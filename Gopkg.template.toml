@@ -1,0 +1,18 @@
+[[constraint]]
+  branch = "master"
+  name = "github.com/pulumi/pulumi"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/pulumi/pulumi-terraform"
+
+[[constraint]]
+  version = "v1.12.0"
+  name = "github.com/terraform-providers/terraform-provider-cloudflare"
+
+  [constraint.metadata]
+    gomod-override = true
+    gomod-exclude-prefixes = [
+      "github.com/golang/protobuf",
+    ]
+

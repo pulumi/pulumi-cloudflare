@@ -1,0 +1,40 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true
+    },
+    "files": [
+        "accessApplication.ts",
+        "accessPolicy.ts",
+        "accessRule.ts",
+        "accountMember.ts",
+        "config/index.ts",
+        "config/vars.ts",
+        "customPages.ts",
+        "filter.ts",
+        "firewallRule.ts",
+        "getIpRanges.ts",
+        "getZones.ts",
+        "index.ts",
+        "loadBalancer.ts",
+        "loadBalancerMonitor.ts",
+        "loadBalancerPool.ts",
+        "pageRule.ts",
+        "provider.ts",
+        "rateLimit.ts",
+        "record.ts",
+        "spectrumApplication.ts",
+        "utilities.ts",
+        "wafRule.ts",
+        "workerRoute.ts",
+        "workerScript.ts",
+        "zone.ts",
+        "zoneLockdown.ts",
+        "zoneSettingsOverride.ts"
+    ]
+}
+
