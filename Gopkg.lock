@@ -909,11 +909,9 @@
   analyzer-version = 1
   input-imports = [
     "github.com/hashicorp/terraform/helper/schema",
-    "github.com/hashicorp/terraform/terraform",
     "github.com/pkg/errors",
     "github.com/pulumi/pulumi-terraform/pkg/tfbridge",
     "github.com/pulumi/pulumi-terraform/pkg/tfgen",
-    "github.com/pulumi/pulumi/pkg/resource",
     "github.com/pulumi/pulumi/pkg/tokens",
     "github.com/pulumi/pulumi/pkg/util/buildutil",
     "github.com/pulumi/pulumi/sdk/go/pulumi",
