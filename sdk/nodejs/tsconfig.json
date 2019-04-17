@@ -23,6 +23,7 @@
         "loadBalancer.ts",
         "loadBalancerMonitor.ts",
         "loadBalancerPool.ts",
+        "logpushJob.ts",
         "pageRule.ts",
         "provider.ts",
         "rateLimit.ts",

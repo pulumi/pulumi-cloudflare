@@ -64,7 +64,7 @@ class Filter(pulumi.CustomResource):
         __props__['description'] = description
 
         if expression is None:
-            raise TypeError('Missing required property expression')
+            raise TypeError("Missing required property 'expression'")
         __props__['expression'] = expression
 
         __props__['paused'] = paused

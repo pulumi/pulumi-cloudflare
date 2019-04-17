@@ -23,19 +23,16 @@ import * as utilities from "./utilities";
  *         status: "active",
  *     },
  * }));
- * const endpointLockdown: cloudflare.ZoneLockdown[] = [];
- * for (let i = 0; i < test.apply(test => test.zones.length); i++) {
- *     endpointLockdown.push(new cloudflare.ZoneLockdown(`endpoint_lockdown-${i}`, {
- *         configurations: [{
- *             target: "ip",
- *             value: "198.51.100.4",
- *         }],
- *         description: "Restrict access to these endpoints to requests from a known IP address",
- *         paused: false,
- *         urls: ["api.mysite.com/some/endpoint*"],
- *         zone: test.apply(test => test.zones[i]),
- *     }));
- * }
+ * const endpointLockdown = new cloudflare.ZoneLockdown("endpoint_lockdown", {
+ *     configurations: [{
+ *         target: "ip",
+ *         value: "198.51.100.4",
+ *     }],
+ *     description: "Restrict access to these endpoints to requests from a known IP address",
+ *     paused: false,
+ *     urls: ["api.mysite.com/some/endpoint*"],
+ *     zone: test.apply(test => (<any>test.zones[0])["name"]),
+ * });
  * ```
  */
 export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
@@ -55,7 +52,8 @@ export interface GetZonesArgs {
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
-    readonly zones: string[];
+    readonly filter: { name?: string, paused?: boolean, status?: string };
+    readonly zones: { id?: string, name?: string }[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

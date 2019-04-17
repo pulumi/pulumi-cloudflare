@@ -21,6 +21,10 @@ class LoadBalancer(pulumi.CustomResource):
     """
     Free text description.
     """
+    enabled: pulumi.Output[bool]
+    """
+    Enable or disable the load balancer. Defaults to `true` (enabled).
+    """
     fallback_pool_id: pulumi.Output[str]
     """
     The pool ID to use when all other pools are detected as unhealthy.
@@ -53,7 +57,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: "off", "geo", "dynamic_latency" or "". Default is "".
     """
-    ttl: pulumi.Output[int]
+    ttl: pulumi.Output[float]
     """
     Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
     """
@@ -65,7 +69,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     ID associated with the specified `zone`.
     """
-    def __init__(__self__, resource_name, opts=None, default_pool_ids=None, description=None, fallback_pool_id=None, name=None, pop_pools=None, proxied=None, region_pools=None, session_affinity=None, steering_policy=None, ttl=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, default_pool_ids=None, description=None, enabled=None, fallback_pool_id=None, name=None, pop_pools=None, proxied=None, region_pools=None, session_affinity=None, steering_policy=None, ttl=None, zone=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Clouflare account before you can use this resource.
         
@@ -73,6 +77,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] default_pool_ids: A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
         :param pulumi.Input[str] description: Free text description.
+        :param pulumi.Input[bool] enabled: Enable or disable the load balancer. Defaults to `true` (enabled).
         :param pulumi.Input[str] fallback_pool_id: The pool ID to use when all other pools are detected as unhealthy.
         :param pulumi.Input[str] name: The DNS name (FQDN, including the zone) to associate with the load balancer.
         :param pulumi.Input[list] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
@@ -80,7 +85,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[list] region_pools: A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         :param pulumi.Input[str] session_affinity: Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: "off", "geo", "dynamic_latency" or "". Default is "".
-        :param pulumi.Input[int] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+        :param pulumi.Input[float] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         :param pulumi.Input[str] zone: The zone to add the load balancer to.
         """
         if __name__ is not None:
@@ -99,17 +104,19 @@ class LoadBalancer(pulumi.CustomResource):
         __props__ = dict()
 
         if default_pool_ids is None:
-            raise TypeError('Missing required property default_pool_ids')
+            raise TypeError("Missing required property 'default_pool_ids'")
         __props__['default_pool_ids'] = default_pool_ids
 
         __props__['description'] = description
 
+        __props__['enabled'] = enabled
+
         if fallback_pool_id is None:
-            raise TypeError('Missing required property fallback_pool_id')
+            raise TypeError("Missing required property 'fallback_pool_id'")
         __props__['fallback_pool_id'] = fallback_pool_id
 
         if name is None:
-            raise TypeError('Missing required property name')
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['pop_pools'] = pop_pools
@@ -125,7 +132,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__['ttl'] = ttl
 
         if zone is None:
-            raise TypeError('Missing required property zone')
+            raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
 
         __props__['created_on'] = None

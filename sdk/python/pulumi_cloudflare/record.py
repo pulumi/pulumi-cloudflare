@@ -37,7 +37,7 @@ class Record(pulumi.CustomResource):
     """
     The name of the record
     """
-    priority: pulumi.Output[int]
+    priority: pulumi.Output[float]
     """
     The priority of the record
     """
@@ -49,7 +49,7 @@ class Record(pulumi.CustomResource):
     """
     Whether the record gets Cloudflare's origin protection; defaults to `false`.
     """
-    ttl: pulumi.Output[int]
+    ttl: pulumi.Output[float]
     """
     The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
     """
@@ -74,9 +74,9 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[dict] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
         :param pulumi.Input[str] domain: The DNS zone to add the record to
         :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[int] priority: The priority of the record
+        :param pulumi.Input[float] priority: The priority of the record
         :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection; defaults to `false`.
-        :param pulumi.Input[int] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        :param pulumi.Input[float] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         """
@@ -98,11 +98,11 @@ class Record(pulumi.CustomResource):
         __props__['data'] = data
 
         if domain is None:
-            raise TypeError('Missing required property domain')
+            raise TypeError("Missing required property 'domain'")
         __props__['domain'] = domain
 
         if name is None:
-            raise TypeError('Missing required property name')
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['priority'] = priority
@@ -112,7 +112,7 @@ class Record(pulumi.CustomResource):
         __props__['ttl'] = ttl
 
         if type is None:
-            raise TypeError('Missing required property type')
+            raise TypeError("Missing required property 'type'")
         __props__['type'] = type
 
         __props__['value'] = value

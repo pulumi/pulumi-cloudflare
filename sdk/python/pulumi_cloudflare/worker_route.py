@@ -55,13 +55,13 @@ class WorkerRoute(pulumi.CustomResource):
         __props__['enabled'] = enabled
 
         if pattern is None:
-            raise TypeError('Missing required property pattern')
+            raise TypeError("Missing required property 'pattern'")
         __props__['pattern'] = pattern
 
         __props__['script_name'] = script_name
 
         if zone is None:
-            raise TypeError('Missing required property zone')
+            raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
 
         __props__['multi_script'] = None

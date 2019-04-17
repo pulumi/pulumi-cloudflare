@@ -33,11 +33,11 @@ class RateLimit(pulumi.CustomResource):
     """
     Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
     """
-    period: pulumi.Output[int]
+    period: pulumi.Output[float]
     """
     The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
     """
-    threshold: pulumi.Output[int]
+    threshold: pulumi.Output[float]
     """
     The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
     """
@@ -61,8 +61,8 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
         :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
         :param pulumi.Input[dict] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
-        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
-        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        :param pulumi.Input[float] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        :param pulumi.Input[float] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
         :param pulumi.Input[str] zone: The DNS zone to apply rate limiting to.
         """
         if __name__ is not None:
@@ -81,7 +81,7 @@ class RateLimit(pulumi.CustomResource):
         __props__ = dict()
 
         if action is None:
-            raise TypeError('Missing required property action')
+            raise TypeError("Missing required property 'action'")
         __props__['action'] = action
 
         __props__['bypass_url_patterns'] = bypass_url_patterns
@@ -95,15 +95,15 @@ class RateLimit(pulumi.CustomResource):
         __props__['match'] = match
 
         if period is None:
-            raise TypeError('Missing required property period')
+            raise TypeError("Missing required property 'period'")
         __props__['period'] = period
 
         if threshold is None:
-            raise TypeError('Missing required property threshold')
+            raise TypeError("Missing required property 'threshold'")
         __props__['threshold'] = threshold
 
         if zone is None:
-            raise TypeError('Missing required property zone')
+            raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
 
         __props__['zone_id'] = None

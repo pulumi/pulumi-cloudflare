@@ -62,7 +62,7 @@ class ZoneLockdown(pulumi.CustomResource):
         __props__ = dict()
 
         if configurations is None:
-            raise TypeError('Missing required property configurations')
+            raise TypeError("Missing required property 'configurations'")
         __props__['configurations'] = configurations
 
         __props__['description'] = description
@@ -70,7 +70,7 @@ class ZoneLockdown(pulumi.CustomResource):
         __props__['paused'] = paused
 
         if urls is None:
-            raise TypeError('Missing required property urls')
+            raise TypeError("Missing required property 'urls'")
         __props__['urls'] = urls
 
         __props__['zone'] = zone

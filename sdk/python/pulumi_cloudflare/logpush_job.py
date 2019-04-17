@@ -8,33 +8,23 @@ import pulumi
 import pulumi.runtime
 from . import utilities, tables
 
-class WorkerScript(pulumi.CustomResource):
-    content: pulumi.Output[str]
-    """
-    The script content.
-    """
+class LogpushJob(pulumi.CustomResource):
+    destination_conf: pulumi.Output[str]
+    enabled: pulumi.Output[bool]
+    logpull_options: pulumi.Output[str]
     name: pulumi.Output[str]
+    ownership_challenge: pulumi.Output[str]
     """
-    The name for the script. 
-    """
-    zone: pulumi.Output[str]
-    """
-    The zone for the script.
+    Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
     """
     zone_id: pulumi.Output[str]
-    """
-    The zone id of the script (only for non-multi-script resources)
-    """
-    def __init__(__self__, resource_name, opts=None, content=None, name=None, zone=None, zone_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, destination_conf=None, enabled=None, logpull_options=None, name=None, ownership_challenge=None, zone_id=None, __name__=None, __opts__=None):
         """
-        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare_worker_route`.
+        Provides a resource which manages Cloudflare logpush jobs.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The name for the script. 
-        :param pulumi.Input[str] zone: The zone for the script.
-        :param pulumi.Input[str] zone_id: The zone id of the script (only for non-multi-script resources)
+        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -51,18 +41,26 @@ class WorkerScript(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if content is None:
-            raise TypeError("Missing required property 'content'")
-        __props__['content'] = content
+        if destination_conf is None:
+            raise TypeError("Missing required property 'destination_conf'")
+        __props__['destination_conf'] = destination_conf
+
+        __props__['enabled'] = enabled
+
+        __props__['logpull_options'] = logpull_options
 
         __props__['name'] = name
 
-        __props__['zone'] = zone
+        if ownership_challenge is None:
+            raise TypeError("Missing required property 'ownership_challenge'")
+        __props__['ownership_challenge'] = ownership_challenge
 
+        if zone_id is None:
+            raise TypeError("Missing required property 'zone_id'")
         __props__['zone_id'] = zone_id
 
-        super(WorkerScript, __self__).__init__(
-            'cloudflare:index/workerScript:WorkerScript',
+        super(LogpushJob, __self__).__init__(
+            'cloudflare:index/logpushJob:LogpushJob',
             resource_name,
             __props__,
             opts)

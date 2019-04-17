@@ -32,6 +32,7 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	if args == nil {
 		inputs["defaultPoolIds"] = nil
 		inputs["description"] = nil
+		inputs["enabled"] = nil
 		inputs["fallbackPoolId"] = nil
 		inputs["name"] = nil
 		inputs["popPools"] = nil
@@ -44,6 +45,7 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	} else {
 		inputs["defaultPoolIds"] = args.DefaultPoolIds
 		inputs["description"] = args.Description
+		inputs["enabled"] = args.Enabled
 		inputs["fallbackPoolId"] = args.FallbackPoolId
 		inputs["name"] = args.Name
 		inputs["popPools"] = args.PopPools
@@ -73,6 +75,7 @@ func GetLoadBalancer(ctx *pulumi.Context,
 		inputs["createdOn"] = state.CreatedOn
 		inputs["defaultPoolIds"] = state.DefaultPoolIds
 		inputs["description"] = state.Description
+		inputs["enabled"] = state.Enabled
 		inputs["fallbackPoolId"] = state.FallbackPoolId
 		inputs["modifiedOn"] = state.ModifiedOn
 		inputs["name"] = state.Name
@@ -115,6 +118,11 @@ func (r *LoadBalancer) DefaultPoolIds() *pulumi.ArrayOutput {
 // Free text description.
 func (r *LoadBalancer) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
+}
+
+// Enable or disable the load balancer. Defaults to `true` (enabled).
+func (r *LoadBalancer) Enabled() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // The pool ID to use when all other pools are detected as unhealthy.
@@ -180,6 +188,8 @@ type LoadBalancerState struct {
 	DefaultPoolIds interface{}
 	// Free text description.
 	Description interface{}
+	// Enable or disable the load balancer. Defaults to `true` (enabled).
+	Enabled interface{}
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPoolId interface{}
 	// The RFC3339 timestamp of when the load balancer was last modified.
@@ -210,6 +220,8 @@ type LoadBalancerArgs struct {
 	DefaultPoolIds interface{}
 	// Free text description.
 	Description interface{}
+	// Enable or disable the load balancer. Defaults to `true` (enabled).
+	Enabled interface{}
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPoolId interface{}
 	// The DNS name (FQDN, including the zone) to associate with the load balancer.

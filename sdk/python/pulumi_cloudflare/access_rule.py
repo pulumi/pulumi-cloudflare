@@ -57,11 +57,11 @@ class AccessRule(pulumi.CustomResource):
         __props__ = dict()
 
         if configuration is None:
-            raise TypeError('Missing required property configuration')
+            raise TypeError("Missing required property 'configuration'")
         __props__['configuration'] = configuration
 
         if mode is None:
-            raise TypeError('Missing required property mode')
+            raise TypeError("Missing required property 'mode'")
         __props__['mode'] = mode
 
         __props__['notes'] = notes

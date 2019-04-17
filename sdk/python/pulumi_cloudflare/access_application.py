@@ -59,17 +59,17 @@ class AccessApplication(pulumi.CustomResource):
         __props__ = dict()
 
         if domain is None:
-            raise TypeError('Missing required property domain')
+            raise TypeError("Missing required property 'domain'")
         __props__['domain'] = domain
 
         if name is None:
-            raise TypeError('Missing required property name')
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['session_duration'] = session_duration
 
         if zone_id is None:
-            raise TypeError('Missing required property zone_id')
+            raise TypeError("Missing required property 'zone_id'")
         __props__['zone_id'] = zone_id
 
         __props__['aud'] = None

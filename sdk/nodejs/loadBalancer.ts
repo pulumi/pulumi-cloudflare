@@ -69,6 +69,10 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly description: pulumi.Output<string | undefined>;
     /**
+     * Enable or disable the load balancer. Defaults to `true` (enabled).
+     */
+    public readonly enabled: pulumi.Output<boolean | undefined>;
+    /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
     public readonly fallbackPoolId: pulumi.Output<string>;
@@ -128,6 +132,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["defaultPoolIds"] = state ? state.defaultPoolIds : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enabled"] = state ? state.enabled : undefined;
             inputs["fallbackPoolId"] = state ? state.fallbackPoolId : undefined;
             inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -155,6 +160,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             }
             inputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enabled"] = args ? args.enabled : undefined;
             inputs["fallbackPoolId"] = args ? args.fallbackPoolId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["popPools"] = args ? args.popPools : undefined;
@@ -188,6 +194,10 @@ export interface LoadBalancerState {
      * Free text description.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Enable or disable the load balancer. Defaults to `true` (enabled).
+     */
+    readonly enabled?: pulumi.Input<boolean>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
@@ -246,6 +256,10 @@ export interface LoadBalancerArgs {
      * Free text description.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * Enable or disable the load balancer. Defaults to `true` (enabled).
+     */
+    readonly enabled?: pulumi.Input<boolean>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */

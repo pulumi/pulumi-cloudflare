@@ -22,7 +22,7 @@ class FirewallRule(pulumi.CustomResource):
     """
     Whether this filter based firewall rule is currently paused. Boolean value.
     """
-    priority: pulumi.Output[int]
+    priority: pulumi.Output[float]
     """
     The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
     """
@@ -46,7 +46,7 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
         :param pulumi.Input[str] description: A description of the rule to help identify it.
         :param pulumi.Input[bool] paused: Whether this filter based firewall rule is currently paused. Boolean value.
-        :param pulumi.Input[int] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        :param pulumi.Input[float] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
         :param pulumi.Input[str] zone: The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
         """
@@ -66,13 +66,13 @@ class FirewallRule(pulumi.CustomResource):
         __props__ = dict()
 
         if action is None:
-            raise TypeError('Missing required property action')
+            raise TypeError("Missing required property 'action'")
         __props__['action'] = action
 
         __props__['description'] = description
 
         if filter_id is None:
-            raise TypeError('Missing required property filter_id')
+            raise TypeError("Missing required property 'filter_id'")
         __props__['filter_id'] = filter_id
 
         __props__['paused'] = paused

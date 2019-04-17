@@ -29,6 +29,6 @@ setup(name='pulumi_cloudflare',
       license='Apache-2.0',
       packages=find_packages(),
       install_requires=[
-          'pulumi>=0.16.16,<0.17.0'
+          'pulumi>=0.17.1,<0.18.0'
       ],
       zip_safe=False)
