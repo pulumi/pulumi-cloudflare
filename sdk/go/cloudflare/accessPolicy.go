@@ -112,8 +112,8 @@ func (r *AccessPolicy) ApplicationId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["applicationId"])
 }
 
-// The complete URL of the asset you wish to put
-// Cloudflare Access in front of. Can include subdomains or paths. Or both.
+// Defines the action Access will take if the policy matches the user.
+// Allowed values: `allow`, `deny`, `bypass`
 func (r *AccessPolicy) Decision() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["decision"])
 }
@@ -157,8 +157,8 @@ type AccessPolicyState struct {
 	// The ID of the application the policy is
 	// associated with.
 	ApplicationId interface{}
-	// The complete URL of the asset you wish to put
-	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
+	// Defines the action Access will take if the policy matches the user.
+	// Allowed values: `allow`, `deny`, `bypass`
 	Decision interface{}
 	// A series of access conditions, see below for
 	// full list.
@@ -183,8 +183,8 @@ type AccessPolicyArgs struct {
 	// The ID of the application the policy is
 	// associated with.
 	ApplicationId interface{}
-	// The complete URL of the asset you wish to put
-	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
+	// Defines the action Access will take if the policy matches the user.
+	// Allowed values: `allow`, `deny`, `bypass`
 	Decision interface{}
 	// A series of access conditions, see below for
 	// full list.

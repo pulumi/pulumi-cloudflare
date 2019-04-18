@@ -18,6 +18,7 @@ func LookupZones(ctx *pulumi.Context, args *GetZonesArgs) (*GetZonesResult, erro
 		return nil, err
 	}
 	return &GetZonesResult{
+		Filter: outputs["filter"],
 		Zones: outputs["zones"],
 		Id: outputs["id"],
 	}, nil
@@ -30,6 +31,7 @@ type GetZonesArgs struct {
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
+	Filter interface{}
 	Zones interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

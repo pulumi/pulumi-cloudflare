@@ -42,11 +42,11 @@ class AccountMember(pulumi.CustomResource):
         __props__ = dict()
 
         if email_address is None:
-            raise TypeError('Missing required property email_address')
+            raise TypeError("Missing required property 'email_address'")
         __props__['email_address'] = email_address
 
         if role_ids is None:
-            raise TypeError('Missing required property role_ids')
+            raise TypeError("Missing required property 'role_ids'")
         __props__['role_ids'] = role_ids
 
         super(AccountMember, __self__).__init__(

@@ -12,12 +12,15 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, zones=None, id=None):
+    def __init__(__self__, filter=None, zones=None, id=None):
+        if filter and not isinstance(filter, dict):
+            raise TypeError("Expected argument 'filter' to be a dict")
+        __self__.filter = filter
         if zones and not isinstance(zones, list):
-            raise TypeError('Expected argument zones to be a list')
+            raise TypeError("Expected argument 'zones' to be a list")
         __self__.zones = zones
         if id and not isinstance(id, str):
-            raise TypeError('Expected argument id to be a str')
+            raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
@@ -33,5 +36,6 @@ async def get_zones(filter=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('cloudflare:index/getZones:getZones', __args__, opts=opts)
 
     return GetZonesResult(
+        filter=__ret__.get('filter'),
         zones=__ret__.get('zones'),
         id=__ret__.get('id'))

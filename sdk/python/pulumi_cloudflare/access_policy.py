@@ -16,8 +16,8 @@ class AccessPolicy(pulumi.CustomResource):
     """
     decision: pulumi.Output[str]
     """
-    The complete URL of the asset you wish to put
-    Cloudflare Access in front of. Can include subdomains or paths. Or both.
+    Defines the action Access will take if the policy matches the user.
+    Allowed values: `allow`, `deny`, `bypass`
     """
     excludes: pulumi.Output[list]
     """
@@ -33,7 +33,7 @@ class AccessPolicy(pulumi.CustomResource):
     """
     Friendly name of the Access Application.
     """
-    precedence: pulumi.Output[int]
+    precedence: pulumi.Output[float]
     """
     The unique precedence for policies on a single application. Integer.
     """
@@ -71,14 +71,14 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The ID of the application the policy is
                associated with.
-        :param pulumi.Input[str] decision: The complete URL of the asset you wish to put
-               Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
+               Allowed values: `allow`, `deny`, `bypass`
         :param pulumi.Input[list] excludes: A series of access conditions, see below for
                full list.
         :param pulumi.Input[list] includes: A series of access conditions, see below for
                full list.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Integer.
+        :param pulumi.Input[float] precedence: The unique precedence for policies on a single application. Integer.
         :param pulumi.Input[list] requires: A series of access conditions, see below for
                full list.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
@@ -100,21 +100,21 @@ class AccessPolicy(pulumi.CustomResource):
         __props__ = dict()
 
         if application_id is None:
-            raise TypeError('Missing required property application_id')
+            raise TypeError("Missing required property 'application_id'")
         __props__['application_id'] = application_id
 
         if decision is None:
-            raise TypeError('Missing required property decision')
+            raise TypeError("Missing required property 'decision'")
         __props__['decision'] = decision
 
         __props__['excludes'] = excludes
 
         if includes is None:
-            raise TypeError('Missing required property includes')
+            raise TypeError("Missing required property 'includes'")
         __props__['includes'] = includes
 
         if name is None:
-            raise TypeError('Missing required property name')
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['precedence'] = precedence
@@ -122,7 +122,7 @@ class AccessPolicy(pulumi.CustomResource):
         __props__['requires'] = requires
 
         if zone_id is None:
-            raise TypeError('Missing required property zone_id')
+            raise TypeError("Missing required property 'zone_id'")
         __props__['zone_id'] = zone_id
 
         super(AccessPolicy, __self__).__init__(

@@ -134,6 +134,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_load_balancer_monitor":  {Tok: makeResource(mainMod, "LoadBalancerMonitor")},
 			"cloudflare_load_balancer_pool":     {Tok: makeResource(mainMod, "LoadBalancerPool")},
 			"cloudflare_load_balancer":          {Tok: makeResource(mainMod, "LoadBalancer")},
+			"cloudflare_logpush_job":            {Tok: makeResource(mainMod, "LogpushJob")},
 			"cloudflare_page_rule":              {Tok: makeResource(mainMod, "PageRule")},
 			"cloudflare_rate_limit":             {Tok: makeResource(mainMod, "RateLimit")},
 			"cloudflare_record":                 {Tok: makeResource(mainMod, "Record")},
@@ -152,7 +153,7 @@ func Provider() tfbridge.ProviderInfo {
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^0.16.16",
+				"@pulumi/pulumi": "^0.17.1",
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
@@ -162,7 +163,7 @@ func Provider() tfbridge.ProviderInfo {
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
-				"pulumi": ">=0.16.16,<0.17.0",
+				"pulumi": ">=0.17.1,<0.18.0",
 			},
 		},
 	}

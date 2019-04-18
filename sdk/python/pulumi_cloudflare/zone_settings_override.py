@@ -55,7 +55,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         __props__ = dict()
 
         if name is None:
-            raise TypeError('Missing required property name')
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['settings'] = settings

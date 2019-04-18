@@ -25,7 +25,7 @@ class LoadBalancerPool(pulumi.CustomResource):
     """
     Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
     """
-    minimum_origins: pulumi.Output[int]
+    minimum_origins: pulumi.Output[float]
     """
     The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
     """
@@ -58,7 +58,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[list] check_regions: A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
-        :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+        :param pulumi.Input[float] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
@@ -90,13 +90,13 @@ class LoadBalancerPool(pulumi.CustomResource):
         __props__['monitor'] = monitor
 
         if name is None:
-            raise TypeError('Missing required property name')
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['notification_email'] = notification_email
 
         if origins is None:
-            raise TypeError('Missing required property origins')
+            raise TypeError("Missing required property 'origins'")
         __props__['origins'] = origins
 
         __props__['created_on'] = None

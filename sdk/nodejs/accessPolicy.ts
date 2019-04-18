@@ -65,8 +65,8 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly applicationId: pulumi.Output<string>;
     /**
-     * The complete URL of the asset you wish to put
-     * Cloudflare Access in front of. Can include subdomains or paths. Or both.
+     * Defines the action Access will take if the policy matches the user.
+     * Allowed values: `allow`, `deny`, `bypass`
      */
     public readonly decision: pulumi.Output<string>;
     /**
@@ -158,8 +158,8 @@ export interface AccessPolicyState {
      */
     readonly applicationId?: pulumi.Input<string>;
     /**
-     * The complete URL of the asset you wish to put
-     * Cloudflare Access in front of. Can include subdomains or paths. Or both.
+     * Defines the action Access will take if the policy matches the user.
+     * Allowed values: `allow`, `deny`, `bypass`
      */
     readonly decision?: pulumi.Input<string>;
     /**
@@ -202,8 +202,8 @@ export interface AccessPolicyArgs {
      */
     readonly applicationId: pulumi.Input<string>;
     /**
-     * The complete URL of the asset you wish to put
-     * Cloudflare Access in front of. Can include subdomains or paths. Or both.
+     * Defines the action Access will take if the policy matches the user.
+     * Allowed values: `allow`, `deny`, `bypass`
      */
     readonly decision: pulumi.Input<string>;
     /**

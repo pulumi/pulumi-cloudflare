@@ -13,7 +13,7 @@ class PageRule(pulumi.CustomResource):
     """
     The actions taken by the page rule, options given below.
     """
-    priority: pulumi.Output[int]
+    priority: pulumi.Output[float]
     """
     The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
     """
@@ -40,7 +40,7 @@ class PageRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] actions: The actions taken by the page rule, options given below.
-        :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+        :param pulumi.Input[float] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone: The DNS zone to which the page rule should be added.
@@ -61,7 +61,7 @@ class PageRule(pulumi.CustomResource):
         __props__ = dict()
 
         if actions is None:
-            raise TypeError('Missing required property actions')
+            raise TypeError("Missing required property 'actions'")
         __props__['actions'] = actions
 
         __props__['priority'] = priority
@@ -69,11 +69,11 @@ class PageRule(pulumi.CustomResource):
         __props__['status'] = status
 
         if target is None:
-            raise TypeError('Missing required property target')
+            raise TypeError("Missing required property 'target'")
         __props__['target'] = target
 
         if zone is None:
-            raise TypeError('Missing required property zone')
+            raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
 
         __props__['zone_id'] = None

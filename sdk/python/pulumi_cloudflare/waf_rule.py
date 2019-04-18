@@ -55,15 +55,15 @@ class WafRule(pulumi.CustomResource):
         __props__ = dict()
 
         if mode is None:
-            raise TypeError('Missing required property mode')
+            raise TypeError("Missing required property 'mode'")
         __props__['mode'] = mode
 
         if rule_id is None:
-            raise TypeError('Missing required property rule_id')
+            raise TypeError("Missing required property 'rule_id'")
         __props__['rule_id'] = rule_id
 
         if zone is None:
-            raise TypeError('Missing required property zone')
+            raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
 
         __props__['package_id'] = None

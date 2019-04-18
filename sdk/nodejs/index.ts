@@ -14,6 +14,7 @@ export * from "./getZones";
 export * from "./loadBalancer";
 export * from "./loadBalancerMonitor";
 export * from "./loadBalancerPool";
+export * from "./logpushJob";
 export * from "./pageRule";
 export * from "./provider";
 export * from "./rateLimit";

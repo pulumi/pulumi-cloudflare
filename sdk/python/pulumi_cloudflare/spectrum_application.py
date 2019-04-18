@@ -25,7 +25,7 @@ class SpectrumApplication(pulumi.CustomResource):
     """
     A destination DNS addresses to the origin. Fields documented below.
     """
-    origin_port: pulumi.Output[int]
+    origin_port: pulumi.Output[float]
     """
     If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
     """
@@ -52,7 +52,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application. Defaults to `true`.
         :param pulumi.Input[list] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input[dict] origin_dns: A destination DNS addresses to the origin. Fields documented below.
-        :param pulumi.Input[int] origin_port: If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+        :param pulumi.Input[float] origin_port: If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
@@ -73,7 +73,7 @@ class SpectrumApplication(pulumi.CustomResource):
         __props__ = dict()
 
         if dns is None:
-            raise TypeError('Missing required property dns')
+            raise TypeError("Missing required property 'dns'")
         __props__['dns'] = dns
 
         __props__['ip_firewall'] = ip_firewall
@@ -83,11 +83,11 @@ class SpectrumApplication(pulumi.CustomResource):
         __props__['origin_dns'] = origin_dns
 
         if origin_port is None:
-            raise TypeError('Missing required property origin_port')
+            raise TypeError("Missing required property 'origin_port'")
         __props__['origin_port'] = origin_port
 
         if protocol is None:
-            raise TypeError('Missing required property protocol')
+            raise TypeError("Missing required property 'protocol'")
         __props__['protocol'] = protocol
 
         __props__['proxy_protocol'] = proxy_protocol
@@ -95,7 +95,7 @@ class SpectrumApplication(pulumi.CustomResource):
         __props__['tls'] = tls
 
         if zone_id is None:
-            raise TypeError('Missing required property zone_id')
+            raise TypeError("Missing required property 'zone_id'")
         __props__['zone_id'] = zone_id
 
         super(SpectrumApplication, __self__).__init__(
