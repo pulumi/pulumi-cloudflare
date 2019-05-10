@@ -1,5 +1,10 @@
 ## 0.17.2 (Unreleased)
 
+### Examples
+
+- Added a Worker example
+
+
 ## 0.17.1 (Released 6th May, 2019)
 
 ### Improvements
