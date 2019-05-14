@@ -1,0 +1,12 @@
+name: cloudflare-worker
+description: A Hello-World implementation of a Cloudflare Worker.
+runtime: nodejs
+template:
+  config:
+    cloudflare:email:
+      description: E-mail associated with the Cloudflare account.
+    cloudflare:token:
+      description: API key to access the Cloudflare account.
+      secret: true
+    zone:
+      description: Zone name (website name).
