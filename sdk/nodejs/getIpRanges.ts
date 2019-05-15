@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *         protocol: "tcp",
  *     }],
  *     network: "default",
- *     sourceRanges: cloudflare.apply(cloudflare => cloudflare.ipv4CidrBlocks),
+ *     sourceRanges: cloudflare.ipv4CidrBlocks,
  * });
  * ```
  */
