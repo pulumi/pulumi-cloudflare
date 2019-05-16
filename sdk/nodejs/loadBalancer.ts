@@ -59,63 +59,63 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The RFC3339 timestamp of when the load balancer was created.
      */
-    public /*out*/ readonly createdOn: pulumi.Output<string>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
      */
-    public readonly defaultPoolIds: pulumi.Output<string[]>;
+    public readonly defaultPoolIds!: pulumi.Output<string[]>;
     /**
      * Free text description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Enable or disable the load balancer. Defaults to `true` (enabled).
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
-    public readonly fallbackPoolId: pulumi.Output<string>;
+    public readonly fallbackPoolId!: pulumi.Output<string>;
     /**
      * The RFC3339 timestamp of when the load balancer was last modified.
      */
-    public /*out*/ readonly modifiedOn: pulumi.Output<string>;
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * The DNS name (FQDN, including the zone) to associate with the load balancer.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
      */
-    public readonly popPools: pulumi.Output<{ poolIds: string[], pop: string }[]>;
+    public readonly popPools!: pulumi.Output<{ poolIds: string[], pop: string }[]>;
     /**
      * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
      */
-    public readonly proxied: pulumi.Output<boolean | undefined>;
+    public readonly proxied!: pulumi.Output<boolean | undefined>;
     /**
      * A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
      */
-    public readonly regionPools: pulumi.Output<{ poolIds: string[], region: string }[]>;
+    public readonly regionPools!: pulumi.Output<{ poolIds: string[], region: string }[]>;
     /**
      * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
      */
-    public readonly sessionAffinity: pulumi.Output<string | undefined>;
+    public readonly sessionAffinity!: pulumi.Output<string | undefined>;
     /**
      * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
      */
-    public readonly steeringPolicy: pulumi.Output<string>;
+    public readonly steeringPolicy!: pulumi.Output<string>;
     /**
      * Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
      */
-    public readonly ttl: pulumi.Output<number>;
+    public readonly ttl!: pulumi.Output<number>;
     /**
      * The zone to add the load balancer to.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * ID associated with the specified `zone`.
      */
-    public /*out*/ readonly zoneId: pulumi.Output<string>;
+    public /*out*/ readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -128,7 +128,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LoadBalancerState = argsOrState as LoadBalancerState | undefined;
+            const state = argsOrState as LoadBalancerState | undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["defaultPoolIds"] = state ? state.defaultPoolIds : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -173,6 +173,13 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/loadBalancer:LoadBalancer", name, inputs, opts);
     }

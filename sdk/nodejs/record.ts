@@ -54,59 +54,59 @@ export class Record extends pulumi.CustomResource {
     /**
      * The RFC3339 timestamp of when the record was created
      */
-    public /*out*/ readonly createdOn: pulumi.Output<string>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
      */
-    public readonly data: pulumi.Output<{ algorithm?: number, altitude?: number, certificate?: string, content?: string, digest?: string, digestType?: number, fingerprint?: string, flags?: string, keyTag?: number, latDegrees?: number, latDirection?: string, latMinutes?: number, latSeconds?: number, longDegrees?: number, longDirection?: string, longMinutes?: number, longSeconds?: number, matchingType?: number, name?: string, order?: number, port?: number, precisionHorz?: number, precisionVert?: number, preference?: number, priority?: number, proto?: string, protocol?: number, publicKey?: string, regex?: string, replacement?: string, selector?: number, service?: string, size?: number, target?: string, type?: number, usage?: number, weight?: number } | undefined>;
+    public readonly data!: pulumi.Output<{ algorithm?: number, altitude?: number, certificate?: string, content?: string, digest?: string, digestType?: number, fingerprint?: string, flags?: string, keyTag?: number, latDegrees?: number, latDirection?: string, latMinutes?: number, latSeconds?: number, longDegrees?: number, longDirection?: string, longMinutes?: number, longSeconds?: number, matchingType?: number, name?: string, order?: number, port?: number, precisionHorz?: number, precisionVert?: number, preference?: number, priority?: number, proto?: string, protocol?: number, publicKey?: string, regex?: string, replacement?: string, selector?: number, service?: string, size?: number, target?: string, type?: number, usage?: number, weight?: number } | undefined>;
     /**
      * The DNS zone to add the record to
      */
-    public readonly domain: pulumi.Output<string>;
+    public readonly domain!: pulumi.Output<string>;
     /**
      * The FQDN of the record
      */
-    public /*out*/ readonly hostname: pulumi.Output<string>;
+    public /*out*/ readonly hostname!: pulumi.Output<string>;
     /**
      * A key-value map of string metadata cloudflare associates with the record
      */
-    public /*out*/ readonly metadata: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: any}>;
     /**
      * The RFC3339 timestamp of when the record was last modified
      */
-    public /*out*/ readonly modifiedOn: pulumi.Output<string>;
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * The name of the record
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The priority of the record
      */
-    public readonly priority: pulumi.Output<number | undefined>;
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * Shows whether this record can be proxied, must be true if setting `proxied=true`
      */
-    public /*out*/ readonly proxiable: pulumi.Output<boolean>;
+    public /*out*/ readonly proxiable!: pulumi.Output<boolean>;
     /**
      * Whether the record gets Cloudflare's origin protection; defaults to `false`.
      */
-    public readonly proxied: pulumi.Output<boolean | undefined>;
+    public readonly proxied!: pulumi.Output<boolean | undefined>;
     /**
      * The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
      */
-    public readonly ttl: pulumi.Output<number>;
+    public readonly ttl!: pulumi.Output<number>;
     /**
      * The type of the record
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * The (string) value of the record. Either this or `data` must be specified
      */
-    public readonly value: pulumi.Output<string>;
+    public readonly value!: pulumi.Output<string>;
     /**
      * The zone id of the record
      */
-    public /*out*/ readonly zoneId: pulumi.Output<string>;
+    public /*out*/ readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Record resource with the given unique name, arguments, and options.
@@ -119,7 +119,7 @@ export class Record extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RecordArgs | RecordState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RecordState = argsOrState as RecordState | undefined;
+            const state = argsOrState as RecordState | undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["data"] = state ? state.data : undefined;
             inputs["domain"] = state ? state.domain : undefined;
@@ -159,6 +159,13 @@ export class Record extends pulumi.CustomResource {
             inputs["modifiedOn"] = undefined /*out*/;
             inputs["proxiable"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/record:Record", name, inputs, opts);
     }

@@ -36,15 +36,15 @@ export class Argo extends pulumi.CustomResource {
     /**
      * Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
      */
-    public readonly smartRouting: pulumi.Output<string | undefined>;
+    public readonly smartRouting!: pulumi.Output<string | undefined>;
     /**
      * Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
      */
-    public readonly tieredCaching: pulumi.Output<string | undefined>;
+    public readonly tieredCaching!: pulumi.Output<string | undefined>;
     /**
      * The DNS zone ID that you wish to manage Argo on.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Argo resource with the given unique name, arguments, and options.
@@ -57,7 +57,7 @@ export class Argo extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ArgoArgs | ArgoState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ArgoState = argsOrState as ArgoState | undefined;
+            const state = argsOrState as ArgoState | undefined;
             inputs["smartRouting"] = state ? state.smartRouting : undefined;
             inputs["tieredCaching"] = state ? state.tieredCaching : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -69,6 +69,13 @@ export class Argo extends pulumi.CustomResource {
             inputs["smartRouting"] = args ? args.smartRouting : undefined;
             inputs["tieredCaching"] = args ? args.tieredCaching : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/argo:Argo", name, inputs, opts);
     }

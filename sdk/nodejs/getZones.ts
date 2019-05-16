@@ -36,6 +36,13 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     return pulumi.runtime.invoke("cloudflare:index/getZones:getZones", {
         "filter": args.filter,
     }, opts);

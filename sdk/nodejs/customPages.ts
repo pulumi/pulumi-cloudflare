@@ -39,29 +39,29 @@ export class CustomPages extends pulumi.CustomResource {
      * updated. Either `account_id` or `zone_id` must be provided. If
      * `account_id` is present, it will override the zone setting.
      */
-    public readonly accountId: pulumi.Output<string | undefined>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * Managed state of the custom page. Must be one of
      * `default`, `customised`. If the value is `default` it will be removed
      * from the Terraform state management.
      */
-    public readonly state: pulumi.Output<string | undefined>;
+    public readonly state!: pulumi.Output<string | undefined>;
     /**
      * The type of custom page you wish to update. Must
      * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
      * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
      * `500_errors`, `1000_errors`, `always_online`.
      */
-    public readonly type: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<string>;
     /**
      * URL of where the custom page source is located.
      */
-    public readonly url: pulumi.Output<string>;
+    public readonly url!: pulumi.Output<string>;
     /**
      * The zone ID where the custom pages should be
      * updated. Either `zone_id` or `account_id` must be provided.
      */
-    public readonly zoneId: pulumi.Output<string | undefined>;
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a CustomPages resource with the given unique name, arguments, and options.
@@ -74,7 +74,7 @@ export class CustomPages extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: CustomPagesArgs | CustomPagesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: CustomPagesState = argsOrState as CustomPagesState | undefined;
+            const state = argsOrState as CustomPagesState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["state"] = state ? state.state : undefined;
             inputs["type"] = state ? state.type : undefined;
@@ -93,6 +93,13 @@ export class CustomPages extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["url"] = args ? args.url : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/customPages:CustomPages", name, inputs, opts);
     }

@@ -45,28 +45,28 @@ export class FirewallRule extends pulumi.CustomResource {
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
      */
-    public readonly action: pulumi.Output<string>;
+    public readonly action!: pulumi.Output<string>;
     /**
      * A description of the rule to help identify it.
      */
-    public readonly description: pulumi.Output<string | undefined>;
-    public readonly filterId: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly filterId!: pulumi.Output<string>;
     /**
      * Whether this filter based firewall rule is currently paused. Boolean value.
      */
-    public readonly paused: pulumi.Output<boolean | undefined>;
+    public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
      * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      */
-    public readonly priority: pulumi.Output<number | undefined>;
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The DNS zone to which the Filter should be added.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a FirewallRule resource with the given unique name, arguments, and options.
@@ -79,7 +79,7 @@ export class FirewallRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FirewallRuleArgs | FirewallRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FirewallRuleState = argsOrState as FirewallRuleState | undefined;
+            const state = argsOrState as FirewallRuleState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["filterId"] = state ? state.filterId : undefined;
@@ -102,6 +102,13 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["priority"] = args ? args.priority : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/firewallRule:FirewallRule", name, inputs, opts);
     }

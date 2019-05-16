@@ -29,7 +29,6 @@ func GetEmail(ctx *pulumi.Context) string {
 	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_EMAIL").(string); ok {
 		return dv
 	}
-	panic(err.Error())
 	return v
 }
 
@@ -102,7 +101,6 @@ func GetToken(ctx *pulumi.Context) string {
 	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_TOKEN").(string); ok {
 		return dv
 	}
-	panic(err.Error())
 	return v
 }
 

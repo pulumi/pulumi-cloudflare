@@ -32,6 +32,13 @@ export class Provider extends pulumi.ProviderResource {
             inputs["token"] = (args ? args.token : undefined) || utilities.getEnv("CLOUDFLARE_TOKEN");
             inputs["useOrgFromZone"] = (args ? args.useOrgFromZone : undefined) || utilities.getEnv("CLOUDFLARE_ORG_ZONE");
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super("cloudflare", name, inputs, opts);
     }
 }

@@ -34,38 +34,38 @@ export class Zone extends pulumi.CustomResource {
     /**
      * Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
      */
-    public readonly jumpStart: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly meta: pulumi.Output<{ phishingDetected: boolean, wildcardProxiable: boolean }>;
+    public readonly jumpStart!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly meta!: pulumi.Output<{ phishingDetected: boolean, wildcardProxiable: boolean }>;
     /**
      * Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
      */
-    public /*out*/ readonly nameServers: pulumi.Output<string[]>;
+    public /*out*/ readonly nameServers!: pulumi.Output<string[]>;
     /**
      * Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
      */
-    public readonly paused: pulumi.Output<boolean | undefined>;
+    public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
      * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
      */
-    public readonly plan: pulumi.Output<string>;
+    public readonly plan!: pulumi.Output<string>;
     /**
      * Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
      */
-    public /*out*/ readonly status: pulumi.Output<string>;
+    public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
      */
-    public readonly type: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<string | undefined>;
     /**
      * List of Vanity Nameservers (if set).
      * * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
      * * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
      */
-    public /*out*/ readonly vanityNameServers: pulumi.Output<string[]>;
+    public /*out*/ readonly vanityNameServers!: pulumi.Output<string[]>;
     /**
      * The DNS zone name which will be added.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -78,7 +78,7 @@ export class Zone extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ZoneArgs | ZoneState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ZoneState = argsOrState as ZoneState | undefined;
+            const state = argsOrState as ZoneState | undefined;
             inputs["jumpStart"] = state ? state.jumpStart : undefined;
             inputs["meta"] = state ? state.meta : undefined;
             inputs["nameServers"] = state ? state.nameServers : undefined;
@@ -102,6 +102,13 @@ export class Zone extends pulumi.CustomResource {
             inputs["nameServers"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["vanityNameServers"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/zone:Zone", name, inputs, opts);
     }

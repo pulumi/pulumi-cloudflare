@@ -40,36 +40,36 @@ export class SpectrumApplication extends pulumi.CustomResource {
     /**
      * The name and type of DNS record for the Spectrum application. Fields documented below.
      */
-    public readonly dns: pulumi.Output<{ name: string, type: string }>;
+    public readonly dns!: pulumi.Output<{ name: string, type: string }>;
     /**
      * Enables the IP Firewall for this application. Defaults to `true`.
      */
-    public readonly ipFirewall: pulumi.Output<boolean | undefined>;
+    public readonly ipFirewall!: pulumi.Output<boolean | undefined>;
     /**
      * A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
      */
-    public readonly originDirects: pulumi.Output<string[] | undefined>;
+    public readonly originDirects!: pulumi.Output<string[] | undefined>;
     /**
      * A destination DNS addresses to the origin. Fields documented below.
      */
-    public readonly originDns: pulumi.Output<{ name: string } | undefined>;
+    public readonly originDns!: pulumi.Output<{ name: string } | undefined>;
     /**
      * If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
-    public readonly originPort: pulumi.Output<number>;
+    public readonly originPort!: pulumi.Output<number>;
     /**
      * The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
      */
-    public readonly protocol: pulumi.Output<string>;
+    public readonly protocol!: pulumi.Output<string>;
     /**
      * Enables Proxy Protocol v1 to the origin. Defaults to `false`.
      */
-    public readonly proxyProtocol: pulumi.Output<boolean | undefined>;
+    public readonly proxyProtocol!: pulumi.Output<boolean | undefined>;
     /**
      * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
      */
-    public readonly tls: pulumi.Output<string | undefined>;
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly tls!: pulumi.Output<string | undefined>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a SpectrumApplication resource with the given unique name, arguments, and options.
@@ -82,7 +82,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: SpectrumApplicationArgs | SpectrumApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: SpectrumApplicationState = argsOrState as SpectrumApplicationState | undefined;
+            const state = argsOrState as SpectrumApplicationState | undefined;
             inputs["dns"] = state ? state.dns : undefined;
             inputs["ipFirewall"] = state ? state.ipFirewall : undefined;
             inputs["originDirects"] = state ? state.originDirects : undefined;
@@ -115,6 +115,13 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
             inputs["tls"] = args ? args.tls : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/spectrumApplication:SpectrumApplication", name, inputs, opts);
     }

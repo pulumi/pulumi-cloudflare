@@ -80,43 +80,43 @@ export class RateLimit extends pulumi.CustomResource {
     /**
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
-    public readonly action: pulumi.Output<{ mode: string, response?: { body: string, contentType: string }, timeout?: number }>;
+    public readonly action!: pulumi.Output<{ mode: string, response?: { body: string, contentType: string }, timeout?: number }>;
     /**
      * URLs matching the patterns specified here will be excluded from rate limiting.
      */
-    public readonly bypassUrlPatterns: pulumi.Output<string[] | undefined>;
+    public readonly bypassUrlPatterns!: pulumi.Output<string[] | undefined>;
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
      */
-    public readonly correlate: pulumi.Output<{ by?: string } | undefined>;
+    public readonly correlate!: pulumi.Output<{ by?: string } | undefined>;
     /**
      * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Whether this ratelimit is currently disabled. Default: `false`.
      */
-    public readonly disabled: pulumi.Output<boolean | undefined>;
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
      */
-    public readonly match: pulumi.Output<{ request: { methods: string[], schemes: string[], urlPattern: string }, response: { originTraffic: boolean, statuses: number[] } }>;
+    public readonly match!: pulumi.Output<{ request: { methods: string[], schemes: string[], urlPattern: string }, response: { originTraffic: boolean, statuses: number[] } }>;
     /**
      * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
      */
-    public readonly period: pulumi.Output<number>;
+    public readonly period!: pulumi.Output<number>;
     /**
      * The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
      */
-    public readonly threshold: pulumi.Output<number>;
+    public readonly threshold!: pulumi.Output<number>;
     /**
      * The DNS zone to apply rate limiting to.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The DNS zone ID.
      */
-    public /*out*/ readonly zoneId: pulumi.Output<string>;
+    public /*out*/ readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a RateLimit resource with the given unique name, arguments, and options.
@@ -129,7 +129,7 @@ export class RateLimit extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: RateLimitArgs | RateLimitState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: RateLimitState = argsOrState as RateLimitState | undefined;
+            const state = argsOrState as RateLimitState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["bypassUrlPatterns"] = state ? state.bypassUrlPatterns : undefined;
             inputs["correlate"] = state ? state.correlate : undefined;
@@ -164,6 +164,13 @@ export class RateLimit extends pulumi.CustomResource {
             inputs["threshold"] = args ? args.threshold : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/rateLimit:RateLimit", name, inputs, opts);
     }

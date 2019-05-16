@@ -36,27 +36,27 @@ export class Filter extends pulumi.CustomResource {
     /**
      * A note that you can use to describe the purpose of the filter.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The filter expression to be used.
      */
-    public readonly expression: pulumi.Output<string>;
+    public readonly expression!: pulumi.Output<string>;
     /**
      * Whether this filter is currently paused. Boolean value.
      */
-    public readonly paused: pulumi.Output<boolean | undefined>;
+    public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
      * Short reference tag to quickly select related rules.
      */
-    public readonly ref: pulumi.Output<string | undefined>;
+    public readonly ref!: pulumi.Output<string | undefined>;
     /**
      * The DNS zone to which the Filter should be added. Will be resolved to `zone_id` upon creation.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The DNS zone to which the Filter should be added.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Filter resource with the given unique name, arguments, and options.
@@ -69,7 +69,7 @@ export class Filter extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: FilterArgs | FilterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: FilterState = argsOrState as FilterState | undefined;
+            const state = argsOrState as FilterState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["expression"] = state ? state.expression : undefined;
             inputs["paused"] = state ? state.paused : undefined;
@@ -87,6 +87,13 @@ export class Filter extends pulumi.CustomResource {
             inputs["ref"] = args ? args.ref : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/filter:Filter", name, inputs, opts);
     }

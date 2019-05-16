@@ -51,24 +51,24 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
     /**
      * Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
      */
-    public /*out*/ readonly initialSettings: pulumi.Output<{ alwaysOnline: string, alwaysUseHttps: string, automaticHttpsRewrites: string, brotli: string, browserCacheTtl: number, browserCheck: string, cacheLevel: string, challengeTtl: number, cnameFlattening: string, developmentMode: string, edgeCacheTtl: number, emailObfuscation: string, hotlinkProtection: string, http2: string, ipGeolocation: string, ipv6: string, maxUpload: number, minTlsVersion: string, minify: { css: string, html: string, js: string }, mirage: string, mobileRedirect: { mobileSubdomain: string, status: string, stripUri: boolean }, opportunisticEncryption: string, opportunisticOnion: string, originErrorPagePassThru: string, polish: string, prefetchPreload: string, privacyPass: string, pseudoIpv4: string, responseBuffering: string, rocketLoader: string, securityHeader: { enabled: boolean, includeSubdomains: boolean, maxAge: number, nosniff: boolean, preload: boolean }, securityLevel: string, serverSideExclude: string, sha1Support: string, sortQueryStringForCache: string, ssl: string, tls12Only: string, tls13: string, tlsClientAuth: string, trueClientIpHeader: string, waf: string, webp: string, websockets: string }>;
-    public /*out*/ readonly initialSettingsReadAt: pulumi.Output<string>;
+    public /*out*/ readonly initialSettings!: pulumi.Output<{ alwaysOnline: string, alwaysUseHttps: string, automaticHttpsRewrites: string, brotli: string, browserCacheTtl: number, browserCheck: string, cacheLevel: string, challengeTtl: number, cnameFlattening: string, developmentMode: string, edgeCacheTtl: number, emailObfuscation: string, hotlinkProtection: string, http2: string, ipGeolocation: string, ipv6: string, maxUpload: number, minTlsVersion: string, minify: { css: string, html: string, js: string }, mirage: string, mobileRedirect: { mobileSubdomain: string, status: string, stripUri: boolean }, opportunisticEncryption: string, opportunisticOnion: string, originErrorPagePassThru: string, polish: string, prefetchPreload: string, privacyPass: string, pseudoIpv4: string, responseBuffering: string, rocketLoader: string, securityHeader: { enabled: boolean, includeSubdomains: boolean, maxAge: number, nosniff: boolean, preload: boolean }, securityLevel: string, serverSideExclude: string, sha1Support: string, sortQueryStringForCache: string, ssl: string, tls12Only: string, tls13: string, tlsClientAuth: string, trueClientIpHeader: string, waf: string, webp: string, websockets: string }>;
+    public /*out*/ readonly initialSettingsReadAt!: pulumi.Output<string>;
     /**
      * The DNS zone to which apply settings.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
      * * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
      * * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
      */
-    public /*out*/ readonly readonlySettings: pulumi.Output<string[]>;
+    public /*out*/ readonly readonlySettings!: pulumi.Output<string[]>;
     /**
      * Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
      */
-    public readonly settings: pulumi.Output<{ alwaysOnline: string, alwaysUseHttps: string, automaticHttpsRewrites: string, brotli: string, browserCacheTtl: number, browserCheck: string, cacheLevel: string, challengeTtl: number, cnameFlattening: string, developmentMode: string, edgeCacheTtl: number, emailObfuscation: string, hotlinkProtection: string, http2: string, ipGeolocation: string, ipv6: string, maxUpload: number, minTlsVersion: string, minify: { css: string, html: string, js: string }, mirage: string, mobileRedirect: { mobileSubdomain: string, status: string, stripUri: boolean }, opportunisticEncryption: string, opportunisticOnion: string, originErrorPagePassThru: string, polish: string, prefetchPreload: string, privacyPass: string, pseudoIpv4: string, responseBuffering: string, rocketLoader: string, securityHeader: { enabled: boolean, includeSubdomains: boolean, maxAge: number, nosniff: boolean, preload: boolean }, securityLevel: string, serverSideExclude: string, sha1Support: string, sortQueryStringForCache: string, ssl: string, tls12Only: string, tls13: string, tlsClientAuth: string, trueClientIpHeader: string, waf: string, webp: string, websockets: string }>;
-    public /*out*/ readonly zoneStatus: pulumi.Output<string>;
-    public /*out*/ readonly zoneType: pulumi.Output<string>;
+    public readonly settings!: pulumi.Output<{ alwaysOnline: string, alwaysUseHttps: string, automaticHttpsRewrites: string, brotli: string, browserCacheTtl: number, browserCheck: string, cacheLevel: string, challengeTtl: number, cnameFlattening: string, developmentMode: string, edgeCacheTtl: number, emailObfuscation: string, hotlinkProtection: string, http2: string, ipGeolocation: string, ipv6: string, maxUpload: number, minTlsVersion: string, minify: { css: string, html: string, js: string }, mirage: string, mobileRedirect: { mobileSubdomain: string, status: string, stripUri: boolean }, opportunisticEncryption: string, opportunisticOnion: string, originErrorPagePassThru: string, polish: string, prefetchPreload: string, privacyPass: string, pseudoIpv4: string, responseBuffering: string, rocketLoader: string, securityHeader: { enabled: boolean, includeSubdomains: boolean, maxAge: number, nosniff: boolean, preload: boolean }, securityLevel: string, serverSideExclude: string, sha1Support: string, sortQueryStringForCache: string, ssl: string, tls12Only: string, tls13: string, tlsClientAuth: string, trueClientIpHeader: string, waf: string, webp: string, websockets: string }>;
+    public /*out*/ readonly zoneStatus!: pulumi.Output<string>;
+    public /*out*/ readonly zoneType!: pulumi.Output<string>;
 
     /**
      * Create a ZoneSettingsOverride resource with the given unique name, arguments, and options.
@@ -81,7 +81,7 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ZoneSettingsOverrideArgs | ZoneSettingsOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ZoneSettingsOverrideState = argsOrState as ZoneSettingsOverrideState | undefined;
+            const state = argsOrState as ZoneSettingsOverrideState | undefined;
             inputs["initialSettings"] = state ? state.initialSettings : undefined;
             inputs["initialSettingsReadAt"] = state ? state.initialSettingsReadAt : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -101,6 +101,13 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
             inputs["readonlySettings"] = undefined /*out*/;
             inputs["zoneStatus"] = undefined /*out*/;
             inputs["zoneType"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride", name, inputs, opts);
     }

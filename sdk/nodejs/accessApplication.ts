@@ -36,25 +36,25 @@ export class AccessApplication extends pulumi.CustomResource {
         return new AccessApplication(name, <any>state, { ...opts, id: id });
     }
 
-    public /*out*/ readonly aud: pulumi.Output<string>;
+    public /*out*/ readonly aud!: pulumi.Output<string>;
     /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.
      */
-    public readonly domain: pulumi.Output<string>;
+    public readonly domain!: pulumi.Output<string>;
     /**
      * Friendly name of the Access Application.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
      */
-    public readonly sessionDuration: pulumi.Output<string | undefined>;
+    public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
      * The DNS zone to which the access rule should be added.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a AccessApplication resource with the given unique name, arguments, and options.
@@ -67,7 +67,7 @@ export class AccessApplication extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccessApplicationArgs | AccessApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccessApplicationState = argsOrState as AccessApplicationState | undefined;
+            const state = argsOrState as AccessApplicationState | undefined;
             inputs["aud"] = state ? state.aud : undefined;
             inputs["domain"] = state ? state.domain : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -89,6 +89,13 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["aud"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/accessApplication:AccessApplication", name, inputs, opts);
     }

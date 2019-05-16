@@ -35,15 +35,15 @@ export class LogpushJob extends pulumi.CustomResource {
         return new LogpushJob(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly destinationConf: pulumi.Output<string>;
-    public readonly enabled: pulumi.Output<boolean | undefined>;
-    public readonly logpullOptions: pulumi.Output<string | undefined>;
-    public readonly name: pulumi.Output<string | undefined>;
+    public readonly destinationConf!: pulumi.Output<string>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public readonly logpullOptions!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string | undefined>;
     /**
      * Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
      */
-    public readonly ownershipChallenge: pulumi.Output<string>;
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly ownershipChallenge!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a LogpushJob resource with the given unique name, arguments, and options.
@@ -56,7 +56,7 @@ export class LogpushJob extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LogpushJobArgs | LogpushJobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LogpushJobState = argsOrState as LogpushJobState | undefined;
+            const state = argsOrState as LogpushJobState | undefined;
             inputs["destinationConf"] = state ? state.destinationConf : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["logpullOptions"] = state ? state.logpullOptions : undefined;
@@ -80,6 +80,13 @@ export class LogpushJob extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/logpushJob:LogpushJob", name, inputs, opts);
     }

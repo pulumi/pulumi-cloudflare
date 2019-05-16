@@ -38,11 +38,11 @@ export class AccountMember extends pulumi.CustomResource {
     /**
      * The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
      */
-    public readonly emailAddress: pulumi.Output<string>;
+    public readonly emailAddress!: pulumi.Output<string>;
     /**
      * Array of account role IDs that you want to assign to a member.
      */
-    public readonly roleIds: pulumi.Output<string[]>;
+    public readonly roleIds!: pulumi.Output<string[]>;
 
     /**
      * Create a AccountMember resource with the given unique name, arguments, and options.
@@ -55,7 +55,7 @@ export class AccountMember extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccountMemberArgs | AccountMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccountMemberState = argsOrState as AccountMemberState | undefined;
+            const state = argsOrState as AccountMemberState | undefined;
             inputs["emailAddress"] = state ? state.emailAddress : undefined;
             inputs["roleIds"] = state ? state.roleIds : undefined;
         } else {
@@ -68,6 +68,13 @@ export class AccountMember extends pulumi.CustomResource {
             }
             inputs["emailAddress"] = args ? args.emailAddress : undefined;
             inputs["roleIds"] = args ? args.roleIds : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/accountMember:AccountMember", name, inputs, opts);
     }

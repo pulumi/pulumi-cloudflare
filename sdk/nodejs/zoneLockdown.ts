@@ -42,27 +42,27 @@ export class ZoneLockdown extends pulumi.CustomResource {
     /**
      * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
      */
-    public readonly configurations: pulumi.Output<{ target: string, value: string }[]>;
+    public readonly configurations!: pulumi.Output<{ target: string, value: string }[]>;
     /**
      * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Boolean of whether this zone lockdown is currently paused. Default: false.
      */
-    public readonly paused: pulumi.Output<boolean | undefined>;
+    public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
      * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
      */
-    public readonly urls: pulumi.Output<string[]>;
+    public readonly urls!: pulumi.Output<string[]>;
     /**
      * The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
      */
-    public readonly zone: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string | undefined>;
     /**
      * The DNS zone to which the access rule should be added.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a ZoneLockdown resource with the given unique name, arguments, and options.
@@ -75,7 +75,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ZoneLockdownArgs | ZoneLockdownState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ZoneLockdownState = argsOrState as ZoneLockdownState | undefined;
+            const state = argsOrState as ZoneLockdownState | undefined;
             inputs["configurations"] = state ? state.configurations : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["paused"] = state ? state.paused : undefined;
@@ -96,6 +96,13 @@ export class ZoneLockdown extends pulumi.CustomResource {
             inputs["urls"] = args ? args.urls : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/zoneLockdown:ZoneLockdown", name, inputs, opts);
     }

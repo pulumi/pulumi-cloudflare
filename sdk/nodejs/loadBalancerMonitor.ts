@@ -47,60 +47,60 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**
      * Do not validate the certificate when monitor use HTTPS.
      */
-    public readonly allowInsecure: pulumi.Output<boolean | undefined>;
+    public readonly allowInsecure!: pulumi.Output<boolean | undefined>;
     /**
      * The RFC3339 timestamp of when the load balancer monitor was created.
      */
-    public /*out*/ readonly createdOn: pulumi.Output<string>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * Free text description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
      */
-    public readonly expectedBody: pulumi.Output<string>;
+    public readonly expectedBody!: pulumi.Output<string>;
     /**
      * The expected HTTP response code or code range of the health check. Eg `2xx`
      */
-    public readonly expectedCodes: pulumi.Output<string>;
+    public readonly expectedCodes!: pulumi.Output<string>;
     /**
      * Follow redirects if returned by the origin.
      */
-    public readonly followRedirects: pulumi.Output<boolean | undefined>;
+    public readonly followRedirects!: pulumi.Output<boolean | undefined>;
     /**
      * The header name.
      */
-    public readonly headers: pulumi.Output<{ header: string, values: string[] }[] | undefined>;
+    public readonly headers!: pulumi.Output<{ header: string, values: string[] }[] | undefined>;
     /**
      * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
      */
-    public readonly interval: pulumi.Output<number | undefined>;
+    public readonly interval!: pulumi.Output<number | undefined>;
     /**
      * The HTTP method to use for the health check. Default: "GET".
      */
-    public readonly method: pulumi.Output<string | undefined>;
+    public readonly method!: pulumi.Output<string | undefined>;
     /**
      * The RFC3339 timestamp of when the load balancer monitor was last modified.
      */
-    public /*out*/ readonly modifiedOn: pulumi.Output<string>;
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * The endpoint path to health check against. Default: "/".
      */
-    public readonly path: pulumi.Output<string | undefined>;
-    public readonly port: pulumi.Output<number | undefined>;
+    public readonly path!: pulumi.Output<string | undefined>;
+    public readonly port!: pulumi.Output<number | undefined>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
      */
-    public readonly retries: pulumi.Output<number | undefined>;
+    public readonly retries!: pulumi.Output<number | undefined>;
     /**
      * The timeout (in seconds) before marking the health check as failed. Default: 5.
      */
-    public readonly timeout: pulumi.Output<number | undefined>;
+    public readonly timeout!: pulumi.Output<number | undefined>;
     /**
      * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
      */
-    public readonly type: pulumi.Output<string | undefined>;
+    public readonly type!: pulumi.Output<string | undefined>;
 
     /**
      * Create a LoadBalancerMonitor resource with the given unique name, arguments, and options.
@@ -113,7 +113,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LoadBalancerMonitorArgs | LoadBalancerMonitorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LoadBalancerMonitorState = argsOrState as LoadBalancerMonitorState | undefined;
+            const state = argsOrState as LoadBalancerMonitorState | undefined;
             inputs["allowInsecure"] = state ? state.allowInsecure : undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -152,6 +152,13 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, inputs, opts);
     }
