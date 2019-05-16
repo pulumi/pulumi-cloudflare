@@ -128,6 +128,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_access_policy":          {Tok: makeResource(mainMod, "AccessPolicy")},
 			"cloudflare_access_rule":            {Tok: makeResource(mainMod, "AccessRule")},
 			"cloudflare_account_member":         {Tok: makeResource(mainMod, "AccountMember")},
+			"cloudflare_argo":                   {Tok: makeResource(mainMod, "Argo")},
 			"cloudflare_custom_pages":           {Tok: makeResource(mainMod, "CustomPages")},
 			"cloudflare_filter":                 {Tok: makeResource(mainMod, "Filter")},
 			"cloudflare_firewall_rule":          {Tok: makeResource(mainMod, "FirewallRule")},

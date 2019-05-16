@@ -24,15 +24,15 @@ class Zone(pulumi.CustomResource):
     """
     plan: pulumi.Output[str]
     """
-    The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`. 
+    The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
     """
     status: pulumi.Output[str]
     """
-    Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`
+    Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
     """
     type: pulumi.Output[str]
     """
-    A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`
+    A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
     """
     vanity_name_servers: pulumi.Output[list]
     """
@@ -44,7 +44,7 @@ class Zone(pulumi.CustomResource):
     """
     The DNS zone name which will be added.
     """
-    def __init__(__self__, resource_name, opts=None, jump_start=None, paused=None, plan=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, jump_start=None, paused=None, plan=None, type=None, zone=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Zone resource. Zone is the basic resource for working with Cloudflare and is roughly equivalent to a domain name that the user purchases.
         
@@ -52,7 +52,8 @@ class Zone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] jump_start: Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
         :param pulumi.Input[bool] paused: Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
-        :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`. 
+        :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
         """
         if __name__ is not None:
@@ -76,6 +77,8 @@ class Zone(pulumi.CustomResource):
 
         __props__['plan'] = plan
 
+        __props__['type'] = type
+
         if zone is None:
             raise TypeError("Missing required property 'zone'")
         __props__['zone'] = zone
@@ -83,7 +86,6 @@ class Zone(pulumi.CustomResource):
         __props__['meta'] = None
         __props__['name_servers'] = None
         __props__['status'] = None
-        __props__['type'] = None
         __props__['vanity_name_servers'] = None
 
         super(Zone, __self__).__init__(

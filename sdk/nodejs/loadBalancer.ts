@@ -101,7 +101,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly sessionAffinity: pulumi.Output<string | undefined>;
     /**
-     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: "off", "geo", "dynamic_latency" or "". Default is "".
+     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
      */
     public readonly steeringPolicy: pulumi.Output<string>;
     /**
@@ -227,7 +227,7 @@ export interface LoadBalancerState {
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
-     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: "off", "geo", "dynamic_latency" or "". Default is "".
+     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
      */
     readonly steeringPolicy?: pulumi.Input<string>;
     /**
@@ -285,7 +285,7 @@ export interface LoadBalancerArgs {
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
-     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: "off", "geo", "dynamic_latency" or "". Default is "".
+     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
      */
     readonly steeringPolicy?: pulumi.Input<string>;
     /**

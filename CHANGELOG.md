@@ -1,5 +1,9 @@
 ## 0.17.2 (Unreleased)
 
+### Improvements
+
+- Updated to the v1.14.0 of the upstream Cloudflare Terraform provider
+
 ### Examples
 
 - Added a Worker example
