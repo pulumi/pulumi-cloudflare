@@ -54,23 +54,23 @@ export class WorkerRoute extends pulumi.CustomResource {
         return new WorkerRoute(name, <any>state, { ...opts, id: id });
     }
 
-    public readonly enabled: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly multiScript: pulumi.Output<boolean>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly multiScript!: pulumi.Output<boolean>;
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
      * * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
      * * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
      */
-    public readonly pattern: pulumi.Output<string>;
-    public readonly scriptName: pulumi.Output<string | undefined>;
+    public readonly pattern!: pulumi.Output<string>;
+    public readonly scriptName!: pulumi.Output<string | undefined>;
     /**
      * The zone to add the route to.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The zone id of the route
      */
-    public /*out*/ readonly zoneId: pulumi.Output<string>;
+    public /*out*/ readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a WorkerRoute resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ export class WorkerRoute extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: WorkerRouteArgs | WorkerRouteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: WorkerRouteState = argsOrState as WorkerRouteState | undefined;
+            const state = argsOrState as WorkerRouteState | undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["multiScript"] = state ? state.multiScript : undefined;
             inputs["pattern"] = state ? state.pattern : undefined;
@@ -104,6 +104,13 @@ export class WorkerRoute extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["multiScript"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/workerRoute:WorkerRoute", name, inputs, opts);
     }

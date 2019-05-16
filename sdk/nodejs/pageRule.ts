@@ -46,27 +46,27 @@ export class PageRule extends pulumi.CustomResource {
     /**
      * The actions taken by the page rule, options given below.
      */
-    public readonly actions: pulumi.Output<{ alwaysOnline?: string, alwaysUseHttps?: boolean, automaticHttpsRewrites?: string, browserCacheTtl?: number, browserCheck?: string, bypassCacheOnCookie?: string, cacheByDeviceType?: string, cacheDeceptionArmor?: string, cacheLevel?: string, cacheOnCookie?: string, disableApps?: boolean, disablePerformance?: boolean, disableRailgun?: boolean, disableSecurity?: boolean, edgeCacheTtl?: number, emailObfuscation?: string, explicitCacheControl?: string, forwardingUrl?: { statusCode: number, url: string }, hostHeaderOverride?: string, ipGeolocation?: string, minifies?: { css: string, html: string, js: string }[], mirage?: string, opportunisticEncryption?: string, originErrorPagePassThru?: string, polish?: string, resolveOverride?: string, respectStrongEtag?: string, responseBuffering?: string, rocketLoader?: string, securityLevel?: string, serverSideExclude?: string, sortQueryStringForCache?: string, ssl?: string, trueClientIpHeader?: string, waf?: string }>;
+    public readonly actions!: pulumi.Output<{ alwaysOnline?: string, alwaysUseHttps?: boolean, automaticHttpsRewrites?: string, browserCacheTtl?: number, browserCheck?: string, bypassCacheOnCookie?: string, cacheByDeviceType?: string, cacheDeceptionArmor?: string, cacheLevel?: string, cacheOnCookie?: string, disableApps?: boolean, disablePerformance?: boolean, disableRailgun?: boolean, disableSecurity?: boolean, edgeCacheTtl?: number, emailObfuscation?: string, explicitCacheControl?: string, forwardingUrl?: { statusCode: number, url: string }, hostHeaderOverride?: string, ipGeolocation?: string, minifies?: { css: string, html: string, js: string }[], mirage?: string, opportunisticEncryption?: string, originErrorPagePassThru?: string, polish?: string, resolveOverride?: string, respectStrongEtag?: string, responseBuffering?: string, rocketLoader?: string, securityLevel?: string, serverSideExclude?: string, sortQueryStringForCache?: string, ssl?: string, trueClientIpHeader?: string, waf?: string }>;
     /**
      * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      */
-    public readonly priority: pulumi.Output<number | undefined>;
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * Whether the page rule is active or disabled.
      */
-    public readonly status: pulumi.Output<string | undefined>;
+    public readonly status!: pulumi.Output<string | undefined>;
     /**
      * The URL pattern to target with the page rule.
      */
-    public readonly target: pulumi.Output<string>;
+    public readonly target!: pulumi.Output<string>;
     /**
      * The DNS zone to which the page rule should be added.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The ID of the zone in which the page rule will be applied.
      */
-    public /*out*/ readonly zoneId: pulumi.Output<string>;
+    public /*out*/ readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a PageRule resource with the given unique name, arguments, and options.
@@ -79,7 +79,7 @@ export class PageRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: PageRuleArgs | PageRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: PageRuleState = argsOrState as PageRuleState | undefined;
+            const state = argsOrState as PageRuleState | undefined;
             inputs["actions"] = state ? state.actions : undefined;
             inputs["priority"] = state ? state.priority : undefined;
             inputs["status"] = state ? state.status : undefined;
@@ -103,6 +103,13 @@ export class PageRule extends pulumi.CustomResource {
             inputs["target"] = args ? args.target : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/pageRule:PageRule", name, inputs, opts);
     }

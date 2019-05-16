@@ -63,40 +63,40 @@ export class AccessPolicy extends pulumi.CustomResource {
      * The ID of the application the policy is
      * associated with.
      */
-    public readonly applicationId: pulumi.Output<string>;
+    public readonly applicationId!: pulumi.Output<string>;
     /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `bypass`
      */
-    public readonly decision: pulumi.Output<string>;
+    public readonly decision!: pulumi.Output<string>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    public readonly excludes: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[] | undefined>;
+    public readonly excludes!: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[] | undefined>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    public readonly includes: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[]>;
+    public readonly includes!: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[]>;
     /**
      * Friendly name of the Access Application.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The unique precedence for policies on a single application. Integer.
      */
-    public readonly precedence: pulumi.Output<number | undefined>;
+    public readonly precedence!: pulumi.Output<number | undefined>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    public readonly requires: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[] | undefined>;
+    public readonly requires!: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[] | undefined>;
     /**
      * The DNS zone to which the access rule should be
      * added.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -109,7 +109,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccessPolicyArgs | AccessPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccessPolicyState = argsOrState as AccessPolicyState | undefined;
+            const state = argsOrState as AccessPolicyState | undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["decision"] = state ? state.decision : undefined;
             inputs["excludes"] = state ? state.excludes : undefined;
@@ -143,6 +143,13 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["precedence"] = args ? args.precedence : undefined;
             inputs["requires"] = args ? args.requires : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/accessPolicy:AccessPolicy", name, inputs, opts);
     }

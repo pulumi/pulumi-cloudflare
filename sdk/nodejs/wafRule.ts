@@ -36,23 +36,23 @@ export class WafRule extends pulumi.CustomResource {
     /**
      * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
      */
-    public readonly mode: pulumi.Output<string>;
+    public readonly mode!: pulumi.Output<string>;
     /**
      * The ID of the WAF Rule Package that contains the rule.
      */
-    public /*out*/ readonly packageId: pulumi.Output<string>;
+    public /*out*/ readonly packageId!: pulumi.Output<string>;
     /**
      * The WAF Rule ID.
      */
-    public readonly ruleId: pulumi.Output<string>;
+    public readonly ruleId!: pulumi.Output<string>;
     /**
      * The DNS zone to apply to.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The DNS zone ID.
      */
-    public /*out*/ readonly zoneId: pulumi.Output<string>;
+    public /*out*/ readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a WafRule resource with the given unique name, arguments, and options.
@@ -65,7 +65,7 @@ export class WafRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: WafRuleArgs | WafRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: WafRuleState = argsOrState as WafRuleState | undefined;
+            const state = argsOrState as WafRuleState | undefined;
             inputs["mode"] = state ? state.mode : undefined;
             inputs["packageId"] = state ? state.packageId : undefined;
             inputs["ruleId"] = state ? state.ruleId : undefined;
@@ -87,6 +87,13 @@ export class WafRule extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["packageId"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/wafRule:WafRule", name, inputs, opts);
     }

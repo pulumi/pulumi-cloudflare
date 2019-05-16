@@ -67,6 +67,10 @@ class WorkerRoute(pulumi.CustomResource):
         __props__['multi_script'] = None
         __props__['zone_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(WorkerRoute, __self__).__init__(
             'cloudflare:index/workerRoute:WorkerRoute',
             resource_name,

@@ -68,23 +68,23 @@ export class AccessRule extends pulumi.CustomResource {
     /**
      * Rule configuration to apply to a matched request. It's a complex value. See description below.
      */
-    public readonly configuration: pulumi.Output<{ target: string, value: string }>;
+    public readonly configuration!: pulumi.Output<{ target: string, value: string }>;
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
      */
-    public readonly mode: pulumi.Output<string>;
+    public readonly mode!: pulumi.Output<string>;
     /**
      * A personal note about the rule. Typically used as a reminder or explanation for the rule.
      */
-    public readonly notes: pulumi.Output<string | undefined>;
+    public readonly notes!: pulumi.Output<string | undefined>;
     /**
      * The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
      */
-    public readonly zone: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The DNS zone to which the access rule should be added.
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a AccessRule resource with the given unique name, arguments, and options.
@@ -97,7 +97,7 @@ export class AccessRule extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AccessRuleArgs | AccessRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: AccessRuleState = argsOrState as AccessRuleState | undefined;
+            const state = argsOrState as AccessRuleState | undefined;
             inputs["configuration"] = state ? state.configuration : undefined;
             inputs["mode"] = state ? state.mode : undefined;
             inputs["notes"] = state ? state.notes : undefined;
@@ -116,6 +116,13 @@ export class AccessRule extends pulumi.CustomResource {
             inputs["notes"] = args ? args.notes : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/accessRule:AccessRule", name, inputs, opts);
     }

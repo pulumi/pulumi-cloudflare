@@ -13,7 +13,7 @@ export let apiClientLogging: boolean | undefined = __config.getObject<boolean>("
 /**
  * A registered Cloudflare email address.
  */
-export let email: string = utilities.requireWithDefault(() => __config.require("email"), utilities.getEnv("CLOUDFLARE_EMAIL"));
+export let email: string | undefined = __config.get("email") || utilities.getEnv("CLOUDFLARE_EMAIL");
 /**
  * Maximum backoff period in seconds after failed API calls
  */
@@ -37,7 +37,7 @@ export let rps: number | undefined = __config.getObject<number>("rps") || (utili
 /**
  * The token key for API operations.
  */
-export let token: string = utilities.requireWithDefault(() => __config.require("token"), utilities.getEnv("CLOUDFLARE_TOKEN"));
+export let token: string | undefined = __config.get("token") || utilities.getEnv("CLOUDFLARE_TOKEN");
 /**
  * If specified zone is owned by an organization, configure API client to always use that organization
  */

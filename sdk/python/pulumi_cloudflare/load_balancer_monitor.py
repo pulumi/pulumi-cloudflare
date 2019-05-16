@@ -133,6 +133,10 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         __props__['created_on'] = None
         __props__['modified_on'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(LoadBalancerMonitor, __self__).__init__(
             'cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor',
             resource_name,

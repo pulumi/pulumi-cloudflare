@@ -50,43 +50,43 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
      */
-    public readonly checkRegions: pulumi.Output<string[]>;
+    public readonly checkRegions!: pulumi.Output<string[]>;
     /**
      * The RFC3339 timestamp of when the load balancer was created.
      */
-    public /*out*/ readonly createdOn: pulumi.Output<string>;
+    public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
      * Free text description.
      */
-    public readonly description: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      */
-    public readonly enabled: pulumi.Output<boolean | undefined>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
      */
-    public readonly minimumOrigins: pulumi.Output<number | undefined>;
+    public readonly minimumOrigins!: pulumi.Output<number | undefined>;
     /**
      * The RFC3339 timestamp of when the load balancer was last modified.
      */
-    public /*out*/ readonly modifiedOn: pulumi.Output<string>;
+    public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * The ID of the Monitor to use for health checking origins within this pool.
      */
-    public readonly monitor: pulumi.Output<string | undefined>;
+    public readonly monitor!: pulumi.Output<string | undefined>;
     /**
      * A human-identifiable name for the origin.
      */
-    public readonly name: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
      */
-    public readonly notificationEmail: pulumi.Output<string | undefined>;
+    public readonly notificationEmail!: pulumi.Output<string | undefined>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */
-    public readonly origins: pulumi.Output<{ address: string, enabled?: boolean, name: string, weight?: number }[]>;
+    public readonly origins!: pulumi.Output<{ address: string, enabled?: boolean, name: string, weight?: number }[]>;
 
     /**
      * Create a LoadBalancerPool resource with the given unique name, arguments, and options.
@@ -99,7 +99,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: LoadBalancerPoolArgs | LoadBalancerPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: LoadBalancerPoolState = argsOrState as LoadBalancerPoolState | undefined;
+            const state = argsOrState as LoadBalancerPoolState | undefined;
             inputs["checkRegions"] = state ? state.checkRegions : undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -128,6 +128,13 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["origins"] = args ? args.origins : undefined;
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, inputs, opts);
     }

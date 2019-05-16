@@ -55,19 +55,19 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * The script content.
      */
-    public readonly content: pulumi.Output<string>;
+    public readonly content!: pulumi.Output<string>;
     /**
      * The name for the script. 
      */
-    public readonly name: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string | undefined>;
     /**
      * The zone for the script.
      */
-    public readonly zone: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string | undefined>;
     /**
      * The zone id of the script (only for non-multi-script resources)
      */
-    public readonly zoneId: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a WorkerScript resource with the given unique name, arguments, and options.
@@ -80,7 +80,7 @@ export class WorkerScript extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: WorkerScriptArgs | WorkerScriptState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: WorkerScriptState = argsOrState as WorkerScriptState | undefined;
+            const state = argsOrState as WorkerScriptState | undefined;
             inputs["content"] = state ? state.content : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["zone"] = state ? state.zone : undefined;
@@ -94,6 +94,13 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super("cloudflare:index/workerScript:WorkerScript", name, inputs, opts);
     }

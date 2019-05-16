@@ -70,6 +70,10 @@ class Provider(pulumi.ProviderResource):
             use_org_from_zone = utilities.get_env('CLOUDFLARE_ORG_ZONE')
         __props__['use_org_from_zone'] = use_org_from_zone
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Provider, __self__).__init__(
             'cloudflare',
             resource_name,
