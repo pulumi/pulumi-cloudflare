@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *         value: "AQ",
  *     },
  *     mode: "whitelist",
- *     notes: "Requests coming from known Tor exit nodes",
+ *     notes: "Requests coming from Antarctica",
  *     zone: "example.com",
  * });
  * // Challenge requests coming from known Tor exit nodes.

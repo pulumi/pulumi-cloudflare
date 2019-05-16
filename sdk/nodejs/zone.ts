@@ -45,17 +45,17 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly paused: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`. 
+     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
      */
     public readonly plan: pulumi.Output<string>;
     /**
-     * Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`
+     * Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
      */
     public /*out*/ readonly status: pulumi.Output<string>;
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
      */
-    public /*out*/ readonly type: pulumi.Output<string>;
+    public readonly type: pulumi.Output<string | undefined>;
     /**
      * List of Vanity Nameservers (if set).
      * * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
@@ -96,11 +96,11 @@ export class Zone extends pulumi.CustomResource {
             inputs["jumpStart"] = args ? args.jumpStart : undefined;
             inputs["paused"] = args ? args.paused : undefined;
             inputs["plan"] = args ? args.plan : undefined;
+            inputs["type"] = args ? args.type : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["meta"] = undefined /*out*/;
             inputs["nameServers"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
             inputs["vanityNameServers"] = undefined /*out*/;
         }
         super("cloudflare:index/zone:Zone", name, inputs, opts);
@@ -125,15 +125,15 @@ export interface ZoneState {
      */
     readonly paused?: pulumi.Input<boolean>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`. 
+     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
      */
     readonly plan?: pulumi.Input<string>;
     /**
-     * Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`
+     * Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
      */
     readonly status?: pulumi.Input<string>;
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
      */
     readonly type?: pulumi.Input<string>;
     /**
@@ -161,9 +161,13 @@ export interface ZoneArgs {
      */
     readonly paused?: pulumi.Input<boolean>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`. 
+     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
      */
     readonly plan?: pulumi.Input<string>;
+    /**
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+     */
+    readonly type?: pulumi.Input<string>;
     /**
      * The DNS zone name which will be added.
      */

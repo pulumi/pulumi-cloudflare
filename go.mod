@@ -16,7 +16,7 @@ require (
 	github.com/pulumi/pulumi v0.17.6-0.20190410045519-ef5e148a73c0
 	github.com/pulumi/pulumi-terraform v0.14.1-dev.0.20190415172837-c7a149bb88e1
 	github.com/smartystreets/assertions v0.0.0-20190116191733-b6c0e53d7304 // indirect
-	github.com/terraform-providers/terraform-provider-cloudflare v1.13.0
+	github.com/terraform-providers/terraform-provider-cloudflare v1.14.0
 )
 
 replace (

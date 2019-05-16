@@ -6,6 +6,7 @@ export * from "./accessApplication";
 export * from "./accessPolicy";
 export * from "./accessRule";
 export * from "./accountMember";
+export * from "./argo";
 export * from "./customPages";
 export * from "./filter";
 export * from "./firewallRule";

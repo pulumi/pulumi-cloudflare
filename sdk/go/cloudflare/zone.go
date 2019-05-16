@@ -24,17 +24,18 @@ func NewZone(ctx *pulumi.Context,
 		inputs["jumpStart"] = nil
 		inputs["paused"] = nil
 		inputs["plan"] = nil
+		inputs["type"] = nil
 		inputs["zone"] = nil
 	} else {
 		inputs["jumpStart"] = args.JumpStart
 		inputs["paused"] = args.Paused
 		inputs["plan"] = args.Plan
+		inputs["type"] = args.Type
 		inputs["zone"] = args.Zone
 	}
 	inputs["meta"] = nil
 	inputs["nameServers"] = nil
 	inputs["status"] = nil
-	inputs["type"] = nil
 	inputs["vanityNameServers"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/zone:Zone", name, true, inputs, opts...)
 	if err != nil {
@@ -95,17 +96,17 @@ func (r *Zone) Paused() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["paused"])
 }
 
-// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`. 
+// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
 func (r *Zone) Plan() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["plan"])
 }
 
-// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`
+// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
 func (r *Zone) Status() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["status"])
 }
 
-// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`
+// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
 func (r *Zone) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
@@ -131,11 +132,11 @@ type ZoneState struct {
 	NameServers interface{}
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
 	Paused interface{}
-	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`. 
+	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
 	Plan interface{}
-	// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`
+	// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
 	Status interface{}
-	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`
+	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
 	Type interface{}
 	// List of Vanity Nameservers (if set).
 	// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
@@ -151,8 +152,10 @@ type ZoneArgs struct {
 	JumpStart interface{}
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
 	Paused interface{}
-	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`. 
+	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
 	Plan interface{}
+	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+	Type interface{}
 	// The DNS zone name which will be added.
 	Zone interface{}
 }
