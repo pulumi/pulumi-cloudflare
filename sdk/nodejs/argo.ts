@@ -70,13 +70,6 @@ export class Argo extends pulumi.CustomResource {
             inputs["tieredCaching"] = args ? args.tieredCaching : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/argo:Argo", name, inputs, opts);
     }
 }

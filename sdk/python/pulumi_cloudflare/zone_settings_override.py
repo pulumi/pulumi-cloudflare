@@ -66,10 +66,6 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         __props__['zone_status'] = None
         __props__['zone_type'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(ZoneSettingsOverride, __self__).__init__(
             'cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride',
             resource_name,

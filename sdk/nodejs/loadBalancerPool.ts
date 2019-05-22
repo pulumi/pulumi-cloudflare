@@ -129,13 +129,6 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, inputs, opts);
     }
 }

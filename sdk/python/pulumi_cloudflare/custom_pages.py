@@ -86,10 +86,6 @@ class CustomPages(pulumi.CustomResource):
 
         __props__['zone_id'] = zone_id
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(CustomPages, __self__).__init__(
             'cloudflare:index/customPages:CustomPages',
             resource_name,

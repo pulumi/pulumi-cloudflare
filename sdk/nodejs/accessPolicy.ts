@@ -144,13 +144,6 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["requires"] = args ? args.requires : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/accessPolicy:AccessPolicy", name, inputs, opts);
     }
 }

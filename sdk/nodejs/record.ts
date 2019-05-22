@@ -160,13 +160,6 @@ export class Record extends pulumi.CustomResource {
             inputs["proxiable"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/record:Record", name, inputs, opts);
     }
 }

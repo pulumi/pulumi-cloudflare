@@ -94,13 +94,6 @@ export class CustomPages extends pulumi.CustomResource {
             inputs["url"] = args ? args.url : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/customPages:CustomPages", name, inputs, opts);
     }
 }
