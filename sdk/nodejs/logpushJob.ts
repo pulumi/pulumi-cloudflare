@@ -81,13 +81,6 @@ export class LogpushJob extends pulumi.CustomResource {
             inputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/logpushJob:LogpushJob", name, inputs, opts);
     }
 }

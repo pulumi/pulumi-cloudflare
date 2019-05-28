@@ -49,10 +49,6 @@ class AccountMember(pulumi.CustomResource):
             raise TypeError("Missing required property 'role_ids'")
         __props__['role_ids'] = role_ids
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(AccountMember, __self__).__init__(
             'cloudflare:index/accountMember:AccountMember',
             resource_name,

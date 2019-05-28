@@ -102,13 +102,6 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
             inputs["zoneStatus"] = undefined /*out*/;
             inputs["zoneType"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride", name, inputs, opts);
     }
 }
