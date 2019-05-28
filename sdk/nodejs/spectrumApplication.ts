@@ -116,13 +116,6 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["tls"] = args ? args.tls : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/spectrumApplication:SpectrumApplication", name, inputs, opts);
     }
 }

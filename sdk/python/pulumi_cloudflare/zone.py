@@ -88,10 +88,6 @@ class Zone(pulumi.CustomResource):
         __props__['status'] = None
         __props__['vanity_name_servers'] = None
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(Zone, __self__).__init__(
             'cloudflare:index/zone:Zone',
             resource_name,

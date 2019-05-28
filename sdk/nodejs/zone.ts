@@ -103,13 +103,6 @@ export class Zone extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["vanityNameServers"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/zone:Zone", name, inputs, opts);
     }
 }

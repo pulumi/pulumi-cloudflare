@@ -98,10 +98,6 @@ class SpectrumApplication(pulumi.CustomResource):
             raise TypeError("Missing required property 'zone_id'")
         __props__['zone_id'] = zone_id
 
-        if opts is None:
-            opts = pulumi.ResourceOptions()
-        if opts.version is None:
-            opts.version = utilities.get_version()
         super(SpectrumApplication, __self__).__init__(
             'cloudflare:index/spectrumApplication:SpectrumApplication',
             resource_name,

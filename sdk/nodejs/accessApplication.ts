@@ -90,13 +90,6 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["aud"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
-        if (!opts.version) {
-            opts.version = utilities.getVersion();
-        }
         super("cloudflare:index/accessApplication:AccessApplication", name, inputs, opts);
     }
 }

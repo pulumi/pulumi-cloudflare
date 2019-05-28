@@ -1,5 +1,12 @@
 ## 0.17.3 (Unreleased)
 
+### Improvements
+
+- Fixed a bug where configuration was required for the default provider instance
+  even in cases where only first-class providers were in use.
+
+- Updated to v1.15.0 of the upstream Cloudflare Terraform provider.
+
 ## 0.17.2 (Released 16th May, 2019)
 
 ### Improvements
