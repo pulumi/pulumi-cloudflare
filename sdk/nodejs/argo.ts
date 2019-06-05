@@ -33,6 +33,20 @@ export class Argo extends pulumi.CustomResource {
         return new Argo(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/argo:Argo';
+
+    /**
+     * Returns true if the given object is an instance of Argo.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Argo {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Argo.__pulumiType;
+    }
+
     /**
      * Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
      */
@@ -70,7 +84,7 @@ export class Argo extends pulumi.CustomResource {
             inputs["tieredCaching"] = args ? args.tieredCaching : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/argo:Argo", name, inputs, opts);
+        super(Argo.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -37,6 +37,20 @@ export class SpectrumApplication extends pulumi.CustomResource {
         return new SpectrumApplication(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/spectrumApplication:SpectrumApplication';
+
+    /**
+     * Returns true if the given object is an instance of SpectrumApplication.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is SpectrumApplication {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === SpectrumApplication.__pulumiType;
+    }
+
     /**
      * The name and type of DNS record for the Spectrum application. Fields documented below.
      */
@@ -116,7 +130,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["tls"] = args ? args.tls : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/spectrumApplication:SpectrumApplication", name, inputs, opts);
+        super(SpectrumApplication.__pulumiType, name, inputs, opts);
     }
 }
 

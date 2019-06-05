@@ -59,6 +59,20 @@ export class AccessPolicy extends pulumi.CustomResource {
         return new AccessPolicy(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/accessPolicy:AccessPolicy';
+
+    /**
+     * Returns true if the given object is an instance of AccessPolicy.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccessPolicy {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccessPolicy.__pulumiType;
+    }
+
     /**
      * The ID of the application the policy is
      * associated with.
@@ -144,7 +158,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["requires"] = args ? args.requires : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/accessPolicy:AccessPolicy", name, inputs, opts);
+        super(AccessPolicy.__pulumiType, name, inputs, opts);
     }
 }
 

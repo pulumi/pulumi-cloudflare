@@ -33,6 +33,20 @@ export class WafRule extends pulumi.CustomResource {
         return new WafRule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/wafRule:WafRule';
+
+    /**
+     * Returns true if the given object is an instance of WafRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is WafRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === WafRule.__pulumiType;
+    }
+
     /**
      * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
      */
@@ -88,7 +102,7 @@ export class WafRule extends pulumi.CustomResource {
             inputs["packageId"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
-        super("cloudflare:index/wafRule:WafRule", name, inputs, opts);
+        super(WafRule.__pulumiType, name, inputs, opts);
     }
 }
 

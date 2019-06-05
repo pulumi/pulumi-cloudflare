@@ -34,6 +34,20 @@ export class CustomPages extends pulumi.CustomResource {
         return new CustomPages(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/customPages:CustomPages';
+
+    /**
+     * Returns true if the given object is an instance of CustomPages.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is CustomPages {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === CustomPages.__pulumiType;
+    }
+
     /**
      * The account ID where the custom pages should be
      * updated. Either `account_id` or `zone_id` must be provided. If
@@ -94,7 +108,7 @@ export class CustomPages extends pulumi.CustomResource {
             inputs["url"] = args ? args.url : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/customPages:CustomPages", name, inputs, opts);
+        super(CustomPages.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -35,6 +35,20 @@ export class LogpushJob extends pulumi.CustomResource {
         return new LogpushJob(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/logpushJob:LogpushJob';
+
+    /**
+     * Returns true if the given object is an instance of LogpushJob.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LogpushJob {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === LogpushJob.__pulumiType;
+    }
+
     public readonly destinationConf!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public readonly logpullOptions!: pulumi.Output<string | undefined>;
@@ -81,7 +95,7 @@ export class LogpushJob extends pulumi.CustomResource {
             inputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/logpushJob:LogpushJob", name, inputs, opts);
+        super(LogpushJob.__pulumiType, name, inputs, opts);
     }
 }
 

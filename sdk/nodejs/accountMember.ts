@@ -35,6 +35,20 @@ export class AccountMember extends pulumi.CustomResource {
         return new AccountMember(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/accountMember:AccountMember';
+
+    /**
+     * Returns true if the given object is an instance of AccountMember.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccountMember {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccountMember.__pulumiType;
+    }
+
     /**
      * The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
      */
@@ -69,7 +83,7 @@ export class AccountMember extends pulumi.CustomResource {
             inputs["emailAddress"] = args ? args.emailAddress : undefined;
             inputs["roleIds"] = args ? args.roleIds : undefined;
         }
-        super("cloudflare:index/accountMember:AccountMember", name, inputs, opts);
+        super(AccountMember.__pulumiType, name, inputs, opts);
     }
 }
 

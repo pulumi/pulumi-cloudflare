@@ -52,6 +52,20 @@ export class WorkerScript extends pulumi.CustomResource {
         return new WorkerScript(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/workerScript:WorkerScript';
+
+    /**
+     * Returns true if the given object is an instance of WorkerScript.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is WorkerScript {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === WorkerScript.__pulumiType;
+    }
+
     /**
      * The script content.
      */
@@ -95,7 +109,7 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/workerScript:WorkerScript", name, inputs, opts);
+        super(WorkerScript.__pulumiType, name, inputs, opts);
     }
 }
 

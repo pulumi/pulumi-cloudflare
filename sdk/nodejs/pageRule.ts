@@ -43,6 +43,20 @@ export class PageRule extends pulumi.CustomResource {
         return new PageRule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/pageRule:PageRule';
+
+    /**
+     * Returns true if the given object is an instance of PageRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is PageRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === PageRule.__pulumiType;
+    }
+
     /**
      * The actions taken by the page rule, options given below.
      */
@@ -104,7 +118,7 @@ export class PageRule extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = undefined /*out*/;
         }
-        super("cloudflare:index/pageRule:PageRule", name, inputs, opts);
+        super(PageRule.__pulumiType, name, inputs, opts);
     }
 }
 

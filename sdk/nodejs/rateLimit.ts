@@ -77,6 +77,20 @@ export class RateLimit extends pulumi.CustomResource {
         return new RateLimit(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/rateLimit:RateLimit';
+
+    /**
+     * Returns true if the given object is an instance of RateLimit.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is RateLimit {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === RateLimit.__pulumiType;
+    }
+
     /**
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
@@ -165,7 +179,7 @@ export class RateLimit extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = undefined /*out*/;
         }
-        super("cloudflare:index/rateLimit:RateLimit", name, inputs, opts);
+        super(RateLimit.__pulumiType, name, inputs, opts);
     }
 }
 

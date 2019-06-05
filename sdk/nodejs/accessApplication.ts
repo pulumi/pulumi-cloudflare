@@ -36,6 +36,20 @@ export class AccessApplication extends pulumi.CustomResource {
         return new AccessApplication(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/accessApplication:AccessApplication';
+
+    /**
+     * Returns true if the given object is an instance of AccessApplication.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccessApplication {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccessApplication.__pulumiType;
+    }
+
     public /*out*/ readonly aud!: pulumi.Output<string>;
     /**
      * The complete URL of the asset you wish to put
@@ -90,7 +104,7 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["aud"] = undefined /*out*/;
         }
-        super("cloudflare:index/accessApplication:AccessApplication", name, inputs, opts);
+        super(AccessApplication.__pulumiType, name, inputs, opts);
     }
 }
 

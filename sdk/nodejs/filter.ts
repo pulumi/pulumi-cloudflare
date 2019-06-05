@@ -33,6 +33,20 @@ export class Filter extends pulumi.CustomResource {
         return new Filter(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/filter:Filter';
+
+    /**
+     * Returns true if the given object is an instance of Filter.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Filter {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Filter.__pulumiType;
+    }
+
     /**
      * A note that you can use to describe the purpose of the filter.
      */
@@ -88,7 +102,7 @@ export class Filter extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/filter:Filter", name, inputs, opts);
+        super(Filter.__pulumiType, name, inputs, opts);
     }
 }
 
