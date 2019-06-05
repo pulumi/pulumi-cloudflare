@@ -39,6 +39,20 @@ export class ZoneLockdown extends pulumi.CustomResource {
         return new ZoneLockdown(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/zoneLockdown:ZoneLockdown';
+
+    /**
+     * Returns true if the given object is an instance of ZoneLockdown.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ZoneLockdown {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ZoneLockdown.__pulumiType;
+    }
+
     /**
      * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
      */
@@ -97,7 +111,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/zoneLockdown:ZoneLockdown", name, inputs, opts);
+        super(ZoneLockdown.__pulumiType, name, inputs, opts);
     }
 }
 

@@ -65,6 +65,20 @@ export class AccessRule extends pulumi.CustomResource {
         return new AccessRule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/accessRule:AccessRule';
+
+    /**
+     * Returns true if the given object is an instance of AccessRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is AccessRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === AccessRule.__pulumiType;
+    }
+
     /**
      * Rule configuration to apply to a matched request. It's a complex value. See description below.
      */
@@ -117,7 +131,7 @@ export class AccessRule extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/accessRule:AccessRule", name, inputs, opts);
+        super(AccessRule.__pulumiType, name, inputs, opts);
     }
 }
 

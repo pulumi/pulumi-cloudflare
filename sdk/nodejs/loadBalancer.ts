@@ -56,6 +56,20 @@ export class LoadBalancer extends pulumi.CustomResource {
         return new LoadBalancer(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/loadBalancer:LoadBalancer';
+
+    /**
+     * Returns true if the given object is an instance of LoadBalancer.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LoadBalancer {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === LoadBalancer.__pulumiType;
+    }
+
     /**
      * The RFC3339 timestamp of when the load balancer was created.
      */
@@ -174,7 +188,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["modifiedOn"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
-        super("cloudflare:index/loadBalancer:LoadBalancer", name, inputs, opts);
+        super(LoadBalancer.__pulumiType, name, inputs, opts);
     }
 }
 

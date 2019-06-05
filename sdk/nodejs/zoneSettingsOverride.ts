@@ -48,6 +48,20 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
         return new ZoneSettingsOverride(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride';
+
+    /**
+     * Returns true if the given object is an instance of ZoneSettingsOverride.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ZoneSettingsOverride {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ZoneSettingsOverride.__pulumiType;
+    }
+
     /**
      * Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
      */
@@ -102,7 +116,7 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
             inputs["zoneStatus"] = undefined /*out*/;
             inputs["zoneType"] = undefined /*out*/;
         }
-        super("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride", name, inputs, opts);
+        super(ZoneSettingsOverride.__pulumiType, name, inputs, opts);
     }
 }
 

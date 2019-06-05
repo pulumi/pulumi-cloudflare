@@ -47,6 +47,20 @@ export class LoadBalancerPool extends pulumi.CustomResource {
         return new LoadBalancerPool(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/loadBalancerPool:LoadBalancerPool';
+
+    /**
+     * Returns true if the given object is an instance of LoadBalancerPool.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LoadBalancerPool {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === LoadBalancerPool.__pulumiType;
+    }
+
     /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
      */
@@ -129,7 +143,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
         }
-        super("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, inputs, opts);
+        super(LoadBalancerPool.__pulumiType, name, inputs, opts);
     }
 }
 

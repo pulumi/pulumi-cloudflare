@@ -51,6 +51,20 @@ export class Record extends pulumi.CustomResource {
         return new Record(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/record:Record';
+
+    /**
+     * Returns true if the given object is an instance of Record.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is Record {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === Record.__pulumiType;
+    }
+
     /**
      * The RFC3339 timestamp of when the record was created
      */
@@ -160,7 +174,7 @@ export class Record extends pulumi.CustomResource {
             inputs["proxiable"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
-        super("cloudflare:index/record:Record", name, inputs, opts);
+        super(Record.__pulumiType, name, inputs, opts);
     }
 }
 

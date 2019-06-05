@@ -42,6 +42,20 @@ export class FirewallRule extends pulumi.CustomResource {
         return new FirewallRule(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/firewallRule:FirewallRule';
+
+    /**
+     * Returns true if the given object is an instance of FirewallRule.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is FirewallRule {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === FirewallRule.__pulumiType;
+    }
+
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
      */
@@ -103,7 +117,7 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        super("cloudflare:index/firewallRule:FirewallRule", name, inputs, opts);
+        super(FirewallRule.__pulumiType, name, inputs, opts);
     }
 }
 

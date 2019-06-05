@@ -54,6 +54,20 @@ export class WorkerRoute extends pulumi.CustomResource {
         return new WorkerRoute(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/workerRoute:WorkerRoute';
+
+    /**
+     * Returns true if the given object is an instance of WorkerRoute.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is WorkerRoute {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === WorkerRoute.__pulumiType;
+    }
+
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly multiScript!: pulumi.Output<boolean>;
     /**
@@ -105,7 +119,7 @@ export class WorkerRoute extends pulumi.CustomResource {
             inputs["multiScript"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
-        super("cloudflare:index/workerRoute:WorkerRoute", name, inputs, opts);
+        super(WorkerRoute.__pulumiType, name, inputs, opts);
     }
 }
 

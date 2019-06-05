@@ -44,6 +44,20 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
         return new LoadBalancerMonitor(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor';
+
+    /**
+     * Returns true if the given object is an instance of LoadBalancerMonitor.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is LoadBalancerMonitor {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === LoadBalancerMonitor.__pulumiType;
+    }
+
     /**
      * Do not validate the certificate when monitor use HTTPS.
      */
@@ -153,7 +167,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
         }
-        super("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, inputs, opts);
+        super(LoadBalancerMonitor.__pulumiType, name, inputs, opts);
     }
 }
 
