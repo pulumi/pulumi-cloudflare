@@ -19,13 +19,13 @@ To use from JavaScript or TypeScript in Node.js, install using either
 
 ::
 
-   $ npm install @pulumi/cloudflare
+    $ npm install @pulumi/cloudflare
 
 or ``yarn``:
 
 ::
 
-   $ yarn add @pulumi/cloudflare
+    $ yarn add @pulumi/cloudflare
 
 Python
 ~~~~~~
@@ -34,7 +34,7 @@ To use from Python, install using ``pip``:
 
 ::
 
-   $ pip install pulumi_cloudflare
+    $ pip install pulumi_cloudflare
 
 Go
 ~~
@@ -43,7 +43,7 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
 ::
 
-   $ go get github.com/pulumi/pulumi-cloudflare/sdk/go/...
+    $ go get github.com/pulumi/pulumi-cloudflare/sdk/go/...
 
 Reference
 ---------
