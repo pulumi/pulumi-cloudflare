@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Update to v1.16.1 of the Cloudflare Terraform Provider
+___NULL___
 
 ---
+
+## 0.17.6 (2019-06-27)
+* Update to v1.16.1 of the Cloudflare Terraform Provider
 
 ## 0.17.5 (2019-06-21)
 * Update to pulumi-terraform@3635bed3a5 which stops maps containing `.` being treated as nested maps.
@@ -26,4 +29,3 @@ CHANGELOG
 
 ## 0.17.0 (2019-03-08)
 * Initial version of the Cloudflare provider, based on v1.12.0 of the Cloudflare Terraform provider
-
