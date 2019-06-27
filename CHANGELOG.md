@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
+* Update to v1.16.1 of the Cloudflare Terraform Provider
 
 ---
 
