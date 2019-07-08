@@ -6,6 +6,9 @@ ___NULL___
 
 ---
 
+## 0.17.7 (2019-07-08)
+* Communicate detailed information about the difference between a resource's desired and actual state during a Pulumi update
+
 ## 0.17.6 (2019-06-27)
 * Update to v1.16.1 of the Cloudflare Terraform Provider
 
