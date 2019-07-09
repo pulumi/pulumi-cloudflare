@@ -36,6 +36,8 @@ class WorkerRoute(pulumi.CustomResource):
                * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
                * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         :param pulumi.Input[str] zone: The zone to add the route to.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

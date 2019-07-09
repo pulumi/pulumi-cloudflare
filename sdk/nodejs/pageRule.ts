@@ -29,6 +29,8 @@ import * as utilities from "./utilities";
  *     zone: var_cloudflare_zone,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
  */
 export class PageRule extends pulumi.CustomResource {
     /**

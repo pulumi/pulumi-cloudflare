@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
  *     sourceRanges: cloudflare.ipv4CidrBlocks,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.markdown.
  */
 export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> {
     return pulumi.runtime.invoke("cloudflare:index/getIpRanges:getIpRanges", {

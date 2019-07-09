@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare_worker_route`.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
 type WorkerScript struct {
 	s *pulumi.ResourceState
 }

@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  *     ownershipChallenge: "00000000000000000",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/logpush_job.html.markdown.
  */
 export class LogpushJob extends pulumi.CustomResource {
     /**

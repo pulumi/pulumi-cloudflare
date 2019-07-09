@@ -64,6 +64,8 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[float] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
         :param pulumi.Input[float] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
         :param pulumi.Input[str] zone: The DNS zone to apply rate limiting to.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/rate_limit.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -34,6 +34,8 @@ import * as utilities from "./utilities";
  *     zone: test.apply(test => (<any>test.zones[0])["name"]),
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.markdown.
  */
 export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     return pulumi.runtime.invoke("cloudflare:index/getZones:getZones", {

@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to look up [Zone][1] records.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.markdown.
 func LookupZones(ctx *pulumi.Context, args *GetZonesArgs) (*GetZonesResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {

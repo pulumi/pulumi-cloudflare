@@ -42,6 +42,8 @@ import * as utilities from "./utilities";
  *     zone: "example.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer.html.markdown.
  */
 export class LoadBalancer extends pulumi.CustomResource {
     /**

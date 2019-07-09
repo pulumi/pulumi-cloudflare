@@ -40,6 +40,8 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone: The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

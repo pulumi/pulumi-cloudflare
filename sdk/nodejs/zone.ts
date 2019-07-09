@@ -17,6 +17,8 @@ import * as utilities from "./utilities";
  *     zone: "example.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone.html.markdown.
  */
 export class Zone extends pulumi.CustomResource {
     /**

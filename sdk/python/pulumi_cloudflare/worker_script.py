@@ -35,6 +35,8 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name for the script. 
         :param pulumi.Input[str] zone: The zone for the script.
         :param pulumi.Input[str] zone_id: The zone id of the script (only for non-multi-script resources)
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -32,6 +32,8 @@ class GetIpRangesResult:
 async def get_ip_ranges(opts=None):
     """
     Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.markdown.
     """
     __args__ = dict()
 

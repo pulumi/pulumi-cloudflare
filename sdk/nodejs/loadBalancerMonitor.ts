@@ -30,6 +30,8 @@ import * as utilities from "./utilities";
  *     timeout: 7,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
  */
 export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**

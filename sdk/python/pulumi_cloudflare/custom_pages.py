@@ -16,11 +16,6 @@ class CustomPages(pulumi.CustomResource):
     `account_id` is present, it will override the zone setting.
     """
     state: pulumi.Output[str]
-    """
-    Managed state of the custom page. Must be one of
-    `default`, `customised`. If the value is `default` it will be removed
-    from the Terraform state management.
-    """
     type: pulumi.Output[str]
     """
     The type of custom page you wish to update. Must
@@ -46,9 +41,6 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account ID where the custom pages should be
                updated. Either `account_id` or `zone_id` must be provided. If
                `account_id` is present, it will override the zone setting.
-        :param pulumi.Input[str] state: Managed state of the custom page. Must be one of
-               `default`, `customised`. If the value is `default` it will be removed
-               from the Terraform state management.
         :param pulumi.Input[str] type: The type of custom page you wish to update. Must
                be one of `basic_challenge`, `waf_challenge`, `waf_block`,
                `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
@@ -56,6 +48,8 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
                updated. Either `zone_id` or `account_id` must be provided.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_pages.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

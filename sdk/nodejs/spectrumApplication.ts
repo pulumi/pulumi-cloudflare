@@ -23,6 +23,8 @@ import * as utilities from "./utilities";
  *     protocol: "tcp/22",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/spectrum_application.html.markdown.
  */
 export class SpectrumApplication extends pulumi.CustomResource {
     /**

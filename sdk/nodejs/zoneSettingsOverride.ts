@@ -34,6 +34,8 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
  */
 export class ZoneSettingsOverride extends pulumi.CustomResource {
     /**

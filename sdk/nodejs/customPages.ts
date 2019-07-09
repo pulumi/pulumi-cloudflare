@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_pages.html.markdown.
  */
 export class CustomPages extends pulumi.CustomResource {
     /**
@@ -54,11 +56,6 @@ export class CustomPages extends pulumi.CustomResource {
      * `account_id` is present, it will override the zone setting.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
-    /**
-     * Managed state of the custom page. Must be one of
-     * `default`, `customised`. If the value is `default` it will be removed
-     * from the Terraform state management.
-     */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
      * The type of custom page you wish to update. Must
@@ -122,11 +119,6 @@ export interface CustomPagesState {
      * `account_id` is present, it will override the zone setting.
      */
     readonly accountId?: pulumi.Input<string>;
-    /**
-     * Managed state of the custom page. Must be one of
-     * `default`, `customised`. If the value is `default` it will be removed
-     * from the Terraform state management.
-     */
     readonly state?: pulumi.Input<string>;
     /**
      * The type of custom page you wish to update. Must
@@ -156,11 +148,6 @@ export interface CustomPagesArgs {
      * `account_id` is present, it will override the zone setting.
      */
     readonly accountId?: pulumi.Input<string>;
-    /**
-     * Managed state of the custom page. Must be one of
-     * `default`, `customised`. If the value is `default` it will be removed
-     * from the Terraform state management.
-     */
     readonly state?: pulumi.Input<string>;
     /**
      * The type of custom page you wish to update. Must
