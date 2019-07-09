@@ -6,6 +6,9 @@ ___NULL___
 
 ---
 
+## 0.17.8 (2019-07-09)
+* Fix detailed diffs with nested computed values.
+
 ## 0.17.7 (2019-07-08)
 * Communicate detailed information about the difference between a resource's desired and actual state during a Pulumi update
 
