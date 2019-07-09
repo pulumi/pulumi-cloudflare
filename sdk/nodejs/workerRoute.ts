@@ -40,6 +40,8 @@ import * as utilities from "./utilities";
  *     zone: "example.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
  */
 export class WorkerRoute extends pulumi.CustomResource {
     /**

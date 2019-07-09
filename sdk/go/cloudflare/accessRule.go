@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.
 type AccessRule struct {
 	s *pulumi.ResourceState
 }

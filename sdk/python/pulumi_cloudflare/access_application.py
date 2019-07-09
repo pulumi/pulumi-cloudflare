@@ -42,6 +42,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_application.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -63,6 +63,8 @@ import * as utilities from "./utilities";
  *     zone: var_cloudflare_zone,
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/rate_limit.html.markdown.
  */
 export class RateLimit extends pulumi.CustomResource {
     /**

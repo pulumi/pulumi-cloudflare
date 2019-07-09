@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
 type ZoneSettingsOverride struct {
 	s *pulumi.ResourceState
 }

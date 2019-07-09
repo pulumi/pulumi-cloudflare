@@ -29,6 +29,8 @@ class GetZonesResult:
 async def get_zones(filter=None,opts=None):
     """
     Use this data source to look up [Zone][1] records.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.markdown.
     """
     __args__ = dict()
 

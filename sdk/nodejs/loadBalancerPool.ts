@@ -33,6 +33,8 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_pool.html.markdown.
  */
 export class LoadBalancerPool extends pulumi.CustomResource {
     /**

@@ -19,6 +19,8 @@ import * as utilities from "./utilities";
  *     zone: "domain.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_rule.html.markdown.
  */
 export class WafRule extends pulumi.CustomResource {
     /**

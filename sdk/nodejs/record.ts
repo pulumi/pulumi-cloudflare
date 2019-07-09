@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a Cloudflare record resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * // Add a record requiring a data map
- * const _sipTls = new cloudflare.Record("_sip_tls", {
- *     data: {
- *         name: "terraform-srv",
- *         port: 443,
- *         priority: 0,
- *         proto: "_tls",
- *         service: "_sip",
- *         target: "example.com",
- *         weight: 0,
- *     },
- *     domain: var_cloudflare_zone,
- *     name: "_sip._tls",
- *     type: "SRV",
- * });
- * // Add a record to the domain
- * const foobar = new cloudflare.Record("foobar", {
- *     domain: var_cloudflare_zone,
- *     name: "terraform",
- *     ttl: 3600,
- *     type: "A",
- *     value: "192.168.0.11",
- * });
- * ```
- */
 export class Record extends pulumi.CustomResource {
     /**
      * Get an existing Record resource's state with the given name, ID, and optional extra

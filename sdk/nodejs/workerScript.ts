@@ -38,6 +38,8 @@ import * as utilities from "./utilities";
  *     name: "script_1",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
  */
 export class WorkerScript extends pulumi.CustomResource {
     /**

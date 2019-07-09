@@ -51,6 +51,8 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.
  */
 export class AccessRule extends pulumi.CustomResource {
     /**

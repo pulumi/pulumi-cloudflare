@@ -9,6 +9,8 @@ import (
 )
 
 // Provides a resource which manages Cloudflare custom error pages.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_pages.html.markdown.
 type CustomPages struct {
 	s *pulumi.ResourceState
 }
@@ -79,9 +81,6 @@ func (r *CustomPages) AccountId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accountId"])
 }
 
-// Managed state of the custom page. Must be one of
-// `default`, `customised`. If the value is `default` it will be removed
-// from the Terraform state management.
 func (r *CustomPages) State() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["state"])
 }
@@ -111,9 +110,6 @@ type CustomPagesState struct {
 	// updated. Either `account_id` or `zone_id` must be provided. If
 	// `account_id` is present, it will override the zone setting.
 	AccountId interface{}
-	// Managed state of the custom page. Must be one of
-	// `default`, `customised`. If the value is `default` it will be removed
-	// from the Terraform state management.
 	State interface{}
 	// The type of custom page you wish to update. Must
 	// be one of `basic_challenge`, `waf_challenge`, `waf_block`,
@@ -133,9 +129,6 @@ type CustomPagesArgs struct {
 	// updated. Either `account_id` or `zone_id` must be provided. If
 	// `account_id` is present, it will override the zone setting.
 	AccountId interface{}
-	// Managed state of the custom page. Must be one of
-	// `default`, `customised`. If the value is `default` it will be removed
-	// from the Terraform state management.
 	State interface{}
 	// The type of custom page you wish to update. Must
 	// be one of `basic_challenge`, `waf_challenge`, `waf_block`,

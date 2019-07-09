@@ -45,6 +45,8 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.Input[list] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone: The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

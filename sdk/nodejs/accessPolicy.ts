@@ -45,6 +45,8 @@ import * as utilities from "./utilities";
  *   `email_domain = ["example.com"]`
  * * `everyone` - (Optional) Boolean indicating permitting access for all
  *   requests. Example: `everyone = true`
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**

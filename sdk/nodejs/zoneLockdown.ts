@@ -25,6 +25,8 @@ import * as utilities from "./utilities";
  *     zone: "api.mysite.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
  */
 export class ZoneLockdown extends pulumi.CustomResource {
     /**

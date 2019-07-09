@@ -79,6 +79,8 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[float] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

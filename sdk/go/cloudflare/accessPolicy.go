@@ -25,6 +25,8 @@ import (
 //   `email_domain = ["example.com"]`
 // * `everyone` - (Optional) Boolean indicating permitting access for all
 //   requests. Example: `everyone = true`
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
 type AccessPolicy struct {
 	s *pulumi.ResourceState
 }

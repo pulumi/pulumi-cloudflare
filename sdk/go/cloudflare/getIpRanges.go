@@ -8,6 +8,8 @@ import (
 )
 
 // Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.markdown.
 func LookupIpRanges(ctx *pulumi.Context) (*GetIpRangesResult, error) {
 	outputs, err := ctx.Invoke("cloudflare:index/getIpRanges:getIpRanges", nil)
 	if err != nil {

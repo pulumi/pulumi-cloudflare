@@ -11,6 +11,8 @@ import (
 // Provides a Cloudflare Access Application resource. Access Applications
 // are used to restrict access to a whole application using an
 // authorisation gateway managed by Cloudflare.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_application.html.markdown.
 type AccessApplication struct {
 	s *pulumi.ResourceState
 }
