@@ -27,9 +27,11 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.markdown.
  */
-export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> {
-    return pulumi.runtime.invoke("cloudflare:index/getIpRanges:getIpRanges", {
+export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> & GetIpRangesResult {
+    const promise: Promise<GetIpRangesResult> = pulumi.runtime.invoke("cloudflare:index/getIpRanges:getIpRanges", {
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
