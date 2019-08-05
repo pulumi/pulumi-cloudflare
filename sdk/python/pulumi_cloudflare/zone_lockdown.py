@@ -79,6 +79,10 @@ class ZoneLockdown(pulumi.CustomResource):
 
         __props__['zone_id'] = zone_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ZoneLockdown, __self__).__init__(
             'cloudflare:index/zoneLockdown:ZoneLockdown',
             resource_name,

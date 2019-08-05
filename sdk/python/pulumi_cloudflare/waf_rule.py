@@ -71,6 +71,10 @@ class WafRule(pulumi.CustomResource):
         __props__['package_id'] = None
         __props__['zone_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(WafRule, __self__).__init__(
             'cloudflare:index/wafRule:WafRule',
             resource_name,

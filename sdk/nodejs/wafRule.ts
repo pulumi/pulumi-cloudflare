@@ -104,6 +104,13 @@ export class WafRule extends pulumi.CustomResource {
             inputs["packageId"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(WafRule.__pulumiType, name, inputs, opts);
     }
 }

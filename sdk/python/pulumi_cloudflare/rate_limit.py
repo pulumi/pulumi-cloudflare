@@ -110,6 +110,10 @@ class RateLimit(pulumi.CustomResource):
 
         __props__['zone_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(RateLimit, __self__).__init__(
             'cloudflare:index/rateLimit:RateLimit',
             resource_name,

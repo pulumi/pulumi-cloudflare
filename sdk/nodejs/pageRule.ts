@@ -120,6 +120,13 @@ export class PageRule extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(PageRule.__pulumiType, name, inputs, opts);
     }
 }

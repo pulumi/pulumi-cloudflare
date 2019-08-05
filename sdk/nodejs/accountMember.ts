@@ -85,6 +85,13 @@ export class AccountMember extends pulumi.CustomResource {
             inputs["emailAddress"] = args ? args.emailAddress : undefined;
             inputs["roleIds"] = args ? args.roleIds : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(AccountMember.__pulumiType, name, inputs, opts);
     }
 }
