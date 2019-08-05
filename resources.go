@@ -164,7 +164,7 @@ func Provider() tfbridge.ProviderInfo {
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
-				"pulumi": ">=0.17.1,<0.18.0",
+				"pulumi": ">=0.17.28,<0.18.0",
 			},
 		},
 	}
