@@ -121,6 +121,13 @@ export class WorkerRoute extends pulumi.CustomResource {
             inputs["multiScript"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(WorkerRoute.__pulumiType, name, inputs, opts);
     }
 }

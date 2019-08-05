@@ -14,7 +14,7 @@ class Provider(pulumi.ProviderResource):
         The provider type for the cloudflare package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
-        [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
+        [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -72,6 +72,10 @@ class Provider(pulumi.ProviderResource):
             use_org_from_zone = utilities.get_env('CLOUDFLARE_ORG_ZONE')
         __props__['use_org_from_zone'] = use_org_from_zone
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Provider, __self__).__init__(
             'cloudflare',
             resource_name,

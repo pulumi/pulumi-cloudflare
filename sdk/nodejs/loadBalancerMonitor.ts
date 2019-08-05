@@ -169,6 +169,13 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(LoadBalancerMonitor.__pulumiType, name, inputs, opts);
     }
 }

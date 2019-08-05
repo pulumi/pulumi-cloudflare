@@ -190,6 +190,13 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["modifiedOn"] = undefined /*out*/;
             inputs["zoneId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(LoadBalancer.__pulumiType, name, inputs, opts);
     }
 }
