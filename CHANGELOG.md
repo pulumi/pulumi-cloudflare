@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Update to pulumi-terraform@013b95b1c8
+___NULL___
 
 ---
+
+## 0.17.9 (2019-08-08)
+* Update to pulumi-terraform@013b95b1c8
 
 ## 0.17.8 (2019-07-09)
 * Fix detailed diffs with nested computed values.
