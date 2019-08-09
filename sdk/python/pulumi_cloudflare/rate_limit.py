@@ -49,7 +49,7 @@ class RateLimit(pulumi.CustomResource):
     """
     The DNS zone ID.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
         
@@ -73,54 +73,76 @@ class RateLimit(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if action is None:
-            raise TypeError("Missing required property 'action'")
-        __props__['action'] = action
-
-        __props__['bypass_url_patterns'] = bypass_url_patterns
-
-        __props__['correlate'] = correlate
-
-        __props__['description'] = description
-
-        __props__['disabled'] = disabled
-
-        __props__['match'] = match
-
-        if period is None:
-            raise TypeError("Missing required property 'period'")
-        __props__['period'] = period
-
-        if threshold is None:
-            raise TypeError("Missing required property 'threshold'")
-        __props__['threshold'] = threshold
-
-        if zone is None:
-            raise TypeError("Missing required property 'zone'")
-        __props__['zone'] = zone
-
-        __props__['zone_id'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if action is None:
+                raise TypeError("Missing required property 'action'")
+            __props__['action'] = action
+            __props__['bypass_url_patterns'] = bypass_url_patterns
+            __props__['correlate'] = correlate
+            __props__['description'] = description
+            __props__['disabled'] = disabled
+            __props__['match'] = match
+            if period is None:
+                raise TypeError("Missing required property 'period'")
+            __props__['period'] = period
+            if threshold is None:
+                raise TypeError("Missing required property 'threshold'")
+            __props__['threshold'] = threshold
+            if zone is None:
+                raise TypeError("Missing required property 'zone'")
+            __props__['zone'] = zone
+            __props__['zone_id'] = None
         super(RateLimit, __self__).__init__(
             'cloudflare:index/rateLimit:RateLimit',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone=None, zone_id=None):
+        """
+        Get an existing RateLimit resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+        :param pulumi.Input[list] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
+        :param pulumi.Input[dict] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+        :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
+        :param pulumi.Input[dict] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        :param pulumi.Input[float] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        :param pulumi.Input[float] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        :param pulumi.Input[str] zone: The DNS zone to apply rate limiting to.
+        :param pulumi.Input[str] zone_id: The DNS zone ID.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/rate_limit.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["action"] = action
+        __props__["bypass_url_patterns"] = bypass_url_patterns
+        __props__["correlate"] = correlate
+        __props__["description"] = description
+        __props__["disabled"] = disabled
+        __props__["match"] = match
+        __props__["period"] = period
+        __props__["threshold"] = threshold
+        __props__["zone"] = zone
+        __props__["zone_id"] = zone_id
+        return RateLimit(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * 
  * // Allowing `test@example.com` to access but only when coming from a
  * // specific IP.
- * const testPolicy = new cloudflare.AccessPolicy("test_policy", {
+ * const testPolicy = new cloudflare.AccessPolicy("testPolicy", {
  *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
  *     decision: "allow",
  *     includes: [{
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     name: "staging policy",
  *     precedence: 1,
  *     requires: [{
- *         ips: [var_office_ip],
+ *         ips: [varOfficeIp],
  *     }],
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
@@ -41,8 +41,8 @@ import * as utilities from "./utilities";
  *   `ip = ["1.2.3.4", "10.0.0.0/2"]`
  * * `email` - (Optional) A list of email addresses. Example:
  *   `email = ["test@example.com"]`
- * * `email_domain` - (Optional) A list of email domains. Example:
- *   `email_domain = ["example.com"]`
+ * * `emailDomain` - (Optional) A list of email domains. Example:
+ *   `emailDomain = ["example.com"]`
  * * `everyone` - (Optional) Boolean indicating permitting access for all
  *   requests. Example: `everyone = true`
  *

@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *     zone: "example.com",
  * });
  * // Challenge requests coming from known Tor exit nodes.
- * const torExitNodes = new cloudflare.AccessRule("tor_exit_nodes", {
+ * const torExitNodes = new cloudflare.AccessRule("torExitNodes", {
  *     configuration: {
  *         target: "country",
  *         value: "T1",
@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  * for (let i = 0; i < myOffice.length; i++) {
  *     officeNetwork.push(new cloudflare.AccessRule(`office_network-${i}`, {
  *         configuration: {
- *             target: "ip_range",
+ *             target: "ipRange",
  *             value: myOffice[i],
  *         },
  *         mode: "whitelist",
@@ -86,7 +86,7 @@ export class AccessRule extends pulumi.CustomResource {
      */
     public readonly configuration!: pulumi.Output<{ target: string, value: string }>;
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -94,7 +94,7 @@ export class AccessRule extends pulumi.CustomResource {
      */
     public readonly notes!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
      */
     public readonly zone!: pulumi.Output<string>;
     /**
@@ -153,7 +153,7 @@ export interface AccessRuleState {
      */
     readonly configuration?: pulumi.Input<{ target: pulumi.Input<string>, value: pulumi.Input<string> }>;
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
      */
     readonly mode?: pulumi.Input<string>;
     /**
@@ -161,7 +161,7 @@ export interface AccessRuleState {
      */
     readonly notes?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
      */
     readonly zone?: pulumi.Input<string>;
     /**
@@ -179,7 +179,7 @@ export interface AccessRuleArgs {
      */
     readonly configuration: pulumi.Input<{ target: pulumi.Input<string>, value: pulumi.Input<string> }>;
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
      */
     readonly mode: pulumi.Input<string>;
     /**
@@ -187,7 +187,7 @@ export interface AccessRuleArgs {
      */
     readonly notes?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
      */
     readonly zone?: pulumi.Input<string>;
     /**

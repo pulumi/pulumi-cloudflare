@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// Provides a Cloudflare worker route resource. A route will also require a `cloudflare_worker_script`.
+// Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
 type WorkerRoute struct {
@@ -85,7 +85,7 @@ func (r *WorkerRoute) MultiScript() *pulumi.BoolOutput {
 
 // The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
 // * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-// * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+// * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
 func (r *WorkerRoute) Pattern() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["pattern"])
 }
@@ -110,7 +110,7 @@ type WorkerRouteState struct {
 	MultiScript interface{}
 	// The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
 	// * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-	// * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+	// * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
 	Pattern interface{}
 	ScriptName interface{}
 	// The zone to add the route to.
@@ -124,7 +124,7 @@ type WorkerRouteArgs struct {
 	Enabled interface{}
 	// The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
 	// * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-	// * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+	// * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
 	Pattern interface{}
 	ScriptName interface{}
 	// The zone to add the route to.

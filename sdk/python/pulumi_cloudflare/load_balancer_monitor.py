@@ -66,7 +66,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     """
     The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
     """
-    def __init__(__self__, resource_name, opts=None, allow_insecure=None, description=None, expected_body=None, expected_codes=None, follow_redirects=None, headers=None, interval=None, method=None, path=None, port=None, retries=None, timeout=None, type=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, allow_insecure=None, description=None, expected_body=None, expected_codes=None, follow_redirects=None, headers=None, interval=None, method=None, path=None, port=None, retries=None, timeout=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S).
         
@@ -93,59 +93,86 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['allow_insecure'] = allow_insecure
-
-        __props__['description'] = description
-
-        if expected_body is None:
-            raise TypeError("Missing required property 'expected_body'")
-        __props__['expected_body'] = expected_body
-
-        if expected_codes is None:
-            raise TypeError("Missing required property 'expected_codes'")
-        __props__['expected_codes'] = expected_codes
-
-        __props__['follow_redirects'] = follow_redirects
-
-        __props__['headers'] = headers
-
-        __props__['interval'] = interval
-
-        __props__['method'] = method
-
-        __props__['path'] = path
-
-        __props__['port'] = port
-
-        __props__['retries'] = retries
-
-        __props__['timeout'] = timeout
-
-        __props__['type'] = type
-
-        __props__['created_on'] = None
-        __props__['modified_on'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['allow_insecure'] = allow_insecure
+            __props__['description'] = description
+            if expected_body is None:
+                raise TypeError("Missing required property 'expected_body'")
+            __props__['expected_body'] = expected_body
+            if expected_codes is None:
+                raise TypeError("Missing required property 'expected_codes'")
+            __props__['expected_codes'] = expected_codes
+            __props__['follow_redirects'] = follow_redirects
+            __props__['headers'] = headers
+            __props__['interval'] = interval
+            __props__['method'] = method
+            __props__['path'] = path
+            __props__['port'] = port
+            __props__['retries'] = retries
+            __props__['timeout'] = timeout
+            __props__['type'] = type
+            __props__['created_on'] = None
+            __props__['modified_on'] = None
         super(LoadBalancerMonitor, __self__).__init__(
             'cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, allow_insecure=None, created_on=None, description=None, expected_body=None, expected_codes=None, follow_redirects=None, headers=None, interval=None, method=None, modified_on=None, path=None, port=None, retries=None, timeout=None, type=None):
+        """
+        Get an existing LoadBalancerMonitor resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.
+        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
+        :param pulumi.Input[str] description: Free text description.
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+        :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`
+        :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin.
+        :param pulumi.Input[list] headers: The header name.
+        :param pulumi.Input[float] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+        :param pulumi.Input[str] method: The HTTP method to use for the health check. Default: "GET".
+        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer monitor was last modified.
+        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/".
+        :param pulumi.Input[float] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+        :param pulumi.Input[float] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
+        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["allow_insecure"] = allow_insecure
+        __props__["created_on"] = created_on
+        __props__["description"] = description
+        __props__["expected_body"] = expected_body
+        __props__["expected_codes"] = expected_codes
+        __props__["follow_redirects"] = follow_redirects
+        __props__["headers"] = headers
+        __props__["interval"] = interval
+        __props__["method"] = method
+        __props__["modified_on"] = modified_on
+        __props__["path"] = path
+        __props__["port"] = port
+        __props__["retries"] = retries
+        __props__["timeout"] = timeout
+        __props__["type"] = type
+        return LoadBalancerMonitor(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

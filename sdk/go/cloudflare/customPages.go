@@ -75,8 +75,8 @@ func (r *CustomPages) ID() *pulumi.IDOutput {
 }
 
 // The account ID where the custom pages should be
-// updated. Either `account_id` or `zone_id` must be provided. If
-// `account_id` is present, it will override the zone setting.
+// updated. Either `accountId` or `zoneId` must be provided. If
+// `accountId` is present, it will override the zone setting.
 func (r *CustomPages) AccountId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["accountId"])
 }
@@ -86,9 +86,9 @@ func (r *CustomPages) State() *pulumi.StringOutput {
 }
 
 // The type of custom page you wish to update. Must
-// be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-// `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-// `500_errors`, `1000_errors`, `always_online`.
+// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
+// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
+// `500Errors`, `1000Errors`, `alwaysOnline`.
 func (r *CustomPages) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
@@ -99,7 +99,7 @@ func (r *CustomPages) Url() *pulumi.StringOutput {
 }
 
 // The zone ID where the custom pages should be
-// updated. Either `zone_id` or `account_id` must be provided.
+// updated. Either `zoneId` or `accountId` must be provided.
 func (r *CustomPages) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -107,37 +107,37 @@ func (r *CustomPages) ZoneId() *pulumi.StringOutput {
 // Input properties used for looking up and filtering CustomPages resources.
 type CustomPagesState struct {
 	// The account ID where the custom pages should be
-	// updated. Either `account_id` or `zone_id` must be provided. If
-	// `account_id` is present, it will override the zone setting.
+	// updated. Either `accountId` or `zoneId` must be provided. If
+	// `accountId` is present, it will override the zone setting.
 	AccountId interface{}
 	State interface{}
 	// The type of custom page you wish to update. Must
-	// be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-	// `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-	// `500_errors`, `1000_errors`, `always_online`.
+	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
+	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
+	// `500Errors`, `1000Errors`, `alwaysOnline`.
 	Type interface{}
 	// URL of where the custom page source is located.
 	Url interface{}
 	// The zone ID where the custom pages should be
-	// updated. Either `zone_id` or `account_id` must be provided.
+	// updated. Either `zoneId` or `accountId` must be provided.
 	ZoneId interface{}
 }
 
 // The set of arguments for constructing a CustomPages resource.
 type CustomPagesArgs struct {
 	// The account ID where the custom pages should be
-	// updated. Either `account_id` or `zone_id` must be provided. If
-	// `account_id` is present, it will override the zone setting.
+	// updated. Either `accountId` or `zoneId` must be provided. If
+	// `accountId` is present, it will override the zone setting.
 	AccountId interface{}
 	State interface{}
 	// The type of custom page you wish to update. Must
-	// be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-	// `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-	// `500_errors`, `1000_errors`, `always_online`.
+	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
+	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
+	// `500Errors`, `1000Errors`, `alwaysOnline`.
 	Type interface{}
 	// URL of where the custom page source is located.
 	Url interface{}
 	// The zone ID where the custom pages should be
-	// updated. Either `zone_id` or `account_id` must be provided.
+	// updated. Either `zoneId` or `accountId` must be provided.
 	ZoneId interface{}
 }

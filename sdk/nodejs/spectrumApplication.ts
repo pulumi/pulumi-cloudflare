@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
  * // Define a spectrum application proxies ssh traffic
- * const sshProxy = new cloudflare.SpectrumApplication("ssh_proxy", {
+ * const sshProxy = new cloudflare.SpectrumApplication("sshProxy", {
  *     dns: {
  *         name: "ssh.example.com",
  *         type: "CNAME",
@@ -70,7 +70,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     public readonly originDns!: pulumi.Output<{ name: string } | undefined>;
     /**
-     * If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
     public readonly originPort!: pulumi.Output<number>;
     /**
@@ -164,7 +164,7 @@ export interface SpectrumApplicationState {
      */
     readonly originDns?: pulumi.Input<{ name: pulumi.Input<string> }>;
     /**
-     * If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
     readonly originPort?: pulumi.Input<number>;
     /**
@@ -203,7 +203,7 @@ export interface SpectrumApplicationArgs {
      */
     readonly originDns?: pulumi.Input<{ name: pulumi.Input<string> }>;
     /**
-     * If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
     readonly originPort: pulumi.Input<number>;
     /**

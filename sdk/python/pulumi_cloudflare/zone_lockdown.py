@@ -33,7 +33,7 @@ class ZoneLockdown(pulumi.CustomResource):
     """
     The DNS zone to which the access rule should be added.
     """
-    def __init__(__self__, resource_name, opts=None, configurations=None, description=None, paused=None, urls=None, zone=None, zone_id=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, configurations=None, description=None, paused=None, urls=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
         
@@ -54,42 +54,60 @@ class ZoneLockdown(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if configurations is None:
-            raise TypeError("Missing required property 'configurations'")
-        __props__['configurations'] = configurations
-
-        __props__['description'] = description
-
-        __props__['paused'] = paused
-
-        if urls is None:
-            raise TypeError("Missing required property 'urls'")
-        __props__['urls'] = urls
-
-        __props__['zone'] = zone
-
-        __props__['zone_id'] = zone_id
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if configurations is None:
+                raise TypeError("Missing required property 'configurations'")
+            __props__['configurations'] = configurations
+            __props__['description'] = description
+            __props__['paused'] = paused
+            if urls is None:
+                raise TypeError("Missing required property 'urls'")
+            __props__['urls'] = urls
+            __props__['zone'] = zone
+            __props__['zone_id'] = zone_id
         super(ZoneLockdown, __self__).__init__(
             'cloudflare:index/zoneLockdown:ZoneLockdown',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, configurations=None, description=None, paused=None, urls=None, zone=None, zone_id=None):
+        """
+        Get an existing ZoneLockdown resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[list] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
+        :param pulumi.Input[list] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        :param pulumi.Input[str] zone: The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["configurations"] = configurations
+        __props__["description"] = description
+        __props__["paused"] = paused
+        __props__["urls"] = urls
+        __props__["zone"] = zone
+        __props__["zone_id"] = zone_id
+        return ZoneLockdown(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

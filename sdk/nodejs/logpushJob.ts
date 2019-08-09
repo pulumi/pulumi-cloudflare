@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const exampleJob = new cloudflare.LogpushJob("example_job", {
+ * const exampleJob = new cloudflare.LogpushJob("exampleJob", {
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  *     enabled: true,
  *     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",

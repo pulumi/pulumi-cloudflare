@@ -97,7 +97,7 @@ func (r *ZoneLockdown) Urls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["urls"])
 }
 
-// The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
+// The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
 func (r *ZoneLockdown) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
@@ -117,7 +117,7 @@ type ZoneLockdownState struct {
 	Paused interface{}
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls interface{}
-	// The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
+	// The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
 	Zone interface{}
 	// The DNS zone to which the access rule should be added.
 	ZoneId interface{}
@@ -133,7 +133,7 @@ type ZoneLockdownArgs struct {
 	Paused interface{}
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls interface{}
-	// The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
+	// The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
 	Zone interface{}
 	// The DNS zone to which the access rule should be added.
 	ZoneId interface{}

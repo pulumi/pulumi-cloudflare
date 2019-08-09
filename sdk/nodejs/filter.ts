@@ -66,7 +66,7 @@ export class Filter extends pulumi.CustomResource {
      */
     public readonly ref!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone to which the Filter should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
      */
     public readonly zone!: pulumi.Output<string>;
     /**
@@ -136,7 +136,7 @@ export interface FilterState {
      */
     readonly ref?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the Filter should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
      */
     readonly zone?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface FilterArgs {
      */
     readonly ref?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the Filter should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
      */
     readonly zone?: pulumi.Input<string>;
     /**

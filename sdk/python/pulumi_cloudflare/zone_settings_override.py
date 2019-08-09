@@ -30,7 +30,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     """
     zone_status: pulumi.Output[str]
     zone_type: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, name=None, settings=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, name=None, settings=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
         
@@ -47,38 +47,60 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        if name is None:
-            raise TypeError("Missing required property 'name'")
-        __props__['name'] = name
-
-        __props__['settings'] = settings
-
-        __props__['initial_settings'] = None
-        __props__['initial_settings_read_at'] = None
-        __props__['readonly_settings'] = None
-        __props__['zone_status'] = None
-        __props__['zone_type'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            if name is None:
+                raise TypeError("Missing required property 'name'")
+            __props__['name'] = name
+            __props__['settings'] = settings
+            __props__['initial_settings'] = None
+            __props__['initial_settings_read_at'] = None
+            __props__['readonly_settings'] = None
+            __props__['zone_status'] = None
+            __props__['zone_type'] = None
         super(ZoneSettingsOverride, __self__).__init__(
             'cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, initial_settings=None, initial_settings_read_at=None, name=None, readonly_settings=None, settings=None, zone_status=None, zone_type=None):
+        """
+        Get an existing ZoneSettingsOverride resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[dict] initial_settings: Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+        :param pulumi.Input[str] name: The DNS zone to which apply settings.
+        :param pulumi.Input[list] readonly_settings: Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
+               * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+               * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+        :param pulumi.Input[dict] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["initial_settings"] = initial_settings
+        __props__["initial_settings_read_at"] = initial_settings_read_at
+        __props__["name"] = name
+        __props__["readonly_settings"] = readonly_settings
+        __props__["settings"] = settings
+        __props__["zone_status"] = zone_status
+        __props__["zone_type"] = zone_type
+        return ZoneSettingsOverride(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

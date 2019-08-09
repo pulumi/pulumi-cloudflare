@@ -13,9 +13,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const basicChallenge = new cloudflare.CustomPages("basic_challenge", {
+ * const basicChallenge = new cloudflare.CustomPages("basicChallenge", {
  *     state: "customized",
- *     type: "basic_challenge",
+ *     type: "basicChallenge",
  *     url: "https://example.com/challenge.html",
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
@@ -52,16 +52,16 @@ export class CustomPages extends pulumi.CustomResource {
 
     /**
      * The account ID where the custom pages should be
-     * updated. Either `account_id` or `zone_id` must be provided. If
-     * `account_id` is present, it will override the zone setting.
+     * updated. Either `accountId` or `zoneId` must be provided. If
+     * `accountId` is present, it will override the zone setting.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     public readonly state!: pulumi.Output<string | undefined>;
     /**
      * The type of custom page you wish to update. Must
-     * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-     * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-     * `500_errors`, `1000_errors`, `always_online`.
+     * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
+     * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
+     * `500Errors`, `1000Errors`, `alwaysOnline`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -70,7 +70,7 @@ export class CustomPages extends pulumi.CustomResource {
     public readonly url!: pulumi.Output<string>;
     /**
      * The zone ID where the custom pages should be
-     * updated. Either `zone_id` or `account_id` must be provided.
+     * updated. Either `zoneId` or `accountId` must be provided.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -122,16 +122,16 @@ export class CustomPages extends pulumi.CustomResource {
 export interface CustomPagesState {
     /**
      * The account ID where the custom pages should be
-     * updated. Either `account_id` or `zone_id` must be provided. If
-     * `account_id` is present, it will override the zone setting.
+     * updated. Either `accountId` or `zoneId` must be provided. If
+     * `accountId` is present, it will override the zone setting.
      */
     readonly accountId?: pulumi.Input<string>;
     readonly state?: pulumi.Input<string>;
     /**
      * The type of custom page you wish to update. Must
-     * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-     * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-     * `500_errors`, `1000_errors`, `always_online`.
+     * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
+     * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
+     * `500Errors`, `1000Errors`, `alwaysOnline`.
      */
     readonly type?: pulumi.Input<string>;
     /**
@@ -140,7 +140,7 @@ export interface CustomPagesState {
     readonly url?: pulumi.Input<string>;
     /**
      * The zone ID where the custom pages should be
-     * updated. Either `zone_id` or `account_id` must be provided.
+     * updated. Either `zoneId` or `accountId` must be provided.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -151,16 +151,16 @@ export interface CustomPagesState {
 export interface CustomPagesArgs {
     /**
      * The account ID where the custom pages should be
-     * updated. Either `account_id` or `zone_id` must be provided. If
-     * `account_id` is present, it will override the zone setting.
+     * updated. Either `accountId` or `zoneId` must be provided. If
+     * `accountId` is present, it will override the zone setting.
      */
     readonly accountId?: pulumi.Input<string>;
     readonly state?: pulumi.Input<string>;
     /**
      * The type of custom page you wish to update. Must
-     * be one of `basic_challenge`, `waf_challenge`, `waf_block`,
-     * `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-     * `500_errors`, `1000_errors`, `always_online`.
+     * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
+     * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
+     * `500Errors`, `1000Errors`, `alwaysOnline`.
      */
     readonly type: pulumi.Input<string>;
     /**
@@ -169,7 +169,7 @@ export interface CustomPagesArgs {
     readonly url: pulumi.Input<string>;
     /**
      * The zone ID where the custom pages should be
-     * updated. Either `zone_id` or `account_id` must be provided.
+     * updated. Either `zoneId` or `accountId` must be provided.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
