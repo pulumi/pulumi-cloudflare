@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare_worker_route`.
+ * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`.
  * 
  * ## Example Usage
  * 
@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as fs from "fs";
  * 
  * // Sets the script for the example.com zone
- * const myScript = new cloudflare.WorkerScript("my_script", {
+ * const myScript = new cloudflare.WorkerScript("myScript", {
  *     content: fs.readFileSync("script.js", "utf-8"),
  *     zone: "example.com",
  * });
@@ -32,10 +32,10 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * import * as fs from "fs";
  * 
- * // Sets the script with the name "script_1"
- * const myScript = new cloudflare.WorkerScript("my_script", {
+ * // Sets the script with the name "script1"
+ * const myScript = new cloudflare.WorkerScript("myScript", {
  *     content: fs.readFileSync("script.js", "utf-8"),
- *     name: "script_1",
+ *     name: "script1",
  * });
  * ```
  *

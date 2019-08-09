@@ -83,7 +83,7 @@ func (r *FirewallRule) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
 func (r *FirewallRule) Action() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["action"])
 }
@@ -107,7 +107,7 @@ func (r *FirewallRule) Priority() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["priority"])
 }
 
-// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
+// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
 func (r *FirewallRule) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
@@ -119,7 +119,7 @@ func (r *FirewallRule) ZoneId() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering FirewallRule resources.
 type FirewallRuleState struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
 	Action interface{}
 	// A description of the rule to help identify it.
 	Description interface{}
@@ -128,7 +128,7 @@ type FirewallRuleState struct {
 	Paused interface{}
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
 	Priority interface{}
-	// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
+	// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
 	Zone interface{}
 	// The DNS zone to which the Filter should be added.
 	ZoneId interface{}
@@ -136,7 +136,7 @@ type FirewallRuleState struct {
 
 // The set of arguments for constructing a FirewallRule resource.
 type FirewallRuleArgs struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
 	Action interface{}
 	// A description of the rule to help identify it.
 	Description interface{}
@@ -145,7 +145,7 @@ type FirewallRuleArgs struct {
 	Paused interface{}
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
 	Priority interface{}
-	// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
+	// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
 	Zone interface{}
 	// The DNS zone to which the Filter should be added.
 	ZoneId interface{}

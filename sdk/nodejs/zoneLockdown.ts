@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
  * // Restrict access to these endpoints to requests from a known IP address.
- * const endpointLockdown = new cloudflare.ZoneLockdown("endpoint_lockdown", {
+ * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
  *     configurations: [{
  *         target: "ip",
  *         value: "198.51.100.4",
@@ -72,7 +72,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
      */
     public readonly urls!: pulumi.Output<string[]>;
     /**
-     * The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
      */
     public readonly zone!: pulumi.Output<string | undefined>;
     /**
@@ -145,7 +145,7 @@ export interface ZoneLockdownState {
      */
     readonly urls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
      */
     readonly zone?: pulumi.Input<string>;
     /**
@@ -175,7 +175,7 @@ export interface ZoneLockdownArgs {
      */
     readonly urls: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
      */
     readonly zone?: pulumi.Input<string>;
     /**

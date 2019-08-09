@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as gcp from "@pulumi/gcp";
  * 
  * const cloudflare = pulumi.output(cloudflare.getIpRanges({}));
- * const allowCloudflareIngress = new gcp.compute.Firewall("allow_cloudflare_ingress", {
+ * const allowCloudflareIngress = new gcp.compute.Firewall("allowCloudflareIngress", {
  *     allows: [{
  *         ports: "443",
  *         protocol: "tcp",

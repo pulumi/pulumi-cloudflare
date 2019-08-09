@@ -162,7 +162,7 @@ func (r *LoadBalancer) SessionAffinity() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["sessionAffinity"])
 }
 
-// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
+// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 func (r *LoadBalancer) SteeringPolicy() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["steeringPolicy"])
 }
@@ -206,7 +206,7 @@ type LoadBalancerState struct {
 	RegionPools interface{}
 	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
 	SessionAffinity interface{}
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
+	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy interface{}
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl interface{}
@@ -236,7 +236,7 @@ type LoadBalancerArgs struct {
 	RegionPools interface{}
 	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
 	SessionAffinity interface{}
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
+	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy interface{}
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl interface{}

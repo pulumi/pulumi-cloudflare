@@ -25,14 +25,15 @@ class GetZonesResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetZonesResult(GetZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetZonesResult(
+            filter=self.filter,
+            zones=self.zones,
+            id=self.id)
 
 def get_zones(filter=None,opts=None):
     """
@@ -49,7 +50,7 @@ def get_zones(filter=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZones:getZones', __args__, opts=opts).value
 
-    return GetZonesResult(
+    return AwaitableGetZonesResult(
         filter=__ret__.get('filter'),
         zones=__ret__.get('zones'),
         id=__ret__.get('id'))

@@ -59,7 +59,7 @@ export class FirewallRule extends pulumi.CustomResource {
     }
 
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -76,7 +76,7 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
      */
     public readonly zone!: pulumi.Output<string>;
     /**
@@ -135,7 +135,7 @@ export class FirewallRule extends pulumi.CustomResource {
  */
 export interface FirewallRuleState {
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
      */
     readonly action?: pulumi.Input<string>;
     /**
@@ -152,7 +152,7 @@ export interface FirewallRuleState {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
      */
     readonly zone?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface FirewallRuleState {
  */
 export interface FirewallRuleArgs {
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
      */
     readonly action: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface FirewallRuleArgs {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
+     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
      */
     readonly zone?: pulumi.Input<string>;
     /**

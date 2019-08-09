@@ -112,7 +112,7 @@ func (r *SpectrumApplication) OriginDns() *pulumi.Output {
 	return r.s.State["originDns"]
 }
 
-// If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+// If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
 func (r *SpectrumApplication) OriginPort() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["originPort"])
 }
@@ -146,7 +146,7 @@ type SpectrumApplicationState struct {
 	OriginDirects interface{}
 	// A destination DNS addresses to the origin. Fields documented below.
 	OriginDns interface{}
-	// If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+	// If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
 	OriginPort interface{}
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol interface{}
@@ -167,7 +167,7 @@ type SpectrumApplicationArgs struct {
 	OriginDirects interface{}
 	// A destination DNS addresses to the origin. Fields documented below.
 	OriginDns interface{}
-	// If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+	// If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
 	OriginPort interface{}
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol interface{}

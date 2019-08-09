@@ -94,7 +94,7 @@ func (r *Filter) Ref() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ref"])
 }
 
-// The DNS zone to which the Filter should be added. Will be resolved to `zone_id` upon creation.
+// The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
 func (r *Filter) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
@@ -114,7 +114,7 @@ type FilterState struct {
 	Paused interface{}
 	// Short reference tag to quickly select related rules.
 	Ref interface{}
-	// The DNS zone to which the Filter should be added. Will be resolved to `zone_id` upon creation.
+	// The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
 	Zone interface{}
 	// The DNS zone to which the Filter should be added.
 	ZoneId interface{}
@@ -130,7 +130,7 @@ type FilterArgs struct {
 	Paused interface{}
 	// Short reference tag to quickly select related rules.
 	Ref interface{}
-	// The DNS zone to which the Filter should be added. Will be resolved to `zone_id` upon creation.
+	// The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
 	Zone interface{}
 	// The DNS zone to which the Filter should be added.
 	ZoneId interface{}

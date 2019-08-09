@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const exampleUser = new cloudflare.AccountMember("example_user", {
+ * const exampleUser = new cloudflare.AccountMember("exampleUser", {
  *     emailAddress: "user@example.com",
  *     roleIds: [
  *         "68b329da9893e34099c7d8ad5cb9c940",

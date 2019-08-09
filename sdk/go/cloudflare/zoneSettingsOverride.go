@@ -87,8 +87,8 @@ func (r *ZoneSettingsOverride) Name() *pulumi.StringOutput {
 }
 
 // Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-// * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-// * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
 func (r *ZoneSettingsOverride) ReadonlySettings() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["readonlySettings"])
 }
@@ -114,8 +114,8 @@ type ZoneSettingsOverrideState struct {
 	// The DNS zone to which apply settings.
 	Name interface{}
 	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-	// * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-	// * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+	// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+	// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
 	ReadonlySettings interface{}
 	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 	Settings interface{}

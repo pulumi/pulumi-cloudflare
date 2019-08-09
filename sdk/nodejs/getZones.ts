@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * ## Example Usage
  * 
  * The example below matches all `active` zones that begin with `example.` and are not paused. The matched zones are then
- * locked down using the `cloudflare_zone_lockdown` resource.
+ * locked down using the `cloudflare..ZoneLockdown` resource.
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  *         status: "active",
  *     },
  * }));
- * const endpointLockdown = new cloudflare.ZoneLockdown("endpoint_lockdown", {
+ * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
  *     configurations: [{
  *         target: "ip",
  *         value: "198.51.100.4",

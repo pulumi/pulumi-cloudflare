@@ -21,8 +21,8 @@ import (
 //   `ip = ["1.2.3.4", "10.0.0.0/2"]`
 // * `email` - (Optional) A list of email addresses. Example:
 //   `email = ["test@example.com"]`
-// * `email_domain` - (Optional) A list of email domains. Example:
-//   `email_domain = ["example.com"]`
+// * `emailDomain` - (Optional) A list of email domains. Example:
+//   `emailDomain = ["example.com"]`
 // * `everyone` - (Optional) Boolean indicating permitting access for all
 //   requests. Example: `everyone = true`
 //

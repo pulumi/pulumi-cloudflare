@@ -79,7 +79,7 @@ func (r *AccessRule) Configuration() *pulumi.Output {
 	return r.s.State["configuration"]
 }
 
-// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
 func (r *AccessRule) Mode() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["mode"])
 }
@@ -89,7 +89,7 @@ func (r *AccessRule) Notes() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["notes"])
 }
 
-// The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
+// The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
 func (r *AccessRule) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
 }
@@ -103,11 +103,11 @@ func (r *AccessRule) ZoneId() *pulumi.StringOutput {
 type AccessRuleState struct {
 	// Rule configuration to apply to a matched request. It's a complex value. See description below.
 	Configuration interface{}
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
 	Mode interface{}
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes interface{}
-	// The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
+	// The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
 	Zone interface{}
 	// The DNS zone to which the access rule should be added.
 	ZoneId interface{}
@@ -117,11 +117,11 @@ type AccessRuleState struct {
 type AccessRuleArgs struct {
 	// Rule configuration to apply to a matched request. It's a complex value. See description below.
 	Configuration interface{}
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
 	Mode interface{}
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes interface{}
-	// The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
+	// The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
 	Zone interface{}
 	// The DNS zone to which the access rule should be added.
 	ZoneId interface{}

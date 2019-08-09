@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare worker route resource. A route will also require a `cloudflare_worker_script`.
+ * Provides a Cloudflare worker route resource. A route will also require a `cloudflare..WorkerScript`.
  * 
  * ## Example Usage
  * 
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const myScript = new cloudflare.WorkerScript("my_script", {});
+ * const myScript = new cloudflare.WorkerScript("myScript", {});
  * // Enables the zone's worker script for all URLs that match `example.com/*`
- * const myRoute = new cloudflare.WorkerRoute("my_route", {
+ * const myRoute = new cloudflare.WorkerRoute("myRoute", {
  *     enabled: true,
  *     pattern: "example.com/*",
  *     zone: "example.com",
@@ -32,9 +32,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const myScript = new cloudflare.WorkerScript("my_script", {});
+ * const myScript = new cloudflare.WorkerScript("myScript", {});
  * // Runs the specified worker script for all URLs that match `example.com/*`
- * const myRoute = new cloudflare.WorkerRoute("my_route", {
+ * const myRoute = new cloudflare.WorkerRoute("myRoute", {
  *     pattern: "example.com/*",
  *     scriptName: myScript.name,
  *     zone: "example.com",
@@ -75,7 +75,7 @@ export class WorkerRoute extends pulumi.CustomResource {
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
      * * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-     * * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+     * * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     public readonly pattern!: pulumi.Output<string>;
     public readonly scriptName!: pulumi.Output<string | undefined>;
@@ -141,7 +141,7 @@ export interface WorkerRouteState {
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
      * * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-     * * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+     * * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     readonly pattern?: pulumi.Input<string>;
     readonly scriptName?: pulumi.Input<string>;
@@ -163,7 +163,7 @@ export interface WorkerRouteArgs {
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
      * * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-     * * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+     * * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     readonly pattern: pulumi.Input<string>;
     readonly scriptName?: pulumi.Input<string>;
