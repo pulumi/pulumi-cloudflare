@@ -80,6 +80,7 @@ func (r *LogpushJob) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
+// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 func (r *LogpushJob) DestinationConf() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["destinationConf"])
 }
@@ -88,41 +89,52 @@ func (r *LogpushJob) Enabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
+// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 func (r *LogpushJob) LogpullOptions() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["logpullOptions"])
 }
 
+// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
 func (r *LogpushJob) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
-// Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
+// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 func (r *LogpushJob) OwnershipChallenge() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ownershipChallenge"])
 }
 
+// The zone ID where the logpush job should be created.
 func (r *LogpushJob) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering LogpushJob resources.
 type LogpushJobState struct {
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf interface{}
 	Enabled interface{}
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions interface{}
+	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
 	Name interface{}
-	// Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
+	// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge interface{}
+	// The zone ID where the logpush job should be created.
 	ZoneId interface{}
 }
 
 // The set of arguments for constructing a LogpushJob resource.
 type LogpushJobArgs struct {
+	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf interface{}
 	Enabled interface{}
+	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions interface{}
+	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
 	Name interface{}
-	// Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
+	// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge interface{}
+	// The zone ID where the logpush job should be created.
 	ZoneId interface{}
 }

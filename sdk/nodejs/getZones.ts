@@ -16,13 +16,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const test = pulumi.output(cloudflare.getZones({
+ * const test = cloudflare.getZones({
  *     filter: {
  *         name: "example.*",
  *         paused: false,
  *         status: "active",
  *     },
- * }));
+ * });
  * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
  *     configurations: [{
  *         target: "ip",
@@ -31,7 +31,7 @@ import * as utilities from "./utilities";
  *     description: "Restrict access to these endpoints to requests from a known IP address",
  *     paused: false,
  *     urls: ["api.mysite.com/some/endpoint*"],
- *     zone: test.apply(test => (<any>test.zones[0])["name"]),
+ *     zone: (<any>test.zones[0])["name"],
  * });
  * ```
  *

@@ -5,17 +5,18 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S).
+ * If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
  * 
  * ## Example Usage
  * 
+ * ### HTTP Monitor
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const test = new cloudflare.LoadBalancerMonitor("test", {
+ * const httpMonitor = new cloudflare.LoadBalancerMonitor("httpMonitor", {
  *     allowInsecure: false,
- *     description: "example load balancer",
+ *     description: "example http load balancer",
  *     expectedBody: "alive",
  *     expectedCodes: "2xx",
  *     followRedirects: true,
@@ -28,6 +29,22 @@ import * as utilities from "./utilities";
  *     path: "/health",
  *     retries: 5,
  *     timeout: 7,
+ *     type: "http",
+ * });
+ * ```
+ * 
+ * ### TCP Monitor
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * 
+ * const tcpMonitor = new cloudflare.LoadBalancerMonitor("tcpMonitor", {
+ *     description: "example tcp load balancer",
+ *     interval: 60,
+ *     method: "connectionEstablished",
+ *     retries: 5,
+ *     timeout: 7,
+ *     type: "tcp",
  * });
  * ```
  *
@@ -61,7 +78,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     }
 
     /**
-     * Do not validate the certificate when monitor use HTTPS.
+     * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */
     public readonly allowInsecure!: pulumi.Output<boolean | undefined>;
     /**
@@ -73,15 +90,15 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
      */
-    public readonly expectedBody!: pulumi.Output<string>;
+    public readonly expectedBody!: pulumi.Output<string | undefined>;
     /**
-     * The expected HTTP response code or code range of the health check. Eg `2xx`
+     * The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
      */
-    public readonly expectedCodes!: pulumi.Output<string>;
+    public readonly expectedCodes!: pulumi.Output<string | undefined>;
     /**
-     * Follow redirects if returned by the origin.
+     * Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
      */
     public readonly followRedirects!: pulumi.Output<boolean | undefined>;
     /**
@@ -93,17 +110,17 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly interval!: pulumi.Output<number | undefined>;
     /**
-     * The HTTP method to use for the health check. Default: "GET".
+     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
      */
-    public readonly method!: pulumi.Output<string | undefined>;
+    public readonly method!: pulumi.Output<string>;
     /**
      * The RFC3339 timestamp of when the load balancer monitor was last modified.
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The endpoint path to health check against. Default: "/".
+     * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
      */
-    public readonly path!: pulumi.Output<string | undefined>;
+    public readonly path!: pulumi.Output<string>;
     public readonly port!: pulumi.Output<number | undefined>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
@@ -114,7 +131,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly timeout!: pulumi.Output<number | undefined>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -125,7 +142,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LoadBalancerMonitorArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: LoadBalancerMonitorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerMonitorArgs | LoadBalancerMonitorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
@@ -147,12 +164,6 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LoadBalancerMonitorArgs | undefined;
-            if (!args || args.expectedBody === undefined) {
-                throw new Error("Missing required property 'expectedBody'");
-            }
-            if (!args || args.expectedCodes === undefined) {
-                throw new Error("Missing required property 'expectedCodes'");
-            }
             inputs["allowInsecure"] = args ? args.allowInsecure : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["expectedBody"] = args ? args.expectedBody : undefined;
@@ -185,7 +196,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
  */
 export interface LoadBalancerMonitorState {
     /**
-     * Do not validate the certificate when monitor use HTTPS.
+     * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */
     readonly allowInsecure?: pulumi.Input<boolean>;
     /**
@@ -197,15 +208,15 @@ export interface LoadBalancerMonitorState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
      */
     readonly expectedBody?: pulumi.Input<string>;
     /**
-     * The expected HTTP response code or code range of the health check. Eg `2xx`
+     * The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
      */
     readonly expectedCodes?: pulumi.Input<string>;
     /**
-     * Follow redirects if returned by the origin.
+     * Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
      */
     readonly followRedirects?: pulumi.Input<boolean>;
     /**
@@ -217,7 +228,7 @@ export interface LoadBalancerMonitorState {
      */
     readonly interval?: pulumi.Input<number>;
     /**
-     * The HTTP method to use for the health check. Default: "GET".
+     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
      */
     readonly method?: pulumi.Input<string>;
     /**
@@ -225,7 +236,7 @@ export interface LoadBalancerMonitorState {
      */
     readonly modifiedOn?: pulumi.Input<string>;
     /**
-     * The endpoint path to health check against. Default: "/".
+     * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
      */
     readonly path?: pulumi.Input<string>;
     readonly port?: pulumi.Input<number>;
@@ -238,7 +249,7 @@ export interface LoadBalancerMonitorState {
      */
     readonly timeout?: pulumi.Input<number>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -248,7 +259,7 @@ export interface LoadBalancerMonitorState {
  */
 export interface LoadBalancerMonitorArgs {
     /**
-     * Do not validate the certificate when monitor use HTTPS.
+     * Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
      */
     readonly allowInsecure?: pulumi.Input<boolean>;
     /**
@@ -256,15 +267,15 @@ export interface LoadBalancerMonitorArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
      */
-    readonly expectedBody: pulumi.Input<string>;
+    readonly expectedBody?: pulumi.Input<string>;
     /**
-     * The expected HTTP response code or code range of the health check. Eg `2xx`
+     * The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
      */
-    readonly expectedCodes: pulumi.Input<string>;
+    readonly expectedCodes?: pulumi.Input<string>;
     /**
-     * Follow redirects if returned by the origin.
+     * Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
      */
     readonly followRedirects?: pulumi.Input<boolean>;
     /**
@@ -276,11 +287,11 @@ export interface LoadBalancerMonitorArgs {
      */
     readonly interval?: pulumi.Input<number>;
     /**
-     * The HTTP method to use for the health check. Default: "GET".
+     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
      */
     readonly method?: pulumi.Input<string>;
     /**
-     * The endpoint path to health check against. Default: "/".
+     * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
      */
     readonly path?: pulumi.Input<string>;
     readonly port?: pulumi.Input<number>;
@@ -293,7 +304,7 @@ export interface LoadBalancerMonitorArgs {
      */
     readonly timeout?: pulumi.Input<number>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
      */
     readonly type?: pulumi.Input<string>;
 }

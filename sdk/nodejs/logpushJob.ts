@@ -17,8 +17,9 @@ import * as utilities from "./utilities";
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  *     enabled: true,
  *     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
- *     name: "My logpush job",
+ *     name: "My-logpush-job",
  *     ownershipChallenge: "00000000000000000",
+ *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
  * ```
  *
@@ -51,14 +52,26 @@ export class LogpushJob extends pulumi.CustomResource {
         return obj['__pulumiType'] === LogpushJob.__pulumiType;
     }
 
+    /**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     */
     public readonly destinationConf!: pulumi.Output<string>;
     public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     */
     public readonly logpullOptions!: pulumi.Output<string | undefined>;
+    /**
+     * The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+     */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
+     * Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */
     public readonly ownershipChallenge!: pulumi.Output<string>;
+    /**
+     * The zone ID where the logpush job should be created.
+     */
     public readonly zoneId!: pulumi.Output<string>;
 
     /**
@@ -112,14 +125,26 @@ export class LogpushJob extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogpushJob resources.
  */
 export interface LogpushJobState {
+    /**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     */
     readonly destinationConf?: pulumi.Input<string>;
     readonly enabled?: pulumi.Input<boolean>;
+    /**
+     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     */
     readonly logpullOptions?: pulumi.Input<string>;
+    /**
+     * The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+     */
     readonly name?: pulumi.Input<string>;
     /**
-     * Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
+     * Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */
     readonly ownershipChallenge?: pulumi.Input<string>;
+    /**
+     * The zone ID where the logpush job should be created.
+     */
     readonly zoneId?: pulumi.Input<string>;
 }
 
@@ -127,13 +152,25 @@ export interface LogpushJobState {
  * The set of arguments for constructing a LogpushJob resource.
  */
 export interface LogpushJobArgs {
+    /**
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     */
     readonly destinationConf: pulumi.Input<string>;
     readonly enabled?: pulumi.Input<boolean>;
+    /**
+     * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+     */
     readonly logpullOptions?: pulumi.Input<string>;
+    /**
+     * The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+     */
     readonly name?: pulumi.Input<string>;
     /**
-     * Ownership challenge token to prove destination ownership. See [https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/](https://developers.cloudflare.com/logs/tutorials/tutorial-logpush-curl/)
+     * Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */
     readonly ownershipChallenge: pulumi.Input<string>;
+    /**
+     * The zone ID where the logpush job should be created.
+     */
     readonly zoneId: pulumi.Input<string>;
 }

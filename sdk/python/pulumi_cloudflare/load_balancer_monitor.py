@@ -11,7 +11,7 @@ from . import utilities, tables
 class LoadBalancerMonitor(pulumi.CustomResource):
     allow_insecure: pulumi.Output[bool]
     """
-    Do not validate the certificate when monitor use HTTPS.
+    Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
     """
     created_on: pulumi.Output[str]
     """
@@ -23,15 +23,15 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     """
     expected_body: pulumi.Output[str]
     """
-    A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+    A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
     """
     expected_codes: pulumi.Output[str]
     """
-    The expected HTTP response code or code range of the health check. Eg `2xx`
+    The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
     """
     follow_redirects: pulumi.Output[bool]
     """
-    Follow redirects if returned by the origin.
+    Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
     """
     headers: pulumi.Output[list]
     """
@@ -43,7 +43,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     """
     method: pulumi.Output[str]
     """
-    The HTTP method to use for the health check. Default: "GET".
+    The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
     """
     modified_on: pulumi.Output[str]
     """
@@ -51,7 +51,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     """
     path: pulumi.Output[str]
     """
-    The endpoint path to health check against. Default: "/".
+    The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
     """
     port: pulumi.Output[float]
     retries: pulumi.Output[float]
@@ -64,26 +64,26 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     """
     type: pulumi.Output[str]
     """
-    The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+    The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
     """
     def __init__(__self__, resource_name, opts=None, allow_insecure=None, description=None, expected_body=None, expected_codes=None, follow_redirects=None, headers=None, interval=None, method=None, path=None, port=None, retries=None, timeout=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
-        If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S).
+        If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.
+        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
-        :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`
-        :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin.
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+        :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
+        :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
         :param pulumi.Input[list] headers: The header name.
         :param pulumi.Input[float] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
-        :param pulumi.Input[str] method: The HTTP method to use for the health check. Default: "GET".
-        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/".
+        :param pulumi.Input[str] method: The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
+        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
         :param pulumi.Input[float] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
         :param pulumi.Input[float] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
-        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
         """
@@ -106,11 +106,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
             __props__['allow_insecure'] = allow_insecure
             __props__['description'] = description
-            if expected_body is None:
-                raise TypeError("Missing required property 'expected_body'")
             __props__['expected_body'] = expected_body
-            if expected_codes is None:
-                raise TypeError("Missing required property 'expected_codes'")
             __props__['expected_codes'] = expected_codes
             __props__['follow_redirects'] = follow_redirects
             __props__['headers'] = headers
@@ -137,20 +133,20 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.
+        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
-        :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`
-        :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin.
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+        :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
+        :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
         :param pulumi.Input[list] headers: The header name.
         :param pulumi.Input[float] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
-        :param pulumi.Input[str] method: The HTTP method to use for the health check. Default: "GET".
+        :param pulumi.Input[str] method: The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer monitor was last modified.
-        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/".
+        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
         :param pulumi.Input[float] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
         :param pulumi.Input[float] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
-        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
         """
