@@ -4,11 +4,10 @@
 package cloudflare
 
 import (
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/go/pulumi"
 )
 
-// If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S).
+// If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
 type LoadBalancerMonitor struct {
@@ -18,12 +17,6 @@ type LoadBalancerMonitor struct {
 // NewLoadBalancerMonitor registers a new resource with the given unique name, arguments, and options.
 func NewLoadBalancerMonitor(ctx *pulumi.Context,
 	name string, args *LoadBalancerMonitorArgs, opts ...pulumi.ResourceOpt) (*LoadBalancerMonitor, error) {
-	if args == nil || args.ExpectedBody == nil {
-		return nil, errors.New("missing required argument 'ExpectedBody'")
-	}
-	if args == nil || args.ExpectedCodes == nil {
-		return nil, errors.New("missing required argument 'ExpectedCodes'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["allowInsecure"] = nil
@@ -102,7 +95,7 @@ func (r *LoadBalancerMonitor) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// Do not validate the certificate when monitor use HTTPS.
+// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
 func (r *LoadBalancerMonitor) AllowInsecure() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["allowInsecure"])
 }
@@ -117,17 +110,17 @@ func (r *LoadBalancerMonitor) Description() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["description"])
 }
 
-// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
 func (r *LoadBalancerMonitor) ExpectedBody() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["expectedBody"])
 }
 
-// The expected HTTP response code or code range of the health check. Eg `2xx`
+// The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
 func (r *LoadBalancerMonitor) ExpectedCodes() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["expectedCodes"])
 }
 
-// Follow redirects if returned by the origin.
+// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
 func (r *LoadBalancerMonitor) FollowRedirects() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["followRedirects"])
 }
@@ -142,7 +135,7 @@ func (r *LoadBalancerMonitor) Interval() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["interval"])
 }
 
-// The HTTP method to use for the health check. Default: "GET".
+// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
 func (r *LoadBalancerMonitor) Method() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["method"])
 }
@@ -152,7 +145,7 @@ func (r *LoadBalancerMonitor) ModifiedOn() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["modifiedOn"])
 }
 
-// The endpoint path to health check against. Default: "/".
+// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 func (r *LoadBalancerMonitor) Path() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["path"])
 }
@@ -171,69 +164,69 @@ func (r *LoadBalancerMonitor) Timeout() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["timeout"])
 }
 
-// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
 func (r *LoadBalancerMonitor) Type() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering LoadBalancerMonitor resources.
 type LoadBalancerMonitorState struct {
-	// Do not validate the certificate when monitor use HTTPS.
+	// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
 	AllowInsecure interface{}
 	// The RFC3339 timestamp of when the load balancer monitor was created.
 	CreatedOn interface{}
 	// Free text description.
 	Description interface{}
-	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
 	ExpectedBody interface{}
-	// The expected HTTP response code or code range of the health check. Eg `2xx`
+	// The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
 	ExpectedCodes interface{}
-	// Follow redirects if returned by the origin.
+	// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
 	FollowRedirects interface{}
 	// The header name.
 	Headers interface{}
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
 	Interval interface{}
-	// The HTTP method to use for the health check. Default: "GET".
+	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
 	Method interface{}
 	// The RFC3339 timestamp of when the load balancer monitor was last modified.
 	ModifiedOn interface{}
-	// The endpoint path to health check against. Default: "/".
+	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path interface{}
 	Port interface{}
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries interface{}
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
 	Timeout interface{}
-	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
 	Type interface{}
 }
 
 // The set of arguments for constructing a LoadBalancerMonitor resource.
 type LoadBalancerMonitorArgs struct {
-	// Do not validate the certificate when monitor use HTTPS.
+	// Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
 	AllowInsecure interface{}
 	// Free text description.
 	Description interface{}
-	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
 	ExpectedBody interface{}
-	// The expected HTTP response code or code range of the health check. Eg `2xx`
+	// The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
 	ExpectedCodes interface{}
-	// Follow redirects if returned by the origin.
+	// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
 	FollowRedirects interface{}
 	// The header name.
 	Headers interface{}
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
 	Interval interface{}
-	// The HTTP method to use for the health check. Default: "GET".
+	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
 	Method interface{}
-	// The endpoint path to health check against. Default: "/".
+	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path interface{}
 	Port interface{}
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries interface{}
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
 	Timeout interface{}
-	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP' and 'HTTPS'. Default: "http".
+	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
 	Type interface{}
 }
