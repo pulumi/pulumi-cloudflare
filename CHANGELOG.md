@@ -2,8 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-___NULL___
-
+* Upgrade to v1.17.0 of the Cloudflare Terraform Provider
 ---
 
 ## 0.17.10 (2019-08-09)
