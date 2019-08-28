@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class LoadBalancerMonitor(pulumi.CustomResource):
@@ -36,6 +37,9 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     headers: pulumi.Output[list]
     """
     The header name.
+    
+      * `header` (`str`) - The header name.
+      * `values` (`list`) - A list of string values for the header.
     """
     interval: pulumi.Output[float]
     """
@@ -84,6 +88,11 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[float] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
         :param pulumi.Input[float] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+        
+        The **headers** object supports the following:
+        
+          * `header` (`pulumi.Input[str]`) - The header name.
+          * `values` (`pulumi.Input[list]`) - A list of string values for the header.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
         """
@@ -130,6 +139,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         """
         Get an existing LoadBalancerMonitor resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -147,10 +157,15 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[float] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
         :param pulumi.Input[float] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+        
+        The **headers** object supports the following:
+        
+          * `header` (`pulumi.Input[str]`) - The header name.
+          * `values` (`pulumi.Input[list]`) - A list of string values for the header.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["allow_insecure"] = allow_insecure

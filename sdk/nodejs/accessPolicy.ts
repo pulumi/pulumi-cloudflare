@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -89,12 +91,12 @@ export class AccessPolicy extends pulumi.CustomResource {
      * A series of access conditions, see below for
      * full list.
      */
-    public readonly excludes!: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[] | undefined>;
+    public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    public readonly includes!: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[]>;
+    public readonly includes!: pulumi.Output<outputs.AccessPolicyInclude[]>;
     /**
      * Friendly name of the Access Application.
      */
@@ -107,7 +109,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      * A series of access conditions, see below for
      * full list.
      */
-    public readonly requires!: pulumi.Output<{ emails?: string[], emailDomains?: string[], everyone?: boolean, ips?: string[] }[] | undefined>;
+    public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
      * The DNS zone to which the access rule should be
      * added.
@@ -189,12 +191,12 @@ export interface AccessPolicyState {
      * A series of access conditions, see below for
      * full list.
      */
-    readonly excludes?: pulumi.Input<pulumi.Input<{ emails?: pulumi.Input<pulumi.Input<string>[]>, emailDomains?: pulumi.Input<pulumi.Input<string>[]>, everyone?: pulumi.Input<boolean>, ips?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    readonly includes?: pulumi.Input<pulumi.Input<{ emails?: pulumi.Input<pulumi.Input<string>[]>, emailDomains?: pulumi.Input<pulumi.Input<string>[]>, everyone?: pulumi.Input<boolean>, ips?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
      * Friendly name of the Access Application.
      */
@@ -207,7 +209,7 @@ export interface AccessPolicyState {
      * A series of access conditions, see below for
      * full list.
      */
-    readonly requires?: pulumi.Input<pulumi.Input<{ emails?: pulumi.Input<pulumi.Input<string>[]>, emailDomains?: pulumi.Input<pulumi.Input<string>[]>, everyone?: pulumi.Input<boolean>, ips?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
      * The DNS zone to which the access rule should be
      * added.
@@ -233,12 +235,12 @@ export interface AccessPolicyArgs {
      * A series of access conditions, see below for
      * full list.
      */
-    readonly excludes?: pulumi.Input<pulumi.Input<{ emails?: pulumi.Input<pulumi.Input<string>[]>, emailDomains?: pulumi.Input<pulumi.Input<string>[]>, everyone?: pulumi.Input<boolean>, ips?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    readonly includes: pulumi.Input<pulumi.Input<{ emails?: pulumi.Input<pulumi.Input<string>[]>, emailDomains?: pulumi.Input<pulumi.Input<string>[]>, everyone?: pulumi.Input<boolean>, ips?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
      * Friendly name of the Access Application.
      */
@@ -251,7 +253,7 @@ export interface AccessPolicyArgs {
      * A series of access conditions, see below for
      * full list.
      */
-    readonly requires?: pulumi.Input<pulumi.Input<{ emails?: pulumi.Input<pulumi.Input<string>[]>, emailDomains?: pulumi.Input<pulumi.Input<string>[]>, everyone?: pulumi.Input<boolean>, ips?: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
      * The DNS zone to which the access rule should be
      * added.

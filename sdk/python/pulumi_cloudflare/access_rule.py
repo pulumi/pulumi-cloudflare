@@ -6,12 +6,16 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class AccessRule(pulumi.CustomResource):
     configuration: pulumi.Output[dict]
     """
     Rule configuration to apply to a matched request. It's a complex value. See description below.
+    
+      * `target` (`str`) - The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+      * `value` (`str`) - The value to target. Depends on target's type.
     """
     mode: pulumi.Output[str]
     """
@@ -40,6 +44,11 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone: The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        
+        The **configuration** object supports the following:
+        
+          * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+          * `value` (`pulumi.Input[str]`) - The value to target. Depends on target's type.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.
         """
@@ -80,6 +89,7 @@ class AccessRule(pulumi.CustomResource):
         """
         Get an existing AccessRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,10 +98,15 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone: The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        
+        The **configuration** object supports the following:
+        
+          * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+          * `value` (`pulumi.Input[str]`) - The value to target. Depends on target's type.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["configuration"] = configuration

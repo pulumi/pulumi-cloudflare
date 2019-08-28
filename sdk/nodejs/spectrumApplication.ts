@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -56,7 +58,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
     /**
      * The name and type of DNS record for the Spectrum application. Fields documented below.
      */
-    public readonly dns!: pulumi.Output<{ name: string, type: string }>;
+    public readonly dns!: pulumi.Output<outputs.SpectrumApplicationDns>;
     /**
      * Enables the IP Firewall for this application. Defaults to `true`.
      */
@@ -68,7 +70,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
     /**
      * A destination DNS addresses to the origin. Fields documented below.
      */
-    public readonly originDns!: pulumi.Output<{ name: string } | undefined>;
+    public readonly originDns!: pulumi.Output<outputs.SpectrumApplicationOriginDns | undefined>;
     /**
      * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
@@ -150,7 +152,7 @@ export interface SpectrumApplicationState {
     /**
      * The name and type of DNS record for the Spectrum application. Fields documented below.
      */
-    readonly dns?: pulumi.Input<{ name: pulumi.Input<string>, type: pulumi.Input<string> }>;
+    readonly dns?: pulumi.Input<inputs.SpectrumApplicationDns>;
     /**
      * Enables the IP Firewall for this application. Defaults to `true`.
      */
@@ -162,7 +164,7 @@ export interface SpectrumApplicationState {
     /**
      * A destination DNS addresses to the origin. Fields documented below.
      */
-    readonly originDns?: pulumi.Input<{ name: pulumi.Input<string> }>;
+    readonly originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns>;
     /**
      * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
@@ -189,7 +191,7 @@ export interface SpectrumApplicationArgs {
     /**
      * The name and type of DNS record for the Spectrum application. Fields documented below.
      */
-    readonly dns: pulumi.Input<{ name: pulumi.Input<string>, type: pulumi.Input<string> }>;
+    readonly dns: pulumi.Input<inputs.SpectrumApplicationDns>;
     /**
      * Enables the IP Firewall for this application. Defaults to `true`.
      */
@@ -201,7 +203,7 @@ export interface SpectrumApplicationArgs {
     /**
      * A destination DNS addresses to the origin. Fields documented below.
      */
-    readonly originDns?: pulumi.Input<{ name: pulumi.Input<string> }>;
+    readonly originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns>;
     /**
      * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */

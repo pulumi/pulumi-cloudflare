@@ -6,12 +6,16 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class SpectrumApplication(pulumi.CustomResource):
     dns: pulumi.Output[dict]
     """
     The name and type of DNS record for the Spectrum application. Fields documented below.
+    
+      * `name` (`str`) - Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+      * `type` (`str`) - The type of DNS record associated with the application. Valid values: `CNAME`.
     """
     ip_firewall: pulumi.Output[bool]
     """
@@ -24,6 +28,8 @@ class SpectrumApplication(pulumi.CustomResource):
     origin_dns: pulumi.Output[dict]
     """
     A destination DNS addresses to the origin. Fields documented below.
+    
+      * `name` (`str`) - Fully qualified domain name of the origin e.g. origin-ssh.example.com.
     """
     origin_port: pulumi.Output[float]
     """
@@ -56,6 +62,15 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+        
+        The **dns** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+          * `type` (`pulumi.Input[str]`) - The type of DNS record associated with the application. Valid values: `CNAME`.
+        
+        The **origin_dns** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - Fully qualified domain name of the origin e.g. origin-ssh.example.com.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/spectrum_application.html.markdown.
         """
@@ -104,6 +119,7 @@ class SpectrumApplication(pulumi.CustomResource):
         """
         Get an existing SpectrumApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -115,10 +131,19 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+        
+        The **dns** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - Fully qualified domain name of the origin e.g. origin-ssh.example.com.
+          * `type` (`pulumi.Input[str]`) - The type of DNS record associated with the application. Valid values: `CNAME`.
+        
+        The **origin_dns** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - Fully qualified domain name of the origin e.g. origin-ssh.example.com.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/spectrum_application.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["dns"] = dns

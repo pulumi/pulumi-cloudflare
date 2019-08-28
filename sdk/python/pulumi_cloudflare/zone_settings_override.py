@@ -6,12 +6,76 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class ZoneSettingsOverride(pulumi.CustomResource):
     initial_settings: pulumi.Output[dict]
     """
     Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+    
+      * `alwaysOnline` (`str`)
+      * `alwaysUseHttps` (`str`)
+      * `automaticHttpsRewrites` (`str`)
+      * `brotli` (`str`)
+      * `browserCacheTtl` (`float`)
+      * `browserCheck` (`str`)
+      * `cacheLevel` (`str`)
+      * `challengeTtl` (`float`)
+      * `cnameFlattening` (`str`)
+      * `developmentMode` (`str`)
+      * `edgeCacheTtl` (`float`)
+      * `emailObfuscation` (`str`)
+      * `h2Prioritization` (`str`)
+      * `hotlinkProtection` (`str`)
+      * `http2` (`str`)
+      * `imageResizing` (`str`)
+      * `ipGeolocation` (`str`)
+      * `ipv6` (`str`)
+      * `maxUpload` (`float`)
+      * `minTlsVersion` (`str`)
+      * `minify` (`dict`)
+    
+        * `css` (`str`) - "on"/"off"
+        * `html` (`str`) - "on"/"off"
+          * `js` (Required)"on"/"off"
+        * `js` (`str`)
+    
+      * `mirage` (`str`)
+      * `mobileRedirect` (`dict`)
+    
+        * `mobileSubdomain` (`str`) - String value
+        * `status` (`str`) - "on"/"off"
+        * `stripUri` (`bool`) - true/false
+    
+      * `opportunisticEncryption` (`str`)
+      * `opportunisticOnion` (`str`)
+      * `originErrorPagePassThru` (`str`)
+      * `polish` (`str`)
+      * `prefetchPreload` (`str`)
+      * `privacyPass` (`str`)
+      * `pseudoIpv4` (`str`)
+      * `responseBuffering` (`str`)
+      * `rocketLoader` (`str`)
+      * `securityHeader` (`dict`)
+    
+        * `enabled` (`bool`) - true/false
+        * `includeSubdomains` (`bool`) - true/false
+        * `maxAge` (`float`) - Integer
+        * `nosniff` (`bool`) - true/false
+        * `preload` (`bool`) - true/false
+    
+      * `securityLevel` (`str`)
+      * `serverSideExclude` (`str`)
+      * `sortQueryStringForCache` (`str`)
+      * `ssl` (`str`)
+      * `tls12Only` (`str`)
+      * `tls13` (`str`)
+      * `tlsClientAuth` (`str`)
+      * `trueClientIpHeader` (`str`)
+      * `waf` (`str`)
+      * `webp` (`str`)
+      * `websockets` (`str`)
     """
     initial_settings_read_at: pulumi.Output[str]
     name: pulumi.Output[str]
@@ -27,6 +91,69 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     settings: pulumi.Output[dict]
     """
     Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+    
+      * `alwaysOnline` (`str`)
+      * `alwaysUseHttps` (`str`)
+      * `automaticHttpsRewrites` (`str`)
+      * `brotli` (`str`)
+      * `browserCacheTtl` (`float`)
+      * `browserCheck` (`str`)
+      * `cacheLevel` (`str`)
+      * `challengeTtl` (`float`)
+      * `cnameFlattening` (`str`)
+      * `developmentMode` (`str`)
+      * `edgeCacheTtl` (`float`)
+      * `emailObfuscation` (`str`)
+      * `h2Prioritization` (`str`)
+      * `hotlinkProtection` (`str`)
+      * `http2` (`str`)
+      * `imageResizing` (`str`)
+      * `ipGeolocation` (`str`)
+      * `ipv6` (`str`)
+      * `maxUpload` (`float`)
+      * `minTlsVersion` (`str`)
+      * `minify` (`dict`)
+    
+        * `css` (`str`) - "on"/"off"
+        * `html` (`str`) - "on"/"off"
+          * `js` (Required)"on"/"off"
+        * `js` (`str`)
+    
+      * `mirage` (`str`)
+      * `mobileRedirect` (`dict`)
+    
+        * `mobileSubdomain` (`str`) - String value
+        * `status` (`str`) - "on"/"off"
+        * `stripUri` (`bool`) - true/false
+    
+      * `opportunisticEncryption` (`str`)
+      * `opportunisticOnion` (`str`)
+      * `originErrorPagePassThru` (`str`)
+      * `polish` (`str`)
+      * `prefetchPreload` (`str`)
+      * `privacyPass` (`str`)
+      * `pseudoIpv4` (`str`)
+      * `responseBuffering` (`str`)
+      * `rocketLoader` (`str`)
+      * `securityHeader` (`dict`)
+    
+        * `enabled` (`bool`) - true/false
+        * `includeSubdomains` (`bool`) - true/false
+        * `maxAge` (`float`) - Integer
+        * `nosniff` (`bool`) - true/false
+        * `preload` (`bool`) - true/false
+    
+      * `securityLevel` (`str`)
+      * `serverSideExclude` (`str`)
+      * `sortQueryStringForCache` (`str`)
+      * `ssl` (`str`)
+      * `tls12Only` (`str`)
+      * `tls13` (`str`)
+      * `tlsClientAuth` (`str`)
+      * `trueClientIpHeader` (`str`)
+      * `waf` (`str`)
+      * `webp` (`str`)
+      * `websockets` (`str`)
     """
     zone_status: pulumi.Output[str]
     zone_type: pulumi.Output[str]
@@ -38,6 +165,71 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The DNS zone to which apply settings.
         :param pulumi.Input[dict] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        
+        The **settings** object supports the following:
+        
+          * `alwaysOnline` (`pulumi.Input[str]`)
+          * `alwaysUseHttps` (`pulumi.Input[str]`)
+          * `automaticHttpsRewrites` (`pulumi.Input[str]`)
+          * `brotli` (`pulumi.Input[str]`)
+          * `browserCacheTtl` (`pulumi.Input[float]`)
+          * `browserCheck` (`pulumi.Input[str]`)
+          * `cacheLevel` (`pulumi.Input[str]`)
+          * `challengeTtl` (`pulumi.Input[float]`)
+          * `cnameFlattening` (`pulumi.Input[str]`)
+          * `developmentMode` (`pulumi.Input[str]`)
+          * `edgeCacheTtl` (`pulumi.Input[float]`)
+          * `emailObfuscation` (`pulumi.Input[str]`)
+          * `h2Prioritization` (`pulumi.Input[str]`)
+          * `hotlinkProtection` (`pulumi.Input[str]`)
+          * `http2` (`pulumi.Input[str]`)
+          * `imageResizing` (`pulumi.Input[str]`)
+          * `ipGeolocation` (`pulumi.Input[str]`)
+          * `ipv6` (`pulumi.Input[str]`)
+          * `maxUpload` (`pulumi.Input[float]`)
+          * `minTlsVersion` (`pulumi.Input[str]`)
+          * `minify` (`pulumi.Input[dict]`)
+        
+            * `css` (`pulumi.Input[str]`) - "on"/"off"
+            * `html` (`pulumi.Input[str]`) - "on"/"off"
+              * `js` (Required)"on"/"off"
+            * `js` (`pulumi.Input[str]`)
+        
+          * `mirage` (`pulumi.Input[str]`)
+          * `mobileRedirect` (`pulumi.Input[dict]`)
+        
+            * `mobileSubdomain` (`pulumi.Input[str]`) - String value
+            * `status` (`pulumi.Input[str]`) - "on"/"off"
+            * `stripUri` (`pulumi.Input[bool]`) - true/false
+        
+          * `opportunisticEncryption` (`pulumi.Input[str]`)
+          * `opportunisticOnion` (`pulumi.Input[str]`)
+          * `originErrorPagePassThru` (`pulumi.Input[str]`)
+          * `polish` (`pulumi.Input[str]`)
+          * `prefetchPreload` (`pulumi.Input[str]`)
+          * `privacyPass` (`pulumi.Input[str]`)
+          * `pseudoIpv4` (`pulumi.Input[str]`)
+          * `responseBuffering` (`pulumi.Input[str]`)
+          * `rocketLoader` (`pulumi.Input[str]`)
+          * `securityHeader` (`pulumi.Input[dict]`)
+        
+            * `enabled` (`pulumi.Input[bool]`) - true/false
+            * `includeSubdomains` (`pulumi.Input[bool]`) - true/false
+            * `maxAge` (`pulumi.Input[float]`) - Integer
+            * `nosniff` (`pulumi.Input[bool]`) - true/false
+            * `preload` (`pulumi.Input[bool]`) - true/false
+        
+          * `securityLevel` (`pulumi.Input[str]`)
+          * `serverSideExclude` (`pulumi.Input[str]`)
+          * `sortQueryStringForCache` (`pulumi.Input[str]`)
+          * `ssl` (`pulumi.Input[str]`)
+          * `tls12Only` (`pulumi.Input[str]`)
+          * `tls13` (`pulumi.Input[str]`)
+          * `tlsClientAuth` (`pulumi.Input[str]`)
+          * `trueClientIpHeader` (`pulumi.Input[str]`)
+          * `waf` (`pulumi.Input[str]`)
+          * `webp` (`pulumi.Input[str]`)
+          * `websockets` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
         """
@@ -78,6 +270,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         """
         Get an existing ZoneSettingsOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,10 +280,140 @@ class ZoneSettingsOverride(pulumi.CustomResource):
                * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
                * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
         :param pulumi.Input[dict] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        
+        The **initial_settings** object supports the following:
+        
+          * `alwaysOnline` (`pulumi.Input[str]`)
+          * `alwaysUseHttps` (`pulumi.Input[str]`)
+          * `automaticHttpsRewrites` (`pulumi.Input[str]`)
+          * `brotli` (`pulumi.Input[str]`)
+          * `browserCacheTtl` (`pulumi.Input[float]`)
+          * `browserCheck` (`pulumi.Input[str]`)
+          * `cacheLevel` (`pulumi.Input[str]`)
+          * `challengeTtl` (`pulumi.Input[float]`)
+          * `cnameFlattening` (`pulumi.Input[str]`)
+          * `developmentMode` (`pulumi.Input[str]`)
+          * `edgeCacheTtl` (`pulumi.Input[float]`)
+          * `emailObfuscation` (`pulumi.Input[str]`)
+          * `h2Prioritization` (`pulumi.Input[str]`)
+          * `hotlinkProtection` (`pulumi.Input[str]`)
+          * `http2` (`pulumi.Input[str]`)
+          * `imageResizing` (`pulumi.Input[str]`)
+          * `ipGeolocation` (`pulumi.Input[str]`)
+          * `ipv6` (`pulumi.Input[str]`)
+          * `maxUpload` (`pulumi.Input[float]`)
+          * `minTlsVersion` (`pulumi.Input[str]`)
+          * `minify` (`pulumi.Input[dict]`)
+        
+            * `css` (`pulumi.Input[str]`) - "on"/"off"
+            * `html` (`pulumi.Input[str]`) - "on"/"off"
+              * `js` (Required)"on"/"off"
+            * `js` (`pulumi.Input[str]`)
+        
+          * `mirage` (`pulumi.Input[str]`)
+          * `mobileRedirect` (`pulumi.Input[dict]`)
+        
+            * `mobileSubdomain` (`pulumi.Input[str]`) - String value
+            * `status` (`pulumi.Input[str]`) - "on"/"off"
+            * `stripUri` (`pulumi.Input[bool]`) - true/false
+        
+          * `opportunisticEncryption` (`pulumi.Input[str]`)
+          * `opportunisticOnion` (`pulumi.Input[str]`)
+          * `originErrorPagePassThru` (`pulumi.Input[str]`)
+          * `polish` (`pulumi.Input[str]`)
+          * `prefetchPreload` (`pulumi.Input[str]`)
+          * `privacyPass` (`pulumi.Input[str]`)
+          * `pseudoIpv4` (`pulumi.Input[str]`)
+          * `responseBuffering` (`pulumi.Input[str]`)
+          * `rocketLoader` (`pulumi.Input[str]`)
+          * `securityHeader` (`pulumi.Input[dict]`)
+        
+            * `enabled` (`pulumi.Input[bool]`) - true/false
+            * `includeSubdomains` (`pulumi.Input[bool]`) - true/false
+            * `maxAge` (`pulumi.Input[float]`) - Integer
+            * `nosniff` (`pulumi.Input[bool]`) - true/false
+            * `preload` (`pulumi.Input[bool]`) - true/false
+        
+          * `securityLevel` (`pulumi.Input[str]`)
+          * `serverSideExclude` (`pulumi.Input[str]`)
+          * `sortQueryStringForCache` (`pulumi.Input[str]`)
+          * `ssl` (`pulumi.Input[str]`)
+          * `tls12Only` (`pulumi.Input[str]`)
+          * `tls13` (`pulumi.Input[str]`)
+          * `tlsClientAuth` (`pulumi.Input[str]`)
+          * `trueClientIpHeader` (`pulumi.Input[str]`)
+          * `waf` (`pulumi.Input[str]`)
+          * `webp` (`pulumi.Input[str]`)
+          * `websockets` (`pulumi.Input[str]`)
+        
+        The **settings** object supports the following:
+        
+          * `alwaysOnline` (`pulumi.Input[str]`)
+          * `alwaysUseHttps` (`pulumi.Input[str]`)
+          * `automaticHttpsRewrites` (`pulumi.Input[str]`)
+          * `brotli` (`pulumi.Input[str]`)
+          * `browserCacheTtl` (`pulumi.Input[float]`)
+          * `browserCheck` (`pulumi.Input[str]`)
+          * `cacheLevel` (`pulumi.Input[str]`)
+          * `challengeTtl` (`pulumi.Input[float]`)
+          * `cnameFlattening` (`pulumi.Input[str]`)
+          * `developmentMode` (`pulumi.Input[str]`)
+          * `edgeCacheTtl` (`pulumi.Input[float]`)
+          * `emailObfuscation` (`pulumi.Input[str]`)
+          * `h2Prioritization` (`pulumi.Input[str]`)
+          * `hotlinkProtection` (`pulumi.Input[str]`)
+          * `http2` (`pulumi.Input[str]`)
+          * `imageResizing` (`pulumi.Input[str]`)
+          * `ipGeolocation` (`pulumi.Input[str]`)
+          * `ipv6` (`pulumi.Input[str]`)
+          * `maxUpload` (`pulumi.Input[float]`)
+          * `minTlsVersion` (`pulumi.Input[str]`)
+          * `minify` (`pulumi.Input[dict]`)
+        
+            * `css` (`pulumi.Input[str]`) - "on"/"off"
+            * `html` (`pulumi.Input[str]`) - "on"/"off"
+              * `js` (Required)"on"/"off"
+            * `js` (`pulumi.Input[str]`)
+        
+          * `mirage` (`pulumi.Input[str]`)
+          * `mobileRedirect` (`pulumi.Input[dict]`)
+        
+            * `mobileSubdomain` (`pulumi.Input[str]`) - String value
+            * `status` (`pulumi.Input[str]`) - "on"/"off"
+            * `stripUri` (`pulumi.Input[bool]`) - true/false
+        
+          * `opportunisticEncryption` (`pulumi.Input[str]`)
+          * `opportunisticOnion` (`pulumi.Input[str]`)
+          * `originErrorPagePassThru` (`pulumi.Input[str]`)
+          * `polish` (`pulumi.Input[str]`)
+          * `prefetchPreload` (`pulumi.Input[str]`)
+          * `privacyPass` (`pulumi.Input[str]`)
+          * `pseudoIpv4` (`pulumi.Input[str]`)
+          * `responseBuffering` (`pulumi.Input[str]`)
+          * `rocketLoader` (`pulumi.Input[str]`)
+          * `securityHeader` (`pulumi.Input[dict]`)
+        
+            * `enabled` (`pulumi.Input[bool]`) - true/false
+            * `includeSubdomains` (`pulumi.Input[bool]`) - true/false
+            * `maxAge` (`pulumi.Input[float]`) - Integer
+            * `nosniff` (`pulumi.Input[bool]`) - true/false
+            * `preload` (`pulumi.Input[bool]`) - true/false
+        
+          * `securityLevel` (`pulumi.Input[str]`)
+          * `serverSideExclude` (`pulumi.Input[str]`)
+          * `sortQueryStringForCache` (`pulumi.Input[str]`)
+          * `ssl` (`pulumi.Input[str]`)
+          * `tls12Only` (`pulumi.Input[str]`)
+          * `tls13` (`pulumi.Input[str]`)
+          * `tlsClientAuth` (`pulumi.Input[str]`)
+          * `trueClientIpHeader` (`pulumi.Input[str]`)
+          * `waf` (`pulumi.Input[str]`)
+          * `webp` (`pulumi.Input[str]`)
+          * `websockets` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["initial_settings"] = initial_settings

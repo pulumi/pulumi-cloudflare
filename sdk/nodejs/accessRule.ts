@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -84,7 +86,7 @@ export class AccessRule extends pulumi.CustomResource {
     /**
      * Rule configuration to apply to a matched request. It's a complex value. See description below.
      */
-    public readonly configuration!: pulumi.Output<{ target: string, value: string }>;
+    public readonly configuration!: pulumi.Output<outputs.AccessRuleConfiguration>;
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
      */
@@ -151,7 +153,7 @@ export interface AccessRuleState {
     /**
      * Rule configuration to apply to a matched request. It's a complex value. See description below.
      */
-    readonly configuration?: pulumi.Input<{ target: pulumi.Input<string>, value: pulumi.Input<string> }>;
+    readonly configuration?: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
      */
@@ -177,7 +179,7 @@ export interface AccessRuleArgs {
     /**
      * Rule configuration to apply to a matched request. It's a complex value. See description below.
      */
-    readonly configuration: pulumi.Input<{ target: pulumi.Input<string>, value: pulumi.Input<string> }>;
+    readonly configuration: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
      */

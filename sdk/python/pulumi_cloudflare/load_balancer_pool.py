@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class LoadBalancerPool(pulumi.CustomResource):
@@ -48,6 +49,11 @@ class LoadBalancerPool(pulumi.CustomResource):
     origins: pulumi.Output[list]
     """
     The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+    
+      * `address` (`str`) - The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+      * `enabled` (`bool`) - Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+      * `name` (`str`) - A human-identifiable name for the origin.
+      * `weight` (`float`) - The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
     """
     def __init__(__self__, resource_name, opts=None, check_regions=None, description=None, enabled=None, minimum_origins=None, monitor=None, name=None, notification_email=None, origins=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -63,6 +69,13 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
         :param pulumi.Input[list] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+        
+        The **origins** object supports the following:
+        
+          * `address` (`pulumi.Input[str]`) - The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+          * `name` (`pulumi.Input[str]`) - A human-identifiable name for the origin.
+          * `weight` (`pulumi.Input[float]`) - The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_pool.html.markdown.
         """
@@ -108,6 +121,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         """
         Get an existing LoadBalancerPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -121,10 +135,17 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
         :param pulumi.Input[list] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+        
+        The **origins** object supports the following:
+        
+          * `address` (`pulumi.Input[str]`) - The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
+          * `enabled` (`pulumi.Input[bool]`) - Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+          * `name` (`pulumi.Input[str]`) - A human-identifiable name for the origin.
+          * `weight` (`pulumi.Input[float]`) - The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_pool.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["check_regions"] = check_regions

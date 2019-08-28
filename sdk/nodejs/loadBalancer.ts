@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -103,7 +105,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
      */
-    public readonly popPools!: pulumi.Output<{ poolIds: string[], pop: string }[]>;
+    public readonly popPools!: pulumi.Output<outputs.LoadBalancerPopPool[]>;
     /**
      * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
      */
@@ -111,7 +113,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
      */
-    public readonly regionPools!: pulumi.Output<{ poolIds: string[], region: string }[]>;
+    public readonly regionPools!: pulumi.Output<outputs.LoadBalancerRegionPool[]>;
     /**
      * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
      */
@@ -236,7 +238,7 @@ export interface LoadBalancerState {
     /**
      * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
      */
-    readonly popPools?: pulumi.Input<pulumi.Input<{ poolIds: pulumi.Input<pulumi.Input<string>[]>, pop: pulumi.Input<string> }>[]>;
+    readonly popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPopPool>[]>;
     /**
      * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
      */
@@ -244,7 +246,7 @@ export interface LoadBalancerState {
     /**
      * A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
      */
-    readonly regionPools?: pulumi.Input<pulumi.Input<{ poolIds: pulumi.Input<pulumi.Input<string>[]>, region: pulumi.Input<string> }>[]>;
+    readonly regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
     /**
      * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
      */
@@ -294,7 +296,7 @@ export interface LoadBalancerArgs {
     /**
      * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
      */
-    readonly popPools?: pulumi.Input<pulumi.Input<{ poolIds: pulumi.Input<pulumi.Input<string>[]>, pop: pulumi.Input<string> }>[]>;
+    readonly popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPopPool>[]>;
     /**
      * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
      */
@@ -302,7 +304,7 @@ export interface LoadBalancerArgs {
     /**
      * A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
      */
-    readonly regionPools?: pulumi.Input<pulumi.Input<{ poolIds: pulumi.Input<pulumi.Input<string>[]>, region: pulumi.Input<string> }>[]>;
+    readonly regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
     /**
      * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
      */

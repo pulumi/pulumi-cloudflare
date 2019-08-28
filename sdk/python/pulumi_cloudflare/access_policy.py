@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class AccessPolicy(pulumi.CustomResource):
@@ -23,11 +24,21 @@ class AccessPolicy(pulumi.CustomResource):
     """
     A series of access conditions, see below for
     full list.
+    
+      * `emails` (`list`)
+      * `emailDomains` (`list`)
+      * `everyone` (`bool`)
+      * `ips` (`list`)
     """
     includes: pulumi.Output[list]
     """
     A series of access conditions, see below for
     full list.
+    
+      * `emails` (`list`)
+      * `emailDomains` (`list`)
+      * `everyone` (`bool`)
+      * `ips` (`list`)
     """
     name: pulumi.Output[str]
     """
@@ -41,6 +52,11 @@ class AccessPolicy(pulumi.CustomResource):
     """
     A series of access conditions, see below for
     full list.
+    
+      * `emails` (`list`)
+      * `emailDomains` (`list`)
+      * `everyone` (`bool`)
+      * `ips` (`list`)
     """
     zone_id: pulumi.Output[str]
     """
@@ -83,6 +99,27 @@ class AccessPolicy(pulumi.CustomResource):
                full list.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
                added.
+        
+        The **excludes** object supports the following:
+        
+          * `emails` (`pulumi.Input[list]`)
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
+        
+        The **includes** object supports the following:
+        
+          * `emails` (`pulumi.Input[list]`)
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
+        
+        The **requires** object supports the following:
+        
+          * `emails` (`pulumi.Input[list]`)
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
         """
@@ -132,6 +169,7 @@ class AccessPolicy(pulumi.CustomResource):
         """
         Get an existing AccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -149,10 +187,31 @@ class AccessPolicy(pulumi.CustomResource):
                full list.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
                added.
+        
+        The **excludes** object supports the following:
+        
+          * `emails` (`pulumi.Input[list]`)
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
+        
+        The **includes** object supports the following:
+        
+          * `emails` (`pulumi.Input[list]`)
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
+        
+        The **requires** object supports the following:
+        
+          * `emails` (`pulumi.Input[list]`)
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["application_id"] = application_id

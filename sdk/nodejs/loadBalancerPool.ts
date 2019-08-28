@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -102,7 +104,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */
-    public readonly origins!: pulumi.Output<{ address: string, enabled?: boolean, name: string, weight?: number }[]>;
+    public readonly origins!: pulumi.Output<outputs.LoadBalancerPoolOrigin[]>;
 
     /**
      * Create a LoadBalancerPool resource with the given unique name, arguments, and options.
@@ -199,7 +201,7 @@ export interface LoadBalancerPoolState {
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */
-    readonly origins?: pulumi.Input<pulumi.Input<{ address: pulumi.Input<string>, enabled?: pulumi.Input<boolean>, name: pulumi.Input<string>, weight?: pulumi.Input<number> }>[]>;
+    readonly origins?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[]>;
 }
 
 /**
@@ -237,5 +239,5 @@ export interface LoadBalancerPoolArgs {
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */
-    readonly origins: pulumi.Input<pulumi.Input<{ address: pulumi.Input<string>, enabled?: pulumi.Input<boolean>, name: pulumi.Input<string>, weight?: pulumi.Input<number> }>[]>;
+    readonly origins: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[]>;
 }

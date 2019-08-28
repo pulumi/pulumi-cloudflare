@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -58,7 +60,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
     /**
      * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
      */
-    public readonly configurations!: pulumi.Output<{ target: string, value: string }[]>;
+    public readonly configurations!: pulumi.Output<outputs.ZoneLockdownConfiguration[]>;
     /**
      * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
      */
@@ -131,7 +133,7 @@ export interface ZoneLockdownState {
     /**
      * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
      */
-    readonly configurations?: pulumi.Input<pulumi.Input<{ target: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
+    readonly configurations?: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
      * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
      */
@@ -161,7 +163,7 @@ export interface ZoneLockdownArgs {
     /**
      * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
      */
-    readonly configurations: pulumi.Input<pulumi.Input<{ target: pulumi.Input<string>, value: pulumi.Input<string> }>[]>;
+    readonly configurations: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
      * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
      */

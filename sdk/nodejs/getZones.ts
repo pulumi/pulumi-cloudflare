@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -56,15 +58,15 @@ export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
-    readonly filter: { name?: string, paused?: boolean, status?: string };
+    readonly filter: inputs.GetZonesFilter;
 }
 
 /**
  * A collection of values returned by getZones.
  */
 export interface GetZonesResult {
-    readonly filter: { name?: string, paused?: boolean, status?: string };
-    readonly zones: { id?: string, name?: string }[];
+    readonly filter: outputs.GetZonesFilter;
+    readonly zones: outputs.GetZonesZone[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

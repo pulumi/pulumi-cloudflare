@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -51,7 +53,7 @@ export class Zone extends pulumi.CustomResource {
      * Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
      */
     public readonly jumpStart!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly meta!: pulumi.Output<{ phishingDetected: boolean, wildcardProxiable: boolean }>;
+    public /*out*/ readonly meta!: pulumi.Output<outputs.ZoneMeta>;
     /**
      * Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
      */
@@ -138,7 +140,7 @@ export interface ZoneState {
      * Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
      */
     readonly jumpStart?: pulumi.Input<boolean>;
-    readonly meta?: pulumi.Input<{ phishingDetected: pulumi.Input<boolean>, wildcardProxiable: pulumi.Input<boolean> }>;
+    readonly meta?: pulumi.Input<inputs.ZoneMeta>;
     /**
      * Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
      */

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class Record(pulumi.CustomResource):
@@ -16,6 +17,44 @@ class Record(pulumi.CustomResource):
     data: pulumi.Output[dict]
     """
     Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+    
+      * `algorithm` (`float`)
+      * `altitude` (`float`)
+      * `certificate` (`str`)
+      * `content` (`str`)
+      * `digest` (`str`)
+      * `digest_type` (`float`)
+      * `fingerprint` (`str`)
+      * `flags` (`str`)
+      * `key_tag` (`float`)
+      * `lat_degrees` (`float`)
+      * `lat_direction` (`str`)
+      * `lat_minutes` (`float`)
+      * `lat_seconds` (`float`)
+      * `long_degrees` (`float`)
+      * `long_direction` (`str`)
+      * `long_minutes` (`float`)
+      * `long_seconds` (`float`)
+      * `matching_type` (`float`)
+      * `name` (`str`) - The name of the record
+      * `order` (`float`)
+      * `port` (`float`)
+      * `precision_horz` (`float`)
+      * `precision_vert` (`float`)
+      * `preference` (`float`)
+      * `priority` (`float`) - The priority of the record
+      * `proto` (`str`)
+      * `protocol` (`float`)
+      * `public_key` (`str`)
+      * `regex` (`str`)
+      * `replacement` (`str`)
+      * `selector` (`float`)
+      * `service` (`str`)
+      * `size` (`float`)
+      * `target` (`str`)
+      * `type` (`float`) - The type of the record
+      * `usage` (`float`)
+      * `weight` (`float`)
     """
     domain: pulumi.Output[str]
     """
@@ -79,6 +118,46 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[float] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
+        
+        The **data** object supports the following:
+        
+          * `algorithm` (`pulumi.Input[float]`)
+          * `altitude` (`pulumi.Input[float]`)
+          * `certificate` (`pulumi.Input[str]`)
+          * `content` (`pulumi.Input[str]`)
+          * `digest` (`pulumi.Input[str]`)
+          * `digest_type` (`pulumi.Input[float]`)
+          * `fingerprint` (`pulumi.Input[str]`)
+          * `flags` (`pulumi.Input[str]`)
+          * `key_tag` (`pulumi.Input[float]`)
+          * `lat_degrees` (`pulumi.Input[float]`)
+          * `lat_direction` (`pulumi.Input[str]`)
+          * `lat_minutes` (`pulumi.Input[float]`)
+          * `lat_seconds` (`pulumi.Input[float]`)
+          * `long_degrees` (`pulumi.Input[float]`)
+          * `long_direction` (`pulumi.Input[str]`)
+          * `long_minutes` (`pulumi.Input[float]`)
+          * `long_seconds` (`pulumi.Input[float]`)
+          * `matching_type` (`pulumi.Input[float]`)
+          * `name` (`pulumi.Input[str]`) - The name of the record
+          * `order` (`pulumi.Input[float]`)
+          * `port` (`pulumi.Input[float]`)
+          * `precision_horz` (`pulumi.Input[float]`)
+          * `precision_vert` (`pulumi.Input[float]`)
+          * `preference` (`pulumi.Input[float]`)
+          * `priority` (`pulumi.Input[float]`) - The priority of the record
+          * `proto` (`pulumi.Input[str]`)
+          * `protocol` (`pulumi.Input[float]`)
+          * `public_key` (`pulumi.Input[str]`)
+          * `regex` (`pulumi.Input[str]`)
+          * `replacement` (`pulumi.Input[str]`)
+          * `selector` (`pulumi.Input[float]`)
+          * `service` (`pulumi.Input[str]`)
+          * `size` (`pulumi.Input[float]`)
+          * `target` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[float]`) - The type of the record
+          * `usage` (`pulumi.Input[float]`)
+          * `weight` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
         """
@@ -130,6 +209,7 @@ class Record(pulumi.CustomResource):
         """
         Get an existing Record resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -147,10 +227,50 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         :param pulumi.Input[str] zone_id: The zone id of the record
+        
+        The **data** object supports the following:
+        
+          * `algorithm` (`pulumi.Input[float]`)
+          * `altitude` (`pulumi.Input[float]`)
+          * `certificate` (`pulumi.Input[str]`)
+          * `content` (`pulumi.Input[str]`)
+          * `digest` (`pulumi.Input[str]`)
+          * `digest_type` (`pulumi.Input[float]`)
+          * `fingerprint` (`pulumi.Input[str]`)
+          * `flags` (`pulumi.Input[str]`)
+          * `key_tag` (`pulumi.Input[float]`)
+          * `lat_degrees` (`pulumi.Input[float]`)
+          * `lat_direction` (`pulumi.Input[str]`)
+          * `lat_minutes` (`pulumi.Input[float]`)
+          * `lat_seconds` (`pulumi.Input[float]`)
+          * `long_degrees` (`pulumi.Input[float]`)
+          * `long_direction` (`pulumi.Input[str]`)
+          * `long_minutes` (`pulumi.Input[float]`)
+          * `long_seconds` (`pulumi.Input[float]`)
+          * `matching_type` (`pulumi.Input[float]`)
+          * `name` (`pulumi.Input[str]`) - The name of the record
+          * `order` (`pulumi.Input[float]`)
+          * `port` (`pulumi.Input[float]`)
+          * `precision_horz` (`pulumi.Input[float]`)
+          * `precision_vert` (`pulumi.Input[float]`)
+          * `preference` (`pulumi.Input[float]`)
+          * `priority` (`pulumi.Input[float]`) - The priority of the record
+          * `proto` (`pulumi.Input[str]`)
+          * `protocol` (`pulumi.Input[float]`)
+          * `public_key` (`pulumi.Input[str]`)
+          * `regex` (`pulumi.Input[str]`)
+          * `replacement` (`pulumi.Input[str]`)
+          * `selector` (`pulumi.Input[float]`)
+          * `service` (`pulumi.Input[str]`)
+          * `size` (`pulumi.Input[float]`)
+          * `target` (`pulumi.Input[str]`)
+          * `type` (`pulumi.Input[float]`) - The type of the record
+          * `usage` (`pulumi.Input[float]`)
+          * `weight` (`pulumi.Input[float]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["created_on"] = created_on
