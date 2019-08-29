@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -96,7 +98,7 @@ export class RateLimit extends pulumi.CustomResource {
     /**
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
-    public readonly action!: pulumi.Output<{ mode: string, response?: { body: string, contentType: string }, timeout?: number }>;
+    public readonly action!: pulumi.Output<outputs.RateLimitAction>;
     /**
      * URLs matching the patterns specified here will be excluded from rate limiting.
      */
@@ -104,7 +106,7 @@ export class RateLimit extends pulumi.CustomResource {
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
      */
-    public readonly correlate!: pulumi.Output<{ by?: string } | undefined>;
+    public readonly correlate!: pulumi.Output<outputs.RateLimitCorrelate | undefined>;
     /**
      * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
      */
@@ -116,7 +118,7 @@ export class RateLimit extends pulumi.CustomResource {
     /**
      * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
      */
-    public readonly match!: pulumi.Output<{ request: { methods: string[], schemes: string[], urlPattern: string }, response: { originTraffic: boolean, statuses: number[] } }>;
+    public readonly match!: pulumi.Output<outputs.RateLimitMatch>;
     /**
      * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
      */
@@ -199,7 +201,7 @@ export interface RateLimitState {
     /**
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
-    readonly action?: pulumi.Input<{ mode: pulumi.Input<string>, response?: pulumi.Input<{ body: pulumi.Input<string>, contentType: pulumi.Input<string> }>, timeout?: pulumi.Input<number> }>;
+    readonly action?: pulumi.Input<inputs.RateLimitAction>;
     /**
      * URLs matching the patterns specified here will be excluded from rate limiting.
      */
@@ -207,7 +209,7 @@ export interface RateLimitState {
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
      */
-    readonly correlate?: pulumi.Input<{ by?: pulumi.Input<string> }>;
+    readonly correlate?: pulumi.Input<inputs.RateLimitCorrelate>;
     /**
      * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
      */
@@ -219,7 +221,7 @@ export interface RateLimitState {
     /**
      * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
      */
-    readonly match?: pulumi.Input<{ request?: pulumi.Input<{ methods?: pulumi.Input<pulumi.Input<string>[]>, schemes?: pulumi.Input<pulumi.Input<string>[]>, urlPattern?: pulumi.Input<string> }>, response?: pulumi.Input<{ originTraffic?: pulumi.Input<boolean>, statuses?: pulumi.Input<pulumi.Input<number>[]> }> }>;
+    readonly match?: pulumi.Input<inputs.RateLimitMatch>;
     /**
      * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
      */
@@ -245,7 +247,7 @@ export interface RateLimitArgs {
     /**
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
-    readonly action: pulumi.Input<{ mode: pulumi.Input<string>, response?: pulumi.Input<{ body: pulumi.Input<string>, contentType: pulumi.Input<string> }>, timeout?: pulumi.Input<number> }>;
+    readonly action: pulumi.Input<inputs.RateLimitAction>;
     /**
      * URLs matching the patterns specified here will be excluded from rate limiting.
      */
@@ -253,7 +255,7 @@ export interface RateLimitArgs {
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
      */
-    readonly correlate?: pulumi.Input<{ by?: pulumi.Input<string> }>;
+    readonly correlate?: pulumi.Input<inputs.RateLimitCorrelate>;
     /**
      * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
      */
@@ -265,7 +267,7 @@ export interface RateLimitArgs {
     /**
      * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
      */
-    readonly match?: pulumi.Input<{ request?: pulumi.Input<{ methods?: pulumi.Input<pulumi.Input<string>[]>, schemes?: pulumi.Input<pulumi.Input<string>[]>, urlPattern?: pulumi.Input<string> }>, response?: pulumi.Input<{ originTraffic?: pulumi.Input<boolean>, statuses?: pulumi.Input<pulumi.Input<number>[]> }> }>;
+    readonly match?: pulumi.Input<inputs.RateLimitMatch>;
     /**
      * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
      */

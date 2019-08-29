@@ -6,12 +6,16 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class ZoneLockdown(pulumi.CustomResource):
     configurations: pulumi.Output[list]
     """
     A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+    
+      * `target` (`str`) - The request property to target. Allowed values: "ip", "ip_range"
+      * `value` (`str`) - The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
     """
     description: pulumi.Output[str]
     """
@@ -45,6 +49,11 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.Input[list] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone: The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        
+        The **configurations** object supports the following:
+        
+          * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip_range"
+          * `value` (`pulumi.Input[str]`) - The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
         """
@@ -86,6 +95,7 @@ class ZoneLockdown(pulumi.CustomResource):
         """
         Get an existing ZoneLockdown resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -95,10 +105,15 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.Input[list] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone: The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        
+        The **configurations** object supports the following:
+        
+          * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip_range"
+          * `value` (`pulumi.Input[str]`) - The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["configurations"] = configurations

@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class LoadBalancer(pulumi.CustomResource):
@@ -40,6 +41,9 @@ class LoadBalancer(pulumi.CustomResource):
     pop_pools: pulumi.Output[list]
     """
     A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+    
+      * `poolIds` (`list`) - A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+      * `pop` (`str`) - A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
     """
     proxied: pulumi.Output[bool]
     """
@@ -48,6 +52,9 @@ class LoadBalancer(pulumi.CustomResource):
     region_pools: pulumi.Output[list]
     """
     A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+    
+      * `poolIds` (`list`) - A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+      * `region` (`str`) - A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
     """
     session_affinity: pulumi.Output[str]
     """
@@ -87,6 +94,16 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
         :param pulumi.Input[float] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         :param pulumi.Input[str] zone: The zone to add the load balancer to.
+        
+        The **pop_pools** object supports the following:
+        
+          * `poolIds` (`pulumi.Input[list]`) - A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+          * `pop` (`pulumi.Input[str]`) - A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        
+        The **region_pools** object supports the following:
+        
+          * `poolIds` (`pulumi.Input[list]`) - A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+          * `region` (`pulumi.Input[str]`) - A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer.html.markdown.
         """
@@ -141,6 +158,7 @@ class LoadBalancer(pulumi.CustomResource):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,10 +177,20 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[float] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         :param pulumi.Input[str] zone: The zone to add the load balancer to.
         :param pulumi.Input[str] zone_id: ID associated with the specified `zone`.
+        
+        The **pop_pools** object supports the following:
+        
+          * `poolIds` (`pulumi.Input[list]`) - A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+          * `pop` (`pulumi.Input[str]`) - A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        
+        The **region_pools** object supports the following:
+        
+          * `poolIds` (`pulumi.Input[list]`) - A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+          * `region` (`pulumi.Input[str]`) - A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["created_on"] = created_on

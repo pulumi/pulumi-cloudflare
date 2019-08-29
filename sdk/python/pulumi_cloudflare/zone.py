@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class Zone(pulumi.CustomResource):
@@ -97,6 +98,7 @@ class Zone(pulumi.CustomResource):
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -110,10 +112,15 @@ class Zone(pulumi.CustomResource):
                * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
                * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
+        
+        The **meta** object supports the following:
+        
+          * `phishing_detected` (`pulumi.Input[bool]`)
+          * `wildcard_proxiable` (`pulumi.Input[bool]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["jump_start"] = jump_start

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -41,7 +43,7 @@ export class Record extends pulumi.CustomResource {
     /**
      * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
      */
-    public readonly data!: pulumi.Output<{ algorithm?: number, altitude?: number, certificate?: string, content?: string, digest?: string, digestType?: number, fingerprint?: string, flags?: string, keyTag?: number, latDegrees?: number, latDirection?: string, latMinutes?: number, latSeconds?: number, longDegrees?: number, longDirection?: string, longMinutes?: number, longSeconds?: number, matchingType?: number, name?: string, order?: number, port?: number, precisionHorz?: number, precisionVert?: number, preference?: number, priority?: number, proto?: string, protocol?: number, publicKey?: string, regex?: string, replacement?: string, selector?: number, service?: string, size?: number, target?: string, type?: number, usage?: number, weight?: number } | undefined>;
+    public readonly data!: pulumi.Output<outputs.RecordData | undefined>;
     /**
      * The DNS zone to add the record to
      */
@@ -165,7 +167,7 @@ export interface RecordState {
     /**
      * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
      */
-    readonly data?: pulumi.Input<{ algorithm?: pulumi.Input<number>, altitude?: pulumi.Input<number>, certificate?: pulumi.Input<string>, content?: pulumi.Input<string>, digest?: pulumi.Input<string>, digestType?: pulumi.Input<number>, fingerprint?: pulumi.Input<string>, flags?: pulumi.Input<string>, keyTag?: pulumi.Input<number>, latDegrees?: pulumi.Input<number>, latDirection?: pulumi.Input<string>, latMinutes?: pulumi.Input<number>, latSeconds?: pulumi.Input<number>, longDegrees?: pulumi.Input<number>, longDirection?: pulumi.Input<string>, longMinutes?: pulumi.Input<number>, longSeconds?: pulumi.Input<number>, matchingType?: pulumi.Input<number>, name?: pulumi.Input<string>, order?: pulumi.Input<number>, port?: pulumi.Input<number>, precisionHorz?: pulumi.Input<number>, precisionVert?: pulumi.Input<number>, preference?: pulumi.Input<number>, priority?: pulumi.Input<number>, proto?: pulumi.Input<string>, protocol?: pulumi.Input<number>, publicKey?: pulumi.Input<string>, regex?: pulumi.Input<string>, replacement?: pulumi.Input<string>, selector?: pulumi.Input<number>, service?: pulumi.Input<string>, size?: pulumi.Input<number>, target?: pulumi.Input<string>, type?: pulumi.Input<number>, usage?: pulumi.Input<number>, weight?: pulumi.Input<number> }>;
+    readonly data?: pulumi.Input<inputs.RecordData>;
     /**
      * The DNS zone to add the record to
      */
@@ -223,7 +225,7 @@ export interface RecordArgs {
     /**
      * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
      */
-    readonly data?: pulumi.Input<{ algorithm?: pulumi.Input<number>, altitude?: pulumi.Input<number>, certificate?: pulumi.Input<string>, content?: pulumi.Input<string>, digest?: pulumi.Input<string>, digestType?: pulumi.Input<number>, fingerprint?: pulumi.Input<string>, flags?: pulumi.Input<string>, keyTag?: pulumi.Input<number>, latDegrees?: pulumi.Input<number>, latDirection?: pulumi.Input<string>, latMinutes?: pulumi.Input<number>, latSeconds?: pulumi.Input<number>, longDegrees?: pulumi.Input<number>, longDirection?: pulumi.Input<string>, longMinutes?: pulumi.Input<number>, longSeconds?: pulumi.Input<number>, matchingType?: pulumi.Input<number>, name?: pulumi.Input<string>, order?: pulumi.Input<number>, port?: pulumi.Input<number>, precisionHorz?: pulumi.Input<number>, precisionVert?: pulumi.Input<number>, preference?: pulumi.Input<number>, priority?: pulumi.Input<number>, proto?: pulumi.Input<string>, protocol?: pulumi.Input<number>, publicKey?: pulumi.Input<string>, regex?: pulumi.Input<string>, replacement?: pulumi.Input<string>, selector?: pulumi.Input<number>, service?: pulumi.Input<string>, size?: pulumi.Input<number>, target?: pulumi.Input<string>, type?: pulumi.Input<number>, usage?: pulumi.Input<number>, weight?: pulumi.Input<number> }>;
+    readonly data?: pulumi.Input<inputs.RecordData>;
     /**
      * The DNS zone to add the record to
      */

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -104,7 +106,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**
      * The header name.
      */
-    public readonly headers!: pulumi.Output<{ header: string, values: string[] }[] | undefined>;
+    public readonly headers!: pulumi.Output<outputs.LoadBalancerMonitorHeader[] | undefined>;
     /**
      * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
      */
@@ -222,7 +224,7 @@ export interface LoadBalancerMonitorState {
     /**
      * The header name.
      */
-    readonly headers?: pulumi.Input<pulumi.Input<{ header: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly headers?: pulumi.Input<pulumi.Input<inputs.LoadBalancerMonitorHeader>[]>;
     /**
      * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
      */
@@ -281,7 +283,7 @@ export interface LoadBalancerMonitorArgs {
     /**
      * The header name.
      */
-    readonly headers?: pulumi.Input<pulumi.Input<{ header: pulumi.Input<string>, values: pulumi.Input<pulumi.Input<string>[]> }>[]>;
+    readonly headers?: pulumi.Input<pulumi.Input<inputs.LoadBalancerMonitorHeader>[]>;
     /**
      * The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
      */

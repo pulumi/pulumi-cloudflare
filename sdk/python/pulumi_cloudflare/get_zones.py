@@ -6,6 +6,7 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class GetZonesResult:
@@ -38,6 +39,13 @@ class AwaitableGetZonesResult(GetZonesResult):
 def get_zones(filter=None,opts=None):
     """
     Use this data source to look up [Zone][1] records.
+    
+    
+    The **filter** object supports the following:
+    
+      * `name` (`str`)
+      * `paused` (`bool`)
+      * `status` (`str`)
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.markdown.
     """
@@ -45,7 +53,7 @@ def get_zones(filter=None,opts=None):
 
     __args__['filter'] = filter
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getZones:getZones', __args__, opts=opts).value

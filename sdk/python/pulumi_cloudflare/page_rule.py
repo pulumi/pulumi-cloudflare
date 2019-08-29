@@ -6,12 +6,58 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
+from typing import Union
 from . import utilities, tables
 
 class PageRule(pulumi.CustomResource):
     actions: pulumi.Output[dict]
     """
     The actions taken by the page rule, options given below.
+    
+      * `alwaysOnline` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `alwaysUseHttps` (`bool`) - Boolean of whether this action is enabled. Default: false.
+      * `automaticHttpsRewrites` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `browserCacheTtl` (`str`) - The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
+      * `browserCheck` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `bypassCacheOnCookie` (`str`) - String value of cookie name to conditionally bypass cache the page.
+      * `cacheByDeviceType` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `cacheDeceptionArmor` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `cacheLevel` (`str`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
+      * `cacheOnCookie` (`str`) - String value of cookie name to conditionally cache the page.
+      * `disableApps` (`bool`) - Boolean of whether this action is enabled. Default: false.
+      * `disablePerformance` (`bool`) - Boolean of whether this action is enabled. Default: false.
+      * `disableRailgun` (`bool`) - Boolean of whether this action is enabled. Default: false.
+      * `disableSecurity` (`bool`) - Boolean of whether this action is enabled. Default: false.
+      * `edgeCacheTtl` (`float`) - The Time To Live for the edge cache.
+      * `emailObfuscation` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `explicitCacheControl` (`str`) - Whether origin Cache-Control action is `"on"` or `"off"`.
+      * `forwardingUrl` (`dict`) - The URL to forward to, and with what status. See below.
+    
+        * `statusCode` (`float`) - The status code to use for the redirection.
+        * `url` (`str`) - The URL to which the page rule should forward.
+    
+      * `hostHeaderOverride` (`str`) - Value of the Host header to send.
+      * `ipGeolocation` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `minifies` (`list`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
+    
+        * `css` (`str`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
+        * `html` (`str`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
+        * `js` (`str`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
+    
+      * `mirage` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `opportunisticEncryption` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `originErrorPagePassThru` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `polish` (`str`) - Whether this action is `"off"`, `"lossless"` or `"lossy"`.
+      * `resolveOverride` (`str`) - Overridden origin server name.
+      * `respectStrongEtag` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `responseBuffering` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `rocketLoader` (`str`) - Whether to set the rocket loader to `"on"`, `"off"`.
+      * `securityLevel` (`str`) - Whether to set the security level to `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, or `"under_attack"`.
+      * `serverSideExclude` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `sortQueryStringForCache` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `ssl` (`str`) - Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
+      * `trueClientIpHeader` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `waf` (`str`) - Whether this action is `"on"` or `"off"`.
     """
     priority: pulumi.Output[float]
     """
@@ -44,6 +90,53 @@ class PageRule(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone: The DNS zone to which the page rule should be added.
+        
+        The **actions** object supports the following:
+        
+          * `alwaysOnline` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `alwaysUseHttps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `automaticHttpsRewrites` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `browserCacheTtl` (`pulumi.Input[str]`) - The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
+          * `browserCheck` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `bypassCacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally bypass cache the page.
+          * `cacheByDeviceType` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `cacheDeceptionArmor` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `cacheLevel` (`pulumi.Input[str]`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
+          * `cacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally cache the page.
+          * `disableApps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `disablePerformance` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `disableRailgun` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `disableSecurity` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `edgeCacheTtl` (`pulumi.Input[float]`) - The Time To Live for the edge cache.
+          * `emailObfuscation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `explicitCacheControl` (`pulumi.Input[str]`) - Whether origin Cache-Control action is `"on"` or `"off"`.
+          * `forwardingUrl` (`pulumi.Input[dict]`) - The URL to forward to, and with what status. See below.
+        
+            * `statusCode` (`pulumi.Input[float]`) - The status code to use for the redirection.
+            * `url` (`pulumi.Input[str]`) - The URL to which the page rule should forward.
+        
+          * `hostHeaderOverride` (`pulumi.Input[str]`) - Value of the Host header to send.
+          * `ipGeolocation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `minifies` (`pulumi.Input[list]`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
+        
+            * `css` (`pulumi.Input[str]`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
+            * `html` (`pulumi.Input[str]`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
+            * `js` (`pulumi.Input[str]`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
+        
+          * `mirage` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `opportunisticEncryption` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `originErrorPagePassThru` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `polish` (`pulumi.Input[str]`) - Whether this action is `"off"`, `"lossless"` or `"lossy"`.
+          * `resolveOverride` (`pulumi.Input[str]`) - Overridden origin server name.
+          * `respectStrongEtag` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `responseBuffering` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `rocketLoader` (`pulumi.Input[str]`) - Whether to set the rocket loader to `"on"`, `"off"`.
+          * `securityLevel` (`pulumi.Input[str]`) - Whether to set the security level to `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, or `"under_attack"`.
+          * `serverSideExclude` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `sortQueryStringForCache` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `ssl` (`pulumi.Input[str]`) - Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
+          * `trueClientIpHeader` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `waf` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
         """
@@ -87,6 +180,7 @@ class PageRule(pulumi.CustomResource):
         """
         Get an existing PageRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
+        
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -96,10 +190,57 @@ class PageRule(pulumi.CustomResource):
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone: The DNS zone to which the page rule should be added.
         :param pulumi.Input[str] zone_id: The ID of the zone in which the page rule will be applied.
+        
+        The **actions** object supports the following:
+        
+          * `alwaysOnline` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `alwaysUseHttps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `automaticHttpsRewrites` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `browserCacheTtl` (`pulumi.Input[str]`) - The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
+          * `browserCheck` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `bypassCacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally bypass cache the page.
+          * `cacheByDeviceType` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `cacheDeceptionArmor` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `cacheLevel` (`pulumi.Input[str]`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
+          * `cacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally cache the page.
+          * `disableApps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `disablePerformance` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `disableRailgun` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `disableSecurity` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
+          * `edgeCacheTtl` (`pulumi.Input[float]`) - The Time To Live for the edge cache.
+          * `emailObfuscation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `explicitCacheControl` (`pulumi.Input[str]`) - Whether origin Cache-Control action is `"on"` or `"off"`.
+          * `forwardingUrl` (`pulumi.Input[dict]`) - The URL to forward to, and with what status. See below.
+        
+            * `statusCode` (`pulumi.Input[float]`) - The status code to use for the redirection.
+            * `url` (`pulumi.Input[str]`) - The URL to which the page rule should forward.
+        
+          * `hostHeaderOverride` (`pulumi.Input[str]`) - Value of the Host header to send.
+          * `ipGeolocation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `minifies` (`pulumi.Input[list]`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
+        
+            * `css` (`pulumi.Input[str]`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
+            * `html` (`pulumi.Input[str]`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
+            * `js` (`pulumi.Input[str]`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
+        
+          * `mirage` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `opportunisticEncryption` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `originErrorPagePassThru` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `polish` (`pulumi.Input[str]`) - Whether this action is `"off"`, `"lossless"` or `"lossy"`.
+          * `resolveOverride` (`pulumi.Input[str]`) - Overridden origin server name.
+          * `respectStrongEtag` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `responseBuffering` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `rocketLoader` (`pulumi.Input[str]`) - Whether to set the rocket loader to `"on"`, `"off"`.
+          * `securityLevel` (`pulumi.Input[str]`) - Whether to set the security level to `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, or `"under_attack"`.
+          * `serverSideExclude` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `sortQueryStringForCache` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `ssl` (`pulumi.Input[str]`) - Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
+          * `trueClientIpHeader` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `waf` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
         """
-        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+        opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
         __props__["actions"] = actions
