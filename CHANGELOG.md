@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade pulumi-terraform to 3f206601e7
+_(none)_
 
 ---
+
+## 0.17.12 (2019-08-29)
+* Upgrade pulumi-terraform to 3f206601e7
 
 ## 0.17.11 (2019-08-20)
 * Upgrade to v1.17.0 of the Cloudflare Terraform Provider
