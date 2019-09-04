@@ -8,6 +8,7 @@ export * from "./accessRule";
 export * from "./accountMember";
 export * from "./argo";
 export * from "./customPages";
+export * from "./customSsl";
 export * from "./filter";
 export * from "./firewallRule";
 export * from "./getIpRanges";

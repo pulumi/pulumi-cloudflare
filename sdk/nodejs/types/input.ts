@@ -36,6 +36,34 @@ export interface AccessRuleConfiguration {
     value: pulumi.Input<string>;
 }
 
+export interface CustomSslCustomSslOptions {
+    /**
+     * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+     */
+    bundleMethod?: pulumi.Input<string>;
+    /**
+     * Certificate certificate and the intermediate(s)
+     */
+    certificate: pulumi.Input<string>;
+    /**
+     * Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
+     */
+    geoRestrictions?: pulumi.Input<string>;
+    /**
+     * Certificate's private key
+     */
+    privateKey: pulumi.Input<string>;
+    /**
+     * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface CustomSslCustomSslPriority {
+    id?: pulumi.Input<string>;
+    priority?: pulumi.Input<number>;
+}
+
 export interface GetZonesFilter {
     name?: string;
     paused?: boolean;

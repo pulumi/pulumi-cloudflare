@@ -21,6 +21,7 @@
         "config/index.ts",
         "config/vars.ts",
         "customPages.ts",
+        "customSsl.ts",
         "filter.ts",
         "firewallRule.ts",
         "getIpRanges.ts",

@@ -146,6 +146,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_zone_lockdown":          {Tok: makeResource(mainMod, "ZoneLockdown")},
 			"cloudflare_zone_settings_override": {Tok: makeResource(mainMod, "ZoneSettingsOverride")},
 			"cloudflare_zone":                   {Tok: makeResource(mainMod, "Zone")},
+			"cloudflare_custom_ssl":             {Tok: makeResource(mainMod, "CustomSsl")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges": {Tok: makeDataSource(mainMod, "getIpRanges")},
