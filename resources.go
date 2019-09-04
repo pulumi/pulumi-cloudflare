@@ -146,6 +146,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_zone_lockdown":          {Tok: makeResource(mainMod, "ZoneLockdown")},
 			"cloudflare_zone_settings_override": {Tok: makeResource(mainMod, "ZoneSettingsOverride")},
 			"cloudflare_zone":                   {Tok: makeResource(mainMod, "Zone")},
+			"cloudflare_custom_ssl":             {Tok: makeResource(mainMod, "CustomSsl")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges": {Tok: makeDataSource(mainMod, "getIpRanges")},
@@ -154,7 +155,7 @@ func Provider() tfbridge.ProviderInfo {
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^1.0.0-beta",
+				"@pulumi/pulumi": "^1.0.0",
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
@@ -164,7 +165,7 @@ func Provider() tfbridge.ProviderInfo {
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
 			Requires: map[string]string{
-				"pulumi": ">=0.17.28,<2.0.0",
+				"pulumi": ">=1.0.0,<2.0.0",
 			},
 		},
 	}

@@ -36,6 +36,34 @@ export interface AccessRuleConfiguration {
     value: string;
 }
 
+export interface CustomSslCustomSslOptions {
+    /**
+     * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
+     */
+    bundleMethod?: string;
+    /**
+     * Certificate certificate and the intermediate(s)
+     */
+    certificate: string;
+    /**
+     * Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
+     */
+    geoRestrictions?: string;
+    /**
+     * Certificate's private key
+     */
+    privateKey: string;
+    /**
+     * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
+     */
+    type?: string;
+}
+
+export interface CustomSslCustomSslPriority {
+    id?: string;
+    priority?: number;
+}
+
 export interface GetZonesFilter {
     name?: string;
     paused?: boolean;
