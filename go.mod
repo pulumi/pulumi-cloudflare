@@ -7,7 +7,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.0.0
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20190905205929-ed0b5c29edd1
-	github.com/terraform-providers/terraform-provider-cloudflare v1.17.1
+	github.com/terraform-providers/terraform-provider-cloudflare v1.18.1
 )
 
 replace (
