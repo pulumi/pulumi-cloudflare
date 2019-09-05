@@ -84,7 +84,7 @@ export class PageRule extends pulumi.CustomResource {
     /**
      * The ID of the zone in which the page rule will be applied.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a PageRule resource with the given unique name, arguments, and options.
@@ -112,15 +112,12 @@ export class PageRule extends pulumi.CustomResource {
             if (!args || args.target === undefined) {
                 throw new Error("Missing required property 'target'");
             }
-            if (!args || args.zone === undefined) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["actions"] = args ? args.actions : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["target"] = args ? args.target : undefined;
             inputs["zone"] = args ? args.zone : undefined;
-            inputs["zoneId"] = undefined /*out*/;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
             opts = {}
@@ -186,5 +183,9 @@ export interface PageRuleArgs {
     /**
      * The DNS zone to which the page rule should be added.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
+    /**
+     * The ID of the zone in which the page rule will be applied.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }

@@ -21,23 +21,21 @@ func NewWorkerRoute(ctx *pulumi.Context,
 	if args == nil || args.Pattern == nil {
 		return nil, errors.New("missing required argument 'Pattern'")
 	}
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["enabled"] = nil
 		inputs["pattern"] = nil
 		inputs["scriptName"] = nil
 		inputs["zone"] = nil
+		inputs["zoneId"] = nil
 	} else {
 		inputs["enabled"] = args.Enabled
 		inputs["pattern"] = args.Pattern
 		inputs["scriptName"] = args.ScriptName
 		inputs["zone"] = args.Zone
+		inputs["zoneId"] = args.ZoneId
 	}
 	inputs["multiScript"] = nil
-	inputs["zoneId"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/workerRoute:WorkerRoute", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -129,4 +127,6 @@ type WorkerRouteArgs struct {
 	ScriptName interface{}
 	// The zone to add the route to.
 	Zone interface{}
+	// The zone id of the route
+	ZoneId interface{}
 }

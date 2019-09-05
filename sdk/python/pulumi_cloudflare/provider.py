@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, api_client_logging=None, email=None, max_backoff=None, min_backoff=None, org_id=None, retries=None, rps=None, token=None, use_org_from_zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, api_client_logging=None, api_token=None, email=None, max_backoff=None, min_backoff=None, org_id=None, retries=None, rps=None, token=None, use_org_from_zone=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the cloudflare package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -42,6 +42,7 @@ class Provider(pulumi.ProviderResource):
             if api_client_logging is None:
                 api_client_logging = (utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
             __props__['api_client_logging'] = pulumi.Output.from_input(api_client_logging).apply(json.dumps) if api_client_logging is not None else None
+            __props__['api_token'] = api_token
             if email is None:
                 email = utilities.get_env('CLOUDFLARE_EMAIL')
             __props__['email'] = email

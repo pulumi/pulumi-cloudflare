@@ -133,7 +133,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * ID associated with the specified `zone`.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -173,9 +173,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             if (!args || args.name === undefined) {
                 throw new Error("Missing required property 'name'");
             }
-            if (!args || args.zone === undefined) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
@@ -188,9 +185,9 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["steeringPolicy"] = args ? args.steeringPolicy : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
-            inputs["zoneId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -320,5 +317,9 @@ export interface LoadBalancerArgs {
     /**
      * The zone to add the load balancer to.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
+    /**
+     * ID associated with the specified `zone`.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }

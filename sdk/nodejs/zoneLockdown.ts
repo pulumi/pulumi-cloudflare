@@ -69,6 +69,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
      * Boolean of whether this zone lockdown is currently paused. Default: false.
      */
     public readonly paused!: pulumi.Output<boolean | undefined>;
+    public readonly priority!: pulumi.Output<number | undefined>;
     /**
      * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
      */
@@ -76,7 +77,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
     /**
      * The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The DNS zone to which the access rule should be added.
      */
@@ -97,6 +98,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
             inputs["configurations"] = state ? state.configurations : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["paused"] = state ? state.paused : undefined;
+            inputs["priority"] = state ? state.priority : undefined;
             inputs["urls"] = state ? state.urls : undefined;
             inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -111,6 +113,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
             inputs["configurations"] = args ? args.configurations : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["paused"] = args ? args.paused : undefined;
+            inputs["priority"] = args ? args.priority : undefined;
             inputs["urls"] = args ? args.urls : undefined;
             inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
@@ -142,6 +145,7 @@ export interface ZoneLockdownState {
      * Boolean of whether this zone lockdown is currently paused. Default: false.
      */
     readonly paused?: pulumi.Input<boolean>;
+    readonly priority?: pulumi.Input<number>;
     /**
      * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
      */
@@ -172,6 +176,7 @@ export interface ZoneLockdownArgs {
      * Boolean of whether this zone lockdown is currently paused. Default: false.
      */
     readonly paused?: pulumi.Input<boolean>;
+    readonly priority?: pulumi.Input<number>;
     /**
      * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
      */

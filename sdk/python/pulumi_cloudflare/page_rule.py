@@ -79,7 +79,7 @@ class PageRule(pulumi.CustomResource):
     """
     The ID of the zone in which the page rule will be applied.
     """
-    def __init__(__self__, resource_name, opts=None, actions=None, priority=None, status=None, target=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, actions=None, priority=None, status=None, target=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare page rule resource.
         
@@ -90,6 +90,7 @@ class PageRule(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone: The DNS zone to which the page rule should be added.
+        :param pulumi.Input[str] zone_id: The ID of the zone in which the page rule will be applied.
         
         The **actions** object supports the following:
         
@@ -165,10 +166,8 @@ class PageRule(pulumi.CustomResource):
             if target is None:
                 raise TypeError("Missing required property 'target'")
             __props__['target'] = target
-            if zone is None:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
-            __props__['zone_id'] = None
+            __props__['zone_id'] = zone_id
         super(PageRule, __self__).__init__(
             'cloudflare:index/pageRule:PageRule',
             resource_name,

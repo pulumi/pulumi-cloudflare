@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v1.18.1 of the Cloudflare Terraform Provider
+* Upgrade to pulumi-terraform ed0b5c29ed
 
 ---
 

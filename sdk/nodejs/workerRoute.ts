@@ -88,7 +88,7 @@ export class WorkerRoute extends pulumi.CustomResource {
     /**
      * The zone id of the route
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a WorkerRoute resource with the given unique name, arguments, and options.
@@ -113,15 +113,12 @@ export class WorkerRoute extends pulumi.CustomResource {
             if (!args || args.pattern === undefined) {
                 throw new Error("Missing required property 'pattern'");
             }
-            if (!args || args.zone === undefined) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["pattern"] = args ? args.pattern : undefined;
             inputs["scriptName"] = args ? args.scriptName : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["multiScript"] = undefined /*out*/;
-            inputs["zoneId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -172,5 +169,9 @@ export interface WorkerRouteArgs {
     /**
      * The zone to add the route to.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
+    /**
+     * The zone id of the route
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }

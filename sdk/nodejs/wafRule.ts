@@ -70,7 +70,7 @@ export class WafRule extends pulumi.CustomResource {
     /**
      * The DNS zone ID.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a WafRule resource with the given unique name, arguments, and options.
@@ -97,14 +97,11 @@ export class WafRule extends pulumi.CustomResource {
             if (!args || args.ruleId === undefined) {
                 throw new Error("Missing required property 'ruleId'");
             }
-            if (!args || args.zone === undefined) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["mode"] = args ? args.mode : undefined;
             inputs["ruleId"] = args ? args.ruleId : undefined;
             inputs["zone"] = args ? args.zone : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["packageId"] = undefined /*out*/;
-            inputs["zoneId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -158,5 +155,9 @@ export interface WafRuleArgs {
     /**
      * The DNS zone to apply to.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
+    /**
+     * The DNS zone ID.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }
