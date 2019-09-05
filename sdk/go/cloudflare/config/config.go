@@ -20,6 +20,11 @@ func GetApiClientLogging(ctx *pulumi.Context) bool {
 	return v
 }
 
+// The API Token for operations.
+func GetApiToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "cloudflare:apiToken")
+}
+
 // A registered Cloudflare email address.
 func GetEmail(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "cloudflare:email")
@@ -92,7 +97,7 @@ func GetRps(ctx *pulumi.Context) int {
 	return v
 }
 
-// The token key for API operations.
+// The API key for operations.
 func GetToken(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "cloudflare:token")
 	if err == nil {

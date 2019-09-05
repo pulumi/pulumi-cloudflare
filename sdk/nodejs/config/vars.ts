@@ -11,6 +11,10 @@ let __config = new pulumi.Config("cloudflare");
  */
 export let apiClientLogging: boolean | undefined = __config.getObject<boolean>("apiClientLogging") || (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
 /**
+ * The API Token for operations.
+ */
+export let apiToken: string | undefined = __config.get("apiToken");
+/**
  * A registered Cloudflare email address.
  */
 export let email: string | undefined = __config.get("email") || utilities.getEnv("CLOUDFLARE_EMAIL");
@@ -35,7 +39,7 @@ export let retries: number | undefined = __config.getObject<number>("retries") |
  */
 export let rps: number | undefined = __config.getObject<number>("rps") || (utilities.getEnvNumber("CLOUDFLARE_RPS") || 4);
 /**
- * The token key for API operations.
+ * The API key for operations.
  */
 export let token: string | undefined = __config.get("token") || utilities.getEnv("CLOUDFLARE_TOKEN");
 /**

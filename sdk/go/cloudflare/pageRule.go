@@ -24,9 +24,6 @@ func NewPageRule(ctx *pulumi.Context,
 	if args == nil || args.Target == nil {
 		return nil, errors.New("missing required argument 'Target'")
 	}
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["actions"] = nil
@@ -34,14 +31,15 @@ func NewPageRule(ctx *pulumi.Context,
 		inputs["status"] = nil
 		inputs["target"] = nil
 		inputs["zone"] = nil
+		inputs["zoneId"] = nil
 	} else {
 		inputs["actions"] = args.Actions
 		inputs["priority"] = args.Priority
 		inputs["status"] = args.Status
 		inputs["target"] = args.Target
 		inputs["zone"] = args.Zone
+		inputs["zoneId"] = args.ZoneId
 	}
-	inputs["zoneId"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/pageRule:PageRule", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -137,4 +135,6 @@ type PageRuleArgs struct {
 	Target interface{}
 	// The DNS zone to which the page rule should be added.
 	Zone interface{}
+	// The ID of the zone in which the page rule will be applied.
+	ZoneId interface{}
 }

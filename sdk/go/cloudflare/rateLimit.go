@@ -27,9 +27,6 @@ func NewRateLimit(ctx *pulumi.Context,
 	if args == nil || args.Threshold == nil {
 		return nil, errors.New("missing required argument 'Threshold'")
 	}
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["action"] = nil
@@ -41,6 +38,7 @@ func NewRateLimit(ctx *pulumi.Context,
 		inputs["period"] = nil
 		inputs["threshold"] = nil
 		inputs["zone"] = nil
+		inputs["zoneId"] = nil
 	} else {
 		inputs["action"] = args.Action
 		inputs["bypassUrlPatterns"] = args.BypassUrlPatterns
@@ -51,8 +49,8 @@ func NewRateLimit(ctx *pulumi.Context,
 		inputs["period"] = args.Period
 		inputs["threshold"] = args.Threshold
 		inputs["zone"] = args.Zone
+		inputs["zoneId"] = args.ZoneId
 	}
-	inputs["zoneId"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/rateLimit:RateLimit", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -188,4 +186,6 @@ type RateLimitArgs struct {
 	Threshold interface{}
 	// The DNS zone to apply rate limiting to.
 	Zone interface{}
+	// The DNS zone ID.
+	ZoneId interface{}
 }

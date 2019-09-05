@@ -25,6 +25,7 @@ class ZoneLockdown(pulumi.CustomResource):
     """
     Boolean of whether this zone lockdown is currently paused. Default: false.
     """
+    priority: pulumi.Output[float]
     urls: pulumi.Output[list]
     """
     A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
@@ -37,7 +38,7 @@ class ZoneLockdown(pulumi.CustomResource):
     """
     The DNS zone to which the access rule should be added.
     """
-    def __init__(__self__, resource_name, opts=None, configurations=None, description=None, paused=None, urls=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, configurations=None, description=None, paused=None, priority=None, urls=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
         
@@ -79,6 +80,7 @@ class ZoneLockdown(pulumi.CustomResource):
             __props__['configurations'] = configurations
             __props__['description'] = description
             __props__['paused'] = paused
+            __props__['priority'] = priority
             if urls is None:
                 raise TypeError("Missing required property 'urls'")
             __props__['urls'] = urls
@@ -91,7 +93,7 @@ class ZoneLockdown(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, configurations=None, description=None, paused=None, urls=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, configurations=None, description=None, paused=None, priority=None, urls=None, zone=None, zone_id=None):
         """
         Get an existing ZoneLockdown resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -119,6 +121,7 @@ class ZoneLockdown(pulumi.CustomResource):
         __props__["configurations"] = configurations
         __props__["description"] = description
         __props__["paused"] = paused
+        __props__["priority"] = priority
         __props__["urls"] = urls
         __props__["zone"] = zone
         __props__["zone_id"] = zone_id

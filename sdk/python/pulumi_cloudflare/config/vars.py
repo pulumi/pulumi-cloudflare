@@ -16,6 +16,11 @@ api_client_logging = __config__.get('apiClientLogging') or (utilities.get_env_bo
 Whether to print logs from the API client (using the default log library logger)
 """
 
+api_token = __config__.get('apiToken')
+"""
+The API Token for operations.
+"""
+
 email = __config__.get('email') or utilities.get_env('CLOUDFLARE_EMAIL')
 """
 A registered Cloudflare email address.
@@ -48,7 +53,7 @@ RPS limit to apply when making calls to the API
 
 token = __config__.get('token') or utilities.get_env('CLOUDFLARE_TOKEN')
 """
-The token key for API operations.
+The API key for operations.
 """
 
 use_org_from_zone = __config__.get('useOrgFromZone') or utilities.get_env('CLOUDFLARE_ORG_ZONE')

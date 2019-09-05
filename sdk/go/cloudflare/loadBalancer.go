@@ -27,9 +27,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	if args == nil || args.Name == nil {
 		return nil, errors.New("missing required argument 'Name'")
 	}
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["defaultPoolIds"] = nil
@@ -44,6 +41,7 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		inputs["steeringPolicy"] = nil
 		inputs["ttl"] = nil
 		inputs["zone"] = nil
+		inputs["zoneId"] = nil
 	} else {
 		inputs["defaultPoolIds"] = args.DefaultPoolIds
 		inputs["description"] = args.Description
@@ -57,10 +55,10 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		inputs["steeringPolicy"] = args.SteeringPolicy
 		inputs["ttl"] = args.Ttl
 		inputs["zone"] = args.Zone
+		inputs["zoneId"] = args.ZoneId
 	}
 	inputs["createdOn"] = nil
 	inputs["modifiedOn"] = nil
-	inputs["zoneId"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/loadBalancer:LoadBalancer", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -242,4 +240,6 @@ type LoadBalancerArgs struct {
 	Ttl interface{}
 	// The zone to add the load balancer to.
 	Zone interface{}
+	// ID associated with the specified `zone`.
+	ZoneId interface{}
 }

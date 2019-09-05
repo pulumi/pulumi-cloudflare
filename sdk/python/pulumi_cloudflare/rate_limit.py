@@ -71,7 +71,7 @@ class RateLimit(pulumi.CustomResource):
     """
     The DNS zone ID.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
         
@@ -86,6 +86,7 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[float] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
         :param pulumi.Input[float] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
         :param pulumi.Input[str] zone: The DNS zone to apply rate limiting to.
+        :param pulumi.Input[str] zone_id: The DNS zone ID.
         
         The **action** object supports the following:
         
@@ -147,10 +148,8 @@ class RateLimit(pulumi.CustomResource):
             if threshold is None:
                 raise TypeError("Missing required property 'threshold'")
             __props__['threshold'] = threshold
-            if zone is None:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
-            __props__['zone_id'] = None
+            __props__['zone_id'] = zone_id
         super(RateLimit, __self__).__init__(
             'cloudflare:index/rateLimit:RateLimit',
             resource_name,

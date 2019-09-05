@@ -29,6 +29,7 @@ func NewZoneLockdown(ctx *pulumi.Context,
 		inputs["configurations"] = nil
 		inputs["description"] = nil
 		inputs["paused"] = nil
+		inputs["priority"] = nil
 		inputs["urls"] = nil
 		inputs["zone"] = nil
 		inputs["zoneId"] = nil
@@ -36,6 +37,7 @@ func NewZoneLockdown(ctx *pulumi.Context,
 		inputs["configurations"] = args.Configurations
 		inputs["description"] = args.Description
 		inputs["paused"] = args.Paused
+		inputs["priority"] = args.Priority
 		inputs["urls"] = args.Urls
 		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
@@ -56,6 +58,7 @@ func GetZoneLockdown(ctx *pulumi.Context,
 		inputs["configurations"] = state.Configurations
 		inputs["description"] = state.Description
 		inputs["paused"] = state.Paused
+		inputs["priority"] = state.Priority
 		inputs["urls"] = state.Urls
 		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
@@ -92,6 +95,10 @@ func (r *ZoneLockdown) Paused() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["paused"])
 }
 
+func (r *ZoneLockdown) Priority() *pulumi.IntOutput {
+	return (*pulumi.IntOutput)(r.s.State["priority"])
+}
+
 // A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 func (r *ZoneLockdown) Urls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["urls"])
@@ -115,6 +122,7 @@ type ZoneLockdownState struct {
 	Description interface{}
 	// Boolean of whether this zone lockdown is currently paused. Default: false.
 	Paused interface{}
+	Priority interface{}
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls interface{}
 	// The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
@@ -131,6 +139,7 @@ type ZoneLockdownArgs struct {
 	Description interface{}
 	// Boolean of whether this zone lockdown is currently paused. Default: false.
 	Paused interface{}
+	Priority interface{}
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls interface{}
 	// The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.

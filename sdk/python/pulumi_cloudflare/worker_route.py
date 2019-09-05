@@ -27,7 +27,7 @@ class WorkerRoute(pulumi.CustomResource):
     """
     The zone id of the route
     """
-    def __init__(__self__, resource_name, opts=None, enabled=None, pattern=None, script_name=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, enabled=None, pattern=None, script_name=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`.
         
@@ -37,6 +37,7 @@ class WorkerRoute(pulumi.CustomResource):
                * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
                * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         :param pulumi.Input[str] zone: The zone to add the route to.
+        :param pulumi.Input[str] zone_id: The zone id of the route
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
         """
@@ -62,11 +63,9 @@ class WorkerRoute(pulumi.CustomResource):
                 raise TypeError("Missing required property 'pattern'")
             __props__['pattern'] = pattern
             __props__['script_name'] = script_name
-            if zone is None:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
+            __props__['zone_id'] = zone_id
             __props__['multi_script'] = None
-            __props__['zone_id'] = None
         super(WorkerRoute, __self__).__init__(
             'cloudflare:index/workerRoute:WorkerRoute',
             resource_name,

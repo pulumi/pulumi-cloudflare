@@ -24,21 +24,19 @@ func NewWafRule(ctx *pulumi.Context,
 	if args == nil || args.RuleId == nil {
 		return nil, errors.New("missing required argument 'RuleId'")
 	}
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["mode"] = nil
 		inputs["ruleId"] = nil
 		inputs["zone"] = nil
+		inputs["zoneId"] = nil
 	} else {
 		inputs["mode"] = args.Mode
 		inputs["ruleId"] = args.RuleId
 		inputs["zone"] = args.Zone
+		inputs["zoneId"] = args.ZoneId
 	}
 	inputs["packageId"] = nil
-	inputs["zoneId"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/wafRule:WafRule", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -122,4 +120,6 @@ type WafRuleArgs struct {
 	RuleId interface{}
 	// The DNS zone to apply to.
 	Zone interface{}
+	// The DNS zone ID.
+	ZoneId interface{}
 }

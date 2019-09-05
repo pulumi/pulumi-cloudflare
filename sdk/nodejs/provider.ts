@@ -41,6 +41,7 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         {
             inputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) || (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
+            inputs["apiToken"] = args ? args.apiToken : undefined;
             inputs["email"] = (args ? args.email : undefined) || utilities.getEnv("CLOUDFLARE_EMAIL");
             inputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) || (utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
             inputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) || (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
@@ -70,6 +71,10 @@ export interface ProviderArgs {
      */
     readonly apiClientLogging?: pulumi.Input<boolean>;
     /**
+     * The API Token for operations.
+     */
+    readonly apiToken?: pulumi.Input<string>;
+    /**
      * A registered Cloudflare email address.
      */
     readonly email?: pulumi.Input<string>;
@@ -94,7 +99,7 @@ export interface ProviderArgs {
      */
     readonly rps?: pulumi.Input<number>;
     /**
-     * The token key for API operations.
+     * The API key for operations.
      */
     readonly token?: pulumi.Input<string>;
     /**

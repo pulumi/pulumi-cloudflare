@@ -81,7 +81,7 @@ export class WorkerScript extends pulumi.CustomResource {
     /**
      * The zone for the script.
      */
-    public readonly zone!: pulumi.Output<string | undefined>;
+    public readonly zone!: pulumi.Output<string>;
     /**
      * The zone id of the script (only for non-multi-script resources)
      */

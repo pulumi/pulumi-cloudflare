@@ -76,7 +76,7 @@ class LoadBalancer(pulumi.CustomResource):
     """
     ID associated with the specified `zone`.
     """
-    def __init__(__self__, resource_name, opts=None, default_pool_ids=None, description=None, enabled=None, fallback_pool_id=None, name=None, pop_pools=None, proxied=None, region_pools=None, session_affinity=None, steering_policy=None, ttl=None, zone=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, default_pool_ids=None, description=None, enabled=None, fallback_pool_id=None, name=None, pop_pools=None, proxied=None, region_pools=None, session_affinity=None, steering_policy=None, ttl=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Clouflare account before you can use this resource.
         
@@ -94,6 +94,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
         :param pulumi.Input[float] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         :param pulumi.Input[str] zone: The zone to add the load balancer to.
+        :param pulumi.Input[str] zone_id: ID associated with the specified `zone`.
         
         The **pop_pools** object supports the following:
         
@@ -141,12 +142,10 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['session_affinity'] = session_affinity
             __props__['steering_policy'] = steering_policy
             __props__['ttl'] = ttl
-            if zone is None:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
+            __props__['zone_id'] = zone_id
             __props__['created_on'] = None
             __props__['modified_on'] = None
-            __props__['zone_id'] = None
         super(LoadBalancer, __self__).__init__(
             'cloudflare:index/loadBalancer:LoadBalancer',
             resource_name,

@@ -134,7 +134,7 @@ export class RateLimit extends pulumi.CustomResource {
     /**
      * The DNS zone ID.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a RateLimit resource with the given unique name, arguments, and options.
@@ -169,9 +169,6 @@ export class RateLimit extends pulumi.CustomResource {
             if (!args || args.threshold === undefined) {
                 throw new Error("Missing required property 'threshold'");
             }
-            if (!args || args.zone === undefined) {
-                throw new Error("Missing required property 'zone'");
-            }
             inputs["action"] = args ? args.action : undefined;
             inputs["bypassUrlPatterns"] = args ? args.bypassUrlPatterns : undefined;
             inputs["correlate"] = args ? args.correlate : undefined;
@@ -181,7 +178,7 @@ export class RateLimit extends pulumi.CustomResource {
             inputs["period"] = args ? args.period : undefined;
             inputs["threshold"] = args ? args.threshold : undefined;
             inputs["zone"] = args ? args.zone : undefined;
-            inputs["zoneId"] = undefined /*out*/;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
             opts = {}
@@ -279,5 +276,9 @@ export interface RateLimitArgs {
     /**
      * The DNS zone to apply rate limiting to.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
+    /**
+     * The DNS zone ID.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }
