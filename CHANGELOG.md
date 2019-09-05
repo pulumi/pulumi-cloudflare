@@ -2,9 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to Pulumi v1.0.0
+_(none)_
 
 ---
+
+## 0.17.13 (2019-09-05)
+* Upgrade to Pulumi v1.0.0
+* Add missing support for `cloudflare.CustomSsl`
 
 ## 0.17.12 (2019-08-29)
 * Upgrade pulumi-terraform to 3f206601e7
