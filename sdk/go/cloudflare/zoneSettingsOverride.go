@@ -18,16 +18,16 @@ type ZoneSettingsOverride struct {
 // NewZoneSettingsOverride registers a new resource with the given unique name, arguments, and options.
 func NewZoneSettingsOverride(ctx *pulumi.Context,
 	name string, args *ZoneSettingsOverrideArgs, opts ...pulumi.ResourceOpt) (*ZoneSettingsOverride, error) {
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["name"] = nil
 		inputs["settings"] = nil
+		inputs["zoneId"] = nil
 	} else {
-		inputs["name"] = args.Name
 		inputs["settings"] = args.Settings
+		inputs["zoneId"] = args.ZoneId
 	}
 	inputs["initialSettings"] = nil
 	inputs["initialSettingsReadAt"] = nil
@@ -49,9 +49,9 @@ func GetZoneSettingsOverride(ctx *pulumi.Context,
 	if state != nil {
 		inputs["initialSettings"] = state.InitialSettings
 		inputs["initialSettingsReadAt"] = state.InitialSettingsReadAt
-		inputs["name"] = state.Name
 		inputs["readonlySettings"] = state.ReadonlySettings
 		inputs["settings"] = state.Settings
+		inputs["zoneId"] = state.ZoneId
 		inputs["zoneStatus"] = state.ZoneStatus
 		inputs["zoneType"] = state.ZoneType
 	}
@@ -81,11 +81,6 @@ func (r *ZoneSettingsOverride) InitialSettingsReadAt() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["initialSettingsReadAt"])
 }
 
-// The DNS zone to which apply settings.
-func (r *ZoneSettingsOverride) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
-}
-
 // Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
 // * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
 // * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
@@ -96,6 +91,11 @@ func (r *ZoneSettingsOverride) ReadonlySettings() *pulumi.ArrayOutput {
 // Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 func (r *ZoneSettingsOverride) Settings() *pulumi.Output {
 	return r.s.State["settings"]
+}
+
+// The DNS zone ID to which apply settings.
+func (r *ZoneSettingsOverride) ZoneId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 func (r *ZoneSettingsOverride) ZoneStatus() *pulumi.StringOutput {
@@ -111,22 +111,22 @@ type ZoneSettingsOverrideState struct {
 	// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
 	InitialSettings interface{}
 	InitialSettingsReadAt interface{}
-	// The DNS zone to which apply settings.
-	Name interface{}
 	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
 	// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
 	// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
 	ReadonlySettings interface{}
 	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 	Settings interface{}
+	// The DNS zone ID to which apply settings.
+	ZoneId interface{}
 	ZoneStatus interface{}
 	ZoneType interface{}
 }
 
 // The set of arguments for constructing a ZoneSettingsOverride resource.
 type ZoneSettingsOverrideArgs struct {
-	// The DNS zone to which apply settings.
-	Name interface{}
 	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 	Settings interface{}
+	// The DNS zone ID to which apply settings.
+	ZoneId interface{}
 }

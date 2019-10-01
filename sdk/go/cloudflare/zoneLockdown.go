@@ -24,6 +24,9 @@ func NewZoneLockdown(ctx *pulumi.Context,
 	if args == nil || args.Urls == nil {
 		return nil, errors.New("missing required argument 'Urls'")
 	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["configurations"] = nil
@@ -31,7 +34,6 @@ func NewZoneLockdown(ctx *pulumi.Context,
 		inputs["paused"] = nil
 		inputs["priority"] = nil
 		inputs["urls"] = nil
-		inputs["zone"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["configurations"] = args.Configurations
@@ -39,7 +41,6 @@ func NewZoneLockdown(ctx *pulumi.Context,
 		inputs["paused"] = args.Paused
 		inputs["priority"] = args.Priority
 		inputs["urls"] = args.Urls
-		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/zoneLockdown:ZoneLockdown", name, true, inputs, opts...)
@@ -60,7 +61,6 @@ func GetZoneLockdown(ctx *pulumi.Context,
 		inputs["paused"] = state.Paused
 		inputs["priority"] = state.Priority
 		inputs["urls"] = state.Urls
-		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/zoneLockdown:ZoneLockdown", name, id, inputs, opts...)
@@ -104,12 +104,7 @@ func (r *ZoneLockdown) Urls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["urls"])
 }
 
-// The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
-func (r *ZoneLockdown) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
-// The DNS zone to which the access rule should be added.
+// The DNS zone ID to which the access rule should be added.
 func (r *ZoneLockdown) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -125,9 +120,7 @@ type ZoneLockdownState struct {
 	Priority interface{}
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls interface{}
-	// The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
-	Zone interface{}
-	// The DNS zone to which the access rule should be added.
+	// The DNS zone ID to which the access rule should be added.
 	ZoneId interface{}
 }
 
@@ -142,8 +135,6 @@ type ZoneLockdownArgs struct {
 	Priority interface{}
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls interface{}
-	// The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
-	Zone interface{}
-	// The DNS zone to which the access rule should be added.
+	// The DNS zone ID to which the access rule should be added.
 	ZoneId interface{}
 }

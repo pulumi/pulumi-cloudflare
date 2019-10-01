@@ -27,15 +27,11 @@ class FirewallRule(pulumi.CustomResource):
     """
     The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
     """
-    zone: pulumi.Output[str]
-    """
-    The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
-    """
     zone_id: pulumi.Output[str]
     """
     The DNS zone to which the Filter should be added.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, description=None, filter_id=None, paused=None, priority=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, action=None, description=None, filter_id=None, paused=None, priority=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.
         A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
@@ -48,7 +44,6 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the rule to help identify it.
         :param pulumi.Input[bool] paused: Whether this filter based firewall rule is currently paused. Boolean value.
         :param pulumi.Input[float] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
-        :param pulumi.Input[str] zone: The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.html.markdown.
@@ -79,7 +74,8 @@ class FirewallRule(pulumi.CustomResource):
             __props__['filter_id'] = filter_id
             __props__['paused'] = paused
             __props__['priority'] = priority
-            __props__['zone'] = zone
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(FirewallRule, __self__).__init__(
             'cloudflare:index/firewallRule:FirewallRule',
@@ -88,7 +84,7 @@ class FirewallRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, description=None, filter_id=None, paused=None, priority=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, action=None, description=None, filter_id=None, paused=None, priority=None, zone_id=None):
         """
         Get an existing FirewallRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -100,7 +96,6 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description of the rule to help identify it.
         :param pulumi.Input[bool] paused: Whether this filter based firewall rule is currently paused. Boolean value.
         :param pulumi.Input[float] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
-        :param pulumi.Input[str] zone: The DNS zone to which the Firewall Rule should be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.html.markdown.
@@ -113,7 +108,6 @@ class FirewallRule(pulumi.CustomResource):
         __props__["filter_id"] = filter_id
         __props__["paused"] = paused
         __props__["priority"] = priority
-        __props__["zone"] = zone
         __props__["zone_id"] = zone_id
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

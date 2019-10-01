@@ -68,15 +68,11 @@ class LoadBalancer(pulumi.CustomResource):
     """
     Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
     """
-    zone: pulumi.Output[str]
-    """
-    The zone to add the load balancer to.
-    """
     zone_id: pulumi.Output[str]
     """
-    ID associated with the specified `zone`.
+    The zone ID to add the load balancer to.
     """
-    def __init__(__self__, resource_name, opts=None, default_pool_ids=None, description=None, enabled=None, fallback_pool_id=None, name=None, pop_pools=None, proxied=None, region_pools=None, session_affinity=None, steering_policy=None, ttl=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, default_pool_ids=None, description=None, enabled=None, fallback_pool_id=None, name=None, pop_pools=None, proxied=None, region_pools=None, session_affinity=None, steering_policy=None, ttl=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Clouflare account before you can use this resource.
         
@@ -93,8 +89,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
         :param pulumi.Input[float] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
-        :param pulumi.Input[str] zone: The zone to add the load balancer to.
-        :param pulumi.Input[str] zone_id: ID associated with the specified `zone`.
+        :param pulumi.Input[str] zone_id: The zone ID to add the load balancer to.
         
         The **pop_pools** object supports the following:
         
@@ -142,7 +137,8 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['session_affinity'] = session_affinity
             __props__['steering_policy'] = steering_policy
             __props__['ttl'] = ttl
-            __props__['zone'] = zone
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['created_on'] = None
             __props__['modified_on'] = None
@@ -153,7 +149,7 @@ class LoadBalancer(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_on=None, default_pool_ids=None, description=None, enabled=None, fallback_pool_id=None, modified_on=None, name=None, pop_pools=None, proxied=None, region_pools=None, session_affinity=None, steering_policy=None, ttl=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, created_on=None, default_pool_ids=None, description=None, enabled=None, fallback_pool_id=None, modified_on=None, name=None, pop_pools=None, proxied=None, region_pools=None, session_affinity=None, steering_policy=None, ttl=None, zone_id=None):
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -174,8 +170,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] session_affinity: Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
         :param pulumi.Input[float] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
-        :param pulumi.Input[str] zone: The zone to add the load balancer to.
-        :param pulumi.Input[str] zone_id: ID associated with the specified `zone`.
+        :param pulumi.Input[str] zone_id: The zone ID to add the load balancer to.
         
         The **pop_pools** object supports the following:
         
@@ -205,7 +200,6 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["session_affinity"] = session_affinity
         __props__["steering_policy"] = steering_policy
         __props__["ttl"] = ttl
-        __props__["zone"] = zone
         __props__["zone_id"] = zone_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

@@ -8,42 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Clouflare account before you can use this resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * const foo = new cloudflare.LoadBalancerPool("foo", {
- *     name: "example-lb-pool",
- *     origins: [{
- *         address: "192.0.2.1",
- *         enabled: false,
- *         name: "example-1",
- *     }],
- * });
- * // Define a load balancer which always points to a pool we define below
- * // In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions
- * // Within each pop or region we can define multiple pools in failover order
- * const bar = new cloudflare.LoadBalancer("bar", {
- *     defaultPoolIds: [foo.id],
- *     description: "example load balancer using geo-balancing",
- *     fallbackPoolId: foo.id,
- *     name: "example-load-balancer",
- *     popPools: [{
- *         poolIds: [foo.id],
- *         pop: "LAX",
- *     }],
- *     proxied: true,
- *     regionPools: [{
- *         poolIds: [foo.id],
- *         region: "WNAM",
- *     }],
- *     steeringPolicy: "geo",
- *     zone: "example.com",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer.html.markdown.
  */
@@ -127,11 +91,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly ttl!: pulumi.Output<number>;
     /**
-     * The zone to add the load balancer to.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
-     * ID associated with the specified `zone`.
+     * The zone ID to add the load balancer to.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -160,7 +120,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
             inputs["steeringPolicy"] = state ? state.steeringPolicy : undefined;
             inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
@@ -173,6 +132,9 @@ export class LoadBalancer extends pulumi.CustomResource {
             if (!args || args.name === undefined) {
                 throw new Error("Missing required property 'name'");
             }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
@@ -184,7 +146,6 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             inputs["steeringPolicy"] = args ? args.steeringPolicy : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
@@ -257,11 +218,7 @@ export interface LoadBalancerState {
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * The zone to add the load balancer to.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * ID associated with the specified `zone`.
+     * The zone ID to add the load balancer to.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -315,11 +272,7 @@ export interface LoadBalancerArgs {
      */
     readonly ttl?: pulumi.Input<number>;
     /**
-     * The zone to add the load balancer to.
+     * The zone ID to add the load balancer to.
      */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * ID associated with the specified `zone`.
-     */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }

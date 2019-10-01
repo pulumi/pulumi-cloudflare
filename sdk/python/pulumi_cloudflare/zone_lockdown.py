@@ -30,15 +30,11 @@ class ZoneLockdown(pulumi.CustomResource):
     """
     A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
     """
-    zone: pulumi.Output[str]
-    """
-    The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
-    """
     zone_id: pulumi.Output[str]
     """
-    The DNS zone to which the access rule should be added.
+    The DNS zone ID to which the access rule should be added.
     """
-    def __init__(__self__, resource_name, opts=None, configurations=None, description=None, paused=None, priority=None, urls=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, configurations=None, description=None, paused=None, priority=None, urls=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
         
@@ -48,8 +44,7 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
         :param pulumi.Input[list] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[str] zone: The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
         
         The **configurations** object supports the following:
         
@@ -84,7 +79,8 @@ class ZoneLockdown(pulumi.CustomResource):
             if urls is None:
                 raise TypeError("Missing required property 'urls'")
             __props__['urls'] = urls
-            __props__['zone'] = zone
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(ZoneLockdown, __self__).__init__(
             'cloudflare:index/zoneLockdown:ZoneLockdown',
@@ -93,7 +89,7 @@ class ZoneLockdown(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, configurations=None, description=None, paused=None, priority=None, urls=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, configurations=None, description=None, paused=None, priority=None, urls=None, zone_id=None):
         """
         Get an existing ZoneLockdown resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -105,8 +101,7 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
         :param pulumi.Input[list] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-        :param pulumi.Input[str] zone: The DNS zone to which the lockdown will be added. Will be resolved to `zone_id` upon creation.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
         
         The **configurations** object supports the following:
         
@@ -123,7 +118,6 @@ class ZoneLockdown(pulumi.CustomResource):
         __props__["paused"] = paused
         __props__["priority"] = priority
         __props__["urls"] = urls
-        __props__["zone"] = zone
         __props__["zone_id"] = zone_id
         return ZoneLockdown(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

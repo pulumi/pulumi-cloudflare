@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * const _100000 = new cloudflare.WafRule("100000", {
  *     mode: "simulate",
  *     ruleId: "100000",
- *     zone: "domain.com",
+ *     zoneId: "ae36f999674d196762efcc5abb06b345",
  * });
  * ```
  *
@@ -64,11 +64,7 @@ export class WafRule extends pulumi.CustomResource {
      */
     public readonly ruleId!: pulumi.Output<string>;
     /**
-     * The DNS zone to apply to.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
-     * The DNS zone ID.
+     * The DNS zone ID to apply to.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -87,7 +83,6 @@ export class WafRule extends pulumi.CustomResource {
             inputs["mode"] = state ? state.mode : undefined;
             inputs["packageId"] = state ? state.packageId : undefined;
             inputs["ruleId"] = state ? state.ruleId : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafRuleArgs | undefined;
@@ -97,9 +92,11 @@ export class WafRule extends pulumi.CustomResource {
             if (!args || args.ruleId === undefined) {
                 throw new Error("Missing required property 'ruleId'");
             }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["mode"] = args ? args.mode : undefined;
             inputs["ruleId"] = args ? args.ruleId : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["packageId"] = undefined /*out*/;
         }
@@ -131,11 +128,7 @@ export interface WafRuleState {
      */
     readonly ruleId?: pulumi.Input<string>;
     /**
-     * The DNS zone to apply to.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The DNS zone ID.
+     * The DNS zone ID to apply to.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -153,11 +146,7 @@ export interface WafRuleArgs {
      */
     readonly ruleId: pulumi.Input<string>;
     /**
-     * The DNS zone to apply to.
+     * The DNS zone ID to apply to.
      */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The DNS zone ID.
-     */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }

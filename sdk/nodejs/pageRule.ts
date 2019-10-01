@@ -8,29 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare page rule resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * // Add a page rule to the domain
- * const foobar = new cloudflare.PageRule("foobar", {
- *     actions: {
- *         emailObfuscation: "on",
- *         minifies: [{
- *             css: "on",
- *             html: "off",
- *             js: "on",
- *         }],
- *         ssl: "flexible",
- *     },
- *     priority: 1,
- *     target: `sub.${var_cloudflare_zone}/page`,
- *     zone: var_cloudflare_zone,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
  */
@@ -78,11 +55,7 @@ export class PageRule extends pulumi.CustomResource {
      */
     public readonly target!: pulumi.Output<string>;
     /**
-     * The DNS zone to which the page rule should be added.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
-     * The ID of the zone in which the page rule will be applied.
+     * The DNS zone ID to which the page rule should be added.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -102,7 +75,6 @@ export class PageRule extends pulumi.CustomResource {
             inputs["priority"] = state ? state.priority : undefined;
             inputs["status"] = state ? state.status : undefined;
             inputs["target"] = state ? state.target : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as PageRuleArgs | undefined;
@@ -112,11 +84,13 @@ export class PageRule extends pulumi.CustomResource {
             if (!args || args.target === undefined) {
                 throw new Error("Missing required property 'target'");
             }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["actions"] = args ? args.actions : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["target"] = args ? args.target : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
@@ -151,11 +125,7 @@ export interface PageRuleState {
      */
     readonly target?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the page rule should be added.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The ID of the zone in which the page rule will be applied.
+     * The DNS zone ID to which the page rule should be added.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -181,11 +151,7 @@ export interface PageRuleArgs {
      */
     readonly target: pulumi.Input<string>;
     /**
-     * The DNS zone to which the page rule should be added.
+     * The DNS zone ID to which the page rule should be added.
      */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The ID of the zone in which the page rule will be applied.
-     */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }

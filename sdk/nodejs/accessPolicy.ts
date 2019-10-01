@@ -11,29 +11,6 @@ import * as utilities from "./utilities";
  * in conjunction with Access Applications to restrict access to a
  * particular resource.
  * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * // Allowing `test@example.com` to access but only when coming from a
- * // specific IP.
- * const testPolicy = new cloudflare.AccessPolicy("testPolicy", {
- *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
- *     decision: "allow",
- *     includes: [{
- *         emails: ["test@example.com"],
- *     }],
- *     name: "staging policy",
- *     precedence: 1,
- *     requires: [{
- *         ips: [varOfficeIp],
- *     }],
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- * });
- * ```
- * 
  * ## Conditions
  * 
  * `require`, `exclude` and `include` arguments share the available

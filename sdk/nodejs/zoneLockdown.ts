@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     description: "Restrict access to these endpoints to requests from a known IP address",
  *     paused: false,
  *     urls: ["api.mysite.com/some/endpoint*"],
- *     zone: "api.mysite.com",
+ *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
  * ```
  *
@@ -75,11 +75,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
      */
     public readonly urls!: pulumi.Output<string[]>;
     /**
-     * The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
-     * The DNS zone to which the access rule should be added.
+     * The DNS zone ID to which the access rule should be added.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -100,7 +96,6 @@ export class ZoneLockdown extends pulumi.CustomResource {
             inputs["paused"] = state ? state.paused : undefined;
             inputs["priority"] = state ? state.priority : undefined;
             inputs["urls"] = state ? state.urls : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneLockdownArgs | undefined;
@@ -110,12 +105,14 @@ export class ZoneLockdown extends pulumi.CustomResource {
             if (!args || args.urls === undefined) {
                 throw new Error("Missing required property 'urls'");
             }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["configurations"] = args ? args.configurations : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["paused"] = args ? args.paused : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["urls"] = args ? args.urls : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
@@ -151,11 +148,7 @@ export interface ZoneLockdownState {
      */
     readonly urls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The DNS zone to which the access rule should be added.
+     * The DNS zone ID to which the access rule should be added.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -182,11 +175,7 @@ export interface ZoneLockdownArgs {
      */
     readonly urls: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The DNS zone to which the lockdown will be added. Will be resolved to `zoneId` upon creation.
+     * The DNS zone ID to which the access rule should be added.
      */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The DNS zone to which the access rule should be added.
-     */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }

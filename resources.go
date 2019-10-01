@@ -77,9 +77,9 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"CLOUDFLARE_EMAIL"},
 				},
 			},
-			"token": {
+			"api_key": {
 				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CLOUDFLARE_TOKEN"},
+					EnvVars: []string{"CLOUDFLARE_API_TOKEN"},
 				},
 			},
 			"rps": {
@@ -112,14 +112,9 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"CLOUDFLARE_API_CLIENT_LOGGING"},
 				},
 			},
-			"use_org_from_zone": {
+			"account_id": {
 				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CLOUDFLARE_ORG_ZONE"},
-				},
-			},
-			"org_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CLOUDFLARE_ORG_ID"},
+					EnvVars: []string{"CLOUDFLARE_ACCOUNT_ID"},
 				},
 			},
 		},

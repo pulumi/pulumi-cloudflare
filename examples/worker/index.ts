@@ -3,15 +3,14 @@ import * as cloudflare from "@pulumi/cloudflare";
 import * as fs from "fs";
 
 const config = new pulumi.Config();
-const zone =  config.require("zone");
+const zone =  config.require("zone_id");
 
 new cloudflare.WorkerScript("test", {
-    zone,
     content: fs.readFileSync("worker.js", { encoding: 'utf-8' })
 });
 
 new cloudflare.WorkerRoute("test", {
-    zone,
+    zone_id: zone,
     enabled: true,
     pattern: `${zone}/helloworld`,
 });

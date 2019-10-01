@@ -27,6 +27,9 @@ func NewFirewallRule(ctx *pulumi.Context,
 	if args == nil || args.FilterId == nil {
 		return nil, errors.New("missing required argument 'FilterId'")
 	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["action"] = nil
@@ -34,7 +37,6 @@ func NewFirewallRule(ctx *pulumi.Context,
 		inputs["filterId"] = nil
 		inputs["paused"] = nil
 		inputs["priority"] = nil
-		inputs["zone"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["action"] = args.Action
@@ -42,7 +44,6 @@ func NewFirewallRule(ctx *pulumi.Context,
 		inputs["filterId"] = args.FilterId
 		inputs["paused"] = args.Paused
 		inputs["priority"] = args.Priority
-		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/firewallRule:FirewallRule", name, true, inputs, opts...)
@@ -63,7 +64,6 @@ func GetFirewallRule(ctx *pulumi.Context,
 		inputs["filterId"] = state.FilterId
 		inputs["paused"] = state.Paused
 		inputs["priority"] = state.Priority
-		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/firewallRule:FirewallRule", name, id, inputs, opts...)
@@ -107,11 +107,6 @@ func (r *FirewallRule) Priority() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["priority"])
 }
 
-// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
-func (r *FirewallRule) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
 // The DNS zone to which the Filter should be added.
 func (r *FirewallRule) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
@@ -128,8 +123,6 @@ type FirewallRuleState struct {
 	Paused interface{}
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
 	Priority interface{}
-	// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
-	Zone interface{}
 	// The DNS zone to which the Filter should be added.
 	ZoneId interface{}
 }
@@ -145,8 +138,6 @@ type FirewallRuleArgs struct {
 	Paused interface{}
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
 	Priority interface{}
-	// The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
-	Zone interface{}
 	// The DNS zone to which the Filter should be added.
 	ZoneId interface{}
 }

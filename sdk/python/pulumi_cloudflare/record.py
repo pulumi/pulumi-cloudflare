@@ -56,17 +56,13 @@ class Record(pulumi.CustomResource):
       * `usage` (`float`)
       * `weight` (`float`)
     """
-    domain: pulumi.Output[str]
-    """
-    The DNS zone to add the record to
-    """
     hostname: pulumi.Output[str]
     """
     The FQDN of the record
     """
     metadata: pulumi.Output[dict]
     """
-    A key-value map of string metadata cloudflare associates with the record
+    A key-value map of string metadata Cloudflare associates with the record
     """
     modified_on: pulumi.Output[str]
     """
@@ -102,22 +98,22 @@ class Record(pulumi.CustomResource):
     """
     zone_id: pulumi.Output[str]
     """
-    The zone id of the record
+    The DNS zone ID to add the record to
     """
-    def __init__(__self__, resource_name, opts=None, data=None, domain=None, name=None, priority=None, proxied=None, ttl=None, type=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, data=None, name=None, priority=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare record resource.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-        :param pulumi.Input[str] domain: The DNS zone to add the record to
         :param pulumi.Input[str] name: The name of the record
         :param pulumi.Input[float] priority: The priority of the record
         :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection; defaults to `false`.
         :param pulumi.Input[float] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
+        :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
         
         The **data** object supports the following:
         
@@ -179,9 +175,6 @@ class Record(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['data'] = data
-            if domain is None:
-                raise TypeError("Missing required property 'domain'")
-            __props__['domain'] = domain
             if name is None:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
@@ -192,12 +185,14 @@ class Record(pulumi.CustomResource):
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['value'] = value
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
+            __props__['zone_id'] = zone_id
             __props__['created_on'] = None
             __props__['hostname'] = None
             __props__['metadata'] = None
             __props__['modified_on'] = None
             __props__['proxiable'] = None
-            __props__['zone_id'] = None
         super(Record, __self__).__init__(
             'cloudflare:index/record:Record',
             resource_name,
@@ -205,7 +200,7 @@ class Record(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_on=None, data=None, domain=None, hostname=None, metadata=None, modified_on=None, name=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None):
+    def get(resource_name, id, opts=None, created_on=None, data=None, hostname=None, metadata=None, modified_on=None, name=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None):
         """
         Get an existing Record resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -215,9 +210,8 @@ class Record(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created
         :param pulumi.Input[dict] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-        :param pulumi.Input[str] domain: The DNS zone to add the record to
         :param pulumi.Input[str] hostname: The FQDN of the record
-        :param pulumi.Input[dict] metadata: A key-value map of string metadata cloudflare associates with the record
+        :param pulumi.Input[dict] metadata: A key-value map of string metadata Cloudflare associates with the record
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified
         :param pulumi.Input[str] name: The name of the record
         :param pulumi.Input[float] priority: The priority of the record
@@ -226,7 +220,7 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[float] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
-        :param pulumi.Input[str] zone_id: The zone id of the record
+        :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
         
         The **data** object supports the following:
         
@@ -275,7 +269,6 @@ class Record(pulumi.CustomResource):
         __props__ = dict()
         __props__["created_on"] = created_on
         __props__["data"] = data
-        __props__["domain"] = domain
         __props__["hostname"] = hostname
         __props__["metadata"] = metadata
         __props__["modified_on"] = modified_on

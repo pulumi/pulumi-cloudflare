@@ -11,25 +11,6 @@ import * as utilities from "./utilities";
  * A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
  * 
  * Filter expressions needs to be created first before using Firewall Rule. See Filter.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * const wordpressFilter = new cloudflare.Filter("wordpress", {
- *     description: "Wordpress break-in attempts that are outside of the office",
- *     expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- * });
- * const wordpressFirewallRule = new cloudflare.FirewallRule("wordpress", {
- *     action: "block",
- *     description: "Block wordpress break-in attempts",
- *     filterId: wordpressFilter.id,
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.html.markdown.
  */
@@ -78,10 +59,6 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     public readonly priority!: pulumi.Output<number | undefined>;
     /**
-     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
      * The DNS zone to which the Filter should be added.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -103,7 +80,6 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["filterId"] = state ? state.filterId : undefined;
             inputs["paused"] = state ? state.paused : undefined;
             inputs["priority"] = state ? state.priority : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
@@ -113,12 +89,14 @@ export class FirewallRule extends pulumi.CustomResource {
             if (!args || args.filterId === undefined) {
                 throw new Error("Missing required property 'filterId'");
             }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["action"] = args ? args.action : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["filterId"] = args ? args.filterId : undefined;
             inputs["paused"] = args ? args.paused : undefined;
             inputs["priority"] = args ? args.priority : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
@@ -154,10 +132,6 @@ export interface FirewallRuleState {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
      * The DNS zone to which the Filter should be added.
      */
     readonly zoneId?: pulumi.Input<string>;
@@ -185,11 +159,7 @@ export interface FirewallRuleArgs {
      */
     readonly priority?: pulumi.Input<number>;
     /**
-     * The DNS zone to which the Firewall Rule should be added. Will be resolved to `zoneId` upon creation.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
      * The DNS zone to which the Filter should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }

@@ -7,9 +7,17 @@ import * as utilities from "../utilities";
 let __config = new pulumi.Config("cloudflare");
 
 /**
+ * Configure API client to always use that account.
+ */
+export let accountId: string | undefined = __config.get("accountId") || utilities.getEnv("CLOUDFLARE_ACCOUNT_ID");
+/**
  * Whether to print logs from the API client (using the default log library logger)
  */
 export let apiClientLogging: boolean | undefined = __config.getObject<boolean>("apiClientLogging") || (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
+/**
+ * The API key for operations.
+ */
+export let apiKey: string | undefined = __config.get("apiKey") || utilities.getEnv("CLOUDFLARE_API_TOKEN");
 /**
  * The API Token for operations.
  */
@@ -27,10 +35,6 @@ export let maxBackoff: number | undefined = __config.getObject<number>("maxBacko
  */
 export let minBackoff: number | undefined = __config.getObject<number>("minBackoff") || (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1);
 /**
- * Configure API client to always use that organization. If set this will override 'user_owner_from_zone'
- */
-export let orgId: string | undefined = __config.get("orgId") || utilities.getEnv("CLOUDFLARE_ORG_ID");
-/**
  * Maximum number of retries to perform when an API request fails
  */
 export let retries: number | undefined = __config.getObject<number>("retries") || (utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3);
@@ -38,11 +42,3 @@ export let retries: number | undefined = __config.getObject<number>("retries") |
  * RPS limit to apply when making calls to the API
  */
 export let rps: number | undefined = __config.getObject<number>("rps") || (utilities.getEnvNumber("CLOUDFLARE_RPS") || 4);
-/**
- * The API key for operations.
- */
-export let token: string | undefined = __config.get("token") || utilities.getEnv("CLOUDFLARE_TOKEN");
-/**
- * If specified zone is owned by an organization, configure API client to always use that organization
- */
-export let useOrgFromZone: string | undefined = __config.get("useOrgFromZone") || utilities.getEnv("CLOUDFLARE_ORG_ZONE");

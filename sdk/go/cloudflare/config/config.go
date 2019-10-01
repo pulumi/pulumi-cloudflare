@@ -8,6 +8,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
 )
 
+// Configure API client to always use that account.
+func GetAccountId(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "cloudflare:accountId")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_ACCOUNT_ID").(string); ok {
+		return dv
+	}
+	return v
+}
+
 // Whether to print logs from the API client (using the default log library logger)
 func GetApiClientLogging(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "cloudflare:apiClientLogging")
@@ -15,6 +27,18 @@ func GetApiClientLogging(ctx *pulumi.Context) bool {
 		return v
 	}
 	if dv, ok := getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING").(bool); ok {
+		return dv
+	}
+	return v
+}
+
+// The API key for operations.
+func GetApiKey(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "cloudflare:apiKey")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_API_TOKEN").(string); ok {
 		return dv
 	}
 	return v
@@ -61,18 +85,6 @@ func GetMinBackoff(ctx *pulumi.Context) int {
 	return v
 }
 
-// Configure API client to always use that organization. If set this will override 'user_owner_from_zone'
-func GetOrgId(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "cloudflare:orgId")
-	if err == nil {
-		return v
-	}
-	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_ORG_ID").(string); ok {
-		return dv
-	}
-	return v
-}
-
 // Maximum number of retries to perform when an API request fails
 func GetRetries(ctx *pulumi.Context) int {
 	v, err := config.TryInt(ctx, "cloudflare:retries")
@@ -92,30 +104,6 @@ func GetRps(ctx *pulumi.Context) int {
 		return v
 	}
 	if dv, ok := getEnvOrDefault(4, parseEnvInt, "CLOUDFLARE_RPS").(int); ok {
-		return dv
-	}
-	return v
-}
-
-// The API key for operations.
-func GetToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "cloudflare:token")
-	if err == nil {
-		return v
-	}
-	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_TOKEN").(string); ok {
-		return dv
-	}
-	return v
-}
-
-// If specified zone is owned by an organization, configure API client to always use that organization
-func GetUseOrgFromZone(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "cloudflare:useOrgFromZone")
-	if err == nil {
-		return v
-	}
-	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_ORG_ZONE").(string); ok {
 		return dv
 	}
 	return v

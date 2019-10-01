@@ -11,36 +11,18 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * __NOTE:__ This is for non-enterprise accounts where there is one script per zone. The `enabled` flag determines whether to run the worker script for a request that matches the specified `pattern`. For enterprise accounts, see the "multi-script" example below.
- * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const myScript = new cloudflare.WorkerScript("myScript", {});
- * // Enables the zone's worker script for all URLs that match `example.com/*`
- * const myRoute = new cloudflare.WorkerRoute("myRoute", {
- *     enabled: true,
- *     pattern: "example.com/*",
- *     zone: "example.com",
- * }, {dependsOn: [myScript]});
- * ```
- * 
- * ## Multi-script example usage
- * 
- * __NOTE:__ This is only for enterprise accounts. With multi-script, each route points to a particular script instead of setting an `enabled` flag
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * const myScript = new cloudflare.WorkerScript("myScript", {});
  * // Runs the specified worker script for all URLs that match `example.com/*`
  * const myRoute = new cloudflare.WorkerRoute("myRoute", {
+ *     "cloudflare_worker_script.my_script.name": [{}],
  *     pattern: "example.com/*",
- *     scriptName: myScript.name,
- *     zone: "example.com",
+ *     scriptName: "",
+ *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
+ * const myScript = new cloudflare.WorkerScript("myScript", {});
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
@@ -72,21 +54,14 @@ export class WorkerRoute extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkerRoute.__pulumiType;
     }
 
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
-    public /*out*/ readonly multiScript!: pulumi.Output<boolean>;
     /**
-     * The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
-     * * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-     * * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+     * * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     public readonly pattern!: pulumi.Output<string>;
     public readonly scriptName!: pulumi.Output<string | undefined>;
     /**
-     * The zone to add the route to.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
-     * The zone id of the route
+     * The zone ID to add the route to.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -102,23 +77,20 @@ export class WorkerRoute extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as WorkerRouteState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["multiScript"] = state ? state.multiScript : undefined;
             inputs["pattern"] = state ? state.pattern : undefined;
             inputs["scriptName"] = state ? state.scriptName : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WorkerRouteArgs | undefined;
             if (!args || args.pattern === undefined) {
                 throw new Error("Missing required property 'pattern'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["pattern"] = args ? args.pattern : undefined;
             inputs["scriptName"] = args ? args.scriptName : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["multiScript"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -135,21 +107,14 @@ export class WorkerRoute extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkerRoute resources.
  */
 export interface WorkerRouteState {
-    readonly enabled?: pulumi.Input<boolean>;
-    readonly multiScript?: pulumi.Input<boolean>;
     /**
-     * The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
-     * * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-     * * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+     * * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     readonly pattern?: pulumi.Input<string>;
     readonly scriptName?: pulumi.Input<string>;
     /**
-     * The zone to add the route to.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The zone id of the route
+     * The zone ID to add the route to.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -158,20 +123,14 @@ export interface WorkerRouteState {
  * The set of arguments for constructing a WorkerRoute resource.
  */
 export interface WorkerRouteArgs {
-    readonly enabled?: pulumi.Input<boolean>;
     /**
-     * The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
-     * * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-     * * `scriptName` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+     * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+     * * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     readonly pattern: pulumi.Input<string>;
     readonly scriptName?: pulumi.Input<string>;
     /**
-     * The zone to add the route to.
+     * The zone ID to add the route to.
      */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The zone id of the route
-     */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }
