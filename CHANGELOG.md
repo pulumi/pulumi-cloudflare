@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Regenerate SDK based on tf2pulumi 0.6.0
 
 ---
 

@@ -22,6 +22,15 @@ import * as utilities from "./utilities";
  *     "2001:db8::/56",
  * ];
  * 
+ * // Challenge requests coming from known Tor exit nodes.
+ * const torExitNodes = new cloudflare.AccessRule("torExitNodes", {
+ *     configuration: {
+ *         target: "country",
+ *         value: "T1",
+ *     },
+ *     mode: "challenge",
+ *     notes: "Requests coming from known Tor exit nodes",
+ * });
  * // Whitelist (sic!) requests coming from Antarctica, but only for single zone.
  * const antarctica = new cloudflare.AccessRule("antarctica", {
  *     configuration: {
@@ -31,15 +40,6 @@ import * as utilities from "./utilities";
  *     mode: "whitelist",
  *     notes: "Requests coming from Antarctica",
  *     zone: "example.com",
- * });
- * // Challenge requests coming from known Tor exit nodes.
- * const torExitNodes = new cloudflare.AccessRule("torExitNodes", {
- *     configuration: {
- *         target: "country",
- *         value: "T1",
- *     },
- *     mode: "challenge",
- *     notes: "Requests coming from known Tor exit nodes",
  * });
  * const officeNetwork: cloudflare.AccessRule[] = [];
  * for (let i = 0; i < myOffice.length; i++) {

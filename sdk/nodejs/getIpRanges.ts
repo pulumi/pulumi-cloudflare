@@ -16,14 +16,14 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * import * as gcp from "@pulumi/gcp";
  * 
- * const cloudflare = cloudflare.getIpRanges({});
+ * const cloudflareIpRanges = cloudflare.getIpRanges();
  * const allowCloudflareIngress = new gcp.compute.Firewall("allowCloudflareIngress", {
  *     allows: [{
  *         ports: "443",
  *         protocol: "tcp",
  *     }],
  *     network: "default",
- *     sourceRanges: cloudflare.ipv4CidrBlocks,
+ *     sourceRanges: cloudflareIpRanges.ipv4CidrBlocks,
  * });
  * ```
  *
