@@ -3,11 +3,12 @@ module github.com/pulumi/pulumi-cloudflare
 go 1.12
 
 require (
-	github.com/hashicorp/terraform v0.12.7
+	github.com/hashicorp/terraform v0.12.8
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.0.0
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190905205929-ed0b5c29edd1
-	github.com/terraform-providers/terraform-provider-cloudflare v1.18.1
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190924145130-e75e14d70f0f
+	github.com/terraform-providers/terraform-provider-cloudflare v0.0.0-20190930160515-22687634f730
+	golang.org/x/lint v0.0.0-20190511005446-959b441ac422 // indirect
 )
 
 replace (
