@@ -25,15 +25,11 @@ class AccessRule(pulumi.CustomResource):
     """
     A personal note about the rule. Typically used as a reminder or explanation for the rule.
     """
-    zone: pulumi.Output[str]
-    """
-    The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
-    """
     zone_id: pulumi.Output[str]
     """
     The DNS zone to which the access rule should be added.
     """
-    def __init__(__self__, resource_name, opts=None, configuration=None, mode=None, notes=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, configuration=None, mode=None, notes=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
         
@@ -42,7 +38,6 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[dict] configuration: Rule configuration to apply to a matched request. It's a complex value. See description below.
         :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
-        :param pulumi.Input[str] zone: The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
         
         The **configuration** object supports the following:
@@ -76,7 +71,6 @@ class AccessRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'mode'")
             __props__['mode'] = mode
             __props__['notes'] = notes
-            __props__['zone'] = zone
             __props__['zone_id'] = zone_id
         super(AccessRule, __self__).__init__(
             'cloudflare:index/accessRule:AccessRule',
@@ -85,7 +79,7 @@ class AccessRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, configuration=None, mode=None, notes=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, configuration=None, mode=None, notes=None, zone_id=None):
         """
         Get an existing AccessRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -96,7 +90,6 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[dict] configuration: Rule configuration to apply to a matched request. It's a complex value. See description below.
         :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
-        :param pulumi.Input[str] zone: The DNS zone to which the access rule should be added. Will be resolved to `zone_id` upon creation.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
         
         The **configuration** object supports the following:
@@ -112,7 +105,6 @@ class AccessRule(pulumi.CustomResource):
         __props__["configuration"] = configuration
         __props__["mode"] = mode
         __props__["notes"] = notes
-        __props__["zone"] = zone
         __props__["zone_id"] = zone_id
         return AccessRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

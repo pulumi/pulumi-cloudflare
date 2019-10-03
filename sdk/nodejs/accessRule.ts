@@ -8,51 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * const config = new pulumi.Config();
- * const myOffice = config.get("myOffice") || [
- *     "192.0.2.0/24",
- *     "198.51.100.0/24",
- *     "2001:db8::/56",
- * ];
- * 
- * // Challenge requests coming from known Tor exit nodes.
- * const torExitNodes = new cloudflare.AccessRule("torExitNodes", {
- *     configuration: {
- *         target: "country",
- *         value: "T1",
- *     },
- *     mode: "challenge",
- *     notes: "Requests coming from known Tor exit nodes",
- * });
- * // Whitelist (sic!) requests coming from Antarctica, but only for single zone.
- * const antarctica = new cloudflare.AccessRule("antarctica", {
- *     configuration: {
- *         target: "country",
- *         value: "AQ",
- *     },
- *     mode: "whitelist",
- *     notes: "Requests coming from Antarctica",
- *     zone: "example.com",
- * });
- * const officeNetwork: cloudflare.AccessRule[] = [];
- * for (let i = 0; i < myOffice.length; i++) {
- *     officeNetwork.push(new cloudflare.AccessRule(`office_network-${i}`, {
- *         configuration: {
- *             target: "ipRange",
- *             value: myOffice[i],
- *         },
- *         mode: "whitelist",
- *         notes: "Requests coming from office network",
- *     }));
- * }
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.
  */
@@ -96,10 +51,6 @@ export class AccessRule extends pulumi.CustomResource {
      */
     public readonly notes!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
      * The DNS zone to which the access rule should be added.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -119,7 +70,6 @@ export class AccessRule extends pulumi.CustomResource {
             inputs["configuration"] = state ? state.configuration : undefined;
             inputs["mode"] = state ? state.mode : undefined;
             inputs["notes"] = state ? state.notes : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
@@ -132,7 +82,6 @@ export class AccessRule extends pulumi.CustomResource {
             inputs["configuration"] = args ? args.configuration : undefined;
             inputs["mode"] = args ? args.mode : undefined;
             inputs["notes"] = args ? args.notes : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
@@ -163,10 +112,6 @@ export interface AccessRuleState {
      */
     readonly notes?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
      * The DNS zone to which the access rule should be added.
      */
     readonly zoneId?: pulumi.Input<string>;
@@ -188,10 +133,6 @@ export interface AccessRuleArgs {
      * A personal note about the rule. Typically used as a reminder or explanation for the rule.
      */
     readonly notes?: pulumi.Input<string>;
-    /**
-     * The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
-     */
-    readonly zone?: pulumi.Input<string>;
     /**
      * The DNS zone to which the access rule should be added.
      */

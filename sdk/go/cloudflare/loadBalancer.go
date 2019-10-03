@@ -27,6 +27,9 @@ func NewLoadBalancer(ctx *pulumi.Context,
 	if args == nil || args.Name == nil {
 		return nil, errors.New("missing required argument 'Name'")
 	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["defaultPoolIds"] = nil
@@ -40,7 +43,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		inputs["sessionAffinity"] = nil
 		inputs["steeringPolicy"] = nil
 		inputs["ttl"] = nil
-		inputs["zone"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["defaultPoolIds"] = args.DefaultPoolIds
@@ -54,7 +56,6 @@ func NewLoadBalancer(ctx *pulumi.Context,
 		inputs["sessionAffinity"] = args.SessionAffinity
 		inputs["steeringPolicy"] = args.SteeringPolicy
 		inputs["ttl"] = args.Ttl
-		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
 	}
 	inputs["createdOn"] = nil
@@ -85,7 +86,6 @@ func GetLoadBalancer(ctx *pulumi.Context,
 		inputs["sessionAffinity"] = state.SessionAffinity
 		inputs["steeringPolicy"] = state.SteeringPolicy
 		inputs["ttl"] = state.Ttl
-		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/loadBalancer:LoadBalancer", name, id, inputs, opts...)
@@ -170,12 +170,7 @@ func (r *LoadBalancer) Ttl() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["ttl"])
 }
 
-// The zone to add the load balancer to.
-func (r *LoadBalancer) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
-// ID associated with the specified `zone`.
+// The zone ID to add the load balancer to.
 func (r *LoadBalancer) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -208,9 +203,7 @@ type LoadBalancerState struct {
 	SteeringPolicy interface{}
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl interface{}
-	// The zone to add the load balancer to.
-	Zone interface{}
-	// ID associated with the specified `zone`.
+	// The zone ID to add the load balancer to.
 	ZoneId interface{}
 }
 
@@ -238,8 +231,6 @@ type LoadBalancerArgs struct {
 	SteeringPolicy interface{}
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl interface{}
-	// The zone to add the load balancer to.
-	Zone interface{}
-	// ID associated with the specified `zone`.
+	// The zone ID to add the load balancer to.
 	ZoneId interface{}
 }

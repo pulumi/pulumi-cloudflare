@@ -21,17 +21,16 @@ func NewWorkerScript(ctx *pulumi.Context,
 	if args == nil || args.Content == nil {
 		return nil, errors.New("missing required argument 'Content'")
 	}
+	if args == nil || args.Name == nil {
+		return nil, errors.New("missing required argument 'Name'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["content"] = nil
 		inputs["name"] = nil
-		inputs["zone"] = nil
-		inputs["zoneId"] = nil
 	} else {
 		inputs["content"] = args.Content
 		inputs["name"] = args.Name
-		inputs["zone"] = args.Zone
-		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/workerScript:WorkerScript", name, true, inputs, opts...)
 	if err != nil {
@@ -48,8 +47,6 @@ func GetWorkerScript(ctx *pulumi.Context,
 	if state != nil {
 		inputs["content"] = state.Content
 		inputs["name"] = state.Name
-		inputs["zone"] = state.Zone
-		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/workerScript:WorkerScript", name, id, inputs, opts...)
 	if err != nil {
@@ -73,41 +70,23 @@ func (r *WorkerScript) Content() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["content"])
 }
 
-// The name for the script. 
+// The name for the script.
 func (r *WorkerScript) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
-}
-
-// The zone for the script.
-func (r *WorkerScript) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
-// The zone id of the script (only for non-multi-script resources)
-func (r *WorkerScript) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering WorkerScript resources.
 type WorkerScriptState struct {
 	// The script content.
 	Content interface{}
-	// The name for the script. 
+	// The name for the script.
 	Name interface{}
-	// The zone for the script.
-	Zone interface{}
-	// The zone id of the script (only for non-multi-script resources)
-	ZoneId interface{}
 }
 
 // The set of arguments for constructing a WorkerScript resource.
 type WorkerScriptArgs struct {
 	// The script content.
 	Content interface{}
-	// The name for the script. 
+	// The name for the script.
 	Name interface{}
-	// The zone for the script.
-	Zone interface{}
-	// The zone id of the script (only for non-multi-script resources)
-	ZoneId interface{}
 }

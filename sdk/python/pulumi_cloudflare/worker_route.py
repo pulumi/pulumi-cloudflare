@@ -10,34 +10,25 @@ from typing import Union
 from . import utilities, tables
 
 class WorkerRoute(pulumi.CustomResource):
-    enabled: pulumi.Output[bool]
-    multi_script: pulumi.Output[bool]
     pattern: pulumi.Output[str]
     """
-    The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
-    * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-    * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+    The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+    * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
     """
     script_name: pulumi.Output[str]
-    zone: pulumi.Output[str]
-    """
-    The zone to add the route to.
-    """
     zone_id: pulumi.Output[str]
     """
-    The zone id of the route
+    The zone ID to add the route to.
     """
-    def __init__(__self__, resource_name, opts=None, enabled=None, pattern=None, script_name=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, pattern=None, script_name=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
-               * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-               * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
-        :param pulumi.Input[str] zone: The zone to add the route to.
-        :param pulumi.Input[str] zone_id: The zone id of the route
+        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+               * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        :param pulumi.Input[str] zone_id: The zone ID to add the route to.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
         """
@@ -58,14 +49,13 @@ class WorkerRoute(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            __props__['enabled'] = enabled
             if pattern is None:
                 raise TypeError("Missing required property 'pattern'")
             __props__['pattern'] = pattern
             __props__['script_name'] = script_name
-            __props__['zone'] = zone
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
-            __props__['multi_script'] = None
         super(WorkerRoute, __self__).__init__(
             'cloudflare:index/workerRoute:WorkerRoute',
             resource_name,
@@ -73,7 +63,7 @@ class WorkerRoute(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, enabled=None, multi_script=None, pattern=None, script_name=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, pattern=None, script_name=None, zone_id=None):
         """
         Get an existing WorkerRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -81,22 +71,17 @@ class WorkerRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/api/route-matching/)
-               * `enabled` (For single-script accounts only) Whether to run the worker script for requests that match the route pattern. Default is `false`
-               * `script_name` (For multi-script accounts only) Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
-        :param pulumi.Input[str] zone: The zone to add the route to.
-        :param pulumi.Input[str] zone_id: The zone id of the route
+        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+               * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        :param pulumi.Input[str] zone_id: The zone ID to add the route to.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
-        __props__["enabled"] = enabled
-        __props__["multi_script"] = multi_script
         __props__["pattern"] = pattern
         __props__["script_name"] = script_name
-        __props__["zone"] = zone
         __props__["zone_id"] = zone_id
         return WorkerRoute(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

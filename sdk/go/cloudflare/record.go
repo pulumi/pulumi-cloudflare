@@ -18,41 +18,40 @@ type Record struct {
 // NewRecord registers a new resource with the given unique name, arguments, and options.
 func NewRecord(ctx *pulumi.Context,
 	name string, args *RecordArgs, opts ...pulumi.ResourceOpt) (*Record, error) {
-	if args == nil || args.Domain == nil {
-		return nil, errors.New("missing required argument 'Domain'")
-	}
 	if args == nil || args.Name == nil {
 		return nil, errors.New("missing required argument 'Name'")
 	}
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["data"] = nil
-		inputs["domain"] = nil
 		inputs["name"] = nil
 		inputs["priority"] = nil
 		inputs["proxied"] = nil
 		inputs["ttl"] = nil
 		inputs["type"] = nil
 		inputs["value"] = nil
+		inputs["zoneId"] = nil
 	} else {
 		inputs["data"] = args.Data
-		inputs["domain"] = args.Domain
 		inputs["name"] = args.Name
 		inputs["priority"] = args.Priority
 		inputs["proxied"] = args.Proxied
 		inputs["ttl"] = args.Ttl
 		inputs["type"] = args.Type
 		inputs["value"] = args.Value
+		inputs["zoneId"] = args.ZoneId
 	}
 	inputs["createdOn"] = nil
 	inputs["hostname"] = nil
 	inputs["metadata"] = nil
 	inputs["modifiedOn"] = nil
 	inputs["proxiable"] = nil
-	inputs["zoneId"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/record:Record", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -68,7 +67,6 @@ func GetRecord(ctx *pulumi.Context,
 	if state != nil {
 		inputs["createdOn"] = state.CreatedOn
 		inputs["data"] = state.Data
-		inputs["domain"] = state.Domain
 		inputs["hostname"] = state.Hostname
 		inputs["metadata"] = state.Metadata
 		inputs["modifiedOn"] = state.ModifiedOn
@@ -108,17 +106,12 @@ func (r *Record) Data() *pulumi.Output {
 	return r.s.State["data"]
 }
 
-// The DNS zone to add the record to
-func (r *Record) Domain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domain"])
-}
-
 // The FQDN of the record
 func (r *Record) Hostname() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["hostname"])
 }
 
-// A key-value map of string metadata cloudflare associates with the record
+// A key-value map of string metadata Cloudflare associates with the record
 func (r *Record) Metadata() *pulumi.MapOutput {
 	return (*pulumi.MapOutput)(r.s.State["metadata"])
 }
@@ -163,7 +156,7 @@ func (r *Record) Value() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["value"])
 }
 
-// The zone id of the record
+// The DNS zone ID to add the record to
 func (r *Record) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -174,11 +167,9 @@ type RecordState struct {
 	CreatedOn interface{}
 	// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
 	Data interface{}
-	// The DNS zone to add the record to
-	Domain interface{}
 	// The FQDN of the record
 	Hostname interface{}
-	// A key-value map of string metadata cloudflare associates with the record
+	// A key-value map of string metadata Cloudflare associates with the record
 	Metadata interface{}
 	// The RFC3339 timestamp of when the record was last modified
 	ModifiedOn interface{}
@@ -196,7 +187,7 @@ type RecordState struct {
 	Type interface{}
 	// The (string) value of the record. Either this or `data` must be specified
 	Value interface{}
-	// The zone id of the record
+	// The DNS zone ID to add the record to
 	ZoneId interface{}
 }
 
@@ -204,8 +195,6 @@ type RecordState struct {
 type RecordArgs struct {
 	// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
 	Data interface{}
-	// The DNS zone to add the record to
-	Domain interface{}
 	// The name of the record
 	Name interface{}
 	// The priority of the record
@@ -218,4 +207,6 @@ type RecordArgs struct {
 	Type interface{}
 	// The (string) value of the record. Either this or `data` must be specified
 	Value interface{}
+	// The DNS zone ID to add the record to
+	ZoneId interface{}
 }

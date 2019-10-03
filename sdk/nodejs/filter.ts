@@ -68,10 +68,6 @@ export class Filter extends pulumi.CustomResource {
      */
     public readonly ref!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
      * The DNS zone to which the Filter should be added.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -92,18 +88,19 @@ export class Filter extends pulumi.CustomResource {
             inputs["expression"] = state ? state.expression : undefined;
             inputs["paused"] = state ? state.paused : undefined;
             inputs["ref"] = state ? state.ref : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FilterArgs | undefined;
             if (!args || args.expression === undefined) {
                 throw new Error("Missing required property 'expression'");
             }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["description"] = args ? args.description : undefined;
             inputs["expression"] = args ? args.expression : undefined;
             inputs["paused"] = args ? args.paused : undefined;
             inputs["ref"] = args ? args.ref : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
@@ -138,10 +135,6 @@ export interface FilterState {
      */
     readonly ref?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
      * The DNS zone to which the Filter should be added.
      */
     readonly zoneId?: pulumi.Input<string>;
@@ -168,11 +161,7 @@ export interface FilterArgs {
      */
     readonly ref?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
      * The DNS zone to which the Filter should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }

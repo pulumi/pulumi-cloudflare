@@ -3,6 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Regenerate SDK based on tf2pulumi 0.6.0
+* Upgrade to v2.0.0 of the Cloudflare Terraform Provider
+
 
 ---
 

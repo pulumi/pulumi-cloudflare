@@ -24,16 +24,17 @@ func NewWafRule(ctx *pulumi.Context,
 	if args == nil || args.RuleId == nil {
 		return nil, errors.New("missing required argument 'RuleId'")
 	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["mode"] = nil
 		inputs["ruleId"] = nil
-		inputs["zone"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["mode"] = args.Mode
 		inputs["ruleId"] = args.RuleId
-		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
 	}
 	inputs["packageId"] = nil
@@ -53,7 +54,6 @@ func GetWafRule(ctx *pulumi.Context,
 		inputs["mode"] = state.Mode
 		inputs["packageId"] = state.PackageId
 		inputs["ruleId"] = state.RuleId
-		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/wafRule:WafRule", name, id, inputs, opts...)
@@ -88,12 +88,7 @@ func (r *WafRule) RuleId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ruleId"])
 }
 
-// The DNS zone to apply to.
-func (r *WafRule) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
-// The DNS zone ID.
+// The DNS zone ID to apply to.
 func (r *WafRule) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -106,9 +101,7 @@ type WafRuleState struct {
 	PackageId interface{}
 	// The WAF Rule ID.
 	RuleId interface{}
-	// The DNS zone to apply to.
-	Zone interface{}
-	// The DNS zone ID.
+	// The DNS zone ID to apply to.
 	ZoneId interface{}
 }
 
@@ -118,8 +111,6 @@ type WafRuleArgs struct {
 	Mode interface{}
 	// The WAF Rule ID.
 	RuleId interface{}
-	// The DNS zone to apply to.
-	Zone interface{}
-	// The DNS zone ID.
+	// The DNS zone ID to apply to.
 	ZoneId interface{}
 }

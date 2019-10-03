@@ -7,6 +7,8 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Cloudflare record resource.
+ *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
  */
 export class Record extends pulumi.CustomResource {
@@ -45,15 +47,11 @@ export class Record extends pulumi.CustomResource {
      */
     public readonly data!: pulumi.Output<outputs.RecordData | undefined>;
     /**
-     * The DNS zone to add the record to
-     */
-    public readonly domain!: pulumi.Output<string>;
-    /**
      * The FQDN of the record
      */
     public /*out*/ readonly hostname!: pulumi.Output<string>;
     /**
-     * A key-value map of string metadata cloudflare associates with the record
+     * A key-value map of string metadata Cloudflare associates with the record
      */
     public /*out*/ readonly metadata!: pulumi.Output<{[key: string]: any}>;
     /**
@@ -89,9 +87,9 @@ export class Record extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The zone id of the record
+     * The DNS zone ID to add the record to
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a Record resource with the given unique name, arguments, and options.
@@ -107,7 +105,6 @@ export class Record extends pulumi.CustomResource {
             const state = argsOrState as RecordState | undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["data"] = state ? state.data : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
             inputs["hostname"] = state ? state.hostname : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
             inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
@@ -121,29 +118,28 @@ export class Record extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RecordArgs | undefined;
-            if (!args || args.domain === undefined) {
-                throw new Error("Missing required property 'domain'");
-            }
             if (!args || args.name === undefined) {
                 throw new Error("Missing required property 'name'");
             }
             if (!args || args.type === undefined) {
                 throw new Error("Missing required property 'type'");
             }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["data"] = args ? args.data : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["proxied"] = args ? args.proxied : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["value"] = args ? args.value : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["createdOn"] = undefined /*out*/;
             inputs["hostname"] = undefined /*out*/;
             inputs["metadata"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
             inputs["proxiable"] = undefined /*out*/;
-            inputs["zoneId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -169,15 +165,11 @@ export interface RecordState {
      */
     readonly data?: pulumi.Input<inputs.RecordData>;
     /**
-     * The DNS zone to add the record to
-     */
-    readonly domain?: pulumi.Input<string>;
-    /**
      * The FQDN of the record
      */
     readonly hostname?: pulumi.Input<string>;
     /**
-     * A key-value map of string metadata cloudflare associates with the record
+     * A key-value map of string metadata Cloudflare associates with the record
      */
     readonly metadata?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -213,7 +205,7 @@ export interface RecordState {
      */
     readonly value?: pulumi.Input<string>;
     /**
-     * The zone id of the record
+     * The DNS zone ID to add the record to
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -226,10 +218,6 @@ export interface RecordArgs {
      * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
      */
     readonly data?: pulumi.Input<inputs.RecordData>;
-    /**
-     * The DNS zone to add the record to
-     */
-    readonly domain: pulumi.Input<string>;
     /**
      * The name of the record
      */
@@ -254,4 +242,8 @@ export interface RecordArgs {
      * The (string) value of the record. Either this or `data` must be specified
      */
     readonly value?: pulumi.Input<string>;
+    /**
+     * The DNS zone ID to add the record to
+     */
+    readonly zoneId: pulumi.Input<string>;
 }

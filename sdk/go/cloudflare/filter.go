@@ -21,20 +21,21 @@ func NewFilter(ctx *pulumi.Context,
 	if args == nil || args.Expression == nil {
 		return nil, errors.New("missing required argument 'Expression'")
 	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["description"] = nil
 		inputs["expression"] = nil
 		inputs["paused"] = nil
 		inputs["ref"] = nil
-		inputs["zone"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["description"] = args.Description
 		inputs["expression"] = args.Expression
 		inputs["paused"] = args.Paused
 		inputs["ref"] = args.Ref
-		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/filter:Filter", name, true, inputs, opts...)
@@ -54,7 +55,6 @@ func GetFilter(ctx *pulumi.Context,
 		inputs["expression"] = state.Expression
 		inputs["paused"] = state.Paused
 		inputs["ref"] = state.Ref
-		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/filter:Filter", name, id, inputs, opts...)
@@ -94,11 +94,6 @@ func (r *Filter) Ref() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["ref"])
 }
 
-// The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
-func (r *Filter) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
 // The DNS zone to which the Filter should be added.
 func (r *Filter) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
@@ -114,8 +109,6 @@ type FilterState struct {
 	Paused interface{}
 	// Short reference tag to quickly select related rules.
 	Ref interface{}
-	// The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
-	Zone interface{}
 	// The DNS zone to which the Filter should be added.
 	ZoneId interface{}
 }
@@ -130,8 +123,6 @@ type FilterArgs struct {
 	Paused interface{}
 	// Short reference tag to quickly select related rules.
 	Ref interface{}
-	// The DNS zone to which the Filter should be added. Will be resolved to `zoneId` upon creation.
-	Zone interface{}
 	// The DNS zone to which the Filter should be added.
 	ZoneId interface{}
 }

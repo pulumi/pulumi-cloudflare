@@ -27,6 +27,9 @@ func NewRateLimit(ctx *pulumi.Context,
 	if args == nil || args.Threshold == nil {
 		return nil, errors.New("missing required argument 'Threshold'")
 	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["action"] = nil
@@ -37,7 +40,6 @@ func NewRateLimit(ctx *pulumi.Context,
 		inputs["match"] = nil
 		inputs["period"] = nil
 		inputs["threshold"] = nil
-		inputs["zone"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["action"] = args.Action
@@ -48,7 +50,6 @@ func NewRateLimit(ctx *pulumi.Context,
 		inputs["match"] = args.Match
 		inputs["period"] = args.Period
 		inputs["threshold"] = args.Threshold
-		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/rateLimit:RateLimit", name, true, inputs, opts...)
@@ -72,7 +73,6 @@ func GetRateLimit(ctx *pulumi.Context,
 		inputs["match"] = state.Match
 		inputs["period"] = state.Period
 		inputs["threshold"] = state.Threshold
-		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/rateLimit:RateLimit", name, id, inputs, opts...)
@@ -132,12 +132,7 @@ func (r *RateLimit) Threshold() *pulumi.IntOutput {
 	return (*pulumi.IntOutput)(r.s.State["threshold"])
 }
 
-// The DNS zone to apply rate limiting to.
-func (r *RateLimit) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
-// The DNS zone ID.
+// The DNS zone ID to apply rate limiting to.
 func (r *RateLimit) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -160,9 +155,7 @@ type RateLimitState struct {
 	Period interface{}
 	// The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
 	Threshold interface{}
-	// The DNS zone to apply rate limiting to.
-	Zone interface{}
-	// The DNS zone ID.
+	// The DNS zone ID to apply rate limiting to.
 	ZoneId interface{}
 }
 
@@ -184,8 +177,6 @@ type RateLimitArgs struct {
 	Period interface{}
 	// The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
 	Threshold interface{}
-	// The DNS zone to apply rate limiting to.
-	Zone interface{}
-	// The DNS zone ID.
+	// The DNS zone ID to apply rate limiting to.
 	ZoneId interface{}
 }

@@ -16,26 +16,16 @@ class WorkerScript(pulumi.CustomResource):
     """
     name: pulumi.Output[str]
     """
-    The name for the script. 
+    The name for the script.
     """
-    zone: pulumi.Output[str]
-    """
-    The zone for the script.
-    """
-    zone_id: pulumi.Output[str]
-    """
-    The zone id of the script (only for non-multi-script resources)
-    """
-    def __init__(__self__, resource_name, opts=None, content=None, name=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, content=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `.WorkerRoute`.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The name for the script. 
-        :param pulumi.Input[str] zone: The zone for the script.
-        :param pulumi.Input[str] zone_id: The zone id of the script (only for non-multi-script resources)
+        :param pulumi.Input[str] name: The name for the script.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """
@@ -59,9 +49,9 @@ class WorkerScript(pulumi.CustomResource):
             if content is None:
                 raise TypeError("Missing required property 'content'")
             __props__['content'] = content
+            if name is None:
+                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
-            __props__['zone'] = zone
-            __props__['zone_id'] = zone_id
         super(WorkerScript, __self__).__init__(
             'cloudflare:index/workerScript:WorkerScript',
             resource_name,
@@ -69,7 +59,7 @@ class WorkerScript(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, content=None, name=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, content=None, name=None):
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -78,9 +68,7 @@ class WorkerScript(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The name for the script. 
-        :param pulumi.Input[str] zone: The zone for the script.
-        :param pulumi.Input[str] zone_id: The zone id of the script (only for non-multi-script resources)
+        :param pulumi.Input[str] name: The name for the script.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """
@@ -89,8 +77,6 @@ class WorkerScript(pulumi.CustomResource):
         __props__ = dict()
         __props__["content"] = content
         __props__["name"] = name
-        __props__["zone"] = zone
-        __props__["zone_id"] = zone_id
         return WorkerScript(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

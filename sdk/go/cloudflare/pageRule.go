@@ -24,20 +24,21 @@ func NewPageRule(ctx *pulumi.Context,
 	if args == nil || args.Target == nil {
 		return nil, errors.New("missing required argument 'Target'")
 	}
+	if args == nil || args.ZoneId == nil {
+		return nil, errors.New("missing required argument 'ZoneId'")
+	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["actions"] = nil
 		inputs["priority"] = nil
 		inputs["status"] = nil
 		inputs["target"] = nil
-		inputs["zone"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["actions"] = args.Actions
 		inputs["priority"] = args.Priority
 		inputs["status"] = args.Status
 		inputs["target"] = args.Target
-		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/pageRule:PageRule", name, true, inputs, opts...)
@@ -57,7 +58,6 @@ func GetPageRule(ctx *pulumi.Context,
 		inputs["priority"] = state.Priority
 		inputs["status"] = state.Status
 		inputs["target"] = state.Target
-		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/pageRule:PageRule", name, id, inputs, opts...)
@@ -97,12 +97,7 @@ func (r *PageRule) Target() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["target"])
 }
 
-// The DNS zone to which the page rule should be added.
-func (r *PageRule) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
-// The ID of the zone in which the page rule will be applied.
+// The DNS zone ID to which the page rule should be added.
 func (r *PageRule) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -117,9 +112,7 @@ type PageRuleState struct {
 	Status interface{}
 	// The URL pattern to target with the page rule.
 	Target interface{}
-	// The DNS zone to which the page rule should be added.
-	Zone interface{}
-	// The ID of the zone in which the page rule will be applied.
+	// The DNS zone ID to which the page rule should be added.
 	ZoneId interface{}
 }
 
@@ -133,8 +126,6 @@ type PageRuleArgs struct {
 	Status interface{}
 	// The URL pattern to target with the page rule.
 	Target interface{}
-	// The DNS zone to which the page rule should be added.
-	Zone interface{}
-	// The ID of the zone in which the page rule will be applied.
+	// The DNS zone ID to which the page rule should be added.
 	ZoneId interface{}
 }

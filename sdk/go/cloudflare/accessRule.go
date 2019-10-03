@@ -29,13 +29,11 @@ func NewAccessRule(ctx *pulumi.Context,
 		inputs["configuration"] = nil
 		inputs["mode"] = nil
 		inputs["notes"] = nil
-		inputs["zone"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["configuration"] = args.Configuration
 		inputs["mode"] = args.Mode
 		inputs["notes"] = args.Notes
-		inputs["zone"] = args.Zone
 		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/accessRule:AccessRule", name, true, inputs, opts...)
@@ -54,7 +52,6 @@ func GetAccessRule(ctx *pulumi.Context,
 		inputs["configuration"] = state.Configuration
 		inputs["mode"] = state.Mode
 		inputs["notes"] = state.Notes
-		inputs["zone"] = state.Zone
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/accessRule:AccessRule", name, id, inputs, opts...)
@@ -89,11 +86,6 @@ func (r *AccessRule) Notes() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["notes"])
 }
 
-// The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
-func (r *AccessRule) Zone() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zone"])
-}
-
 // The DNS zone to which the access rule should be added.
 func (r *AccessRule) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
@@ -107,8 +99,6 @@ type AccessRuleState struct {
 	Mode interface{}
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes interface{}
-	// The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
-	Zone interface{}
 	// The DNS zone to which the access rule should be added.
 	ZoneId interface{}
 }
@@ -121,8 +111,6 @@ type AccessRuleArgs struct {
 	Mode interface{}
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes interface{}
-	// The DNS zone to which the access rule should be added. Will be resolved to `zoneId` upon creation.
-	Zone interface{}
 	// The DNS zone to which the access rule should be added.
 	ZoneId interface{}
 }

@@ -16,24 +16,26 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
  * const test = new cloudflare.ZoneSettingsOverride("test", {
- *     name: var_cloudflare_zone,
- *     settings: {
- *         automaticHttpsRewrites: "on",
- *         brotli: "on",
- *         challengeTtl: 2700,
- *         minify: {
- *             css: "on",
- *             html: "off",
- *             js: "off",
- *         },
- *         mirage: "on",
- *         opportunisticEncryption: "on",
- *         securityHeader: {
- *             enabled: true,
- *         },
- *         securityLevel: "high",
- *         waf: "on",
- *     },
+ *     "var.cloudflare_zone_id": [{
+ *         settings: [{
+ *             automaticHttpsRewrites: "on",
+ *             brotli: "on",
+ *             challengeTtl: 2700,
+ *             minify: [{
+ *                 css: "on",
+ *                 html: "off",
+ *                 js: "off",
+ *             }],
+ *             mirage: "on",
+ *             opportunisticEncryption: "on",
+ *             securityHeader: [{
+ *                 enabled: true,
+ *             }],
+ *             securityLevel: "high",
+ *             waf: "on",
+ *         }],
+ *     }],
+ *     zoneId: "",
  * });
  * ```
  *
@@ -72,10 +74,6 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
     public /*out*/ readonly initialSettings!: pulumi.Output<outputs.ZoneSettingsOverrideInitialSettings>;
     public /*out*/ readonly initialSettingsReadAt!: pulumi.Output<string>;
     /**
-     * The DNS zone to which apply settings.
-     */
-    public readonly name!: pulumi.Output<string>;
-    /**
      * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
      * * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
      * * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
@@ -85,6 +83,10 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
      * Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
      */
     public readonly settings!: pulumi.Output<outputs.ZoneSettingsOverrideSettings>;
+    /**
+     * The DNS zone ID to which apply settings.
+     */
+    public readonly zoneId!: pulumi.Output<string>;
     public /*out*/ readonly zoneStatus!: pulumi.Output<string>;
     public /*out*/ readonly zoneType!: pulumi.Output<string>;
 
@@ -102,18 +104,18 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
             const state = argsOrState as ZoneSettingsOverrideState | undefined;
             inputs["initialSettings"] = state ? state.initialSettings : undefined;
             inputs["initialSettingsReadAt"] = state ? state.initialSettingsReadAt : undefined;
-            inputs["name"] = state ? state.name : undefined;
             inputs["readonlySettings"] = state ? state.readonlySettings : undefined;
             inputs["settings"] = state ? state.settings : undefined;
+            inputs["zoneId"] = state ? state.zoneId : undefined;
             inputs["zoneStatus"] = state ? state.zoneStatus : undefined;
             inputs["zoneType"] = state ? state.zoneType : undefined;
         } else {
             const args = argsOrState as ZoneSettingsOverrideArgs | undefined;
-            if (!args || args.name === undefined) {
-                throw new Error("Missing required property 'name'");
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
             }
-            inputs["name"] = args ? args.name : undefined;
             inputs["settings"] = args ? args.settings : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["initialSettings"] = undefined /*out*/;
             inputs["initialSettingsReadAt"] = undefined /*out*/;
             inputs["readonlySettings"] = undefined /*out*/;
@@ -141,10 +143,6 @@ export interface ZoneSettingsOverrideState {
     readonly initialSettings?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettings>;
     readonly initialSettingsReadAt?: pulumi.Input<string>;
     /**
-     * The DNS zone to which apply settings.
-     */
-    readonly name?: pulumi.Input<string>;
-    /**
      * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
      * * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
      * * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
@@ -154,6 +152,10 @@ export interface ZoneSettingsOverrideState {
      * Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
      */
     readonly settings?: pulumi.Input<inputs.ZoneSettingsOverrideSettings>;
+    /**
+     * The DNS zone ID to which apply settings.
+     */
+    readonly zoneId?: pulumi.Input<string>;
     readonly zoneStatus?: pulumi.Input<string>;
     readonly zoneType?: pulumi.Input<string>;
 }
@@ -163,11 +165,11 @@ export interface ZoneSettingsOverrideState {
  */
 export interface ZoneSettingsOverrideArgs {
     /**
-     * The DNS zone to which apply settings.
-     */
-    readonly name: pulumi.Input<string>;
-    /**
      * Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
      */
     readonly settings?: pulumi.Input<inputs.ZoneSettingsOverrideSettings>;
+    /**
+     * The DNS zone ID to which apply settings.
+     */
+    readonly zoneId: pulumi.Input<string>;
 }

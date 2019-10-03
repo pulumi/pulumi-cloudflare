@@ -8,63 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * const example = new cloudflare.RateLimit("example", {
- *     action: {
- *         mode: "simulate",
- *         response: {
- *             body: "custom response body",
- *             contentType: "text/plain",
- *         },
- *         timeout: 43200,
- *     },
- *     bypassUrlPatterns: [
- *         `${var_cloudflare_zone}/bypass1`,
- *         `${var_cloudflare_zone}/bypass2`,
- *     ],
- *     correlate: {
- *         by: "nat",
- *     },
- *     description: "example rate limit for a zone",
- *     disabled: false,
- *     match: {
- *         request: {
- *             methods: [
- *                 "GET",
- *                 "POST",
- *                 "PUT",
- *                 "DELETE",
- *                 "PATCH",
- *                 "HEAD",
- *             ],
- *             schemes: [
- *                 "HTTP",
- *                 "HTTPS",
- *             ],
- *             urlPattern: `${var_cloudflare_zone}/*`,
- *         },
- *         response: {
- *             originTraffic: false,
- *             statuses: [
- *                 200,
- *                 201,
- *                 202,
- *                 301,
- *                 429,
- *             ],
- *         },
- *     },
- *     period: 2,
- *     threshold: 2000,
- *     zone: var_cloudflare_zone,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/rate_limit.html.markdown.
  */
@@ -128,11 +71,7 @@ export class RateLimit extends pulumi.CustomResource {
      */
     public readonly threshold!: pulumi.Output<number>;
     /**
-     * The DNS zone to apply rate limiting to.
-     */
-    public readonly zone!: pulumi.Output<string>;
-    /**
-     * The DNS zone ID.
+     * The DNS zone ID to apply rate limiting to.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -156,7 +95,6 @@ export class RateLimit extends pulumi.CustomResource {
             inputs["match"] = state ? state.match : undefined;
             inputs["period"] = state ? state.period : undefined;
             inputs["threshold"] = state ? state.threshold : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RateLimitArgs | undefined;
@@ -169,6 +107,9 @@ export class RateLimit extends pulumi.CustomResource {
             if (!args || args.threshold === undefined) {
                 throw new Error("Missing required property 'threshold'");
             }
+            if (!args || args.zoneId === undefined) {
+                throw new Error("Missing required property 'zoneId'");
+            }
             inputs["action"] = args ? args.action : undefined;
             inputs["bypassUrlPatterns"] = args ? args.bypassUrlPatterns : undefined;
             inputs["correlate"] = args ? args.correlate : undefined;
@@ -177,7 +118,6 @@ export class RateLimit extends pulumi.CustomResource {
             inputs["match"] = args ? args.match : undefined;
             inputs["period"] = args ? args.period : undefined;
             inputs["threshold"] = args ? args.threshold : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
@@ -228,11 +168,7 @@ export interface RateLimitState {
      */
     readonly threshold?: pulumi.Input<number>;
     /**
-     * The DNS zone to apply rate limiting to.
-     */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The DNS zone ID.
+     * The DNS zone ID to apply rate limiting to.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -274,11 +210,7 @@ export interface RateLimitArgs {
      */
     readonly threshold: pulumi.Input<number>;
     /**
-     * The DNS zone to apply rate limiting to.
+     * The DNS zone ID to apply rate limiting to.
      */
-    readonly zone?: pulumi.Input<string>;
-    /**
-     * The DNS zone ID.
-     */
-    readonly zoneId?: pulumi.Input<string>;
+    readonly zoneId: pulumi.Input<string>;
 }

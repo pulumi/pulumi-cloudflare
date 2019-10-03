@@ -22,15 +22,11 @@ class WafRule(pulumi.CustomResource):
     """
     The WAF Rule ID.
     """
-    zone: pulumi.Output[str]
-    """
-    The DNS zone to apply to.
-    """
     zone_id: pulumi.Output[str]
     """
-    The DNS zone ID.
+    The DNS zone ID to apply to.
     """
-    def __init__(__self__, resource_name, opts=None, mode=None, rule_id=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, mode=None, rule_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare WAF rule resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall rules.
         
@@ -38,8 +34,7 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] mode: The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
         :param pulumi.Input[str] rule_id: The WAF Rule ID.
-        :param pulumi.Input[str] zone: The DNS zone to apply to.
-        :param pulumi.Input[str] zone_id: The DNS zone ID.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_rule.html.markdown.
         """
@@ -66,7 +61,8 @@ class WafRule(pulumi.CustomResource):
             if rule_id is None:
                 raise TypeError("Missing required property 'rule_id'")
             __props__['rule_id'] = rule_id
-            __props__['zone'] = zone
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['package_id'] = None
         super(WafRule, __self__).__init__(
@@ -76,7 +72,7 @@ class WafRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, mode=None, package_id=None, rule_id=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, mode=None, package_id=None, rule_id=None, zone_id=None):
         """
         Get an existing WafRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,8 +83,7 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
         :param pulumi.Input[str] package_id: The ID of the WAF Rule Package that contains the rule.
         :param pulumi.Input[str] rule_id: The WAF Rule ID.
-        :param pulumi.Input[str] zone: The DNS zone to apply to.
-        :param pulumi.Input[str] zone_id: The DNS zone ID.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_rule.html.markdown.
         """
@@ -98,7 +93,6 @@ class WafRule(pulumi.CustomResource):
         __props__["mode"] = mode
         __props__["package_id"] = package_id
         __props__["rule_id"] = rule_id
-        __props__["zone"] = zone
         __props__["zone_id"] = zone_id
         return WafRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

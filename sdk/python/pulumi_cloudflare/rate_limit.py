@@ -63,15 +63,11 @@ class RateLimit(pulumi.CustomResource):
     """
     The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
     """
-    zone: pulumi.Output[str]
-    """
-    The DNS zone to apply rate limiting to.
-    """
     zone_id: pulumi.Output[str]
     """
-    The DNS zone ID.
+    The DNS zone ID to apply rate limiting to.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
         
@@ -85,8 +81,7 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[dict] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
         :param pulumi.Input[float] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
         :param pulumi.Input[float] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
-        :param pulumi.Input[str] zone: The DNS zone to apply rate limiting to.
-        :param pulumi.Input[str] zone_id: The DNS zone ID.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
         
         The **action** object supports the following:
         
@@ -148,7 +143,8 @@ class RateLimit(pulumi.CustomResource):
             if threshold is None:
                 raise TypeError("Missing required property 'threshold'")
             __props__['threshold'] = threshold
-            __props__['zone'] = zone
+            if zone_id is None:
+                raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(RateLimit, __self__).__init__(
             'cloudflare:index/rateLimit:RateLimit',
@@ -157,7 +153,7 @@ class RateLimit(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone=None, zone_id=None):
+    def get(resource_name, id, opts=None, action=None, bypass_url_patterns=None, correlate=None, description=None, disabled=None, match=None, period=None, threshold=None, zone_id=None):
         """
         Get an existing RateLimit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -173,8 +169,7 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[dict] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
         :param pulumi.Input[float] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
         :param pulumi.Input[float] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
-        :param pulumi.Input[str] zone: The DNS zone to apply rate limiting to.
-        :param pulumi.Input[str] zone_id: The DNS zone ID.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
         
         The **action** object supports the following:
         
@@ -216,7 +211,6 @@ class RateLimit(pulumi.CustomResource):
         __props__["match"] = match
         __props__["period"] = period
         __props__["threshold"] = threshold
-        __props__["zone"] = zone
         __props__["zone_id"] = zone_id
         return RateLimit(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
