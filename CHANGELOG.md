@@ -2,11 +2,23 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.0.0 (2019-10-03)
 * Regenerate SDK based on tf2pulumi 0.6.0
 * Upgrade to v2.0.0 of the Cloudflare Terraform Provider
 
+  ### BREAKING CHANGES:
 
----
+  * provider configuration option `token` has been renamed to `api_key`.
+  * provider configuration option `org_id` has been renamed to `account_id` and is now required.
+  * provider configuration option `use_org_from_zone` has been removed.
+  * environment variable `CLOUDFLARE_TOKEN` has been renamed to `CLOUDFLARE_API_TOKEN`.
+  * environment variable `CLOUDFLARE_ORG_ID` has been renamed to `CLOUDFLARE_ACCOUNT_ID`.
+  * environment variable `CLOUDFLARE_ORG_ZONE` has been removed.
+  * `zone_id` is now a required parameter in all resources
 
 ## 0.17.14 (2019-09-05)
 * Upgrade to v1.18.1 of the Cloudflare Terraform Provider
