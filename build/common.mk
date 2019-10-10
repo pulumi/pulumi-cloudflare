@@ -104,7 +104,11 @@ endif
 PULUMI_BIN          := $(PULUMI_ROOT)/bin
 PULUMI_NODE_MODULES := $(PULUMI_ROOT)/node_modules
 
-.PHONY: default all ensure only_build only_test build lint install test_fast test_all core
+GO_TEST_FAST = go test -short -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM}
+GO_TEST = go test -v -count=1 -cover -timeout 2h -parallel ${TESTPARALLELISM}
+GOPROXY = 'https://proxy.golang.org'
+
+.PHONY: default all ensure only_build only_test build lint install test_all core
 
 # ensure that `default` is the target that is run when no arguments are passed to make
 default::
@@ -117,6 +121,7 @@ PIP ?= pip3
 ifneq ($(SUB_PROJECTS),)
 only_build:: $(SUB_PROJECTS:%=%_only_build)
 only_test:: $(SUB_PROJECTS:%=%_only_test)
+only_test_fast:: $(SUB_PROJECTS:%=%_only_test_fast)
 default:: $(SUB_PROJECTS:%=%_default)
 all:: $(SUB_PROJECTS:%=%_all)
 ensure:: $(SUB_PROJECTS:%=%_ensure)
@@ -143,8 +148,14 @@ all:: build install lint test_all
 
 ensure::
 	$(call STEP_MESSAGE)
-	@if [ -e 'Gopkg.toml' ]; then echo "dep ensure -v"; dep ensure -v; \
-		elif [ -e 'go.mod' ]; then echo "GO111MODULE=on go mod vendor"; GO111MODULE=on go mod vendor; gomod-doccopy -provider terraform-provider-$(PACK); fi
+ifeq ($(NOPROXY), true)
+	@echo "GO111MODULE=on go mod tidy"; GO111MODULE=on go mod tidy
+	@echo "GO111MODULE=on go mod vendor"; GO111MODULE=on go mod vendor
+else
+	@echo "GO111MODULE=on GOPROXY=$(GOPROXY) go mod tidy"; GO111MODULE=on GOPROXY=$(GOPROXY) go mod tidy
+	@echo "GO111MODULE=on GOPROXY=$(GOPROXY) go mod vendor"; GO111MODULE=on GOPROXY=$(GOPROXY) go mod vendor
+endif
+	gomod-doccopy -provider terraform-provider-$(PACK);
 	@if [ -e 'package.json' ]; then echo "yarn install"; yarn install; fi
 
 build::
@@ -161,7 +172,7 @@ install::
 	@mkdir -p $(PULUMI_BIN)
 	@mkdir -p $(PULUMI_NODE_MODULES)
 
-test_all:: test_fast
+test_all::
 	$(call STEP_MESSAGE)
 
 ifneq ($(NODE_MODULE_NAME),)
@@ -179,6 +190,7 @@ endif
 
 only_build:: build install
 only_test:: lint test_all
+only_test_fast:: lint test_fast
 
 # Generate targets for each sub project. This project's default and
 # all targets will depend on the sub project's targets, and the
@@ -203,6 +215,8 @@ $(SUB_PROJECTS:%=%_only_build):
 	@$(MAKE) -C ./$(@:%_only_build=%) only_build
 $(SUB_PROJECTS:%=%_only_test):
 	@$(MAKE) -C ./$(@:%_only_test=%) only_test
+$(SUB_PROJECTS:%=%_only_test_fast):
+	@$(MAKE) -C ./$(@:%_only_test_fast=%) only_test_fast
 endif
 
 # As a convinece, we provide a format target that folks can build to

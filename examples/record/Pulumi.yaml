@@ -1,0 +1,7 @@
+name: cloudflare-record
+description: A simple addition of a DNS record to a CloudFlare zone.
+runtime: nodejs
+template:
+  config:
+    zone_id:
+      description: Zone ID.

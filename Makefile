@@ -62,9 +62,11 @@ install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
 	pulumi plugin install resource gcp 0.17.1
 
+test_fast::
+	$(GO_TEST_FAST) ./examples
+
 test_all::
-	#PATH=$(PULUMI_BIN):$(PATH) go test -v -count=1 -cover -timeout 1h -parallel ${TESTPARALLELISM} ./examples
-	#PATH=$(PULUMI_BIN):$(PATH) go test -v -count=1 -cover -timeout 1h -parallel ${TESTPARALLELISM} ./tests/...
+	$(GO_TEST) ./examples
 
 .PHONY: publish_tgz
 publish_tgz:

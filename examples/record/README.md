@@ -1,6 +1,6 @@
-# Cloudflare Worker
+# Cloudflare Record
 
-A Hello-World implementation of a Cloudflare Worker. Deploys a non-enterprise worker.
+A simple addition of a DNS record to a CloudFlare zone.
 
 ## Running the App
 
@@ -16,22 +16,10 @@ A Hello-World implementation of a Cloudflare Worker. Deploys a non-enterprise wo
     $ npm install
     ```
 
-1. Define Cloudflare e-mail:
+1. Define the zone id:
 
     ```
-    pulumi config set cloudflare:email <value>
-    ```
-
-1. Define Cloudflare [API key](https://support.cloudflare.com/hc/en-us/articles/200167836-Where-do-I-find-my-Cloudflare-API-key-):
-
-    ```
-    pulumi config set --secret cloudflare:token <value>
-    ```
-
-1. Define the zone name (your website name):
-
-    ```
-    pulumi config set zone <value>
+    pulumi config set zone_id <value>
     ```
 
 1.  Run `pulumi up` to preview and deploy changes:
