@@ -11,7 +11,6 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.0.0
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20190924145130-e75e14d70f0f
-	github.com/stretchr/testify v1.4.0
 	github.com/terraform-providers/terraform-provider-cloudflare v0.0.0-20190930160515-22687634f730
 )
 
