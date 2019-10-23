@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.0.1 of the Cloudflare Terraform Provider
+_(none)_
 
 ---
+
+## 1.1.0 (2019-10-23)
+* Upgrade to v2.0.1 of the Cloudflare Terraform Provider
 
 ## 1.0.0 (2019-10-03)
 * Regenerate SDK based on tf2pulumi 0.6.0
