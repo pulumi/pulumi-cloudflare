@@ -64,6 +64,37 @@ export interface CustomSslCustomSslPriority {
     priority?: number;
 }
 
+export interface GetWafGroupsFilter {
+    mode?: string;
+    name?: string;
+}
+
+export interface GetWafGroupsGroup {
+    description?: string;
+    id?: string;
+    mode?: string;
+    modifiedRulesCount?: number;
+    name?: string;
+    packageId?: string;
+    rulesCount?: number;
+}
+
+export interface GetWafPackagesFilter {
+    actionMode?: string;
+    detectionMode?: string;
+    name?: string;
+    sensitivity?: string;
+}
+
+export interface GetWafPackagesPackage {
+    actionMode?: string;
+    description?: string;
+    detectionMode?: string;
+    id?: string;
+    name?: string;
+    sensitivity?: string;
+}
+
 export interface GetZonesFilter {
     name?: string;
     paused?: boolean;

@@ -40,6 +40,7 @@ func NewSpectrumApplication(ctx *pulumi.Context,
 		inputs["protocol"] = nil
 		inputs["proxyProtocol"] = nil
 		inputs["tls"] = nil
+		inputs["trafficType"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["dns"] = args.Dns
@@ -50,6 +51,7 @@ func NewSpectrumApplication(ctx *pulumi.Context,
 		inputs["protocol"] = args.Protocol
 		inputs["proxyProtocol"] = args.ProxyProtocol
 		inputs["tls"] = args.Tls
+		inputs["trafficType"] = args.TrafficType
 		inputs["zoneId"] = args.ZoneId
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/spectrumApplication:SpectrumApplication", name, true, inputs, opts...)
@@ -73,6 +75,7 @@ func GetSpectrumApplication(ctx *pulumi.Context,
 		inputs["protocol"] = state.Protocol
 		inputs["proxyProtocol"] = state.ProxyProtocol
 		inputs["tls"] = state.Tls
+		inputs["trafficType"] = state.TrafficType
 		inputs["zoneId"] = state.ZoneId
 	}
 	s, err := ctx.ReadResource("cloudflare:index/spectrumApplication:SpectrumApplication", name, id, inputs, opts...)
@@ -132,6 +135,11 @@ func (r *SpectrumApplication) Tls() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["tls"])
 }
 
+// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+func (r *SpectrumApplication) TrafficType() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["trafficType"])
+}
+
 func (r *SpectrumApplication) ZoneId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -154,6 +162,8 @@ type SpectrumApplicationState struct {
 	ProxyProtocol interface{}
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls interface{}
+	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+	TrafficType interface{}
 	ZoneId interface{}
 }
 
@@ -175,5 +185,7 @@ type SpectrumApplicationArgs struct {
 	ProxyProtocol interface{}
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls interface{}
+	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+	TrafficType interface{}
 	ZoneId interface{}
 }

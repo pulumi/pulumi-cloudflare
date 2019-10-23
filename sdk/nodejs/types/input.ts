@@ -64,6 +64,18 @@ export interface CustomSslCustomSslPriority {
     priority?: pulumi.Input<number>;
 }
 
+export interface GetWafGroupsFilter {
+    mode?: string;
+    name?: string;
+}
+
+export interface GetWafPackagesFilter {
+    actionMode?: string;
+    detectionMode?: string;
+    name?: string;
+    sensitivity?: string;
+}
+
 export interface GetZonesFilter {
     name?: string;
     paused?: boolean;

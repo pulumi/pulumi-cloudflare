@@ -17,8 +17,8 @@ package cloudflare
 import (
 	"unicode"
 
-	"github.com/hashicorp/terraform/helper/schema"
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 	"github.com/pulumi/pulumi/pkg/tokens"
 	"github.com/terraform-providers/terraform-provider-cloudflare/cloudflare"
 )
@@ -142,10 +142,15 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_zone_settings_override": {Tok: makeResource(mainMod, "ZoneSettingsOverride")},
 			"cloudflare_zone":                   {Tok: makeResource(mainMod, "Zone")},
 			"cloudflare_custom_ssl":             {Tok: makeResource(mainMod, "CustomSsl")},
+			"cloudflare_access_service_token":   {Tok: makeResource(mainMod, "AccessServiceToken")},
+			"cloudflare_waf_package":            {Tok: makeResource(mainMod, "WafPackage")},
+			"cloudflare_waf_group":              {Tok: makeResource(mainMod, "WafGroup")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"cloudflare_ip_ranges": {Tok: makeDataSource(mainMod, "getIpRanges")},
-			"cloudflare_zones":     {Tok: makeDataSource(mainMod, "getZones")},
+			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},
+			"cloudflare_zones":        {Tok: makeDataSource(mainMod, "getZones")},
+			"cloudflare_waf_groups":   {Tok: makeDataSource(mainMod, "getWafGroups")},
+			"cloudflare_waf_packages": {Tok: makeDataSource(mainMod, "getWafPackages")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

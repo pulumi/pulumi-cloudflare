@@ -23,6 +23,7 @@ import * as utilities from "./utilities";
  *     },
  *     originDirects: ["tcp://109.151.40.129:22"],
  *     protocol: "tcp/22",
+ *     trafficType: "direct",
  * });
  * ```
  *
@@ -87,6 +88,10 @@ export class SpectrumApplication extends pulumi.CustomResource {
      * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
      */
     public readonly tls!: pulumi.Output<string | undefined>;
+    /**
+     * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+     */
+    public readonly trafficType!: pulumi.Output<string | undefined>;
     public readonly zoneId!: pulumi.Output<string>;
 
     /**
@@ -109,6 +114,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["protocol"] = state ? state.protocol : undefined;
             inputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
             inputs["tls"] = state ? state.tls : undefined;
+            inputs["trafficType"] = state ? state.trafficType : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SpectrumApplicationArgs | undefined;
@@ -132,6 +138,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
             inputs["tls"] = args ? args.tls : undefined;
+            inputs["trafficType"] = args ? args.trafficType : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
@@ -181,6 +188,10 @@ export interface SpectrumApplicationState {
      * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
      */
     readonly tls?: pulumi.Input<string>;
+    /**
+     * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+     */
+    readonly trafficType?: pulumi.Input<string>;
     readonly zoneId?: pulumi.Input<string>;
 }
 
@@ -220,5 +231,9 @@ export interface SpectrumApplicationArgs {
      * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
      */
     readonly tls?: pulumi.Input<string>;
+    /**
+     * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+     */
+    readonly trafficType?: pulumi.Input<string>;
     readonly zoneId: pulumi.Input<string>;
 }
