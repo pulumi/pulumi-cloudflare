@@ -47,8 +47,12 @@ class SpectrumApplication(pulumi.CustomResource):
     """
     TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
     """
+    traffic_type: pulumi.Output[str]
+    """
+    Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+    """
     zone_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, dns=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, dns=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
         
@@ -62,6 +66,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+        :param pulumi.Input[str] traffic_type: Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         
         The **dns** object supports the following:
         
@@ -105,6 +110,7 @@ class SpectrumApplication(pulumi.CustomResource):
             __props__['protocol'] = protocol
             __props__['proxy_protocol'] = proxy_protocol
             __props__['tls'] = tls
+            __props__['traffic_type'] = traffic_type
             if zone_id is None:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
@@ -115,7 +121,7 @@ class SpectrumApplication(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dns=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, zone_id=None):
+    def get(resource_name, id, opts=None, dns=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None):
         """
         Get an existing SpectrumApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,6 +137,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+        :param pulumi.Input[str] traffic_type: Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         
         The **dns** object supports the following:
         
@@ -154,6 +161,7 @@ class SpectrumApplication(pulumi.CustomResource):
         __props__["protocol"] = protocol
         __props__["proxy_protocol"] = proxy_protocol
         __props__["tls"] = tls
+        __props__["traffic_type"] = traffic_type
         __props__["zone_id"] = zone_id
         return SpectrumApplication(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

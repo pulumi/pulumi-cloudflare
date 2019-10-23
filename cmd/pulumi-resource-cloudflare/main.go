@@ -15,7 +15,7 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 
 	cloudflare "github.com/pulumi/pulumi-cloudflare"
 	"github.com/pulumi/pulumi-cloudflare/pkg/version"
