@@ -168,6 +168,12 @@ func Provider() tfbridge.ProviderInfo {
 				"pulumi": ">=1.0.0,<2.0.0",
 			},
 		},
+		CSharp: &tfbridge.CSharpInfo{
+			PackageReferences: map[string]string{
+				"Pulumi":                       "1.5.0-*",
+				"System.Collections.Immutable": "1.6.0",
+			},
+		},
 	}
 
 	return prov

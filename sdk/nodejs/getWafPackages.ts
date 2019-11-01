@@ -8,29 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up [WAF Rule Packages][1].
- * 
- * ## Example Usage
- * 
- * The example below matches all `high` sensitivity WAF Rule Packages, with a `challenge` action mode and an `anomaly` detection mode, that contain the word `example`. The matched WAF Rule Packages are then returned as output.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * const test = cloudflare.getWafPackages({
- *     filter: {
- *         actionMode: "challenge",
- *         detectionMode: "anomaly",
- *         name: ".*example.*",
- *         sensitivity: "high",
- *     },
- * });
- * 
- * export const wafPackages = {
- *     "data.cloudflare_waf_packages.test.packages": [{}],
- *     value: "",
- * };
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.markdown.
  */
