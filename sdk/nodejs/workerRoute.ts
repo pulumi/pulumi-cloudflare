@@ -8,22 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare worker route resource. A route will also require a `cloudflare..WorkerScript`.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * // Runs the specified worker script for all URLs that match `example.com/*`
- * const myRoute = new cloudflare.WorkerRoute("myRoute", {
- *     "cloudflare_worker_script.my_script.name": [{}],
- *     pattern: "example.com/*",
- *     scriptName: "",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- * });
- * const myScript = new cloudflare.WorkerScript("myScript", {});
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
  */

@@ -8,27 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up [WAF Rule Groups][1].
- * 
- * ## Example Usage
- * 
- * The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * const test = cloudflare.getWafGroups({
- *     filter: {
- *         mode: "on",
- *         name: ".*example.*",
- *     },
- * });
- * 
- * export const wafGroups = {
- *     "data.cloudflare_waf_groups.test.groups": [{}],
- *     value: "",
- * };
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.markdown.
  */

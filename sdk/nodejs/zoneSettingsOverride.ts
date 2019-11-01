@@ -8,36 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * const test = new cloudflare.ZoneSettingsOverride("test", {
- *     "var.cloudflare_zone_id": [{
- *         settings: [{
- *             automaticHttpsRewrites: "on",
- *             brotli: "on",
- *             challengeTtl: 2700,
- *             minify: [{
- *                 css: "on",
- *                 html: "off",
- *                 js: "off",
- *             }],
- *             mirage: "on",
- *             opportunisticEncryption: "on",
- *             securityHeader: [{
- *                 enabled: true,
- *             }],
- *             securityLevel: "high",
- *             waf: "on",
- *         }],
- *     }],
- *     zoneId: "",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
  */
