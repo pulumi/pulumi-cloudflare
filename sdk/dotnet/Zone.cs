@@ -65,7 +65,7 @@ namespace Pulumi.Cloudflare
         /// The DNS zone name which will be added.
         /// </summary>
         [Output("zone")]
-        public Output<string> Zone { get; private set; } = null!;
+        public Output<string> ZoneName { get; private set; } = null!;
 
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// The DNS zone name which will be added.
         /// </summary>
         [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        public Input<string> ZoneName { get; set; } = null!;
 
         public ZoneArgs()
         {
@@ -213,7 +213,7 @@ namespace Pulumi.Cloudflare
         /// The DNS zone name which will be added.
         /// </summary>
         [Input("zone")]
-        public Input<string>? Zone { get; set; }
+        public Input<string>? ZoneName { get; set; }
 
         public ZoneState()
         {

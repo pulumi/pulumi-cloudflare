@@ -140,11 +140,18 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_worker_script":          {Tok: makeResource(mainMod, "WorkerScript")},
 			"cloudflare_zone_lockdown":          {Tok: makeResource(mainMod, "ZoneLockdown")},
 			"cloudflare_zone_settings_override": {Tok: makeResource(mainMod, "ZoneSettingsOverride")},
-			"cloudflare_zone":                   {Tok: makeResource(mainMod, "Zone")},
-			"cloudflare_custom_ssl":             {Tok: makeResource(mainMod, "CustomSsl")},
-			"cloudflare_access_service_token":   {Tok: makeResource(mainMod, "AccessServiceToken")},
-			"cloudflare_waf_package":            {Tok: makeResource(mainMod, "WafPackage")},
-			"cloudflare_waf_group":              {Tok: makeResource(mainMod, "WafGroup")},
+			"cloudflare_zone": {
+				Tok: makeResource(mainMod, "Zone"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"zone": {
+						CSharpName: "ZoneName",
+					},
+				},
+			},
+			"cloudflare_custom_ssl":           {Tok: makeResource(mainMod, "CustomSsl")},
+			"cloudflare_access_service_token": {Tok: makeResource(mainMod, "AccessServiceToken")},
+			"cloudflare_waf_package":          {Tok: makeResource(mainMod, "WafPackage")},
+			"cloudflare_waf_group":            {Tok: makeResource(mainMod, "WafGroup")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},
