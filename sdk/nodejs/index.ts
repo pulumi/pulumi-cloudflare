@@ -15,6 +15,7 @@ export * from "./firewallRule";
 export * from "./getIpRanges";
 export * from "./getWafGroups";
 export * from "./getWafPackages";
+export * from "./getWafRules";
 export * from "./getZones";
 export * from "./loadBalancer";
 export * from "./loadBalancerMonitor";

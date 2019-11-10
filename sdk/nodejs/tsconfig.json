@@ -28,6 +28,7 @@
         "getIpRanges.ts",
         "getWafGroups.ts",
         "getWafPackages.ts",
+        "getWafRules.ts",
         "getZones.ts",
         "index.ts",
         "loadBalancer.ts",

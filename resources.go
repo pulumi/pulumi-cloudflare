@@ -158,6 +158,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_zones":        {Tok: makeDataSource(mainMod, "getZones")},
 			"cloudflare_waf_groups":   {Tok: makeDataSource(mainMod, "getWafGroups")},
 			"cloudflare_waf_packages": {Tok: makeDataSource(mainMod, "getWafPackages")},
+			"cloudflare_waf_rules":    {Tok: makeDataSource(mainMod, "getWafRules")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

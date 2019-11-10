@@ -41,6 +41,10 @@ class Zone(pulumi.CustomResource):
     * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
     * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
     """
+    verification_key: pulumi.Output[str]
+    """
+    Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+    """
     zone: pulumi.Output[str]
     """
     The DNS zone name which will be added.
@@ -87,6 +91,7 @@ class Zone(pulumi.CustomResource):
             __props__['name_servers'] = None
             __props__['status'] = None
             __props__['vanity_name_servers'] = None
+            __props__['verification_key'] = None
         super(Zone, __self__).__init__(
             'cloudflare:index/zone:Zone',
             resource_name,
@@ -94,7 +99,7 @@ class Zone(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, jump_start=None, meta=None, name_servers=None, paused=None, plan=None, status=None, type=None, vanity_name_servers=None, zone=None):
+    def get(resource_name, id, opts=None, jump_start=None, meta=None, name_servers=None, paused=None, plan=None, status=None, type=None, vanity_name_servers=None, verification_key=None, zone=None):
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -111,6 +116,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[list] vanity_name_servers: List of Vanity Nameservers (if set).
                * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
                * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+        :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
         
         The **meta** object supports the following:
@@ -131,6 +137,7 @@ class Zone(pulumi.CustomResource):
         __props__["status"] = status
         __props__["type"] = type
         __props__["vanity_name_servers"] = vanity_name_servers
+        __props__["verification_key"] = verification_key
         __props__["zone"] = zone
         return Zone(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

@@ -62,6 +62,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> VanityNameServers { get; private set; } = null!;
 
         /// <summary>
+        /// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+        /// </summary>
+        [Output("verificationKey")]
+        public Output<string> VerificationKey { get; private set; } = null!;
+
+        /// <summary>
         /// The DNS zone name which will be added.
         /// </summary>
         [Output("zone")]
@@ -208,6 +214,12 @@ namespace Pulumi.Cloudflare
             get => _vanityNameServers ?? (_vanityNameServers = new InputList<string>());
             set => _vanityNameServers = value;
         }
+
+        /// <summary>
+        /// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+        /// </summary>
+        [Input("verificationKey")]
+        public Input<string>? VerificationKey { get; set; }
 
         /// <summary>
         /// The DNS zone name which will be added.
