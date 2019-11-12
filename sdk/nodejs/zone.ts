@@ -81,6 +81,10 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly vanityNameServers!: pulumi.Output<string[]>;
     /**
+     * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+     */
+    public /*out*/ readonly verificationKey!: pulumi.Output<string>;
+    /**
      * The DNS zone name which will be added.
      */
     public readonly zone!: pulumi.Output<string>;
@@ -105,6 +109,7 @@ export class Zone extends pulumi.CustomResource {
             inputs["status"] = state ? state.status : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["vanityNameServers"] = state ? state.vanityNameServers : undefined;
+            inputs["verificationKey"] = state ? state.verificationKey : undefined;
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
@@ -120,6 +125,7 @@ export class Zone extends pulumi.CustomResource {
             inputs["nameServers"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["vanityNameServers"] = undefined /*out*/;
+            inputs["verificationKey"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -167,6 +173,10 @@ export interface ZoneState {
      * * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
      */
     readonly vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+     */
+    readonly verificationKey?: pulumi.Input<string>;
     /**
      * The DNS zone name which will be added.
      */

@@ -95,6 +95,22 @@ export interface GetWafPackagesPackage {
     sensitivity?: string;
 }
 
+export interface GetWafRulesFilter {
+    description?: string;
+    groupId?: string;
+    mode?: string;
+}
+
+export interface GetWafRulesRule {
+    description?: string;
+    groupId?: string;
+    groupName?: string;
+    id?: string;
+    mode?: string;
+    packageId?: string;
+    priority?: string;
+}
+
 export interface GetZonesFilter {
     name?: string;
     paused?: boolean;

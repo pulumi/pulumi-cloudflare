@@ -39,5 +39,6 @@ from .zone_settings_override import *
 from .get_ip_ranges import *
 from .get_waf_groups import *
 from .get_waf_packages import *
+from .get_waf_rules import *
 from .get_zones import *
 from .provider import *

@@ -39,6 +39,7 @@ func NewZone(ctx *pulumi.Context,
 	inputs["nameServers"] = nil
 	inputs["status"] = nil
 	inputs["vanityNameServers"] = nil
+	inputs["verificationKey"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/zone:Zone", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -60,6 +61,7 @@ func GetZone(ctx *pulumi.Context,
 		inputs["status"] = state.Status
 		inputs["type"] = state.Type
 		inputs["vanityNameServers"] = state.VanityNameServers
+		inputs["verificationKey"] = state.VerificationKey
 		inputs["zone"] = state.Zone
 	}
 	s, err := ctx.ReadResource("cloudflare:index/zone:Zone", name, id, inputs, opts...)
@@ -120,6 +122,11 @@ func (r *Zone) VanityNameServers() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["vanityNameServers"])
 }
 
+// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+func (r *Zone) VerificationKey() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["verificationKey"])
+}
+
 // The DNS zone name which will be added.
 func (r *Zone) Zone() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["zone"])
@@ -144,6 +151,8 @@ type ZoneState struct {
 	// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
 	// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
 	VanityNameServers interface{}
+	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+	VerificationKey interface{}
 	// The DNS zone name which will be added.
 	Zone interface{}
 }

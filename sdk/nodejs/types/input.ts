@@ -76,6 +76,12 @@ export interface GetWafPackagesFilter {
     sensitivity?: string;
 }
 
+export interface GetWafRulesFilter {
+    description?: string;
+    groupId?: string;
+    mode?: string;
+}
+
 export interface GetZonesFilter {
     name?: string;
     paused?: boolean;
