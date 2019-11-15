@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Add support for DotNet SDK Generation
-* Upgrade to v2.1.0 of the Cloudflare Terraform Provider
+_(none)_
 
 ---
+
+## 1.2.0 (2019-11-15)
+* Add support for DotNet SDK Generation
+* Upgrade to v2.1.0 of the Cloudflare Terraform Provider
 
 ## 1.1.0 (2019-10-23)
 * Upgrade to v2.0.1 of the Cloudflare Terraform Provider
