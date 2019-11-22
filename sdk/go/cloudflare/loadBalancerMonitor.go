@@ -86,87 +86,87 @@ func GetLoadBalancerMonitor(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LoadBalancerMonitor) URN() *pulumi.URNOutput {
+func (r *LoadBalancerMonitor) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LoadBalancerMonitor) ID() *pulumi.IDOutput {
+func (r *LoadBalancerMonitor) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
-func (r *LoadBalancerMonitor) AllowInsecure() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["allowInsecure"])
+func (r *LoadBalancerMonitor) AllowInsecure() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["allowInsecure"])
 }
 
 // The RFC3339 timestamp of when the load balancer monitor was created.
-func (r *LoadBalancerMonitor) CreatedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdOn"])
+func (r *LoadBalancerMonitor) CreatedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdOn"])
 }
 
 // Free text description.
-func (r *LoadBalancerMonitor) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *LoadBalancerMonitor) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
-func (r *LoadBalancerMonitor) ExpectedBody() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expectedBody"])
+func (r *LoadBalancerMonitor) ExpectedBody() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expectedBody"])
 }
 
 // The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
-func (r *LoadBalancerMonitor) ExpectedCodes() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expectedCodes"])
+func (r *LoadBalancerMonitor) ExpectedCodes() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expectedCodes"])
 }
 
 // Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-func (r *LoadBalancerMonitor) FollowRedirects() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["followRedirects"])
+func (r *LoadBalancerMonitor) FollowRedirects() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["followRedirects"])
 }
 
 // The header name.
-func (r *LoadBalancerMonitor) Headers() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["headers"])
+func (r *LoadBalancerMonitor) Headers() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["headers"])
 }
 
 // The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
-func (r *LoadBalancerMonitor) Interval() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["interval"])
+func (r *LoadBalancerMonitor) Interval() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["interval"])
 }
 
 // The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
-func (r *LoadBalancerMonitor) Method() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["method"])
+func (r *LoadBalancerMonitor) Method() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["method"])
 }
 
 // The RFC3339 timestamp of when the load balancer monitor was last modified.
-func (r *LoadBalancerMonitor) ModifiedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["modifiedOn"])
+func (r *LoadBalancerMonitor) ModifiedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["modifiedOn"])
 }
 
 // The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
-func (r *LoadBalancerMonitor) Path() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["path"])
+func (r *LoadBalancerMonitor) Path() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["path"])
 }
 
-func (r *LoadBalancerMonitor) Port() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["port"])
+func (r *LoadBalancerMonitor) Port() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["port"])
 }
 
 // The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
-func (r *LoadBalancerMonitor) Retries() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["retries"])
+func (r *LoadBalancerMonitor) Retries() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["retries"])
 }
 
 // The timeout (in seconds) before marking the health check as failed. Default: 5.
-func (r *LoadBalancerMonitor) Timeout() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["timeout"])
+func (r *LoadBalancerMonitor) Timeout() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["timeout"])
 }
 
 // The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
-func (r *LoadBalancerMonitor) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *LoadBalancerMonitor) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // Input properties used for looking up and filtering LoadBalancerMonitor resources.

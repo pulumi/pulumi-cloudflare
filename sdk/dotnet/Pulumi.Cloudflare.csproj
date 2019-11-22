@@ -15,11 +15,12 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>1701;1702;1591;8604;8625</NoWarn>
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="version.txt" />
+    <Content Include="version.txt" />
   </ItemGroup>
 
   <ItemGroup>

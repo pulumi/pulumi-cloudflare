@@ -69,39 +69,39 @@ func GetAccessApplication(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccessApplication) URN() *pulumi.URNOutput {
+func (r *AccessApplication) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccessApplication) ID() *pulumi.IDOutput {
+func (r *AccessApplication) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *AccessApplication) Aud() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["aud"])
+func (r *AccessApplication) Aud() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["aud"])
 }
 
 // The complete URL of the asset you wish to put
 // Cloudflare Access in front of. Can include subdomains or paths. Or both.
-func (r *AccessApplication) Domain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domain"])
+func (r *AccessApplication) Domain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domain"])
 }
 
 // Friendly name of the Access Application.
-func (r *AccessApplication) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AccessApplication) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // How often a user will be forced to
 // re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
-func (r *AccessApplication) SessionDuration() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sessionDuration"])
+func (r *AccessApplication) SessionDuration() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sessionDuration"])
 }
 
 // The DNS zone to which the access rule should be added.
-func (r *AccessApplication) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *AccessApplication) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering AccessApplication resources.

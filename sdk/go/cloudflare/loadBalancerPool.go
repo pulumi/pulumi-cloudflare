@@ -78,63 +78,63 @@ func GetLoadBalancerPool(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LoadBalancerPool) URN() *pulumi.URNOutput {
+func (r *LoadBalancerPool) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LoadBalancerPool) ID() *pulumi.IDOutput {
+func (r *LoadBalancerPool) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
-func (r *LoadBalancerPool) CheckRegions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["checkRegions"])
+func (r *LoadBalancerPool) CheckRegions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["checkRegions"])
 }
 
 // The RFC3339 timestamp of when the load balancer was created.
-func (r *LoadBalancerPool) CreatedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdOn"])
+func (r *LoadBalancerPool) CreatedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdOn"])
 }
 
 // Free text description.
-func (r *LoadBalancerPool) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *LoadBalancerPool) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
-func (r *LoadBalancerPool) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *LoadBalancerPool) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
-func (r *LoadBalancerPool) MinimumOrigins() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["minimumOrigins"])
+func (r *LoadBalancerPool) MinimumOrigins() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["minimumOrigins"])
 }
 
 // The RFC3339 timestamp of when the load balancer was last modified.
-func (r *LoadBalancerPool) ModifiedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["modifiedOn"])
+func (r *LoadBalancerPool) ModifiedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["modifiedOn"])
 }
 
 // The ID of the Monitor to use for health checking origins within this pool.
-func (r *LoadBalancerPool) Monitor() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["monitor"])
+func (r *LoadBalancerPool) Monitor() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["monitor"])
 }
 
 // A human-identifiable name for the origin.
-func (r *LoadBalancerPool) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *LoadBalancerPool) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
-func (r *LoadBalancerPool) NotificationEmail() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["notificationEmail"])
+func (r *LoadBalancerPool) NotificationEmail() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["notificationEmail"])
 }
 
 // The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
-func (r *LoadBalancerPool) Origins() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["origins"])
+func (r *LoadBalancerPool) Origins() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["origins"])
 }
 
 // Input properties used for looking up and filtering LoadBalancerPool resources.

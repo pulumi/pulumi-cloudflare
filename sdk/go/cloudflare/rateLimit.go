@@ -83,58 +83,58 @@ func GetRateLimit(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *RateLimit) URN() *pulumi.URNOutput {
+func (r *RateLimit) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *RateLimit) ID() *pulumi.IDOutput {
+func (r *RateLimit) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-func (r *RateLimit) Action() *pulumi.Output {
+func (r *RateLimit) Action() pulumi.Output {
 	return r.s.State["action"]
 }
 
 // URLs matching the patterns specified here will be excluded from rate limiting.
-func (r *RateLimit) BypassUrlPatterns() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["bypassUrlPatterns"])
+func (r *RateLimit) BypassUrlPatterns() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["bypassUrlPatterns"])
 }
 
 // Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
-func (r *RateLimit) Correlate() *pulumi.Output {
+func (r *RateLimit) Correlate() pulumi.Output {
 	return r.s.State["correlate"]
 }
 
 // A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
-func (r *RateLimit) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *RateLimit) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Whether this ratelimit is currently disabled. Default: `false`.
-func (r *RateLimit) Disabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["disabled"])
+func (r *RateLimit) Disabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["disabled"])
 }
 
 // Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
-func (r *RateLimit) Match() *pulumi.Output {
+func (r *RateLimit) Match() pulumi.Output {
 	return r.s.State["match"]
 }
 
 // The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
-func (r *RateLimit) Period() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["period"])
+func (r *RateLimit) Period() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["period"])
 }
 
 // The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
-func (r *RateLimit) Threshold() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["threshold"])
+func (r *RateLimit) Threshold() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["threshold"])
 }
 
 // The DNS zone ID to apply rate limiting to.
-func (r *RateLimit) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *RateLimit) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering RateLimit resources.

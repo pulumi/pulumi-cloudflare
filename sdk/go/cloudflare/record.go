@@ -87,78 +87,78 @@ func GetRecord(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Record) URN() *pulumi.URNOutput {
+func (r *Record) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Record) ID() *pulumi.IDOutput {
+func (r *Record) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The RFC3339 timestamp of when the record was created
-func (r *Record) CreatedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdOn"])
+func (r *Record) CreatedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdOn"])
 }
 
 // Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-func (r *Record) Data() *pulumi.Output {
+func (r *Record) Data() pulumi.Output {
 	return r.s.State["data"]
 }
 
 // The FQDN of the record
-func (r *Record) Hostname() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostname"])
+func (r *Record) Hostname() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostname"])
 }
 
 // A key-value map of string metadata Cloudflare associates with the record
-func (r *Record) Metadata() *pulumi.MapOutput {
-	return (*pulumi.MapOutput)(r.s.State["metadata"])
+func (r *Record) Metadata() pulumi.MapOutput {
+	return (pulumi.MapOutput)(r.s.State["metadata"])
 }
 
 // The RFC3339 timestamp of when the record was last modified
-func (r *Record) ModifiedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["modifiedOn"])
+func (r *Record) ModifiedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["modifiedOn"])
 }
 
 // The name of the record
-func (r *Record) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Record) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The priority of the record
-func (r *Record) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *Record) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // Shows whether this record can be proxied, must be true if setting `proxied=true`
-func (r *Record) Proxiable() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["proxiable"])
+func (r *Record) Proxiable() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["proxiable"])
 }
 
 // Whether the record gets Cloudflare's origin protection; defaults to `false`.
-func (r *Record) Proxied() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["proxied"])
+func (r *Record) Proxied() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["proxied"])
 }
 
 // The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
-func (r *Record) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *Record) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
 // The type of the record
-func (r *Record) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Record) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The (string) value of the record. Either this or `data` must be specified
-func (r *Record) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *Record) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // The DNS zone ID to add the record to
-func (r *Record) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *Record) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering Record resources.

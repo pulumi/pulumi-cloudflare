@@ -72,59 +72,59 @@ func GetCustomSsl(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *CustomSsl) URN() *pulumi.URNOutput {
+func (r *CustomSsl) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *CustomSsl) ID() *pulumi.IDOutput {
+func (r *CustomSsl) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-func (r *CustomSsl) CustomSslOptions() *pulumi.Output {
+func (r *CustomSsl) CustomSslOptions() pulumi.Output {
 	return r.s.State["customSslOptions"]
 }
 
-func (r *CustomSsl) CustomSslPriorities() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["customSslPriorities"])
+func (r *CustomSsl) CustomSslPriorities() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["customSslPriorities"])
 }
 
-func (r *CustomSsl) ExpiresOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expiresOn"])
+func (r *CustomSsl) ExpiresOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expiresOn"])
 }
 
-func (r *CustomSsl) Hosts() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["hosts"])
+func (r *CustomSsl) Hosts() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["hosts"])
 }
 
-func (r *CustomSsl) Issuer() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["issuer"])
+func (r *CustomSsl) Issuer() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["issuer"])
 }
 
-func (r *CustomSsl) ModifiedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["modifiedOn"])
+func (r *CustomSsl) ModifiedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["modifiedOn"])
 }
 
-func (r *CustomSsl) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *CustomSsl) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
-func (r *CustomSsl) Signature() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["signature"])
+func (r *CustomSsl) Signature() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["signature"])
 }
 
-func (r *CustomSsl) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *CustomSsl) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
-func (r *CustomSsl) UploadedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["uploadedOn"])
+func (r *CustomSsl) UploadedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["uploadedOn"])
 }
 
 // The DNS zone id to the custom ssl cert should be added.
-func (r *CustomSsl) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *CustomSsl) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering CustomSsl resources.

@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessApplication(string name, AccessApplicationArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/accessApplication:AccessApplication", name, args, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/accessApplication:AccessApplication", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

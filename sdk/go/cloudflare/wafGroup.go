@@ -62,33 +62,33 @@ func GetWafGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *WafGroup) URN() *pulumi.URNOutput {
+func (r *WafGroup) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *WafGroup) ID() *pulumi.IDOutput {
+func (r *WafGroup) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The WAF Rule Group ID.
-func (r *WafGroup) GroupId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["groupId"])
+func (r *WafGroup) GroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["groupId"])
 }
 
 // The mode of the group, can be one of ["on", "off"].
-func (r *WafGroup) Mode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mode"])
+func (r *WafGroup) Mode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mode"])
 }
 
 // The ID of the WAF Rule Package that contains the group.
-func (r *WafGroup) PackageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["packageId"])
+func (r *WafGroup) PackageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["packageId"])
 }
 
 // The DNS zone ID to apply to.
-func (r *WafGroup) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *WafGroup) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering WafGroup resources.

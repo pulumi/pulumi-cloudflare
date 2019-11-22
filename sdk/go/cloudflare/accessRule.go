@@ -62,33 +62,33 @@ func GetAccessRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccessRule) URN() *pulumi.URNOutput {
+func (r *AccessRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccessRule) ID() *pulumi.IDOutput {
+func (r *AccessRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Rule configuration to apply to a matched request. It's a complex value. See description below.
-func (r *AccessRule) Configuration() *pulumi.Output {
+func (r *AccessRule) Configuration() pulumi.Output {
 	return r.s.State["configuration"]
 }
 
 // The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
-func (r *AccessRule) Mode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mode"])
+func (r *AccessRule) Mode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mode"])
 }
 
 // A personal note about the rule. Typically used as a reminder or explanation for the rule.
-func (r *AccessRule) Notes() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["notes"])
+func (r *AccessRule) Notes() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["notes"])
 }
 
 // The DNS zone to which the access rule should be added.
-func (r *AccessRule) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *AccessRule) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering AccessRule resources.

@@ -71,42 +71,42 @@ func GetLogpushJob(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LogpushJob) URN() *pulumi.URNOutput {
+func (r *LogpushJob) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LogpushJob) ID() *pulumi.IDOutput {
+func (r *LogpushJob) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
-func (r *LogpushJob) DestinationConf() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["destinationConf"])
+func (r *LogpushJob) DestinationConf() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["destinationConf"])
 }
 
-func (r *LogpushJob) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *LogpushJob) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-func (r *LogpushJob) LogpullOptions() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["logpullOptions"])
+func (r *LogpushJob) LogpullOptions() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["logpullOptions"])
 }
 
 // The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
-func (r *LogpushJob) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *LogpushJob) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-func (r *LogpushJob) OwnershipChallenge() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ownershipChallenge"])
+func (r *LogpushJob) OwnershipChallenge() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ownershipChallenge"])
 }
 
 // The zone ID where the logpush job should be created.
-func (r *LogpushJob) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *LogpushJob) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering LogpushJob resources.

@@ -99,59 +99,59 @@ func GetAccessPolicy(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccessPolicy) URN() *pulumi.URNOutput {
+func (r *AccessPolicy) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccessPolicy) ID() *pulumi.IDOutput {
+func (r *AccessPolicy) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the application the policy is
 // associated with.
-func (r *AccessPolicy) ApplicationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["applicationId"])
+func (r *AccessPolicy) ApplicationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["applicationId"])
 }
 
 // Defines the action Access will take if the policy matches the user.
 // Allowed values: `allow`, `deny`, `bypass`
-func (r *AccessPolicy) Decision() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["decision"])
+func (r *AccessPolicy) Decision() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["decision"])
 }
 
 // A series of access conditions, see below for
 // full list.
-func (r *AccessPolicy) Excludes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["excludes"])
+func (r *AccessPolicy) Excludes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["excludes"])
 }
 
 // A series of access conditions, see below for
 // full list.
-func (r *AccessPolicy) Includes() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["includes"])
+func (r *AccessPolicy) Includes() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["includes"])
 }
 
 // Friendly name of the Access Application.
-func (r *AccessPolicy) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AccessPolicy) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The unique precedence for policies on a single application. Integer.
-func (r *AccessPolicy) Precedence() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["precedence"])
+func (r *AccessPolicy) Precedence() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["precedence"])
 }
 
 // A series of access conditions, see below for
 // full list.
-func (r *AccessPolicy) Requires() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["requires"])
+func (r *AccessPolicy) Requires() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["requires"])
 }
 
 // The DNS zone to which the access rule should be
 // added.
-func (r *AccessPolicy) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *AccessPolicy) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering AccessPolicy resources.

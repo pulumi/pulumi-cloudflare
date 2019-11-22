@@ -65,43 +65,43 @@ func GetCustomPages(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *CustomPages) URN() *pulumi.URNOutput {
+func (r *CustomPages) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *CustomPages) ID() *pulumi.IDOutput {
+func (r *CustomPages) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The account ID where the custom pages should be
 // updated. Either `accountId` or `zoneId` must be provided. If
 // `accountId` is present, it will override the zone setting.
-func (r *CustomPages) AccountId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accountId"])
+func (r *CustomPages) AccountId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accountId"])
 }
 
-func (r *CustomPages) State() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["state"])
+func (r *CustomPages) State() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["state"])
 }
 
 // The type of custom page you wish to update. Must
 // be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 // `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
 // `500Errors`, `1000Errors`, `alwaysOnline`.
-func (r *CustomPages) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *CustomPages) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // URL of where the custom page source is located.
-func (r *CustomPages) Url() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["url"])
+func (r *CustomPages) Url() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["url"])
 }
 
 // The zone ID where the custom pages should be
 // updated. Either `zoneId` or `accountId` must be provided.
-func (r *CustomPages) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *CustomPages) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering CustomPages resources.

@@ -68,38 +68,38 @@ func GetPageRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *PageRule) URN() *pulumi.URNOutput {
+func (r *PageRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *PageRule) ID() *pulumi.IDOutput {
+func (r *PageRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The actions taken by the page rule, options given below.
-func (r *PageRule) Actions() *pulumi.Output {
+func (r *PageRule) Actions() pulumi.Output {
 	return r.s.State["actions"]
 }
 
 // The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
-func (r *PageRule) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *PageRule) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // Whether the page rule is active or disabled.
-func (r *PageRule) Status() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["status"])
+func (r *PageRule) Status() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["status"])
 }
 
 // The URL pattern to target with the page rule.
-func (r *PageRule) Target() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["target"])
+func (r *PageRule) Target() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["target"])
 }
 
 // The DNS zone ID to which the page rule should be added.
-func (r *PageRule) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *PageRule) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering PageRule resources.

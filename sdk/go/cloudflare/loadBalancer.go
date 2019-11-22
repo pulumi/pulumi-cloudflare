@@ -96,83 +96,83 @@ func GetLoadBalancer(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *LoadBalancer) URN() *pulumi.URNOutput {
+func (r *LoadBalancer) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *LoadBalancer) ID() *pulumi.IDOutput {
+func (r *LoadBalancer) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The RFC3339 timestamp of when the load balancer was created.
-func (r *LoadBalancer) CreatedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["createdOn"])
+func (r *LoadBalancer) CreatedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["createdOn"])
 }
 
 // A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
-func (r *LoadBalancer) DefaultPoolIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["defaultPoolIds"])
+func (r *LoadBalancer) DefaultPoolIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["defaultPoolIds"])
 }
 
 // Free text description.
-func (r *LoadBalancer) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *LoadBalancer) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Enable or disable the load balancer. Defaults to `true` (enabled).
-func (r *LoadBalancer) Enabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["enabled"])
+func (r *LoadBalancer) Enabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["enabled"])
 }
 
 // The pool ID to use when all other pools are detected as unhealthy.
-func (r *LoadBalancer) FallbackPoolId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["fallbackPoolId"])
+func (r *LoadBalancer) FallbackPoolId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["fallbackPoolId"])
 }
 
 // The RFC3339 timestamp of when the load balancer was last modified.
-func (r *LoadBalancer) ModifiedOn() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["modifiedOn"])
+func (r *LoadBalancer) ModifiedOn() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["modifiedOn"])
 }
 
 // The DNS name (FQDN, including the zone) to associate with the load balancer.
-func (r *LoadBalancer) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *LoadBalancer) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
-func (r *LoadBalancer) PopPools() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["popPools"])
+func (r *LoadBalancer) PopPools() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["popPools"])
 }
 
 // Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
-func (r *LoadBalancer) Proxied() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["proxied"])
+func (r *LoadBalancer) Proxied() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["proxied"])
 }
 
 // A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
-func (r *LoadBalancer) RegionPools() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["regionPools"])
+func (r *LoadBalancer) RegionPools() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["regionPools"])
 }
 
 // Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
-func (r *LoadBalancer) SessionAffinity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sessionAffinity"])
+func (r *LoadBalancer) SessionAffinity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sessionAffinity"])
 }
 
 // Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
-func (r *LoadBalancer) SteeringPolicy() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["steeringPolicy"])
+func (r *LoadBalancer) SteeringPolicy() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["steeringPolicy"])
 }
 
 // Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
-func (r *LoadBalancer) Ttl() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["ttl"])
+func (r *LoadBalancer) Ttl() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["ttl"])
 }
 
 // The zone ID to add the load balancer to.
-func (r *LoadBalancer) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *LoadBalancer) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering LoadBalancer resources.

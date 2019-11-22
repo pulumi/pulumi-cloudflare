@@ -59,28 +59,28 @@ func GetWorkerRoute(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *WorkerRoute) URN() *pulumi.URNOutput {
+func (r *WorkerRoute) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *WorkerRoute) ID() *pulumi.IDOutput {
+func (r *WorkerRoute) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
 // * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
-func (r *WorkerRoute) Pattern() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["pattern"])
+func (r *WorkerRoute) Pattern() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["pattern"])
 }
 
-func (r *WorkerRoute) ScriptName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["scriptName"])
+func (r *WorkerRoute) ScriptName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["scriptName"])
 }
 
 // The zone ID to add the route to.
-func (r *WorkerRoute) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *WorkerRoute) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering WorkerRoute resources.
