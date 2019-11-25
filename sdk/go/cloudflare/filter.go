@@ -65,38 +65,38 @@ func GetFilter(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Filter) URN() *pulumi.URNOutput {
+func (r *Filter) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Filter) ID() *pulumi.IDOutput {
+func (r *Filter) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A note that you can use to describe the purpose of the filter.
-func (r *Filter) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *Filter) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // The filter expression to be used.
-func (r *Filter) Expression() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["expression"])
+func (r *Filter) Expression() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["expression"])
 }
 
 // Whether this filter is currently paused. Boolean value.
-func (r *Filter) Paused() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["paused"])
+func (r *Filter) Paused() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["paused"])
 }
 
 // Short reference tag to quickly select related rules.
-func (r *Filter) Ref() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ref"])
+func (r *Filter) Ref() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ref"])
 }
 
 // The DNS zone to which the Filter should be added.
-func (r *Filter) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *Filter) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering Filter resources.

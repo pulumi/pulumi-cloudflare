@@ -63,47 +63,47 @@ func GetZoneSettingsOverride(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ZoneSettingsOverride) URN() *pulumi.URNOutput {
+func (r *ZoneSettingsOverride) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ZoneSettingsOverride) ID() *pulumi.IDOutput {
+func (r *ZoneSettingsOverride) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-func (r *ZoneSettingsOverride) InitialSettings() *pulumi.Output {
+func (r *ZoneSettingsOverride) InitialSettings() pulumi.Output {
 	return r.s.State["initialSettings"]
 }
 
-func (r *ZoneSettingsOverride) InitialSettingsReadAt() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["initialSettingsReadAt"])
+func (r *ZoneSettingsOverride) InitialSettingsReadAt() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["initialSettingsReadAt"])
 }
 
 // Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
 // * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
 // * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-func (r *ZoneSettingsOverride) ReadonlySettings() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["readonlySettings"])
+func (r *ZoneSettingsOverride) ReadonlySettings() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["readonlySettings"])
 }
 
 // Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-func (r *ZoneSettingsOverride) Settings() *pulumi.Output {
+func (r *ZoneSettingsOverride) Settings() pulumi.Output {
 	return r.s.State["settings"]
 }
 
 // The DNS zone ID to which apply settings.
-func (r *ZoneSettingsOverride) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *ZoneSettingsOverride) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
-func (r *ZoneSettingsOverride) ZoneStatus() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneStatus"])
+func (r *ZoneSettingsOverride) ZoneStatus() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneStatus"])
 }
 
-func (r *ZoneSettingsOverride) ZoneType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneType"])
+func (r *ZoneSettingsOverride) ZoneType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneType"])
 }
 
 // Input properties used for looking up and filtering ZoneSettingsOverride resources.

@@ -62,33 +62,33 @@ func GetWafPackage(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *WafPackage) URN() *pulumi.URNOutput {
+func (r *WafPackage) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *WafPackage) ID() *pulumi.IDOutput {
+func (r *WafPackage) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The action mode of the package, can be one of ["block", "challenge", "simulate"].
-func (r *WafPackage) ActionMode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["actionMode"])
+func (r *WafPackage) ActionMode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["actionMode"])
 }
 
 // The WAF Package ID.
-func (r *WafPackage) PackageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["packageId"])
+func (r *WafPackage) PackageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["packageId"])
 }
 
 // The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
-func (r *WafPackage) Sensitivity() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["sensitivity"])
+func (r *WafPackage) Sensitivity() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["sensitivity"])
 }
 
 // The DNS zone ID to apply to.
-func (r *WafPackage) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *WafPackage) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering WafPackage resources.

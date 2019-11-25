@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Cloudflare.Config
+namespace Pulumi.Cloudflare
 {
     public static class Config
     {

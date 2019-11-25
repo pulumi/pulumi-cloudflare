@@ -56,28 +56,28 @@ func GetArgo(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Argo) URN() *pulumi.URNOutput {
+func (r *Argo) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Argo) ID() *pulumi.IDOutput {
+func (r *Argo) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
-func (r *Argo) SmartRouting() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["smartRouting"])
+func (r *Argo) SmartRouting() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["smartRouting"])
 }
 
 // Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
-func (r *Argo) TieredCaching() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tieredCaching"])
+func (r *Argo) TieredCaching() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tieredCaching"])
 }
 
 // The DNS zone ID that you wish to manage Argo on.
-func (r *Argo) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *Argo) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering Argo resources.

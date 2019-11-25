@@ -71,42 +71,42 @@ func GetZoneLockdown(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ZoneLockdown) URN() *pulumi.URNOutput {
+func (r *ZoneLockdown) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ZoneLockdown) ID() *pulumi.IDOutput {
+func (r *ZoneLockdown) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
-func (r *ZoneLockdown) Configurations() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["configurations"])
+func (r *ZoneLockdown) Configurations() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["configurations"])
 }
 
 // A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
-func (r *ZoneLockdown) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *ZoneLockdown) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
 // Boolean of whether this zone lockdown is currently paused. Default: false.
-func (r *ZoneLockdown) Paused() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["paused"])
+func (r *ZoneLockdown) Paused() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["paused"])
 }
 
-func (r *ZoneLockdown) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *ZoneLockdown) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
-func (r *ZoneLockdown) Urls() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["urls"])
+func (r *ZoneLockdown) Urls() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["urls"])
 }
 
 // The DNS zone ID to which the access rule should be added.
-func (r *ZoneLockdown) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *ZoneLockdown) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering ZoneLockdown resources.

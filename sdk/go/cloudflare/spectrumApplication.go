@@ -86,62 +86,62 @@ func GetSpectrumApplication(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *SpectrumApplication) URN() *pulumi.URNOutput {
+func (r *SpectrumApplication) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *SpectrumApplication) ID() *pulumi.IDOutput {
+func (r *SpectrumApplication) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The name and type of DNS record for the Spectrum application. Fields documented below.
-func (r *SpectrumApplication) Dns() *pulumi.Output {
+func (r *SpectrumApplication) Dns() pulumi.Output {
 	return r.s.State["dns"]
 }
 
 // Enables the IP Firewall for this application. Defaults to `true`.
-func (r *SpectrumApplication) IpFirewall() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["ipFirewall"])
+func (r *SpectrumApplication) IpFirewall() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["ipFirewall"])
 }
 
 // A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
-func (r *SpectrumApplication) OriginDirects() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["originDirects"])
+func (r *SpectrumApplication) OriginDirects() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["originDirects"])
 }
 
 // A destination DNS addresses to the origin. Fields documented below.
-func (r *SpectrumApplication) OriginDns() *pulumi.Output {
+func (r *SpectrumApplication) OriginDns() pulumi.Output {
 	return r.s.State["originDns"]
 }
 
 // If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
-func (r *SpectrumApplication) OriginPort() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["originPort"])
+func (r *SpectrumApplication) OriginPort() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["originPort"])
 }
 
 // The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
-func (r *SpectrumApplication) Protocol() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["protocol"])
+func (r *SpectrumApplication) Protocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
 // Enables Proxy Protocol v1 to the origin. Defaults to `false`.
-func (r *SpectrumApplication) ProxyProtocol() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["proxyProtocol"])
+func (r *SpectrumApplication) ProxyProtocol() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["proxyProtocol"])
 }
 
 // TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
-func (r *SpectrumApplication) Tls() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["tls"])
+func (r *SpectrumApplication) Tls() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["tls"])
 }
 
 // Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
-func (r *SpectrumApplication) TrafficType() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["trafficType"])
+func (r *SpectrumApplication) TrafficType() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["trafficType"])
 }
 
-func (r *SpectrumApplication) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *SpectrumApplication) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering SpectrumApplication resources.

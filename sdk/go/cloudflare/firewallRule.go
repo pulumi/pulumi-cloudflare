@@ -74,42 +74,42 @@ func GetFirewallRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *FirewallRule) URN() *pulumi.URNOutput {
+func (r *FirewallRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *FirewallRule) ID() *pulumi.IDOutput {
+func (r *FirewallRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
-func (r *FirewallRule) Action() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["action"])
+func (r *FirewallRule) Action() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["action"])
 }
 
 // A description of the rule to help identify it.
-func (r *FirewallRule) Description() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["description"])
+func (r *FirewallRule) Description() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-func (r *FirewallRule) FilterId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["filterId"])
+func (r *FirewallRule) FilterId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["filterId"])
 }
 
 // Whether this filter based firewall rule is currently paused. Boolean value.
-func (r *FirewallRule) Paused() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["paused"])
+func (r *FirewallRule) Paused() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["paused"])
 }
 
 // The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
-func (r *FirewallRule) Priority() *pulumi.IntOutput {
-	return (*pulumi.IntOutput)(r.s.State["priority"])
+func (r *FirewallRule) Priority() pulumi.IntOutput {
+	return (pulumi.IntOutput)(r.s.State["priority"])
 }
 
 // The DNS zone to which the Filter should be added.
-func (r *FirewallRule) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *FirewallRule) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering FirewallRule resources.

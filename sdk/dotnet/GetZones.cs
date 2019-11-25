@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.markdown.
         /// </summary>
         public static Task<GetZonesResult> GetZones(GetZonesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetZonesArgs : Pulumi.ResourceArgs

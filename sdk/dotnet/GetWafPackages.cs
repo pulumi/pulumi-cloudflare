@@ -15,7 +15,7 @@ namespace Pulumi.Cloudflare
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.markdown.
         /// </summary>
         public static Task<GetWafPackagesResult> GetWafPackages(GetWafPackagesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWafPackagesResult>("cloudflare:index/getWafPackages:getWafPackages", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWafPackagesResult>("cloudflare:index/getWafPackages:getWafPackages", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetWafPackagesArgs : Pulumi.ResourceArgs

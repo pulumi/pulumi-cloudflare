@@ -56,23 +56,23 @@ func GetAccountMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccountMember) URN() *pulumi.URNOutput {
+func (r *AccountMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccountMember) ID() *pulumi.IDOutput {
+func (r *AccountMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
-func (r *AccountMember) EmailAddress() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["emailAddress"])
+func (r *AccountMember) EmailAddress() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["emailAddress"])
 }
 
 // Array of account role IDs that you want to assign to a member.
-func (r *AccountMember) RoleIds() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["roleIds"])
+func (r *AccountMember) RoleIds() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["roleIds"])
 }
 
 // Input properties used for looking up and filtering AccountMember resources.

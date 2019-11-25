@@ -61,34 +61,34 @@ func GetAccessServiceToken(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *AccessServiceToken) URN() *pulumi.URNOutput {
+func (r *AccessServiceToken) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *AccessServiceToken) ID() *pulumi.IDOutput {
+func (r *AccessServiceToken) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The ID of the account where the Access
 // Service is being created.
-func (r *AccessServiceToken) AccountId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["accountId"])
+func (r *AccessServiceToken) AccountId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["accountId"])
 }
 
 // UUID client ID associated with the Service Token.
-func (r *AccessServiceToken) ClientId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clientId"])
+func (r *AccessServiceToken) ClientId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clientId"])
 }
 
 // A secret for interacting with Access protocols.
-func (r *AccessServiceToken) ClientSecret() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["clientSecret"])
+func (r *AccessServiceToken) ClientSecret() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["clientSecret"])
 }
 
 // Friendly name of the token's intent.
-func (r *AccessServiceToken) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *AccessServiceToken) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering AccessServiceToken resources.

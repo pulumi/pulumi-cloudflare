@@ -64,33 +64,33 @@ func GetWafRule(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *WafRule) URN() *pulumi.URNOutput {
+func (r *WafRule) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *WafRule) ID() *pulumi.IDOutput {
+func (r *WafRule) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
-func (r *WafRule) Mode() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mode"])
+func (r *WafRule) Mode() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mode"])
 }
 
 // The ID of the WAF Rule Package that contains the rule.
-func (r *WafRule) PackageId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["packageId"])
+func (r *WafRule) PackageId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["packageId"])
 }
 
 // The WAF Rule ID.
-func (r *WafRule) RuleId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ruleId"])
+func (r *WafRule) RuleId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ruleId"])
 }
 
 // The DNS zone ID to apply to.
-func (r *WafRule) ZoneId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["zoneId"])
+func (r *WafRule) ZoneId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
 
 // Input properties used for looking up and filtering WafRule resources.

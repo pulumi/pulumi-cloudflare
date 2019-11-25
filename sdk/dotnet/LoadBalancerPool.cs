@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LoadBalancerPool(string name, LoadBalancerPoolArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, args, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

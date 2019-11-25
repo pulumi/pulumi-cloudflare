@@ -35,7 +35,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccountMember(string name, AccountMemberArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/accountMember:AccountMember", name, args, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/accountMember:AccountMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

@@ -56,23 +56,23 @@ func GetWorkerScript(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *WorkerScript) URN() *pulumi.URNOutput {
+func (r *WorkerScript) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *WorkerScript) ID() *pulumi.IDOutput {
+func (r *WorkerScript) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The script content.
-func (r *WorkerScript) Content() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["content"])
+func (r *WorkerScript) Content() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["content"])
 }
 
 // The name for the script.
-func (r *WorkerScript) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *WorkerScript) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // Input properties used for looking up and filtering WorkerScript resources.
