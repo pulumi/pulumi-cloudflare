@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.2.0 of the Cloudflare Terraform Provider
+_(none)_
 
 ---
+
+## 1.4.0 (2019-12-10)
+* Upgrade to v2.2.0 of the Cloudflare Terraform Provider
 
 ## 1.3.0 (2019-12-04)
 * Upgrade to support go 1.13.x
