@@ -14,18 +14,24 @@ class WorkerScript(pulumi.CustomResource):
     """
     The script content.
     """
+    kv_namespace_bindings: pulumi.Output[list]
     name: pulumi.Output[str]
     """
-    The name for the script.
+    The name for the binding.
     """
-    def __init__(__self__, resource_name, opts=None, content=None, name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, content=None, kv_namespace_bindings=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `.WorkerRoute`.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The name for the script.
+        :param pulumi.Input[str] name: The name for the binding.
+        
+        The **kv_namespace_bindings** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name for the binding.
+          * `namespaceId` (`pulumi.Input[str]`) - ID of KV namespace.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """
@@ -49,6 +55,7 @@ class WorkerScript(pulumi.CustomResource):
             if content is None:
                 raise TypeError("Missing required property 'content'")
             __props__['content'] = content
+            __props__['kv_namespace_bindings'] = kv_namespace_bindings
             if name is None:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
@@ -59,7 +66,7 @@ class WorkerScript(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, content=None, name=None):
+    def get(resource_name, id, opts=None, content=None, kv_namespace_bindings=None, name=None):
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -68,7 +75,12 @@ class WorkerScript(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The name for the script.
+        :param pulumi.Input[str] name: The name for the binding.
+        
+        The **kv_namespace_bindings** object supports the following:
+        
+          * `name` (`pulumi.Input[str]`) - The name for the binding.
+          * `namespaceId` (`pulumi.Input[str]`) - ID of KV namespace.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """
@@ -76,6 +88,7 @@ class WorkerScript(pulumi.CustomResource):
 
         __props__ = dict()
         __props__["content"] = content
+        __props__["kv_namespace_bindings"] = kv_namespace_bindings
         __props__["name"] = name
         return WorkerScript(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

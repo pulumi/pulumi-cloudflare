@@ -46,8 +46,10 @@ class Provider(pulumi.ProviderResource):
                 api_client_logging = (utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
             __props__['api_client_logging'] = pulumi.Output.from_input(api_client_logging).apply(json.dumps) if api_client_logging is not None else None
             if api_key is None:
-                api_key = utilities.get_env('CLOUDFLARE_API_TOKEN')
+                api_key = utilities.get_env('CLOUDFLARE_API_KEY')
             __props__['api_key'] = api_key
+            if api_token is None:
+                api_token = utilities.get_env('CLOUDFLARE_API_TOKEN')
             __props__['api_token'] = api_token
             if email is None:
                 email = utilities.get_env('CLOUDFLARE_EMAIL')

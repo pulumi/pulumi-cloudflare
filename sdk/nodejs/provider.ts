@@ -42,8 +42,8 @@ export class Provider extends pulumi.ProviderResource {
         {
             inputs["accountId"] = (args ? args.accountId : undefined) || utilities.getEnv("CLOUDFLARE_ACCOUNT_ID");
             inputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) || (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
-            inputs["apiKey"] = (args ? args.apiKey : undefined) || utilities.getEnv("CLOUDFLARE_API_TOKEN");
-            inputs["apiToken"] = args ? args.apiToken : undefined;
+            inputs["apiKey"] = (args ? args.apiKey : undefined) || utilities.getEnv("CLOUDFLARE_API_KEY");
+            inputs["apiToken"] = (args ? args.apiToken : undefined) || utilities.getEnv("CLOUDFLARE_API_TOKEN");
             inputs["email"] = (args ? args.email : undefined) || utilities.getEnv("CLOUDFLARE_EMAIL");
             inputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) || (utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
             inputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) || (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);

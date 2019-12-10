@@ -20,8 +20,11 @@ namespace Pulumi.Cloudflare
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
 
+        [Output("kvNamespaceBindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBindings>> KvNamespaceBindings { get; private set; } = null!;
+
         /// <summary>
-        /// The name for the script.
+        /// The name for the binding.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -78,8 +81,16 @@ namespace Pulumi.Cloudflare
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
+        [Input("kvNamespaceBindings")]
+        private InputList<Inputs.WorkerScriptKvNamespaceBindingsArgs>? _kvNamespaceBindings;
+        public InputList<Inputs.WorkerScriptKvNamespaceBindingsArgs> KvNamespaceBindings
+        {
+            get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingsArgs>());
+            set => _kvNamespaceBindings = value;
+        }
+
         /// <summary>
-        /// The name for the script.
+        /// The name for the binding.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -97,8 +108,16 @@ namespace Pulumi.Cloudflare
         [Input("content")]
         public Input<string>? Content { get; set; }
 
+        [Input("kvNamespaceBindings")]
+        private InputList<Inputs.WorkerScriptKvNamespaceBindingsGetArgs>? _kvNamespaceBindings;
+        public InputList<Inputs.WorkerScriptKvNamespaceBindingsGetArgs> KvNamespaceBindings
+        {
+            get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingsGetArgs>());
+            set => _kvNamespaceBindings = value;
+        }
+
         /// <summary>
-        /// The name for the script.
+        /// The name for the binding.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -106,5 +125,73 @@ namespace Pulumi.Cloudflare
         public WorkerScriptState()
         {
         }
+    }
+
+    namespace Inputs
+    {
+
+    public sealed class WorkerScriptKvNamespaceBindingsArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The name for the binding.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// ID of KV namespace.
+        /// </summary>
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        public WorkerScriptKvNamespaceBindingsArgs()
+        {
+        }
+    }
+
+    public sealed class WorkerScriptKvNamespaceBindingsGetArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The name for the binding.
+        /// </summary>
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// ID of KV namespace.
+        /// </summary>
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
+        public WorkerScriptKvNamespaceBindingsGetArgs()
+        {
+        }
+    }
+    }
+
+    namespace Outputs
+    {
+
+    [OutputType]
+    public sealed class WorkerScriptKvNamespaceBindings
+    {
+        /// <summary>
+        /// The name for the binding.
+        /// </summary>
+        public readonly string Name;
+        /// <summary>
+        /// ID of KV namespace.
+        /// </summary>
+        public readonly string NamespaceId;
+
+        [OutputConstructor]
+        private WorkerScriptKvNamespaceBindings(
+            string name,
+            string namespaceId)
+        {
+            Name = name;
+            NamespaceId = namespaceId;
+        }
+    }
     }
 }

@@ -11,6 +11,7 @@ for pkg in __all__:
 
 # Export this package's modules as members:
 from .access_application import *
+from .access_group import *
 from .access_policy import *
 from .access_rule import *
 from .access_service_token import *
@@ -33,6 +34,7 @@ from .waf_package import *
 from .waf_rule import *
 from .worker_route import *
 from .worker_script import *
+from .workers_kv_namespace import *
 from .zone import *
 from .zone_lockdown import *
 from .zone_settings_override import *

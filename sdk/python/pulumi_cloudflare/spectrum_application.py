@@ -52,6 +52,9 @@ class SpectrumApplication(pulumi.CustomResource):
     Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
     """
     zone_id: pulumi.Output[str]
+    """
+    The DNS zone ID to add the application to
+    """
     def __init__(__self__, resource_name, opts=None, dns=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
@@ -67,6 +70,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
         :param pulumi.Input[str] traffic_type: Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to
         
         The **dns** object supports the following:
         
@@ -102,8 +106,6 @@ class SpectrumApplication(pulumi.CustomResource):
             __props__['ip_firewall'] = ip_firewall
             __props__['origin_directs'] = origin_directs
             __props__['origin_dns'] = origin_dns
-            if origin_port is None:
-                raise TypeError("Missing required property 'origin_port'")
             __props__['origin_port'] = origin_port
             if protocol is None:
                 raise TypeError("Missing required property 'protocol'")
@@ -138,6 +140,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
         :param pulumi.Input[str] traffic_type: Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to
         
         The **dns** object supports the following:
         

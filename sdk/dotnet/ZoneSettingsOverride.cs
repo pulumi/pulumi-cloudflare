@@ -165,6 +165,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneSettingsOverrideInitialSettingsGetArgs : Pulumi.ResourceArgs
     {
+        [Input("zerortt")]
+        public Input<string>? Zerortt { get; set; }
+
         [Input("alwaysOnline")]
         public Input<string>? AlwaysOnline { get; set; }
 
@@ -209,6 +212,9 @@ namespace Pulumi.Cloudflare
 
         [Input("http2")]
         public Input<string>? Http2 { get; set; }
+
+        [Input("http3")]
+        public Input<string>? Http3 { get; set; }
 
         [Input("imageResizing")]
         public Input<string>? ImageResizing { get; set; }
@@ -389,6 +395,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneSettingsOverrideSettingsArgs : Pulumi.ResourceArgs
     {
+        [Input("zerortt")]
+        public Input<string>? Zerortt { get; set; }
+
         [Input("alwaysOnline")]
         public Input<string>? AlwaysOnline { get; set; }
 
@@ -433,6 +442,9 @@ namespace Pulumi.Cloudflare
 
         [Input("http2")]
         public Input<string>? Http2 { get; set; }
+
+        [Input("http3")]
+        public Input<string>? Http3 { get; set; }
 
         [Input("imageResizing")]
         public Input<string>? ImageResizing { get; set; }
@@ -528,6 +540,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneSettingsOverrideSettingsGetArgs : Pulumi.ResourceArgs
     {
+        [Input("zerortt")]
+        public Input<string>? Zerortt { get; set; }
+
         [Input("alwaysOnline")]
         public Input<string>? AlwaysOnline { get; set; }
 
@@ -572,6 +587,9 @@ namespace Pulumi.Cloudflare
 
         [Input("http2")]
         public Input<string>? Http2 { get; set; }
+
+        [Input("http3")]
+        public Input<string>? Http3 { get; set; }
 
         [Input("imageResizing")]
         public Input<string>? ImageResizing { get; set; }
@@ -842,6 +860,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class ZoneSettingsOverrideInitialSettings
     {
+        public readonly string Zerortt;
         public readonly string AlwaysOnline;
         public readonly string AlwaysUseHttps;
         public readonly string AutomaticHttpsRewrites;
@@ -857,6 +876,7 @@ namespace Pulumi.Cloudflare
         public readonly string H2Prioritization;
         public readonly string HotlinkProtection;
         public readonly string Http2;
+        public readonly string Http3;
         public readonly string ImageResizing;
         public readonly string IpGeolocation;
         public readonly string Ipv6;
@@ -889,6 +909,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private ZoneSettingsOverrideInitialSettings(
+            string zerortt,
             string alwaysOnline,
             string alwaysUseHttps,
             string automaticHttpsRewrites,
@@ -904,6 +925,7 @@ namespace Pulumi.Cloudflare
             string h2Prioritization,
             string hotlinkProtection,
             string http2,
+            string http3,
             string imageResizing,
             string ipGeolocation,
             string ipv6,
@@ -934,6 +956,7 @@ namespace Pulumi.Cloudflare
             string webp,
             string websockets)
         {
+            Zerortt = zerortt;
             AlwaysOnline = alwaysOnline;
             AlwaysUseHttps = alwaysUseHttps;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
@@ -949,6 +972,7 @@ namespace Pulumi.Cloudflare
             H2Prioritization = h2Prioritization;
             HotlinkProtection = hotlinkProtection;
             Http2 = http2;
+            Http3 = http3;
             ImageResizing = imageResizing;
             IpGeolocation = ipGeolocation;
             Ipv6 = ipv6;
@@ -1078,6 +1102,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class ZoneSettingsOverrideSettings
     {
+        public readonly string Zerortt;
         public readonly string AlwaysOnline;
         public readonly string AlwaysUseHttps;
         public readonly string AutomaticHttpsRewrites;
@@ -1093,6 +1118,7 @@ namespace Pulumi.Cloudflare
         public readonly string H2Prioritization;
         public readonly string HotlinkProtection;
         public readonly string Http2;
+        public readonly string Http3;
         public readonly string ImageResizing;
         public readonly string IpGeolocation;
         public readonly string Ipv6;
@@ -1125,6 +1151,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private ZoneSettingsOverrideSettings(
+            string zerortt,
             string alwaysOnline,
             string alwaysUseHttps,
             string automaticHttpsRewrites,
@@ -1140,6 +1167,7 @@ namespace Pulumi.Cloudflare
             string h2Prioritization,
             string hotlinkProtection,
             string http2,
+            string http3,
             string imageResizing,
             string ipGeolocation,
             string ipv6,
@@ -1170,6 +1198,7 @@ namespace Pulumi.Cloudflare
             string webp,
             string websockets)
         {
+            Zerortt = zerortt;
             AlwaysOnline = alwaysOnline;
             AlwaysUseHttps = alwaysUseHttps;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
@@ -1185,6 +1214,7 @@ namespace Pulumi.Cloudflare
             H2Prioritization = h2Prioritization;
             HotlinkProtection = hotlinkProtection;
             Http2 = http2;
+            Http3 = http3;
             ImageResizing = imageResizing;
             IpGeolocation = ipGeolocation;
             Ipv6 = ipv6;

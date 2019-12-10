@@ -14,6 +14,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     """
     Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
     
+      * `zerortt` (`str`)
       * `alwaysOnline` (`str`)
       * `alwaysUseHttps` (`str`)
       * `automaticHttpsRewrites` (`str`)
@@ -29,6 +30,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
       * `h2Prioritization` (`str`)
       * `hotlinkProtection` (`str`)
       * `http2` (`str`)
+      * `http3` (`str`)
       * `imageResizing` (`str`)
       * `ipGeolocation` (`str`)
       * `ipv6` (`str`)
@@ -88,6 +90,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     """
     Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
     
+      * `zerortt` (`str`)
       * `alwaysOnline` (`str`)
       * `alwaysUseHttps` (`str`)
       * `automaticHttpsRewrites` (`str`)
@@ -103,6 +106,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
       * `h2Prioritization` (`str`)
       * `hotlinkProtection` (`str`)
       * `http2` (`str`)
+      * `http3` (`str`)
       * `imageResizing` (`str`)
       * `ipGeolocation` (`str`)
       * `ipv6` (`str`)
@@ -168,6 +172,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         
         The **settings** object supports the following:
         
+          * `zerortt` (`pulumi.Input[str]`)
           * `alwaysOnline` (`pulumi.Input[str]`)
           * `alwaysUseHttps` (`pulumi.Input[str]`)
           * `automaticHttpsRewrites` (`pulumi.Input[str]`)
@@ -183,6 +188,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `h2Prioritization` (`pulumi.Input[str]`)
           * `hotlinkProtection` (`pulumi.Input[str]`)
           * `http2` (`pulumi.Input[str]`)
+          * `http3` (`pulumi.Input[str]`)
           * `imageResizing` (`pulumi.Input[str]`)
           * `ipGeolocation` (`pulumi.Input[str]`)
           * `ipv6` (`pulumi.Input[str]`)
@@ -283,6 +289,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         
         The **initial_settings** object supports the following:
         
+          * `zerortt` (`pulumi.Input[str]`)
           * `alwaysOnline` (`pulumi.Input[str]`)
           * `alwaysUseHttps` (`pulumi.Input[str]`)
           * `automaticHttpsRewrites` (`pulumi.Input[str]`)
@@ -298,6 +305,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `h2Prioritization` (`pulumi.Input[str]`)
           * `hotlinkProtection` (`pulumi.Input[str]`)
           * `http2` (`pulumi.Input[str]`)
+          * `http3` (`pulumi.Input[str]`)
           * `imageResizing` (`pulumi.Input[str]`)
           * `ipGeolocation` (`pulumi.Input[str]`)
           * `ipv6` (`pulumi.Input[str]`)
@@ -348,6 +356,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         
         The **settings** object supports the following:
         
+          * `zerortt` (`pulumi.Input[str]`)
           * `alwaysOnline` (`pulumi.Input[str]`)
           * `alwaysUseHttps` (`pulumi.Input[str]`)
           * `automaticHttpsRewrites` (`pulumi.Input[str]`)
@@ -363,6 +372,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `h2Prioritization` (`pulumi.Input[str]`)
           * `hotlinkProtection` (`pulumi.Input[str]`)
           * `http2` (`pulumi.Input[str]`)
+          * `http3` (`pulumi.Input[str]`)
           * `imageResizing` (`pulumi.Input[str]`)
           * `ipGeolocation` (`pulumi.Input[str]`)
           * `ipv6` (`pulumi.Input[str]`)

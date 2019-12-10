@@ -110,7 +110,7 @@ func (r *LoadBalancerMonitor) Description() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["description"])
 }
 
-// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
 func (r *LoadBalancerMonitor) ExpectedBody() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["expectedBody"])
 }
@@ -177,7 +177,7 @@ type LoadBalancerMonitorState struct {
 	CreatedOn interface{}
 	// Free text description.
 	Description interface{}
-	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
 	ExpectedBody interface{}
 	// The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
 	ExpectedCodes interface{}
@@ -208,7 +208,7 @@ type LoadBalancerMonitorArgs struct {
 	AllowInsecure interface{}
 	// Free text description.
 	Description interface{}
-	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
 	ExpectedBody interface{}
 	// The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
 	ExpectedCodes interface{}

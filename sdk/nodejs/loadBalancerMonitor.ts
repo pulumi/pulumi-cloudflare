@@ -92,7 +92,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
      */
     public readonly expectedBody!: pulumi.Output<string | undefined>;
     /**
@@ -210,7 +210,7 @@ export interface LoadBalancerMonitorState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
      */
     readonly expectedBody?: pulumi.Input<string>;
     /**
@@ -269,7 +269,7 @@ export interface LoadBalancerMonitorArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+     * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
      */
     readonly expectedBody?: pulumi.Input<string>;
     /**

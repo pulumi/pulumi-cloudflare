@@ -38,7 +38,7 @@ func GetApiKey(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_API_TOKEN").(string); ok {
+	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_API_KEY").(string); ok {
 		return dv
 	}
 	return v
@@ -46,7 +46,14 @@ func GetApiKey(ctx *pulumi.Context) string {
 
 // The API Token for operations.
 func GetApiToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "cloudflare:apiToken")
+	v, err := config.Try(ctx, "cloudflare:apiToken")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_API_TOKEN").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // A registered Cloudflare email address.

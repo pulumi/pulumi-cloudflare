@@ -42,8 +42,9 @@ export class WorkerScript extends pulumi.CustomResource {
      * The script content.
      */
     public readonly content!: pulumi.Output<string>;
+    public readonly kvNamespaceBindings!: pulumi.Output<outputs.WorkerScriptKvNamespaceBinding[] | undefined>;
     /**
-     * The name for the script.
+     * The name for the binding.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -60,6 +61,7 @@ export class WorkerScript extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as WorkerScriptState | undefined;
             inputs["content"] = state ? state.content : undefined;
+            inputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
@@ -70,6 +72,7 @@ export class WorkerScript extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             inputs["content"] = args ? args.content : undefined;
+            inputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
         if (!opts) {
@@ -91,8 +94,9 @@ export interface WorkerScriptState {
      * The script content.
      */
     readonly content?: pulumi.Input<string>;
+    readonly kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
-     * The name for the script.
+     * The name for the binding.
      */
     readonly name?: pulumi.Input<string>;
 }
@@ -105,8 +109,9 @@ export interface WorkerScriptArgs {
      * The script content.
      */
     readonly content: pulumi.Input<string>;
+    readonly kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
-     * The name for the script.
+     * The name for the binding.
      */
     readonly name: pulumi.Input<string>;
 }

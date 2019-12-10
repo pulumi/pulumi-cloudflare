@@ -21,9 +21,6 @@ func NewSpectrumApplication(ctx *pulumi.Context,
 	if args == nil || args.Dns == nil {
 		return nil, errors.New("missing required argument 'Dns'")
 	}
-	if args == nil || args.OriginPort == nil {
-		return nil, errors.New("missing required argument 'OriginPort'")
-	}
 	if args == nil || args.Protocol == nil {
 		return nil, errors.New("missing required argument 'Protocol'")
 	}
@@ -140,6 +137,7 @@ func (r *SpectrumApplication) TrafficType() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["trafficType"])
 }
 
+// The DNS zone ID to add the application to
 func (r *SpectrumApplication) ZoneId() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["zoneId"])
 }
@@ -164,6 +162,7 @@ type SpectrumApplicationState struct {
 	Tls interface{}
 	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
 	TrafficType interface{}
+	// The DNS zone ID to add the application to
 	ZoneId interface{}
 }
 
@@ -187,5 +186,6 @@ type SpectrumApplicationArgs struct {
 	Tls interface{}
 	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
 	TrafficType interface{}
+	// The DNS zone ID to add the application to
 	ZoneId interface{}
 }

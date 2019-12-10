@@ -17,11 +17,11 @@ export let apiClientLogging: boolean | undefined = __config.getObject<boolean>("
 /**
  * The API key for operations.
  */
-export let apiKey: string | undefined = __config.get("apiKey") || utilities.getEnv("CLOUDFLARE_API_TOKEN");
+export let apiKey: string | undefined = __config.get("apiKey") || utilities.getEnv("CLOUDFLARE_API_KEY");
 /**
  * The API Token for operations.
  */
-export let apiToken: string | undefined = __config.get("apiToken");
+export let apiToken: string | undefined = __config.get("apiToken") || utilities.getEnv("CLOUDFLARE_API_TOKEN");
 /**
  * A registered Cloudflare email address.
  */

@@ -14,6 +14,7 @@
     },
     "files": [
         "accessApplication.ts",
+        "accessGroup.ts",
         "accessPolicy.ts",
         "accessRule.ts",
         "accessServiceToken.ts",
@@ -49,6 +50,7 @@
         "wafRule.ts",
         "workerRoute.ts",
         "workerScript.ts",
+        "workersKvNamespace.ts",
         "zone.ts",
         "zoneLockdown.ts",
         "zoneSettingsOverride.ts"

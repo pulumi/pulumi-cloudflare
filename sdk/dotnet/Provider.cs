@@ -102,7 +102,8 @@ namespace Pulumi.Cloudflare
         {
             AccountId = Utilities.GetEnv("CLOUDFLARE_ACCOUNT_ID");
             ApiClientLogging = Utilities.GetEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") ?? false;
-            ApiKey = Utilities.GetEnv("CLOUDFLARE_API_TOKEN");
+            ApiKey = Utilities.GetEnv("CLOUDFLARE_API_KEY");
+            ApiToken = Utilities.GetEnv("CLOUDFLARE_API_TOKEN");
             Email = Utilities.GetEnv("CLOUDFLARE_EMAIL");
             MaxBackoff = Utilities.GetEnvInt32("CLOUDFLARE_MAX_BACKOFF") ?? 30;
             MinBackoff = Utilities.GetEnvInt32("CLOUDFLARE_MIN_BACKOFF") ?? 1;
