@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
         /// If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         /// </summary>
         [Output("originPort")]
-        public Output<int> OriginPort { get; private set; } = null!;
+        public Output<int?> OriginPort { get; private set; } = null!;
 
         /// <summary>
         /// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
@@ -68,6 +68,9 @@ namespace Pulumi.Cloudflare
         [Output("trafficType")]
         public Output<string?> TrafficType { get; private set; } = null!;
 
+        /// <summary>
+        /// The DNS zone ID to add the application to
+        /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
@@ -150,8 +153,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         /// </summary>
-        [Input("originPort", required: true)]
-        public Input<int> OriginPort { get; set; } = null!;
+        [Input("originPort")]
+        public Input<int>? OriginPort { get; set; }
 
         /// <summary>
         /// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
@@ -177,6 +180,9 @@ namespace Pulumi.Cloudflare
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
 
+        /// <summary>
+        /// The DNS zone ID to add the application to
+        /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
 
@@ -247,6 +253,9 @@ namespace Pulumi.Cloudflare
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
 
+        /// <summary>
+        /// The DNS zone ID to add the application to
+        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 

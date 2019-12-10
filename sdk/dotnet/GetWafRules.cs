@@ -107,6 +107,7 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetWafRulesRulesResult
     {
+        public readonly ImmutableArray<string> AllowedModes;
         public readonly string? Description;
         public readonly string? GroupId;
         public readonly string? GroupName;
@@ -117,6 +118,7 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetWafRulesRulesResult(
+            ImmutableArray<string> allowedModes,
             string? description,
             string? groupId,
             string? groupName,
@@ -125,6 +127,7 @@ namespace Pulumi.Cloudflare
             string? packageId,
             string? priority)
         {
+            AllowedModes = allowedModes;
             Description = description;
             GroupId = groupId;
             GroupName = groupName;

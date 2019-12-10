@@ -79,6 +79,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"api_key": {
 				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"CLOUDFLARE_API_KEY"},
+				},
+			},
+			"api_token": {
+				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"CLOUDFLARE_API_TOKEN"},
 				},
 			},
@@ -119,27 +124,49 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"cloudflare_access_application":     {Tok: makeResource(mainMod, "AccessApplication")},
-			"cloudflare_access_policy":          {Tok: makeResource(mainMod, "AccessPolicy")},
-			"cloudflare_access_rule":            {Tok: makeResource(mainMod, "AccessRule")},
-			"cloudflare_account_member":         {Tok: makeResource(mainMod, "AccountMember")},
-			"cloudflare_argo":                   {Tok: makeResource(mainMod, "Argo")},
-			"cloudflare_custom_pages":           {Tok: makeResource(mainMod, "CustomPages")},
-			"cloudflare_filter":                 {Tok: makeResource(mainMod, "Filter")},
-			"cloudflare_firewall_rule":          {Tok: makeResource(mainMod, "FirewallRule")},
-			"cloudflare_load_balancer_monitor":  {Tok: makeResource(mainMod, "LoadBalancerMonitor")},
-			"cloudflare_load_balancer_pool":     {Tok: makeResource(mainMod, "LoadBalancerPool")},
-			"cloudflare_load_balancer":          {Tok: makeResource(mainMod, "LoadBalancer")},
-			"cloudflare_logpush_job":            {Tok: makeResource(mainMod, "LogpushJob")},
-			"cloudflare_page_rule":              {Tok: makeResource(mainMod, "PageRule")},
-			"cloudflare_rate_limit":             {Tok: makeResource(mainMod, "RateLimit")},
-			"cloudflare_record":                 {Tok: makeResource(mainMod, "Record")},
-			"cloudflare_spectrum_application":   {Tok: makeResource(mainMod, "SpectrumApplication")},
-			"cloudflare_waf_rule":               {Tok: makeResource(mainMod, "WafRule")},
-			"cloudflare_worker_route":           {Tok: makeResource(mainMod, "WorkerRoute")},
-			"cloudflare_worker_script":          {Tok: makeResource(mainMod, "WorkerScript")},
-			"cloudflare_zone_lockdown":          {Tok: makeResource(mainMod, "ZoneLockdown")},
-			"cloudflare_zone_settings_override": {Tok: makeResource(mainMod, "ZoneSettingsOverride")},
+			"cloudflare_access_application":    {Tok: makeResource(mainMod, "AccessApplication")},
+			"cloudflare_access_policy":         {Tok: makeResource(mainMod, "AccessPolicy")},
+			"cloudflare_access_rule":           {Tok: makeResource(mainMod, "AccessRule")},
+			"cloudflare_account_member":        {Tok: makeResource(mainMod, "AccountMember")},
+			"cloudflare_argo":                  {Tok: makeResource(mainMod, "Argo")},
+			"cloudflare_custom_pages":          {Tok: makeResource(mainMod, "CustomPages")},
+			"cloudflare_filter":                {Tok: makeResource(mainMod, "Filter")},
+			"cloudflare_firewall_rule":         {Tok: makeResource(mainMod, "FirewallRule")},
+			"cloudflare_load_balancer_monitor": {Tok: makeResource(mainMod, "LoadBalancerMonitor")},
+			"cloudflare_load_balancer_pool":    {Tok: makeResource(mainMod, "LoadBalancerPool")},
+			"cloudflare_load_balancer":         {Tok: makeResource(mainMod, "LoadBalancer")},
+			"cloudflare_logpush_job":           {Tok: makeResource(mainMod, "LogpushJob")},
+			"cloudflare_page_rule":             {Tok: makeResource(mainMod, "PageRule")},
+			"cloudflare_rate_limit":            {Tok: makeResource(mainMod, "RateLimit")},
+			"cloudflare_record":                {Tok: makeResource(mainMod, "Record")},
+			"cloudflare_spectrum_application":  {Tok: makeResource(mainMod, "SpectrumApplication")},
+			"cloudflare_waf_rule":              {Tok: makeResource(mainMod, "WafRule")},
+			"cloudflare_worker_route":          {Tok: makeResource(mainMod, "WorkerRoute")},
+			"cloudflare_worker_script":         {Tok: makeResource(mainMod, "WorkerScript")},
+			"cloudflare_zone_lockdown":         {Tok: makeResource(mainMod, "ZoneLockdown")},
+			"cloudflare_zone_settings_override": {
+				Tok: makeResource(mainMod, "ZoneSettingsOverride"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"settings": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"0rtt": {
+									Name: "zerortt",
+								},
+							},
+						},
+					},
+					"initial_settings": {
+						Elem: &tfbridge.SchemaInfo{
+							Fields: map[string]*tfbridge.SchemaInfo{
+								"0rtt": {
+									Name: "zerortt",
+								},
+							},
+						},
+					},
+				},
+			},
 			"cloudflare_zone": {
 				Tok: makeResource(mainMod, "Zone"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -152,6 +179,8 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_access_service_token": {Tok: makeResource(mainMod, "AccessServiceToken")},
 			"cloudflare_waf_package":          {Tok: makeResource(mainMod, "WafPackage")},
 			"cloudflare_waf_group":            {Tok: makeResource(mainMod, "WafGroup")},
+			"cloudflare_access_group":         {Tok: makeResource(mainMod, "AccessGroup")},
+			"cloudflare_workers_kv_namespace": {Tok: makeResource(mainMod, "WorkersKvNamespace")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},

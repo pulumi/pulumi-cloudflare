@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
+export interface AccessGroupExclude {
+    emails?: string[];
+    emailDomains?: string[];
+    everyone?: boolean;
+    groups?: string[];
+    ips?: string[];
+}
+
+export interface AccessGroupInclude {
+    emails?: string[];
+    emailDomains?: string[];
+    everyone?: boolean;
+    groups?: string[];
+    ips?: string[];
+}
+
+export interface AccessGroupRequire {
+    emails?: string[];
+    emailDomains?: string[];
+    everyone?: boolean;
+    groups?: string[];
+    ips?: string[];
+}
+
 export interface AccessPolicyExclude {
     emails?: string[];
     emailDomains?: string[];
@@ -102,6 +126,7 @@ export interface GetWafRulesFilter {
 }
 
 export interface GetWafRulesRule {
+    allowedModes?: string[];
     description?: string;
     groupId?: string;
     groupName?: string;
@@ -480,6 +505,17 @@ export interface SpectrumApplicationOriginDns {
     name: string;
 }
 
+export interface WorkerScriptKvNamespaceBinding {
+    /**
+     * The name for the binding.
+     */
+    name: string;
+    /**
+     * ID of KV namespace.
+     */
+    namespaceId: string;
+}
+
 export interface ZoneLockdownConfiguration {
     /**
      * The request property to target. Allowed values: "ip", "ipRange"
@@ -497,6 +533,7 @@ export interface ZoneMeta {
 }
 
 export interface ZoneSettingsOverrideInitialSettings {
+    zerortt: string;
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
@@ -512,6 +549,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     h2Prioritization: string;
     hotlinkProtection: string;
     http2: string;
+    http3: string;
     imageResizing: string;
     ipGeolocation: string;
     ipv6: string;
@@ -595,6 +633,7 @@ export interface ZoneSettingsOverrideInitialSettingsSecurityHeader {
 }
 
 export interface ZoneSettingsOverrideSettings {
+    zerortt: string;
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
@@ -610,6 +649,7 @@ export interface ZoneSettingsOverrideSettings {
     h2Prioritization: string;
     hotlinkProtection: string;
     http2: string;
+    http3: string;
     imageResizing: string;
     ipGeolocation: string;
     ipv6: string;

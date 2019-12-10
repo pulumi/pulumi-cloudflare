@@ -27,9 +27,11 @@ func NewWorkerScript(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["content"] = nil
+		inputs["kvNamespaceBindings"] = nil
 		inputs["name"] = nil
 	} else {
 		inputs["content"] = args.Content
+		inputs["kvNamespaceBindings"] = args.KvNamespaceBindings
 		inputs["name"] = args.Name
 	}
 	s, err := ctx.RegisterResource("cloudflare:index/workerScript:WorkerScript", name, true, inputs, opts...)
@@ -46,6 +48,7 @@ func GetWorkerScript(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["content"] = state.Content
+		inputs["kvNamespaceBindings"] = state.KvNamespaceBindings
 		inputs["name"] = state.Name
 	}
 	s, err := ctx.ReadResource("cloudflare:index/workerScript:WorkerScript", name, id, inputs, opts...)
@@ -70,7 +73,11 @@ func (r *WorkerScript) Content() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["content"])
 }
 
-// The name for the script.
+func (r *WorkerScript) KvNamespaceBindings() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["kvNamespaceBindings"])
+}
+
+// The name for the binding.
 func (r *WorkerScript) Name() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["name"])
 }
@@ -79,7 +86,8 @@ func (r *WorkerScript) Name() pulumi.StringOutput {
 type WorkerScriptState struct {
 	// The script content.
 	Content interface{}
-	// The name for the script.
+	KvNamespaceBindings interface{}
+	// The name for the binding.
 	Name interface{}
 }
 
@@ -87,6 +95,7 @@ type WorkerScriptState struct {
 type WorkerScriptArgs struct {
 	// The script content.
 	Content interface{}
-	// The name for the script.
+	KvNamespaceBindings interface{}
+	// The name for the binding.
 	Name interface{}
 }

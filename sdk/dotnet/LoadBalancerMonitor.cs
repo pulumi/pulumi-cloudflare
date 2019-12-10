@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
         /// </summary>
         [Output("expectedBody")]
         public Output<string?> ExpectedBody { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
         /// </summary>
         [Input("expectedBody")]
         public Input<string>? ExpectedBody { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+        /// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
         /// </summary>
         [Input("expectedBody")]
         public Input<string>? ExpectedBody { get; set; }

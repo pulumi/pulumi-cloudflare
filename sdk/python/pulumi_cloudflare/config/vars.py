@@ -21,12 +21,12 @@ api_client_logging = __config__.get('apiClientLogging') or (utilities.get_env_bo
 Whether to print logs from the API client (using the default log library logger)
 """
 
-api_key = __config__.get('apiKey') or utilities.get_env('CLOUDFLARE_API_TOKEN')
+api_key = __config__.get('apiKey') or utilities.get_env('CLOUDFLARE_API_KEY')
 """
 The API key for operations.
 """
 
-api_token = __config__.get('apiToken')
+api_token = __config__.get('apiToken') or utilities.get_env('CLOUDFLARE_API_TOKEN')
 """
 The API Token for operations.
 """

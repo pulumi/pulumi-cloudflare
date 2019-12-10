@@ -24,7 +24,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     """
     expected_body: pulumi.Output[str]
     """
-    A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+    A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
     """
     expected_codes: pulumi.Output[str]
     """
@@ -78,7 +78,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
         :param pulumi.Input[list] headers: The header name.
@@ -146,7 +146,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid and required if `type` is "http" or "https".
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
         :param pulumi.Input[list] headers: The header name.

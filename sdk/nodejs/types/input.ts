@@ -4,6 +4,30 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
+export interface AccessGroupExclude {
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    everyone?: pulumi.Input<boolean>;
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    ips?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupInclude {
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    everyone?: pulumi.Input<boolean>;
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    ips?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupRequire {
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    everyone?: pulumi.Input<boolean>;
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    ips?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface AccessPolicyExclude {
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
@@ -446,6 +470,17 @@ export interface SpectrumApplicationOriginDns {
     name: pulumi.Input<string>;
 }
 
+export interface WorkerScriptKvNamespaceBinding {
+    /**
+     * The name for the binding.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * ID of KV namespace.
+     */
+    namespaceId: pulumi.Input<string>;
+}
+
 export interface ZoneLockdownConfiguration {
     /**
      * The request property to target. Allowed values: "ip", "ipRange"
@@ -463,6 +498,7 @@ export interface ZoneMeta {
 }
 
 export interface ZoneSettingsOverrideInitialSettings {
+    zerortt?: pulumi.Input<string>;
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
@@ -478,6 +514,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
     http2?: pulumi.Input<string>;
+    http3?: pulumi.Input<string>;
     imageResizing?: pulumi.Input<string>;
     ipGeolocation?: pulumi.Input<string>;
     ipv6?: pulumi.Input<string>;
@@ -561,6 +598,7 @@ export interface ZoneSettingsOverrideInitialSettingsSecurityHeader {
 }
 
 export interface ZoneSettingsOverrideSettings {
+    zerortt?: pulumi.Input<string>;
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
@@ -576,6 +614,7 @@ export interface ZoneSettingsOverrideSettings {
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
     http2?: pulumi.Input<string>;
+    http3?: pulumi.Input<string>;
     imageResizing?: pulumi.Input<string>;
     ipGeolocation?: pulumi.Input<string>;
     ipv6?: pulumi.Input<string>;

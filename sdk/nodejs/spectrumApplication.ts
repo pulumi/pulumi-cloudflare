@@ -8,24 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * 
- * // Define a spectrum application proxies ssh traffic
- * const sshProxy = new cloudflare.SpectrumApplication("sshProxy", {
- *     dns: {
- *         name: "ssh.example.com",
- *         type: "CNAME",
- *     },
- *     originDirects: ["tcp://109.151.40.129:22"],
- *     protocol: "tcp/22",
- *     trafficType: "direct",
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/spectrum_application.html.markdown.
  */
@@ -75,7 +57,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
     /**
      * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
-    public readonly originPort!: pulumi.Output<number>;
+    public readonly originPort!: pulumi.Output<number | undefined>;
     /**
      * The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
      */
@@ -92,6 +74,9 @@ export class SpectrumApplication extends pulumi.CustomResource {
      * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
      */
     public readonly trafficType!: pulumi.Output<string | undefined>;
+    /**
+     * The DNS zone ID to add the application to
+     */
     public readonly zoneId!: pulumi.Output<string>;
 
     /**
@@ -120,9 +105,6 @@ export class SpectrumApplication extends pulumi.CustomResource {
             const args = argsOrState as SpectrumApplicationArgs | undefined;
             if (!args || args.dns === undefined) {
                 throw new Error("Missing required property 'dns'");
-            }
-            if (!args || args.originPort === undefined) {
-                throw new Error("Missing required property 'originPort'");
             }
             if (!args || args.protocol === undefined) {
                 throw new Error("Missing required property 'protocol'");
@@ -192,6 +174,9 @@ export interface SpectrumApplicationState {
      * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
      */
     readonly trafficType?: pulumi.Input<string>;
+    /**
+     * The DNS zone ID to add the application to
+     */
     readonly zoneId?: pulumi.Input<string>;
 }
 
@@ -218,7 +203,7 @@ export interface SpectrumApplicationArgs {
     /**
      * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
-    readonly originPort: pulumi.Input<number>;
+    readonly originPort?: pulumi.Input<number>;
     /**
      * The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
      */
@@ -235,5 +220,8 @@ export interface SpectrumApplicationArgs {
      * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
      */
     readonly trafficType?: pulumi.Input<string>;
+    /**
+     * The DNS zone ID to add the application to
+     */
     readonly zoneId: pulumi.Input<string>;
 }

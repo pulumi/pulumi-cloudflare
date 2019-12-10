@@ -22,12 +22,12 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The API key for operations.
         /// </summary>
-        public static string? ApiKey { get; set; } = __config.Get("apiKey") ?? Utilities.GetEnv("CLOUDFLARE_API_TOKEN");
+        public static string? ApiKey { get; set; } = __config.Get("apiKey") ?? Utilities.GetEnv("CLOUDFLARE_API_KEY");
 
         /// <summary>
         /// The API Token for operations.
         /// </summary>
-        public static string? ApiToken { get; set; } = __config.Get("apiToken");
+        public static string? ApiToken { get; set; } = __config.Get("apiToken") ?? Utilities.GetEnv("CLOUDFLARE_API_TOKEN");
 
         /// <summary>
         /// A registered Cloudflare email address.
