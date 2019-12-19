@@ -25,6 +25,7 @@ from .load_balancer import *
 from .load_balancer_monitor import *
 from .load_balancer_pool import *
 from .logpush_job import *
+from .origin_ca_certificate import *
 from .page_rule import *
 from .rate_limit import *
 from .record import *

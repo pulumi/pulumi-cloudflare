@@ -63,9 +63,9 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * Enables Proxy Protocol v1 to the origin. Defaults to `false`.
+     * Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
      */
-    public readonly proxyProtocol!: pulumi.Output<boolean | undefined>;
+    public readonly proxyProtocol!: pulumi.Output<string | undefined>;
     /**
      * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
      */
@@ -163,9 +163,9 @@ export interface SpectrumApplicationState {
      */
     readonly protocol?: pulumi.Input<string>;
     /**
-     * Enables Proxy Protocol v1 to the origin. Defaults to `false`.
+     * Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
      */
-    readonly proxyProtocol?: pulumi.Input<boolean>;
+    readonly proxyProtocol?: pulumi.Input<string>;
     /**
      * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
      */
@@ -209,9 +209,9 @@ export interface SpectrumApplicationArgs {
      */
     readonly protocol: pulumi.Input<string>;
     /**
-     * Enables Proxy Protocol v1 to the origin. Defaults to `false`.
+     * Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
      */
-    readonly proxyProtocol?: pulumi.Input<boolean>;
+    readonly proxyProtocol?: pulumi.Input<string>;
     /**
      * TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
      */

@@ -14,7 +14,7 @@ class AccessRule(pulumi.CustomResource):
     """
     Rule configuration to apply to a matched request. It's a complex value. See description below.
     
-      * `target` (`str`) - The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+      * `target` (`str`) - The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
       * `value` (`str`) - The value to target. Depends on target's type.
     """
     mode: pulumi.Output[str]
@@ -42,7 +42,7 @@ class AccessRule(pulumi.CustomResource):
         
         The **configuration** object supports the following:
         
-          * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+          * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
           * `value` (`pulumi.Input[str]`) - The value to target. Depends on target's type.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.
@@ -94,7 +94,7 @@ class AccessRule(pulumi.CustomResource):
         
         The **configuration** object supports the following:
         
-          * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+          * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
           * `value` (`pulumi.Input[str]`) - The value to target. Depends on target's type.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.

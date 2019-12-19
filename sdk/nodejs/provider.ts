@@ -44,6 +44,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) || (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
             inputs["apiKey"] = (args ? args.apiKey : undefined) || utilities.getEnv("CLOUDFLARE_API_KEY");
             inputs["apiToken"] = (args ? args.apiToken : undefined) || utilities.getEnv("CLOUDFLARE_API_TOKEN");
+            inputs["apiUserServiceKey"] = (args ? args.apiUserServiceKey : undefined) || utilities.getEnv("CLOUDFLARE_API_USER_SERVICE_KEY");
             inputs["email"] = (args ? args.email : undefined) || utilities.getEnv("CLOUDFLARE_EMAIL");
             inputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) || (utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
             inputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) || (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
@@ -81,6 +82,10 @@ export interface ProviderArgs {
      * The API Token for operations.
      */
     readonly apiToken?: pulumi.Input<string>;
+    /**
+     * A special Cloudflare API key good for a restricted set of endpoints.
+     */
+    readonly apiUserServiceKey?: pulumi.Input<string>;
     /**
      * A registered Cloudflare email address.
      */

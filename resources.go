@@ -122,6 +122,11 @@ func Provider() tfbridge.ProviderInfo {
 					EnvVars: []string{"CLOUDFLARE_ACCOUNT_ID"},
 				},
 			},
+			"api_user_service_key": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"CLOUDFLARE_API_USER_SERVICE_KEY"},
+				},
+			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"cloudflare_access_application":    {Tok: makeResource(mainMod, "AccessApplication")},
@@ -175,12 +180,13 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"cloudflare_custom_ssl":           {Tok: makeResource(mainMod, "CustomSsl")},
-			"cloudflare_access_service_token": {Tok: makeResource(mainMod, "AccessServiceToken")},
-			"cloudflare_waf_package":          {Tok: makeResource(mainMod, "WafPackage")},
-			"cloudflare_waf_group":            {Tok: makeResource(mainMod, "WafGroup")},
-			"cloudflare_access_group":         {Tok: makeResource(mainMod, "AccessGroup")},
-			"cloudflare_workers_kv_namespace": {Tok: makeResource(mainMod, "WorkersKvNamespace")},
+			"cloudflare_custom_ssl":            {Tok: makeResource(mainMod, "CustomSsl")},
+			"cloudflare_access_service_token":  {Tok: makeResource(mainMod, "AccessServiceToken")},
+			"cloudflare_waf_package":           {Tok: makeResource(mainMod, "WafPackage")},
+			"cloudflare_waf_group":             {Tok: makeResource(mainMod, "WafGroup")},
+			"cloudflare_access_group":          {Tok: makeResource(mainMod, "AccessGroup")},
+			"cloudflare_workers_kv_namespace":  {Tok: makeResource(mainMod, "WorkersKvNamespace")},
+			"cloudflare_origin_ca_certificate": {Tok: makeResource(mainMod, "OriginCaCertificate")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},
@@ -207,7 +213,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "1.5.0-*",
+				"Pulumi":                       "1.7.0-preview",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{

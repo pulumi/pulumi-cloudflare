@@ -23,6 +23,10 @@ export let apiKey: string | undefined = __config.get("apiKey") || utilities.getE
  */
 export let apiToken: string | undefined = __config.get("apiToken") || utilities.getEnv("CLOUDFLARE_API_TOKEN");
 /**
+ * A special Cloudflare API key good for a restricted set of endpoints.
+ */
+export let apiUserServiceKey: string | undefined = __config.get("apiUserServiceKey") || utilities.getEnv("CLOUDFLARE_API_USER_SERVICE_KEY");
+/**
  * A registered Cloudflare email address.
  */
 export let email: string | undefined = __config.get("email") || utilities.getEnv("CLOUDFLARE_EMAIL");

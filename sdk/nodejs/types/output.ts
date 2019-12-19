@@ -51,7 +51,7 @@ export interface AccessPolicyRequire {
 
 export interface AccessRuleConfiguration {
     /**
-     * The request property to target. Allowed values: "ip", "ipRange", "asn", "country"
+     * The request property to target. Allowed values: "ip", "ip6", "ipRange", "asn", "country"
      */
     target: string;
     /**
@@ -533,7 +533,6 @@ export interface ZoneMeta {
 }
 
 export interface ZoneSettingsOverrideInitialSettings {
-    zerortt: string;
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
@@ -579,6 +578,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     waf: string;
     webp: string;
     websockets: string;
+    zeroRtt: string;
 }
 
 export interface ZoneSettingsOverrideInitialSettingsMinify {
@@ -633,7 +633,6 @@ export interface ZoneSettingsOverrideInitialSettingsSecurityHeader {
 }
 
 export interface ZoneSettingsOverrideSettings {
-    zerortt: string;
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
@@ -679,6 +678,7 @@ export interface ZoneSettingsOverrideSettings {
     waf: string;
     webp: string;
     websockets: string;
+    zeroRtt: string;
 }
 
 export interface ZoneSettingsOverrideSettingsMinify {

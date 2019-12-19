@@ -51,7 +51,7 @@ export interface AccessPolicyRequire {
 
 export interface AccessRuleConfiguration {
     /**
-     * The request property to target. Allowed values: "ip", "ipRange", "asn", "country"
+     * The request property to target. Allowed values: "ip", "ip6", "ipRange", "asn", "country"
      */
     target: pulumi.Input<string>;
     /**
@@ -498,7 +498,6 @@ export interface ZoneMeta {
 }
 
 export interface ZoneSettingsOverrideInitialSettings {
-    zerortt?: pulumi.Input<string>;
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
@@ -544,6 +543,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     waf?: pulumi.Input<string>;
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
+    zeroRtt?: pulumi.Input<string>;
 }
 
 export interface ZoneSettingsOverrideInitialSettingsMinify {
@@ -598,7 +598,6 @@ export interface ZoneSettingsOverrideInitialSettingsSecurityHeader {
 }
 
 export interface ZoneSettingsOverrideSettings {
-    zerortt?: pulumi.Input<string>;
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
@@ -644,6 +643,7 @@ export interface ZoneSettingsOverrideSettings {
     waf?: pulumi.Input<string>;
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
+    zeroRtt?: pulumi.Input<string>;
 }
 
 export interface ZoneSettingsOverrideSettingsMinify {
