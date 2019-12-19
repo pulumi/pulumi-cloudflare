@@ -122,9 +122,9 @@ func (r *SpectrumApplication) Protocol() pulumi.StringOutput {
 	return (pulumi.StringOutput)(r.s.State["protocol"])
 }
 
-// Enables Proxy Protocol v1 to the origin. Defaults to `false`.
-func (r *SpectrumApplication) ProxyProtocol() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["proxyProtocol"])
+// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+func (r *SpectrumApplication) ProxyProtocol() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["proxyProtocol"])
 }
 
 // TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
@@ -156,7 +156,7 @@ type SpectrumApplicationState struct {
 	OriginPort interface{}
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol interface{}
-	// Enables Proxy Protocol v1 to the origin. Defaults to `false`.
+	// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
 	ProxyProtocol interface{}
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls interface{}
@@ -180,7 +180,7 @@ type SpectrumApplicationArgs struct {
 	OriginPort interface{}
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol interface{}
-	// Enables Proxy Protocol v1 to the origin. Defaults to `false`.
+	// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
 	ProxyProtocol interface{}
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls interface{}

@@ -30,14 +30,16 @@ func NewWafRule(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["mode"] = nil
+		inputs["packageId"] = nil
 		inputs["ruleId"] = nil
 		inputs["zoneId"] = nil
 	} else {
 		inputs["mode"] = args.Mode
+		inputs["packageId"] = args.PackageId
 		inputs["ruleId"] = args.RuleId
 		inputs["zoneId"] = args.ZoneId
 	}
-	inputs["packageId"] = nil
+	inputs["groupId"] = nil
 	s, err := ctx.RegisterResource("cloudflare:index/wafRule:WafRule", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -51,6 +53,7 @@ func GetWafRule(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *WafRuleState, opts ...pulumi.ResourceOpt) (*WafRule, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["groupId"] = state.GroupId
 		inputs["mode"] = state.Mode
 		inputs["packageId"] = state.PackageId
 		inputs["ruleId"] = state.RuleId
@@ -71,6 +74,11 @@ func (r *WafRule) URN() pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *WafRule) ID() pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// The ID of the WAF Rule Group that contains the rule.
+func (r *WafRule) GroupId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["groupId"])
 }
 
 // The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
@@ -95,6 +103,8 @@ func (r *WafRule) ZoneId() pulumi.StringOutput {
 
 // Input properties used for looking up and filtering WafRule resources.
 type WafRuleState struct {
+	// The ID of the WAF Rule Group that contains the rule.
+	GroupId interface{}
 	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
 	Mode interface{}
 	// The ID of the WAF Rule Package that contains the rule.
@@ -109,6 +119,8 @@ type WafRuleState struct {
 type WafRuleArgs struct {
 	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
 	Mode interface{}
+	// The ID of the WAF Rule Package that contains the rule.
+	PackageId interface{}
 	// The WAF Rule ID.
 	RuleId interface{}
 	// The DNS zone ID to apply to.

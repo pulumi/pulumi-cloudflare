@@ -31,6 +31,11 @@ api_token = __config__.get('apiToken') or utilities.get_env('CLOUDFLARE_API_TOKE
 The API Token for operations.
 """
 
+api_user_service_key = __config__.get('apiUserServiceKey') or utilities.get_env('CLOUDFLARE_API_USER_SERVICE_KEY')
+"""
+A special Cloudflare API key good for a restricted set of endpoints.
+"""
+
 email = __config__.get('email') or utilities.get_env('CLOUDFLARE_EMAIL')
 """
 A registered Cloudflare email address.

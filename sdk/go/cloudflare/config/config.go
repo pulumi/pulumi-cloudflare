@@ -56,6 +56,18 @@ func GetApiToken(ctx *pulumi.Context) string {
 	return v
 }
 
+// A special Cloudflare API key good for a restricted set of endpoints.
+func GetApiUserServiceKey(ctx *pulumi.Context) string {
+	v, err := config.Try(ctx, "cloudflare:apiUserServiceKey")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "CLOUDFLARE_API_USER_SERVICE_KEY").(string); ok {
+		return dv
+	}
+	return v
+}
+
 // A registered Cloudflare email address.
 func GetEmail(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "cloudflare:email")

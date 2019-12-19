@@ -36,6 +36,7 @@
         "loadBalancerMonitor.ts",
         "loadBalancerPool.ts",
         "logpushJob.ts",
+        "originCaCertificate.ts",
         "pageRule.ts",
         "provider.ts",
         "rateLimit.ts",

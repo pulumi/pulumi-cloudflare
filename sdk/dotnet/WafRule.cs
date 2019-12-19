@@ -15,6 +15,12 @@ namespace Pulumi.Cloudflare
     public partial class WafRule : Pulumi.CustomResource
     {
         /// <summary>
+        /// The ID of the WAF Rule Group that contains the rule.
+        /// </summary>
+        [Output("groupId")]
+        public Output<string> GroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
         /// </summary>
         [Output("mode")]
@@ -91,6 +97,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
+        /// The ID of the WAF Rule Package that contains the rule.
+        /// </summary>
+        [Input("packageId")]
+        public Input<string>? PackageId { get; set; }
+
+        /// <summary>
         /// The WAF Rule ID.
         /// </summary>
         [Input("ruleId", required: true)]
@@ -109,6 +121,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class WafRuleState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the WAF Rule Group that contains the rule.
+        /// </summary>
+        [Input("groupId")]
+        public Input<string>? GroupId { get; set; }
+
         /// <summary>
         /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
         /// </summary>

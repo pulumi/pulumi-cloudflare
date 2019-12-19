@@ -52,13 +52,17 @@ export class WafRule extends pulumi.CustomResource {
     }
 
     /**
+     * The ID of the WAF Rule Group that contains the rule.
+     */
+    public /*out*/ readonly groupId!: pulumi.Output<string>;
+    /**
      * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
      */
     public readonly mode!: pulumi.Output<string>;
     /**
      * The ID of the WAF Rule Package that contains the rule.
      */
-    public /*out*/ readonly packageId!: pulumi.Output<string>;
+    public readonly packageId!: pulumi.Output<string>;
     /**
      * The WAF Rule ID.
      */
@@ -80,6 +84,7 @@ export class WafRule extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as WafRuleState | undefined;
+            inputs["groupId"] = state ? state.groupId : undefined;
             inputs["mode"] = state ? state.mode : undefined;
             inputs["packageId"] = state ? state.packageId : undefined;
             inputs["ruleId"] = state ? state.ruleId : undefined;
@@ -96,9 +101,10 @@ export class WafRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["mode"] = args ? args.mode : undefined;
+            inputs["packageId"] = args ? args.packageId : undefined;
             inputs["ruleId"] = args ? args.ruleId : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["packageId"] = undefined /*out*/;
+            inputs["groupId"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -115,6 +121,10 @@ export class WafRule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WafRule resources.
  */
 export interface WafRuleState {
+    /**
+     * The ID of the WAF Rule Group that contains the rule.
+     */
+    readonly groupId?: pulumi.Input<string>;
     /**
      * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
      */
@@ -141,6 +151,10 @@ export interface WafRuleArgs {
      * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
      */
     readonly mode: pulumi.Input<string>;
+    /**
+     * The ID of the WAF Rule Package that contains the rule.
+     */
+    readonly packageId?: pulumi.Input<string>;
     /**
      * The WAF Rule ID.
      */

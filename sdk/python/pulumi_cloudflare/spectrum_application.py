@@ -39,9 +39,9 @@ class SpectrumApplication(pulumi.CustomResource):
     """
     The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
     """
-    proxy_protocol: pulumi.Output[bool]
+    proxy_protocol: pulumi.Output[str]
     """
-    Enables Proxy Protocol v1 to the origin. Defaults to `false`.
+    Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
     """
     tls: pulumi.Output[str]
     """
@@ -67,7 +67,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[dict] origin_dns: A destination DNS addresses to the origin. Fields documented below.
         :param pulumi.Input[float] origin_port: If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
-        :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
+        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
         :param pulumi.Input[str] traffic_type: Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to
@@ -137,7 +137,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[dict] origin_dns: A destination DNS addresses to the origin. Fields documented below.
         :param pulumi.Input[float] origin_port: If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
-        :param pulumi.Input[bool] proxy_protocol: Enables Proxy Protocol v1 to the origin. Defaults to `false`.
+        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
         :param pulumi.Input[str] traffic_type: Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to

@@ -165,9 +165,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneSettingsOverrideInitialSettingsGetArgs : Pulumi.ResourceArgs
     {
-        [Input("zerortt")]
-        public Input<string>? Zerortt { get; set; }
-
         [Input("alwaysOnline")]
         public Input<string>? AlwaysOnline { get; set; }
 
@@ -303,6 +300,9 @@ namespace Pulumi.Cloudflare
         [Input("websockets")]
         public Input<string>? Websockets { get; set; }
 
+        [Input("zeroRtt")]
+        public Input<string>? ZeroRtt { get; set; }
+
         public ZoneSettingsOverrideInitialSettingsGetArgs()
         {
         }
@@ -395,9 +395,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneSettingsOverrideSettingsArgs : Pulumi.ResourceArgs
     {
-        [Input("zerortt")]
-        public Input<string>? Zerortt { get; set; }
-
         [Input("alwaysOnline")]
         public Input<string>? AlwaysOnline { get; set; }
 
@@ -533,6 +530,9 @@ namespace Pulumi.Cloudflare
         [Input("websockets")]
         public Input<string>? Websockets { get; set; }
 
+        [Input("zeroRtt")]
+        public Input<string>? ZeroRtt { get; set; }
+
         public ZoneSettingsOverrideSettingsArgs()
         {
         }
@@ -540,9 +540,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneSettingsOverrideSettingsGetArgs : Pulumi.ResourceArgs
     {
-        [Input("zerortt")]
-        public Input<string>? Zerortt { get; set; }
-
         [Input("alwaysOnline")]
         public Input<string>? AlwaysOnline { get; set; }
 
@@ -677,6 +674,9 @@ namespace Pulumi.Cloudflare
 
         [Input("websockets")]
         public Input<string>? Websockets { get; set; }
+
+        [Input("zeroRtt")]
+        public Input<string>? ZeroRtt { get; set; }
 
         public ZoneSettingsOverrideSettingsGetArgs()
         {
@@ -860,7 +860,6 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class ZoneSettingsOverrideInitialSettings
     {
-        public readonly string Zerortt;
         public readonly string AlwaysOnline;
         public readonly string AlwaysUseHttps;
         public readonly string AutomaticHttpsRewrites;
@@ -906,10 +905,10 @@ namespace Pulumi.Cloudflare
         public readonly string Waf;
         public readonly string Webp;
         public readonly string Websockets;
+        public readonly string ZeroRtt;
 
         [OutputConstructor]
         private ZoneSettingsOverrideInitialSettings(
-            string zerortt,
             string alwaysOnline,
             string alwaysUseHttps,
             string automaticHttpsRewrites,
@@ -954,9 +953,9 @@ namespace Pulumi.Cloudflare
             string trueClientIpHeader,
             string waf,
             string webp,
-            string websockets)
+            string websockets,
+            string zeroRtt)
         {
-            Zerortt = zerortt;
             AlwaysOnline = alwaysOnline;
             AlwaysUseHttps = alwaysUseHttps;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
@@ -1002,6 +1001,7 @@ namespace Pulumi.Cloudflare
             Waf = waf;
             Webp = webp;
             Websockets = websockets;
+            ZeroRtt = zeroRtt;
         }
     }
 
@@ -1102,7 +1102,6 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class ZoneSettingsOverrideSettings
     {
-        public readonly string Zerortt;
         public readonly string AlwaysOnline;
         public readonly string AlwaysUseHttps;
         public readonly string AutomaticHttpsRewrites;
@@ -1148,10 +1147,10 @@ namespace Pulumi.Cloudflare
         public readonly string Waf;
         public readonly string Webp;
         public readonly string Websockets;
+        public readonly string ZeroRtt;
 
         [OutputConstructor]
         private ZoneSettingsOverrideSettings(
-            string zerortt,
             string alwaysOnline,
             string alwaysUseHttps,
             string automaticHttpsRewrites,
@@ -1196,9 +1195,9 @@ namespace Pulumi.Cloudflare
             string trueClientIpHeader,
             string waf,
             string webp,
-            string websockets)
+            string websockets,
+            string zeroRtt)
         {
-            Zerortt = zerortt;
             AlwaysOnline = alwaysOnline;
             AlwaysUseHttps = alwaysUseHttps;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
@@ -1244,6 +1243,7 @@ namespace Pulumi.Cloudflare
             Waf = waf;
             Webp = webp;
             Websockets = websockets;
+            ZeroRtt = zeroRtt;
         }
     }
 

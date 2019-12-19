@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessRuleConfigurationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+        /// The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessRuleConfigurationGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+        /// The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessRuleConfiguration
     {
         /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip_range", "asn", "country"
+        /// The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
         /// </summary>
         public readonly string Target;
         /// <summary>

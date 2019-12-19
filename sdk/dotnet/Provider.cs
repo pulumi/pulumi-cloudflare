@@ -69,6 +69,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? ApiToken { get; set; }
 
         /// <summary>
+        /// A special Cloudflare API key good for a restricted set of endpoints.
+        /// </summary>
+        [Input("apiUserServiceKey")]
+        public Input<string>? ApiUserServiceKey { get; set; }
+
+        /// <summary>
         /// A registered Cloudflare email address.
         /// </summary>
         [Input("email")]
@@ -104,6 +110,7 @@ namespace Pulumi.Cloudflare
             ApiClientLogging = Utilities.GetEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") ?? false;
             ApiKey = Utilities.GetEnv("CLOUDFLARE_API_KEY");
             ApiToken = Utilities.GetEnv("CLOUDFLARE_API_TOKEN");
+            ApiUserServiceKey = Utilities.GetEnv("CLOUDFLARE_API_USER_SERVICE_KEY");
             Email = Utilities.GetEnv("CLOUDFLARE_EMAIL");
             MaxBackoff = Utilities.GetEnvInt32("CLOUDFLARE_MAX_BACKOFF") ?? 30;
             MinBackoff = Utilities.GetEnvInt32("CLOUDFLARE_MIN_BACKOFF") ?? 1;

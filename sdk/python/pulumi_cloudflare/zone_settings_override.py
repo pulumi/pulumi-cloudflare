@@ -14,7 +14,6 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     """
     Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
     
-      * `zerortt` (`str`)
       * `alwaysOnline` (`str`)
       * `alwaysUseHttps` (`str`)
       * `automaticHttpsRewrites` (`str`)
@@ -78,6 +77,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
       * `waf` (`str`)
       * `webp` (`str`)
       * `websockets` (`str`)
+      * `zeroRtt` (`str`)
     """
     initial_settings_read_at: pulumi.Output[str]
     readonly_settings: pulumi.Output[list]
@@ -90,7 +90,6 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     """
     Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
     
-      * `zerortt` (`str`)
       * `alwaysOnline` (`str`)
       * `alwaysUseHttps` (`str`)
       * `automaticHttpsRewrites` (`str`)
@@ -154,6 +153,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
       * `waf` (`str`)
       * `webp` (`str`)
       * `websockets` (`str`)
+      * `zeroRtt` (`str`)
     """
     zone_id: pulumi.Output[str]
     """
@@ -172,7 +172,6 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         
         The **settings** object supports the following:
         
-          * `zerortt` (`pulumi.Input[str]`)
           * `alwaysOnline` (`pulumi.Input[str]`)
           * `alwaysUseHttps` (`pulumi.Input[str]`)
           * `automaticHttpsRewrites` (`pulumi.Input[str]`)
@@ -236,6 +235,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `waf` (`pulumi.Input[str]`)
           * `webp` (`pulumi.Input[str]`)
           * `websockets` (`pulumi.Input[str]`)
+          * `zeroRtt` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
         """
@@ -289,7 +289,6 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         
         The **initial_settings** object supports the following:
         
-          * `zerortt` (`pulumi.Input[str]`)
           * `alwaysOnline` (`pulumi.Input[str]`)
           * `alwaysUseHttps` (`pulumi.Input[str]`)
           * `automaticHttpsRewrites` (`pulumi.Input[str]`)
@@ -353,10 +352,10 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `waf` (`pulumi.Input[str]`)
           * `webp` (`pulumi.Input[str]`)
           * `websockets` (`pulumi.Input[str]`)
+          * `zeroRtt` (`pulumi.Input[str]`)
         
         The **settings** object supports the following:
         
-          * `zerortt` (`pulumi.Input[str]`)
           * `alwaysOnline` (`pulumi.Input[str]`)
           * `alwaysUseHttps` (`pulumi.Input[str]`)
           * `automaticHttpsRewrites` (`pulumi.Input[str]`)
@@ -420,6 +419,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `waf` (`pulumi.Input[str]`)
           * `webp` (`pulumi.Input[str]`)
           * `websockets` (`pulumi.Input[str]`)
+          * `zeroRtt` (`pulumi.Input[str]`)
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
         """

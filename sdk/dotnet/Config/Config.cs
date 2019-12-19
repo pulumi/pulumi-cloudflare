@@ -30,6 +30,11 @@ namespace Pulumi.Cloudflare
         public static string? ApiToken { get; set; } = __config.Get("apiToken") ?? Utilities.GetEnv("CLOUDFLARE_API_TOKEN");
 
         /// <summary>
+        /// A special Cloudflare API key good for a restricted set of endpoints.
+        /// </summary>
+        public static string? ApiUserServiceKey { get; set; } = __config.Get("apiUserServiceKey") ?? Utilities.GetEnv("CLOUDFLARE_API_USER_SERVICE_KEY");
+
+        /// <summary>
         /// A registered Cloudflare email address.
         /// </summary>
         public static string? Email { get; set; } = __config.Get("email") ?? Utilities.GetEnv("CLOUDFLARE_EMAIL");
