@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.3.0 of the Cloudflare Terraform Provider
-* Upgrade to pulumi-terraform-bridge v1.5.2
+_(none)_
 
 ---
+
+## 1.5.0 (2019-12-19)
+* Upgrade to v2.3.0 of the Cloudflare Terraform Provider
+* Upgrade to pulumi-terraform-bridge v1.5.2
 
 ## 1.4.0 (2019-12-10)
 * Upgrade to v2.2.0 of the Cloudflare Terraform Provider
