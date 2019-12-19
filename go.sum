@@ -272,7 +272,6 @@ github.com/hashicorp/terraform-config-inspect v0.0.0-20190821133035-82a99dc22ef4
 github.com/hashicorp/terraform-config-inspect v0.0.0-20191115094559-17f92b0546e8 h1:+RyjwU+Gnd/aTJBPZVDNm903eXVjjqhbaR4Ypx3xYyY=
 github.com/hashicorp/terraform-config-inspect v0.0.0-20191115094559-17f92b0546e8/go.mod h1:p+ivJws3dpqbp1iP84+npOyAmTTOLMgCzrXd3GSdn/A=
 github.com/hashicorp/terraform-plugin-sdk v1.0.0/go.mod h1:NuwtLpEpPsFaKJPJNGtMcn9vlhe6Ofe+Y6NqXhJgV2M=
-github.com/hashicorp/terraform-plugin-sdk v1.4.0/go.mod h1:H5QLx/uhwfxBZ59Bc5SqT19M4i+fYt7LZjHTpbLZiAg=
 github.com/hashicorp/terraform-plugin-sdk v1.4.1 h1:REgN6WbySD6aIYdF6Uob3ic4eQkfh4NXSWU/casmgb4=
 github.com/hashicorp/terraform-plugin-sdk v1.4.1/go.mod h1:H5QLx/uhwfxBZ59Bc5SqT19M4i+fYt7LZjHTpbLZiAg=
 github.com/hashicorp/terraform-svchost v0.0.0-20191011084731-65d371908596 h1:hjyO2JsNZUKT1ym+FAdlBEkGPevazYsmVgIMw7dVELg=
@@ -398,8 +397,8 @@ github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d/go.mod h1:c3At6R
 github.com/prometheus/procfs v0.0.0-20190117184657-bf6a532e95b1/go.mod h1:c3At6R/oaqEKCNdg8wHV1ftS6bRYblBhIjjI8uT2IGk=
 github.com/pulumi/pulumi v1.6.0 h1:HgALIMX6kv5lwlgyezjKPPc2nNYv+/leFrOjJoo8EB8=
 github.com/pulumi/pulumi v1.6.0/go.mod h1:gJBsD+SkjIhWRWPY+0ID9QM6sngLsMGQH8KiknlH0lU=
-github.com/pulumi/pulumi-terraform-bridge v1.4.3 h1:FULN1p1bJaWmSvTkXKHzQ67OLmTwI0hFoIjEzWOLR6o=
-github.com/pulumi/pulumi-terraform-bridge v1.4.3/go.mod h1:dSbi1sxIj9D4VYdX+HEWCUkPEsh4hAj6pKhXC4Z9FzE=
+github.com/pulumi/pulumi-terraform-bridge v1.5.2 h1:vKzPPTsDYk3qIq9v4Ez4BTEQUKkz9vwEk7qLiEdc3wE=
+github.com/pulumi/pulumi-terraform-bridge v1.5.2/go.mod h1:dSbi1sxIj9D4VYdX+HEWCUkPEsh4hAj6pKhXC4Z9FzE=
 github.com/rcrowley/go-metrics v0.0.0-20181016184325-3113b8401b8a/go.mod h1:bCqnVzQkZxMG4s8nGwiZ5l3QUCyqpo9Y+/ZMZ9VjZe4=
 github.com/reconquest/loreley v0.0.0-20160708080500-2ab6b7470a54/go.mod h1:1NF/j951kWm+ZnRXpOkBqweImgwhlzFVwTA4A0V7TEU=
 github.com/rjeczalik/notify v0.9.2 h1:MiTWrPj55mNDHEiIX5YUSKefw/+lCQVoAFmD6oQm5w8=
