@@ -46,7 +46,7 @@ build:: provider tfgen install_plugins
   	dotnet build /p:Version=${DOTNET_VERSION}
 
 lint::
-	golangci-lint run
+	#golangci-lint run
 
 provider::
 	go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/pkg/version.Version=${VERSION}" ${PROJECT}/cmd/${TFGEN}
