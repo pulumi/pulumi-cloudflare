@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_rules.html.markdown.
  */
-export function getWafRules(args: GetWafRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafRulesResult> & GetWafRulesResult {
+export function getWafRules(args: GetWafRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafRulesResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,13 +19,11 @@ export function getWafRules(args: GetWafRulesArgs, opts?: pulumi.InvokeOptions):
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetWafRulesResult> = pulumi.runtime.invoke("cloudflare:index/getWafRules:getWafRules", {
+    return pulumi.runtime.invoke("cloudflare:index/getWafRules:getWafRules", {
         "filter": args.filter,
         "packageId": args.packageId,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

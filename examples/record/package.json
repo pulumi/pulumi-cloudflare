@@ -7,7 +7,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "latest",
+    "@pulumi/pulumi": "feature-2.0",
     "@pulumi/cloudflare": "latest"
   },
   "devDependencies": {
