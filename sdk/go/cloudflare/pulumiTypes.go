@@ -341,6 +341,200 @@ func (o AccessGroupRequireArrayOutput) Index(i pulumi.IntInput) AccessGroupRequi
 	}).(AccessGroupRequireOutput)
 }
 
+type AccessIdentityProviderConfig struct {
+	AppsDomain *string `pulumi:"appsDomain"`
+	Attributes []string `pulumi:"attributes"`
+	AuthUrl *string `pulumi:"authUrl"`
+	CentrifyAccount *string `pulumi:"centrifyAccount"`
+	CentrifyAppId *string `pulumi:"centrifyAppId"`
+	CertsUrl *string `pulumi:"certsUrl"`
+	ClientId *string `pulumi:"clientId"`
+	ClientSecret *string `pulumi:"clientSecret"`
+	DirectoryId *string `pulumi:"directoryId"`
+	EmailAttributeName *string `pulumi:"emailAttributeName"`
+	IdpPublicCert *string `pulumi:"idpPublicCert"`
+	IssuerUrl *string `pulumi:"issuerUrl"`
+	OktaAccount *string `pulumi:"oktaAccount"`
+	OneloginAccount *string `pulumi:"oneloginAccount"`
+	RedirectUrl *string `pulumi:"redirectUrl"`
+	SignRequest *bool `pulumi:"signRequest"`
+	SsoTargetUrl *string `pulumi:"ssoTargetUrl"`
+	SupportGroups *bool `pulumi:"supportGroups"`
+	TokenUrl *string `pulumi:"tokenUrl"`
+}
+
+type AccessIdentityProviderConfigInput interface {
+	pulumi.Input
+
+	ToAccessIdentityProviderConfigOutput() AccessIdentityProviderConfigOutput
+	ToAccessIdentityProviderConfigOutputWithContext(context.Context) AccessIdentityProviderConfigOutput
+}
+
+type AccessIdentityProviderConfigArgs struct {
+	AppsDomain pulumi.StringPtrInput `pulumi:"appsDomain"`
+	Attributes pulumi.StringArrayInput `pulumi:"attributes"`
+	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
+	CentrifyAccount pulumi.StringPtrInput `pulumi:"centrifyAccount"`
+	CentrifyAppId pulumi.StringPtrInput `pulumi:"centrifyAppId"`
+	CertsUrl pulumi.StringPtrInput `pulumi:"certsUrl"`
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	DirectoryId pulumi.StringPtrInput `pulumi:"directoryId"`
+	EmailAttributeName pulumi.StringPtrInput `pulumi:"emailAttributeName"`
+	IdpPublicCert pulumi.StringPtrInput `pulumi:"idpPublicCert"`
+	IssuerUrl pulumi.StringPtrInput `pulumi:"issuerUrl"`
+	OktaAccount pulumi.StringPtrInput `pulumi:"oktaAccount"`
+	OneloginAccount pulumi.StringPtrInput `pulumi:"oneloginAccount"`
+	RedirectUrl pulumi.StringPtrInput `pulumi:"redirectUrl"`
+	SignRequest pulumi.BoolPtrInput `pulumi:"signRequest"`
+	SsoTargetUrl pulumi.StringPtrInput `pulumi:"ssoTargetUrl"`
+	SupportGroups pulumi.BoolPtrInput `pulumi:"supportGroups"`
+	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
+}
+
+func (AccessIdentityProviderConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessIdentityProviderConfig)(nil)).Elem()
+}
+
+func (i AccessIdentityProviderConfigArgs) ToAccessIdentityProviderConfigOutput() AccessIdentityProviderConfigOutput {
+	return i.ToAccessIdentityProviderConfigOutputWithContext(context.Background())
+}
+
+func (i AccessIdentityProviderConfigArgs) ToAccessIdentityProviderConfigOutputWithContext(ctx context.Context) AccessIdentityProviderConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderConfigOutput)
+}
+
+type AccessIdentityProviderConfigArrayInput interface {
+	pulumi.Input
+
+	ToAccessIdentityProviderConfigArrayOutput() AccessIdentityProviderConfigArrayOutput
+	ToAccessIdentityProviderConfigArrayOutputWithContext(context.Context) AccessIdentityProviderConfigArrayOutput
+}
+
+type AccessIdentityProviderConfigArray []AccessIdentityProviderConfigInput
+
+func (AccessIdentityProviderConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessIdentityProviderConfig)(nil)).Elem()
+}
+
+func (i AccessIdentityProviderConfigArray) ToAccessIdentityProviderConfigArrayOutput() AccessIdentityProviderConfigArrayOutput {
+	return i.ToAccessIdentityProviderConfigArrayOutputWithContext(context.Background())
+}
+
+func (i AccessIdentityProviderConfigArray) ToAccessIdentityProviderConfigArrayOutputWithContext(ctx context.Context) AccessIdentityProviderConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderConfigArrayOutput)
+}
+
+type AccessIdentityProviderConfigOutput struct { *pulumi.OutputState }
+
+func (AccessIdentityProviderConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessIdentityProviderConfig)(nil)).Elem()
+}
+
+func (o AccessIdentityProviderConfigOutput) ToAccessIdentityProviderConfigOutput() AccessIdentityProviderConfigOutput {
+	return o
+}
+
+func (o AccessIdentityProviderConfigOutput) ToAccessIdentityProviderConfigOutputWithContext(ctx context.Context) AccessIdentityProviderConfigOutput {
+	return o
+}
+
+func (o AccessIdentityProviderConfigOutput) AppsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.AppsDomain }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) Attributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) []string { return v.Attributes }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) AuthUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) CentrifyAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.CentrifyAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) CentrifyAppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.CentrifyAppId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) CertsUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.CertsUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) DirectoryId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.DirectoryId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) EmailAttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.EmailAttributeName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) IdpPublicCert() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.IdpPublicCert }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) IssuerUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.IssuerUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) OktaAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.OktaAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) OneloginAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.OneloginAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.RedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) SignRequest() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *bool { return v.SignRequest }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) SsoTargetUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.SsoTargetUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) SupportGroups() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *bool { return v.SupportGroups }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessIdentityProviderConfig) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
+}
+
+type AccessIdentityProviderConfigArrayOutput struct { *pulumi.OutputState}
+
+func (AccessIdentityProviderConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessIdentityProviderConfig)(nil)).Elem()
+}
+
+func (o AccessIdentityProviderConfigArrayOutput) ToAccessIdentityProviderConfigArrayOutput() AccessIdentityProviderConfigArrayOutput {
+	return o
+}
+
+func (o AccessIdentityProviderConfigArrayOutput) ToAccessIdentityProviderConfigArrayOutputWithContext(ctx context.Context) AccessIdentityProviderConfigArrayOutput {
+	return o
+}
+
+func (o AccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInput) AccessIdentityProviderConfigOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessIdentityProviderConfig {
+		return vs[0].([]AccessIdentityProviderConfig)[vs[1].(int)]
+	}).(AccessIdentityProviderConfigOutput)
+}
+
 type AccessPolicyExclude struct {
 	EmailDomains []string `pulumi:"emailDomains"`
 	Emails []string `pulumi:"emails"`
@@ -6777,6 +6971,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupIncludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireArrayOutput{})
+	pulumi.RegisterOutputType(AccessIdentityProviderConfigOutput{})
+	pulumi.RegisterOutputType(AccessIdentityProviderConfigArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeOutput{})

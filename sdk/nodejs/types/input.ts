@@ -28,6 +28,28 @@ export interface AccessGroupRequire {
     ips?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface AccessIdentityProviderConfig {
+    appsDomain?: pulumi.Input<string>;
+    attributes?: pulumi.Input<pulumi.Input<string>[]>;
+    authUrl?: pulumi.Input<string>;
+    centrifyAccount?: pulumi.Input<string>;
+    centrifyAppId?: pulumi.Input<string>;
+    certsUrl?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string>;
+    emailAttributeName?: pulumi.Input<string>;
+    idpPublicCert?: pulumi.Input<string>;
+    issuerUrl?: pulumi.Input<string>;
+    oktaAccount?: pulumi.Input<string>;
+    oneloginAccount?: pulumi.Input<string>;
+    redirectUrl?: pulumi.Input<string>;
+    signRequest?: pulumi.Input<boolean>;
+    ssoTargetUrl?: pulumi.Input<string>;
+    supportGroups?: pulumi.Input<boolean>;
+    tokenUrl?: pulumi.Input<string>;
+}
+
 export interface AccessPolicyExclude {
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;

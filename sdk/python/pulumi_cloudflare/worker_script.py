@@ -31,7 +31,7 @@ class WorkerScript(pulumi.CustomResource):
         The **kv_namespace_bindings** object supports the following:
         
           * `name` (`pulumi.Input[str]`) - The name for the binding.
-          * `namespaceId` (`pulumi.Input[str]`) - ID of KV namespace.
+          * `namespace_id` (`pulumi.Input[str]`) - ID of KV namespace.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """
@@ -80,7 +80,7 @@ class WorkerScript(pulumi.CustomResource):
         The **kv_namespace_bindings** object supports the following:
         
           * `name` (`pulumi.Input[str]`) - The name for the binding.
-          * `namespaceId` (`pulumi.Input[str]`) - ID of KV namespace.
+          * `namespace_id` (`pulumi.Input[str]`) - ID of KV namespace.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """

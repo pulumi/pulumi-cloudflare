@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare
     public partial class FirewallRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -44,6 +44,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
+
+        /// <summary>
+        /// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+        /// </summary>
+        [Output("products")]
+        public Output<ImmutableArray<string>> Products { get; private set; } = null!;
 
         /// <summary>
         /// The DNS zone to which the Filter should be added.
@@ -98,7 +104,7 @@ namespace Pulumi.Cloudflare
     public sealed class FirewallRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -124,6 +130,18 @@ namespace Pulumi.Cloudflare
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        [Input("products")]
+        private InputList<string>? _products;
+
+        /// <summary>
+        /// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+        /// </summary>
+        public InputList<string> Products
+        {
+            get => _products ?? (_products = new InputList<string>());
+            set => _products = value;
+        }
+
         /// <summary>
         /// The DNS zone to which the Filter should be added.
         /// </summary>
@@ -138,7 +156,7 @@ namespace Pulumi.Cloudflare
     public sealed class FirewallRuleState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -163,6 +181,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
+
+        [Input("products")]
+        private InputList<string>? _products;
+
+        /// <summary>
+        /// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+        /// </summary>
+        public InputList<string> Products
+        {
+            get => _products ?? (_products = new InputList<string>());
+            set => _products = value;
+        }
 
         /// <summary>
         /// The DNS zone to which the Filter should be added.

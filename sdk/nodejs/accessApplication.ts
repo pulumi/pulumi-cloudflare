@@ -52,6 +52,9 @@ export class AccessApplication extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessApplication.__pulumiType;
     }
 
+    /**
+     * Application Audience (AUD) Tag of the application
+     */
     public /*out*/ readonly aud!: pulumi.Output<string>;
     /**
      * The complete URL of the asset you wish to put
@@ -121,6 +124,9 @@ export class AccessApplication extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessApplication resources.
  */
 export interface AccessApplicationState {
+    /**
+     * Application Audience (AUD) Tag of the application
+     */
     readonly aud?: pulumi.Input<string>;
     /**
      * The complete URL of the asset you wish to put

@@ -12,7 +12,7 @@ from . import utilities, tables
 class FirewallRule(pulumi.CustomResource):
     action: pulumi.Output[str]
     """
-    The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+    The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
     """
     description: pulumi.Output[str]
     """
@@ -27,11 +27,15 @@ class FirewallRule(pulumi.CustomResource):
     """
     The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
     """
+    products: pulumi.Output[list]
+    """
+    List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+    """
     zone_id: pulumi.Output[str]
     """
     The DNS zone to which the Filter should be added.
     """
-    def __init__(__self__, resource_name, opts=None, action=None, description=None, filter_id=None, paused=None, priority=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, action=None, description=None, filter_id=None, paused=None, priority=None, products=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.
         A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
@@ -40,10 +44,11 @@ class FirewallRule(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+        :param pulumi.Input[str] action: The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
         :param pulumi.Input[str] description: A description of the rule to help identify it.
         :param pulumi.Input[bool] paused: Whether this filter based firewall rule is currently paused. Boolean value.
         :param pulumi.Input[float] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        :param pulumi.Input[list] products: List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.html.markdown.
@@ -74,6 +79,7 @@ class FirewallRule(pulumi.CustomResource):
             __props__['filter_id'] = filter_id
             __props__['paused'] = paused
             __props__['priority'] = priority
+            __props__['products'] = products
             if zone_id is None:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
@@ -84,7 +90,7 @@ class FirewallRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action=None, description=None, filter_id=None, paused=None, priority=None, zone_id=None):
+    def get(resource_name, id, opts=None, action=None, description=None, filter_id=None, paused=None, priority=None, products=None, zone_id=None):
         """
         Get an existing FirewallRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -92,10 +98,11 @@ class FirewallRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge". Enterprise plan also allows "log".
+        :param pulumi.Input[str] action: The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
         :param pulumi.Input[str] description: A description of the rule to help identify it.
         :param pulumi.Input[bool] paused: Whether this filter based firewall rule is currently paused. Boolean value.
         :param pulumi.Input[float] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        :param pulumi.Input[list] products: List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.html.markdown.
@@ -108,6 +115,7 @@ class FirewallRule(pulumi.CustomResource):
         __props__["filter_id"] = filter_id
         __props__["paused"] = paused
         __props__["priority"] = priority
+        __props__["products"] = products
         __props__["zone_id"] = zone_id
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

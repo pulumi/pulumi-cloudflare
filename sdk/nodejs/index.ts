@@ -4,6 +4,7 @@
 // Export members:
 export * from "./accessApplication";
 export * from "./accessGroup";
+export * from "./accessIdentityProvider";
 export * from "./accessPolicy";
 export * from "./accessRule";
 export * from "./accessServiceToken";
@@ -33,6 +34,7 @@ export * from "./wafPackage";
 export * from "./wafRule";
 export * from "./workerRoute";
 export * from "./workerScript";
+export * from "./workersKv";
 export * from "./workersKvNamespace";
 export * from "./zone";
 export * from "./zoneLockdown";

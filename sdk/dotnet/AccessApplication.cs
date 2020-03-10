@@ -17,6 +17,9 @@ namespace Pulumi.Cloudflare
     /// </summary>
     public partial class AccessApplication : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Application Audience (AUD) Tag of the application
+        /// </summary>
         [Output("aud")]
         public Output<string> Aud { get; private set; } = null!;
 
@@ -125,6 +128,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessApplicationState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Application Audience (AUD) Tag of the application
+        /// </summary>
         [Input("aud")]
         public Input<string>? Aud { get; set; }
 

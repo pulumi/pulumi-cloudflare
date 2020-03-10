@@ -11,6 +11,9 @@ from . import utilities, tables
 
 class AccessApplication(pulumi.CustomResource):
     aud: pulumi.Output[str]
+    """
+    Application Audience (AUD) Tag of the application
+    """
     domain: pulumi.Output[str]
     """
     The complete URL of the asset you wish to put
@@ -89,6 +92,7 @@ class AccessApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[str] name: Friendly name of the Access Application.

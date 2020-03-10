@@ -42,7 +42,7 @@ export class FirewallRule extends pulumi.CustomResource {
     }
 
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -58,6 +58,10 @@ export class FirewallRule extends pulumi.CustomResource {
      * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      */
     public readonly priority!: pulumi.Output<number | undefined>;
+    /**
+     * List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+     */
+    public readonly products!: pulumi.Output<string[] | undefined>;
     /**
      * The DNS zone to which the Filter should be added.
      */
@@ -80,6 +84,7 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["filterId"] = state ? state.filterId : undefined;
             inputs["paused"] = state ? state.paused : undefined;
             inputs["priority"] = state ? state.priority : undefined;
+            inputs["products"] = state ? state.products : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
@@ -97,6 +102,7 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["filterId"] = args ? args.filterId : undefined;
             inputs["paused"] = args ? args.paused : undefined;
             inputs["priority"] = args ? args.priority : undefined;
+            inputs["products"] = args ? args.products : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
@@ -115,7 +121,7 @@ export class FirewallRule extends pulumi.CustomResource {
  */
 export interface FirewallRuleState {
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
      */
     readonly action?: pulumi.Input<string>;
     /**
@@ -132,6 +138,10 @@ export interface FirewallRuleState {
      */
     readonly priority?: pulumi.Input<number>;
     /**
+     * List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+     */
+    readonly products?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The DNS zone to which the Filter should be added.
      */
     readonly zoneId?: pulumi.Input<string>;
@@ -142,7 +152,7 @@ export interface FirewallRuleState {
  */
 export interface FirewallRuleArgs {
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
      */
     readonly action: pulumi.Input<string>;
     /**
@@ -158,6 +168,10 @@ export interface FirewallRuleArgs {
      * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      */
     readonly priority?: pulumi.Input<number>;
+    /**
+     * List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+     */
+    readonly products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS zone to which the Filter should be added.
      */
