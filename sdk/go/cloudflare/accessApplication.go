@@ -19,6 +19,7 @@ import (
 type AccessApplication struct {
 	pulumi.CustomResourceState
 
+	// Application Audience (AUD) Tag of the application
 	Aud pulumi.StringOutput `pulumi:"aud"`
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -69,6 +70,7 @@ func GetAccessApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessApplication resources.
 type accessApplicationState struct {
+	// Application Audience (AUD) Tag of the application
 	Aud *string `pulumi:"aud"`
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -83,6 +85,7 @@ type accessApplicationState struct {
 }
 
 type AccessApplicationState struct {
+	// Application Audience (AUD) Tag of the application
 	Aud pulumi.StringPtrInput
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.

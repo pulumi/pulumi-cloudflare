@@ -28,6 +28,28 @@ export interface AccessGroupRequire {
     ips?: string[];
 }
 
+export interface AccessIdentityProviderConfig {
+    appsDomain?: string;
+    attributes?: string[];
+    authUrl?: string;
+    centrifyAccount?: string;
+    centrifyAppId?: string;
+    certsUrl?: string;
+    clientId?: string;
+    clientSecret?: string;
+    directoryId?: string;
+    emailAttributeName?: string;
+    idpPublicCert?: string;
+    issuerUrl?: string;
+    oktaAccount?: string;
+    oneloginAccount?: string;
+    redirectUrl: string;
+    signRequest?: boolean;
+    ssoTargetUrl?: string;
+    supportGroups?: boolean;
+    tokenUrl?: string;
+}
+
 export interface AccessPolicyExclude {
     emails?: string[];
     emailDomains?: string[];

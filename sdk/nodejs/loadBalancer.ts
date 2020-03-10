@@ -79,11 +79,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly regionPools!: pulumi.Output<outputs.LoadBalancerRegionPool[]>;
     /**
-     * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
+     * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
      */
     public readonly sessionAffinity!: pulumi.Output<string | undefined>;
     /**
-     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
      */
     public readonly steeringPolicy!: pulumi.Output<string>;
     /**
@@ -206,11 +206,11 @@ export interface LoadBalancerState {
      */
     readonly regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
     /**
-     * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
+     * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
-     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
      */
     readonly steeringPolicy?: pulumi.Input<string>;
     /**
@@ -260,11 +260,11 @@ export interface LoadBalancerArgs {
      */
     readonly regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
     /**
-     * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
+     * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
-     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+     * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
      */
     readonly steeringPolicy?: pulumi.Input<string>;
     /**

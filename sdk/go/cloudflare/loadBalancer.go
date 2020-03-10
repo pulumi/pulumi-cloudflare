@@ -37,9 +37,9 @@ type LoadBalancer struct {
 	Proxied pulumi.BoolPtrOutput `pulumi:"proxied"`
 	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
 	RegionPools LoadBalancerRegionPoolArrayOutput `pulumi:"regionPools"`
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
+	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity pulumi.StringPtrOutput `pulumi:"sessionAffinity"`
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy pulumi.StringOutput `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
@@ -107,9 +107,9 @@ type loadBalancerState struct {
 	Proxied *bool `pulumi:"proxied"`
 	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
 	RegionPools []LoadBalancerRegionPool `pulumi:"regionPools"`
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
+	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl *int `pulumi:"ttl"`
@@ -138,9 +138,9 @@ type LoadBalancerState struct {
 	Proxied pulumi.BoolPtrInput
 	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
 	RegionPools LoadBalancerRegionPoolArrayInput
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
+	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity pulumi.StringPtrInput
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy pulumi.StringPtrInput
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl pulumi.IntPtrInput
@@ -169,9 +169,9 @@ type loadBalancerArgs struct {
 	Proxied *bool `pulumi:"proxied"`
 	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
 	RegionPools []LoadBalancerRegionPool `pulumi:"regionPools"`
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
+	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl *int `pulumi:"ttl"`
@@ -197,9 +197,9 @@ type LoadBalancerArgs struct {
 	Proxied pulumi.BoolPtrInput
 	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
 	RegionPools LoadBalancerRegionPoolArrayInput
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.
+	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity pulumi.StringPtrInput
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values  are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy pulumi.StringPtrInput
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
 	Ttl pulumi.IntPtrInput

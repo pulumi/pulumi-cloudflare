@@ -8,24 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as gcp from "@pulumi/gcp";
- * 
- * const cloudflareIpRanges = cloudflare.getIpRanges();
- * const allowCloudflareIngress = new gcp.compute.Firewall("allowCloudflareIngress", {
- *     allows: [{
- *         ports: "443",
- *         protocol: "tcp",
- *     }],
- *     network: "default",
- *     sourceRanges: cloudflareIpRanges.ipv4CidrBlocks,
- * });
- * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.markdown.
  */
