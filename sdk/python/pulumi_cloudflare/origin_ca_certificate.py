@@ -37,17 +37,17 @@ class OriginCaCertificate(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, csr=None, hostnames=None, request_type=None, requested_validity=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
-        
+
         **This resource requires you use your Origin CA Key as the `api_user_service_key`.**
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/origin_ca_certificate.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded.
         :param pulumi.Input[list] hostnames: An array of hostnames or wildcard names bound to the certificate.
         :param pulumi.Input[str] request_type: The signature type desired on the certificate.
         :param pulumi.Input[float] requested_validity: The number of days for which the certificate should be valid.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/origin_ca_certificate.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +89,7 @@ class OriginCaCertificate(pulumi.CustomResource):
         """
         Get an existing OriginCaCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,12 +99,11 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[list] hostnames: An array of hostnames or wildcard names bound to the certificate.
         :param pulumi.Input[str] request_type: The signature type desired on the certificate.
         :param pulumi.Input[float] requested_validity: The number of days for which the certificate should be valid.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/origin_ca_certificate.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["certificate"] = certificate
         __props__["csr"] = csr
         __props__["expires_on"] = expires_on

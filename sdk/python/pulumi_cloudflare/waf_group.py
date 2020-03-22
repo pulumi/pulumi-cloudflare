@@ -29,15 +29,15 @@ class WafGroup(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, group_id=None, mode=None, package_id=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_group.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The WAF Rule Group ID.
         :param pulumi.Input[str] mode: The mode of the group, can be one of ["on", "off"].
         :param pulumi.Input[str] package_id: The ID of the WAF Rule Package that contains the group.
         :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,7 +75,7 @@ class WafGroup(pulumi.CustomResource):
         """
         Get an existing WafGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -83,12 +83,11 @@ class WafGroup(pulumi.CustomResource):
         :param pulumi.Input[str] mode: The mode of the group, can be one of ["on", "off"].
         :param pulumi.Input[str] package_id: The ID of the WAF Rule Package that contains the group.
         :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["group_id"] = group_id
         __props__["mode"] = mode
         __props__["package_id"] = package_id

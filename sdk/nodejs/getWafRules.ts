@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Use this data source to look up [WAF Rules][1].
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_rules.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_rules.html.md.
  */
 export function getWafRules(args: GetWafRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafRulesResult> & GetWafRulesResult {
     if (!opts) {

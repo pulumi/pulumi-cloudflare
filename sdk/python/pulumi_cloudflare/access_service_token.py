@@ -31,14 +31,14 @@ class AccessServiceToken(pulumi.CustomResource):
         """
         Access Service Tokens are used for service-to-service communication
         when an application is behind Cloudflare Access.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_service_token.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account where the Access
                Service is being created.
         :param pulumi.Input[str] name: Friendly name of the token's intent.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_service_token.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -76,7 +76,7 @@ class AccessServiceToken(pulumi.CustomResource):
         """
         Get an existing AccessServiceToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -85,12 +85,11 @@ class AccessServiceToken(pulumi.CustomResource):
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token.
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols.
         :param pulumi.Input[str] name: Friendly name of the token's intent.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_service_token.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["client_id"] = client_id
         __props__["client_secret"] = client_secret

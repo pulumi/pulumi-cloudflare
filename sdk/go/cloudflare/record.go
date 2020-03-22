@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Cloudflare record resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
 type Record struct {
 	pulumi.CustomResourceState

@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a resource which manages Cloudflare logpush jobs.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/logpush_job.html.markdown.
 type LogpushJob struct {
 	pulumi.CustomResourceState

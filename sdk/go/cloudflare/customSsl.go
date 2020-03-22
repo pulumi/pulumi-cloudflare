@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Cloudflare custom ssl resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_ssl.html.markdown.
 type CustomSsl struct {
 	pulumi.CustomResourceState

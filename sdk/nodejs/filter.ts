@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/filter.html.markdown.
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/filter.markdown.
  */
 export class Filter extends pulumi.CustomResource {
     /**

@@ -25,14 +25,14 @@ class WorkersKv(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, key=None, namespace_id=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Workers KV Pair.  *NOTE:*  This resource uses the Cloudflare account APIs.  This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/workers_kv.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The key name
         :param pulumi.Input[str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair
         :param pulumi.Input[str] value: The string value to be stored in the key
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/workers_kv.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -71,19 +71,18 @@ class WorkersKv(pulumi.CustomResource):
         """
         Get an existing WorkersKv resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The key name
         :param pulumi.Input[str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair
         :param pulumi.Input[str] value: The string value to be stored in the key
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/workers_kv.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["key"] = key
         __props__["namespace_id"] = namespace_id
         __props__["value"] = value

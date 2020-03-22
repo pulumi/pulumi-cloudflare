@@ -13,22 +13,22 @@ class GetIpRangesResult:
     """
     A collection of values returned by getIpRanges.
     """
-    def __init__(__self__, cidr_blocks=None, ipv4_cidr_blocks=None, ipv6_cidr_blocks=None, id=None):
+    def __init__(__self__, cidr_blocks=None, id=None, ipv4_cidr_blocks=None, ipv6_cidr_blocks=None):
         if cidr_blocks and not isinstance(cidr_blocks, list):
             raise TypeError("Expected argument 'cidr_blocks' to be a list")
         __self__.cidr_blocks = cidr_blocks
-        if ipv4_cidr_blocks and not isinstance(ipv4_cidr_blocks, list):
-            raise TypeError("Expected argument 'ipv4_cidr_blocks' to be a list")
-        __self__.ipv4_cidr_blocks = ipv4_cidr_blocks
-        if ipv6_cidr_blocks and not isinstance(ipv6_cidr_blocks, list):
-            raise TypeError("Expected argument 'ipv6_cidr_blocks' to be a list")
-        __self__.ipv6_cidr_blocks = ipv6_cidr_blocks
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if ipv4_cidr_blocks and not isinstance(ipv4_cidr_blocks, list):
+            raise TypeError("Expected argument 'ipv4_cidr_blocks' to be a list")
+        __self__.ipv4_cidr_blocks = ipv4_cidr_blocks
+        if ipv6_cidr_blocks and not isinstance(ipv6_cidr_blocks, list):
+            raise TypeError("Expected argument 'ipv6_cidr_blocks' to be a list")
+        __self__.ipv6_cidr_blocks = ipv6_cidr_blocks
 class AwaitableGetIpRangesResult(GetIpRangesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -36,17 +36,18 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
             yield self
         return GetIpRangesResult(
             cidr_blocks=self.cidr_blocks,
+            id=self.id,
             ipv4_cidr_blocks=self.ipv4_cidr_blocks,
-            ipv6_cidr_blocks=self.ipv6_cidr_blocks,
-            id=self.id)
+            ipv6_cidr_blocks=self.ipv6_cidr_blocks)
 
 def get_ip_ranges(opts=None):
     """
     Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.markdown.
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.md.
     """
     __args__ = dict()
+
 
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -56,6 +57,6 @@ def get_ip_ranges(opts=None):
 
     return AwaitableGetIpRangesResult(
         cidr_blocks=__ret__.get('cidrBlocks'),
+        id=__ret__.get('id'),
         ipv4_cidr_blocks=__ret__.get('ipv4CidrBlocks'),
-        ipv6_cidr_blocks=__ret__.get('ipv6CidrBlocks'),
-        id=__ret__.get('id'))
+        ipv6_cidr_blocks=__ret__.get('ipv6CidrBlocks'))

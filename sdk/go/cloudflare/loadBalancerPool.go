@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Clouflare account before you can use this resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_pool.html.markdown.
 type LoadBalancerPool struct {
 	pulumi.CustomResourceState

@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Cloudflare page rule resource.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
 type PageRule struct {
 	pulumi.CustomResourceState

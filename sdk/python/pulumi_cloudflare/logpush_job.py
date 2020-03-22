@@ -34,7 +34,9 @@ class LogpushJob(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, destination_conf=None, enabled=None, logpull_options=None, name=None, ownership_challenge=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource which manages Cloudflare logpush jobs.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/logpush_job.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
@@ -42,8 +44,6 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone ID where the logpush job should be created.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/logpush_job.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,7 +85,7 @@ class LogpushJob(pulumi.CustomResource):
         """
         Get an existing LogpushJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -94,12 +94,11 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone ID where the logpush job should be created.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/logpush_job.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["destination_conf"] = destination_conf
         __props__["enabled"] = enabled
         __props__["logpull_options"] = logpull_options

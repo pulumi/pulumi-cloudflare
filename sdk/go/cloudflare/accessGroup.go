@@ -14,12 +14,12 @@ import (
 // Provides a Cloudflare Access Group resource. Access Groups are used
 // in conjunction with Access Policies to restrict access to a
 // particular resource based on group membership.
-// 
+//
 // ## Conditions
-// 
+//
 // `require`, `exclude` and `include` arguments share the available
 // conditions which can be applied. The conditions are:
-// 
+//
 // * `ip` - (Optional) A list of IP addresses or ranges. Example:
 //   `ip = ["1.2.3.4", "10.0.0.0/2"]`
 // * `email` - (Optional) A list of email addresses. Example:
@@ -28,7 +28,7 @@ import (
 //   `emailDomain = ["example.com"]`
 // * `everyone` - (Optional) Boolean indicating permitting access for all
 //   requests. Example: `everyone = true`
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_group.html.markdown.
 type AccessGroup struct {
 	pulumi.CustomResourceState

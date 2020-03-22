@@ -13,7 +13,7 @@ class CustomSsl(pulumi.CustomResource):
     custom_ssl_options: pulumi.Output[dict]
     """
     The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-    
+
       * `bundle_method` (`str`) - Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
       * `certificate` (`str`) - Certificate certificate and the intermediate(s)
       * `geo_restrictions` (`str`) - Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
@@ -36,26 +36,26 @@ class CustomSsl(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, custom_ssl_options=None, custom_ssl_priorities=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare custom ssl resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_ssl.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
         :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
-        
+
         The **custom_ssl_options** object supports the following:
-        
+
           * `bundle_method` (`pulumi.Input[str]`) - Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
           * `certificate` (`pulumi.Input[str]`) - Certificate certificate and the intermediate(s)
           * `geo_restrictions` (`pulumi.Input[str]`) - Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
           * `private_key` (`pulumi.Input[str]`) - Certificate's private key
           * `type` (`pulumi.Input[str]`) - Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
-        
+
         The **custom_ssl_priorities** object supports the following:
-        
+
           * `id` (`pulumi.Input[str]`)
           * `priority` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_ssl.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -98,31 +98,30 @@ class CustomSsl(pulumi.CustomResource):
         """
         Get an existing CustomSsl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
         :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
-        
+
         The **custom_ssl_options** object supports the following:
-        
+
           * `bundle_method` (`pulumi.Input[str]`) - Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
           * `certificate` (`pulumi.Input[str]`) - Certificate certificate and the intermediate(s)
           * `geo_restrictions` (`pulumi.Input[str]`) - Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
           * `private_key` (`pulumi.Input[str]`) - Certificate's private key
           * `type` (`pulumi.Input[str]`) - Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
-        
+
         The **custom_ssl_priorities** object supports the following:
-        
+
           * `id` (`pulumi.Input[str]`)
           * `priority` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_ssl.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["custom_ssl_options"] = custom_ssl_options
         __props__["custom_ssl_priorities"] = custom_ssl_priorities
         __props__["expires_on"] = expires_on

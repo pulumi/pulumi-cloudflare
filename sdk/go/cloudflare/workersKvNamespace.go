@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Workers KV Namespace
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/workers_kv_namespace.html.markdown.
 type WorkersKvNamespace struct {
 	pulumi.CustomResourceState

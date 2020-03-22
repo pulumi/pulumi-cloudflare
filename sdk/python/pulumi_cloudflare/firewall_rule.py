@@ -39,9 +39,11 @@ class FirewallRule(pulumi.CustomResource):
         """
         Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.
         A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
-        
+
         Filter expressions needs to be created first before using Firewall Rule. See Filter.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
@@ -50,8 +52,6 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[float] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
         :param pulumi.Input[list] products: List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -94,7 +94,7 @@ class FirewallRule(pulumi.CustomResource):
         """
         Get an existing FirewallRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -104,12 +104,11 @@ class FirewallRule(pulumi.CustomResource):
         :param pulumi.Input[float] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
         :param pulumi.Input[list] products: List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["action"] = action
         __props__["description"] = description
         __props__["filter_id"] = filter_id

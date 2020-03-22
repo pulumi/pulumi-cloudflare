@@ -22,18 +22,18 @@ class WorkerScript(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, content=None, kv_namespace_bindings=None, name=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `.WorkerRoute`.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] name: The name for the binding.
-        
+
         The **kv_namespace_bindings** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - The name for the binding.
           * `namespace_id` (`pulumi.Input[str]`) - ID of KV namespace.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -70,23 +70,22 @@ class WorkerScript(pulumi.CustomResource):
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] name: The name for the binding.
-        
+
         The **kv_namespace_bindings** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - The name for the binding.
           * `namespace_id` (`pulumi.Input[str]`) - ID of KV namespace.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["content"] = content
         __props__["kv_namespace_bindings"] = kv_namespace_bindings
         __props__["name"] = name

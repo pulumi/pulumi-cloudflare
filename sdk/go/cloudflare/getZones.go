@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to look up [Zone][1] records.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.md.
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("cloudflare:index/getZones:getZones", args, &rv, opts...)

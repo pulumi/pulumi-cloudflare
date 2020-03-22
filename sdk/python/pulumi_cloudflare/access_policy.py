@@ -24,9 +24,9 @@ class AccessPolicy(pulumi.CustomResource):
     """
     A series of access conditions, see below for
     full list.
-    
-      * `emails` (`list`)
+
       * `emailDomains` (`list`)
+      * `emails` (`list`)
       * `everyone` (`bool`)
       * `ips` (`list`)
     """
@@ -34,9 +34,9 @@ class AccessPolicy(pulumi.CustomResource):
     """
     A series of access conditions, see below for
     full list.
-    
-      * `emails` (`list`)
+
       * `emailDomains` (`list`)
+      * `emails` (`list`)
       * `everyone` (`bool`)
       * `ips` (`list`)
     """
@@ -52,9 +52,9 @@ class AccessPolicy(pulumi.CustomResource):
     """
     A series of access conditions, see below for
     full list.
-    
-      * `emails` (`list`)
+
       * `emailDomains` (`list`)
+      * `emails` (`list`)
       * `everyone` (`bool`)
       * `ips` (`list`)
     """
@@ -68,12 +68,12 @@ class AccessPolicy(pulumi.CustomResource):
         Provides a Cloudflare Access Policy resource. Access Policies are used
         in conjunction with Access Applications to restrict access to a
         particular resource.
-        
+
         ## Conditions
-        
+
         `require`, `exclude` and `include` arguments share the available
         conditions which can be applied. The conditions are:
-        
+
         * `ip` - (Optional) A list of IP addresses or ranges. Example:
           `ip = ["1.2.3.4", "10.0.0.0/2"]`
         * `email` - (Optional) A list of email addresses. Example:
@@ -82,7 +82,9 @@ class AccessPolicy(pulumi.CustomResource):
           `email_domain = ["example.com"]`
         * `everyone` - (Optional) Boolean indicating permitting access for all
           requests. Example: `everyone = true`
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The ID of the application the policy is
@@ -99,29 +101,27 @@ class AccessPolicy(pulumi.CustomResource):
                full list.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
                added.
-        
+
         The **excludes** object supports the following:
-        
-          * `emails` (`pulumi.Input[list]`)
+
           * `emailDomains` (`pulumi.Input[list]`)
-          * `everyone` (`pulumi.Input[bool]`)
-          * `ips` (`pulumi.Input[list]`)
-        
-        The **includes** object supports the following:
-        
           * `emails` (`pulumi.Input[list]`)
-          * `emailDomains` (`pulumi.Input[list]`)
-          * `everyone` (`pulumi.Input[bool]`)
-          * `ips` (`pulumi.Input[list]`)
-        
-        The **requires** object supports the following:
-        
-          * `emails` (`pulumi.Input[list]`)
-          * `emailDomains` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
           * `ips` (`pulumi.Input[list]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
+        The **includes** object supports the following:
+
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `emails` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
+
+        The **requires** object supports the following:
+
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `emails` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -169,7 +169,7 @@ class AccessPolicy(pulumi.CustomResource):
         """
         Get an existing AccessPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -187,33 +187,32 @@ class AccessPolicy(pulumi.CustomResource):
                full list.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
                added.
-        
+
         The **excludes** object supports the following:
-        
-          * `emails` (`pulumi.Input[list]`)
+
           * `emailDomains` (`pulumi.Input[list]`)
-          * `everyone` (`pulumi.Input[bool]`)
-          * `ips` (`pulumi.Input[list]`)
-        
-        The **includes** object supports the following:
-        
           * `emails` (`pulumi.Input[list]`)
-          * `emailDomains` (`pulumi.Input[list]`)
-          * `everyone` (`pulumi.Input[bool]`)
-          * `ips` (`pulumi.Input[list]`)
-        
-        The **requires** object supports the following:
-        
-          * `emails` (`pulumi.Input[list]`)
-          * `emailDomains` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
           * `ips` (`pulumi.Input[list]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
+        The **includes** object supports the following:
+
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `emails` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
+
+        The **requires** object supports the following:
+
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `emails` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `ips` (`pulumi.Input[list]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["application_id"] = application_id
         __props__["decision"] = decision
         __props__["excludes"] = excludes

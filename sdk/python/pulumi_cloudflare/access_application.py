@@ -37,7 +37,9 @@ class AccessApplication(pulumi.CustomResource):
         Provides a Cloudflare Access Application resource. Access Applications
         are used to restrict access to a whole application using an
         authorisation gateway managed by Cloudflare.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_application.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
@@ -46,8 +48,6 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_application.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,7 +88,7 @@ class AccessApplication(pulumi.CustomResource):
         """
         Get an existing AccessApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,12 +99,11 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_application.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["aud"] = aud
         __props__["domain"] = domain
         __props__["name"] = name

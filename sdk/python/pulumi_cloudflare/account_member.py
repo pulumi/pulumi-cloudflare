@@ -21,13 +21,13 @@ class AccountMember(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, email_address=None, role_ids=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource which manages Cloudflare account members.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/account_member.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
         :param pulumi.Input[list] role_ids: Array of account role IDs that you want to assign to a member.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/account_member.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -63,18 +63,17 @@ class AccountMember(pulumi.CustomResource):
         """
         Get an existing AccountMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
         :param pulumi.Input[list] role_ids: Array of account role IDs that you want to assign to a member.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/account_member.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["email_address"] = email_address
         __props__["role_ids"] = role_ids
         return AccountMember(resource_name, opts=opts, __props__=__props__)

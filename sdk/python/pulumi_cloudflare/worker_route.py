@@ -23,14 +23,14 @@ class WorkerRoute(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, pattern=None, script_name=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
                * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         :param pulumi.Input[str] zone_id: The zone ID to add the route to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,19 +67,18 @@ class WorkerRoute(pulumi.CustomResource):
         """
         Get an existing WorkerRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
                * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         :param pulumi.Input[str] zone_id: The zone ID to add the route to.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["pattern"] = pattern
         __props__["script_name"] = script_name
         __props__["zone_id"] = zone_id
