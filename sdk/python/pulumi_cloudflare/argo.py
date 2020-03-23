@@ -25,14 +25,14 @@ class Argo(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, smart_routing=None, tiered_caching=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Cloudflare Argo controls the routing to your origin and tiered caching options to speed up your website browsing experience.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/argo.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
         :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
         :param pulumi.Input[str] zone_id: The DNS zone ID that you wish to manage Argo on.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/argo.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -67,19 +67,18 @@ class Argo(pulumi.CustomResource):
         """
         Get an existing Argo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
         :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
         :param pulumi.Input[str] zone_id: The DNS zone ID that you wish to manage Argo on.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/argo.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["smart_routing"] = smart_routing
         __props__["tiered_caching"] = tiered_caching
         __props__["zone_id"] = zone_id

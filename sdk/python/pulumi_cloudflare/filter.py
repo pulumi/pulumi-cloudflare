@@ -33,7 +33,9 @@ class Filter(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, description=None, expression=None, paused=None, ref=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Filter expressions that can be referenced across multiple features, e.g. Firewall Rule. The expression format is similar to [Wireshark Display Filter](https://www.wireshark.org/docs/man-pages/wireshark-filter.html).
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/filter.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
@@ -41,8 +43,6 @@ class Filter(pulumi.CustomResource):
         :param pulumi.Input[bool] paused: Whether this filter is currently paused. Boolean value.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/filter.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -81,7 +81,7 @@ class Filter(pulumi.CustomResource):
         """
         Get an existing Filter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -90,12 +90,11 @@ class Filter(pulumi.CustomResource):
         :param pulumi.Input[bool] paused: Whether this filter is currently paused. Boolean value.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
         :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/filter.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["description"] = description
         __props__["expression"] = expression
         __props__["paused"] = paused

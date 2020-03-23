@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_group.html.markdown.
 type WafGroup struct {
 	pulumi.CustomResourceState

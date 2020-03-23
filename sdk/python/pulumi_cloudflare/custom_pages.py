@@ -36,7 +36,9 @@ class CustomPages(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, account_id=None, state=None, type=None, url=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource which manages Cloudflare custom error pages.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_pages.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account ID where the custom pages should be
@@ -49,8 +51,6 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
                updated. Either `zone_id` or `account_id` must be provided.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_pages.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +89,7 @@ class CustomPages(pulumi.CustomResource):
         """
         Get an existing CustomPages resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -103,12 +103,11 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
                updated. Either `zone_id` or `account_id` must be provided.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_pages.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["state"] = state
         __props__["type"] = type

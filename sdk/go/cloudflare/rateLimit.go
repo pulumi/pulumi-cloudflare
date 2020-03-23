@@ -12,7 +12,7 @@ import (
 )
 
 // Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/rate_limit.html.markdown.
 type RateLimit struct {
 	pulumi.CustomResourceState

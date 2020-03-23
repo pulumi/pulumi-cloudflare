@@ -19,9 +19,9 @@ class AccessGroup(pulumi.CustomResource):
     """
     A series of access conditions, see below for
     full list.
-    
-      * `emails` (`list`)
+
       * `emailDomains` (`list`)
+      * `emails` (`list`)
       * `everyone` (`bool`)
       * `groups` (`list`)
       * `ips` (`list`)
@@ -30,9 +30,9 @@ class AccessGroup(pulumi.CustomResource):
     """
     A series of access conditions, see below for
     full list.
-    
-      * `emails` (`list`)
+
       * `emailDomains` (`list`)
+      * `emails` (`list`)
       * `everyone` (`bool`)
       * `groups` (`list`)
       * `ips` (`list`)
@@ -45,9 +45,9 @@ class AccessGroup(pulumi.CustomResource):
     """
     A series of access conditions, see below for
     full list.
-    
-      * `emails` (`list`)
+
       * `emailDomains` (`list`)
+      * `emails` (`list`)
       * `everyone` (`bool`)
       * `groups` (`list`)
       * `ips` (`list`)
@@ -57,12 +57,12 @@ class AccessGroup(pulumi.CustomResource):
         Provides a Cloudflare Access Group resource. Access Groups are used
         in conjunction with Access Policies to restrict access to a
         particular resource based on group membership.
-        
+
         ## Conditions
-        
+
         `require`, `exclude` and `include` arguments share the available
         conditions which can be applied. The conditions are:
-        
+
         * `ip` - (Optional) A list of IP addresses or ranges. Example:
           `ip = ["1.2.3.4", "10.0.0.0/2"]`
         * `email` - (Optional) A list of email addresses. Example:
@@ -71,7 +71,9 @@ class AccessGroup(pulumi.CustomResource):
           `email_domain = ["example.com"]`
         * `everyone` - (Optional) Boolean indicating permitting access for all
           requests. Example: `everyone = true`
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_group.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account the group is
@@ -83,32 +85,30 @@ class AccessGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         :param pulumi.Input[list] requires: A series of access conditions, see below for
                full list.
-        
+
         The **excludes** object supports the following:
-        
-          * `emails` (`pulumi.Input[list]`)
+
           * `emailDomains` (`pulumi.Input[list]`)
-          * `everyone` (`pulumi.Input[bool]`)
-          * `groups` (`pulumi.Input[list]`)
-          * `ips` (`pulumi.Input[list]`)
-        
-        The **includes** object supports the following:
-        
           * `emails` (`pulumi.Input[list]`)
-          * `emailDomains` (`pulumi.Input[list]`)
-          * `everyone` (`pulumi.Input[bool]`)
-          * `groups` (`pulumi.Input[list]`)
-          * `ips` (`pulumi.Input[list]`)
-        
-        The **requires** object supports the following:
-        
-          * `emails` (`pulumi.Input[list]`)
-          * `emailDomains` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
           * `groups` (`pulumi.Input[list]`)
           * `ips` (`pulumi.Input[list]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_group.html.markdown.
+        The **includes** object supports the following:
+
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `emails` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `groups` (`pulumi.Input[list]`)
+          * `ips` (`pulumi.Input[list]`)
+
+        The **requires** object supports the following:
+
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `emails` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `groups` (`pulumi.Input[list]`)
+          * `ips` (`pulumi.Input[list]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -149,7 +149,7 @@ class AccessGroup(pulumi.CustomResource):
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -162,36 +162,35 @@ class AccessGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         :param pulumi.Input[list] requires: A series of access conditions, see below for
                full list.
-        
+
         The **excludes** object supports the following:
-        
-          * `emails` (`pulumi.Input[list]`)
+
           * `emailDomains` (`pulumi.Input[list]`)
-          * `everyone` (`pulumi.Input[bool]`)
-          * `groups` (`pulumi.Input[list]`)
-          * `ips` (`pulumi.Input[list]`)
-        
-        The **includes** object supports the following:
-        
           * `emails` (`pulumi.Input[list]`)
-          * `emailDomains` (`pulumi.Input[list]`)
-          * `everyone` (`pulumi.Input[bool]`)
-          * `groups` (`pulumi.Input[list]`)
-          * `ips` (`pulumi.Input[list]`)
-        
-        The **requires** object supports the following:
-        
-          * `emails` (`pulumi.Input[list]`)
-          * `emailDomains` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
           * `groups` (`pulumi.Input[list]`)
           * `ips` (`pulumi.Input[list]`)
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_group.html.markdown.
+        The **includes** object supports the following:
+
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `emails` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `groups` (`pulumi.Input[list]`)
+          * `ips` (`pulumi.Input[list]`)
+
+        The **requires** object supports the following:
+
+          * `emailDomains` (`pulumi.Input[list]`)
+          * `emails` (`pulumi.Input[list]`)
+          * `everyone` (`pulumi.Input[bool]`)
+          * `groups` (`pulumi.Input[list]`)
+          * `ips` (`pulumi.Input[list]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["excludes"] = excludes
         __props__["includes"] = includes

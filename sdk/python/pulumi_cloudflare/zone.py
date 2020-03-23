@@ -52,7 +52,9 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, jump_start=None, paused=None, plan=None, type=None, zone=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Zone resource. Zone is the basic resource for working with Cloudflare and is roughly equivalent to a domain name that the user purchases.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] jump_start: Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
@@ -60,8 +62,6 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -103,7 +103,7 @@ class Zone(pulumi.CustomResource):
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -118,17 +118,16 @@ class Zone(pulumi.CustomResource):
                * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
-        
+
         The **meta** object supports the following:
-        
+
           * `phishing_detected` (`pulumi.Input[bool]`)
           * `wildcard_proxiable` (`pulumi.Input[bool]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["jump_start"] = jump_start
         __props__["meta"] = meta
         __props__["name_servers"] = name_servers

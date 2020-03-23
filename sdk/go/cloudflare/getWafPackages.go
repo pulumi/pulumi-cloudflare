@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to look up [WAF Rule Packages][1].
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.md.
 func GetWafPackages(ctx *pulumi.Context, args *GetWafPackagesArgs, opts ...pulumi.InvokeOption) (*GetWafPackagesResult, error) {
 	var rv GetWafPackagesResult
 	err := ctx.Invoke("cloudflare:index/getWafPackages:getWafPackages", args, &rv, opts...)

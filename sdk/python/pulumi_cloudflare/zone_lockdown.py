@@ -13,7 +13,7 @@ class ZoneLockdown(pulumi.CustomResource):
     configurations: pulumi.Output[list]
     """
     A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
-    
+
       * `target` (`str`) - The request property to target. Allowed values: "ip", "ip_range"
       * `value` (`str`) - The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
     """
@@ -37,7 +37,9 @@ class ZoneLockdown(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, configurations=None, description=None, paused=None, priority=None, urls=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
@@ -45,13 +47,11 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
         :param pulumi.Input[list] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
-        
+
         The **configurations** object supports the following:
-        
+
           * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip_range"
           * `value` (`pulumi.Input[str]`) - The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -93,7 +93,7 @@ class ZoneLockdown(pulumi.CustomResource):
         """
         Get an existing ZoneLockdown resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -102,17 +102,16 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
         :param pulumi.Input[list] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
-        
+
         The **configurations** object supports the following:
-        
+
           * `target` (`pulumi.Input[str]`) - The request property to target. Allowed values: "ip", "ip_range"
           * `value` (`pulumi.Input[str]`) - The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["configurations"] = configurations
         __props__["description"] = description
         __props__["paused"] = paused

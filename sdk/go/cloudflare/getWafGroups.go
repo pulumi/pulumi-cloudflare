@@ -9,8 +9,8 @@ import (
 )
 
 // Use this data source to look up [WAF Rule Groups][1].
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.md.
 func GetWafGroups(ctx *pulumi.Context, args *GetWafGroupsArgs, opts ...pulumi.InvokeOption) (*GetWafGroupsResult, error) {
 	var rv GetWafGroupsResult
 	err := ctx.Invoke("cloudflare:index/getWafGroups:getWafGroups", args, &rv, opts...)

@@ -13,7 +13,7 @@ import (
 
 // Provides a Cloudflare Access Identity Provider resource. Identity Providers are
 // used as an authentication or authorisation source within Access.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_identity_provider.html.markdown.
 type AccessIdentityProvider struct {
 	pulumi.CustomResourceState

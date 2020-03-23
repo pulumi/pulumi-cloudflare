@@ -17,7 +17,7 @@ class Record(pulumi.CustomResource):
     data: pulumi.Output[dict]
     """
     Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-    
+
       * `algorithm` (`float`)
       * `altitude` (`float`)
       * `certificate` (`str`)
@@ -103,7 +103,9 @@ class Record(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, data=None, name=None, priority=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare record resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
@@ -114,9 +116,9 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
-        
+
         The **data** object supports the following:
-        
+
           * `algorithm` (`pulumi.Input[float]`)
           * `altitude` (`pulumi.Input[float]`)
           * `certificate` (`pulumi.Input[str]`)
@@ -154,8 +156,6 @@ class Record(pulumi.CustomResource):
           * `type` (`pulumi.Input[float]`) - The type of the record
           * `usage` (`pulumi.Input[float]`)
           * `weight` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -204,7 +204,7 @@ class Record(pulumi.CustomResource):
         """
         Get an existing Record resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -221,9 +221,9 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
-        
+
         The **data** object supports the following:
-        
+
           * `algorithm` (`pulumi.Input[float]`)
           * `altitude` (`pulumi.Input[float]`)
           * `certificate` (`pulumi.Input[str]`)
@@ -261,12 +261,11 @@ class Record(pulumi.CustomResource):
           * `type` (`pulumi.Input[float]`) - The type of the record
           * `usage` (`pulumi.Input[float]`)
           * `weight` (`pulumi.Input[float]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["created_on"] = created_on
         __props__["data"] = data
         __props__["hostname"] = hostname

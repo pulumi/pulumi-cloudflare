@@ -14,7 +14,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
     configs: pulumi.Output[list]
     """
     Provider configuration from the [developer documentation][access_identity_provider_guide].
-    
+
       * `appsDomain` (`str`)
       * `attributes` (`list`)
       * `authUrl` (`str`)
@@ -49,7 +49,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
         """
         Provides a Cloudflare Access Identity Provider resource. Identity Providers are
         used as an authentication or authorisation source within Access.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_identity_provider.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
@@ -57,9 +59,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
                `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
                `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
-        
+
         The **configs** object supports the following:
-        
+
           * `appsDomain` (`pulumi.Input[str]`)
           * `attributes` (`pulumi.Input[list]`)
           * `authUrl` (`pulumi.Input[str]`)
@@ -79,8 +81,6 @@ class AccessIdentityProvider(pulumi.CustomResource):
           * `ssoTargetUrl` (`pulumi.Input[str]`)
           * `supportGroups` (`pulumi.Input[bool]`)
           * `tokenUrl` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_identity_provider.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -120,7 +120,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         """
         Get an existing AccessIdentityProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -129,9 +129,9 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
                `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
                `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
-        
+
         The **configs** object supports the following:
-        
+
           * `appsDomain` (`pulumi.Input[str]`)
           * `attributes` (`pulumi.Input[list]`)
           * `authUrl` (`pulumi.Input[str]`)
@@ -151,12 +151,11 @@ class AccessIdentityProvider(pulumi.CustomResource):
           * `ssoTargetUrl` (`pulumi.Input[str]`)
           * `supportGroups` (`pulumi.Input[bool]`)
           * `tokenUrl` (`pulumi.Input[str]`)
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_identity_provider.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["account_id"] = account_id
         __props__["configs"] = configs
         __props__["name"] = name

@@ -13,7 +13,7 @@ class PageRule(pulumi.CustomResource):
     actions: pulumi.Output[dict]
     """
     The actions taken by the page rule, options given below.
-    
+
       * `alwaysOnline` (`str`) - Whether this action is `"on"` or `"off"`.
       * `alwaysUseHttps` (`bool`) - Boolean of whether this action is enabled. Default: false.
       * `automaticHttpsRewrites` (`str`) - Whether this action is `"on"` or `"off"`.
@@ -32,18 +32,16 @@ class PageRule(pulumi.CustomResource):
       * `emailObfuscation` (`str`) - Whether this action is `"on"` or `"off"`.
       * `explicitCacheControl` (`str`) - Whether origin Cache-Control action is `"on"` or `"off"`.
       * `forwardingUrl` (`dict`) - The URL to forward to, and with what status. See below.
-    
         * `statusCode` (`float`) - The status code to use for the redirection.
         * `url` (`str`) - The URL to which the page rule should forward.
-    
+
       * `hostHeaderOverride` (`str`) - Value of the Host header to send.
       * `ipGeolocation` (`str`) - Whether this action is `"on"` or `"off"`.
       * `minifies` (`list`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
-    
         * `css` (`str`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
         * `html` (`str`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
         * `js` (`str`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
-    
+
       * `mirage` (`str`) - Whether this action is `"on"` or `"off"`.
       * `opportunisticEncryption` (`str`) - Whether this action is `"on"` or `"off"`.
       * `originErrorPagePassThru` (`str`) - Whether this action is `"on"` or `"off"`.
@@ -78,7 +76,9 @@ class PageRule(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, actions=None, priority=None, status=None, target=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare page rule resource.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] actions: The actions taken by the page rule, options given below.
@@ -86,9 +86,9 @@ class PageRule(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
-        
+
         The **actions** object supports the following:
-        
+
           * `alwaysOnline` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `alwaysUseHttps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
           * `automaticHttpsRewrites` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
@@ -107,18 +107,16 @@ class PageRule(pulumi.CustomResource):
           * `emailObfuscation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `explicitCacheControl` (`pulumi.Input[str]`) - Whether origin Cache-Control action is `"on"` or `"off"`.
           * `forwardingUrl` (`pulumi.Input[dict]`) - The URL to forward to, and with what status. See below.
-        
             * `statusCode` (`pulumi.Input[float]`) - The status code to use for the redirection.
             * `url` (`pulumi.Input[str]`) - The URL to which the page rule should forward.
-        
+
           * `hostHeaderOverride` (`pulumi.Input[str]`) - Value of the Host header to send.
           * `ipGeolocation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `minifies` (`pulumi.Input[list]`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
-        
             * `css` (`pulumi.Input[str]`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
             * `html` (`pulumi.Input[str]`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
             * `js` (`pulumi.Input[str]`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
-        
+
           * `mirage` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `opportunisticEncryption` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `originErrorPagePassThru` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
@@ -133,8 +131,6 @@ class PageRule(pulumi.CustomResource):
           * `ssl` (`pulumi.Input[str]`) - Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
           * `trueClientIpHeader` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `waf` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -175,7 +171,7 @@ class PageRule(pulumi.CustomResource):
         """
         Get an existing PageRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -184,9 +180,9 @@ class PageRule(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
-        
+
         The **actions** object supports the following:
-        
+
           * `alwaysOnline` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `alwaysUseHttps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
           * `automaticHttpsRewrites` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
@@ -205,18 +201,16 @@ class PageRule(pulumi.CustomResource):
           * `emailObfuscation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `explicitCacheControl` (`pulumi.Input[str]`) - Whether origin Cache-Control action is `"on"` or `"off"`.
           * `forwardingUrl` (`pulumi.Input[dict]`) - The URL to forward to, and with what status. See below.
-        
             * `statusCode` (`pulumi.Input[float]`) - The status code to use for the redirection.
             * `url` (`pulumi.Input[str]`) - The URL to which the page rule should forward.
-        
+
           * `hostHeaderOverride` (`pulumi.Input[str]`) - Value of the Host header to send.
           * `ipGeolocation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `minifies` (`pulumi.Input[list]`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
-        
             * `css` (`pulumi.Input[str]`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
             * `html` (`pulumi.Input[str]`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
             * `js` (`pulumi.Input[str]`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
-        
+
           * `mirage` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `opportunisticEncryption` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `originErrorPagePassThru` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
@@ -231,12 +225,11 @@ class PageRule(pulumi.CustomResource):
           * `ssl` (`pulumi.Input[str]`) - Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
           * `trueClientIpHeader` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `waf` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["actions"] = actions
         __props__["priority"] = priority
         __props__["status"] = status
