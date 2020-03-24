@@ -6,6 +6,9 @@ _(none)_
 
 ---
 
+## 1.8.1 (2020-03-24)
+* Upgrade to Pulumi v1.12.1 in DotNet dependency
+
 ## 1.8.0 (2020-03-23)
 * Upgrade to v2.4.1 of the Cloudflare Terraform Provider
 * Upgrade to Pulumi v1.12.1
