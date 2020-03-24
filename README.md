@@ -36,7 +36,7 @@ The following configuration points are available:
 
 - `cloudflare:email` - (Optional) The email associated with the account. May be set via the `CLOUDFLARE_EMAIL` environment variable.
 - `cloudflare:apiKey` - (Optional) The Cloudflare API key. May be set via the `CLOUDFLARE_API_KEY` environment variable. 
-- `cloudflare:apiToken` - (Optional) The Cloudflare API Token. May be set via the `c` environment variable. This is an alternative to `email` + `apiKey`. If both are specified, `apiToken` will be used over `email` + `apiKey` fields
+- `cloudflare:apiToken` - (Optional) The Cloudflare API Token. May be set via the `CLOUDFLARE_API_TOKEN` environment variable. This is an alternative to `email` + `apiKey`. If both are specified, `apiToken` will be used over `email` + `apiKey` fields
 - `cloudflare:accountId` - (Optional) Configure API client with this account ID, so calls use the account API rather than the (default) user API. This is required for other users in your account to have access to the resources you manage. May be set via the `CLOUDFLARE_ACCOUNT_ID` environment variable.
 - `cloudflare:rps` - (Optional) RPS limit to apply when making calls to the API. Default: `4`. May be set via the `CLOUDFLARE_RPS` environment variable.
 - `cloudflare:retries` - (Optional) Maximum number of retries to perform when an API request fails. Default: `3`. May be set via the `CLOUDFLARE_RETRIES` environment variable.
