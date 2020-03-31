@@ -14,20 +14,6 @@ namespace Pulumi.Cloudflare
     /// in conjunction with Access Applications to restrict access to a
     /// particular resource.
     /// 
-    /// ## Conditions
-    /// 
-    /// `require`, `exclude` and `include` arguments share the available
-    /// conditions which can be applied. The conditions are:
-    /// 
-    /// * `ip` - (Optional) A list of IP addresses or ranges. Example:
-    ///   `ip = ["1.2.3.4", "10.0.0.0/2"]`
-    /// * `email` - (Optional) A list of email addresses. Example:
-    ///   `email = ["test@example.com"]`
-    /// * `email_domain` - (Optional) A list of email domains. Example:
-    ///   `email_domain = ["example.com"]`
-    /// * `everyone` - (Optional) Boolean indicating permitting access for all
-    ///   requests. Example: `everyone = true`
-    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
     /// </summary>
     public partial class AccessPolicy : Pulumi.CustomResource
@@ -41,21 +27,19 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Defines the action Access will take if the policy matches the user.
-        /// Allowed values: `allow`, `deny`, `bypass`
+        /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         /// </summary>
         [Output("decision")]
         public Output<string> Decision { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         [Output("excludes")]
         public Output<ImmutableArray<Outputs.AccessPolicyExcludes>> Excludes { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         [Output("includes")]
         public Output<ImmutableArray<Outputs.AccessPolicyIncludes>> Includes { get; private set; } = null!;
@@ -73,8 +57,7 @@ namespace Pulumi.Cloudflare
         public Output<int?> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         [Output("requires")]
         public Output<ImmutableArray<Outputs.AccessPolicyRequires>> Requires { get; private set; } = null!;
@@ -141,7 +124,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Defines the action Access will take if the policy matches the user.
-        /// Allowed values: `allow`, `deny`, `bypass`
+        /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         /// </summary>
         [Input("decision", required: true)]
         public Input<string> Decision { get; set; } = null!;
@@ -150,8 +133,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyExcludesArgs>? _excludes;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyExcludesArgs> Excludes
         {
@@ -163,8 +145,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyIncludesArgs>? _includes;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyIncludesArgs> Includes
         {
@@ -188,8 +169,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyRequiresArgs>? _requires;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyRequiresArgs> Requires
         {
@@ -220,7 +200,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Defines the action Access will take if the policy matches the user.
-        /// Allowed values: `allow`, `deny`, `bypass`
+        /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         /// </summary>
         [Input("decision")]
         public Input<string>? Decision { get; set; }
@@ -229,8 +209,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyExcludesGetArgs>? _excludes;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyExcludesGetArgs> Excludes
         {
@@ -242,8 +221,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyIncludesGetArgs>? _includes;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyIncludesGetArgs> Includes
         {
@@ -267,8 +245,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyRequiresGetArgs>? _requires;
 
         /// <summary>
-        /// A series of access conditions, see below for
-        /// full list.
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyRequiresGetArgs> Requires
         {
@@ -293,6 +270,23 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessPolicyExcludesArgs : Pulumi.ResourceArgs
     {
+        [Input("anyValidServiceToken")]
+        public Input<bool>? AnyValidServiceToken { get; set; }
+
+        [Input("azures")]
+        private InputList<AccessPolicyExcludesAzuresArgs>? _azures;
+        public InputList<AccessPolicyExcludesAzuresArgs> Azures
+        {
+            get => _azures ?? (_azures = new InputList<AccessPolicyExcludesAzuresArgs>());
+            set => _azures = value;
+        }
+
+        [Input("certificate")]
+        public Input<bool>? Certificate { get; set; }
+
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
         [Input("emails")]
         private InputList<string>? _emails;
         public InputList<string> Emails
@@ -312,12 +306,60 @@ namespace Pulumi.Cloudflare
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("githubs")]
+        private InputList<AccessPolicyExcludesGithubsArgs>? _githubs;
+        public InputList<AccessPolicyExcludesGithubsArgs> Githubs
+        {
+            get => _githubs ?? (_githubs = new InputList<AccessPolicyExcludesGithubsArgs>());
+            set => _githubs = value;
+        }
+
+        [Input("groups")]
+        private InputList<string>? _groups;
+        public InputList<string> Groups
+        {
+            get => _groups ?? (_groups = new InputList<string>());
+            set => _groups = value;
+        }
+
+        [Input("gsuites")]
+        private InputList<AccessPolicyExcludesGsuitesArgs>? _gsuites;
+        public InputList<AccessPolicyExcludesGsuitesArgs> Gsuites
+        {
+            get => _gsuites ?? (_gsuites = new InputList<AccessPolicyExcludesGsuitesArgs>());
+            set => _gsuites = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());
             set => _ips = value;
+        }
+
+        [Input("oktas")]
+        private InputList<AccessPolicyExcludesOktasArgs>? _oktas;
+        public InputList<AccessPolicyExcludesOktasArgs> Oktas
+        {
+            get => _oktas ?? (_oktas = new InputList<AccessPolicyExcludesOktasArgs>());
+            set => _oktas = value;
+        }
+
+        [Input("samls")]
+        private InputList<AccessPolicyExcludesSamlsArgs>? _samls;
+        public InputList<AccessPolicyExcludesSamlsArgs> Samls
+        {
+            get => _samls ?? (_samls = new InputList<AccessPolicyExcludesSamlsArgs>());
+            set => _samls = value;
+        }
+
+        [Input("serviceTokens")]
+        private InputList<string>? _serviceTokens;
+        public InputList<string> ServiceTokens
+        {
+            get => _serviceTokens ?? (_serviceTokens = new InputList<string>());
+            set => _serviceTokens = value;
         }
 
         public AccessPolicyExcludesArgs()
@@ -325,8 +367,51 @@ namespace Pulumi.Cloudflare
         }
     }
 
+    public sealed class AccessPolicyExcludesAzuresArgs : Pulumi.ResourceArgs
+    {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyExcludesAzuresArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyExcludesAzuresGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyExcludesAzuresGetArgs()
+        {
+        }
+    }
+
     public sealed class AccessPolicyExcludesGetArgs : Pulumi.ResourceArgs
     {
+        [Input("anyValidServiceToken")]
+        public Input<bool>? AnyValidServiceToken { get; set; }
+
+        [Input("azures")]
+        private InputList<AccessPolicyExcludesAzuresGetArgs>? _azures;
+        public InputList<AccessPolicyExcludesAzuresGetArgs> Azures
+        {
+            get => _azures ?? (_azures = new InputList<AccessPolicyExcludesAzuresGetArgs>());
+            set => _azures = value;
+        }
+
+        [Input("certificate")]
+        public Input<bool>? Certificate { get; set; }
+
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
         [Input("emails")]
         private InputList<string>? _emails;
         public InputList<string> Emails
@@ -346,12 +431,60 @@ namespace Pulumi.Cloudflare
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("githubs")]
+        private InputList<AccessPolicyExcludesGithubsGetArgs>? _githubs;
+        public InputList<AccessPolicyExcludesGithubsGetArgs> Githubs
+        {
+            get => _githubs ?? (_githubs = new InputList<AccessPolicyExcludesGithubsGetArgs>());
+            set => _githubs = value;
+        }
+
+        [Input("groups")]
+        private InputList<string>? _groups;
+        public InputList<string> Groups
+        {
+            get => _groups ?? (_groups = new InputList<string>());
+            set => _groups = value;
+        }
+
+        [Input("gsuites")]
+        private InputList<AccessPolicyExcludesGsuitesGetArgs>? _gsuites;
+        public InputList<AccessPolicyExcludesGsuitesGetArgs> Gsuites
+        {
+            get => _gsuites ?? (_gsuites = new InputList<AccessPolicyExcludesGsuitesGetArgs>());
+            set => _gsuites = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());
             set => _ips = value;
+        }
+
+        [Input("oktas")]
+        private InputList<AccessPolicyExcludesOktasGetArgs>? _oktas;
+        public InputList<AccessPolicyExcludesOktasGetArgs> Oktas
+        {
+            get => _oktas ?? (_oktas = new InputList<AccessPolicyExcludesOktasGetArgs>());
+            set => _oktas = value;
+        }
+
+        [Input("samls")]
+        private InputList<AccessPolicyExcludesSamlsGetArgs>? _samls;
+        public InputList<AccessPolicyExcludesSamlsGetArgs> Samls
+        {
+            get => _samls ?? (_samls = new InputList<AccessPolicyExcludesSamlsGetArgs>());
+            set => _samls = value;
+        }
+
+        [Input("serviceTokens")]
+        private InputList<string>? _serviceTokens;
+        public InputList<string> ServiceTokens
+        {
+            get => _serviceTokens ?? (_serviceTokens = new InputList<string>());
+            set => _serviceTokens = value;
         }
 
         public AccessPolicyExcludesGetArgs()
@@ -359,8 +492,147 @@ namespace Pulumi.Cloudflare
         }
     }
 
+    public sealed class AccessPolicyExcludesGithubsArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyExcludesGithubsArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyExcludesGithubsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyExcludesGithubsGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyExcludesGsuitesArgs : Pulumi.ResourceArgs
+    {
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyExcludesGsuitesArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyExcludesGsuitesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyExcludesGsuitesGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyExcludesOktasArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyExcludesOktasArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyExcludesOktasGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyExcludesOktasGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyExcludesSamlsArgs : Pulumi.ResourceArgs
+    {
+        [Input("attributeName")]
+        public Input<string>? AttributeName { get; set; }
+
+        [Input("attributeValue")]
+        public Input<string>? AttributeValue { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyExcludesSamlsArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyExcludesSamlsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("attributeName")]
+        public Input<string>? AttributeName { get; set; }
+
+        [Input("attributeValue")]
+        public Input<string>? AttributeValue { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyExcludesSamlsGetArgs()
+        {
+        }
+    }
+
     public sealed class AccessPolicyIncludesArgs : Pulumi.ResourceArgs
     {
+        [Input("anyValidServiceToken")]
+        public Input<bool>? AnyValidServiceToken { get; set; }
+
+        [Input("azures")]
+        private InputList<AccessPolicyIncludesAzuresArgs>? _azures;
+        public InputList<AccessPolicyIncludesAzuresArgs> Azures
+        {
+            get => _azures ?? (_azures = new InputList<AccessPolicyIncludesAzuresArgs>());
+            set => _azures = value;
+        }
+
+        [Input("certificate")]
+        public Input<bool>? Certificate { get; set; }
+
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
         [Input("emails")]
         private InputList<string>? _emails;
         public InputList<string> Emails
@@ -380,12 +652,60 @@ namespace Pulumi.Cloudflare
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("githubs")]
+        private InputList<AccessPolicyIncludesGithubsArgs>? _githubs;
+        public InputList<AccessPolicyIncludesGithubsArgs> Githubs
+        {
+            get => _githubs ?? (_githubs = new InputList<AccessPolicyIncludesGithubsArgs>());
+            set => _githubs = value;
+        }
+
+        [Input("groups")]
+        private InputList<string>? _groups;
+        public InputList<string> Groups
+        {
+            get => _groups ?? (_groups = new InputList<string>());
+            set => _groups = value;
+        }
+
+        [Input("gsuites")]
+        private InputList<AccessPolicyIncludesGsuitesArgs>? _gsuites;
+        public InputList<AccessPolicyIncludesGsuitesArgs> Gsuites
+        {
+            get => _gsuites ?? (_gsuites = new InputList<AccessPolicyIncludesGsuitesArgs>());
+            set => _gsuites = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());
             set => _ips = value;
+        }
+
+        [Input("oktas")]
+        private InputList<AccessPolicyIncludesOktasArgs>? _oktas;
+        public InputList<AccessPolicyIncludesOktasArgs> Oktas
+        {
+            get => _oktas ?? (_oktas = new InputList<AccessPolicyIncludesOktasArgs>());
+            set => _oktas = value;
+        }
+
+        [Input("samls")]
+        private InputList<AccessPolicyIncludesSamlsArgs>? _samls;
+        public InputList<AccessPolicyIncludesSamlsArgs> Samls
+        {
+            get => _samls ?? (_samls = new InputList<AccessPolicyIncludesSamlsArgs>());
+            set => _samls = value;
+        }
+
+        [Input("serviceTokens")]
+        private InputList<string>? _serviceTokens;
+        public InputList<string> ServiceTokens
+        {
+            get => _serviceTokens ?? (_serviceTokens = new InputList<string>());
+            set => _serviceTokens = value;
         }
 
         public AccessPolicyIncludesArgs()
@@ -393,8 +713,51 @@ namespace Pulumi.Cloudflare
         }
     }
 
+    public sealed class AccessPolicyIncludesAzuresArgs : Pulumi.ResourceArgs
+    {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyIncludesAzuresArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyIncludesAzuresGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyIncludesAzuresGetArgs()
+        {
+        }
+    }
+
     public sealed class AccessPolicyIncludesGetArgs : Pulumi.ResourceArgs
     {
+        [Input("anyValidServiceToken")]
+        public Input<bool>? AnyValidServiceToken { get; set; }
+
+        [Input("azures")]
+        private InputList<AccessPolicyIncludesAzuresGetArgs>? _azures;
+        public InputList<AccessPolicyIncludesAzuresGetArgs> Azures
+        {
+            get => _azures ?? (_azures = new InputList<AccessPolicyIncludesAzuresGetArgs>());
+            set => _azures = value;
+        }
+
+        [Input("certificate")]
+        public Input<bool>? Certificate { get; set; }
+
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
         [Input("emails")]
         private InputList<string>? _emails;
         public InputList<string> Emails
@@ -414,12 +777,60 @@ namespace Pulumi.Cloudflare
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("githubs")]
+        private InputList<AccessPolicyIncludesGithubsGetArgs>? _githubs;
+        public InputList<AccessPolicyIncludesGithubsGetArgs> Githubs
+        {
+            get => _githubs ?? (_githubs = new InputList<AccessPolicyIncludesGithubsGetArgs>());
+            set => _githubs = value;
+        }
+
+        [Input("groups")]
+        private InputList<string>? _groups;
+        public InputList<string> Groups
+        {
+            get => _groups ?? (_groups = new InputList<string>());
+            set => _groups = value;
+        }
+
+        [Input("gsuites")]
+        private InputList<AccessPolicyIncludesGsuitesGetArgs>? _gsuites;
+        public InputList<AccessPolicyIncludesGsuitesGetArgs> Gsuites
+        {
+            get => _gsuites ?? (_gsuites = new InputList<AccessPolicyIncludesGsuitesGetArgs>());
+            set => _gsuites = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());
             set => _ips = value;
+        }
+
+        [Input("oktas")]
+        private InputList<AccessPolicyIncludesOktasGetArgs>? _oktas;
+        public InputList<AccessPolicyIncludesOktasGetArgs> Oktas
+        {
+            get => _oktas ?? (_oktas = new InputList<AccessPolicyIncludesOktasGetArgs>());
+            set => _oktas = value;
+        }
+
+        [Input("samls")]
+        private InputList<AccessPolicyIncludesSamlsGetArgs>? _samls;
+        public InputList<AccessPolicyIncludesSamlsGetArgs> Samls
+        {
+            get => _samls ?? (_samls = new InputList<AccessPolicyIncludesSamlsGetArgs>());
+            set => _samls = value;
+        }
+
+        [Input("serviceTokens")]
+        private InputList<string>? _serviceTokens;
+        public InputList<string> ServiceTokens
+        {
+            get => _serviceTokens ?? (_serviceTokens = new InputList<string>());
+            set => _serviceTokens = value;
         }
 
         public AccessPolicyIncludesGetArgs()
@@ -427,8 +838,147 @@ namespace Pulumi.Cloudflare
         }
     }
 
+    public sealed class AccessPolicyIncludesGithubsArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyIncludesGithubsArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyIncludesGithubsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyIncludesGithubsGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyIncludesGsuitesArgs : Pulumi.ResourceArgs
+    {
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyIncludesGsuitesArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyIncludesGsuitesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyIncludesGsuitesGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyIncludesOktasArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyIncludesOktasArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyIncludesOktasGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyIncludesOktasGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyIncludesSamlsArgs : Pulumi.ResourceArgs
+    {
+        [Input("attributeName")]
+        public Input<string>? AttributeName { get; set; }
+
+        [Input("attributeValue")]
+        public Input<string>? AttributeValue { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyIncludesSamlsArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyIncludesSamlsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("attributeName")]
+        public Input<string>? AttributeName { get; set; }
+
+        [Input("attributeValue")]
+        public Input<string>? AttributeValue { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyIncludesSamlsGetArgs()
+        {
+        }
+    }
+
     public sealed class AccessPolicyRequiresArgs : Pulumi.ResourceArgs
     {
+        [Input("anyValidServiceToken")]
+        public Input<bool>? AnyValidServiceToken { get; set; }
+
+        [Input("azures")]
+        private InputList<AccessPolicyRequiresAzuresArgs>? _azures;
+        public InputList<AccessPolicyRequiresAzuresArgs> Azures
+        {
+            get => _azures ?? (_azures = new InputList<AccessPolicyRequiresAzuresArgs>());
+            set => _azures = value;
+        }
+
+        [Input("certificate")]
+        public Input<bool>? Certificate { get; set; }
+
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
         [Input("emails")]
         private InputList<string>? _emails;
         public InputList<string> Emails
@@ -448,12 +998,60 @@ namespace Pulumi.Cloudflare
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("githubs")]
+        private InputList<AccessPolicyRequiresGithubsArgs>? _githubs;
+        public InputList<AccessPolicyRequiresGithubsArgs> Githubs
+        {
+            get => _githubs ?? (_githubs = new InputList<AccessPolicyRequiresGithubsArgs>());
+            set => _githubs = value;
+        }
+
+        [Input("groups")]
+        private InputList<string>? _groups;
+        public InputList<string> Groups
+        {
+            get => _groups ?? (_groups = new InputList<string>());
+            set => _groups = value;
+        }
+
+        [Input("gsuites")]
+        private InputList<AccessPolicyRequiresGsuitesArgs>? _gsuites;
+        public InputList<AccessPolicyRequiresGsuitesArgs> Gsuites
+        {
+            get => _gsuites ?? (_gsuites = new InputList<AccessPolicyRequiresGsuitesArgs>());
+            set => _gsuites = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());
             set => _ips = value;
+        }
+
+        [Input("oktas")]
+        private InputList<AccessPolicyRequiresOktasArgs>? _oktas;
+        public InputList<AccessPolicyRequiresOktasArgs> Oktas
+        {
+            get => _oktas ?? (_oktas = new InputList<AccessPolicyRequiresOktasArgs>());
+            set => _oktas = value;
+        }
+
+        [Input("samls")]
+        private InputList<AccessPolicyRequiresSamlsArgs>? _samls;
+        public InputList<AccessPolicyRequiresSamlsArgs> Samls
+        {
+            get => _samls ?? (_samls = new InputList<AccessPolicyRequiresSamlsArgs>());
+            set => _samls = value;
+        }
+
+        [Input("serviceTokens")]
+        private InputList<string>? _serviceTokens;
+        public InputList<string> ServiceTokens
+        {
+            get => _serviceTokens ?? (_serviceTokens = new InputList<string>());
+            set => _serviceTokens = value;
         }
 
         public AccessPolicyRequiresArgs()
@@ -461,8 +1059,51 @@ namespace Pulumi.Cloudflare
         }
     }
 
+    public sealed class AccessPolicyRequiresAzuresArgs : Pulumi.ResourceArgs
+    {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyRequiresAzuresArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresAzuresGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyRequiresAzuresGetArgs()
+        {
+        }
+    }
+
     public sealed class AccessPolicyRequiresGetArgs : Pulumi.ResourceArgs
     {
+        [Input("anyValidServiceToken")]
+        public Input<bool>? AnyValidServiceToken { get; set; }
+
+        [Input("azures")]
+        private InputList<AccessPolicyRequiresAzuresGetArgs>? _azures;
+        public InputList<AccessPolicyRequiresAzuresGetArgs> Azures
+        {
+            get => _azures ?? (_azures = new InputList<AccessPolicyRequiresAzuresGetArgs>());
+            set => _azures = value;
+        }
+
+        [Input("certificate")]
+        public Input<bool>? Certificate { get; set; }
+
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
         [Input("emails")]
         private InputList<string>? _emails;
         public InputList<string> Emails
@@ -482,6 +1123,30 @@ namespace Pulumi.Cloudflare
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("githubs")]
+        private InputList<AccessPolicyRequiresGithubsGetArgs>? _githubs;
+        public InputList<AccessPolicyRequiresGithubsGetArgs> Githubs
+        {
+            get => _githubs ?? (_githubs = new InputList<AccessPolicyRequiresGithubsGetArgs>());
+            set => _githubs = value;
+        }
+
+        [Input("groups")]
+        private InputList<string>? _groups;
+        public InputList<string> Groups
+        {
+            get => _groups ?? (_groups = new InputList<string>());
+            set => _groups = value;
+        }
+
+        [Input("gsuites")]
+        private InputList<AccessPolicyRequiresGsuitesGetArgs>? _gsuites;
+        public InputList<AccessPolicyRequiresGsuitesGetArgs> Gsuites
+        {
+            get => _gsuites ?? (_gsuites = new InputList<AccessPolicyRequiresGsuitesGetArgs>());
+            set => _gsuites = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips
@@ -490,7 +1155,153 @@ namespace Pulumi.Cloudflare
             set => _ips = value;
         }
 
+        [Input("oktas")]
+        private InputList<AccessPolicyRequiresOktasGetArgs>? _oktas;
+        public InputList<AccessPolicyRequiresOktasGetArgs> Oktas
+        {
+            get => _oktas ?? (_oktas = new InputList<AccessPolicyRequiresOktasGetArgs>());
+            set => _oktas = value;
+        }
+
+        [Input("samls")]
+        private InputList<AccessPolicyRequiresSamlsGetArgs>? _samls;
+        public InputList<AccessPolicyRequiresSamlsGetArgs> Samls
+        {
+            get => _samls ?? (_samls = new InputList<AccessPolicyRequiresSamlsGetArgs>());
+            set => _samls = value;
+        }
+
+        [Input("serviceTokens")]
+        private InputList<string>? _serviceTokens;
+        public InputList<string> ServiceTokens
+        {
+            get => _serviceTokens ?? (_serviceTokens = new InputList<string>());
+            set => _serviceTokens = value;
+        }
+
         public AccessPolicyRequiresGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresGithubsArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyRequiresGithubsArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresGithubsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyRequiresGithubsGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresGsuitesArgs : Pulumi.ResourceArgs
+    {
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyRequiresGsuitesArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresGsuitesGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("email")]
+        public Input<string>? Email { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyRequiresGsuitesGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresOktasArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyRequiresOktasArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresOktasGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        public AccessPolicyRequiresOktasGetArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresSamlsArgs : Pulumi.ResourceArgs
+    {
+        [Input("attributeName")]
+        public Input<string>? AttributeName { get; set; }
+
+        [Input("attributeValue")]
+        public Input<string>? AttributeValue { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyRequiresSamlsArgs()
+        {
+        }
+    }
+
+    public sealed class AccessPolicyRequiresSamlsGetArgs : Pulumi.ResourceArgs
+    {
+        [Input("attributeName")]
+        public Input<string>? AttributeName { get; set; }
+
+        [Input("attributeValue")]
+        public Input<string>? AttributeValue { get; set; }
+
+        [Input("identityProviderId")]
+        public Input<string>? IdentityProviderId { get; set; }
+
+        public AccessPolicyRequiresSamlsGetArgs()
         {
         }
     }
@@ -502,66 +1313,423 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class AccessPolicyExcludes
     {
+        public readonly bool? AnyValidServiceToken;
+        public readonly ImmutableArray<AccessPolicyExcludesAzures> Azures;
+        public readonly bool? Certificate;
+        public readonly string? CommonName;
         public readonly ImmutableArray<string> Emails;
         public readonly ImmutableArray<string> EmailDomains;
         public readonly bool? Everyone;
+        public readonly ImmutableArray<AccessPolicyExcludesGithubs> Githubs;
+        public readonly ImmutableArray<string> Groups;
+        public readonly ImmutableArray<AccessPolicyExcludesGsuites> Gsuites;
         public readonly ImmutableArray<string> Ips;
+        public readonly ImmutableArray<AccessPolicyExcludesOktas> Oktas;
+        public readonly ImmutableArray<AccessPolicyExcludesSamls> Samls;
+        public readonly ImmutableArray<string> ServiceTokens;
 
         [OutputConstructor]
         private AccessPolicyExcludes(
+            bool? anyValidServiceToken,
+            ImmutableArray<AccessPolicyExcludesAzures> azures,
+            bool? certificate,
+            string? commonName,
             ImmutableArray<string> emails,
             ImmutableArray<string> emailDomains,
             bool? everyone,
-            ImmutableArray<string> ips)
+            ImmutableArray<AccessPolicyExcludesGithubs> githubs,
+            ImmutableArray<string> groups,
+            ImmutableArray<AccessPolicyExcludesGsuites> gsuites,
+            ImmutableArray<string> ips,
+            ImmutableArray<AccessPolicyExcludesOktas> oktas,
+            ImmutableArray<AccessPolicyExcludesSamls> samls,
+            ImmutableArray<string> serviceTokens)
         {
+            AnyValidServiceToken = anyValidServiceToken;
+            Azures = azures;
+            Certificate = certificate;
+            CommonName = commonName;
             Emails = emails;
             EmailDomains = emailDomains;
             Everyone = everyone;
+            Githubs = githubs;
+            Groups = groups;
+            Gsuites = gsuites;
             Ips = ips;
+            Oktas = oktas;
+            Samls = samls;
+            ServiceTokens = serviceTokens;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyExcludesAzures
+    {
+        public readonly string? Id;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyExcludesAzures(
+            string? id,
+            string? identityProviderId)
+        {
+            Id = id;
+            IdentityProviderId = identityProviderId;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyExcludesGithubs
+    {
+        public readonly string? IdentityProviderId;
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        public readonly string? Name;
+
+        [OutputConstructor]
+        private AccessPolicyExcludesGithubs(
+            string? identityProviderId,
+            string? name)
+        {
+            IdentityProviderId = identityProviderId;
+            Name = name;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyExcludesGsuites
+    {
+        public readonly string? Email;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyExcludesGsuites(
+            string? email,
+            string? identityProviderId)
+        {
+            Email = email;
+            IdentityProviderId = identityProviderId;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyExcludesOktas
+    {
+        public readonly string? IdentityProviderId;
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        public readonly string? Name;
+
+        [OutputConstructor]
+        private AccessPolicyExcludesOktas(
+            string? identityProviderId,
+            string? name)
+        {
+            IdentityProviderId = identityProviderId;
+            Name = name;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyExcludesSamls
+    {
+        public readonly string? AttributeName;
+        public readonly string? AttributeValue;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyExcludesSamls(
+            string? attributeName,
+            string? attributeValue,
+            string? identityProviderId)
+        {
+            AttributeName = attributeName;
+            AttributeValue = attributeValue;
+            IdentityProviderId = identityProviderId;
         }
     }
 
     [OutputType]
     public sealed class AccessPolicyIncludes
     {
+        public readonly bool? AnyValidServiceToken;
+        public readonly ImmutableArray<AccessPolicyIncludesAzures> Azures;
+        public readonly bool? Certificate;
+        public readonly string? CommonName;
         public readonly ImmutableArray<string> Emails;
         public readonly ImmutableArray<string> EmailDomains;
         public readonly bool? Everyone;
+        public readonly ImmutableArray<AccessPolicyIncludesGithubs> Githubs;
+        public readonly ImmutableArray<string> Groups;
+        public readonly ImmutableArray<AccessPolicyIncludesGsuites> Gsuites;
         public readonly ImmutableArray<string> Ips;
+        public readonly ImmutableArray<AccessPolicyIncludesOktas> Oktas;
+        public readonly ImmutableArray<AccessPolicyIncludesSamls> Samls;
+        public readonly ImmutableArray<string> ServiceTokens;
 
         [OutputConstructor]
         private AccessPolicyIncludes(
+            bool? anyValidServiceToken,
+            ImmutableArray<AccessPolicyIncludesAzures> azures,
+            bool? certificate,
+            string? commonName,
             ImmutableArray<string> emails,
             ImmutableArray<string> emailDomains,
             bool? everyone,
-            ImmutableArray<string> ips)
+            ImmutableArray<AccessPolicyIncludesGithubs> githubs,
+            ImmutableArray<string> groups,
+            ImmutableArray<AccessPolicyIncludesGsuites> gsuites,
+            ImmutableArray<string> ips,
+            ImmutableArray<AccessPolicyIncludesOktas> oktas,
+            ImmutableArray<AccessPolicyIncludesSamls> samls,
+            ImmutableArray<string> serviceTokens)
         {
+            AnyValidServiceToken = anyValidServiceToken;
+            Azures = azures;
+            Certificate = certificate;
+            CommonName = commonName;
             Emails = emails;
             EmailDomains = emailDomains;
             Everyone = everyone;
+            Githubs = githubs;
+            Groups = groups;
+            Gsuites = gsuites;
             Ips = ips;
+            Oktas = oktas;
+            Samls = samls;
+            ServiceTokens = serviceTokens;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyIncludesAzures
+    {
+        public readonly string? Id;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyIncludesAzures(
+            string? id,
+            string? identityProviderId)
+        {
+            Id = id;
+            IdentityProviderId = identityProviderId;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyIncludesGithubs
+    {
+        public readonly string? IdentityProviderId;
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        public readonly string? Name;
+
+        [OutputConstructor]
+        private AccessPolicyIncludesGithubs(
+            string? identityProviderId,
+            string? name)
+        {
+            IdentityProviderId = identityProviderId;
+            Name = name;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyIncludesGsuites
+    {
+        public readonly string? Email;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyIncludesGsuites(
+            string? email,
+            string? identityProviderId)
+        {
+            Email = email;
+            IdentityProviderId = identityProviderId;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyIncludesOktas
+    {
+        public readonly string? IdentityProviderId;
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        public readonly string? Name;
+
+        [OutputConstructor]
+        private AccessPolicyIncludesOktas(
+            string? identityProviderId,
+            string? name)
+        {
+            IdentityProviderId = identityProviderId;
+            Name = name;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyIncludesSamls
+    {
+        public readonly string? AttributeName;
+        public readonly string? AttributeValue;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyIncludesSamls(
+            string? attributeName,
+            string? attributeValue,
+            string? identityProviderId)
+        {
+            AttributeName = attributeName;
+            AttributeValue = attributeValue;
+            IdentityProviderId = identityProviderId;
         }
     }
 
     [OutputType]
     public sealed class AccessPolicyRequires
     {
+        public readonly bool? AnyValidServiceToken;
+        public readonly ImmutableArray<AccessPolicyRequiresAzures> Azures;
+        public readonly bool? Certificate;
+        public readonly string? CommonName;
         public readonly ImmutableArray<string> Emails;
         public readonly ImmutableArray<string> EmailDomains;
         public readonly bool? Everyone;
+        public readonly ImmutableArray<AccessPolicyRequiresGithubs> Githubs;
+        public readonly ImmutableArray<string> Groups;
+        public readonly ImmutableArray<AccessPolicyRequiresGsuites> Gsuites;
         public readonly ImmutableArray<string> Ips;
+        public readonly ImmutableArray<AccessPolicyRequiresOktas> Oktas;
+        public readonly ImmutableArray<AccessPolicyRequiresSamls> Samls;
+        public readonly ImmutableArray<string> ServiceTokens;
 
         [OutputConstructor]
         private AccessPolicyRequires(
+            bool? anyValidServiceToken,
+            ImmutableArray<AccessPolicyRequiresAzures> azures,
+            bool? certificate,
+            string? commonName,
             ImmutableArray<string> emails,
             ImmutableArray<string> emailDomains,
             bool? everyone,
-            ImmutableArray<string> ips)
+            ImmutableArray<AccessPolicyRequiresGithubs> githubs,
+            ImmutableArray<string> groups,
+            ImmutableArray<AccessPolicyRequiresGsuites> gsuites,
+            ImmutableArray<string> ips,
+            ImmutableArray<AccessPolicyRequiresOktas> oktas,
+            ImmutableArray<AccessPolicyRequiresSamls> samls,
+            ImmutableArray<string> serviceTokens)
         {
+            AnyValidServiceToken = anyValidServiceToken;
+            Azures = azures;
+            Certificate = certificate;
+            CommonName = commonName;
             Emails = emails;
             EmailDomains = emailDomains;
             Everyone = everyone;
+            Githubs = githubs;
+            Groups = groups;
+            Gsuites = gsuites;
             Ips = ips;
+            Oktas = oktas;
+            Samls = samls;
+            ServiceTokens = serviceTokens;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyRequiresAzures
+    {
+        public readonly string? Id;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyRequiresAzures(
+            string? id,
+            string? identityProviderId)
+        {
+            Id = id;
+            IdentityProviderId = identityProviderId;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyRequiresGithubs
+    {
+        public readonly string? IdentityProviderId;
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        public readonly string? Name;
+
+        [OutputConstructor]
+        private AccessPolicyRequiresGithubs(
+            string? identityProviderId,
+            string? name)
+        {
+            IdentityProviderId = identityProviderId;
+            Name = name;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyRequiresGsuites
+    {
+        public readonly string? Email;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyRequiresGsuites(
+            string? email,
+            string? identityProviderId)
+        {
+            Email = email;
+            IdentityProviderId = identityProviderId;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyRequiresOktas
+    {
+        public readonly string? IdentityProviderId;
+        /// <summary>
+        /// Friendly name of the Access Application.
+        /// </summary>
+        public readonly string? Name;
+
+        [OutputConstructor]
+        private AccessPolicyRequiresOktas(
+            string? identityProviderId,
+            string? name)
+        {
+            IdentityProviderId = identityProviderId;
+            Name = name;
+        }
+    }
+
+    [OutputType]
+    public sealed class AccessPolicyRequiresSamls
+    {
+        public readonly string? AttributeName;
+        public readonly string? AttributeValue;
+        public readonly string? IdentityProviderId;
+
+        [OutputConstructor]
+        private AccessPolicyRequiresSamls(
+            string? attributeName,
+            string? attributeValue,
+            string? identityProviderId)
+        {
+            AttributeName = attributeName;
+            AttributeValue = attributeValue;
+            IdentityProviderId = identityProviderId;
         }
     }
     }

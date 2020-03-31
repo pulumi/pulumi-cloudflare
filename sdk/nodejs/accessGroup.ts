@@ -22,8 +22,73 @@ import * as utilities from "./utilities";
  *   `email = ["test@example.com"]`
  * * `emailDomain` - (Optional) A list of email domains. Example:
  *   `emailDomain = ["example.com"]`
+ * * `serviceToken` - (Optional) A list of service token ids. Example:
+ *   `serviceToken = cloudflare_access_service_token.demo.id`
+ * * `anyValidServiceToken` - (Optional) Boolean indicating if allow
+ *   all tokens to be granted. Example: `anyValidServiceToken = true`
+ * * `group` - (Optional) A list of access group ids. Example:
+ *   `group = [cloudflare_access_group.demo.id]`
  * * `everyone` - (Optional) Boolean indicating permitting access for all
  *   requests. Example: `everyone = true`
+ * * `certificate` - (Optional) Whether to use mTLS certificate authentication.
+ * * `commonName` - (Optional) Use a certificate common name to authenticate with.
+ * * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
+ * 
+ *   ```hcl
+ *   # ... other configuration
+ *   include {
+ *     gsuite {
+ *       email = "admins@example.com"
+ *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
+ *     }
+ *   }
+ *   ```
+ * * `github` - (Optional) Use a GitHub team as the `include` condition. Example:
+ * 
+ *   ```hcl
+ *   # ... other configuration
+ *   include {
+ *     github {
+ *       name = "my-github-team-name"
+ *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
+ *     }
+ *   }
+ *   ```
+ * * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
+ * 
+ *   ```hcl
+ *   # ... other configuration
+ *   include {
+ *     azure {
+ *       id = "86773093-5feb-48dd-814b-7ccd3676ff50e"
+ *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
+ *     }
+ *   }
+ *   ```
+ * * `okta` - (Optional) Use Okta as the `include` condition. Example:
+ * 
+ *   ```hcl
+ *   # ... other configuration
+ *   include {
+ *     okta {
+ *       name = "admins"
+ *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
+ *     }
+ *   }
+ *   ```
+ * * `saml` - (Optional) Use an external SAML setup as the `include` condition.
+ *   Example:
+ * 
+ *   ```hcl
+ *   # ... other configuration
+ *   include {
+ *     saml {
+ *       attributeName = "group"
+ *       attributeValue = "admins"
+ *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
+ *     }
+ *   }
+ *   ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_group.html.markdown.
  */

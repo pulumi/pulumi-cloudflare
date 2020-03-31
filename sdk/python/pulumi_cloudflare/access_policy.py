@@ -18,27 +18,77 @@ class AccessPolicy(pulumi.CustomResource):
     decision: pulumi.Output[str]
     """
     Defines the action Access will take if the policy matches the user.
-    Allowed values: `allow`, `deny`, `bypass`
+    Allowed values: `allow`, `deny`, `non_identity`, `bypass`
     """
     excludes: pulumi.Output[list]
     """
-    A series of access conditions, see below for
-    full list.
+    A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
 
+      * `anyValidServiceToken` (`bool`)
+      * `azures` (`list`)
+        * `id` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `certificate` (`bool`)
+      * `commonName` (`str`)
       * `emailDomains` (`list`)
       * `emails` (`list`)
       * `everyone` (`bool`)
+      * `githubs` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Application.
+
+      * `groups` (`list`)
+      * `gsuites` (`list`)
+        * `email` (`str`)
+        * `identityProviderId` (`str`)
+
       * `ips` (`list`)
+      * `oktas` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Application.
+
+      * `samls` (`list`)
+        * `attributeName` (`str`)
+        * `attributeValue` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `serviceTokens` (`list`)
     """
     includes: pulumi.Output[list]
     """
-    A series of access conditions, see below for
-    full list.
+    A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
 
+      * `anyValidServiceToken` (`bool`)
+      * `azures` (`list`)
+        * `id` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `certificate` (`bool`)
+      * `commonName` (`str`)
       * `emailDomains` (`list`)
       * `emails` (`list`)
       * `everyone` (`bool`)
+      * `githubs` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Application.
+
+      * `groups` (`list`)
+      * `gsuites` (`list`)
+        * `email` (`str`)
+        * `identityProviderId` (`str`)
+
       * `ips` (`list`)
+      * `oktas` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Application.
+
+      * `samls` (`list`)
+        * `attributeName` (`str`)
+        * `attributeValue` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `serviceTokens` (`list`)
     """
     name: pulumi.Output[str]
     """
@@ -50,13 +100,38 @@ class AccessPolicy(pulumi.CustomResource):
     """
     requires: pulumi.Output[list]
     """
-    A series of access conditions, see below for
-    full list.
+    A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
 
+      * `anyValidServiceToken` (`bool`)
+      * `azures` (`list`)
+        * `id` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `certificate` (`bool`)
+      * `commonName` (`str`)
       * `emailDomains` (`list`)
       * `emails` (`list`)
       * `everyone` (`bool`)
+      * `githubs` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Application.
+
+      * `groups` (`list`)
+      * `gsuites` (`list`)
+        * `email` (`str`)
+        * `identityProviderId` (`str`)
+
       * `ips` (`list`)
+      * `oktas` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Application.
+
+      * `samls` (`list`)
+        * `attributeName` (`str`)
+        * `attributeValue` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `serviceTokens` (`list`)
     """
     zone_id: pulumi.Output[str]
     """
@@ -69,20 +144,6 @@ class AccessPolicy(pulumi.CustomResource):
         in conjunction with Access Applications to restrict access to a
         particular resource.
 
-        ## Conditions
-
-        `require`, `exclude` and `include` arguments share the available
-        conditions which can be applied. The conditions are:
-
-        * `ip` - (Optional) A list of IP addresses or ranges. Example:
-          `ip = ["1.2.3.4", "10.0.0.0/2"]`
-        * `email` - (Optional) A list of email addresses. Example:
-          `email = ["test@example.com"]`
-        * `email_domain` - (Optional) A list of email domains. Example:
-          `email_domain = ["example.com"]`
-        * `everyone` - (Optional) Boolean indicating permitting access for all
-          requests. Example: `everyone = true`
-
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
 
         :param str resource_name: The name of the resource.
@@ -90,38 +151,113 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] application_id: The ID of the application the policy is
                associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
-               Allowed values: `allow`, `deny`, `bypass`
-        :param pulumi.Input[list] excludes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[list] includes: A series of access conditions, see below for
-               full list.
+               Allowed values: `allow`, `deny`, `non_identity`, `bypass`
+        :param pulumi.Input[list] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        :param pulumi.Input[list] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[float] precedence: The unique precedence for policies on a single application. Integer.
-        :param pulumi.Input[list] requires: A series of access conditions, see below for
-               full list.
+        :param pulumi.Input[list] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
                added.
 
         The **excludes** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
 
         The **includes** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
 
         The **requires** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -176,38 +312,113 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] application_id: The ID of the application the policy is
                associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
-               Allowed values: `allow`, `deny`, `bypass`
-        :param pulumi.Input[list] excludes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[list] includes: A series of access conditions, see below for
-               full list.
+               Allowed values: `allow`, `deny`, `non_identity`, `bypass`
+        :param pulumi.Input[list] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        :param pulumi.Input[list] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[float] precedence: The unique precedence for policies on a single application. Integer.
-        :param pulumi.Input[list] requires: A series of access conditions, see below for
-               full list.
+        :param pulumi.Input[list] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
                added.
 
         The **excludes** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
 
         The **includes** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
 
         The **requires** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Application.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

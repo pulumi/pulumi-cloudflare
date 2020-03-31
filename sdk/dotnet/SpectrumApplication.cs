@@ -17,10 +17,28 @@ namespace Pulumi.Cloudflare
     public partial class SpectrumApplication : Pulumi.CustomResource
     {
         /// <summary>
+        /// . Enables Argo Smart Routing. Defaults to `false`.
+        /// </summary>
+        [Output("argoSmartRouting")]
+        public Output<bool?> ArgoSmartRouting { get; private set; } = null!;
+
+        /// <summary>
         /// The name and type of DNS record for the Spectrum application. Fields documented below.
         /// </summary>
         [Output("dns")]
         public Output<Outputs.SpectrumApplicationDns> Dns { get; private set; } = null!;
+
+        /// <summary>
+        /// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+        /// </summary>
+        [Output("edgeIpConnectivity")]
+        public Output<string?> EdgeIpConnectivity { get; private set; } = null!;
+
+        /// <summary>
+        /// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        /// </summary>
+        [Output("edgeIps")]
+        public Output<ImmutableArray<string>> EdgeIps { get; private set; } = null!;
 
         /// <summary>
         /// Enables the IP Firewall for this application. Defaults to `true`.
@@ -65,7 +83,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Tls { get; private set; } = null!;
 
         /// <summary>
-        /// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        /// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         /// </summary>
         [Output("trafficType")]
         public Output<string?> TrafficType { get; private set; } = null!;
@@ -123,10 +141,34 @@ namespace Pulumi.Cloudflare
     public sealed class SpectrumApplicationArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// . Enables Argo Smart Routing. Defaults to `false`.
+        /// </summary>
+        [Input("argoSmartRouting")]
+        public Input<bool>? ArgoSmartRouting { get; set; }
+
+        /// <summary>
         /// The name and type of DNS record for the Spectrum application. Fields documented below.
         /// </summary>
         [Input("dns", required: true)]
         public Input<Inputs.SpectrumApplicationDnsArgs> Dns { get; set; } = null!;
+
+        /// <summary>
+        /// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+        /// </summary>
+        [Input("edgeIpConnectivity")]
+        public Input<string>? EdgeIpConnectivity { get; set; }
+
+        [Input("edgeIps")]
+        private InputList<string>? _edgeIps;
+
+        /// <summary>
+        /// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        /// </summary>
+        public InputList<string> EdgeIps
+        {
+            get => _edgeIps ?? (_edgeIps = new InputList<string>());
+            set => _edgeIps = value;
+        }
 
         /// <summary>
         /// Enables the IP Firewall for this application. Defaults to `true`.
@@ -177,7 +219,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Tls { get; set; }
 
         /// <summary>
-        /// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        /// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
@@ -196,10 +238,34 @@ namespace Pulumi.Cloudflare
     public sealed class SpectrumApplicationState : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// . Enables Argo Smart Routing. Defaults to `false`.
+        /// </summary>
+        [Input("argoSmartRouting")]
+        public Input<bool>? ArgoSmartRouting { get; set; }
+
+        /// <summary>
         /// The name and type of DNS record for the Spectrum application. Fields documented below.
         /// </summary>
         [Input("dns")]
         public Input<Inputs.SpectrumApplicationDnsGetArgs>? Dns { get; set; }
+
+        /// <summary>
+        /// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+        /// </summary>
+        [Input("edgeIpConnectivity")]
+        public Input<string>? EdgeIpConnectivity { get; set; }
+
+        [Input("edgeIps")]
+        private InputList<string>? _edgeIps;
+
+        /// <summary>
+        /// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+        /// </summary>
+        public InputList<string> EdgeIps
+        {
+            get => _edgeIps ?? (_edgeIps = new InputList<string>());
+            set => _edgeIps = value;
+        }
 
         /// <summary>
         /// Enables the IP Firewall for this application. Defaults to `true`.
@@ -250,7 +316,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Tls { get; set; }
 
         /// <summary>
-        /// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        /// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }

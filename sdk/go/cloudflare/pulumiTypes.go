@@ -536,10 +536,20 @@ func (o AccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInput) Access
 }
 
 type AccessPolicyExclude struct {
+	AnyValidServiceToken *bool `pulumi:"anyValidServiceToken"`
+	Azures []AccessPolicyExcludeAzure `pulumi:"azures"`
+	Certificate *bool `pulumi:"certificate"`
+	CommonName *string `pulumi:"commonName"`
 	EmailDomains []string `pulumi:"emailDomains"`
 	Emails []string `pulumi:"emails"`
 	Everyone *bool `pulumi:"everyone"`
+	Githubs []AccessPolicyExcludeGithub `pulumi:"githubs"`
+	Groups []string `pulumi:"groups"`
+	Gsuites []AccessPolicyExcludeGsuite `pulumi:"gsuites"`
 	Ips []string `pulumi:"ips"`
+	Oktas []AccessPolicyExcludeOkta `pulumi:"oktas"`
+	Samls []AccessPolicyExcludeSaml `pulumi:"samls"`
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 type AccessPolicyExcludeInput interface {
@@ -550,10 +560,20 @@ type AccessPolicyExcludeInput interface {
 }
 
 type AccessPolicyExcludeArgs struct {
+	AnyValidServiceToken pulumi.BoolPtrInput `pulumi:"anyValidServiceToken"`
+	Azures AccessPolicyExcludeAzureArrayInput `pulumi:"azures"`
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	Githubs AccessPolicyExcludeGithubArrayInput `pulumi:"githubs"`
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	Gsuites AccessPolicyExcludeGsuiteArrayInput `pulumi:"gsuites"`
 	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	Oktas AccessPolicyExcludeOktaArrayInput `pulumi:"oktas"`
+	Samls AccessPolicyExcludeSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyExcludeArgs) ElementType() reflect.Type {
@@ -603,6 +623,22 @@ func (o AccessPolicyExcludeOutput) ToAccessPolicyExcludeOutputWithContext(ctx co
 	return o
 }
 
+func (o AccessPolicyExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyExcludeOutput) Azures() AccessPolicyExcludeAzureArrayOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) []AccessPolicyExcludeAzure { return v.Azures }).(AccessPolicyExcludeAzureArrayOutput)
+}
+
+func (o AccessPolicyExcludeOutput) Certificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyExcludeOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessPolicyExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v AccessPolicyExclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -615,8 +651,32 @@ func (o AccessPolicyExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v AccessPolicyExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+func (o AccessPolicyExcludeOutput) Githubs() AccessPolicyExcludeGithubArrayOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) []AccessPolicyExcludeGithub { return v.Githubs }).(AccessPolicyExcludeGithubArrayOutput)
+}
+
+func (o AccessPolicyExcludeOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyExcludeOutput) Gsuites() AccessPolicyExcludeGsuiteArrayOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) []AccessPolicyExcludeGsuite { return v.Gsuites }).(AccessPolicyExcludeGsuiteArrayOutput)
+}
+
 func (o AccessPolicyExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v AccessPolicyExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyExcludeOutput) Oktas() AccessPolicyExcludeOktaArrayOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) []AccessPolicyExcludeOkta { return v.Oktas }).(AccessPolicyExcludeOktaArrayOutput)
+}
+
+func (o AccessPolicyExcludeOutput) Samls() AccessPolicyExcludeSamlArrayOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) []AccessPolicyExcludeSaml { return v.Samls }).(AccessPolicyExcludeSamlArrayOutput)
+}
+
+func (o AccessPolicyExcludeOutput) ServiceTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v AccessPolicyExclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyExcludeArrayOutput struct { *pulumi.OutputState}
@@ -639,11 +699,493 @@ func (o AccessPolicyExcludeArrayOutput) Index(i pulumi.IntInput) AccessPolicyExc
 	}).(AccessPolicyExcludeOutput)
 }
 
+type AccessPolicyExcludeAzure struct {
+	Id *string `pulumi:"id"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyExcludeAzureInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeAzureOutput() AccessPolicyExcludeAzureOutput
+	ToAccessPolicyExcludeAzureOutputWithContext(context.Context) AccessPolicyExcludeAzureOutput
+}
+
+type AccessPolicyExcludeAzureArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyExcludeAzureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeAzure)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeAzureArgs) ToAccessPolicyExcludeAzureOutput() AccessPolicyExcludeAzureOutput {
+	return i.ToAccessPolicyExcludeAzureOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeAzureArgs) ToAccessPolicyExcludeAzureOutputWithContext(ctx context.Context) AccessPolicyExcludeAzureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeAzureOutput)
+}
+
+type AccessPolicyExcludeAzureArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeAzureArrayOutput() AccessPolicyExcludeAzureArrayOutput
+	ToAccessPolicyExcludeAzureArrayOutputWithContext(context.Context) AccessPolicyExcludeAzureArrayOutput
+}
+
+type AccessPolicyExcludeAzureArray []AccessPolicyExcludeAzureInput
+
+func (AccessPolicyExcludeAzureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeAzure)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeAzureArray) ToAccessPolicyExcludeAzureArrayOutput() AccessPolicyExcludeAzureArrayOutput {
+	return i.ToAccessPolicyExcludeAzureArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeAzureArray) ToAccessPolicyExcludeAzureArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeAzureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeAzureArrayOutput)
+}
+
+type AccessPolicyExcludeAzureOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyExcludeAzureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeAzure)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeAzureOutput) ToAccessPolicyExcludeAzureOutput() AccessPolicyExcludeAzureOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeAzureOutput) ToAccessPolicyExcludeAzureOutputWithContext(ctx context.Context) AccessPolicyExcludeAzureOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeAzureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyExcludeAzureArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyExcludeAzureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeAzure)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeAzureArrayOutput) ToAccessPolicyExcludeAzureArrayOutput() AccessPolicyExcludeAzureArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeAzureArrayOutput) ToAccessPolicyExcludeAzureArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeAzureArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeAzureArrayOutput) Index(i pulumi.IntInput) AccessPolicyExcludeAzureOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyExcludeAzure {
+		return vs[0].([]AccessPolicyExcludeAzure)[vs[1].(int)]
+	}).(AccessPolicyExcludeAzureOutput)
+}
+
+type AccessPolicyExcludeGithub struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name *string `pulumi:"name"`
+}
+
+type AccessPolicyExcludeGithubInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeGithubOutput() AccessPolicyExcludeGithubOutput
+	ToAccessPolicyExcludeGithubOutputWithContext(context.Context) AccessPolicyExcludeGithubOutput
+}
+
+type AccessPolicyExcludeGithubArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessPolicyExcludeGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeGithub)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeGithubArgs) ToAccessPolicyExcludeGithubOutput() AccessPolicyExcludeGithubOutput {
+	return i.ToAccessPolicyExcludeGithubOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeGithubArgs) ToAccessPolicyExcludeGithubOutputWithContext(ctx context.Context) AccessPolicyExcludeGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeGithubOutput)
+}
+
+type AccessPolicyExcludeGithubArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeGithubArrayOutput() AccessPolicyExcludeGithubArrayOutput
+	ToAccessPolicyExcludeGithubArrayOutputWithContext(context.Context) AccessPolicyExcludeGithubArrayOutput
+}
+
+type AccessPolicyExcludeGithubArray []AccessPolicyExcludeGithubInput
+
+func (AccessPolicyExcludeGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeGithub)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeGithubArray) ToAccessPolicyExcludeGithubArrayOutput() AccessPolicyExcludeGithubArrayOutput {
+	return i.ToAccessPolicyExcludeGithubArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeGithubArray) ToAccessPolicyExcludeGithubArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeGithubArrayOutput)
+}
+
+type AccessPolicyExcludeGithubOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyExcludeGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeGithub)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeGithubOutput) ToAccessPolicyExcludeGithubOutput() AccessPolicyExcludeGithubOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeGithubOutput) ToAccessPolicyExcludeGithubOutputWithContext(ctx context.Context) AccessPolicyExcludeGithubOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Application.
+func (o AccessPolicyExcludeGithubOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyExcludeGithubArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyExcludeGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeGithub)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeGithubArrayOutput) ToAccessPolicyExcludeGithubArrayOutput() AccessPolicyExcludeGithubArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeGithubArrayOutput) ToAccessPolicyExcludeGithubArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeGithubArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeGithubArrayOutput) Index(i pulumi.IntInput) AccessPolicyExcludeGithubOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyExcludeGithub {
+		return vs[0].([]AccessPolicyExcludeGithub)[vs[1].(int)]
+	}).(AccessPolicyExcludeGithubOutput)
+}
+
+type AccessPolicyExcludeGsuite struct {
+	Email *string `pulumi:"email"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyExcludeGsuiteInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeGsuiteOutput() AccessPolicyExcludeGsuiteOutput
+	ToAccessPolicyExcludeGsuiteOutputWithContext(context.Context) AccessPolicyExcludeGsuiteOutput
+}
+
+type AccessPolicyExcludeGsuiteArgs struct {
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyExcludeGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeGsuite)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeGsuiteArgs) ToAccessPolicyExcludeGsuiteOutput() AccessPolicyExcludeGsuiteOutput {
+	return i.ToAccessPolicyExcludeGsuiteOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeGsuiteArgs) ToAccessPolicyExcludeGsuiteOutputWithContext(ctx context.Context) AccessPolicyExcludeGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeGsuiteOutput)
+}
+
+type AccessPolicyExcludeGsuiteArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeGsuiteArrayOutput() AccessPolicyExcludeGsuiteArrayOutput
+	ToAccessPolicyExcludeGsuiteArrayOutputWithContext(context.Context) AccessPolicyExcludeGsuiteArrayOutput
+}
+
+type AccessPolicyExcludeGsuiteArray []AccessPolicyExcludeGsuiteInput
+
+func (AccessPolicyExcludeGsuiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeGsuite)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeGsuiteArray) ToAccessPolicyExcludeGsuiteArrayOutput() AccessPolicyExcludeGsuiteArrayOutput {
+	return i.ToAccessPolicyExcludeGsuiteArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeGsuiteArray) ToAccessPolicyExcludeGsuiteArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeGsuiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeGsuiteArrayOutput)
+}
+
+type AccessPolicyExcludeGsuiteOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyExcludeGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeGsuite)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeGsuiteOutput) ToAccessPolicyExcludeGsuiteOutput() AccessPolicyExcludeGsuiteOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeGsuiteOutput) ToAccessPolicyExcludeGsuiteOutputWithContext(ctx context.Context) AccessPolicyExcludeGsuiteOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeGsuiteOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyExcludeGsuiteArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyExcludeGsuiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeGsuite)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeGsuiteArrayOutput) ToAccessPolicyExcludeGsuiteArrayOutput() AccessPolicyExcludeGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeGsuiteArrayOutput) ToAccessPolicyExcludeGsuiteArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPolicyExcludeGsuiteOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyExcludeGsuite {
+		return vs[0].([]AccessPolicyExcludeGsuite)[vs[1].(int)]
+	}).(AccessPolicyExcludeGsuiteOutput)
+}
+
+type AccessPolicyExcludeOkta struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name *string `pulumi:"name"`
+}
+
+type AccessPolicyExcludeOktaInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeOktaOutput() AccessPolicyExcludeOktaOutput
+	ToAccessPolicyExcludeOktaOutputWithContext(context.Context) AccessPolicyExcludeOktaOutput
+}
+
+type AccessPolicyExcludeOktaArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessPolicyExcludeOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeOkta)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeOktaArgs) ToAccessPolicyExcludeOktaOutput() AccessPolicyExcludeOktaOutput {
+	return i.ToAccessPolicyExcludeOktaOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeOktaArgs) ToAccessPolicyExcludeOktaOutputWithContext(ctx context.Context) AccessPolicyExcludeOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeOktaOutput)
+}
+
+type AccessPolicyExcludeOktaArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeOktaArrayOutput() AccessPolicyExcludeOktaArrayOutput
+	ToAccessPolicyExcludeOktaArrayOutputWithContext(context.Context) AccessPolicyExcludeOktaArrayOutput
+}
+
+type AccessPolicyExcludeOktaArray []AccessPolicyExcludeOktaInput
+
+func (AccessPolicyExcludeOktaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeOkta)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeOktaArray) ToAccessPolicyExcludeOktaArrayOutput() AccessPolicyExcludeOktaArrayOutput {
+	return i.ToAccessPolicyExcludeOktaArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeOktaArray) ToAccessPolicyExcludeOktaArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeOktaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeOktaArrayOutput)
+}
+
+type AccessPolicyExcludeOktaOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyExcludeOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeOkta)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeOktaOutput) ToAccessPolicyExcludeOktaOutput() AccessPolicyExcludeOktaOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeOktaOutput) ToAccessPolicyExcludeOktaOutputWithContext(ctx context.Context) AccessPolicyExcludeOktaOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Application.
+func (o AccessPolicyExcludeOktaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyExcludeOktaArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyExcludeOktaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeOkta)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeOktaArrayOutput) ToAccessPolicyExcludeOktaArrayOutput() AccessPolicyExcludeOktaArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeOktaArrayOutput) ToAccessPolicyExcludeOktaArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeOktaArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeOktaArrayOutput) Index(i pulumi.IntInput) AccessPolicyExcludeOktaOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyExcludeOkta {
+		return vs[0].([]AccessPolicyExcludeOkta)[vs[1].(int)]
+	}).(AccessPolicyExcludeOktaOutput)
+}
+
+type AccessPolicyExcludeSaml struct {
+	AttributeName *string `pulumi:"attributeName"`
+	AttributeValue *string `pulumi:"attributeValue"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyExcludeSamlInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeSamlOutput() AccessPolicyExcludeSamlOutput
+	ToAccessPolicyExcludeSamlOutputWithContext(context.Context) AccessPolicyExcludeSamlOutput
+}
+
+type AccessPolicyExcludeSamlArgs struct {
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyExcludeSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeSaml)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeSamlArgs) ToAccessPolicyExcludeSamlOutput() AccessPolicyExcludeSamlOutput {
+	return i.ToAccessPolicyExcludeSamlOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeSamlArgs) ToAccessPolicyExcludeSamlOutputWithContext(ctx context.Context) AccessPolicyExcludeSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeSamlOutput)
+}
+
+type AccessPolicyExcludeSamlArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeSamlArrayOutput() AccessPolicyExcludeSamlArrayOutput
+	ToAccessPolicyExcludeSamlArrayOutputWithContext(context.Context) AccessPolicyExcludeSamlArrayOutput
+}
+
+type AccessPolicyExcludeSamlArray []AccessPolicyExcludeSamlInput
+
+func (AccessPolicyExcludeSamlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeSaml)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeSamlArray) ToAccessPolicyExcludeSamlArrayOutput() AccessPolicyExcludeSamlArrayOutput {
+	return i.ToAccessPolicyExcludeSamlArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeSamlArray) ToAccessPolicyExcludeSamlArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeSamlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeSamlArrayOutput)
+}
+
+type AccessPolicyExcludeSamlOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyExcludeSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeSaml)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeSamlOutput) ToAccessPolicyExcludeSamlOutput() AccessPolicyExcludeSamlOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeSamlOutput) ToAccessPolicyExcludeSamlOutputWithContext(ctx context.Context) AccessPolicyExcludeSamlOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyExcludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyExcludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyExcludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyExcludeSamlArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyExcludeSamlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeSaml)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeSamlArrayOutput) ToAccessPolicyExcludeSamlArrayOutput() AccessPolicyExcludeSamlArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeSamlArrayOutput) ToAccessPolicyExcludeSamlArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeSamlArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolicyExcludeSamlOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyExcludeSaml {
+		return vs[0].([]AccessPolicyExcludeSaml)[vs[1].(int)]
+	}).(AccessPolicyExcludeSamlOutput)
+}
+
 type AccessPolicyInclude struct {
+	AnyValidServiceToken *bool `pulumi:"anyValidServiceToken"`
+	Azures []AccessPolicyIncludeAzure `pulumi:"azures"`
+	Certificate *bool `pulumi:"certificate"`
+	CommonName *string `pulumi:"commonName"`
 	EmailDomains []string `pulumi:"emailDomains"`
 	Emails []string `pulumi:"emails"`
 	Everyone *bool `pulumi:"everyone"`
+	Githubs []AccessPolicyIncludeGithub `pulumi:"githubs"`
+	Groups []string `pulumi:"groups"`
+	Gsuites []AccessPolicyIncludeGsuite `pulumi:"gsuites"`
 	Ips []string `pulumi:"ips"`
+	Oktas []AccessPolicyIncludeOkta `pulumi:"oktas"`
+	Samls []AccessPolicyIncludeSaml `pulumi:"samls"`
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 type AccessPolicyIncludeInput interface {
@@ -654,10 +1196,20 @@ type AccessPolicyIncludeInput interface {
 }
 
 type AccessPolicyIncludeArgs struct {
+	AnyValidServiceToken pulumi.BoolPtrInput `pulumi:"anyValidServiceToken"`
+	Azures AccessPolicyIncludeAzureArrayInput `pulumi:"azures"`
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	Githubs AccessPolicyIncludeGithubArrayInput `pulumi:"githubs"`
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	Gsuites AccessPolicyIncludeGsuiteArrayInput `pulumi:"gsuites"`
 	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	Oktas AccessPolicyIncludeOktaArrayInput `pulumi:"oktas"`
+	Samls AccessPolicyIncludeSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyIncludeArgs) ElementType() reflect.Type {
@@ -707,6 +1259,22 @@ func (o AccessPolicyIncludeOutput) ToAccessPolicyIncludeOutputWithContext(ctx co
 	return o
 }
 
+func (o AccessPolicyIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyIncludeOutput) Azures() AccessPolicyIncludeAzureArrayOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) []AccessPolicyIncludeAzure { return v.Azures }).(AccessPolicyIncludeAzureArrayOutput)
+}
+
+func (o AccessPolicyIncludeOutput) Certificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyIncludeOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessPolicyIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v AccessPolicyInclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -719,8 +1287,32 @@ func (o AccessPolicyIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v AccessPolicyInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+func (o AccessPolicyIncludeOutput) Githubs() AccessPolicyIncludeGithubArrayOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) []AccessPolicyIncludeGithub { return v.Githubs }).(AccessPolicyIncludeGithubArrayOutput)
+}
+
+func (o AccessPolicyIncludeOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyIncludeOutput) Gsuites() AccessPolicyIncludeGsuiteArrayOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) []AccessPolicyIncludeGsuite { return v.Gsuites }).(AccessPolicyIncludeGsuiteArrayOutput)
+}
+
 func (o AccessPolicyIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v AccessPolicyInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyIncludeOutput) Oktas() AccessPolicyIncludeOktaArrayOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) []AccessPolicyIncludeOkta { return v.Oktas }).(AccessPolicyIncludeOktaArrayOutput)
+}
+
+func (o AccessPolicyIncludeOutput) Samls() AccessPolicyIncludeSamlArrayOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) []AccessPolicyIncludeSaml { return v.Samls }).(AccessPolicyIncludeSamlArrayOutput)
+}
+
+func (o AccessPolicyIncludeOutput) ServiceTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v AccessPolicyInclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyIncludeArrayOutput struct { *pulumi.OutputState}
@@ -743,11 +1335,493 @@ func (o AccessPolicyIncludeArrayOutput) Index(i pulumi.IntInput) AccessPolicyInc
 	}).(AccessPolicyIncludeOutput)
 }
 
+type AccessPolicyIncludeAzure struct {
+	Id *string `pulumi:"id"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyIncludeAzureInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeAzureOutput() AccessPolicyIncludeAzureOutput
+	ToAccessPolicyIncludeAzureOutputWithContext(context.Context) AccessPolicyIncludeAzureOutput
+}
+
+type AccessPolicyIncludeAzureArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyIncludeAzureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeAzure)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeAzureArgs) ToAccessPolicyIncludeAzureOutput() AccessPolicyIncludeAzureOutput {
+	return i.ToAccessPolicyIncludeAzureOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeAzureArgs) ToAccessPolicyIncludeAzureOutputWithContext(ctx context.Context) AccessPolicyIncludeAzureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeAzureOutput)
+}
+
+type AccessPolicyIncludeAzureArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeAzureArrayOutput() AccessPolicyIncludeAzureArrayOutput
+	ToAccessPolicyIncludeAzureArrayOutputWithContext(context.Context) AccessPolicyIncludeAzureArrayOutput
+}
+
+type AccessPolicyIncludeAzureArray []AccessPolicyIncludeAzureInput
+
+func (AccessPolicyIncludeAzureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeAzure)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeAzureArray) ToAccessPolicyIncludeAzureArrayOutput() AccessPolicyIncludeAzureArrayOutput {
+	return i.ToAccessPolicyIncludeAzureArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeAzureArray) ToAccessPolicyIncludeAzureArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeAzureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeAzureArrayOutput)
+}
+
+type AccessPolicyIncludeAzureOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyIncludeAzureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeAzure)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeAzureOutput) ToAccessPolicyIncludeAzureOutput() AccessPolicyIncludeAzureOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeAzureOutput) ToAccessPolicyIncludeAzureOutputWithContext(ctx context.Context) AccessPolicyIncludeAzureOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeAzureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyIncludeAzureArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyIncludeAzureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeAzure)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeAzureArrayOutput) ToAccessPolicyIncludeAzureArrayOutput() AccessPolicyIncludeAzureArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeAzureArrayOutput) ToAccessPolicyIncludeAzureArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeAzureArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeAzureArrayOutput) Index(i pulumi.IntInput) AccessPolicyIncludeAzureOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyIncludeAzure {
+		return vs[0].([]AccessPolicyIncludeAzure)[vs[1].(int)]
+	}).(AccessPolicyIncludeAzureOutput)
+}
+
+type AccessPolicyIncludeGithub struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name *string `pulumi:"name"`
+}
+
+type AccessPolicyIncludeGithubInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeGithubOutput() AccessPolicyIncludeGithubOutput
+	ToAccessPolicyIncludeGithubOutputWithContext(context.Context) AccessPolicyIncludeGithubOutput
+}
+
+type AccessPolicyIncludeGithubArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessPolicyIncludeGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeGithub)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeGithubArgs) ToAccessPolicyIncludeGithubOutput() AccessPolicyIncludeGithubOutput {
+	return i.ToAccessPolicyIncludeGithubOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeGithubArgs) ToAccessPolicyIncludeGithubOutputWithContext(ctx context.Context) AccessPolicyIncludeGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeGithubOutput)
+}
+
+type AccessPolicyIncludeGithubArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeGithubArrayOutput() AccessPolicyIncludeGithubArrayOutput
+	ToAccessPolicyIncludeGithubArrayOutputWithContext(context.Context) AccessPolicyIncludeGithubArrayOutput
+}
+
+type AccessPolicyIncludeGithubArray []AccessPolicyIncludeGithubInput
+
+func (AccessPolicyIncludeGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeGithub)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeGithubArray) ToAccessPolicyIncludeGithubArrayOutput() AccessPolicyIncludeGithubArrayOutput {
+	return i.ToAccessPolicyIncludeGithubArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeGithubArray) ToAccessPolicyIncludeGithubArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeGithubArrayOutput)
+}
+
+type AccessPolicyIncludeGithubOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyIncludeGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeGithub)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeGithubOutput) ToAccessPolicyIncludeGithubOutput() AccessPolicyIncludeGithubOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeGithubOutput) ToAccessPolicyIncludeGithubOutputWithContext(ctx context.Context) AccessPolicyIncludeGithubOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Application.
+func (o AccessPolicyIncludeGithubOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyIncludeGithubArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyIncludeGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeGithub)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeGithubArrayOutput) ToAccessPolicyIncludeGithubArrayOutput() AccessPolicyIncludeGithubArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeGithubArrayOutput) ToAccessPolicyIncludeGithubArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeGithubArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeGithubArrayOutput) Index(i pulumi.IntInput) AccessPolicyIncludeGithubOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyIncludeGithub {
+		return vs[0].([]AccessPolicyIncludeGithub)[vs[1].(int)]
+	}).(AccessPolicyIncludeGithubOutput)
+}
+
+type AccessPolicyIncludeGsuite struct {
+	Email *string `pulumi:"email"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyIncludeGsuiteInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeGsuiteOutput() AccessPolicyIncludeGsuiteOutput
+	ToAccessPolicyIncludeGsuiteOutputWithContext(context.Context) AccessPolicyIncludeGsuiteOutput
+}
+
+type AccessPolicyIncludeGsuiteArgs struct {
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyIncludeGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeGsuite)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeGsuiteArgs) ToAccessPolicyIncludeGsuiteOutput() AccessPolicyIncludeGsuiteOutput {
+	return i.ToAccessPolicyIncludeGsuiteOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeGsuiteArgs) ToAccessPolicyIncludeGsuiteOutputWithContext(ctx context.Context) AccessPolicyIncludeGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeGsuiteOutput)
+}
+
+type AccessPolicyIncludeGsuiteArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeGsuiteArrayOutput() AccessPolicyIncludeGsuiteArrayOutput
+	ToAccessPolicyIncludeGsuiteArrayOutputWithContext(context.Context) AccessPolicyIncludeGsuiteArrayOutput
+}
+
+type AccessPolicyIncludeGsuiteArray []AccessPolicyIncludeGsuiteInput
+
+func (AccessPolicyIncludeGsuiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeGsuite)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeGsuiteArray) ToAccessPolicyIncludeGsuiteArrayOutput() AccessPolicyIncludeGsuiteArrayOutput {
+	return i.ToAccessPolicyIncludeGsuiteArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeGsuiteArray) ToAccessPolicyIncludeGsuiteArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeGsuiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeGsuiteArrayOutput)
+}
+
+type AccessPolicyIncludeGsuiteOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyIncludeGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeGsuite)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeGsuiteOutput) ToAccessPolicyIncludeGsuiteOutput() AccessPolicyIncludeGsuiteOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeGsuiteOutput) ToAccessPolicyIncludeGsuiteOutputWithContext(ctx context.Context) AccessPolicyIncludeGsuiteOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeGsuiteOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyIncludeGsuiteArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyIncludeGsuiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeGsuite)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeGsuiteArrayOutput) ToAccessPolicyIncludeGsuiteArrayOutput() AccessPolicyIncludeGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeGsuiteArrayOutput) ToAccessPolicyIncludeGsuiteArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPolicyIncludeGsuiteOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyIncludeGsuite {
+		return vs[0].([]AccessPolicyIncludeGsuite)[vs[1].(int)]
+	}).(AccessPolicyIncludeGsuiteOutput)
+}
+
+type AccessPolicyIncludeOkta struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name *string `pulumi:"name"`
+}
+
+type AccessPolicyIncludeOktaInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeOktaOutput() AccessPolicyIncludeOktaOutput
+	ToAccessPolicyIncludeOktaOutputWithContext(context.Context) AccessPolicyIncludeOktaOutput
+}
+
+type AccessPolicyIncludeOktaArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessPolicyIncludeOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeOkta)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeOktaArgs) ToAccessPolicyIncludeOktaOutput() AccessPolicyIncludeOktaOutput {
+	return i.ToAccessPolicyIncludeOktaOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeOktaArgs) ToAccessPolicyIncludeOktaOutputWithContext(ctx context.Context) AccessPolicyIncludeOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeOktaOutput)
+}
+
+type AccessPolicyIncludeOktaArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeOktaArrayOutput() AccessPolicyIncludeOktaArrayOutput
+	ToAccessPolicyIncludeOktaArrayOutputWithContext(context.Context) AccessPolicyIncludeOktaArrayOutput
+}
+
+type AccessPolicyIncludeOktaArray []AccessPolicyIncludeOktaInput
+
+func (AccessPolicyIncludeOktaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeOkta)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeOktaArray) ToAccessPolicyIncludeOktaArrayOutput() AccessPolicyIncludeOktaArrayOutput {
+	return i.ToAccessPolicyIncludeOktaArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeOktaArray) ToAccessPolicyIncludeOktaArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeOktaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeOktaArrayOutput)
+}
+
+type AccessPolicyIncludeOktaOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyIncludeOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeOkta)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeOktaOutput) ToAccessPolicyIncludeOktaOutput() AccessPolicyIncludeOktaOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeOktaOutput) ToAccessPolicyIncludeOktaOutputWithContext(ctx context.Context) AccessPolicyIncludeOktaOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Application.
+func (o AccessPolicyIncludeOktaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyIncludeOktaArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyIncludeOktaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeOkta)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeOktaArrayOutput) ToAccessPolicyIncludeOktaArrayOutput() AccessPolicyIncludeOktaArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeOktaArrayOutput) ToAccessPolicyIncludeOktaArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeOktaArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeOktaArrayOutput) Index(i pulumi.IntInput) AccessPolicyIncludeOktaOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyIncludeOkta {
+		return vs[0].([]AccessPolicyIncludeOkta)[vs[1].(int)]
+	}).(AccessPolicyIncludeOktaOutput)
+}
+
+type AccessPolicyIncludeSaml struct {
+	AttributeName *string `pulumi:"attributeName"`
+	AttributeValue *string `pulumi:"attributeValue"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyIncludeSamlInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeSamlOutput() AccessPolicyIncludeSamlOutput
+	ToAccessPolicyIncludeSamlOutputWithContext(context.Context) AccessPolicyIncludeSamlOutput
+}
+
+type AccessPolicyIncludeSamlArgs struct {
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyIncludeSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeSaml)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeSamlArgs) ToAccessPolicyIncludeSamlOutput() AccessPolicyIncludeSamlOutput {
+	return i.ToAccessPolicyIncludeSamlOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeSamlArgs) ToAccessPolicyIncludeSamlOutputWithContext(ctx context.Context) AccessPolicyIncludeSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeSamlOutput)
+}
+
+type AccessPolicyIncludeSamlArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeSamlArrayOutput() AccessPolicyIncludeSamlArrayOutput
+	ToAccessPolicyIncludeSamlArrayOutputWithContext(context.Context) AccessPolicyIncludeSamlArrayOutput
+}
+
+type AccessPolicyIncludeSamlArray []AccessPolicyIncludeSamlInput
+
+func (AccessPolicyIncludeSamlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeSaml)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeSamlArray) ToAccessPolicyIncludeSamlArrayOutput() AccessPolicyIncludeSamlArrayOutput {
+	return i.ToAccessPolicyIncludeSamlArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeSamlArray) ToAccessPolicyIncludeSamlArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeSamlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeSamlArrayOutput)
+}
+
+type AccessPolicyIncludeSamlOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyIncludeSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeSaml)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeSamlOutput) ToAccessPolicyIncludeSamlOutput() AccessPolicyIncludeSamlOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeSamlOutput) ToAccessPolicyIncludeSamlOutputWithContext(ctx context.Context) AccessPolicyIncludeSamlOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIncludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIncludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyIncludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyIncludeSamlArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyIncludeSamlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeSaml)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeSamlArrayOutput) ToAccessPolicyIncludeSamlArrayOutput() AccessPolicyIncludeSamlArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeSamlArrayOutput) ToAccessPolicyIncludeSamlArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeSamlArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolicyIncludeSamlOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyIncludeSaml {
+		return vs[0].([]AccessPolicyIncludeSaml)[vs[1].(int)]
+	}).(AccessPolicyIncludeSamlOutput)
+}
+
 type AccessPolicyRequire struct {
+	AnyValidServiceToken *bool `pulumi:"anyValidServiceToken"`
+	Azures []AccessPolicyRequireAzure `pulumi:"azures"`
+	Certificate *bool `pulumi:"certificate"`
+	CommonName *string `pulumi:"commonName"`
 	EmailDomains []string `pulumi:"emailDomains"`
 	Emails []string `pulumi:"emails"`
 	Everyone *bool `pulumi:"everyone"`
+	Githubs []AccessPolicyRequireGithub `pulumi:"githubs"`
+	Groups []string `pulumi:"groups"`
+	Gsuites []AccessPolicyRequireGsuite `pulumi:"gsuites"`
 	Ips []string `pulumi:"ips"`
+	Oktas []AccessPolicyRequireOkta `pulumi:"oktas"`
+	Samls []AccessPolicyRequireSaml `pulumi:"samls"`
+	ServiceTokens []string `pulumi:"serviceTokens"`
 }
 
 type AccessPolicyRequireInput interface {
@@ -758,10 +1832,20 @@ type AccessPolicyRequireInput interface {
 }
 
 type AccessPolicyRequireArgs struct {
+	AnyValidServiceToken pulumi.BoolPtrInput `pulumi:"anyValidServiceToken"`
+	Azures AccessPolicyRequireAzureArrayInput `pulumi:"azures"`
+	Certificate pulumi.BoolPtrInput `pulumi:"certificate"`
+	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
 	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
 	Emails pulumi.StringArrayInput `pulumi:"emails"`
 	Everyone pulumi.BoolPtrInput `pulumi:"everyone"`
+	Githubs AccessPolicyRequireGithubArrayInput `pulumi:"githubs"`
+	Groups pulumi.StringArrayInput `pulumi:"groups"`
+	Gsuites AccessPolicyRequireGsuiteArrayInput `pulumi:"gsuites"`
 	Ips pulumi.StringArrayInput `pulumi:"ips"`
+	Oktas AccessPolicyRequireOktaArrayInput `pulumi:"oktas"`
+	Samls AccessPolicyRequireSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyRequireArgs) ElementType() reflect.Type {
@@ -811,6 +1895,22 @@ func (o AccessPolicyRequireOutput) ToAccessPolicyRequireOutputWithContext(ctx co
 	return o
 }
 
+func (o AccessPolicyRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyRequireOutput) Azures() AccessPolicyRequireAzureArrayOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) []AccessPolicyRequireAzure { return v.Azures }).(AccessPolicyRequireAzureArrayOutput)
+}
+
+func (o AccessPolicyRequireOutput) Certificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyRequireOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessPolicyRequireOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v AccessPolicyRequire) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -823,8 +1923,32 @@ func (o AccessPolicyRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func (v AccessPolicyRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+func (o AccessPolicyRequireOutput) Githubs() AccessPolicyRequireGithubArrayOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) []AccessPolicyRequireGithub { return v.Githubs }).(AccessPolicyRequireGithubArrayOutput)
+}
+
+func (o AccessPolicyRequireOutput) Groups() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) []string { return v.Groups }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyRequireOutput) Gsuites() AccessPolicyRequireGsuiteArrayOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) []AccessPolicyRequireGsuite { return v.Gsuites }).(AccessPolicyRequireGsuiteArrayOutput)
+}
+
 func (o AccessPolicyRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func (v AccessPolicyRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyRequireOutput) Oktas() AccessPolicyRequireOktaArrayOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) []AccessPolicyRequireOkta { return v.Oktas }).(AccessPolicyRequireOktaArrayOutput)
+}
+
+func (o AccessPolicyRequireOutput) Samls() AccessPolicyRequireSamlArrayOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) []AccessPolicyRequireSaml { return v.Samls }).(AccessPolicyRequireSamlArrayOutput)
+}
+
+func (o AccessPolicyRequireOutput) ServiceTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func (v AccessPolicyRequire) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyRequireArrayOutput struct { *pulumi.OutputState}
@@ -845,6 +1969,478 @@ func (o AccessPolicyRequireArrayOutput) Index(i pulumi.IntInput) AccessPolicyReq
 	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyRequire {
 		return vs[0].([]AccessPolicyRequire)[vs[1].(int)]
 	}).(AccessPolicyRequireOutput)
+}
+
+type AccessPolicyRequireAzure struct {
+	Id *string `pulumi:"id"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyRequireAzureInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireAzureOutput() AccessPolicyRequireAzureOutput
+	ToAccessPolicyRequireAzureOutputWithContext(context.Context) AccessPolicyRequireAzureOutput
+}
+
+type AccessPolicyRequireAzureArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyRequireAzureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireAzure)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireAzureArgs) ToAccessPolicyRequireAzureOutput() AccessPolicyRequireAzureOutput {
+	return i.ToAccessPolicyRequireAzureOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireAzureArgs) ToAccessPolicyRequireAzureOutputWithContext(ctx context.Context) AccessPolicyRequireAzureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireAzureOutput)
+}
+
+type AccessPolicyRequireAzureArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireAzureArrayOutput() AccessPolicyRequireAzureArrayOutput
+	ToAccessPolicyRequireAzureArrayOutputWithContext(context.Context) AccessPolicyRequireAzureArrayOutput
+}
+
+type AccessPolicyRequireAzureArray []AccessPolicyRequireAzureInput
+
+func (AccessPolicyRequireAzureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireAzure)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireAzureArray) ToAccessPolicyRequireAzureArrayOutput() AccessPolicyRequireAzureArrayOutput {
+	return i.ToAccessPolicyRequireAzureArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireAzureArray) ToAccessPolicyRequireAzureArrayOutputWithContext(ctx context.Context) AccessPolicyRequireAzureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireAzureArrayOutput)
+}
+
+type AccessPolicyRequireAzureOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyRequireAzureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireAzure)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireAzureOutput) ToAccessPolicyRequireAzureOutput() AccessPolicyRequireAzureOutput {
+	return o
+}
+
+func (o AccessPolicyRequireAzureOutput) ToAccessPolicyRequireAzureOutputWithContext(ctx context.Context) AccessPolicyRequireAzureOutput {
+	return o
+}
+
+func (o AccessPolicyRequireAzureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyRequireAzureArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyRequireAzureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireAzure)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireAzureArrayOutput) ToAccessPolicyRequireAzureArrayOutput() AccessPolicyRequireAzureArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireAzureArrayOutput) ToAccessPolicyRequireAzureArrayOutputWithContext(ctx context.Context) AccessPolicyRequireAzureArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireAzureArrayOutput) Index(i pulumi.IntInput) AccessPolicyRequireAzureOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyRequireAzure {
+		return vs[0].([]AccessPolicyRequireAzure)[vs[1].(int)]
+	}).(AccessPolicyRequireAzureOutput)
+}
+
+type AccessPolicyRequireGithub struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name *string `pulumi:"name"`
+}
+
+type AccessPolicyRequireGithubInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireGithubOutput() AccessPolicyRequireGithubOutput
+	ToAccessPolicyRequireGithubOutputWithContext(context.Context) AccessPolicyRequireGithubOutput
+}
+
+type AccessPolicyRequireGithubArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessPolicyRequireGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireGithub)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireGithubArgs) ToAccessPolicyRequireGithubOutput() AccessPolicyRequireGithubOutput {
+	return i.ToAccessPolicyRequireGithubOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireGithubArgs) ToAccessPolicyRequireGithubOutputWithContext(ctx context.Context) AccessPolicyRequireGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireGithubOutput)
+}
+
+type AccessPolicyRequireGithubArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireGithubArrayOutput() AccessPolicyRequireGithubArrayOutput
+	ToAccessPolicyRequireGithubArrayOutputWithContext(context.Context) AccessPolicyRequireGithubArrayOutput
+}
+
+type AccessPolicyRequireGithubArray []AccessPolicyRequireGithubInput
+
+func (AccessPolicyRequireGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireGithub)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireGithubArray) ToAccessPolicyRequireGithubArrayOutput() AccessPolicyRequireGithubArrayOutput {
+	return i.ToAccessPolicyRequireGithubArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireGithubArray) ToAccessPolicyRequireGithubArrayOutputWithContext(ctx context.Context) AccessPolicyRequireGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireGithubArrayOutput)
+}
+
+type AccessPolicyRequireGithubOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyRequireGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireGithub)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireGithubOutput) ToAccessPolicyRequireGithubOutput() AccessPolicyRequireGithubOutput {
+	return o
+}
+
+func (o AccessPolicyRequireGithubOutput) ToAccessPolicyRequireGithubOutputWithContext(ctx context.Context) AccessPolicyRequireGithubOutput {
+	return o
+}
+
+func (o AccessPolicyRequireGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Application.
+func (o AccessPolicyRequireGithubOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyRequireGithubArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyRequireGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireGithub)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireGithubArrayOutput) ToAccessPolicyRequireGithubArrayOutput() AccessPolicyRequireGithubArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireGithubArrayOutput) ToAccessPolicyRequireGithubArrayOutputWithContext(ctx context.Context) AccessPolicyRequireGithubArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireGithubArrayOutput) Index(i pulumi.IntInput) AccessPolicyRequireGithubOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyRequireGithub {
+		return vs[0].([]AccessPolicyRequireGithub)[vs[1].(int)]
+	}).(AccessPolicyRequireGithubOutput)
+}
+
+type AccessPolicyRequireGsuite struct {
+	Email *string `pulumi:"email"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyRequireGsuiteInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireGsuiteOutput() AccessPolicyRequireGsuiteOutput
+	ToAccessPolicyRequireGsuiteOutputWithContext(context.Context) AccessPolicyRequireGsuiteOutput
+}
+
+type AccessPolicyRequireGsuiteArgs struct {
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyRequireGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireGsuite)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireGsuiteArgs) ToAccessPolicyRequireGsuiteOutput() AccessPolicyRequireGsuiteOutput {
+	return i.ToAccessPolicyRequireGsuiteOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireGsuiteArgs) ToAccessPolicyRequireGsuiteOutputWithContext(ctx context.Context) AccessPolicyRequireGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireGsuiteOutput)
+}
+
+type AccessPolicyRequireGsuiteArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireGsuiteArrayOutput() AccessPolicyRequireGsuiteArrayOutput
+	ToAccessPolicyRequireGsuiteArrayOutputWithContext(context.Context) AccessPolicyRequireGsuiteArrayOutput
+}
+
+type AccessPolicyRequireGsuiteArray []AccessPolicyRequireGsuiteInput
+
+func (AccessPolicyRequireGsuiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireGsuite)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireGsuiteArray) ToAccessPolicyRequireGsuiteArrayOutput() AccessPolicyRequireGsuiteArrayOutput {
+	return i.ToAccessPolicyRequireGsuiteArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireGsuiteArray) ToAccessPolicyRequireGsuiteArrayOutputWithContext(ctx context.Context) AccessPolicyRequireGsuiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireGsuiteArrayOutput)
+}
+
+type AccessPolicyRequireGsuiteOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyRequireGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireGsuite)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireGsuiteOutput) ToAccessPolicyRequireGsuiteOutput() AccessPolicyRequireGsuiteOutput {
+	return o
+}
+
+func (o AccessPolicyRequireGsuiteOutput) ToAccessPolicyRequireGsuiteOutputWithContext(ctx context.Context) AccessPolicyRequireGsuiteOutput {
+	return o
+}
+
+func (o AccessPolicyRequireGsuiteOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyRequireGsuiteArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyRequireGsuiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireGsuite)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireGsuiteArrayOutput) ToAccessPolicyRequireGsuiteArrayOutput() AccessPolicyRequireGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireGsuiteArrayOutput) ToAccessPolicyRequireGsuiteArrayOutputWithContext(ctx context.Context) AccessPolicyRequireGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPolicyRequireGsuiteOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyRequireGsuite {
+		return vs[0].([]AccessPolicyRequireGsuite)[vs[1].(int)]
+	}).(AccessPolicyRequireGsuiteOutput)
+}
+
+type AccessPolicyRequireOkta struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name *string `pulumi:"name"`
+}
+
+type AccessPolicyRequireOktaInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireOktaOutput() AccessPolicyRequireOktaOutput
+	ToAccessPolicyRequireOktaOutputWithContext(context.Context) AccessPolicyRequireOktaOutput
+}
+
+type AccessPolicyRequireOktaArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessPolicyRequireOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireOkta)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireOktaArgs) ToAccessPolicyRequireOktaOutput() AccessPolicyRequireOktaOutput {
+	return i.ToAccessPolicyRequireOktaOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireOktaArgs) ToAccessPolicyRequireOktaOutputWithContext(ctx context.Context) AccessPolicyRequireOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireOktaOutput)
+}
+
+type AccessPolicyRequireOktaArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireOktaArrayOutput() AccessPolicyRequireOktaArrayOutput
+	ToAccessPolicyRequireOktaArrayOutputWithContext(context.Context) AccessPolicyRequireOktaArrayOutput
+}
+
+type AccessPolicyRequireOktaArray []AccessPolicyRequireOktaInput
+
+func (AccessPolicyRequireOktaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireOkta)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireOktaArray) ToAccessPolicyRequireOktaArrayOutput() AccessPolicyRequireOktaArrayOutput {
+	return i.ToAccessPolicyRequireOktaArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireOktaArray) ToAccessPolicyRequireOktaArrayOutputWithContext(ctx context.Context) AccessPolicyRequireOktaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireOktaArrayOutput)
+}
+
+type AccessPolicyRequireOktaOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyRequireOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireOkta)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireOktaOutput) ToAccessPolicyRequireOktaOutput() AccessPolicyRequireOktaOutput {
+	return o
+}
+
+func (o AccessPolicyRequireOktaOutput) ToAccessPolicyRequireOktaOutputWithContext(ctx context.Context) AccessPolicyRequireOktaOutput {
+	return o
+}
+
+func (o AccessPolicyRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Application.
+func (o AccessPolicyRequireOktaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyRequireOktaArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyRequireOktaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireOkta)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireOktaArrayOutput) ToAccessPolicyRequireOktaArrayOutput() AccessPolicyRequireOktaArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireOktaArrayOutput) ToAccessPolicyRequireOktaArrayOutputWithContext(ctx context.Context) AccessPolicyRequireOktaArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireOktaArrayOutput) Index(i pulumi.IntInput) AccessPolicyRequireOktaOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyRequireOkta {
+		return vs[0].([]AccessPolicyRequireOkta)[vs[1].(int)]
+	}).(AccessPolicyRequireOktaOutput)
+}
+
+type AccessPolicyRequireSaml struct {
+	AttributeName *string `pulumi:"attributeName"`
+	AttributeValue *string `pulumi:"attributeValue"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+type AccessPolicyRequireSamlInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireSamlOutput() AccessPolicyRequireSamlOutput
+	ToAccessPolicyRequireSamlOutputWithContext(context.Context) AccessPolicyRequireSamlOutput
+}
+
+type AccessPolicyRequireSamlArgs struct {
+	AttributeName pulumi.StringPtrInput `pulumi:"attributeName"`
+	AttributeValue pulumi.StringPtrInput `pulumi:"attributeValue"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyRequireSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireSaml)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireSamlArgs) ToAccessPolicyRequireSamlOutput() AccessPolicyRequireSamlOutput {
+	return i.ToAccessPolicyRequireSamlOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireSamlArgs) ToAccessPolicyRequireSamlOutputWithContext(ctx context.Context) AccessPolicyRequireSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireSamlOutput)
+}
+
+type AccessPolicyRequireSamlArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireSamlArrayOutput() AccessPolicyRequireSamlArrayOutput
+	ToAccessPolicyRequireSamlArrayOutputWithContext(context.Context) AccessPolicyRequireSamlArrayOutput
+}
+
+type AccessPolicyRequireSamlArray []AccessPolicyRequireSamlInput
+
+func (AccessPolicyRequireSamlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireSaml)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireSamlArray) ToAccessPolicyRequireSamlArrayOutput() AccessPolicyRequireSamlArrayOutput {
+	return i.ToAccessPolicyRequireSamlArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireSamlArray) ToAccessPolicyRequireSamlArrayOutputWithContext(ctx context.Context) AccessPolicyRequireSamlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireSamlArrayOutput)
+}
+
+type AccessPolicyRequireSamlOutput struct { *pulumi.OutputState }
+
+func (AccessPolicyRequireSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireSaml)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireSamlOutput) ToAccessPolicyRequireSamlOutput() AccessPolicyRequireSamlOutput {
+	return o
+}
+
+func (o AccessPolicyRequireSamlOutput) ToAccessPolicyRequireSamlOutputWithContext(ctx context.Context) AccessPolicyRequireSamlOutput {
+	return o
+}
+
+func (o AccessPolicyRequireSamlOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyRequireSamlOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyRequireSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func (v AccessPolicyRequireSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyRequireSamlArrayOutput struct { *pulumi.OutputState}
+
+func (AccessPolicyRequireSamlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireSaml)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireSamlArrayOutput) ToAccessPolicyRequireSamlArrayOutput() AccessPolicyRequireSamlArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireSamlArrayOutput) ToAccessPolicyRequireSamlArrayOutputWithContext(ctx context.Context) AccessPolicyRequireSamlArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireSamlArrayOutput) Index(i pulumi.IntInput) AccessPolicyRequireSamlOutput {
+	return pulumi.All(o, i).ApplyT(func (vs []interface{}) AccessPolicyRequireSaml {
+		return vs[0].([]AccessPolicyRequireSaml)[vs[1].(int)]
+	}).(AccessPolicyRequireSamlOutput)
 }
 
 type AccessRuleConfiguration struct {
@@ -6975,10 +8571,40 @@ func init() {
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeAzureOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeGithubOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeGithubArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeGsuiteOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeGsuiteArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeOktaOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeOktaArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeSamlOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeAzureOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeGithubOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeGithubArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeGsuiteOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeGsuiteArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeOktaOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeOktaArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeSamlOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireAzureOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireGithubOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireGithubArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireGsuiteOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireGsuiteArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireOktaOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireOktaArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireSamlOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessRuleConfigurationOutput{})
 	pulumi.RegisterOutputType(AccessRuleConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslOptionsOutput{})

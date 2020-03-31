@@ -51,24 +51,150 @@ export interface AccessIdentityProviderConfig {
 }
 
 export interface AccessPolicyExclude {
+    anyValidServiceToken?: pulumi.Input<boolean>;
+    azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAzure>[]>;
+    certificate?: pulumi.Input<boolean>;
+    commonName?: pulumi.Input<string>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGithub>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeOkta>[]>;
+    samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeSaml>[]>;
+    serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyExcludeAzure {
+    id?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeGithub {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeGsuite {
+    email?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeOkta {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyExcludeSaml {
+    attributeName?: pulumi.Input<string>;
+    attributeValue?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyInclude {
+    anyValidServiceToken?: pulumi.Input<boolean>;
+    azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAzure>[]>;
+    certificate?: pulumi.Input<boolean>;
+    commonName?: pulumi.Input<string>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGithub>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeOkta>[]>;
+    samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeSaml>[]>;
+    serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyIncludeAzure {
+    id?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeGithub {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeGsuite {
+    email?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeOkta {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyIncludeSaml {
+    attributeName?: pulumi.Input<string>;
+    attributeValue?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequire {
+    anyValidServiceToken?: pulumi.Input<boolean>;
+    azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAzure>[]>;
+    certificate?: pulumi.Input<boolean>;
+    commonName?: pulumi.Input<string>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGithub>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireOkta>[]>;
+    samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireSaml>[]>;
+    serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyRequireAzure {
+    id?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireGithub {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireGsuite {
+    email?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireOkta {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessPolicyRequireSaml {
+    attributeName?: pulumi.Input<string>;
+    attributeValue?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessRuleConfiguration {
