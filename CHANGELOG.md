@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.5.0 of the Cloudflare Terraform Provider
+_(none)_
 
 ---
+
+## 1.9.0 (2020-03-31)
+* Upgrade to v2.5.0 of the Cloudflare Terraform Provider
 
 ## 1.8.1 (2020-03-24)
 * Upgrade to Pulumi v1.12.1 in DotNet dependency
