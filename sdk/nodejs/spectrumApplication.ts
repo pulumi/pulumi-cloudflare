@@ -39,9 +39,21 @@ export class SpectrumApplication extends pulumi.CustomResource {
     }
 
     /**
+     * . Enables Argo Smart Routing. Defaults to `false`.
+     */
+    public readonly argoSmartRouting!: pulumi.Output<boolean | undefined>;
+    /**
      * The name and type of DNS record for the Spectrum application. Fields documented below.
      */
     public readonly dns!: pulumi.Output<outputs.SpectrumApplicationDns>;
+    /**
+     * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     */
+    public readonly edgeIpConnectivity!: pulumi.Output<string | undefined>;
+    /**
+     * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     */
+    public readonly edgeIps!: pulumi.Output<string[] | undefined>;
     /**
      * Enables the IP Firewall for this application. Defaults to `true`.
      */
@@ -71,7 +83,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     public readonly tls!: pulumi.Output<string | undefined>;
     /**
-     * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+     * Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
      */
     public readonly trafficType!: pulumi.Output<string | undefined>;
     /**
@@ -91,7 +103,10 @@ export class SpectrumApplication extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as SpectrumApplicationState | undefined;
+            inputs["argoSmartRouting"] = state ? state.argoSmartRouting : undefined;
             inputs["dns"] = state ? state.dns : undefined;
+            inputs["edgeIpConnectivity"] = state ? state.edgeIpConnectivity : undefined;
+            inputs["edgeIps"] = state ? state.edgeIps : undefined;
             inputs["ipFirewall"] = state ? state.ipFirewall : undefined;
             inputs["originDirects"] = state ? state.originDirects : undefined;
             inputs["originDns"] = state ? state.originDns : undefined;
@@ -112,7 +127,10 @@ export class SpectrumApplication extends pulumi.CustomResource {
             if (!args || args.zoneId === undefined) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            inputs["argoSmartRouting"] = args ? args.argoSmartRouting : undefined;
             inputs["dns"] = args ? args.dns : undefined;
+            inputs["edgeIpConnectivity"] = args ? args.edgeIpConnectivity : undefined;
+            inputs["edgeIps"] = args ? args.edgeIps : undefined;
             inputs["ipFirewall"] = args ? args.ipFirewall : undefined;
             inputs["originDirects"] = args ? args.originDirects : undefined;
             inputs["originDns"] = args ? args.originDns : undefined;
@@ -139,9 +157,21 @@ export class SpectrumApplication extends pulumi.CustomResource {
  */
 export interface SpectrumApplicationState {
     /**
+     * . Enables Argo Smart Routing. Defaults to `false`.
+     */
+    readonly argoSmartRouting?: pulumi.Input<boolean>;
+    /**
      * The name and type of DNS record for the Spectrum application. Fields documented below.
      */
     readonly dns?: pulumi.Input<inputs.SpectrumApplicationDns>;
+    /**
+     * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     */
+    readonly edgeIpConnectivity?: pulumi.Input<string>;
+    /**
+     * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     */
+    readonly edgeIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enables the IP Firewall for this application. Defaults to `true`.
      */
@@ -171,7 +201,7 @@ export interface SpectrumApplicationState {
      */
     readonly tls?: pulumi.Input<string>;
     /**
-     * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+     * Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
      */
     readonly trafficType?: pulumi.Input<string>;
     /**
@@ -185,9 +215,21 @@ export interface SpectrumApplicationState {
  */
 export interface SpectrumApplicationArgs {
     /**
+     * . Enables Argo Smart Routing. Defaults to `false`.
+     */
+    readonly argoSmartRouting?: pulumi.Input<boolean>;
+    /**
      * The name and type of DNS record for the Spectrum application. Fields documented below.
      */
     readonly dns: pulumi.Input<inputs.SpectrumApplicationDns>;
+    /**
+     * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+     */
+    readonly edgeIpConnectivity?: pulumi.Input<string>;
+    /**
+     * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+     */
+    readonly edgeIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Enables the IP Firewall for this application. Defaults to `true`.
      */
@@ -217,7 +259,7 @@ export interface SpectrumApplicationArgs {
      */
     readonly tls?: pulumi.Input<string>;
     /**
-     * Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+     * Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
      */
     readonly trafficType?: pulumi.Input<string>;
     /**

@@ -10,20 +10,6 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Access Policy resource. Access Policies are used
  * in conjunction with Access Applications to restrict access to a
  * particular resource.
- * 
- * ## Conditions
- * 
- * `require`, `exclude` and `include` arguments share the available
- * conditions which can be applied. The conditions are:
- * 
- * * `ip` - (Optional) A list of IP addresses or ranges. Example:
- *   `ip = ["1.2.3.4", "10.0.0.0/2"]`
- * * `email` - (Optional) A list of email addresses. Example:
- *   `email = ["test@example.com"]`
- * * `emailDomain` - (Optional) A list of email domains. Example:
- *   `emailDomain = ["example.com"]`
- * * `everyone` - (Optional) Boolean indicating permitting access for all
- *   requests. Example: `everyone = true`
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
  */
@@ -61,17 +47,15 @@ export class AccessPolicy extends pulumi.CustomResource {
     public readonly applicationId!: pulumi.Output<string>;
     /**
      * Defines the action Access will take if the policy matches the user.
-     * Allowed values: `allow`, `deny`, `bypass`
+     * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
      */
     public readonly decision!: pulumi.Output<string>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     public readonly includes!: pulumi.Output<outputs.AccessPolicyInclude[]>;
     /**
@@ -83,8 +67,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly precedence!: pulumi.Output<number | undefined>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
@@ -161,17 +144,15 @@ export interface AccessPolicyState {
     readonly applicationId?: pulumi.Input<string>;
     /**
      * Defines the action Access will take if the policy matches the user.
-     * Allowed values: `allow`, `deny`, `bypass`
+     * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
      */
     readonly decision?: pulumi.Input<string>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     readonly includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
@@ -183,8 +164,7 @@ export interface AccessPolicyState {
      */
     readonly precedence?: pulumi.Input<number>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
@@ -205,17 +185,15 @@ export interface AccessPolicyArgs {
     readonly applicationId: pulumi.Input<string>;
     /**
      * Defines the action Access will take if the policy matches the user.
-     * Allowed values: `allow`, `deny`, `bypass`
+     * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
      */
     readonly decision: pulumi.Input<string>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     readonly includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
@@ -227,8 +205,7 @@ export interface AccessPolicyArgs {
      */
     readonly precedence?: pulumi.Input<number>;
     /**
-     * A series of access conditions, see below for
-     * full list.
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
      */
     readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**

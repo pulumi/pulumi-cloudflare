@@ -17,8 +17,14 @@ import (
 type SpectrumApplication struct {
 	pulumi.CustomResourceState
 
+	// . Enables Argo Smart Routing. Defaults to `false`.
+	ArgoSmartRouting pulumi.BoolPtrOutput `pulumi:"argoSmartRouting"`
 	// The name and type of DNS record for the Spectrum application. Fields documented below.
 	Dns SpectrumApplicationDnsOutput `pulumi:"dns"`
+	// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+	EdgeIpConnectivity pulumi.StringPtrOutput `pulumi:"edgeIpConnectivity"`
+	// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+	EdgeIps pulumi.StringArrayOutput `pulumi:"edgeIps"`
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall pulumi.BoolPtrOutput `pulumi:"ipFirewall"`
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -33,7 +39,7 @@ type SpectrumApplication struct {
 	ProxyProtocol pulumi.StringPtrOutput `pulumi:"proxyProtocol"`
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls pulumi.StringPtrOutput `pulumi:"tls"`
-	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+	// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
 	TrafficType pulumi.StringPtrOutput `pulumi:"trafficType"`
 	// The DNS zone ID to add the application to
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -76,8 +82,14 @@ func GetSpectrumApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SpectrumApplication resources.
 type spectrumApplicationState struct {
+	// . Enables Argo Smart Routing. Defaults to `false`.
+	ArgoSmartRouting *bool `pulumi:"argoSmartRouting"`
 	// The name and type of DNS record for the Spectrum application. Fields documented below.
 	Dns *SpectrumApplicationDns `pulumi:"dns"`
+	// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+	EdgeIpConnectivity *string `pulumi:"edgeIpConnectivity"`
+	// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+	EdgeIps []string `pulumi:"edgeIps"`
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall *bool `pulumi:"ipFirewall"`
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -92,15 +104,21 @@ type spectrumApplicationState struct {
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls *string `pulumi:"tls"`
-	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+	// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
 	TrafficType *string `pulumi:"trafficType"`
 	// The DNS zone ID to add the application to
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type SpectrumApplicationState struct {
+	// . Enables Argo Smart Routing. Defaults to `false`.
+	ArgoSmartRouting pulumi.BoolPtrInput
 	// The name and type of DNS record for the Spectrum application. Fields documented below.
 	Dns SpectrumApplicationDnsPtrInput
+	// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+	EdgeIpConnectivity pulumi.StringPtrInput
+	// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+	EdgeIps pulumi.StringArrayInput
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall pulumi.BoolPtrInput
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -115,7 +133,7 @@ type SpectrumApplicationState struct {
 	ProxyProtocol pulumi.StringPtrInput
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls pulumi.StringPtrInput
-	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+	// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
 	TrafficType pulumi.StringPtrInput
 	// The DNS zone ID to add the application to
 	ZoneId pulumi.StringPtrInput
@@ -126,8 +144,14 @@ func (SpectrumApplicationState) ElementType() reflect.Type {
 }
 
 type spectrumApplicationArgs struct {
+	// . Enables Argo Smart Routing. Defaults to `false`.
+	ArgoSmartRouting *bool `pulumi:"argoSmartRouting"`
 	// The name and type of DNS record for the Spectrum application. Fields documented below.
 	Dns SpectrumApplicationDns `pulumi:"dns"`
+	// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+	EdgeIpConnectivity *string `pulumi:"edgeIpConnectivity"`
+	// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+	EdgeIps []string `pulumi:"edgeIps"`
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall *bool `pulumi:"ipFirewall"`
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -142,7 +166,7 @@ type spectrumApplicationArgs struct {
 	ProxyProtocol *string `pulumi:"proxyProtocol"`
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls *string `pulumi:"tls"`
-	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+	// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
 	TrafficType *string `pulumi:"trafficType"`
 	// The DNS zone ID to add the application to
 	ZoneId string `pulumi:"zoneId"`
@@ -150,8 +174,14 @@ type spectrumApplicationArgs struct {
 
 // The set of arguments for constructing a SpectrumApplication resource.
 type SpectrumApplicationArgs struct {
+	// . Enables Argo Smart Routing. Defaults to `false`.
+	ArgoSmartRouting pulumi.BoolPtrInput
 	// The name and type of DNS record for the Spectrum application. Fields documented below.
 	Dns SpectrumApplicationDnsInput
+	// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+	EdgeIpConnectivity pulumi.StringPtrInput
+	// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+	EdgeIps pulumi.StringArrayInput
 	// Enables the IP Firewall for this application. Defaults to `true`.
 	IpFirewall pulumi.BoolPtrInput
 	// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -166,7 +196,7 @@ type SpectrumApplicationArgs struct {
 	ProxyProtocol pulumi.StringPtrInput
 	// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
 	Tls pulumi.StringPtrInput
-	// Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+	// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
 	TrafficType pulumi.StringPtrInput
 	// The DNS zone ID to add the application to
 	ZoneId pulumi.StringInput

@@ -10,12 +10,24 @@ from typing import Union
 from . import utilities, tables
 
 class SpectrumApplication(pulumi.CustomResource):
+    argo_smart_routing: pulumi.Output[bool]
+    """
+    . Enables Argo Smart Routing. Defaults to `false`.
+    """
     dns: pulumi.Output[dict]
     """
     The name and type of DNS record for the Spectrum application. Fields documented below.
 
       * `name` (`str`) - Fully qualified domain name of the origin e.g. origin-ssh.example.com.
       * `type` (`str`) - The type of DNS record associated with the application. Valid values: `CNAME`.
+    """
+    edge_ip_connectivity: pulumi.Output[str]
+    """
+    . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+    """
+    edge_ips: pulumi.Output[list]
+    """
+    . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
     """
     ip_firewall: pulumi.Output[bool]
     """
@@ -49,13 +61,13 @@ class SpectrumApplication(pulumi.CustomResource):
     """
     traffic_type: pulumi.Output[str]
     """
-    Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+    Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
     """
     zone_id: pulumi.Output[str]
     """
     The DNS zone ID to add the application to
     """
-    def __init__(__self__, resource_name, opts=None, dns=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, argo_smart_routing=None, dns=None, edge_ip_connectivity=None, edge_ips=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
 
@@ -63,7 +75,10 @@ class SpectrumApplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] argo_smart_routing: . Enables Argo Smart Routing. Defaults to `false`.
         :param pulumi.Input[dict] dns: The name and type of DNS record for the Spectrum application. Fields documented below.
+        :param pulumi.Input[str] edge_ip_connectivity: . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+        :param pulumi.Input[list] edge_ips: . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
         :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application. Defaults to `true`.
         :param pulumi.Input[list] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input[dict] origin_dns: A destination DNS addresses to the origin. Fields documented below.
@@ -71,7 +86,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to
 
         The **dns** object supports the following:
@@ -100,9 +115,12 @@ class SpectrumApplication(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['argo_smart_routing'] = argo_smart_routing
             if dns is None:
                 raise TypeError("Missing required property 'dns'")
             __props__['dns'] = dns
+            __props__['edge_ip_connectivity'] = edge_ip_connectivity
+            __props__['edge_ips'] = edge_ips
             __props__['ip_firewall'] = ip_firewall
             __props__['origin_directs'] = origin_directs
             __props__['origin_dns'] = origin_dns
@@ -123,7 +141,7 @@ class SpectrumApplication(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, dns=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None):
+    def get(resource_name, id, opts=None, argo_smart_routing=None, dns=None, edge_ip_connectivity=None, edge_ips=None, ip_firewall=None, origin_directs=None, origin_dns=None, origin_port=None, protocol=None, proxy_protocol=None, tls=None, traffic_type=None, zone_id=None):
         """
         Get an existing SpectrumApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -131,7 +149,10 @@ class SpectrumApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] argo_smart_routing: . Enables Argo Smart Routing. Defaults to `false`.
         :param pulumi.Input[dict] dns: The name and type of DNS record for the Spectrum application. Fields documented below.
+        :param pulumi.Input[str] edge_ip_connectivity: . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+        :param pulumi.Input[list] edge_ips: . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
         :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application. Defaults to `true`.
         :param pulumi.Input[list] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input[dict] origin_dns: A destination DNS addresses to the origin. Fields documented below.
@@ -139,7 +160,7 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Set's application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to
 
         The **dns** object supports the following:
@@ -155,7 +176,10 @@ class SpectrumApplication(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["argo_smart_routing"] = argo_smart_routing
         __props__["dns"] = dns
+        __props__["edge_ip_connectivity"] = edge_ip_connectivity
+        __props__["edge_ips"] = edge_ips
         __props__["ip_firewall"] = ip_firewall
         __props__["origin_directs"] = origin_directs
         __props__["origin_dns"] = origin_dns

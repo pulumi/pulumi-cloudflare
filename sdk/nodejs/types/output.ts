@@ -51,24 +51,150 @@ export interface AccessIdentityProviderConfig {
 }
 
 export interface AccessPolicyExclude {
+    anyValidServiceToken?: boolean;
+    azures?: outputs.AccessPolicyExcludeAzure[];
+    certificate?: boolean;
+    commonName?: string;
     emails?: string[];
     emailDomains?: string[];
     everyone?: boolean;
+    githubs?: outputs.AccessPolicyExcludeGithub[];
+    groups?: string[];
+    gsuites?: outputs.AccessPolicyExcludeGsuite[];
     ips?: string[];
+    oktas?: outputs.AccessPolicyExcludeOkta[];
+    samls?: outputs.AccessPolicyExcludeSaml[];
+    serviceTokens?: string[];
+}
+
+export interface AccessPolicyExcludeAzure {
+    id?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessPolicyExcludeGithub {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: string;
+}
+
+export interface AccessPolicyExcludeGsuite {
+    email?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessPolicyExcludeOkta {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: string;
+}
+
+export interface AccessPolicyExcludeSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
 }
 
 export interface AccessPolicyInclude {
+    anyValidServiceToken?: boolean;
+    azures?: outputs.AccessPolicyIncludeAzure[];
+    certificate?: boolean;
+    commonName?: string;
     emails?: string[];
     emailDomains?: string[];
     everyone?: boolean;
+    githubs?: outputs.AccessPolicyIncludeGithub[];
+    groups?: string[];
+    gsuites?: outputs.AccessPolicyIncludeGsuite[];
     ips?: string[];
+    oktas?: outputs.AccessPolicyIncludeOkta[];
+    samls?: outputs.AccessPolicyIncludeSaml[];
+    serviceTokens?: string[];
+}
+
+export interface AccessPolicyIncludeAzure {
+    id?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessPolicyIncludeGithub {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: string;
+}
+
+export interface AccessPolicyIncludeGsuite {
+    email?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessPolicyIncludeOkta {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: string;
+}
+
+export interface AccessPolicyIncludeSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
 }
 
 export interface AccessPolicyRequire {
+    anyValidServiceToken?: boolean;
+    azures?: outputs.AccessPolicyRequireAzure[];
+    certificate?: boolean;
+    commonName?: string;
     emails?: string[];
     emailDomains?: string[];
     everyone?: boolean;
+    githubs?: outputs.AccessPolicyRequireGithub[];
+    groups?: string[];
+    gsuites?: outputs.AccessPolicyRequireGsuite[];
     ips?: string[];
+    oktas?: outputs.AccessPolicyRequireOkta[];
+    samls?: outputs.AccessPolicyRequireSaml[];
+    serviceTokens?: string[];
+}
+
+export interface AccessPolicyRequireAzure {
+    id?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessPolicyRequireGithub {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: string;
+}
+
+export interface AccessPolicyRequireGsuite {
+    email?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessPolicyRequireOkta {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: string;
+}
+
+export interface AccessPolicyRequireSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
 }
 
 export interface AccessRuleConfiguration {
