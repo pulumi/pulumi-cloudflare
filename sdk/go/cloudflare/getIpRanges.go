@@ -24,8 +24,7 @@ func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRanges
 type GetIpRangesResult struct {
 	CidrBlocks []string `pulumi:"cidrBlocks"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string   `pulumi:"id"`
 	Ipv4CidrBlocks []string `pulumi:"ipv4CidrBlocks"`
 	Ipv6CidrBlocks []string `pulumi:"ipv6CidrBlocks"`
 }
-

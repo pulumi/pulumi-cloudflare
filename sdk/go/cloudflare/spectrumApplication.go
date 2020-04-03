@@ -205,4 +205,3 @@ type SpectrumApplicationArgs struct {
 func (SpectrumApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*spectrumApplicationArgs)(nil)).Elem()
 }
-

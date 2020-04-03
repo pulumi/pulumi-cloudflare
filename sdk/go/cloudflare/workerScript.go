@@ -18,7 +18,7 @@ type WorkerScript struct {
 	pulumi.CustomResourceState
 
 	// The script content.
-	Content pulumi.StringOutput `pulumi:"content"`
+	Content             pulumi.StringOutput                       `pulumi:"content"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
 	// The name for the binding.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -59,7 +59,7 @@ func GetWorkerScript(ctx *pulumi.Context,
 // Input properties used for looking up and filtering WorkerScript resources.
 type workerScriptState struct {
 	// The script content.
-	Content *string `pulumi:"content"`
+	Content             *string                          `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// The name for the binding.
 	Name *string `pulumi:"name"`
@@ -67,7 +67,7 @@ type workerScriptState struct {
 
 type WorkerScriptState struct {
 	// The script content.
-	Content pulumi.StringPtrInput
+	Content             pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// The name for the binding.
 	Name pulumi.StringPtrInput
@@ -79,7 +79,7 @@ func (WorkerScriptState) ElementType() reflect.Type {
 
 type workerScriptArgs struct {
 	// The script content.
-	Content string `pulumi:"content"`
+	Content             string                           `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// The name for the binding.
 	Name string `pulumi:"name"`
@@ -88,7 +88,7 @@ type workerScriptArgs struct {
 // The set of arguments for constructing a WorkerScript resource.
 type WorkerScriptArgs struct {
 	// The script content.
-	Content pulumi.StringInput
+	Content             pulumi.StringInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// The name for the binding.
 	Name pulumi.StringInput
@@ -97,4 +97,3 @@ type WorkerScriptArgs struct {
 func (WorkerScriptArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerScriptArgs)(nil)).Elem()
 }
-

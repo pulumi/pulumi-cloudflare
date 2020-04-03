@@ -25,12 +25,10 @@ type GetZonesArgs struct {
 	Filter GetZonesFilter `pulumi:"filter"`
 }
 
-
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	Filter GetZonesFilter `pulumi:"filter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id    string         `pulumi:"id"`
 	Zones []GetZonesZone `pulumi:"zones"`
 }
-

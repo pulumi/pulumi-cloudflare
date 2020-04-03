@@ -99,4 +99,3 @@ type ArgoArgs struct {
 func (ArgoArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*argoArgs)(nil)).Elem()
 }
-

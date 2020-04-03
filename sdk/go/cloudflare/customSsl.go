@@ -18,16 +18,16 @@ type CustomSsl struct {
 	pulumi.CustomResourceState
 
 	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-	CustomSslOptions CustomSslCustomSslOptionsPtrOutput `pulumi:"customSslOptions"`
+	CustomSslOptions    CustomSslCustomSslOptionsPtrOutput    `pulumi:"customSslOptions"`
 	CustomSslPriorities CustomSslCustomSslPriorityArrayOutput `pulumi:"customSslPriorities"`
-	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
-	Hosts pulumi.StringArrayOutput `pulumi:"hosts"`
-	Issuer pulumi.StringOutput `pulumi:"issuer"`
-	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	Priority pulumi.IntOutput `pulumi:"priority"`
-	Signature pulumi.StringOutput `pulumi:"signature"`
-	Status pulumi.StringOutput `pulumi:"status"`
-	UploadedOn pulumi.StringOutput `pulumi:"uploadedOn"`
+	ExpiresOn           pulumi.StringOutput                   `pulumi:"expiresOn"`
+	Hosts               pulumi.StringArrayOutput              `pulumi:"hosts"`
+	Issuer              pulumi.StringOutput                   `pulumi:"issuer"`
+	ModifiedOn          pulumi.StringOutput                   `pulumi:"modifiedOn"`
+	Priority            pulumi.IntOutput                      `pulumi:"priority"`
+	Signature           pulumi.StringOutput                   `pulumi:"signature"`
+	Status              pulumi.StringOutput                   `pulumi:"status"`
+	UploadedOn          pulumi.StringOutput                   `pulumi:"uploadedOn"`
 	// The DNS zone id to the custom ssl cert should be added.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -64,32 +64,32 @@ func GetCustomSsl(ctx *pulumi.Context,
 // Input properties used for looking up and filtering CustomSsl resources.
 type customSslState struct {
 	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-	CustomSslOptions *CustomSslCustomSslOptions `pulumi:"customSslOptions"`
+	CustomSslOptions    *CustomSslCustomSslOptions   `pulumi:"customSslOptions"`
 	CustomSslPriorities []CustomSslCustomSslPriority `pulumi:"customSslPriorities"`
-	ExpiresOn *string `pulumi:"expiresOn"`
-	Hosts []string `pulumi:"hosts"`
-	Issuer *string `pulumi:"issuer"`
-	ModifiedOn *string `pulumi:"modifiedOn"`
-	Priority *int `pulumi:"priority"`
-	Signature *string `pulumi:"signature"`
-	Status *string `pulumi:"status"`
-	UploadedOn *string `pulumi:"uploadedOn"`
+	ExpiresOn           *string                      `pulumi:"expiresOn"`
+	Hosts               []string                     `pulumi:"hosts"`
+	Issuer              *string                      `pulumi:"issuer"`
+	ModifiedOn          *string                      `pulumi:"modifiedOn"`
+	Priority            *int                         `pulumi:"priority"`
+	Signature           *string                      `pulumi:"signature"`
+	Status              *string                      `pulumi:"status"`
+	UploadedOn          *string                      `pulumi:"uploadedOn"`
 	// The DNS zone id to the custom ssl cert should be added.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type CustomSslState struct {
 	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-	CustomSslOptions CustomSslCustomSslOptionsPtrInput
+	CustomSslOptions    CustomSslCustomSslOptionsPtrInput
 	CustomSslPriorities CustomSslCustomSslPriorityArrayInput
-	ExpiresOn pulumi.StringPtrInput
-	Hosts pulumi.StringArrayInput
-	Issuer pulumi.StringPtrInput
-	ModifiedOn pulumi.StringPtrInput
-	Priority pulumi.IntPtrInput
-	Signature pulumi.StringPtrInput
-	Status pulumi.StringPtrInput
-	UploadedOn pulumi.StringPtrInput
+	ExpiresOn           pulumi.StringPtrInput
+	Hosts               pulumi.StringArrayInput
+	Issuer              pulumi.StringPtrInput
+	ModifiedOn          pulumi.StringPtrInput
+	Priority            pulumi.IntPtrInput
+	Signature           pulumi.StringPtrInput
+	Status              pulumi.StringPtrInput
+	UploadedOn          pulumi.StringPtrInput
 	// The DNS zone id to the custom ssl cert should be added.
 	ZoneId pulumi.StringPtrInput
 }
@@ -100,7 +100,7 @@ func (CustomSslState) ElementType() reflect.Type {
 
 type customSslArgs struct {
 	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-	CustomSslOptions *CustomSslCustomSslOptions `pulumi:"customSslOptions"`
+	CustomSslOptions    *CustomSslCustomSslOptions   `pulumi:"customSslOptions"`
 	CustomSslPriorities []CustomSslCustomSslPriority `pulumi:"customSslPriorities"`
 	// The DNS zone id to the custom ssl cert should be added.
 	ZoneId string `pulumi:"zoneId"`
@@ -109,7 +109,7 @@ type customSslArgs struct {
 // The set of arguments for constructing a CustomSsl resource.
 type CustomSslArgs struct {
 	// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-	CustomSslOptions CustomSslCustomSslOptionsPtrInput
+	CustomSslOptions    CustomSslCustomSslOptionsPtrInput
 	CustomSslPriorities CustomSslCustomSslPriorityArrayInput
 	// The DNS zone id to the custom ssl cert should be added.
 	ZoneId pulumi.StringInput
@@ -118,4 +118,3 @@ type CustomSslArgs struct {
 func (CustomSslArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customSslArgs)(nil)).Elem()
 }
-

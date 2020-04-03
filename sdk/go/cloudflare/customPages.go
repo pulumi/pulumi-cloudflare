@@ -21,7 +21,7 @@ type CustomPages struct {
 	// updated. Either `accountId` or `zoneId` must be provided. If
 	// `accountId` is present, it will override the zone setting.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	State pulumi.StringPtrOutput `pulumi:"state"`
+	State     pulumi.StringPtrOutput `pulumi:"state"`
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
@@ -72,7 +72,7 @@ type customPagesState struct {
 	// updated. Either `accountId` or `zoneId` must be provided. If
 	// `accountId` is present, it will override the zone setting.
 	AccountId *string `pulumi:"accountId"`
-	State *string `pulumi:"state"`
+	State     *string `pulumi:"state"`
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
@@ -90,7 +90,7 @@ type CustomPagesState struct {
 	// updated. Either `accountId` or `zoneId` must be provided. If
 	// `accountId` is present, it will override the zone setting.
 	AccountId pulumi.StringPtrInput
-	State pulumi.StringPtrInput
+	State     pulumi.StringPtrInput
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
@@ -112,7 +112,7 @@ type customPagesArgs struct {
 	// updated. Either `accountId` or `zoneId` must be provided. If
 	// `accountId` is present, it will override the zone setting.
 	AccountId *string `pulumi:"accountId"`
-	State *string `pulumi:"state"`
+	State     *string `pulumi:"state"`
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
@@ -131,7 +131,7 @@ type CustomPagesArgs struct {
 	// updated. Either `accountId` or `zoneId` must be provided. If
 	// `accountId` is present, it will override the zone setting.
 	AccountId pulumi.StringPtrInput
-	State pulumi.StringPtrInput
+	State     pulumi.StringPtrInput
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
@@ -147,4 +147,3 @@ type CustomPagesArgs struct {
 func (CustomPagesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customPagesArgs)(nil)).Elem()
 }
-

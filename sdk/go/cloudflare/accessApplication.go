@@ -133,4 +133,3 @@ type AccessApplicationArgs struct {
 func (AccessApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessApplicationArgs)(nil)).Elem()
 }
-

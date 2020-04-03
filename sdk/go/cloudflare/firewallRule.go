@@ -24,7 +24,7 @@ type FirewallRule struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	FilterId pulumi.StringOutput `pulumi:"filterId"`
+	FilterId    pulumi.StringOutput    `pulumi:"filterId"`
 	// Whether this filter based firewall rule is currently paused. Boolean value.
 	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
@@ -76,7 +76,7 @@ type firewallRuleState struct {
 	Action *string `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description *string `pulumi:"description"`
-	FilterId *string `pulumi:"filterId"`
+	FilterId    *string `pulumi:"filterId"`
 	// Whether this filter based firewall rule is currently paused. Boolean value.
 	Paused *bool `pulumi:"paused"`
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
@@ -92,7 +92,7 @@ type FirewallRuleState struct {
 	Action pulumi.StringPtrInput
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrInput
-	FilterId pulumi.StringPtrInput
+	FilterId    pulumi.StringPtrInput
 	// Whether this filter based firewall rule is currently paused. Boolean value.
 	Paused pulumi.BoolPtrInput
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
@@ -112,7 +112,7 @@ type firewallRuleArgs struct {
 	Action string `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description *string `pulumi:"description"`
-	FilterId string `pulumi:"filterId"`
+	FilterId    string  `pulumi:"filterId"`
 	// Whether this filter based firewall rule is currently paused. Boolean value.
 	Paused *bool `pulumi:"paused"`
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
@@ -129,7 +129,7 @@ type FirewallRuleArgs struct {
 	Action pulumi.StringInput
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrInput
-	FilterId pulumi.StringInput
+	FilterId    pulumi.StringInput
 	// Whether this filter based firewall rule is currently paused. Boolean value.
 	Paused pulumi.BoolPtrInput
 	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
@@ -143,4 +143,3 @@ type FirewallRuleArgs struct {
 func (FirewallRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallRuleArgs)(nil)).Elem()
 }
-

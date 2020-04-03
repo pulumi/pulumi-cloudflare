@@ -112,4 +112,3 @@ type WafGroupArgs struct {
 func (WafGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafGroupArgs)(nil)).Elem()
 }
-

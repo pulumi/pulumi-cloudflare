@@ -23,16 +23,14 @@ func GetWafPackages(ctx *pulumi.Context, args *GetWafPackagesArgs, opts ...pulum
 // A collection of arguments for invoking getWafPackages.
 type GetWafPackagesArgs struct {
 	Filter *GetWafPackagesFilter `pulumi:"filter"`
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId string                `pulumi:"zoneId"`
 }
-
 
 // A collection of values returned by getWafPackages.
 type GetWafPackagesResult struct {
 	Filter *GetWafPackagesFilter `pulumi:"filter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id       string                  `pulumi:"id"`
 	Packages []GetWafPackagesPackage `pulumi:"packages"`
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId   string                  `pulumi:"zoneId"`
 }
-

@@ -19,7 +19,7 @@ type WorkerRoute struct {
 
 	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
 	// * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
-	Pattern pulumi.StringOutput `pulumi:"pattern"`
+	Pattern    pulumi.StringOutput    `pulumi:"pattern"`
 	ScriptName pulumi.StringPtrOutput `pulumi:"scriptName"`
 	// The zone ID to add the route to.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -61,7 +61,7 @@ func GetWorkerRoute(ctx *pulumi.Context,
 type workerRouteState struct {
 	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
 	// * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
-	Pattern *string `pulumi:"pattern"`
+	Pattern    *string `pulumi:"pattern"`
 	ScriptName *string `pulumi:"scriptName"`
 	// The zone ID to add the route to.
 	ZoneId *string `pulumi:"zoneId"`
@@ -70,7 +70,7 @@ type workerRouteState struct {
 type WorkerRouteState struct {
 	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
 	// * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
-	Pattern pulumi.StringPtrInput
+	Pattern    pulumi.StringPtrInput
 	ScriptName pulumi.StringPtrInput
 	// The zone ID to add the route to.
 	ZoneId pulumi.StringPtrInput
@@ -83,7 +83,7 @@ func (WorkerRouteState) ElementType() reflect.Type {
 type workerRouteArgs struct {
 	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
 	// * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
-	Pattern string `pulumi:"pattern"`
+	Pattern    string  `pulumi:"pattern"`
 	ScriptName *string `pulumi:"scriptName"`
 	// The zone ID to add the route to.
 	ZoneId string `pulumi:"zoneId"`
@@ -93,7 +93,7 @@ type workerRouteArgs struct {
 type WorkerRouteArgs struct {
 	// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
 	// * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
-	Pattern pulumi.StringInput
+	Pattern    pulumi.StringInput
 	ScriptName pulumi.StringPtrInput
 	// The zone ID to add the route to.
 	ZoneId pulumi.StringInput
@@ -102,4 +102,3 @@ type WorkerRouteArgs struct {
 func (WorkerRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerRouteArgs)(nil)).Elem()
 }
-
