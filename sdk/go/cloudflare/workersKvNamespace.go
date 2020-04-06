@@ -79,4 +79,3 @@ type WorkersKvNamespaceArgs struct {
 func (WorkersKvNamespaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersKvNamespaceArgs)(nil)).Elem()
 }
-

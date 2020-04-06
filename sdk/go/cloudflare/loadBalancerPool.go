@@ -164,4 +164,3 @@ type LoadBalancerPoolArgs struct {
 func (LoadBalancerPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerPoolArgs)(nil)).Elem()
 }
-

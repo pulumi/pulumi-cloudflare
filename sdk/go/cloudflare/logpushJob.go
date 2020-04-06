@@ -18,8 +18,8 @@ type LogpushJob struct {
 	pulumi.CustomResourceState
 
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
-	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	DestinationConf pulumi.StringOutput  `pulumi:"destinationConf"`
+	Enabled         pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -69,7 +69,7 @@ func GetLogpushJob(ctx *pulumi.Context,
 type logpushJobState struct {
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf *string `pulumi:"destinationConf"`
-	Enabled *bool `pulumi:"enabled"`
+	Enabled         *bool   `pulumi:"enabled"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -83,7 +83,7 @@ type logpushJobState struct {
 type LogpushJobState struct {
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf pulumi.StringPtrInput
-	Enabled pulumi.BoolPtrInput
+	Enabled         pulumi.BoolPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -101,7 +101,7 @@ func (LogpushJobState) ElementType() reflect.Type {
 type logpushJobArgs struct {
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf string `pulumi:"destinationConf"`
-	Enabled *bool `pulumi:"enabled"`
+	Enabled         *bool  `pulumi:"enabled"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -116,7 +116,7 @@ type logpushJobArgs struct {
 type LogpushJobArgs struct {
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf pulumi.StringInput
-	Enabled pulumi.BoolPtrInput
+	Enabled         pulumi.BoolPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -130,4 +130,3 @@ type LogpushJobArgs struct {
 func (LogpushJobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logpushJobArgs)(nil)).Elem()
 }
-

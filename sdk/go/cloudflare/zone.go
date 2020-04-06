@@ -19,7 +19,7 @@ type Zone struct {
 
 	// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
 	JumpStart pulumi.BoolPtrOutput `pulumi:"jumpStart"`
-	Meta ZoneMetaOutput `pulumi:"meta"`
+	Meta      ZoneMetaOutput       `pulumi:"meta"`
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
@@ -34,7 +34,7 @@ type Zone struct {
 	// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
 	// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
 	VanityNameServers pulumi.StringArrayOutput `pulumi:"vanityNameServers"`
-	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey pulumi.StringOutput `pulumi:"verificationKey"`
 	// The DNS zone name which will be added.
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -72,8 +72,8 @@ func GetZone(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Zone resources.
 type zoneState struct {
 	// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
-	JumpStart *bool `pulumi:"jumpStart"`
-	Meta *ZoneMeta `pulumi:"meta"`
+	JumpStart *bool     `pulumi:"jumpStart"`
+	Meta      *ZoneMeta `pulumi:"meta"`
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
 	NameServers []string `pulumi:"nameServers"`
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
@@ -88,7 +88,7 @@ type zoneState struct {
 	// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
 	// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
 	VanityNameServers []string `pulumi:"vanityNameServers"`
-	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey *string `pulumi:"verificationKey"`
 	// The DNS zone name which will be added.
 	Zone *string `pulumi:"zone"`
@@ -97,7 +97,7 @@ type zoneState struct {
 type ZoneState struct {
 	// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
 	JumpStart pulumi.BoolPtrInput
-	Meta ZoneMetaPtrInput
+	Meta      ZoneMetaPtrInput
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
 	NameServers pulumi.StringArrayInput
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
@@ -112,7 +112,7 @@ type ZoneState struct {
 	// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
 	// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
 	VanityNameServers pulumi.StringArrayInput
-	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey pulumi.StringPtrInput
 	// The DNS zone name which will be added.
 	Zone pulumi.StringPtrInput
@@ -152,4 +152,3 @@ type ZoneArgs struct {
 func (ZoneArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneArgs)(nil)).Elem()
 }
-

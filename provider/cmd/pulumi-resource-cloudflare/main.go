@@ -12,15 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//go:generate go run ./generate.go
+
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 
-	cloudflare "github.com/pulumi/pulumi-cloudflare"
-	"github.com/pulumi/pulumi-cloudflare/pkg/version"
+	cloudflare "github.com/pulumi/pulumi-cloudflare/provider"
+	"github.com/pulumi/pulumi-cloudflare/provider/pkg/version"
 )
 
 func main() {
-	tfgen.Main("cloudflare", version.Version, cloudflare.Provider())
+	tfbridge.Main("cloudflare", version.Version, cloudflare.Provider(), pulumiSchema)
 }

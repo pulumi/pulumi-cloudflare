@@ -168,4 +168,3 @@ type RateLimitArgs struct {
 func (RateLimitArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rateLimitArgs)(nil)).Elem()
 }
-

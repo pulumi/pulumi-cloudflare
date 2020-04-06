@@ -110,4 +110,3 @@ type AccessServiceTokenArgs struct {
 func (AccessServiceTokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessServiceTokenArgs)(nil)).Elem()
 }
-

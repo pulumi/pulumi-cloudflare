@@ -19,7 +19,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/tokens"
+	"github.com/pulumi/pulumi/sdk/go/common/tokens"
 	"github.com/terraform-providers/terraform-provider-cloudflare/cloudflare"
 )
 
@@ -180,15 +180,15 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"cloudflare_custom_ssl":            {Tok: makeResource(mainMod, "CustomSsl")},
-			"cloudflare_access_service_token":  {Tok: makeResource(mainMod, "AccessServiceToken")},
-			"cloudflare_waf_package":           {Tok: makeResource(mainMod, "WafPackage")},
-			"cloudflare_waf_group":             {Tok: makeResource(mainMod, "WafGroup")},
-			"cloudflare_access_group":          {Tok: makeResource(mainMod, "AccessGroup")},
-			"cloudflare_workers_kv_namespace":  {Tok: makeResource(mainMod, "WorkersKvNamespace")},
-			"cloudflare_origin_ca_certificate": {Tok: makeResource(mainMod, "OriginCaCertificate")},
+			"cloudflare_custom_ssl":               {Tok: makeResource(mainMod, "CustomSsl")},
+			"cloudflare_access_service_token":     {Tok: makeResource(mainMod, "AccessServiceToken")},
+			"cloudflare_waf_package":              {Tok: makeResource(mainMod, "WafPackage")},
+			"cloudflare_waf_group":                {Tok: makeResource(mainMod, "WafGroup")},
+			"cloudflare_access_group":             {Tok: makeResource(mainMod, "AccessGroup")},
+			"cloudflare_workers_kv_namespace":     {Tok: makeResource(mainMod, "WorkersKvNamespace")},
+			"cloudflare_origin_ca_certificate":    {Tok: makeResource(mainMod, "OriginCaCertificate")},
 			"cloudflare_access_identity_provider": {Tok: makeResource(mainMod, "AccessIdentityProvider")},
-			"cloudflare_workers_kv": {Tok: makeResource(mainMod, "WorkersKv")},
+			"cloudflare_workers_kv":               {Tok: makeResource(mainMod, "WorkersKv")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},

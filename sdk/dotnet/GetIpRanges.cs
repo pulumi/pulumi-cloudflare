@@ -16,7 +16,18 @@ namespace Pulumi.Cloudflare
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.md.
         /// </summary>
+        [Obsolete("Use GetIpRanges.InvokeAsync() instead")]
         public static Task<GetIpRangesResult> GetIpRanges(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetIpRanges
+    {
+        /// <summary>
+        /// Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.md.
+        /// </summary>
+        public static Task<GetIpRangesResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetIpRangesResult>("cloudflare:index/getIpRanges:getIpRanges", InvokeArgs.Empty, options.WithVersion());
     }
 

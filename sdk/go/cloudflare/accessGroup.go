@@ -226,4 +226,3 @@ type AccessGroupArgs struct {
 func (AccessGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessGroupArgs)(nil)).Elem()
 }
-

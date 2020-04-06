@@ -121,4 +121,3 @@ type WafRuleArgs struct {
 func (WafRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafRuleArgs)(nil)).Elem()
 }
-

@@ -122,4 +122,3 @@ type FilterArgs struct {
 func (FilterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*filterArgs)(nil)).Elem()
 }
-

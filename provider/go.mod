@@ -1,12 +1,11 @@
-module github.com/pulumi/pulumi-cloudflare
+module github.com/pulumi/pulumi-cloudflare/provider
 
 go 1.13
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk v1.9.0
-	github.com/pkg/errors v0.9.1
-	github.com/pulumi/pulumi v1.12.2-0.20200313044354-8111d33438b9
-	github.com/pulumi/pulumi-terraform-bridge v1.8.2
+	github.com/pulumi/pulumi-terraform-bridge v1.8.4
+	github.com/pulumi/pulumi/sdk v1.13.1
 	github.com/terraform-providers/terraform-provider-cloudflare v1.18.2-0.20200327152548-937194c105f7
 )
 

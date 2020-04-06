@@ -97,7 +97,7 @@ type loadBalancerMonitorState struct {
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path *string `pulumi:"path"`
-	Port *int `pulumi:"port"`
+	Port *int    `pulumi:"port"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries *int `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
@@ -161,7 +161,7 @@ type loadBalancerMonitorArgs struct {
 	Method *string `pulumi:"method"`
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path *string `pulumi:"path"`
-	Port *int `pulumi:"port"`
+	Port *int    `pulumi:"port"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries *int `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
@@ -202,4 +202,3 @@ type LoadBalancerMonitorArgs struct {
 func (LoadBalancerMonitorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerMonitorArgs)(nil)).Elem()
 }
-

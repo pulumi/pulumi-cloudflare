@@ -22,8 +22,8 @@ type ZoneLockdown struct {
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Boolean of whether this zone lockdown is currently paused. Default: false.
-	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
-	Priority pulumi.IntPtrOutput `pulumi:"priority"`
+	Paused   pulumi.BoolPtrOutput `pulumi:"paused"`
+	Priority pulumi.IntPtrOutput  `pulumi:"priority"`
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
 	// The DNS zone ID to which the access rule should be added.
@@ -72,8 +72,8 @@ type zoneLockdownState struct {
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description *string `pulumi:"description"`
 	// Boolean of whether this zone lockdown is currently paused. Default: false.
-	Paused *bool `pulumi:"paused"`
-	Priority *int `pulumi:"priority"`
+	Paused   *bool `pulumi:"paused"`
+	Priority *int  `pulumi:"priority"`
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls []string `pulumi:"urls"`
 	// The DNS zone ID to which the access rule should be added.
@@ -86,7 +86,7 @@ type ZoneLockdownState struct {
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description pulumi.StringPtrInput
 	// Boolean of whether this zone lockdown is currently paused. Default: false.
-	Paused pulumi.BoolPtrInput
+	Paused   pulumi.BoolPtrInput
 	Priority pulumi.IntPtrInput
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls pulumi.StringArrayInput
@@ -104,8 +104,8 @@ type zoneLockdownArgs struct {
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description *string `pulumi:"description"`
 	// Boolean of whether this zone lockdown is currently paused. Default: false.
-	Paused *bool `pulumi:"paused"`
-	Priority *int `pulumi:"priority"`
+	Paused   *bool `pulumi:"paused"`
+	Priority *int  `pulumi:"priority"`
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls []string `pulumi:"urls"`
 	// The DNS zone ID to which the access rule should be added.
@@ -119,7 +119,7 @@ type ZoneLockdownArgs struct {
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description pulumi.StringPtrInput
 	// Boolean of whether this zone lockdown is currently paused. Default: false.
-	Paused pulumi.BoolPtrInput
+	Paused   pulumi.BoolPtrInput
 	Priority pulumi.IntPtrInput
 	// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
 	Urls pulumi.StringArrayInput
@@ -130,4 +130,3 @@ type ZoneLockdownArgs struct {
 func (ZoneLockdownArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneLockdownArgs)(nil)).Elem()
 }
-

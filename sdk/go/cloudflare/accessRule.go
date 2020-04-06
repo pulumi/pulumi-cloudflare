@@ -112,4 +112,3 @@ type AccessRuleArgs struct {
 func (AccessRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessRuleArgs)(nil)).Elem()
 }
-

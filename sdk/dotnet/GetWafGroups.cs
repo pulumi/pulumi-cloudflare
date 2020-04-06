@@ -16,7 +16,18 @@ namespace Pulumi.Cloudflare
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.md.
         /// </summary>
+        [Obsolete("Use GetWafGroups.InvokeAsync() instead")]
         public static Task<GetWafGroupsResult> GetWafGroups(GetWafGroupsArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetWafGroups
+    {
+        /// <summary>
+        /// Use this data source to look up [WAF Rule Groups][1].
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.md.
+        /// </summary>
+        public static Task<GetWafGroupsResult> InvokeAsync(GetWafGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

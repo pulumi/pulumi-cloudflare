@@ -125,4 +125,3 @@ type PageRuleArgs struct {
 func (PageRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pageRuleArgs)(nil)).Elem()
 }
-

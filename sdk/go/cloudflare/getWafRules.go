@@ -22,19 +22,17 @@ func GetWafRules(ctx *pulumi.Context, args *GetWafRulesArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getWafRules.
 type GetWafRulesArgs struct {
-	Filter *GetWafRulesFilter `pulumi:"filter"`
-	PackageId *string `pulumi:"packageId"`
-	ZoneId string `pulumi:"zoneId"`
+	Filter    *GetWafRulesFilter `pulumi:"filter"`
+	PackageId *string            `pulumi:"packageId"`
+	ZoneId    string             `pulumi:"zoneId"`
 }
-
 
 // A collection of values returned by getWafRules.
 type GetWafRulesResult struct {
 	Filter *GetWafRulesFilter `pulumi:"filter"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	PackageId *string `pulumi:"packageId"`
-	Rules []GetWafRulesRule `pulumi:"rules"`
-	ZoneId string `pulumi:"zoneId"`
+	Id        string            `pulumi:"id"`
+	PackageId *string           `pulumi:"packageId"`
+	Rules     []GetWafRulesRule `pulumi:"rules"`
+	ZoneId    string            `pulumi:"zoneId"`
 }
-
