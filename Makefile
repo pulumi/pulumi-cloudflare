@@ -49,7 +49,7 @@ lint::
 	#golangci-lint run
 
 provider:: generate_schema
-	go generate ${PROJECT}/provider/cmd/${PROVIDER}
+	cd provider && go generate cmd/${PROVIDER}/main.go
 	cd provider && go install -ldflags "-X github.com/pulumi/pulumi-${PACK}/provider/pkg/version.Version=${VERSION}" ${PROJECT}/provider/cmd/${PROVIDER}
 
 generate_schema:: tfgen
