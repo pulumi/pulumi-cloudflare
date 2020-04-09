@@ -8,10 +8,11 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up [WAF Rule Groups][1].
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.md.
  */
-export function getWafGroups(args: GetWafGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetWafGroupsResult> & GetWafGroupsResult {
+export function getWafGroups(args: GetWafGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetWafGroupsResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,13 +20,11 @@ export function getWafGroups(args: GetWafGroupsArgs, opts?: pulumi.InvokeOptions
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetWafGroupsResult> = pulumi.runtime.invoke("cloudflare:index/getWafGroups:getWafGroups", {
+    return pulumi.runtime.invoke("cloudflare:index/getWafGroups:getWafGroups", {
         "filter": args.filter,
         "packageId": args.packageId,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

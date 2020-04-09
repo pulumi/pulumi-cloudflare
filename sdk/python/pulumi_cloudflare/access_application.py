@@ -38,6 +38,8 @@ class AccessApplication(pulumi.CustomResource):
         are used to restrict access to a whole application using an
         authorisation gateway managed by Cloudflare.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_application.html.markdown.
 
         :param str resource_name: The name of the resource.

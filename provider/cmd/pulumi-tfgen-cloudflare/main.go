@@ -15,10 +15,9 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
-
-	cloudflare "github.com/pulumi/pulumi-cloudflare/provider"
-	"github.com/pulumi/pulumi-cloudflare/provider/pkg/version"
+	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v2"
+	"github.com/pulumi/pulumi-cloudflare/provider/v2/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfgen"
 )
 
 func main() {

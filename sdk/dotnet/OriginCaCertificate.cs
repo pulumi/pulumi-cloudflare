@@ -14,6 +14,8 @@ namespace Pulumi.Cloudflare
     /// 
     /// **This resource requires you use your Origin CA Key as the `api_user_service_key`.**
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/origin_ca_certificate.html.markdown.
     /// </summary>
     public partial class OriginCaCertificate : Pulumi.CustomResource

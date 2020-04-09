@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare worker route resource. A route will also require a `cloudflare..WorkerScript`.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
  */

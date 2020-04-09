@@ -26,6 +26,8 @@ class Argo(pulumi.CustomResource):
         """
         Cloudflare Argo controls the routing to your origin and tiered caching options to speed up your website browsing experience.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/argo.html.markdown.
 
         :param str resource_name: The name of the resource.

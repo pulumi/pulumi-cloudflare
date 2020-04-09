@@ -12,6 +12,8 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource which manages Cloudflare account members.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/account_member.markdown.
     /// </summary>
     public partial class AccountMember : Pulumi.CustomResource

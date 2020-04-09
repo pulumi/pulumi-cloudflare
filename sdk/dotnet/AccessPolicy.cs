@@ -14,6 +14,8 @@ namespace Pulumi.Cloudflare
     /// in conjunction with Access Applications to restrict access to a
     /// particular resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
     /// </summary>
     public partial class AccessPolicy : Pulumi.CustomResource

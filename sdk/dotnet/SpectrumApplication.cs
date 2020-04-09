@@ -12,6 +12,8 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/spectrum_application.html.markdown.
     /// </summary>
     public partial class SpectrumApplication : Pulumi.CustomResource

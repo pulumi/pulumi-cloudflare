@@ -71,6 +71,8 @@ class SpectrumApplication(pulumi.CustomResource):
         """
         Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/spectrum_application.html.markdown.
 
         :param str resource_name: The name of the resource.

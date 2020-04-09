@@ -37,6 +37,8 @@ class CustomSsl(pulumi.CustomResource):
         """
         Provides a Cloudflare custom ssl resource.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_ssl.html.markdown.
 
         :param str resource_name: The name of the resource.

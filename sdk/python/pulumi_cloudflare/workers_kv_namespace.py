@@ -18,6 +18,8 @@ class WorkersKvNamespace(pulumi.CustomResource):
         """
         Provides a Workers KV Namespace
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/workers_kv_namespace.html.markdown.
 
         :param str resource_name: The name of the resource.

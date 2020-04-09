@@ -8,10 +8,11 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.md.
  */
-export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> & GetIpRangesResult {
+export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,10 +20,8 @@ export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesRes
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetIpRangesResult> = pulumi.runtime.invoke("cloudflare:index/getIpRanges:getIpRanges", {
+    return pulumi.runtime.invoke("cloudflare:index/getIpRanges:getIpRanges", {
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

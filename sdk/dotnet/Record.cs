@@ -12,6 +12,8 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare record resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
     /// </summary>
     public partial class Record : Pulumi.CustomResource

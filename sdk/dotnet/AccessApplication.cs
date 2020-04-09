@@ -14,6 +14,8 @@ namespace Pulumi.Cloudflare
     /// are used to restrict access to a whole application using an
     /// authorisation gateway managed by Cloudflare.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_application.html.markdown.
     /// </summary>
     public partial class AccessApplication : Pulumi.CustomResource

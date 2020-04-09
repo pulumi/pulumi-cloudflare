@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a Cloudflare Access Group resource. Access Groups are used
 // in conjunction with Access Policies to restrict access to a
 // particular resource based on group membership.
+//
 //
 // ## Conditions
 //

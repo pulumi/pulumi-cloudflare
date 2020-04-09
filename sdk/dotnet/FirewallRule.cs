@@ -15,6 +15,8 @@ namespace Pulumi.Cloudflare
     /// 
     /// Filter expressions needs to be created first before using Firewall Rule. See Filter.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.markdown.
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource

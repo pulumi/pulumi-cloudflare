@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// in conjunction with Access Policies to restrict access to a
     /// particular resource based on group membership.
     /// 
+    /// 
     /// ## Conditions
     /// 
     /// `require`, `exclude` and `include` arguments share the available

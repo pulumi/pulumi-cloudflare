@@ -5,10 +5,12 @@
 package cloudflare
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Use this data source to look up [WAF Rule Packages][1].
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.md.
 func GetWafPackages(ctx *pulumi.Context, args *GetWafPackagesArgs, opts ...pulumi.InvokeOption) (*GetWafPackagesResult, error) {

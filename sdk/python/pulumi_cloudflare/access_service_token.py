@@ -32,6 +32,8 @@ class AccessServiceToken(pulumi.CustomResource):
         Access Service Tokens are used for service-to-service communication
         when an application is behind Cloudflare Access.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_service_token.html.markdown.
 
         :param str resource_name: The name of the resource.

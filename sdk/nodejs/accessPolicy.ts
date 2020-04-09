@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Access Policy resource. Access Policies are used
  * in conjunction with Access Applications to restrict access to a
  * particular resource.
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
  */

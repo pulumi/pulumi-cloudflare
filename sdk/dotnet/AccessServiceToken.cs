@@ -13,6 +13,8 @@ namespace Pulumi.Cloudflare
     /// Access Service Tokens are used for service-to-service communication
     /// when an application is behind Cloudflare Access.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_service_token.html.markdown.
     /// </summary>
     public partial class AccessServiceToken : Pulumi.CustomResource

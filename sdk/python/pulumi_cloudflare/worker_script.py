@@ -23,6 +23,8 @@ class WorkerScript(pulumi.CustomResource):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `.WorkerRoute`.
 
+
+
         > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
 
         :param str resource_name: The name of the resource.

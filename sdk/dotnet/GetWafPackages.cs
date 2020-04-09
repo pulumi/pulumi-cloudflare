@@ -14,6 +14,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to look up [WAF Rule Packages][1].
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.md.
         /// </summary>
         [Obsolete("Use GetWafPackages.InvokeAsync() instead")]
@@ -24,6 +26,8 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to look up [WAF Rule Packages][1].
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.md.
         /// </summary>
