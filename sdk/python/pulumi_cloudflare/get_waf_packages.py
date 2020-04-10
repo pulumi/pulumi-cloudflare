@@ -46,8 +46,6 @@ def get_waf_packages(filter=None,zone_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.md.
-
 
 
     The **filter** object supports the following:

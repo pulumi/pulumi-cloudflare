@@ -50,8 +50,6 @@ def get_waf_groups(filter=None,package_id=None,zone_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.md.
-
 
 
     The **filter** object supports the following:

@@ -24,8 +24,6 @@ class AccountMember(pulumi.CustomResource):
 
 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/account_member.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.

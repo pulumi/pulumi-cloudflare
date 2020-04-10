@@ -55,8 +55,6 @@ class Zone(pulumi.CustomResource):
 
 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] jump_start: Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.

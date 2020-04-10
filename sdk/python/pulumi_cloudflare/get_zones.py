@@ -42,8 +42,6 @@ def get_zones(filter=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.md.
-
 
 
     The **filter** object supports the following:

@@ -106,8 +106,6 @@ class Record(pulumi.CustomResource):
 
 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/record.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified

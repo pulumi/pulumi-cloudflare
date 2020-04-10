@@ -78,8 +78,6 @@ class LoadBalancer(pulumi.CustomResource):
 
 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] default_pool_ids: A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
