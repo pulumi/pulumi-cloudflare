@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.10.0 (2020-04-14)
 * Refactor layout to support Go modules
 * Upgrade to Pulumi v1.13.1
 * Upgrade to pulumi-terraform-bridge v1.8.4
 * Upgrade to v2.5.1 of the Cloudflare Terraform Provider
-
----
 
 ## 1.9.0 (2020-03-31)
 * Upgrade to v2.5.0 of the Cloudflare Terraform Provider
