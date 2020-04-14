@@ -11,8 +11,7 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
- * The example below matches all `active` zones that begin with `example.` and are not paused. The matched zones are then
- * locked down using the `cloudflare..ZoneLockdown` resource.
+ * 
  * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -39,7 +38,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.md.
  */
-export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> & GetZonesResult {
+export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     if (!opts) {
         opts = {}
     }
@@ -47,11 +46,9 @@ export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promi
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetZonesResult> = pulumi.runtime.invoke("cloudflare:index/getZones:getZones", {
+    return pulumi.runtime.invoke("cloudflare:index/getZones:getZones", {
         "filter": args.filter,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

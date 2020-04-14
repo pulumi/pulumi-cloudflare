@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to look up [Zone][1] records.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.md.
-        /// </summary>
-        [Obsolete("Use GetZones.InvokeAsync() instead")]
-        public static Task<GetZonesResult> GetZones(GetZonesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetZones
     {
         /// <summary>
         /// Use this data source to look up [Zone][1] records.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
@@ -41,84 +32,28 @@ namespace Pulumi.Cloudflare
         }
     }
 
+
     [OutputType]
     public sealed class GetZonesResult
     {
         public readonly Outputs.GetZonesFilterResult Filter;
-        public readonly ImmutableArray<Outputs.GetZonesZonesResult> Zones;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 
         [OutputConstructor]
         private GetZonesResult(
             Outputs.GetZonesFilterResult filter,
-            ImmutableArray<Outputs.GetZonesZonesResult> zones,
-            string id)
+
+            string id,
+
+            ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
             Filter = filter;
+            Id = id;
             Zones = zones;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetZonesFilterArgs : Pulumi.InvokeArgs
-    {
-        [Input("name")]
-        public string? Name { get; set; }
-
-        [Input("paused")]
-        public bool? Paused { get; set; }
-
-        [Input("status")]
-        public string? Status { get; set; }
-
-        public GetZonesFilterArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetZonesFilterResult
-    {
-        public readonly string? Name;
-        public readonly bool? Paused;
-        public readonly string? Status;
-
-        [OutputConstructor]
-        private GetZonesFilterResult(
-            string? name,
-            bool? paused,
-            string? status)
-        {
-            Name = name;
-            Paused = paused;
-            Status = status;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetZonesZonesResult
-    {
-        public readonly string? Id;
-        public readonly string? Name;
-
-        [OutputConstructor]
-        private GetZonesZonesResult(
-            string? id,
-            string? name)
-        {
-            Id = id;
-            Name = name;
-        }
-    }
     }
 }

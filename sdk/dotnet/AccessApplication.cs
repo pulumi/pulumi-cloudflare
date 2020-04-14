@@ -13,8 +13,6 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Access Application resource. Access Applications
     /// are used to restrict access to a whole application using an
     /// authorisation gateway managed by Cloudflare.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_application.html.markdown.
     /// </summary>
     public partial class AccessApplication : Pulumi.CustomResource
     {
@@ -59,7 +57,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessApplication(string name, AccessApplicationArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/accessApplication:AccessApplication", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/accessApplication:AccessApplication", name, args ?? new AccessApplicationArgs(), MakeResourceOptions(options, ""))
         {
         }
 

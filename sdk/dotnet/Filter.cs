@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Filter expressions that can be referenced across multiple features, e.g. Firewall Rule. The expression format is similar to [Wireshark Display Filter](https://www.wireshark.org/docs/man-pages/wireshark-filter.html).
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/filter.markdown.
     /// </summary>
     public partial class Filter : Pulumi.CustomResource
     {
@@ -55,7 +53,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Filter(string name, FilterArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/filter:Filter", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/filter:Filter", name, args ?? new FilterArgs(), MakeResourceOptions(options, ""))
         {
         }
 

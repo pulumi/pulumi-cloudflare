@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare custom ssl resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_ssl.html.markdown.
     /// </summary>
     public partial class CustomSsl : Pulumi.CustomResource
     {
@@ -23,7 +21,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.CustomSslCustomSslOptions?> CustomSslOptions { get; private set; } = null!;
 
         [Output("customSslPriorities")]
-        public Output<ImmutableArray<Outputs.CustomSslCustomSslPriorities>> CustomSslPriorities { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.CustomSslCustomSslPriority>> CustomSslPriorities { get; private set; } = null!;
 
         [Output("expiresOn")]
         public Output<string> ExpiresOn { get; private set; } = null!;
@@ -64,7 +62,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CustomSsl(string name, CustomSslArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/customSsl:CustomSsl", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/customSsl:CustomSsl", name, args ?? new CustomSslArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -108,10 +106,10 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.CustomSslCustomSslOptionsArgs>? CustomSslOptions { get; set; }
 
         [Input("customSslPriorities")]
-        private InputList<Inputs.CustomSslCustomSslPrioritiesArgs>? _customSslPriorities;
-        public InputList<Inputs.CustomSslCustomSslPrioritiesArgs> CustomSslPriorities
+        private InputList<Inputs.CustomSslCustomSslPriorityArgs>? _customSslPriorities;
+        public InputList<Inputs.CustomSslCustomSslPriorityArgs> CustomSslPriorities
         {
-            get => _customSslPriorities ?? (_customSslPriorities = new InputList<Inputs.CustomSslCustomSslPrioritiesArgs>());
+            get => _customSslPriorities ?? (_customSslPriorities = new InputList<Inputs.CustomSslCustomSslPriorityArgs>());
             set => _customSslPriorities = value;
         }
 
@@ -135,10 +133,10 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.CustomSslCustomSslOptionsGetArgs>? CustomSslOptions { get; set; }
 
         [Input("customSslPriorities")]
-        private InputList<Inputs.CustomSslCustomSslPrioritiesGetArgs>? _customSslPriorities;
-        public InputList<Inputs.CustomSslCustomSslPrioritiesGetArgs> CustomSslPriorities
+        private InputList<Inputs.CustomSslCustomSslPriorityGetArgs>? _customSslPriorities;
+        public InputList<Inputs.CustomSslCustomSslPriorityGetArgs> CustomSslPriorities
         {
-            get => _customSslPriorities ?? (_customSslPriorities = new InputList<Inputs.CustomSslCustomSslPrioritiesGetArgs>());
+            get => _customSslPriorities ?? (_customSslPriorities = new InputList<Inputs.CustomSslCustomSslPriorityGetArgs>());
             set => _customSslPriorities = value;
         }
 
@@ -180,169 +178,5 @@ namespace Pulumi.Cloudflare
         public CustomSslState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class CustomSslCustomSslOptionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
-        /// </summary>
-        [Input("bundleMethod")]
-        public Input<string>? BundleMethod { get; set; }
-
-        /// <summary>
-        /// Certificate certificate and the intermediate(s)
-        /// </summary>
-        [Input("certificate", required: true)]
-        public Input<string> Certificate { get; set; } = null!;
-
-        /// <summary>
-        /// Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
-        /// </summary>
-        [Input("geoRestrictions")]
-        public Input<string>? GeoRestrictions { get; set; }
-
-        /// <summary>
-        /// Certificate's private key
-        /// </summary>
-        [Input("privateKey", required: true)]
-        public Input<string> PrivateKey { get; set; } = null!;
-
-        /// <summary>
-        /// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public CustomSslCustomSslOptionsArgs()
-        {
-        }
-    }
-
-    public sealed class CustomSslCustomSslOptionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
-        /// </summary>
-        [Input("bundleMethod")]
-        public Input<string>? BundleMethod { get; set; }
-
-        /// <summary>
-        /// Certificate certificate and the intermediate(s)
-        /// </summary>
-        [Input("certificate", required: true)]
-        public Input<string> Certificate { get; set; } = null!;
-
-        /// <summary>
-        /// Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
-        /// </summary>
-        [Input("geoRestrictions")]
-        public Input<string>? GeoRestrictions { get; set; }
-
-        /// <summary>
-        /// Certificate's private key
-        /// </summary>
-        [Input("privateKey", required: true)]
-        public Input<string> PrivateKey { get; set; } = null!;
-
-        /// <summary>
-        /// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        public CustomSslCustomSslOptionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class CustomSslCustomSslPrioritiesArgs : Pulumi.ResourceArgs
-    {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("priority")]
-        public Input<int>? Priority { get; set; }
-
-        public CustomSslCustomSslPrioritiesArgs()
-        {
-        }
-    }
-
-    public sealed class CustomSslCustomSslPrioritiesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        [Input("priority")]
-        public Input<int>? Priority { get; set; }
-
-        public CustomSslCustomSslPrioritiesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class CustomSslCustomSslOptions
-    {
-        /// <summary>
-        /// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
-        /// </summary>
-        public readonly string? BundleMethod;
-        /// <summary>
-        /// Certificate certificate and the intermediate(s)
-        /// </summary>
-        public readonly string Certificate;
-        /// <summary>
-        /// Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
-        /// </summary>
-        public readonly string? GeoRestrictions;
-        /// <summary>
-        /// Certificate's private key
-        /// </summary>
-        public readonly string PrivateKey;
-        /// <summary>
-        /// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
-        /// </summary>
-        public readonly string? Type;
-
-        [OutputConstructor]
-        private CustomSslCustomSslOptions(
-            string? bundleMethod,
-            string certificate,
-            string? geoRestrictions,
-            string privateKey,
-            string? type)
-        {
-            BundleMethod = bundleMethod;
-            Certificate = certificate;
-            GeoRestrictions = geoRestrictions;
-            PrivateKey = privateKey;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class CustomSslCustomSslPriorities
-    {
-        public readonly string? Id;
-        public readonly int? Priority;
-
-        [OutputConstructor]
-        private CustomSslCustomSslPriorities(
-            string? id,
-            int? priority)
-        {
-            Id = id;
-            Priority = priority;
-        }
-    }
     }
 }

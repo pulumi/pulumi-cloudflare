@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Access Identity Provider resource. Identity Providers are
     /// used as an authentication or authorisation source within Access.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_identity_provider.html.markdown.
     /// </summary>
     public partial class AccessIdentityProvider : Pulumi.CustomResource
     {
@@ -24,7 +22,7 @@ namespace Pulumi.Cloudflare
         /// Provider configuration from the [developer documentation][access_identity_provider_guide].
         /// </summary>
         [Output("configs")]
-        public Output<ImmutableArray<Outputs.AccessIdentityProviderConfigs>> Configs { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AccessIdentityProviderConfig>> Configs { get; private set; } = null!;
 
         /// <summary>
         /// Friendly name of the Access Identity Provider configuration.
@@ -49,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessIdentityProvider(string name, AccessIdentityProviderArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", name, args ?? new AccessIdentityProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -90,14 +88,14 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         [Input("configs")]
-        private InputList<Inputs.AccessIdentityProviderConfigsArgs>? _configs;
+        private InputList<Inputs.AccessIdentityProviderConfigArgs>? _configs;
 
         /// <summary>
         /// Provider configuration from the [developer documentation][access_identity_provider_guide].
         /// </summary>
-        public InputList<Inputs.AccessIdentityProviderConfigsArgs> Configs
+        public InputList<Inputs.AccessIdentityProviderConfigArgs> Configs
         {
-            get => _configs ?? (_configs = new InputList<Inputs.AccessIdentityProviderConfigsArgs>());
+            get => _configs ?? (_configs = new InputList<Inputs.AccessIdentityProviderConfigArgs>());
             set => _configs = value;
         }
 
@@ -126,14 +124,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         [Input("configs")]
-        private InputList<Inputs.AccessIdentityProviderConfigsGetArgs>? _configs;
+        private InputList<Inputs.AccessIdentityProviderConfigGetArgs>? _configs;
 
         /// <summary>
         /// Provider configuration from the [developer documentation][access_identity_provider_guide].
         /// </summary>
-        public InputList<Inputs.AccessIdentityProviderConfigsGetArgs> Configs
+        public InputList<Inputs.AccessIdentityProviderConfigGetArgs> Configs
         {
-            get => _configs ?? (_configs = new InputList<Inputs.AccessIdentityProviderConfigsGetArgs>());
+            get => _configs ?? (_configs = new InputList<Inputs.AccessIdentityProviderConfigGetArgs>());
             set => _configs = value;
         }
 
@@ -154,218 +152,5 @@ namespace Pulumi.Cloudflare
         public AccessIdentityProviderState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AccessIdentityProviderConfigsArgs : Pulumi.ResourceArgs
-    {
-        [Input("appsDomain")]
-        public Input<string>? AppsDomain { get; set; }
-
-        [Input("attributes")]
-        private InputList<string>? _attributes;
-        public InputList<string> Attributes
-        {
-            get => _attributes ?? (_attributes = new InputList<string>());
-            set => _attributes = value;
-        }
-
-        [Input("authUrl")]
-        public Input<string>? AuthUrl { get; set; }
-
-        [Input("centrifyAccount")]
-        public Input<string>? CentrifyAccount { get; set; }
-
-        [Input("centrifyAppId")]
-        public Input<string>? CentrifyAppId { get; set; }
-
-        [Input("certsUrl")]
-        public Input<string>? CertsUrl { get; set; }
-
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
-
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
-
-        [Input("directoryId")]
-        public Input<string>? DirectoryId { get; set; }
-
-        [Input("emailAttributeName")]
-        public Input<string>? EmailAttributeName { get; set; }
-
-        [Input("idpPublicCert")]
-        public Input<string>? IdpPublicCert { get; set; }
-
-        [Input("issuerUrl")]
-        public Input<string>? IssuerUrl { get; set; }
-
-        [Input("oktaAccount")]
-        public Input<string>? OktaAccount { get; set; }
-
-        [Input("oneloginAccount")]
-        public Input<string>? OneloginAccount { get; set; }
-
-        [Input("redirectUrl")]
-        public Input<string>? RedirectUrl { get; set; }
-
-        [Input("signRequest")]
-        public Input<bool>? SignRequest { get; set; }
-
-        [Input("ssoTargetUrl")]
-        public Input<string>? SsoTargetUrl { get; set; }
-
-        [Input("supportGroups")]
-        public Input<bool>? SupportGroups { get; set; }
-
-        [Input("tokenUrl")]
-        public Input<string>? TokenUrl { get; set; }
-
-        public AccessIdentityProviderConfigsArgs()
-        {
-        }
-    }
-
-    public sealed class AccessIdentityProviderConfigsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("appsDomain")]
-        public Input<string>? AppsDomain { get; set; }
-
-        [Input("attributes")]
-        private InputList<string>? _attributes;
-        public InputList<string> Attributes
-        {
-            get => _attributes ?? (_attributes = new InputList<string>());
-            set => _attributes = value;
-        }
-
-        [Input("authUrl")]
-        public Input<string>? AuthUrl { get; set; }
-
-        [Input("centrifyAccount")]
-        public Input<string>? CentrifyAccount { get; set; }
-
-        [Input("centrifyAppId")]
-        public Input<string>? CentrifyAppId { get; set; }
-
-        [Input("certsUrl")]
-        public Input<string>? CertsUrl { get; set; }
-
-        [Input("clientId")]
-        public Input<string>? ClientId { get; set; }
-
-        [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
-
-        [Input("directoryId")]
-        public Input<string>? DirectoryId { get; set; }
-
-        [Input("emailAttributeName")]
-        public Input<string>? EmailAttributeName { get; set; }
-
-        [Input("idpPublicCert")]
-        public Input<string>? IdpPublicCert { get; set; }
-
-        [Input("issuerUrl")]
-        public Input<string>? IssuerUrl { get; set; }
-
-        [Input("oktaAccount")]
-        public Input<string>? OktaAccount { get; set; }
-
-        [Input("oneloginAccount")]
-        public Input<string>? OneloginAccount { get; set; }
-
-        [Input("redirectUrl")]
-        public Input<string>? RedirectUrl { get; set; }
-
-        [Input("signRequest")]
-        public Input<bool>? SignRequest { get; set; }
-
-        [Input("ssoTargetUrl")]
-        public Input<string>? SsoTargetUrl { get; set; }
-
-        [Input("supportGroups")]
-        public Input<bool>? SupportGroups { get; set; }
-
-        [Input("tokenUrl")]
-        public Input<string>? TokenUrl { get; set; }
-
-        public AccessIdentityProviderConfigsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AccessIdentityProviderConfigs
-    {
-        public readonly string? AppsDomain;
-        public readonly ImmutableArray<string> Attributes;
-        public readonly string? AuthUrl;
-        public readonly string? CentrifyAccount;
-        public readonly string? CentrifyAppId;
-        public readonly string? CertsUrl;
-        public readonly string? ClientId;
-        public readonly string? ClientSecret;
-        public readonly string? DirectoryId;
-        public readonly string? EmailAttributeName;
-        public readonly string? IdpPublicCert;
-        public readonly string? IssuerUrl;
-        public readonly string? OktaAccount;
-        public readonly string? OneloginAccount;
-        public readonly string RedirectUrl;
-        public readonly bool? SignRequest;
-        public readonly string? SsoTargetUrl;
-        public readonly bool? SupportGroups;
-        public readonly string? TokenUrl;
-
-        [OutputConstructor]
-        private AccessIdentityProviderConfigs(
-            string? appsDomain,
-            ImmutableArray<string> attributes,
-            string? authUrl,
-            string? centrifyAccount,
-            string? centrifyAppId,
-            string? certsUrl,
-            string? clientId,
-            string? clientSecret,
-            string? directoryId,
-            string? emailAttributeName,
-            string? idpPublicCert,
-            string? issuerUrl,
-            string? oktaAccount,
-            string? oneloginAccount,
-            string redirectUrl,
-            bool? signRequest,
-            string? ssoTargetUrl,
-            bool? supportGroups,
-            string? tokenUrl)
-        {
-            AppsDomain = appsDomain;
-            Attributes = attributes;
-            AuthUrl = authUrl;
-            CentrifyAccount = centrifyAccount;
-            CentrifyAppId = centrifyAppId;
-            CertsUrl = certsUrl;
-            ClientId = clientId;
-            ClientSecret = clientSecret;
-            DirectoryId = directoryId;
-            EmailAttributeName = emailAttributeName;
-            IdpPublicCert = idpPublicCert;
-            IssuerUrl = issuerUrl;
-            OktaAccount = oktaAccount;
-            OneloginAccount = oneloginAccount;
-            RedirectUrl = redirectUrl;
-            SignRequest = signRequest;
-            SsoTargetUrl = ssoTargetUrl;
-            SupportGroups = supportGroups;
-            TokenUrl = tokenUrl;
-        }
-    }
     }
 }

@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to look up [WAF Rules][1].
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_rules.html.md.
-        /// </summary>
-        [Obsolete("Use GetWafRules.InvokeAsync() instead")]
-        public static Task<GetWafRulesResult> GetWafRules(GetWafRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWafRulesResult>("cloudflare:index/getWafRules:getWafRules", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetWafRules
     {
         /// <summary>
         /// Use this data source to look up [WAF Rules][1].
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_rules.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafRulesResult> InvokeAsync(GetWafRulesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWafRulesResult>("cloudflare:index/getWafRules:getWafRules", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWafRulesResult>("cloudflare:index/getWafRules:getWafRules", args ?? new GetWafRulesArgs(), options.WithVersion());
     }
+
 
     public sealed class GetWafRulesArgs : Pulumi.InvokeArgs
     {
@@ -47,108 +38,36 @@ namespace Pulumi.Cloudflare
         }
     }
 
+
     [OutputType]
     public sealed class GetWafRulesResult
     {
         public readonly Outputs.GetWafRulesFilterResult? Filter;
-        public readonly string? PackageId;
-        public readonly ImmutableArray<Outputs.GetWafRulesRulesResult> Rules;
-        public readonly string ZoneId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? PackageId;
+        public readonly ImmutableArray<Outputs.GetWafRulesRuleResult> Rules;
+        public readonly string ZoneId;
 
         [OutputConstructor]
         private GetWafRulesResult(
             Outputs.GetWafRulesFilterResult? filter,
+
+            string id,
+
             string? packageId,
-            ImmutableArray<Outputs.GetWafRulesRulesResult> rules,
-            string zoneId,
-            string id)
+
+            ImmutableArray<Outputs.GetWafRulesRuleResult> rules,
+
+            string zoneId)
         {
             Filter = filter;
+            Id = id;
             PackageId = packageId;
             Rules = rules;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetWafRulesFilterArgs : Pulumi.InvokeArgs
-    {
-        [Input("description")]
-        public string? Description { get; set; }
-
-        [Input("groupId")]
-        public string? GroupId { get; set; }
-
-        [Input("mode")]
-        public string? Mode { get; set; }
-
-        public GetWafRulesFilterArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetWafRulesFilterResult
-    {
-        public readonly string? Description;
-        public readonly string? GroupId;
-        public readonly string? Mode;
-
-        [OutputConstructor]
-        private GetWafRulesFilterResult(
-            string? description,
-            string? groupId,
-            string? mode)
-        {
-            Description = description;
-            GroupId = groupId;
-            Mode = mode;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetWafRulesRulesResult
-    {
-        public readonly ImmutableArray<string> AllowedModes;
-        public readonly string? Description;
-        public readonly string? GroupId;
-        public readonly string? GroupName;
-        public readonly string? Id;
-        public readonly string? Mode;
-        public readonly string? PackageId;
-        public readonly string? Priority;
-
-        [OutputConstructor]
-        private GetWafRulesRulesResult(
-            ImmutableArray<string> allowedModes,
-            string? description,
-            string? groupId,
-            string? groupName,
-            string? id,
-            string? mode,
-            string? packageId,
-            string? priority)
-        {
-            AllowedModes = allowedModes;
-            Description = description;
-            GroupId = groupId;
-            GroupName = groupName;
-            Id = id;
-            Mode = mode;
-            PackageId = packageId;
-            Priority = priority;
-        }
-    }
     }
 }

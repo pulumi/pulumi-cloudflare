@@ -12,6 +12,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -50,9 +52,6 @@ import * as utilities from "./utilities";
  *     type: "saml",
  * });
  * ```
- * 
- * Please refer to the [developers.cloudflare.com Access documentation][accessIdentityProviderGuide]
- * for full reference on what is available and how to configure your provider.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_identity_provider.html.markdown.
  */

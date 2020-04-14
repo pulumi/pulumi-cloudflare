@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Workers KV Namespace
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/workers_kv_namespace.html.markdown.
     /// </summary>
     public partial class WorkersKvNamespace : Pulumi.CustomResource
     {
@@ -31,7 +29,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkersKvNamespace(string name, WorkersKvNamespaceArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/workersKvNamespace:WorkersKvNamespace", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/workersKvNamespace:WorkersKvNamespace", name, args ?? new WorkersKvNamespaceArgs(), MakeResourceOptions(options, ""))
         {
         }
 

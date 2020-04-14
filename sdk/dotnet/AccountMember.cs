@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource which manages Cloudflare account members.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/account_member.markdown.
     /// </summary>
     public partial class AccountMember : Pulumi.CustomResource
     {
@@ -37,7 +35,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccountMember(string name, AccountMemberArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/accountMember:AccountMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/accountMember:AccountMember", name, args ?? new AccountMemberArgs(), MakeResourceOptions(options, ""))
         {
         }
 

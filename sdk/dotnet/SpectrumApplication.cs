@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/spectrum_application.html.markdown.
     /// </summary>
     public partial class SpectrumApplication : Pulumi.CustomResource
     {
@@ -103,7 +101,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SpectrumApplication(string name, SpectrumApplicationArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/spectrumApplication:SpectrumApplication", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/spectrumApplication:SpectrumApplication", name, args ?? new SpectrumApplicationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -330,114 +328,5 @@ namespace Pulumi.Cloudflare
         public SpectrumApplicationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class SpectrumApplicationDnsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The type of DNS record associated with the application. Valid values: `CNAME`.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public SpectrumApplicationDnsArgs()
-        {
-        }
-    }
-
-    public sealed class SpectrumApplicationDnsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The type of DNS record associated with the application. Valid values: `CNAME`.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public SpectrumApplicationDnsGetArgs()
-        {
-        }
-    }
-
-    public sealed class SpectrumApplicationOriginDnsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public SpectrumApplicationOriginDnsArgs()
-        {
-        }
-    }
-
-    public sealed class SpectrumApplicationOriginDnsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        public SpectrumApplicationOriginDnsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class SpectrumApplicationDns
-    {
-        /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The type of DNS record associated with the application. Valid values: `CNAME`.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private SpectrumApplicationDns(
-            string name,
-            string type)
-        {
-            Name = name;
-            Type = type;
-        }
-    }
-
-    [OutputType]
-    public sealed class SpectrumApplicationOriginDns
-    {
-        /// <summary>
-        /// Fully qualified domain name of the origin e.g. origin-ssh.example.com.
-        /// </summary>
-        public readonly string Name;
-
-        [OutputConstructor]
-        private SpectrumApplicationOriginDns(string name)
-        {
-            Name = name;
-        }
-    }
     }
 }

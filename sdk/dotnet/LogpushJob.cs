@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource which manages Cloudflare logpush jobs.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/logpush_job.html.markdown.
     /// </summary>
     public partial class LogpushJob : Pulumi.CustomResource
     {
@@ -58,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LogpushJob(string name, LogpushJobArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/logpushJob:LogpushJob", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/logpushJob:LogpushJob", name, args ?? new LogpushJobArgs(), MakeResourceOptions(options, ""))
         {
         }
 

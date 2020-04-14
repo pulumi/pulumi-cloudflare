@@ -14,8 +14,6 @@ namespace Pulumi.Cloudflare
     /// A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
     /// 
     /// Filter expressions needs to be created first before using Firewall Rule. See Filter.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.markdown.
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {
@@ -67,7 +65,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FirewallRule(string name, FirewallRuleArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/firewallRule:FirewallRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/firewallRule:FirewallRule", name, args ?? new FirewallRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

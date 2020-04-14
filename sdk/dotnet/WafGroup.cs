@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_group.html.markdown.
     /// </summary>
     public partial class WafGroup : Pulumi.CustomResource
     {
@@ -49,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WafGroup(string name, WafGroupArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/wafGroup:WafGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/wafGroup:WafGroup", name, args ?? new WafGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_rule.html.markdown.
     /// </summary>
     public partial class AccessRule : Pulumi.CustomResource
     {
@@ -49,7 +47,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessRule(string name, AccessRuleArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/accessRule:AccessRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/accessRule:AccessRule", name, args ?? new AccessRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -144,73 +142,5 @@ namespace Pulumi.Cloudflare
         public AccessRuleState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AccessRuleConfigurationArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
-        /// </summary>
-        [Input("target", required: true)]
-        public Input<string> Target { get; set; } = null!;
-
-        /// <summary>
-        /// The value to target. Depends on target's type.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public AccessRuleConfigurationArgs()
-        {
-        }
-    }
-
-    public sealed class AccessRuleConfigurationGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
-        /// </summary>
-        [Input("target", required: true)]
-        public Input<string> Target { get; set; } = null!;
-
-        /// <summary>
-        /// The value to target. Depends on target's type.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public AccessRuleConfigurationGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AccessRuleConfiguration
-    {
-        /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip6", "ip_range", "asn", "country"
-        /// </summary>
-        public readonly string Target;
-        /// <summary>
-        /// The value to target. Depends on target's type.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private AccessRuleConfiguration(
-            string target,
-            string value)
-        {
-            Target = target;
-            Value = value;
-        }
-    }
     }
 }

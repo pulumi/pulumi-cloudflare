@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Cloudflare Argo controls the routing to your origin and tiered caching options to speed up your website browsing experience.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/argo.html.markdown.
     /// </summary>
     public partial class Argo : Pulumi.CustomResource
     {
@@ -43,7 +41,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Argo(string name, ArgoArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/argo:Argo", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/argo:Argo", name, args ?? new ArgoArgs(), MakeResourceOptions(options, ""))
         {
         }
 

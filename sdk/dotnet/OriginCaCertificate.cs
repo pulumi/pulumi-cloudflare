@@ -13,8 +13,6 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
     /// 
     /// **This resource requires you use your Origin CA Key as the `api_user_service_key`.**
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/origin_ca_certificate.html.markdown.
     /// </summary>
     public partial class OriginCaCertificate : Pulumi.CustomResource
     {
@@ -63,7 +61,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OriginCaCertificate(string name, OriginCaCertificateArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/originCaCertificate:OriginCaCertificate", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/originCaCertificate:OriginCaCertificate", name, args ?? new OriginCaCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 

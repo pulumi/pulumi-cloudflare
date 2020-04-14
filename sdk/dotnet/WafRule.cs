@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare WAF rule resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall rules.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_rule.html.markdown.
     /// </summary>
     public partial class WafRule : Pulumi.CustomResource
     {
@@ -55,7 +53,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WafRule(string name, WafRuleArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/wafRule:WafRule", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/wafRule:WafRule", name, args ?? new WafRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 

@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
     /// </summary>
     public partial class WorkerScript : Pulumi.CustomResource
     {
@@ -23,7 +21,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Content { get; private set; } = null!;
 
         [Output("kvNamespaceBindings")]
-        public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBindings>> KvNamespaceBindings { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBinding>> KvNamespaceBindings { get; private set; } = null!;
 
         /// <summary>
         /// The name for the binding.
@@ -40,7 +38,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkerScript(string name, WorkerScriptArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/workerScript:WorkerScript", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/workerScript:WorkerScript", name, args ?? new WorkerScriptArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -84,10 +82,10 @@ namespace Pulumi.Cloudflare
         public Input<string> Content { get; set; } = null!;
 
         [Input("kvNamespaceBindings")]
-        private InputList<Inputs.WorkerScriptKvNamespaceBindingsArgs>? _kvNamespaceBindings;
-        public InputList<Inputs.WorkerScriptKvNamespaceBindingsArgs> KvNamespaceBindings
+        private InputList<Inputs.WorkerScriptKvNamespaceBindingArgs>? _kvNamespaceBindings;
+        public InputList<Inputs.WorkerScriptKvNamespaceBindingArgs> KvNamespaceBindings
         {
-            get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingsArgs>());
+            get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingArgs>());
             set => _kvNamespaceBindings = value;
         }
 
@@ -111,10 +109,10 @@ namespace Pulumi.Cloudflare
         public Input<string>? Content { get; set; }
 
         [Input("kvNamespaceBindings")]
-        private InputList<Inputs.WorkerScriptKvNamespaceBindingsGetArgs>? _kvNamespaceBindings;
-        public InputList<Inputs.WorkerScriptKvNamespaceBindingsGetArgs> KvNamespaceBindings
+        private InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs>? _kvNamespaceBindings;
+        public InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs> KvNamespaceBindings
         {
-            get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingsGetArgs>());
+            get => _kvNamespaceBindings ?? (_kvNamespaceBindings = new InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs>());
             set => _kvNamespaceBindings = value;
         }
 
@@ -127,73 +125,5 @@ namespace Pulumi.Cloudflare
         public WorkerScriptState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class WorkerScriptKvNamespaceBindingsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name for the binding.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// ID of KV namespace.
-        /// </summary>
-        [Input("namespaceId", required: true)]
-        public Input<string> NamespaceId { get; set; } = null!;
-
-        public WorkerScriptKvNamespaceBindingsArgs()
-        {
-        }
-    }
-
-    public sealed class WorkerScriptKvNamespaceBindingsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The name for the binding.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// ID of KV namespace.
-        /// </summary>
-        [Input("namespaceId", required: true)]
-        public Input<string> NamespaceId { get; set; } = null!;
-
-        public WorkerScriptKvNamespaceBindingsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class WorkerScriptKvNamespaceBindings
-    {
-        /// <summary>
-        /// The name for the binding.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// ID of KV namespace.
-        /// </summary>
-        public readonly string NamespaceId;
-
-        [OutputConstructor]
-        private WorkerScriptKvNamespaceBindings(
-            string name,
-            string namespaceId)
-        {
-            Name = name;
-            NamespaceId = namespaceId;
-        }
-    }
     }
 }

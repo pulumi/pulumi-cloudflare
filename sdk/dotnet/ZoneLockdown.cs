@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
     /// </summary>
     public partial class ZoneLockdown : Pulumi.CustomResource
     {
@@ -20,7 +18,7 @@ namespace Pulumi.Cloudflare
         /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
         /// </summary>
         [Output("configurations")]
-        public Output<ImmutableArray<Outputs.ZoneLockdownConfigurations>> Configurations { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ZoneLockdownConfiguration>> Configurations { get; private set; } = null!;
 
         /// <summary>
         /// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
@@ -58,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ZoneLockdown(string name, ZoneLockdownArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/zoneLockdown:ZoneLockdown", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/zoneLockdown:ZoneLockdown", name, args ?? new ZoneLockdownArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -96,14 +94,14 @@ namespace Pulumi.Cloudflare
     public sealed class ZoneLockdownArgs : Pulumi.ResourceArgs
     {
         [Input("configurations", required: true)]
-        private InputList<Inputs.ZoneLockdownConfigurationsArgs>? _configurations;
+        private InputList<Inputs.ZoneLockdownConfigurationArgs>? _configurations;
 
         /// <summary>
         /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
         /// </summary>
-        public InputList<Inputs.ZoneLockdownConfigurationsArgs> Configurations
+        public InputList<Inputs.ZoneLockdownConfigurationArgs> Configurations
         {
-            get => _configurations ?? (_configurations = new InputList<Inputs.ZoneLockdownConfigurationsArgs>());
+            get => _configurations ?? (_configurations = new InputList<Inputs.ZoneLockdownConfigurationArgs>());
             set => _configurations = value;
         }
 
@@ -148,14 +146,14 @@ namespace Pulumi.Cloudflare
     public sealed class ZoneLockdownState : Pulumi.ResourceArgs
     {
         [Input("configurations")]
-        private InputList<Inputs.ZoneLockdownConfigurationsGetArgs>? _configurations;
+        private InputList<Inputs.ZoneLockdownConfigurationGetArgs>? _configurations;
 
         /// <summary>
         /// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
         /// </summary>
-        public InputList<Inputs.ZoneLockdownConfigurationsGetArgs> Configurations
+        public InputList<Inputs.ZoneLockdownConfigurationGetArgs> Configurations
         {
-            get => _configurations ?? (_configurations = new InputList<Inputs.ZoneLockdownConfigurationsGetArgs>());
+            get => _configurations ?? (_configurations = new InputList<Inputs.ZoneLockdownConfigurationGetArgs>());
             set => _configurations = value;
         }
 
@@ -195,73 +193,5 @@ namespace Pulumi.Cloudflare
         public ZoneLockdownState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ZoneLockdownConfigurationsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip_range"
-        /// </summary>
-        [Input("target", required: true)]
-        public Input<string> Target { get; set; } = null!;
-
-        /// <summary>
-        /// The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ZoneLockdownConfigurationsArgs()
-        {
-        }
-    }
-
-    public sealed class ZoneLockdownConfigurationsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip_range"
-        /// </summary>
-        [Input("target", required: true)]
-        public Input<string> Target { get; set; } = null!;
-
-        /// <summary>
-        /// The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
-        /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
-
-        public ZoneLockdownConfigurationsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ZoneLockdownConfigurations
-    {
-        /// <summary>
-        /// The request property to target. Allowed values: "ip", "ip_range"
-        /// </summary>
-        public readonly string Target;
-        /// <summary>
-        /// The value to target. Depends on target's type. IP addresses should just be standard IPv4/IPv6 notation i.e. `198.51.100.4` or `2001:db8::/32` and IP ranges in CIDR format i.e. `198.51.0.0/16`.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private ZoneLockdownConfigurations(
-            string target,
-            string value)
-        {
-            Target = target;
-            Value = value;
-        }
-    }
     }
 }

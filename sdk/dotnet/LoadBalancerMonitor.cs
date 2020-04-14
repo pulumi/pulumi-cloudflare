@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
     /// </summary>
     public partial class LoadBalancerMonitor : Pulumi.CustomResource
     {
@@ -56,7 +54,7 @@ namespace Pulumi.Cloudflare
         /// The header name.
         /// </summary>
         [Output("headers")]
-        public Output<ImmutableArray<Outputs.LoadBalancerMonitorHeaders>> Headers { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.LoadBalancerMonitorHeader>> Headers { get; private set; } = null!;
 
         /// <summary>
         /// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
@@ -112,7 +110,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LoadBalancerMonitor(string name, LoadBalancerMonitorArgs? args = null, CustomResourceOptions? options = null)
-            : base("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, args ?? new LoadBalancerMonitorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -180,14 +178,14 @@ namespace Pulumi.Cloudflare
         public Input<bool>? FollowRedirects { get; set; }
 
         [Input("headers")]
-        private InputList<Inputs.LoadBalancerMonitorHeadersArgs>? _headers;
+        private InputList<Inputs.LoadBalancerMonitorHeaderArgs>? _headers;
 
         /// <summary>
         /// The header name.
         /// </summary>
-        public InputList<Inputs.LoadBalancerMonitorHeadersArgs> Headers
+        public InputList<Inputs.LoadBalancerMonitorHeaderArgs> Headers
         {
-            get => _headers ?? (_headers = new InputList<Inputs.LoadBalancerMonitorHeadersArgs>());
+            get => _headers ?? (_headers = new InputList<Inputs.LoadBalancerMonitorHeaderArgs>());
             set => _headers = value;
         }
 
@@ -274,14 +272,14 @@ namespace Pulumi.Cloudflare
         public Input<bool>? FollowRedirects { get; set; }
 
         [Input("headers")]
-        private InputList<Inputs.LoadBalancerMonitorHeadersGetArgs>? _headers;
+        private InputList<Inputs.LoadBalancerMonitorHeaderGetArgs>? _headers;
 
         /// <summary>
         /// The header name.
         /// </summary>
-        public InputList<Inputs.LoadBalancerMonitorHeadersGetArgs> Headers
+        public InputList<Inputs.LoadBalancerMonitorHeaderGetArgs> Headers
         {
-            get => _headers ?? (_headers = new InputList<Inputs.LoadBalancerMonitorHeadersGetArgs>());
+            get => _headers ?? (_headers = new InputList<Inputs.LoadBalancerMonitorHeaderGetArgs>());
             set => _headers = value;
         }
 
@@ -333,85 +331,5 @@ namespace Pulumi.Cloudflare
         public LoadBalancerMonitorState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class LoadBalancerMonitorHeadersArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The header name.
-        /// </summary>
-        [Input("header", required: true)]
-        public Input<string> Header { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of string values for the header.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public LoadBalancerMonitorHeadersArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerMonitorHeadersGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The header name.
-        /// </summary>
-        [Input("header", required: true)]
-        public Input<string> Header { get; set; } = null!;
-
-        [Input("values", required: true)]
-        private InputList<string>? _values;
-
-        /// <summary>
-        /// A list of string values for the header.
-        /// </summary>
-        public InputList<string> Values
-        {
-            get => _values ?? (_values = new InputList<string>());
-            set => _values = value;
-        }
-
-        public LoadBalancerMonitorHeadersGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class LoadBalancerMonitorHeaders
-    {
-        /// <summary>
-        /// The header name.
-        /// </summary>
-        public readonly string Header;
-        /// <summary>
-        /// A list of string values for the header.
-        /// </summary>
-        public readonly ImmutableArray<string> Values;
-
-        [OutputConstructor]
-        private LoadBalancerMonitorHeaders(
-            string header,
-            ImmutableArray<string> values)
-        {
-            Header = header;
-            Values = values;
-        }
-    }
     }
 }

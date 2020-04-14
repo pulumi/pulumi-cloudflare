@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource which manages Cloudflare custom error pages.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_pages.html.markdown.
     /// </summary>
     public partial class CustomPages : Pulumi.CustomResource
     {
@@ -58,7 +56,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CustomPages(string name, CustomPagesArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/customPages:CustomPages", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/customPages:CustomPages", name, args ?? new CustomPagesArgs(), MakeResourceOptions(options, ""))
         {
         }
 

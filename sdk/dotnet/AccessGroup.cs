@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// in conjunction with Access Policies to restrict access to a
     /// particular resource based on group membership.
     /// 
+    /// 
     /// ## Conditions
     /// 
     /// `require`, `exclude` and `include` arguments share the available
@@ -92,8 +93,6 @@ namespace Pulumi.Cloudflare
     ///     }
     ///   }
     ///   ```
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_group.html.markdown.
     /// </summary>
     public partial class AccessGroup : Pulumi.CustomResource
     {
@@ -109,14 +108,14 @@ namespace Pulumi.Cloudflare
         /// full list.
         /// </summary>
         [Output("excludes")]
-        public Output<ImmutableArray<Outputs.AccessGroupExcludes>> Excludes { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AccessGroupExclude>> Excludes { get; private set; } = null!;
 
         /// <summary>
         /// A series of access conditions, see below for
         /// full list.
         /// </summary>
         [Output("includes")]
-        public Output<ImmutableArray<Outputs.AccessGroupIncludes>> Includes { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AccessGroupInclude>> Includes { get; private set; } = null!;
 
         /// <summary>
         /// Friendly name of the Access Group.
@@ -129,7 +128,7 @@ namespace Pulumi.Cloudflare
         /// full list.
         /// </summary>
         [Output("requires")]
-        public Output<ImmutableArray<Outputs.AccessGroupRequires>> Requires { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.AccessGroupRequire>> Requires { get; private set; } = null!;
 
 
         /// <summary>
@@ -140,7 +139,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessGroup(string name, AccessGroupArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/accessGroup:AccessGroup", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/accessGroup:AccessGroup", name, args ?? new AccessGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -185,28 +184,28 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         [Input("excludes")]
-        private InputList<Inputs.AccessGroupExcludesArgs>? _excludes;
+        private InputList<Inputs.AccessGroupExcludeArgs>? _excludes;
 
         /// <summary>
         /// A series of access conditions, see below for
         /// full list.
         /// </summary>
-        public InputList<Inputs.AccessGroupExcludesArgs> Excludes
+        public InputList<Inputs.AccessGroupExcludeArgs> Excludes
         {
-            get => _excludes ?? (_excludes = new InputList<Inputs.AccessGroupExcludesArgs>());
+            get => _excludes ?? (_excludes = new InputList<Inputs.AccessGroupExcludeArgs>());
             set => _excludes = value;
         }
 
         [Input("includes", required: true)]
-        private InputList<Inputs.AccessGroupIncludesArgs>? _includes;
+        private InputList<Inputs.AccessGroupIncludeArgs>? _includes;
 
         /// <summary>
         /// A series of access conditions, see below for
         /// full list.
         /// </summary>
-        public InputList<Inputs.AccessGroupIncludesArgs> Includes
+        public InputList<Inputs.AccessGroupIncludeArgs> Includes
         {
-            get => _includes ?? (_includes = new InputList<Inputs.AccessGroupIncludesArgs>());
+            get => _includes ?? (_includes = new InputList<Inputs.AccessGroupIncludeArgs>());
             set => _includes = value;
         }
 
@@ -217,15 +216,15 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         [Input("requires")]
-        private InputList<Inputs.AccessGroupRequiresArgs>? _requires;
+        private InputList<Inputs.AccessGroupRequireArgs>? _requires;
 
         /// <summary>
         /// A series of access conditions, see below for
         /// full list.
         /// </summary>
-        public InputList<Inputs.AccessGroupRequiresArgs> Requires
+        public InputList<Inputs.AccessGroupRequireArgs> Requires
         {
-            get => _requires ?? (_requires = new InputList<Inputs.AccessGroupRequiresArgs>());
+            get => _requires ?? (_requires = new InputList<Inputs.AccessGroupRequireArgs>());
             set => _requires = value;
         }
 
@@ -244,28 +243,28 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         [Input("excludes")]
-        private InputList<Inputs.AccessGroupExcludesGetArgs>? _excludes;
+        private InputList<Inputs.AccessGroupExcludeGetArgs>? _excludes;
 
         /// <summary>
         /// A series of access conditions, see below for
         /// full list.
         /// </summary>
-        public InputList<Inputs.AccessGroupExcludesGetArgs> Excludes
+        public InputList<Inputs.AccessGroupExcludeGetArgs> Excludes
         {
-            get => _excludes ?? (_excludes = new InputList<Inputs.AccessGroupExcludesGetArgs>());
+            get => _excludes ?? (_excludes = new InputList<Inputs.AccessGroupExcludeGetArgs>());
             set => _excludes = value;
         }
 
         [Input("includes")]
-        private InputList<Inputs.AccessGroupIncludesGetArgs>? _includes;
+        private InputList<Inputs.AccessGroupIncludeGetArgs>? _includes;
 
         /// <summary>
         /// A series of access conditions, see below for
         /// full list.
         /// </summary>
-        public InputList<Inputs.AccessGroupIncludesGetArgs> Includes
+        public InputList<Inputs.AccessGroupIncludeGetArgs> Includes
         {
-            get => _includes ?? (_includes = new InputList<Inputs.AccessGroupIncludesGetArgs>());
+            get => _includes ?? (_includes = new InputList<Inputs.AccessGroupIncludeGetArgs>());
             set => _includes = value;
         }
 
@@ -276,355 +275,20 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         [Input("requires")]
-        private InputList<Inputs.AccessGroupRequiresGetArgs>? _requires;
+        private InputList<Inputs.AccessGroupRequireGetArgs>? _requires;
 
         /// <summary>
         /// A series of access conditions, see below for
         /// full list.
         /// </summary>
-        public InputList<Inputs.AccessGroupRequiresGetArgs> Requires
+        public InputList<Inputs.AccessGroupRequireGetArgs> Requires
         {
-            get => _requires ?? (_requires = new InputList<Inputs.AccessGroupRequiresGetArgs>());
+            get => _requires ?? (_requires = new InputList<Inputs.AccessGroupRequireGetArgs>());
             set => _requires = value;
         }
 
         public AccessGroupState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class AccessGroupExcludesArgs : Pulumi.ResourceArgs
-    {
-        [Input("emails")]
-        private InputList<string>? _emails;
-        public InputList<string> Emails
-        {
-            get => _emails ?? (_emails = new InputList<string>());
-            set => _emails = value;
-        }
-
-        [Input("emailDomains")]
-        private InputList<string>? _emailDomains;
-        public InputList<string> EmailDomains
-        {
-            get => _emailDomains ?? (_emailDomains = new InputList<string>());
-            set => _emailDomains = value;
-        }
-
-        [Input("everyone")]
-        public Input<bool>? Everyone { get; set; }
-
-        [Input("groups")]
-        private InputList<string>? _groups;
-        public InputList<string> Groups
-        {
-            get => _groups ?? (_groups = new InputList<string>());
-            set => _groups = value;
-        }
-
-        [Input("ips")]
-        private InputList<string>? _ips;
-        public InputList<string> Ips
-        {
-            get => _ips ?? (_ips = new InputList<string>());
-            set => _ips = value;
-        }
-
-        public AccessGroupExcludesArgs()
-        {
-        }
-    }
-
-    public sealed class AccessGroupExcludesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("emails")]
-        private InputList<string>? _emails;
-        public InputList<string> Emails
-        {
-            get => _emails ?? (_emails = new InputList<string>());
-            set => _emails = value;
-        }
-
-        [Input("emailDomains")]
-        private InputList<string>? _emailDomains;
-        public InputList<string> EmailDomains
-        {
-            get => _emailDomains ?? (_emailDomains = new InputList<string>());
-            set => _emailDomains = value;
-        }
-
-        [Input("everyone")]
-        public Input<bool>? Everyone { get; set; }
-
-        [Input("groups")]
-        private InputList<string>? _groups;
-        public InputList<string> Groups
-        {
-            get => _groups ?? (_groups = new InputList<string>());
-            set => _groups = value;
-        }
-
-        [Input("ips")]
-        private InputList<string>? _ips;
-        public InputList<string> Ips
-        {
-            get => _ips ?? (_ips = new InputList<string>());
-            set => _ips = value;
-        }
-
-        public AccessGroupExcludesGetArgs()
-        {
-        }
-    }
-
-    public sealed class AccessGroupIncludesArgs : Pulumi.ResourceArgs
-    {
-        [Input("emails")]
-        private InputList<string>? _emails;
-        public InputList<string> Emails
-        {
-            get => _emails ?? (_emails = new InputList<string>());
-            set => _emails = value;
-        }
-
-        [Input("emailDomains")]
-        private InputList<string>? _emailDomains;
-        public InputList<string> EmailDomains
-        {
-            get => _emailDomains ?? (_emailDomains = new InputList<string>());
-            set => _emailDomains = value;
-        }
-
-        [Input("everyone")]
-        public Input<bool>? Everyone { get; set; }
-
-        [Input("groups")]
-        private InputList<string>? _groups;
-        public InputList<string> Groups
-        {
-            get => _groups ?? (_groups = new InputList<string>());
-            set => _groups = value;
-        }
-
-        [Input("ips")]
-        private InputList<string>? _ips;
-        public InputList<string> Ips
-        {
-            get => _ips ?? (_ips = new InputList<string>());
-            set => _ips = value;
-        }
-
-        public AccessGroupIncludesArgs()
-        {
-        }
-    }
-
-    public sealed class AccessGroupIncludesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("emails")]
-        private InputList<string>? _emails;
-        public InputList<string> Emails
-        {
-            get => _emails ?? (_emails = new InputList<string>());
-            set => _emails = value;
-        }
-
-        [Input("emailDomains")]
-        private InputList<string>? _emailDomains;
-        public InputList<string> EmailDomains
-        {
-            get => _emailDomains ?? (_emailDomains = new InputList<string>());
-            set => _emailDomains = value;
-        }
-
-        [Input("everyone")]
-        public Input<bool>? Everyone { get; set; }
-
-        [Input("groups")]
-        private InputList<string>? _groups;
-        public InputList<string> Groups
-        {
-            get => _groups ?? (_groups = new InputList<string>());
-            set => _groups = value;
-        }
-
-        [Input("ips")]
-        private InputList<string>? _ips;
-        public InputList<string> Ips
-        {
-            get => _ips ?? (_ips = new InputList<string>());
-            set => _ips = value;
-        }
-
-        public AccessGroupIncludesGetArgs()
-        {
-        }
-    }
-
-    public sealed class AccessGroupRequiresArgs : Pulumi.ResourceArgs
-    {
-        [Input("emails")]
-        private InputList<string>? _emails;
-        public InputList<string> Emails
-        {
-            get => _emails ?? (_emails = new InputList<string>());
-            set => _emails = value;
-        }
-
-        [Input("emailDomains")]
-        private InputList<string>? _emailDomains;
-        public InputList<string> EmailDomains
-        {
-            get => _emailDomains ?? (_emailDomains = new InputList<string>());
-            set => _emailDomains = value;
-        }
-
-        [Input("everyone")]
-        public Input<bool>? Everyone { get; set; }
-
-        [Input("groups")]
-        private InputList<string>? _groups;
-        public InputList<string> Groups
-        {
-            get => _groups ?? (_groups = new InputList<string>());
-            set => _groups = value;
-        }
-
-        [Input("ips")]
-        private InputList<string>? _ips;
-        public InputList<string> Ips
-        {
-            get => _ips ?? (_ips = new InputList<string>());
-            set => _ips = value;
-        }
-
-        public AccessGroupRequiresArgs()
-        {
-        }
-    }
-
-    public sealed class AccessGroupRequiresGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("emails")]
-        private InputList<string>? _emails;
-        public InputList<string> Emails
-        {
-            get => _emails ?? (_emails = new InputList<string>());
-            set => _emails = value;
-        }
-
-        [Input("emailDomains")]
-        private InputList<string>? _emailDomains;
-        public InputList<string> EmailDomains
-        {
-            get => _emailDomains ?? (_emailDomains = new InputList<string>());
-            set => _emailDomains = value;
-        }
-
-        [Input("everyone")]
-        public Input<bool>? Everyone { get; set; }
-
-        [Input("groups")]
-        private InputList<string>? _groups;
-        public InputList<string> Groups
-        {
-            get => _groups ?? (_groups = new InputList<string>());
-            set => _groups = value;
-        }
-
-        [Input("ips")]
-        private InputList<string>? _ips;
-        public InputList<string> Ips
-        {
-            get => _ips ?? (_ips = new InputList<string>());
-            set => _ips = value;
-        }
-
-        public AccessGroupRequiresGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class AccessGroupExcludes
-    {
-        public readonly ImmutableArray<string> Emails;
-        public readonly ImmutableArray<string> EmailDomains;
-        public readonly bool? Everyone;
-        public readonly ImmutableArray<string> Groups;
-        public readonly ImmutableArray<string> Ips;
-
-        [OutputConstructor]
-        private AccessGroupExcludes(
-            ImmutableArray<string> emails,
-            ImmutableArray<string> emailDomains,
-            bool? everyone,
-            ImmutableArray<string> groups,
-            ImmutableArray<string> ips)
-        {
-            Emails = emails;
-            EmailDomains = emailDomains;
-            Everyone = everyone;
-            Groups = groups;
-            Ips = ips;
-        }
-    }
-
-    [OutputType]
-    public sealed class AccessGroupIncludes
-    {
-        public readonly ImmutableArray<string> Emails;
-        public readonly ImmutableArray<string> EmailDomains;
-        public readonly bool? Everyone;
-        public readonly ImmutableArray<string> Groups;
-        public readonly ImmutableArray<string> Ips;
-
-        [OutputConstructor]
-        private AccessGroupIncludes(
-            ImmutableArray<string> emails,
-            ImmutableArray<string> emailDomains,
-            bool? everyone,
-            ImmutableArray<string> groups,
-            ImmutableArray<string> ips)
-        {
-            Emails = emails;
-            EmailDomains = emailDomains;
-            Everyone = everyone;
-            Groups = groups;
-            Ips = ips;
-        }
-    }
-
-    [OutputType]
-    public sealed class AccessGroupRequires
-    {
-        public readonly ImmutableArray<string> Emails;
-        public readonly ImmutableArray<string> EmailDomains;
-        public readonly bool? Everyone;
-        public readonly ImmutableArray<string> Groups;
-        public readonly ImmutableArray<string> Ips;
-
-        [OutputConstructor]
-        private AccessGroupRequires(
-            ImmutableArray<string> emails,
-            ImmutableArray<string> emailDomains,
-            bool? everyone,
-            ImmutableArray<string> groups,
-            ImmutableArray<string> ips)
-        {
-            Emails = emails;
-            EmailDomains = emailDomains;
-            Everyone = everyone;
-            Groups = groups;
-            Ips = ips;
-        }
-    }
     }
 }

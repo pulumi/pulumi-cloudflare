@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_pool.html.markdown.
     /// </summary>
     public partial class LoadBalancerPool : Pulumi.CustomResource
     {
@@ -74,7 +72,7 @@ namespace Pulumi.Cloudflare
         /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
         /// </summary>
         [Output("origins")]
-        public Output<ImmutableArray<Outputs.LoadBalancerPoolOrigins>> Origins { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.LoadBalancerPoolOrigin>> Origins { get; private set; } = null!;
 
 
         /// <summary>
@@ -85,7 +83,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LoadBalancerPool(string name, LoadBalancerPoolArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, args ?? new LoadBalancerPoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -171,14 +169,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? NotificationEmail { get; set; }
 
         [Input("origins", required: true)]
-        private InputList<Inputs.LoadBalancerPoolOriginsArgs>? _origins;
+        private InputList<Inputs.LoadBalancerPoolOriginArgs>? _origins;
 
         /// <summary>
         /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPoolOriginsArgs> Origins
+        public InputList<Inputs.LoadBalancerPoolOriginArgs> Origins
         {
-            get => _origins ?? (_origins = new InputList<Inputs.LoadBalancerPoolOriginsArgs>());
+            get => _origins ?? (_origins = new InputList<Inputs.LoadBalancerPoolOriginArgs>());
             set => _origins = value;
         }
 
@@ -250,123 +248,19 @@ namespace Pulumi.Cloudflare
         public Input<string>? NotificationEmail { get; set; }
 
         [Input("origins")]
-        private InputList<Inputs.LoadBalancerPoolOriginsGetArgs>? _origins;
+        private InputList<Inputs.LoadBalancerPoolOriginGetArgs>? _origins;
 
         /// <summary>
         /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPoolOriginsGetArgs> Origins
+        public InputList<Inputs.LoadBalancerPoolOriginGetArgs> Origins
         {
-            get => _origins ?? (_origins = new InputList<Inputs.LoadBalancerPoolOriginsGetArgs>());
+            get => _origins ?? (_origins = new InputList<Inputs.LoadBalancerPoolOriginGetArgs>());
             set => _origins = value;
         }
 
         public LoadBalancerPoolState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class LoadBalancerPoolOriginsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
-        /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
-
-        /// <summary>
-        /// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
-        /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        /// <summary>
-        /// A human-identifiable name for the origin.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
-        /// </summary>
-        [Input("weight")]
-        public Input<double>? Weight { get; set; }
-
-        public LoadBalancerPoolOriginsArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerPoolOriginsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
-        /// </summary>
-        [Input("address", required: true)]
-        public Input<string> Address { get; set; } = null!;
-
-        /// <summary>
-        /// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
-        /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        /// <summary>
-        /// A human-identifiable name for the origin.
-        /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
-
-        /// <summary>
-        /// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
-        /// </summary>
-        [Input("weight")]
-        public Input<double>? Weight { get; set; }
-
-        public LoadBalancerPoolOriginsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class LoadBalancerPoolOrigins
-    {
-        /// <summary>
-        /// The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
-        /// </summary>
-        public readonly string Address;
-        /// <summary>
-        /// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
-        /// </summary>
-        public readonly bool? Enabled;
-        /// <summary>
-        /// A human-identifiable name for the origin.
-        /// </summary>
-        public readonly string Name;
-        /// <summary>
-        /// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
-        /// </summary>
-        public readonly double? Weight;
-
-        [OutputConstructor]
-        private LoadBalancerPoolOrigins(
-            string address,
-            bool? enabled,
-            string name,
-            double? weight)
-        {
-            Address = address;
-            Enabled = enabled;
-            Name = name;
-            Weight = weight;
-        }
-    }
     }
 }

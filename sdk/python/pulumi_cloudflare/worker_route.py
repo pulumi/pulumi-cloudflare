@@ -24,7 +24,7 @@ class WorkerRoute(pulumi.CustomResource):
         """
         Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`.
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_route.html.markdown.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

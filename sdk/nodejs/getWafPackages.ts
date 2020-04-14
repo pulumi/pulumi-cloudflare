@@ -8,10 +8,11 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up [WAF Rule Packages][1].
+ * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_packages.html.md.
  */
-export function getWafPackages(args: GetWafPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafPackagesResult> & GetWafPackagesResult {
+export function getWafPackages(args: GetWafPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafPackagesResult> {
     if (!opts) {
         opts = {}
     }
@@ -19,12 +20,10 @@ export function getWafPackages(args: GetWafPackagesArgs, opts?: pulumi.InvokeOpt
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetWafPackagesResult> = pulumi.runtime.invoke("cloudflare:index/getWafPackages:getWafPackages", {
+    return pulumi.runtime.invoke("cloudflare:index/getWafPackages:getWafPackages", {
         "filter": args.filter,
         "zoneId": args.zoneId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

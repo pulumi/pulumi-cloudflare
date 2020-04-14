@@ -58,6 +58,7 @@ class AccessGroup(pulumi.CustomResource):
         in conjunction with Access Policies to restrict access to a
         particular resource based on group membership.
 
+
         ## Conditions
 
         `require`, `exclude` and `include` arguments share the available
@@ -136,8 +137,6 @@ class AccessGroup(pulumi.CustomResource):
             }
           }
           ```
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_group.html.markdown.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

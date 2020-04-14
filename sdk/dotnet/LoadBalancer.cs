@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer.html.markdown.
     /// </summary>
     public partial class LoadBalancer : Pulumi.CustomResource
     {
@@ -62,7 +60,7 @@ namespace Pulumi.Cloudflare
         /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
         /// </summary>
         [Output("popPools")]
-        public Output<ImmutableArray<Outputs.LoadBalancerPopPools>> PopPools { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.LoadBalancerPopPool>> PopPools { get; private set; } = null!;
 
         /// <summary>
         /// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
@@ -74,7 +72,7 @@ namespace Pulumi.Cloudflare
         /// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         /// </summary>
         [Output("regionPools")]
-        public Output<ImmutableArray<Outputs.LoadBalancerRegionPools>> RegionPools { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.LoadBalancerRegionPool>> RegionPools { get; private set; } = null!;
 
         /// <summary>
         /// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
@@ -109,7 +107,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public LoadBalancer(string name, LoadBalancerArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/loadBalancer:LoadBalancer", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/loadBalancer:LoadBalancer", name, args ?? new LoadBalancerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -183,14 +181,14 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         [Input("popPools")]
-        private InputList<Inputs.LoadBalancerPopPoolsArgs>? _popPools;
+        private InputList<Inputs.LoadBalancerPopPoolArgs>? _popPools;
 
         /// <summary>
         /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPopPoolsArgs> PopPools
+        public InputList<Inputs.LoadBalancerPopPoolArgs> PopPools
         {
-            get => _popPools ?? (_popPools = new InputList<Inputs.LoadBalancerPopPoolsArgs>());
+            get => _popPools ?? (_popPools = new InputList<Inputs.LoadBalancerPopPoolArgs>());
             set => _popPools = value;
         }
 
@@ -201,14 +199,14 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Proxied { get; set; }
 
         [Input("regionPools")]
-        private InputList<Inputs.LoadBalancerRegionPoolsArgs>? _regionPools;
+        private InputList<Inputs.LoadBalancerRegionPoolArgs>? _regionPools;
 
         /// <summary>
         /// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         /// </summary>
-        public InputList<Inputs.LoadBalancerRegionPoolsArgs> RegionPools
+        public InputList<Inputs.LoadBalancerRegionPoolArgs> RegionPools
         {
-            get => _regionPools ?? (_regionPools = new InputList<Inputs.LoadBalancerRegionPoolsArgs>());
+            get => _regionPools ?? (_regionPools = new InputList<Inputs.LoadBalancerRegionPoolArgs>());
             set => _regionPools = value;
         }
 
@@ -292,14 +290,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         [Input("popPools")]
-        private InputList<Inputs.LoadBalancerPopPoolsGetArgs>? _popPools;
+        private InputList<Inputs.LoadBalancerPopPoolGetArgs>? _popPools;
 
         /// <summary>
         /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
         /// </summary>
-        public InputList<Inputs.LoadBalancerPopPoolsGetArgs> PopPools
+        public InputList<Inputs.LoadBalancerPopPoolGetArgs> PopPools
         {
-            get => _popPools ?? (_popPools = new InputList<Inputs.LoadBalancerPopPoolsGetArgs>());
+            get => _popPools ?? (_popPools = new InputList<Inputs.LoadBalancerPopPoolGetArgs>());
             set => _popPools = value;
         }
 
@@ -310,14 +308,14 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Proxied { get; set; }
 
         [Input("regionPools")]
-        private InputList<Inputs.LoadBalancerRegionPoolsGetArgs>? _regionPools;
+        private InputList<Inputs.LoadBalancerRegionPoolGetArgs>? _regionPools;
 
         /// <summary>
         /// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         /// </summary>
-        public InputList<Inputs.LoadBalancerRegionPoolsGetArgs> RegionPools
+        public InputList<Inputs.LoadBalancerRegionPoolGetArgs> RegionPools
         {
-            get => _regionPools ?? (_regionPools = new InputList<Inputs.LoadBalancerRegionPoolsGetArgs>());
+            get => _regionPools ?? (_regionPools = new InputList<Inputs.LoadBalancerRegionPoolGetArgs>());
             set => _regionPools = value;
         }
 
@@ -348,157 +346,5 @@ namespace Pulumi.Cloudflare
         public LoadBalancerState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class LoadBalancerPopPoolsArgs : Pulumi.ResourceArgs
-    {
-        [Input("poolIds", required: true)]
-        private InputList<string>? _poolIds;
-
-        /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
-        /// </summary>
-        public InputList<string> PoolIds
-        {
-            get => _poolIds ?? (_poolIds = new InputList<string>());
-            set => _poolIds = value;
-        }
-
-        /// <summary>
-        /// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
-        /// </summary>
-        [Input("pop", required: true)]
-        public Input<string> Pop { get; set; } = null!;
-
-        public LoadBalancerPopPoolsArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerPopPoolsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("poolIds", required: true)]
-        private InputList<string>? _poolIds;
-
-        /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
-        /// </summary>
-        public InputList<string> PoolIds
-        {
-            get => _poolIds ?? (_poolIds = new InputList<string>());
-            set => _poolIds = value;
-        }
-
-        /// <summary>
-        /// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
-        /// </summary>
-        [Input("pop", required: true)]
-        public Input<string> Pop { get; set; } = null!;
-
-        public LoadBalancerPopPoolsGetArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerRegionPoolsArgs : Pulumi.ResourceArgs
-    {
-        [Input("poolIds", required: true)]
-        private InputList<string>? _poolIds;
-
-        /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
-        /// </summary>
-        public InputList<string> PoolIds
-        {
-            get => _poolIds ?? (_poolIds = new InputList<string>());
-            set => _poolIds = value;
-        }
-
-        /// <summary>
-        /// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
-        /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        public LoadBalancerRegionPoolsArgs()
-        {
-        }
-    }
-
-    public sealed class LoadBalancerRegionPoolsGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("poolIds", required: true)]
-        private InputList<string>? _poolIds;
-
-        /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
-        /// </summary>
-        public InputList<string> PoolIds
-        {
-            get => _poolIds ?? (_poolIds = new InputList<string>());
-            set => _poolIds = value;
-        }
-
-        /// <summary>
-        /// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
-        /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
-
-        public LoadBalancerRegionPoolsGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class LoadBalancerPopPools
-    {
-        /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
-        /// </summary>
-        public readonly ImmutableArray<string> PoolIds;
-        /// <summary>
-        /// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
-        /// </summary>
-        public readonly string Pop;
-
-        [OutputConstructor]
-        private LoadBalancerPopPools(
-            ImmutableArray<string> poolIds,
-            string pop)
-        {
-            PoolIds = poolIds;
-            Pop = pop;
-        }
-    }
-
-    [OutputType]
-    public sealed class LoadBalancerRegionPools
-    {
-        /// <summary>
-        /// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
-        /// </summary>
-        public readonly ImmutableArray<string> PoolIds;
-        /// <summary>
-        /// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
-        /// </summary>
-        public readonly string Region;
-
-        [OutputConstructor]
-        private LoadBalancerRegionPools(
-            ImmutableArray<string> poolIds,
-            string region)
-        {
-            PoolIds = poolIds;
-            Region = region;
-        }
-    }
     }
 }

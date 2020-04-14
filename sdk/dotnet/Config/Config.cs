@@ -8,7 +8,6 @@ namespace Pulumi.Cloudflare
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("cloudflare");
-
         /// <summary>
         /// Configure API client to always use that account.
         /// </summary>
@@ -59,8 +58,5 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static int? Rps { get; set; } = __config.GetInt32("rps") ?? Utilities.GetEnvInt32("CLOUDFLARE_RPS") ?? 4;
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

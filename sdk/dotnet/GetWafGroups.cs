@@ -9,27 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Use this data source to look up [WAF Rule Groups][1].
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.md.
-        /// </summary>
-        [Obsolete("Use GetWafGroups.InvokeAsync() instead")]
-        public static Task<GetWafGroupsResult> GetWafGroups(GetWafGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetWafGroups
     {
         /// <summary>
         /// Use this data source to look up [WAF Rule Groups][1].
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_groups.html.md.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafGroupsResult> InvokeAsync(GetWafGroupsArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? new GetWafGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetWafGroupsArgs : Pulumi.InvokeArgs
     {
@@ -47,99 +38,36 @@ namespace Pulumi.Cloudflare
         }
     }
 
+
     [OutputType]
     public sealed class GetWafGroupsResult
     {
         public readonly Outputs.GetWafGroupsFilterResult? Filter;
-        public readonly ImmutableArray<Outputs.GetWafGroupsGroupsResult> Groups;
-        public readonly string? PackageId;
-        public readonly string ZoneId;
+        public readonly ImmutableArray<Outputs.GetWafGroupsGroupResult> Groups;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string? PackageId;
+        public readonly string ZoneId;
 
         [OutputConstructor]
         private GetWafGroupsResult(
             Outputs.GetWafGroupsFilterResult? filter,
-            ImmutableArray<Outputs.GetWafGroupsGroupsResult> groups,
+
+            ImmutableArray<Outputs.GetWafGroupsGroupResult> groups,
+
+            string id,
+
             string? packageId,
-            string zoneId,
-            string id)
+
+            string zoneId)
         {
             Filter = filter;
             Groups = groups;
+            Id = id;
             PackageId = packageId;
             ZoneId = zoneId;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetWafGroupsFilterArgs : Pulumi.InvokeArgs
-    {
-        [Input("mode")]
-        public string? Mode { get; set; }
-
-        [Input("name")]
-        public string? Name { get; set; }
-
-        public GetWafGroupsFilterArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetWafGroupsFilterResult
-    {
-        public readonly string? Mode;
-        public readonly string? Name;
-
-        [OutputConstructor]
-        private GetWafGroupsFilterResult(
-            string? mode,
-            string? name)
-        {
-            Mode = mode;
-            Name = name;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetWafGroupsGroupsResult
-    {
-        public readonly string? Description;
-        public readonly string? Id;
-        public readonly string? Mode;
-        public readonly int? ModifiedRulesCount;
-        public readonly string? Name;
-        public readonly string? PackageId;
-        public readonly int? RulesCount;
-
-        [OutputConstructor]
-        private GetWafGroupsGroupsResult(
-            string? description,
-            string? id,
-            string? mode,
-            int? modifiedRulesCount,
-            string? name,
-            string? packageId,
-            int? rulesCount)
-        {
-            Description = description;
-            Id = id;
-            Mode = mode;
-            ModifiedRulesCount = modifiedRulesCount;
-            Name = name;
-            PackageId = packageId;
-            RulesCount = rulesCount;
-        }
-    }
     }
 }

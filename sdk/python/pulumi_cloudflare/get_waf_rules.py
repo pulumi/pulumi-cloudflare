@@ -48,7 +48,7 @@ def get_waf_rules(filter=None,package_id=None,zone_id=None,opts=None):
     """
     Use this data source to look up [WAF Rules][1].
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_rules.html.md.
+
 
 
 

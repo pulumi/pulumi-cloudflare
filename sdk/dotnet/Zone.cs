@@ -11,8 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare Zone resource. Zone is the basic resource for working with Cloudflare and is roughly equivalent to a domain name that the user purchases.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone.html.markdown.
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {
@@ -84,7 +82,7 @@ namespace Pulumi.Cloudflare
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Zone(string name, ZoneArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/zone:Zone", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("cloudflare:index/zone:Zone", name, args ?? new ZoneArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -232,42 +230,5 @@ namespace Pulumi.Cloudflare
         public ZoneState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ZoneMetaGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("phishingDetected", required: true)]
-        public Input<bool> PhishingDetected { get; set; } = null!;
-
-        [Input("wildcardProxiable", required: true)]
-        public Input<bool> WildcardProxiable { get; set; } = null!;
-
-        public ZoneMetaGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ZoneMeta
-    {
-        public readonly bool PhishingDetected;
-        public readonly bool WildcardProxiable;
-
-        [OutputConstructor]
-        private ZoneMeta(
-            bool phishingDetected,
-            bool wildcardProxiable)
-        {
-            PhishingDetected = phishingDetected;
-            WildcardProxiable = wildcardProxiable;
-        }
-    }
     }
 }
