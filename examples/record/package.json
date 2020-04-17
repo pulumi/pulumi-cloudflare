@@ -7,13 +7,11 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@pulumi/pulumi": "2.0.0-beta.3",
-    "minimist": ">=1.2.2"
+    "@pulumi/pulumi": "^2.0.0",
+    "@pulumi/cloudflare": "latest"
   },
   "devDependencies": {
-    "typescript": "latest"
-  },
-  "peerDependencies": {
-    "@pulumi/cloudflare": "dev"
+    "typescript": "latest",
+    "minimist": ">=1.2.2"
   }
 }
