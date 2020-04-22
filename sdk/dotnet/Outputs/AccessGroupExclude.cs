@@ -13,29 +13,65 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupExclude
     {
+        public readonly bool? AnyValidServiceToken;
+        public readonly ImmutableArray<Outputs.AccessGroupExcludeAzure> Azures;
+        public readonly bool? Certificate;
+        public readonly string? CommonName;
         public readonly ImmutableArray<string> EmailDomains;
         public readonly ImmutableArray<string> Emails;
         public readonly bool? Everyone;
+        public readonly ImmutableArray<Outputs.AccessGroupExcludeGithub> Githubs;
         public readonly ImmutableArray<string> Groups;
+        public readonly ImmutableArray<Outputs.AccessGroupExcludeGsuite> Gsuites;
         public readonly ImmutableArray<string> Ips;
+        public readonly ImmutableArray<Outputs.AccessGroupExcludeOkta> Oktas;
+        public readonly ImmutableArray<Outputs.AccessGroupExcludeSaml> Samls;
+        public readonly ImmutableArray<string> ServiceTokens;
 
         [OutputConstructor]
         private AccessGroupExclude(
+            bool? anyValidServiceToken,
+
+            ImmutableArray<Outputs.AccessGroupExcludeAzure> azures,
+
+            bool? certificate,
+
+            string? commonName,
+
             ImmutableArray<string> emailDomains,
 
             ImmutableArray<string> emails,
 
             bool? everyone,
 
+            ImmutableArray<Outputs.AccessGroupExcludeGithub> githubs,
+
             ImmutableArray<string> groups,
 
-            ImmutableArray<string> ips)
+            ImmutableArray<Outputs.AccessGroupExcludeGsuite> gsuites,
+
+            ImmutableArray<string> ips,
+
+            ImmutableArray<Outputs.AccessGroupExcludeOkta> oktas,
+
+            ImmutableArray<Outputs.AccessGroupExcludeSaml> samls,
+
+            ImmutableArray<string> serviceTokens)
         {
+            AnyValidServiceToken = anyValidServiceToken;
+            Azures = azures;
+            Certificate = certificate;
+            CommonName = commonName;
             EmailDomains = emailDomains;
             Emails = emails;
             Everyone = everyone;
+            Githubs = githubs;
             Groups = groups;
+            Gsuites = gsuites;
             Ips = ips;
+            Oktas = oktas;
+            Samls = samls;
+            ServiceTokens = serviceTokens;
         }
     }
 }

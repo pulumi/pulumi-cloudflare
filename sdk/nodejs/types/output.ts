@@ -5,27 +5,150 @@ import * as pulumi from "@pulumi/pulumi";
 import * as outputs from "../types/output";
 
 export interface AccessGroupExclude {
+    anyValidServiceToken?: boolean;
+    azures?: outputs.AccessGroupExcludeAzure[];
+    certificate?: boolean;
+    commonName?: string;
     emails?: string[];
     emailDomains?: string[];
     everyone?: boolean;
+    githubs?: outputs.AccessGroupExcludeGithub[];
     groups?: string[];
+    gsuites?: outputs.AccessGroupExcludeGsuite[];
     ips?: string[];
+    oktas?: outputs.AccessGroupExcludeOkta[];
+    samls?: outputs.AccessGroupExcludeSaml[];
+    serviceTokens?: string[];
+}
+
+export interface AccessGroupExcludeAzure {
+    id?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessGroupExcludeGithub {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: string;
+}
+
+export interface AccessGroupExcludeGsuite {
+    email?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessGroupExcludeOkta {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: string;
+}
+
+export interface AccessGroupExcludeSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
 }
 
 export interface AccessGroupInclude {
+    anyValidServiceToken?: boolean;
+    azures?: outputs.AccessGroupIncludeAzure[];
+    certificate?: boolean;
+    commonName?: string;
     emails?: string[];
     emailDomains?: string[];
     everyone?: boolean;
+    githubs?: outputs.AccessGroupIncludeGithub[];
     groups?: string[];
+    gsuites?: outputs.AccessGroupIncludeGsuite[];
     ips?: string[];
+    oktas?: outputs.AccessGroupIncludeOkta[];
+    samls?: outputs.AccessGroupIncludeSaml[];
+    serviceTokens?: string[];
+}
+
+export interface AccessGroupIncludeAzure {
+    id?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessGroupIncludeGithub {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: string;
+}
+
+export interface AccessGroupIncludeGsuite {
+    email?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessGroupIncludeOkta {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: string;
+}
+
+export interface AccessGroupIncludeSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
 }
 
 export interface AccessGroupRequire {
+    anyValidServiceToken?: boolean;
+    azures?: outputs.AccessGroupRequireAzure[];
+    certificate?: boolean;
+    commonName?: string;
     emails?: string[];
     emailDomains?: string[];
     everyone?: boolean;
+    githubs?: outputs.AccessGroupRequireGithub[];
     groups?: string[];
+    gsuites?: outputs.AccessGroupRequireGsuite[];
     ips?: string[];
+    oktas?: outputs.AccessGroupRequireOkta[];
+    samls?: outputs.AccessGroupRequireSaml[];
+    serviceTokens?: string[];
+}
+
+export interface AccessGroupRequireAzure {
+    id?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessGroupRequireGithub {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: string;
+}
+
+export interface AccessGroupRequireGsuite {
+    email?: string;
+    identityProviderId?: string;
+}
+
+export interface AccessGroupRequireOkta {
+    identityProviderId?: string;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: string;
+}
+
+export interface AccessGroupRequireSaml {
+    attributeName?: string;
+    attributeValue?: string;
+    identityProviderId?: string;
 }
 
 export interface AccessIdentityProviderConfig {
@@ -691,7 +814,6 @@ export interface ZoneSettingsOverrideInitialSettings {
     challengeTtl: number;
     cnameFlattening: string;
     developmentMode: string;
-    edgeCacheTtl: number;
     emailObfuscation: string;
     h2Prioritization: string;
     hotlinkProtection: string;
@@ -723,6 +845,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     tls13: string;
     tlsClientAuth: string;
     trueClientIpHeader: string;
+    universalSsl: string;
     waf: string;
     webp: string;
     websockets: string;
@@ -791,7 +914,6 @@ export interface ZoneSettingsOverrideSettings {
     challengeTtl: number;
     cnameFlattening: string;
     developmentMode: string;
-    edgeCacheTtl: number;
     emailObfuscation: string;
     h2Prioritization: string;
     hotlinkProtection: string;
@@ -823,6 +945,7 @@ export interface ZoneSettingsOverrideSettings {
     tls13: string;
     tlsClientAuth: string;
     trueClientIpHeader: string;
+    universalSsl: string;
     waf: string;
     webp: string;
     websockets: string;

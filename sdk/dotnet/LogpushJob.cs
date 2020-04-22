@@ -15,6 +15,12 @@ namespace Pulumi.Cloudflare
     public partial class LogpushJob : Pulumi.CustomResource
     {
         /// <summary>
+        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        /// </summary>
+        [Output("dataset")]
+        public Output<string> Dataset { get; private set; } = null!;
+
+        /// <summary>
         /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         /// </summary>
         [Output("destinationConf")]
@@ -94,6 +100,12 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        /// </summary>
+        [Input("dataset", required: true)]
+        public Input<string> Dataset { get; set; } = null!;
+
+        /// <summary>
         /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         /// </summary>
         [Input("destinationConf", required: true)]
@@ -133,6 +145,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class LogpushJobState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        /// </summary>
+        [Input("dataset")]
+        public Input<string>? Dataset { get; set; }
+
         /// <summary>
         /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         /// </summary>

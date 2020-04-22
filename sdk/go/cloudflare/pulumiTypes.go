@@ -11,11 +11,20 @@ import (
 )
 
 type AccessGroupExclude struct {
-	EmailDomains []string `pulumi:"emailDomains"`
-	Emails       []string `pulumi:"emails"`
-	Everyone     *bool    `pulumi:"everyone"`
-	Groups       []string `pulumi:"groups"`
-	Ips          []string `pulumi:"ips"`
+	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
+	Azures               []AccessGroupExcludeAzure  `pulumi:"azures"`
+	Certificate          *bool                      `pulumi:"certificate"`
+	CommonName           *string                    `pulumi:"commonName"`
+	EmailDomains         []string                   `pulumi:"emailDomains"`
+	Emails               []string                   `pulumi:"emails"`
+	Everyone             *bool                      `pulumi:"everyone"`
+	Githubs              []AccessGroupExcludeGithub `pulumi:"githubs"`
+	Groups               []string                   `pulumi:"groups"`
+	Gsuites              []AccessGroupExcludeGsuite `pulumi:"gsuites"`
+	Ips                  []string                   `pulumi:"ips"`
+	Oktas                []AccessGroupExcludeOkta   `pulumi:"oktas"`
+	Samls                []AccessGroupExcludeSaml   `pulumi:"samls"`
+	ServiceTokens        []string                   `pulumi:"serviceTokens"`
 }
 
 // AccessGroupExcludeInput is an input type that accepts AccessGroupExcludeArgs and AccessGroupExcludeOutput values.
@@ -31,11 +40,20 @@ type AccessGroupExcludeInput interface {
 }
 
 type AccessGroupExcludeArgs struct {
-	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
-	Emails       pulumi.StringArrayInput `pulumi:"emails"`
-	Everyone     pulumi.BoolPtrInput     `pulumi:"everyone"`
-	Groups       pulumi.StringArrayInput `pulumi:"groups"`
-	Ips          pulumi.StringArrayInput `pulumi:"ips"`
+	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
+	Azures               AccessGroupExcludeAzureArrayInput  `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
+	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
+	Githubs              AccessGroupExcludeGithubArrayInput `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
+	Gsuites              AccessGroupExcludeGsuiteArrayInput `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
+	Oktas                AccessGroupExcludeOktaArrayInput   `pulumi:"oktas"`
+	Samls                AccessGroupExcludeSamlArrayInput   `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupExcludeArgs) ElementType() reflect.Type {
@@ -90,6 +108,22 @@ func (o AccessGroupExcludeOutput) ToAccessGroupExcludeOutputWithContext(ctx cont
 	return o
 }
 
+func (o AccessGroupExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupExcludeOutput) Azures() AccessGroupExcludeAzureArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeAzure { return v.Azures }).(AccessGroupExcludeAzureArrayOutput)
+}
+
+func (o AccessGroupExcludeOutput) Certificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupExcludeOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessGroupExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -102,12 +136,32 @@ func (o AccessGroupExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+func (o AccessGroupExcludeOutput) Githubs() AccessGroupExcludeGithubArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeGithub { return v.Githubs }).(AccessGroupExcludeGithubArrayOutput)
+}
+
 func (o AccessGroupExcludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+func (o AccessGroupExcludeOutput) Gsuites() AccessGroupExcludeGsuiteArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeGsuite { return v.Gsuites }).(AccessGroupExcludeGsuiteArrayOutput)
+}
+
 func (o AccessGroupExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupExcludeOutput) Oktas() AccessGroupExcludeOktaArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeOkta { return v.Oktas }).(AccessGroupExcludeOktaArrayOutput)
+}
+
+func (o AccessGroupExcludeOutput) Samls() AccessGroupExcludeSamlArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeSaml { return v.Samls }).(AccessGroupExcludeSamlArrayOutput)
+}
+
+func (o AccessGroupExcludeOutput) ServiceTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupExcludeArrayOutput struct{ *pulumi.OutputState }
@@ -130,12 +184,543 @@ func (o AccessGroupExcludeArrayOutput) Index(i pulumi.IntInput) AccessGroupExclu
 	}).(AccessGroupExcludeOutput)
 }
 
+type AccessGroupExcludeAzure struct {
+	Id                 *string `pulumi:"id"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupExcludeAzureInput is an input type that accepts AccessGroupExcludeAzureArgs and AccessGroupExcludeAzureOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeAzureInput` via:
+//
+// 		 AccessGroupExcludeAzureArgs{...}
+//
+type AccessGroupExcludeAzureInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeAzureOutput() AccessGroupExcludeAzureOutput
+	ToAccessGroupExcludeAzureOutputWithContext(context.Context) AccessGroupExcludeAzureOutput
+}
+
+type AccessGroupExcludeAzureArgs struct {
+	Id                 pulumi.StringPtrInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupExcludeAzureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeAzure)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeAzureArgs) ToAccessGroupExcludeAzureOutput() AccessGroupExcludeAzureOutput {
+	return i.ToAccessGroupExcludeAzureOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeAzureArgs) ToAccessGroupExcludeAzureOutputWithContext(ctx context.Context) AccessGroupExcludeAzureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeAzureOutput)
+}
+
+// AccessGroupExcludeAzureArrayInput is an input type that accepts AccessGroupExcludeAzureArray and AccessGroupExcludeAzureArrayOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeAzureArrayInput` via:
+//
+// 		 AccessGroupExcludeAzureArray{ AccessGroupExcludeAzureArgs{...} }
+//
+type AccessGroupExcludeAzureArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeAzureArrayOutput() AccessGroupExcludeAzureArrayOutput
+	ToAccessGroupExcludeAzureArrayOutputWithContext(context.Context) AccessGroupExcludeAzureArrayOutput
+}
+
+type AccessGroupExcludeAzureArray []AccessGroupExcludeAzureInput
+
+func (AccessGroupExcludeAzureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeAzure)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeAzureArray) ToAccessGroupExcludeAzureArrayOutput() AccessGroupExcludeAzureArrayOutput {
+	return i.ToAccessGroupExcludeAzureArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeAzureArray) ToAccessGroupExcludeAzureArrayOutputWithContext(ctx context.Context) AccessGroupExcludeAzureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeAzureArrayOutput)
+}
+
+type AccessGroupExcludeAzureOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeAzureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeAzure)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeAzureOutput) ToAccessGroupExcludeAzureOutput() AccessGroupExcludeAzureOutput {
+	return o
+}
+
+func (o AccessGroupExcludeAzureOutput) ToAccessGroupExcludeAzureOutputWithContext(ctx context.Context) AccessGroupExcludeAzureOutput {
+	return o
+}
+
+func (o AccessGroupExcludeAzureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupExcludeAzureArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeAzureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeAzure)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeAzureArrayOutput) ToAccessGroupExcludeAzureArrayOutput() AccessGroupExcludeAzureArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeAzureArrayOutput) ToAccessGroupExcludeAzureArrayOutputWithContext(ctx context.Context) AccessGroupExcludeAzureArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeAzureArrayOutput) Index(i pulumi.IntInput) AccessGroupExcludeAzureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupExcludeAzure {
+		return vs[0].([]AccessGroupExcludeAzure)[vs[1].(int)]
+	}).(AccessGroupExcludeAzureOutput)
+}
+
+type AccessGroupExcludeGithub struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name *string `pulumi:"name"`
+}
+
+// AccessGroupExcludeGithubInput is an input type that accepts AccessGroupExcludeGithubArgs and AccessGroupExcludeGithubOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeGithubInput` via:
+//
+// 		 AccessGroupExcludeGithubArgs{...}
+//
+type AccessGroupExcludeGithubInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeGithubOutput() AccessGroupExcludeGithubOutput
+	ToAccessGroupExcludeGithubOutputWithContext(context.Context) AccessGroupExcludeGithubOutput
+}
+
+type AccessGroupExcludeGithubArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessGroupExcludeGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeGithub)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeGithubArgs) ToAccessGroupExcludeGithubOutput() AccessGroupExcludeGithubOutput {
+	return i.ToAccessGroupExcludeGithubOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeGithubArgs) ToAccessGroupExcludeGithubOutputWithContext(ctx context.Context) AccessGroupExcludeGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeGithubOutput)
+}
+
+// AccessGroupExcludeGithubArrayInput is an input type that accepts AccessGroupExcludeGithubArray and AccessGroupExcludeGithubArrayOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeGithubArrayInput` via:
+//
+// 		 AccessGroupExcludeGithubArray{ AccessGroupExcludeGithubArgs{...} }
+//
+type AccessGroupExcludeGithubArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeGithubArrayOutput() AccessGroupExcludeGithubArrayOutput
+	ToAccessGroupExcludeGithubArrayOutputWithContext(context.Context) AccessGroupExcludeGithubArrayOutput
+}
+
+type AccessGroupExcludeGithubArray []AccessGroupExcludeGithubInput
+
+func (AccessGroupExcludeGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeGithub)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeGithubArray) ToAccessGroupExcludeGithubArrayOutput() AccessGroupExcludeGithubArrayOutput {
+	return i.ToAccessGroupExcludeGithubArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeGithubArray) ToAccessGroupExcludeGithubArrayOutputWithContext(ctx context.Context) AccessGroupExcludeGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeGithubArrayOutput)
+}
+
+type AccessGroupExcludeGithubOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeGithub)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeGithubOutput) ToAccessGroupExcludeGithubOutput() AccessGroupExcludeGithubOutput {
+	return o
+}
+
+func (o AccessGroupExcludeGithubOutput) ToAccessGroupExcludeGithubOutputWithContext(ctx context.Context) AccessGroupExcludeGithubOutput {
+	return o
+}
+
+func (o AccessGroupExcludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Group.
+func (o AccessGroupExcludeGithubOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupExcludeGithubArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeGithub)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeGithubArrayOutput) ToAccessGroupExcludeGithubArrayOutput() AccessGroupExcludeGithubArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeGithubArrayOutput) ToAccessGroupExcludeGithubArrayOutputWithContext(ctx context.Context) AccessGroupExcludeGithubArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeGithubArrayOutput) Index(i pulumi.IntInput) AccessGroupExcludeGithubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupExcludeGithub {
+		return vs[0].([]AccessGroupExcludeGithub)[vs[1].(int)]
+	}).(AccessGroupExcludeGithubOutput)
+}
+
+type AccessGroupExcludeGsuite struct {
+	Email              *string `pulumi:"email"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupExcludeGsuiteInput is an input type that accepts AccessGroupExcludeGsuiteArgs and AccessGroupExcludeGsuiteOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeGsuiteInput` via:
+//
+// 		 AccessGroupExcludeGsuiteArgs{...}
+//
+type AccessGroupExcludeGsuiteInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeGsuiteOutput() AccessGroupExcludeGsuiteOutput
+	ToAccessGroupExcludeGsuiteOutputWithContext(context.Context) AccessGroupExcludeGsuiteOutput
+}
+
+type AccessGroupExcludeGsuiteArgs struct {
+	Email              pulumi.StringPtrInput `pulumi:"email"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupExcludeGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeGsuite)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeGsuiteArgs) ToAccessGroupExcludeGsuiteOutput() AccessGroupExcludeGsuiteOutput {
+	return i.ToAccessGroupExcludeGsuiteOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeGsuiteArgs) ToAccessGroupExcludeGsuiteOutputWithContext(ctx context.Context) AccessGroupExcludeGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeGsuiteOutput)
+}
+
+// AccessGroupExcludeGsuiteArrayInput is an input type that accepts AccessGroupExcludeGsuiteArray and AccessGroupExcludeGsuiteArrayOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeGsuiteArrayInput` via:
+//
+// 		 AccessGroupExcludeGsuiteArray{ AccessGroupExcludeGsuiteArgs{...} }
+//
+type AccessGroupExcludeGsuiteArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeGsuiteArrayOutput() AccessGroupExcludeGsuiteArrayOutput
+	ToAccessGroupExcludeGsuiteArrayOutputWithContext(context.Context) AccessGroupExcludeGsuiteArrayOutput
+}
+
+type AccessGroupExcludeGsuiteArray []AccessGroupExcludeGsuiteInput
+
+func (AccessGroupExcludeGsuiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeGsuite)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeGsuiteArray) ToAccessGroupExcludeGsuiteArrayOutput() AccessGroupExcludeGsuiteArrayOutput {
+	return i.ToAccessGroupExcludeGsuiteArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeGsuiteArray) ToAccessGroupExcludeGsuiteArrayOutputWithContext(ctx context.Context) AccessGroupExcludeGsuiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeGsuiteArrayOutput)
+}
+
+type AccessGroupExcludeGsuiteOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeGsuite)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeGsuiteOutput) ToAccessGroupExcludeGsuiteOutput() AccessGroupExcludeGsuiteOutput {
+	return o
+}
+
+func (o AccessGroupExcludeGsuiteOutput) ToAccessGroupExcludeGsuiteOutputWithContext(ctx context.Context) AccessGroupExcludeGsuiteOutput {
+	return o
+}
+
+func (o AccessGroupExcludeGsuiteOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupExcludeGsuiteArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeGsuiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeGsuite)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeGsuiteArrayOutput) ToAccessGroupExcludeGsuiteArrayOutput() AccessGroupExcludeGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeGsuiteArrayOutput) ToAccessGroupExcludeGsuiteArrayOutputWithContext(ctx context.Context) AccessGroupExcludeGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGroupExcludeGsuiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupExcludeGsuite {
+		return vs[0].([]AccessGroupExcludeGsuite)[vs[1].(int)]
+	}).(AccessGroupExcludeGsuiteOutput)
+}
+
+type AccessGroupExcludeOkta struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name *string `pulumi:"name"`
+}
+
+// AccessGroupExcludeOktaInput is an input type that accepts AccessGroupExcludeOktaArgs and AccessGroupExcludeOktaOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeOktaInput` via:
+//
+// 		 AccessGroupExcludeOktaArgs{...}
+//
+type AccessGroupExcludeOktaInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeOktaOutput() AccessGroupExcludeOktaOutput
+	ToAccessGroupExcludeOktaOutputWithContext(context.Context) AccessGroupExcludeOktaOutput
+}
+
+type AccessGroupExcludeOktaArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessGroupExcludeOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeOkta)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeOktaArgs) ToAccessGroupExcludeOktaOutput() AccessGroupExcludeOktaOutput {
+	return i.ToAccessGroupExcludeOktaOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeOktaArgs) ToAccessGroupExcludeOktaOutputWithContext(ctx context.Context) AccessGroupExcludeOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeOktaOutput)
+}
+
+// AccessGroupExcludeOktaArrayInput is an input type that accepts AccessGroupExcludeOktaArray and AccessGroupExcludeOktaArrayOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeOktaArrayInput` via:
+//
+// 		 AccessGroupExcludeOktaArray{ AccessGroupExcludeOktaArgs{...} }
+//
+type AccessGroupExcludeOktaArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeOktaArrayOutput() AccessGroupExcludeOktaArrayOutput
+	ToAccessGroupExcludeOktaArrayOutputWithContext(context.Context) AccessGroupExcludeOktaArrayOutput
+}
+
+type AccessGroupExcludeOktaArray []AccessGroupExcludeOktaInput
+
+func (AccessGroupExcludeOktaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeOkta)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeOktaArray) ToAccessGroupExcludeOktaArrayOutput() AccessGroupExcludeOktaArrayOutput {
+	return i.ToAccessGroupExcludeOktaArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeOktaArray) ToAccessGroupExcludeOktaArrayOutputWithContext(ctx context.Context) AccessGroupExcludeOktaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeOktaArrayOutput)
+}
+
+type AccessGroupExcludeOktaOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeOkta)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeOktaOutput) ToAccessGroupExcludeOktaOutput() AccessGroupExcludeOktaOutput {
+	return o
+}
+
+func (o AccessGroupExcludeOktaOutput) ToAccessGroupExcludeOktaOutputWithContext(ctx context.Context) AccessGroupExcludeOktaOutput {
+	return o
+}
+
+func (o AccessGroupExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Group.
+func (o AccessGroupExcludeOktaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupExcludeOktaArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeOktaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeOkta)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeOktaArrayOutput) ToAccessGroupExcludeOktaArrayOutput() AccessGroupExcludeOktaArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeOktaArrayOutput) ToAccessGroupExcludeOktaArrayOutputWithContext(ctx context.Context) AccessGroupExcludeOktaArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeOktaArrayOutput) Index(i pulumi.IntInput) AccessGroupExcludeOktaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupExcludeOkta {
+		return vs[0].([]AccessGroupExcludeOkta)[vs[1].(int)]
+	}).(AccessGroupExcludeOktaOutput)
+}
+
+type AccessGroupExcludeSaml struct {
+	AttributeName      *string `pulumi:"attributeName"`
+	AttributeValue     *string `pulumi:"attributeValue"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupExcludeSamlInput is an input type that accepts AccessGroupExcludeSamlArgs and AccessGroupExcludeSamlOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeSamlInput` via:
+//
+// 		 AccessGroupExcludeSamlArgs{...}
+//
+type AccessGroupExcludeSamlInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeSamlOutput() AccessGroupExcludeSamlOutput
+	ToAccessGroupExcludeSamlOutputWithContext(context.Context) AccessGroupExcludeSamlOutput
+}
+
+type AccessGroupExcludeSamlArgs struct {
+	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
+	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupExcludeSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeSaml)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeSamlArgs) ToAccessGroupExcludeSamlOutput() AccessGroupExcludeSamlOutput {
+	return i.ToAccessGroupExcludeSamlOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeSamlArgs) ToAccessGroupExcludeSamlOutputWithContext(ctx context.Context) AccessGroupExcludeSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeSamlOutput)
+}
+
+// AccessGroupExcludeSamlArrayInput is an input type that accepts AccessGroupExcludeSamlArray and AccessGroupExcludeSamlArrayOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeSamlArrayInput` via:
+//
+// 		 AccessGroupExcludeSamlArray{ AccessGroupExcludeSamlArgs{...} }
+//
+type AccessGroupExcludeSamlArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeSamlArrayOutput() AccessGroupExcludeSamlArrayOutput
+	ToAccessGroupExcludeSamlArrayOutputWithContext(context.Context) AccessGroupExcludeSamlArrayOutput
+}
+
+type AccessGroupExcludeSamlArray []AccessGroupExcludeSamlInput
+
+func (AccessGroupExcludeSamlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeSaml)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeSamlArray) ToAccessGroupExcludeSamlArrayOutput() AccessGroupExcludeSamlArrayOutput {
+	return i.ToAccessGroupExcludeSamlArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeSamlArray) ToAccessGroupExcludeSamlArrayOutputWithContext(ctx context.Context) AccessGroupExcludeSamlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeSamlArrayOutput)
+}
+
+type AccessGroupExcludeSamlOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeSaml)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeSamlOutput) ToAccessGroupExcludeSamlOutput() AccessGroupExcludeSamlOutput {
+	return o
+}
+
+func (o AccessGroupExcludeSamlOutput) ToAccessGroupExcludeSamlOutputWithContext(ctx context.Context) AccessGroupExcludeSamlOutput {
+	return o
+}
+
+func (o AccessGroupExcludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupExcludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupExcludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupExcludeSamlArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeSamlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeSaml)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeSamlArrayOutput) ToAccessGroupExcludeSamlArrayOutput() AccessGroupExcludeSamlArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeSamlArrayOutput) ToAccessGroupExcludeSamlArrayOutputWithContext(ctx context.Context) AccessGroupExcludeSamlArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupExcludeSamlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupExcludeSaml {
+		return vs[0].([]AccessGroupExcludeSaml)[vs[1].(int)]
+	}).(AccessGroupExcludeSamlOutput)
+}
+
 type AccessGroupInclude struct {
-	EmailDomains []string `pulumi:"emailDomains"`
-	Emails       []string `pulumi:"emails"`
-	Everyone     *bool    `pulumi:"everyone"`
-	Groups       []string `pulumi:"groups"`
-	Ips          []string `pulumi:"ips"`
+	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
+	Azures               []AccessGroupIncludeAzure  `pulumi:"azures"`
+	Certificate          *bool                      `pulumi:"certificate"`
+	CommonName           *string                    `pulumi:"commonName"`
+	EmailDomains         []string                   `pulumi:"emailDomains"`
+	Emails               []string                   `pulumi:"emails"`
+	Everyone             *bool                      `pulumi:"everyone"`
+	Githubs              []AccessGroupIncludeGithub `pulumi:"githubs"`
+	Groups               []string                   `pulumi:"groups"`
+	Gsuites              []AccessGroupIncludeGsuite `pulumi:"gsuites"`
+	Ips                  []string                   `pulumi:"ips"`
+	Oktas                []AccessGroupIncludeOkta   `pulumi:"oktas"`
+	Samls                []AccessGroupIncludeSaml   `pulumi:"samls"`
+	ServiceTokens        []string                   `pulumi:"serviceTokens"`
 }
 
 // AccessGroupIncludeInput is an input type that accepts AccessGroupIncludeArgs and AccessGroupIncludeOutput values.
@@ -151,11 +736,20 @@ type AccessGroupIncludeInput interface {
 }
 
 type AccessGroupIncludeArgs struct {
-	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
-	Emails       pulumi.StringArrayInput `pulumi:"emails"`
-	Everyone     pulumi.BoolPtrInput     `pulumi:"everyone"`
-	Groups       pulumi.StringArrayInput `pulumi:"groups"`
-	Ips          pulumi.StringArrayInput `pulumi:"ips"`
+	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
+	Azures               AccessGroupIncludeAzureArrayInput  `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
+	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
+	Githubs              AccessGroupIncludeGithubArrayInput `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
+	Gsuites              AccessGroupIncludeGsuiteArrayInput `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
+	Oktas                AccessGroupIncludeOktaArrayInput   `pulumi:"oktas"`
+	Samls                AccessGroupIncludeSamlArrayInput   `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupIncludeArgs) ElementType() reflect.Type {
@@ -210,6 +804,22 @@ func (o AccessGroupIncludeOutput) ToAccessGroupIncludeOutputWithContext(ctx cont
 	return o
 }
 
+func (o AccessGroupIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupIncludeOutput) Azures() AccessGroupIncludeAzureArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeAzure { return v.Azures }).(AccessGroupIncludeAzureArrayOutput)
+}
+
+func (o AccessGroupIncludeOutput) Certificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupIncludeOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessGroupIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -222,12 +832,32 @@ func (o AccessGroupIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+func (o AccessGroupIncludeOutput) Githubs() AccessGroupIncludeGithubArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeGithub { return v.Githubs }).(AccessGroupIncludeGithubArrayOutput)
+}
+
 func (o AccessGroupIncludeOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+func (o AccessGroupIncludeOutput) Gsuites() AccessGroupIncludeGsuiteArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeGsuite { return v.Gsuites }).(AccessGroupIncludeGsuiteArrayOutput)
+}
+
 func (o AccessGroupIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupIncludeOutput) Oktas() AccessGroupIncludeOktaArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeOkta { return v.Oktas }).(AccessGroupIncludeOktaArrayOutput)
+}
+
+func (o AccessGroupIncludeOutput) Samls() AccessGroupIncludeSamlArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeSaml { return v.Samls }).(AccessGroupIncludeSamlArrayOutput)
+}
+
+func (o AccessGroupIncludeOutput) ServiceTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupIncludeArrayOutput struct{ *pulumi.OutputState }
@@ -250,12 +880,543 @@ func (o AccessGroupIncludeArrayOutput) Index(i pulumi.IntInput) AccessGroupInclu
 	}).(AccessGroupIncludeOutput)
 }
 
+type AccessGroupIncludeAzure struct {
+	Id                 *string `pulumi:"id"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupIncludeAzureInput is an input type that accepts AccessGroupIncludeAzureArgs and AccessGroupIncludeAzureOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeAzureInput` via:
+//
+// 		 AccessGroupIncludeAzureArgs{...}
+//
+type AccessGroupIncludeAzureInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeAzureOutput() AccessGroupIncludeAzureOutput
+	ToAccessGroupIncludeAzureOutputWithContext(context.Context) AccessGroupIncludeAzureOutput
+}
+
+type AccessGroupIncludeAzureArgs struct {
+	Id                 pulumi.StringPtrInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupIncludeAzureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeAzure)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeAzureArgs) ToAccessGroupIncludeAzureOutput() AccessGroupIncludeAzureOutput {
+	return i.ToAccessGroupIncludeAzureOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeAzureArgs) ToAccessGroupIncludeAzureOutputWithContext(ctx context.Context) AccessGroupIncludeAzureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeAzureOutput)
+}
+
+// AccessGroupIncludeAzureArrayInput is an input type that accepts AccessGroupIncludeAzureArray and AccessGroupIncludeAzureArrayOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeAzureArrayInput` via:
+//
+// 		 AccessGroupIncludeAzureArray{ AccessGroupIncludeAzureArgs{...} }
+//
+type AccessGroupIncludeAzureArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeAzureArrayOutput() AccessGroupIncludeAzureArrayOutput
+	ToAccessGroupIncludeAzureArrayOutputWithContext(context.Context) AccessGroupIncludeAzureArrayOutput
+}
+
+type AccessGroupIncludeAzureArray []AccessGroupIncludeAzureInput
+
+func (AccessGroupIncludeAzureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeAzure)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeAzureArray) ToAccessGroupIncludeAzureArrayOutput() AccessGroupIncludeAzureArrayOutput {
+	return i.ToAccessGroupIncludeAzureArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeAzureArray) ToAccessGroupIncludeAzureArrayOutputWithContext(ctx context.Context) AccessGroupIncludeAzureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeAzureArrayOutput)
+}
+
+type AccessGroupIncludeAzureOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeAzureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeAzure)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeAzureOutput) ToAccessGroupIncludeAzureOutput() AccessGroupIncludeAzureOutput {
+	return o
+}
+
+func (o AccessGroupIncludeAzureOutput) ToAccessGroupIncludeAzureOutputWithContext(ctx context.Context) AccessGroupIncludeAzureOutput {
+	return o
+}
+
+func (o AccessGroupIncludeAzureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupIncludeAzureArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeAzureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeAzure)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeAzureArrayOutput) ToAccessGroupIncludeAzureArrayOutput() AccessGroupIncludeAzureArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeAzureArrayOutput) ToAccessGroupIncludeAzureArrayOutputWithContext(ctx context.Context) AccessGroupIncludeAzureArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeAzureArrayOutput) Index(i pulumi.IntInput) AccessGroupIncludeAzureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupIncludeAzure {
+		return vs[0].([]AccessGroupIncludeAzure)[vs[1].(int)]
+	}).(AccessGroupIncludeAzureOutput)
+}
+
+type AccessGroupIncludeGithub struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name *string `pulumi:"name"`
+}
+
+// AccessGroupIncludeGithubInput is an input type that accepts AccessGroupIncludeGithubArgs and AccessGroupIncludeGithubOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeGithubInput` via:
+//
+// 		 AccessGroupIncludeGithubArgs{...}
+//
+type AccessGroupIncludeGithubInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeGithubOutput() AccessGroupIncludeGithubOutput
+	ToAccessGroupIncludeGithubOutputWithContext(context.Context) AccessGroupIncludeGithubOutput
+}
+
+type AccessGroupIncludeGithubArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessGroupIncludeGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeGithub)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeGithubArgs) ToAccessGroupIncludeGithubOutput() AccessGroupIncludeGithubOutput {
+	return i.ToAccessGroupIncludeGithubOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeGithubArgs) ToAccessGroupIncludeGithubOutputWithContext(ctx context.Context) AccessGroupIncludeGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeGithubOutput)
+}
+
+// AccessGroupIncludeGithubArrayInput is an input type that accepts AccessGroupIncludeGithubArray and AccessGroupIncludeGithubArrayOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeGithubArrayInput` via:
+//
+// 		 AccessGroupIncludeGithubArray{ AccessGroupIncludeGithubArgs{...} }
+//
+type AccessGroupIncludeGithubArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeGithubArrayOutput() AccessGroupIncludeGithubArrayOutput
+	ToAccessGroupIncludeGithubArrayOutputWithContext(context.Context) AccessGroupIncludeGithubArrayOutput
+}
+
+type AccessGroupIncludeGithubArray []AccessGroupIncludeGithubInput
+
+func (AccessGroupIncludeGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeGithub)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeGithubArray) ToAccessGroupIncludeGithubArrayOutput() AccessGroupIncludeGithubArrayOutput {
+	return i.ToAccessGroupIncludeGithubArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeGithubArray) ToAccessGroupIncludeGithubArrayOutputWithContext(ctx context.Context) AccessGroupIncludeGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeGithubArrayOutput)
+}
+
+type AccessGroupIncludeGithubOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeGithub)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeGithubOutput) ToAccessGroupIncludeGithubOutput() AccessGroupIncludeGithubOutput {
+	return o
+}
+
+func (o AccessGroupIncludeGithubOutput) ToAccessGroupIncludeGithubOutputWithContext(ctx context.Context) AccessGroupIncludeGithubOutput {
+	return o
+}
+
+func (o AccessGroupIncludeGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Group.
+func (o AccessGroupIncludeGithubOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupIncludeGithubArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeGithub)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeGithubArrayOutput) ToAccessGroupIncludeGithubArrayOutput() AccessGroupIncludeGithubArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeGithubArrayOutput) ToAccessGroupIncludeGithubArrayOutputWithContext(ctx context.Context) AccessGroupIncludeGithubArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeGithubArrayOutput) Index(i pulumi.IntInput) AccessGroupIncludeGithubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupIncludeGithub {
+		return vs[0].([]AccessGroupIncludeGithub)[vs[1].(int)]
+	}).(AccessGroupIncludeGithubOutput)
+}
+
+type AccessGroupIncludeGsuite struct {
+	Email              *string `pulumi:"email"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupIncludeGsuiteInput is an input type that accepts AccessGroupIncludeGsuiteArgs and AccessGroupIncludeGsuiteOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeGsuiteInput` via:
+//
+// 		 AccessGroupIncludeGsuiteArgs{...}
+//
+type AccessGroupIncludeGsuiteInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeGsuiteOutput() AccessGroupIncludeGsuiteOutput
+	ToAccessGroupIncludeGsuiteOutputWithContext(context.Context) AccessGroupIncludeGsuiteOutput
+}
+
+type AccessGroupIncludeGsuiteArgs struct {
+	Email              pulumi.StringPtrInput `pulumi:"email"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupIncludeGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeGsuite)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeGsuiteArgs) ToAccessGroupIncludeGsuiteOutput() AccessGroupIncludeGsuiteOutput {
+	return i.ToAccessGroupIncludeGsuiteOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeGsuiteArgs) ToAccessGroupIncludeGsuiteOutputWithContext(ctx context.Context) AccessGroupIncludeGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeGsuiteOutput)
+}
+
+// AccessGroupIncludeGsuiteArrayInput is an input type that accepts AccessGroupIncludeGsuiteArray and AccessGroupIncludeGsuiteArrayOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeGsuiteArrayInput` via:
+//
+// 		 AccessGroupIncludeGsuiteArray{ AccessGroupIncludeGsuiteArgs{...} }
+//
+type AccessGroupIncludeGsuiteArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeGsuiteArrayOutput() AccessGroupIncludeGsuiteArrayOutput
+	ToAccessGroupIncludeGsuiteArrayOutputWithContext(context.Context) AccessGroupIncludeGsuiteArrayOutput
+}
+
+type AccessGroupIncludeGsuiteArray []AccessGroupIncludeGsuiteInput
+
+func (AccessGroupIncludeGsuiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeGsuite)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeGsuiteArray) ToAccessGroupIncludeGsuiteArrayOutput() AccessGroupIncludeGsuiteArrayOutput {
+	return i.ToAccessGroupIncludeGsuiteArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeGsuiteArray) ToAccessGroupIncludeGsuiteArrayOutputWithContext(ctx context.Context) AccessGroupIncludeGsuiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeGsuiteArrayOutput)
+}
+
+type AccessGroupIncludeGsuiteOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeGsuite)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeGsuiteOutput) ToAccessGroupIncludeGsuiteOutput() AccessGroupIncludeGsuiteOutput {
+	return o
+}
+
+func (o AccessGroupIncludeGsuiteOutput) ToAccessGroupIncludeGsuiteOutputWithContext(ctx context.Context) AccessGroupIncludeGsuiteOutput {
+	return o
+}
+
+func (o AccessGroupIncludeGsuiteOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupIncludeGsuiteArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeGsuiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeGsuite)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeGsuiteArrayOutput) ToAccessGroupIncludeGsuiteArrayOutput() AccessGroupIncludeGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeGsuiteArrayOutput) ToAccessGroupIncludeGsuiteArrayOutputWithContext(ctx context.Context) AccessGroupIncludeGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGroupIncludeGsuiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupIncludeGsuite {
+		return vs[0].([]AccessGroupIncludeGsuite)[vs[1].(int)]
+	}).(AccessGroupIncludeGsuiteOutput)
+}
+
+type AccessGroupIncludeOkta struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name *string `pulumi:"name"`
+}
+
+// AccessGroupIncludeOktaInput is an input type that accepts AccessGroupIncludeOktaArgs and AccessGroupIncludeOktaOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeOktaInput` via:
+//
+// 		 AccessGroupIncludeOktaArgs{...}
+//
+type AccessGroupIncludeOktaInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeOktaOutput() AccessGroupIncludeOktaOutput
+	ToAccessGroupIncludeOktaOutputWithContext(context.Context) AccessGroupIncludeOktaOutput
+}
+
+type AccessGroupIncludeOktaArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessGroupIncludeOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeOkta)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeOktaArgs) ToAccessGroupIncludeOktaOutput() AccessGroupIncludeOktaOutput {
+	return i.ToAccessGroupIncludeOktaOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeOktaArgs) ToAccessGroupIncludeOktaOutputWithContext(ctx context.Context) AccessGroupIncludeOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeOktaOutput)
+}
+
+// AccessGroupIncludeOktaArrayInput is an input type that accepts AccessGroupIncludeOktaArray and AccessGroupIncludeOktaArrayOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeOktaArrayInput` via:
+//
+// 		 AccessGroupIncludeOktaArray{ AccessGroupIncludeOktaArgs{...} }
+//
+type AccessGroupIncludeOktaArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeOktaArrayOutput() AccessGroupIncludeOktaArrayOutput
+	ToAccessGroupIncludeOktaArrayOutputWithContext(context.Context) AccessGroupIncludeOktaArrayOutput
+}
+
+type AccessGroupIncludeOktaArray []AccessGroupIncludeOktaInput
+
+func (AccessGroupIncludeOktaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeOkta)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeOktaArray) ToAccessGroupIncludeOktaArrayOutput() AccessGroupIncludeOktaArrayOutput {
+	return i.ToAccessGroupIncludeOktaArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeOktaArray) ToAccessGroupIncludeOktaArrayOutputWithContext(ctx context.Context) AccessGroupIncludeOktaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeOktaArrayOutput)
+}
+
+type AccessGroupIncludeOktaOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeOkta)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeOktaOutput) ToAccessGroupIncludeOktaOutput() AccessGroupIncludeOktaOutput {
+	return o
+}
+
+func (o AccessGroupIncludeOktaOutput) ToAccessGroupIncludeOktaOutputWithContext(ctx context.Context) AccessGroupIncludeOktaOutput {
+	return o
+}
+
+func (o AccessGroupIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Group.
+func (o AccessGroupIncludeOktaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupIncludeOktaArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeOktaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeOkta)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeOktaArrayOutput) ToAccessGroupIncludeOktaArrayOutput() AccessGroupIncludeOktaArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeOktaArrayOutput) ToAccessGroupIncludeOktaArrayOutputWithContext(ctx context.Context) AccessGroupIncludeOktaArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeOktaArrayOutput) Index(i pulumi.IntInput) AccessGroupIncludeOktaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupIncludeOkta {
+		return vs[0].([]AccessGroupIncludeOkta)[vs[1].(int)]
+	}).(AccessGroupIncludeOktaOutput)
+}
+
+type AccessGroupIncludeSaml struct {
+	AttributeName      *string `pulumi:"attributeName"`
+	AttributeValue     *string `pulumi:"attributeValue"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupIncludeSamlInput is an input type that accepts AccessGroupIncludeSamlArgs and AccessGroupIncludeSamlOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeSamlInput` via:
+//
+// 		 AccessGroupIncludeSamlArgs{...}
+//
+type AccessGroupIncludeSamlInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeSamlOutput() AccessGroupIncludeSamlOutput
+	ToAccessGroupIncludeSamlOutputWithContext(context.Context) AccessGroupIncludeSamlOutput
+}
+
+type AccessGroupIncludeSamlArgs struct {
+	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
+	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupIncludeSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeSaml)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeSamlArgs) ToAccessGroupIncludeSamlOutput() AccessGroupIncludeSamlOutput {
+	return i.ToAccessGroupIncludeSamlOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeSamlArgs) ToAccessGroupIncludeSamlOutputWithContext(ctx context.Context) AccessGroupIncludeSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeSamlOutput)
+}
+
+// AccessGroupIncludeSamlArrayInput is an input type that accepts AccessGroupIncludeSamlArray and AccessGroupIncludeSamlArrayOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeSamlArrayInput` via:
+//
+// 		 AccessGroupIncludeSamlArray{ AccessGroupIncludeSamlArgs{...} }
+//
+type AccessGroupIncludeSamlArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeSamlArrayOutput() AccessGroupIncludeSamlArrayOutput
+	ToAccessGroupIncludeSamlArrayOutputWithContext(context.Context) AccessGroupIncludeSamlArrayOutput
+}
+
+type AccessGroupIncludeSamlArray []AccessGroupIncludeSamlInput
+
+func (AccessGroupIncludeSamlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeSaml)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeSamlArray) ToAccessGroupIncludeSamlArrayOutput() AccessGroupIncludeSamlArrayOutput {
+	return i.ToAccessGroupIncludeSamlArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeSamlArray) ToAccessGroupIncludeSamlArrayOutputWithContext(ctx context.Context) AccessGroupIncludeSamlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeSamlArrayOutput)
+}
+
+type AccessGroupIncludeSamlOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeSaml)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeSamlOutput) ToAccessGroupIncludeSamlOutput() AccessGroupIncludeSamlOutput {
+	return o
+}
+
+func (o AccessGroupIncludeSamlOutput) ToAccessGroupIncludeSamlOutputWithContext(ctx context.Context) AccessGroupIncludeSamlOutput {
+	return o
+}
+
+func (o AccessGroupIncludeSamlOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupIncludeSamlOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupIncludeSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupIncludeSamlArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeSamlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeSaml)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeSamlArrayOutput) ToAccessGroupIncludeSamlArrayOutput() AccessGroupIncludeSamlArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeSamlArrayOutput) ToAccessGroupIncludeSamlArrayOutputWithContext(ctx context.Context) AccessGroupIncludeSamlArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupIncludeSamlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupIncludeSaml {
+		return vs[0].([]AccessGroupIncludeSaml)[vs[1].(int)]
+	}).(AccessGroupIncludeSamlOutput)
+}
+
 type AccessGroupRequire struct {
-	EmailDomains []string `pulumi:"emailDomains"`
-	Emails       []string `pulumi:"emails"`
-	Everyone     *bool    `pulumi:"everyone"`
-	Groups       []string `pulumi:"groups"`
-	Ips          []string `pulumi:"ips"`
+	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
+	Azures               []AccessGroupRequireAzure  `pulumi:"azures"`
+	Certificate          *bool                      `pulumi:"certificate"`
+	CommonName           *string                    `pulumi:"commonName"`
+	EmailDomains         []string                   `pulumi:"emailDomains"`
+	Emails               []string                   `pulumi:"emails"`
+	Everyone             *bool                      `pulumi:"everyone"`
+	Githubs              []AccessGroupRequireGithub `pulumi:"githubs"`
+	Groups               []string                   `pulumi:"groups"`
+	Gsuites              []AccessGroupRequireGsuite `pulumi:"gsuites"`
+	Ips                  []string                   `pulumi:"ips"`
+	Oktas                []AccessGroupRequireOkta   `pulumi:"oktas"`
+	Samls                []AccessGroupRequireSaml   `pulumi:"samls"`
+	ServiceTokens        []string                   `pulumi:"serviceTokens"`
 }
 
 // AccessGroupRequireInput is an input type that accepts AccessGroupRequireArgs and AccessGroupRequireOutput values.
@@ -271,11 +1432,20 @@ type AccessGroupRequireInput interface {
 }
 
 type AccessGroupRequireArgs struct {
-	EmailDomains pulumi.StringArrayInput `pulumi:"emailDomains"`
-	Emails       pulumi.StringArrayInput `pulumi:"emails"`
-	Everyone     pulumi.BoolPtrInput     `pulumi:"everyone"`
-	Groups       pulumi.StringArrayInput `pulumi:"groups"`
-	Ips          pulumi.StringArrayInput `pulumi:"ips"`
+	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
+	Azures               AccessGroupRequireAzureArrayInput  `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
+	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
+	Githubs              AccessGroupRequireGithubArrayInput `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
+	Gsuites              AccessGroupRequireGsuiteArrayInput `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
+	Oktas                AccessGroupRequireOktaArrayInput   `pulumi:"oktas"`
+	Samls                AccessGroupRequireSamlArrayInput   `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupRequireArgs) ElementType() reflect.Type {
@@ -330,6 +1500,22 @@ func (o AccessGroupRequireOutput) ToAccessGroupRequireOutputWithContext(ctx cont
 	return o
 }
 
+func (o AccessGroupRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupRequireOutput) Azures() AccessGroupRequireAzureArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireAzure { return v.Azures }).(AccessGroupRequireAzureArrayOutput)
+}
+
+func (o AccessGroupRequireOutput) Certificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.Certificate }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupRequireOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessGroupRequireOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
 }
@@ -342,12 +1528,32 @@ func (o AccessGroupRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
 }
 
+func (o AccessGroupRequireOutput) Githubs() AccessGroupRequireGithubArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireGithub { return v.Githubs }).(AccessGroupRequireGithubArrayOutput)
+}
+
 func (o AccessGroupRequireOutput) Groups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Groups }).(pulumi.StringArrayOutput)
 }
 
+func (o AccessGroupRequireOutput) Gsuites() AccessGroupRequireGsuiteArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireGsuite { return v.Gsuites }).(AccessGroupRequireGsuiteArrayOutput)
+}
+
 func (o AccessGroupRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupRequireOutput) Oktas() AccessGroupRequireOktaArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireOkta { return v.Oktas }).(AccessGroupRequireOktaArrayOutput)
+}
+
+func (o AccessGroupRequireOutput) Samls() AccessGroupRequireSamlArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireSaml { return v.Samls }).(AccessGroupRequireSamlArrayOutput)
+}
+
+func (o AccessGroupRequireOutput) ServiceTokens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []string { return v.ServiceTokens }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupRequireArrayOutput struct{ *pulumi.OutputState }
@@ -368,6 +1574,528 @@ func (o AccessGroupRequireArrayOutput) Index(i pulumi.IntInput) AccessGroupRequi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequire {
 		return vs[0].([]AccessGroupRequire)[vs[1].(int)]
 	}).(AccessGroupRequireOutput)
+}
+
+type AccessGroupRequireAzure struct {
+	Id                 *string `pulumi:"id"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupRequireAzureInput is an input type that accepts AccessGroupRequireAzureArgs and AccessGroupRequireAzureOutput values.
+// You can construct a concrete instance of `AccessGroupRequireAzureInput` via:
+//
+// 		 AccessGroupRequireAzureArgs{...}
+//
+type AccessGroupRequireAzureInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireAzureOutput() AccessGroupRequireAzureOutput
+	ToAccessGroupRequireAzureOutputWithContext(context.Context) AccessGroupRequireAzureOutput
+}
+
+type AccessGroupRequireAzureArgs struct {
+	Id                 pulumi.StringPtrInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupRequireAzureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireAzure)(nil)).Elem()
+}
+
+func (i AccessGroupRequireAzureArgs) ToAccessGroupRequireAzureOutput() AccessGroupRequireAzureOutput {
+	return i.ToAccessGroupRequireAzureOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireAzureArgs) ToAccessGroupRequireAzureOutputWithContext(ctx context.Context) AccessGroupRequireAzureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireAzureOutput)
+}
+
+// AccessGroupRequireAzureArrayInput is an input type that accepts AccessGroupRequireAzureArray and AccessGroupRequireAzureArrayOutput values.
+// You can construct a concrete instance of `AccessGroupRequireAzureArrayInput` via:
+//
+// 		 AccessGroupRequireAzureArray{ AccessGroupRequireAzureArgs{...} }
+//
+type AccessGroupRequireAzureArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireAzureArrayOutput() AccessGroupRequireAzureArrayOutput
+	ToAccessGroupRequireAzureArrayOutputWithContext(context.Context) AccessGroupRequireAzureArrayOutput
+}
+
+type AccessGroupRequireAzureArray []AccessGroupRequireAzureInput
+
+func (AccessGroupRequireAzureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireAzure)(nil)).Elem()
+}
+
+func (i AccessGroupRequireAzureArray) ToAccessGroupRequireAzureArrayOutput() AccessGroupRequireAzureArrayOutput {
+	return i.ToAccessGroupRequireAzureArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireAzureArray) ToAccessGroupRequireAzureArrayOutputWithContext(ctx context.Context) AccessGroupRequireAzureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireAzureArrayOutput)
+}
+
+type AccessGroupRequireAzureOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireAzureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireAzure)(nil)).Elem()
+}
+
+func (o AccessGroupRequireAzureOutput) ToAccessGroupRequireAzureOutput() AccessGroupRequireAzureOutput {
+	return o
+}
+
+func (o AccessGroupRequireAzureOutput) ToAccessGroupRequireAzureOutputWithContext(ctx context.Context) AccessGroupRequireAzureOutput {
+	return o
+}
+
+func (o AccessGroupRequireAzureOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupRequireAzureArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireAzureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireAzure)(nil)).Elem()
+}
+
+func (o AccessGroupRequireAzureArrayOutput) ToAccessGroupRequireAzureArrayOutput() AccessGroupRequireAzureArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireAzureArrayOutput) ToAccessGroupRequireAzureArrayOutputWithContext(ctx context.Context) AccessGroupRequireAzureArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireAzureArrayOutput) Index(i pulumi.IntInput) AccessGroupRequireAzureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequireAzure {
+		return vs[0].([]AccessGroupRequireAzure)[vs[1].(int)]
+	}).(AccessGroupRequireAzureOutput)
+}
+
+type AccessGroupRequireGithub struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name *string `pulumi:"name"`
+}
+
+// AccessGroupRequireGithubInput is an input type that accepts AccessGroupRequireGithubArgs and AccessGroupRequireGithubOutput values.
+// You can construct a concrete instance of `AccessGroupRequireGithubInput` via:
+//
+// 		 AccessGroupRequireGithubArgs{...}
+//
+type AccessGroupRequireGithubInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireGithubOutput() AccessGroupRequireGithubOutput
+	ToAccessGroupRequireGithubOutputWithContext(context.Context) AccessGroupRequireGithubOutput
+}
+
+type AccessGroupRequireGithubArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessGroupRequireGithubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireGithub)(nil)).Elem()
+}
+
+func (i AccessGroupRequireGithubArgs) ToAccessGroupRequireGithubOutput() AccessGroupRequireGithubOutput {
+	return i.ToAccessGroupRequireGithubOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireGithubArgs) ToAccessGroupRequireGithubOutputWithContext(ctx context.Context) AccessGroupRequireGithubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireGithubOutput)
+}
+
+// AccessGroupRequireGithubArrayInput is an input type that accepts AccessGroupRequireGithubArray and AccessGroupRequireGithubArrayOutput values.
+// You can construct a concrete instance of `AccessGroupRequireGithubArrayInput` via:
+//
+// 		 AccessGroupRequireGithubArray{ AccessGroupRequireGithubArgs{...} }
+//
+type AccessGroupRequireGithubArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireGithubArrayOutput() AccessGroupRequireGithubArrayOutput
+	ToAccessGroupRequireGithubArrayOutputWithContext(context.Context) AccessGroupRequireGithubArrayOutput
+}
+
+type AccessGroupRequireGithubArray []AccessGroupRequireGithubInput
+
+func (AccessGroupRequireGithubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireGithub)(nil)).Elem()
+}
+
+func (i AccessGroupRequireGithubArray) ToAccessGroupRequireGithubArrayOutput() AccessGroupRequireGithubArrayOutput {
+	return i.ToAccessGroupRequireGithubArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireGithubArray) ToAccessGroupRequireGithubArrayOutputWithContext(ctx context.Context) AccessGroupRequireGithubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireGithubArrayOutput)
+}
+
+type AccessGroupRequireGithubOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireGithubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireGithub)(nil)).Elem()
+}
+
+func (o AccessGroupRequireGithubOutput) ToAccessGroupRequireGithubOutput() AccessGroupRequireGithubOutput {
+	return o
+}
+
+func (o AccessGroupRequireGithubOutput) ToAccessGroupRequireGithubOutputWithContext(ctx context.Context) AccessGroupRequireGithubOutput {
+	return o
+}
+
+func (o AccessGroupRequireGithubOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireGithub) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Group.
+func (o AccessGroupRequireGithubOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupRequireGithubArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireGithubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireGithub)(nil)).Elem()
+}
+
+func (o AccessGroupRequireGithubArrayOutput) ToAccessGroupRequireGithubArrayOutput() AccessGroupRequireGithubArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireGithubArrayOutput) ToAccessGroupRequireGithubArrayOutputWithContext(ctx context.Context) AccessGroupRequireGithubArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireGithubArrayOutput) Index(i pulumi.IntInput) AccessGroupRequireGithubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequireGithub {
+		return vs[0].([]AccessGroupRequireGithub)[vs[1].(int)]
+	}).(AccessGroupRequireGithubOutput)
+}
+
+type AccessGroupRequireGsuite struct {
+	Email              *string `pulumi:"email"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupRequireGsuiteInput is an input type that accepts AccessGroupRequireGsuiteArgs and AccessGroupRequireGsuiteOutput values.
+// You can construct a concrete instance of `AccessGroupRequireGsuiteInput` via:
+//
+// 		 AccessGroupRequireGsuiteArgs{...}
+//
+type AccessGroupRequireGsuiteInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireGsuiteOutput() AccessGroupRequireGsuiteOutput
+	ToAccessGroupRequireGsuiteOutputWithContext(context.Context) AccessGroupRequireGsuiteOutput
+}
+
+type AccessGroupRequireGsuiteArgs struct {
+	Email              pulumi.StringPtrInput `pulumi:"email"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupRequireGsuiteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireGsuite)(nil)).Elem()
+}
+
+func (i AccessGroupRequireGsuiteArgs) ToAccessGroupRequireGsuiteOutput() AccessGroupRequireGsuiteOutput {
+	return i.ToAccessGroupRequireGsuiteOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireGsuiteArgs) ToAccessGroupRequireGsuiteOutputWithContext(ctx context.Context) AccessGroupRequireGsuiteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireGsuiteOutput)
+}
+
+// AccessGroupRequireGsuiteArrayInput is an input type that accepts AccessGroupRequireGsuiteArray and AccessGroupRequireGsuiteArrayOutput values.
+// You can construct a concrete instance of `AccessGroupRequireGsuiteArrayInput` via:
+//
+// 		 AccessGroupRequireGsuiteArray{ AccessGroupRequireGsuiteArgs{...} }
+//
+type AccessGroupRequireGsuiteArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireGsuiteArrayOutput() AccessGroupRequireGsuiteArrayOutput
+	ToAccessGroupRequireGsuiteArrayOutputWithContext(context.Context) AccessGroupRequireGsuiteArrayOutput
+}
+
+type AccessGroupRequireGsuiteArray []AccessGroupRequireGsuiteInput
+
+func (AccessGroupRequireGsuiteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireGsuite)(nil)).Elem()
+}
+
+func (i AccessGroupRequireGsuiteArray) ToAccessGroupRequireGsuiteArrayOutput() AccessGroupRequireGsuiteArrayOutput {
+	return i.ToAccessGroupRequireGsuiteArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireGsuiteArray) ToAccessGroupRequireGsuiteArrayOutputWithContext(ctx context.Context) AccessGroupRequireGsuiteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireGsuiteArrayOutput)
+}
+
+type AccessGroupRequireGsuiteOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireGsuiteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireGsuite)(nil)).Elem()
+}
+
+func (o AccessGroupRequireGsuiteOutput) ToAccessGroupRequireGsuiteOutput() AccessGroupRequireGsuiteOutput {
+	return o
+}
+
+func (o AccessGroupRequireGsuiteOutput) ToAccessGroupRequireGsuiteOutputWithContext(ctx context.Context) AccessGroupRequireGsuiteOutput {
+	return o
+}
+
+func (o AccessGroupRequireGsuiteOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireGsuite) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupRequireGsuiteArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireGsuiteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireGsuite)(nil)).Elem()
+}
+
+func (o AccessGroupRequireGsuiteArrayOutput) ToAccessGroupRequireGsuiteArrayOutput() AccessGroupRequireGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireGsuiteArrayOutput) ToAccessGroupRequireGsuiteArrayOutputWithContext(ctx context.Context) AccessGroupRequireGsuiteArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGroupRequireGsuiteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequireGsuite {
+		return vs[0].([]AccessGroupRequireGsuite)[vs[1].(int)]
+	}).(AccessGroupRequireGsuiteOutput)
+}
+
+type AccessGroupRequireOkta struct {
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name *string `pulumi:"name"`
+}
+
+// AccessGroupRequireOktaInput is an input type that accepts AccessGroupRequireOktaArgs and AccessGroupRequireOktaOutput values.
+// You can construct a concrete instance of `AccessGroupRequireOktaInput` via:
+//
+// 		 AccessGroupRequireOktaArgs{...}
+//
+type AccessGroupRequireOktaInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireOktaOutput() AccessGroupRequireOktaOutput
+	ToAccessGroupRequireOktaOutputWithContext(context.Context) AccessGroupRequireOktaOutput
+}
+
+type AccessGroupRequireOktaArgs struct {
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	// Friendly name of the Access Group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (AccessGroupRequireOktaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireOkta)(nil)).Elem()
+}
+
+func (i AccessGroupRequireOktaArgs) ToAccessGroupRequireOktaOutput() AccessGroupRequireOktaOutput {
+	return i.ToAccessGroupRequireOktaOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireOktaArgs) ToAccessGroupRequireOktaOutputWithContext(ctx context.Context) AccessGroupRequireOktaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireOktaOutput)
+}
+
+// AccessGroupRequireOktaArrayInput is an input type that accepts AccessGroupRequireOktaArray and AccessGroupRequireOktaArrayOutput values.
+// You can construct a concrete instance of `AccessGroupRequireOktaArrayInput` via:
+//
+// 		 AccessGroupRequireOktaArray{ AccessGroupRequireOktaArgs{...} }
+//
+type AccessGroupRequireOktaArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireOktaArrayOutput() AccessGroupRequireOktaArrayOutput
+	ToAccessGroupRequireOktaArrayOutputWithContext(context.Context) AccessGroupRequireOktaArrayOutput
+}
+
+type AccessGroupRequireOktaArray []AccessGroupRequireOktaInput
+
+func (AccessGroupRequireOktaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireOkta)(nil)).Elem()
+}
+
+func (i AccessGroupRequireOktaArray) ToAccessGroupRequireOktaArrayOutput() AccessGroupRequireOktaArrayOutput {
+	return i.ToAccessGroupRequireOktaArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireOktaArray) ToAccessGroupRequireOktaArrayOutputWithContext(ctx context.Context) AccessGroupRequireOktaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireOktaArrayOutput)
+}
+
+type AccessGroupRequireOktaOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireOktaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireOkta)(nil)).Elem()
+}
+
+func (o AccessGroupRequireOktaOutput) ToAccessGroupRequireOktaOutput() AccessGroupRequireOktaOutput {
+	return o
+}
+
+func (o AccessGroupRequireOktaOutput) ToAccessGroupRequireOktaOutputWithContext(ctx context.Context) AccessGroupRequireOktaOutput {
+	return o
+}
+
+func (o AccessGroupRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireOkta) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Group.
+func (o AccessGroupRequireOktaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupRequireOktaArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireOktaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireOkta)(nil)).Elem()
+}
+
+func (o AccessGroupRequireOktaArrayOutput) ToAccessGroupRequireOktaArrayOutput() AccessGroupRequireOktaArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireOktaArrayOutput) ToAccessGroupRequireOktaArrayOutputWithContext(ctx context.Context) AccessGroupRequireOktaArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireOktaArrayOutput) Index(i pulumi.IntInput) AccessGroupRequireOktaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequireOkta {
+		return vs[0].([]AccessGroupRequireOkta)[vs[1].(int)]
+	}).(AccessGroupRequireOktaOutput)
+}
+
+type AccessGroupRequireSaml struct {
+	AttributeName      *string `pulumi:"attributeName"`
+	AttributeValue     *string `pulumi:"attributeValue"`
+	IdentityProviderId *string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupRequireSamlInput is an input type that accepts AccessGroupRequireSamlArgs and AccessGroupRequireSamlOutput values.
+// You can construct a concrete instance of `AccessGroupRequireSamlInput` via:
+//
+// 		 AccessGroupRequireSamlArgs{...}
+//
+type AccessGroupRequireSamlInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireSamlOutput() AccessGroupRequireSamlOutput
+	ToAccessGroupRequireSamlOutputWithContext(context.Context) AccessGroupRequireSamlOutput
+}
+
+type AccessGroupRequireSamlArgs struct {
+	AttributeName      pulumi.StringPtrInput `pulumi:"attributeName"`
+	AttributeValue     pulumi.StringPtrInput `pulumi:"attributeValue"`
+	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupRequireSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireSaml)(nil)).Elem()
+}
+
+func (i AccessGroupRequireSamlArgs) ToAccessGroupRequireSamlOutput() AccessGroupRequireSamlOutput {
+	return i.ToAccessGroupRequireSamlOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireSamlArgs) ToAccessGroupRequireSamlOutputWithContext(ctx context.Context) AccessGroupRequireSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireSamlOutput)
+}
+
+// AccessGroupRequireSamlArrayInput is an input type that accepts AccessGroupRequireSamlArray and AccessGroupRequireSamlArrayOutput values.
+// You can construct a concrete instance of `AccessGroupRequireSamlArrayInput` via:
+//
+// 		 AccessGroupRequireSamlArray{ AccessGroupRequireSamlArgs{...} }
+//
+type AccessGroupRequireSamlArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireSamlArrayOutput() AccessGroupRequireSamlArrayOutput
+	ToAccessGroupRequireSamlArrayOutputWithContext(context.Context) AccessGroupRequireSamlArrayOutput
+}
+
+type AccessGroupRequireSamlArray []AccessGroupRequireSamlInput
+
+func (AccessGroupRequireSamlArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireSaml)(nil)).Elem()
+}
+
+func (i AccessGroupRequireSamlArray) ToAccessGroupRequireSamlArrayOutput() AccessGroupRequireSamlArrayOutput {
+	return i.ToAccessGroupRequireSamlArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireSamlArray) ToAccessGroupRequireSamlArrayOutputWithContext(ctx context.Context) AccessGroupRequireSamlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireSamlArrayOutput)
+}
+
+type AccessGroupRequireSamlOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireSaml)(nil)).Elem()
+}
+
+func (o AccessGroupRequireSamlOutput) ToAccessGroupRequireSamlOutput() AccessGroupRequireSamlOutput {
+	return o
+}
+
+func (o AccessGroupRequireSamlOutput) ToAccessGroupRequireSamlOutputWithContext(ctx context.Context) AccessGroupRequireSamlOutput {
+	return o
+}
+
+func (o AccessGroupRequireSamlOutput) AttributeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireSaml) *string { return v.AttributeName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupRequireSamlOutput) AttributeValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireSaml) *string { return v.AttributeValue }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupRequireSamlOutput) IdentityProviderId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireSaml) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupRequireSamlArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireSamlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireSaml)(nil)).Elem()
+}
+
+func (o AccessGroupRequireSamlArrayOutput) ToAccessGroupRequireSamlArrayOutput() AccessGroupRequireSamlArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireSamlArrayOutput) ToAccessGroupRequireSamlArrayOutputWithContext(ctx context.Context) AccessGroupRequireSamlArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupRequireSamlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequireSaml {
+		return vs[0].([]AccessGroupRequireSaml)[vs[1].(int)]
+	}).(AccessGroupRequireSamlOutput)
 }
 
 type AccessIdentityProviderConfig struct {
@@ -6394,7 +8122,6 @@ type ZoneSettingsOverrideInitialSettings struct {
 	ChallengeTtl            *int                                               `pulumi:"challengeTtl"`
 	CnameFlattening         *string                                            `pulumi:"cnameFlattening"`
 	DevelopmentMode         *string                                            `pulumi:"developmentMode"`
-	EdgeCacheTtl            *int                                               `pulumi:"edgeCacheTtl"`
 	EmailObfuscation        *string                                            `pulumi:"emailObfuscation"`
 	H2Prioritization        *string                                            `pulumi:"h2Prioritization"`
 	HotlinkProtection       *string                                            `pulumi:"hotlinkProtection"`
@@ -6426,6 +8153,7 @@ type ZoneSettingsOverrideInitialSettings struct {
 	Tls13                   *string                                            `pulumi:"tls13"`
 	TlsClientAuth           *string                                            `pulumi:"tlsClientAuth"`
 	TrueClientIpHeader      *string                                            `pulumi:"trueClientIpHeader"`
+	UniversalSsl            *string                                            `pulumi:"universalSsl"`
 	Waf                     *string                                            `pulumi:"waf"`
 	Webp                    *string                                            `pulumi:"webp"`
 	Websockets              *string                                            `pulumi:"websockets"`
@@ -6455,7 +8183,6 @@ type ZoneSettingsOverrideInitialSettingsArgs struct {
 	ChallengeTtl            pulumi.IntPtrInput                                        `pulumi:"challengeTtl"`
 	CnameFlattening         pulumi.StringPtrInput                                     `pulumi:"cnameFlattening"`
 	DevelopmentMode         pulumi.StringPtrInput                                     `pulumi:"developmentMode"`
-	EdgeCacheTtl            pulumi.IntPtrInput                                        `pulumi:"edgeCacheTtl"`
 	EmailObfuscation        pulumi.StringPtrInput                                     `pulumi:"emailObfuscation"`
 	H2Prioritization        pulumi.StringPtrInput                                     `pulumi:"h2Prioritization"`
 	HotlinkProtection       pulumi.StringPtrInput                                     `pulumi:"hotlinkProtection"`
@@ -6487,6 +8214,7 @@ type ZoneSettingsOverrideInitialSettingsArgs struct {
 	Tls13                   pulumi.StringPtrInput                                     `pulumi:"tls13"`
 	TlsClientAuth           pulumi.StringPtrInput                                     `pulumi:"tlsClientAuth"`
 	TrueClientIpHeader      pulumi.StringPtrInput                                     `pulumi:"trueClientIpHeader"`
+	UniversalSsl            pulumi.StringPtrInput                                     `pulumi:"universalSsl"`
 	Waf                     pulumi.StringPtrInput                                     `pulumi:"waf"`
 	Webp                    pulumi.StringPtrInput                                     `pulumi:"webp"`
 	Websockets              pulumi.StringPtrInput                                     `pulumi:"websockets"`
@@ -6608,10 +8336,6 @@ func (o ZoneSettingsOverrideInitialSettingsOutput) CnameFlattening() pulumi.Stri
 
 func (o ZoneSettingsOverrideInitialSettingsOutput) DevelopmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsOutput) EdgeCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *int { return v.EdgeCacheTtl }).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsOutput) EmailObfuscation() pulumi.StringPtrOutput {
@@ -6744,6 +8468,10 @@ func (o ZoneSettingsOverrideInitialSettingsOutput) TrueClientIpHeader() pulumi.S
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideInitialSettingsOutput) UniversalSsl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideInitialSettingsOutput) Waf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Waf }).(pulumi.StringPtrOutput)
 }
@@ -6816,10 +8544,6 @@ func (o ZoneSettingsOverrideInitialSettingsPtrOutput) CnameFlattening() pulumi.S
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) DevelopmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) EdgeCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *int { return v.EdgeCacheTtl }).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) EmailObfuscation() pulumi.StringPtrOutput {
@@ -6950,6 +8674,10 @@ func (o ZoneSettingsOverrideInitialSettingsPtrOutput) TlsClientAuth() pulumi.Str
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) TrueClientIpHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideInitialSettingsPtrOutput) UniversalSsl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Waf() pulumi.StringPtrOutput {
@@ -7481,7 +9209,6 @@ type ZoneSettingsOverrideSettings struct {
 	ChallengeTtl            *int                                        `pulumi:"challengeTtl"`
 	CnameFlattening         *string                                     `pulumi:"cnameFlattening"`
 	DevelopmentMode         *string                                     `pulumi:"developmentMode"`
-	EdgeCacheTtl            *int                                        `pulumi:"edgeCacheTtl"`
 	EmailObfuscation        *string                                     `pulumi:"emailObfuscation"`
 	H2Prioritization        *string                                     `pulumi:"h2Prioritization"`
 	HotlinkProtection       *string                                     `pulumi:"hotlinkProtection"`
@@ -7513,6 +9240,7 @@ type ZoneSettingsOverrideSettings struct {
 	Tls13                   *string                                     `pulumi:"tls13"`
 	TlsClientAuth           *string                                     `pulumi:"tlsClientAuth"`
 	TrueClientIpHeader      *string                                     `pulumi:"trueClientIpHeader"`
+	UniversalSsl            *string                                     `pulumi:"universalSsl"`
 	Waf                     *string                                     `pulumi:"waf"`
 	Webp                    *string                                     `pulumi:"webp"`
 	Websockets              *string                                     `pulumi:"websockets"`
@@ -7542,7 +9270,6 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	ChallengeTtl            pulumi.IntPtrInput                                 `pulumi:"challengeTtl"`
 	CnameFlattening         pulumi.StringPtrInput                              `pulumi:"cnameFlattening"`
 	DevelopmentMode         pulumi.StringPtrInput                              `pulumi:"developmentMode"`
-	EdgeCacheTtl            pulumi.IntPtrInput                                 `pulumi:"edgeCacheTtl"`
 	EmailObfuscation        pulumi.StringPtrInput                              `pulumi:"emailObfuscation"`
 	H2Prioritization        pulumi.StringPtrInput                              `pulumi:"h2Prioritization"`
 	HotlinkProtection       pulumi.StringPtrInput                              `pulumi:"hotlinkProtection"`
@@ -7574,6 +9301,7 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	Tls13                   pulumi.StringPtrInput                              `pulumi:"tls13"`
 	TlsClientAuth           pulumi.StringPtrInput                              `pulumi:"tlsClientAuth"`
 	TrueClientIpHeader      pulumi.StringPtrInput                              `pulumi:"trueClientIpHeader"`
+	UniversalSsl            pulumi.StringPtrInput                              `pulumi:"universalSsl"`
 	Waf                     pulumi.StringPtrInput                              `pulumi:"waf"`
 	Webp                    pulumi.StringPtrInput                              `pulumi:"webp"`
 	Websockets              pulumi.StringPtrInput                              `pulumi:"websockets"`
@@ -7695,10 +9423,6 @@ func (o ZoneSettingsOverrideSettingsOutput) CnameFlattening() pulumi.StringPtrOu
 
 func (o ZoneSettingsOverrideSettingsOutput) DevelopmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideSettingsOutput) EdgeCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *int { return v.EdgeCacheTtl }).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsOutput) EmailObfuscation() pulumi.StringPtrOutput {
@@ -7829,6 +9553,10 @@ func (o ZoneSettingsOverrideSettingsOutput) TrueClientIpHeader() pulumi.StringPt
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsOutput) UniversalSsl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsOutput) Waf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Waf }).(pulumi.StringPtrOutput)
 }
@@ -7901,10 +9629,6 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) CnameFlattening() pulumi.StringPt
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) DevelopmentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideSettingsPtrOutput) EdgeCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *int { return v.EdgeCacheTtl }).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) EmailObfuscation() pulumi.StringPtrOutput {
@@ -8033,6 +9757,10 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) TlsClientAuth() pulumi.StringPtrO
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) TrueClientIpHeader() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsPtrOutput) UniversalSsl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Waf() pulumi.StringPtrOutput {
@@ -9300,10 +11028,40 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeAzureOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeGithubOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeGithubArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeGsuiteOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeGsuiteArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeOktaOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeOktaArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeSamlOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeAzureOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeGithubOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeGithubArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeGsuiteOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeGsuiteArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeOktaOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeOktaArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeSamlOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireAzureOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireGithubOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireGithubArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireGsuiteOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireGsuiteArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireOktaOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireOktaArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireSamlOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeOutput{})

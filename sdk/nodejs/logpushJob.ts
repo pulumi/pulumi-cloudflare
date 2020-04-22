@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
  * const exampleJob = new cloudflare.LogpushJob("exampleJob", {
+ *     dataset: "httpRequests",
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  *     enabled: true,
  *     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
@@ -57,6 +58,10 @@ export class LogpushJob extends pulumi.CustomResource {
     }
 
     /**
+     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+     */
+    public readonly dataset!: pulumi.Output<string>;
+    /**
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
      */
     public readonly destinationConf!: pulumi.Output<string>;
@@ -90,6 +95,7 @@ export class LogpushJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as LogpushJobState | undefined;
+            inputs["dataset"] = state ? state.dataset : undefined;
             inputs["destinationConf"] = state ? state.destinationConf : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["logpullOptions"] = state ? state.logpullOptions : undefined;
@@ -98,6 +104,9 @@ export class LogpushJob extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LogpushJobArgs | undefined;
+            if (!args || args.dataset === undefined) {
+                throw new Error("Missing required property 'dataset'");
+            }
             if (!args || args.destinationConf === undefined) {
                 throw new Error("Missing required property 'destinationConf'");
             }
@@ -107,6 +116,7 @@ export class LogpushJob extends pulumi.CustomResource {
             if (!args || args.zoneId === undefined) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            inputs["dataset"] = args ? args.dataset : undefined;
             inputs["destinationConf"] = args ? args.destinationConf : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["logpullOptions"] = args ? args.logpullOptions : undefined;
@@ -129,6 +139,10 @@ export class LogpushJob extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LogpushJob resources.
  */
 export interface LogpushJobState {
+    /**
+     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+     */
+    readonly dataset?: pulumi.Input<string>;
     /**
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
      */
@@ -156,6 +170,10 @@ export interface LogpushJobState {
  * The set of arguments for constructing a LogpushJob resource.
  */
 export interface LogpushJobArgs {
+    /**
+     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+     */
+    readonly dataset: pulumi.Input<string>;
     /**
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
      */

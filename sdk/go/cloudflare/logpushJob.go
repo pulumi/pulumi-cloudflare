@@ -14,6 +14,8 @@ import (
 type LogpushJob struct {
 	pulumi.CustomResourceState
 
+	// Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf pulumi.StringOutput  `pulumi:"destinationConf"`
 	Enabled         pulumi.BoolPtrOutput `pulumi:"enabled"`
@@ -30,6 +32,9 @@ type LogpushJob struct {
 // NewLogpushJob registers a new resource with the given unique name, arguments, and options.
 func NewLogpushJob(ctx *pulumi.Context,
 	name string, args *LogpushJobArgs, opts ...pulumi.ResourceOption) (*LogpushJob, error) {
+	if args == nil || args.Dataset == nil {
+		return nil, errors.New("missing required argument 'Dataset'")
+	}
 	if args == nil || args.DestinationConf == nil {
 		return nil, errors.New("missing required argument 'DestinationConf'")
 	}
@@ -64,6 +69,8 @@ func GetLogpushJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LogpushJob resources.
 type logpushJobState struct {
+	// Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+	Dataset *string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf *string `pulumi:"destinationConf"`
 	Enabled         *bool   `pulumi:"enabled"`
@@ -78,6 +85,8 @@ type logpushJobState struct {
 }
 
 type LogpushJobState struct {
+	// Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+	Dataset pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf pulumi.StringPtrInput
 	Enabled         pulumi.BoolPtrInput
@@ -96,6 +105,8 @@ func (LogpushJobState) ElementType() reflect.Type {
 }
 
 type logpushJobArgs struct {
+	// Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf string `pulumi:"destinationConf"`
 	Enabled         *bool  `pulumi:"enabled"`
@@ -111,6 +122,8 @@ type logpushJobArgs struct {
 
 // The set of arguments for constructing a LogpushJob resource.
 type LogpushJobArgs struct {
+	// Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+	Dataset pulumi.StringInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf pulumi.StringInput
 	Enabled         pulumi.BoolPtrInput
