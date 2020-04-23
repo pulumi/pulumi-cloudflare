@@ -27,7 +27,7 @@ import (
 // * `emailDomain` - (Optional) A list of email domains. Example:
 //   `emailDomain = ["example.com"]`
 // * `serviceToken` - (Optional) A list of service token ids. Example:
-//   `serviceToken = cloudflare_access_service_token.demo.id`
+//   `serviceToken = [cloudflare_access_service_token.demo.id]`
 // * `anyValidServiceToken` - (Optional) Boolean indicating if allow
 //   all tokens to be granted. Example: `anyValidServiceToken = true`
 // * `group` - (Optional) A list of access group ids. Example:

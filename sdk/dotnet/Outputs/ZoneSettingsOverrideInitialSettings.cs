@@ -23,7 +23,6 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int? ChallengeTtl;
         public readonly string? CnameFlattening;
         public readonly string? DevelopmentMode;
-        public readonly int? EdgeCacheTtl;
         public readonly string? EmailObfuscation;
         public readonly string? H2Prioritization;
         public readonly string? HotlinkProtection;
@@ -55,6 +54,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Tls13;
         public readonly string? TlsClientAuth;
         public readonly string? TrueClientIpHeader;
+        public readonly string? UniversalSsl;
         public readonly string? Waf;
         public readonly string? Webp;
         public readonly string? Websockets;
@@ -81,8 +81,6 @@ namespace Pulumi.Cloudflare.Outputs
             string? cnameFlattening,
 
             string? developmentMode,
-
-            int? edgeCacheTtl,
 
             string? emailObfuscation,
 
@@ -146,6 +144,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? trueClientIpHeader,
 
+            string? universalSsl,
+
             string? waf,
 
             string? webp,
@@ -164,7 +164,6 @@ namespace Pulumi.Cloudflare.Outputs
             ChallengeTtl = challengeTtl;
             CnameFlattening = cnameFlattening;
             DevelopmentMode = developmentMode;
-            EdgeCacheTtl = edgeCacheTtl;
             EmailObfuscation = emailObfuscation;
             H2Prioritization = h2Prioritization;
             HotlinkProtection = hotlinkProtection;
@@ -196,6 +195,7 @@ namespace Pulumi.Cloudflare.Outputs
             Tls13 = tls13;
             TlsClientAuth = tlsClientAuth;
             TrueClientIpHeader = trueClientIpHeader;
+            UniversalSsl = universalSsl;
             Waf = waf;
             Webp = webp;
             Websockets = websockets;

@@ -12,6 +12,23 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessGroupIncludeArgs : Pulumi.ResourceArgs
     {
+        [Input("anyValidServiceToken")]
+        public Input<bool>? AnyValidServiceToken { get; set; }
+
+        [Input("azures")]
+        private InputList<Inputs.AccessGroupIncludeAzureArgs>? _azures;
+        public InputList<Inputs.AccessGroupIncludeAzureArgs> Azures
+        {
+            get => _azures ?? (_azures = new InputList<Inputs.AccessGroupIncludeAzureArgs>());
+            set => _azures = value;
+        }
+
+        [Input("certificate")]
+        public Input<bool>? Certificate { get; set; }
+
+        [Input("commonName")]
+        public Input<string>? CommonName { get; set; }
+
         [Input("emailDomains")]
         private InputList<string>? _emailDomains;
         public InputList<string> EmailDomains
@@ -31,6 +48,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("githubs")]
+        private InputList<Inputs.AccessGroupIncludeGithubArgs>? _githubs;
+        public InputList<Inputs.AccessGroupIncludeGithubArgs> Githubs
+        {
+            get => _githubs ?? (_githubs = new InputList<Inputs.AccessGroupIncludeGithubArgs>());
+            set => _githubs = value;
+        }
+
         [Input("groups")]
         private InputList<string>? _groups;
         public InputList<string> Groups
@@ -39,12 +64,44 @@ namespace Pulumi.Cloudflare.Inputs
             set => _groups = value;
         }
 
+        [Input("gsuites")]
+        private InputList<Inputs.AccessGroupIncludeGsuiteArgs>? _gsuites;
+        public InputList<Inputs.AccessGroupIncludeGsuiteArgs> Gsuites
+        {
+            get => _gsuites ?? (_gsuites = new InputList<Inputs.AccessGroupIncludeGsuiteArgs>());
+            set => _gsuites = value;
+        }
+
         [Input("ips")]
         private InputList<string>? _ips;
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());
             set => _ips = value;
+        }
+
+        [Input("oktas")]
+        private InputList<Inputs.AccessGroupIncludeOktaArgs>? _oktas;
+        public InputList<Inputs.AccessGroupIncludeOktaArgs> Oktas
+        {
+            get => _oktas ?? (_oktas = new InputList<Inputs.AccessGroupIncludeOktaArgs>());
+            set => _oktas = value;
+        }
+
+        [Input("samls")]
+        private InputList<Inputs.AccessGroupIncludeSamlArgs>? _samls;
+        public InputList<Inputs.AccessGroupIncludeSamlArgs> Samls
+        {
+            get => _samls ?? (_samls = new InputList<Inputs.AccessGroupIncludeSamlArgs>());
+            set => _samls = value;
+        }
+
+        [Input("serviceTokens")]
+        private InputList<string>? _serviceTokens;
+        public InputList<string> ServiceTokens
+        {
+            get => _serviceTokens ?? (_serviceTokens = new InputList<string>());
+            set => _serviceTokens = value;
         }
 
         public AccessGroupIncludeArgs()

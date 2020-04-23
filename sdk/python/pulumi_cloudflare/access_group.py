@@ -20,22 +20,72 @@ class AccessGroup(pulumi.CustomResource):
     A series of access conditions, see below for
     full list.
 
+      * `anyValidServiceToken` (`bool`)
+      * `azures` (`list`)
+        * `id` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `certificate` (`bool`)
+      * `commonName` (`str`)
       * `emailDomains` (`list`)
       * `emails` (`list`)
       * `everyone` (`bool`)
+      * `githubs` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Group.
+
       * `groups` (`list`)
+      * `gsuites` (`list`)
+        * `email` (`str`)
+        * `identityProviderId` (`str`)
+
       * `ips` (`list`)
+      * `oktas` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Group.
+
+      * `samls` (`list`)
+        * `attributeName` (`str`)
+        * `attributeValue` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `serviceTokens` (`list`)
     """
     includes: pulumi.Output[list]
     """
     A series of access conditions, see below for
     full list.
 
+      * `anyValidServiceToken` (`bool`)
+      * `azures` (`list`)
+        * `id` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `certificate` (`bool`)
+      * `commonName` (`str`)
       * `emailDomains` (`list`)
       * `emails` (`list`)
       * `everyone` (`bool`)
+      * `githubs` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Group.
+
       * `groups` (`list`)
+      * `gsuites` (`list`)
+        * `email` (`str`)
+        * `identityProviderId` (`str`)
+
       * `ips` (`list`)
+      * `oktas` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Group.
+
+      * `samls` (`list`)
+        * `attributeName` (`str`)
+        * `attributeValue` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `serviceTokens` (`list`)
     """
     name: pulumi.Output[str]
     """
@@ -46,11 +96,36 @@ class AccessGroup(pulumi.CustomResource):
     A series of access conditions, see below for
     full list.
 
+      * `anyValidServiceToken` (`bool`)
+      * `azures` (`list`)
+        * `id` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `certificate` (`bool`)
+      * `commonName` (`str`)
       * `emailDomains` (`list`)
       * `emails` (`list`)
       * `everyone` (`bool`)
+      * `githubs` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Group.
+
       * `groups` (`list`)
+      * `gsuites` (`list`)
+        * `email` (`str`)
+        * `identityProviderId` (`str`)
+
       * `ips` (`list`)
+      * `oktas` (`list`)
+        * `identityProviderId` (`str`)
+        * `name` (`str`) - Friendly name of the Access Group.
+
+      * `samls` (`list`)
+        * `attributeName` (`str`)
+        * `attributeValue` (`str`)
+        * `identityProviderId` (`str`)
+
+      * `serviceTokens` (`list`)
     """
     def __init__(__self__, resource_name, opts=None, account_id=None, excludes=None, includes=None, name=None, requires=None, __props__=None, __name__=None, __opts__=None):
         """
@@ -71,7 +146,7 @@ class AccessGroup(pulumi.CustomResource):
         * `email_domain` - (Optional) A list of email domains. Example:
           `email_domain = ["example.com"]`
         * `service_token` - (Optional) A list of service token ids. Example:
-          `service_token = cloudflare_access_service_token.demo.id`
+          `service_token = [cloudflare_access_service_token.demo.id]`
         * `any_valid_service_token` - (Optional) Boolean indicating if allow
           all tokens to be granted. Example: `any_valid_service_token = true`
         * `group` - (Optional) A list of access group ids. Example:
@@ -152,27 +227,102 @@ class AccessGroup(pulumi.CustomResource):
 
         The **excludes** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
           * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
 
         The **includes** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
           * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
 
         The **requires** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
           * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -229,27 +379,102 @@ class AccessGroup(pulumi.CustomResource):
 
         The **excludes** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
           * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
 
         The **includes** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
           * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
 
         The **requires** object supports the following:
 
+          * `anyValidServiceToken` (`pulumi.Input[bool]`)
+          * `azures` (`pulumi.Input[list]`)
+            * `id` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `certificate` (`pulumi.Input[bool]`)
+          * `commonName` (`pulumi.Input[str]`)
           * `emailDomains` (`pulumi.Input[list]`)
           * `emails` (`pulumi.Input[list]`)
           * `everyone` (`pulumi.Input[bool]`)
+          * `githubs` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
           * `groups` (`pulumi.Input[list]`)
+          * `gsuites` (`pulumi.Input[list]`)
+            * `email` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
           * `ips` (`pulumi.Input[list]`)
+          * `oktas` (`pulumi.Input[list]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+            * `name` (`pulumi.Input[str]`) - Friendly name of the Access Group.
+
+          * `samls` (`pulumi.Input[list]`)
+            * `attributeName` (`pulumi.Input[str]`)
+            * `attributeValue` (`pulumi.Input[str]`)
+            * `identityProviderId` (`pulumi.Input[str]`)
+
+          * `serviceTokens` (`pulumi.Input[list]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

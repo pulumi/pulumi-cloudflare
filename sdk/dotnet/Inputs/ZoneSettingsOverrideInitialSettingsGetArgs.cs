@@ -42,9 +42,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("developmentMode")]
         public Input<string>? DevelopmentMode { get; set; }
 
-        [Input("edgeCacheTtl")]
-        public Input<int>? EdgeCacheTtl { get; set; }
-
         [Input("emailObfuscation")]
         public Input<string>? EmailObfuscation { get; set; }
 
@@ -137,6 +134,9 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("trueClientIpHeader")]
         public Input<string>? TrueClientIpHeader { get; set; }
+
+        [Input("universalSsl")]
+        public Input<string>? UniversalSsl { get; set; }
 
         [Input("waf")]
         public Input<string>? Waf { get; set; }

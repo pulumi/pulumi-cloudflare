@@ -10,6 +10,10 @@ from typing import Union
 from . import utilities, tables
 
 class LogpushJob(pulumi.CustomResource):
+    dataset: pulumi.Output[str]
+    """
+    Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+    """
     destination_conf: pulumi.Output[str]
     """
     Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
@@ -31,7 +35,7 @@ class LogpushJob(pulumi.CustomResource):
     """
     The zone ID where the logpush job should be created.
     """
-    def __init__(__self__, resource_name, opts=None, destination_conf=None, enabled=None, logpull_options=None, name=None, ownership_challenge=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, dataset=None, destination_conf=None, enabled=None, logpull_options=None, name=None, ownership_challenge=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a resource which manages Cloudflare logpush jobs.
 
@@ -39,6 +43,7 @@ class LogpushJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -62,6 +67,9 @@ class LogpushJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            if dataset is None:
+                raise TypeError("Missing required property 'dataset'")
+            __props__['dataset'] = dataset
             if destination_conf is None:
                 raise TypeError("Missing required property 'destination_conf'")
             __props__['destination_conf'] = destination_conf
@@ -81,7 +89,7 @@ class LogpushJob(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, destination_conf=None, enabled=None, logpull_options=None, name=None, ownership_challenge=None, zone_id=None):
+    def get(resource_name, id, opts=None, dataset=None, destination_conf=None, enabled=None, logpull_options=None, name=None, ownership_challenge=None, zone_id=None):
         """
         Get an existing LogpushJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -89,6 +97,7 @@ class LogpushJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -99,6 +108,7 @@ class LogpushJob(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["dataset"] = dataset
         __props__["destination_conf"] = destination_conf
         __props__["enabled"] = enabled
         __props__["logpull_options"] = logpull_options

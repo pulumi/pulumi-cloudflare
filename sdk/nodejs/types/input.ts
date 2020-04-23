@@ -5,27 +5,150 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 
 export interface AccessGroupExclude {
+    anyValidServiceToken?: pulumi.Input<boolean>;
+    azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAzure>[]>;
+    certificate?: pulumi.Input<boolean>;
+    commonName?: pulumi.Input<string>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeOkta>[]>;
+    samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeSaml>[]>;
+    serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupExcludeAzure {
+    id?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeGithub {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeGsuite {
+    email?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeOkta {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessGroupExcludeSaml {
+    attributeName?: pulumi.Input<string>;
+    attributeValue?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupInclude {
+    anyValidServiceToken?: pulumi.Input<boolean>;
+    azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAzure>[]>;
+    certificate?: pulumi.Input<boolean>;
+    commonName?: pulumi.Input<string>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeOkta>[]>;
+    samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeSaml>[]>;
+    serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupIncludeAzure {
+    id?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeGithub {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeGsuite {
+    email?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeOkta {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessGroupIncludeSaml {
+    attributeName?: pulumi.Input<string>;
+    attributeValue?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequire {
+    anyValidServiceToken?: pulumi.Input<boolean>;
+    azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAzure>[]>;
+    certificate?: pulumi.Input<boolean>;
+    commonName?: pulumi.Input<string>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
+    gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireOkta>[]>;
+    samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireSaml>[]>;
+    serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupRequireAzure {
+    id?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireGithub {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireGsuite {
+    email?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireOkta {
+    identityProviderId?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Group.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface AccessGroupRequireSaml {
+    attributeName?: pulumi.Input<string>;
+    attributeValue?: pulumi.Input<string>;
+    identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessIdentityProviderConfig {
@@ -656,7 +779,6 @@ export interface ZoneSettingsOverrideInitialSettings {
     challengeTtl?: pulumi.Input<number>;
     cnameFlattening?: pulumi.Input<string>;
     developmentMode?: pulumi.Input<string>;
-    edgeCacheTtl?: pulumi.Input<number>;
     emailObfuscation?: pulumi.Input<string>;
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
@@ -688,6 +810,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     tls13?: pulumi.Input<string>;
     tlsClientAuth?: pulumi.Input<string>;
     trueClientIpHeader?: pulumi.Input<string>;
+    universalSsl?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
@@ -756,7 +879,6 @@ export interface ZoneSettingsOverrideSettings {
     challengeTtl?: pulumi.Input<number>;
     cnameFlattening?: pulumi.Input<string>;
     developmentMode?: pulumi.Input<string>;
-    edgeCacheTtl?: pulumi.Input<number>;
     emailObfuscation?: pulumi.Input<string>;
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
@@ -788,6 +910,7 @@ export interface ZoneSettingsOverrideSettings {
     tls13?: pulumi.Input<string>;
     tlsClientAuth?: pulumi.Input<string>;
     trueClientIpHeader?: pulumi.Input<string>;
+    universalSsl?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
