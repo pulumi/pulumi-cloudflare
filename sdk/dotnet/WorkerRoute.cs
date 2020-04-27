@@ -16,11 +16,13 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-        /// * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         /// </summary>
         [Output("pattern")]
         public Output<string> Pattern { get; private set; } = null!;
 
+        /// <summary>
+        /// Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        /// </summary>
         [Output("scriptName")]
         public Output<string?> ScriptName { get; private set; } = null!;
 
@@ -78,11 +80,13 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-        /// * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         /// </summary>
         [Input("pattern", required: true)]
         public Input<string> Pattern { get; set; } = null!;
 
+        /// <summary>
+        /// Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
 
@@ -101,11 +105,13 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-        /// * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         /// </summary>
         [Input("pattern")]
         public Input<string>? Pattern { get; set; }
 
+        /// <summary>
+        /// Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        /// </summary>
         [Input("scriptName")]
         public Input<string>? ScriptName { get; set; }
 

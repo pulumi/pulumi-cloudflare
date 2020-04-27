@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare
     public static class GetWafPackages
     {
         /// <summary>
-        /// Use this data source to look up [WAF Rule Packages][1].
+        /// Use this data source to look up [WAF Rule Packages](https://api.cloudflare.com/#waf-rule-packages-properties).
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly Outputs.GetWafPackagesFilterResult? Filter;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetWafPackagesPackageResult> Packages;

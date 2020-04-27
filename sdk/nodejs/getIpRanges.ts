@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
+ * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
  * 
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/ip_ranges.html.md.
@@ -32,7 +32,7 @@ export interface GetIpRangesResult {
     readonly ipv4CidrBlocks: string[];
     readonly ipv6CidrBlocks: string[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

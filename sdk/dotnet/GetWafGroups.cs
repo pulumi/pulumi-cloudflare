@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare
     public static class GetWafGroups
     {
         /// <summary>
-        /// Use this data source to look up [WAF Rule Groups][1].
+        /// Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
         public readonly Outputs.GetWafGroupsFilterResult? Filter;
         public readonly ImmutableArray<Outputs.GetWafGroupsGroupResult> Groups;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string? PackageId;

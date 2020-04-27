@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to look up [Zone][1] records.
+ * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
  * 
  * ## Example Usage
  * 
@@ -17,13 +17,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * 
- * const test = cloudflare.getZones({
+ * const test = pulumi.output(cloudflare.getZones({
  *     filter: {
  *         name: "example.*",
  *         paused: false,
  *         status: "active",
  *     },
- * });
+ * }, { async: true }));
  * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
  *     configurations: [{
  *         target: "ip",
@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  *     description: "Restrict access to these endpoints to requests from a known IP address",
  *     paused: false,
  *     urls: ["api.mysite.com/some/endpoint*"],
- *     zone: (<any>test.zones[0])["name"],
+ *     zone: test.apply(test => (<any>test.zones[0])["name"]),
  * });
  * ```
  *
@@ -65,7 +65,7 @@ export interface GetZonesResult {
     readonly filter: outputs.GetZonesFilter;
     readonly zones: outputs.GetZonesZone[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

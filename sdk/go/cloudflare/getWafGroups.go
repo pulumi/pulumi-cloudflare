@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to look up [WAF Rule Groups][1].
+// Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
 func GetWafGroups(ctx *pulumi.Context, args *GetWafGroupsArgs, opts ...pulumi.InvokeOption) (*GetWafGroupsResult, error) {
 	var rv GetWafGroupsResult
 	err := ctx.Invoke("cloudflare:index/getWafGroups:getWafGroups", args, &rv, opts...)
@@ -28,7 +28,7 @@ type GetWafGroupsArgs struct {
 type GetWafGroupsResult struct {
 	Filter *GetWafGroupsFilter `pulumi:"filter"`
 	Groups []GetWafGroupsGroup `pulumi:"groups"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id        string  `pulumi:"id"`
 	PackageId *string `pulumi:"packageId"`
 	ZoneId    string  `pulumi:"zoneId"`

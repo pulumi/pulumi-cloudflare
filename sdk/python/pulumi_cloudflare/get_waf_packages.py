@@ -21,7 +21,7 @@ class GetWafPackagesResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if packages and not isinstance(packages, list):
             raise TypeError("Expected argument 'packages' to be a list")
@@ -42,7 +42,7 @@ class AwaitableGetWafPackagesResult(GetWafPackagesResult):
 
 def get_waf_packages(filter=None,zone_id=None,opts=None):
     """
-    Use this data source to look up [WAF Rule Packages][1].
+    Use this data source to look up [WAF Rule Packages](https://api.cloudflare.com/#waf-rule-packages-properties).
 
 
 

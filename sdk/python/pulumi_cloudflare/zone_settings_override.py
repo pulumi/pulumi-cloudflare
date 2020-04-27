@@ -37,8 +37,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
       * `minify` (`dict`)
         * `css` (`str`) - "on"/"off"
         * `html` (`str`) - "on"/"off"
-          * `js` (Required)"on"/"off"
-        * `js` (`str`)
+        * `js` (`str`) - "on"/"off"
 
       * `mirage` (`str`)
       * `mobileRedirect` (`dict`)
@@ -72,7 +71,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
       * `trueClientIpHeader` (`str`)
       * `universalSsl` (`str`)
       * `waf` (`str`)
-      * `webp` (`str`)
+      * `webp` (`str`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
       * `websockets` (`str`)
       * `zeroRtt` (`str`)
     """
@@ -110,8 +109,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
       * `minify` (`dict`)
         * `css` (`str`) - "on"/"off"
         * `html` (`str`) - "on"/"off"
-          * `js` (Required)"on"/"off"
-        * `js` (`str`)
+        * `js` (`str`) - "on"/"off"
 
       * `mirage` (`str`)
       * `mobileRedirect` (`dict`)
@@ -145,7 +143,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
       * `trueClientIpHeader` (`str`)
       * `universalSsl` (`str`)
       * `waf` (`str`)
-      * `webp` (`str`)
+      * `webp` (`str`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
       * `websockets` (`str`)
       * `zeroRtt` (`str`)
     """
@@ -191,8 +189,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `minify` (`pulumi.Input[dict]`)
             * `css` (`pulumi.Input[str]`) - "on"/"off"
             * `html` (`pulumi.Input[str]`) - "on"/"off"
-              * `js` (Required)"on"/"off"
-            * `js` (`pulumi.Input[str]`)
+            * `js` (`pulumi.Input[str]`) - "on"/"off"
 
           * `mirage` (`pulumi.Input[str]`)
           * `mobileRedirect` (`pulumi.Input[dict]`)
@@ -226,7 +223,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `trueClientIpHeader` (`pulumi.Input[str]`)
           * `universalSsl` (`pulumi.Input[str]`)
           * `waf` (`pulumi.Input[str]`)
-          * `webp` (`pulumi.Input[str]`)
+          * `webp` (`pulumi.Input[str]`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
           * `websockets` (`pulumi.Input[str]`)
           * `zeroRtt` (`pulumi.Input[str]`)
         """
@@ -303,8 +300,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `minify` (`pulumi.Input[dict]`)
             * `css` (`pulumi.Input[str]`) - "on"/"off"
             * `html` (`pulumi.Input[str]`) - "on"/"off"
-              * `js` (Required)"on"/"off"
-            * `js` (`pulumi.Input[str]`)
+            * `js` (`pulumi.Input[str]`) - "on"/"off"
 
           * `mirage` (`pulumi.Input[str]`)
           * `mobileRedirect` (`pulumi.Input[dict]`)
@@ -338,7 +334,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `trueClientIpHeader` (`pulumi.Input[str]`)
           * `universalSsl` (`pulumi.Input[str]`)
           * `waf` (`pulumi.Input[str]`)
-          * `webp` (`pulumi.Input[str]`)
+          * `webp` (`pulumi.Input[str]`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
           * `websockets` (`pulumi.Input[str]`)
           * `zeroRtt` (`pulumi.Input[str]`)
 
@@ -367,8 +363,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `minify` (`pulumi.Input[dict]`)
             * `css` (`pulumi.Input[str]`) - "on"/"off"
             * `html` (`pulumi.Input[str]`) - "on"/"off"
-              * `js` (Required)"on"/"off"
-            * `js` (`pulumi.Input[str]`)
+            * `js` (`pulumi.Input[str]`) - "on"/"off"
 
           * `mirage` (`pulumi.Input[str]`)
           * `mobileRedirect` (`pulumi.Input[dict]`)
@@ -402,7 +397,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           * `trueClientIpHeader` (`pulumi.Input[str]`)
           * `universalSsl` (`pulumi.Input[str]`)
           * `waf` (`pulumi.Input[str]`)
-          * `webp` (`pulumi.Input[str]`)
+          * `webp` (`pulumi.Input[str]`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
           * `websockets` (`pulumi.Input[str]`)
           * `zeroRtt` (`pulumi.Input[str]`)
         """

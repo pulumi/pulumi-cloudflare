@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
+// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
 func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRangesResult, error) {
 	var rv GetIpRangesResult
 	err := ctx.Invoke("cloudflare:index/getIpRanges:getIpRanges", nil, &rv, opts...)
@@ -20,7 +20,7 @@ func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRanges
 // A collection of values returned by getIpRanges.
 type GetIpRangesResult struct {
 	CidrBlocks []string `pulumi:"cidrBlocks"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id             string   `pulumi:"id"`
 	Ipv4CidrBlocks []string `pulumi:"ipv4CidrBlocks"`
 	Ipv6CidrBlocks []string `pulumi:"ipv6CidrBlocks"`

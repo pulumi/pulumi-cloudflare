@@ -4523,13 +4523,23 @@ func (o AccessRuleConfigurationPtrOutput) Elem() AccessRuleConfigurationOutput {
 }
 
 // The request property to target. Allowed values: "ip", "ip6", "ipRange", "asn", "country"
-func (o AccessRuleConfigurationPtrOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessRuleConfiguration) string { return v.Target }).(pulumi.StringOutput)
+func (o AccessRuleConfigurationPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRuleConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
 }
 
 // The value to target. Depends on target's type.
-func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessRuleConfiguration) string { return v.Value }).(pulumi.StringOutput)
+func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRuleConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type CustomSslCustomSslOptions struct {
@@ -4693,27 +4703,52 @@ func (o CustomSslCustomSslOptionsPtrOutput) Elem() CustomSslCustomSslOptionsOutp
 
 // Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
 func (o CustomSslCustomSslOptionsPtrOutput) BundleMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomSslCustomSslOptions) *string { return v.BundleMethod }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *CustomSslCustomSslOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BundleMethod
+	}).(pulumi.StringPtrOutput)
 }
 
 // Certificate certificate and the intermediate(s)
-func (o CustomSslCustomSslOptionsPtrOutput) Certificate() pulumi.StringOutput {
-	return o.ApplyT(func(v CustomSslCustomSslOptions) string { return v.Certificate }).(pulumi.StringOutput)
+func (o CustomSslCustomSslOptionsPtrOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomSslCustomSslOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Certificate
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
 func (o CustomSslCustomSslOptionsPtrOutput) GeoRestrictions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomSslCustomSslOptions) *string { return v.GeoRestrictions }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *CustomSslCustomSslOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GeoRestrictions
+	}).(pulumi.StringPtrOutput)
 }
 
 // Certificate's private key
-func (o CustomSslCustomSslOptionsPtrOutput) PrivateKey() pulumi.StringOutput {
-	return o.ApplyT(func(v CustomSslCustomSslOptions) string { return v.PrivateKey }).(pulumi.StringOutput)
+func (o CustomSslCustomSslOptionsPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomSslCustomSslOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateKey
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
 func (o CustomSslCustomSslOptionsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomSslCustomSslOptions) *string { return v.Type }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *CustomSslCustomSslOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type CustomSslCustomSslPriority struct {
@@ -5699,177 +5734,352 @@ func (o PageRuleActionsPtrOutput) Elem() PageRuleActionsOutput {
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) AlwaysOnline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.AlwaysOnline }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlwaysOnline
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
 func (o PageRuleActionsPtrOutput) AlwaysUseHttps() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *bool { return v.AlwaysUseHttps }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AlwaysUseHttps
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) AutomaticHttpsRewrites() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.AutomaticHttpsRewrites }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticHttpsRewrites
+	}).(pulumi.StringPtrOutput)
 }
 
 // The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
 func (o PageRuleActionsPtrOutput) BrowserCacheTtl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.BrowserCacheTtl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BrowserCacheTtl
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) BrowserCheck() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.BrowserCheck }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BrowserCheck
+	}).(pulumi.StringPtrOutput)
 }
 
 // String value of cookie name to conditionally bypass cache the page.
 func (o PageRuleActionsPtrOutput) BypassCacheOnCookie() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.BypassCacheOnCookie }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BypassCacheOnCookie
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) CacheByDeviceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.CacheByDeviceType }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheByDeviceType
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) CacheDeceptionArmor() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.CacheDeceptionArmor }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheDeceptionArmor
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cacheEverything"`.
 func (o PageRuleActionsPtrOutput) CacheLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.CacheLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 // String value of cookie name to conditionally cache the page.
 func (o PageRuleActionsPtrOutput) CacheOnCookie() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.CacheOnCookie }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheOnCookie
+	}).(pulumi.StringPtrOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
 func (o PageRuleActionsPtrOutput) DisableApps() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *bool { return v.DisableApps }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableApps
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
 func (o PageRuleActionsPtrOutput) DisablePerformance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *bool { return v.DisablePerformance }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePerformance
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
 func (o PageRuleActionsPtrOutput) DisableRailgun() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *bool { return v.DisableRailgun }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableRailgun
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
 func (o PageRuleActionsPtrOutput) DisableSecurity() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *bool { return v.DisableSecurity }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableSecurity
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The Time To Live for the edge cache.
 func (o PageRuleActionsPtrOutput) EdgeCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *int { return v.EdgeCacheTtl }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EdgeCacheTtl
+	}).(pulumi.IntPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) EmailObfuscation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.EmailObfuscation }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailObfuscation
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether origin Cache-Control action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) ExplicitCacheControl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.ExplicitCacheControl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExplicitCacheControl
+	}).(pulumi.StringPtrOutput)
 }
 
 // The URL to forward to, and with what status. See below.
 func (o PageRuleActionsPtrOutput) ForwardingUrl() PageRuleActionsForwardingUrlPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *PageRuleActionsForwardingUrl { return v.ForwardingUrl }).(PageRuleActionsForwardingUrlPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *PageRuleActionsForwardingUrl {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardingUrl
+	}).(PageRuleActionsForwardingUrlPtrOutput)
 }
 
 // Value of the Host header to send.
 func (o PageRuleActionsPtrOutput) HostHeaderOverride() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.HostHeaderOverride }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostHeaderOverride
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) IpGeolocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.IpGeolocation }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpGeolocation
+	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration for HTML, CSS and JS minification. See below for full list of options.
 func (o PageRuleActionsPtrOutput) Minifies() PageRuleActionsMinifyArrayOutput {
-	return o.ApplyT(func(v PageRuleActions) []PageRuleActionsMinify { return v.Minifies }).(PageRuleActionsMinifyArrayOutput)
+	return o.ApplyT(func(v *PageRuleActions) []PageRuleActionsMinify {
+		if v == nil {
+			return nil
+		}
+		return v.Minifies
+	}).(PageRuleActionsMinifyArrayOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) Mirage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.Mirage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mirage
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.OpportunisticEncryption }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticEncryption
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginErrorPagePassThru
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"off"`, `"lossless"` or `"lossy"`.
 func (o PageRuleActionsPtrOutput) Polish() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.Polish }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Polish
+	}).(pulumi.StringPtrOutput)
 }
 
 // Overridden origin server name.
 func (o PageRuleActionsPtrOutput) ResolveOverride() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.ResolveOverride }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResolveOverride
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) RespectStrongEtag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.RespectStrongEtag }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RespectStrongEtag
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) ResponseBuffering() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.ResponseBuffering }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseBuffering
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to set the rocket loader to `"on"`, `"off"`.
 func (o PageRuleActionsPtrOutput) RocketLoader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.RocketLoader }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RocketLoader
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to set the security level to `"off"`, `"essentiallyOff"`, `"low"`, `"medium"`, `"high"`, or `"underAttack"`.
 func (o PageRuleActionsPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) ServerSideExclude() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.ServerSideExclude }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSideExclude
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SortQueryStringForCache
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"originPull"`.
 func (o PageRuleActionsPtrOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) TrueClientIpHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrueClientIpHeader
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsPtrOutput) Waf() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *string { return v.Waf }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *PageRuleActions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Waf
+	}).(pulumi.StringPtrOutput)
 }
 
 type PageRuleActionsForwardingUrl struct {
@@ -6005,13 +6215,23 @@ func (o PageRuleActionsForwardingUrlPtrOutput) Elem() PageRuleActionsForwardingU
 }
 
 // The status code to use for the redirection.
-func (o PageRuleActionsForwardingUrlPtrOutput) StatusCode() pulumi.IntOutput {
-	return o.ApplyT(func(v PageRuleActionsForwardingUrl) int { return v.StatusCode }).(pulumi.IntOutput)
+func (o PageRuleActionsForwardingUrlPtrOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsForwardingUrl) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.StatusCode
+	}).(pulumi.IntPtrOutput)
 }
 
 // The URL to which the page rule should forward.
-func (o PageRuleActionsForwardingUrlPtrOutput) Url() pulumi.StringOutput {
-	return o.ApplyT(func(v PageRuleActionsForwardingUrl) string { return v.Url }).(pulumi.StringOutput)
+func (o PageRuleActionsForwardingUrlPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsForwardingUrl) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Url
+	}).(pulumi.StringPtrOutput)
 }
 
 type PageRuleActionsMinify struct {
@@ -6273,18 +6493,33 @@ func (o RateLimitActionPtrOutput) Elem() RateLimitActionOutput {
 }
 
 // The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
-func (o RateLimitActionPtrOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v RateLimitAction) string { return v.Mode }).(pulumi.StringOutput)
+func (o RateLimitActionPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimitAction) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
 func (o RateLimitActionPtrOutput) Response() RateLimitActionResponsePtrOutput {
-	return o.ApplyT(func(v RateLimitAction) *RateLimitActionResponse { return v.Response }).(RateLimitActionResponsePtrOutput)
+	return o.ApplyT(func(v *RateLimitAction) *RateLimitActionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(RateLimitActionResponsePtrOutput)
 }
 
 // The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
 func (o RateLimitActionPtrOutput) Timeout() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RateLimitAction) *int { return v.Timeout }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RateLimitAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.IntPtrOutput)
 }
 
 type RateLimitActionResponse struct {
@@ -6420,13 +6655,23 @@ func (o RateLimitActionResponsePtrOutput) Elem() RateLimitActionResponseOutput {
 }
 
 // The body to return, the content here should conform to the content_type.
-func (o RateLimitActionResponsePtrOutput) Body() pulumi.StringOutput {
-	return o.ApplyT(func(v RateLimitActionResponse) string { return v.Body }).(pulumi.StringOutput)
+func (o RateLimitActionResponsePtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimitActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Body
+	}).(pulumi.StringPtrOutput)
 }
 
 // The content-type of the body, must be one of: 'text/plain', 'text/xml', 'application/json'.
-func (o RateLimitActionResponsePtrOutput) ContentType() pulumi.StringOutput {
-	return o.ApplyT(func(v RateLimitActionResponse) string { return v.ContentType }).(pulumi.StringOutput)
+func (o RateLimitActionResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimitActionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ContentType
+	}).(pulumi.StringPtrOutput)
 }
 
 type RateLimitCorrelate struct {
@@ -6554,7 +6799,12 @@ func (o RateLimitCorrelatePtrOutput) Elem() RateLimitCorrelateOutput {
 
 // If set to 'nat', NAT support will be enabled for rate limiting.
 func (o RateLimitCorrelatePtrOutput) By() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitCorrelate) *string { return v.By }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RateLimitCorrelate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.By
+	}).(pulumi.StringPtrOutput)
 }
 
 type RateLimitMatch struct {
@@ -6691,12 +6941,22 @@ func (o RateLimitMatchPtrOutput) Elem() RateLimitMatchOutput {
 
 // Matches HTTP requests (from the client to Cloudflare). See definition below.
 func (o RateLimitMatchPtrOutput) Request() RateLimitMatchRequestPtrOutput {
-	return o.ApplyT(func(v RateLimitMatch) *RateLimitMatchRequest { return v.Request }).(RateLimitMatchRequestPtrOutput)
+	return o.ApplyT(func(v *RateLimitMatch) *RateLimitMatchRequest {
+		if v == nil {
+			return nil
+		}
+		return v.Request
+	}).(RateLimitMatchRequestPtrOutput)
 }
 
 // Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
 func (o RateLimitMatchPtrOutput) Response() RateLimitMatchResponsePtrOutput {
-	return o.ApplyT(func(v RateLimitMatch) *RateLimitMatchResponse { return v.Response }).(RateLimitMatchResponsePtrOutput)
+	return o.ApplyT(func(v *RateLimitMatch) *RateLimitMatchResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Response
+	}).(RateLimitMatchResponsePtrOutput)
 }
 
 type RateLimitMatchRequest struct {
@@ -6842,17 +7102,32 @@ func (o RateLimitMatchRequestPtrOutput) Elem() RateLimitMatchRequestOutput {
 
 // HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
 func (o RateLimitMatchRequestPtrOutput) Methods() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RateLimitMatchRequest) []string { return v.Methods }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *RateLimitMatchRequest) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Methods
+	}).(pulumi.StringArrayOutput)
 }
 
 // HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
 func (o RateLimitMatchRequestPtrOutput) Schemes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RateLimitMatchRequest) []string { return v.Schemes }).(pulumi.StringArrayOutput)
+	return o.ApplyT(func(v *RateLimitMatchRequest) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Schemes
+	}).(pulumi.StringArrayOutput)
 }
 
 // The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use * for all traffic to your zone. Default: '*'.
 func (o RateLimitMatchRequestPtrOutput) UrlPattern() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RateLimitMatchRequest) *string { return v.UrlPattern }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RateLimitMatchRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UrlPattern
+	}).(pulumi.StringPtrOutput)
 }
 
 type RateLimitMatchResponse struct {
@@ -6989,12 +7264,22 @@ func (o RateLimitMatchResponsePtrOutput) Elem() RateLimitMatchResponseOutput {
 
 // Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
 func (o RateLimitMatchResponsePtrOutput) OriginTraffic() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RateLimitMatchResponse) *bool { return v.OriginTraffic }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *RateLimitMatchResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OriginTraffic
+	}).(pulumi.BoolPtrOutput)
 }
 
 // HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
 func (o RateLimitMatchResponsePtrOutput) Statuses() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v RateLimitMatchResponse) []int { return v.Statuses }).(pulumi.IntArrayOutput)
+	return o.ApplyT(func(v *RateLimitMatchResponse) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Statuses
+	}).(pulumi.IntArrayOutput)
 }
 
 type RecordData struct {
@@ -7342,154 +7627,339 @@ func (o RecordDataPtrOutput) Elem() RecordDataOutput {
 }
 
 func (o RecordDataPtrOutput) Algorithm() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Algorithm }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Algorithm
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Altitude() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RecordData) *float64 { return v.Altitude }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Altitude
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o RecordDataPtrOutput) Certificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Certificate }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Certificate
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Content() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Content }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Content
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Digest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Digest }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Digest
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) DigestType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.DigestType }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DigestType
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Fingerprint }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fingerprint
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Flags() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Flags }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) KeyTag() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.KeyTag }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeyTag
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) LatDegrees() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.LatDegrees }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LatDegrees
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) LatDirection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.LatDirection }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LatDirection
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) LatMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.LatMinutes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LatMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) LatSeconds() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RecordData) *float64 { return v.LatSeconds }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LatSeconds
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o RecordDataPtrOutput) LongDegrees() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.LongDegrees }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LongDegrees
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) LongDirection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.LongDirection }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LongDirection
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) LongMinutes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.LongMinutes }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LongMinutes
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) LongSeconds() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RecordData) *float64 { return v.LongSeconds }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.LongSeconds
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o RecordDataPtrOutput) MatchingType() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.MatchingType }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MatchingType
+	}).(pulumi.IntPtrOutput)
 }
 
 // The name of the record
 func (o RecordDataPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Name }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Order() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Order }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Port }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) PrecisionHorz() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RecordData) *float64 { return v.PrecisionHorz }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PrecisionHorz
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o RecordDataPtrOutput) PrecisionVert() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RecordData) *float64 { return v.PrecisionVert }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PrecisionVert
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o RecordDataPtrOutput) Preference() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Preference }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Preference
+	}).(pulumi.IntPtrOutput)
 }
 
 // The priority of the record
 func (o RecordDataPtrOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Priority }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Priority
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Proto() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Proto }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Proto
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Protocol() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Protocol }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) PublicKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKey
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Regex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Regex }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Replacement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Replacement }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Replacement
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Selector() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Selector }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Selector
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Service }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Size() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v RecordData) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
+	return o.ApplyT(func(v *RecordData) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.Float64PtrOutput)
 }
 
 func (o RecordDataPtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecordData) *string { return v.Target }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
 }
 
 // The type of the record
 func (o RecordDataPtrOutput) Type() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Type }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Usage() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Usage }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Usage
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RecordData) *int { return v.Weight }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *RecordData) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Weight
+	}).(pulumi.IntPtrOutput)
 }
 
 type SpectrumApplicationDns struct {
@@ -7625,13 +8095,23 @@ func (o SpectrumApplicationDnsPtrOutput) Elem() SpectrumApplicationDnsOutput {
 }
 
 // Fully qualified domain name of the origin e.g. origin-ssh.example.com.
-func (o SpectrumApplicationDnsPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SpectrumApplicationDns) string { return v.Name }).(pulumi.StringOutput)
+func (o SpectrumApplicationDnsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplicationDns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 // The type of DNS record associated with the application. Valid values: `CNAME`.
-func (o SpectrumApplicationDnsPtrOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SpectrumApplicationDns) string { return v.Type }).(pulumi.StringOutput)
+func (o SpectrumApplicationDnsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplicationDns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type SpectrumApplicationOriginDns struct {
@@ -7758,8 +8238,13 @@ func (o SpectrumApplicationOriginDnsPtrOutput) Elem() SpectrumApplicationOriginD
 }
 
 // Fully qualified domain name of the origin e.g. origin-ssh.example.com.
-func (o SpectrumApplicationOriginDnsPtrOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SpectrumApplicationOriginDns) string { return v.Name }).(pulumi.StringOutput)
+func (o SpectrumApplicationOriginDnsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplicationOriginDns) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkerScriptKvNamespaceBinding struct {
@@ -8103,12 +8588,22 @@ func (o ZoneMetaPtrOutput) Elem() ZoneMetaOutput {
 	return o.ApplyT(func(v *ZoneMeta) ZoneMeta { return *v }).(ZoneMetaOutput)
 }
 
-func (o ZoneMetaPtrOutput) PhishingDetected() pulumi.BoolOutput {
-	return o.ApplyT(func(v ZoneMeta) bool { return v.PhishingDetected }).(pulumi.BoolOutput)
+func (o ZoneMetaPtrOutput) PhishingDetected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.PhishingDetected
+	}).(pulumi.BoolPtrOutput)
 }
 
-func (o ZoneMetaPtrOutput) WildcardProxiable() pulumi.BoolOutput {
-	return o.ApplyT(func(v ZoneMeta) bool { return v.WildcardProxiable }).(pulumi.BoolOutput)
+func (o ZoneMetaPtrOutput) WildcardProxiable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneMeta) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.WildcardProxiable
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ZoneSettingsOverrideInitialSettings struct {
@@ -8155,9 +8650,10 @@ type ZoneSettingsOverrideInitialSettings struct {
 	TrueClientIpHeader      *string                                            `pulumi:"trueClientIpHeader"`
 	UniversalSsl            *string                                            `pulumi:"universalSsl"`
 	Waf                     *string                                            `pulumi:"waf"`
-	Webp                    *string                                            `pulumi:"webp"`
-	Websockets              *string                                            `pulumi:"websockets"`
-	ZeroRtt                 *string                                            `pulumi:"zeroRtt"`
+	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+	Webp       *string `pulumi:"webp"`
+	Websockets *string `pulumi:"websockets"`
+	ZeroRtt    *string `pulumi:"zeroRtt"`
 }
 
 // ZoneSettingsOverrideInitialSettingsInput is an input type that accepts ZoneSettingsOverrideInitialSettingsArgs and ZoneSettingsOverrideInitialSettingsOutput values.
@@ -8216,9 +8712,10 @@ type ZoneSettingsOverrideInitialSettingsArgs struct {
 	TrueClientIpHeader      pulumi.StringPtrInput                                     `pulumi:"trueClientIpHeader"`
 	UniversalSsl            pulumi.StringPtrInput                                     `pulumi:"universalSsl"`
 	Waf                     pulumi.StringPtrInput                                     `pulumi:"waf"`
-	Webp                    pulumi.StringPtrInput                                     `pulumi:"webp"`
-	Websockets              pulumi.StringPtrInput                                     `pulumi:"websockets"`
-	ZeroRtt                 pulumi.StringPtrInput                                     `pulumi:"zeroRtt"`
+	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+	Webp       pulumi.StringPtrInput `pulumi:"webp"`
+	Websockets pulumi.StringPtrInput `pulumi:"websockets"`
+	ZeroRtt    pulumi.StringPtrInput `pulumi:"zeroRtt"`
 }
 
 func (ZoneSettingsOverrideInitialSettingsArgs) ElementType() reflect.Type {
@@ -8476,6 +8973,7 @@ func (o ZoneSettingsOverrideInitialSettingsOutput) Waf() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Waf }).(pulumi.StringPtrOutput)
 }
 
+// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 func (o ZoneSettingsOverrideInitialSettingsOutput) Webp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Webp }).(pulumi.StringPtrOutput)
 }
@@ -8507,202 +9005,427 @@ func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Elem() ZoneSettingsOverrid
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) AlwaysOnline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.AlwaysOnline }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlwaysOnline
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) AlwaysUseHttps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.AlwaysUseHttps }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlwaysUseHttps
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) AutomaticHttpsRewrites() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.AutomaticHttpsRewrites }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticHttpsRewrites
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Brotli() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Brotli }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Brotli
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) BrowserCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *int { return v.BrowserCacheTtl }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BrowserCacheTtl
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) BrowserCheck() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.BrowserCheck }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BrowserCheck
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) CacheLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.CacheLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ChallengeTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *int { return v.ChallengeTtl }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ChallengeTtl
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) CnameFlattening() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.CnameFlattening }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CnameFlattening
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) DevelopmentMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DevelopmentMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) EmailObfuscation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.EmailObfuscation }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailObfuscation
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) H2Prioritization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.H2Prioritization }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.H2Prioritization
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) HotlinkProtection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.HotlinkProtection }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HotlinkProtection
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Http2() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Http2 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Http2
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Http3() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Http3 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Http3
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ImageResizing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.ImageResizing }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageResizing
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) IpGeolocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.IpGeolocation }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpGeolocation
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Ipv6() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) MaxUpload() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *int { return v.MaxUpload }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUpload
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) MinTlsVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinTlsVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Minify() ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsMinify {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsMinify {
+		if v == nil {
+			return nil
+		}
 		return v.Minify
 	}).(ZoneSettingsOverrideInitialSettingsMinifyPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Mirage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Mirage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mirage
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) MobileRedirect() ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsMobileRedirect {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsMobileRedirect {
+		if v == nil {
+			return nil
+		}
 		return v.MobileRedirect
 	}).(ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.OpportunisticEncryption }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticEncryption
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) OpportunisticOnion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.OpportunisticOnion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticOnion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginErrorPagePassThru
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Polish() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Polish }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Polish
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) PrefetchPreload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.PrefetchPreload }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefetchPreload
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) PrivacyPass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.PrivacyPass }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivacyPass
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) PseudoIpv4() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.PseudoIpv4 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PseudoIpv4
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ResponseBuffering() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.ResponseBuffering }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseBuffering
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) RocketLoader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.RocketLoader }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RocketLoader
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) SecurityHeader() ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsSecurityHeader {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsSecurityHeader {
+		if v == nil {
+			return nil
+		}
 		return v.SecurityHeader
 	}).(ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ServerSideExclude() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.ServerSideExclude }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSideExclude
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SortQueryStringForCache
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Tls12Only() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tls12Only
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Tls13() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Tls13 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tls13
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) TlsClientAuth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.TlsClientAuth }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsClientAuth
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) TrueClientIpHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrueClientIpHeader
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) UniversalSsl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UniversalSsl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Waf() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Waf }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Waf
+	}).(pulumi.StringPtrOutput)
 }
 
+// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Webp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Webp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Webp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Websockets() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Websockets }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Websockets
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ZeroRtt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.ZeroRtt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZeroRtt
+	}).(pulumi.StringPtrOutput)
 }
 
 type ZoneSettingsOverrideInitialSettingsMinify struct {
 	// "on"/"off"
 	Css string `pulumi:"css"`
 	// "on"/"off"
-	// * `js` (Required)"on"/"off"
 	Html string `pulumi:"html"`
-	Js   string `pulumi:"js"`
+	// "on"/"off"
+	Js string `pulumi:"js"`
 }
 
 // ZoneSettingsOverrideInitialSettingsMinifyInput is an input type that accepts ZoneSettingsOverrideInitialSettingsMinifyArgs and ZoneSettingsOverrideInitialSettingsMinifyOutput values.
@@ -8721,9 +9444,9 @@ type ZoneSettingsOverrideInitialSettingsMinifyArgs struct {
 	// "on"/"off"
 	Css pulumi.StringInput `pulumi:"css"`
 	// "on"/"off"
-	// * `js` (Required)"on"/"off"
 	Html pulumi.StringInput `pulumi:"html"`
-	Js   pulumi.StringInput `pulumi:"js"`
+	// "on"/"off"
+	Js pulumi.StringInput `pulumi:"js"`
 }
 
 func (ZoneSettingsOverrideInitialSettingsMinifyArgs) ElementType() reflect.Type {
@@ -8810,11 +9533,11 @@ func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) Css() pulumi.StringOutp
 }
 
 // "on"/"off"
-// * `js` (Required)"on"/"off"
 func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) Html() pulumi.StringOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) string { return v.Html }).(pulumi.StringOutput)
 }
 
+// "on"/"off"
 func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) Js() pulumi.StringOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) string { return v.Js }).(pulumi.StringOutput)
 }
@@ -8840,18 +9563,33 @@ func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Elem() ZoneSettingsO
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Css() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) string { return v.Css }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Css() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMinify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Css
+	}).(pulumi.StringPtrOutput)
 }
 
 // "on"/"off"
-// * `js` (Required)"on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) string { return v.Html }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMinify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Js() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) string { return v.Js }).(pulumi.StringOutput)
+// "on"/"off"
+func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Js() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMinify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Js
+	}).(pulumi.StringPtrOutput)
 }
 
 type ZoneSettingsOverrideInitialSettingsMobileRedirect struct {
@@ -8998,18 +9736,33 @@ func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) Elem() ZoneS
 }
 
 // String value
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) MobileSubdomain() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMobileRedirect) string { return v.MobileSubdomain }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) MobileSubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMobileRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MobileSubdomain
+	}).(pulumi.StringPtrOutput)
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMobileRedirect) string { return v.Status }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMobileRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) StripUri() pulumi.BoolOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMobileRedirect) bool { return v.StripUri }).(pulumi.BoolOutput)
+func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) StripUri() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMobileRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StripUri
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ZoneSettingsOverrideInitialSettingsSecurityHeader struct {
@@ -9175,27 +9928,52 @@ func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Elem() ZoneS
 
 // true/false
 func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // true/false
 func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool { return v.IncludeSubdomains }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeSubdomains
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Integer
 func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.IntPtrOutput)
 }
 
 // true/false
 func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Nosniff() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool { return v.Nosniff }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nosniff
+	}).(pulumi.BoolPtrOutput)
 }
 
 // true/false
 func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Preload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool { return v.Preload }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preload
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ZoneSettingsOverrideSettings struct {
@@ -9242,9 +10020,10 @@ type ZoneSettingsOverrideSettings struct {
 	TrueClientIpHeader      *string                                     `pulumi:"trueClientIpHeader"`
 	UniversalSsl            *string                                     `pulumi:"universalSsl"`
 	Waf                     *string                                     `pulumi:"waf"`
-	Webp                    *string                                     `pulumi:"webp"`
-	Websockets              *string                                     `pulumi:"websockets"`
-	ZeroRtt                 *string                                     `pulumi:"zeroRtt"`
+	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+	Webp       *string `pulumi:"webp"`
+	Websockets *string `pulumi:"websockets"`
+	ZeroRtt    *string `pulumi:"zeroRtt"`
 }
 
 // ZoneSettingsOverrideSettingsInput is an input type that accepts ZoneSettingsOverrideSettingsArgs and ZoneSettingsOverrideSettingsOutput values.
@@ -9303,9 +10082,10 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	TrueClientIpHeader      pulumi.StringPtrInput                              `pulumi:"trueClientIpHeader"`
 	UniversalSsl            pulumi.StringPtrInput                              `pulumi:"universalSsl"`
 	Waf                     pulumi.StringPtrInput                              `pulumi:"waf"`
-	Webp                    pulumi.StringPtrInput                              `pulumi:"webp"`
-	Websockets              pulumi.StringPtrInput                              `pulumi:"websockets"`
-	ZeroRtt                 pulumi.StringPtrInput                              `pulumi:"zeroRtt"`
+	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+	Webp       pulumi.StringPtrInput `pulumi:"webp"`
+	Websockets pulumi.StringPtrInput `pulumi:"websockets"`
+	ZeroRtt    pulumi.StringPtrInput `pulumi:"zeroRtt"`
 }
 
 func (ZoneSettingsOverrideSettingsArgs) ElementType() reflect.Type {
@@ -9561,6 +10341,7 @@ func (o ZoneSettingsOverrideSettingsOutput) Waf() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Waf }).(pulumi.StringPtrOutput)
 }
 
+// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 func (o ZoneSettingsOverrideSettingsOutput) Webp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Webp }).(pulumi.StringPtrOutput)
 }
@@ -9592,200 +10373,427 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Elem() ZoneSettingsOverrideSettin
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) AlwaysOnline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.AlwaysOnline }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlwaysOnline
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) AlwaysUseHttps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.AlwaysUseHttps }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AlwaysUseHttps
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) AutomaticHttpsRewrites() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.AutomaticHttpsRewrites }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticHttpsRewrites
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Brotli() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Brotli }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Brotli
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) BrowserCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *int { return v.BrowserCacheTtl }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BrowserCacheTtl
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) BrowserCheck() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.BrowserCheck }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BrowserCheck
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) CacheLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.CacheLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) ChallengeTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *int { return v.ChallengeTtl }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ChallengeTtl
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) CnameFlattening() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.CnameFlattening }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CnameFlattening
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) DevelopmentMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DevelopmentMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) EmailObfuscation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.EmailObfuscation }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailObfuscation
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) H2Prioritization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.H2Prioritization }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.H2Prioritization
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) HotlinkProtection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.HotlinkProtection }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HotlinkProtection
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Http2() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Http2 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Http2
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Http3() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Http3 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Http3
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) ImageResizing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.ImageResizing }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageResizing
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) IpGeolocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.IpGeolocation }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpGeolocation
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Ipv6() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) MaxUpload() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *int { return v.MaxUpload }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUpload
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) MinTlsVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinTlsVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Minify() ZoneSettingsOverrideSettingsMinifyPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsMinify { return v.Minify }).(ZoneSettingsOverrideSettingsMinifyPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsMinify {
+		if v == nil {
+			return nil
+		}
+		return v.Minify
+	}).(ZoneSettingsOverrideSettingsMinifyPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Mirage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Mirage }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mirage
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) MobileRedirect() ZoneSettingsOverrideSettingsMobileRedirectPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsMobileRedirect {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsMobileRedirect {
+		if v == nil {
+			return nil
+		}
 		return v.MobileRedirect
 	}).(ZoneSettingsOverrideSettingsMobileRedirectPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.OpportunisticEncryption }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticEncryption
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) OpportunisticOnion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.OpportunisticOnion }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OpportunisticOnion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OriginErrorPagePassThru
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Polish() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Polish }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Polish
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) PrefetchPreload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.PrefetchPreload }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrefetchPreload
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) PrivacyPass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.PrivacyPass }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivacyPass
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) PseudoIpv4() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.PseudoIpv4 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PseudoIpv4
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) ResponseBuffering() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.ResponseBuffering }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseBuffering
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) RocketLoader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.RocketLoader }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RocketLoader
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) SecurityHeader() ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsSecurityHeader {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsSecurityHeader {
+		if v == nil {
+			return nil
+		}
 		return v.SecurityHeader
 	}).(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityLevel
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) ServerSideExclude() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.ServerSideExclude }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerSideExclude
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SortQueryStringForCache
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ssl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Tls12Only() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tls12Only
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Tls13() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Tls13 }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tls13
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) TlsClientAuth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.TlsClientAuth }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TlsClientAuth
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) TrueClientIpHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TrueClientIpHeader
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) UniversalSsl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UniversalSsl
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Waf() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Waf }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Waf
+	}).(pulumi.StringPtrOutput)
 }
 
+// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 func (o ZoneSettingsOverrideSettingsPtrOutput) Webp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Webp }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Webp
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Websockets() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Websockets }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Websockets
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) ZeroRtt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.ZeroRtt }).(pulumi.StringPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ZeroRtt
+	}).(pulumi.StringPtrOutput)
 }
 
 type ZoneSettingsOverrideSettingsMinify struct {
 	// "on"/"off"
 	Css string `pulumi:"css"`
 	// "on"/"off"
-	// * `js` (Required)"on"/"off"
 	Html string `pulumi:"html"`
-	Js   string `pulumi:"js"`
+	// "on"/"off"
+	Js string `pulumi:"js"`
 }
 
 // ZoneSettingsOverrideSettingsMinifyInput is an input type that accepts ZoneSettingsOverrideSettingsMinifyArgs and ZoneSettingsOverrideSettingsMinifyOutput values.
@@ -9804,9 +10812,9 @@ type ZoneSettingsOverrideSettingsMinifyArgs struct {
 	// "on"/"off"
 	Css pulumi.StringInput `pulumi:"css"`
 	// "on"/"off"
-	// * `js` (Required)"on"/"off"
 	Html pulumi.StringInput `pulumi:"html"`
-	Js   pulumi.StringInput `pulumi:"js"`
+	// "on"/"off"
+	Js pulumi.StringInput `pulumi:"js"`
 }
 
 func (ZoneSettingsOverrideSettingsMinifyArgs) ElementType() reflect.Type {
@@ -9893,11 +10901,11 @@ func (o ZoneSettingsOverrideSettingsMinifyOutput) Css() pulumi.StringOutput {
 }
 
 // "on"/"off"
-// * `js` (Required)"on"/"off"
 func (o ZoneSettingsOverrideSettingsMinifyOutput) Html() pulumi.StringOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMinify) string { return v.Html }).(pulumi.StringOutput)
 }
 
+// "on"/"off"
 func (o ZoneSettingsOverrideSettingsMinifyOutput) Js() pulumi.StringOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMinify) string { return v.Js }).(pulumi.StringOutput)
 }
@@ -9921,18 +10929,33 @@ func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) Elem() ZoneSettingsOverride
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) Css() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMinify) string { return v.Css }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) Css() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMinify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Css
+	}).(pulumi.StringPtrOutput)
 }
 
 // "on"/"off"
-// * `js` (Required)"on"/"off"
-func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMinify) string { return v.Html }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMinify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Html
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) Js() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMinify) string { return v.Js }).(pulumi.StringOutput)
+// "on"/"off"
+func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) Js() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMinify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Js
+	}).(pulumi.StringPtrOutput)
 }
 
 type ZoneSettingsOverrideSettingsMobileRedirect struct {
@@ -10079,18 +11102,33 @@ func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) Elem() ZoneSettings
 }
 
 // String value
-func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) MobileSubdomain() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMobileRedirect) string { return v.MobileSubdomain }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) MobileSubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMobileRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MobileSubdomain
+	}).(pulumi.StringPtrOutput)
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMobileRedirect) string { return v.Status }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMobileRedirect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // true/false
-func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) StripUri() pulumi.BoolOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMobileRedirect) bool { return v.StripUri }).(pulumi.BoolOutput)
+func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) StripUri() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMobileRedirect) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.StripUri
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ZoneSettingsOverrideSettingsSecurityHeader struct {
@@ -10256,27 +11294,52 @@ func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) Elem() ZoneSettings
 
 // true/false
 func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsSecurityHeader) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsSecurityHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // true/false
 func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsSecurityHeader) *bool { return v.IncludeSubdomains }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsSecurityHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeSubdomains
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Integer
 func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsSecurityHeader) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsSecurityHeader) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxAge
+	}).(pulumi.IntPtrOutput)
 }
 
 // true/false
 func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) Nosniff() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsSecurityHeader) *bool { return v.Nosniff }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsSecurityHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nosniff
+	}).(pulumi.BoolPtrOutput)
 }
 
 // true/false
 func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) Preload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsSecurityHeader) *bool { return v.Preload }).(pulumi.BoolPtrOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsSecurityHeader) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Preload
+	}).(pulumi.BoolPtrOutput)
 }
 
 type GetWafGroupsFilter struct {

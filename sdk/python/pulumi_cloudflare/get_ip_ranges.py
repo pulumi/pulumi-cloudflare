@@ -21,7 +21,7 @@ class GetIpRangesResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if ipv4_cidr_blocks and not isinstance(ipv4_cidr_blocks, list):
             raise TypeError("Expected argument 'ipv4_cidr_blocks' to be a list")
@@ -42,7 +42,7 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
 
 def get_ip_ranges(opts=None):
     """
-    Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
+    Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
     """
     __args__ = dict()
 

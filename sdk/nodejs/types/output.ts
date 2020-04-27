@@ -847,6 +847,9 @@ export interface ZoneSettingsOverrideInitialSettings {
     trueClientIpHeader: string;
     universalSsl: string;
     waf: string;
+    /**
+     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+     */
     webp: string;
     websockets: string;
     zeroRtt: string;
@@ -859,9 +862,11 @@ export interface ZoneSettingsOverrideInitialSettingsMinify {
     css: string;
     /**
      * "on"/"off"
-     * * `js` (Required)"on"/"off"
      */
     html: string;
+    /**
+     * "on"/"off"
+     */
     js: string;
 }
 
@@ -947,6 +952,9 @@ export interface ZoneSettingsOverrideSettings {
     trueClientIpHeader: string;
     universalSsl: string;
     waf: string;
+    /**
+     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+     */
     webp: string;
     websockets: string;
     zeroRtt: string;
@@ -959,9 +967,11 @@ export interface ZoneSettingsOverrideSettingsMinify {
     css: string;
     /**
      * "on"/"off"
-     * * `js` (Required)"on"/"off"
      */
     html: string;
+    /**
+     * "on"/"off"
+     */
     js: string;
 }
 
