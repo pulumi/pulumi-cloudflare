@@ -41,9 +41,11 @@ export class WorkerRoute extends pulumi.CustomResource {
 
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-     * * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     public readonly pattern!: pulumi.Output<string>;
+    /**
+     * Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+     */
     public readonly scriptName!: pulumi.Output<string | undefined>;
     /**
      * The zone ID to add the route to.
@@ -94,9 +96,11 @@ export class WorkerRoute extends pulumi.CustomResource {
 export interface WorkerRouteState {
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-     * * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     readonly pattern?: pulumi.Input<string>;
+    /**
+     * Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+     */
     readonly scriptName?: pulumi.Input<string>;
     /**
      * The zone ID to add the route to.
@@ -110,9 +114,11 @@ export interface WorkerRouteState {
 export interface WorkerRouteArgs {
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-     * * `scriptName` Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
     readonly pattern: pulumi.Input<string>;
+    /**
+     * Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+     */
     readonly scriptName?: pulumi.Input<string>;
     /**
      * The zone ID to add the route to.

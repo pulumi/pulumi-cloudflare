@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to look up [WAF Rule Packages][1].
+// Use this data source to look up [WAF Rule Packages](https://api.cloudflare.com/#waf-rule-packages-properties).
 func GetWafPackages(ctx *pulumi.Context, args *GetWafPackagesArgs, opts ...pulumi.InvokeOption) (*GetWafPackagesResult, error) {
 	var rv GetWafPackagesResult
 	err := ctx.Invoke("cloudflare:index/getWafPackages:getWafPackages", args, &rv, opts...)
@@ -26,7 +26,7 @@ type GetWafPackagesArgs struct {
 // A collection of values returned by getWafPackages.
 type GetWafPackagesResult struct {
 	Filter *GetWafPackagesFilter `pulumi:"filter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id       string                  `pulumi:"id"`
 	Packages []GetWafPackagesPackage `pulumi:"packages"`
 	ZoneId   string                  `pulumi:"zoneId"`

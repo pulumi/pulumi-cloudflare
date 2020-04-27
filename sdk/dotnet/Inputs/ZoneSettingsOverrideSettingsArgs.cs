@@ -141,6 +141,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("waf")]
         public Input<string>? Waf { get; set; }
 
+        /// <summary>
+        /// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+        /// </summary>
         [Input("webp")]
         public Input<string>? Webp { get; set; }
 

@@ -20,11 +20,13 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// "on"/"off"
-        /// * `js` (Required)"on"/"off"
         /// </summary>
         [Input("html", required: true)]
         public Input<string> Html { get; set; } = null!;
 
+        /// <summary>
+        /// "on"/"off"
+        /// </summary>
         [Input("js", required: true)]
         public Input<string> Js { get; set; } = null!;
 

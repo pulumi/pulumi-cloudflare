@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to look up [Zone][1] records.
+// Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("cloudflare:index/getZones:getZones", args, &rv, opts...)
@@ -25,7 +25,7 @@ type GetZonesArgs struct {
 // A collection of values returned by getZones.
 type GetZonesResult struct {
 	Filter GetZonesFilter `pulumi:"filter"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id    string         `pulumi:"id"`
 	Zones []GetZonesZone `pulumi:"zones"`
 }

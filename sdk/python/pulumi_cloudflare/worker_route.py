@@ -13,9 +13,11 @@ class WorkerRoute(pulumi.CustomResource):
     pattern: pulumi.Output[str]
     """
     The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-    * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
     """
     script_name: pulumi.Output[str]
+    """
+    Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+    """
     zone_id: pulumi.Output[str]
     """
     The zone ID to add the route to.
@@ -29,7 +31,7 @@ class WorkerRoute(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-               * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        :param pulumi.Input[str] script_name: Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         :param pulumi.Input[str] zone_id: The zone ID to add the route to.
         """
         if __name__ is not None:
@@ -72,7 +74,7 @@ class WorkerRoute(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
-               * `script_name` Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        :param pulumi.Input[str] script_name: Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         :param pulumi.Input[str] zone_id: The zone ID to add the route to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

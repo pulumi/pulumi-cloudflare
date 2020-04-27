@@ -812,6 +812,9 @@ export interface ZoneSettingsOverrideInitialSettings {
     trueClientIpHeader?: pulumi.Input<string>;
     universalSsl?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
+    /**
+     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+     */
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
     zeroRtt?: pulumi.Input<string>;
@@ -824,9 +827,11 @@ export interface ZoneSettingsOverrideInitialSettingsMinify {
     css: pulumi.Input<string>;
     /**
      * "on"/"off"
-     * * `js` (Required)"on"/"off"
      */
     html: pulumi.Input<string>;
+    /**
+     * "on"/"off"
+     */
     js: pulumi.Input<string>;
 }
 
@@ -912,6 +917,9 @@ export interface ZoneSettingsOverrideSettings {
     trueClientIpHeader?: pulumi.Input<string>;
     universalSsl?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
+    /**
+     * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+     */
     webp?: pulumi.Input<string>;
     websockets?: pulumi.Input<string>;
     zeroRtt?: pulumi.Input<string>;
@@ -924,9 +932,11 @@ export interface ZoneSettingsOverrideSettingsMinify {
     css: pulumi.Input<string>;
     /**
      * "on"/"off"
-     * * `js` (Required)"on"/"off"
      */
     html: pulumi.Input<string>;
+    /**
+     * "on"/"off"
+     */
     js: pulumi.Input<string>;
 }
 

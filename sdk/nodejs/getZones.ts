@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to look up [Zone][1] records.
+ * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
  * 
  * ## Example Usage
  * 
@@ -65,7 +65,7 @@ export interface GetZonesResult {
     readonly filter: outputs.GetZonesFilter;
     readonly zones: outputs.GetZonesZone[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

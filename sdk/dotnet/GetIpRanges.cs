@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare
     public static class GetIpRanges
     {
         /// <summary>
-        /// Use this data source to get the [IP ranges][1] of Cloudflare edge nodes.
+        /// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly ImmutableArray<string> CidrBlocks;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<string> Ipv4CidrBlocks;

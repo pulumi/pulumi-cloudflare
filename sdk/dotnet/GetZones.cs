@@ -12,7 +12,7 @@ namespace Pulumi.Cloudflare
     public static class GetZones
     {
         /// <summary>
-        /// Use this data source to look up [Zone][1] records.
+        /// Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
         /// 
         /// {{% examples %}}
         /// {{% /examples %}}
@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare
     {
         public readonly Outputs.GetZonesFilterResult Filter;
         /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
+        /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;

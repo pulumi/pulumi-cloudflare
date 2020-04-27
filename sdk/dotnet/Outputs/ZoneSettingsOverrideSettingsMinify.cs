@@ -19,9 +19,11 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Css;
         /// <summary>
         /// "on"/"off"
-        /// * `js` (Required)"on"/"off"
         /// </summary>
         public readonly string Html;
+        /// <summary>
+        /// "on"/"off"
+        /// </summary>
         public readonly string Js;
 
         [OutputConstructor]

@@ -56,6 +56,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? TrueClientIpHeader;
         public readonly string? UniversalSsl;
         public readonly string? Waf;
+        /// <summary>
+        /// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
+        /// </summary>
         public readonly string? Webp;
         public readonly string? Websockets;
         public readonly string? ZeroRtt;
