@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Regenerate datasource examples to be async
-* Upgrade to pulumi-terraform-bridge v2.1.0
+_(none)_
 
 ---
+
+## 2.2.0 (2020-04-28)
+* Regenerate datasource examples to be async
+* Upgrade to pulumi-terraform-bridge v2.1.0
 
 ## 2.1.0 (2020-04-23)
 * Upgrade to v2.6.0 of the CloudFlare Terraform Provider
