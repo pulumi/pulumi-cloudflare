@@ -39,6 +39,23 @@ class LogpushJob(pulumi.CustomResource):
         """
         Provides a resource which manages Cloudflare logpush jobs.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_job = cloudflare.LogpushJob("exampleJob",
+            dataset="http_requests",
+            destination_conf="s3://my-bucket-path?region=us-west-2",
+            enabled=True,
+            logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+            name="My-logpush-job",
+            ownership_challenge="00000000000000000",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
 
 
         :param str resource_name: The name of the resource.

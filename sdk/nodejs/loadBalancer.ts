@@ -9,6 +9,43 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * 
+ * const foo = new cloudflare.LoadBalancerPool("foo", {
+ *     name: "example-lb-pool",
+ *     origins: [{
+ *         name: "example-1",
+ *         address: "192.0.2.1",
+ *         enabled: false,
+ *     }],
+ * });
+ * // Define a load balancer which always points to a pool we define below
+ * // In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions
+ * // Within each pop or region we can define multiple pools in failover order
+ * const bar = new cloudflare.LoadBalancer("bar", {
+ *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     name: "example-load-balancer",
+ *     fallbackPoolId: foo.id,
+ *     defaultPoolIds: [foo.id],
+ *     description: "example load balancer using geo-balancing",
+ *     proxied: true,
+ *     steeringPolicy: "geo",
+ *     pop_pools: [{
+ *         pop: "LAX",
+ *         poolIds: [foo.id],
+ *     }],
+ *     region_pools: [{
+ *         region: "WNAM",
+ *         poolIds: [foo.id],
+ *     }],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer.html.markdown.
  */

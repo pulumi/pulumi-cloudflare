@@ -30,6 +30,19 @@ class WafGroup(pulumi.CustomResource):
         """
         Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        honey_pot = cloudflare.WafGroup("honeyPot",
+            group_id="de677e5818985db1285d0e80225f06e5",
+            mode="on",
+            zone_id="ae36f999674d196762efcc5abb06b345")
+        ```
 
 
         :param str resource_name: The name of the resource.

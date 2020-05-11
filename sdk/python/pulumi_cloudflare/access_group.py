@@ -133,6 +133,33 @@ class AccessGroup(pulumi.CustomResource):
         in conjunction with Access Policies to restrict access to a
         particular resource based on group membership.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        test_group_access_group = cloudflare.AccessGroup("testGroupAccessGroup",
+            account_id="975ecf5a45e3bcb680dba0722a420ad9",
+            name="staging group",
+            include=[{
+                "emails": ["test@example.com"],
+            }])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        test_group_index_access_group_access_group = cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup",
+            account_id="975ecf5a45e3bcb680dba0722a420ad9",
+            name="staging group",
+            include=[{
+                "emails": ["test@example.com"],
+            }],
+            requires={
+                "ips": [var["office_ip"]],
+            })
+        ```
 
         ## Conditions
 

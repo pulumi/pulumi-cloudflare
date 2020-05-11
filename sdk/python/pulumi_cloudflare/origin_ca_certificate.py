@@ -36,12 +36,7 @@ class OriginCaCertificate(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, csr=None, hostnames=None, request_type=None, requested_validity=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
-
-        **This resource requires you use your Origin CA Key as the `api_user_service_key`.**
-
-
-
+        Create a OriginCaCertificate resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded.

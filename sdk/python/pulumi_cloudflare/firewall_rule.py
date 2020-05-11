@@ -42,6 +42,24 @@ class FirewallRule(pulumi.CustomResource):
 
         Filter expressions needs to be created first before using Firewall Rule. See Filter.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        wordpress_filter = cloudflare.Filter("wordpressFilter",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            description="Wordpress break-in attempts that are outside of the office",
+            expression="(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1")
+        wordpress_firewall_rule = cloudflare.FirewallRule("wordpressFirewallRule",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            description="Block wordpress break-in attempts",
+            filter_id=wordpress_filter.id,
+            action="block")
+        ```
 
 
         :param str resource_name: The name of the resource.

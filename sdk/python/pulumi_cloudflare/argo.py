@@ -26,6 +26,19 @@ class Argo(pulumi.CustomResource):
         """
         Cloudflare Argo controls the routing to your origin and tiered caching options to speed up your website browsing experience.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Argo("example",
+            smart_routing="on",
+            tiered_caching="on",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
 
 
         :param str resource_name: The name of the resource.

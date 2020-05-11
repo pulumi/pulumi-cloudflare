@@ -37,6 +37,20 @@ class CustomPages(pulumi.CustomResource):
         """
         Provides a resource which manages Cloudflare custom error pages.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        basic_challenge = cloudflare.CustomPages("basicChallenge",
+            state="customized",
+            type="basic_challenge",
+            url="https://example.com/challenge.html",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
 
 
         :param str resource_name: The name of the resource.

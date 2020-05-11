@@ -32,6 +32,18 @@ class AccessServiceToken(pulumi.CustomResource):
         Access Service Tokens are used for service-to-service communication
         when an application is behind Cloudflare Access.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_app = cloudflare.AccessServiceToken("myApp",
+            account_id="d41d8cd98f00b204e9800998ecf8427e",
+            name="CI/CD app")
+        ```
 
 
         :param str resource_name: The name of the resource.

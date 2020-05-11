@@ -60,6 +60,32 @@ class LoadBalancerPool(pulumi.CustomResource):
         Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
 
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        foo = cloudflare.LoadBalancerPool("foo",
+            description="example load balancer pool",
+            enabled=False,
+            minimum_origins=1,
+            name="example-pool",
+            notification_email="someone@example.com",
+            origins=[
+                {
+                    "address": "192.0.2.1",
+                    "enabled": False,
+                    "name": "example-1",
+                },
+                {
+                    "address": "192.0.2.2",
+                    "name": "example-2",
+                },
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.
