@@ -22,6 +22,21 @@ class AccountMember(pulumi.CustomResource):
         """
         Provides a resource which manages Cloudflare account members.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_user = cloudflare.AccountMember("exampleUser",
+            email_address="user@example.com",
+            role_ids=[
+                "68b329da9893e34099c7d8ad5cb9c940",
+                "d784fa8b6d98d27699781bd9a7cf19f0",
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.

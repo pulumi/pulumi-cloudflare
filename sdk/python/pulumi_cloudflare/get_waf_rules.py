@@ -48,6 +48,23 @@ def get_waf_rules(filter=None,package_id=None,zone_id=None,opts=None):
     """
     Use this data source to look up [WAF Rules](https://api.cloudflare.com/#waf-rule-groups-properties).
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    test = cloudflare.get_waf_rules(zone_id="ae36f999674d196762efcc5abb06b345",
+        package_id="a25a9a7e9c00afc1fb2e0245519d725b",
+        filter={
+            "description": ".*example.*",
+            "mode": "on",
+            "groupId": "de677e5818985db1285d0e80225f06e5",
+        })
+    pulumi.export("wafRules", test.rules)
+    ```
 
 
 

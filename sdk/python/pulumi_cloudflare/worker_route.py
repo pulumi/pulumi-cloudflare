@@ -26,6 +26,22 @@ class WorkerRoute(pulumi.CustomResource):
         """
         Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_script = cloudflare.WorkerScript("myScript")
+        # see ".WorkerScript" documentation ...
+        # Runs the specified worker script for all URLs that match `example.com/*`
+        my_route = cloudflare.WorkerRoute("myRoute",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            pattern="example.com/*",
+            script_name=my_script.name)
+        ```
 
 
         :param str resource_name: The name of the resource.

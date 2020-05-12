@@ -102,10 +102,7 @@ class Record(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, data=None, name=None, priority=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Cloudflare record resource.
-
-
-
+        Create a Record resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[dict] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified

@@ -9,6 +9,64 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * 
+ * const example = new cloudflare.RateLimit("example", {
+ *     zoneId: var.cloudflare_zone_id,
+ *     threshold: 2000,
+ *     period: 2,
+ *     match: {
+ *         request: {
+ *             urlPattern: `${var.cloudflare_zone}/*`,
+ *             schemes: [
+ *                 "HTTP",
+ *                 "HTTPS",
+ *             ],
+ *             methods: [
+ *                 "GET",
+ *                 "POST",
+ *                 "PUT",
+ *                 "DELETE",
+ *                 "PATCH",
+ *                 "HEAD",
+ *             ],
+ *         },
+ *         response: {
+ *             statuses: [
+ *                 200,
+ *                 201,
+ *                 202,
+ *                 301,
+ *                 429,
+ *             ],
+ *             originTraffic: false,
+ *         },
+ *     },
+ *     action: {
+ *         mode: "simulate",
+ *         timeout: 43200,
+ *         response: {
+ *             contentType: "text/plain",
+ *             body: "custom response body",
+ *         },
+ *     },
+ *     correlate: {
+ *         by: "nat",
+ *     },
+ *     disabled: false,
+ *     description: "example rate limit for a zone",
+ *     bypassUrlPatterns: [
+ *         `${var.cloudflare_zone}/bypass1`,
+ *         `${var.cloudflare_zone}/bypass2`,
+ *     ],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/rate_limit.html.markdown.
  */

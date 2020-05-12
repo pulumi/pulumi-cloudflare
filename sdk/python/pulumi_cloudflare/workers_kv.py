@@ -26,6 +26,20 @@ class WorkersKv(pulumi.CustomResource):
         """
         Provides a Workers KV Pair.  *NOTE:*  This resource uses the Cloudflare account APIs.  This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_ns = cloudflare.WorkersKvNamespace("exampleNs", title="test-namespace")
+        example = cloudflare.WorkersKv("example",
+            namespace_id=example_ns.id,
+            key="test-key",
+            value="test value")
+        ```
 
 
         :param str resource_name: The name of the resource.

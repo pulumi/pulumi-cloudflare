@@ -30,6 +30,20 @@ class WafPackage(pulumi.CustomResource):
         """
         Provides a Cloudflare WAF rule package resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall packages.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        owasp = cloudflare.WafPackage("owasp",
+            action_mode="simulate",
+            package_id="a25a9a7e9c00afc1fb2e0245519d725b",
+            sensitivity="medium",
+            zone_id="ae36f999674d196762efcc5abb06b345")
+        ```
 
 
         :param str resource_name: The name of the resource.

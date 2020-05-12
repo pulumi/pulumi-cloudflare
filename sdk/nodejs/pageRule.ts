@@ -9,6 +9,30 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare page rule resource.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * 
+ * // Add a page rule to the domain
+ * const foobar = new cloudflare.PageRule("foobar", {
+ *     zoneId: var.cloudflare_zone_id,
+ *     target: `sub.${var.cloudflare_zone}/page`,
+ *     priority: 1,
+ *     actions: {
+ *         ssl: "flexible",
+ *         emailObfuscation: "on",
+ *         minify: [{
+ *             html: "off",
+ *             css: "on",
+ *             js: "on",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/page_rule.html.markdown.
  */

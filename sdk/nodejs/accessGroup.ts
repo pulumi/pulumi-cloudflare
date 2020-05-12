@@ -11,6 +11,35 @@ import * as utilities from "./utilities";
  * in conjunction with Access Policies to restrict access to a
  * particular resource based on group membership.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * 
+ * // Allowing access to `test@example.com` email address only
+ * const testGroupAccessGroup = new cloudflare.AccessGroup("testGroupAccessGroup", {
+ *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
+ *     name: "staging group",
+ *     include: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ * });
+ * // Allowing `test@example.com` to access but only when coming from a
+ * // specific IP.
+ * const testGroupIndex/accessGroupAccessGroup = new cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", {
+ *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
+ *     name: "staging group",
+ *     include: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ *     requires: {
+ *         ips: [var.office_ip],
+ *     },
+ * });
+ * ```
  * 
  * ## Conditions
  * 

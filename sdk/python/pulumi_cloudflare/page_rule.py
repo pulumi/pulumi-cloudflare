@@ -77,6 +77,29 @@ class PageRule(pulumi.CustomResource):
         """
         Provides a Cloudflare page rule resource.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Add a page rule to the domain
+        foobar = cloudflare.PageRule("foobar",
+            zone_id=var["cloudflare_zone_id"],
+            target=f"sub.{var['cloudflare_zone']}/page",
+            priority=1,
+            actions={
+                "ssl": "flexible",
+                "emailObfuscation": "on",
+                "minify": [{
+                    "html": "off",
+                    "css": "on",
+                    "js": "on",
+                }],
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

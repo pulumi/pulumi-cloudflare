@@ -9,6 +9,26 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
  * 
+ * ## Example Usage
+ * 
+ * 
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * 
+ * // Define a spectrum application proxies ssh traffic
+ * const sshProxy = new cloudflare.SpectrumApplication("sshProxy", {
+ *     zoneId: var.cloudflare_zone_id,
+ *     protocol: "tcp/22",
+ *     trafficType: "direct",
+ *     dns: {
+ *         type: "CNAME",
+ *         name: "ssh.example.com",
+ *     },
+ *     originDirects: ["tcp://109.151.40.129:22"],
+ * });
+ * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/spectrum_application.html.markdown.
  */

@@ -157,6 +157,34 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         """
         Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        test = cloudflare.ZoneSettingsOverride("test",
+            zone_id=var["cloudflare_zone_id"],
+            settings={
+                "brotli": "on",
+                "challengeTtl": 2700,
+                "securityLevel": "high",
+                "opportunisticEncryption": "on",
+                "automaticHttpsRewrites": "on",
+                "mirage": "on",
+                "waf": "on",
+                "minify": {
+                    "css": "on",
+                    "js": "off",
+                    "html": "off",
+                },
+                "security_header": {
+                    "enabled": True,
+                },
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

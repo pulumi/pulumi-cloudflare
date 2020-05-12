@@ -40,6 +40,29 @@ def get_zones(filter=None,opts=None):
     """
     Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    test = cloudflare.get_zones(filter={
+        "name": "example.*",
+        "paused": False,
+        "status": "active",
+    })
+    endpoint_lockdown = cloudflare.ZoneLockdown("endpointLockdown",
+        configurations=[{
+            "target": "ip",
+            "value": "198.51.100.4",
+        }],
+        description="Restrict access to these endpoints to requests from a known IP address",
+        paused="false",
+        urls=["api.mysite.com/some/endpoint*"],
+        zone=test.zones[0]["name"])
+    ```
 
 
 

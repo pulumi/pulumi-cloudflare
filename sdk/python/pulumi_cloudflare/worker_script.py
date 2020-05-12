@@ -23,6 +23,24 @@ class WorkerScript(pulumi.CustomResource):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `.WorkerRoute`.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_namespace = cloudflare.WorkersKvNamespace("myNamespace", title="example")
+        # Sets the script with the name "script_1"
+        my_script = cloudflare.WorkerScript("myScript",
+            name="script_1",
+            content=(lambda path: open(path).read())("script.js"),
+            kv_namespace_binding=[{
+                "name": "my_binding",
+                "namespaceId": my_namespace.id,
+            }])
+        ```
 
 
         :param str resource_name: The name of the resource.

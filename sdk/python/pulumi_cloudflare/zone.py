@@ -53,6 +53,16 @@ class Zone(pulumi.CustomResource):
         """
         Provides a Cloudflare Zone resource. Zone is the basic resource for working with Cloudflare and is roughly equivalent to a domain name that the user purchases.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Zone("example", zone="example.com")
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -74,6 +74,46 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         """
         If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
 
+        ## Example Usage
+
+        ### HTTP Monitor
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        http_monitor = cloudflare.LoadBalancerMonitor("httpMonitor",
+            allow_insecure=False,
+            description="example http load balancer",
+            expected_body="alive",
+            expected_codes="2xx",
+            follow_redirects=True,
+            headers=[{
+                "header": "Host",
+                "values": ["example.com"],
+            }],
+            interval=60,
+            method="GET",
+            path="/health",
+            retries=5,
+            timeout=7,
+            type="http")
+        ```
+
+        ### TCP Monitor
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        tcp_monitor = cloudflare.LoadBalancerMonitor("tcpMonitor",
+            description="example tcp load balancer",
+            interval=60,
+            method="connection_established",
+            retries=5,
+            timeout=7,
+            type="tcp")
+        ```
 
 
         :param str resource_name: The name of the resource.

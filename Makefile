@@ -74,7 +74,7 @@ install:: provider
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource gcp 0.17.1
+	pulumi plugin install resource gcp 3.3.0
 
 test_fast::
 	cd examples && $(GO_TEST_FAST) .

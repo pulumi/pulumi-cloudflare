@@ -38,6 +38,20 @@ class AccessApplication(pulumi.CustomResource):
         are used to restrict access to a whole application using an
         authorisation gateway managed by Cloudflare.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        staging_app = cloudflare.AccessApplication("stagingApp",
+            domain="staging.example.com",
+            name="staging application",
+            session_duration="24h",
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        ```
 
 
         :param str resource_name: The name of the resource.

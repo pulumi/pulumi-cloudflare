@@ -34,6 +34,19 @@ class WafRule(pulumi.CustomResource):
         """
         Provides a Cloudflare WAF rule resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall rules.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        _100000 = cloudflare.WafRule("100000",
+            mode="simulate",
+            rule_id="100000",
+            zone_id="ae36f999674d196762efcc5abb06b345")
+        ```
 
 
         :param str resource_name: The name of the resource.

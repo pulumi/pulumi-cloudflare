@@ -71,6 +71,25 @@ class SpectrumApplication(pulumi.CustomResource):
         """
         Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Define a spectrum application proxies ssh traffic
+        ssh_proxy = cloudflare.SpectrumApplication("sshProxy",
+            zone_id=var["cloudflare_zone_id"],
+            protocol="tcp/22",
+            traffic_type="direct",
+            dns={
+                "type": "CNAME",
+                "name": "ssh.example.com",
+            },
+            origin_directs=["tcp://109.151.40.129:22"])
+        ```
 
 
         :param str resource_name: The name of the resource.

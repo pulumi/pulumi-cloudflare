@@ -18,6 +18,16 @@ class WorkersKvNamespace(pulumi.CustomResource):
         """
         Provides a Workers KV Namespace
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WorkersKvNamespace("example", title="test-namespace")
+        ```
 
 
         :param str resource_name: The name of the resource.
