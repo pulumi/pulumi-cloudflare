@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.3.1
+_(none)_
 
 ---
+
+## 2.2.1 (2020-05-12)
+* Upgrade to pulumi-terraform-bridge v2.3.1
 
 ## 2.2.0 (2020-04-28)
 * Regenerate datasource examples to be async
