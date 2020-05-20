@@ -418,6 +418,17 @@ export interface GetZonesZone {
     name?: string;
 }
 
+export interface HealthcheckHeader {
+    /**
+     * The header name.
+     */
+    header: string;
+    /**
+     * A list of string values for the header.
+     */
+    values: string[];
+}
+
 export interface LoadBalancerMonitorHeader {
     /**
      * The header name.
@@ -503,6 +514,10 @@ export interface PageRuleActions {
      * Whether this action is `"on"` or `"off"`.
      */
     cacheDeceptionArmor?: string;
+    /**
+     * Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+     */
+    cacheKeyFields?: outputs.PageRuleActionsCacheKeyFields;
     /**
      * Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cacheEverything"`.
      */
@@ -611,6 +626,92 @@ export interface PageRuleActions {
      * Whether this action is `"on"` or `"off"`.
      */
     waf?: string;
+}
+
+export interface PageRuleActionsCacheKeyFields {
+    /**
+     * Controls what cookies go into Cache Key:
+     */
+    cookie: outputs.PageRuleActionsCacheKeyFieldsCookie;
+    /**
+     * Controls what HTTP headers go into Cache Key:
+     */
+    header: outputs.PageRuleActionsCacheKeyFieldsHeader;
+    /**
+     * Controls which Host header goes into Cache Key:
+     */
+    host: outputs.PageRuleActionsCacheKeyFieldsHost;
+    /**
+     * Controls which URL query string parameters go into the Cache Key.
+     */
+    queryString: outputs.PageRuleActionsCacheKeyFieldsQueryString;
+    /**
+     * Controls which end user-related features go into the Cache Key.
+     */
+    user: outputs.PageRuleActionsCacheKeyFieldsUser;
+}
+
+export interface PageRuleActionsCacheKeyFieldsCookie {
+    /**
+     * Check for presence of specified HTTP headers, without including their actual values.
+     */
+    checkPresences: string[];
+    /**
+     * Only use values of specified query string parameters in Cache Key.
+     */
+    includes: string[];
+}
+
+export interface PageRuleActionsCacheKeyFieldsHeader {
+    /**
+     * Check for presence of specified HTTP headers, without including their actual values.
+     */
+    checkPresences: string[];
+    /**
+     * Exclude these query string parameters from Cache Key.
+     */
+    excludes: string[];
+    /**
+     * Only use values of specified query string parameters in Cache Key.
+     */
+    includes: string[];
+}
+
+export interface PageRuleActionsCacheKeyFieldsHost {
+    /**
+     * `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+     */
+    resolved: boolean;
+}
+
+export interface PageRuleActionsCacheKeyFieldsQueryString {
+    /**
+     * Exclude these query string parameters from Cache Key.
+     */
+    excludes: string[];
+    /**
+     * `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+     */
+    ignore: boolean;
+    /**
+     * Only use values of specified query string parameters in Cache Key.
+     */
+    includes: string[];
+}
+
+export interface PageRuleActionsCacheKeyFieldsUser {
+    /**
+     * `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+     */
+    deviceType: boolean;
+    /**
+     * `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+     */
+    geo: boolean;
+    /**
+     * `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+     */
+    lang: boolean;
 }
 
 export interface PageRuleActionsForwardingUrl {

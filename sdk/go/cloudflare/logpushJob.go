@@ -10,7 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a resource which manages Cloudflare logpush jobs.
 type LogpushJob struct {
 	pulumi.CustomResourceState
 

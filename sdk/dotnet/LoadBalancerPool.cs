@@ -63,7 +63,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         /// </summary>
         [Output("notificationEmail")]
         public Output<string?> NotificationEmail { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         /// </summary>
         [Input("notificationEmail")]
         public Input<string>? NotificationEmail { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+        /// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         /// </summary>
         [Input("notificationEmail")]
         public Input<string>? NotificationEmail { get; set; }

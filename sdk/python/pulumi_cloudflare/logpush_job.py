@@ -37,27 +37,7 @@ class LogpushJob(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, dataset=None, destination_conf=None, enabled=None, logpull_options=None, name=None, ownership_challenge=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a resource which manages Cloudflare logpush jobs.
-
-        ## Example Usage
-
-
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_job = cloudflare.LogpushJob("exampleJob",
-            dataset="http_requests",
-            destination_conf="s3://my-bucket-path?region=us-west-2",
-            enabled=True,
-            logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
-            name="My-logpush-job",
-            ownership_challenge="00000000000000000",
-            zone_id="d41d8cd98f00b204e9800998ecf8427e")
-        ```
-
-
+        Create a LogpushJob resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.

@@ -189,6 +189,9 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_origin_ca_certificate":    {Tok: makeResource(mainMod, "OriginCaCertificate")},
 			"cloudflare_access_identity_provider": {Tok: makeResource(mainMod, "AccessIdentityProvider")},
 			"cloudflare_workers_kv":               {Tok: makeResource(mainMod, "WorkersKv")},
+			"cloudflare_byo_ip_prefix":            {Tok: makeResource(mainMod, "ByoIpPrefix")},
+			"cloudflare_logpull_retention":        {Tok: makeResource(mainMod, "LogpullRetention")},
+			"cloudflare_healthcheck":              {Tok: makeResource(mainMod, "Healthcheck")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},

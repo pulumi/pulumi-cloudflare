@@ -4853,6 +4853,114 @@ func (o CustomSslCustomSslPriorityArrayOutput) Index(i pulumi.IntInput) CustomSs
 	}).(CustomSslCustomSslPriorityOutput)
 }
 
+type HealthcheckHeader struct {
+	// The header name.
+	Header string `pulumi:"header"`
+	// A list of string values for the header.
+	Values []string `pulumi:"values"`
+}
+
+// HealthcheckHeaderInput is an input type that accepts HealthcheckHeaderArgs and HealthcheckHeaderOutput values.
+// You can construct a concrete instance of `HealthcheckHeaderInput` via:
+//
+// 		 HealthcheckHeaderArgs{...}
+//
+type HealthcheckHeaderInput interface {
+	pulumi.Input
+
+	ToHealthcheckHeaderOutput() HealthcheckHeaderOutput
+	ToHealthcheckHeaderOutputWithContext(context.Context) HealthcheckHeaderOutput
+}
+
+type HealthcheckHeaderArgs struct {
+	// The header name.
+	Header pulumi.StringInput `pulumi:"header"`
+	// A list of string values for the header.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (HealthcheckHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthcheckHeader)(nil)).Elem()
+}
+
+func (i HealthcheckHeaderArgs) ToHealthcheckHeaderOutput() HealthcheckHeaderOutput {
+	return i.ToHealthcheckHeaderOutputWithContext(context.Background())
+}
+
+func (i HealthcheckHeaderArgs) ToHealthcheckHeaderOutputWithContext(ctx context.Context) HealthcheckHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckHeaderOutput)
+}
+
+// HealthcheckHeaderArrayInput is an input type that accepts HealthcheckHeaderArray and HealthcheckHeaderArrayOutput values.
+// You can construct a concrete instance of `HealthcheckHeaderArrayInput` via:
+//
+// 		 HealthcheckHeaderArray{ HealthcheckHeaderArgs{...} }
+//
+type HealthcheckHeaderArrayInput interface {
+	pulumi.Input
+
+	ToHealthcheckHeaderArrayOutput() HealthcheckHeaderArrayOutput
+	ToHealthcheckHeaderArrayOutputWithContext(context.Context) HealthcheckHeaderArrayOutput
+}
+
+type HealthcheckHeaderArray []HealthcheckHeaderInput
+
+func (HealthcheckHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HealthcheckHeader)(nil)).Elem()
+}
+
+func (i HealthcheckHeaderArray) ToHealthcheckHeaderArrayOutput() HealthcheckHeaderArrayOutput {
+	return i.ToHealthcheckHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i HealthcheckHeaderArray) ToHealthcheckHeaderArrayOutputWithContext(ctx context.Context) HealthcheckHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckHeaderArrayOutput)
+}
+
+type HealthcheckHeaderOutput struct{ *pulumi.OutputState }
+
+func (HealthcheckHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthcheckHeader)(nil)).Elem()
+}
+
+func (o HealthcheckHeaderOutput) ToHealthcheckHeaderOutput() HealthcheckHeaderOutput {
+	return o
+}
+
+func (o HealthcheckHeaderOutput) ToHealthcheckHeaderOutputWithContext(ctx context.Context) HealthcheckHeaderOutput {
+	return o
+}
+
+// The header name.
+func (o HealthcheckHeaderOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v HealthcheckHeader) string { return v.Header }).(pulumi.StringOutput)
+}
+
+// A list of string values for the header.
+func (o HealthcheckHeaderOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HealthcheckHeader) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type HealthcheckHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (HealthcheckHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HealthcheckHeader)(nil)).Elem()
+}
+
+func (o HealthcheckHeaderArrayOutput) ToHealthcheckHeaderArrayOutput() HealthcheckHeaderArrayOutput {
+	return o
+}
+
+func (o HealthcheckHeaderArrayOutput) ToHealthcheckHeaderArrayOutputWithContext(ctx context.Context) HealthcheckHeaderArrayOutput {
+	return o
+}
+
+func (o HealthcheckHeaderArrayOutput) Index(i pulumi.IntInput) HealthcheckHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthcheckHeader {
+		return vs[0].([]HealthcheckHeader)[vs[1].(int)]
+	}).(HealthcheckHeaderOutput)
+}
+
 type LoadBalancerMonitorHeader struct {
 	// The header name.
 	Header string `pulumi:"header"`
@@ -5320,6 +5428,8 @@ type PageRuleActions struct {
 	CacheByDeviceType *string `pulumi:"cacheByDeviceType"`
 	// Whether this action is `"on"` or `"off"`.
 	CacheDeceptionArmor *string `pulumi:"cacheDeceptionArmor"`
+	// Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+	CacheKeyFields *PageRuleActionsCacheKeyFields `pulumi:"cacheKeyFields"`
 	// Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cacheEverything"`.
 	CacheLevel *string `pulumi:"cacheLevel"`
 	// String value of cookie name to conditionally cache the page.
@@ -5405,6 +5515,8 @@ type PageRuleActionsArgs struct {
 	CacheByDeviceType pulumi.StringPtrInput `pulumi:"cacheByDeviceType"`
 	// Whether this action is `"on"` or `"off"`.
 	CacheDeceptionArmor pulumi.StringPtrInput `pulumi:"cacheDeceptionArmor"`
+	// Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+	CacheKeyFields PageRuleActionsCacheKeyFieldsPtrInput `pulumi:"cacheKeyFields"`
 	// Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cacheEverything"`.
 	CacheLevel pulumi.StringPtrInput `pulumi:"cacheLevel"`
 	// String value of cookie name to conditionally cache the page.
@@ -5577,6 +5689,11 @@ func (o PageRuleActionsOutput) CacheByDeviceType() pulumi.StringPtrOutput {
 // Whether this action is `"on"` or `"off"`.
 func (o PageRuleActionsOutput) CacheDeceptionArmor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PageRuleActions) *string { return v.CacheDeceptionArmor }).(pulumi.StringPtrOutput)
+}
+
+// Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+func (o PageRuleActionsOutput) CacheKeyFields() PageRuleActionsCacheKeyFieldsPtrOutput {
+	return o.ApplyT(func(v PageRuleActions) *PageRuleActionsCacheKeyFields { return v.CacheKeyFields }).(PageRuleActionsCacheKeyFieldsPtrOutput)
 }
 
 // Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cacheEverything"`.
@@ -5810,6 +5927,16 @@ func (o PageRuleActionsPtrOutput) CacheDeceptionArmor() pulumi.StringPtrOutput {
 		}
 		return v.CacheDeceptionArmor
 	}).(pulumi.StringPtrOutput)
+}
+
+// Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+func (o PageRuleActionsPtrOutput) CacheKeyFields() PageRuleActionsCacheKeyFieldsPtrOutput {
+	return o.ApplyT(func(v *PageRuleActions) *PageRuleActionsCacheKeyFields {
+		if v == nil {
+			return nil
+		}
+		return v.CacheKeyFields
+	}).(PageRuleActionsCacheKeyFieldsPtrOutput)
 }
 
 // Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cacheEverything"`.
@@ -6080,6 +6207,1013 @@ func (o PageRuleActionsPtrOutput) Waf() pulumi.StringPtrOutput {
 		}
 		return v.Waf
 	}).(pulumi.StringPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFields struct {
+	// Controls what cookies go into Cache Key:
+	Cookie PageRuleActionsCacheKeyFieldsCookie `pulumi:"cookie"`
+	// Controls what HTTP headers go into Cache Key:
+	Header PageRuleActionsCacheKeyFieldsHeader `pulumi:"header"`
+	// Controls which Host header goes into Cache Key:
+	Host PageRuleActionsCacheKeyFieldsHost `pulumi:"host"`
+	// Controls which URL query string parameters go into the Cache Key.
+	QueryString PageRuleActionsCacheKeyFieldsQueryString `pulumi:"queryString"`
+	// Controls which end user-related features go into the Cache Key.
+	User PageRuleActionsCacheKeyFieldsUser `pulumi:"user"`
+}
+
+// PageRuleActionsCacheKeyFieldsInput is an input type that accepts PageRuleActionsCacheKeyFieldsArgs and PageRuleActionsCacheKeyFieldsOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsArgs{...}
+//
+type PageRuleActionsCacheKeyFieldsInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsOutput() PageRuleActionsCacheKeyFieldsOutput
+	ToPageRuleActionsCacheKeyFieldsOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsOutput
+}
+
+type PageRuleActionsCacheKeyFieldsArgs struct {
+	// Controls what cookies go into Cache Key:
+	Cookie PageRuleActionsCacheKeyFieldsCookieInput `pulumi:"cookie"`
+	// Controls what HTTP headers go into Cache Key:
+	Header PageRuleActionsCacheKeyFieldsHeaderInput `pulumi:"header"`
+	// Controls which Host header goes into Cache Key:
+	Host PageRuleActionsCacheKeyFieldsHostInput `pulumi:"host"`
+	// Controls which URL query string parameters go into the Cache Key.
+	QueryString PageRuleActionsCacheKeyFieldsQueryStringInput `pulumi:"queryString"`
+	// Controls which end user-related features go into the Cache Key.
+	User PageRuleActionsCacheKeyFieldsUserInput `pulumi:"user"`
+}
+
+func (PageRuleActionsCacheKeyFieldsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFields)(nil)).Elem()
+}
+
+func (i PageRuleActionsCacheKeyFieldsArgs) ToPageRuleActionsCacheKeyFieldsOutput() PageRuleActionsCacheKeyFieldsOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsArgs) ToPageRuleActionsCacheKeyFieldsOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsOutput)
+}
+
+func (i PageRuleActionsCacheKeyFieldsArgs) ToPageRuleActionsCacheKeyFieldsPtrOutput() PageRuleActionsCacheKeyFieldsPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsArgs) ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsOutput).ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(ctx)
+}
+
+// PageRuleActionsCacheKeyFieldsPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsArgs, PageRuleActionsCacheKeyFieldsPtr and PageRuleActionsCacheKeyFieldsPtrOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsPtrInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type PageRuleActionsCacheKeyFieldsPtrInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsPtrOutput() PageRuleActionsCacheKeyFieldsPtrOutput
+	ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsPtrOutput
+}
+
+type pageRuleActionsCacheKeyFieldsPtrType PageRuleActionsCacheKeyFieldsArgs
+
+func PageRuleActionsCacheKeyFieldsPtr(v *PageRuleActionsCacheKeyFieldsArgs) PageRuleActionsCacheKeyFieldsPtrInput {
+	return (*pageRuleActionsCacheKeyFieldsPtrType)(v)
+}
+
+func (*pageRuleActionsCacheKeyFieldsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFields)(nil)).Elem()
+}
+
+func (i *pageRuleActionsCacheKeyFieldsPtrType) ToPageRuleActionsCacheKeyFieldsPtrOutput() PageRuleActionsCacheKeyFieldsPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(context.Background())
+}
+
+func (i *pageRuleActionsCacheKeyFieldsPtrType) ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFields)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsOutput) ToPageRuleActionsCacheKeyFieldsOutput() PageRuleActionsCacheKeyFieldsOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsOutput) ToPageRuleActionsCacheKeyFieldsOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsOutput) ToPageRuleActionsCacheKeyFieldsPtrOutput() PageRuleActionsCacheKeyFieldsPtrOutput {
+	return o.ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(context.Background())
+}
+
+func (o PageRuleActionsCacheKeyFieldsOutput) ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFields) *PageRuleActionsCacheKeyFields {
+		return &v
+	}).(PageRuleActionsCacheKeyFieldsPtrOutput)
+}
+
+// Controls what cookies go into Cache Key:
+func (o PageRuleActionsCacheKeyFieldsOutput) Cookie() PageRuleActionsCacheKeyFieldsCookieOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFields) PageRuleActionsCacheKeyFieldsCookie { return v.Cookie }).(PageRuleActionsCacheKeyFieldsCookieOutput)
+}
+
+// Controls what HTTP headers go into Cache Key:
+func (o PageRuleActionsCacheKeyFieldsOutput) Header() PageRuleActionsCacheKeyFieldsHeaderOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFields) PageRuleActionsCacheKeyFieldsHeader { return v.Header }).(PageRuleActionsCacheKeyFieldsHeaderOutput)
+}
+
+// Controls which Host header goes into Cache Key:
+func (o PageRuleActionsCacheKeyFieldsOutput) Host() PageRuleActionsCacheKeyFieldsHostOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFields) PageRuleActionsCacheKeyFieldsHost { return v.Host }).(PageRuleActionsCacheKeyFieldsHostOutput)
+}
+
+// Controls which URL query string parameters go into the Cache Key.
+func (o PageRuleActionsCacheKeyFieldsOutput) QueryString() PageRuleActionsCacheKeyFieldsQueryStringOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFields) PageRuleActionsCacheKeyFieldsQueryString { return v.QueryString }).(PageRuleActionsCacheKeyFieldsQueryStringOutput)
+}
+
+// Controls which end user-related features go into the Cache Key.
+func (o PageRuleActionsCacheKeyFieldsOutput) User() PageRuleActionsCacheKeyFieldsUserOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFields) PageRuleActionsCacheKeyFieldsUser { return v.User }).(PageRuleActionsCacheKeyFieldsUserOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsPtrOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFields)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsPtrOutput) ToPageRuleActionsCacheKeyFieldsPtrOutput() PageRuleActionsCacheKeyFieldsPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsPtrOutput) ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsPtrOutput) Elem() PageRuleActionsCacheKeyFieldsOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFields) PageRuleActionsCacheKeyFields { return *v }).(PageRuleActionsCacheKeyFieldsOutput)
+}
+
+// Controls what cookies go into Cache Key:
+func (o PageRuleActionsCacheKeyFieldsPtrOutput) Cookie() PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFields) *PageRuleActionsCacheKeyFieldsCookie {
+		if v == nil {
+			return nil
+		}
+		return &v.Cookie
+	}).(PageRuleActionsCacheKeyFieldsCookiePtrOutput)
+}
+
+// Controls what HTTP headers go into Cache Key:
+func (o PageRuleActionsCacheKeyFieldsPtrOutput) Header() PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFields) *PageRuleActionsCacheKeyFieldsHeader {
+		if v == nil {
+			return nil
+		}
+		return &v.Header
+	}).(PageRuleActionsCacheKeyFieldsHeaderPtrOutput)
+}
+
+// Controls which Host header goes into Cache Key:
+func (o PageRuleActionsCacheKeyFieldsPtrOutput) Host() PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFields) *PageRuleActionsCacheKeyFieldsHost {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(PageRuleActionsCacheKeyFieldsHostPtrOutput)
+}
+
+// Controls which URL query string parameters go into the Cache Key.
+func (o PageRuleActionsCacheKeyFieldsPtrOutput) QueryString() PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFields) *PageRuleActionsCacheKeyFieldsQueryString {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryString
+	}).(PageRuleActionsCacheKeyFieldsQueryStringPtrOutput)
+}
+
+// Controls which end user-related features go into the Cache Key.
+func (o PageRuleActionsCacheKeyFieldsPtrOutput) User() PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFields) *PageRuleActionsCacheKeyFieldsUser {
+		if v == nil {
+			return nil
+		}
+		return &v.User
+	}).(PageRuleActionsCacheKeyFieldsUserPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsCookie struct {
+	// Check for presence of specified HTTP headers, without including their actual values.
+	CheckPresences []string `pulumi:"checkPresences"`
+	// Only use values of specified query string parameters in Cache Key.
+	Includes []string `pulumi:"includes"`
+}
+
+// PageRuleActionsCacheKeyFieldsCookieInput is an input type that accepts PageRuleActionsCacheKeyFieldsCookieArgs and PageRuleActionsCacheKeyFieldsCookieOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsCookieInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsCookieArgs{...}
+//
+type PageRuleActionsCacheKeyFieldsCookieInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsCookieOutput() PageRuleActionsCacheKeyFieldsCookieOutput
+	ToPageRuleActionsCacheKeyFieldsCookieOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsCookieOutput
+}
+
+type PageRuleActionsCacheKeyFieldsCookieArgs struct {
+	// Check for presence of specified HTTP headers, without including their actual values.
+	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
+	// Only use values of specified query string parameters in Cache Key.
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (PageRuleActionsCacheKeyFieldsCookieArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsCookie)(nil)).Elem()
+}
+
+func (i PageRuleActionsCacheKeyFieldsCookieArgs) ToPageRuleActionsCacheKeyFieldsCookieOutput() PageRuleActionsCacheKeyFieldsCookieOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsCookieOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsCookieArgs) ToPageRuleActionsCacheKeyFieldsCookieOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsCookieOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsCookieOutput)
+}
+
+func (i PageRuleActionsCacheKeyFieldsCookieArgs) ToPageRuleActionsCacheKeyFieldsCookiePtrOutput() PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsCookieArgs) ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsCookieOutput).ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(ctx)
+}
+
+// PageRuleActionsCacheKeyFieldsCookiePtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsCookieArgs, PageRuleActionsCacheKeyFieldsCookiePtr and PageRuleActionsCacheKeyFieldsCookiePtrOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsCookiePtrInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsCookieArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type PageRuleActionsCacheKeyFieldsCookiePtrInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsCookiePtrOutput() PageRuleActionsCacheKeyFieldsCookiePtrOutput
+	ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsCookiePtrOutput
+}
+
+type pageRuleActionsCacheKeyFieldsCookiePtrType PageRuleActionsCacheKeyFieldsCookieArgs
+
+func PageRuleActionsCacheKeyFieldsCookiePtr(v *PageRuleActionsCacheKeyFieldsCookieArgs) PageRuleActionsCacheKeyFieldsCookiePtrInput {
+	return (*pageRuleActionsCacheKeyFieldsCookiePtrType)(v)
+}
+
+func (*pageRuleActionsCacheKeyFieldsCookiePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsCookie)(nil)).Elem()
+}
+
+func (i *pageRuleActionsCacheKeyFieldsCookiePtrType) ToPageRuleActionsCacheKeyFieldsCookiePtrOutput() PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(context.Background())
+}
+
+func (i *pageRuleActionsCacheKeyFieldsCookiePtrType) ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsCookiePtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsCookieOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsCookieOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsCookie)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsCookieOutput) ToPageRuleActionsCacheKeyFieldsCookieOutput() PageRuleActionsCacheKeyFieldsCookieOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsCookieOutput) ToPageRuleActionsCacheKeyFieldsCookieOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsCookieOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsCookieOutput) ToPageRuleActionsCacheKeyFieldsCookiePtrOutput() PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return o.ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(context.Background())
+}
+
+func (o PageRuleActionsCacheKeyFieldsCookieOutput) ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsCookie) *PageRuleActionsCacheKeyFieldsCookie {
+		return &v
+	}).(PageRuleActionsCacheKeyFieldsCookiePtrOutput)
+}
+
+// Check for presence of specified HTTP headers, without including their actual values.
+func (o PageRuleActionsCacheKeyFieldsCookieOutput) CheckPresences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsCookie) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
+}
+
+// Only use values of specified query string parameters in Cache Key.
+func (o PageRuleActionsCacheKeyFieldsCookieOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsCookie) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsCookiePtrOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsCookiePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsCookie)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) ToPageRuleActionsCacheKeyFieldsCookiePtrOutput() PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsCookiePtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) Elem() PageRuleActionsCacheKeyFieldsCookieOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsCookie) PageRuleActionsCacheKeyFieldsCookie { return *v }).(PageRuleActionsCacheKeyFieldsCookieOutput)
+}
+
+// Check for presence of specified HTTP headers, without including their actual values.
+func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) CheckPresences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsCookie) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckPresences
+	}).(pulumi.StringArrayOutput)
+}
+
+// Only use values of specified query string parameters in Cache Key.
+func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsCookie) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsHeader struct {
+	// Check for presence of specified HTTP headers, without including their actual values.
+	CheckPresences []string `pulumi:"checkPresences"`
+	// Exclude these query string parameters from Cache Key.
+	Excludes []string `pulumi:"excludes"`
+	// Only use values of specified query string parameters in Cache Key.
+	Includes []string `pulumi:"includes"`
+}
+
+// PageRuleActionsCacheKeyFieldsHeaderInput is an input type that accepts PageRuleActionsCacheKeyFieldsHeaderArgs and PageRuleActionsCacheKeyFieldsHeaderOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsHeaderInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsHeaderArgs{...}
+//
+type PageRuleActionsCacheKeyFieldsHeaderInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsHeaderOutput() PageRuleActionsCacheKeyFieldsHeaderOutput
+	ToPageRuleActionsCacheKeyFieldsHeaderOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsHeaderOutput
+}
+
+type PageRuleActionsCacheKeyFieldsHeaderArgs struct {
+	// Check for presence of specified HTTP headers, without including their actual values.
+	CheckPresences pulumi.StringArrayInput `pulumi:"checkPresences"`
+	// Exclude these query string parameters from Cache Key.
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
+	// Only use values of specified query string parameters in Cache Key.
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (PageRuleActionsCacheKeyFieldsHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsHeader)(nil)).Elem()
+}
+
+func (i PageRuleActionsCacheKeyFieldsHeaderArgs) ToPageRuleActionsCacheKeyFieldsHeaderOutput() PageRuleActionsCacheKeyFieldsHeaderOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsHeaderOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsHeaderArgs) ToPageRuleActionsCacheKeyFieldsHeaderOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsHeaderOutput)
+}
+
+func (i PageRuleActionsCacheKeyFieldsHeaderArgs) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutput() PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsHeaderArgs) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsHeaderOutput).ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(ctx)
+}
+
+// PageRuleActionsCacheKeyFieldsHeaderPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsHeaderArgs, PageRuleActionsCacheKeyFieldsHeaderPtr and PageRuleActionsCacheKeyFieldsHeaderPtrOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsHeaderPtrInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsHeaderArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type PageRuleActionsCacheKeyFieldsHeaderPtrInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsHeaderPtrOutput() PageRuleActionsCacheKeyFieldsHeaderPtrOutput
+	ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsHeaderPtrOutput
+}
+
+type pageRuleActionsCacheKeyFieldsHeaderPtrType PageRuleActionsCacheKeyFieldsHeaderArgs
+
+func PageRuleActionsCacheKeyFieldsHeaderPtr(v *PageRuleActionsCacheKeyFieldsHeaderArgs) PageRuleActionsCacheKeyFieldsHeaderPtrInput {
+	return (*pageRuleActionsCacheKeyFieldsHeaderPtrType)(v)
+}
+
+func (*pageRuleActionsCacheKeyFieldsHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsHeader)(nil)).Elem()
+}
+
+func (i *pageRuleActionsCacheKeyFieldsHeaderPtrType) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutput() PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *pageRuleActionsCacheKeyFieldsHeaderPtrType) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsHeaderPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsHeaderOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsHeader)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsHeaderOutput) ToPageRuleActionsCacheKeyFieldsHeaderOutput() PageRuleActionsCacheKeyFieldsHeaderOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsHeaderOutput) ToPageRuleActionsCacheKeyFieldsHeaderOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHeaderOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsHeaderOutput) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutput() PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return o.ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o PageRuleActionsCacheKeyFieldsHeaderOutput) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHeader) *PageRuleActionsCacheKeyFieldsHeader {
+		return &v
+	}).(PageRuleActionsCacheKeyFieldsHeaderPtrOutput)
+}
+
+// Check for presence of specified HTTP headers, without including their actual values.
+func (o PageRuleActionsCacheKeyFieldsHeaderOutput) CheckPresences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHeader) []string { return v.CheckPresences }).(pulumi.StringArrayOutput)
+}
+
+// Exclude these query string parameters from Cache Key.
+func (o PageRuleActionsCacheKeyFieldsHeaderOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHeader) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+}
+
+// Only use values of specified query string parameters in Cache Key.
+func (o PageRuleActionsCacheKeyFieldsHeaderOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHeader) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsHeader)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutput() PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) Elem() PageRuleActionsCacheKeyFieldsHeaderOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) PageRuleActionsCacheKeyFieldsHeader { return *v }).(PageRuleActionsCacheKeyFieldsHeaderOutput)
+}
+
+// Check for presence of specified HTTP headers, without including their actual values.
+func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) CheckPresences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CheckPresences
+	}).(pulumi.StringArrayOutput)
+}
+
+// Exclude these query string parameters from Cache Key.
+func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excludes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Only use values of specified query string parameters in Cache Key.
+func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsHost struct {
+	// `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+	Resolved *bool `pulumi:"resolved"`
+}
+
+// PageRuleActionsCacheKeyFieldsHostInput is an input type that accepts PageRuleActionsCacheKeyFieldsHostArgs and PageRuleActionsCacheKeyFieldsHostOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsHostInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsHostArgs{...}
+//
+type PageRuleActionsCacheKeyFieldsHostInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsHostOutput() PageRuleActionsCacheKeyFieldsHostOutput
+	ToPageRuleActionsCacheKeyFieldsHostOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsHostOutput
+}
+
+type PageRuleActionsCacheKeyFieldsHostArgs struct {
+	// `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+	Resolved pulumi.BoolPtrInput `pulumi:"resolved"`
+}
+
+func (PageRuleActionsCacheKeyFieldsHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsHost)(nil)).Elem()
+}
+
+func (i PageRuleActionsCacheKeyFieldsHostArgs) ToPageRuleActionsCacheKeyFieldsHostOutput() PageRuleActionsCacheKeyFieldsHostOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsHostOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsHostArgs) ToPageRuleActionsCacheKeyFieldsHostOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsHostOutput)
+}
+
+func (i PageRuleActionsCacheKeyFieldsHostArgs) ToPageRuleActionsCacheKeyFieldsHostPtrOutput() PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsHostArgs) ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsHostOutput).ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(ctx)
+}
+
+// PageRuleActionsCacheKeyFieldsHostPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsHostArgs, PageRuleActionsCacheKeyFieldsHostPtr and PageRuleActionsCacheKeyFieldsHostPtrOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsHostPtrInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsHostArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type PageRuleActionsCacheKeyFieldsHostPtrInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsHostPtrOutput() PageRuleActionsCacheKeyFieldsHostPtrOutput
+	ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsHostPtrOutput
+}
+
+type pageRuleActionsCacheKeyFieldsHostPtrType PageRuleActionsCacheKeyFieldsHostArgs
+
+func PageRuleActionsCacheKeyFieldsHostPtr(v *PageRuleActionsCacheKeyFieldsHostArgs) PageRuleActionsCacheKeyFieldsHostPtrInput {
+	return (*pageRuleActionsCacheKeyFieldsHostPtrType)(v)
+}
+
+func (*pageRuleActionsCacheKeyFieldsHostPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsHost)(nil)).Elem()
+}
+
+func (i *pageRuleActionsCacheKeyFieldsHostPtrType) ToPageRuleActionsCacheKeyFieldsHostPtrOutput() PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(context.Background())
+}
+
+func (i *pageRuleActionsCacheKeyFieldsHostPtrType) ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsHostPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsHostOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsHost)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsHostOutput) ToPageRuleActionsCacheKeyFieldsHostOutput() PageRuleActionsCacheKeyFieldsHostOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsHostOutput) ToPageRuleActionsCacheKeyFieldsHostOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHostOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsHostOutput) ToPageRuleActionsCacheKeyFieldsHostPtrOutput() PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return o.ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(context.Background())
+}
+
+func (o PageRuleActionsCacheKeyFieldsHostOutput) ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHost) *PageRuleActionsCacheKeyFieldsHost {
+		return &v
+	}).(PageRuleActionsCacheKeyFieldsHostPtrOutput)
+}
+
+// `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+func (o PageRuleActionsCacheKeyFieldsHostOutput) Resolved() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHost) *bool { return v.Resolved }).(pulumi.BoolPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsHostPtrOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsHostPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsHost)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsHostPtrOutput) ToPageRuleActionsCacheKeyFieldsHostPtrOutput() PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsHostPtrOutput) ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHostPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsHostPtrOutput) Elem() PageRuleActionsCacheKeyFieldsHostOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHost) PageRuleActionsCacheKeyFieldsHost { return *v }).(PageRuleActionsCacheKeyFieldsHostOutput)
+}
+
+// `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+func (o PageRuleActionsCacheKeyFieldsHostPtrOutput) Resolved() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHost) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Resolved
+	}).(pulumi.BoolPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsQueryString struct {
+	// Exclude these query string parameters from Cache Key.
+	Excludes []string `pulumi:"excludes"`
+	// `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+	Ignore *bool `pulumi:"ignore"`
+	// Only use values of specified query string parameters in Cache Key.
+	Includes []string `pulumi:"includes"`
+}
+
+// PageRuleActionsCacheKeyFieldsQueryStringInput is an input type that accepts PageRuleActionsCacheKeyFieldsQueryStringArgs and PageRuleActionsCacheKeyFieldsQueryStringOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsQueryStringInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsQueryStringArgs{...}
+//
+type PageRuleActionsCacheKeyFieldsQueryStringInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsQueryStringOutput() PageRuleActionsCacheKeyFieldsQueryStringOutput
+	ToPageRuleActionsCacheKeyFieldsQueryStringOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsQueryStringOutput
+}
+
+type PageRuleActionsCacheKeyFieldsQueryStringArgs struct {
+	// Exclude these query string parameters from Cache Key.
+	Excludes pulumi.StringArrayInput `pulumi:"excludes"`
+	// `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+	Ignore pulumi.BoolPtrInput `pulumi:"ignore"`
+	// Only use values of specified query string parameters in Cache Key.
+	Includes pulumi.StringArrayInput `pulumi:"includes"`
+}
+
+func (PageRuleActionsCacheKeyFieldsQueryStringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsQueryString)(nil)).Elem()
+}
+
+func (i PageRuleActionsCacheKeyFieldsQueryStringArgs) ToPageRuleActionsCacheKeyFieldsQueryStringOutput() PageRuleActionsCacheKeyFieldsQueryStringOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsQueryStringOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsQueryStringArgs) ToPageRuleActionsCacheKeyFieldsQueryStringOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsQueryStringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsQueryStringOutput)
+}
+
+func (i PageRuleActionsCacheKeyFieldsQueryStringArgs) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutput() PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsQueryStringArgs) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsQueryStringOutput).ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(ctx)
+}
+
+// PageRuleActionsCacheKeyFieldsQueryStringPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsQueryStringArgs, PageRuleActionsCacheKeyFieldsQueryStringPtr and PageRuleActionsCacheKeyFieldsQueryStringPtrOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsQueryStringPtrInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsQueryStringArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type PageRuleActionsCacheKeyFieldsQueryStringPtrInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutput() PageRuleActionsCacheKeyFieldsQueryStringPtrOutput
+	ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsQueryStringPtrOutput
+}
+
+type pageRuleActionsCacheKeyFieldsQueryStringPtrType PageRuleActionsCacheKeyFieldsQueryStringArgs
+
+func PageRuleActionsCacheKeyFieldsQueryStringPtr(v *PageRuleActionsCacheKeyFieldsQueryStringArgs) PageRuleActionsCacheKeyFieldsQueryStringPtrInput {
+	return (*pageRuleActionsCacheKeyFieldsQueryStringPtrType)(v)
+}
+
+func (*pageRuleActionsCacheKeyFieldsQueryStringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsQueryString)(nil)).Elem()
+}
+
+func (i *pageRuleActionsCacheKeyFieldsQueryStringPtrType) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutput() PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(context.Background())
+}
+
+func (i *pageRuleActionsCacheKeyFieldsQueryStringPtrType) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsQueryStringPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsQueryStringOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsQueryStringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsQueryString)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) ToPageRuleActionsCacheKeyFieldsQueryStringOutput() PageRuleActionsCacheKeyFieldsQueryStringOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) ToPageRuleActionsCacheKeyFieldsQueryStringOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsQueryStringOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutput() PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return o.ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(context.Background())
+}
+
+func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsQueryString) *PageRuleActionsCacheKeyFieldsQueryString {
+		return &v
+	}).(PageRuleActionsCacheKeyFieldsQueryStringPtrOutput)
+}
+
+// Exclude these query string parameters from Cache Key.
+func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsQueryString) []string { return v.Excludes }).(pulumi.StringArrayOutput)
+}
+
+// `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) Ignore() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsQueryString) *bool { return v.Ignore }).(pulumi.BoolPtrOutput)
+}
+
+// Only use values of specified query string parameters in Cache Key.
+func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsQueryString) []string { return v.Includes }).(pulumi.StringArrayOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsQueryStringPtrOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsQueryString)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutput() PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Elem() PageRuleActionsCacheKeyFieldsQueryStringOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsQueryString) PageRuleActionsCacheKeyFieldsQueryString { return *v }).(PageRuleActionsCacheKeyFieldsQueryStringOutput)
+}
+
+// Exclude these query string parameters from Cache Key.
+func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Excludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsQueryString) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Excludes
+	}).(pulumi.StringArrayOutput)
+}
+
+// `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Ignore() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsQueryString) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ignore
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Only use values of specified query string parameters in Cache Key.
+func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Includes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsQueryString) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Includes
+	}).(pulumi.StringArrayOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsUser struct {
+	// `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+	DeviceType *bool `pulumi:"deviceType"`
+	// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+	Geo *bool `pulumi:"geo"`
+	// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+	Lang *bool `pulumi:"lang"`
+}
+
+// PageRuleActionsCacheKeyFieldsUserInput is an input type that accepts PageRuleActionsCacheKeyFieldsUserArgs and PageRuleActionsCacheKeyFieldsUserOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsUserInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsUserArgs{...}
+//
+type PageRuleActionsCacheKeyFieldsUserInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsUserOutput() PageRuleActionsCacheKeyFieldsUserOutput
+	ToPageRuleActionsCacheKeyFieldsUserOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsUserOutput
+}
+
+type PageRuleActionsCacheKeyFieldsUserArgs struct {
+	// `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+	DeviceType pulumi.BoolPtrInput `pulumi:"deviceType"`
+	// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+	Geo pulumi.BoolPtrInput `pulumi:"geo"`
+	// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+	Lang pulumi.BoolPtrInput `pulumi:"lang"`
+}
+
+func (PageRuleActionsCacheKeyFieldsUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsUser)(nil)).Elem()
+}
+
+func (i PageRuleActionsCacheKeyFieldsUserArgs) ToPageRuleActionsCacheKeyFieldsUserOutput() PageRuleActionsCacheKeyFieldsUserOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsUserOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsUserArgs) ToPageRuleActionsCacheKeyFieldsUserOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsUserOutput)
+}
+
+func (i PageRuleActionsCacheKeyFieldsUserArgs) ToPageRuleActionsCacheKeyFieldsUserPtrOutput() PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheKeyFieldsUserArgs) ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsUserOutput).ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(ctx)
+}
+
+// PageRuleActionsCacheKeyFieldsUserPtrInput is an input type that accepts PageRuleActionsCacheKeyFieldsUserArgs, PageRuleActionsCacheKeyFieldsUserPtr and PageRuleActionsCacheKeyFieldsUserPtrOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheKeyFieldsUserPtrInput` via:
+//
+// 		 PageRuleActionsCacheKeyFieldsUserArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type PageRuleActionsCacheKeyFieldsUserPtrInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheKeyFieldsUserPtrOutput() PageRuleActionsCacheKeyFieldsUserPtrOutput
+	ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(context.Context) PageRuleActionsCacheKeyFieldsUserPtrOutput
+}
+
+type pageRuleActionsCacheKeyFieldsUserPtrType PageRuleActionsCacheKeyFieldsUserArgs
+
+func PageRuleActionsCacheKeyFieldsUserPtr(v *PageRuleActionsCacheKeyFieldsUserArgs) PageRuleActionsCacheKeyFieldsUserPtrInput {
+	return (*pageRuleActionsCacheKeyFieldsUserPtrType)(v)
+}
+
+func (*pageRuleActionsCacheKeyFieldsUserPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsUser)(nil)).Elem()
+}
+
+func (i *pageRuleActionsCacheKeyFieldsUserPtrType) ToPageRuleActionsCacheKeyFieldsUserPtrOutput() PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return i.ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(context.Background())
+}
+
+func (i *pageRuleActionsCacheKeyFieldsUserPtrType) ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheKeyFieldsUserPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsUserOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheKeyFieldsUser)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsUserOutput) ToPageRuleActionsCacheKeyFieldsUserOutput() PageRuleActionsCacheKeyFieldsUserOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsUserOutput) ToPageRuleActionsCacheKeyFieldsUserOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsUserOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsUserOutput) ToPageRuleActionsCacheKeyFieldsUserPtrOutput() PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return o.ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(context.Background())
+}
+
+func (o PageRuleActionsCacheKeyFieldsUserOutput) ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsUser) *PageRuleActionsCacheKeyFieldsUser {
+		return &v
+	}).(PageRuleActionsCacheKeyFieldsUserPtrOutput)
+}
+
+// `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+func (o PageRuleActionsCacheKeyFieldsUserOutput) DeviceType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsUser) *bool { return v.DeviceType }).(pulumi.BoolPtrOutput)
+}
+
+// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+func (o PageRuleActionsCacheKeyFieldsUserOutput) Geo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsUser) *bool { return v.Geo }).(pulumi.BoolPtrOutput)
+}
+
+// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+func (o PageRuleActionsCacheKeyFieldsUserOutput) Lang() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsUser) *bool { return v.Lang }).(pulumi.BoolPtrOutput)
+}
+
+type PageRuleActionsCacheKeyFieldsUserPtrOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheKeyFieldsUserPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRuleActionsCacheKeyFieldsUser)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) ToPageRuleActionsCacheKeyFieldsUserPtrOutput() PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsUserPtrOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Elem() PageRuleActionsCacheKeyFieldsUserOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsUser) PageRuleActionsCacheKeyFieldsUser { return *v }).(PageRuleActionsCacheKeyFieldsUserOutput)
+}
+
+// `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) DeviceType() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsUser) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceType
+	}).(pulumi.BoolPtrOutput)
+}
+
+// `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Geo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsUser) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Geo
+	}).(pulumi.BoolPtrOutput)
+}
+
+// `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Lang() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsUser) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Lang
+	}).(pulumi.BoolPtrOutput)
 }
 
 type PageRuleActionsForwardingUrl struct {
@@ -12177,6 +13311,8 @@ func init() {
 	pulumi.RegisterOutputType(CustomSslCustomSslOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityArrayOutput{})
+	pulumi.RegisterOutputType(HealthcheckHeaderOutput{})
+	pulumi.RegisterOutputType(HealthcheckHeaderArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginOutput{})
@@ -12187,6 +13323,18 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerRegionPoolArrayOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsPtrOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsPtrOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsCookieOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsCookiePtrOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsHeaderOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsHeaderPtrOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsHostOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsHostPtrOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsQueryStringOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsQueryStringPtrOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsUserOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsUserPtrOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsForwardingUrlOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsForwardingUrlPtrOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsMinifyOutput{})

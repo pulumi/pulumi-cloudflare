@@ -22,6 +22,29 @@ class PageRule(pulumi.CustomResource):
       * `bypassCacheOnCookie` (`str`) - String value of cookie name to conditionally bypass cache the page.
       * `cacheByDeviceType` (`str`) - Whether this action is `"on"` or `"off"`.
       * `cacheDeceptionArmor` (`str`) - Whether this action is `"on"` or `"off"`.
+      * `cacheKeyFields` (`dict`) - Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+        * `cookie` (`dict`) - Controls what cookies go into Cache Key:
+          * `checkPresences` (`list`) - Check for presence of specified HTTP headers, without including their actual values.
+          * `includes` (`list`) - Only use values of specified query string parameters in Cache Key.
+
+        * `header` (`dict`) - Controls what HTTP headers go into Cache Key:
+          * `checkPresences` (`list`) - Check for presence of specified HTTP headers, without including their actual values.
+          * `excludes` (`list`) - Exclude these query string parameters from Cache Key.
+          * `includes` (`list`) - Only use values of specified query string parameters in Cache Key.
+
+        * `host` (`dict`) - Controls which Host header goes into Cache Key:
+          * `resolved` (`bool`) - `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+
+        * `queryString` (`dict`) - Controls which URL query string parameters go into the Cache Key.
+          * `excludes` (`list`) - Exclude these query string parameters from Cache Key.
+          * `ignore` (`bool`) - `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+          * `includes` (`list`) - Only use values of specified query string parameters in Cache Key.
+
+        * `user` (`dict`) - Controls which end user-related features go into the Cache Key.
+          * `deviceType` (`bool`) - `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+          * `geo` (`bool`) - `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+          * `lang` (`bool`) - `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+
       * `cacheLevel` (`str`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
       * `cacheOnCookie` (`str`) - String value of cookie name to conditionally cache the page.
       * `disableApps` (`bool`) - Boolean of whether this action is enabled. Default: false.
@@ -120,6 +143,29 @@ class PageRule(pulumi.CustomResource):
           * `bypassCacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally bypass cache the page.
           * `cacheByDeviceType` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `cacheDeceptionArmor` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `cacheKeyFields` (`pulumi.Input[dict]`) - Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+            * `cookie` (`pulumi.Input[dict]`) - Controls what cookies go into Cache Key:
+              * `checkPresences` (`pulumi.Input[list]`) - Check for presence of specified HTTP headers, without including their actual values.
+              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
+
+            * `header` (`pulumi.Input[dict]`) - Controls what HTTP headers go into Cache Key:
+              * `checkPresences` (`pulumi.Input[list]`) - Check for presence of specified HTTP headers, without including their actual values.
+              * `excludes` (`pulumi.Input[list]`) - Exclude these query string parameters from Cache Key.
+              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
+
+            * `host` (`pulumi.Input[dict]`) - Controls which Host header goes into Cache Key:
+              * `resolved` (`pulumi.Input[bool]`) - `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+
+            * `queryString` (`pulumi.Input[dict]`) - Controls which URL query string parameters go into the Cache Key.
+              * `excludes` (`pulumi.Input[list]`) - Exclude these query string parameters from Cache Key.
+              * `ignore` (`pulumi.Input[bool]`) - `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
+
+            * `user` (`pulumi.Input[dict]`) - Controls which end user-related features go into the Cache Key.
+              * `deviceType` (`pulumi.Input[bool]`) - `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+              * `geo` (`pulumi.Input[bool]`) - `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+              * `lang` (`pulumi.Input[bool]`) - `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+
           * `cacheLevel` (`pulumi.Input[str]`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
           * `cacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally cache the page.
           * `disableApps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
@@ -214,6 +260,29 @@ class PageRule(pulumi.CustomResource):
           * `bypassCacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally bypass cache the page.
           * `cacheByDeviceType` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
           * `cacheDeceptionArmor` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
+          * `cacheKeyFields` (`pulumi.Input[dict]`) - Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+            * `cookie` (`pulumi.Input[dict]`) - Controls what cookies go into Cache Key:
+              * `checkPresences` (`pulumi.Input[list]`) - Check for presence of specified HTTP headers, without including their actual values.
+              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
+
+            * `header` (`pulumi.Input[dict]`) - Controls what HTTP headers go into Cache Key:
+              * `checkPresences` (`pulumi.Input[list]`) - Check for presence of specified HTTP headers, without including their actual values.
+              * `excludes` (`pulumi.Input[list]`) - Exclude these query string parameters from Cache Key.
+              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
+
+            * `host` (`pulumi.Input[dict]`) - Controls which Host header goes into Cache Key:
+              * `resolved` (`pulumi.Input[bool]`) - `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+
+            * `queryString` (`pulumi.Input[dict]`) - Controls which URL query string parameters go into the Cache Key.
+              * `excludes` (`pulumi.Input[list]`) - Exclude these query string parameters from Cache Key.
+              * `ignore` (`pulumi.Input[bool]`) - `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
+
+            * `user` (`pulumi.Input[dict]`) - Controls which end user-related features go into the Cache Key.
+              * `deviceType` (`pulumi.Input[bool]`) - `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+              * `geo` (`pulumi.Input[bool]`) - `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+              * `lang` (`pulumi.Input[bool]`) - `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+
           * `cacheLevel` (`pulumi.Input[str]`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
           * `cacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally cache the page.
           * `disableApps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.

@@ -30,7 +30,7 @@ type LoadBalancerPool struct {
 	Monitor pulumi.StringPtrOutput `pulumi:"monitor"`
 	// A human-identifiable name for the origin.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrOutput `pulumi:"notificationEmail"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins LoadBalancerPoolOriginArrayOutput `pulumi:"origins"`
@@ -86,7 +86,7 @@ type loadBalancerPoolState struct {
 	Monitor *string `pulumi:"monitor"`
 	// A human-identifiable name for the origin.
 	Name *string `pulumi:"name"`
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins []LoadBalancerPoolOrigin `pulumi:"origins"`
@@ -109,7 +109,7 @@ type LoadBalancerPoolState struct {
 	Monitor pulumi.StringPtrInput
 	// A human-identifiable name for the origin.
 	Name pulumi.StringPtrInput
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins LoadBalancerPoolOriginArrayInput
@@ -132,7 +132,7 @@ type loadBalancerPoolArgs struct {
 	Monitor *string `pulumi:"monitor"`
 	// A human-identifiable name for the origin.
 	Name string `pulumi:"name"`
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins []LoadBalancerPoolOrigin `pulumi:"origins"`
@@ -152,7 +152,7 @@ type LoadBalancerPoolArgs struct {
 	Monitor pulumi.StringPtrInput
 	// A human-identifiable name for the origin.
 	Name pulumi.StringInput
-	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins LoadBalancerPoolOriginArrayInput

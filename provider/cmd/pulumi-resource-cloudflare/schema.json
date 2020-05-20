@@ -1911,6 +1911,36 @@
             },
             "type": "object"
         },
+        "cloudflare:/HealthcheckHeader:HealthcheckHeader": {
+            "properties": {
+                "header": {
+                    "type": "string",
+                    "description": "The header name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of string values for the header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "header",
+                "values"
+            ]
+        },
         "cloudflare:/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader": {
             "properties": {
                 "header": {
@@ -2114,6 +2144,15 @@
                 "cacheDeceptionArmor": {
                     "type": "string",
                     "description": "Whether this action is `\"on\"` or `\"off\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cacheKeyFields": {
+                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFields:PageRuleActionsCacheKeyFields",
+                    "description": "Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2360,6 +2399,217 @@
                 "waf": {
                     "type": "string",
                     "description": "Whether this action is `\"on\"` or `\"off\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:/PageRuleActionsCacheKeyFields:PageRuleActionsCacheKeyFields": {
+            "properties": {
+                "cookie": {
+                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsCookie:PageRuleActionsCacheKeyFieldsCookie",
+                    "description": "Controls what cookies go into Cache Key:\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "header": {
+                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsHeader:PageRuleActionsCacheKeyFieldsHeader",
+                    "description": "Controls what HTTP headers go into Cache Key:\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsHost:PageRuleActionsCacheKeyFieldsHost",
+                    "description": "Controls which Host header goes into Cache Key:\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queryString": {
+                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString",
+                    "description": "Controls which URL query string parameters go into the Cache Key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "user": {
+                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsUser:PageRuleActionsCacheKeyFieldsUser",
+                    "description": "Controls which end user-related features go into the Cache Key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "cookie",
+                "header",
+                "host",
+                "queryString",
+                "user"
+            ]
+        },
+        "cloudflare:/PageRuleActionsCacheKeyFieldsCookie:PageRuleActionsCacheKeyFieldsCookie": {
+            "properties": {
+                "checkPresences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Check for presence of specified HTTP headers, without including their actual values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only use values of specified query string parameters in Cache Key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:/PageRuleActionsCacheKeyFieldsHeader:PageRuleActionsCacheKeyFieldsHeader": {
+            "properties": {
+                "checkPresences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Check for presence of specified HTTP headers, without including their actual values.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Exclude these query string parameters from Cache Key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only use values of specified query string parameters in Cache Key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:/PageRuleActionsCacheKeyFieldsHost:PageRuleActionsCacheKeyFieldsHost": {
+            "properties": {
+                "resolved": {
+                    "type": "boolean",
+                    "description": "`false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString": {
+            "properties": {
+                "excludes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Exclude these query string parameters from Cache Key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ignore": {
+                    "type": "boolean",
+                    "description": "`false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Only use values of specified query string parameters in Cache Key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:/PageRuleActionsCacheKeyFieldsUser:PageRuleActionsCacheKeyFieldsUser": {
+            "properties": {
+                "deviceType": {
+                    "type": "boolean",
+                    "description": "`true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "geo": {
+                    "type": "boolean",
+                    "description": "`true` - includes the client’s country, derived from the IP address; defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lang": {
+                    "type": "boolean",
+                    "description": "`true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4910,6 +5160,63 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/byoIpPrefix:ByoIpPrefix": {
+            "description": "Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP) which are used with or without Magic Transit.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "advertisement": {
+                    "type": "string",
+                    "description": "Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the prefix.\n"
+                },
+                "prefixId": {
+                    "type": "string",
+                    "description": "The assigned Bring-Your-Own-IP prefix ID.\n"
+                }
+            },
+            "required": [
+                "advertisement",
+                "description",
+                "prefixId"
+            ],
+            "inputProperties": {
+                "advertisement": {
+                    "type": "string",
+                    "description": "Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the prefix.\n"
+                },
+                "prefixId": {
+                    "type": "string",
+                    "description": "The assigned Bring-Your-Own-IP prefix ID.\n"
+                }
+            },
+            "requiredInputs": [
+                "prefixId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ByoIpPrefix resources.\n",
+                "properties": {
+                    "advertisement": {
+                        "type": "string",
+                        "description": "Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the prefix.\n"
+                    },
+                    "prefixId": {
+                        "type": "string",
+                        "description": "The assigned Bring-Your-Own-IP prefix ID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/customPages:CustomPages": {
             "description": "Provides a resource which manages Cloudflare custom error pages.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst basicChallenge = new cloudflare.CustomPages(\"basic_challenge\", {\n    state: \"customized\",\n    type: \"basic_challenge\",\n    url: \"https://example.com/challenge.html\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nbasic_challenge = cloudflare.CustomPages(\"basicChallenge\",\n    state=\"customized\",\n    type=\"basic_challenge\",\n    url=\"https://example.com/challenge.html\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
@@ -5300,6 +5607,347 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The DNS zone to which the Filter should be added.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/healthcheck:Healthcheck": {
+            "description": "Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer. \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe resource supports HTTP, HTTPS and TCP type health checks.\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The hostname or IP address of the origin server to run health checks on.\n"
+                },
+                "allowInsecure": {
+                    "type": "boolean",
+                    "description": "Do not validate the certificate when the health check uses HTTPS. Valid values: `true` or `false` (Default: `false`).\n"
+                },
+                "checkRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of regions from which to run health checks. If not set Cloudflare will pick a default region. Valid values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.\n"
+                },
+                "consecutiveFails": {
+                    "type": "integer",
+                    "description": "The number of consecutive fails required from a health check before changing the health to unhealthy. (Default: `1`)\n"
+                },
+                "consecutiveSuccesses": {
+                    "type": "integer",
+                    "description": "The number of consecutive successes required from a health check before changing the health to healthy. (Default: `1`)\n"
+                },
+                "createdOn": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A human-readable description of the health check.\n"
+                },
+                "expectedBody": {
+                    "type": "string",
+                    "description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.\n"
+                },
+                "expectedCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check. (Default: `[\"200\"]`)\n"
+                },
+                "followRedirects": {
+                    "type": "boolean",
+                    "description": "Follow redirects if the origin returns a 3xx status code. Valid values: `true` or `false` (Default: `false`).\n"
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/HealthcheckHeader:HealthcheckHeader"
+                    },
+                    "description": "The header name.\n"
+                },
+                "interval": {
+                    "type": "integer",
+                    "description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)\n"
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The TCP connection method to use for the health check. Valid values: `connection_established` (Default: `connection_established`).\n"
+                },
+                "modifiedOn": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.\n"
+                },
+                "notificationEmailAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses we want to send the notifications to.\n"
+                },
+                "notificationSuspended": {
+                    "type": "boolean",
+                    "description": "Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The endpoint path to health check against. (Default: `/`)\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).\n"
+                },
+                "retries": {
+                    "type": "integer",
+                    "description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).\n"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "The timeout (in seconds) before marking the health check as failed. (Default: `5`)\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The protocol to use for the health check. Valid values: `HTTP`, `HTTPS`, `TCP`.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone ID to which apply settings.\n"
+                }
+            },
+            "required": [
+                "address",
+                "checkRegions",
+                "createdOn",
+                "method",
+                "modifiedOn",
+                "name",
+                "type",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "address": {
+                    "type": "string",
+                    "description": "The hostname or IP address of the origin server to run health checks on.\n"
+                },
+                "allowInsecure": {
+                    "type": "boolean",
+                    "description": "Do not validate the certificate when the health check uses HTTPS. Valid values: `true` or `false` (Default: `false`).\n"
+                },
+                "checkRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of regions from which to run health checks. If not set Cloudflare will pick a default region. Valid values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.\n"
+                },
+                "consecutiveFails": {
+                    "type": "integer",
+                    "description": "The number of consecutive fails required from a health check before changing the health to unhealthy. (Default: `1`)\n"
+                },
+                "consecutiveSuccesses": {
+                    "type": "integer",
+                    "description": "The number of consecutive successes required from a health check before changing the health to healthy. (Default: `1`)\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A human-readable description of the health check.\n"
+                },
+                "expectedBody": {
+                    "type": "string",
+                    "description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.\n"
+                },
+                "expectedCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check. (Default: `[\"200\"]`)\n"
+                },
+                "followRedirects": {
+                    "type": "boolean",
+                    "description": "Follow redirects if the origin returns a 3xx status code. Valid values: `true` or `false` (Default: `false`).\n"
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/HealthcheckHeader:HealthcheckHeader"
+                    },
+                    "description": "The header name.\n"
+                },
+                "interval": {
+                    "type": "integer",
+                    "description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)\n"
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The TCP connection method to use for the health check. Valid values: `connection_established` (Default: `connection_established`).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.\n"
+                },
+                "notificationEmailAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of email addresses we want to send the notifications to.\n"
+                },
+                "notificationSuspended": {
+                    "type": "boolean",
+                    "description": "Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The endpoint path to health check against. (Default: `/`)\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).\n"
+                },
+                "retries": {
+                    "type": "integer",
+                    "description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).\n"
+                },
+                "timeout": {
+                    "type": "integer",
+                    "description": "The timeout (in seconds) before marking the health check as failed. (Default: `5`)\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The protocol to use for the health check. Valid values: `HTTP`, `HTTPS`, `TCP`.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone ID to which apply settings.\n"
+                }
+            },
+            "requiredInputs": [
+                "address",
+                "name",
+                "type",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Healthcheck resources.\n",
+                "properties": {
+                    "address": {
+                        "type": "string",
+                        "description": "The hostname or IP address of the origin server to run health checks on.\n"
+                    },
+                    "allowInsecure": {
+                        "type": "boolean",
+                        "description": "Do not validate the certificate when the health check uses HTTPS. Valid values: `true` or `false` (Default: `false`).\n"
+                    },
+                    "checkRegions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of regions from which to run health checks. If not set Cloudflare will pick a default region. Valid values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.\n"
+                    },
+                    "consecutiveFails": {
+                        "type": "integer",
+                        "description": "The number of consecutive fails required from a health check before changing the health to unhealthy. (Default: `1`)\n"
+                    },
+                    "consecutiveSuccesses": {
+                        "type": "integer",
+                        "description": "The number of consecutive successes required from a health check before changing the health to healthy. (Default: `1`)\n"
+                    },
+                    "createdOn": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A human-readable description of the health check.\n"
+                    },
+                    "expectedBody": {
+                        "type": "string",
+                        "description": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.\n"
+                    },
+                    "expectedCodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The expected HTTP response codes (e.g. \"200\") or code ranges (e.g. \"2xx\" for all codes starting with 2) of the health check. (Default: `[\"200\"]`)\n"
+                    },
+                    "followRedirects": {
+                        "type": "boolean",
+                        "description": "Follow redirects if the origin returns a 3xx status code. Valid values: `true` or `false` (Default: `false`).\n"
+                    },
+                    "headers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:/HealthcheckHeader:HealthcheckHeader"
+                        },
+                        "description": "The header name.\n"
+                    },
+                    "interval": {
+                        "type": "integer",
+                        "description": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)\n"
+                    },
+                    "method": {
+                        "type": "string",
+                        "description": "The TCP connection method to use for the health check. Valid values: `connection_established` (Default: `connection_established`).\n"
+                    },
+                    "modifiedOn": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.\n"
+                    },
+                    "notificationEmailAddresses": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of email addresses we want to send the notifications to.\n"
+                    },
+                    "notificationSuspended": {
+                        "type": "boolean",
+                        "description": "Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The endpoint path to health check against. (Default: `/`)\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).\n"
+                    },
+                    "retries": {
+                        "type": "integer",
+                        "description": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)\n"
+                    },
+                    "suspended": {
+                        "type": "boolean",
+                        "description": "If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).\n"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "description": "The timeout (in seconds) before marking the health check as failed. (Default: `5`)\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The protocol to use for the health check. Valid values: `HTTP`, `HTTPS`, `TCP`.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The DNS zone ID to which apply settings.\n"
                     }
                 },
                 "type": "object"
@@ -5760,7 +6408,7 @@
                 },
                 "notificationEmail": {
                     "type": "string",
-                    "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list.\n"
+                    "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.\n"
                 },
                 "origins": {
                     "type": "array",
@@ -5807,7 +6455,7 @@
                 },
                 "notificationEmail": {
                     "type": "string",
-                    "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list.\n"
+                    "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.\n"
                 },
                 "origins": {
                     "type": "array",
@@ -5861,7 +6509,7 @@
                     },
                     "notificationEmail": {
                         "type": "string",
-                        "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list.\n"
+                        "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.\n"
                     },
                     "origins": {
                         "type": "array",
@@ -5874,8 +6522,52 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/logpullRetention:LogpullRetention": {
+            "description": "Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether you wish to retain logs or not.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID to apply the log retention to.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether you wish to retain logs or not.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID to apply the log retention to.\n"
+                }
+            },
+            "requiredInputs": [
+                "enabled",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LogpullRetention resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether you wish to retain logs or not.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID to apply the log retention to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/logpushJob:LogpushJob": {
-            "description": "Provides a resource which manages Cloudflare logpush jobs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleJob = new cloudflare.LogpushJob(\"example_job\", {\n    dataset: \"http_requests\",\n    destinationConf: \"s3://my-bucket-path?region=us-west-2\",\n    enabled: true,\n    logpullOptions: \"fields=RayID,ClientIP,EdgeStartTimestamp\u0026timestamps=rfc3339\",\n    name: \"My-logpush-job\",\n    ownershipChallenge: \"00000000000000000\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_job = cloudflare.LogpushJob(\"exampleJob\",\n    dataset=\"http_requests\",\n    destination_conf=\"s3://my-bucket-path?region=us-west-2\",\n    enabled=True,\n    logpull_options=\"fields=RayID,ClientIP,EdgeStartTimestamp\u0026timestamps=rfc3339\",\n    name=\"My-logpush-job\",\n    ownership_challenge=\"00000000000000000\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "dataset": {
                     "type": "string",
@@ -6893,7 +7585,7 @@
             }
         },
         "cloudflare:index/workerRoute:WorkerRoute": {
-            "description": "Provides a Cloudflare worker route resource. A route will also require a `cloudflare..WorkerScript`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst myScript = new cloudflare.WorkerScript(\"myScript\", {});\n// see \"cloudflare..WorkerScript\" documentation ...\n// Runs the specified worker script for all URLs that match `example.com/*`\nconst myRoute = new cloudflare.WorkerRoute(\"myRoute\", {\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    pattern: \"example.com/*\",\n    scriptName: myScript.name,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_script = cloudflare.WorkerScript(\"myScript\")\n# see \"cloudflare..WorkerScript\" documentation ...\n# Runs the specified worker script for all URLs that match `example.com/*`\nmy_route = cloudflare.WorkerRoute(\"myRoute\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    pattern=\"example.com/*\",\n    script_name=my_script.name)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a Cloudflare worker route resource. A route will also require a `cloudflare..WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst myScript = new cloudflare.WorkerScript(\"myScript\", {});\n// see \"cloudflare..WorkerScript\" documentation ...\n// Runs the specified worker script for all URLs that match `example.com/*`\nconst myRoute = new cloudflare.WorkerRoute(\"myRoute\", {\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    pattern: \"example.com/*\",\n    scriptName: myScript.name,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_script = cloudflare.WorkerScript(\"myScript\")\n# see \"cloudflare..WorkerScript\" documentation ...\n# Runs the specified worker script for all URLs that match `example.com/*`\nmy_route = cloudflare.WorkerRoute(\"myRoute\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    pattern=\"example.com/*\",\n    script_name=my_script.name)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "pattern": {
                     "type": "string",
@@ -6950,7 +7642,7 @@
             }
         },
         "cloudflare:index/workerScript:WorkerScript": {
-            "description": "Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * from \"fs\";\n\nconst myNamespace = new cloudflare.WorkersKvNamespace(\"myNamespace\", {title: \"example\"});\n// Sets the script with the name \"script_1\"\nconst myScript = new cloudflare.WorkerScript(\"myScript\", {\n    name: \"script_1\",\n    content: fs.readFileSync(\"script.js\"),\n    kv_namespace_binding: [{\n        name: \"my_binding\",\n        namespaceId: myNamespace.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_namespace = cloudflare.WorkersKvNamespace(\"myNamespace\", title=\"example\")\n# Sets the script with the name \"script_1\"\nmy_script = cloudflare.WorkerScript(\"myScript\",\n    name=\"script_1\",\n    content=(lambda path: open(path).read())(\"script.js\"),\n    kv_namespace_binding=[{\n        \"name\": \"my_binding\",\n        \"namespaceId\": my_namespace.id,\n    }])\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * from \"fs\";\n\nconst myNamespace = new cloudflare.WorkersKvNamespace(\"myNamespace\", {title: \"example\"});\n// Sets the script with the name \"script_1\"\nconst myScript = new cloudflare.WorkerScript(\"myScript\", {\n    name: \"script_1\",\n    content: fs.readFileSync(\"script.js\"),\n    kv_namespace_binding: [{\n        name: \"my_binding\",\n        namespaceId: myNamespace.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_namespace = cloudflare.WorkersKvNamespace(\"myNamespace\", title=\"example\")\n# Sets the script with the name \"script_1\"\nmy_script = cloudflare.WorkerScript(\"myScript\",\n    name=\"script_1\",\n    content=(lambda path: open(path).read())(\"script.js\"),\n    kv_namespace_binding=[{\n        \"name\": \"my_binding\",\n        \"namespaceId\": my_namespace.id,\n    }])\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "content": {
                     "type": "string",

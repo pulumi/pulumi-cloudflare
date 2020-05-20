@@ -98,7 +98,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+     * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
     public readonly notificationEmail!: pulumi.Output<string | undefined>;
     /**
@@ -195,7 +195,7 @@ export interface LoadBalancerPoolState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+     * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
     readonly notificationEmail?: pulumi.Input<string>;
     /**
@@ -233,7 +233,7 @@ export interface LoadBalancerPoolArgs {
      */
     readonly name: pulumi.Input<string>;
     /**
-     * The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+     * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
     readonly notificationEmail?: pulumi.Input<string>;
     /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare..WorkerScript`.
+    /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare..WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
     /// </summary>
     public partial class WorkerRoute : Pulumi.CustomResource
     {
