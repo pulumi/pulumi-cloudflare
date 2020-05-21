@@ -10,15 +10,15 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Access Group resource. Access Groups are used
  * in conjunction with Access Policies to restrict access to a
  * particular resource based on group membership.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * // Allowing access to `test@example.com` email address only
  * const testGroupAccessGroup = new cloudflare.AccessGroup("testGroupAccessGroup", {
  *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
@@ -40,12 +40,12 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * 
+ *
  * ## Conditions
- * 
+ *
  * `require`, `exclude` and `include` arguments share the available
  * conditions which can be applied. The conditions are:
- * 
+ *
  * * `ip` - (Optional) A list of IP addresses or ranges. Example:
  *   `ip = ["1.2.3.4", "10.0.0.0/2"]`
  * * `email` - (Optional) A list of email addresses. Example:
@@ -63,7 +63,7 @@ import * as utilities from "./utilities";
  * * `certificate` - (Optional) Whether to use mTLS certificate authentication.
  * * `commonName` - (Optional) Use a certificate common name to authenticate with.
  * * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
- * 
+ *
  *   ```hcl
  *   # ... other configuration
  *   include {
@@ -74,7 +74,7 @@ import * as utilities from "./utilities";
  *   }
  *   ```
  * * `github` - (Optional) Use a GitHub team as the `include` condition. Example:
- * 
+ *
  *   ```hcl
  *   # ... other configuration
  *   include {
@@ -85,7 +85,7 @@ import * as utilities from "./utilities";
  *   }
  *   ```
  * * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
- * 
+ *
  *   ```hcl
  *   # ... other configuration
  *   include {
@@ -96,7 +96,7 @@ import * as utilities from "./utilities";
  *   }
  *   ```
  * * `okta` - (Optional) Use Okta as the `include` condition. Example:
- * 
+ *
  *   ```hcl
  *   # ... other configuration
  *   include {
@@ -108,7 +108,7 @@ import * as utilities from "./utilities";
  *   ```
  * * `saml` - (Optional) Use an external SAML setup as the `include` condition.
  *   Example:
- * 
+ *
  *   ```hcl
  *   # ... other configuration
  *   include {
@@ -119,8 +119,6 @@ import * as utilities from "./utilities";
  *     }
  *   }
  *   ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_group.html.markdown.
  */
 export class AccessGroup extends pulumi.CustomResource {
     /**

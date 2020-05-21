@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const test = new cloudflare.ZoneSettingsOverride("test", {
  *     zoneId: var.cloudflare_zone_id,
  *     settings: {
@@ -38,8 +38,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_settings_override.html.markdown.
  */
 export class ZoneSettingsOverride extends pulumi.CustomResource {
     /**

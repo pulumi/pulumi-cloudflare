@@ -9,15 +9,15 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Access Identity Provider resource. Identity Providers are
  * used as an authentication or authorisation source within Access.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * // one time pin
  * const pinLogin = new cloudflare.AccessIdentityProvider("pinLogin", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
@@ -52,8 +52,6 @@ import * as utilities from "./utilities";
  *     type: "saml",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_identity_provider.html.markdown.
  */
 export class AccessIdentityProvider extends pulumi.CustomResource {
     /**

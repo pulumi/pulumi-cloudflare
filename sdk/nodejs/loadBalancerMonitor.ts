@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
- * 
+ *
  * ## Example Usage
- * 
+ *
  * ### HTTP Monitor
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const httpMonitor = new cloudflare.LoadBalancerMonitor("httpMonitor", {
  *     allowInsecure: false,
  *     description: "example http load balancer",
@@ -35,13 +35,13 @@ import * as utilities from "./utilities";
  *     type: "http",
  * });
  * ```
- * 
+ *
  * ### TCP Monitor
- * 
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const tcpMonitor = new cloudflare.LoadBalancerMonitor("tcpMonitor", {
  *     description: "example tcp load balancer",
  *     interval: 60,
@@ -51,8 +51,6 @@ import * as utilities from "./utilities";
  *     type: "tcp",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/load_balancer_monitor.html.markdown.
  */
 export class LoadBalancerMonitor extends pulumi.CustomResource {
     /**

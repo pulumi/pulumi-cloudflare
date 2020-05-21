@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource which manages Cloudflare custom error pages.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const basicChallenge = new cloudflare.CustomPages("basicChallenge", {
  *     state: "customized",
  *     type: "basicChallenge",
@@ -24,8 +24,6 @@ import * as utilities from "./utilities";
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/custom_pages.html.markdown.
  */
 export class CustomPages extends pulumi.CustomResource {
     /**

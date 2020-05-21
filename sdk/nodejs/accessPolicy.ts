@@ -10,15 +10,15 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Access Policy resource. Access Policies are used
  * in conjunction with Access Applications to restrict access to a
  * particular resource.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * // Allowing access to `test@example.com` email address only
  * const testPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyAccessPolicy", {
  *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
@@ -46,8 +46,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_policy.html.markdown.
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**

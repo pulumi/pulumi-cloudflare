@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource which manages Cloudflare logpush jobs.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const exampleJob = new cloudflare.LogpushJob("exampleJob", {
  *     dataset: "httpRequests",
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
@@ -27,8 +27,6 @@ import * as utilities from "./utilities";
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/logpush_job.html.markdown.
  */
 export class LogpushJob extends pulumi.CustomResource {
     /**

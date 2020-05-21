@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * // Restrict access to these endpoints to requests from a known IP address.
  * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
  *     configurations: [{
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/zone_lockdown.html.markdown.
  */
 export class ZoneLockdown extends pulumi.CustomResource {
     /**

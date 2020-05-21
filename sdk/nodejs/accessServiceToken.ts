@@ -9,22 +9,20 @@ import * as utilities from "./utilities";
 /**
  * Access Service Tokens are used for service-to-service communication
  * when an application is behind Cloudflare Access.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const myApp = new cloudflare.AccessServiceToken("myApp", {
  *     accountId: "d41d8cd98f00b204e9800998ecf8427e",
  *     name: "CI/CD app",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/access_service_token.html.markdown.
  */
 export class AccessServiceToken extends pulumi.CustomResource {
     /**
