@@ -383,6 +383,17 @@ export interface GetZonesFilter {
     status?: string;
 }
 
+export interface HealthcheckHeader {
+    /**
+     * The header name.
+     */
+    header: pulumi.Input<string>;
+    /**
+     * A list of string values for the header.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface LoadBalancerMonitorHeader {
     /**
      * The header name.
@@ -468,6 +479,10 @@ export interface PageRuleActions {
      * Whether this action is `"on"` or `"off"`.
      */
     cacheDeceptionArmor?: pulumi.Input<string>;
+    /**
+     * Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+     */
+    cacheKeyFields?: pulumi.Input<inputs.PageRuleActionsCacheKeyFields>;
     /**
      * Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cacheEverything"`.
      */
@@ -576,6 +591,92 @@ export interface PageRuleActions {
      * Whether this action is `"on"` or `"off"`.
      */
     waf?: pulumi.Input<string>;
+}
+
+export interface PageRuleActionsCacheKeyFields {
+    /**
+     * Controls what cookies go into Cache Key:
+     */
+    cookie: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsCookie>;
+    /**
+     * Controls what HTTP headers go into Cache Key:
+     */
+    header: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsHeader>;
+    /**
+     * Controls which Host header goes into Cache Key:
+     */
+    host: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsHost>;
+    /**
+     * Controls which URL query string parameters go into the Cache Key.
+     */
+    queryString: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsQueryString>;
+    /**
+     * Controls which end user-related features go into the Cache Key.
+     */
+    user: pulumi.Input<inputs.PageRuleActionsCacheKeyFieldsUser>;
+}
+
+export interface PageRuleActionsCacheKeyFieldsCookie {
+    /**
+     * Check for presence of specified HTTP headers, without including their actual values.
+     */
+    checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Only use values of specified query string parameters in Cache Key.
+     */
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PageRuleActionsCacheKeyFieldsHeader {
+    /**
+     * Check for presence of specified HTTP headers, without including their actual values.
+     */
+    checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Exclude these query string parameters from Cache Key.
+     */
+    excludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Only use values of specified query string parameters in Cache Key.
+     */
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PageRuleActionsCacheKeyFieldsHost {
+    /**
+     * `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
+     */
+    resolved?: pulumi.Input<boolean>;
+}
+
+export interface PageRuleActionsCacheKeyFieldsQueryString {
+    /**
+     * Exclude these query string parameters from Cache Key.
+     */
+    excludes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+     */
+    ignore?: pulumi.Input<boolean>;
+    /**
+     * Only use values of specified query string parameters in Cache Key.
+     */
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface PageRuleActionsCacheKeyFieldsUser {
+    /**
+     * `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
+     */
+    deviceType?: pulumi.Input<boolean>;
+    /**
+     * `true` - includes the client’s country, derived from the IP address; defaults to `false`.
+     */
+    geo?: pulumi.Input<boolean>;
+    /**
+     * `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
+     */
+    lang?: pulumi.Input<boolean>;
 }
 
 export interface PageRuleActionsForwardingUrl {

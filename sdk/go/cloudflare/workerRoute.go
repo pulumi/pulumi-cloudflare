@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`.
+// Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
 type WorkerRoute struct {
 	pulumi.CustomResourceState
 

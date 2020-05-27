@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
-    /// <summary>
-    /// Provides a resource which manages Cloudflare logpush jobs.
-    /// </summary>
     public partial class LogpushJob : Pulumi.CustomResource
     {
         /// <summary>

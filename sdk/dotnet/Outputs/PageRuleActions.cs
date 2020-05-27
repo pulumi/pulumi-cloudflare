@@ -46,6 +46,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? CacheDeceptionArmor;
         /// <summary>
+        /// Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+        /// </summary>
+        public readonly Outputs.PageRuleActionsCacheKeyFields? CacheKeyFields;
+        /// <summary>
         /// Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
         /// </summary>
         public readonly string? CacheLevel;
@@ -172,6 +176,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? cacheDeceptionArmor,
 
+            Outputs.PageRuleActionsCacheKeyFields? cacheKeyFields,
+
             string? cacheLevel,
 
             string? cacheOnCookie,
@@ -234,6 +240,7 @@ namespace Pulumi.Cloudflare.Outputs
             BypassCacheOnCookie = bypassCacheOnCookie;
             CacheByDeviceType = cacheByDeviceType;
             CacheDeceptionArmor = cacheDeceptionArmor;
+            CacheKeyFields = cacheKeyFields;
             CacheLevel = cacheLevel;
             CacheOnCookie = cacheOnCookie;
             DisableApps = disableApps;

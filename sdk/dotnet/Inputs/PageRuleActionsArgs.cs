@@ -61,6 +61,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? CacheDeceptionArmor { get; set; }
 
         /// <summary>
+        /// Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
+        /// </summary>
+        [Input("cacheKeyFields")]
+        public Input<Inputs.PageRuleActionsCacheKeyFieldsArgs>? CacheKeyFields { get; set; }
+
+        /// <summary>
         /// Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
         /// </summary>
         [Input("cacheLevel")]

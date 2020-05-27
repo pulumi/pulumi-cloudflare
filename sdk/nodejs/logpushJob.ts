@@ -6,28 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Provides a resource which manages Cloudflare logpush jobs.
- *
- * ## Example Usage
- *
- *
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleJob = new cloudflare.LogpushJob("exampleJob", {
- *     dataset: "httpRequests",
- *     destinationConf: "s3://my-bucket-path?region=us-west-2",
- *     enabled: true,
- *     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
- *     name: "My-logpush-job",
- *     ownershipChallenge: "00000000000000000",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- * });
- * ```
- */
 export class LogpushJob extends pulumi.CustomResource {
     /**
      * Get an existing LogpushJob resource's state with the given name, ID, and optional extra

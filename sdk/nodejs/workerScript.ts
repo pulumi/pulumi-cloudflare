@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`.
+ * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
  *
  * ## Example Usage
  *

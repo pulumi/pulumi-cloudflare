@@ -44,7 +44,7 @@ class LoadBalancerPool(pulumi.CustomResource):
     """
     notification_email: pulumi.Output[str]
     """
-    The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+    The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
     """
     origins: pulumi.Output[list]
     """
@@ -96,7 +96,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[float] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
-        :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+        :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         :param pulumi.Input[list] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 
         The **origins** object supports the following:
@@ -160,7 +160,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer was last modified.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
-        :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list.
+        :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         :param pulumi.Input[list] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 
         The **origins** object supports the following:

@@ -24,7 +24,7 @@ class WorkerRoute(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, pattern=None, script_name=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`.
+        Provides a Cloudflare worker route resource. A route will also require a `.WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
