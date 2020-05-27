@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource which manages Cloudflare account members.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const exampleUser = new cloudflare.AccountMember("exampleUser", {
  *     emailAddress: "user@example.com",
  *     roleIds: [
@@ -25,8 +25,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/account_member.markdown.
  */
 export class AccountMember extends pulumi.CustomResource {
     /**

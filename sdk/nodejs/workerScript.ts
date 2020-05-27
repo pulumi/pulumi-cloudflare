@@ -8,16 +8,16 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  * import * from "fs";
- * 
+ *
  * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {title: "example"});
  * // Sets the script with the name "script1"
  * const myScript = new cloudflare.WorkerScript("myScript", {
@@ -29,8 +29,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/worker_script.html.markdown.
  */
 export class WorkerScript extends pulumi.CustomResource {
     /**

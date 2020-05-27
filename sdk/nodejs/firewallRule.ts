@@ -9,17 +9,17 @@ import * as utilities from "./utilities";
 /**
  * Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.
  * A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
- * 
+ *
  * Filter expressions needs to be created first before using Firewall Rule. See Filter.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const wordpressFilter = new cloudflare.Filter("wordpressFilter", {
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  *     description: "Wordpress break-in attempts that are outside of the office",
@@ -32,8 +32,6 @@ import * as utilities from "./utilities";
  *     action: "block",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/firewall_rule.markdown.
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

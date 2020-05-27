@@ -8644,12 +8644,13 @@ type ZoneSettingsOverrideInitialSettings struct {
 	ServerSideExclude       *string                                            `pulumi:"serverSideExclude"`
 	SortQueryStringForCache *string                                            `pulumi:"sortQueryStringForCache"`
 	Ssl                     *string                                            `pulumi:"ssl"`
-	Tls12Only               *string                                            `pulumi:"tls12Only"`
-	Tls13                   *string                                            `pulumi:"tls13"`
-	TlsClientAuth           *string                                            `pulumi:"tlsClientAuth"`
-	TrueClientIpHeader      *string                                            `pulumi:"trueClientIpHeader"`
-	UniversalSsl            *string                                            `pulumi:"universalSsl"`
-	Waf                     *string                                            `pulumi:"waf"`
+	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+	Tls12Only          *string `pulumi:"tls12Only"`
+	Tls13              *string `pulumi:"tls13"`
+	TlsClientAuth      *string `pulumi:"tlsClientAuth"`
+	TrueClientIpHeader *string `pulumi:"trueClientIpHeader"`
+	UniversalSsl       *string `pulumi:"universalSsl"`
+	Waf                *string `pulumi:"waf"`
 	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 	Webp       *string `pulumi:"webp"`
 	Websockets *string `pulumi:"websockets"`
@@ -8706,12 +8707,13 @@ type ZoneSettingsOverrideInitialSettingsArgs struct {
 	ServerSideExclude       pulumi.StringPtrInput                                     `pulumi:"serverSideExclude"`
 	SortQueryStringForCache pulumi.StringPtrInput                                     `pulumi:"sortQueryStringForCache"`
 	Ssl                     pulumi.StringPtrInput                                     `pulumi:"ssl"`
-	Tls12Only               pulumi.StringPtrInput                                     `pulumi:"tls12Only"`
-	Tls13                   pulumi.StringPtrInput                                     `pulumi:"tls13"`
-	TlsClientAuth           pulumi.StringPtrInput                                     `pulumi:"tlsClientAuth"`
-	TrueClientIpHeader      pulumi.StringPtrInput                                     `pulumi:"trueClientIpHeader"`
-	UniversalSsl            pulumi.StringPtrInput                                     `pulumi:"universalSsl"`
-	Waf                     pulumi.StringPtrInput                                     `pulumi:"waf"`
+	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
+	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
+	TlsClientAuth      pulumi.StringPtrInput `pulumi:"tlsClientAuth"`
+	TrueClientIpHeader pulumi.StringPtrInput `pulumi:"trueClientIpHeader"`
+	UniversalSsl       pulumi.StringPtrInput `pulumi:"universalSsl"`
+	Waf                pulumi.StringPtrInput `pulumi:"waf"`
 	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 	Webp       pulumi.StringPtrInput `pulumi:"webp"`
 	Websockets pulumi.StringPtrInput `pulumi:"websockets"`
@@ -8949,6 +8951,7 @@ func (o ZoneSettingsOverrideInitialSettingsOutput) Ssl() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
 func (o ZoneSettingsOverrideInitialSettingsOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
 }
@@ -9337,6 +9340,7 @@ func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Ssl() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
 func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
 		if v == nil {
@@ -10014,12 +10018,13 @@ type ZoneSettingsOverrideSettings struct {
 	ServerSideExclude       *string                                     `pulumi:"serverSideExclude"`
 	SortQueryStringForCache *string                                     `pulumi:"sortQueryStringForCache"`
 	Ssl                     *string                                     `pulumi:"ssl"`
-	Tls12Only               *string                                     `pulumi:"tls12Only"`
-	Tls13                   *string                                     `pulumi:"tls13"`
-	TlsClientAuth           *string                                     `pulumi:"tlsClientAuth"`
-	TrueClientIpHeader      *string                                     `pulumi:"trueClientIpHeader"`
-	UniversalSsl            *string                                     `pulumi:"universalSsl"`
-	Waf                     *string                                     `pulumi:"waf"`
+	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+	Tls12Only          *string `pulumi:"tls12Only"`
+	Tls13              *string `pulumi:"tls13"`
+	TlsClientAuth      *string `pulumi:"tlsClientAuth"`
+	TrueClientIpHeader *string `pulumi:"trueClientIpHeader"`
+	UniversalSsl       *string `pulumi:"universalSsl"`
+	Waf                *string `pulumi:"waf"`
 	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 	Webp       *string `pulumi:"webp"`
 	Websockets *string `pulumi:"websockets"`
@@ -10076,12 +10081,13 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	ServerSideExclude       pulumi.StringPtrInput                              `pulumi:"serverSideExclude"`
 	SortQueryStringForCache pulumi.StringPtrInput                              `pulumi:"sortQueryStringForCache"`
 	Ssl                     pulumi.StringPtrInput                              `pulumi:"ssl"`
-	Tls12Only               pulumi.StringPtrInput                              `pulumi:"tls12Only"`
-	Tls13                   pulumi.StringPtrInput                              `pulumi:"tls13"`
-	TlsClientAuth           pulumi.StringPtrInput                              `pulumi:"tlsClientAuth"`
-	TrueClientIpHeader      pulumi.StringPtrInput                              `pulumi:"trueClientIpHeader"`
-	UniversalSsl            pulumi.StringPtrInput                              `pulumi:"universalSsl"`
-	Waf                     pulumi.StringPtrInput                              `pulumi:"waf"`
+	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
+	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
+	TlsClientAuth      pulumi.StringPtrInput `pulumi:"tlsClientAuth"`
+	TrueClientIpHeader pulumi.StringPtrInput `pulumi:"trueClientIpHeader"`
+	UniversalSsl       pulumi.StringPtrInput `pulumi:"universalSsl"`
+	Waf                pulumi.StringPtrInput `pulumi:"waf"`
 	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 	Webp       pulumi.StringPtrInput `pulumi:"webp"`
 	Websockets pulumi.StringPtrInput `pulumi:"websockets"`
@@ -10317,6 +10323,7 @@ func (o ZoneSettingsOverrideSettingsOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
 func (o ZoneSettingsOverrideSettingsOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
 }
@@ -10705,6 +10712,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Ssl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
 func (o ZoneSettingsOverrideSettingsPtrOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {

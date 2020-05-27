@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up [WAF Rules](https://api.cloudflare.com/#waf-rule-groups-properties).
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const test = cloudflare.getWafRules({
  *     zoneId: "ae36f999674d196762efcc5abb06b345",
  *     packageId: "a25a9a7e9c00afc1fb2e0245519d725b",
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  * });
  * export const wafRules = test.then(test => test.rules);
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/waf_rules.html.md.
  */
 export function getWafRules(args: GetWafRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafRulesResult> {
     if (!opts) {

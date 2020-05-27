@@ -8,23 +8,21 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const honeyPot = new cloudflare.WafGroup("honeyPot", {
  *     groupId: "de677e5818985db1285d0e80225f06e5",
  *     mode: "on",
  *     zoneId: "ae36f999674d196762efcc5abb06b345",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/waf_group.html.markdown.
  */
 export class WafGroup extends pulumi.CustomResource {
     /**

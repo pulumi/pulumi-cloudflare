@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Workers KV Pair.  *NOTE:*  This resource uses the Cloudflare account APIs.  This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const exampleNs = new cloudflare.WorkersKvNamespace("exampleNs", {title: "test-namespace"});
  * const example = new cloudflare.WorkersKv("example", {
  *     namespaceId: exampleNs.id,
@@ -24,8 +24,6 @@ import * as utilities from "./utilities";
  *     value: "test value",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/r/workers_kv.html.markdown.
  */
 export class WorkersKv extends pulumi.CustomResource {
     /**

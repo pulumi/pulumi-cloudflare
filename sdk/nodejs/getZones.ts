@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * 
+ *
  * const test = pulumi.output(cloudflare.getZones({
  *     filter: {
  *         name: "example.*",
@@ -35,8 +35,6 @@ import * as utilities from "./utilities";
  *     zone: test.apply(test => (<any>test.zones[0])["name"]),
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-cloudflare/blob/master/website/docs/d/zones.html.md.
  */
 export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     if (!opts) {
