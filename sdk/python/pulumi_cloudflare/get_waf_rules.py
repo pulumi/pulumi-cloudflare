@@ -61,7 +61,7 @@ def get_waf_rules(filter=None,package_id=None,zone_id=None,opts=None):
         filter={
             "description": ".*example.*",
             "mode": "on",
-            "groupId": "de677e5818985db1285d0e80225f06e5",
+            "group_id": "de677e5818985db1285d0e80225f06e5",
         })
     pulumi.export("wafRules", test.rules)
     ```

@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * });
  * // Allowing `test@example.com` to access but only when coming from a
  * // specific IP.
- * const testPolicyIndex/accessPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", {
+ * const testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", {
  *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  *     name: "staging policy",
@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *         emails: ["test@example.com"],
  *     }],
  *     requires: {
- *         ips: [var.office_ip],
+ *         ips: [_var.office_ip],
  *     },
  * });
  * ```

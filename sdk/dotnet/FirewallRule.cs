@@ -14,6 +14,36 @@ namespace Pulumi.Cloudflare
     /// A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
     /// 
     /// Filter expressions needs to be created first before using Firewall Rule. See Filter.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var wordpressFilter = new Cloudflare.Filter("wordpressFilter", new Cloudflare.FilterArgs
+    ///         {
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///             Description = "Wordpress break-in attempts that are outside of the office",
+    ///             Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
+    ///         });
+    ///         var wordpressFirewallRule = new Cloudflare.FirewallRule("wordpressFirewallRule", new Cloudflare.FirewallRuleArgs
+    ///         {
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///             Description = "Block wordpress break-in attempts",
+    ///             FilterId = wordpressFilter.Id,
+    ///             Action = "block",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class FirewallRule : Pulumi.CustomResource
     {

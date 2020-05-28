@@ -13,6 +13,30 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Access Application resource. Access Applications
     /// are used to restrict access to a whole application using an
     /// authorisation gateway managed by Cloudflare.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var stagingApp = new Cloudflare.AccessApplication("stagingApp", new Cloudflare.AccessApplicationArgs
+    ///         {
+    ///             Domain = "staging.example.com",
+    ///             Name = "staging application",
+    ///             SessionDuration = "24h",
+    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessApplication : Pulumi.CustomResource
     {

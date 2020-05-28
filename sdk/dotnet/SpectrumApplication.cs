@@ -11,6 +11,39 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Define a spectrum application proxies ssh traffic
+    ///         var sshProxy = new Cloudflare.SpectrumApplication("sshProxy", new Cloudflare.SpectrumApplicationArgs
+    ///         {
+    ///             ZoneId = @var.Cloudflare_zone_id,
+    ///             Protocol = "tcp/22",
+    ///             TrafficType = "direct",
+    ///             Dns = new Cloudflare.Inputs.SpectrumApplicationDnsArgs
+    ///             {
+    ///                 Type = "CNAME",
+    ///                 Name = "ssh.example.com",
+    ///             },
+    ///             OriginDirects = 
+    ///             {
+    ///                 "tcp://109.151.40.129:22",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class SpectrumApplication : Pulumi.CustomResource
     {

@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
-    /// <summary>
-    /// Provides a Cloudflare record resource.
-    /// </summary>
     public partial class Record : Pulumi.CustomResource
     {
         /// <summary>

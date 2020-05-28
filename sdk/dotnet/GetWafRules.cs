@@ -15,6 +15,39 @@ namespace Pulumi.Cloudflare
         /// Use this data source to look up [WAF Rules](https://api.cloudflare.com/#waf-rule-groups-properties).
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The example below matches all WAF Rules that are in the group of ID `de677e5818985db1285d0e80225f06e5`, contain `example` in their description, and are currently `on`. The matched WAF Rules are then returned as output.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Cloudflare.GetWafRules.InvokeAsync(new Cloudflare.GetWafRulesArgs
+        ///         {
+        ///             ZoneId = "ae36f999674d196762efcc5abb06b345",
+        ///             PackageId = "a25a9a7e9c00afc1fb2e0245519d725b",
+        ///             Filter = new Cloudflare.Inputs.GetWafRulesFilterArgs
+        ///             {
+        ///                 Description = ".*example.*",
+        ///                 Mode = "on",
+        ///                 GroupId = "de677e5818985db1285d0e80225f06e5",
+        ///             },
+        ///         }));
+        ///         this.WafRules = test.Apply(test =&gt; test.Rules);
+        ///     }
+        /// 
+        ///     [Output("wafRules")]
+        ///     public Output&lt;string&gt; WafRules { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafRulesResult> InvokeAsync(GetWafRulesArgs args, InvokeOptions? options = null)

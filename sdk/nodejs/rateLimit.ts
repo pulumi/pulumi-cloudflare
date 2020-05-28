@@ -18,12 +18,12 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.RateLimit("example", {
- *     zoneId: var.cloudflare_zone_id,
+ *     zoneId: _var.cloudflare_zone_id,
  *     threshold: 2000,
  *     period: 2,
  *     match: {
  *         request: {
- *             urlPattern: `${var.cloudflare_zone}/*`,
+ *             urlPattern: `${_var.cloudflare_zone}/*`,
  *             schemes: [
  *                 "HTTP",
  *                 "HTTPS",
@@ -62,8 +62,8 @@ import * as utilities from "./utilities";
  *     disabled: false,
  *     description: "example rate limit for a zone",
  *     bypassUrlPatterns: [
- *         `${var.cloudflare_zone}/bypass1`,
- *         `${var.cloudflare_zone}/bypass2`,
+ *         `${_var.cloudflare_zone}/bypass1`,
+ *         `${_var.cloudflare_zone}/bypass2`,
  *     ],
  * });
  * ```

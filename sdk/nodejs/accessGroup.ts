@@ -29,14 +29,14 @@ import * as utilities from "./utilities";
  * });
  * // Allowing `test@example.com` to access but only when coming from a
  * // specific IP.
- * const testGroupIndex/accessGroupAccessGroup = new cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", {
+ * const testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", {
  *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
  *     name: "staging group",
  *     include: [{
  *         emails: ["test@example.com"],
  *     }],
  *     requires: {
- *         ips: [var.office_ip],
+ *         ips: [_var.office_ip],
  *     },
  * });
  * ```

@@ -11,6 +11,72 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### HTTP Monitor
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var httpMonitor = new Cloudflare.LoadBalancerMonitor("httpMonitor", new Cloudflare.LoadBalancerMonitorArgs
+    ///         {
+    ///             AllowInsecure = false,
+    ///             Description = "example http load balancer",
+    ///             ExpectedBody = "alive",
+    ///             ExpectedCodes = "2xx",
+    ///             FollowRedirects = true,
+    ///             Headers = 
+    ///             {
+    ///                 new Cloudflare.Inputs.LoadBalancerMonitorHeaderArgs
+    ///                 {
+    ///                     Header = "Host",
+    ///                     Values = 
+    ///                     {
+    ///                         "example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Interval = 60,
+    ///             Method = "GET",
+    ///             Path = "/health",
+    ///             Retries = 5,
+    ///             Timeout = 7,
+    ///             Type = "http",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ### TCP Monitor
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tcpMonitor = new Cloudflare.LoadBalancerMonitor("tcpMonitor", new Cloudflare.LoadBalancerMonitorArgs
+    ///         {
+    ///             Description = "example tcp load balancer",
+    ///             Interval = 60,
+    ///             Method = "connection_established",
+    ///             Retries = 5,
+    ///             Timeout = 7,
+    ///             Type = "tcp",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class LoadBalancerMonitor : Pulumi.CustomResource
     {

@@ -38,7 +38,7 @@ class WorkerScript(pulumi.CustomResource):
             content=(lambda path: open(path).read())("script.js"),
             kv_namespace_binding=[{
                 "name": "my_binding",
-                "namespaceId": my_namespace.id,
+                "namespace_id": my_namespace.id,
             }])
         ```
 
