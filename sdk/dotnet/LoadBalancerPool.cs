@@ -11,6 +11,46 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
+    /// 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foo = new Cloudflare.LoadBalancerPool("foo", new Cloudflare.LoadBalancerPoolArgs
+    ///         {
+    ///             Description = "example load balancer pool",
+    ///             Enabled = false,
+    ///             MinimumOrigins = 1,
+    ///             Name = "example-pool",
+    ///             NotificationEmail = "someone@example.com",
+    ///             Origins = 
+    ///             {
+    ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
+    ///                 {
+    ///                     Address = "192.0.2.1",
+    ///                     Enabled = false,
+    ///                     Name = "example-1",
+    ///                 },
+    ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
+    ///                 {
+    ///                     Address = "192.0.2.2",
+    ///                     Name = "example-2",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class LoadBalancerPool : Pulumi.CustomResource
     {

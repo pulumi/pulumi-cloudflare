@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const httpHealthCheck = new cloudflare.Healthcheck("httpHealthCheck", {
- *     zoneId: var.cloudflare_zone_id,
+ *     zoneId: _var.cloudflare_zone_id,
  *     name: "http-health-check",
  *     description: "example http health check",
  *     address: "example.com",
@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const tcpHealthCheck = new cloudflare.Healthcheck("tcpHealthCheck", {
- *     zoneId: var.cloudflare_zone_id,
+ *     zoneId: _var.cloudflare_zone_id,
  *     name: "tcp-health-check",
  *     description: "example tcp health check",
  *     address: "example.com",

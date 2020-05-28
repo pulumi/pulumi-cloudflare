@@ -12,6 +12,28 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Access Service Tokens are used for service-to-service communication
     /// when an application is behind Cloudflare Access.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myApp = new Cloudflare.AccessServiceToken("myApp", new Cloudflare.AccessServiceTokenArgs
+    ///         {
+    ///             AccountId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///             Name = "CI/CD app",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessServiceToken : Pulumi.CustomResource
     {

@@ -11,6 +11,29 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Filter expressions that can be referenced across multiple features, e.g. Firewall Rule. The expression format is similar to [Wireshark Display Filter](https://www.wireshark.org/docs/man-pages/wireshark-filter.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var wordpress = new Cloudflare.Filter("wordpress", new Cloudflare.FilterArgs
+    ///         {
+    ///             Description = "Wordpress break-in attempts that are outside of the office",
+    ///             Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Filter : Pulumi.CustomResource
     {

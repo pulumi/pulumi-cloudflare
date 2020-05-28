@@ -11,6 +11,49 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer. 
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### TCP Monitor
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tcpHealthCheck = new Cloudflare.Healthcheck("tcpHealthCheck", new Cloudflare.HealthcheckArgs
+    ///         {
+    ///             ZoneId = @var.Cloudflare_zone_id,
+    ///             Name = "tcp-health-check",
+    ///             Description = "example tcp health check",
+    ///             Address = "example.com",
+    ///             Suspended = false,
+    ///             CheckRegions = 
+    ///             {
+    ///                 "WEU",
+    ///                 "EEU",
+    ///             },
+    ///             NotificationSuspended = false,
+    ///             NotificationEmailAddresses = 
+    ///             {
+    ///                 "hostmaster@example.com",
+    ///             },
+    ///             Type = "TCP",
+    ///             Port = "22",
+    ///             Method = "connection_established",
+    ///             Timeout = 10,
+    ///             Retries = 2,
+    ///             Interval = 60,
+    ///             ConsecutiveFails = 3,
+    ///             ConsecutiveSuccesses = 2,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Healthcheck : Pulumi.CustomResource
     {

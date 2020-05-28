@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const test = new cloudflare.ZoneSettingsOverride("test", {
- *     zoneId: var.cloudflare_zone_id,
+ *     zoneId: _var.cloudflare_zone_id,
  *     settings: {
  *         brotli: "on",
  *         challengeTtl: 2700,

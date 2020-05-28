@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * // Define a spectrum application proxies ssh traffic
  * const sshProxy = new cloudflare.SpectrumApplication("sshProxy", {
- *     zoneId: var.cloudflare_zone_id,
+ *     zoneId: _var.cloudflare_zone_id,
  *     protocol: "tcp/22",
  *     trafficType: "direct",
  *     dns: {

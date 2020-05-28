@@ -11,6 +11,47 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Cloudflare.ZoneSettingsOverride("test", new Cloudflare.ZoneSettingsOverrideArgs
+    ///         {
+    ///             ZoneId = @var.Cloudflare_zone_id,
+    ///             Settings = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsArgs
+    ///             {
+    ///                 Brotli = "on",
+    ///                 ChallengeTtl = 2700,
+    ///                 SecurityLevel = "high",
+    ///                 OpportunisticEncryption = "on",
+    ///                 AutomaticHttpsRewrites = "on",
+    ///                 Mirage = "on",
+    ///                 Waf = "on",
+    ///                 Minify = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsMinifyArgs
+    ///                 {
+    ///                     Css = "on",
+    ///                     Js = "off",
+    ///                     Html = "off",
+    ///                 },
+    ///                 Security_header = 
+    ///                 {
+    ///                     { "enabled", true },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class ZoneSettingsOverride : Pulumi.CustomResource
     {

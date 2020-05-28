@@ -12,6 +12,69 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Access Identity Provider resource. Identity Providers are
     /// used as an authentication or authorisation source within Access.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // one time pin
+    ///         var pinLogin = new Cloudflare.AccessIdentityProvider("pinLogin", new Cloudflare.AccessIdentityProviderArgs
+    ///         {
+    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             Name = "PIN login",
+    ///             Type = "onetimepin",
+    ///         });
+    ///         // oauth
+    ///         var githubOauth = new Cloudflare.AccessIdentityProvider("githubOauth", new Cloudflare.AccessIdentityProviderArgs
+    ///         {
+    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             Configs = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
+    ///                 {
+    ///                     ClientId = "example",
+    ///                     ClientSecret = "secret_key",
+    ///                 },
+    ///             },
+    ///             Name = "GitHub OAuth",
+    ///             Type = "github",
+    ///         });
+    ///         // saml
+    ///         var jumpcloudSaml = new Cloudflare.AccessIdentityProvider("jumpcloudSaml", new Cloudflare.AccessIdentityProviderArgs
+    ///         {
+    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             Configs = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
+    ///                 {
+    ///                     Attributes = 
+    ///                     {
+    ///                         "email",
+    ///                         "username",
+    ///                     },
+    ///                     IdpPublicCert = @"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+    /// uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
+    /// ",
+    ///                     IssuerUrl = "jumpcloud",
+    ///                     SignRequest = false,
+    ///                     SsoTargetUrl = "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+    ///                 },
+    ///             },
+    ///             Name = "JumpCloud SAML",
+    ///             Type = "saml",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessIdentityProvider : Pulumi.CustomResource
     {

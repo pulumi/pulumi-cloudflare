@@ -11,6 +11,44 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare page rule resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a page rule to the domain
+    ///         var foobar = new Cloudflare.PageRule("foobar", new Cloudflare.PageRuleArgs
+    ///         {
+    ///             ZoneId = @var.Cloudflare_zone_id,
+    ///             Target = $"sub.{@var.Cloudflare_zone}/page",
+    ///             Priority = 1,
+    ///             Actions = new Cloudflare.Inputs.PageRuleActionsArgs
+    ///             {
+    ///                 Ssl = "flexible",
+    ///                 EmailObfuscation = "on",
+    ///                 Minify = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "html", "off" },
+    ///                         { "css", "on" },
+    ///                         { "js", "on" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class PageRule : Pulumi.CustomResource
     {

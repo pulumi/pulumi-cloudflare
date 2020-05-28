@@ -11,6 +11,27 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Workers KV Namespace
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Cloudflare.WorkersKvNamespace("example", new Cloudflare.WorkersKvNamespaceArgs
+    ///         {
+    ///             Title = "test-namespace",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class WorkersKvNamespace : Pulumi.CustomResource
     {

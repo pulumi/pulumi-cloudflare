@@ -11,6 +11,38 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Cloudflare custom ssl resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var config = new Config();
+    ///         var cloudflareZoneId = config.Get("cloudflareZoneId") ?? "1d5fdc9e88c8a8c4518b068cd94331fe";
+    ///         // Add a custom ssl certificate to the domain
+    ///         var foossl = new Cloudflare.CustomSsl("foossl", new Cloudflare.CustomSslArgs
+    ///         {
+    ///             CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs
+    ///             {
+    ///                 Bundle_method = "ubiquitous",
+    ///                 Certificate = "-----INSERT CERTIFICATE-----",
+    ///                 Geo_restrictions = "us",
+    ///                 Private_key = "-----INSERT PRIVATE KEY-----",
+    ///                 Type = "legacy_custom",
+    ///             },
+    ///             ZoneId = cloudflareZoneId,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class CustomSsl : Pulumi.CustomResource
     {

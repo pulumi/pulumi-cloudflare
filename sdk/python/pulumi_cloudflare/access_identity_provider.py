@@ -67,8 +67,8 @@ class AccessIdentityProvider(pulumi.CustomResource):
         github_oauth = cloudflare.AccessIdentityProvider("githubOauth",
             account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
             configs=[{
-                "clientId": "example",
-                "clientSecret": "secret_key",
+                "client_id": "example",
+                "client_secret": "secret_key",
             }],
             name="GitHub OAuth",
             type="github")

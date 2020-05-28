@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  *
  * // Add a page rule to the domain
  * const foobar = new cloudflare.PageRule("foobar", {
- *     zoneId: var.cloudflare_zone_id,
- *     target: `sub.${var.cloudflare_zone}/page`,
+ *     zoneId: _var.cloudflare_zone_id,
+ *     target: `sub.${_var.cloudflare_zone}/page`,
  *     priority: 1,
  *     actions: {
  *         ssl: "flexible",
