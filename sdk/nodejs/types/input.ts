@@ -3,14 +3,15 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AccessGroupExclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -58,8 +59,8 @@ export interface AccessGroupInclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -107,8 +108,8 @@ export interface AccessGroupRequire {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -178,8 +179,8 @@ export interface AccessPolicyExclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -227,8 +228,8 @@ export interface AccessPolicyInclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -276,8 +277,8 @@ export interface AccessPolicyRequire {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
-    emails?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -907,6 +908,9 @@ export interface ZoneSettingsOverrideInitialSettings {
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
     ssl?: pulumi.Input<string>;
+    /**
+     * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+     */
     tls12Only?: pulumi.Input<string>;
     tls13?: pulumi.Input<string>;
     tlsClientAuth?: pulumi.Input<string>;
@@ -1012,6 +1016,9 @@ export interface ZoneSettingsOverrideSettings {
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
     ssl?: pulumi.Input<string>;
+    /**
+     * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+     */
     tls12Only?: pulumi.Input<string>;
     tls13?: pulumi.Input<string>;
     tlsClientAuth?: pulumi.Input<string>;

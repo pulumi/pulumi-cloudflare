@@ -76,7 +76,7 @@ install:: provider
 
 install_plugins::
 	[ -x $(shell which pulumi) ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource $(PACK) 2.3.0
+	pulumi plugin install resource $(PACK) $(PROVIDER_VERSION)
 	pulumi plugin install resource gcp 3.3.0
 
 test_fast::

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
 export interface AccessGroupExclude {
@@ -9,8 +10,8 @@ export interface AccessGroupExclude {
     azures?: outputs.AccessGroupExcludeAzure[];
     certificate?: boolean;
     commonName?: string;
-    emails?: string[];
     emailDomains?: string[];
+    emails?: string[];
     everyone?: boolean;
     githubs?: outputs.AccessGroupExcludeGithub[];
     groups?: string[];
@@ -58,8 +59,8 @@ export interface AccessGroupInclude {
     azures?: outputs.AccessGroupIncludeAzure[];
     certificate?: boolean;
     commonName?: string;
-    emails?: string[];
     emailDomains?: string[];
+    emails?: string[];
     everyone?: boolean;
     githubs?: outputs.AccessGroupIncludeGithub[];
     groups?: string[];
@@ -107,8 +108,8 @@ export interface AccessGroupRequire {
     azures?: outputs.AccessGroupRequireAzure[];
     certificate?: boolean;
     commonName?: string;
-    emails?: string[];
     emailDomains?: string[];
+    emails?: string[];
     everyone?: boolean;
     githubs?: outputs.AccessGroupRequireGithub[];
     groups?: string[];
@@ -178,8 +179,8 @@ export interface AccessPolicyExclude {
     azures?: outputs.AccessPolicyExcludeAzure[];
     certificate?: boolean;
     commonName?: string;
-    emails?: string[];
     emailDomains?: string[];
+    emails?: string[];
     everyone?: boolean;
     githubs?: outputs.AccessPolicyExcludeGithub[];
     groups?: string[];
@@ -227,8 +228,8 @@ export interface AccessPolicyInclude {
     azures?: outputs.AccessPolicyIncludeAzure[];
     certificate?: boolean;
     commonName?: string;
-    emails?: string[];
     emailDomains?: string[];
+    emails?: string[];
     everyone?: boolean;
     githubs?: outputs.AccessPolicyIncludeGithub[];
     groups?: string[];
@@ -276,8 +277,8 @@ export interface AccessPolicyRequire {
     azures?: outputs.AccessPolicyRequireAzure[];
     certificate?: boolean;
     commonName?: string;
-    emails?: string[];
     emailDomains?: string[];
+    emails?: string[];
     everyone?: boolean;
     githubs?: outputs.AccessPolicyRequireGithub[];
     groups?: string[];
@@ -942,6 +943,9 @@ export interface ZoneSettingsOverrideInitialSettings {
     serverSideExclude: string;
     sortQueryStringForCache: string;
     ssl: string;
+    /**
+     * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+     */
     tls12Only: string;
     tls13: string;
     tlsClientAuth: string;
@@ -1047,6 +1051,9 @@ export interface ZoneSettingsOverrideSettings {
     serverSideExclude: string;
     sortQueryStringForCache: string;
     ssl: string;
+    /**
+     * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+     */
     tls12Only: string;
     tls13: string;
     tlsClientAuth: string;

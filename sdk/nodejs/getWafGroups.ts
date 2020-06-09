@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
- *
  */
 export function getWafGroups(args: GetWafGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetWafGroupsResult> {
     if (!opts) {
@@ -40,10 +39,10 @@ export interface GetWafGroupsArgs {
 export interface GetWafGroupsResult {
     readonly filter?: outputs.GetWafGroupsFilter;
     readonly groups: outputs.GetWafGroupsGroup[];
-    readonly packageId?: string;
-    readonly zoneId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly packageId?: string;
+    readonly zoneId: string;
 }

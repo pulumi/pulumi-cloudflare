@@ -1056,7 +1056,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "redirectUrl"
+                    ]
+                }
+            }
         },
         "cloudflare:/AccessPolicyExclude:AccessPolicyExclude": {
             "properties": {
@@ -2492,7 +2499,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "checkPresences",
+                        "includes"
+                    ]
+                }
+            }
         },
         "cloudflare:/PageRuleActionsCacheKeyFieldsHeader:PageRuleActionsCacheKeyFieldsHeader": {
             "properties": {
@@ -2533,7 +2548,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "checkPresences",
+                        "excludes",
+                        "includes"
+                    ]
+                }
+            }
         },
         "cloudflare:/PageRuleActionsCacheKeyFieldsHost:PageRuleActionsCacheKeyFieldsHost": {
             "properties": {
@@ -2547,7 +2571,14 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "resolved"
+                    ]
+                }
+            }
         },
         "cloudflare:/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString": {
             "properties": {
@@ -2585,7 +2616,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "excludes",
+                        "ignore",
+                        "includes"
+                    ]
+                }
+            }
         },
         "cloudflare:/PageRuleActionsCacheKeyFieldsUser:PageRuleActionsCacheKeyFieldsUser": {
             "properties": {
@@ -2617,7 +2657,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "deviceType",
+                        "geo",
+                        "lang"
+                    ]
+                }
+            }
         },
         "cloudflare:/PageRuleActionsForwardingUrl:PageRuleActionsForwardingUrl": {
             "properties": {
@@ -2780,7 +2829,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "request",
+                        "response"
+                    ]
+                }
+            }
         },
         "cloudflare:/RateLimitMatchRequest:RateLimitMatchRequest": {
             "properties": {
@@ -2818,7 +2875,16 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "methods",
+                        "schemes",
+                        "urlPattern"
+                    ]
+                }
+            }
         },
         "cloudflare:/RateLimitMatchResponse:RateLimitMatchResponse": {
             "properties": {
@@ -2844,7 +2910,15 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "originTraffic",
+                        "statuses"
+                    ]
+                }
+            }
         },
         "cloudflare:/RecordData:RecordData": {
             "properties": {
@@ -3451,7 +3525,59 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "alwaysOnline",
+                        "alwaysUseHttps",
+                        "automaticHttpsRewrites",
+                        "brotli",
+                        "browserCacheTtl",
+                        "browserCheck",
+                        "cacheLevel",
+                        "challengeTtl",
+                        "cnameFlattening",
+                        "developmentMode",
+                        "emailObfuscation",
+                        "h2Prioritization",
+                        "hotlinkProtection",
+                        "http2",
+                        "http3",
+                        "imageResizing",
+                        "ipGeolocation",
+                        "ipv6",
+                        "maxUpload",
+                        "minTlsVersion",
+                        "minify",
+                        "mirage",
+                        "mobileRedirect",
+                        "opportunisticEncryption",
+                        "opportunisticOnion",
+                        "originErrorPagePassThru",
+                        "polish",
+                        "prefetchPreload",
+                        "privacyPass",
+                        "pseudoIpv4",
+                        "responseBuffering",
+                        "rocketLoader",
+                        "securityHeader",
+                        "securityLevel",
+                        "serverSideExclude",
+                        "sortQueryStringForCache",
+                        "ssl",
+                        "tls12Only",
+                        "tls13",
+                        "tlsClientAuth",
+                        "trueClientIpHeader",
+                        "universalSsl",
+                        "waf",
+                        "webp",
+                        "websockets",
+                        "zeroRtt"
+                    ]
+                }
+            }
         },
         "cloudflare:/ZoneSettingsOverrideInitialSettingsMinify:ZoneSettingsOverrideInitialSettingsMinify": {
             "properties": {
@@ -3575,7 +3701,18 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "includeSubdomains",
+                        "maxAge",
+                        "nosniff",
+                        "preload"
+                    ]
+                }
+            }
         },
         "cloudflare:/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings": {
             "properties": {
@@ -3950,7 +4087,59 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "alwaysOnline",
+                        "alwaysUseHttps",
+                        "automaticHttpsRewrites",
+                        "brotli",
+                        "browserCacheTtl",
+                        "browserCheck",
+                        "cacheLevel",
+                        "challengeTtl",
+                        "cnameFlattening",
+                        "developmentMode",
+                        "emailObfuscation",
+                        "h2Prioritization",
+                        "hotlinkProtection",
+                        "http2",
+                        "http3",
+                        "imageResizing",
+                        "ipGeolocation",
+                        "ipv6",
+                        "maxUpload",
+                        "minTlsVersion",
+                        "minify",
+                        "mirage",
+                        "mobileRedirect",
+                        "opportunisticEncryption",
+                        "opportunisticOnion",
+                        "originErrorPagePassThru",
+                        "polish",
+                        "prefetchPreload",
+                        "privacyPass",
+                        "pseudoIpv4",
+                        "responseBuffering",
+                        "rocketLoader",
+                        "securityHeader",
+                        "securityLevel",
+                        "serverSideExclude",
+                        "sortQueryStringForCache",
+                        "ssl",
+                        "tls12Only",
+                        "tls13",
+                        "tlsClientAuth",
+                        "trueClientIpHeader",
+                        "universalSsl",
+                        "waf",
+                        "webp",
+                        "websockets",
+                        "zeroRtt"
+                    ]
+                }
+            }
         },
         "cloudflare:/ZoneSettingsOverrideSettingsMinify:ZoneSettingsOverrideSettingsMinify": {
             "properties": {
@@ -4074,7 +4263,18 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "includeSubdomains",
+                        "maxAge",
+                        "nosniff",
+                        "preload"
+                    ]
+                }
+            }
         },
         "cloudflare:/getWafGroupsFilter:getWafGroupsFilter": {
             "properties": {
@@ -5613,7 +5813,7 @@
             }
         },
         "cloudflare:index/healthcheck:Healthcheck": {
-            "description": "Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer. \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe resource supports HTTP, HTTPS and TCP type health checks.\n\n{{% /example %}}\n{{% example %}}\n### TCP Monitor\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst tcpHealthCheck = new cloudflare.Healthcheck(\"tcpHealthCheck\", {\n    zoneId: _var.cloudflare_zone_id,\n    name: \"tcp-health-check\",\n    description: \"example tcp health check\",\n    address: \"example.com\",\n    suspended: false,\n    checkRegions: [\n        \"WEU\",\n        \"EEU\",\n    ],\n    notificationSuspended: false,\n    notificationEmailAddresses: [\"hostmaster@example.com\"],\n    type: \"TCP\",\n    port: \"22\",\n    method: \"connection_established\",\n    timeout: 10,\n    retries: 2,\n    interval: 60,\n    consecutiveFails: 3,\n    consecutiveSuccesses: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ntcp_health_check = cloudflare.Healthcheck(\"tcpHealthCheck\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    name=\"tcp-health-check\",\n    description=\"example tcp health check\",\n    address=\"example.com\",\n    suspended=False,\n    check_regions=[\n        \"WEU\",\n        \"EEU\",\n    ],\n    notification_suspended=False,\n    notification_email_addresses=[\"hostmaster@example.com\"],\n    type=\"TCP\",\n    port=\"22\",\n    method=\"connection_established\",\n    timeout=10,\n    retries=2,\n    interval=60,\n    consecutive_fails=3,\n    consecutive_successes=2)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var tcpHealthCheck = new Cloudflare.Healthcheck(\"tcpHealthCheck\", new Cloudflare.HealthcheckArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Name = \"tcp-health-check\",\n            Description = \"example tcp health check\",\n            Address = \"example.com\",\n            Suspended = false,\n            CheckRegions = \n            {\n                \"WEU\",\n                \"EEU\",\n            },\n            NotificationSuspended = false,\n            NotificationEmailAddresses = \n            {\n                \"hostmaster@example.com\",\n            },\n            Type = \"TCP\",\n            Port = \"22\",\n            Method = \"connection_established\",\n            Timeout = 10,\n            Retries = 2,\n            Interval = 60,\n            ConsecutiveFails = 3,\n            ConsecutiveSuccesses = 2,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer. \n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe resource supports HTTP, HTTPS and TCP type health checks.\n\n{{% /example %}}\n{{% example %}}\n### TCP Monitor\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst tcpHealthCheck = new cloudflare.Healthcheck(\"tcpHealthCheck\", {\n    zoneId: _var.cloudflare_zone_id,\n    name: \"tcp-health-check\",\n    description: \"example tcp health check\",\n    address: \"example.com\",\n    suspended: false,\n    checkRegions: [\n        \"WEU\",\n        \"EEU\",\n    ],\n    notificationSuspended: false,\n    notificationEmailAddresses: [\"hostmaster@example.com\"],\n    type: \"TCP\",\n    port: \"22\",\n    method: \"connection_established\",\n    timeout: 10,\n    retries: 2,\n    interval: 60,\n    consecutiveFails: 3,\n    consecutiveSuccesses: 2,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ntcp_health_check = cloudflare.Healthcheck(\"tcpHealthCheck\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    name=\"tcp-health-check\",\n    description=\"example tcp health check\",\n    address=\"example.com\",\n    suspended=False,\n    check_regions=[\n        \"WEU\",\n        \"EEU\",\n    ],\n    notification_suspended=False,\n    notification_email_addresses=[\"hostmaster@example.com\"],\n    type=\"TCP\",\n    port=\"22\",\n    method=\"connection_established\",\n    timeout=10,\n    retries=2,\n    interval=60,\n    consecutive_fails=3,\n    consecutive_successes=2)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var tcpHealthCheck = new Cloudflare.Healthcheck(\"tcpHealthCheck\", new Cloudflare.HealthcheckArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Name = \"tcp-health-check\",\n            Description = \"example tcp health check\",\n            Address = \"example.com\",\n            Suspended = false,\n            CheckRegions = \n            {\n                \"WEU\",\n                \"EEU\",\n            },\n            NotificationSuspended = false,\n            NotificationEmailAddresses = \n            {\n                \"hostmaster@example.com\",\n            },\n            Type = \"TCP\",\n            Port = 22,\n            Method = \"connection_established\",\n            Timeout = 10,\n            Retries = 2,\n            Interval = 60,\n            ConsecutiveFails = 3,\n            ConsecutiveSuccesses = 2,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "address": {
                     "type": "string",
@@ -6523,7 +6723,7 @@
             }
         },
         "cloudflare:index/logpullRetention:LogpullRetention": {
-            "description": "Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.LogpullRetention(\"example\", {\n    enabled: true,\n    zoneId: \"fb54f084ca7f7b732d3d3ecbd8ef7bf2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.LogpullRetention(\"example\",\n    enabled=\"true\",\n    zone_id=\"fb54f084ca7f7b732d3d3ecbd8ef7bf2\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.LogpullRetention(\"example\", new Cloudflare.LogpullRetentionArgs\n        {\n            Enabled = \"true\",\n            ZoneId = \"fb54f084ca7f7b732d3d3ecbd8ef7bf2\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.LogpullRetention(\"example\", {\n    enabled: true,\n    zoneId: \"fb54f084ca7f7b732d3d3ecbd8ef7bf2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.LogpullRetention(\"example\",\n    enabled=\"true\",\n    zone_id=\"fb54f084ca7f7b732d3d3ecbd8ef7bf2\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.LogpullRetention(\"example\", new Cloudflare.LogpullRetentionArgs\n        {\n            Enabled = true,\n            ZoneId = \"fb54f084ca7f7b732d3d3ecbd8ef7bf2\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -7945,7 +8145,7 @@
             }
         },
         "cloudflare:index/zoneLockdown:ZoneLockdown": {
-            "description": "Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Restrict access to these endpoints to requests from a known IP address.\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpoint_lockdown\", {\n    configurations: [{\n        target: \"ip\",\n        value: \"198.51.100.4\",\n    }],\n    description: \"Restrict access to these endpoints to requests from a known IP address\",\n    paused: false,\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Restrict access to these endpoints to requests from a known IP address.\nendpoint_lockdown = cloudflare.ZoneLockdown(\"endpointLockdown\",\n    configurations=[{\n        \"target\": \"ip\",\n        \"value\": \"198.51.100.4\",\n    }],\n    description=\"Restrict access to these endpoints to requests from a known IP address\",\n    paused=\"false\",\n    urls=[\"api.mysite.com/some/endpoint*\"],\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Restrict access to these endpoints to requests from a known IP address.\n        var endpointLockdown = new Cloudflare.ZoneLockdown(\"endpointLockdown\", new Cloudflare.ZoneLockdownArgs\n        {\n            Configurations = \n            {\n                new Cloudflare.Inputs.ZoneLockdownConfigurationArgs\n                {\n                    Target = \"ip\",\n                    Value = \"198.51.100.4\",\n                },\n            },\n            Description = \"Restrict access to these endpoints to requests from a known IP address\",\n            Paused = \"false\",\n            Urls = \n            {\n                \"api.mysite.com/some/endpoint*\",\n            },\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Restrict access to these endpoints to requests from a known IP address.\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpoint_lockdown\", {\n    configurations: [{\n        target: \"ip\",\n        value: \"198.51.100.4\",\n    }],\n    description: \"Restrict access to these endpoints to requests from a known IP address\",\n    paused: false,\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Restrict access to these endpoints to requests from a known IP address.\nendpoint_lockdown = cloudflare.ZoneLockdown(\"endpointLockdown\",\n    configurations=[{\n        \"target\": \"ip\",\n        \"value\": \"198.51.100.4\",\n    }],\n    description=\"Restrict access to these endpoints to requests from a known IP address\",\n    paused=\"false\",\n    urls=[\"api.mysite.com/some/endpoint*\"],\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Restrict access to these endpoints to requests from a known IP address.\n        var endpointLockdown = new Cloudflare.ZoneLockdown(\"endpointLockdown\", new Cloudflare.ZoneLockdownArgs\n        {\n            Configurations = \n            {\n                new Cloudflare.Inputs.ZoneLockdownConfigurationArgs\n                {\n                    Target = \"ip\",\n                    Value = \"198.51.100.4\",\n                },\n            },\n            Description = \"Restrict access to these endpoints to requests from a known IP address\",\n            Paused = false,\n            Urls = \n            {\n                \"api.mysite.com/some/endpoint*\",\n            },\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "configurations": {
                     "type": "array",
@@ -8387,8 +8587,10 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing Cloudflare cloud resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-cloudflare)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-cloudflare` repo](https://github.com/pulumi/pulumi-cloudflare/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-cloudflare` repo](https://github.com/terraform-providers/terraform-provider-cloudflare/issues).",
             "typescriptVersion": ""
         },
         "python": {
