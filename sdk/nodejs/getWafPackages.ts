@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up [WAF Rule Packages](https://api.cloudflare.com/#waf-rule-packages-properties).
- *
  */
 export function getWafPackages(args: GetWafPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetWafPackagesResult> {
     if (!opts) {
@@ -37,10 +36,10 @@ export interface GetWafPackagesArgs {
  */
 export interface GetWafPackagesResult {
     readonly filter?: outputs.GetWafPackagesFilter;
-    readonly packages: outputs.GetWafPackagesPackage[];
-    readonly zoneId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly packages: outputs.GetWafPackagesPackage[];
+    readonly zoneId: string;
 }

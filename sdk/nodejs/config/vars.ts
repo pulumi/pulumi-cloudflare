@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("cloudflare");
@@ -13,7 +15,7 @@ export let accountId: string | undefined = __config.get("accountId") || utilitie
 /**
  * Whether to print logs from the API client (using the default log library logger)
  */
-export let apiClientLogging: boolean | undefined = __config.getObject<boolean>("apiClientLogging") || (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
+export let apiClientLogging: boolean | undefined = __config.getObject<boolean>("apiClientLogging") || (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
 /**
  * The API key for operations.
  */
@@ -33,16 +35,16 @@ export let email: string | undefined = __config.get("email") || utilities.getEnv
 /**
  * Maximum backoff period in seconds after failed API calls
  */
-export let maxBackoff: number | undefined = __config.getObject<number>("maxBackoff") || (utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30);
+export let maxBackoff: number | undefined = __config.getObject<number>("maxBackoff") || (<any>utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30);
 /**
  * Minimum backoff period in seconds after failed API calls
  */
-export let minBackoff: number | undefined = __config.getObject<number>("minBackoff") || (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1);
+export let minBackoff: number | undefined = __config.getObject<number>("minBackoff") || (<any>utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1);
 /**
  * Maximum number of retries to perform when an API request fails
  */
-export let retries: number | undefined = __config.getObject<number>("retries") || (utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3);
+export let retries: number | undefined = __config.getObject<number>("retries") || (<any>utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3);
 /**
  * RPS limit to apply when making calls to the API
  */
-export let rps: number | undefined = __config.getObject<number>("rps") || (utilities.getEnvNumber("CLOUDFLARE_RPS") || 4);
+export let rps: number | undefined = __config.getObject<number>("rps") || (<any>utilities.getEnvNumber("CLOUDFLARE_RPS") || 4);

@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///                 "hostmaster@example.com",
     ///             },
     ///             Type = "TCP",
-    ///             Port = "22",
+    ///             Port = 22,
     ///             Method = "connection_established",
     ///             Timeout = 10,
     ///             Retries = 2,

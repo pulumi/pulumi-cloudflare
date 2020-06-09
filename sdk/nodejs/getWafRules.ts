@@ -58,11 +58,11 @@ export interface GetWafRulesArgs {
  */
 export interface GetWafRulesResult {
     readonly filter?: outputs.GetWafRulesFilter;
-    readonly packageId?: string;
-    readonly rules: outputs.GetWafRulesRule[];
-    readonly zoneId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly packageId?: string;
+    readonly rules: outputs.GetWafRulesRule[];
+    readonly zoneId: string;
 }

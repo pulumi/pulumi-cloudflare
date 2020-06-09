@@ -61,9 +61,9 @@ export interface GetZonesArgs {
  */
 export interface GetZonesResult {
     readonly filter: outputs.GetZonesFilter;
-    readonly zones: outputs.GetZonesZone[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly zones: outputs.GetZonesZone[];
 }

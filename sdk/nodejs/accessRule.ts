@@ -8,7 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
- *
  */
 export class AccessRule extends pulumi.CustomResource {
     /**
@@ -18,6 +17,7 @@ export class AccessRule extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AccessRuleState, opts?: pulumi.CustomResourceOptions): AccessRule {
         return new AccessRule(name, <any>state, { ...opts, id: id });

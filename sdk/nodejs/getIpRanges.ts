@@ -46,10 +46,10 @@ export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesRes
  */
 export interface GetIpRangesResult {
     readonly cidrBlocks: string[];
-    readonly ipv4CidrBlocks: string[];
-    readonly ipv6CidrBlocks: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ipv4CidrBlocks: string[];
+    readonly ipv6CidrBlocks: string[];
 }
