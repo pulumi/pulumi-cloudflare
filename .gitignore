@@ -1,8 +1,11 @@
+.idea
+.code
 **/vendor/
 .pulumi
 **/bin/
 **/obj/
 Pulumi.*.yaml
+**/node_modules/
 
 **/command-output/
 
@@ -10,6 +13,10 @@ Pulumi.*.yaml
 *.iml
 
 yarn.lock
-node_modules/
-
 **/pulumiManifest.go
+
+ci-scripts
+**/schema.go
+**/version.txt
+**/nuget
+**/dist

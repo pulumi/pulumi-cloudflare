@@ -4,20 +4,10 @@ package examples
 
 import (
 	"os"
-	"path"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
-
-func TestAccRecord(t *testing.T) {
-	test := getJSBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "record"),
-		})
-
-	integration.ProgramTest(t, &test)
-}
 
 func getZoneId(t *testing.T) string {
 	zoneId := os.Getenv("CLOUDFLARE_ZONE_ID")
@@ -39,19 +29,4 @@ func getCwd(t *testing.T) string {
 
 func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{}
-}
-
-func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	zoneId := getZoneId(t)
-	base := getBaseOptions()
-	baseJS := base.With(integration.ProgramTestOptions{
-		Config: map[string]string{
-			"zone_id": zoneId,
-		},
-		Dependencies: []string{
-			"@pulumi/cloudflare",
-		},
-	})
-
-	return baseJS
 }
