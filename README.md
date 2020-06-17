@@ -28,7 +28,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-cloudflare/sdk/go/...
+    $ go get github.com/pulumi/pulumi-cloudflare/sdk/v2/go/...
 
 ### .NET
 
