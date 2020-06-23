@@ -12,11 +12,11 @@ from . import utilities, tables
 class Argo(pulumi.CustomResource):
     smart_routing: pulumi.Output[str]
     """
-    Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+    Whether smart routing is enabled. Valid values: `on` or `off`.
     """
     tiered_caching: pulumi.Output[str]
     """
-    Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+    Whether tiered caching is enabled. Valid values: `on` or `off`.
     """
     zone_id: pulumi.Output[str]
     """
@@ -43,8 +43,8 @@ class Argo(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
-        :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+        :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Valid values: `on` or `off`.
+        :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Valid values: `on` or `off`.
         :param pulumi.Input[str] zone_id: The DNS zone ID that you wish to manage Argo on.
         """
         if __name__ is not None:
@@ -84,8 +84,8 @@ class Argo(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
-        :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+        :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Valid values: `on` or `off`.
+        :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Valid values: `on` or `off`.
         :param pulumi.Input[str] zone_id: The DNS zone ID that you wish to manage Argo on.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

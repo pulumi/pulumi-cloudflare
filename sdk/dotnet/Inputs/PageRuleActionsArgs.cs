@@ -78,6 +78,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("cacheOnCookie")]
         public Input<string>? CacheOnCookie { get; set; }
 
+        [Input("cacheTtlByStatuses")]
+        private InputList<Inputs.PageRuleActionsCacheTtlByStatusArgs>? _cacheTtlByStatuses;
+
+        /// <summary>
+        /// Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+        /// </summary>
+        public InputList<Inputs.PageRuleActionsCacheTtlByStatusArgs> CacheTtlByStatuses
+        {
+            get => _cacheTtlByStatuses ?? (_cacheTtlByStatuses = new InputList<Inputs.PageRuleActionsCacheTtlByStatusArgs>());
+            set => _cacheTtlByStatuses = value;
+        }
+
         /// <summary>
         /// Boolean of whether this action is enabled. Default: false.
         /// </summary>

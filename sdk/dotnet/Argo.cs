@@ -38,13 +38,13 @@ namespace Pulumi.Cloudflare
     public partial class Argo : Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+        /// Whether smart routing is enabled. Valid values: `on` or `off`.
         /// </summary>
         [Output("smartRouting")]
         public Output<string?> SmartRouting { get; private set; } = null!;
 
         /// <summary>
-        /// Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+        /// Whether tiered caching is enabled. Valid values: `on` or `off`.
         /// </summary>
         [Output("tieredCaching")]
         public Output<string?> TieredCaching { get; private set; } = null!;
@@ -102,13 +102,13 @@ namespace Pulumi.Cloudflare
     public sealed class ArgoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+        /// Whether smart routing is enabled. Valid values: `on` or `off`.
         /// </summary>
         [Input("smartRouting")]
         public Input<string>? SmartRouting { get; set; }
 
         /// <summary>
-        /// Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+        /// Whether tiered caching is enabled. Valid values: `on` or `off`.
         /// </summary>
         [Input("tieredCaching")]
         public Input<string>? TieredCaching { get; set; }
@@ -127,13 +127,13 @@ namespace Pulumi.Cloudflare
     public sealed class ArgoState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+        /// Whether smart routing is enabled. Valid values: `on` or `off`.
         /// </summary>
         [Input("smartRouting")]
         public Input<string>? SmartRouting { get; set; }
 
         /// <summary>
-        /// Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+        /// Whether tiered caching is enabled. Valid values: `on` or `off`.
         /// </summary>
         [Input("tieredCaching")]
         public Input<string>? TieredCaching { get; set; }

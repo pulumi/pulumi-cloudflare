@@ -528,6 +528,10 @@ export interface PageRuleActions {
      */
     cacheOnCookie?: string;
     /**
+     * Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+     */
+    cacheTtlByStatuses?: outputs.PageRuleActionsCacheTtlByStatus[];
+    /**
      * Boolean of whether this action is enabled. Default: false.
      */
     disableApps?: boolean;
@@ -715,6 +719,18 @@ export interface PageRuleActionsCacheKeyFieldsUser {
     lang: boolean;
 }
 
+export interface PageRuleActionsCacheTtlByStatus {
+    /**
+     * A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+     */
+    codes: string;
+    /**
+     * Duration a resource lives in the Cloudflare cache.
+     * * positive number - cache for specified duration in seconds
+     */
+    ttl: number;
+}
+
 export interface PageRuleActionsForwardingUrl {
     /**
      * The status code to use for the redirection.
@@ -880,13 +896,32 @@ export interface SpectrumApplicationOriginDns {
 
 export interface WorkerScriptKvNamespaceBinding {
     /**
-     * The name for the binding.
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+    namespaceId: string;
+}
+
+export interface WorkerScriptPlainTextBinding {
+    /**
+     * The global variable for the binding in your Worker code.
      */
     name: string;
     /**
-     * ID of KV namespace.
+     * The secret text you want to store.
      */
-    namespaceId: string;
+    text: string;
+}
+
+export interface WorkerScriptSecretTextBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+    /**
+     * The secret text you want to store.
+     */
+    text: string;
 }
 
 export interface ZoneLockdownConfiguration {

@@ -14,9 +14,9 @@ import (
 type Argo struct {
 	pulumi.CustomResourceState
 
-	// Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether smart routing is enabled. Valid values: `on` or `off`.
 	SmartRouting pulumi.StringPtrOutput `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether tiered caching is enabled. Valid values: `on` or `off`.
 	TieredCaching pulumi.StringPtrOutput `pulumi:"tieredCaching"`
 	// The DNS zone ID that you wish to manage Argo on.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -53,18 +53,18 @@ func GetArgo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Argo resources.
 type argoState struct {
-	// Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether smart routing is enabled. Valid values: `on` or `off`.
 	SmartRouting *string `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether tiered caching is enabled. Valid values: `on` or `off`.
 	TieredCaching *string `pulumi:"tieredCaching"`
 	// The DNS zone ID that you wish to manage Argo on.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ArgoState struct {
-	// Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether smart routing is enabled. Valid values: `on` or `off`.
 	SmartRouting pulumi.StringPtrInput
-	// Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether tiered caching is enabled. Valid values: `on` or `off`.
 	TieredCaching pulumi.StringPtrInput
 	// The DNS zone ID that you wish to manage Argo on.
 	ZoneId pulumi.StringPtrInput
@@ -75,9 +75,9 @@ func (ArgoState) ElementType() reflect.Type {
 }
 
 type argoArgs struct {
-	// Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether smart routing is enabled. Valid values: `on` or `off`.
 	SmartRouting *string `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether tiered caching is enabled. Valid values: `on` or `off`.
 	TieredCaching *string `pulumi:"tieredCaching"`
 	// The DNS zone ID that you wish to manage Argo on.
 	ZoneId string `pulumi:"zoneId"`
@@ -85,9 +85,9 @@ type argoArgs struct {
 
 // The set of arguments for constructing a Argo resource.
 type ArgoArgs struct {
-	// Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether smart routing is enabled. Valid values: `on` or `off`.
 	SmartRouting pulumi.StringPtrInput
-	// Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+	// Whether tiered caching is enabled. Valid values: `on` or `off`.
 	TieredCaching pulumi.StringPtrInput
 	// The DNS zone ID that you wish to manage Argo on.
 	ZoneId pulumi.StringInput

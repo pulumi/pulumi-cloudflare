@@ -2184,6 +2184,18 @@
                         }
                     }
                 },
+                "cacheTtlByStatuses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/PageRuleActionsCacheTtlByStatus:PageRuleActionsCacheTtlByStatus"
+                    },
+                    "description": "Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "disableApps": {
                     "type": "boolean",
                     "description": "Boolean of whether this action is enabled. Default: false.\n",
@@ -2668,6 +2680,33 @@
                 }
             }
         },
+        "cloudflare:/PageRuleActionsCacheTtlByStatus:PageRuleActionsCacheTtlByStatus": {
+            "properties": {
+                "codes": {
+                    "type": "string",
+                    "description": "A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "Duration a resource lives in the Cloudflare cache.\n* positive number - cache for specified duration in seconds\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "codes",
+                "ttl"
+            ]
+        },
         "cloudflare:/PageRuleActionsForwardingUrl:PageRuleActionsForwardingUrl": {
             "properties": {
                 "statusCode": {
@@ -3087,7 +3126,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The name for the binding.\n",
+                    "description": "The global variable for the binding in your Worker code.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3096,7 +3135,6 @@
                 },
                 "namespaceId": {
                     "type": "string",
-                    "description": "ID of KV namespace.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3108,6 +3146,60 @@
             "required": [
                 "name",
                 "namespaceId"
+            ]
+        },
+        "cloudflare:/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The secret text you want to store.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "text"
+            ]
+        },
+        "cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "text": {
+                    "type": "string",
+                    "description": "The secret text you want to store.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "text"
             ]
         },
         "cloudflare:/ZoneLockdownConfiguration:ZoneLockdownConfiguration": {
@@ -5310,11 +5402,11 @@
             "properties": {
                 "smartRouting": {
                     "type": "string",
-                    "description": "Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.\n"
+                    "description": "Whether smart routing is enabled. Valid values: `on` or `off`.\n"
                 },
                 "tieredCaching": {
                     "type": "string",
-                    "description": "Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.\n"
+                    "description": "Whether tiered caching is enabled. Valid values: `on` or `off`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -5327,11 +5419,11 @@
             "inputProperties": {
                 "smartRouting": {
                     "type": "string",
-                    "description": "Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.\n"
+                    "description": "Whether smart routing is enabled. Valid values: `on` or `off`.\n"
                 },
                 "tieredCaching": {
                     "type": "string",
-                    "description": "Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.\n"
+                    "description": "Whether tiered caching is enabled. Valid values: `on` or `off`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -5346,11 +5438,11 @@
                 "properties": {
                     "smartRouting": {
                         "type": "string",
-                        "description": "Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.\n"
+                        "description": "Whether smart routing is enabled. Valid values: `on` or `off`.\n"
                     },
                     "tieredCaching": {
                         "type": "string",
-                        "description": "Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.\n"
+                        "description": "Whether tiered caching is enabled. Valid values: `on` or `off`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -6722,6 +6814,60 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge": {
+            "description": "Provides a resource which manages Cloudflare Logpush ownership challenges to use\nin a Logpush Job. On it's own, doesn't do much however this resource should\nbe used in conjunction to create Logpush jobs.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "destinationConf": {
+                    "type": "string",
+                    "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
+                },
+                "ownershipChallengeFilename": {
+                    "type": "string",
+                    "description": "The filename of the ownership challenge which\ncontains the contents required for Logpush Job creation.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID where the logpush ownership challenge should be created.\n"
+                }
+            },
+            "required": [
+                "destinationConf",
+                "ownershipChallengeFilename",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "destinationConf": {
+                    "type": "string",
+                    "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID where the logpush ownership challenge should be created.\n"
+                }
+            },
+            "requiredInputs": [
+                "destinationConf",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LogPushOwnershipChallenge resources.\n",
+                "properties": {
+                    "destinationConf": {
+                        "type": "string",
+                        "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
+                    },
+                    "ownershipChallengeFilename": {
+                        "type": "string",
+                        "description": "The filename of the ownership challenge which\ncontains the contents required for Logpush Job creation.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID where the logpush ownership challenge should be created.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/logpullRetention:LogpullRetention": {
             "description": "Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.LogpullRetention(\"example\", {\n    enabled: true,\n    zoneId: \"fb54f084ca7f7b732d3d3ecbd8ef7bf2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.LogpullRetention(\"example\",\n    enabled=\"true\",\n    zone_id=\"fb54f084ca7f7b732d3d3ecbd8ef7bf2\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.LogpullRetention(\"example\", new Cloudflare.LogpullRetentionArgs\n        {\n            Enabled = true,\n            ZoneId = \"fb54f084ca7f7b732d3d3ecbd8ef7bf2\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
@@ -7634,6 +7780,168 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/wafOverride:WafOverride": {
+            "description": "Provides a Cloudflare WAF override resource. This enables the ability to toggle\nWAF rules and groups on or off based on URIs.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of what the WAF override does.\n"
+                },
+                "groups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Similar to `rules`; which WAF groups you want to alter.\n"
+                },
+                "overrideId": {
+                    "type": "string"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "Whether this package is currently paused.\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Relative priority of this configuration when multiple configurations match a single URL.\n"
+                },
+                "rewriteAction": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "When a WAF rule matches, substitute its configured action for a different action specified by this definition.\n"
+                },
+                "rules": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A list of WAF rule ID to rule action you intend to apply.\n"
+                },
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of URLs to apply the WAF override to.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone to which the WAF override condition should be added.\n"
+                }
+            },
+            "required": [
+                "overrideId",
+                "rules",
+                "urls",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of what the WAF override does.\n"
+                },
+                "groups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Similar to `rules`; which WAF groups you want to alter.\n"
+                },
+                "paused": {
+                    "type": "boolean",
+                    "description": "Whether this package is currently paused.\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Relative priority of this configuration when multiple configurations match a single URL.\n"
+                },
+                "rewriteAction": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "When a WAF rule matches, substitute its configured action for a different action specified by this definition.\n"
+                },
+                "rules": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A list of WAF rule ID to rule action you intend to apply.\n"
+                },
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An array of URLs to apply the WAF override to.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone to which the WAF override condition should be added.\n"
+                }
+            },
+            "requiredInputs": [
+                "rules",
+                "urls",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WafOverride resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of what the WAF override does.\n"
+                    },
+                    "groups": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Similar to `rules`; which WAF groups you want to alter.\n"
+                    },
+                    "overrideId": {
+                        "type": "string"
+                    },
+                    "paused": {
+                        "type": "boolean",
+                        "description": "Whether this package is currently paused.\n"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "description": "Relative priority of this configuration when multiple configurations match a single URL.\n"
+                    },
+                    "rewriteAction": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "When a WAF rule matches, substitute its configured action for a different action specified by this definition.\n"
+                    },
+                    "rules": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A list of WAF rule ID to rule action you intend to apply.\n"
+                    },
+                    "urls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "An array of URLs to apply the WAF override to.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The DNS zone to which the WAF override condition should be added.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/wafPackage:WafPackage": {
             "description": "Provides a Cloudflare WAF rule package resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall packages.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst owasp = new cloudflare.WafPackage(\"owasp\", {\n    actionMode: \"simulate\",\n    packageId: \"a25a9a7e9c00afc1fb2e0245519d725b\",\n    sensitivity: \"medium\",\n    zoneId: \"ae36f999674d196762efcc5abb06b345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nowasp = cloudflare.WafPackage(\"owasp\",\n    action_mode=\"simulate\",\n    package_id=\"a25a9a7e9c00afc1fb2e0245519d725b\",\n    sensitivity=\"medium\",\n    zone_id=\"ae36f999674d196762efcc5abb06b345\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var owasp = new Cloudflare.WafPackage(\"owasp\", new Cloudflare.WafPackageArgs\n        {\n            ActionMode = \"simulate\",\n            PackageId = \"a25a9a7e9c00afc1fb2e0245519d725b\",\n            Sensitivity = \"medium\",\n            ZoneId = \"ae36f999674d196762efcc5abb06b345\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
@@ -7856,7 +8164,19 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name for the binding.\n"
+                    "description": "The global variable for the binding in your Worker code.\n"
+                },
+                "plainTextBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
+                    }
+                },
+                "secretTextBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                    }
                 }
             },
             "required": [
@@ -7876,7 +8196,19 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name for the binding.\n"
+                    "description": "The global variable for the binding in your Worker code.\n"
+                },
+                "plainTextBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
+                    }
+                },
+                "secretTextBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                    }
                 }
             },
             "requiredInputs": [
@@ -7898,7 +8230,19 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name for the binding.\n"
+                        "description": "The global variable for the binding in your Worker code.\n"
+                    },
+                    "plainTextBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
+                        }
+                    },
+                    "secretTextBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                        }
                     }
                 },
                 "type": "object"

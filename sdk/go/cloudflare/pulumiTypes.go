@@ -5434,6 +5434,8 @@ type PageRuleActions struct {
 	CacheLevel *string `pulumi:"cacheLevel"`
 	// String value of cookie name to conditionally cache the page.
 	CacheOnCookie *string `pulumi:"cacheOnCookie"`
+	// Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+	CacheTtlByStatuses []PageRuleActionsCacheTtlByStatus `pulumi:"cacheTtlByStatuses"`
 	// Boolean of whether this action is enabled. Default: false.
 	DisableApps *bool `pulumi:"disableApps"`
 	// Boolean of whether this action is enabled. Default: false.
@@ -5521,6 +5523,8 @@ type PageRuleActionsArgs struct {
 	CacheLevel pulumi.StringPtrInput `pulumi:"cacheLevel"`
 	// String value of cookie name to conditionally cache the page.
 	CacheOnCookie pulumi.StringPtrInput `pulumi:"cacheOnCookie"`
+	// Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+	CacheTtlByStatuses PageRuleActionsCacheTtlByStatusArrayInput `pulumi:"cacheTtlByStatuses"`
 	// Boolean of whether this action is enabled. Default: false.
 	DisableApps pulumi.BoolPtrInput `pulumi:"disableApps"`
 	// Boolean of whether this action is enabled. Default: false.
@@ -5704,6 +5708,11 @@ func (o PageRuleActionsOutput) CacheLevel() pulumi.StringPtrOutput {
 // String value of cookie name to conditionally cache the page.
 func (o PageRuleActionsOutput) CacheOnCookie() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PageRuleActions) *string { return v.CacheOnCookie }).(pulumi.StringPtrOutput)
+}
+
+// Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+func (o PageRuleActionsOutput) CacheTtlByStatuses() PageRuleActionsCacheTtlByStatusArrayOutput {
+	return o.ApplyT(func(v PageRuleActions) []PageRuleActionsCacheTtlByStatus { return v.CacheTtlByStatuses }).(PageRuleActionsCacheTtlByStatusArrayOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
@@ -5957,6 +5966,16 @@ func (o PageRuleActionsPtrOutput) CacheOnCookie() pulumi.StringPtrOutput {
 		}
 		return v.CacheOnCookie
 	}).(pulumi.StringPtrOutput)
+}
+
+// Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+func (o PageRuleActionsPtrOutput) CacheTtlByStatuses() PageRuleActionsCacheTtlByStatusArrayOutput {
+	return o.ApplyT(func(v *PageRuleActions) []PageRuleActionsCacheTtlByStatus {
+		if v == nil {
+			return nil
+		}
+		return v.CacheTtlByStatuses
+	}).(PageRuleActionsCacheTtlByStatusArrayOutput)
 }
 
 // Boolean of whether this action is enabled. Default: false.
@@ -7214,6 +7233,117 @@ func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Lang() pulumi.BoolPtrOutput 
 		}
 		return v.Lang
 	}).(pulumi.BoolPtrOutput)
+}
+
+type PageRuleActionsCacheTtlByStatus struct {
+	// A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+	Codes string `pulumi:"codes"`
+	// Duration a resource lives in the Cloudflare cache.
+	// * positive number - cache for specified duration in seconds
+	Ttl int `pulumi:"ttl"`
+}
+
+// PageRuleActionsCacheTtlByStatusInput is an input type that accepts PageRuleActionsCacheTtlByStatusArgs and PageRuleActionsCacheTtlByStatusOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheTtlByStatusInput` via:
+//
+// 		 PageRuleActionsCacheTtlByStatusArgs{...}
+//
+type PageRuleActionsCacheTtlByStatusInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheTtlByStatusOutput() PageRuleActionsCacheTtlByStatusOutput
+	ToPageRuleActionsCacheTtlByStatusOutputWithContext(context.Context) PageRuleActionsCacheTtlByStatusOutput
+}
+
+type PageRuleActionsCacheTtlByStatusArgs struct {
+	// A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+	Codes pulumi.StringInput `pulumi:"codes"`
+	// Duration a resource lives in the Cloudflare cache.
+	// * positive number - cache for specified duration in seconds
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (PageRuleActionsCacheTtlByStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheTtlByStatus)(nil)).Elem()
+}
+
+func (i PageRuleActionsCacheTtlByStatusArgs) ToPageRuleActionsCacheTtlByStatusOutput() PageRuleActionsCacheTtlByStatusOutput {
+	return i.ToPageRuleActionsCacheTtlByStatusOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheTtlByStatusArgs) ToPageRuleActionsCacheTtlByStatusOutputWithContext(ctx context.Context) PageRuleActionsCacheTtlByStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheTtlByStatusOutput)
+}
+
+// PageRuleActionsCacheTtlByStatusArrayInput is an input type that accepts PageRuleActionsCacheTtlByStatusArray and PageRuleActionsCacheTtlByStatusArrayOutput values.
+// You can construct a concrete instance of `PageRuleActionsCacheTtlByStatusArrayInput` via:
+//
+// 		 PageRuleActionsCacheTtlByStatusArray{ PageRuleActionsCacheTtlByStatusArgs{...} }
+//
+type PageRuleActionsCacheTtlByStatusArrayInput interface {
+	pulumi.Input
+
+	ToPageRuleActionsCacheTtlByStatusArrayOutput() PageRuleActionsCacheTtlByStatusArrayOutput
+	ToPageRuleActionsCacheTtlByStatusArrayOutputWithContext(context.Context) PageRuleActionsCacheTtlByStatusArrayOutput
+}
+
+type PageRuleActionsCacheTtlByStatusArray []PageRuleActionsCacheTtlByStatusInput
+
+func (PageRuleActionsCacheTtlByStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PageRuleActionsCacheTtlByStatus)(nil)).Elem()
+}
+
+func (i PageRuleActionsCacheTtlByStatusArray) ToPageRuleActionsCacheTtlByStatusArrayOutput() PageRuleActionsCacheTtlByStatusArrayOutput {
+	return i.ToPageRuleActionsCacheTtlByStatusArrayOutputWithContext(context.Background())
+}
+
+func (i PageRuleActionsCacheTtlByStatusArray) ToPageRuleActionsCacheTtlByStatusArrayOutputWithContext(ctx context.Context) PageRuleActionsCacheTtlByStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleActionsCacheTtlByStatusArrayOutput)
+}
+
+type PageRuleActionsCacheTtlByStatusOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheTtlByStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleActionsCacheTtlByStatus)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheTtlByStatusOutput) ToPageRuleActionsCacheTtlByStatusOutput() PageRuleActionsCacheTtlByStatusOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheTtlByStatusOutput) ToPageRuleActionsCacheTtlByStatusOutputWithContext(ctx context.Context) PageRuleActionsCacheTtlByStatusOutput {
+	return o
+}
+
+// A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+func (o PageRuleActionsCacheTtlByStatusOutput) Codes() pulumi.StringOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheTtlByStatus) string { return v.Codes }).(pulumi.StringOutput)
+}
+
+// Duration a resource lives in the Cloudflare cache.
+// * positive number - cache for specified duration in seconds
+func (o PageRuleActionsCacheTtlByStatusOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v PageRuleActionsCacheTtlByStatus) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type PageRuleActionsCacheTtlByStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (PageRuleActionsCacheTtlByStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PageRuleActionsCacheTtlByStatus)(nil)).Elem()
+}
+
+func (o PageRuleActionsCacheTtlByStatusArrayOutput) ToPageRuleActionsCacheTtlByStatusArrayOutput() PageRuleActionsCacheTtlByStatusArrayOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheTtlByStatusArrayOutput) ToPageRuleActionsCacheTtlByStatusArrayOutputWithContext(ctx context.Context) PageRuleActionsCacheTtlByStatusArrayOutput {
+	return o
+}
+
+func (o PageRuleActionsCacheTtlByStatusArrayOutput) Index(i pulumi.IntInput) PageRuleActionsCacheTtlByStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PageRuleActionsCacheTtlByStatus {
+		return vs[0].([]PageRuleActionsCacheTtlByStatus)[vs[1].(int)]
+	}).(PageRuleActionsCacheTtlByStatusOutput)
 }
 
 type PageRuleActionsForwardingUrl struct {
@@ -9382,9 +9512,8 @@ func (o SpectrumApplicationOriginDnsPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 type WorkerScriptKvNamespaceBinding struct {
-	// The name for the binding.
-	Name string `pulumi:"name"`
-	// ID of KV namespace.
+	// The global variable for the binding in your Worker code.
+	Name        string `pulumi:"name"`
 	NamespaceId string `pulumi:"namespaceId"`
 }
 
@@ -9401,9 +9530,8 @@ type WorkerScriptKvNamespaceBindingInput interface {
 }
 
 type WorkerScriptKvNamespaceBindingArgs struct {
-	// The name for the binding.
-	Name pulumi.StringInput `pulumi:"name"`
-	// ID of KV namespace.
+	// The global variable for the binding in your Worker code.
+	Name        pulumi.StringInput `pulumi:"name"`
 	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
 }
 
@@ -9459,12 +9587,11 @@ func (o WorkerScriptKvNamespaceBindingOutput) ToWorkerScriptKvNamespaceBindingOu
 	return o
 }
 
-// The name for the binding.
+// The global variable for the binding in your Worker code.
 func (o WorkerScriptKvNamespaceBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerScriptKvNamespaceBinding) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// ID of KV namespace.
 func (o WorkerScriptKvNamespaceBindingOutput) NamespaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerScriptKvNamespaceBinding) string { return v.NamespaceId }).(pulumi.StringOutput)
 }
@@ -9487,6 +9614,222 @@ func (o WorkerScriptKvNamespaceBindingArrayOutput) Index(i pulumi.IntInput) Work
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptKvNamespaceBinding {
 		return vs[0].([]WorkerScriptKvNamespaceBinding)[vs[1].(int)]
 	}).(WorkerScriptKvNamespaceBindingOutput)
+}
+
+type WorkerScriptPlainTextBinding struct {
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+	// The secret text you want to store.
+	Text string `pulumi:"text"`
+}
+
+// WorkerScriptPlainTextBindingInput is an input type that accepts WorkerScriptPlainTextBindingArgs and WorkerScriptPlainTextBindingOutput values.
+// You can construct a concrete instance of `WorkerScriptPlainTextBindingInput` via:
+//
+// 		 WorkerScriptPlainTextBindingArgs{...}
+//
+type WorkerScriptPlainTextBindingInput interface {
+	pulumi.Input
+
+	ToWorkerScriptPlainTextBindingOutput() WorkerScriptPlainTextBindingOutput
+	ToWorkerScriptPlainTextBindingOutputWithContext(context.Context) WorkerScriptPlainTextBindingOutput
+}
+
+type WorkerScriptPlainTextBindingArgs struct {
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The secret text you want to store.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (WorkerScriptPlainTextBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptPlainTextBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptPlainTextBindingArgs) ToWorkerScriptPlainTextBindingOutput() WorkerScriptPlainTextBindingOutput {
+	return i.ToWorkerScriptPlainTextBindingOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptPlainTextBindingArgs) ToWorkerScriptPlainTextBindingOutputWithContext(ctx context.Context) WorkerScriptPlainTextBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptPlainTextBindingOutput)
+}
+
+// WorkerScriptPlainTextBindingArrayInput is an input type that accepts WorkerScriptPlainTextBindingArray and WorkerScriptPlainTextBindingArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptPlainTextBindingArrayInput` via:
+//
+// 		 WorkerScriptPlainTextBindingArray{ WorkerScriptPlainTextBindingArgs{...} }
+//
+type WorkerScriptPlainTextBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptPlainTextBindingArrayOutput() WorkerScriptPlainTextBindingArrayOutput
+	ToWorkerScriptPlainTextBindingArrayOutputWithContext(context.Context) WorkerScriptPlainTextBindingArrayOutput
+}
+
+type WorkerScriptPlainTextBindingArray []WorkerScriptPlainTextBindingInput
+
+func (WorkerScriptPlainTextBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptPlainTextBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptPlainTextBindingArray) ToWorkerScriptPlainTextBindingArrayOutput() WorkerScriptPlainTextBindingArrayOutput {
+	return i.ToWorkerScriptPlainTextBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptPlainTextBindingArray) ToWorkerScriptPlainTextBindingArrayOutputWithContext(ctx context.Context) WorkerScriptPlainTextBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptPlainTextBindingArrayOutput)
+}
+
+type WorkerScriptPlainTextBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptPlainTextBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptPlainTextBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptPlainTextBindingOutput) ToWorkerScriptPlainTextBindingOutput() WorkerScriptPlainTextBindingOutput {
+	return o
+}
+
+func (o WorkerScriptPlainTextBindingOutput) ToWorkerScriptPlainTextBindingOutputWithContext(ctx context.Context) WorkerScriptPlainTextBindingOutput {
+	return o
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptPlainTextBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptPlainTextBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The secret text you want to store.
+func (o WorkerScriptPlainTextBindingOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptPlainTextBinding) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type WorkerScriptPlainTextBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptPlainTextBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptPlainTextBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptPlainTextBindingArrayOutput) ToWorkerScriptPlainTextBindingArrayOutput() WorkerScriptPlainTextBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptPlainTextBindingArrayOutput) ToWorkerScriptPlainTextBindingArrayOutputWithContext(ctx context.Context) WorkerScriptPlainTextBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptPlainTextBindingArrayOutput) Index(i pulumi.IntInput) WorkerScriptPlainTextBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptPlainTextBinding {
+		return vs[0].([]WorkerScriptPlainTextBinding)[vs[1].(int)]
+	}).(WorkerScriptPlainTextBindingOutput)
+}
+
+type WorkerScriptSecretTextBinding struct {
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+	// The secret text you want to store.
+	Text string `pulumi:"text"`
+}
+
+// WorkerScriptSecretTextBindingInput is an input type that accepts WorkerScriptSecretTextBindingArgs and WorkerScriptSecretTextBindingOutput values.
+// You can construct a concrete instance of `WorkerScriptSecretTextBindingInput` via:
+//
+// 		 WorkerScriptSecretTextBindingArgs{...}
+//
+type WorkerScriptSecretTextBindingInput interface {
+	pulumi.Input
+
+	ToWorkerScriptSecretTextBindingOutput() WorkerScriptSecretTextBindingOutput
+	ToWorkerScriptSecretTextBindingOutputWithContext(context.Context) WorkerScriptSecretTextBindingOutput
+}
+
+type WorkerScriptSecretTextBindingArgs struct {
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The secret text you want to store.
+	Text pulumi.StringInput `pulumi:"text"`
+}
+
+func (WorkerScriptSecretTextBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptSecretTextBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptSecretTextBindingArgs) ToWorkerScriptSecretTextBindingOutput() WorkerScriptSecretTextBindingOutput {
+	return i.ToWorkerScriptSecretTextBindingOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptSecretTextBindingArgs) ToWorkerScriptSecretTextBindingOutputWithContext(ctx context.Context) WorkerScriptSecretTextBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptSecretTextBindingOutput)
+}
+
+// WorkerScriptSecretTextBindingArrayInput is an input type that accepts WorkerScriptSecretTextBindingArray and WorkerScriptSecretTextBindingArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptSecretTextBindingArrayInput` via:
+//
+// 		 WorkerScriptSecretTextBindingArray{ WorkerScriptSecretTextBindingArgs{...} }
+//
+type WorkerScriptSecretTextBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptSecretTextBindingArrayOutput() WorkerScriptSecretTextBindingArrayOutput
+	ToWorkerScriptSecretTextBindingArrayOutputWithContext(context.Context) WorkerScriptSecretTextBindingArrayOutput
+}
+
+type WorkerScriptSecretTextBindingArray []WorkerScriptSecretTextBindingInput
+
+func (WorkerScriptSecretTextBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptSecretTextBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptSecretTextBindingArray) ToWorkerScriptSecretTextBindingArrayOutput() WorkerScriptSecretTextBindingArrayOutput {
+	return i.ToWorkerScriptSecretTextBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptSecretTextBindingArray) ToWorkerScriptSecretTextBindingArrayOutputWithContext(ctx context.Context) WorkerScriptSecretTextBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptSecretTextBindingArrayOutput)
+}
+
+type WorkerScriptSecretTextBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptSecretTextBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptSecretTextBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptSecretTextBindingOutput) ToWorkerScriptSecretTextBindingOutput() WorkerScriptSecretTextBindingOutput {
+	return o
+}
+
+func (o WorkerScriptSecretTextBindingOutput) ToWorkerScriptSecretTextBindingOutputWithContext(ctx context.Context) WorkerScriptSecretTextBindingOutput {
+	return o
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptSecretTextBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptSecretTextBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The secret text you want to store.
+func (o WorkerScriptSecretTextBindingOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptSecretTextBinding) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type WorkerScriptSecretTextBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptSecretTextBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptSecretTextBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptSecretTextBindingArrayOutput) ToWorkerScriptSecretTextBindingArrayOutput() WorkerScriptSecretTextBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptSecretTextBindingArrayOutput) ToWorkerScriptSecretTextBindingArrayOutputWithContext(ctx context.Context) WorkerScriptSecretTextBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptSecretTextBindingArrayOutput) Index(i pulumi.IntInput) WorkerScriptSecretTextBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptSecretTextBinding {
+		return vs[0].([]WorkerScriptSecretTextBinding)[vs[1].(int)]
+	}).(WorkerScriptSecretTextBindingOutput)
 }
 
 type ZoneLockdownConfiguration struct {
@@ -13335,6 +13678,8 @@ func init() {
 	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsQueryStringPtrOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsUserOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsUserPtrOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheTtlByStatusOutput{})
+	pulumi.RegisterOutputType(PageRuleActionsCacheTtlByStatusArrayOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsForwardingUrlOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsForwardingUrlPtrOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsMinifyOutput{})
@@ -13359,6 +13704,10 @@ func init() {
 	pulumi.RegisterOutputType(SpectrumApplicationOriginDnsPtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingOutput{})
+	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptSecretTextBindingOutput{})
+	pulumi.RegisterOutputType(WorkerScriptSecretTextBindingArrayOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(ZoneMetaOutput{})

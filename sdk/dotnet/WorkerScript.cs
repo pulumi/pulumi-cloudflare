@@ -24,10 +24,16 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBinding>> KvNamespaceBindings { get; private set; } = null!;
 
         /// <summary>
-        /// The name for the binding.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("plainTextBindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptPlainTextBinding>> PlainTextBindings { get; private set; } = null!;
+
+        [Output("secretTextBindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptSecretTextBinding>> SecretTextBindings { get; private set; } = null!;
 
 
         /// <summary>
@@ -90,10 +96,26 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The name for the binding.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("plainTextBindings")]
+        private InputList<Inputs.WorkerScriptPlainTextBindingArgs>? _plainTextBindings;
+        public InputList<Inputs.WorkerScriptPlainTextBindingArgs> PlainTextBindings
+        {
+            get => _plainTextBindings ?? (_plainTextBindings = new InputList<Inputs.WorkerScriptPlainTextBindingArgs>());
+            set => _plainTextBindings = value;
+        }
+
+        [Input("secretTextBindings")]
+        private InputList<Inputs.WorkerScriptSecretTextBindingArgs>? _secretTextBindings;
+        public InputList<Inputs.WorkerScriptSecretTextBindingArgs> SecretTextBindings
+        {
+            get => _secretTextBindings ?? (_secretTextBindings = new InputList<Inputs.WorkerScriptSecretTextBindingArgs>());
+            set => _secretTextBindings = value;
+        }
 
         public WorkerScriptArgs()
         {
@@ -117,10 +139,26 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The name for the binding.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("plainTextBindings")]
+        private InputList<Inputs.WorkerScriptPlainTextBindingGetArgs>? _plainTextBindings;
+        public InputList<Inputs.WorkerScriptPlainTextBindingGetArgs> PlainTextBindings
+        {
+            get => _plainTextBindings ?? (_plainTextBindings = new InputList<Inputs.WorkerScriptPlainTextBindingGetArgs>());
+            set => _plainTextBindings = value;
+        }
+
+        [Input("secretTextBindings")]
+        private InputList<Inputs.WorkerScriptSecretTextBindingGetArgs>? _secretTextBindings;
+        public InputList<Inputs.WorkerScriptSecretTextBindingGetArgs> SecretTextBindings
+        {
+            get => _secretTextBindings ?? (_secretTextBindings = new InputList<Inputs.WorkerScriptSecretTextBindingGetArgs>());
+            set => _secretTextBindings = value;
+        }
 
         public WorkerScriptState()
         {

@@ -32,6 +32,7 @@ from .healthcheck import *
 from .load_balancer import *
 from .load_balancer_monitor import *
 from .load_balancer_pool import *
+from .log_push_ownership_challenge import *
 from .logpull_retention import *
 from .logpush_job import *
 from .origin_ca_certificate import *
@@ -41,6 +42,7 @@ from .rate_limit import *
 from .record import *
 from .spectrum_application import *
 from .waf_group import *
+from .waf_override import *
 from .waf_package import *
 from .waf_rule import *
 from .worker_route import *

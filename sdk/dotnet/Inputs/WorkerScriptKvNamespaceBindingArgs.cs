@@ -13,14 +13,11 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class WorkerScriptKvNamespaceBindingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name for the binding.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// ID of KV namespace.
-        /// </summary>
         [Input("namespaceId", required: true)]
         public Input<string> NamespaceId { get; set; } = null!;
 

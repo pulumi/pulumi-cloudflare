@@ -14,12 +14,9 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class WorkerScriptKvNamespaceBinding
     {
         /// <summary>
-        /// The name for the binding.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// ID of KV namespace.
-        /// </summary>
         public readonly string NamespaceId;
 
         [OutputConstructor]
