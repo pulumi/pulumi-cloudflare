@@ -17,8 +17,10 @@ type WorkerScript struct {
 	// The script content.
 	Content             pulumi.StringOutput                       `pulumi:"content"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
-	// The name for the binding.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// The global variable for the binding in your Worker code.
+	Name               pulumi.StringOutput                      `pulumi:"name"`
+	PlainTextBindings  WorkerScriptPlainTextBindingArrayOutput  `pulumi:"plainTextBindings"`
+	SecretTextBindings WorkerScriptSecretTextBindingArrayOutput `pulumi:"secretTextBindings"`
 }
 
 // NewWorkerScript registers a new resource with the given unique name, arguments, and options.
@@ -58,16 +60,20 @@ type workerScriptState struct {
 	// The script content.
 	Content             *string                          `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
-	// The name for the binding.
-	Name *string `pulumi:"name"`
+	// The global variable for the binding in your Worker code.
+	Name               *string                         `pulumi:"name"`
+	PlainTextBindings  []WorkerScriptPlainTextBinding  `pulumi:"plainTextBindings"`
+	SecretTextBindings []WorkerScriptSecretTextBinding `pulumi:"secretTextBindings"`
 }
 
 type WorkerScriptState struct {
 	// The script content.
 	Content             pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
-	// The name for the binding.
-	Name pulumi.StringPtrInput
+	// The global variable for the binding in your Worker code.
+	Name               pulumi.StringPtrInput
+	PlainTextBindings  WorkerScriptPlainTextBindingArrayInput
+	SecretTextBindings WorkerScriptSecretTextBindingArrayInput
 }
 
 func (WorkerScriptState) ElementType() reflect.Type {
@@ -78,8 +84,10 @@ type workerScriptArgs struct {
 	// The script content.
 	Content             string                           `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
-	// The name for the binding.
-	Name string `pulumi:"name"`
+	// The global variable for the binding in your Worker code.
+	Name               string                          `pulumi:"name"`
+	PlainTextBindings  []WorkerScriptPlainTextBinding  `pulumi:"plainTextBindings"`
+	SecretTextBindings []WorkerScriptSecretTextBinding `pulumi:"secretTextBindings"`
 }
 
 // The set of arguments for constructing a WorkerScript resource.
@@ -87,8 +95,10 @@ type WorkerScriptArgs struct {
 	// The script content.
 	Content             pulumi.StringInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
-	// The name for the binding.
-	Name pulumi.StringInput
+	// The global variable for the binding in your Worker code.
+	Name               pulumi.StringInput
+	PlainTextBindings  WorkerScriptPlainTextBindingArrayInput
+	SecretTextBindings WorkerScriptSecretTextBindingArrayInput
 }
 
 func (WorkerScriptArgs) ElementType() reflect.Type {

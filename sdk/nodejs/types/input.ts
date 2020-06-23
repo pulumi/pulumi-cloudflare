@@ -493,6 +493,10 @@ export interface PageRuleActions {
      */
     cacheOnCookie?: pulumi.Input<string>;
     /**
+     * Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+     */
+    cacheTtlByStatuses?: pulumi.Input<pulumi.Input<inputs.PageRuleActionsCacheTtlByStatus>[]>;
+    /**
      * Boolean of whether this action is enabled. Default: false.
      */
     disableApps?: pulumi.Input<boolean>;
@@ -680,6 +684,18 @@ export interface PageRuleActionsCacheKeyFieldsUser {
     lang?: pulumi.Input<boolean>;
 }
 
+export interface PageRuleActionsCacheTtlByStatus {
+    /**
+     * A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+     */
+    codes: pulumi.Input<string>;
+    /**
+     * Duration a resource lives in the Cloudflare cache.
+     * * positive number - cache for specified duration in seconds
+     */
+    ttl: pulumi.Input<number>;
+}
+
 export interface PageRuleActionsForwardingUrl {
     /**
      * The status code to use for the redirection.
@@ -845,13 +861,32 @@ export interface SpectrumApplicationOriginDns {
 
 export interface WorkerScriptKvNamespaceBinding {
     /**
-     * The name for the binding.
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
+}
+
+export interface WorkerScriptPlainTextBinding {
+    /**
+     * The global variable for the binding in your Worker code.
      */
     name: pulumi.Input<string>;
     /**
-     * ID of KV namespace.
+     * The secret text you want to store.
      */
-    namespaceId: pulumi.Input<string>;
+    text: pulumi.Input<string>;
+}
+
+export interface WorkerScriptSecretTextBinding {
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The secret text you want to store.
+     */
+    text: pulumi.Input<string>;
 }
 
 export interface ZoneLockdownConfiguration {

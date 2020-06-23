@@ -51,11 +51,11 @@ export class Argo extends pulumi.CustomResource {
     }
 
     /**
-     * Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+     * Whether smart routing is enabled. Valid values: `on` or `off`.
      */
     public readonly smartRouting!: pulumi.Output<string | undefined>;
     /**
-     * Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+     * Whether tiered caching is enabled. Valid values: `on` or `off`.
      */
     public readonly tieredCaching!: pulumi.Output<string | undefined>;
     /**
@@ -103,11 +103,11 @@ export class Argo extends pulumi.CustomResource {
  */
 export interface ArgoState {
     /**
-     * Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+     * Whether smart routing is enabled. Valid values: `on` or `off`.
      */
     readonly smartRouting?: pulumi.Input<string>;
     /**
-     * Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+     * Whether tiered caching is enabled. Valid values: `on` or `off`.
      */
     readonly tieredCaching?: pulumi.Input<string>;
     /**
@@ -121,11 +121,11 @@ export interface ArgoState {
  */
 export interface ArgoArgs {
     /**
-     * Whether smart routing is enabled. Valid values: `on` or `off`. Defaults to `off`.
+     * Whether smart routing is enabled. Valid values: `on` or `off`.
      */
     readonly smartRouting?: pulumi.Input<string>;
     /**
-     * Whether tiered caching is enabled. Valid values: `on` or `off`. Defaults to `off`.
+     * Whether tiered caching is enabled. Valid values: `on` or `off`.
      */
     readonly tieredCaching?: pulumi.Input<string>;
     /**

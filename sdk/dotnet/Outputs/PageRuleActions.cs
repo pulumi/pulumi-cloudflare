@@ -58,6 +58,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? CacheOnCookie;
         /// <summary>
+        /// Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PageRuleActionsCacheTtlByStatus> CacheTtlByStatuses;
+        /// <summary>
         /// Boolean of whether this action is enabled. Default: false.
         /// </summary>
         public readonly bool? DisableApps;
@@ -182,6 +186,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? cacheOnCookie,
 
+            ImmutableArray<Outputs.PageRuleActionsCacheTtlByStatus> cacheTtlByStatuses,
+
             bool? disableApps,
 
             bool? disablePerformance,
@@ -243,6 +249,7 @@ namespace Pulumi.Cloudflare.Outputs
             CacheKeyFields = cacheKeyFields;
             CacheLevel = cacheLevel;
             CacheOnCookie = cacheOnCookie;
+            CacheTtlByStatuses = cacheTtlByStatuses;
             DisableApps = disableApps;
             DisablePerformance = disablePerformance;
             DisableRailgun = disableRailgun;

@@ -24,8 +24,16 @@ import * as utilities from "./utilities";
  *     name: "script1",
  *     content: fs.readFileSync("script.js"),
  *     kv_namespace_binding: [{
- *         name: "myBinding",
+ *         name: "MY_EXAMPLE_KV_NAMESPACE",
  *         namespaceId: myNamespace.id,
+ *     }],
+ *     plain_text_binding: [{
+ *         name: "MY_EXAMPLE_PLAIN_TEXT",
+ *         text: "foobar",
+ *     }],
+ *     secret_text_binding: [{
+ *         name: "MY_EXAMPLE_SECRET_TEXT",
+ *         text: _var.secret_foo_value,
  *     }],
  * });
  * ```
@@ -64,9 +72,11 @@ export class WorkerScript extends pulumi.CustomResource {
     public readonly content!: pulumi.Output<string>;
     public readonly kvNamespaceBindings!: pulumi.Output<outputs.WorkerScriptKvNamespaceBinding[] | undefined>;
     /**
-     * The name for the binding.
+     * The global variable for the binding in your Worker code.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly plainTextBindings!: pulumi.Output<outputs.WorkerScriptPlainTextBinding[] | undefined>;
+    public readonly secretTextBindings!: pulumi.Output<outputs.WorkerScriptSecretTextBinding[] | undefined>;
 
     /**
      * Create a WorkerScript resource with the given unique name, arguments, and options.
@@ -83,6 +93,8 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["content"] = state ? state.content : undefined;
             inputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
+            inputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
             if (!args || args.content === undefined) {
@@ -94,6 +106,8 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["content"] = args ? args.content : undefined;
             inputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
+            inputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
         }
         if (!opts) {
             opts = {}
@@ -116,9 +130,11 @@ export interface WorkerScriptState {
     readonly content?: pulumi.Input<string>;
     readonly kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
-     * The name for the binding.
+     * The global variable for the binding in your Worker code.
      */
     readonly name?: pulumi.Input<string>;
+    readonly plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
+    readonly secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
 }
 
 /**
@@ -131,7 +147,9 @@ export interface WorkerScriptArgs {
     readonly content: pulumi.Input<string>;
     readonly kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
-     * The name for the binding.
+     * The global variable for the binding in your Worker code.
      */
     readonly name: pulumi.Input<string>;
+    readonly plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
+    readonly secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
 }

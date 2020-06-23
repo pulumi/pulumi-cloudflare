@@ -17,9 +17,11 @@ class WorkerScript(pulumi.CustomResource):
     kv_namespace_bindings: pulumi.Output[list]
     name: pulumi.Output[str]
     """
-    The name for the binding.
+    The global variable for the binding in your Worker code.
     """
-    def __init__(__self__, resource_name, opts=None, content=None, kv_namespace_bindings=None, name=None, __props__=None, __name__=None, __opts__=None):
+    plain_text_bindings: pulumi.Output[list]
+    secret_text_bindings: pulumi.Output[list]
+    def __init__(__self__, resource_name, opts=None, content=None, kv_namespace_bindings=None, name=None, plain_text_bindings=None, secret_text_bindings=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
@@ -37,8 +39,16 @@ class WorkerScript(pulumi.CustomResource):
             name="script_1",
             content=(lambda path: open(path).read())("script.js"),
             kv_namespace_binding=[{
-                "name": "my_binding",
+                "name": "MY_EXAMPLE_KV_NAMESPACE",
                 "namespace_id": my_namespace.id,
+            }],
+            plain_text_binding=[{
+                "name": "MY_EXAMPLE_PLAIN_TEXT",
+                "text": "foobar",
+            }],
+            secret_text_binding=[{
+                "name": "MY_EXAMPLE_SECRET_TEXT",
+                "text": var["secret_foo_value"],
             }])
         ```
 
@@ -46,12 +56,22 @@ class WorkerScript(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The name for the binding.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
 
         The **kv_namespace_bindings** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name for the binding.
-          * `namespace_id` (`pulumi.Input[str]`) - ID of KV namespace.
+          * `name` (`pulumi.Input[str]`) - The global variable for the binding in your Worker code.
+          * `namespace_id` (`pulumi.Input[str]`)
+
+        The **plain_text_bindings** object supports the following:
+
+          * `name` (`pulumi.Input[str]`) - The global variable for the binding in your Worker code.
+          * `text` (`pulumi.Input[str]`) - The secret text you want to store.
+
+        The **secret_text_bindings** object supports the following:
+
+          * `name` (`pulumi.Input[str]`) - The global variable for the binding in your Worker code.
+          * `text` (`pulumi.Input[str]`) - The secret text you want to store.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -77,6 +97,8 @@ class WorkerScript(pulumi.CustomResource):
             if name is None:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
+            __props__['plain_text_bindings'] = plain_text_bindings
+            __props__['secret_text_bindings'] = secret_text_bindings
         super(WorkerScript, __self__).__init__(
             'cloudflare:index/workerScript:WorkerScript',
             resource_name,
@@ -84,7 +106,7 @@ class WorkerScript(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, content=None, kv_namespace_bindings=None, name=None):
+    def get(resource_name, id, opts=None, content=None, kv_namespace_bindings=None, name=None, plain_text_bindings=None, secret_text_bindings=None):
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -93,12 +115,22 @@ class WorkerScript(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The name for the binding.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
 
         The **kv_namespace_bindings** object supports the following:
 
-          * `name` (`pulumi.Input[str]`) - The name for the binding.
-          * `namespace_id` (`pulumi.Input[str]`) - ID of KV namespace.
+          * `name` (`pulumi.Input[str]`) - The global variable for the binding in your Worker code.
+          * `namespace_id` (`pulumi.Input[str]`)
+
+        The **plain_text_bindings** object supports the following:
+
+          * `name` (`pulumi.Input[str]`) - The global variable for the binding in your Worker code.
+          * `text` (`pulumi.Input[str]`) - The secret text you want to store.
+
+        The **secret_text_bindings** object supports the following:
+
+          * `name` (`pulumi.Input[str]`) - The global variable for the binding in your Worker code.
+          * `text` (`pulumi.Input[str]`) - The secret text you want to store.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -107,6 +139,8 @@ class WorkerScript(pulumi.CustomResource):
         __props__["content"] = content
         __props__["kv_namespace_bindings"] = kv_namespace_bindings
         __props__["name"] = name
+        __props__["plain_text_bindings"] = plain_text_bindings
+        __props__["secret_text_bindings"] = secret_text_bindings
         return WorkerScript(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

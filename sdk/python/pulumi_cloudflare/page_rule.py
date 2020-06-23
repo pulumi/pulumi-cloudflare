@@ -47,6 +47,11 @@ class PageRule(pulumi.CustomResource):
 
       * `cacheLevel` (`str`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
       * `cacheOnCookie` (`str`) - String value of cookie name to conditionally cache the page.
+      * `cacheTtlByStatuses` (`list`) - Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+        * `codes` (`str`) - A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+        * `ttl` (`float`) - Duration a resource lives in the Cloudflare cache.
+          * positive number - cache for specified duration in seconds
+
       * `disableApps` (`bool`) - Boolean of whether this action is enabled. Default: false.
       * `disablePerformance` (`bool`) - Boolean of whether this action is enabled. Default: false.
       * `disableRailgun` (`bool`) - Boolean of whether this action is enabled. Default: false.
@@ -168,6 +173,11 @@ class PageRule(pulumi.CustomResource):
 
           * `cacheLevel` (`pulumi.Input[str]`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
           * `cacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally cache the page.
+          * `cacheTtlByStatuses` (`pulumi.Input[list]`) - Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+            * `codes` (`pulumi.Input[str]`) - A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+            * `ttl` (`pulumi.Input[float]`) - Duration a resource lives in the Cloudflare cache.
+              * positive number - cache for specified duration in seconds
+
           * `disableApps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
           * `disablePerformance` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
           * `disableRailgun` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
@@ -285,6 +295,11 @@ class PageRule(pulumi.CustomResource):
 
           * `cacheLevel` (`pulumi.Input[str]`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
           * `cacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally cache the page.
+          * `cacheTtlByStatuses` (`pulumi.Input[list]`) - Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+            * `codes` (`pulumi.Input[str]`) - A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
+            * `ttl` (`pulumi.Input[float]`) - Duration a resource lives in the Cloudflare cache.
+              * positive number - cache for specified duration in seconds
+
           * `disableApps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
           * `disablePerformance` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
           * `disableRailgun` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
