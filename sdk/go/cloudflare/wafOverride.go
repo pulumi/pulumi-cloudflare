@@ -12,6 +12,43 @@ import (
 
 // Provides a Cloudflare WAF override resource. This enables the ability to toggle
 // WAF rules and groups on or off based on URIs.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewWafOverride(ctx, "shopEcxample", &cloudflare.WafOverrideArgs{
+// 			ZoneId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Urls: pulumi.StringArray{
+// 				pulumi.String("example.com/no-waf-here"),
+// 				pulumi.String("example.com/another/path/*"),
+// 			},
+// 			Rules: pulumi.StringMap{
+// 				"100015": pulumi.String("disable"),
+// 			},
+// 			Groups: pulumi.StringMap{
+// 				"ea8687e59929c1fd05ba97574ad43f77": pulumi.String("default"),
+// 			},
+// 			RewriteAction: pulumi.StringMap{
+// 				"default":   pulumi.String("block"),
+// 				"challenge": pulumi.String("block"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type WafOverride struct {
 	pulumi.CustomResourceState
 

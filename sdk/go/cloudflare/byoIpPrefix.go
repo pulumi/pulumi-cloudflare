@@ -11,6 +11,31 @@ import (
 )
 
 // Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP) which are used with or without Magic Transit.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewByoIpPrefix(ctx, "example", &cloudflare.ByoIpPrefixArgs{
+// 			Advertisement: pulumi.String("on"),
+// 			Description:   pulumi.String("Example IP Prefix"),
+// 			PrefixId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ByoIpPrefix struct {
 	pulumi.CustomResourceState
 

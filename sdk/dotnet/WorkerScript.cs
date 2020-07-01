@@ -10,7 +10,57 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+    /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myNamespace = new Cloudflare.WorkersKvNamespace("myNamespace", new Cloudflare.WorkersKvNamespaceArgs
+    ///         {
+    ///             Title = "example",
+    ///         });
+    ///         // Sets the script with the name "script_1"
+    ///         var myScript = new Cloudflare.WorkerScript("myScript", new Cloudflare.WorkerScriptArgs
+    ///         {
+    ///             Name = "script_1",
+    ///             Content = File.ReadAllText("script.js"),
+    ///             KvNamespaceBindings = 
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkerScriptKvNamespaceBindingArgs
+    ///                 {
+    ///                     Name = "MY_EXAMPLE_KV_NAMESPACE",
+    ///                     NamespaceId = myNamespace.Id,
+    ///                 },
+    ///             },
+    ///             PlainTextBindings = 
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkerScriptPlainTextBindingArgs
+    ///                 {
+    ///                     Name = "MY_EXAMPLE_PLAIN_TEXT",
+    ///                     Text = "foobar",
+    ///                 },
+    ///             },
+    ///             SecretTextBindings = 
+    ///             {
+    ///                 new Cloudflare.Inputs.WorkerScriptSecretTextBindingArgs
+    ///                 {
+    ///                     Name = "MY_EXAMPLE_SECRET_TEXT",
+    ///                     Text = @var.Secret_foo_value,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class WorkerScript : Pulumi.CustomResource
     {

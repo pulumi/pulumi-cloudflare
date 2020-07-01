@@ -14,8 +14,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
@@ -34,13 +32,13 @@ namespace Pulumi.Cloudflare
     ///             {
     ///                 Ssl = "flexible",
     ///                 EmailObfuscation = "on",
-    ///                 Minify = 
+    ///                 Minifies = 
     ///                 {
-    ///                     
+    ///                     new Cloudflare.Inputs.PageRuleActionsMinifyArgs
     ///                     {
-    ///                         { "html", "off" },
-    ///                         { "css", "on" },
-    ///                         { "js", "on" },
+    ///                         Html = "off",
+    ///                         Css = "on",
+    ///                         Js = "on",
     ///                     },
     ///                 },
     ///             },

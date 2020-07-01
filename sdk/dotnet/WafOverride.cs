@@ -12,6 +12,43 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare WAF override resource. This enables the ability to toggle
     /// WAF rules and groups on or off based on URIs.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var shopEcxample = new Cloudflare.WafOverride("shopEcxample", new Cloudflare.WafOverrideArgs
+    ///         {
+    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             Urls = 
+    ///             {
+    ///                 "example.com/no-waf-here",
+    ///                 "example.com/another/path/*",
+    ///             },
+    ///             Rules = 
+    ///             {
+    ///                 { "100015", "disable" },
+    ///             },
+    ///             Groups = 
+    ///             {
+    ///                 { "ea8687e59929c1fd05ba97574ad43f77", "default" },
+    ///             },
+    ///             RewriteAction = 
+    ///             {
+    ///                 { "default", "block" },
+    ///                 { "challenge", "block" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class WafOverride : Pulumi.CustomResource
     {

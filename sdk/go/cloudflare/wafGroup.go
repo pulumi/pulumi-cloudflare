@@ -11,6 +11,31 @@ import (
 )
 
 // Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewWafGroup(ctx, "honeyPot", &cloudflare.WafGroupArgs{
+// 			GroupId: pulumi.String("de677e5818985db1285d0e80225f06e5"),
+// 			Mode:    pulumi.String("on"),
+// 			ZoneId:  pulumi.String("ae36f999674d196762efcc5abb06b345"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type WafGroup struct {
 	pulumi.CustomResourceState
 

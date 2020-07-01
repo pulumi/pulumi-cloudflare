@@ -9,13 +9,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleUser = new cloudflare.AccountMember("exampleUser", {
+ * const exampleUser = new cloudflare.AccountMember("example_user", {
  *     emailAddress: "user@example.com",
  *     roleIds: [
  *         "68b329da9893e34099c7d8ad5cb9c940",

@@ -13,6 +13,26 @@ namespace Pulumi.Cloudflare
     /// Provides a resource which manages Cloudflare Logpush ownership challenges to use
     /// in a Logpush Job. On it's own, doesn't do much however this resource should
     /// be used in conjunction to create Logpush jobs.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Cloudflare.LogPushOwnershipChallenge("example", new Cloudflare.LogPushOwnershipChallengeArgs
+    ///         {
+    ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class LogPushOwnershipChallenge : Pulumi.CustomResource
     {

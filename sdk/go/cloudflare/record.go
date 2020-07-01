@@ -11,6 +11,50 @@ import (
 )
 
 // Provides a Cloudflare record resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewRecord(ctx, "foobar", &cloudflare.RecordArgs{
+// 			ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+// 			Name:   pulumi.String("terraform"),
+// 			Value:  pulumi.String("192.168.0.11"),
+// 			Type:   pulumi.String("A"),
+// 			Ttl:    pulumi.Int(3600),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewRecord(ctx, "_sipTls", &cloudflare.RecordArgs{
+// 			ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+// 			Name:   pulumi.String("_sip._tls"),
+// 			Type:   pulumi.String("SRV"),
+// 			Data: &cloudflare.RecordDataArgs{
+// 				Service:  pulumi.String("_sip"),
+// 				Proto:    pulumi.String("_tls"),
+// 				Name:     pulumi.String("terraform-srv"),
+// 				Priority: pulumi.Int(0),
+// 				Weight:   pulumi.Int(0),
+// 				Port:     pulumi.Int(443),
+// 				Target:   pulumi.String("example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Record struct {
 	pulumi.CustomResourceState
 

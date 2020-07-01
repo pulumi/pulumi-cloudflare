@@ -10,11 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare..WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+    /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
     /// 
     /// ## Example Usage
-    /// 
-    /// 
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -27,7 +25,7 @@ namespace Pulumi.Cloudflare
     ///         var myScript = new Cloudflare.WorkerScript("myScript", new Cloudflare.WorkerScriptArgs
     ///         {
     ///         });
-    ///         // see "cloudflare..WorkerScript" documentation ...
+    ///         // see "cloudflare_worker_script" documentation ...
     ///         // Runs the specified worker script for all URLs that match `example.com/*`
     ///         var myRoute = new Cloudflare.WorkerRoute("myRoute", new Cloudflare.WorkerRouteArgs
     ///         {

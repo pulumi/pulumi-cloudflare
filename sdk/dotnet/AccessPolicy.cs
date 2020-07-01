@@ -13,6 +13,67 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Access Policy resource. Access Policies are used
     /// in conjunction with Access Applications to restrict access to a
     /// particular resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Allowing access to `test@example.com` email address only
+    ///         var testPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyAccessPolicy", new Cloudflare.AccessPolicyArgs
+    ///         {
+    ///             ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///             Name = "staging policy",
+    ///             Precedence = 1,
+    ///             Decision = "allow",
+    ///             Includes = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Allowing `test@example.com` to access but only when coming from a
+    ///         // specific IP.
+    ///         var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", new Cloudflare.AccessPolicyArgs
+    ///         {
+    ///             ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///             Name = "staging policy",
+    ///             Precedence = 1,
+    ///             Decision = "allow",
+    ///             Includes = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Requires = 
+    ///             {
+    ///                 { "ips", 
+    ///                 {
+    ///                     @var.Office_ip,
+    ///                 } },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class AccessPolicy : Pulumi.CustomResource
     {

@@ -15,8 +15,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
@@ -75,6 +73,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// Please refer to the [developers.cloudflare.com Access documentation][access_identity_provider_guide]
+    /// for full reference on what is available and how to configure your provider.
     /// </summary>
     public partial class AccessIdentityProvider : Pulumi.CustomResource
     {

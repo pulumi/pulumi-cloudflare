@@ -12,6 +12,30 @@ import (
 
 // Access Service Tokens are used for service-to-service communication
 // when an application is behind Cloudflare Access.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewAccessServiceToken(ctx, "myApp", &cloudflare.AccessServiceTokenArgs{
+// 			AccountId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 			Name:      pulumi.String("CI/CD app"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AccessServiceToken struct {
 	pulumi.CustomResourceState
 

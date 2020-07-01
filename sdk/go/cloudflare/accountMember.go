@@ -11,6 +11,33 @@ import (
 )
 
 // Provides a resource which manages Cloudflare account members.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewAccountMember(ctx, "exampleUser", &cloudflare.AccountMemberArgs{
+// 			EmailAddress: pulumi.String("user@example.com"),
+// 			RoleIds: pulumi.StringArray{
+// 				pulumi.String("68b329da9893e34099c7d8ad5cb9c940"),
+// 				pulumi.String("d784fa8b6d98d27699781bd9a7cf19f0"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AccountMember struct {
 	pulumi.CustomResourceState
 

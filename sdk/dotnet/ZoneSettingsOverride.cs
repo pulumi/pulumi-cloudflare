@@ -14,8 +14,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
@@ -42,9 +40,9 @@ namespace Pulumi.Cloudflare
     ///                     Js = "off",
     ///                     Html = "off",
     ///                 },
-    ///                 Security_header = 
+    ///                 SecurityHeader = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsSecurityHeaderArgs
     ///                 {
-    ///                     { "enabled", true },
+    ///                     Enabled = true,
     ///                 },
     ///             },
     ///         });

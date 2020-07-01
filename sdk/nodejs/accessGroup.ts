@@ -13,8 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -23,7 +21,7 @@ import * as utilities from "./utilities";
  * const testGroupAccessGroup = new cloudflare.AccessGroup("testGroupAccessGroup", {
  *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
  *     name: "staging group",
- *     include: [{
+ *     includes: [{
  *         emails: ["test@example.com"],
  *     }],
  * });
@@ -32,7 +30,7 @@ import * as utilities from "./utilities";
  * const testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", {
  *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
  *     name: "staging group",
- *     include: [{
+ *     includes: [{
  *         emails: ["test@example.com"],
  *     }],
  *     requires: {
@@ -40,85 +38,33 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- *
  * ## Conditions
  *
  * `require`, `exclude` and `include` arguments share the available
  * conditions which can be applied. The conditions are:
  *
  * * `ip` - (Optional) A list of IP addresses or ranges. Example:
- *   `ip = ["1.2.3.4", "10.0.0.0/2"]`
+ * `ip = ["1.2.3.4", "10.0.0.0/2"]`
  * * `email` - (Optional) A list of email addresses. Example:
- *   `email = ["test@example.com"]`
+ * `email = ["test@example.com"]`
  * * `emailDomain` - (Optional) A list of email domains. Example:
- *   `emailDomain = ["example.com"]`
+ * `emailDomain = ["example.com"]`
  * * `serviceToken` - (Optional) A list of service token ids. Example:
- *   `serviceToken = [cloudflare_access_service_token.demo.id]`
+ * `serviceToken = [cloudflare_access_service_token.demo.id]`
  * * `anyValidServiceToken` - (Optional) Boolean indicating if allow
- *   all tokens to be granted. Example: `anyValidServiceToken = true`
+ * all tokens to be granted. Example: `anyValidServiceToken = true`
  * * `group` - (Optional) A list of access group ids. Example:
- *   `group = [cloudflare_access_group.demo.id]`
+ * `group = [cloudflare_access_group.demo.id]`
  * * `everyone` - (Optional) Boolean indicating permitting access for all
- *   requests. Example: `everyone = true`
+ * requests. Example: `everyone = true`
  * * `certificate` - (Optional) Whether to use mTLS certificate authentication.
  * * `commonName` - (Optional) Use a certificate common name to authenticate with.
  * * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
- *
- *   ```hcl
- *   # ... other configuration
- *   include {
- *     gsuite {
- *       email = "admins@example.com"
- *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
- *     }
- *   }
- *   ```
  * * `github` - (Optional) Use a GitHub team as the `include` condition. Example:
- *
- *   ```hcl
- *   # ... other configuration
- *   include {
- *     github {
- *       name = "my-github-team-name"
- *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
- *     }
- *   }
- *   ```
  * * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
- *
- *   ```hcl
- *   # ... other configuration
- *   include {
- *     azure {
- *       id = "86773093-5feb-48dd-814b-7ccd3676ff50e"
- *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
- *     }
- *   }
- *   ```
  * * `okta` - (Optional) Use Okta as the `include` condition. Example:
- *
- *   ```hcl
- *   # ... other configuration
- *   include {
- *     okta {
- *       name = "admins"
- *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
- *     }
- *   }
- *   ```
  * * `saml` - (Optional) Use an external SAML setup as the `include` condition.
- *   Example:
- *
- *   ```hcl
- *   # ... other configuration
- *   include {
- *     saml {
- *       attributeName = "group"
- *       attributeValue = "admins"
- *       identityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761"
- *     }
- *   }
- *   ```
+ * Example:
  */
 export class AccessGroup extends pulumi.CustomResource {
     /**

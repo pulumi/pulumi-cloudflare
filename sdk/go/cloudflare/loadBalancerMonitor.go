@@ -10,6 +10,73 @@ import (
 )
 
 // If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
+//
+// ## Example Usage
+// ### HTTP Monitor
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewLoadBalancerMonitor(ctx, "httpMonitor", &cloudflare.LoadBalancerMonitorArgs{
+// 			AllowInsecure:   pulumi.Bool(false),
+// 			Description:     pulumi.String("example http load balancer"),
+// 			ExpectedBody:    pulumi.String("alive"),
+// 			ExpectedCodes:   pulumi.String("2xx"),
+// 			FollowRedirects: pulumi.Bool(true),
+// 			Headers: cloudflare.LoadBalancerMonitorHeaderArray{
+// 				&cloudflare.LoadBalancerMonitorHeaderArgs{
+// 					Header: pulumi.String("Host"),
+// 					Values: pulumi.StringArray{
+// 						pulumi.String("example.com"),
+// 					},
+// 				},
+// 			},
+// 			Interval: pulumi.Int(60),
+// 			Method:   pulumi.String("GET"),
+// 			Path:     pulumi.String("/health"),
+// 			Retries:  pulumi.Int(5),
+// 			Timeout:  pulumi.Int(7),
+// 			Type:     pulumi.String("http"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### TCP Monitor
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewLoadBalancerMonitor(ctx, "tcpMonitor", &cloudflare.LoadBalancerMonitorArgs{
+// 			Description: pulumi.String("example tcp load balancer"),
+// 			Interval:    pulumi.Int(60),
+// 			Method:      pulumi.String("connection_established"),
+// 			Retries:     pulumi.Int(5),
+// 			Timeout:     pulumi.Int(7),
+// 			Type:        pulumi.String("tcp"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LoadBalancerMonitor struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,110 @@ import (
 )
 
 // Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer.
+//
+// ## Example Usage
+//
+// The resource supports HTTP, HTTPS and TCP type health checks.
+// ### HTTPS Health Check
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewHealthcheck(ctx, "httpHealthCheck", &cloudflare.HealthcheckArgs{
+// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+// 			Name:        pulumi.String("http-health-check"),
+// 			Description: pulumi.String("example http health check"),
+// 			Address:     pulumi.String("example.com"),
+// 			Suspended:   pulumi.Bool(false),
+// 			CheckRegions: pulumi.StringArray{
+// 				pulumi.String("WEU"),
+// 				pulumi.String("EEU"),
+// 			},
+// 			NotificationSuspended: pulumi.Bool(false),
+// 			NotificationEmailAddresses: pulumi.StringArray{
+// 				pulumi.String("hostmaster@example.com"),
+// 			},
+// 			Type:         pulumi.String("HTTPS"),
+// 			Port:         pulumi.Int(443),
+// 			Method:       pulumi.String("GET"),
+// 			Path:         pulumi.String("/health"),
+// 			ExpectedBody: pulumi.String("alive"),
+// 			ExpectedCodes: pulumi.StringArray{
+// 				pulumi.String("2xx"),
+// 				pulumi.String("301"),
+// 			},
+// 			FollowRedirects: pulumi.Bool(true),
+// 			AllowInsecure:   pulumi.Bool(false),
+// 			Headers: cloudflare.HealthcheckHeaderArray{
+// 				&cloudflare.HealthcheckHeaderArgs{
+// 					Header: pulumi.String("Host"),
+// 					Values: pulumi.StringArray{
+// 						pulumi.String("example.com"),
+// 					},
+// 				},
+// 			},
+// 			Timeout:              pulumi.Int(10),
+// 			Retries:              pulumi.Int(2),
+// 			Interval:             pulumi.Int(60),
+// 			ConsecutiveFails:     pulumi.Int(3),
+// 			ConsecutiveSuccesses: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### TCP Monitor
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewHealthcheck(ctx, "tcpHealthCheck", &cloudflare.HealthcheckArgs{
+// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+// 			Name:        pulumi.String("tcp-health-check"),
+// 			Description: pulumi.String("example tcp health check"),
+// 			Address:     pulumi.String("example.com"),
+// 			Suspended:   pulumi.Bool(false),
+// 			CheckRegions: pulumi.StringArray{
+// 				pulumi.String("WEU"),
+// 				pulumi.String("EEU"),
+// 			},
+// 			NotificationSuspended: pulumi.Bool(false),
+// 			NotificationEmailAddresses: pulumi.StringArray{
+// 				pulumi.String("hostmaster@example.com"),
+// 			},
+// 			Type:                 pulumi.String("TCP"),
+// 			Port:                 pulumi.Int(22),
+// 			Method:               pulumi.String("connection_established"),
+// 			Timeout:              pulumi.Int(10),
+// 			Retries:              pulumi.Int(2),
+// 			Interval:             pulumi.Int(60),
+// 			ConsecutiveFails:     pulumi.Int(3),
+// 			ConsecutiveSuccesses: pulumi.Int(2),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Healthcheck struct {
 	pulumi.CustomResourceState
 

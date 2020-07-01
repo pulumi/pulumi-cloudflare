@@ -10,13 +10,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const myApp = new cloudflare.AccessServiceToken("myApp", {
+ * const myApp = new cloudflare.AccessServiceToken("my_app", {
  *     accountId: "d41d8cd98f00b204e9800998ecf8427e",
  *     name: "CI/CD app",
  * });

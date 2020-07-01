@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,7 +20,7 @@ import * as utilities from "./utilities";
  * const allowCloudflareIngress = new gcp.compute.Firewall("allowCloudflareIngress", {
  *     network: "default",
  *     sourceRanges: cloudflare.then(cloudflare => cloudflare.ipv4CidrBlocks),
- *     allow: [{
+ *     allows: [{
  *         ports: "443",
  *         protocol: "tcp",
  *     }],

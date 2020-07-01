@@ -11,6 +11,38 @@ import (
 )
 
 // Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewSpectrumApplication(ctx, "sshProxy", &cloudflare.SpectrumApplicationArgs{
+// 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
+// 			Protocol:    pulumi.String("tcp/22"),
+// 			TrafficType: pulumi.String("direct"),
+// 			Dns: &cloudflare.SpectrumApplicationDnsArgs{
+// 				Type: pulumi.String("CNAME"),
+// 				Name: pulumi.String("ssh.example.com"),
+// 			},
+// 			OriginDirects: pulumi.StringArray{
+// 				pulumi.String("tcp://109.151.40.129:22"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type SpectrumApplication struct {
 	pulumi.CustomResourceState
 

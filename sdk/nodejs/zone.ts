@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -82,7 +80,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly vanityNameServers!: pulumi.Output<string[]>;
     /**
-     * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+     * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
      */
     public /*out*/ readonly verificationKey!: pulumi.Output<string>;
     /**
@@ -175,7 +173,7 @@ export interface ZoneState {
      */
     readonly vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+     * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
      */
     readonly verificationKey?: pulumi.Input<string>;
     /**

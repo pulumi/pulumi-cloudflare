@@ -12,30 +12,28 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // one time pin
- * const pinLogin = new cloudflare.AccessIdentityProvider("pinLogin", {
+ * const pinLogin = new cloudflare.AccessIdentityProvider("pin_login", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     name: "PIN login",
  *     type: "onetimepin",
  * });
  * // oauth
- * const githubOauth = new cloudflare.AccessIdentityProvider("githubOauth", {
+ * const githubOauth = new cloudflare.AccessIdentityProvider("github_oauth", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     configs: [{
  *         clientId: "example",
- *         clientSecret: "secretKey",
+ *         clientSecret: "secret_key",
  *     }],
  *     name: "GitHub OAuth",
  *     type: "github",
  * });
  * // saml
- * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloudSaml", {
+ * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloud_saml", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     configs: [{
  *         attributes: [
@@ -52,6 +50,9 @@ import * as utilities from "./utilities";
  *     type: "saml",
  * });
  * ```
+ *
+ * Please refer to the [developers.cloudflare.com Access documentation][accessIdentityProviderGuide]
+ * for full reference on what is available and how to configure your provider.
  */
 export class AccessIdentityProvider extends pulumi.CustomResource {
     /**

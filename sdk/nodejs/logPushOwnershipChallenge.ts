@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.LogpushOwnershipChallenge("example", {
+ * const example = new cloudflare.LogPushOwnershipChallenge("example", {
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });

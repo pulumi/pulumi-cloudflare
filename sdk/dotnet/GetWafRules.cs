@@ -46,7 +46,6 @@ namespace Pulumi.Cloudflare
         ///     public Output&lt;string&gt; WafRules { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

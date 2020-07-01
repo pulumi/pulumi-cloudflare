@@ -12,6 +12,70 @@ import (
 
 // Provides a Cloudflare Access Identity Provider resource. Identity Providers are
 // used as an authentication or authorisation source within Access.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewAccessIdentityProvider(ctx, "pinLogin", &cloudflare.AccessIdentityProviderArgs{
+// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Name:      pulumi.String("PIN login"),
+// 			Type:      pulumi.String("onetimepin"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewAccessIdentityProvider(ctx, "githubOauth", &cloudflare.AccessIdentityProviderArgs{
+// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Configs: cloudflare.AccessIdentityProviderConfigArray{
+// 				&cloudflare.AccessIdentityProviderConfigArgs{
+// 					ClientId:     pulumi.String("example"),
+// 					ClientSecret: pulumi.String("secret_key"),
+// 				},
+// 			},
+// 			Name: pulumi.String("GitHub OAuth"),
+// 			Type: pulumi.String("github"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewAccessIdentityProvider(ctx, "jumpcloudSaml", &cloudflare.AccessIdentityProviderArgs{
+// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Configs: cloudflare.AccessIdentityProviderConfigArray{
+// 				&cloudflare.AccessIdentityProviderConfigArgs{
+// 					Attributes: pulumi.StringArray{
+// 						pulumi.String("email"),
+// 						pulumi.String("username"),
+// 					},
+// 					IdpPublicCert: pulumi.String(fmt.Sprintf("%v%v", "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\n", "uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\n")),
+// 					IssuerUrl:     pulumi.String("jumpcloud"),
+// 					SignRequest:   pulumi.Bool(false),
+// 					SsoTargetUrl:  pulumi.String("https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess"),
+// 				},
+// 			},
+// 			Name: pulumi.String("JumpCloud SAML"),
+// 			Type: pulumi.String("saml"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Please refer to the [developers.cloudflare.com Access documentation][accessIdentityProviderGuide]
+// for full reference on what is available and how to configure your provider.
 type AccessIdentityProvider struct {
 	pulumi.CustomResourceState
 

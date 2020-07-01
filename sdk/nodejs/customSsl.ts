@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -27,7 +25,7 @@ import * as utilities from "./utilities";
  *         certificate: "-----INSERT CERTIFICATE-----",
  *         geo_restrictions: "us",
  *         private_key: "-----INSERT PRIVATE KEY-----",
- *         type: "legacyCustom",
+ *         type: "legacy_custom",
  *     },
  *     zoneId: cloudflareZoneId,
  * });
