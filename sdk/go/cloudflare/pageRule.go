@@ -11,6 +11,44 @@ import (
 )
 
 // Provides a Cloudflare page rule resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
+// 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
+// 			Target:   pulumi.String(fmt.Sprintf("%v%v%v", "sub.", _var.Cloudflare_zone, "/page")),
+// 			Priority: pulumi.Int(1),
+// 			Actions: &cloudflare.PageRuleActionsArgs{
+// 				Ssl:              pulumi.String("flexible"),
+// 				EmailObfuscation: pulumi.String("on"),
+// 				Minifies: cloudflare.PageRuleActionsMinifyArray{
+// 					&cloudflare.PageRuleActionsMinifyArgs{
+// 						Html: pulumi.String("off"),
+// 						Css:  pulumi.String("on"),
+// 						Js:   pulumi.String("on"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type PageRule struct {
 	pulumi.CustomResourceState
 

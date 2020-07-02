@@ -9,6 +9,50 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    /// <summary>
+    /// Provides a Cloudflare record resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a record to the domain
+    ///         var foobar = new Cloudflare.Record("foobar", new Cloudflare.RecordArgs
+    ///         {
+    ///             ZoneId = @var.Cloudflare_zone_id,
+    ///             Name = "terraform",
+    ///             Value = "192.168.0.11",
+    ///             Type = "A",
+    ///             Ttl = 3600,
+    ///         });
+    ///         // Add a record requiring a data map
+    ///         var _sipTls = new Cloudflare.Record("_sipTls", new Cloudflare.RecordArgs
+    ///         {
+    ///             ZoneId = @var.Cloudflare_zone_id,
+    ///             Name = "_sip._tls",
+    ///             Type = "SRV",
+    ///             Data = new Cloudflare.Inputs.RecordDataArgs
+    ///             {
+    ///                 Service = "_sip",
+    ///                 Proto = "_tls",
+    ///                 Name = "terraform-srv",
+    ///                 Priority = 0,
+    ///                 Weight = 0,
+    ///                 Port = 443,
+    ///                 Target = "example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Record : Pulumi.CustomResource
     {
         /// <summary>

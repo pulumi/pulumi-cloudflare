@@ -11,6 +11,46 @@ import (
 )
 
 // Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewZoneSettingsOverride(ctx, "test", &cloudflare.ZoneSettingsOverrideArgs{
+// 			ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+// 			Settings: &cloudflare.ZoneSettingsOverrideSettingsArgs{
+// 				Brotli:                  pulumi.String("on"),
+// 				ChallengeTtl:            pulumi.Int(2700),
+// 				SecurityLevel:           pulumi.String("high"),
+// 				OpportunisticEncryption: pulumi.String("on"),
+// 				AutomaticHttpsRewrites:  pulumi.String("on"),
+// 				Mirage:                  pulumi.String("on"),
+// 				Waf:                     pulumi.String("on"),
+// 				Minify: &cloudflare.ZoneSettingsOverrideSettingsMinifyArgs{
+// 					Css:  pulumi.String("on"),
+// 					Js:   pulumi.String("off"),
+// 					Html: pulumi.String("off"),
+// 				},
+// 				SecurityHeader: &cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs{
+// 					Enabled: pulumi.Bool(true),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ZoneSettingsOverride struct {
 	pulumi.CustomResourceState
 

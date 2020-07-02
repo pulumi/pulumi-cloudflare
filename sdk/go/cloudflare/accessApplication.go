@@ -13,6 +13,32 @@ import (
 // Provides a Cloudflare Access Application resource. Access Applications
 // are used to restrict access to a whole application using an
 // authorisation gateway managed by Cloudflare.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
+// 			Domain:          pulumi.String("staging.example.com"),
+// 			Name:            pulumi.String("staging application"),
+// 			SessionDuration: pulumi.String("24h"),
+// 			ZoneId:          pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type AccessApplication struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,31 @@ import (
 )
 
 // Provides a Cloudflare WAF rule resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall rules.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewWafRule(ctx, "_00000", &cloudflare.WafRuleArgs{
+// 			Mode:   pulumi.String("simulate"),
+// 			RuleId: pulumi.String("100000"),
+// 			ZoneId: pulumi.String("ae36f999674d196762efcc5abb06b345"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type WafRule struct {
 	pulumi.CustomResourceState
 

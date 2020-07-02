@@ -11,6 +11,40 @@ import (
 )
 
 // Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewZoneLockdown(ctx, "endpointLockdown", &cloudflare.ZoneLockdownArgs{
+// 			Configurations: cloudflare.ZoneLockdownConfigurationArray{
+// 				&cloudflare.ZoneLockdownConfigurationArgs{
+// 					Target: pulumi.String("ip"),
+// 					Value:  pulumi.String("198.51.100.4"),
+// 				},
+// 			},
+// 			Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address"),
+// 			Paused:      pulumi.Bool(false),
+// 			Urls: pulumi.StringArray{
+// 				pulumi.String("api.mysite.com/some/endpoint*"),
+// 			},
+// 			ZoneId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ZoneLockdown struct {
 	pulumi.CustomResourceState
 

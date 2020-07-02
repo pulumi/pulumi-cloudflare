@@ -13,8 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -26,7 +24,7 @@ import * as utilities from "./utilities";
  *     name: "staging policy",
  *     precedence: "1",
  *     decision: "allow",
- *     include: [{
+ *     includes: [{
  *         emails: ["test@example.com"],
  *     }],
  * });
@@ -38,7 +36,7 @@ import * as utilities from "./utilities";
  *     name: "staging policy",
  *     precedence: "1",
  *     decision: "allow",
- *     include: [{
+ *     includes: [{
  *         emails: ["test@example.com"],
  *     }],
  *     requires: {

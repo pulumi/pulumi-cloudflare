@@ -9,15 +9,13 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const basicChallenge = new cloudflare.CustomPages("basicChallenge", {
+ * const basicChallenge = new cloudflare.CustomPages("basic_challenge", {
  *     state: "customized",
- *     type: "basicChallenge",
+ *     type: "basic_challenge",
  *     url: "https://example.com/challenge.html",
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });

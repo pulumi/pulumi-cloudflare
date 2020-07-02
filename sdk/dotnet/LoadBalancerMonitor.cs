@@ -13,9 +13,7 @@ namespace Pulumi.Cloudflare
     /// If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
     /// 
     /// ## Example Usage
-    /// 
     /// ### HTTP Monitor
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
@@ -53,9 +51,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
-    /// 
     /// ### TCP Monitor
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;

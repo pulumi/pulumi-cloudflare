@@ -7,6 +7,31 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare WAF override resource. This enables the ability to toggle
  * WAF rules and groups on or off based on URIs.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const shopEcxample = new cloudflare.WafOverride("shopEcxample", {
+ *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     urls: [
+ *         "example.com/no-waf-here",
+ *         "example.com/another/path/*",
+ *     ],
+ *     rules: {
+ *         "100015": "disable",
+ *     },
+ *     groups: {
+ *         ea8687e59929c1fd05ba97574ad43f77: "default",
+ *     },
+ *     rewriteAction: {
+ *         "default": "block",
+ *         challenge: "block",
+ *     },
+ * });
+ * ```
  */
 export class WafOverride extends pulumi.CustomResource {
     /**

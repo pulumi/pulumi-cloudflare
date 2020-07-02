@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Restrict access to these endpoints to requests from a known IP address.
- * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
+ * const endpointLockdown = new cloudflare.ZoneLockdown("endpoint_lockdown", {
  *     configurations: [{
  *         target: "ip",
  *         value: "198.51.100.4",

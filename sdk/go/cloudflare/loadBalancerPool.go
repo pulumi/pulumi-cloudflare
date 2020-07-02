@@ -11,6 +11,44 @@ import (
 )
 
 // Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
+// 			Description:       pulumi.String("example load balancer pool"),
+// 			Enabled:           pulumi.Bool(false),
+// 			MinimumOrigins:    pulumi.Int(1),
+// 			Name:              pulumi.String("example-pool"),
+// 			NotificationEmail: pulumi.String("someone@example.com"),
+// 			Origins: cloudflare.LoadBalancerPoolOriginArray{
+// 				&cloudflare.LoadBalancerPoolOriginArgs{
+// 					Address: pulumi.String("192.0.2.1"),
+// 					Enabled: pulumi.Bool(false),
+// 					Name:    pulumi.String("example-1"),
+// 				},
+// 				&cloudflare.LoadBalancerPoolOriginArgs{
+// 					Address: pulumi.String("192.0.2.2"),
+// 					Name:    pulumi.String("example-2"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LoadBalancerPool struct {
 	pulumi.CustomResourceState
 

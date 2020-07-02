@@ -7,11 +7,9 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare..WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
+ * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
  *
  * ## Example Usage
- *
- *
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,19 +17,19 @@ import * as utilities from "./utilities";
  * import * from "fs";
  *
  * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {title: "example"});
- * // Sets the script with the name "script1"
+ * // Sets the script with the name "script_1"
  * const myScript = new cloudflare.WorkerScript("myScript", {
- *     name: "script1",
+ *     name: "script_1",
  *     content: fs.readFileSync("script.js"),
- *     kv_namespace_binding: [{
+ *     kvNamespaceBindings: [{
  *         name: "MY_EXAMPLE_KV_NAMESPACE",
  *         namespaceId: myNamespace.id,
  *     }],
- *     plain_text_binding: [{
+ *     plainTextBindings: [{
  *         name: "MY_EXAMPLE_PLAIN_TEXT",
  *         text: "foobar",
  *     }],
- *     secret_text_binding: [{
+ *     secretTextBindings: [{
  *         name: "MY_EXAMPLE_SECRET_TEXT",
  *         text: _var.secret_foo_value,
  *     }],

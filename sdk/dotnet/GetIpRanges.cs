@@ -15,6 +15,37 @@ namespace Pulumi.Cloudflare
         /// Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var cloudflare = Output.Create(Cloudflare.GetIpRanges.InvokeAsync());
+        ///         var allowCloudflareIngress = new Gcp.Compute.Firewall("allowCloudflareIngress", new Gcp.Compute.FirewallArgs
+        ///         {
+        ///             Network = "default",
+        ///             SourceRanges = cloudflare.Apply(cloudflare =&gt; cloudflare.Ipv4CidrBlocks),
+        ///             Allows = 
+        ///             {
+        ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///                 {
+        ///                     Ports = "443",
+        ///                     Protocol = "tcp",
+        ///                 },
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetIpRangesResult> InvokeAsync(InvokeOptions? options = null)

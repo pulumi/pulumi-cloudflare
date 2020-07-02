@@ -13,9 +13,6 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
-        /// 
-        /// {{% examples %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());

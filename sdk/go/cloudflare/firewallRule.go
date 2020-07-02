@@ -14,6 +14,40 @@ import (
 // A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
 //
 // Filter expressions needs to be created first before using Firewall Rule. See Filter.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		wordpressFilter, err := cloudflare.NewFilter(ctx, "wordpressFilter", &cloudflare.FilterArgs{
+// 			ZoneId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 			Description: pulumi.String("Wordpress break-in attempts that are outside of the office"),
+// 			Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewFirewallRule(ctx, "wordpressFirewallRule", &cloudflare.FirewallRuleArgs{
+// 			ZoneId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 			Description: pulumi.String("Block wordpress break-in attempts"),
+// 			FilterId:    wordpressFilter.ID(),
+// 			Action:      pulumi.String("block"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type FirewallRule struct {
 	pulumi.CustomResourceState
 

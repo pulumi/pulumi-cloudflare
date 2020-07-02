@@ -11,8 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -36,11 +34,11 @@ import * as utilities from "./utilities";
  *     description: "example load balancer using geo-balancing",
  *     proxied: true,
  *     steeringPolicy: "geo",
- *     pop_pools: [{
+ *     popPools: [{
  *         pop: "LAX",
  *         poolIds: [foo.id],
  *     }],
- *     region_pools: [{
+ *     regionPools: [{
  *         region: "WNAM",
  *         poolIds: [foo.id],
  *     }],

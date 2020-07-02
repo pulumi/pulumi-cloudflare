@@ -11,13 +11,11 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const stagingApp = new cloudflare.AccessApplication("stagingApp", {
+ * const stagingApp = new cloudflare.AccessApplication("staging_app", {
  *     domain: "staging.example.com",
  *     name: "staging application",
  *     sessionDuration: "24h",

@@ -10,10 +10,71 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer. 
+    /// Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer.
     /// 
     /// ## Example Usage
     /// 
+    /// The resource supports HTTP, HTTPS and TCP type health checks.
+    /// ### HTTPS Health Check
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var httpHealthCheck = new Cloudflare.Healthcheck("httpHealthCheck", new Cloudflare.HealthcheckArgs
+    ///         {
+    ///             ZoneId = @var.Cloudflare_zone_id,
+    ///             Name = "http-health-check",
+    ///             Description = "example http health check",
+    ///             Address = "example.com",
+    ///             Suspended = false,
+    ///             CheckRegions = 
+    ///             {
+    ///                 "WEU",
+    ///                 "EEU",
+    ///             },
+    ///             NotificationSuspended = false,
+    ///             NotificationEmailAddresses = 
+    ///             {
+    ///                 "hostmaster@example.com",
+    ///             },
+    ///             Type = "HTTPS",
+    ///             Port = 443,
+    ///             Method = "GET",
+    ///             Path = "/health",
+    ///             ExpectedBody = "alive",
+    ///             ExpectedCodes = 
+    ///             {
+    ///                 "2xx",
+    ///                 "301",
+    ///             },
+    ///             FollowRedirects = true,
+    ///             AllowInsecure = false,
+    ///             Headers = 
+    ///             {
+    ///                 new Cloudflare.Inputs.HealthcheckHeaderArgs
+    ///                 {
+    ///                     Header = "Host",
+    ///                     Values = 
+    ///                     {
+    ///                         "example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Timeout = 10,
+    ///             Retries = 2,
+    ///             Interval = 60,
+    ///             ConsecutiveFails = 3,
+    ///             ConsecutiveSuccesses = 2,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### TCP Monitor
     /// 
     /// ```csharp

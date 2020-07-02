@@ -14,85 +14,87 @@ namespace Pulumi.Cloudflare
     /// in conjunction with Access Policies to restrict access to a
     /// particular resource based on group membership.
     /// 
+    /// ## Example Usage
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Allowing access to `test@example.com` email address only
+    ///         var testGroupAccessGroup = new Cloudflare.AccessGroup("testGroupAccessGroup", new Cloudflare.AccessGroupArgs
+    ///         {
+    ///             AccountId = "975ecf5a45e3bcb680dba0722a420ad9",
+    ///             Name = "staging group",
+    ///             Includes = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Allowing `test@example.com` to access but only when coming from a
+    ///         // specific IP.
+    ///         var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", new Cloudflare.AccessGroupArgs
+    ///         {
+    ///             AccountId = "975ecf5a45e3bcb680dba0722a420ad9",
+    ///             Name = "staging group",
+    ///             Includes = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Requires = 
+    ///             {
+    ///                 { "ips", 
+    ///                 {
+    ///                     @var.Office_ip,
+    ///                 } },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Conditions
     /// 
     /// `require`, `exclude` and `include` arguments share the available
     /// conditions which can be applied. The conditions are:
     /// 
     /// * `ip` - (Optional) A list of IP addresses or ranges. Example:
-    ///   `ip = ["1.2.3.4", "10.0.0.0/2"]`
+    /// `ip = ["1.2.3.4", "10.0.0.0/2"]`
     /// * `email` - (Optional) A list of email addresses. Example:
-    ///   `email = ["test@example.com"]`
+    /// `email = ["test@example.com"]`
     /// * `email_domain` - (Optional) A list of email domains. Example:
-    ///   `email_domain = ["example.com"]`
+    /// `email_domain = ["example.com"]`
     /// * `service_token` - (Optional) A list of service token ids. Example:
-    ///   `service_token = [cloudflare_access_service_token.demo.id]`
+    /// `service_token = [cloudflare_access_service_token.demo.id]`
     /// * `any_valid_service_token` - (Optional) Boolean indicating if allow
-    ///   all tokens to be granted. Example: `any_valid_service_token = true`
+    /// all tokens to be granted. Example: `any_valid_service_token = true`
     /// * `group` - (Optional) A list of access group ids. Example:
-    ///   `group = [cloudflare_access_group.demo.id]`
+    /// `group = [cloudflare_access_group.demo.id]`
     /// * `everyone` - (Optional) Boolean indicating permitting access for all
-    ///   requests. Example: `everyone = true`
+    /// requests. Example: `everyone = true`
     /// * `certificate` - (Optional) Whether to use mTLS certificate authentication.
     /// * `common_name` - (Optional) Use a certificate common name to authenticate with.
     /// * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
-    /// 
-    ///   ```hcl
-    ///   # ... other configuration
-    ///   include {
-    ///     gsuite {
-    ///       email = "admins@example.com"
-    ///       identity_provider_id = "ca298b82-93b5-41bf-bc2d-10493f09b761"
-    ///     }
-    ///   }
-    ///   ```
     /// * `github` - (Optional) Use a GitHub team as the `include` condition. Example:
-    /// 
-    ///   ```hcl
-    ///   # ... other configuration
-    ///   include {
-    ///     github {
-    ///       name = "my-github-team-name"
-    ///       identity_provider_id = "ca298b82-93b5-41bf-bc2d-10493f09b761"
-    ///     }
-    ///   }
-    ///   ```
     /// * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
-    /// 
-    ///   ```hcl
-    ///   # ... other configuration
-    ///   include {
-    ///     azure {
-    ///       id = "86773093-5feb-48dd-814b-7ccd3676ff50e"
-    ///       identity_provider_id = "ca298b82-93b5-41bf-bc2d-10493f09b761"
-    ///     }
-    ///   }
-    ///   ```
     /// * `okta` - (Optional) Use Okta as the `include` condition. Example:
-    /// 
-    ///   ```hcl
-    ///   # ... other configuration
-    ///   include {
-    ///     okta {
-    ///       name = "admins"
-    ///       identity_provider_id = "ca298b82-93b5-41bf-bc2d-10493f09b761"
-    ///     }
-    ///   }
-    ///   ```
     /// * `saml` - (Optional) Use an external SAML setup as the `include` condition.
-    ///   Example:
-    /// 
-    ///   ```hcl
-    ///   # ... other configuration
-    ///   include {
-    ///     saml {
-    ///       attribute_name = "group"
-    ///       attribute_value = "admins"
-    ///       identity_provider_id = "ca298b82-93b5-41bf-bc2d-10493f09b761"
-    ///     }
-    ///   }
-    ///   ```
+    /// Example:
     /// </summary>
     public partial class AccessGroup : Pulumi.CustomResource
     {

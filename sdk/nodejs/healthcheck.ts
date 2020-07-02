@@ -7,10 +7,11 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer. 
+ * Standalone Health Checks provide a way to monitor origin servers without needing a Cloudflare Load Balancer.
  *
  * ## Example Usage
  *
+ * The resource supports HTTP, HTTPS and TCP type health checks.
  * ### HTTPS Health Check
  *
  * ```typescript
@@ -40,7 +41,7 @@ import * as utilities from "./utilities";
  *     ],
  *     followRedirects: true,
  *     allowInsecure: false,
- *     header: [{
+ *     headers: [{
  *         header: "Host",
  *         values: ["example.com"],
  *     }],
@@ -51,7 +52,6 @@ import * as utilities from "./utilities";
  *     consecutiveSuccesses: 2,
  * });
  * ```
- *
  * ### TCP Monitor
  *
  * ```typescript
@@ -72,7 +72,7 @@ import * as utilities from "./utilities";
  *     notificationEmailAddresses: ["hostmaster@example.com"],
  *     type: "TCP",
  *     port: "22",
- *     method: "connectionEstablished",
+ *     method: "connection_established",
  *     timeout: 10,
  *     retries: 2,
  *     interval: 60,

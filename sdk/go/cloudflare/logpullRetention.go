@@ -11,6 +11,30 @@ import (
 )
 
 // Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewLogpullRetention(ctx, "example", &cloudflare.LogpullRetentionArgs{
+// 			Enabled: pulumi.Bool(true),
+// 			ZoneId:  pulumi.String("fb54f084ca7f7b732d3d3ecbd8ef7bf2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LogpullRetention struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,66 @@ import (
 )
 
 // Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
+// 			Name: pulumi.String("example-lb-pool"),
+// 			Origins: cloudflare.LoadBalancerPoolOriginArray{
+// 				&cloudflare.LoadBalancerPoolOriginArgs{
+// 					Name:    pulumi.String("example-1"),
+// 					Address: pulumi.String("192.0.2.1"),
+// 					Enabled: pulumi.Bool(false),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewLoadBalancer(ctx, "bar", &cloudflare.LoadBalancerArgs{
+// 			ZoneId:         pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 			Name:           pulumi.String("example-load-balancer"),
+// 			FallbackPoolId: foo.ID(),
+// 			DefaultPoolIds: pulumi.StringArray{
+// 				foo.ID(),
+// 			},
+// 			Description:    pulumi.String("example load balancer using geo-balancing"),
+// 			Proxied:        pulumi.Bool(true),
+// 			SteeringPolicy: pulumi.String("geo"),
+// 			PopPools: cloudflare.LoadBalancerPopPoolArray{
+// 				&cloudflare.LoadBalancerPopPoolArgs{
+// 					Pop: pulumi.String("LAX"),
+// 					PoolIds: pulumi.StringArray{
+// 						foo.ID(),
+// 					},
+// 				},
+// 			},
+// 			RegionPools: cloudflare.LoadBalancerRegionPoolArray{
+// 				&cloudflare.LoadBalancerRegionPoolArgs{
+// 					Region: pulumi.String("WNAM"),
+// 					PoolIds: pulumi.StringArray{
+// 						foo.ID(),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 

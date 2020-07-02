@@ -8,6 +8,39 @@ import (
 )
 
 // Use this data source to look up [WAF Rules](https://api.cloudflare.com/#waf-rule-groups-properties).
+//
+// ## Example Usage
+//
+// The example below matches all WAF Rules that are in the group of ID `de677e5818985db1285d0e80225f06e5`, contain `example` in their description, and are currently `on`. The matched WAF Rules are then returned as output.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "a25a9a7e9c00afc1fb2e0245519d725b"
+// 		test, err := cloudflare.GetWafRules(ctx, &cloudflare.GetWafRulesArgs{
+// 			ZoneId:    "ae36f999674d196762efcc5abb06b345",
+// 			PackageId: &opt0,
+// 			Filter: cloudflare.GetWafRulesFilter{
+// 				Description: ".*example.*",
+// 				Mode:        "on",
+// 				GroupId:     "de677e5818985db1285d0e80225f06e5",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("wafRules", test.Rules)
+// 		return nil
+// 	})
+// }
+// ```
 func GetWafRules(ctx *pulumi.Context, args *GetWafRulesArgs, opts ...pulumi.InvokeOption) (*GetWafRulesResult, error) {
 	var rv GetWafRulesResult
 	err := ctx.Invoke("cloudflare:index/getWafRules:getWafRules", args, &rv, opts...)

@@ -14,8 +14,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
@@ -83,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> VanityNameServers { get; private set; } = null!;
 
         /// <summary>
-        /// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+        /// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
         /// </summary>
         [Output("verificationKey")]
         public Output<string> VerificationKey { get; private set; } = null!;
@@ -237,7 +235,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`. 
+        /// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
         /// </summary>
         [Input("verificationKey")]
         public Input<string>? VerificationKey { get; set; }
