@@ -21,9 +21,16 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWafPackagesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// One or more values used to look up WAF Rule Packages. If more than one value is given all
+        /// values must match in order to be included, see below for full list.
+        /// </summary>
         [Input("filter")]
         public Inputs.GetWafPackagesFilterArgs? Filter { get; set; }
 
+        /// <summary>
+        /// The ID of the DNS zone in which to search for the WAF Rule Packages.
+        /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
 
@@ -41,6 +48,9 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A map of WAF Rule Packages details. Full list below:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWafPackagesPackageResult> Packages;
         public readonly string ZoneId;
 

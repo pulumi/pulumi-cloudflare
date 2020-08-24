@@ -13,6 +13,50 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
     /// 
     /// **This resource requires you use your Origin CA Key as the `api_user_service_key`.**
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// using Tls = Pulumi.Tls;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a CSR and generate a CA certificate
+    ///         var examplePrivateKey = new Tls.PrivateKey("examplePrivateKey", new Tls.PrivateKeyArgs
+    ///         {
+    ///             Algorithm = "RSA",
+    ///         });
+    ///         var exampleCertRequest = new Tls.CertRequest("exampleCertRequest", new Tls.CertRequestArgs
+    ///         {
+    ///             KeyAlgorithm = examplePrivateKey.Algorithm,
+    ///             PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
+    ///             Subjects = 
+    ///             {
+    ///                 new Tls.Inputs.CertRequestSubjectArgs
+    ///                 {
+    ///                     CommonName = "",
+    ///                     Organization = "Terraform Test",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate("exampleOriginCaCertificate", new Cloudflare.OriginCaCertificateArgs
+    ///         {
+    ///             Csr = exampleCertRequest.CertRequestPem,
+    ///             Hostnames = 
+    ///             {
+    ///                 "example.com",
+    ///             },
+    ///             RequestType = "origin-rsa",
+    ///             RequestedValidity = 7,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class OriginCaCertificate : Pulumi.CustomResource
     {

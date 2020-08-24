@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class GetZonesFilterArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A regular expression matching the zone to lookup.
+        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
+        /// <summary>
+        /// Paused status of the zone to lookup. Valid values are `true` or `false`.
+        /// </summary>
         [Input("paused")]
         public bool? Paused { get; set; }
 
+        /// <summary>
+        /// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+        /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 

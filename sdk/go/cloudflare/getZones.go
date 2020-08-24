@@ -19,6 +19,8 @@ func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getZones.
 type GetZonesArgs struct {
+	// One or more values used to look up zone records. If more than one value is given all
+	// values must match in order to be included, see below for full list.
 	Filter GetZonesFilter `pulumi:"filter"`
 }
 
@@ -26,6 +28,7 @@ type GetZonesArgs struct {
 type GetZonesResult struct {
 	Filter GetZonesFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id    string         `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A map of zone details. Full list below:
 	Zones []GetZonesZone `pulumi:"zones"`
 }

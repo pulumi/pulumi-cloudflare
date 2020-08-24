@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetZonesFilterResult
     {
+        /// <summary>
+        /// A regular expression matching the zone to lookup.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Paused status of the zone to lookup. Valid values are `true` or `false`.
+        /// </summary>
         public readonly bool? Paused;
+        /// <summary>
+        /// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

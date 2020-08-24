@@ -8,6 +8,31 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
  *
  * **This resource requires you use your Origin CA Key as the `apiUserServiceKey`.**
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * import * as tls from "@pulumi/tls";
+ *
+ * // Create a CSR and generate a CA certificate
+ * const examplePrivateKey = new tls.PrivateKey("examplePrivateKey", {algorithm: "RSA"});
+ * const exampleCertRequest = new tls.CertRequest("exampleCertRequest", {
+ *     keyAlgorithm: examplePrivateKey.algorithm,
+ *     privateKeyPem: examplePrivateKey.privateKeyPem,
+ *     subjects: [{
+ *         commonName: "",
+ *         organization: "Terraform Test",
+ *     }],
+ * });
+ * const exampleOriginCaCertificate = new cloudflare.OriginCaCertificate("exampleOriginCaCertificate", {
+ *     csr: exampleCertRequest.certRequestPem,
+ *     hostnames: ["example.com"],
+ *     requestType: "origin-rsa",
+ *     requestedValidity: 7,
+ * });
+ * ```
  */
 export class OriginCaCertificate extends pulumi.CustomResource {
     /**

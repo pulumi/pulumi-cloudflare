@@ -56,12 +56,22 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWafRulesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// One or more values used to look up WAF Rules. If more than one value is given all
+        /// values must match in order to be included, see below for full list.
+        /// </summary>
         [Input("filter")]
         public Inputs.GetWafRulesFilterArgs? Filter { get; set; }
 
+        /// <summary>
+        /// The ID of the WAF Rule Package in which to search for the WAF Rules.
+        /// </summary>
         [Input("packageId")]
         public string? PackageId { get; set; }
 
+        /// <summary>
+        /// The ID of the DNS zone in which to search for the WAF Rules.
+        /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
 
@@ -79,7 +89,13 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the WAF Rule Package that contains the WAF Rule
+        /// </summary>
         public readonly string? PackageId;
+        /// <summary>
+        /// A map of WAF Rules details. Full list below:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWafRulesRuleResult> Rules;
         public readonly string ZoneId;
 

@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetZonesResult',
+    'AwaitableGetZonesResult',
+    'get_zones',
+]
+
+@pulumi.output_type
 class GetZonesResult:
     """
     A collection of values returned by getZones.
@@ -15,16 +24,36 @@ class GetZonesResult:
     def __init__(__self__, filter=None, id=None, zones=None):
         if filter and not isinstance(filter, dict):
             raise TypeError("Expected argument 'filter' to be a dict")
-        __self__.filter = filter
+        pulumi.set(__self__, "filter", filter)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if zones and not isinstance(zones, list):
+            raise TypeError("Expected argument 'zones' to be a list")
+        pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> 'outputs.GetZonesFilterResult':
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if zones and not isinstance(zones, list):
-            raise TypeError("Expected argument 'zones' to be a list")
-        __self__.zones = zones
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def zones(self) -> List['outputs.GetZonesZoneResult']:
+        """
+        A map of zone details. Full list below:
+        """
+        return pulumi.get(self, "zones")
+
+
 class AwaitableGetZonesResult(GetZonesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -35,54 +64,25 @@ class AwaitableGetZonesResult(GetZonesResult):
             id=self.id,
             zones=self.zones)
 
-def get_zones(filter=None,opts=None):
+
+def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZonesResult:
     """
     Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
 
-    ## Example Usage
 
-    The example below matches all `active` zones that begin with `example.` and are not paused. The matched zones are then
-    locked down using the `ZoneLockdown` resource.
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    test = cloudflare.get_zones(filter={
-        "name": "example.*",
-        "paused": False,
-        "status": "active",
-    })
-    endpoint_lockdown = cloudflare.ZoneLockdown("endpointLockdown",
-        configurations=[{
-            "target": "ip",
-            "value": "198.51.100.4",
-        }],
-        description="Restrict access to these endpoints to requests from a known IP address",
-        paused="false",
-        urls=["api.mysite.com/some/endpoint*"],
-        zone=test.zones[0]["name"])
-    ```
-
-
-
-    The **filter** object supports the following:
-
-      * `name` (`str`)
-      * `paused` (`bool`)
-      * `status` (`str`)
+    :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all
+           values must match in order to be included, see below for full list.
     """
     __args__ = dict()
-
-
     __args__['filter'] = filter
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('cloudflare:index/getZones:getZones', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('cloudflare:index/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        filter=__ret__.get('filter'),
-        id=__ret__.get('id'),
-        zones=__ret__.get('zones'))
+        filter=__ret__.filter,
+        id=__ret__.id,
+        zones=__ret__.zones)

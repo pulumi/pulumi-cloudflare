@@ -43,11 +43,20 @@ export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesRes
  * A collection of values returned by getIpRanges.
  */
 export interface GetIpRangesResult {
+    /**
+     * The lexically ordered list of all CIDR blocks.
+     */
     readonly cidrBlocks: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The lexically ordered list of only the IPv4 CIDR blocks.
+     */
     readonly ipv4CidrBlocks: string[];
+    /**
+     * The lexically ordered list of only the IPv6 CIDR blocks.
+     */
     readonly ipv6CidrBlocks: string[];
 }

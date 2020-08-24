@@ -13,6 +13,54 @@ import (
 // Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
 //
 // **This resource requires you use your Origin CA Key as the `apiUserServiceKey`.**
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-tls/sdk/v2/go/tls"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		examplePrivateKey, err := tls.NewPrivateKey(ctx, "examplePrivateKey", &tls.PrivateKeyArgs{
+// 			Algorithm: pulumi.String("RSA"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
+// 			KeyAlgorithm:  examplePrivateKey.Algorithm,
+// 			PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
+// 			Subjects: tls.CertRequestSubjectArray{
+// 				&tls.CertRequestSubjectArgs{
+// 					CommonName:   pulumi.String(""),
+// 					Organization: pulumi.String("Terraform Test"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewOriginCaCertificate(ctx, "exampleOriginCaCertificate", &cloudflare.OriginCaCertificateArgs{
+// 			Csr: exampleCertRequest.CertRequestPem,
+// 			Hostnames: pulumi.StringArray{
+// 				pulumi.String("example.com"),
+// 			},
+// 			RequestType:       pulumi.String("origin-rsa"),
+// 			RequestedValidity: pulumi.Int(7),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type OriginCaCertificate struct {
 	pulumi.CustomResourceState
 

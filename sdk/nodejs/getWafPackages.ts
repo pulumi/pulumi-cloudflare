@@ -27,7 +27,14 @@ export function getWafPackages(args: GetWafPackagesArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getWafPackages.
  */
 export interface GetWafPackagesArgs {
+    /**
+     * One or more values used to look up WAF Rule Packages. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     */
     readonly filter?: inputs.GetWafPackagesFilter;
+    /**
+     * The ID of the DNS zone in which to search for the WAF Rule Packages.
+     */
     readonly zoneId: string;
 }
 
@@ -40,6 +47,9 @@ export interface GetWafPackagesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A map of WAF Rule Packages details. Full list below:
+     */
     readonly packages: outputs.GetWafPackagesPackage[];
     readonly zoneId: string;
 }

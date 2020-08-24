@@ -45,3 +45,10 @@ from .workers_kv_namespace import *
 from .zone import *
 from .zone_lockdown import *
 from .zone_settings_override import *
+from ._inputs import *
+from . import outputs
+
+# Make subpackages available:
+from . import (
+    config,
+)

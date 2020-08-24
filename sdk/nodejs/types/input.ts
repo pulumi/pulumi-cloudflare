@@ -361,26 +361,62 @@ export interface CustomSslCustomSslPriority {
 }
 
 export interface GetWafGroupsFilter {
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
     mode?: string;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
     name?: string;
 }
 
 export interface GetWafPackagesFilter {
+    /**
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     */
     actionMode?: string;
+    /**
+     * Detection mode of the WAF Rule Packages to lookup.
+     */
     detectionMode?: string;
+    /**
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
+     */
     name?: string;
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     */
     sensitivity?: string;
 }
 
 export interface GetWafRulesFilter {
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     */
     description?: string;
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     */
     groupId?: string;
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+     */
     mode?: string;
 }
 
 export interface GetZonesFilter {
+    /**
+     * A regular expression matching the zone to lookup.
+     */
     name?: string;
+    /**
+     * Paused status of the zone to lookup. Valid values are `true` or `false`.
+     */
     paused?: boolean;
+    /**
+     * Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+     */
     status?: string;
 }
 

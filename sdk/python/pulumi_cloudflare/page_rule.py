@@ -5,103 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['PageRule']
 
 
 class PageRule(pulumi.CustomResource):
-    actions: pulumi.Output[dict]
-    """
-    The actions taken by the page rule, options given below.
-
-      * `alwaysOnline` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `alwaysUseHttps` (`bool`) - Boolean of whether this action is enabled. Default: false.
-      * `automaticHttpsRewrites` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `browserCacheTtl` (`str`) - The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
-      * `browserCheck` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `bypassCacheOnCookie` (`str`) - String value of cookie name to conditionally bypass cache the page.
-      * `cacheByDeviceType` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `cacheDeceptionArmor` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `cacheKeyFields` (`dict`) - Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
-        * `cookie` (`dict`) - Controls what cookies go into Cache Key:
-          * `checkPresences` (`list`) - Check for presence of specified HTTP headers, without including their actual values.
-          * `includes` (`list`) - Only use values of specified query string parameters in Cache Key.
-
-        * `header` (`dict`) - Controls what HTTP headers go into Cache Key:
-          * `checkPresences` (`list`) - Check for presence of specified HTTP headers, without including their actual values.
-          * `excludes` (`list`) - Exclude these query string parameters from Cache Key.
-          * `includes` (`list`) - Only use values of specified query string parameters in Cache Key.
-
-        * `host` (`dict`) - Controls which Host header goes into Cache Key:
-          * `resolved` (`bool`) - `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-
-        * `queryString` (`dict`) - Controls which URL query string parameters go into the Cache Key.
-          * `excludes` (`list`) - Exclude these query string parameters from Cache Key.
-          * `ignore` (`bool`) - `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
-          * `includes` (`list`) - Only use values of specified query string parameters in Cache Key.
-
-        * `user` (`dict`) - Controls which end user-related features go into the Cache Key.
-          * `deviceType` (`bool`) - `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-          * `geo` (`bool`) - `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-          * `lang` (`bool`) - `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-
-      * `cacheLevel` (`str`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
-      * `cacheOnCookie` (`str`) - String value of cookie name to conditionally cache the page.
-      * `cacheTtlByStatuses` (`list`) - Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
-        * `codes` (`str`) - A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
-        * `ttl` (`float`) - Duration a resource lives in the Cloudflare cache.
-          * positive number - cache for specified duration in seconds
-
-      * `disableApps` (`bool`) - Boolean of whether this action is enabled. Default: false.
-      * `disablePerformance` (`bool`) - Boolean of whether this action is enabled. Default: false.
-      * `disableRailgun` (`bool`) - Boolean of whether this action is enabled. Default: false.
-      * `disableSecurity` (`bool`) - Boolean of whether this action is enabled. Default: false.
-      * `edgeCacheTtl` (`float`) - The Time To Live for the edge cache.
-      * `emailObfuscation` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `explicitCacheControl` (`str`) - Whether origin Cache-Control action is `"on"` or `"off"`.
-      * `forwardingUrl` (`dict`) - The URL to forward to, and with what status. See below.
-        * `statusCode` (`float`) - The status code to use for the redirection.
-        * `url` (`str`) - The URL to which the page rule should forward.
-
-      * `hostHeaderOverride` (`str`) - Value of the Host header to send.
-      * `ipGeolocation` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `minifies` (`list`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
-        * `css` (`str`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
-        * `html` (`str`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
-        * `js` (`str`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
-
-      * `mirage` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `opportunisticEncryption` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `originErrorPagePassThru` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `polish` (`str`) - Whether this action is `"off"`, `"lossless"` or `"lossy"`.
-      * `resolveOverride` (`str`) - Overridden origin server name.
-      * `respectStrongEtag` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `responseBuffering` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `rocketLoader` (`str`) - Whether to set the rocket loader to `"on"`, `"off"`.
-      * `securityLevel` (`str`) - Whether to set the security level to `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, or `"under_attack"`.
-      * `serverSideExclude` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `sortQueryStringForCache` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `ssl` (`str`) - Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
-      * `trueClientIpHeader` (`str`) - Whether this action is `"on"` or `"off"`.
-      * `waf` (`str`) - Whether this action is `"on"` or `"off"`.
-    """
-    priority: pulumi.Output[float]
-    """
-    The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
-    """
-    status: pulumi.Output[str]
-    """
-    Whether the page rule is active or disabled.
-    """
-    target: pulumi.Output[str]
-    """
-    The URL pattern to target with the page rule.
-    """
-    zone_id: pulumi.Output[str]
-    """
-    The DNS zone ID to which the page rule should be added.
-    """
-    def __init__(__self__, resource_name, opts=None, actions=None, priority=None, status=None, target=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 actions: Optional[pulumi.Input[pulumi.InputType['PageRuleActionsArgs']]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 target: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Cloudflare page rule resource.
 
@@ -116,97 +39,24 @@ class PageRule(pulumi.CustomResource):
             zone_id=var["cloudflare_zone_id"],
             target=f"sub.{var['cloudflare_zone']}/page",
             priority=1,
-            actions={
-                "ssl": "flexible",
-                "emailObfuscation": "on",
-                "minifies": [{
-                    "html": "off",
-                    "css": "on",
-                    "js": "on",
-                }],
-            })
+            actions=cloudflare.PageRuleActionsArgs(
+                ssl="flexible",
+                email_obfuscation="on",
+                minifies=[cloudflare.PageRuleActionsMinifyArgs(
+                    html="off",
+                    css="on",
+                    js="on",
+                )],
+            ))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] actions: The actions taken by the page rule, options given below.
+        :param pulumi.Input[pulumi.InputType['PageRuleActionsArgs']] actions: The actions taken by the page rule, options given below.
         :param pulumi.Input[float] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
-
-        The **actions** object supports the following:
-
-          * `alwaysOnline` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `alwaysUseHttps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `automaticHttpsRewrites` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `browserCacheTtl` (`pulumi.Input[str]`) - The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
-          * `browserCheck` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `bypassCacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally bypass cache the page.
-          * `cacheByDeviceType` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `cacheDeceptionArmor` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `cacheKeyFields` (`pulumi.Input[dict]`) - Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
-            * `cookie` (`pulumi.Input[dict]`) - Controls what cookies go into Cache Key:
-              * `checkPresences` (`pulumi.Input[list]`) - Check for presence of specified HTTP headers, without including their actual values.
-              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
-
-            * `header` (`pulumi.Input[dict]`) - Controls what HTTP headers go into Cache Key:
-              * `checkPresences` (`pulumi.Input[list]`) - Check for presence of specified HTTP headers, without including their actual values.
-              * `excludes` (`pulumi.Input[list]`) - Exclude these query string parameters from Cache Key.
-              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
-
-            * `host` (`pulumi.Input[dict]`) - Controls which Host header goes into Cache Key:
-              * `resolved` (`pulumi.Input[bool]`) - `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-
-            * `queryString` (`pulumi.Input[dict]`) - Controls which URL query string parameters go into the Cache Key.
-              * `excludes` (`pulumi.Input[list]`) - Exclude these query string parameters from Cache Key.
-              * `ignore` (`pulumi.Input[bool]`) - `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
-              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
-
-            * `user` (`pulumi.Input[dict]`) - Controls which end user-related features go into the Cache Key.
-              * `deviceType` (`pulumi.Input[bool]`) - `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-              * `geo` (`pulumi.Input[bool]`) - `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-              * `lang` (`pulumi.Input[bool]`) - `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-
-          * `cacheLevel` (`pulumi.Input[str]`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
-          * `cacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally cache the page.
-          * `cacheTtlByStatuses` (`pulumi.Input[list]`) - Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
-            * `codes` (`pulumi.Input[str]`) - A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
-            * `ttl` (`pulumi.Input[float]`) - Duration a resource lives in the Cloudflare cache.
-              * positive number - cache for specified duration in seconds
-
-          * `disableApps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `disablePerformance` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `disableRailgun` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `disableSecurity` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `edgeCacheTtl` (`pulumi.Input[float]`) - The Time To Live for the edge cache.
-          * `emailObfuscation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `explicitCacheControl` (`pulumi.Input[str]`) - Whether origin Cache-Control action is `"on"` or `"off"`.
-          * `forwardingUrl` (`pulumi.Input[dict]`) - The URL to forward to, and with what status. See below.
-            * `statusCode` (`pulumi.Input[float]`) - The status code to use for the redirection.
-            * `url` (`pulumi.Input[str]`) - The URL to which the page rule should forward.
-
-          * `hostHeaderOverride` (`pulumi.Input[str]`) - Value of the Host header to send.
-          * `ipGeolocation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `minifies` (`pulumi.Input[list]`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
-            * `css` (`pulumi.Input[str]`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
-            * `html` (`pulumi.Input[str]`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
-            * `js` (`pulumi.Input[str]`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
-
-          * `mirage` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `opportunisticEncryption` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `originErrorPagePassThru` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `polish` (`pulumi.Input[str]`) - Whether this action is `"off"`, `"lossless"` or `"lossy"`.
-          * `resolveOverride` (`pulumi.Input[str]`) - Overridden origin server name.
-          * `respectStrongEtag` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `responseBuffering` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `rocketLoader` (`pulumi.Input[str]`) - Whether to set the rocket loader to `"on"`, `"off"`.
-          * `securityLevel` (`pulumi.Input[str]`) - Whether to set the security level to `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, or `"under_attack"`.
-          * `serverSideExclude` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `sortQueryStringForCache` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `ssl` (`pulumi.Input[str]`) - Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
-          * `trueClientIpHeader` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `waf` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -219,7 +69,7 @@ class PageRule(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -243,92 +93,26 @@ class PageRule(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, actions=None, priority=None, status=None, target=None, zone_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            actions: Optional[pulumi.Input[pulumi.InputType['PageRuleActionsArgs']]] = None,
+            priority: Optional[pulumi.Input[float]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            target: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'PageRule':
         """
         Get an existing PageRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] actions: The actions taken by the page rule, options given below.
+        :param pulumi.Input[pulumi.InputType['PageRuleActionsArgs']] actions: The actions taken by the page rule, options given below.
         :param pulumi.Input[float] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
-
-        The **actions** object supports the following:
-
-          * `alwaysOnline` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `alwaysUseHttps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `automaticHttpsRewrites` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `browserCacheTtl` (`pulumi.Input[str]`) - The Time To Live for the browser cache. `0` means 'Respect Existing Headers'
-          * `browserCheck` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `bypassCacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally bypass cache the page.
-          * `cacheByDeviceType` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `cacheDeceptionArmor` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `cacheKeyFields` (`pulumi.Input[dict]`) - Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
-            * `cookie` (`pulumi.Input[dict]`) - Controls what cookies go into Cache Key:
-              * `checkPresences` (`pulumi.Input[list]`) - Check for presence of specified HTTP headers, without including their actual values.
-              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
-
-            * `header` (`pulumi.Input[dict]`) - Controls what HTTP headers go into Cache Key:
-              * `checkPresences` (`pulumi.Input[list]`) - Check for presence of specified HTTP headers, without including their actual values.
-              * `excludes` (`pulumi.Input[list]`) - Exclude these query string parameters from Cache Key.
-              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
-
-            * `host` (`pulumi.Input[dict]`) - Controls which Host header goes into Cache Key:
-              * `resolved` (`pulumi.Input[bool]`) - `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
-
-            * `queryString` (`pulumi.Input[dict]`) - Controls which URL query string parameters go into the Cache Key.
-              * `excludes` (`pulumi.Input[list]`) - Exclude these query string parameters from Cache Key.
-              * `ignore` (`pulumi.Input[bool]`) - `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
-              * `includes` (`pulumi.Input[list]`) - Only use values of specified query string parameters in Cache Key.
-
-            * `user` (`pulumi.Input[dict]`) - Controls which end user-related features go into the Cache Key.
-              * `deviceType` (`pulumi.Input[bool]`) - `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
-              * `geo` (`pulumi.Input[bool]`) - `true` - includes the client’s country, derived from the IP address; defaults to `false`.
-              * `lang` (`pulumi.Input[bool]`) - `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
-
-          * `cacheLevel` (`pulumi.Input[str]`) - Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
-          * `cacheOnCookie` (`pulumi.Input[str]`) - String value of cookie name to conditionally cache the page.
-          * `cacheTtlByStatuses` (`pulumi.Input[list]`) - Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
-            * `codes` (`pulumi.Input[str]`) - A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
-            * `ttl` (`pulumi.Input[float]`) - Duration a resource lives in the Cloudflare cache.
-              * positive number - cache for specified duration in seconds
-
-          * `disableApps` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `disablePerformance` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `disableRailgun` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `disableSecurity` (`pulumi.Input[bool]`) - Boolean of whether this action is enabled. Default: false.
-          * `edgeCacheTtl` (`pulumi.Input[float]`) - The Time To Live for the edge cache.
-          * `emailObfuscation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `explicitCacheControl` (`pulumi.Input[str]`) - Whether origin Cache-Control action is `"on"` or `"off"`.
-          * `forwardingUrl` (`pulumi.Input[dict]`) - The URL to forward to, and with what status. See below.
-            * `statusCode` (`pulumi.Input[float]`) - The status code to use for the redirection.
-            * `url` (`pulumi.Input[str]`) - The URL to which the page rule should forward.
-
-          * `hostHeaderOverride` (`pulumi.Input[str]`) - Value of the Host header to send.
-          * `ipGeolocation` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `minifies` (`pulumi.Input[list]`) - The configuration for HTML, CSS and JS minification. See below for full list of options.
-            * `css` (`pulumi.Input[str]`) - Whether CSS should be minified. Valid values are `"on"` or `"off"`.
-            * `html` (`pulumi.Input[str]`) - Whether HTML should be minified. Valid values are `"on"` or `"off"`.
-            * `js` (`pulumi.Input[str]`) - Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
-
-          * `mirage` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `opportunisticEncryption` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `originErrorPagePassThru` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `polish` (`pulumi.Input[str]`) - Whether this action is `"off"`, `"lossless"` or `"lossy"`.
-          * `resolveOverride` (`pulumi.Input[str]`) - Overridden origin server name.
-          * `respectStrongEtag` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `responseBuffering` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `rocketLoader` (`pulumi.Input[str]`) - Whether to set the rocket loader to `"on"`, `"off"`.
-          * `securityLevel` (`pulumi.Input[str]`) - Whether to set the security level to `"off"`, `"essentially_off"`, `"low"`, `"medium"`, `"high"`, or `"under_attack"`.
-          * `serverSideExclude` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `sortQueryStringForCache` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `ssl` (`pulumi.Input[str]`) - Whether to set the SSL mode to `"off"`, `"flexible"`, `"full"`, `"strict"`, or `"origin_pull"`.
-          * `trueClientIpHeader` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
-          * `waf` (`pulumi.Input[str]`) - Whether this action is `"on"` or `"off"`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -341,8 +125,49 @@ class PageRule(pulumi.CustomResource):
         __props__["zone_id"] = zone_id
         return PageRule(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def actions(self) -> 'outputs.PageRuleActions':
+        """
+        The actions taken by the page rule, options given below.
+        """
+        return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[float]:
+        """
+        The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[str]:
+        """
+        Whether the page rule is active or disabled.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def target(self) -> str:
+        """
+        The URL pattern to target with the page rule.
+        """
+        return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The DNS zone ID to which the page rule should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

@@ -5,20 +5,21 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['LogpullRetention']
 
 
 class LogpullRetention(pulumi.CustomResource):
-    enabled: pulumi.Output[bool]
-    """
-    Whether you wish to retain logs or not.
-    """
-    zone_id: pulumi.Output[str]
-    """
-    The zone ID to apply the log retention to.
-    """
-    def __init__(__self__, resource_name, opts=None, enabled=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
 
@@ -29,7 +30,7 @@ class LogpullRetention(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.LogpullRetention("example",
-            enabled="true",
+            enabled=True,
             zone_id="fb54f084ca7f7b732d3d3ecbd8ef7bf2")
         ```
 
@@ -49,7 +50,7 @@ class LogpullRetention(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -68,13 +69,17 @@ class LogpullRetention(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, enabled=None, zone_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'LogpullRetention':
         """
         Get an existing LogpullRetention resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether you wish to retain logs or not.
         :param pulumi.Input[str] zone_id: The zone ID to apply the log retention to.
@@ -87,8 +92,25 @@ class LogpullRetention(pulumi.CustomResource):
         __props__["zone_id"] = zone_id
         return LogpullRetention(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether you wish to retain logs or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The zone ID to apply the log retention to.
+        """
+        return pulumi.get(self, "zone_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

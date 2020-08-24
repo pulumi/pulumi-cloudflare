@@ -56,12 +56,21 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetIpRangesResult
     {
+        /// <summary>
+        /// The lexically ordered list of all CIDR blocks.
+        /// </summary>
         public readonly ImmutableArray<string> CidrBlocks;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The lexically ordered list of only the IPv4 CIDR blocks.
+        /// </summary>
         public readonly ImmutableArray<string> Ipv4CidrBlocks;
+        /// <summary>
+        /// The lexically ordered list of only the IPv6 CIDR blocks.
+        /// </summary>
         public readonly ImmutableArray<string> Ipv6CidrBlocks;
 
         [OutputConstructor]

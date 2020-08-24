@@ -13,12 +13,33 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetWafGroupsGroupResult
     {
+        /// <summary>
+        /// The WAF Rule Group description
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The WAF Rule Group ID
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+        /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// The number of modified rules in the WAF Rule Group
+        /// </summary>
         public readonly int? ModifiedRulesCount;
+        /// <summary>
+        /// A regular expression matching the name of the WAF Rule Groups to lookup.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+        /// </summary>
         public readonly string? PackageId;
+        /// <summary>
+        /// The number of rules in the WAF Rule Group
+        /// </summary>
         public readonly int? RulesCount;
 
         [OutputConstructor]
