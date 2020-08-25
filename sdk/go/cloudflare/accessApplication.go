@@ -27,6 +27,20 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
+// 			CorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{
+// 				&cloudflare.AccessApplicationCorsHeaderArgs{
+// 					AllowCredentials: pulumi.Bool(true),
+// 					AllowedMethods: pulumi.StringArray{
+// 						pulumi.String("GET"),
+// 						pulumi.String("POST"),
+// 						pulumi.String("OPTIONS"),
+// 					},
+// 					AllowedOrigins: pulumi.StringArray{
+// 						pulumi.String("https://example.com"),
+// 					},
+// 					MaxAge: pulumi.Int(10),
+// 				},
+// 			},
 // 			Domain:          pulumi.String("staging.example.com"),
 // 			Name:            pulumi.String("staging application"),
 // 			SessionDuration: pulumi.String("24h"),
@@ -42,17 +56,29 @@ import (
 type AccessApplication struct {
 	pulumi.CustomResourceState
 
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The identity providers selected for the application.
+	AllowedIdps pulumi.StringArrayOutput `pulumi:"allowedIdps"`
 	// Application Audience (AUD) Tag of the application
 	Aud pulumi.StringOutput `pulumi:"aud"`
+	// Option to skip identity provider
+	// selection if only one is configured in allowed_idps. Defaults to `false`
+	// (disabled).
+	AutoRedirectToIdentity pulumi.BoolPtrOutput `pulumi:"autoRedirectToIdentity"`
+	// CORS configuration for the Access Application. See
+	// below for reference structure.
+	CorsHeaders AccessApplicationCorsHeaderArrayOutput `pulumi:"corsHeaders"`
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Friendly name of the Access Application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How often a user will be forced to
-	// re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	// The DNS zone to which the access rule should be added.
+	//
+	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -64,9 +90,6 @@ func NewAccessApplication(ctx *pulumi.Context,
 	}
 	if args == nil || args.Name == nil {
 		return nil, errors.New("missing required argument 'Name'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
 	}
 	if args == nil {
 		args = &AccessApplicationArgs{}
@@ -93,32 +116,56 @@ func GetAccessApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessApplication resources.
 type accessApplicationState struct {
+	AccountId *string `pulumi:"accountId"`
+	// The identity providers selected for the application.
+	AllowedIdps []string `pulumi:"allowedIdps"`
 	// Application Audience (AUD) Tag of the application
 	Aud *string `pulumi:"aud"`
+	// Option to skip identity provider
+	// selection if only one is configured in allowed_idps. Defaults to `false`
+	// (disabled).
+	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
+	// CORS configuration for the Access Application. See
+	// below for reference structure.
+	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain *string `pulumi:"domain"`
 	// Friendly name of the Access Application.
 	Name *string `pulumi:"name"`
 	// How often a user will be forced to
-	// re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// The DNS zone to which the access rule should be added.
+	//
+	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessApplicationState struct {
+	AccountId pulumi.StringPtrInput
+	// The identity providers selected for the application.
+	AllowedIdps pulumi.StringArrayInput
 	// Application Audience (AUD) Tag of the application
 	Aud pulumi.StringPtrInput
+	// Option to skip identity provider
+	// selection if only one is configured in allowed_idps. Defaults to `false`
+	// (disabled).
+	AutoRedirectToIdentity pulumi.BoolPtrInput
+	// CORS configuration for the Access Application. See
+	// below for reference structure.
+	CorsHeaders AccessApplicationCorsHeaderArrayInput
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringPtrInput
 	// Friendly name of the Access Application.
 	Name pulumi.StringPtrInput
 	// How often a user will be forced to
-	// re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration pulumi.StringPtrInput
 	// The DNS zone to which the access rule should be added.
+	//
+	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -127,30 +174,54 @@ func (AccessApplicationState) ElementType() reflect.Type {
 }
 
 type accessApplicationArgs struct {
+	AccountId *string `pulumi:"accountId"`
+	// The identity providers selected for the application.
+	AllowedIdps []string `pulumi:"allowedIdps"`
+	// Option to skip identity provider
+	// selection if only one is configured in allowed_idps. Defaults to `false`
+	// (disabled).
+	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
+	// CORS configuration for the Access Application. See
+	// below for reference structure.
+	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain string `pulumi:"domain"`
 	// Friendly name of the Access Application.
 	Name string `pulumi:"name"`
 	// How often a user will be forced to
-	// re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// The DNS zone to which the access rule should be added.
-	ZoneId string `pulumi:"zoneId"`
+	//
+	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessApplication resource.
 type AccessApplicationArgs struct {
+	AccountId pulumi.StringPtrInput
+	// The identity providers selected for the application.
+	AllowedIdps pulumi.StringArrayInput
+	// Option to skip identity provider
+	// selection if only one is configured in allowed_idps. Defaults to `false`
+	// (disabled).
+	AutoRedirectToIdentity pulumi.BoolPtrInput
+	// CORS configuration for the Access Application. See
+	// below for reference structure.
+	CorsHeaders AccessApplicationCorsHeaderArrayInput
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringInput
 	// Friendly name of the Access Application.
 	Name pulumi.StringInput
 	// How often a user will be forced to
-	// re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration pulumi.StringPtrInput
 	// The DNS zone to which the access rule should be added.
-	ZoneId pulumi.StringInput
+	//
+	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessApplicationArgs) ElementType() reflect.Type {

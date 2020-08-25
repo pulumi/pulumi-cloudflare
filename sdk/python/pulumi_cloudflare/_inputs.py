@@ -9,6 +9,7 @@ from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
 
 __all__ = [
+    'AccessApplicationCorsHeaderArgs',
     'AccessGroupExcludeArgs',
     'AccessGroupExcludeAzureArgs',
     'AccessGroupExcludeGithubArgs',
@@ -47,9 +48,14 @@ __all__ = [
     'AccessPolicyRequireOktaArgs',
     'AccessPolicyRequireSamlArgs',
     'AccessRuleConfigurationArgs',
+    'CustomHostnameOwnershipVerificationArgs',
+    'CustomHostnameOwnershipVerificationHttpArgs',
+    'CustomHostnameSslArgs',
+    'CustomHostnameSslSettingArgs',
     'CustomSslCustomSslOptionsArgs',
     'CustomSslCustomSslPriorityArgs',
     'HealthcheckHeaderArgs',
+    'IpListItemArgs',
     'LoadBalancerMonitorHeaderArgs',
     'LoadBalancerPoolOriginArgs',
     'LoadBalancerPopPoolArgs',
@@ -73,6 +79,7 @@ __all__ = [
     'RecordDataArgs',
     'SpectrumApplicationDnsArgs',
     'SpectrumApplicationOriginDnsArgs',
+    'SpectrumApplicationOriginPortRangeArgs',
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlainTextBindingArgs',
     'WorkerScriptSecretTextBindingArgs',
@@ -91,6 +98,153 @@ __all__ = [
     'GetWafRulesFilterArgs',
     'GetZonesFilterArgs',
 ]
+
+@pulumi.input_type
+class AccessApplicationCorsHeaderArgs:
+    def __init__(__self__, *,
+                 allow_all_headers: Optional[pulumi.Input[bool]] = None,
+                 allow_all_methods: Optional[pulumi.Input[bool]] = None,
+                 allow_all_origins: Optional[pulumi.Input[bool]] = None,
+                 allow_credentials: Optional[pulumi.Input[bool]] = None,
+                 allowed_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 max_age: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[bool] allow_all_headers: Boolean value to determine whether all
+               HTTP headers are exposed.
+        :param pulumi.Input[bool] allow_all_methods: Boolean value to determine whether all
+               methods are exposed.
+        :param pulumi.Input[bool] allow_all_origins: Boolean value to determine whether all
+               origins are permitted to make CORS requests.
+        :param pulumi.Input[bool] allow_credentials: Boolean value to determine if credentials
+               (cookies, authorization headers, or TLS client certificates) are included with
+               requests.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: List of HTTP headers to expose via CORS.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: List of methods to expose via CORS.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: List of origins permitted to make CORS requests.
+        :param pulumi.Input[float] max_age: Integer representing the maximum time a preflight
+               request will be cached.
+        """
+        if allow_all_headers is not None:
+            pulumi.set(__self__, "allow_all_headers", allow_all_headers)
+        if allow_all_methods is not None:
+            pulumi.set(__self__, "allow_all_methods", allow_all_methods)
+        if allow_all_origins is not None:
+            pulumi.set(__self__, "allow_all_origins", allow_all_origins)
+        if allow_credentials is not None:
+            pulumi.set(__self__, "allow_credentials", allow_credentials)
+        if allowed_headers is not None:
+            pulumi.set(__self__, "allowed_headers", allowed_headers)
+        if allowed_methods is not None:
+            pulumi.set(__self__, "allowed_methods", allowed_methods)
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if max_age is not None:
+            pulumi.set(__self__, "max_age", max_age)
+
+    @property
+    @pulumi.getter(name="allowAllHeaders")
+    def allow_all_headers(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean value to determine whether all
+        HTTP headers are exposed.
+        """
+        return pulumi.get(self, "allow_all_headers")
+
+    @allow_all_headers.setter
+    def allow_all_headers(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_all_headers", value)
+
+    @property
+    @pulumi.getter(name="allowAllMethods")
+    def allow_all_methods(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean value to determine whether all
+        methods are exposed.
+        """
+        return pulumi.get(self, "allow_all_methods")
+
+    @allow_all_methods.setter
+    def allow_all_methods(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_all_methods", value)
+
+    @property
+    @pulumi.getter(name="allowAllOrigins")
+    def allow_all_origins(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean value to determine whether all
+        origins are permitted to make CORS requests.
+        """
+        return pulumi.get(self, "allow_all_origins")
+
+    @allow_all_origins.setter
+    def allow_all_origins(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_all_origins", value)
+
+    @property
+    @pulumi.getter(name="allowCredentials")
+    def allow_credentials(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean value to determine if credentials
+        (cookies, authorization headers, or TLS client certificates) are included with
+        requests.
+        """
+        return pulumi.get(self, "allow_credentials")
+
+    @allow_credentials.setter
+    def allow_credentials(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_credentials", value)
+
+    @property
+    @pulumi.getter(name="allowedHeaders")
+    def allowed_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        List of HTTP headers to expose via CORS.
+        """
+        return pulumi.get(self, "allowed_headers")
+
+    @allowed_headers.setter
+    def allowed_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_headers", value)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        List of methods to expose via CORS.
+        """
+        return pulumi.get(self, "allowed_methods")
+
+    @allowed_methods.setter
+    def allowed_methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_methods", value)
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        List of origins permitted to make CORS requests.
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @allowed_origins.setter
+    def allowed_origins(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_origins", value)
+
+    @property
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> Optional[pulumi.Input[float]]:
+        """
+        Integer representing the maximum time a preflight
+        request will be cached.
+        """
+        return pulumi.get(self, "max_age")
+
+    @max_age.setter
+    def max_age(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "max_age", value)
+
 
 @pulumi.input_type
 class AccessGroupExcludeArgs:
@@ -2415,6 +2569,308 @@ class AccessRuleConfigurationArgs:
 
 
 @pulumi.input_type
+class CustomHostnameOwnershipVerificationArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class CustomHostnameOwnershipVerificationHttpArgs:
+    def __init__(__self__, *,
+                 http_body: Optional[pulumi.Input[str]] = None,
+                 http_url: Optional[pulumi.Input[str]] = None):
+        if http_body is not None:
+            pulumi.set(__self__, "http_body", http_body)
+        if http_url is not None:
+            pulumi.set(__self__, "http_url", http_url)
+
+    @property
+    @pulumi.getter(name="httpBody")
+    def http_body(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_body")
+
+    @http_body.setter
+    def http_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_body", value)
+
+    @property
+    @pulumi.getter(name="httpUrl")
+    def http_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "http_url")
+
+    @http_url.setter
+    def http_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_url", value)
+
+
+@pulumi.input_type
+class CustomHostnameSslArgs:
+    def __init__(__self__, *,
+                 certificate_authority: Optional[pulumi.Input[str]] = None,
+                 cname_name: Optional[pulumi.Input[str]] = None,
+                 cname_target: Optional[pulumi.Input[str]] = None,
+                 custom_certificate: Optional[pulumi.Input[str]] = None,
+                 custom_key: Optional[pulumi.Input[str]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 settings: Optional[pulumi.Input[List[pulumi.Input['CustomHostnameSslSettingArgs']]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 wildcard: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] custom_certificate: If a custom uploaded certificate is used.
+        :param pulumi.Input[str] custom_key: The key for a custom uploaded certificate.
+        :param pulumi.Input[str] method: Domain control validation (DCV) method used for this
+               hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+        :param pulumi.Input[List[pulumi.Input['CustomHostnameSslSettingArgs']]] settings: SSL/TLS settings for the certificate. See further notes below.
+        :param pulumi.Input[str] type: Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+        :param pulumi.Input[bool] wildcard: Indicates whether the certificate covers a wildcard.
+        """
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if cname_name is not None:
+            pulumi.set(__self__, "cname_name", cname_name)
+        if cname_target is not None:
+            pulumi.set(__self__, "cname_target", cname_target)
+        if custom_certificate is not None:
+            pulumi.set(__self__, "custom_certificate", custom_certificate)
+        if custom_key is not None:
+            pulumi.set(__self__, "custom_key", custom_key)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if wildcard is not None:
+            pulumi.set(__self__, "wildcard", wildcard)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_authority")
+
+    @certificate_authority.setter
+    def certificate_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter(name="cnameName")
+    def cname_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cname_name")
+
+    @cname_name.setter
+    def cname_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cname_name", value)
+
+    @property
+    @pulumi.getter(name="cnameTarget")
+    def cname_target(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cname_target")
+
+    @cname_target.setter
+    def cname_target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cname_target", value)
+
+    @property
+    @pulumi.getter(name="customCertificate")
+    def custom_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        If a custom uploaded certificate is used.
+        """
+        return pulumi.get(self, "custom_certificate")
+
+    @custom_certificate.setter
+    def custom_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_certificate", value)
+
+    @property
+    @pulumi.getter(name="customKey")
+    def custom_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key for a custom uploaded certificate.
+        """
+        return pulumi.get(self, "custom_key")
+
+    @custom_key.setter
+    def custom_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_key", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Domain control validation (DCV) method used for this
+        hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input[List[pulumi.Input['CustomHostnameSslSettingArgs']]]]:
+        """
+        SSL/TLS settings for the certificate. See further notes below.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input[List[pulumi.Input['CustomHostnameSslSettingArgs']]]]):
+        pulumi.set(self, "settings", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def wildcard(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the certificate covers a wildcard.
+        """
+        return pulumi.get(self, "wildcard")
+
+    @wildcard.setter
+    def wildcard(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wildcard", value)
+
+
+@pulumi.input_type
+class CustomHostnameSslSettingArgs:
+    def __init__(__self__, *,
+                 ciphers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 http2: Optional[pulumi.Input[str]] = None,
+                 min_tls_version: Optional[pulumi.Input[str]] = None,
+                 tls13: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[List[pulumi.Input[str]]] ciphers: List of SSL/TLS ciphers to associate with this certificate.
+        :param pulumi.Input[str] http2: Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
+        :param pulumi.Input[str] min_tls_version: Lowest version of TLS this certificate should
+               support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
+        :param pulumi.Input[str] tls13: Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
+        """
+        if ciphers is not None:
+            pulumi.set(__self__, "ciphers", ciphers)
+        if http2 is not None:
+            pulumi.set(__self__, "http2", http2)
+        if min_tls_version is not None:
+            pulumi.set(__self__, "min_tls_version", min_tls_version)
+        if tls13 is not None:
+            pulumi.set(__self__, "tls13", tls13)
+
+    @property
+    @pulumi.getter
+    def ciphers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        """
+        List of SSL/TLS ciphers to associate with this certificate.
+        """
+        return pulumi.get(self, "ciphers")
+
+    @ciphers.setter
+    def ciphers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "ciphers", value)
+
+    @property
+    @pulumi.getter
+    def http2(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
+        """
+        return pulumi.get(self, "http2")
+
+    @http2.setter
+    def http2(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http2", value)
+
+    @property
+    @pulumi.getter(name="minTlsVersion")
+    def min_tls_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Lowest version of TLS this certificate should
+        support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
+        """
+        return pulumi.get(self, "min_tls_version")
+
+    @min_tls_version.setter
+    def min_tls_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_tls_version", value)
+
+    @property
+    @pulumi.getter
+    def tls13(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
+        """
+        return pulumi.get(self, "tls13")
+
+    @tls13.setter
+    def tls13(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tls13", value)
+
+
+@pulumi.input_type
 class CustomSslCustomSslOptionsArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[str],
@@ -2563,6 +3019,56 @@ class HealthcheckHeaderArgs:
     @values.setter
     def values(self, value: pulumi.Input[List[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class IpListItemArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[str],
+                 comment: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] value: The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        :param pulumi.Input[str] comment: A note that can be used to annotate the item.
+        """
+        pulumi.set(__self__, "value", value)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def comment(self) -> Optional[pulumi.Input[str]]:
+        """
+        A note that can be used to annotate the item.
+        """
+        return pulumi.get(self, "comment")
+
+    @comment.setter
+    def comment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "comment", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
@@ -4551,6 +5057,43 @@ class SpectrumApplicationOriginDnsArgs:
 
 
 @pulumi.input_type
+class SpectrumApplicationOriginPortRangeArgs:
+    def __init__(__self__, *,
+                 end: pulumi.Input[float],
+                 start: pulumi.Input[float]):
+        """
+        :param pulumi.Input[float] end: Upper bound of the origin port range, e.g. `2000`
+        :param pulumi.Input[float] start: Lower bound of the origin port range, e.g. `1000`
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> pulumi.Input[float]:
+        """
+        Upper bound of the origin port range, e.g. `2000`
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: pulumi.Input[float]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> pulumi.Input[float]:
+        """
+        Lower bound of the origin port range, e.g. `1000`
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: pulumi.Input[float]):
+        pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
 class WorkerScriptKvNamespaceBindingArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -6403,14 +6946,29 @@ class GetWafRulesFilterArgs:
 @pulumi.input_type
 class GetZonesFilterArgs:
     def __init__(__self__, *,
+                 lookup_type: Optional[str] = None,
+                 match: Optional[str] = None,
                  name: Optional[str] = None,
                  paused: Optional[bool] = None,
                  status: Optional[str] = None):
         """
-        :param str name: A regular expression matching the zone to lookup.
-        :param bool paused: Paused status of the zone to lookup. Valid values are `true` or `false`.
-        :param str status: Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+        :param str lookup_type: The type of search to perform for the `name` value
+               when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+               to `"exact"`.
+        :param str match: A RE2 compatible regular expression to filter the
+               results. This is performed client side whereas the `name` and `lookup_type`
+               are performed on the Cloudflare server side.
+        :param str name: A string value to search for.
+        :param bool paused: Paused status of the zone to lookup. Valid values are
+               `true` or `false`.
+        :param str status: Status of the zone to lookup. Valid values: `"active"`,
+               `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+               `"read only"`.
         """
+        if lookup_type is not None:
+            pulumi.set(__self__, "lookup_type", lookup_type)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if paused is not None:
@@ -6419,10 +6977,38 @@ class GetZonesFilterArgs:
             pulumi.set(__self__, "status", status)
 
     @property
+    @pulumi.getter(name="lookupType")
+    def lookup_type(self) -> Optional[str]:
+        """
+        The type of search to perform for the `name` value
+        when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+        to `"exact"`.
+        """
+        return pulumi.get(self, "lookup_type")
+
+    @lookup_type.setter
+    def lookup_type(self, value: Optional[str]):
+        pulumi.set(self, "lookup_type", value)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[str]:
+        """
+        A RE2 compatible regular expression to filter the
+        results. This is performed client side whereas the `name` and `lookup_type`
+        are performed on the Cloudflare server side.
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: Optional[str]):
+        pulumi.set(self, "match", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        A regular expression matching the zone to lookup.
+        A string value to search for.
         """
         return pulumi.get(self, "name")
 
@@ -6434,7 +7020,8 @@ class GetZonesFilterArgs:
     @pulumi.getter
     def paused(self) -> Optional[bool]:
         """
-        Paused status of the zone to lookup. Valid values are `true` or `false`.
+        Paused status of the zone to lookup. Valid values are
+        `true` or `false`.
         """
         return pulumi.get(self, "paused")
 
@@ -6446,7 +7033,9 @@ class GetZonesFilterArgs:
     @pulumi.getter
     def status(self) -> Optional[str]:
         """
-        Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+        Status of the zone to lookup. Valid values: `"active"`,
+        `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+        `"read only"`.
         """
         return pulumi.get(self, "status")
 

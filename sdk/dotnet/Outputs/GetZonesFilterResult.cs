@@ -14,26 +14,47 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZonesFilterResult
     {
         /// <summary>
-        /// A regular expression matching the zone to lookup.
+        /// The type of search to perform for the `name` value
+        /// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+        /// to `"exact"`.
+        /// </summary>
+        public readonly string? LookupType;
+        /// <summary>
+        /// A RE2 compatible regular expression to filter the
+        /// results. This is performed client side whereas the `name` and `lookup_type`
+        /// are performed on the Cloudflare server side.
+        /// </summary>
+        public readonly string? Match;
+        /// <summary>
+        /// A string value to search for.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Paused status of the zone to lookup. Valid values are `true` or `false`.
+        /// Paused status of the zone to lookup. Valid values are
+        /// `true` or `false`.
         /// </summary>
         public readonly bool? Paused;
         /// <summary>
-        /// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+        /// Status of the zone to lookup. Valid values: `"active"`,
+        /// `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+        /// `"read only"`.
         /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]
         private GetZonesFilterResult(
+            string? lookupType,
+
+            string? match,
+
             string? name,
 
             bool? paused,
 
             string? status)
         {
+            LookupType = lookupType;
+            Match = match;
             Name = name;
             Paused = paused;
             Status = status;

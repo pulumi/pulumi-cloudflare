@@ -72,6 +72,7 @@ import (
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The ID of the application the policy is
 	// associated with.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
@@ -108,9 +109,6 @@ func NewAccessPolicy(ctx *pulumi.Context,
 	if args == nil || args.Name == nil {
 		return nil, errors.New("missing required argument 'Name'")
 	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
 		args = &AccessPolicyArgs{}
 	}
@@ -136,6 +134,7 @@ func GetAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicy resources.
 type accessPolicyState struct {
+	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is
 	// associated with.
 	ApplicationId *string `pulumi:"applicationId"`
@@ -158,6 +157,7 @@ type accessPolicyState struct {
 }
 
 type AccessPolicyState struct {
+	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is
 	// associated with.
 	ApplicationId pulumi.StringPtrInput
@@ -184,6 +184,7 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
+	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is
 	// associated with.
 	ApplicationId string `pulumi:"applicationId"`
@@ -202,11 +203,12 @@ type accessPolicyArgs struct {
 	Requires []AccessPolicyRequire `pulumi:"requires"`
 	// The DNS zone to which the access rule should be
 	// added.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
+	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is
 	// associated with.
 	ApplicationId pulumi.StringInput
@@ -225,7 +227,7 @@ type AccessPolicyArgs struct {
 	Requires AccessPolicyRequireArrayInput
 	// The DNS zone to which the access rule should be
 	// added.
-	ZoneId pulumi.StringInput
+	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessPolicyArgs) ElementType() reflect.Type {

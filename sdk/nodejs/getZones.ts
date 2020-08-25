@@ -11,8 +11,62 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * The example below matches all `active` zones that begin with `example.` and are not paused. The matched zones are then
- * locked down using the `cloudflare.ZoneLockdown` resource.
+ * Given you have the following zones in Cloudflare.
+ *
+ * - example.com
+ * - example.net
+ * - not-example.com
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Look for a single zone that you know exists using an exact match.
+ * // API request will be for zones?name=example.com. Will not match not-example.com
+ * // or example.net.
+ * const example = pulumi.output(cloudflare.getZones({
+ *     filter: {
+ *         name: "example.com",
+ *     },
+ * }, { async: true }));
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Look for all zones which include "example".
+ * // API request will be for zones?name=contains:example. Will return all three
+ * // zones.
+ * const example = pulumi.output(cloudflare.getZones({
+ *     filter: {
+ *         lookupType: "contains",
+ *         name: "example",
+ *     },
+ * }, { async: true }));
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Look for all zones which include "example" but start with "not-".
+ * // API request will be for zones?name=contains:example. Will perform client side
+ * // filtering using the provided regex and will only match the single zone,
+ * // not-example.com.
+ * const example = pulumi.output(cloudflare.getZones({
+ *     filter: {
+ *         lookupType: "contains",
+ *         match: "^not-",
+ *         name: "example",
+ *     },
+ * }, { async: true }));
+ * ```
+ * ### Example usage with other resources
+ *
+ * The example below matches all zones which have "example" in their value, end
+ * with ".com" and are active. The matched zone is then referenced in the zone
+ * lockdown resource.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -20,8 +74,9 @@ import * as utilities from "./utilities";
  *
  * const test = pulumi.output(cloudflare.getZones({
  *     filter: {
- *         name: "example.*",
- *         paused: false,
+ *         lookupType: "contains",
+ *         match: ".com$",
+ *         name: "example",
  *         status: "active",
  *     },
  * }, { async: true }));

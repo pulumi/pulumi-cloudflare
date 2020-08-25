@@ -10,6 +10,184 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type AccessApplicationCorsHeader struct {
+	// Boolean value to determine whether all
+	// HTTP headers are exposed.
+	AllowAllHeaders *bool `pulumi:"allowAllHeaders"`
+	// Boolean value to determine whether all
+	// methods are exposed.
+	AllowAllMethods *bool `pulumi:"allowAllMethods"`
+	// Boolean value to determine whether all
+	// origins are permitted to make CORS requests.
+	AllowAllOrigins *bool `pulumi:"allowAllOrigins"`
+	// Boolean value to determine if credentials
+	// (cookies, authorization headers, or TLS client certificates) are included with
+	// requests.
+	AllowCredentials *bool `pulumi:"allowCredentials"`
+	// List of HTTP headers to expose via CORS.
+	AllowedHeaders []string `pulumi:"allowedHeaders"`
+	// List of methods to expose via CORS.
+	AllowedMethods []string `pulumi:"allowedMethods"`
+	// List of origins permitted to make CORS requests.
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// Integer representing the maximum time a preflight
+	// request will be cached.
+	MaxAge *int `pulumi:"maxAge"`
+}
+
+// AccessApplicationCorsHeaderInput is an input type that accepts AccessApplicationCorsHeaderArgs and AccessApplicationCorsHeaderOutput values.
+// You can construct a concrete instance of `AccessApplicationCorsHeaderInput` via:
+//
+//          AccessApplicationCorsHeaderArgs{...}
+type AccessApplicationCorsHeaderInput interface {
+	pulumi.Input
+
+	ToAccessApplicationCorsHeaderOutput() AccessApplicationCorsHeaderOutput
+	ToAccessApplicationCorsHeaderOutputWithContext(context.Context) AccessApplicationCorsHeaderOutput
+}
+
+type AccessApplicationCorsHeaderArgs struct {
+	// Boolean value to determine whether all
+	// HTTP headers are exposed.
+	AllowAllHeaders pulumi.BoolPtrInput `pulumi:"allowAllHeaders"`
+	// Boolean value to determine whether all
+	// methods are exposed.
+	AllowAllMethods pulumi.BoolPtrInput `pulumi:"allowAllMethods"`
+	// Boolean value to determine whether all
+	// origins are permitted to make CORS requests.
+	AllowAllOrigins pulumi.BoolPtrInput `pulumi:"allowAllOrigins"`
+	// Boolean value to determine if credentials
+	// (cookies, authorization headers, or TLS client certificates) are included with
+	// requests.
+	AllowCredentials pulumi.BoolPtrInput `pulumi:"allowCredentials"`
+	// List of HTTP headers to expose via CORS.
+	AllowedHeaders pulumi.StringArrayInput `pulumi:"allowedHeaders"`
+	// List of methods to expose via CORS.
+	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
+	// List of origins permitted to make CORS requests.
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// Integer representing the maximum time a preflight
+	// request will be cached.
+	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+}
+
+func (AccessApplicationCorsHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationCorsHeader)(nil)).Elem()
+}
+
+func (i AccessApplicationCorsHeaderArgs) ToAccessApplicationCorsHeaderOutput() AccessApplicationCorsHeaderOutput {
+	return i.ToAccessApplicationCorsHeaderOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationCorsHeaderArgs) ToAccessApplicationCorsHeaderOutputWithContext(ctx context.Context) AccessApplicationCorsHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationCorsHeaderOutput)
+}
+
+// AccessApplicationCorsHeaderArrayInput is an input type that accepts AccessApplicationCorsHeaderArray and AccessApplicationCorsHeaderArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationCorsHeaderArrayInput` via:
+//
+//          AccessApplicationCorsHeaderArray{ AccessApplicationCorsHeaderArgs{...} }
+type AccessApplicationCorsHeaderArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationCorsHeaderArrayOutput() AccessApplicationCorsHeaderArrayOutput
+	ToAccessApplicationCorsHeaderArrayOutputWithContext(context.Context) AccessApplicationCorsHeaderArrayOutput
+}
+
+type AccessApplicationCorsHeaderArray []AccessApplicationCorsHeaderInput
+
+func (AccessApplicationCorsHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationCorsHeader)(nil)).Elem()
+}
+
+func (i AccessApplicationCorsHeaderArray) ToAccessApplicationCorsHeaderArrayOutput() AccessApplicationCorsHeaderArrayOutput {
+	return i.ToAccessApplicationCorsHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationCorsHeaderArray) ToAccessApplicationCorsHeaderArrayOutputWithContext(ctx context.Context) AccessApplicationCorsHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationCorsHeaderArrayOutput)
+}
+
+type AccessApplicationCorsHeaderOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationCorsHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationCorsHeader)(nil)).Elem()
+}
+
+func (o AccessApplicationCorsHeaderOutput) ToAccessApplicationCorsHeaderOutput() AccessApplicationCorsHeaderOutput {
+	return o
+}
+
+func (o AccessApplicationCorsHeaderOutput) ToAccessApplicationCorsHeaderOutputWithContext(ctx context.Context) AccessApplicationCorsHeaderOutput {
+	return o
+}
+
+// Boolean value to determine whether all
+// HTTP headers are exposed.
+func (o AccessApplicationCorsHeaderOutput) AllowAllHeaders() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationCorsHeader) *bool { return v.AllowAllHeaders }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean value to determine whether all
+// methods are exposed.
+func (o AccessApplicationCorsHeaderOutput) AllowAllMethods() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationCorsHeader) *bool { return v.AllowAllMethods }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean value to determine whether all
+// origins are permitted to make CORS requests.
+func (o AccessApplicationCorsHeaderOutput) AllowAllOrigins() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationCorsHeader) *bool { return v.AllowAllOrigins }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean value to determine if credentials
+// (cookies, authorization headers, or TLS client certificates) are included with
+// requests.
+func (o AccessApplicationCorsHeaderOutput) AllowCredentials() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationCorsHeader) *bool { return v.AllowCredentials }).(pulumi.BoolPtrOutput)
+}
+
+// List of HTTP headers to expose via CORS.
+func (o AccessApplicationCorsHeaderOutput) AllowedHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationCorsHeader) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
+}
+
+// List of methods to expose via CORS.
+func (o AccessApplicationCorsHeaderOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationCorsHeader) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+}
+
+// List of origins permitted to make CORS requests.
+func (o AccessApplicationCorsHeaderOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationCorsHeader) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// Integer representing the maximum time a preflight
+// request will be cached.
+func (o AccessApplicationCorsHeaderOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessApplicationCorsHeader) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+}
+
+type AccessApplicationCorsHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationCorsHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationCorsHeader)(nil)).Elem()
+}
+
+func (o AccessApplicationCorsHeaderArrayOutput) ToAccessApplicationCorsHeaderArrayOutput() AccessApplicationCorsHeaderArrayOutput {
+	return o
+}
+
+func (o AccessApplicationCorsHeaderArrayOutput) ToAccessApplicationCorsHeaderArrayOutputWithContext(ctx context.Context) AccessApplicationCorsHeaderArrayOutput {
+	return o
+}
+
+func (o AccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput) AccessApplicationCorsHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationCorsHeader {
+		return vs[0].([]AccessApplicationCorsHeader)[vs[1].(int)]
+	}).(AccessApplicationCorsHeaderOutput)
+}
+
 type AccessGroupExclude struct {
 	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
 	Azures               []AccessGroupExcludeAzure  `pulumi:"azures"`
@@ -4466,6 +4644,603 @@ func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CustomHostnameOwnershipVerification struct {
+	Name *string `pulumi:"name"`
+	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+	Type  *string `pulumi:"type"`
+	Value *string `pulumi:"value"`
+}
+
+// CustomHostnameOwnershipVerificationInput is an input type that accepts CustomHostnameOwnershipVerificationArgs and CustomHostnameOwnershipVerificationOutput values.
+// You can construct a concrete instance of `CustomHostnameOwnershipVerificationInput` via:
+//
+//          CustomHostnameOwnershipVerificationArgs{...}
+type CustomHostnameOwnershipVerificationInput interface {
+	pulumi.Input
+
+	ToCustomHostnameOwnershipVerificationOutput() CustomHostnameOwnershipVerificationOutput
+	ToCustomHostnameOwnershipVerificationOutputWithContext(context.Context) CustomHostnameOwnershipVerificationOutput
+}
+
+type CustomHostnameOwnershipVerificationArgs struct {
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+	Type  pulumi.StringPtrInput `pulumi:"type"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CustomHostnameOwnershipVerificationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameOwnershipVerification)(nil)).Elem()
+}
+
+func (i CustomHostnameOwnershipVerificationArgs) ToCustomHostnameOwnershipVerificationOutput() CustomHostnameOwnershipVerificationOutput {
+	return i.ToCustomHostnameOwnershipVerificationOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameOwnershipVerificationArgs) ToCustomHostnameOwnershipVerificationOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationOutput)
+}
+
+func (i CustomHostnameOwnershipVerificationArgs) ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput {
+	return i.ToCustomHostnameOwnershipVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameOwnershipVerificationArgs) ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationOutput).ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx)
+}
+
+// CustomHostnameOwnershipVerificationPtrInput is an input type that accepts CustomHostnameOwnershipVerificationArgs, CustomHostnameOwnershipVerificationPtr and CustomHostnameOwnershipVerificationPtrOutput values.
+// You can construct a concrete instance of `CustomHostnameOwnershipVerificationPtrInput` via:
+//
+//          CustomHostnameOwnershipVerificationArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomHostnameOwnershipVerificationPtrInput interface {
+	pulumi.Input
+
+	ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput
+	ToCustomHostnameOwnershipVerificationPtrOutputWithContext(context.Context) CustomHostnameOwnershipVerificationPtrOutput
+}
+
+type customHostnameOwnershipVerificationPtrType CustomHostnameOwnershipVerificationArgs
+
+func CustomHostnameOwnershipVerificationPtr(v *CustomHostnameOwnershipVerificationArgs) CustomHostnameOwnershipVerificationPtrInput {
+	return (*customHostnameOwnershipVerificationPtrType)(v)
+}
+
+func (*customHostnameOwnershipVerificationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomHostnameOwnershipVerification)(nil)).Elem()
+}
+
+func (i *customHostnameOwnershipVerificationPtrType) ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput {
+	return i.ToCustomHostnameOwnershipVerificationPtrOutputWithContext(context.Background())
+}
+
+func (i *customHostnameOwnershipVerificationPtrType) ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationPtrOutput)
+}
+
+type CustomHostnameOwnershipVerificationOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameOwnershipVerificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameOwnershipVerification)(nil)).Elem()
+}
+
+func (o CustomHostnameOwnershipVerificationOutput) ToCustomHostnameOwnershipVerificationOutput() CustomHostnameOwnershipVerificationOutput {
+	return o
+}
+
+func (o CustomHostnameOwnershipVerificationOutput) ToCustomHostnameOwnershipVerificationOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationOutput {
+	return o
+}
+
+func (o CustomHostnameOwnershipVerificationOutput) ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput {
+	return o.ToCustomHostnameOwnershipVerificationPtrOutputWithContext(context.Background())
+}
+
+func (o CustomHostnameOwnershipVerificationOutput) ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationPtrOutput {
+	return o.ApplyT(func(v CustomHostnameOwnershipVerification) *CustomHostnameOwnershipVerification {
+		return &v
+	}).(CustomHostnameOwnershipVerificationPtrOutput)
+}
+func (o CustomHostnameOwnershipVerificationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameOwnershipVerification) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+func (o CustomHostnameOwnershipVerificationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameOwnershipVerification) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameOwnershipVerificationOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameOwnershipVerification) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CustomHostnameOwnershipVerificationPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameOwnershipVerificationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomHostnameOwnershipVerification)(nil)).Elem()
+}
+
+func (o CustomHostnameOwnershipVerificationPtrOutput) ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput {
+	return o
+}
+
+func (o CustomHostnameOwnershipVerificationPtrOutput) ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationPtrOutput {
+	return o
+}
+
+func (o CustomHostnameOwnershipVerificationPtrOutput) Elem() CustomHostnameOwnershipVerificationOutput {
+	return o.ApplyT(func(v *CustomHostnameOwnershipVerification) CustomHostnameOwnershipVerification { return *v }).(CustomHostnameOwnershipVerificationOutput)
+}
+
+func (o CustomHostnameOwnershipVerificationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomHostnameOwnershipVerification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+func (o CustomHostnameOwnershipVerificationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomHostnameOwnershipVerification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameOwnershipVerificationPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomHostnameOwnershipVerification) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomHostnameOwnershipVerificationHttp struct {
+	HttpBody *string `pulumi:"httpBody"`
+	HttpUrl  *string `pulumi:"httpUrl"`
+}
+
+// CustomHostnameOwnershipVerificationHttpInput is an input type that accepts CustomHostnameOwnershipVerificationHttpArgs and CustomHostnameOwnershipVerificationHttpOutput values.
+// You can construct a concrete instance of `CustomHostnameOwnershipVerificationHttpInput` via:
+//
+//          CustomHostnameOwnershipVerificationHttpArgs{...}
+type CustomHostnameOwnershipVerificationHttpInput interface {
+	pulumi.Input
+
+	ToCustomHostnameOwnershipVerificationHttpOutput() CustomHostnameOwnershipVerificationHttpOutput
+	ToCustomHostnameOwnershipVerificationHttpOutputWithContext(context.Context) CustomHostnameOwnershipVerificationHttpOutput
+}
+
+type CustomHostnameOwnershipVerificationHttpArgs struct {
+	HttpBody pulumi.StringPtrInput `pulumi:"httpBody"`
+	HttpUrl  pulumi.StringPtrInput `pulumi:"httpUrl"`
+}
+
+func (CustomHostnameOwnershipVerificationHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameOwnershipVerificationHttp)(nil)).Elem()
+}
+
+func (i CustomHostnameOwnershipVerificationHttpArgs) ToCustomHostnameOwnershipVerificationHttpOutput() CustomHostnameOwnershipVerificationHttpOutput {
+	return i.ToCustomHostnameOwnershipVerificationHttpOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameOwnershipVerificationHttpArgs) ToCustomHostnameOwnershipVerificationHttpOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationHttpOutput)
+}
+
+func (i CustomHostnameOwnershipVerificationHttpArgs) ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput {
+	return i.ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameOwnershipVerificationHttpArgs) ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationHttpOutput).ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx)
+}
+
+// CustomHostnameOwnershipVerificationHttpPtrInput is an input type that accepts CustomHostnameOwnershipVerificationHttpArgs, CustomHostnameOwnershipVerificationHttpPtr and CustomHostnameOwnershipVerificationHttpPtrOutput values.
+// You can construct a concrete instance of `CustomHostnameOwnershipVerificationHttpPtrInput` via:
+//
+//          CustomHostnameOwnershipVerificationHttpArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomHostnameOwnershipVerificationHttpPtrInput interface {
+	pulumi.Input
+
+	ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput
+	ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput
+}
+
+type customHostnameOwnershipVerificationHttpPtrType CustomHostnameOwnershipVerificationHttpArgs
+
+func CustomHostnameOwnershipVerificationHttpPtr(v *CustomHostnameOwnershipVerificationHttpArgs) CustomHostnameOwnershipVerificationHttpPtrInput {
+	return (*customHostnameOwnershipVerificationHttpPtrType)(v)
+}
+
+func (*customHostnameOwnershipVerificationHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomHostnameOwnershipVerificationHttp)(nil)).Elem()
+}
+
+func (i *customHostnameOwnershipVerificationHttpPtrType) ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput {
+	return i.ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *customHostnameOwnershipVerificationHttpPtrType) ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationHttpPtrOutput)
+}
+
+type CustomHostnameOwnershipVerificationHttpOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameOwnershipVerificationHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameOwnershipVerificationHttp)(nil)).Elem()
+}
+
+func (o CustomHostnameOwnershipVerificationHttpOutput) ToCustomHostnameOwnershipVerificationHttpOutput() CustomHostnameOwnershipVerificationHttpOutput {
+	return o
+}
+
+func (o CustomHostnameOwnershipVerificationHttpOutput) ToCustomHostnameOwnershipVerificationHttpOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpOutput {
+	return o
+}
+
+func (o CustomHostnameOwnershipVerificationHttpOutput) ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput {
+	return o.ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(context.Background())
+}
+
+func (o CustomHostnameOwnershipVerificationHttpOutput) ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput {
+	return o.ApplyT(func(v CustomHostnameOwnershipVerificationHttp) *CustomHostnameOwnershipVerificationHttp {
+		return &v
+	}).(CustomHostnameOwnershipVerificationHttpPtrOutput)
+}
+func (o CustomHostnameOwnershipVerificationHttpOutput) HttpBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameOwnershipVerificationHttp) *string { return v.HttpBody }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameOwnershipVerificationHttpOutput) HttpUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameOwnershipVerificationHttp) *string { return v.HttpUrl }).(pulumi.StringPtrOutput)
+}
+
+type CustomHostnameOwnershipVerificationHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameOwnershipVerificationHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomHostnameOwnershipVerificationHttp)(nil)).Elem()
+}
+
+func (o CustomHostnameOwnershipVerificationHttpPtrOutput) ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput {
+	return o
+}
+
+func (o CustomHostnameOwnershipVerificationHttpPtrOutput) ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput {
+	return o
+}
+
+func (o CustomHostnameOwnershipVerificationHttpPtrOutput) Elem() CustomHostnameOwnershipVerificationHttpOutput {
+	return o.ApplyT(func(v *CustomHostnameOwnershipVerificationHttp) CustomHostnameOwnershipVerificationHttp { return *v }).(CustomHostnameOwnershipVerificationHttpOutput)
+}
+
+func (o CustomHostnameOwnershipVerificationHttpPtrOutput) HttpBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomHostnameOwnershipVerificationHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpBody
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameOwnershipVerificationHttpPtrOutput) HttpUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomHostnameOwnershipVerificationHttp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomHostnameSsl struct {
+	CertificateAuthority *string `pulumi:"certificateAuthority"`
+	CnameName            *string `pulumi:"cnameName"`
+	CnameTarget          *string `pulumi:"cnameTarget"`
+	// If a custom uploaded certificate is used.
+	CustomCertificate *string `pulumi:"customCertificate"`
+	// The key for a custom uploaded certificate.
+	CustomKey *string `pulumi:"customKey"`
+	// Domain control validation (DCV) method used for this
+	// hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+	Method *string `pulumi:"method"`
+	// SSL/TLS settings for the certificate. See further notes below.
+	Settings []CustomHostnameSslSetting `pulumi:"settings"`
+	Status   *string                    `pulumi:"status"`
+	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+	Type *string `pulumi:"type"`
+	// Indicates whether the certificate covers a wildcard.
+	Wildcard *bool `pulumi:"wildcard"`
+}
+
+// CustomHostnameSslInput is an input type that accepts CustomHostnameSslArgs and CustomHostnameSslOutput values.
+// You can construct a concrete instance of `CustomHostnameSslInput` via:
+//
+//          CustomHostnameSslArgs{...}
+type CustomHostnameSslInput interface {
+	pulumi.Input
+
+	ToCustomHostnameSslOutput() CustomHostnameSslOutput
+	ToCustomHostnameSslOutputWithContext(context.Context) CustomHostnameSslOutput
+}
+
+type CustomHostnameSslArgs struct {
+	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
+	CnameName            pulumi.StringPtrInput `pulumi:"cnameName"`
+	CnameTarget          pulumi.StringPtrInput `pulumi:"cnameTarget"`
+	// If a custom uploaded certificate is used.
+	CustomCertificate pulumi.StringPtrInput `pulumi:"customCertificate"`
+	// The key for a custom uploaded certificate.
+	CustomKey pulumi.StringPtrInput `pulumi:"customKey"`
+	// Domain control validation (DCV) method used for this
+	// hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// SSL/TLS settings for the certificate. See further notes below.
+	Settings CustomHostnameSslSettingArrayInput `pulumi:"settings"`
+	Status   pulumi.StringPtrInput              `pulumi:"status"`
+	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Indicates whether the certificate covers a wildcard.
+	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
+}
+
+func (CustomHostnameSslArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameSsl)(nil)).Elem()
+}
+
+func (i CustomHostnameSslArgs) ToCustomHostnameSslOutput() CustomHostnameSslOutput {
+	return i.ToCustomHostnameSslOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameSslArgs) ToCustomHostnameSslOutputWithContext(ctx context.Context) CustomHostnameSslOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameSslOutput)
+}
+
+// CustomHostnameSslArrayInput is an input type that accepts CustomHostnameSslArray and CustomHostnameSslArrayOutput values.
+// You can construct a concrete instance of `CustomHostnameSslArrayInput` via:
+//
+//          CustomHostnameSslArray{ CustomHostnameSslArgs{...} }
+type CustomHostnameSslArrayInput interface {
+	pulumi.Input
+
+	ToCustomHostnameSslArrayOutput() CustomHostnameSslArrayOutput
+	ToCustomHostnameSslArrayOutputWithContext(context.Context) CustomHostnameSslArrayOutput
+}
+
+type CustomHostnameSslArray []CustomHostnameSslInput
+
+func (CustomHostnameSslArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostnameSsl)(nil)).Elem()
+}
+
+func (i CustomHostnameSslArray) ToCustomHostnameSslArrayOutput() CustomHostnameSslArrayOutput {
+	return i.ToCustomHostnameSslArrayOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameSslArray) ToCustomHostnameSslArrayOutputWithContext(ctx context.Context) CustomHostnameSslArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameSslArrayOutput)
+}
+
+type CustomHostnameSslOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameSslOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameSsl)(nil)).Elem()
+}
+
+func (o CustomHostnameSslOutput) ToCustomHostnameSslOutput() CustomHostnameSslOutput {
+	return o
+}
+
+func (o CustomHostnameSslOutput) ToCustomHostnameSslOutputWithContext(ctx context.Context) CustomHostnameSslOutput {
+	return o
+}
+
+func (o CustomHostnameSslOutput) CertificateAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameSslOutput) CnameName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CnameName }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameSslOutput) CnameTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CnameTarget }).(pulumi.StringPtrOutput)
+}
+
+// If a custom uploaded certificate is used.
+func (o CustomHostnameSslOutput) CustomCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CustomCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The key for a custom uploaded certificate.
+func (o CustomHostnameSslOutput) CustomKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CustomKey }).(pulumi.StringPtrOutput)
+}
+
+// Domain control validation (DCV) method used for this
+// hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+func (o CustomHostnameSslOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// SSL/TLS settings for the certificate. See further notes below.
+func (o CustomHostnameSslOutput) Settings() CustomHostnameSslSettingArrayOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) []CustomHostnameSslSetting { return v.Settings }).(CustomHostnameSslSettingArrayOutput)
+}
+
+func (o CustomHostnameSslOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+func (o CustomHostnameSslOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether the certificate covers a wildcard.
+func (o CustomHostnameSslOutput) Wildcard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) *bool { return v.Wildcard }).(pulumi.BoolPtrOutput)
+}
+
+type CustomHostnameSslArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameSslArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostnameSsl)(nil)).Elem()
+}
+
+func (o CustomHostnameSslArrayOutput) ToCustomHostnameSslArrayOutput() CustomHostnameSslArrayOutput {
+	return o
+}
+
+func (o CustomHostnameSslArrayOutput) ToCustomHostnameSslArrayOutputWithContext(ctx context.Context) CustomHostnameSslArrayOutput {
+	return o
+}
+
+func (o CustomHostnameSslArrayOutput) Index(i pulumi.IntInput) CustomHostnameSslOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomHostnameSsl {
+		return vs[0].([]CustomHostnameSsl)[vs[1].(int)]
+	}).(CustomHostnameSslOutput)
+}
+
+type CustomHostnameSslSetting struct {
+	// List of SSL/TLS ciphers to associate with this certificate.
+	Ciphers []string `pulumi:"ciphers"`
+	// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
+	Http2 *string `pulumi:"http2"`
+	// Lowest version of TLS this certificate should
+	// support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
+	MinTlsVersion *string `pulumi:"minTlsVersion"`
+	// Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
+	Tls13 *string `pulumi:"tls13"`
+}
+
+// CustomHostnameSslSettingInput is an input type that accepts CustomHostnameSslSettingArgs and CustomHostnameSslSettingOutput values.
+// You can construct a concrete instance of `CustomHostnameSslSettingInput` via:
+//
+//          CustomHostnameSslSettingArgs{...}
+type CustomHostnameSslSettingInput interface {
+	pulumi.Input
+
+	ToCustomHostnameSslSettingOutput() CustomHostnameSslSettingOutput
+	ToCustomHostnameSslSettingOutputWithContext(context.Context) CustomHostnameSslSettingOutput
+}
+
+type CustomHostnameSslSettingArgs struct {
+	// List of SSL/TLS ciphers to associate with this certificate.
+	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
+	// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
+	Http2 pulumi.StringPtrInput `pulumi:"http2"`
+	// Lowest version of TLS this certificate should
+	// support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
+	MinTlsVersion pulumi.StringPtrInput `pulumi:"minTlsVersion"`
+	// Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
+	Tls13 pulumi.StringPtrInput `pulumi:"tls13"`
+}
+
+func (CustomHostnameSslSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameSslSetting)(nil)).Elem()
+}
+
+func (i CustomHostnameSslSettingArgs) ToCustomHostnameSslSettingOutput() CustomHostnameSslSettingOutput {
+	return i.ToCustomHostnameSslSettingOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameSslSettingArgs) ToCustomHostnameSslSettingOutputWithContext(ctx context.Context) CustomHostnameSslSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameSslSettingOutput)
+}
+
+// CustomHostnameSslSettingArrayInput is an input type that accepts CustomHostnameSslSettingArray and CustomHostnameSslSettingArrayOutput values.
+// You can construct a concrete instance of `CustomHostnameSslSettingArrayInput` via:
+//
+//          CustomHostnameSslSettingArray{ CustomHostnameSslSettingArgs{...} }
+type CustomHostnameSslSettingArrayInput interface {
+	pulumi.Input
+
+	ToCustomHostnameSslSettingArrayOutput() CustomHostnameSslSettingArrayOutput
+	ToCustomHostnameSslSettingArrayOutputWithContext(context.Context) CustomHostnameSslSettingArrayOutput
+}
+
+type CustomHostnameSslSettingArray []CustomHostnameSslSettingInput
+
+func (CustomHostnameSslSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostnameSslSetting)(nil)).Elem()
+}
+
+func (i CustomHostnameSslSettingArray) ToCustomHostnameSslSettingArrayOutput() CustomHostnameSslSettingArrayOutput {
+	return i.ToCustomHostnameSslSettingArrayOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameSslSettingArray) ToCustomHostnameSslSettingArrayOutputWithContext(ctx context.Context) CustomHostnameSslSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameSslSettingArrayOutput)
+}
+
+type CustomHostnameSslSettingOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameSslSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameSslSetting)(nil)).Elem()
+}
+
+func (o CustomHostnameSslSettingOutput) ToCustomHostnameSslSettingOutput() CustomHostnameSslSettingOutput {
+	return o
+}
+
+func (o CustomHostnameSslSettingOutput) ToCustomHostnameSslSettingOutputWithContext(ctx context.Context) CustomHostnameSslSettingOutput {
+	return o
+}
+
+// List of SSL/TLS ciphers to associate with this certificate.
+func (o CustomHostnameSslSettingOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomHostnameSslSetting) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
+func (o CustomHostnameSslSettingOutput) Http2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslSetting) *string { return v.Http2 }).(pulumi.StringPtrOutput)
+}
+
+// Lowest version of TLS this certificate should
+// support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
+func (o CustomHostnameSslSettingOutput) MinTlsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslSetting) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
+func (o CustomHostnameSslSettingOutput) Tls13() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslSetting) *string { return v.Tls13 }).(pulumi.StringPtrOutput)
+}
+
+type CustomHostnameSslSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameSslSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostnameSslSetting)(nil)).Elem()
+}
+
+func (o CustomHostnameSslSettingArrayOutput) ToCustomHostnameSslSettingArrayOutput() CustomHostnameSslSettingArrayOutput {
+	return o
+}
+
+func (o CustomHostnameSslSettingArrayOutput) ToCustomHostnameSslSettingArrayOutputWithContext(ctx context.Context) CustomHostnameSslSettingArrayOutput {
+	return o
+}
+
+func (o CustomHostnameSslSettingArrayOutput) Index(i pulumi.IntInput) CustomHostnameSslSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomHostnameSslSetting {
+		return vs[0].([]CustomHostnameSslSetting)[vs[1].(int)]
+	}).(CustomHostnameSslSettingOutput)
+}
+
 type CustomSslCustomSslOptions struct {
 	// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
 	BundleMethod *string `pulumi:"bundleMethod"`
@@ -4877,6 +5652,118 @@ func (o HealthcheckHeaderArrayOutput) Index(i pulumi.IntInput) HealthcheckHeader
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthcheckHeader {
 		return vs[0].([]HealthcheckHeader)[vs[1].(int)]
 	}).(HealthcheckHeaderOutput)
+}
+
+type IpListItem struct {
+	// A note that can be used to annotate the item.
+	Comment *string `pulumi:"comment"`
+	Id      *string `pulumi:"id"`
+	// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+	Value string `pulumi:"value"`
+}
+
+// IpListItemInput is an input type that accepts IpListItemArgs and IpListItemOutput values.
+// You can construct a concrete instance of `IpListItemInput` via:
+//
+//          IpListItemArgs{...}
+type IpListItemInput interface {
+	pulumi.Input
+
+	ToIpListItemOutput() IpListItemOutput
+	ToIpListItemOutputWithContext(context.Context) IpListItemOutput
+}
+
+type IpListItemArgs struct {
+	// A note that can be used to annotate the item.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	Id      pulumi.StringPtrInput `pulumi:"id"`
+	// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (IpListItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpListItem)(nil)).Elem()
+}
+
+func (i IpListItemArgs) ToIpListItemOutput() IpListItemOutput {
+	return i.ToIpListItemOutputWithContext(context.Background())
+}
+
+func (i IpListItemArgs) ToIpListItemOutputWithContext(ctx context.Context) IpListItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpListItemOutput)
+}
+
+// IpListItemArrayInput is an input type that accepts IpListItemArray and IpListItemArrayOutput values.
+// You can construct a concrete instance of `IpListItemArrayInput` via:
+//
+//          IpListItemArray{ IpListItemArgs{...} }
+type IpListItemArrayInput interface {
+	pulumi.Input
+
+	ToIpListItemArrayOutput() IpListItemArrayOutput
+	ToIpListItemArrayOutputWithContext(context.Context) IpListItemArrayOutput
+}
+
+type IpListItemArray []IpListItemInput
+
+func (IpListItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpListItem)(nil)).Elem()
+}
+
+func (i IpListItemArray) ToIpListItemArrayOutput() IpListItemArrayOutput {
+	return i.ToIpListItemArrayOutputWithContext(context.Background())
+}
+
+func (i IpListItemArray) ToIpListItemArrayOutputWithContext(ctx context.Context) IpListItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpListItemArrayOutput)
+}
+
+type IpListItemOutput struct{ *pulumi.OutputState }
+
+func (IpListItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpListItem)(nil)).Elem()
+}
+
+func (o IpListItemOutput) ToIpListItemOutput() IpListItemOutput {
+	return o
+}
+
+func (o IpListItemOutput) ToIpListItemOutputWithContext(ctx context.Context) IpListItemOutput {
+	return o
+}
+
+// A note that can be used to annotate the item.
+func (o IpListItemOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpListItem) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+func (o IpListItemOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IpListItem) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+func (o IpListItemOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v IpListItem) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type IpListItemArrayOutput struct{ *pulumi.OutputState }
+
+func (IpListItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpListItem)(nil)).Elem()
+}
+
+func (o IpListItemArrayOutput) ToIpListItemArrayOutput() IpListItemArrayOutput {
+	return o
+}
+
+func (o IpListItemArrayOutput) ToIpListItemArrayOutputWithContext(ctx context.Context) IpListItemArrayOutput {
+	return o
+}
+
+func (o IpListItemArrayOutput) Index(i pulumi.IntInput) IpListItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpListItem {
+		return vs[0].([]IpListItem)[vs[1].(int)]
+	}).(IpListItemOutput)
 }
 
 type LoadBalancerMonitorHeader struct {
@@ -9383,6 +10270,156 @@ func (o SpectrumApplicationOriginDnsPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SpectrumApplicationOriginPortRange struct {
+	// Upper bound of the origin port range, e.g. `2000`
+	End int `pulumi:"end"`
+	// Lower bound of the origin port range, e.g. `1000`
+	Start int `pulumi:"start"`
+}
+
+// SpectrumApplicationOriginPortRangeInput is an input type that accepts SpectrumApplicationOriginPortRangeArgs and SpectrumApplicationOriginPortRangeOutput values.
+// You can construct a concrete instance of `SpectrumApplicationOriginPortRangeInput` via:
+//
+//          SpectrumApplicationOriginPortRangeArgs{...}
+type SpectrumApplicationOriginPortRangeInput interface {
+	pulumi.Input
+
+	ToSpectrumApplicationOriginPortRangeOutput() SpectrumApplicationOriginPortRangeOutput
+	ToSpectrumApplicationOriginPortRangeOutputWithContext(context.Context) SpectrumApplicationOriginPortRangeOutput
+}
+
+type SpectrumApplicationOriginPortRangeArgs struct {
+	// Upper bound of the origin port range, e.g. `2000`
+	End pulumi.IntInput `pulumi:"end"`
+	// Lower bound of the origin port range, e.g. `1000`
+	Start pulumi.IntInput `pulumi:"start"`
+}
+
+func (SpectrumApplicationOriginPortRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpectrumApplicationOriginPortRange)(nil)).Elem()
+}
+
+func (i SpectrumApplicationOriginPortRangeArgs) ToSpectrumApplicationOriginPortRangeOutput() SpectrumApplicationOriginPortRangeOutput {
+	return i.ToSpectrumApplicationOriginPortRangeOutputWithContext(context.Background())
+}
+
+func (i SpectrumApplicationOriginPortRangeArgs) ToSpectrumApplicationOriginPortRangeOutputWithContext(ctx context.Context) SpectrumApplicationOriginPortRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationOriginPortRangeOutput)
+}
+
+func (i SpectrumApplicationOriginPortRangeArgs) ToSpectrumApplicationOriginPortRangePtrOutput() SpectrumApplicationOriginPortRangePtrOutput {
+	return i.ToSpectrumApplicationOriginPortRangePtrOutputWithContext(context.Background())
+}
+
+func (i SpectrumApplicationOriginPortRangeArgs) ToSpectrumApplicationOriginPortRangePtrOutputWithContext(ctx context.Context) SpectrumApplicationOriginPortRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationOriginPortRangeOutput).ToSpectrumApplicationOriginPortRangePtrOutputWithContext(ctx)
+}
+
+// SpectrumApplicationOriginPortRangePtrInput is an input type that accepts SpectrumApplicationOriginPortRangeArgs, SpectrumApplicationOriginPortRangePtr and SpectrumApplicationOriginPortRangePtrOutput values.
+// You can construct a concrete instance of `SpectrumApplicationOriginPortRangePtrInput` via:
+//
+//          SpectrumApplicationOriginPortRangeArgs{...}
+//
+//  or:
+//
+//          nil
+type SpectrumApplicationOriginPortRangePtrInput interface {
+	pulumi.Input
+
+	ToSpectrumApplicationOriginPortRangePtrOutput() SpectrumApplicationOriginPortRangePtrOutput
+	ToSpectrumApplicationOriginPortRangePtrOutputWithContext(context.Context) SpectrumApplicationOriginPortRangePtrOutput
+}
+
+type spectrumApplicationOriginPortRangePtrType SpectrumApplicationOriginPortRangeArgs
+
+func SpectrumApplicationOriginPortRangePtr(v *SpectrumApplicationOriginPortRangeArgs) SpectrumApplicationOriginPortRangePtrInput {
+	return (*spectrumApplicationOriginPortRangePtrType)(v)
+}
+
+func (*spectrumApplicationOriginPortRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpectrumApplicationOriginPortRange)(nil)).Elem()
+}
+
+func (i *spectrumApplicationOriginPortRangePtrType) ToSpectrumApplicationOriginPortRangePtrOutput() SpectrumApplicationOriginPortRangePtrOutput {
+	return i.ToSpectrumApplicationOriginPortRangePtrOutputWithContext(context.Background())
+}
+
+func (i *spectrumApplicationOriginPortRangePtrType) ToSpectrumApplicationOriginPortRangePtrOutputWithContext(ctx context.Context) SpectrumApplicationOriginPortRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationOriginPortRangePtrOutput)
+}
+
+type SpectrumApplicationOriginPortRangeOutput struct{ *pulumi.OutputState }
+
+func (SpectrumApplicationOriginPortRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpectrumApplicationOriginPortRange)(nil)).Elem()
+}
+
+func (o SpectrumApplicationOriginPortRangeOutput) ToSpectrumApplicationOriginPortRangeOutput() SpectrumApplicationOriginPortRangeOutput {
+	return o
+}
+
+func (o SpectrumApplicationOriginPortRangeOutput) ToSpectrumApplicationOriginPortRangeOutputWithContext(ctx context.Context) SpectrumApplicationOriginPortRangeOutput {
+	return o
+}
+
+func (o SpectrumApplicationOriginPortRangeOutput) ToSpectrumApplicationOriginPortRangePtrOutput() SpectrumApplicationOriginPortRangePtrOutput {
+	return o.ToSpectrumApplicationOriginPortRangePtrOutputWithContext(context.Background())
+}
+
+func (o SpectrumApplicationOriginPortRangeOutput) ToSpectrumApplicationOriginPortRangePtrOutputWithContext(ctx context.Context) SpectrumApplicationOriginPortRangePtrOutput {
+	return o.ApplyT(func(v SpectrumApplicationOriginPortRange) *SpectrumApplicationOriginPortRange {
+		return &v
+	}).(SpectrumApplicationOriginPortRangePtrOutput)
+}
+
+// Upper bound of the origin port range, e.g. `2000`
+func (o SpectrumApplicationOriginPortRangeOutput) End() pulumi.IntOutput {
+	return o.ApplyT(func(v SpectrumApplicationOriginPortRange) int { return v.End }).(pulumi.IntOutput)
+}
+
+// Lower bound of the origin port range, e.g. `1000`
+func (o SpectrumApplicationOriginPortRangeOutput) Start() pulumi.IntOutput {
+	return o.ApplyT(func(v SpectrumApplicationOriginPortRange) int { return v.Start }).(pulumi.IntOutput)
+}
+
+type SpectrumApplicationOriginPortRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SpectrumApplicationOriginPortRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SpectrumApplicationOriginPortRange)(nil)).Elem()
+}
+
+func (o SpectrumApplicationOriginPortRangePtrOutput) ToSpectrumApplicationOriginPortRangePtrOutput() SpectrumApplicationOriginPortRangePtrOutput {
+	return o
+}
+
+func (o SpectrumApplicationOriginPortRangePtrOutput) ToSpectrumApplicationOriginPortRangePtrOutputWithContext(ctx context.Context) SpectrumApplicationOriginPortRangePtrOutput {
+	return o
+}
+
+func (o SpectrumApplicationOriginPortRangePtrOutput) Elem() SpectrumApplicationOriginPortRangeOutput {
+	return o.ApplyT(func(v *SpectrumApplicationOriginPortRange) SpectrumApplicationOriginPortRange { return *v }).(SpectrumApplicationOriginPortRangeOutput)
+}
+
+// Upper bound of the origin port range, e.g. `2000`
+func (o SpectrumApplicationOriginPortRangePtrOutput) End() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplicationOriginPortRange) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.End
+	}).(pulumi.IntPtrOutput)
+}
+
+// Lower bound of the origin port range, e.g. `1000`
+func (o SpectrumApplicationOriginPortRangePtrOutput) Start() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplicationOriginPortRange) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Start
+	}).(pulumi.IntPtrOutput)
+}
+
 type WorkerScriptKvNamespaceBinding struct {
 	// The global variable for the binding in your Worker code.
 	Name        string `pulumi:"name"`
@@ -13337,11 +14374,22 @@ func (o GetWafRulesRuleArrayOutput) Index(i pulumi.IntInput) GetWafRulesRuleOutp
 }
 
 type GetZonesFilter struct {
-	// A regular expression matching the zone to lookup.
+	// The type of search to perform for the `name` value
+	// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+	// to `"exact"`.
+	LookupType *string `pulumi:"lookupType"`
+	// A RE2 compatible regular expression to filter the
+	// results. This is performed client side whereas the `name` and `lookupType`
+	// are performed on the Cloudflare server side.
+	Match *string `pulumi:"match"`
+	// A string value to search for.
 	Name *string `pulumi:"name"`
-	// Paused status of the zone to lookup. Valid values are `true` or `false`.
+	// Paused status of the zone to lookup. Valid values are
+	// `true` or `false`.
 	Paused *bool `pulumi:"paused"`
-	// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+	// Status of the zone to lookup. Valid values: `"active"`,
+	// `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+	// `"read only"`.
 	Status *string `pulumi:"status"`
 }
 
@@ -13357,11 +14405,22 @@ type GetZonesFilterInput interface {
 }
 
 type GetZonesFilterArgs struct {
-	// A regular expression matching the zone to lookup.
+	// The type of search to perform for the `name` value
+	// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+	// to `"exact"`.
+	LookupType pulumi.StringPtrInput `pulumi:"lookupType"`
+	// A RE2 compatible regular expression to filter the
+	// results. This is performed client side whereas the `name` and `lookupType`
+	// are performed on the Cloudflare server side.
+	Match pulumi.StringPtrInput `pulumi:"match"`
+	// A string value to search for.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Paused status of the zone to lookup. Valid values are `true` or `false`.
+	// Paused status of the zone to lookup. Valid values are
+	// `true` or `false`.
 	Paused pulumi.BoolPtrInput `pulumi:"paused"`
-	// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+	// Status of the zone to lookup. Valid values: `"active"`,
+	// `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+	// `"read only"`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -13391,17 +14450,34 @@ func (o GetZonesFilterOutput) ToGetZonesFilterOutputWithContext(ctx context.Cont
 	return o
 }
 
-// A regular expression matching the zone to lookup.
+// The type of search to perform for the `name` value
+// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+// to `"exact"`.
+func (o GetZonesFilterOutput) LookupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesFilter) *string { return v.LookupType }).(pulumi.StringPtrOutput)
+}
+
+// A RE2 compatible regular expression to filter the
+// results. This is performed client side whereas the `name` and `lookupType`
+// are performed on the Cloudflare server side.
+func (o GetZonesFilterOutput) Match() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesFilter) *string { return v.Match }).(pulumi.StringPtrOutput)
+}
+
+// A string value to search for.
 func (o GetZonesFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Paused status of the zone to lookup. Valid values are `true` or `false`.
+// Paused status of the zone to lookup. Valid values are
+// `true` or `false`.
 func (o GetZonesFilterOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
-// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+// Status of the zone to lookup. Valid values: `"active"`,
+// `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+// `"read only"`.
 func (o GetZonesFilterOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -13409,7 +14485,7 @@ func (o GetZonesFilterOutput) Status() pulumi.StringPtrOutput {
 type GetZonesZone struct {
 	// The zone ID
 	Id *string `pulumi:"id"`
-	// A regular expression matching the zone to lookup.
+	// A string value to search for.
 	Name *string `pulumi:"name"`
 }
 
@@ -13427,7 +14503,7 @@ type GetZonesZoneInput interface {
 type GetZonesZoneArgs struct {
 	// The zone ID
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// A regular expression matching the zone to lookup.
+	// A string value to search for.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -13487,7 +14563,7 @@ func (o GetZonesZoneOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesZone) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// A regular expression matching the zone to lookup.
+// A string value to search for.
 func (o GetZonesZoneOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesZone) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -13513,6 +14589,8 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(AccessApplicationCorsHeaderOutput{})
+	pulumi.RegisterOutputType(AccessApplicationCorsHeaderArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAzureOutput{})
@@ -13589,12 +14667,22 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyRequireSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessRuleConfigurationOutput{})
 	pulumi.RegisterOutputType(AccessRuleConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationOutput{})
+	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationPtrOutput{})
+	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationHttpOutput{})
+	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationHttpPtrOutput{})
+	pulumi.RegisterOutputType(CustomHostnameSslOutput{})
+	pulumi.RegisterOutputType(CustomHostnameSslArrayOutput{})
+	pulumi.RegisterOutputType(CustomHostnameSslSettingOutput{})
+	pulumi.RegisterOutputType(CustomHostnameSslSettingArrayOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslOptionsOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityArrayOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderArrayOutput{})
+	pulumi.RegisterOutputType(IpListItemOutput{})
+	pulumi.RegisterOutputType(IpListItemArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginOutput{})
@@ -13641,6 +14729,8 @@ func init() {
 	pulumi.RegisterOutputType(SpectrumApplicationDnsPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginDnsOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginDnsPtrOutput{})
+	pulumi.RegisterOutputType(SpectrumApplicationOriginPortRangeOutput{})
+	pulumi.RegisterOutputType(SpectrumApplicationOriginPortRangePtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingOutput{})
