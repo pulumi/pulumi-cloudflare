@@ -5,155 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['ZoneSettingsOverride']
 
 
 class ZoneSettingsOverride(pulumi.CustomResource):
-    initial_settings: pulumi.Output[dict]
-    """
-    Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-
-      * `alwaysOnline` (`str`)
-      * `alwaysUseHttps` (`str`)
-      * `automaticHttpsRewrites` (`str`)
-      * `brotli` (`str`)
-      * `browserCacheTtl` (`float`)
-      * `browserCheck` (`str`)
-      * `cacheLevel` (`str`)
-      * `challengeTtl` (`float`)
-      * `cnameFlattening` (`str`)
-      * `developmentMode` (`str`)
-      * `emailObfuscation` (`str`)
-      * `h2Prioritization` (`str`)
-      * `hotlinkProtection` (`str`)
-      * `http2` (`str`)
-      * `http3` (`str`)
-      * `imageResizing` (`str`)
-      * `ipGeolocation` (`str`)
-      * `ipv6` (`str`)
-      * `maxUpload` (`float`)
-      * `minTlsVersion` (`str`)
-      * `minify` (`dict`)
-        * `css` (`str`) - "on"/"off"
-        * `html` (`str`) - "on"/"off"
-        * `js` (`str`) - "on"/"off"
-
-      * `mirage` (`str`)
-      * `mobileRedirect` (`dict`)
-        * `mobileSubdomain` (`str`) - String value
-        * `status` (`str`) - "on"/"off"
-        * `stripUri` (`bool`) - true/false
-
-      * `opportunisticEncryption` (`str`)
-      * `opportunisticOnion` (`str`)
-      * `originErrorPagePassThru` (`str`)
-      * `polish` (`str`)
-      * `prefetchPreload` (`str`)
-      * `privacyPass` (`str`)
-      * `pseudoIpv4` (`str`)
-      * `responseBuffering` (`str`)
-      * `rocketLoader` (`str`)
-      * `securityHeader` (`dict`)
-        * `enabled` (`bool`) - true/false
-        * `includeSubdomains` (`bool`) - true/false
-        * `maxAge` (`float`) - Integer
-        * `nosniff` (`bool`) - true/false
-        * `preload` (`bool`) - true/false
-
-      * `securityLevel` (`str`)
-      * `serverSideExclude` (`str`)
-      * `sortQueryStringForCache` (`str`)
-      * `ssl` (`str`)
-      * `tls12Only` (`str`)
-      * `tls13` (`str`)
-      * `tlsClientAuth` (`str`)
-      * `trueClientIpHeader` (`str`)
-      * `universalSsl` (`str`)
-      * `waf` (`str`)
-      * `webp` (`str`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-      * `websockets` (`str`)
-      * `zeroRtt` (`str`)
-    """
-    initial_settings_read_at: pulumi.Output[str]
-    readonly_settings: pulumi.Output[list]
-    """
-    Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-    * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-    * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-    """
-    settings: pulumi.Output[dict]
-    """
-    Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
-
-      * `alwaysOnline` (`str`)
-      * `alwaysUseHttps` (`str`)
-      * `automaticHttpsRewrites` (`str`)
-      * `brotli` (`str`)
-      * `browserCacheTtl` (`float`)
-      * `browserCheck` (`str`)
-      * `cacheLevel` (`str`)
-      * `challengeTtl` (`float`)
-      * `cnameFlattening` (`str`)
-      * `developmentMode` (`str`)
-      * `emailObfuscation` (`str`)
-      * `h2Prioritization` (`str`)
-      * `hotlinkProtection` (`str`)
-      * `http2` (`str`)
-      * `http3` (`str`)
-      * `imageResizing` (`str`)
-      * `ipGeolocation` (`str`)
-      * `ipv6` (`str`)
-      * `maxUpload` (`float`)
-      * `minTlsVersion` (`str`)
-      * `minify` (`dict`)
-        * `css` (`str`) - "on"/"off"
-        * `html` (`str`) - "on"/"off"
-        * `js` (`str`) - "on"/"off"
-
-      * `mirage` (`str`)
-      * `mobileRedirect` (`dict`)
-        * `mobileSubdomain` (`str`) - String value
-        * `status` (`str`) - "on"/"off"
-        * `stripUri` (`bool`) - true/false
-
-      * `opportunisticEncryption` (`str`)
-      * `opportunisticOnion` (`str`)
-      * `originErrorPagePassThru` (`str`)
-      * `polish` (`str`)
-      * `prefetchPreload` (`str`)
-      * `privacyPass` (`str`)
-      * `pseudoIpv4` (`str`)
-      * `responseBuffering` (`str`)
-      * `rocketLoader` (`str`)
-      * `securityHeader` (`dict`)
-        * `enabled` (`bool`) - true/false
-        * `includeSubdomains` (`bool`) - true/false
-        * `maxAge` (`float`) - Integer
-        * `nosniff` (`bool`) - true/false
-        * `preload` (`bool`) - true/false
-
-      * `securityLevel` (`str`)
-      * `serverSideExclude` (`str`)
-      * `sortQueryStringForCache` (`str`)
-      * `ssl` (`str`)
-      * `tls12Only` (`str`)
-      * `tls13` (`str`)
-      * `tlsClientAuth` (`str`)
-      * `trueClientIpHeader` (`str`)
-      * `universalSsl` (`str`)
-      * `waf` (`str`)
-      * `webp` (`str`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-      * `websockets` (`str`)
-      * `zeroRtt` (`str`)
-    """
-    zone_id: pulumi.Output[str]
-    """
-    The DNS zone ID to which apply settings.
-    """
-    zone_status: pulumi.Output[str]
-    zone_type: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, settings=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
 
@@ -165,92 +33,29 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
         test = cloudflare.ZoneSettingsOverride("test",
             zone_id=var["cloudflare_zone_id"],
-            settings={
-                "brotli": "on",
-                "challengeTtl": 2700,
-                "securityLevel": "high",
-                "opportunisticEncryption": "on",
-                "automaticHttpsRewrites": "on",
-                "mirage": "on",
-                "waf": "on",
-                "minify": {
-                    "css": "on",
-                    "js": "off",
-                    "html": "off",
-                },
-                "securityHeader": {
-                    "enabled": True,
-                },
-            })
+            settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
+                brotli="on",
+                challenge_ttl=2700,
+                security_level="high",
+                opportunistic_encryption="on",
+                automatic_https_rewrites="on",
+                mirage="on",
+                waf="on",
+                minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(
+                    css="on",
+                    js="off",
+                    html="off",
+                ),
+                security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(
+                    enabled=True,
+                ),
+            ))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        :param pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which apply settings.
-
-        The **settings** object supports the following:
-
-          * `alwaysOnline` (`pulumi.Input[str]`)
-          * `alwaysUseHttps` (`pulumi.Input[str]`)
-          * `automaticHttpsRewrites` (`pulumi.Input[str]`)
-          * `brotli` (`pulumi.Input[str]`)
-          * `browserCacheTtl` (`pulumi.Input[float]`)
-          * `browserCheck` (`pulumi.Input[str]`)
-          * `cacheLevel` (`pulumi.Input[str]`)
-          * `challengeTtl` (`pulumi.Input[float]`)
-          * `cnameFlattening` (`pulumi.Input[str]`)
-          * `developmentMode` (`pulumi.Input[str]`)
-          * `emailObfuscation` (`pulumi.Input[str]`)
-          * `h2Prioritization` (`pulumi.Input[str]`)
-          * `hotlinkProtection` (`pulumi.Input[str]`)
-          * `http2` (`pulumi.Input[str]`)
-          * `http3` (`pulumi.Input[str]`)
-          * `imageResizing` (`pulumi.Input[str]`)
-          * `ipGeolocation` (`pulumi.Input[str]`)
-          * `ipv6` (`pulumi.Input[str]`)
-          * `maxUpload` (`pulumi.Input[float]`)
-          * `minTlsVersion` (`pulumi.Input[str]`)
-          * `minify` (`pulumi.Input[dict]`)
-            * `css` (`pulumi.Input[str]`) - "on"/"off"
-            * `html` (`pulumi.Input[str]`) - "on"/"off"
-            * `js` (`pulumi.Input[str]`) - "on"/"off"
-
-          * `mirage` (`pulumi.Input[str]`)
-          * `mobileRedirect` (`pulumi.Input[dict]`)
-            * `mobileSubdomain` (`pulumi.Input[str]`) - String value
-            * `status` (`pulumi.Input[str]`) - "on"/"off"
-            * `stripUri` (`pulumi.Input[bool]`) - true/false
-
-          * `opportunisticEncryption` (`pulumi.Input[str]`)
-          * `opportunisticOnion` (`pulumi.Input[str]`)
-          * `originErrorPagePassThru` (`pulumi.Input[str]`)
-          * `polish` (`pulumi.Input[str]`)
-          * `prefetchPreload` (`pulumi.Input[str]`)
-          * `privacyPass` (`pulumi.Input[str]`)
-          * `pseudoIpv4` (`pulumi.Input[str]`)
-          * `responseBuffering` (`pulumi.Input[str]`)
-          * `rocketLoader` (`pulumi.Input[str]`)
-          * `securityHeader` (`pulumi.Input[dict]`)
-            * `enabled` (`pulumi.Input[bool]`) - true/false
-            * `includeSubdomains` (`pulumi.Input[bool]`) - true/false
-            * `maxAge` (`pulumi.Input[float]`) - Integer
-            * `nosniff` (`pulumi.Input[bool]`) - true/false
-            * `preload` (`pulumi.Input[bool]`) - true/false
-
-          * `securityLevel` (`pulumi.Input[str]`)
-          * `serverSideExclude` (`pulumi.Input[str]`)
-          * `sortQueryStringForCache` (`pulumi.Input[str]`)
-          * `ssl` (`pulumi.Input[str]`)
-          * `tls12Only` (`pulumi.Input[str]`)
-          * `tls13` (`pulumi.Input[str]`)
-          * `tlsClientAuth` (`pulumi.Input[str]`)
-          * `trueClientIpHeader` (`pulumi.Input[str]`)
-          * `universalSsl` (`pulumi.Input[str]`)
-          * `waf` (`pulumi.Input[str]`)
-          * `webp` (`pulumi.Input[str]`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-          * `websockets` (`pulumi.Input[str]`)
-          * `zeroRtt` (`pulumi.Input[str]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -263,7 +68,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -285,146 +90,29 @@ class ZoneSettingsOverride(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, initial_settings=None, initial_settings_read_at=None, readonly_settings=None, settings=None, zone_id=None, zone_status=None, zone_type=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            initial_settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideInitialSettingsArgs']]] = None,
+            initial_settings_read_at: Optional[pulumi.Input[str]] = None,
+            readonly_settings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None,
+            zone_status: Optional[pulumi.Input[str]] = None,
+            zone_type: Optional[pulumi.Input[str]] = None) -> 'ZoneSettingsOverride':
         """
         Get an existing ZoneSettingsOverride resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] initial_settings: Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-        :param pulumi.Input[list] readonly_settings: Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
+        :param pulumi.Input[pulumi.InputType['ZoneSettingsOverrideInitialSettingsArgs']] initial_settings: Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+        :param pulumi.Input[List[pulumi.Input[str]]] readonly_settings: Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
                * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
                * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
-        :param pulumi.Input[dict] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        :param pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which apply settings.
-
-        The **initial_settings** object supports the following:
-
-          * `alwaysOnline` (`pulumi.Input[str]`)
-          * `alwaysUseHttps` (`pulumi.Input[str]`)
-          * `automaticHttpsRewrites` (`pulumi.Input[str]`)
-          * `brotli` (`pulumi.Input[str]`)
-          * `browserCacheTtl` (`pulumi.Input[float]`)
-          * `browserCheck` (`pulumi.Input[str]`)
-          * `cacheLevel` (`pulumi.Input[str]`)
-          * `challengeTtl` (`pulumi.Input[float]`)
-          * `cnameFlattening` (`pulumi.Input[str]`)
-          * `developmentMode` (`pulumi.Input[str]`)
-          * `emailObfuscation` (`pulumi.Input[str]`)
-          * `h2Prioritization` (`pulumi.Input[str]`)
-          * `hotlinkProtection` (`pulumi.Input[str]`)
-          * `http2` (`pulumi.Input[str]`)
-          * `http3` (`pulumi.Input[str]`)
-          * `imageResizing` (`pulumi.Input[str]`)
-          * `ipGeolocation` (`pulumi.Input[str]`)
-          * `ipv6` (`pulumi.Input[str]`)
-          * `maxUpload` (`pulumi.Input[float]`)
-          * `minTlsVersion` (`pulumi.Input[str]`)
-          * `minify` (`pulumi.Input[dict]`)
-            * `css` (`pulumi.Input[str]`) - "on"/"off"
-            * `html` (`pulumi.Input[str]`) - "on"/"off"
-            * `js` (`pulumi.Input[str]`) - "on"/"off"
-
-          * `mirage` (`pulumi.Input[str]`)
-          * `mobileRedirect` (`pulumi.Input[dict]`)
-            * `mobileSubdomain` (`pulumi.Input[str]`) - String value
-            * `status` (`pulumi.Input[str]`) - "on"/"off"
-            * `stripUri` (`pulumi.Input[bool]`) - true/false
-
-          * `opportunisticEncryption` (`pulumi.Input[str]`)
-          * `opportunisticOnion` (`pulumi.Input[str]`)
-          * `originErrorPagePassThru` (`pulumi.Input[str]`)
-          * `polish` (`pulumi.Input[str]`)
-          * `prefetchPreload` (`pulumi.Input[str]`)
-          * `privacyPass` (`pulumi.Input[str]`)
-          * `pseudoIpv4` (`pulumi.Input[str]`)
-          * `responseBuffering` (`pulumi.Input[str]`)
-          * `rocketLoader` (`pulumi.Input[str]`)
-          * `securityHeader` (`pulumi.Input[dict]`)
-            * `enabled` (`pulumi.Input[bool]`) - true/false
-            * `includeSubdomains` (`pulumi.Input[bool]`) - true/false
-            * `maxAge` (`pulumi.Input[float]`) - Integer
-            * `nosniff` (`pulumi.Input[bool]`) - true/false
-            * `preload` (`pulumi.Input[bool]`) - true/false
-
-          * `securityLevel` (`pulumi.Input[str]`)
-          * `serverSideExclude` (`pulumi.Input[str]`)
-          * `sortQueryStringForCache` (`pulumi.Input[str]`)
-          * `ssl` (`pulumi.Input[str]`)
-          * `tls12Only` (`pulumi.Input[str]`)
-          * `tls13` (`pulumi.Input[str]`)
-          * `tlsClientAuth` (`pulumi.Input[str]`)
-          * `trueClientIpHeader` (`pulumi.Input[str]`)
-          * `universalSsl` (`pulumi.Input[str]`)
-          * `waf` (`pulumi.Input[str]`)
-          * `webp` (`pulumi.Input[str]`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-          * `websockets` (`pulumi.Input[str]`)
-          * `zeroRtt` (`pulumi.Input[str]`)
-
-        The **settings** object supports the following:
-
-          * `alwaysOnline` (`pulumi.Input[str]`)
-          * `alwaysUseHttps` (`pulumi.Input[str]`)
-          * `automaticHttpsRewrites` (`pulumi.Input[str]`)
-          * `brotli` (`pulumi.Input[str]`)
-          * `browserCacheTtl` (`pulumi.Input[float]`)
-          * `browserCheck` (`pulumi.Input[str]`)
-          * `cacheLevel` (`pulumi.Input[str]`)
-          * `challengeTtl` (`pulumi.Input[float]`)
-          * `cnameFlattening` (`pulumi.Input[str]`)
-          * `developmentMode` (`pulumi.Input[str]`)
-          * `emailObfuscation` (`pulumi.Input[str]`)
-          * `h2Prioritization` (`pulumi.Input[str]`)
-          * `hotlinkProtection` (`pulumi.Input[str]`)
-          * `http2` (`pulumi.Input[str]`)
-          * `http3` (`pulumi.Input[str]`)
-          * `imageResizing` (`pulumi.Input[str]`)
-          * `ipGeolocation` (`pulumi.Input[str]`)
-          * `ipv6` (`pulumi.Input[str]`)
-          * `maxUpload` (`pulumi.Input[float]`)
-          * `minTlsVersion` (`pulumi.Input[str]`)
-          * `minify` (`pulumi.Input[dict]`)
-            * `css` (`pulumi.Input[str]`) - "on"/"off"
-            * `html` (`pulumi.Input[str]`) - "on"/"off"
-            * `js` (`pulumi.Input[str]`) - "on"/"off"
-
-          * `mirage` (`pulumi.Input[str]`)
-          * `mobileRedirect` (`pulumi.Input[dict]`)
-            * `mobileSubdomain` (`pulumi.Input[str]`) - String value
-            * `status` (`pulumi.Input[str]`) - "on"/"off"
-            * `stripUri` (`pulumi.Input[bool]`) - true/false
-
-          * `opportunisticEncryption` (`pulumi.Input[str]`)
-          * `opportunisticOnion` (`pulumi.Input[str]`)
-          * `originErrorPagePassThru` (`pulumi.Input[str]`)
-          * `polish` (`pulumi.Input[str]`)
-          * `prefetchPreload` (`pulumi.Input[str]`)
-          * `privacyPass` (`pulumi.Input[str]`)
-          * `pseudoIpv4` (`pulumi.Input[str]`)
-          * `responseBuffering` (`pulumi.Input[str]`)
-          * `rocketLoader` (`pulumi.Input[str]`)
-          * `securityHeader` (`pulumi.Input[dict]`)
-            * `enabled` (`pulumi.Input[bool]`) - true/false
-            * `includeSubdomains` (`pulumi.Input[bool]`) - true/false
-            * `maxAge` (`pulumi.Input[float]`) - Integer
-            * `nosniff` (`pulumi.Input[bool]`) - true/false
-            * `preload` (`pulumi.Input[bool]`) - true/false
-
-          * `securityLevel` (`pulumi.Input[str]`)
-          * `serverSideExclude` (`pulumi.Input[str]`)
-          * `sortQueryStringForCache` (`pulumi.Input[str]`)
-          * `ssl` (`pulumi.Input[str]`)
-          * `tls12Only` (`pulumi.Input[str]`)
-          * `tls13` (`pulumi.Input[str]`)
-          * `tlsClientAuth` (`pulumi.Input[str]`)
-          * `trueClientIpHeader` (`pulumi.Input[str]`)
-          * `universalSsl` (`pulumi.Input[str]`)
-          * `waf` (`pulumi.Input[str]`)
-          * `webp` (`pulumi.Input[str]`) - . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-          * `websockets` (`pulumi.Input[str]`)
-          * `zeroRtt` (`pulumi.Input[str]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -439,8 +127,58 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         __props__["zone_type"] = zone_type
         return ZoneSettingsOverride(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="initialSettings")
+    def initial_settings(self) -> 'outputs.ZoneSettingsOverrideInitialSettings':
+        """
+        Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+        """
+        return pulumi.get(self, "initial_settings")
+
+    @property
+    @pulumi.getter(name="initialSettingsReadAt")
+    def initial_settings_read_at(self) -> str:
+        return pulumi.get(self, "initial_settings_read_at")
+
+    @property
+    @pulumi.getter(name="readonlySettings")
+    def readonly_settings(self) -> List[str]:
+        """
+        Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
+        * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+        * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+        """
+        return pulumi.get(self, "readonly_settings")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> 'outputs.ZoneSettingsOverrideSettings':
+        """
+        Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        """
+        return pulumi.get(self, "settings")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The DNS zone ID to which apply settings.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneStatus")
+    def zone_status(self) -> str:
+        return pulumi.get(self, "zone_status")
+
+    @property
+    @pulumi.getter(name="zoneType")
+    def zone_type(self) -> str:
+        return pulumi.get(self, "zone_type")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

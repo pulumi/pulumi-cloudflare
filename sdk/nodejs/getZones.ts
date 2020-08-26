@@ -54,6 +54,10 @@ export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getZones.
  */
 export interface GetZonesArgs {
+    /**
+     * One or more values used to look up zone records. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     */
     readonly filter: inputs.GetZonesFilter;
 }
 
@@ -66,5 +70,8 @@ export interface GetZonesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A map of zone details. Full list below:
+     */
     readonly zones: outputs.GetZonesZone[];
 }

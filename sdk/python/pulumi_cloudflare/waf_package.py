@@ -5,28 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['WafPackage']
 
 
 class WafPackage(pulumi.CustomResource):
-    action_mode: pulumi.Output[str]
-    """
-    The action mode of the package, can be one of ["block", "challenge", "simulate"].
-    """
-    package_id: pulumi.Output[str]
-    """
-    The WAF Package ID.
-    """
-    sensitivity: pulumi.Output[str]
-    """
-    The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
-    """
-    zone_id: pulumi.Output[str]
-    """
-    The DNS zone ID to apply to.
-    """
-    def __init__(__self__, resource_name, opts=None, action_mode=None, package_id=None, sensitivity=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action_mode: Optional[pulumi.Input[str]] = None,
+                 package_id: Optional[pulumi.Input[str]] = None,
+                 sensitivity: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Cloudflare WAF rule package resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall packages.
 
@@ -61,7 +56,7 @@ class WafPackage(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -82,13 +77,19 @@ class WafPackage(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, action_mode=None, package_id=None, sensitivity=None, zone_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            action_mode: Optional[pulumi.Input[str]] = None,
+            package_id: Optional[pulumi.Input[str]] = None,
+            sensitivity: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'WafPackage':
         """
         Get an existing WafPackage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_mode: The action mode of the package, can be one of ["block", "challenge", "simulate"].
         :param pulumi.Input[str] package_id: The WAF Package ID.
@@ -105,8 +106,41 @@ class WafPackage(pulumi.CustomResource):
         __props__["zone_id"] = zone_id
         return WafPackage(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="actionMode")
+    def action_mode(self) -> Optional[str]:
+        """
+        The action mode of the package, can be one of ["block", "challenge", "simulate"].
+        """
+        return pulumi.get(self, "action_mode")
+
+    @property
+    @pulumi.getter(name="packageId")
+    def package_id(self) -> str:
+        """
+        The WAF Package ID.
+        """
+        return pulumi.get(self, "package_id")
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[str]:
+        """
+        The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
+        """
+        return pulumi.get(self, "sensitivity")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The DNS zone ID to apply to.
+        """
+        return pulumi.get(self, "zone_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

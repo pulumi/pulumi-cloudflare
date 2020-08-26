@@ -5,102 +5,29 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['Record']
 
 
 class Record(pulumi.CustomResource):
-    created_on: pulumi.Output[str]
-    """
-    The RFC3339 timestamp of when the record was created
-    """
-    data: pulumi.Output[dict]
-    """
-    Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
-
-      * `algorithm` (`float`)
-      * `altitude` (`float`)
-      * `certificate` (`str`)
-      * `content` (`str`)
-      * `digest` (`str`)
-      * `digest_type` (`float`)
-      * `fingerprint` (`str`)
-      * `flags` (`str`)
-      * `key_tag` (`float`)
-      * `lat_degrees` (`float`)
-      * `lat_direction` (`str`)
-      * `lat_minutes` (`float`)
-      * `lat_seconds` (`float`)
-      * `long_degrees` (`float`)
-      * `long_direction` (`str`)
-      * `long_minutes` (`float`)
-      * `long_seconds` (`float`)
-      * `matching_type` (`float`)
-      * `name` (`str`) - The name of the record
-      * `order` (`float`)
-      * `port` (`float`)
-      * `precision_horz` (`float`)
-      * `precision_vert` (`float`)
-      * `preference` (`float`)
-      * `priority` (`float`) - The priority of the record
-      * `proto` (`str`)
-      * `protocol` (`float`)
-      * `public_key` (`str`)
-      * `regex` (`str`)
-      * `replacement` (`str`)
-      * `selector` (`float`)
-      * `service` (`str`)
-      * `size` (`float`)
-      * `target` (`str`)
-      * `type` (`float`) - The type of the record
-      * `usage` (`float`)
-      * `weight` (`float`)
-    """
-    hostname: pulumi.Output[str]
-    """
-    The FQDN of the record
-    """
-    metadata: pulumi.Output[dict]
-    """
-    A key-value map of string metadata Cloudflare associates with the record
-    """
-    modified_on: pulumi.Output[str]
-    """
-    The RFC3339 timestamp of when the record was last modified
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the record
-    """
-    priority: pulumi.Output[float]
-    """
-    The priority of the record
-    """
-    proxiable: pulumi.Output[bool]
-    """
-    Shows whether this record can be proxied, must be true if setting `proxied=true`
-    """
-    proxied: pulumi.Output[bool]
-    """
-    Whether the record gets Cloudflare's origin protection; defaults to `false`.
-    """
-    ttl: pulumi.Output[float]
-    """
-    The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
-    """
-    type: pulumi.Output[str]
-    """
-    The type of the record
-    """
-    value: pulumi.Output[str]
-    """
-    The (string) value of the record. Either this or `data` must be specified
-    """
-    zone_id: pulumi.Output[str]
-    """
-    The DNS zone ID to add the record to
-    """
-    def __init__(__self__, resource_name, opts=None, data=None, name=None, priority=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 proxied: Optional[pulumi.Input[bool]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Cloudflare record resource.
 
@@ -122,20 +49,20 @@ class Record(pulumi.CustomResource):
             zone_id=var["cloudflare_zone_id"],
             name="_sip._tls",
             type="SRV",
-            data={
-                "service": "_sip",
-                "proto": "_tls",
-                "name": "terraform-srv",
-                "priority": 0,
-                "weight": 0,
-                "port": 443,
-                "target": "example.com",
-            })
+            data=cloudflare.RecordDataArgs(
+                service="_sip",
+                proto="_tls",
+                name="terraform-srv",
+                priority=0,
+                weight=0,
+                port=443,
+                target="example.com",
+            ))
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
         :param pulumi.Input[str] name: The name of the record
         :param pulumi.Input[float] priority: The priority of the record
         :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection; defaults to `false`.
@@ -143,46 +70,6 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
-
-        The **data** object supports the following:
-
-          * `algorithm` (`pulumi.Input[float]`)
-          * `altitude` (`pulumi.Input[float]`)
-          * `certificate` (`pulumi.Input[str]`)
-          * `content` (`pulumi.Input[str]`)
-          * `digest` (`pulumi.Input[str]`)
-          * `digest_type` (`pulumi.Input[float]`)
-          * `fingerprint` (`pulumi.Input[str]`)
-          * `flags` (`pulumi.Input[str]`)
-          * `key_tag` (`pulumi.Input[float]`)
-          * `lat_degrees` (`pulumi.Input[float]`)
-          * `lat_direction` (`pulumi.Input[str]`)
-          * `lat_minutes` (`pulumi.Input[float]`)
-          * `lat_seconds` (`pulumi.Input[float]`)
-          * `long_degrees` (`pulumi.Input[float]`)
-          * `long_direction` (`pulumi.Input[str]`)
-          * `long_minutes` (`pulumi.Input[float]`)
-          * `long_seconds` (`pulumi.Input[float]`)
-          * `matching_type` (`pulumi.Input[float]`)
-          * `name` (`pulumi.Input[str]`) - The name of the record
-          * `order` (`pulumi.Input[float]`)
-          * `port` (`pulumi.Input[float]`)
-          * `precision_horz` (`pulumi.Input[float]`)
-          * `precision_vert` (`pulumi.Input[float]`)
-          * `preference` (`pulumi.Input[float]`)
-          * `priority` (`pulumi.Input[float]`) - The priority of the record
-          * `proto` (`pulumi.Input[str]`)
-          * `protocol` (`pulumi.Input[float]`)
-          * `public_key` (`pulumi.Input[str]`)
-          * `regex` (`pulumi.Input[str]`)
-          * `replacement` (`pulumi.Input[str]`)
-          * `selector` (`pulumi.Input[float]`)
-          * `service` (`pulumi.Input[str]`)
-          * `size` (`pulumi.Input[float]`)
-          * `target` (`pulumi.Input[str]`)
-          * `type` (`pulumi.Input[float]`) - The type of the record
-          * `usage` (`pulumi.Input[float]`)
-          * `weight` (`pulumi.Input[float]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -195,7 +82,7 @@ class Record(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -227,18 +114,33 @@ class Record(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, created_on=None, data=None, hostname=None, metadata=None, modified_on=None, name=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            created_on: Optional[pulumi.Input[str]] = None,
+            data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
+            hostname: Optional[pulumi.Input[str]] = None,
+            metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            modified_on: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            priority: Optional[pulumi.Input[float]] = None,
+            proxiable: Optional[pulumi.Input[bool]] = None,
+            proxied: Optional[pulumi.Input[bool]] = None,
+            ttl: Optional[pulumi.Input[float]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'Record':
         """
         Get an existing Record resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created
-        :param pulumi.Input[dict] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
         :param pulumi.Input[str] hostname: The FQDN of the record
-        :param pulumi.Input[dict] metadata: A key-value map of string metadata Cloudflare associates with the record
+        :param pulumi.Input[Mapping[str, Any]] metadata: A key-value map of string metadata Cloudflare associates with the record
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the record was last modified
         :param pulumi.Input[str] name: The name of the record
         :param pulumi.Input[float] priority: The priority of the record
@@ -248,46 +150,6 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
-
-        The **data** object supports the following:
-
-          * `algorithm` (`pulumi.Input[float]`)
-          * `altitude` (`pulumi.Input[float]`)
-          * `certificate` (`pulumi.Input[str]`)
-          * `content` (`pulumi.Input[str]`)
-          * `digest` (`pulumi.Input[str]`)
-          * `digest_type` (`pulumi.Input[float]`)
-          * `fingerprint` (`pulumi.Input[str]`)
-          * `flags` (`pulumi.Input[str]`)
-          * `key_tag` (`pulumi.Input[float]`)
-          * `lat_degrees` (`pulumi.Input[float]`)
-          * `lat_direction` (`pulumi.Input[str]`)
-          * `lat_minutes` (`pulumi.Input[float]`)
-          * `lat_seconds` (`pulumi.Input[float]`)
-          * `long_degrees` (`pulumi.Input[float]`)
-          * `long_direction` (`pulumi.Input[str]`)
-          * `long_minutes` (`pulumi.Input[float]`)
-          * `long_seconds` (`pulumi.Input[float]`)
-          * `matching_type` (`pulumi.Input[float]`)
-          * `name` (`pulumi.Input[str]`) - The name of the record
-          * `order` (`pulumi.Input[float]`)
-          * `port` (`pulumi.Input[float]`)
-          * `precision_horz` (`pulumi.Input[float]`)
-          * `precision_vert` (`pulumi.Input[float]`)
-          * `preference` (`pulumi.Input[float]`)
-          * `priority` (`pulumi.Input[float]`) - The priority of the record
-          * `proto` (`pulumi.Input[str]`)
-          * `protocol` (`pulumi.Input[float]`)
-          * `public_key` (`pulumi.Input[str]`)
-          * `regex` (`pulumi.Input[str]`)
-          * `replacement` (`pulumi.Input[str]`)
-          * `selector` (`pulumi.Input[float]`)
-          * `service` (`pulumi.Input[str]`)
-          * `size` (`pulumi.Input[float]`)
-          * `target` (`pulumi.Input[str]`)
-          * `type` (`pulumi.Input[float]`) - The type of the record
-          * `usage` (`pulumi.Input[float]`)
-          * `weight` (`pulumi.Input[float]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -308,8 +170,113 @@ class Record(pulumi.CustomResource):
         __props__["zone_id"] = zone_id
         return Record(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> str:
+        """
+        The RFC3339 timestamp of when the record was created
+        """
+        return pulumi.get(self, "created_on")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Optional['outputs.RecordData']:
+        """
+        Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The FQDN of the record
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, Any]:
+        """
+        A key-value map of string metadata Cloudflare associates with the record
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> str:
+        """
+        The RFC3339 timestamp of when the record was last modified
+        """
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the record
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[float]:
+        """
+        The priority of the record
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def proxiable(self) -> bool:
+        """
+        Shows whether this record can be proxied, must be true if setting `proxied=true`
+        """
+        return pulumi.get(self, "proxiable")
+
+    @property
+    @pulumi.getter
+    def proxied(self) -> Optional[bool]:
+        """
+        Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        """
+        return pulumi.get(self, "proxied")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> float:
+        """
+        The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the record
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The (string) value of the record. Either this or `data` must be specified
+        """
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The DNS zone ID to add the record to
+        """
+        return pulumi.get(self, "zone_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

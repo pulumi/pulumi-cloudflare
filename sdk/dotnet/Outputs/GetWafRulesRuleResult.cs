@@ -13,13 +13,37 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetWafRulesRuleResult
     {
+        /// <summary>
+        /// The list of allowed `mode` values for the WAF Rule
+        /// </summary>
         public readonly ImmutableArray<string> AllowedModes;
+        /// <summary>
+        /// A regular expression matching the description of the WAF Rules to lookup.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+        /// </summary>
         public readonly string? GroupId;
+        /// <summary>
+        /// The Name of the WAF Rule Group that contains the WAF Rule
+        /// </summary>
         public readonly string? GroupName;
+        /// <summary>
+        /// The WAF Rule ID
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+        /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// The ID of the WAF Rule Package in which to search for the WAF Rules.
+        /// </summary>
         public readonly string? PackageId;
+        /// <summary>
+        /// The WAF Rule priority
+        /// </summary>
         public readonly string? Priority;
 
         [OutputConstructor]

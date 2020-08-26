@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ByoIpPrefix']
 
 
 class ByoIpPrefix(pulumi.CustomResource):
-    advertisement: pulumi.Output[str]
-    """
-    Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
-    """
-    description: pulumi.Output[str]
-    """
-    The description of the prefix.
-    """
-    prefix_id: pulumi.Output[str]
-    """
-    The assigned Bring-Your-Own-IP prefix ID.
-    """
-    def __init__(__self__, resource_name, opts=None, advertisement=None, description=None, prefix_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 advertisement: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 prefix_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP) which are used with or without Magic Transit.
 
@@ -55,7 +53,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -73,13 +71,18 @@ class ByoIpPrefix(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, advertisement=None, description=None, prefix_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            advertisement: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            prefix_id: Optional[pulumi.Input[str]] = None) -> 'ByoIpPrefix':
         """
         Get an existing ByoIpPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         :param pulumi.Input[str] description: The description of the prefix.
@@ -94,8 +97,33 @@ class ByoIpPrefix(pulumi.CustomResource):
         __props__["prefix_id"] = prefix_id
         return ByoIpPrefix(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def advertisement(self) -> str:
+        """
+        Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+        """
+        return pulumi.get(self, "advertisement")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the prefix.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="prefixId")
+    def prefix_id(self) -> str:
+        """
+        The assigned Bring-Your-Own-IP prefix ID.
+        """
+        return pulumi.get(self, "prefix_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

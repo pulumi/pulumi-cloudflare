@@ -5,24 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['WorkersKv']
 
 
 class WorkersKv(pulumi.CustomResource):
-    key: pulumi.Output[str]
-    """
-    The key name
-    """
-    namespace_id: pulumi.Output[str]
-    """
-    The ID of the Workers KV namespace in which you want to create the KV pair
-    """
-    value: pulumi.Output[str]
-    """
-    The string value to be stored in the key
-    """
-    def __init__(__self__, resource_name, opts=None, key=None, namespace_id=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 key: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Workers KV Pair.  *NOTE:*  This resource uses the Cloudflare account APIs.  This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
@@ -56,7 +54,7 @@ class WorkersKv(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -78,13 +76,18 @@ class WorkersKv(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, key=None, namespace_id=None, value=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            key: Optional[pulumi.Input[str]] = None,
+            namespace_id: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None) -> 'WorkersKv':
         """
         Get an existing WorkersKv resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] key: The key name
         :param pulumi.Input[str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair
@@ -99,8 +102,33 @@ class WorkersKv(pulumi.CustomResource):
         __props__["value"] = value
         return WorkersKv(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key name
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> str:
+        """
+        The ID of the Workers KV namespace in which you want to create the KV pair
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The string value to be stored in the key
+        """
+        return pulumi.get(self, "value")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

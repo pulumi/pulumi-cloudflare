@@ -5,9 +5,16 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
 
+__all__ = [
+    'GetIpRangesResult',
+    'AwaitableGetIpRangesResult',
+    'get_ip_ranges',
+]
+
+@pulumi.output_type
 class GetIpRangesResult:
     """
     A collection of values returned by getIpRanges.
@@ -15,19 +22,50 @@ class GetIpRangesResult:
     def __init__(__self__, cidr_blocks=None, id=None, ipv4_cidr_blocks=None, ipv6_cidr_blocks=None):
         if cidr_blocks and not isinstance(cidr_blocks, list):
             raise TypeError("Expected argument 'cidr_blocks' to be a list")
-        __self__.cidr_blocks = cidr_blocks
+        pulumi.set(__self__, "cidr_blocks", cidr_blocks)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if ipv4_cidr_blocks and not isinstance(ipv4_cidr_blocks, list):
+            raise TypeError("Expected argument 'ipv4_cidr_blocks' to be a list")
+        pulumi.set(__self__, "ipv4_cidr_blocks", ipv4_cidr_blocks)
+        if ipv6_cidr_blocks and not isinstance(ipv6_cidr_blocks, list):
+            raise TypeError("Expected argument 'ipv6_cidr_blocks' to be a list")
+        pulumi.set(__self__, "ipv6_cidr_blocks", ipv6_cidr_blocks)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> List[str]:
+        """
+        The lexically ordered list of all CIDR blocks.
+        """
+        return pulumi.get(self, "cidr_blocks")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if ipv4_cidr_blocks and not isinstance(ipv4_cidr_blocks, list):
-            raise TypeError("Expected argument 'ipv4_cidr_blocks' to be a list")
-        __self__.ipv4_cidr_blocks = ipv4_cidr_blocks
-        if ipv6_cidr_blocks and not isinstance(ipv6_cidr_blocks, list):
-            raise TypeError("Expected argument 'ipv6_cidr_blocks' to be a list")
-        __self__.ipv6_cidr_blocks = ipv6_cidr_blocks
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ipv4CidrBlocks")
+    def ipv4_cidr_blocks(self) -> List[str]:
+        """
+        The lexically ordered list of only the IPv4 CIDR blocks.
+        """
+        return pulumi.get(self, "ipv4_cidr_blocks")
+
+    @property
+    @pulumi.getter(name="ipv6CidrBlocks")
+    def ipv6_cidr_blocks(self) -> List[str]:
+        """
+        The lexically ordered list of only the IPv6 CIDR blocks.
+        """
+        return pulumi.get(self, "ipv6_cidr_blocks")
+
+
 class AwaitableGetIpRangesResult(GetIpRangesResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -39,7 +77,8 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
             ipv4_cidr_blocks=self.ipv4_cidr_blocks,
             ipv6_cidr_blocks=self.ipv6_cidr_blocks)
 
-def get_ip_ranges(opts=None):
+
+def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpRangesResult:
     """
     Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
 
@@ -61,16 +100,14 @@ def get_ip_ranges(opts=None):
     ```
     """
     __args__ = dict()
-
-
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('cloudflare:index/getIpRanges:getIpRanges', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('cloudflare:index/getIpRanges:getIpRanges', __args__, opts=opts, typ=GetIpRangesResult).value
 
     return AwaitableGetIpRangesResult(
-        cidr_blocks=__ret__.get('cidrBlocks'),
-        id=__ret__.get('id'),
-        ipv4_cidr_blocks=__ret__.get('ipv4CidrBlocks'),
-        ipv6_cidr_blocks=__ret__.get('ipv6CidrBlocks'))
+        cidr_blocks=__ret__.cidr_blocks,
+        id=__ret__.id,
+        ipv4_cidr_blocks=__ret__.ipv4_cidr_blocks,
+        ipv6_cidr_blocks=__ret__.ipv6_cidr_blocks)

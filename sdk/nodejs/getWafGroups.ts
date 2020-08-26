@@ -28,8 +28,18 @@ export function getWafGroups(args: GetWafGroupsArgs, opts?: pulumi.InvokeOptions
  * A collection of arguments for invoking getWafGroups.
  */
 export interface GetWafGroupsArgs {
+    /**
+     * One or more values used to look up WAF Rule Groups. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     */
     readonly filter?: inputs.GetWafGroupsFilter;
+    /**
+     * The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+     */
     readonly packageId?: string;
+    /**
+     * The ID of the DNS zone in which to search for the WAF Rule Groups.
+     */
     readonly zoneId: string;
 }
 
@@ -38,11 +48,17 @@ export interface GetWafGroupsArgs {
  */
 export interface GetWafGroupsResult {
     readonly filter?: outputs.GetWafGroupsFilter;
+    /**
+     * A map of WAF Rule Groups details. Full list below:
+     */
     readonly groups: outputs.GetWafGroupsGroup[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The ID of the WAF Rule Package that contains the WAF Rule Group
+     */
     readonly packageId?: string;
     readonly zoneId: string;
 }

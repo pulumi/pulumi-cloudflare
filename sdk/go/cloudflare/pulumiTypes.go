@@ -12674,7 +12674,9 @@ func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) Preload() pulumi.Bo
 }
 
 type GetWafGroupsFilter struct {
+	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
 	Mode *string `pulumi:"mode"`
+	// A regular expression matching the name of the WAF Rule Groups to lookup.
 	Name *string `pulumi:"name"`
 }
 
@@ -12690,7 +12692,9 @@ type GetWafGroupsFilterInput interface {
 }
 
 type GetWafGroupsFilterArgs struct {
+	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// A regular expression matching the name of the WAF Rule Groups to lookup.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -12720,22 +12724,31 @@ func (o GetWafGroupsFilterOutput) ToGetWafGroupsFilterOutputWithContext(ctx cont
 	return o
 }
 
+// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
 func (o GetWafGroupsFilterOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// A regular expression matching the name of the WAF Rule Groups to lookup.
 func (o GetWafGroupsFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 type GetWafGroupsGroup struct {
-	Description        *string `pulumi:"description"`
-	Id                 *string `pulumi:"id"`
-	Mode               *string `pulumi:"mode"`
-	ModifiedRulesCount *int    `pulumi:"modifiedRulesCount"`
-	Name               *string `pulumi:"name"`
-	PackageId          *string `pulumi:"packageId"`
-	RulesCount         *int    `pulumi:"rulesCount"`
+	// The WAF Rule Group description
+	Description *string `pulumi:"description"`
+	// The WAF Rule Group ID
+	Id *string `pulumi:"id"`
+	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+	Mode *string `pulumi:"mode"`
+	// The number of modified rules in the WAF Rule Group
+	ModifiedRulesCount *int `pulumi:"modifiedRulesCount"`
+	// A regular expression matching the name of the WAF Rule Groups to lookup.
+	Name *string `pulumi:"name"`
+	// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+	PackageId *string `pulumi:"packageId"`
+	// The number of rules in the WAF Rule Group
+	RulesCount *int `pulumi:"rulesCount"`
 }
 
 // GetWafGroupsGroupInput is an input type that accepts GetWafGroupsGroupArgs and GetWafGroupsGroupOutput values.
@@ -12750,13 +12763,20 @@ type GetWafGroupsGroupInput interface {
 }
 
 type GetWafGroupsGroupArgs struct {
-	Description        pulumi.StringPtrInput `pulumi:"description"`
-	Id                 pulumi.StringPtrInput `pulumi:"id"`
-	Mode               pulumi.StringPtrInput `pulumi:"mode"`
-	ModifiedRulesCount pulumi.IntPtrInput    `pulumi:"modifiedRulesCount"`
-	Name               pulumi.StringPtrInput `pulumi:"name"`
-	PackageId          pulumi.StringPtrInput `pulumi:"packageId"`
-	RulesCount         pulumi.IntPtrInput    `pulumi:"rulesCount"`
+	// The WAF Rule Group description
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The WAF Rule Group ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The number of modified rules in the WAF Rule Group
+	ModifiedRulesCount pulumi.IntPtrInput `pulumi:"modifiedRulesCount"`
+	// A regular expression matching the name of the WAF Rule Groups to lookup.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+	PackageId pulumi.StringPtrInput `pulumi:"packageId"`
+	// The number of rules in the WAF Rule Group
+	RulesCount pulumi.IntPtrInput `pulumi:"rulesCount"`
 }
 
 func (GetWafGroupsGroupArgs) ElementType() reflect.Type {
@@ -12810,30 +12830,37 @@ func (o GetWafGroupsGroupOutput) ToGetWafGroupsGroupOutputWithContext(ctx contex
 	return o
 }
 
+// The WAF Rule Group description
 func (o GetWafGroupsGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The WAF Rule Group ID
 func (o GetWafGroupsGroupOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
 func (o GetWafGroupsGroupOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// The number of modified rules in the WAF Rule Group
 func (o GetWafGroupsGroupOutput) ModifiedRulesCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *int { return v.ModifiedRulesCount }).(pulumi.IntPtrOutput)
 }
 
+// A regular expression matching the name of the WAF Rule Groups to lookup.
 func (o GetWafGroupsGroupOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
 func (o GetWafGroupsGroupOutput) PackageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *string { return v.PackageId }).(pulumi.StringPtrOutput)
 }
 
+// The number of rules in the WAF Rule Group
 func (o GetWafGroupsGroupOutput) RulesCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsGroup) *int { return v.RulesCount }).(pulumi.IntPtrOutput)
 }
@@ -12859,10 +12886,14 @@ func (o GetWafGroupsGroupArrayOutput) Index(i pulumi.IntInput) GetWafGroupsGroup
 }
 
 type GetWafPackagesFilter struct {
-	ActionMode    *string `pulumi:"actionMode"`
+	// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+	ActionMode *string `pulumi:"actionMode"`
+	// Detection mode of the WAF Rule Packages to lookup.
 	DetectionMode *string `pulumi:"detectionMode"`
-	Name          *string `pulumi:"name"`
-	Sensitivity   *string `pulumi:"sensitivity"`
+	// A regular expression matching the name of the WAF Rule Packages to lookup.
+	Name *string `pulumi:"name"`
+	// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+	Sensitivity *string `pulumi:"sensitivity"`
 }
 
 // GetWafPackagesFilterInput is an input type that accepts GetWafPackagesFilterArgs and GetWafPackagesFilterOutput values.
@@ -12877,10 +12908,14 @@ type GetWafPackagesFilterInput interface {
 }
 
 type GetWafPackagesFilterArgs struct {
-	ActionMode    pulumi.StringPtrInput `pulumi:"actionMode"`
+	// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+	ActionMode pulumi.StringPtrInput `pulumi:"actionMode"`
+	// Detection mode of the WAF Rule Packages to lookup.
 	DetectionMode pulumi.StringPtrInput `pulumi:"detectionMode"`
-	Name          pulumi.StringPtrInput `pulumi:"name"`
-	Sensitivity   pulumi.StringPtrInput `pulumi:"sensitivity"`
+	// A regular expression matching the name of the WAF Rule Packages to lookup.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+	Sensitivity pulumi.StringPtrInput `pulumi:"sensitivity"`
 }
 
 func (GetWafPackagesFilterArgs) ElementType() reflect.Type {
@@ -12909,29 +12944,39 @@ func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterOutputWithContext(ctx 
 	return o
 }
 
+// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
 func (o GetWafPackagesFilterOutput) ActionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.ActionMode }).(pulumi.StringPtrOutput)
 }
 
+// Detection mode of the WAF Rule Packages to lookup.
 func (o GetWafPackagesFilterOutput) DetectionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.DetectionMode }).(pulumi.StringPtrOutput)
 }
 
+// A regular expression matching the name of the WAF Rule Packages to lookup.
 func (o GetWafPackagesFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
 func (o GetWafPackagesFilterOutput) Sensitivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.Sensitivity }).(pulumi.StringPtrOutput)
 }
 
 type GetWafPackagesPackage struct {
-	ActionMode    *string `pulumi:"actionMode"`
-	Description   *string `pulumi:"description"`
+	// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+	ActionMode *string `pulumi:"actionMode"`
+	// The WAF Rule Package description
+	Description *string `pulumi:"description"`
+	// Detection mode of the WAF Rule Packages to lookup.
 	DetectionMode *string `pulumi:"detectionMode"`
-	Id            *string `pulumi:"id"`
-	Name          *string `pulumi:"name"`
-	Sensitivity   *string `pulumi:"sensitivity"`
+	// The WAF Rule Package ID
+	Id *string `pulumi:"id"`
+	// A regular expression matching the name of the WAF Rule Packages to lookup.
+	Name *string `pulumi:"name"`
+	// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+	Sensitivity *string `pulumi:"sensitivity"`
 }
 
 // GetWafPackagesPackageInput is an input type that accepts GetWafPackagesPackageArgs and GetWafPackagesPackageOutput values.
@@ -12946,12 +12991,18 @@ type GetWafPackagesPackageInput interface {
 }
 
 type GetWafPackagesPackageArgs struct {
-	ActionMode    pulumi.StringPtrInput `pulumi:"actionMode"`
-	Description   pulumi.StringPtrInput `pulumi:"description"`
+	// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+	ActionMode pulumi.StringPtrInput `pulumi:"actionMode"`
+	// The WAF Rule Package description
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Detection mode of the WAF Rule Packages to lookup.
 	DetectionMode pulumi.StringPtrInput `pulumi:"detectionMode"`
-	Id            pulumi.StringPtrInput `pulumi:"id"`
-	Name          pulumi.StringPtrInput `pulumi:"name"`
-	Sensitivity   pulumi.StringPtrInput `pulumi:"sensitivity"`
+	// The WAF Rule Package ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A regular expression matching the name of the WAF Rule Packages to lookup.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+	Sensitivity pulumi.StringPtrInput `pulumi:"sensitivity"`
 }
 
 func (GetWafPackagesPackageArgs) ElementType() reflect.Type {
@@ -13005,26 +13056,32 @@ func (o GetWafPackagesPackageOutput) ToGetWafPackagesPackageOutputWithContext(ct
 	return o
 }
 
+// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
 func (o GetWafPackagesPackageOutput) ActionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.ActionMode }).(pulumi.StringPtrOutput)
 }
 
+// The WAF Rule Package description
 func (o GetWafPackagesPackageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Detection mode of the WAF Rule Packages to lookup.
 func (o GetWafPackagesPackageOutput) DetectionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.DetectionMode }).(pulumi.StringPtrOutput)
 }
 
+// The WAF Rule Package ID
 func (o GetWafPackagesPackageOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// A regular expression matching the name of the WAF Rule Packages to lookup.
 func (o GetWafPackagesPackageOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
 func (o GetWafPackagesPackageOutput) Sensitivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesPackage) *string { return v.Sensitivity }).(pulumi.StringPtrOutput)
 }
@@ -13050,9 +13107,12 @@ func (o GetWafPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetWafPackage
 }
 
 type GetWafRulesFilter struct {
+	// A regular expression matching the description of the WAF Rules to lookup.
 	Description *string `pulumi:"description"`
-	GroupId     *string `pulumi:"groupId"`
-	Mode        *string `pulumi:"mode"`
+	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+	GroupId *string `pulumi:"groupId"`
+	// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+	Mode *string `pulumi:"mode"`
 }
 
 // GetWafRulesFilterInput is an input type that accepts GetWafRulesFilterArgs and GetWafRulesFilterOutput values.
@@ -13067,9 +13127,12 @@ type GetWafRulesFilterInput interface {
 }
 
 type GetWafRulesFilterArgs struct {
+	// A regular expression matching the description of the WAF Rules to lookup.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	GroupId     pulumi.StringPtrInput `pulumi:"groupId"`
-	Mode        pulumi.StringPtrInput `pulumi:"mode"`
+	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
 }
 
 func (GetWafRulesFilterArgs) ElementType() reflect.Type {
@@ -13098,27 +13161,38 @@ func (o GetWafRulesFilterOutput) ToGetWafRulesFilterOutputWithContext(ctx contex
 	return o
 }
 
+// A regular expression matching the description of the WAF Rules to lookup.
 func (o GetWafRulesFilterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
 func (o GetWafRulesFilterOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
+// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
 func (o GetWafRulesFilterOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
 type GetWafRulesRule struct {
+	// The list of allowed `mode` values for the WAF Rule
 	AllowedModes []string `pulumi:"allowedModes"`
-	Description  *string  `pulumi:"description"`
-	GroupId      *string  `pulumi:"groupId"`
-	GroupName    *string  `pulumi:"groupName"`
-	Id           *string  `pulumi:"id"`
-	Mode         *string  `pulumi:"mode"`
-	PackageId    *string  `pulumi:"packageId"`
-	Priority     *string  `pulumi:"priority"`
+	// A regular expression matching the description of the WAF Rules to lookup.
+	Description *string `pulumi:"description"`
+	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+	GroupId *string `pulumi:"groupId"`
+	// The Name of the WAF Rule Group that contains the WAF Rule
+	GroupName *string `pulumi:"groupName"`
+	// The WAF Rule ID
+	Id *string `pulumi:"id"`
+	// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+	Mode *string `pulumi:"mode"`
+	// The ID of the WAF Rule Package in which to search for the WAF Rules.
+	PackageId *string `pulumi:"packageId"`
+	// The WAF Rule priority
+	Priority *string `pulumi:"priority"`
 }
 
 // GetWafRulesRuleInput is an input type that accepts GetWafRulesRuleArgs and GetWafRulesRuleOutput values.
@@ -13133,14 +13207,22 @@ type GetWafRulesRuleInput interface {
 }
 
 type GetWafRulesRuleArgs struct {
+	// The list of allowed `mode` values for the WAF Rule
 	AllowedModes pulumi.StringArrayInput `pulumi:"allowedModes"`
-	Description  pulumi.StringPtrInput   `pulumi:"description"`
-	GroupId      pulumi.StringPtrInput   `pulumi:"groupId"`
-	GroupName    pulumi.StringPtrInput   `pulumi:"groupName"`
-	Id           pulumi.StringPtrInput   `pulumi:"id"`
-	Mode         pulumi.StringPtrInput   `pulumi:"mode"`
-	PackageId    pulumi.StringPtrInput   `pulumi:"packageId"`
-	Priority     pulumi.StringPtrInput   `pulumi:"priority"`
+	// A regular expression matching the description of the WAF Rules to lookup.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
+	// The Name of the WAF Rule Group that contains the WAF Rule
+	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
+	// The WAF Rule ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The ID of the WAF Rule Package in which to search for the WAF Rules.
+	PackageId pulumi.StringPtrInput `pulumi:"packageId"`
+	// The WAF Rule priority
+	Priority pulumi.StringPtrInput `pulumi:"priority"`
 }
 
 func (GetWafRulesRuleArgs) ElementType() reflect.Type {
@@ -13194,34 +13276,42 @@ func (o GetWafRulesRuleOutput) ToGetWafRulesRuleOutputWithContext(ctx context.Co
 	return o
 }
 
+// The list of allowed `mode` values for the WAF Rule
 func (o GetWafRulesRuleOutput) AllowedModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWafRulesRule) []string { return v.AllowedModes }).(pulumi.StringArrayOutput)
 }
 
+// A regular expression matching the description of the WAF Rules to lookup.
 func (o GetWafRulesRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
 func (o GetWafRulesRuleOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
+// The Name of the WAF Rule Group that contains the WAF Rule
 func (o GetWafRulesRuleOutput) GroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.GroupName }).(pulumi.StringPtrOutput)
 }
 
+// The WAF Rule ID
 func (o GetWafRulesRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
 func (o GetWafRulesRuleOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the WAF Rule Package in which to search for the WAF Rules.
 func (o GetWafRulesRuleOutput) PackageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.PackageId }).(pulumi.StringPtrOutput)
 }
 
+// The WAF Rule priority
 func (o GetWafRulesRuleOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Priority }).(pulumi.StringPtrOutput)
 }
@@ -13247,8 +13337,11 @@ func (o GetWafRulesRuleArrayOutput) Index(i pulumi.IntInput) GetWafRulesRuleOutp
 }
 
 type GetZonesFilter struct {
-	Name   *string `pulumi:"name"`
-	Paused *bool   `pulumi:"paused"`
+	// A regular expression matching the zone to lookup.
+	Name *string `pulumi:"name"`
+	// Paused status of the zone to lookup. Valid values are `true` or `false`.
+	Paused *bool `pulumi:"paused"`
+	// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
 	Status *string `pulumi:"status"`
 }
 
@@ -13264,8 +13357,11 @@ type GetZonesFilterInput interface {
 }
 
 type GetZonesFilterArgs struct {
-	Name   pulumi.StringPtrInput `pulumi:"name"`
-	Paused pulumi.BoolPtrInput   `pulumi:"paused"`
+	// A regular expression matching the zone to lookup.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Paused status of the zone to lookup. Valid values are `true` or `false`.
+	Paused pulumi.BoolPtrInput `pulumi:"paused"`
+	// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -13295,20 +13391,25 @@ func (o GetZonesFilterOutput) ToGetZonesFilterOutputWithContext(ctx context.Cont
 	return o
 }
 
+// A regular expression matching the zone to lookup.
 func (o GetZonesFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Paused status of the zone to lookup. Valid values are `true` or `false`.
 func (o GetZonesFilterOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *bool { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
+// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
 func (o GetZonesFilterOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesFilter) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type GetZonesZone struct {
-	Id   *string `pulumi:"id"`
+	// The zone ID
+	Id *string `pulumi:"id"`
+	// A regular expression matching the zone to lookup.
 	Name *string `pulumi:"name"`
 }
 
@@ -13324,7 +13425,9 @@ type GetZonesZoneInput interface {
 }
 
 type GetZonesZoneArgs struct {
-	Id   pulumi.StringPtrInput `pulumi:"id"`
+	// The zone ID
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A regular expression matching the zone to lookup.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -13379,10 +13482,12 @@ func (o GetZonesZoneOutput) ToGetZonesZoneOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The zone ID
 func (o GetZonesZoneOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesZone) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// A regular expression matching the zone to lookup.
 func (o GetZonesZoneOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetZonesZone) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

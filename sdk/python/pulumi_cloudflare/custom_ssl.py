@@ -5,35 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
+
+__all__ = ['CustomSsl']
 
 
 class CustomSsl(pulumi.CustomResource):
-    custom_ssl_options: pulumi.Output[dict]
-    """
-    The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
-
-      * `bundle_method` (`str`) - Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
-      * `certificate` (`str`) - Certificate certificate and the intermediate(s)
-      * `geo_restrictions` (`str`) - Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
-      * `private_key` (`str`) - Certificate's private key
-      * `type` (`str`) - Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
-    """
-    custom_ssl_priorities: pulumi.Output[list]
-    expires_on: pulumi.Output[str]
-    hosts: pulumi.Output[list]
-    issuer: pulumi.Output[str]
-    modified_on: pulumi.Output[str]
-    priority: pulumi.Output[float]
-    signature: pulumi.Output[str]
-    status: pulumi.Output[str]
-    uploaded_on: pulumi.Output[str]
-    zone_id: pulumi.Output[str]
-    """
-    The DNS zone id to the custom ssl cert should be added.
-    """
-    def __init__(__self__, resource_name, opts=None, custom_ssl_options=None, custom_ssl_priorities=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_ssl_options: Optional[pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']]] = None,
+                 custom_ssl_priorities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Cloudflare custom ssl resource.
 
@@ -49,33 +38,20 @@ class CustomSsl(pulumi.CustomResource):
             cloudflare_zone_id = "1d5fdc9e88c8a8c4518b068cd94331fe"
         # Add a custom ssl certificate to the domain
         foossl = cloudflare.CustomSsl("foossl",
-            custom_ssl_options={
-                "bundle_method": "ubiquitous",
-                "certificate": "-----INSERT CERTIFICATE-----",
-                "geo_restrictions": "us",
-                "private_key": "-----INSERT PRIVATE KEY-----",
-                "type": "legacy_custom",
-            },
+            custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
+                bundle_method="ubiquitous",
+                certificate="-----INSERT CERTIFICATE-----",
+                geo_restrictions="us",
+                private_key="-----INSERT PRIVATE KEY-----",
+                type="legacy_custom",
+            ),
             zone_id=cloudflare_zone_id)
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
         :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
-
-        The **custom_ssl_options** object supports the following:
-
-          * `bundle_method` (`pulumi.Input[str]`) - Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
-          * `certificate` (`pulumi.Input[str]`) - Certificate certificate and the intermediate(s)
-          * `geo_restrictions` (`pulumi.Input[str]`) - Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
-          * `private_key` (`pulumi.Input[str]`) - Certificate's private key
-          * `type` (`pulumi.Input[str]`) - Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
-
-        The **custom_ssl_priorities** object supports the following:
-
-          * `id` (`pulumi.Input[str]`)
-          * `priority` (`pulumi.Input[float]`)
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -88,7 +64,7 @@ class CustomSsl(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -114,29 +90,29 @@ class CustomSsl(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, custom_ssl_options=None, custom_ssl_priorities=None, expires_on=None, hosts=None, issuer=None, modified_on=None, priority=None, signature=None, status=None, uploaded_on=None, zone_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            custom_ssl_options: Optional[pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']]] = None,
+            custom_ssl_priorities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
+            expires_on: Optional[pulumi.Input[str]] = None,
+            hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            issuer: Optional[pulumi.Input[str]] = None,
+            modified_on: Optional[pulumi.Input[str]] = None,
+            priority: Optional[pulumi.Input[float]] = None,
+            signature: Optional[pulumi.Input[str]] = None,
+            status: Optional[pulumi.Input[str]] = None,
+            uploaded_on: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'CustomSsl':
         """
         Get an existing CustomSsl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[dict] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
         :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
-
-        The **custom_ssl_options** object supports the following:
-
-          * `bundle_method` (`pulumi.Input[str]`) - Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
-          * `certificate` (`pulumi.Input[str]`) - Certificate certificate and the intermediate(s)
-          * `geo_restrictions` (`pulumi.Input[str]`) - Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
-          * `private_key` (`pulumi.Input[str]`) - Certificate's private key
-          * `type` (`pulumi.Input[str]`) - Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
-
-        The **custom_ssl_priorities** object supports the following:
-
-          * `id` (`pulumi.Input[str]`)
-          * `priority` (`pulumi.Input[float]`)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -155,8 +131,70 @@ class CustomSsl(pulumi.CustomResource):
         __props__["zone_id"] = zone_id
         return CustomSsl(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="customSslOptions")
+    def custom_ssl_options(self) -> Optional['outputs.CustomSslCustomSslOptions']:
+        """
+        The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        """
+        return pulumi.get(self, "custom_ssl_options")
+
+    @property
+    @pulumi.getter(name="customSslPriorities")
+    def custom_ssl_priorities(self) -> Optional[List['outputs.CustomSslCustomSslPriority']]:
+        return pulumi.get(self, "custom_ssl_priorities")
+
+    @property
+    @pulumi.getter(name="expiresOn")
+    def expires_on(self) -> str:
+        return pulumi.get(self, "expires_on")
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> List[str]:
+        return pulumi.get(self, "hosts")
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> str:
+        return pulumi.get(self, "issuer")
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> str:
+        return pulumi.get(self, "modified_on")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> float:
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def signature(self) -> str:
+        return pulumi.get(self, "signature")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="uploadedOn")
+    def uploaded_on(self) -> str:
+        return pulumi.get(self, "uploaded_on")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The DNS zone id to the custom ssl cert should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

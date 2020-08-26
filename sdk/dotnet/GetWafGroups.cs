@@ -21,12 +21,22 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetWafGroupsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// One or more values used to look up WAF Rule Groups. If more than one value is given all
+        /// values must match in order to be included, see below for full list.
+        /// </summary>
         [Input("filter")]
         public Inputs.GetWafGroupsFilterArgs? Filter { get; set; }
 
+        /// <summary>
+        /// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+        /// </summary>
         [Input("packageId")]
         public string? PackageId { get; set; }
 
+        /// <summary>
+        /// The ID of the DNS zone in which to search for the WAF Rule Groups.
+        /// </summary>
         [Input("zoneId", required: true)]
         public string ZoneId { get; set; } = null!;
 
@@ -40,11 +50,17 @@ namespace Pulumi.Cloudflare
     public sealed class GetWafGroupsResult
     {
         public readonly Outputs.GetWafGroupsFilterResult? Filter;
+        /// <summary>
+        /// A map of WAF Rule Groups details. Full list below:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetWafGroupsGroupResult> Groups;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the WAF Rule Package that contains the WAF Rule Group
+        /// </summary>
         public readonly string? PackageId;
         public readonly string ZoneId;
 

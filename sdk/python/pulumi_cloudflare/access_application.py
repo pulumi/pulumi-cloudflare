@@ -5,34 +5,23 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['AccessApplication']
 
 
 class AccessApplication(pulumi.CustomResource):
-    aud: pulumi.Output[str]
-    """
-    Application Audience (AUD) Tag of the application
-    """
-    domain: pulumi.Output[str]
-    """
-    The complete URL of the asset you wish to put
-    Cloudflare Access in front of. Can include subdomains or paths. Or both.
-    """
-    name: pulumi.Output[str]
-    """
-    Friendly name of the Access Application.
-    """
-    session_duration: pulumi.Output[str]
-    """
-    How often a user will be forced to
-    re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
-    """
-    zone_id: pulumi.Output[str]
-    """
-    The DNS zone to which the access rule should be added.
-    """
-    def __init__(__self__, resource_name, opts=None, domain=None, name=None, session_duration=None, zone_id=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a Cloudflare Access Application resource. Access Applications
         are used to restrict access to a whole application using an
@@ -71,7 +60,7 @@ class AccessApplication(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -95,13 +84,20 @@ class AccessApplication(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, aud=None, domain=None, name=None, session_duration=None, zone_id=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            aud: Optional[pulumi.Input[str]] = None,
+            domain: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            session_duration: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessApplication':
         """
         Get an existing AccessApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
@@ -122,8 +118,51 @@ class AccessApplication(pulumi.CustomResource):
         __props__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def aud(self) -> str:
+        """
+        Application Audience (AUD) Tag of the application
+        """
+        return pulumi.get(self, "aud")
+
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The complete URL of the asset you wish to put
+        Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> Optional[str]:
+        """
+        How often a user will be forced to
+        re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        """
+        return pulumi.get(self, "session_duration")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> str:
+        """
+        The DNS zone to which the access rule should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

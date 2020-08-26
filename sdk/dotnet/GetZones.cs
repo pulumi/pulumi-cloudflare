@@ -21,6 +21,10 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetZonesArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// One or more values used to look up zone records. If more than one value is given all
+        /// values must match in order to be included, see below for full list.
+        /// </summary>
         [Input("filter", required: true)]
         public Inputs.GetZonesFilterArgs Filter { get; set; } = null!;
 
@@ -38,6 +42,9 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A map of zone details. Full list below:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 
         [OutputConstructor]

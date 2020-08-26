@@ -19,17 +19,23 @@ func GetWafGroups(ctx *pulumi.Context, args *GetWafGroupsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getWafGroups.
 type GetWafGroupsArgs struct {
-	Filter    *GetWafGroupsFilter `pulumi:"filter"`
-	PackageId *string             `pulumi:"packageId"`
-	ZoneId    string              `pulumi:"zoneId"`
+	// One or more values used to look up WAF Rule Groups. If more than one value is given all
+	// values must match in order to be included, see below for full list.
+	Filter *GetWafGroupsFilter `pulumi:"filter"`
+	// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+	PackageId *string `pulumi:"packageId"`
+	// The ID of the DNS zone in which to search for the WAF Rule Groups.
+	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWafGroups.
 type GetWafGroupsResult struct {
 	Filter *GetWafGroupsFilter `pulumi:"filter"`
+	// A map of WAF Rule Groups details. Full list below:
 	Groups []GetWafGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string  `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The ID of the WAF Rule Package that contains the WAF Rule Group
 	PackageId *string `pulumi:"packageId"`
 	ZoneId    string  `pulumi:"zoneId"`
 }

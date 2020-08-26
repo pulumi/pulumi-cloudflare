@@ -361,61 +361,166 @@ export interface CustomSslCustomSslPriority {
 }
 
 export interface GetWafGroupsFilter {
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
     mode?: string;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
     name?: string;
 }
 
 export interface GetWafGroupsGroup {
+    /**
+     * The WAF Rule Group description
+     */
     description?: string;
+    /**
+     * The WAF Rule Group ID
+     */
     id?: string;
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
     mode?: string;
+    /**
+     * The number of modified rules in the WAF Rule Group
+     */
     modifiedRulesCount?: number;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
     name?: string;
+    /**
+     * The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+     */
     packageId?: string;
+    /**
+     * The number of rules in the WAF Rule Group
+     */
     rulesCount?: number;
 }
 
 export interface GetWafPackagesFilter {
+    /**
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     */
     actionMode?: string;
+    /**
+     * Detection mode of the WAF Rule Packages to lookup.
+     */
     detectionMode?: string;
+    /**
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
+     */
     name?: string;
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     */
     sensitivity?: string;
 }
 
 export interface GetWafPackagesPackage {
+    /**
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     */
     actionMode?: string;
+    /**
+     * The WAF Rule Package description
+     */
     description?: string;
+    /**
+     * Detection mode of the WAF Rule Packages to lookup.
+     */
     detectionMode?: string;
+    /**
+     * The WAF Rule Package ID
+     */
     id?: string;
+    /**
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
+     */
     name?: string;
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     */
     sensitivity?: string;
 }
 
 export interface GetWafRulesFilter {
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     */
     description?: string;
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     */
     groupId?: string;
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+     */
     mode?: string;
 }
 
 export interface GetWafRulesRule {
+    /**
+     * The list of allowed `mode` values for the WAF Rule
+     */
     allowedModes?: string[];
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     */
     description?: string;
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     */
     groupId?: string;
+    /**
+     * The Name of the WAF Rule Group that contains the WAF Rule
+     */
     groupName?: string;
+    /**
+     * The WAF Rule ID
+     */
     id?: string;
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+     */
     mode?: string;
+    /**
+     * The ID of the WAF Rule Package in which to search for the WAF Rules.
+     */
     packageId?: string;
+    /**
+     * The WAF Rule priority
+     */
     priority?: string;
 }
 
 export interface GetZonesFilter {
+    /**
+     * A regular expression matching the zone to lookup.
+     */
     name?: string;
+    /**
+     * Paused status of the zone to lookup. Valid values are `true` or `false`.
+     */
     paused?: boolean;
+    /**
+     * Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+     */
     status?: string;
 }
 
 export interface GetZonesZone {
+    /**
+     * The zone ID
+     */
     id?: string;
+    /**
+     * A regular expression matching the zone to lookup.
+     */
     name?: string;
 }
 

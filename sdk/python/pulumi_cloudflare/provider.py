@@ -6,12 +6,29 @@ import json
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Provider']
 
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, account_id=None, api_client_logging=None, api_key=None, api_token=None, api_user_service_key=None, email=None, max_backoff=None, min_backoff=None, retries=None, rps=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 api_client_logging: Optional[pulumi.Input[bool]] = None,
+                 api_key: Optional[pulumi.Input[str]] = None,
+                 api_token: Optional[pulumi.Input[str]] = None,
+                 api_user_service_key: Optional[pulumi.Input[str]] = None,
+                 email: Optional[pulumi.Input[str]] = None,
+                 max_backoff: Optional[pulumi.Input[float]] = None,
+                 min_backoff: Optional[pulumi.Input[float]] = None,
+                 retries: Optional[pulumi.Input[float]] = None,
+                 rps: Optional[pulumi.Input[float]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         The provider type for the cloudflare package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -42,41 +59,41 @@ class Provider(pulumi.ProviderResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
             if account_id is None:
-                account_id = utilities.get_env('CLOUDFLARE_ACCOUNT_ID')
+                account_id = _utilities.get_env('CLOUDFLARE_ACCOUNT_ID')
             __props__['account_id'] = account_id
             if api_client_logging is None:
-                api_client_logging = (utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
+                api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
             __props__['api_client_logging'] = pulumi.Output.from_input(api_client_logging).apply(json.dumps) if api_client_logging is not None else None
             if api_key is None:
-                api_key = utilities.get_env('CLOUDFLARE_API_KEY')
+                api_key = _utilities.get_env('CLOUDFLARE_API_KEY')
             __props__['api_key'] = api_key
             if api_token is None:
-                api_token = utilities.get_env('CLOUDFLARE_API_TOKEN')
+                api_token = _utilities.get_env('CLOUDFLARE_API_TOKEN')
             __props__['api_token'] = api_token
             if api_user_service_key is None:
-                api_user_service_key = utilities.get_env('CLOUDFLARE_API_USER_SERVICE_KEY')
+                api_user_service_key = _utilities.get_env('CLOUDFLARE_API_USER_SERVICE_KEY')
             __props__['api_user_service_key'] = api_user_service_key
             if email is None:
-                email = utilities.get_env('CLOUDFLARE_EMAIL')
+                email = _utilities.get_env('CLOUDFLARE_EMAIL')
             __props__['email'] = email
             if max_backoff is None:
-                max_backoff = (utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)
+                max_backoff = (_utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)
             __props__['max_backoff'] = pulumi.Output.from_input(max_backoff).apply(json.dumps) if max_backoff is not None else None
             if min_backoff is None:
-                min_backoff = (utilities.get_env_int('CLOUDFLARE_MIN_BACKOFF') or 1)
+                min_backoff = (_utilities.get_env_int('CLOUDFLARE_MIN_BACKOFF') or 1)
             __props__['min_backoff'] = pulumi.Output.from_input(min_backoff).apply(json.dumps) if min_backoff is not None else None
             if retries is None:
-                retries = (utilities.get_env_int('CLOUDFLARE_RETRIES') or 3)
+                retries = (_utilities.get_env_int('CLOUDFLARE_RETRIES') or 3)
             __props__['retries'] = pulumi.Output.from_input(retries).apply(json.dumps) if retries is not None else None
             if rps is None:
-                rps = (utilities.get_env_int('CLOUDFLARE_RPS') or 4)
+                rps = (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
             __props__['rps'] = pulumi.Output.from_input(rps).apply(json.dumps) if rps is not None else None
         super(Provider, __self__).__init__(
             'cloudflare',
@@ -85,7 +102,8 @@ class Provider(pulumi.ProviderResource):
             opts)
 
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+

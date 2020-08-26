@@ -61,9 +61,12 @@ func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRanges
 
 // A collection of values returned by getIpRanges.
 type GetIpRangesResult struct {
+	// The lexically ordered list of all CIDR blocks.
 	CidrBlocks []string `pulumi:"cidrBlocks"`
 	// The provider-assigned unique ID for this managed resource.
-	Id             string   `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// The lexically ordered list of only the IPv4 CIDR blocks.
 	Ipv4CidrBlocks []string `pulumi:"ipv4CidrBlocks"`
+	// The lexically ordered list of only the IPv6 CIDR blocks.
 	Ipv6CidrBlocks []string `pulumi:"ipv6CidrBlocks"`
 }
