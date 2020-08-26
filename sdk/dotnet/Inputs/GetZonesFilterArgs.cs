@@ -13,19 +13,38 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetZonesFilterArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A regular expression matching the zone to lookup.
+        /// The type of search to perform for the `name` value
+        /// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+        /// to `"exact"`.
+        /// </summary>
+        [Input("lookupType")]
+        public string? LookupType { get; set; }
+
+        /// <summary>
+        /// A RE2 compatible regular expression to filter the
+        /// results. This is performed client side whereas the `name` and `lookup_type`
+        /// are performed on the Cloudflare server side.
+        /// </summary>
+        [Input("match")]
+        public string? Match { get; set; }
+
+        /// <summary>
+        /// A string value to search for.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Paused status of the zone to lookup. Valid values are `true` or `false`.
+        /// Paused status of the zone to lookup. Valid values are
+        /// `true` or `false`.
         /// </summary>
         [Input("paused")]
         public bool? Paused { get; set; }
 
         /// <summary>
-        /// Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+        /// Status of the zone to lookup. Valid values: `"active"`,
+        /// `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+        /// `"read only"`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }

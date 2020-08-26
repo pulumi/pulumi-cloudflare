@@ -77,6 +77,9 @@ namespace Pulumi.Cloudflare
     /// </summary>
     public partial class AccessPolicy : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the application the policy is
         /// associated with.
@@ -174,6 +177,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// The ID of the application the policy is
         /// associated with.
@@ -240,8 +246,8 @@ namespace Pulumi.Cloudflare
         /// The DNS zone to which the access rule should be
         /// added.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public AccessPolicyArgs()
         {
@@ -250,6 +256,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessPolicyState : Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// The ID of the application the policy is
         /// associated with.

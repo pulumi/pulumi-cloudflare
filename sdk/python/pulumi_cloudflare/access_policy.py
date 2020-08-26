@@ -17,6 +17,7 @@ class AccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
@@ -96,6 +97,7 @@ class AccessPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['account_id'] = account_id
             if application_id is None:
                 raise TypeError("Missing required property 'application_id'")
             __props__['application_id'] = application_id
@@ -111,8 +113,6 @@ class AccessPolicy(pulumi.CustomResource):
             __props__['name'] = name
             __props__['precedence'] = precedence
             __props__['requires'] = requires
-            if zone_id is None:
-                raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(AccessPolicy, __self__).__init__(
             'cloudflare:index/accessPolicy:AccessPolicy',
@@ -124,6 +124,7 @@ class AccessPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             decision: Optional[pulumi.Input[str]] = None,
             excludes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
@@ -155,6 +156,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["account_id"] = account_id
         __props__["application_id"] = application_id
         __props__["decision"] = decision
         __props__["excludes"] = excludes
@@ -164,6 +166,11 @@ class AccessPolicy(pulumi.CustomResource):
         __props__["requires"] = requires
         __props__["zone_id"] = zone_id
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="applicationId")

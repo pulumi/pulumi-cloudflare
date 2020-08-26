@@ -8,6 +8,86 @@ import (
 )
 
 // Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+//
+// ## Example Usage
+//
+// Given you have the following zones in Cloudflare.
+//
+// - example.com
+// - example.net
+// - not-example.com
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
+// 			Filter: cloudflare.GetZonesFilter{
+// 				Name: "example.com",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
+// 			Filter: cloudflare.GetZonesFilter{
+// 				LookupType: "contains",
+// 				Name:       "example",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
+// 			Filter: cloudflare.GetZonesFilter{
+// 				LookupType: "contains",
+// 				Match:      "^not-",
+// 				Name:       "example",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	var rv GetZonesResult
 	err := ctx.Invoke("cloudflare:index/getZones:getZones", args, &rv, opts...)

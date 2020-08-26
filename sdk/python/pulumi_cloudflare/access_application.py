@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
 from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['AccessApplication']
 
@@ -15,6 +17,10 @@ class AccessApplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 allowed_idps: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 cors_headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
@@ -33,7 +39,18 @@ class AccessApplication(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
+        # With CORS configuration
         staging_app = cloudflare.AccessApplication("stagingApp",
+            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
+                allow_credentials=True,
+                allowed_methods=[
+                    "GET",
+                    "POST",
+                    "OPTIONS",
+                ],
+                allowed_origins=["https://example.com"],
+                max_age=10,
+            )],
             domain="staging.example.com",
             name="staging application",
             session_duration="24h",
@@ -42,11 +59,17 @@ class AccessApplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
+               selection if only one is configured in allowed_idps. Defaults to `false`
+               (disabled).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
+               below for reference structure.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
-               re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+               re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
         """
         if __name__ is not None:
@@ -66,6 +89,10 @@ class AccessApplication(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['account_id'] = account_id
+            __props__['allowed_idps'] = allowed_idps
+            __props__['auto_redirect_to_identity'] = auto_redirect_to_identity
+            __props__['cors_headers'] = cors_headers
             if domain is None:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
@@ -73,8 +100,9 @@ class AccessApplication(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['session_duration'] = session_duration
-            if zone_id is None:
-                raise TypeError("Missing required property 'zone_id'")
+            if zone_id is not None:
+                warnings.warn("This field will be removed in version 3 and replaced with the account_id field.", DeprecationWarning)
+                pulumi.log.warn("zone_id is deprecated: This field will be removed in version 3 and replaced with the account_id field.")
             __props__['zone_id'] = zone_id
             __props__['aud'] = None
         super(AccessApplication, __self__).__init__(
@@ -87,7 +115,11 @@ class AccessApplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
+            allowed_idps: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
             aud: Optional[pulumi.Input[str]] = None,
+            auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+            cors_headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
@@ -99,24 +131,47 @@ class AccessApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[List[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
+        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
+               selection if only one is configured in allowed_idps. Defaults to `false`
+               (disabled).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
+               below for reference structure.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
-               re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+               re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["account_id"] = account_id
+        __props__["allowed_idps"] = allowed_idps
         __props__["aud"] = aud
+        __props__["auto_redirect_to_identity"] = auto_redirect_to_identity
+        __props__["cors_headers"] = cors_headers
         __props__["domain"] = domain
         __props__["name"] = name
         __props__["session_duration"] = session_duration
         __props__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="allowedIdps")
+    def allowed_idps(self) -> Optional[List[str]]:
+        """
+        The identity providers selected for the application.
+        """
+        return pulumi.get(self, "allowed_idps")
 
     @property
     @pulumi.getter
@@ -125,6 +180,25 @@ class AccessApplication(pulumi.CustomResource):
         Application Audience (AUD) Tag of the application
         """
         return pulumi.get(self, "aud")
+
+    @property
+    @pulumi.getter(name="autoRedirectToIdentity")
+    def auto_redirect_to_identity(self) -> Optional[bool]:
+        """
+        Option to skip identity provider
+        selection if only one is configured in allowed_idps. Defaults to `false`
+        (disabled).
+        """
+        return pulumi.get(self, "auto_redirect_to_identity")
+
+    @property
+    @pulumi.getter(name="corsHeaders")
+    def cors_headers(self) -> Optional[List['outputs.AccessApplicationCorsHeader']]:
+        """
+        CORS configuration for the Access Application. See
+        below for reference structure.
+        """
+        return pulumi.get(self, "cors_headers")
 
     @property
     @pulumi.getter
@@ -148,7 +222,7 @@ class AccessApplication(pulumi.CustomResource):
     def session_duration(self) -> Optional[str]:
         """
         How often a user will be forced to
-        re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         """
         return pulumi.get(self, "session_duration")
 

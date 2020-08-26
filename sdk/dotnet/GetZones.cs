@@ -13,6 +13,81 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Given you have the following zones in Cloudflare.
+        /// 
+        /// - example.com
+        /// - example.net
+        /// - not-example.com
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetZonesFilterArgs
+        ///             {
+        ///                 Name = "example.com",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetZonesFilterArgs
+        ///             {
+        ///                 LookupType = "contains",
+        ///                 Name = "example",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetZonesFilterArgs
+        ///             {
+        ///                 LookupType = "contains",
+        ///                 Match = "^not-",
+        ///                 Name = "example",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());

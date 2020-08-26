@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +17,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
+ * // With CORS configuration
  * const stagingApp = new cloudflare.AccessApplication("staging_app", {
+ *     corsHeaders: [{
+ *         allowCredentials: true,
+ *         allowedMethods: [
+ *             "GET",
+ *             "POST",
+ *             "OPTIONS",
+ *         ],
+ *         allowedOrigins: ["https://example.com"],
+ *         maxAge: 10,
+ *     }],
  *     domain: "staging.example.com",
  *     name: "staging application",
  *     sessionDuration: "24h",
@@ -51,10 +64,26 @@ export class AccessApplication extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessApplication.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
+    /**
+     * The identity providers selected for the application.
+     */
+    public readonly allowedIdps!: pulumi.Output<string[] | undefined>;
     /**
      * Application Audience (AUD) Tag of the application
      */
     public /*out*/ readonly aud!: pulumi.Output<string>;
+    /**
+     * Option to skip identity provider
+     * selection if only one is configured in allowed_idps. Defaults to `false`
+     * (disabled).
+     */
+    public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
+    /**
+     * CORS configuration for the Access Application. See
+     * below for reference structure.
+     */
+    public readonly corsHeaders!: pulumi.Output<outputs.AccessApplicationCorsHeader[] | undefined>;
     /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -66,11 +95,13 @@ export class AccessApplication extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * How often a user will be forced to
-     * re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+     * re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
      * The DNS zone to which the access rule should be added.
+     *
+     * @deprecated This field will be removed in version 3 and replaced with the account_id field.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -86,7 +117,11 @@ export class AccessApplication extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as AccessApplicationState | undefined;
+            inputs["accountId"] = state ? state.accountId : undefined;
+            inputs["allowedIdps"] = state ? state.allowedIdps : undefined;
             inputs["aud"] = state ? state.aud : undefined;
+            inputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
+            inputs["corsHeaders"] = state ? state.corsHeaders : undefined;
             inputs["domain"] = state ? state.domain : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["sessionDuration"] = state ? state.sessionDuration : undefined;
@@ -99,9 +134,10 @@ export class AccessApplication extends pulumi.CustomResource {
             if (!args || args.name === undefined) {
                 throw new Error("Missing required property 'name'");
             }
-            if (!args || args.zoneId === undefined) {
-                throw new Error("Missing required property 'zoneId'");
-            }
+            inputs["accountId"] = args ? args.accountId : undefined;
+            inputs["allowedIdps"] = args ? args.allowedIdps : undefined;
+            inputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
+            inputs["corsHeaders"] = args ? args.corsHeaders : undefined;
             inputs["domain"] = args ? args.domain : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["sessionDuration"] = args ? args.sessionDuration : undefined;
@@ -123,10 +159,26 @@ export class AccessApplication extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessApplication resources.
  */
 export interface AccessApplicationState {
+    readonly accountId?: pulumi.Input<string>;
+    /**
+     * The identity providers selected for the application.
+     */
+    readonly allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Application Audience (AUD) Tag of the application
      */
     readonly aud?: pulumi.Input<string>;
+    /**
+     * Option to skip identity provider
+     * selection if only one is configured in allowed_idps. Defaults to `false`
+     * (disabled).
+     */
+    readonly autoRedirectToIdentity?: pulumi.Input<boolean>;
+    /**
+     * CORS configuration for the Access Application. See
+     * below for reference structure.
+     */
+    readonly corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
     /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -138,11 +190,13 @@ export interface AccessApplicationState {
     readonly name?: pulumi.Input<string>;
     /**
      * How often a user will be forced to
-     * re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+     * re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
      */
     readonly sessionDuration?: pulumi.Input<string>;
     /**
      * The DNS zone to which the access rule should be added.
+     *
+     * @deprecated This field will be removed in version 3 and replaced with the account_id field.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -151,6 +205,22 @@ export interface AccessApplicationState {
  * The set of arguments for constructing a AccessApplication resource.
  */
 export interface AccessApplicationArgs {
+    readonly accountId?: pulumi.Input<string>;
+    /**
+     * The identity providers selected for the application.
+     */
+    readonly allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Option to skip identity provider
+     * selection if only one is configured in allowed_idps. Defaults to `false`
+     * (disabled).
+     */
+    readonly autoRedirectToIdentity?: pulumi.Input<boolean>;
+    /**
+     * CORS configuration for the Access Application. See
+     * below for reference structure.
+     */
+    readonly corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
     /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -162,11 +232,13 @@ export interface AccessApplicationArgs {
     readonly name: pulumi.Input<string>;
     /**
      * How often a user will be forced to
-     * re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+     * re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
      */
     readonly sessionDuration?: pulumi.Input<string>;
     /**
      * The DNS zone to which the access rule should be added.
+     *
+     * @deprecated This field will be removed in version 3 and replaced with the account_id field.
      */
-    readonly zoneId: pulumi.Input<string>;
+    readonly zoneId?: pulumi.Input<string>;
 }

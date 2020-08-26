@@ -7,7 +7,7 @@
     ],
     "homepage": "https://pulumi.io",
     "license": "Apache-2.0",
-    "attribution": "This Pulumi package is based on the [`cloudflare` Terraform Provider](https://github.com/terraform-providers/terraform-provider-cloudflare).",
+    "attribution": "This Pulumi package is based on the [`cloudflare` Terraform Provider](https://github.com/cloudflare/terraform-provider-cloudflare).",
     "repository": "https://github.com/pulumi/pulumi-cloudflare",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
@@ -112,6 +112,92 @@
         }
     },
     "types": {
+        "cloudflare:/AccessApplicationCorsHeader:AccessApplicationCorsHeader": {
+            "properties": {
+                "allowAllHeaders": {
+                    "type": "boolean",
+                    "description": "Boolean value to determine whether all\nHTTP headers are exposed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowAllMethods": {
+                    "type": "boolean",
+                    "description": "Boolean value to determine whether all\nmethods are exposed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowAllOrigins": {
+                    "type": "boolean",
+                    "description": "Boolean value to determine whether all\norigins are permitted to make CORS requests.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowCredentials": {
+                    "type": "boolean",
+                    "description": "Boolean value to determine if credentials\n(cookies, authorization headers, or TLS client certificates) are included with\nrequests.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowedHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of HTTP headers to expose via CORS.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowedMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of methods to expose via CORS.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "allowedOrigins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of origins permitted to make CORS requests.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "maxAge": {
+                    "type": "integer",
+                    "description": "Integer representing the maximum time a preflight\nrequest will be cached.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:/AccessGroupExclude:AccessGroupExclude": {
             "properties": {
                 "anyValidServiceToken": {
@@ -1868,6 +1954,187 @@
                 "value"
             ]
         },
+        "cloudflare:/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Level of validation to be used for this hostname. Domain validation (\"dv\") must be used.\n"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "type",
+                        "value"
+                    ]
+                }
+            }
+        },
+        "cloudflare:/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp": {
+            "properties": {
+                "httpBody": {
+                    "type": "string"
+                },
+                "httpUrl": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "httpBody",
+                        "httpUrl"
+                    ]
+                }
+            }
+        },
+        "cloudflare:/CustomHostnameSsl:CustomHostnameSsl": {
+            "properties": {
+                "certificateAuthority": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cnameName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cnameTarget": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customCertificate": {
+                    "type": "string",
+                    "description": "If a custom uploaded certificate is used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customKey": {
+                    "type": "string",
+                    "description": "The key for a custom uploaded certificate.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "method": {
+                    "type": "string",
+                    "description": "Domain control validation (DCV) method used for this\nhostname. Valid values are `\"txt\"`, `\"http\"` and `\"email\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "settings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/CustomHostnameSslSetting:CustomHostnameSslSetting"
+                    },
+                    "description": "SSL/TLS settings for the certificate. See further notes below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "status": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Level of validation to be used for this hostname. Domain validation (\"dv\") must be used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "wildcard": {
+                    "type": "boolean",
+                    "description": "Indicates whether the certificate covers a wildcard.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:/CustomHostnameSslSetting:CustomHostnameSslSetting": {
+            "properties": {
+                "ciphers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of SSL/TLS ciphers to associate with this certificate.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http2": {
+                    "type": "string",
+                    "description": "Whether or not HTTP2 should be supported. Valid values are `\"on\"` or `\"off\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "minTlsVersion": {
+                    "type": "string",
+                    "description": "Lowest version of TLS this certificate should\nsupport. Valid values are `\"1.0\"`, `\"1.1\"`, `\"1.2\"` and `\"1.3\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tls13": {
+                    "type": "string",
+                    "description": "Whether or not TLSv1.3 should be supported. Valid values are `\"on\"` or `\"off\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:/CustomSslCustomSslOptions:CustomSslCustomSslOptions": {
             "properties": {
                 "bundleMethod": {
@@ -1947,6 +2214,48 @@
                 "header",
                 "values"
             ]
+        },
+        "cloudflare:/IpListItem:IpListItem": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "A note that can be used to annotate the item.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "value"
+                    ]
+                }
+            }
         },
         "cloudflare:/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader": {
             "properties": {
@@ -3120,6 +3429,33 @@
             "type": "object",
             "required": [
                 "name"
+            ]
+        },
+        "cloudflare:/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange": {
+            "properties": {
+                "end": {
+                    "type": "integer",
+                    "description": "Upper bound of the origin port range, e.g. `2000`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "start": {
+                    "type": "integer",
+                    "description": "Lower bound of the origin port range, e.g. `1000`\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "end",
+                "start"
             ]
         },
         "cloudflare:/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding": {
@@ -4673,9 +5009,27 @@
         },
         "cloudflare:/getZonesFilter:getZonesFilter": {
             "properties": {
+                "lookupType": {
+                    "type": "string",
+                    "description": "The type of search to perform for the `name` value\nwhen querying the zone API. Valid values: `\"exact\"` and `\"contains\"`. Defaults\nto `\"exact\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "match": {
+                    "type": "string",
+                    "description": "A RE2 compatible regular expression to filter the\nresults. This is performed client side whereas the `name` and `lookup_type`\nare performed on the Cloudflare server side.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
-                    "description": "A regular expression matching the zone to lookup.\n",
+                    "description": "A string value to search for.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4684,7 +5038,7 @@
                 },
                 "paused": {
                     "type": "boolean",
-                    "description": "Paused status of the zone to lookup. Valid values are `true` or `false`.\n",
+                    "description": "Paused status of the zone to lookup. Valid values are\n`true` or `false`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4693,7 +5047,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.\n",
+                    "description": "Status of the zone to lookup. Valid values: `\"active\"`,\n`\"pending\"`, `\"initializing\"`, `\"moved\"`, `\"deleted\"`, `\"deactivated\"` and\n`\"read only\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4716,7 +5070,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "A regular expression matching the zone to lookup.\n",
+                    "description": "A string value to search for.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4829,11 +5183,32 @@
     },
     "resources": {
         "cloudflare:index/accessApplication:AccessApplication": {
-            "description": "Provides a Cloudflare Access Application resource. Access Applications\nare used to restrict access to a whole application using an\nauthorisation gateway managed by Cloudflare.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst stagingApp = new cloudflare.AccessApplication(\"staging_app\", {\n    domain: \"staging.example.com\",\n    name: \"staging application\",\n    sessionDuration: \"24h\",\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nstaging_app = cloudflare.AccessApplication(\"stagingApp\",\n    domain=\"staging.example.com\",\n    name=\"staging application\",\n    session_duration=\"24h\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var stagingApp = new Cloudflare.AccessApplication(\"stagingApp\", new Cloudflare.AccessApplicationArgs\n        {\n            Domain = \"staging.example.com\",\n            Name = \"staging application\",\n            SessionDuration = \"24h\",\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessApplication(ctx, \"stagingApp\", \u0026cloudflare.AccessApplicationArgs{\n\t\t\tDomain:          pulumi.String(\"staging.example.com\"),\n\t\t\tName:            pulumi.String(\"staging application\"),\n\t\t\tSessionDuration: pulumi.String(\"24h\"),\n\t\t\tZoneId:          pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Cloudflare Access Application resource. Access Applications\nare used to restrict access to a whole application using an\nauthorisation gateway managed by Cloudflare.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// With CORS configuration\nconst stagingApp = new cloudflare.AccessApplication(\"staging_app\", {\n    corsHeaders: [{\n        allowCredentials: true,\n        allowedMethods: [\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowedOrigins: [\"https://example.com\"],\n        maxAge: 10,\n    }],\n    domain: \"staging.example.com\",\n    name: \"staging application\",\n    sessionDuration: \"24h\",\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# With CORS configuration\nstaging_app = cloudflare.AccessApplication(\"stagingApp\",\n    cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(\n        allow_credentials=True,\n        allowed_methods=[\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowed_origins=[\"https://example.com\"],\n        max_age=10,\n    )],\n    domain=\"staging.example.com\",\n    name=\"staging application\",\n    session_duration=\"24h\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // With CORS configuration\n        var stagingApp = new Cloudflare.AccessApplication(\"stagingApp\", new Cloudflare.AccessApplicationArgs\n        {\n            CorsHeaders = \n            {\n                new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs\n                {\n                    AllowCredentials = true,\n                    AllowedMethods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"OPTIONS\",\n                    },\n                    AllowedOrigins = \n                    {\n                        \"https://example.com\",\n                    },\n                    MaxAge = 10,\n                },\n            },\n            Domain = \"staging.example.com\",\n            Name = \"staging application\",\n            SessionDuration = \"24h\",\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessApplication(ctx, \"stagingApp\", \u0026cloudflare.AccessApplicationArgs{\n\t\t\tCorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{\n\t\t\t\t\u0026cloudflare.AccessApplicationCorsHeaderArgs{\n\t\t\t\t\tAllowCredentials: pulumi.Bool(true),\n\t\t\t\t\tAllowedMethods: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"GET\"),\n\t\t\t\t\t\tpulumi.String(\"POST\"),\n\t\t\t\t\t\tpulumi.String(\"OPTIONS\"),\n\t\t\t\t\t},\n\t\t\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tMaxAge: pulumi.Int(10),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDomain:          pulumi.String(\"staging.example.com\"),\n\t\t\tName:            pulumi.String(\"staging application\"),\n\t\t\tSessionDuration: pulumi.String(\"24h\"),\n\t\t\tZoneId:          pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "allowedIdps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The identity providers selected for the application.\n"
+                },
                 "aud": {
                     "type": "string",
                     "description": "Application Audience (AUD) Tag of the application\n"
+                },
+                "autoRedirectToIdentity": {
+                    "type": "boolean",
+                    "description": "Option to skip identity provider\nselection if only one is configured in allowed_idps. Defaults to `false`\n(disabled).\n"
+                },
+                "corsHeaders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
+                    },
+                    "description": "CORS configuration for the Access Application. See\nbelow for reference structure.\n"
                 },
                 "domain": {
                     "type": "string",
@@ -4845,20 +5220,43 @@
                 },
                 "sessionDuration": {
                     "type": "string",
-                    "description": "How often a user will be forced to\nre-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
+                    "description": "How often a user will be forced to\nre-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The DNS zone to which the access rule should be added.\n"
+                    "description": "The DNS zone to which the access rule should be added.\n",
+                    "deprecationMessage": "This field will be removed in version 3 and replaced with the account_id field."
                 }
             },
             "required": [
+                "accountId",
                 "aud",
                 "domain",
                 "name",
                 "zoneId"
             ],
             "inputProperties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "allowedIdps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The identity providers selected for the application.\n"
+                },
+                "autoRedirectToIdentity": {
+                    "type": "boolean",
+                    "description": "Option to skip identity provider\nselection if only one is configured in allowed_idps. Defaults to `false`\n(disabled).\n"
+                },
+                "corsHeaders": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
+                    },
+                    "description": "CORS configuration for the Access Application. See\nbelow for reference structure.\n"
+                },
                 "domain": {
                     "type": "string",
                     "description": "The complete URL of the asset you wish to put\nCloudflare Access in front of. Can include subdomains or paths. Or both.\n"
@@ -4869,24 +5267,45 @@
                 },
                 "sessionDuration": {
                     "type": "string",
-                    "description": "How often a user will be forced to\nre-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
+                    "description": "How often a user will be forced to\nre-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The DNS zone to which the access rule should be added.\n"
+                    "description": "The DNS zone to which the access rule should be added.\n",
+                    "deprecationMessage": "This field will be removed in version 3 and replaced with the account_id field."
                 }
             },
             "requiredInputs": [
                 "domain",
-                "name",
-                "zoneId"
+                "name"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AccessApplication resources.\n",
                 "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "allowedIdps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The identity providers selected for the application.\n"
+                    },
                     "aud": {
                         "type": "string",
                         "description": "Application Audience (AUD) Tag of the application\n"
+                    },
+                    "autoRedirectToIdentity": {
+                        "type": "boolean",
+                        "description": "Option to skip identity provider\nselection if only one is configured in allowed_idps. Defaults to `false`\n(disabled).\n"
+                    },
+                    "corsHeaders": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
+                        },
+                        "description": "CORS configuration for the Access Application. See\nbelow for reference structure.\n"
                     },
                     "domain": {
                         "type": "string",
@@ -4898,11 +5317,12 @@
                     },
                     "sessionDuration": {
                         "type": "string",
-                        "description": "How often a user will be forced to\nre-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
+                        "description": "How often a user will be forced to\nre-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The DNS zone to which the access rule should be added.\n"
+                        "description": "The DNS zone to which the access rule should be added.\n",
+                        "deprecationMessage": "This field will be removed in version 3 and replaced with the account_id field."
                     }
                 },
                 "type": "object"
@@ -5098,6 +5518,9 @@
         "cloudflare:index/accessPolicy:AccessPolicy": {
             "description": "Provides a Cloudflare Access Policy resource. Access Policies are used\nin conjunction with Access Applications to restrict access to a\nparticular resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_policy_index_access_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessPolicy(ctx, \"testPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessPolicy(ctx, \"testPolicyIndex_accessPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessPolicyRequireArray{\n\t\t\t\tIps: cloudflare.AccessPolicyRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "accountId": {
+                    "type": "string"
+                },
                 "applicationId": {
                     "type": "string",
                     "description": "The ID of the application the policy is\nassociated with.\n"
@@ -5141,6 +5564,7 @@
                 }
             },
             "required": [
+                "accountId",
                 "applicationId",
                 "decision",
                 "includes",
@@ -5148,6 +5572,9 @@
                 "zoneId"
             ],
             "inputProperties": {
+                "accountId": {
+                    "type": "string"
+                },
                 "applicationId": {
                     "type": "string",
                     "description": "The ID of the application the policy is\nassociated with.\n"
@@ -5194,12 +5621,14 @@
                 "applicationId",
                 "decision",
                 "includes",
-                "name",
-                "zoneId"
+                "name"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AccessPolicy resources.\n",
                 "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
                     "applicationId": {
                         "type": "string",
                         "description": "The ID of the application the policy is\nassociated with.\n"
@@ -5487,6 +5916,190 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls": {
+            "description": "Provides a Cloudflare Authenticated Origin Pulls resource. An `cloudflare.AuthenticatedOriginPulls` resource is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe arguments that you provide determine which form of Authenticated Origin Pulls to use:\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Authenticated Origin Pulls\nconst myAop = new cloudflare.AuthenticatedOriginPulls(\"myAop\", {\n    zoneId: _var.cloudflare_zone_id,\n    enabled: true,\n});\n// Per-Zone Authenticated Origin Pulls\nconst myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", {\n    zoneId: _var.cloudflare_zone_id,\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-zone\",\n});\nconst myPerZoneAop = new cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\", {\n    zoneId: _var.cloudflare_zone_id,\n    authenticatedOriginPullsCertificate: myPerZoneAopCert.id,\n    enabled: true,\n});\n// Per-Hostname Authenticated Origin Pulls\nconst myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", {\n    zoneId: _var.cloudflare_zone_id,\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-hostname\",\n});\nconst myPerHostnameAop = new cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\", {\n    zoneId: _var.cloudflare_zone_id,\n    authenticatedOriginPullsCertificate: myPerHostnameAopCert.id,\n    hostname: \"aop.example.com\",\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Authenticated Origin Pulls\nmy_aop = cloudflare.AuthenticatedOriginPulls(\"myAop\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    enabled=True)\n# Per-Zone Authenticated Origin Pulls\nmy_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-zone\")\nmy_per_zone_aop = cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,\n    enabled=True)\n# Per-Hostname Authenticated Origin Pulls\nmy_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-hostname\")\nmy_per_hostname_aop = cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,\n    hostname=\"aop.example.com\",\n    enabled=True)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Authenticated Origin Pulls\n        var myAop = new Cloudflare.AuthenticatedOriginPulls(\"myAop\", new Cloudflare.AuthenticatedOriginPullsArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Enabled = true,\n        });\n        // Per-Zone Authenticated Origin Pulls\n        var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", new Cloudflare.AuthenticatedOriginPullsCertificateArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Certificate = \"-----INSERT CERTIFICATE-----\",\n            PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n            Type = \"per-zone\",\n        });\n        var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\", new Cloudflare.AuthenticatedOriginPullsArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,\n            Enabled = true,\n        });\n        // Per-Hostname Authenticated Origin Pulls\n        var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", new Cloudflare.AuthenticatedOriginPullsCertificateArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Certificate = \"-----INSERT CERTIFICATE-----\",\n            PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n            Type = \"per-hostname\",\n        });\n        var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\", new Cloudflare.AuthenticatedOriginPullsArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,\n            Hostname = \"aop.example.com\",\n            Enabled = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, \"myAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:  pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyPerZoneAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerZoneAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tZoneId:      pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-zone\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, \"myPerZoneAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:                              pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tAuthenticatedOriginPullsCertificate: myPerZoneAopCert.ID(),\n\t\t\tEnabled:                             pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyPerHostnameAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerHostnameAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tZoneId:      pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-hostname\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, \"myPerHostnameAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:                              pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tAuthenticatedOriginPullsCertificate: myPerHostnameAopCert.ID(),\n\t\t\tHostname:                            pulumi.String(\"aop.example.com\"),\n\t\t\tEnabled:                             pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "authenticatedOriginPullsCertificate": {
+                    "type": "string",
+                    "description": "The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID to upload the certificate to.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "authenticatedOriginPullsCertificate": {
+                    "type": "string",
+                    "description": "The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID to upload the certificate to.\n"
+                }
+            },
+            "requiredInputs": [
+                "enabled",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthenticatedOriginPulls resources.\n",
+                "properties": {
+                    "authenticatedOriginPullsCertificate": {
+                        "type": "string",
+                        "description": "The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID to upload the certificate to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate": {
+            "description": "Provides a Cloudflare Authenticated Origin Pulls certificate resource. An uploaded client certificate is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Per-Zone Authenticated Origin Pulls certificate\nconst myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"my_per_zone_aop_cert\", {\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-zone\",\n    zoneId: var_cloudflare_zone_id,\n});\n// Per-Hostname Authenticated Origin Pulls certificate\nconst myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"my_per_hostname_aop_cert\", {\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-hostname\",\n    zoneId: var_cloudflare_zone_id,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Per-Zone Authenticated Origin Pulls certificate\nmy_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-zone\",\n    zone_id=var[\"cloudflare_zone_id\"])\n# Per-Hostname Authenticated Origin Pulls certificate\nmy_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-hostname\",\n    zone_id=var[\"cloudflare_zone_id\"])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Per-Zone Authenticated Origin Pulls certificate\n        var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", new Cloudflare.AuthenticatedOriginPullsCertificateArgs\n        {\n            Certificate = \"-----INSERT CERTIFICATE-----\",\n            PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n            Type = \"per-zone\",\n            ZoneId = @var.Cloudflare_zone_id,\n        });\n        // Per-Hostname Authenticated Origin Pulls certificate\n        var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", new Cloudflare.AuthenticatedOriginPullsCertificateArgs\n        {\n            Certificate = \"-----INSERT CERTIFICATE-----\",\n            PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n            Type = \"per-hostname\",\n            ZoneId = @var.Cloudflare_zone_id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerZoneAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-zone\"),\n\t\t\tZoneId:      pulumi.Any(_var.Cloudflare_zone_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerHostnameAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-hostname\"),\n\t\t\tZoneId:      pulumi.Any(_var.Cloudflare_zone_id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "certificate": {
+                    "type": "string",
+                    "description": "The public client certificate.\n"
+                },
+                "expiresOn": {
+                    "type": "string"
+                },
+                "issuer": {
+                    "type": "string"
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The private key of the client certificate.\n"
+                },
+                "serialNumber": {
+                    "type": "string"
+                },
+                "signature": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The form of Authenticated Origin Pulls to upload the certificate to.\n"
+                },
+                "uploadedOn": {
+                    "type": "string"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID to upload the certificate to.\n"
+                }
+            },
+            "required": [
+                "certificate",
+                "expiresOn",
+                "issuer",
+                "privateKey",
+                "serialNumber",
+                "signature",
+                "status",
+                "type",
+                "uploadedOn",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "certificate": {
+                    "type": "string",
+                    "description": "The public client certificate.\n"
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The private key of the client certificate.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The form of Authenticated Origin Pulls to upload the certificate to.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID to upload the certificate to.\n"
+                }
+            },
+            "requiredInputs": [
+                "certificate",
+                "privateKey",
+                "type",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthenticatedOriginPullsCertificate resources.\n",
+                "properties": {
+                    "certificate": {
+                        "type": "string",
+                        "description": "The public client certificate.\n"
+                    },
+                    "expiresOn": {
+                        "type": "string"
+                    },
+                    "issuer": {
+                        "type": "string"
+                    },
+                    "privateKey": {
+                        "type": "string",
+                        "description": "The private key of the client certificate.\n"
+                    },
+                    "serialNumber": {
+                        "type": "string"
+                    },
+                    "signature": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The form of Authenticated Origin Pulls to upload the certificate to.\n"
+                    },
+                    "uploadedOn": {
+                        "type": "string"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID to upload the certificate to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/byoIpPrefix:ByoIpPrefix": {
             "description": "Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP) which are used with or without Magic Transit.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ByoIpPrefix(\"example\", {\n    advertisement: \"on\",\n    description: \"Example IP Prefix\",\n    prefixId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ByoIpPrefix(\"example\",\n    advertisement=\"on\",\n    description=\"Example IP Prefix\",\n    prefix_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.ByoIpPrefix(\"example\", new Cloudflare.ByoIpPrefixArgs\n        {\n            Advertisement = \"on\",\n            Description = \"Example IP Prefix\",\n            PrefixId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewByoIpPrefix(ctx, \"example\", \u0026cloudflare.ByoIpPrefixArgs{\n\t\t\tAdvertisement: pulumi.String(\"on\"),\n\t\t\tDescription:   pulumi.String(\"Example IP Prefix\"),\n\t\t\tPrefixId:      pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -5539,6 +6152,161 @@
                     "prefixId": {
                         "type": "string",
                         "description": "The assigned Bring-Your-Own-IP prefix ID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/customHostname:CustomHostname": {
+            "description": "Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleHostname = new cloudflare.CustomHostname(\"example_hostname\", {\n    hostname: \"hostname.example.com\",\n    ssls: [{\n        method: \"txt\",\n    }],\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_hostname = cloudflare.CustomHostname(\"exampleHostname\",\n    hostname=\"hostname.example.com\",\n    ssls=[cloudflare.CustomHostnameSslArgs(\n        method=\"txt\",\n    )],\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleHostname = new Cloudflare.CustomHostname(\"exampleHostname\", new Cloudflare.CustomHostnameArgs\n        {\n            Hostname = \"hostname.example.com\",\n            Ssls = \n            {\n                new Cloudflare.Inputs.CustomHostnameSslArgs\n                {\n                    Method = \"txt\",\n                },\n            },\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewCustomHostname(ctx, \"exampleHostname\", \u0026cloudflare.CustomHostnameArgs{\n\t\t\tHostname: pulumi.String(\"hostname.example.com\"),\n\t\t\tSsls: cloudflare.CustomHostnameSslArray{\n\t\t\t\t\u0026cloudflare.CustomHostnameSslArgs{\n\t\t\t\t\tMethod: pulumi.String(\"txt\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "customOriginServer": {
+                    "type": "string",
+                    "description": "The custom origin server used for certificates.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname you intend to request a certificate for.\n"
+                },
+                "ownershipVerification": {
+                    "$ref": "#/types/cloudflare:/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification"
+                },
+                "ownershipVerificationHttp": {
+                    "$ref": "#/types/cloudflare:/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp"
+                },
+                "ssls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/CustomHostnameSsl:CustomHostnameSsl"
+                    },
+                    "description": "SSL configuration of the certificate. See further notes below.\n"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone ID where the custom hostname should be assigned.\n"
+                }
+            },
+            "required": [
+                "hostname",
+                "ownershipVerification",
+                "ownershipVerificationHttp",
+                "ssls",
+                "status",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "customOriginServer": {
+                    "type": "string",
+                    "description": "The custom origin server used for certificates.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname you intend to request a certificate for.\n"
+                },
+                "ssls": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/CustomHostnameSsl:CustomHostnameSsl"
+                    },
+                    "description": "SSL configuration of the certificate. See further notes below.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone ID where the custom hostname should be assigned.\n"
+                }
+            },
+            "requiredInputs": [
+                "hostname",
+                "ssls",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CustomHostname resources.\n",
+                "properties": {
+                    "customOriginServer": {
+                        "type": "string",
+                        "description": "The custom origin server used for certificates.\n"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname you intend to request a certificate for.\n"
+                    },
+                    "ownershipVerification": {
+                        "$ref": "#/types/cloudflare:/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification"
+                    },
+                    "ownershipVerificationHttp": {
+                        "$ref": "#/types/cloudflare:/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp"
+                    },
+                    "ssls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:/CustomHostnameSsl:CustomHostnameSsl"
+                        },
+                        "description": "SSL configuration of the certificate. See further notes below.\n"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The DNS zone ID where the custom hostname should be assigned.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin": {
+            "description": "Provides a Cloudflare custom hostname fallback origin resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst fallbackOrigin = new cloudflare.CustomHostnameFallbackOrigin(\"fallback_origin\", {\n    origin: \"fallback.example.com\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nfallback_origin = cloudflare.CustomHostnameFallbackOrigin(\"fallbackOrigin\",\n    origin=\"fallback.example.com\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var fallbackOrigin = new Cloudflare.CustomHostnameFallbackOrigin(\"fallbackOrigin\", new Cloudflare.CustomHostnameFallbackOriginArgs\n        {\n            Origin = \"fallback.example.com\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewCustomHostnameFallbackOrigin(ctx, \"fallbackOrigin\", \u0026cloudflare.CustomHostnameFallbackOriginArgs{\n\t\t\tOrigin: pulumi.String(\"fallback.example.com\"),\n\t\t\tZoneId: pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "origin": {
+                    "type": "string",
+                    "description": "Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the fallback origin's activation.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone ID where the custom hostname should be assigned.\n"
+                }
+            },
+            "required": [
+                "origin",
+                "status",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "origin": {
+                    "type": "string",
+                    "description": "Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone ID where the custom hostname should be assigned.\n"
+                }
+            },
+            "requiredInputs": [
+                "origin",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CustomHostnameFallbackOrigin resources.\n",
+                "properties": {
+                    "origin": {
+                        "type": "string",
+                        "description": "Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the fallback origin's activation.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The DNS zone ID where the custom hostname should be assigned.\n"
                     }
                 },
                 "type": "object"
@@ -6275,6 +7043,95 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The DNS zone ID to which apply settings.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/ipList:IpList": {
+            "description": "IP Lists are a set of IP addresses or CIDR ranges that are configured on the account level. Once created, IP Lists can be \nused in Firewall Rules across all zones within the same account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.IpList(\"example\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"list description\",\n    items: [\n        {\n            comment: \"Office IP\",\n            value: \"192.0.2.1\",\n        },\n        {\n            comment: \"Datacenter range\",\n            value: \"203.0.113.0/24\",\n        },\n    ],\n    kind: \"ip\",\n    name: \"example_list\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.IpList(\"example\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"list description\",\n    items=[\n        cloudflare.IpListItemArgs(\n            comment=\"Office IP\",\n            value=\"192.0.2.1\",\n        ),\n        cloudflare.IpListItemArgs(\n            comment=\"Datacenter range\",\n            value=\"203.0.113.0/24\",\n        ),\n    ],\n    kind=\"ip\",\n    name=\"example_list\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.IpList(\"example\", new Cloudflare.IpListArgs\n        {\n            AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"list description\",\n            Items = \n            {\n                new Cloudflare.Inputs.IpListItemArgs\n                {\n                    Comment = \"Office IP\",\n                    Value = \"192.0.2.1\",\n                },\n                new Cloudflare.Inputs.IpListItemArgs\n                {\n                    Comment = \"Datacenter range\",\n                    Value = \"203.0.113.0/24\",\n                },\n            },\n            Kind = \"ip\",\n            Name = \"example_list\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewIpList(ctx, \"example\", \u0026cloudflare.IpListArgs{\n\t\t\tAccountId:   pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"list description\"),\n\t\t\tItems: cloudflare.IpListItemArray{\n\t\t\t\t\u0026cloudflare.IpListItemArgs{\n\t\t\t\t\tComment: pulumi.String(\"Office IP\"),\n\t\t\t\t\tValue:   pulumi.String(\"192.0.2.1\"),\n\t\t\t\t},\n\t\t\t\t\u0026cloudflare.IpListItemArgs{\n\t\t\t\t\tComment: pulumi.String(\"Datacenter range\"),\n\t\t\t\t\tValue:   pulumi.String(\"203.0.113.0/24\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tKind: pulumi.String(\"ip\"),\n\t\t\tName: pulumi.String(\"example_list\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the IP List is being created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A note that can be used to annotate the List. Maximum Length: 500\n"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/IpListItem:IpListItem"
+                    }
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of values in the List. Valid values: `ip`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "kind",
+                "name"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the IP List is being created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A note that can be used to annotate the List. Maximum Length: 500\n"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/IpListItem:IpListItem"
+                    }
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of values in the List. Valid values: `ip`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "kind",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IpList resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account where the IP List is being created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A note that can be used to annotate the List. Maximum Length: 500\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:/IpListItem:IpListItem"
+                        }
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "The kind of values in the List. Valid values: `ip`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50\n"
                     }
                 },
                 "type": "object"
@@ -7588,7 +8445,11 @@
                 },
                 "originPort": {
                     "type": "integer",
-                    "description": "If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
+                    "description": "If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
+                },
+                "originPortRange": {
+                    "$ref": "#/types/cloudflare:/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
+                    "description": "If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -7653,7 +8514,11 @@
                 },
                 "originPort": {
                     "type": "integer",
-                    "description": "If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
+                    "description": "If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
+                },
+                "originPortRange": {
+                    "$ref": "#/types/cloudflare:/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
+                    "description": "If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.\n"
                 },
                 "protocol": {
                     "type": "string",
@@ -7720,7 +8585,11 @@
                     },
                     "originPort": {
                         "type": "integer",
-                        "description": "If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
+                        "description": "If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
+                    },
+                    "originPortRange": {
+                        "$ref": "#/types/cloudflare:/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
+                        "description": "If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.\n"
                     },
                     "protocol": {
                         "type": "string",
@@ -8926,7 +9795,7 @@
             }
         },
         "cloudflare:index/getZones:getZones": {
-            "description": "Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nThe example below matches all `active` zones that begin with `example.` and are not paused. The matched zones are then\nlocked down using the `cloudflare.ZoneLockdown` resource.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst test = pulumi.output(cloudflare.getZones({\n    filter: {\n        name: \"example.*\",\n        paused: false,\n        status: \"active\",\n    },\n}, { async: true }));\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpoint_lockdown\", {\n    configurations: [{\n        target: \"ip\",\n        value: \"198.51.100.4\",\n    }],\n    description: \"Restrict access to these endpoints to requests from a known IP address\",\n    paused: false,\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    zone: test.apply(test =\u003e (\u003cany\u003etest.zones[0])[\"name\"]),\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGiven you have the following zones in Cloudflare.\n\n- example.com\n- example.net\n- not-example.com\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for a single zone that you know exists using an exact match.\n// API request will be for zones?name=example.com. Will not match not-example.com\n// or example.net.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        name: \"example.com\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    name=\"example.com\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                Name = \"example.com\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tName: \"example.com\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\".\n// API request will be for zones?name=contains:example. Will return all three\n// zones.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        name: \"example\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\" but start with \"not-\".\n// API request will be for zones?name=contains:example. Will perform client side\n// filtering using the provided regex and will only match the single zone,\n// not-example.com.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        match: \"^not-\",\n        name: \"example\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    match=\"^not-\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Match = \"^not-\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tMatch:      \"^not-\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Example usage with other resources\n\nThe example below matches all zones which have \"example\" in their value, end\nwith \".com\" and are active. The matched zone is then referenced in the zone\nlockdown resource.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst test = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        match: \".com$\",\n        name: \"example\",\n        status: \"active\",\n    },\n}, { async: true }));\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpoint_lockdown\", {\n    configurations: [{\n        target: \"ip\",\n        value: \"198.51.100.4\",\n    }],\n    description: \"Restrict access to these endpoints to requests from a known IP address\",\n    paused: false,\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    zone: test.apply(test =\u003e (\u003cany\u003etest.zones[0])[\"name\"]),\n});\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getZones.\n",
                 "properties": {
@@ -8988,11 +9857,11 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing Cloudflare cloud resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-cloudflare)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-cloudflare` repo](https://github.com/pulumi/pulumi-cloudflare/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-cloudflare` repo](https://github.com/terraform-providers/terraform-provider-cloudflare/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/cloudflare/terraform-provider-cloudflare)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-cloudflare` repo](https://github.com/pulumi/pulumi-cloudflare/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`cloudflare/terraform-provider-cloudflare` repo](https://github.com/cloudflare/terraform-provider-cloudflare/issues).",
             "typescriptVersion": ""
         },
         "python": {
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-cloudflare)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-cloudflare` repo](https://github.com/pulumi/pulumi-cloudflare/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-cloudflare` repo](https://github.com/terraform-providers/terraform-provider-cloudflare/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/cloudflare/terraform-provider-cloudflare)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-cloudflare` repo](https://github.com/pulumi/pulumi-cloudflare/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`cloudflare/terraform-provider-cloudflare` repo](https://github.com/cloudflare/terraform-provider-cloudflare/issues).",
             "requires": {
                 "pulumi": "\u003e=2.9.0,\u003c3.0.0"
             },

@@ -24,8 +24,27 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
+    ///         // With CORS configuration
     ///         var stagingApp = new Cloudflare.AccessApplication("stagingApp", new Cloudflare.AccessApplicationArgs
     ///         {
+    ///             CorsHeaders = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs
+    ///                 {
+    ///                     AllowCredentials = true,
+    ///                     AllowedMethods = 
+    ///                     {
+    ///                         "GET",
+    ///                         "POST",
+    ///                         "OPTIONS",
+    ///                     },
+    ///                     AllowedOrigins = 
+    ///                     {
+    ///                         "https://example.com",
+    ///                     },
+    ///                     MaxAge = 10,
+    ///                 },
+    ///             },
     ///             Domain = "staging.example.com",
     ///             Name = "staging application",
     ///             SessionDuration = "24h",
@@ -38,11 +57,35 @@ namespace Pulumi.Cloudflare
     /// </summary>
     public partial class AccessApplication : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// The identity providers selected for the application.
+        /// </summary>
+        [Output("allowedIdps")]
+        public Output<ImmutableArray<string>> AllowedIdps { get; private set; } = null!;
+
         /// <summary>
         /// Application Audience (AUD) Tag of the application
         /// </summary>
         [Output("aud")]
         public Output<string> Aud { get; private set; } = null!;
+
+        /// <summary>
+        /// Option to skip identity provider
+        /// selection if only one is configured in allowed_idps. Defaults to `false`
+        /// (disabled).
+        /// </summary>
+        [Output("autoRedirectToIdentity")]
+        public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
+
+        /// <summary>
+        /// CORS configuration for the Access Application. See
+        /// below for reference structure.
+        /// </summary>
+        [Output("corsHeaders")]
+        public Output<ImmutableArray<Outputs.AccessApplicationCorsHeader>> CorsHeaders { get; private set; } = null!;
 
         /// <summary>
         /// The complete URL of the asset you wish to put
@@ -59,7 +102,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// How often a user will be forced to
-        /// re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        /// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
@@ -116,6 +159,42 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessApplicationArgs : Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        [Input("allowedIdps")]
+        private InputList<string>? _allowedIdps;
+
+        /// <summary>
+        /// The identity providers selected for the application.
+        /// </summary>
+        public InputList<string> AllowedIdps
+        {
+            get => _allowedIdps ?? (_allowedIdps = new InputList<string>());
+            set => _allowedIdps = value;
+        }
+
+        /// <summary>
+        /// Option to skip identity provider
+        /// selection if only one is configured in allowed_idps. Defaults to `false`
+        /// (disabled).
+        /// </summary>
+        [Input("autoRedirectToIdentity")]
+        public Input<bool>? AutoRedirectToIdentity { get; set; }
+
+        [Input("corsHeaders")]
+        private InputList<Inputs.AccessApplicationCorsHeaderArgs>? _corsHeaders;
+
+        /// <summary>
+        /// CORS configuration for the Access Application. See
+        /// below for reference structure.
+        /// </summary>
+        public InputList<Inputs.AccessApplicationCorsHeaderArgs> CorsHeaders
+        {
+            get => _corsHeaders ?? (_corsHeaders = new InputList<Inputs.AccessApplicationCorsHeaderArgs>());
+            set => _corsHeaders = value;
+        }
+
         /// <summary>
         /// The complete URL of the asset you wish to put
         /// Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -131,7 +210,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// How often a user will be forced to
-        /// re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        /// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
@@ -139,8 +218,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The DNS zone to which the access rule should be added.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public AccessApplicationArgs()
         {
@@ -149,11 +228,47 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessApplicationState : Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        [Input("allowedIdps")]
+        private InputList<string>? _allowedIdps;
+
+        /// <summary>
+        /// The identity providers selected for the application.
+        /// </summary>
+        public InputList<string> AllowedIdps
+        {
+            get => _allowedIdps ?? (_allowedIdps = new InputList<string>());
+            set => _allowedIdps = value;
+        }
+
         /// <summary>
         /// Application Audience (AUD) Tag of the application
         /// </summary>
         [Input("aud")]
         public Input<string>? Aud { get; set; }
+
+        /// <summary>
+        /// Option to skip identity provider
+        /// selection if only one is configured in allowed_idps. Defaults to `false`
+        /// (disabled).
+        /// </summary>
+        [Input("autoRedirectToIdentity")]
+        public Input<bool>? AutoRedirectToIdentity { get; set; }
+
+        [Input("corsHeaders")]
+        private InputList<Inputs.AccessApplicationCorsHeaderGetArgs>? _corsHeaders;
+
+        /// <summary>
+        /// CORS configuration for the Access Application. See
+        /// below for reference structure.
+        /// </summary>
+        public InputList<Inputs.AccessApplicationCorsHeaderGetArgs> CorsHeaders
+        {
+            get => _corsHeaders ?? (_corsHeaders = new InputList<Inputs.AccessApplicationCorsHeaderGetArgs>());
+            set => _corsHeaders = value;
+        }
 
         /// <summary>
         /// The complete URL of the asset you wish to put
@@ -170,7 +285,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// How often a user will be forced to
-        /// re-authorise. Must be one of `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        /// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }

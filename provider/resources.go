@@ -17,10 +17,10 @@ package cloudflare
 import (
 	"unicode"
 
+	"github.com/cloudflare/terraform-provider-cloudflare/cloudflare"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-cloudflare/cloudflare"
 )
 
 // all of the token components used below.
@@ -70,6 +70,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "cloudflare"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
+		GitHubOrg:   "cloudflare",
 		Repository:  "https://github.com/pulumi/pulumi-cloudflare",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"email": {
@@ -194,6 +195,15 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_healthcheck":                 {Tok: makeResource(mainMod, "Healthcheck")},
 			"cloudflare_logpush_ownership_challenge": {Tok: makeResource(mainMod, "LogPushOwnershipChallenge")},
 			"cloudflare_waf_override":                {Tok: makeResource(mainMod, "WafOverride")},
+			"cloudflare_authenticated_origin_pulls":  {Tok: makeResource(mainMod, "AuthenticatedOriginPulls")},
+			"cloudflare_authenticated_origin_pulls_certificate": {
+				Tok: makeResource(mainMod, "AuthenticatedOriginPullsCertificate"),
+			},
+			"cloudflare_custom_hostname": {Tok: makeResource(mainMod, "CustomHostname")},
+			"cloudflare_custom_hostname_fallback_origin": {
+				Tok: makeResource(mainMod, "CustomHostnameFallbackOrigin"),
+			},
+			"cloudflare_ip_list": {Tok: makeResource(mainMod, "IpList")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},

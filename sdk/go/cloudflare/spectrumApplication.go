@@ -60,8 +60,10 @@ type SpectrumApplication struct {
 	OriginDirects pulumi.StringArrayOutput `pulumi:"originDirects"`
 	// A destination DNS addresses to the origin. Fields documented below.
 	OriginDns SpectrumApplicationOriginDnsPtrOutput `pulumi:"originDns"`
-	// If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+	// If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
 	OriginPort pulumi.IntPtrOutput `pulumi:"originPort"`
+	// If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+	OriginPortRange SpectrumApplicationOriginPortRangePtrOutput `pulumi:"originPortRange"`
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
@@ -125,8 +127,10 @@ type spectrumApplicationState struct {
 	OriginDirects []string `pulumi:"originDirects"`
 	// A destination DNS addresses to the origin. Fields documented below.
 	OriginDns *SpectrumApplicationOriginDns `pulumi:"originDns"`
-	// If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+	// If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
 	OriginPort *int `pulumi:"originPort"`
+	// If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+	OriginPortRange *SpectrumApplicationOriginPortRange `pulumi:"originPortRange"`
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol *string `pulumi:"protocol"`
 	// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
@@ -154,8 +158,10 @@ type SpectrumApplicationState struct {
 	OriginDirects pulumi.StringArrayInput
 	// A destination DNS addresses to the origin. Fields documented below.
 	OriginDns SpectrumApplicationOriginDnsPtrInput
-	// If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+	// If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
 	OriginPort pulumi.IntPtrInput
+	// If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+	OriginPortRange SpectrumApplicationOriginPortRangePtrInput
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol pulumi.StringPtrInput
 	// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
@@ -187,8 +193,10 @@ type spectrumApplicationArgs struct {
 	OriginDirects []string `pulumi:"originDirects"`
 	// A destination DNS addresses to the origin. Fields documented below.
 	OriginDns *SpectrumApplicationOriginDns `pulumi:"originDns"`
-	// If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+	// If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
 	OriginPort *int `pulumi:"originPort"`
+	// If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+	OriginPortRange *SpectrumApplicationOriginPortRange `pulumi:"originPortRange"`
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol string `pulumi:"protocol"`
 	// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
@@ -217,8 +225,10 @@ type SpectrumApplicationArgs struct {
 	OriginDirects pulumi.StringArrayInput
 	// A destination DNS addresses to the origin. Fields documented below.
 	OriginDns SpectrumApplicationOriginDnsPtrInput
-	// If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+	// If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
 	OriginPort pulumi.IntPtrInput
+	// If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+	OriginPortRange SpectrumApplicationOriginPortRangePtrInput
 	// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
 	Protocol pulumi.StringInput
 	// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.

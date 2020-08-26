@@ -85,9 +85,13 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     public readonly originDns!: pulumi.Output<outputs.SpectrumApplicationOriginDns | undefined>;
     /**
-     * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
     public readonly originPort!: pulumi.Output<number | undefined>;
+    /**
+     * If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     */
+    public readonly originPortRange!: pulumi.Output<outputs.SpectrumApplicationOriginPortRange | undefined>;
     /**
      * The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
      */
@@ -129,6 +133,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["originDirects"] = state ? state.originDirects : undefined;
             inputs["originDns"] = state ? state.originDns : undefined;
             inputs["originPort"] = state ? state.originPort : undefined;
+            inputs["originPortRange"] = state ? state.originPortRange : undefined;
             inputs["protocol"] = state ? state.protocol : undefined;
             inputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
             inputs["tls"] = state ? state.tls : undefined;
@@ -153,6 +158,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["originDirects"] = args ? args.originDirects : undefined;
             inputs["originDns"] = args ? args.originDns : undefined;
             inputs["originPort"] = args ? args.originPort : undefined;
+            inputs["originPortRange"] = args ? args.originPortRange : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
             inputs["tls"] = args ? args.tls : undefined;
@@ -203,9 +209,13 @@ export interface SpectrumApplicationState {
      */
     readonly originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns>;
     /**
-     * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
     readonly originPort?: pulumi.Input<number>;
+    /**
+     * If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     */
+    readonly originPortRange?: pulumi.Input<inputs.SpectrumApplicationOriginPortRange>;
     /**
      * The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
      */
@@ -261,9 +271,13 @@ export interface SpectrumApplicationArgs {
      */
     readonly originDns?: pulumi.Input<inputs.SpectrumApplicationOriginDns>;
     /**
-     * If using `originDns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+     * If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
      */
     readonly originPort?: pulumi.Input<number>;
+    /**
+     * If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+     */
+    readonly originPortRange?: pulumi.Input<inputs.SpectrumApplicationOriginPortRange>;
     /**
      * The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
      */

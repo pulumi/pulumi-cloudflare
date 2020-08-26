@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AccessApplicationCorsHeader {
+    /**
+     * Boolean value to determine whether all
+     * HTTP headers are exposed.
+     */
+    allowAllHeaders?: pulumi.Input<boolean>;
+    /**
+     * Boolean value to determine whether all
+     * methods are exposed.
+     */
+    allowAllMethods?: pulumi.Input<boolean>;
+    /**
+     * Boolean value to determine whether all
+     * origins are permitted to make CORS requests.
+     */
+    allowAllOrigins?: pulumi.Input<boolean>;
+    /**
+     * Boolean value to determine if credentials
+     * (cookies, authorization headers, or TLS client certificates) are included with
+     * requests.
+     */
+    allowCredentials?: pulumi.Input<boolean>;
+    /**
+     * List of HTTP headers to expose via CORS.
+     */
+    allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of methods to expose via CORS.
+     */
+    allowedMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of origins permitted to make CORS requests.
+     */
+    allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Integer representing the maximum time a preflight
+     * request will be cached.
+     */
+    maxAge?: pulumi.Input<number>;
+}
+
 export interface AccessGroupExclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAzure>[]>;
@@ -332,6 +373,72 @@ export interface AccessRuleConfiguration {
     value: pulumi.Input<string>;
 }
 
+export interface CustomHostnameOwnershipVerification {
+    name?: pulumi.Input<string>;
+    /**
+     * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+     */
+    type?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
+}
+
+export interface CustomHostnameOwnershipVerificationHttp {
+    httpBody?: pulumi.Input<string>;
+    httpUrl?: pulumi.Input<string>;
+}
+
+export interface CustomHostnameSsl {
+    certificateAuthority?: pulumi.Input<string>;
+    cnameName?: pulumi.Input<string>;
+    cnameTarget?: pulumi.Input<string>;
+    /**
+     * If a custom uploaded certificate is used.
+     */
+    customCertificate?: pulumi.Input<string>;
+    /**
+     * The key for a custom uploaded certificate.
+     */
+    customKey?: pulumi.Input<string>;
+    /**
+     * Domain control validation (DCV) method used for this
+     * hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+     */
+    method?: pulumi.Input<string>;
+    /**
+     * SSL/TLS settings for the certificate. See further notes below.
+     */
+    settings?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSslSetting>[]>;
+    status?: pulumi.Input<string>;
+    /**
+     * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Indicates whether the certificate covers a wildcard.
+     */
+    wildcard?: pulumi.Input<boolean>;
+}
+
+export interface CustomHostnameSslSetting {
+    /**
+     * List of SSL/TLS ciphers to associate with this certificate.
+     */
+    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
+     */
+    http2?: pulumi.Input<string>;
+    /**
+     * Lowest version of TLS this certificate should
+     * support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
+     */
+    minTlsVersion?: pulumi.Input<string>;
+    /**
+     * Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
+     */
+    tls13?: pulumi.Input<string>;
+}
+
 export interface CustomSslCustomSslOptions {
     /**
      * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
@@ -407,15 +514,30 @@ export interface GetWafRulesFilter {
 
 export interface GetZonesFilter {
     /**
-     * A regular expression matching the zone to lookup.
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+     * to `"exact"`.
+     */
+    lookupType?: string;
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookupType`
+     * are performed on the Cloudflare server side.
+     */
+    match?: string;
+    /**
+     * A string value to search for.
      */
     name?: string;
     /**
-     * Paused status of the zone to lookup. Valid values are `true` or `false`.
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
      */
     paused?: boolean;
     /**
-     * Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+     * Status of the zone to lookup. Valid values: `"active"`,
+     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+     * `"read only"`.
      */
     status?: string;
 }
@@ -429,6 +551,18 @@ export interface HealthcheckHeader {
      * A list of string values for the header.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface IpListItem {
+    /**
+     * A note that can be used to annotate the item.
+     */
+    comment?: pulumi.Input<string>;
+    id?: pulumi.Input<string>;
+    /**
+     * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface LoadBalancerMonitorHeader {
@@ -893,6 +1027,17 @@ export interface SpectrumApplicationOriginDns {
      * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
      */
     name: pulumi.Input<string>;
+}
+
+export interface SpectrumApplicationOriginPortRange {
+    /**
+     * Upper bound of the origin port range, e.g. `2000`
+     */
+    end: pulumi.Input<number>;
+    /**
+     * Lower bound of the origin port range, e.g. `1000`
+     */
+    start: pulumi.Input<number>;
 }
 
 export interface WorkerScriptKvNamespaceBinding {

@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// A regular expression matching the zone to lookup.
+        /// A string value to search for.
         /// </summary>
         public readonly string? Name;
 

@@ -73,6 +73,7 @@ export class AccessPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPolicy.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * The ID of the application the policy is
      * associated with.
@@ -121,6 +122,7 @@ export class AccessPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
+            inputs["accountId"] = state ? state.accountId : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["decision"] = state ? state.decision : undefined;
             inputs["excludes"] = state ? state.excludes : undefined;
@@ -143,9 +145,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             if (!args || args.name === undefined) {
                 throw new Error("Missing required property 'name'");
             }
-            if (!args || args.zoneId === undefined) {
-                throw new Error("Missing required property 'zoneId'");
-            }
+            inputs["accountId"] = args ? args.accountId : undefined;
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["decision"] = args ? args.decision : undefined;
             inputs["excludes"] = args ? args.excludes : undefined;
@@ -170,6 +170,7 @@ export class AccessPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessPolicy resources.
  */
 export interface AccessPolicyState {
+    readonly accountId?: pulumi.Input<string>;
     /**
      * The ID of the application the policy is
      * associated with.
@@ -211,6 +212,7 @@ export interface AccessPolicyState {
  * The set of arguments for constructing a AccessPolicy resource.
  */
 export interface AccessPolicyArgs {
+    readonly accountId?: pulumi.Input<string>;
     /**
      * The ID of the application the policy is
      * associated with.
@@ -245,5 +247,5 @@ export interface AccessPolicyArgs {
      * The DNS zone to which the access rule should be
      * added.
      */
-    readonly zoneId: pulumi.Input<string>;
+    readonly zoneId?: pulumi.Input<string>;
 }

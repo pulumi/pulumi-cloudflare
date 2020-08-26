@@ -88,10 +88,16 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.SpectrumApplicationOriginDns?> OriginDns { get; private set; } = null!;
 
         /// <summary>
-        /// If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+        /// If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         /// </summary>
         [Output("originPort")]
         public Output<int?> OriginPort { get; private set; } = null!;
+
+        /// <summary>
+        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        /// </summary>
+        [Output("originPortRange")]
+        public Output<Outputs.SpectrumApplicationOriginPortRange?> OriginPortRange { get; private set; } = null!;
 
         /// <summary>
         /// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
@@ -224,10 +230,16 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.SpectrumApplicationOriginDnsArgs>? OriginDns { get; set; }
 
         /// <summary>
-        /// If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+        /// If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         /// </summary>
         [Input("originPort")]
         public Input<int>? OriginPort { get; set; }
+
+        /// <summary>
+        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        /// </summary>
+        [Input("originPortRange")]
+        public Input<Inputs.SpectrumApplicationOriginPortRangeArgs>? OriginPortRange { get; set; }
 
         /// <summary>
         /// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
@@ -321,10 +333,16 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.SpectrumApplicationOriginDnsGetArgs>? OriginDns { get; set; }
 
         /// <summary>
-        /// If using `origin_dns` this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+        /// If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         /// </summary>
         [Input("originPort")]
         public Input<int>? OriginPort { get; set; }
+
+        /// <summary>
+        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        /// </summary>
+        [Input("originPortRange")]
+        public Input<Inputs.SpectrumApplicationOriginPortRangeGetArgs>? OriginPortRange { get; set; }
 
         /// <summary>
         /// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.

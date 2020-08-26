@@ -5,6 +5,47 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AccessApplicationCorsHeader {
+    /**
+     * Boolean value to determine whether all
+     * HTTP headers are exposed.
+     */
+    allowAllHeaders?: boolean;
+    /**
+     * Boolean value to determine whether all
+     * methods are exposed.
+     */
+    allowAllMethods?: boolean;
+    /**
+     * Boolean value to determine whether all
+     * origins are permitted to make CORS requests.
+     */
+    allowAllOrigins?: boolean;
+    /**
+     * Boolean value to determine if credentials
+     * (cookies, authorization headers, or TLS client certificates) are included with
+     * requests.
+     */
+    allowCredentials?: boolean;
+    /**
+     * List of HTTP headers to expose via CORS.
+     */
+    allowedHeaders?: string[];
+    /**
+     * List of methods to expose via CORS.
+     */
+    allowedMethods?: string[];
+    /**
+     * List of origins permitted to make CORS requests.
+     */
+    allowedOrigins?: string[];
+    /**
+     * Integer representing the maximum time a preflight
+     * request will be cached.
+     */
+    maxAge?: number;
+}
+
 export interface AccessGroupExclude {
     anyValidServiceToken?: boolean;
     azures?: outputs.AccessGroupExcludeAzure[];
@@ -332,6 +373,72 @@ export interface AccessRuleConfiguration {
     value: string;
 }
 
+export interface CustomHostnameOwnershipVerification {
+    name: string;
+    /**
+     * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+     */
+    type: string;
+    value: string;
+}
+
+export interface CustomHostnameOwnershipVerificationHttp {
+    httpBody: string;
+    httpUrl: string;
+}
+
+export interface CustomHostnameSsl {
+    certificateAuthority?: string;
+    cnameName?: string;
+    cnameTarget?: string;
+    /**
+     * If a custom uploaded certificate is used.
+     */
+    customCertificate?: string;
+    /**
+     * The key for a custom uploaded certificate.
+     */
+    customKey?: string;
+    /**
+     * Domain control validation (DCV) method used for this
+     * hostname. Valid values are `"txt"`, `"http"` and `"email"`.
+     */
+    method?: string;
+    /**
+     * SSL/TLS settings for the certificate. See further notes below.
+     */
+    settings?: outputs.CustomHostnameSslSetting[];
+    status?: string;
+    /**
+     * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
+     */
+    type?: string;
+    /**
+     * Indicates whether the certificate covers a wildcard.
+     */
+    wildcard?: boolean;
+}
+
+export interface CustomHostnameSslSetting {
+    /**
+     * List of SSL/TLS ciphers to associate with this certificate.
+     */
+    ciphers?: string[];
+    /**
+     * Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
+     */
+    http2?: string;
+    /**
+     * Lowest version of TLS this certificate should
+     * support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
+     */
+    minTlsVersion?: string;
+    /**
+     * Whether or not TLSv1.3 should be supported. Valid values are `"on"` or `"off"`.
+     */
+    tls13?: string;
+}
+
 export interface CustomSslCustomSslOptions {
     /**
      * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
@@ -500,15 +607,30 @@ export interface GetWafRulesRule {
 
 export interface GetZonesFilter {
     /**
-     * A regular expression matching the zone to lookup.
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+     * to `"exact"`.
+     */
+    lookupType?: string;
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookupType`
+     * are performed on the Cloudflare server side.
+     */
+    match?: string;
+    /**
+     * A string value to search for.
      */
     name?: string;
     /**
-     * Paused status of the zone to lookup. Valid values are `true` or `false`.
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
      */
     paused?: boolean;
     /**
-     * Status of the zone to lookup. Valid values: active, pending, initializing, moved, deleted, deactivated and read only.
+     * Status of the zone to lookup. Valid values: `"active"`,
+     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+     * `"read only"`.
      */
     status?: string;
 }
@@ -519,7 +641,7 @@ export interface GetZonesZone {
      */
     id?: string;
     /**
-     * A regular expression matching the zone to lookup.
+     * A string value to search for.
      */
     name?: string;
 }
@@ -533,6 +655,18 @@ export interface HealthcheckHeader {
      * A list of string values for the header.
      */
     values: string[];
+}
+
+export interface IpListItem {
+    /**
+     * A note that can be used to annotate the item.
+     */
+    comment?: string;
+    id: string;
+    /**
+     * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+     */
+    value: string;
 }
 
 export interface LoadBalancerMonitorHeader {
@@ -997,6 +1131,17 @@ export interface SpectrumApplicationOriginDns {
      * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
      */
     name: string;
+}
+
+export interface SpectrumApplicationOriginPortRange {
+    /**
+     * Upper bound of the origin port range, e.g. `2000`
+     */
+    end: number;
+    /**
+     * Lower bound of the origin port range, e.g. `1000`
+     */
+    start: number;
 }
 
 export interface WorkerScriptKvNamespaceBinding {

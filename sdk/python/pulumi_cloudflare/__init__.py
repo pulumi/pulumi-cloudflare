@@ -11,7 +11,11 @@ from .access_rule import *
 from .access_service_token import *
 from .account_member import *
 from .argo import *
+from .authenticated_origin_pulls import *
+from .authenticated_origin_pulls_certificate import *
 from .byo_ip_prefix import *
+from .custom_hostname import *
+from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
 from .filter import *
@@ -22,6 +26,7 @@ from .get_waf_packages import *
 from .get_waf_rules import *
 from .get_zones import *
 from .healthcheck import *
+from .ip_list import *
 from .load_balancer import *
 from .load_balancer_monitor import *
 from .load_balancer_pool import *
