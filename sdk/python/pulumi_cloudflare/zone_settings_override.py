@@ -15,7 +15,7 @@ __all__ = ['ZoneSettingsOverride']
 
 class ZoneSettingsOverride(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -129,7 +129,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initialSettings")
-    def initial_settings(self) -> 'outputs.ZoneSettingsOverrideInitialSettings':
+    def initial_settings(self) -> pulumi.Output['outputs.ZoneSettingsOverrideInitialSettings']:
         """
         Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
         """
@@ -137,12 +137,12 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="initialSettingsReadAt")
-    def initial_settings_read_at(self) -> str:
+    def initial_settings_read_at(self) -> pulumi.Output[str]:
         return pulumi.get(self, "initial_settings_read_at")
 
     @property
     @pulumi.getter(name="readonlySettings")
-    def readonly_settings(self) -> List[str]:
+    def readonly_settings(self) -> pulumi.Output[List[str]]:
         """
         Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
         * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
@@ -152,7 +152,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def settings(self) -> 'outputs.ZoneSettingsOverrideSettings':
+    def settings(self) -> pulumi.Output['outputs.ZoneSettingsOverrideSettings']:
         """
         Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
         """
@@ -160,7 +160,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to which apply settings.
         """
@@ -168,12 +168,12 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneStatus")
-    def zone_status(self) -> str:
+    def zone_status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "zone_status")
 
     @property
     @pulumi.getter(name="zoneType")
-    def zone_type(self) -> str:
+    def zone_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "zone_type")
 
     def translate_output_property(self, prop):

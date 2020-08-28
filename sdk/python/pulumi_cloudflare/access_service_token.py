@@ -13,7 +13,7 @@ __all__ = ['AccessServiceToken']
 
 class AccessServiceToken(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -105,7 +105,7 @@ class AccessServiceToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         The ID of the account where the Access
         Service is being created.
@@ -114,7 +114,7 @@ class AccessServiceToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> str:
+    def client_id(self) -> pulumi.Output[str]:
         """
         UUID client ID associated with the Service Token.
         """
@@ -122,7 +122,7 @@ class AccessServiceToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="clientSecret")
-    def client_secret(self) -> str:
+    def client_secret(self) -> pulumi.Output[str]:
         """
         A secret for interacting with Access protocols.
         """
@@ -130,7 +130,7 @@ class AccessServiceToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Friendly name of the token's intent.
         """

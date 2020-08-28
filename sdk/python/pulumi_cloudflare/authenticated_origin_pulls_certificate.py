@@ -13,7 +13,7 @@ __all__ = ['AuthenticatedOriginPullsCertificate']
 
 class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  private_key: Optional[pulumi.Input[str]] = None,
@@ -137,7 +137,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def certificate(self) -> str:
+    def certificate(self) -> pulumi.Output[str]:
         """
         The public client certificate.
         """
@@ -145,17 +145,17 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expiresOn")
-    def expires_on(self) -> str:
+    def expires_on(self) -> pulumi.Output[str]:
         return pulumi.get(self, "expires_on")
 
     @property
     @pulumi.getter
-    def issuer(self) -> str:
+    def issuer(self) -> pulumi.Output[str]:
         return pulumi.get(self, "issuer")
 
     @property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> str:
+    def private_key(self) -> pulumi.Output[str]:
         """
         The private key of the client certificate.
         """
@@ -163,22 +163,22 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> str:
+    def serial_number(self) -> pulumi.Output[str]:
         return pulumi.get(self, "serial_number")
 
     @property
     @pulumi.getter
-    def signature(self) -> str:
+    def signature(self) -> pulumi.Output[str]:
         return pulumi.get(self, "signature")
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The form of Authenticated Origin Pulls to upload the certificate to.
         """
@@ -186,12 +186,12 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uploadedOn")
-    def uploaded_on(self) -> str:
+    def uploaded_on(self) -> pulumi.Output[str]:
         return pulumi.get(self, "uploaded_on")
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID to upload the certificate to.
         """

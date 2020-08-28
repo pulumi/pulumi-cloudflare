@@ -15,7 +15,7 @@ __all__ = ['SpectrumApplication']
 
 class SpectrumApplication(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argo_smart_routing: Optional[pulumi.Input[bool]] = None,
                  dns: Optional[pulumi.Input[pulumi.InputType['SpectrumApplicationDnsArgs']]] = None,
@@ -177,7 +177,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="argoSmartRouting")
-    def argo_smart_routing(self) -> Optional[bool]:
+    def argo_smart_routing(self) -> pulumi.Output[Optional[bool]]:
         """
         . Enables Argo Smart Routing. Defaults to `false`.
         """
@@ -185,7 +185,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dns(self) -> 'outputs.SpectrumApplicationDns':
+    def dns(self) -> pulumi.Output['outputs.SpectrumApplicationDns']:
         """
         The name and type of DNS record for the Spectrum application. Fields documented below.
         """
@@ -193,7 +193,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="edgeIpConnectivity")
-    def edge_ip_connectivity(self) -> Optional[str]:
+    def edge_ip_connectivity(self) -> pulumi.Output[Optional[str]]:
         """
         . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
         """
@@ -201,7 +201,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="edgeIps")
-    def edge_ips(self) -> Optional[List[str]]:
+    def edge_ips(self) -> pulumi.Output[Optional[List[str]]]:
         """
         . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
         """
@@ -209,7 +209,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipFirewall")
-    def ip_firewall(self) -> Optional[bool]:
+    def ip_firewall(self) -> pulumi.Output[Optional[bool]]:
         """
         Enables the IP Firewall for this application. Defaults to `true`.
         """
@@ -217,7 +217,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="originDirects")
-    def origin_directs(self) -> Optional[List[str]]:
+    def origin_directs(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         """
@@ -225,7 +225,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="originDns")
-    def origin_dns(self) -> Optional['outputs.SpectrumApplicationOriginDns']:
+    def origin_dns(self) -> pulumi.Output[Optional['outputs.SpectrumApplicationOriginDns']]:
         """
         A destination DNS addresses to the origin. Fields documented below.
         """
@@ -233,7 +233,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="originPort")
-    def origin_port(self) -> Optional[float]:
+    def origin_port(self) -> pulumi.Output[Optional[float]]:
         """
         If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
         """
@@ -241,7 +241,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="originPortRange")
-    def origin_port_range(self) -> Optional['outputs.SpectrumApplicationOriginPortRange']:
+    def origin_port_range(self) -> pulumi.Output[Optional['outputs.SpectrumApplicationOriginPortRange']]:
         """
         If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         """
@@ -249,7 +249,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def protocol(self) -> str:
+    def protocol(self) -> pulumi.Output[str]:
         """
         The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         """
@@ -257,7 +257,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> Optional[str]:
+    def proxy_protocol(self) -> pulumi.Output[Optional[str]]:
         """
         Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         """
@@ -265,7 +265,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tls(self) -> Optional[str]:
+    def tls(self) -> pulumi.Output[Optional[str]]:
         """
         TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
         """
@@ -273,7 +273,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="trafficType")
-    def traffic_type(self) -> Optional[str]:
+    def traffic_type(self) -> pulumi.Output[Optional[str]]:
         """
         Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
         """
@@ -281,7 +281,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to add the application to
         """

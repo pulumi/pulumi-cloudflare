@@ -13,7 +13,7 @@ __all__ = ['WafOverride']
 
 class WafOverride(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  groups: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -149,7 +149,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Description of what the WAF override does.
         """
@@ -157,7 +157,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[Mapping[str, str]]:
+    def groups(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Similar to `rules`; which WAF groups you want to alter.
         """
@@ -165,12 +165,12 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="overrideId")
-    def override_id(self) -> str:
+    def override_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "override_id")
 
     @property
     @pulumi.getter
-    def paused(self) -> Optional[bool]:
+    def paused(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this package is currently paused.
         """
@@ -178,7 +178,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         Relative priority of this configuration when multiple configurations match a single URL.
         """
@@ -186,7 +186,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rewriteAction")
-    def rewrite_action(self) -> Optional[Mapping[str, str]]:
+    def rewrite_action(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         When a WAF rule matches, substitute its configured action for a different action specified by this definition.
         """
@@ -194,7 +194,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> Mapping[str, str]:
+    def rules(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A list of WAF rule ID to rule action you intend to apply.
         """
@@ -202,7 +202,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def urls(self) -> List[str]:
+    def urls(self) -> pulumi.Output[List[str]]:
         """
         An array of URLs to apply the WAF override to.
         """
@@ -210,7 +210,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone to which the WAF override condition should be added.
         """

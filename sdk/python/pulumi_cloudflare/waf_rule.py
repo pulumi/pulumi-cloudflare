@@ -13,7 +13,7 @@ __all__ = ['WafRule']
 
 class WafRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  package_id: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class WafRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> str:
+    def group_id(self) -> pulumi.Output[str]:
         """
         The ID of the WAF Rule Group that contains the rule.
         """
@@ -121,7 +121,7 @@ class WafRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> str:
+    def mode(self) -> pulumi.Output[str]:
         """
         The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
         """
@@ -129,7 +129,7 @@ class WafRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageId")
-    def package_id(self) -> str:
+    def package_id(self) -> pulumi.Output[str]:
         """
         The ID of the WAF Rule Package that contains the rule.
         """
@@ -137,7 +137,7 @@ class WafRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> str:
+    def rule_id(self) -> pulumi.Output[str]:
         """
         The WAF Rule ID.
         """
@@ -145,7 +145,7 @@ class WafRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to apply to.
         """

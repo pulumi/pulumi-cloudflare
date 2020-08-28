@@ -13,7 +13,7 @@ __all__ = ['CustomHostnameFallbackOrigin']
 
 class CustomHostnameFallbackOrigin(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  origin: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -98,7 +98,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def origin(self) -> str:
+    def origin(self) -> pulumi.Output[str]:
         """
         Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
         """
@@ -106,7 +106,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         """
         Status of the fallback origin's activation.
         """
@@ -114,7 +114,7 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID where the custom hostname should be assigned.
         """

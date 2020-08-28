@@ -13,7 +13,7 @@ __all__ = ['FirewallRule']
 
 class FirewallRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> str:
+    def action(self) -> pulumi.Output[str]:
         """
         The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
         """
@@ -141,7 +141,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of the rule to help identify it.
         """
@@ -149,12 +149,12 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="filterId")
-    def filter_id(self) -> str:
+    def filter_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "filter_id")
 
     @property
     @pulumi.getter
-    def paused(self) -> Optional[bool]:
+    def paused(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this filter based firewall rule is currently paused. Boolean value.
         """
@@ -162,7 +162,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
         """
@@ -170,7 +170,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def products(self) -> Optional[List[str]]:
+    def products(self) -> pulumi.Output[Optional[List[str]]]:
         """
         List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
         """
@@ -178,7 +178,7 @@ class FirewallRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone to which the Filter should be added.
         """

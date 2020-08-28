@@ -13,7 +13,7 @@ __all__ = ['ByoIpPrefix']
 
 class ByoIpPrefix(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  advertisement: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -99,7 +99,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def advertisement(self) -> str:
+    def advertisement(self) -> pulumi.Output[str]:
         """
         Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         """
@@ -107,7 +107,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the prefix.
         """
@@ -115,7 +115,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="prefixId")
-    def prefix_id(self) -> str:
+    def prefix_id(self) -> pulumi.Output[str]:
         """
         The assigned Bring-Your-Own-IP prefix ID.
         """

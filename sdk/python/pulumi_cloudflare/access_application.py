@@ -15,7 +15,7 @@ __all__ = ['AccessApplication']
 
 class AccessApplication(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -162,12 +162,12 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="allowedIdps")
-    def allowed_idps(self) -> Optional[List[str]]:
+    def allowed_idps(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The identity providers selected for the application.
         """
@@ -175,7 +175,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def aud(self) -> str:
+    def aud(self) -> pulumi.Output[str]:
         """
         Application Audience (AUD) Tag of the application
         """
@@ -183,7 +183,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoRedirectToIdentity")
-    def auto_redirect_to_identity(self) -> Optional[bool]:
+    def auto_redirect_to_identity(self) -> pulumi.Output[Optional[bool]]:
         """
         Option to skip identity provider
         selection if only one is configured in allowed_idps. Defaults to `false`
@@ -193,7 +193,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="corsHeaders")
-    def cors_headers(self) -> Optional[List['outputs.AccessApplicationCorsHeader']]:
+    def cors_headers(self) -> pulumi.Output[Optional[List['outputs.AccessApplicationCorsHeader']]]:
         """
         CORS configuration for the Access Application. See
         below for reference structure.
@@ -202,7 +202,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The complete URL of the asset you wish to put
         Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -211,7 +211,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Friendly name of the Access Application.
         """
@@ -219,7 +219,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[str]:
+    def session_duration(self) -> pulumi.Output[Optional[str]]:
         """
         How often a user will be forced to
         re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
@@ -228,7 +228,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone to which the access rule should be added.
         """

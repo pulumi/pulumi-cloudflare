@@ -15,7 +15,7 @@ __all__ = ['Record']
 
 class Record(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -172,7 +172,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> str:
+    def created_on(self) -> pulumi.Output[str]:
         """
         The RFC3339 timestamp of when the record was created
         """
@@ -180,7 +180,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def data(self) -> Optional['outputs.RecordData']:
+    def data(self) -> pulumi.Output[Optional['outputs.RecordData']]:
         """
         Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
         """
@@ -188,7 +188,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostname(self) -> str:
+    def hostname(self) -> pulumi.Output[str]:
         """
         The FQDN of the record
         """
@@ -196,7 +196,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def metadata(self) -> Mapping[str, Any]:
+    def metadata(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         A key-value map of string metadata Cloudflare associates with the record
         """
@@ -204,7 +204,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> str:
+    def modified_on(self) -> pulumi.Output[str]:
         """
         The RFC3339 timestamp of when the record was last modified
         """
@@ -212,7 +212,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the record
         """
@@ -220,7 +220,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of the record
         """
@@ -228,7 +228,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def proxiable(self) -> bool:
+    def proxiable(self) -> pulumi.Output[bool]:
         """
         Shows whether this record can be proxied, must be true if setting `proxied=true`
         """
@@ -236,7 +236,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def proxied(self) -> Optional[bool]:
+    def proxied(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the record gets Cloudflare's origin protection; defaults to `false`.
         """
@@ -244,7 +244,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> pulumi.Output[float]:
         """
         The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
         """
@@ -252,7 +252,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of the record
         """
@@ -260,7 +260,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The (string) value of the record. Either this or `data` must be specified
         """
@@ -268,7 +268,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to add the record to
         """

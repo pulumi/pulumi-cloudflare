@@ -15,7 +15,7 @@ __all__ = ['PageRule']
 
 class PageRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[pulumi.InputType['PageRuleActionsArgs']]] = None,
                  priority: Optional[pulumi.Input[float]] = None,
@@ -127,7 +127,7 @@ class PageRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def actions(self) -> 'outputs.PageRuleActions':
+    def actions(self) -> pulumi.Output['outputs.PageRuleActions']:
         """
         The actions taken by the page rule, options given below.
         """
@@ -135,7 +135,7 @@ class PageRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         """
         The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         """
@@ -143,7 +143,7 @@ class PageRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> Optional[str]:
+    def status(self) -> pulumi.Output[Optional[str]]:
         """
         Whether the page rule is active or disabled.
         """
@@ -151,7 +151,7 @@ class PageRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def target(self) -> str:
+    def target(self) -> pulumi.Output[str]:
         """
         The URL pattern to target with the page rule.
         """
@@ -159,7 +159,7 @@ class PageRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to which the page rule should be added.
         """

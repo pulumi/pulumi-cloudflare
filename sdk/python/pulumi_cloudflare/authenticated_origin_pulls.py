@@ -13,7 +13,7 @@ __all__ = ['AuthenticatedOriginPulls']
 
 class AuthenticatedOriginPulls(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -130,7 +130,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authenticatedOriginPullsCertificate")
-    def authenticated_origin_pulls_certificate(self) -> Optional[str]:
+    def authenticated_origin_pulls_certificate(self) -> pulumi.Output[Optional[str]]:
         """
         The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
         """
@@ -138,7 +138,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
         """
@@ -146,7 +146,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostname(self) -> Optional[str]:
+    def hostname(self) -> pulumi.Output[Optional[str]]:
         """
         Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
         """
@@ -154,7 +154,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID to upload the certificate to.
         """

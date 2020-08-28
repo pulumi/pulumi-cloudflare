@@ -15,7 +15,7 @@ __all__ = ['IpList']
 
 class IpList(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class IpList(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         The ID of the account where the IP List is being created.
         """
@@ -135,7 +135,7 @@ class IpList(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A note that can be used to annotate the List. Maximum Length: 500
         """
@@ -143,12 +143,12 @@ class IpList(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def items(self) -> Optional[List['outputs.IpListItem']]:
+    def items(self) -> pulumi.Output[Optional[List['outputs.IpListItem']]]:
         return pulumi.get(self, "items")
 
     @property
     @pulumi.getter
-    def kind(self) -> str:
+    def kind(self) -> pulumi.Output[str]:
         """
         The kind of values in the List. Valid values: `ip`.
         """
@@ -156,7 +156,7 @@ class IpList(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
         """

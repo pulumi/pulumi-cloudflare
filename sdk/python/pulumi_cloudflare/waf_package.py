@@ -13,7 +13,7 @@ __all__ = ['WafPackage']
 
 class WafPackage(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action_mode: Optional[pulumi.Input[str]] = None,
                  package_id: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class WafPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="actionMode")
-    def action_mode(self) -> Optional[str]:
+    def action_mode(self) -> pulumi.Output[Optional[str]]:
         """
         The action mode of the package, can be one of ["block", "challenge", "simulate"].
         """
@@ -116,7 +116,7 @@ class WafPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="packageId")
-    def package_id(self) -> str:
+    def package_id(self) -> pulumi.Output[str]:
         """
         The WAF Package ID.
         """
@@ -124,7 +124,7 @@ class WafPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def sensitivity(self) -> Optional[str]:
+    def sensitivity(self) -> pulumi.Output[Optional[str]]:
         """
         The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
         """
@@ -132,7 +132,7 @@ class WafPackage(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to apply to.
         """

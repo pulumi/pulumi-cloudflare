@@ -13,7 +13,7 @@ __all__ = ['CustomPages']
 
 class CustomPages(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -124,7 +124,7 @@ class CustomPages(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
         The account ID where the custom pages should be
         updated. Either `account_id` or `zone_id` must be provided. If
@@ -134,12 +134,12 @@ class CustomPages(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def state(self) -> Optional[str]:
+    def state(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of custom page you wish to update. Must
         be one of `basic_challenge`, `waf_challenge`, `waf_block`,
@@ -150,7 +150,7 @@ class CustomPages(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def url(self) -> str:
+    def url(self) -> pulumi.Output[str]:
         """
         URL of where the custom page source is located.
         """
@@ -158,7 +158,7 @@ class CustomPages(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
         The zone ID where the custom pages should be
         updated. Either `zone_id` or `account_id` must be provided.

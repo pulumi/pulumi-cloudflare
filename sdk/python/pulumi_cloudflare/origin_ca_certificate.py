@@ -13,7 +13,7 @@ __all__ = ['OriginCaCertificate']
 
 class OriginCaCertificate(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  csr: Optional[pulumi.Input[str]] = None,
                  hostnames: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -130,7 +130,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def certificate(self) -> str:
+    def certificate(self) -> pulumi.Output[str]:
         """
         The Origin CA certificate
         """
@@ -138,7 +138,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def csr(self) -> str:
+    def csr(self) -> pulumi.Output[str]:
         """
         The Certificate Signing Request. Must be newline-encoded.
         """
@@ -146,7 +146,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expiresOn")
-    def expires_on(self) -> str:
+    def expires_on(self) -> pulumi.Output[str]:
         """
         The datetime when the certificate will expire.
         """
@@ -154,7 +154,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostnames(self) -> List[str]:
+    def hostnames(self) -> pulumi.Output[List[str]]:
         """
         An array of hostnames or wildcard names bound to the certificate.
         """
@@ -162,7 +162,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestType")
-    def request_type(self) -> str:
+    def request_type(self) -> pulumi.Output[str]:
         """
         The signature type desired on the certificate.
         """
@@ -170,7 +170,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestedValidity")
-    def requested_validity(self) -> Optional[float]:
+    def requested_validity(self) -> pulumi.Output[Optional[float]]:
         """
         The number of days for which the certificate should be valid.
         """

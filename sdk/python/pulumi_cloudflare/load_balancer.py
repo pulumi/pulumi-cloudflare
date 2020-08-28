@@ -15,7 +15,7 @@ __all__ = ['LoadBalancer']
 
 class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -191,7 +191,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> str:
+    def created_on(self) -> pulumi.Output[str]:
         """
         The RFC3339 timestamp of when the load balancer was created.
         """
@@ -199,7 +199,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPoolIds")
-    def default_pool_ids(self) -> List[str]:
+    def default_pool_ids(self) -> pulumi.Output[List[str]]:
         """
         A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
         """
@@ -207,7 +207,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Free text description.
         """
@@ -215,7 +215,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Enable or disable the load balancer. Defaults to `true` (enabled).
         """
@@ -223,7 +223,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fallbackPoolId")
-    def fallback_pool_id(self) -> str:
+    def fallback_pool_id(self) -> pulumi.Output[str]:
         """
         The pool ID to use when all other pools are detected as unhealthy.
         """
@@ -231,7 +231,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> str:
+    def modified_on(self) -> pulumi.Output[str]:
         """
         The RFC3339 timestamp of when the load balancer was last modified.
         """
@@ -239,7 +239,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The DNS name (FQDN, including the zone) to associate with the load balancer.
         """
@@ -247,7 +247,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="popPools")
-    def pop_pools(self) -> List['outputs.LoadBalancerPopPool']:
+    def pop_pools(self) -> pulumi.Output[List['outputs.LoadBalancerPopPool']]:
         """
         A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
         """
@@ -255,7 +255,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def proxied(self) -> Optional[bool]:
+    def proxied(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
         """
@@ -263,7 +263,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regionPools")
-    def region_pools(self) -> List['outputs.LoadBalancerRegionPool']:
+    def region_pools(self) -> pulumi.Output[List['outputs.LoadBalancerRegionPool']]:
         """
         A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         """
@@ -271,7 +271,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[str]:
+    def session_affinity(self) -> pulumi.Output[Optional[str]]:
         """
         Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
         """
@@ -279,7 +279,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="steeringPolicy")
-    def steering_policy(self) -> str:
+    def steering_policy(self) -> pulumi.Output[str]:
         """
         Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
         """
@@ -287,7 +287,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> pulumi.Output[float]:
         """
         Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         """
@@ -295,7 +295,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID to add the load balancer to.
         """

@@ -13,7 +13,7 @@ __all__ = ['LogpullRetention']
 
 class LogpullRetention(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -94,7 +94,7 @@ class LogpullRetention(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> bool:
+    def enabled(self) -> pulumi.Output[bool]:
         """
         Whether you wish to retain logs or not.
         """
@@ -102,7 +102,7 @@ class LogpullRetention(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID to apply the log retention to.
         """

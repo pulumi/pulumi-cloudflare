@@ -15,7 +15,7 @@ __all__ = ['CustomHostname']
 
 class CustomHostname(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -122,7 +122,7 @@ class CustomHostname(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customOriginServer")
-    def custom_origin_server(self) -> Optional[str]:
+    def custom_origin_server(self) -> pulumi.Output[Optional[str]]:
         """
         The custom origin server used for certificates.
         """
@@ -130,7 +130,7 @@ class CustomHostname(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostname(self) -> str:
+    def hostname(self) -> pulumi.Output[str]:
         """
         Hostname you intend to request a certificate for.
         """
@@ -138,17 +138,17 @@ class CustomHostname(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownershipVerification")
-    def ownership_verification(self) -> 'outputs.CustomHostnameOwnershipVerification':
+    def ownership_verification(self) -> pulumi.Output['outputs.CustomHostnameOwnershipVerification']:
         return pulumi.get(self, "ownership_verification")
 
     @property
     @pulumi.getter(name="ownershipVerificationHttp")
-    def ownership_verification_http(self) -> 'outputs.CustomHostnameOwnershipVerificationHttp':
+    def ownership_verification_http(self) -> pulumi.Output['outputs.CustomHostnameOwnershipVerificationHttp']:
         return pulumi.get(self, "ownership_verification_http")
 
     @property
     @pulumi.getter
-    def ssls(self) -> List['outputs.CustomHostnameSsl']:
+    def ssls(self) -> pulumi.Output[List['outputs.CustomHostnameSsl']]:
         """
         SSL configuration of the certificate. See further notes below.
         """
@@ -156,12 +156,12 @@ class CustomHostname(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def status(self) -> str:
+    def status(self) -> pulumi.Output[str]:
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID where the custom hostname should be assigned.
         """

@@ -13,7 +13,7 @@ __all__ = ['AccountMember']
 
 class AccountMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  email_address: Optional[pulumi.Input[str]] = None,
                  role_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -97,7 +97,7 @@ class AccountMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="emailAddress")
-    def email_address(self) -> str:
+    def email_address(self) -> pulumi.Output[str]:
         """
         The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
         """
@@ -105,7 +105,7 @@ class AccountMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="roleIds")
-    def role_ids(self) -> List[str]:
+    def role_ids(self) -> pulumi.Output[List[str]]:
         """
         Array of account role IDs that you want to assign to a member.
         """

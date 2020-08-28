@@ -13,7 +13,7 @@ __all__ = ['LogpushJob']
 
 class LogpushJob(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset: Optional[pulumi.Input[str]] = None,
                  destination_conf: Optional[pulumi.Input[str]] = None,
@@ -114,7 +114,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def dataset(self) -> str:
+    def dataset(self) -> pulumi.Output[str]:
         """
         Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
         """
@@ -122,7 +122,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationConf")
-    def destination_conf(self) -> str:
+    def destination_conf(self) -> pulumi.Output[str]:
         """
         Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         """
@@ -130,12 +130,12 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="logpullOptions")
-    def logpull_options(self) -> Optional[str]:
+    def logpull_options(self) -> pulumi.Output[Optional[str]]:
         """
         Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         """
@@ -143,7 +143,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def name(self) -> pulumi.Output[Optional[str]]:
         """
         The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
         """
@@ -151,7 +151,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownershipChallenge")
-    def ownership_challenge(self) -> str:
+    def ownership_challenge(self) -> pulumi.Output[str]:
         """
         Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         """
@@ -159,7 +159,7 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID where the logpush job should be created.
         """

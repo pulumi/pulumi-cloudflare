@@ -13,7 +13,7 @@ __all__ = ['Filter']
 
 class Filter(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
@@ -113,7 +113,7 @@ class Filter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A note that you can use to describe the purpose of the filter.
         """
@@ -121,7 +121,7 @@ class Filter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def expression(self) -> str:
+    def expression(self) -> pulumi.Output[str]:
         """
         The filter expression to be used.
         """
@@ -129,7 +129,7 @@ class Filter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def paused(self) -> Optional[bool]:
+    def paused(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this filter is currently paused. Boolean value.
         """
@@ -137,7 +137,7 @@ class Filter(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ref(self) -> Optional[str]:
+    def ref(self) -> pulumi.Output[Optional[str]]:
         """
         Short reference tag to quickly select related rules.
         """
@@ -145,7 +145,7 @@ class Filter(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone to which the Filter should be added.
         """
