@@ -13,7 +13,7 @@ __all__ = ['WorkersKvNamespace']
 
 class WorkersKvNamespace(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -84,7 +84,7 @@ class WorkersKvNamespace(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def title(self) -> str:
+    def title(self) -> pulumi.Output[str]:
         """
         The name of the namespace you wish to create.
         """

@@ -13,7 +13,7 @@ __all__ = ['WorkersKv']
 
 class WorkersKv(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  namespace_id: Optional[pulumi.Input[str]] = None,
@@ -104,7 +104,7 @@ class WorkersKv(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def key(self) -> str:
+    def key(self) -> pulumi.Output[str]:
         """
         The key name
         """
@@ -112,7 +112,7 @@ class WorkersKv(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> str:
+    def namespace_id(self) -> pulumi.Output[str]:
         """
         The ID of the Workers KV namespace in which you want to create the KV pair
         """
@@ -120,7 +120,7 @@ class WorkersKv(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The string value to be stored in the key
         """

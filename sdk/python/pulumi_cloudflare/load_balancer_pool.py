@@ -15,7 +15,7 @@ __all__ = ['LoadBalancerPool']
 
 class LoadBalancerPool(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_regions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -154,7 +154,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkRegions")
-    def check_regions(self) -> List[str]:
+    def check_regions(self) -> pulumi.Output[List[str]]:
         """
         A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
         """
@@ -162,7 +162,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> str:
+    def created_on(self) -> pulumi.Output[str]:
         """
         The RFC3339 timestamp of when the load balancer was created.
         """
@@ -170,7 +170,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Free text description.
         """
@@ -178,7 +178,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def enabled(self) -> Optional[bool]:
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
         """
@@ -186,7 +186,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minimumOrigins")
-    def minimum_origins(self) -> Optional[float]:
+    def minimum_origins(self) -> pulumi.Output[Optional[float]]:
         """
         The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         """
@@ -194,7 +194,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> str:
+    def modified_on(self) -> pulumi.Output[str]:
         """
         The RFC3339 timestamp of when the load balancer was last modified.
         """
@@ -202,7 +202,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def monitor(self) -> Optional[str]:
+    def monitor(self) -> pulumi.Output[Optional[str]]:
         """
         The ID of the Monitor to use for health checking origins within this pool.
         """
@@ -210,7 +210,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A human-identifiable name for the origin.
         """
@@ -218,7 +218,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationEmail")
-    def notification_email(self) -> Optional[str]:
+    def notification_email(self) -> pulumi.Output[Optional[str]]:
         """
         The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         """
@@ -226,7 +226,7 @@ class LoadBalancerPool(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def origins(self) -> List['outputs.LoadBalancerPoolOrigin']:
+    def origins(self) -> pulumi.Output[List['outputs.LoadBalancerPoolOrigin']]:
         """
         The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
         """

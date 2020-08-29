@@ -15,7 +15,7 @@ __all__ = ['AccessRule']
 
 class AccessRule(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configuration: Optional[pulumi.Input[pulumi.InputType['AccessRuleConfigurationArgs']]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
@@ -97,7 +97,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configuration(self) -> 'outputs.AccessRuleConfiguration':
+    def configuration(self) -> pulumi.Output['outputs.AccessRuleConfiguration']:
         """
         Rule configuration to apply to a matched request. It's a complex value. See description below.
         """
@@ -105,7 +105,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mode(self) -> str:
+    def mode(self) -> pulumi.Output[str]:
         """
         The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
         """
@@ -113,7 +113,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def notes(self) -> Optional[str]:
+    def notes(self) -> pulumi.Output[Optional[str]]:
         """
         A personal note about the rule. Typically used as a reminder or explanation for the rule.
         """
@@ -121,7 +121,7 @@ class AccessRule(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone to which the access rule should be added.
         """

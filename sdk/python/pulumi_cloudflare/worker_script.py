@@ -15,7 +15,7 @@ __all__ = ['WorkerScript']
 
 class WorkerScript(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
@@ -122,7 +122,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def content(self) -> str:
+    def content(self) -> pulumi.Output[str]:
         """
         The script content.
         """
@@ -130,12 +130,12 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
-    def kv_namespace_bindings(self) -> Optional[List['outputs.WorkerScriptKvNamespaceBinding']]:
+    def kv_namespace_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptKvNamespaceBinding']]]:
         return pulumi.get(self, "kv_namespace_bindings")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The global variable for the binding in your Worker code.
         """
@@ -143,12 +143,12 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="plainTextBindings")
-    def plain_text_bindings(self) -> Optional[List['outputs.WorkerScriptPlainTextBinding']]:
+    def plain_text_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptPlainTextBinding']]]:
         return pulumi.get(self, "plain_text_bindings")
 
     @property
     @pulumi.getter(name="secretTextBindings")
-    def secret_text_bindings(self) -> Optional[List['outputs.WorkerScriptSecretTextBinding']]:
+    def secret_text_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptSecretTextBinding']]]:
         return pulumi.get(self, "secret_text_bindings")
 
     def translate_output_property(self, prop):

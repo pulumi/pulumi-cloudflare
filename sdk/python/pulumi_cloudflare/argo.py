@@ -13,7 +13,7 @@ __all__ = ['Argo']
 
 class Argo(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  smart_routing: Optional[pulumi.Input[str]] = None,
                  tiered_caching: Optional[pulumi.Input[str]] = None,
@@ -99,7 +99,7 @@ class Argo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="smartRouting")
-    def smart_routing(self) -> Optional[str]:
+    def smart_routing(self) -> pulumi.Output[Optional[str]]:
         """
         Whether smart routing is enabled. Valid values: `on` or `off`.
         """
@@ -107,7 +107,7 @@ class Argo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tieredCaching")
-    def tiered_caching(self) -> Optional[str]:
+    def tiered_caching(self) -> pulumi.Output[Optional[str]]:
         """
         Whether tiered caching is enabled. Valid values: `on` or `off`.
         """
@@ -115,7 +115,7 @@ class Argo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID that you wish to manage Argo on.
         """

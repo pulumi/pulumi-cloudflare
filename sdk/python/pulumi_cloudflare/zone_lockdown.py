@@ -15,7 +15,7 @@ __all__ = ['ZoneLockdown']
 
 class ZoneLockdown(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configurations(self) -> List['outputs.ZoneLockdownConfiguration']:
+    def configurations(self) -> pulumi.Output[List['outputs.ZoneLockdownConfiguration']]:
         """
         A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
         """
@@ -135,7 +135,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         """
@@ -143,7 +143,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def paused(self) -> Optional[bool]:
+    def paused(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean of whether this zone lockdown is currently paused. Default: false.
         """
@@ -151,12 +151,12 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
-    def urls(self) -> List[str]:
+    def urls(self) -> pulumi.Output[List[str]]:
         """
         A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         """
@@ -164,7 +164,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to which the access rule should be added.
         """

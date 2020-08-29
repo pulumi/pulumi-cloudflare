@@ -13,7 +13,7 @@ __all__ = ['LogPushOwnershipChallenge']
 
 class LogPushOwnershipChallenge(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination_conf: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -101,7 +101,7 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="destinationConf")
-    def destination_conf(self) -> str:
+    def destination_conf(self) -> pulumi.Output[str]:
         """
         Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         """
@@ -109,7 +109,7 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownershipChallengeFilename")
-    def ownership_challenge_filename(self) -> str:
+    def ownership_challenge_filename(self) -> pulumi.Output[str]:
         """
         The filename of the ownership challenge which
         contains the contents required for Logpush Job creation.
@@ -118,7 +118,7 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID where the logpush ownership challenge should be created.
         """

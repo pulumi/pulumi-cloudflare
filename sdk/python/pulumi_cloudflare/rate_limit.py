@@ -15,7 +15,7 @@ __all__ = ['RateLimit']
 
 class RateLimit(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[pulumi.InputType['RateLimitActionArgs']]] = None,
                  bypass_url_patterns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -187,7 +187,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def action(self) -> 'outputs.RateLimitAction':
+    def action(self) -> pulumi.Output['outputs.RateLimitAction']:
         """
         The action to be performed when the threshold of matched traffic within the period defined is exceeded.
         """
@@ -195,7 +195,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bypassUrlPatterns")
-    def bypass_url_patterns(self) -> Optional[List[str]]:
+    def bypass_url_patterns(self) -> pulumi.Output[Optional[List[str]]]:
         """
         URLs matching the patterns specified here will be excluded from rate limiting.
         """
@@ -203,7 +203,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def correlate(self) -> Optional['outputs.RateLimitCorrelate']:
+    def correlate(self) -> pulumi.Output[Optional['outputs.RateLimitCorrelate']]:
         """
         Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         """
@@ -211,7 +211,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
         """
@@ -219,7 +219,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether this ratelimit is currently disabled. Default: `false`.
         """
@@ -227,7 +227,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def match(self) -> 'outputs.RateLimitMatch':
+    def match(self) -> pulumi.Output['outputs.RateLimitMatch']:
         """
         Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
         """
@@ -235,7 +235,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> float:
+    def period(self) -> pulumi.Output[float]:
         """
         The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
         """
@@ -243,7 +243,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def threshold(self) -> float:
+    def threshold(self) -> pulumi.Output[float]:
         """
         The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
         """
@@ -251,7 +251,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to apply rate limiting to.
         """

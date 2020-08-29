@@ -15,7 +15,7 @@ __all__ = ['AccessIdentityProvider']
 
 class AccessIdentityProvider(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
@@ -144,12 +144,12 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
-    def configs(self) -> Optional[List['outputs.AccessIdentityProviderConfig']]:
+    def configs(self) -> pulumi.Output[Optional[List['outputs.AccessIdentityProviderConfig']]]:
         """
         Provider configuration from the [developer documentation][access_identity_provider_guide].
         """
@@ -157,7 +157,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Friendly name of the Access Identity Provider configuration.
         """
@@ -165,7 +165,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The provider type to use. Must be one of: `"centrify"`,
         `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,

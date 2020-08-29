@@ -15,7 +15,7 @@ __all__ = ['AccessGroup']
 
 class AccessGroup(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
@@ -168,7 +168,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         """
         The ID of the account the group is
         associated with.
@@ -177,7 +177,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[List['outputs.AccessGroupExclude']]:
+    def excludes(self) -> pulumi.Output[Optional[List['outputs.AccessGroupExclude']]]:
         """
         A series of access conditions, see below for
         full list.
@@ -186,7 +186,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def includes(self) -> List['outputs.AccessGroupInclude']:
+    def includes(self) -> pulumi.Output[List['outputs.AccessGroupInclude']]:
         """
         A series of access conditions, see below for
         full list.
@@ -195,7 +195,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Friendly name of the Access Group.
         """
@@ -203,7 +203,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def requires(self) -> Optional[List['outputs.AccessGroupRequire']]:
+    def requires(self) -> pulumi.Output[Optional[List['outputs.AccessGroupRequire']]]:
         """
         A series of access conditions, see below for
         full list.

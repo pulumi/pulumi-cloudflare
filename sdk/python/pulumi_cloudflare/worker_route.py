@@ -13,7 +13,7 @@ __all__ = ['WorkerRoute']
 
 class WorkerRoute(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  pattern: Optional[pulumi.Input[str]] = None,
                  script_name: Optional[pulumi.Input[str]] = None,
@@ -104,7 +104,7 @@ class WorkerRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def pattern(self) -> str:
+    def pattern(self) -> pulumi.Output[str]:
         """
         The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
         """
@@ -112,7 +112,7 @@ class WorkerRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scriptName")
-    def script_name(self) -> Optional[str]:
+    def script_name(self) -> pulumi.Output[Optional[str]]:
         """
         Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
         """
@@ -120,7 +120,7 @@ class WorkerRoute(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The zone ID to add the route to.
         """

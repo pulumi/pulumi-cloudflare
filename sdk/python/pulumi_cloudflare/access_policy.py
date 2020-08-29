@@ -15,7 +15,7 @@ __all__ = ['AccessPolicy']
 
 class AccessPolicy(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
@@ -169,12 +169,12 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> str:
+    def account_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> str:
+    def application_id(self) -> pulumi.Output[str]:
         """
         The ID of the application the policy is
         associated with.
@@ -183,7 +183,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def decision(self) -> str:
+    def decision(self) -> pulumi.Output[str]:
         """
         Defines the action Access will take if the policy matches the user.
         Allowed values: `allow`, `deny`, `non_identity`, `bypass`
@@ -192,7 +192,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[List['outputs.AccessPolicyExclude']]:
+    def excludes(self) -> pulumi.Output[Optional[List['outputs.AccessPolicyExclude']]]:
         """
         A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         """
@@ -200,7 +200,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def includes(self) -> List['outputs.AccessPolicyInclude']:
+    def includes(self) -> pulumi.Output[List['outputs.AccessPolicyInclude']]:
         """
         A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         """
@@ -208,7 +208,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         Friendly name of the Access Application.
         """
@@ -216,7 +216,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def precedence(self) -> Optional[float]:
+    def precedence(self) -> pulumi.Output[Optional[float]]:
         """
         The unique precedence for policies on a single application. Integer.
         """
@@ -224,7 +224,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def requires(self) -> Optional[List['outputs.AccessPolicyRequire']]:
+    def requires(self) -> pulumi.Output[Optional[List['outputs.AccessPolicyRequire']]]:
         """
         A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
         """
@@ -232,7 +232,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone to which the access rule should be
         added.

@@ -15,7 +15,7 @@ __all__ = ['Healthcheck']
 
 class Healthcheck(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
@@ -285,7 +285,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def address(self) -> str:
+    def address(self) -> pulumi.Output[str]:
         """
         The hostname or IP address of the origin server to run health checks on.
         """
@@ -293,7 +293,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[bool]:
+    def allow_insecure(self) -> pulumi.Output[Optional[bool]]:
         """
         Do not validate the certificate when the health check uses HTTPS. Valid values: `true` or `false` (Default: `false`).
         """
@@ -301,7 +301,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="checkRegions")
-    def check_regions(self) -> List[str]:
+    def check_regions(self) -> pulumi.Output[List[str]]:
         """
         A list of regions from which to run health checks. If not set Cloudflare will pick a default region. Valid values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
         """
@@ -309,7 +309,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="consecutiveFails")
-    def consecutive_fails(self) -> Optional[float]:
+    def consecutive_fails(self) -> pulumi.Output[Optional[float]]:
         """
         The number of consecutive fails required from a health check before changing the health to unhealthy. (Default: `1`)
         """
@@ -317,7 +317,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="consecutiveSuccesses")
-    def consecutive_successes(self) -> Optional[float]:
+    def consecutive_successes(self) -> pulumi.Output[Optional[float]]:
         """
         The number of consecutive successes required from a health check before changing the health to healthy. (Default: `1`)
         """
@@ -325,12 +325,12 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> str:
+    def created_on(self) -> pulumi.Output[str]:
         return pulumi.get(self, "created_on")
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         A human-readable description of the health check.
         """
@@ -338,7 +338,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expectedBody")
-    def expected_body(self) -> Optional[str]:
+    def expected_body(self) -> pulumi.Output[Optional[str]]:
         """
         A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
         """
@@ -346,7 +346,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expectedCodes")
-    def expected_codes(self) -> Optional[List[str]]:
+    def expected_codes(self) -> pulumi.Output[Optional[List[str]]]:
         """
         The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. (Default: `["200"]`)
         """
@@ -354,7 +354,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="followRedirects")
-    def follow_redirects(self) -> Optional[bool]:
+    def follow_redirects(self) -> pulumi.Output[Optional[bool]]:
         """
         Follow redirects if the origin returns a 3xx status code. Valid values: `true` or `false` (Default: `false`).
         """
@@ -362,7 +362,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[List['outputs.HealthcheckHeader']]:
+    def headers(self) -> pulumi.Output[Optional[List['outputs.HealthcheckHeader']]]:
         """
         The header name.
         """
@@ -370,7 +370,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[float]:
+    def interval(self) -> pulumi.Output[Optional[float]]:
         """
         The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)
         """
@@ -378,7 +378,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def method(self) -> str:
+    def method(self) -> pulumi.Output[str]:
         """
         The TCP connection method to use for the health check. Valid values: `connection_established` (Default: `connection_established`).
         """
@@ -386,12 +386,12 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> str:
+    def modified_on(self) -> pulumi.Output[str]:
         return pulumi.get(self, "modified_on")
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
         """
@@ -399,7 +399,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationEmailAddresses")
-    def notification_email_addresses(self) -> Optional[List[str]]:
+    def notification_email_addresses(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of email addresses we want to send the notifications to.
         """
@@ -407,7 +407,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="notificationSuspended")
-    def notification_suspended(self) -> Optional[bool]:
+    def notification_suspended(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
         """
@@ -415,7 +415,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def path(self) -> Optional[str]:
+    def path(self) -> pulumi.Output[Optional[str]]:
         """
         The endpoint path to health check against. (Default: `/`)
         """
@@ -423,7 +423,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         """
         Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
         """
@@ -431,7 +431,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def retries(self) -> Optional[float]:
+    def retries(self) -> pulumi.Output[Optional[float]]:
         """
         The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
         """
@@ -439,7 +439,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def suspended(self) -> Optional[bool]:
+    def suspended(self) -> pulumi.Output[Optional[bool]]:
         """
         If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).
         """
@@ -447,7 +447,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The timeout (in seconds) before marking the health check as failed. (Default: `5`)
         """
@@ -455,7 +455,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The protocol to use for the health check. Valid values: `HTTP`, `HTTPS`, `TCP`.
         """
@@ -463,7 +463,7 @@ class Healthcheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> str:
+    def zone_id(self) -> pulumi.Output[str]:
         """
         The DNS zone ID to which apply settings.
         """

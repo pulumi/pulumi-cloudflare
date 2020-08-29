@@ -15,7 +15,7 @@ __all__ = ['LoadBalancerMonitor']
 
 class LoadBalancerMonitor(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -190,7 +190,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[bool]:
+    def allow_insecure(self) -> pulumi.Output[Optional[bool]]:
         """
         Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
         """
@@ -198,7 +198,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="createdOn")
-    def created_on(self) -> str:
+    def created_on(self) -> pulumi.Output[str]:
         """
         The RFC3339 timestamp of when the load balancer monitor was created.
         """
@@ -206,7 +206,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Free text description.
         """
@@ -214,7 +214,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expectedBody")
-    def expected_body(self) -> Optional[str]:
+    def expected_body(self) -> pulumi.Output[Optional[str]]:
         """
         A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
         """
@@ -222,7 +222,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="expectedCodes")
-    def expected_codes(self) -> Optional[str]:
+    def expected_codes(self) -> pulumi.Output[Optional[str]]:
         """
         The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         """
@@ -230,7 +230,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="followRedirects")
-    def follow_redirects(self) -> Optional[bool]:
+    def follow_redirects(self) -> pulumi.Output[Optional[bool]]:
         """
         Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
         """
@@ -238,7 +238,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def headers(self) -> Optional[List['outputs.LoadBalancerMonitorHeader']]:
+    def headers(self) -> pulumi.Output[Optional[List['outputs.LoadBalancerMonitorHeader']]]:
         """
         The header name.
         """
@@ -246,7 +246,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def interval(self) -> Optional[float]:
+    def interval(self) -> pulumi.Output[Optional[float]]:
         """
         The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
         """
@@ -254,7 +254,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def method(self) -> str:
+    def method(self) -> pulumi.Output[str]:
         """
         The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
         """
@@ -262,7 +262,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modifiedOn")
-    def modified_on(self) -> str:
+    def modified_on(self) -> pulumi.Output[str]:
         """
         The RFC3339 timestamp of when the load balancer monitor was last modified.
         """
@@ -270,7 +270,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def path(self) -> str:
+    def path(self) -> pulumi.Output[str]:
         """
         The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
         """
@@ -278,12 +278,12 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> pulumi.Output[Optional[float]]:
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
-    def retries(self) -> Optional[float]:
+    def retries(self) -> pulumi.Output[Optional[float]]:
         """
         The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
         """
@@ -291,7 +291,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> pulumi.Output[Optional[float]]:
         """
         The timeout (in seconds) before marking the health check as failed. Default: 5.
         """
@@ -299,7 +299,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
         """
