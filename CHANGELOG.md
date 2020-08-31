@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.5.0 (2020-08-31)
 * Upgrade to pulumi-terraform-bridge v2.7.3
 * Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
 * Upgrade to v2.10.1 of the CloudFlare Terraform Provider
-
----
 
 ## 2.4.0 (2020-06-23)
 * Upgrade to v2.8.0 of the CloudFlare Terraform Provider
