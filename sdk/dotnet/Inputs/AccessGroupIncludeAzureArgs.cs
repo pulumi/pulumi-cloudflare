@@ -12,11 +12,16 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessGroupIncludeAzureArgs : Pulumi.ResourceArgs
     {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
+
+        [Input("ids")]
+        private InputList<string>? _ids;
+        public InputList<string> Ids
+        {
+            get => _ids ?? (_ids = new InputList<string>());
+            set => _ids = value;
+        }
 
         public AccessGroupIncludeAzureArgs()
         {

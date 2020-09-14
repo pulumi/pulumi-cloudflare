@@ -13,17 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupRequireAzure
     {
-        public readonly string? Id;
         public readonly string? IdentityProviderId;
+        public readonly ImmutableArray<string> Ids;
 
         [OutputConstructor]
         private AccessGroupRequireAzure(
-            string? id,
+            string? identityProviderId,
 
-            string? identityProviderId)
+            ImmutableArray<string> ids)
         {
-            Id = id;
             IdentityProviderId = identityProviderId;
+            Ids = ids;
         }
     }
 }

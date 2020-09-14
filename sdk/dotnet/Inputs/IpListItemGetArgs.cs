@@ -18,9 +18,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
         /// <summary>
         /// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         /// </summary>

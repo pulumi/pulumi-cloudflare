@@ -190,6 +190,7 @@ func (o AccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput) AccessA
 
 type AccessGroupExclude struct {
 	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                    `pulumi:"authMethod"`
 	Azures               []AccessGroupExcludeAzure  `pulumi:"azures"`
 	Certificate          *bool                      `pulumi:"certificate"`
 	CommonName           *string                    `pulumi:"commonName"`
@@ -218,6 +219,7 @@ type AccessGroupExcludeInput interface {
 
 type AccessGroupExcludeArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput              `pulumi:"authMethod"`
 	Azures               AccessGroupExcludeAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
@@ -286,6 +288,10 @@ func (o AccessGroupExcludeOutput) ToAccessGroupExcludeOutputWithContext(ctx cont
 
 func (o AccessGroupExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupExcludeOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessGroupExcludeOutput) Azures() AccessGroupExcludeAzureArrayOutput {
@@ -361,8 +367,8 @@ func (o AccessGroupExcludeArrayOutput) Index(i pulumi.IntInput) AccessGroupExclu
 }
 
 type AccessGroupExcludeAzure struct {
-	Id                 *string `pulumi:"id"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	Ids                []string `pulumi:"ids"`
 }
 
 // AccessGroupExcludeAzureInput is an input type that accepts AccessGroupExcludeAzureArgs and AccessGroupExcludeAzureOutput values.
@@ -377,8 +383,8 @@ type AccessGroupExcludeAzureInput interface {
 }
 
 type AccessGroupExcludeAzureArgs struct {
-	Id                 pulumi.StringPtrInput `pulumi:"id"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	Ids                pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessGroupExcludeAzureArgs) ElementType() reflect.Type {
@@ -432,12 +438,12 @@ func (o AccessGroupExcludeAzureOutput) ToAccessGroupExcludeAzureOutputWithContex
 	return o
 }
 
-func (o AccessGroupExcludeAzureOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupExcludeAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 func (o AccessGroupExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupExcludeAzureOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExcludeAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupExcludeAzureArrayOutput struct{ *pulumi.OutputState }
@@ -463,7 +469,8 @@ func (o AccessGroupExcludeAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 type AccessGroupExcludeGithub struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name *string `pulumi:"name"`
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessGroupExcludeGithubInput is an input type that accepts AccessGroupExcludeGithubArgs and AccessGroupExcludeGithubOutput values.
@@ -480,7 +487,8 @@ type AccessGroupExcludeGithubInput interface {
 type AccessGroupExcludeGithubArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessGroupExcludeGithubArgs) ElementType() reflect.Type {
@@ -543,6 +551,10 @@ func (o AccessGroupExcludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessGroupExcludeGithubOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExcludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
 type AccessGroupExcludeGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupExcludeGithubArrayOutput) ElementType() reflect.Type {
@@ -564,8 +576,8 @@ func (o AccessGroupExcludeGithubArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupExcludeGsuite struct {
-	Email              *string `pulumi:"email"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	Emails             []string `pulumi:"emails"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
 }
 
 // AccessGroupExcludeGsuiteInput is an input type that accepts AccessGroupExcludeGsuiteArgs and AccessGroupExcludeGsuiteOutput values.
@@ -580,8 +592,8 @@ type AccessGroupExcludeGsuiteInput interface {
 }
 
 type AccessGroupExcludeGsuiteArgs struct {
-	Email              pulumi.StringPtrInput `pulumi:"email"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	Emails             pulumi.StringArrayInput `pulumi:"emails"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -635,8 +647,8 @@ func (o AccessGroupExcludeGsuiteOutput) ToAccessGroupExcludeGsuiteOutputWithCont
 	return o
 }
 
-func (o AccessGroupExcludeGsuiteOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupExcludeGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+func (o AccessGroupExcludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExcludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
@@ -666,7 +678,7 @@ func (o AccessGroupExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGrou
 type AccessGroupExcludeOkta struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name *string `pulumi:"name"`
+	Names []string `pulumi:"names"`
 }
 
 // AccessGroupExcludeOktaInput is an input type that accepts AccessGroupExcludeOktaArgs and AccessGroupExcludeOktaOutput values.
@@ -683,7 +695,7 @@ type AccessGroupExcludeOktaInput interface {
 type AccessGroupExcludeOktaArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessGroupExcludeOktaArgs) ElementType() reflect.Type {
@@ -742,8 +754,8 @@ func (o AccessGroupExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutpu
 }
 
 // Friendly name of the Access Group.
-func (o AccessGroupExcludeOktaOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupExcludeOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o AccessGroupExcludeOktaOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExcludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupExcludeOktaArrayOutput struct{ *pulumi.OutputState }
@@ -874,6 +886,7 @@ func (o AccessGroupExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupE
 
 type AccessGroupInclude struct {
 	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                    `pulumi:"authMethod"`
 	Azures               []AccessGroupIncludeAzure  `pulumi:"azures"`
 	Certificate          *bool                      `pulumi:"certificate"`
 	CommonName           *string                    `pulumi:"commonName"`
@@ -902,6 +915,7 @@ type AccessGroupIncludeInput interface {
 
 type AccessGroupIncludeArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput              `pulumi:"authMethod"`
 	Azures               AccessGroupIncludeAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
@@ -970,6 +984,10 @@ func (o AccessGroupIncludeOutput) ToAccessGroupIncludeOutputWithContext(ctx cont
 
 func (o AccessGroupIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupIncludeOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupInclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessGroupIncludeOutput) Azures() AccessGroupIncludeAzureArrayOutput {
@@ -1045,8 +1063,8 @@ func (o AccessGroupIncludeArrayOutput) Index(i pulumi.IntInput) AccessGroupInclu
 }
 
 type AccessGroupIncludeAzure struct {
-	Id                 *string `pulumi:"id"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	Ids                []string `pulumi:"ids"`
 }
 
 // AccessGroupIncludeAzureInput is an input type that accepts AccessGroupIncludeAzureArgs and AccessGroupIncludeAzureOutput values.
@@ -1061,8 +1079,8 @@ type AccessGroupIncludeAzureInput interface {
 }
 
 type AccessGroupIncludeAzureArgs struct {
-	Id                 pulumi.StringPtrInput `pulumi:"id"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	Ids                pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessGroupIncludeAzureArgs) ElementType() reflect.Type {
@@ -1116,12 +1134,12 @@ func (o AccessGroupIncludeAzureOutput) ToAccessGroupIncludeAzureOutputWithContex
 	return o
 }
 
-func (o AccessGroupIncludeAzureOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupIncludeAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 func (o AccessGroupIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupIncludeAzureOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupIncludeAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupIncludeAzureArrayOutput struct{ *pulumi.OutputState }
@@ -1147,7 +1165,8 @@ func (o AccessGroupIncludeAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 type AccessGroupIncludeGithub struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name *string `pulumi:"name"`
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessGroupIncludeGithubInput is an input type that accepts AccessGroupIncludeGithubArgs and AccessGroupIncludeGithubOutput values.
@@ -1164,7 +1183,8 @@ type AccessGroupIncludeGithubInput interface {
 type AccessGroupIncludeGithubArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessGroupIncludeGithubArgs) ElementType() reflect.Type {
@@ -1227,6 +1247,10 @@ func (o AccessGroupIncludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessGroupIncludeGithubOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupIncludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
 type AccessGroupIncludeGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupIncludeGithubArrayOutput) ElementType() reflect.Type {
@@ -1248,8 +1272,8 @@ func (o AccessGroupIncludeGithubArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupIncludeGsuite struct {
-	Email              *string `pulumi:"email"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	Emails             []string `pulumi:"emails"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
 }
 
 // AccessGroupIncludeGsuiteInput is an input type that accepts AccessGroupIncludeGsuiteArgs and AccessGroupIncludeGsuiteOutput values.
@@ -1264,8 +1288,8 @@ type AccessGroupIncludeGsuiteInput interface {
 }
 
 type AccessGroupIncludeGsuiteArgs struct {
-	Email              pulumi.StringPtrInput `pulumi:"email"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	Emails             pulumi.StringArrayInput `pulumi:"emails"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -1319,8 +1343,8 @@ func (o AccessGroupIncludeGsuiteOutput) ToAccessGroupIncludeGsuiteOutputWithCont
 	return o
 }
 
-func (o AccessGroupIncludeGsuiteOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupIncludeGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+func (o AccessGroupIncludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupIncludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
@@ -1350,7 +1374,7 @@ func (o AccessGroupIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGrou
 type AccessGroupIncludeOkta struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name *string `pulumi:"name"`
+	Names []string `pulumi:"names"`
 }
 
 // AccessGroupIncludeOktaInput is an input type that accepts AccessGroupIncludeOktaArgs and AccessGroupIncludeOktaOutput values.
@@ -1367,7 +1391,7 @@ type AccessGroupIncludeOktaInput interface {
 type AccessGroupIncludeOktaArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessGroupIncludeOktaArgs) ElementType() reflect.Type {
@@ -1426,8 +1450,8 @@ func (o AccessGroupIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutpu
 }
 
 // Friendly name of the Access Group.
-func (o AccessGroupIncludeOktaOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupIncludeOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o AccessGroupIncludeOktaOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupIncludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupIncludeOktaArrayOutput struct{ *pulumi.OutputState }
@@ -1558,6 +1582,7 @@ func (o AccessGroupIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupI
 
 type AccessGroupRequire struct {
 	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                    `pulumi:"authMethod"`
 	Azures               []AccessGroupRequireAzure  `pulumi:"azures"`
 	Certificate          *bool                      `pulumi:"certificate"`
 	CommonName           *string                    `pulumi:"commonName"`
@@ -1586,6 +1611,7 @@ type AccessGroupRequireInput interface {
 
 type AccessGroupRequireArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput              `pulumi:"authMethod"`
 	Azures               AccessGroupRequireAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
@@ -1654,6 +1680,10 @@ func (o AccessGroupRequireOutput) ToAccessGroupRequireOutputWithContext(ctx cont
 
 func (o AccessGroupRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupRequireOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequire) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessGroupRequireOutput) Azures() AccessGroupRequireAzureArrayOutput {
@@ -1729,8 +1759,8 @@ func (o AccessGroupRequireArrayOutput) Index(i pulumi.IntInput) AccessGroupRequi
 }
 
 type AccessGroupRequireAzure struct {
-	Id                 *string `pulumi:"id"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	Ids                []string `pulumi:"ids"`
 }
 
 // AccessGroupRequireAzureInput is an input type that accepts AccessGroupRequireAzureArgs and AccessGroupRequireAzureOutput values.
@@ -1745,8 +1775,8 @@ type AccessGroupRequireAzureInput interface {
 }
 
 type AccessGroupRequireAzureArgs struct {
-	Id                 pulumi.StringPtrInput `pulumi:"id"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	Ids                pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessGroupRequireAzureArgs) ElementType() reflect.Type {
@@ -1800,12 +1830,12 @@ func (o AccessGroupRequireAzureOutput) ToAccessGroupRequireAzureOutputWithContex
 	return o
 }
 
-func (o AccessGroupRequireAzureOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupRequireAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 func (o AccessGroupRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupRequireAzureOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequireAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupRequireAzureArrayOutput struct{ *pulumi.OutputState }
@@ -1831,7 +1861,8 @@ func (o AccessGroupRequireAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 type AccessGroupRequireGithub struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name *string `pulumi:"name"`
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessGroupRequireGithubInput is an input type that accepts AccessGroupRequireGithubArgs and AccessGroupRequireGithubOutput values.
@@ -1848,7 +1879,8 @@ type AccessGroupRequireGithubInput interface {
 type AccessGroupRequireGithubArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessGroupRequireGithubArgs) ElementType() reflect.Type {
@@ -1911,6 +1943,10 @@ func (o AccessGroupRequireGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessGroupRequireGithubOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequireGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
 type AccessGroupRequireGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupRequireGithubArrayOutput) ElementType() reflect.Type {
@@ -1932,8 +1968,8 @@ func (o AccessGroupRequireGithubArrayOutput) Index(i pulumi.IntInput) AccessGrou
 }
 
 type AccessGroupRequireGsuite struct {
-	Email              *string `pulumi:"email"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	Emails             []string `pulumi:"emails"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
 }
 
 // AccessGroupRequireGsuiteInput is an input type that accepts AccessGroupRequireGsuiteArgs and AccessGroupRequireGsuiteOutput values.
@@ -1948,8 +1984,8 @@ type AccessGroupRequireGsuiteInput interface {
 }
 
 type AccessGroupRequireGsuiteArgs struct {
-	Email              pulumi.StringPtrInput `pulumi:"email"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	Emails             pulumi.StringArrayInput `pulumi:"emails"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
 }
 
 func (AccessGroupRequireGsuiteArgs) ElementType() reflect.Type {
@@ -2003,8 +2039,8 @@ func (o AccessGroupRequireGsuiteOutput) ToAccessGroupRequireGsuiteOutputWithCont
 	return o
 }
 
-func (o AccessGroupRequireGsuiteOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupRequireGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+func (o AccessGroupRequireGsuiteOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequireGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
@@ -2034,7 +2070,7 @@ func (o AccessGroupRequireGsuiteArrayOutput) Index(i pulumi.IntInput) AccessGrou
 type AccessGroupRequireOkta struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name *string `pulumi:"name"`
+	Names []string `pulumi:"names"`
 }
 
 // AccessGroupRequireOktaInput is an input type that accepts AccessGroupRequireOktaArgs and AccessGroupRequireOktaOutput values.
@@ -2051,7 +2087,7 @@ type AccessGroupRequireOktaInput interface {
 type AccessGroupRequireOktaArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Group.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessGroupRequireOktaArgs) ElementType() reflect.Type {
@@ -2110,8 +2146,8 @@ func (o AccessGroupRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutpu
 }
 
 // Friendly name of the Access Group.
-func (o AccessGroupRequireOktaOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessGroupRequireOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o AccessGroupRequireOktaOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequireOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 type AccessGroupRequireOktaArrayOutput struct{ *pulumi.OutputState }
@@ -2444,6 +2480,7 @@ func (o AccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInput) Access
 
 type AccessPolicyExclude struct {
 	AnyValidServiceToken *bool                       `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                     `pulumi:"authMethod"`
 	Azures               []AccessPolicyExcludeAzure  `pulumi:"azures"`
 	Certificate          *bool                       `pulumi:"certificate"`
 	CommonName           *string                     `pulumi:"commonName"`
@@ -2472,6 +2509,7 @@ type AccessPolicyExcludeInput interface {
 
 type AccessPolicyExcludeArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                 `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput               `pulumi:"authMethod"`
 	Azures               AccessPolicyExcludeAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
@@ -2540,6 +2578,10 @@ func (o AccessPolicyExcludeOutput) ToAccessPolicyExcludeOutputWithContext(ctx co
 
 func (o AccessPolicyExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyExcludeOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessPolicyExcludeOutput) Azures() AccessPolicyExcludeAzureArrayOutput {
@@ -2615,8 +2657,8 @@ func (o AccessPolicyExcludeArrayOutput) Index(i pulumi.IntInput) AccessPolicyExc
 }
 
 type AccessPolicyExcludeAzure struct {
-	Id                 *string `pulumi:"id"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	Ids                []string `pulumi:"ids"`
 }
 
 // AccessPolicyExcludeAzureInput is an input type that accepts AccessPolicyExcludeAzureArgs and AccessPolicyExcludeAzureOutput values.
@@ -2631,8 +2673,8 @@ type AccessPolicyExcludeAzureInput interface {
 }
 
 type AccessPolicyExcludeAzureArgs struct {
-	Id                 pulumi.StringPtrInput `pulumi:"id"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	Ids                pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessPolicyExcludeAzureArgs) ElementType() reflect.Type {
@@ -2686,12 +2728,12 @@ func (o AccessPolicyExcludeAzureOutput) ToAccessPolicyExcludeAzureOutputWithCont
 	return o
 }
 
-func (o AccessPolicyExcludeAzureOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyExcludeAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 func (o AccessPolicyExcludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyExcludeAzureOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyExcludeAzureArrayOutput struct{ *pulumi.OutputState }
@@ -2717,7 +2759,8 @@ func (o AccessPolicyExcludeAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 type AccessPolicyExcludeGithub struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name *string `pulumi:"name"`
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyExcludeGithubInput is an input type that accepts AccessPolicyExcludeGithubArgs and AccessPolicyExcludeGithubOutput values.
@@ -2734,7 +2777,8 @@ type AccessPolicyExcludeGithubInput interface {
 type AccessPolicyExcludeGithubArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyExcludeGithubArgs) ElementType() reflect.Type {
@@ -2797,6 +2841,10 @@ func (o AccessPolicyExcludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExcludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessPolicyExcludeGithubOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
 type AccessPolicyExcludeGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyExcludeGithubArrayOutput) ElementType() reflect.Type {
@@ -2818,8 +2866,8 @@ func (o AccessPolicyExcludeGithubArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyExcludeGsuite struct {
-	Email              *string `pulumi:"email"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	Emails             []string `pulumi:"emails"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyExcludeGsuiteInput is an input type that accepts AccessPolicyExcludeGsuiteArgs and AccessPolicyExcludeGsuiteOutput values.
@@ -2834,8 +2882,8 @@ type AccessPolicyExcludeGsuiteInput interface {
 }
 
 type AccessPolicyExcludeGsuiteArgs struct {
-	Email              pulumi.StringPtrInput `pulumi:"email"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	Emails             pulumi.StringArrayInput `pulumi:"emails"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyExcludeGsuiteArgs) ElementType() reflect.Type {
@@ -2889,8 +2937,8 @@ func (o AccessPolicyExcludeGsuiteOutput) ToAccessPolicyExcludeGsuiteOutputWithCo
 	return o
 }
 
-func (o AccessPolicyExcludeGsuiteOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyExcludeGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+func (o AccessPolicyExcludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyExcludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
@@ -2920,7 +2968,7 @@ func (o AccessPolicyExcludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 type AccessPolicyExcludeOkta struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name *string `pulumi:"name"`
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyExcludeOktaInput is an input type that accepts AccessPolicyExcludeOktaArgs and AccessPolicyExcludeOktaOutput values.
@@ -2937,7 +2985,7 @@ type AccessPolicyExcludeOktaInput interface {
 type AccessPolicyExcludeOktaArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyExcludeOktaArgs) ElementType() reflect.Type {
@@ -2996,8 +3044,8 @@ func (o AccessPolicyExcludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutp
 }
 
 // Friendly name of the Access Application.
-func (o AccessPolicyExcludeOktaOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyExcludeOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o AccessPolicyExcludeOktaOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyExcludeOktaArrayOutput struct{ *pulumi.OutputState }
@@ -3128,6 +3176,7 @@ func (o AccessPolicyExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 
 type AccessPolicyInclude struct {
 	AnyValidServiceToken *bool                       `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                     `pulumi:"authMethod"`
 	Azures               []AccessPolicyIncludeAzure  `pulumi:"azures"`
 	Certificate          *bool                       `pulumi:"certificate"`
 	CommonName           *string                     `pulumi:"commonName"`
@@ -3156,6 +3205,7 @@ type AccessPolicyIncludeInput interface {
 
 type AccessPolicyIncludeArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                 `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput               `pulumi:"authMethod"`
 	Azures               AccessPolicyIncludeAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
@@ -3224,6 +3274,10 @@ func (o AccessPolicyIncludeOutput) ToAccessPolicyIncludeOutputWithContext(ctx co
 
 func (o AccessPolicyIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyIncludeOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessPolicyIncludeOutput) Azures() AccessPolicyIncludeAzureArrayOutput {
@@ -3299,8 +3353,8 @@ func (o AccessPolicyIncludeArrayOutput) Index(i pulumi.IntInput) AccessPolicyInc
 }
 
 type AccessPolicyIncludeAzure struct {
-	Id                 *string `pulumi:"id"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	Ids                []string `pulumi:"ids"`
 }
 
 // AccessPolicyIncludeAzureInput is an input type that accepts AccessPolicyIncludeAzureArgs and AccessPolicyIncludeAzureOutput values.
@@ -3315,8 +3369,8 @@ type AccessPolicyIncludeAzureInput interface {
 }
 
 type AccessPolicyIncludeAzureArgs struct {
-	Id                 pulumi.StringPtrInput `pulumi:"id"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	Ids                pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessPolicyIncludeAzureArgs) ElementType() reflect.Type {
@@ -3370,12 +3424,12 @@ func (o AccessPolicyIncludeAzureOutput) ToAccessPolicyIncludeAzureOutputWithCont
 	return o
 }
 
-func (o AccessPolicyIncludeAzureOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyIncludeAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 func (o AccessPolicyIncludeAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIncludeAzureOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyIncludeAzureArrayOutput struct{ *pulumi.OutputState }
@@ -3401,7 +3455,8 @@ func (o AccessPolicyIncludeAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 type AccessPolicyIncludeGithub struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name *string `pulumi:"name"`
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyIncludeGithubInput is an input type that accepts AccessPolicyIncludeGithubArgs and AccessPolicyIncludeGithubOutput values.
@@ -3418,7 +3473,8 @@ type AccessPolicyIncludeGithubInput interface {
 type AccessPolicyIncludeGithubArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyIncludeGithubArgs) ElementType() reflect.Type {
@@ -3481,6 +3537,10 @@ func (o AccessPolicyIncludeGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyIncludeGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessPolicyIncludeGithubOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
 type AccessPolicyIncludeGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyIncludeGithubArrayOutput) ElementType() reflect.Type {
@@ -3502,8 +3562,8 @@ func (o AccessPolicyIncludeGithubArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyIncludeGsuite struct {
-	Email              *string `pulumi:"email"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	Emails             []string `pulumi:"emails"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyIncludeGsuiteInput is an input type that accepts AccessPolicyIncludeGsuiteArgs and AccessPolicyIncludeGsuiteOutput values.
@@ -3518,8 +3578,8 @@ type AccessPolicyIncludeGsuiteInput interface {
 }
 
 type AccessPolicyIncludeGsuiteArgs struct {
-	Email              pulumi.StringPtrInput `pulumi:"email"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	Emails             pulumi.StringArrayInput `pulumi:"emails"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyIncludeGsuiteArgs) ElementType() reflect.Type {
@@ -3573,8 +3633,8 @@ func (o AccessPolicyIncludeGsuiteOutput) ToAccessPolicyIncludeGsuiteOutputWithCo
 	return o
 }
 
-func (o AccessPolicyIncludeGsuiteOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyIncludeGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+func (o AccessPolicyIncludeGsuiteOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyIncludeGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
@@ -3604,7 +3664,7 @@ func (o AccessPolicyIncludeGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 type AccessPolicyIncludeOkta struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name *string `pulumi:"name"`
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyIncludeOktaInput is an input type that accepts AccessPolicyIncludeOktaArgs and AccessPolicyIncludeOktaOutput values.
@@ -3621,7 +3681,7 @@ type AccessPolicyIncludeOktaInput interface {
 type AccessPolicyIncludeOktaArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyIncludeOktaArgs) ElementType() reflect.Type {
@@ -3680,8 +3740,8 @@ func (o AccessPolicyIncludeOktaOutput) IdentityProviderId() pulumi.StringPtrOutp
 }
 
 // Friendly name of the Access Application.
-func (o AccessPolicyIncludeOktaOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyIncludeOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o AccessPolicyIncludeOktaOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyIncludeOktaArrayOutput struct{ *pulumi.OutputState }
@@ -3812,6 +3872,7 @@ func (o AccessPolicyIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 
 type AccessPolicyRequire struct {
 	AnyValidServiceToken *bool                       `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                     `pulumi:"authMethod"`
 	Azures               []AccessPolicyRequireAzure  `pulumi:"azures"`
 	Certificate          *bool                       `pulumi:"certificate"`
 	CommonName           *string                     `pulumi:"commonName"`
@@ -3840,6 +3901,7 @@ type AccessPolicyRequireInput interface {
 
 type AccessPolicyRequireArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                 `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput               `pulumi:"authMethod"`
 	Azures               AccessPolicyRequireAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
@@ -3908,6 +3970,10 @@ func (o AccessPolicyRequireOutput) ToAccessPolicyRequireOutputWithContext(ctx co
 
 func (o AccessPolicyRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyRequireOutput) AuthMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) *string { return v.AuthMethod }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessPolicyRequireOutput) Azures() AccessPolicyRequireAzureArrayOutput {
@@ -3983,8 +4049,8 @@ func (o AccessPolicyRequireArrayOutput) Index(i pulumi.IntInput) AccessPolicyReq
 }
 
 type AccessPolicyRequireAzure struct {
-	Id                 *string `pulumi:"id"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
+	Ids                []string `pulumi:"ids"`
 }
 
 // AccessPolicyRequireAzureInput is an input type that accepts AccessPolicyRequireAzureArgs and AccessPolicyRequireAzureOutput values.
@@ -3999,8 +4065,8 @@ type AccessPolicyRequireAzureInput interface {
 }
 
 type AccessPolicyRequireAzureArgs struct {
-	Id                 pulumi.StringPtrInput `pulumi:"id"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
+	Ids                pulumi.StringArrayInput `pulumi:"ids"`
 }
 
 func (AccessPolicyRequireAzureArgs) ElementType() reflect.Type {
@@ -4054,12 +4120,12 @@ func (o AccessPolicyRequireAzureOutput) ToAccessPolicyRequireAzureOutputWithCont
 	return o
 }
 
-func (o AccessPolicyRequireAzureOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyRequireAzure) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
 func (o AccessPolicyRequireAzureOutput) IdentityProviderId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireAzure) *string { return v.IdentityProviderId }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyRequireAzureOutput) Ids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequireAzure) []string { return v.Ids }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyRequireAzureArrayOutput struct{ *pulumi.OutputState }
@@ -4085,7 +4151,8 @@ func (o AccessPolicyRequireAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 type AccessPolicyRequireGithub struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name *string `pulumi:"name"`
+	Name  *string  `pulumi:"name"`
+	Teams []string `pulumi:"teams"`
 }
 
 // AccessPolicyRequireGithubInput is an input type that accepts AccessPolicyRequireGithubArgs and AccessPolicyRequireGithubOutput values.
@@ -4102,7 +4169,8 @@ type AccessPolicyRequireGithubInput interface {
 type AccessPolicyRequireGithubArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Name  pulumi.StringPtrInput   `pulumi:"name"`
+	Teams pulumi.StringArrayInput `pulumi:"teams"`
 }
 
 func (AccessPolicyRequireGithubArgs) ElementType() reflect.Type {
@@ -4165,6 +4233,10 @@ func (o AccessPolicyRequireGithubOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequireGithub) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessPolicyRequireGithubOutput) Teams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequireGithub) []string { return v.Teams }).(pulumi.StringArrayOutput)
+}
+
 type AccessPolicyRequireGithubArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessPolicyRequireGithubArrayOutput) ElementType() reflect.Type {
@@ -4186,8 +4258,8 @@ func (o AccessPolicyRequireGithubArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyRequireGsuite struct {
-	Email              *string `pulumi:"email"`
-	IdentityProviderId *string `pulumi:"identityProviderId"`
+	Emails             []string `pulumi:"emails"`
+	IdentityProviderId *string  `pulumi:"identityProviderId"`
 }
 
 // AccessPolicyRequireGsuiteInput is an input type that accepts AccessPolicyRequireGsuiteArgs and AccessPolicyRequireGsuiteOutput values.
@@ -4202,8 +4274,8 @@ type AccessPolicyRequireGsuiteInput interface {
 }
 
 type AccessPolicyRequireGsuiteArgs struct {
-	Email              pulumi.StringPtrInput `pulumi:"email"`
-	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
+	Emails             pulumi.StringArrayInput `pulumi:"emails"`
+	IdentityProviderId pulumi.StringPtrInput   `pulumi:"identityProviderId"`
 }
 
 func (AccessPolicyRequireGsuiteArgs) ElementType() reflect.Type {
@@ -4257,8 +4329,8 @@ func (o AccessPolicyRequireGsuiteOutput) ToAccessPolicyRequireGsuiteOutputWithCo
 	return o
 }
 
-func (o AccessPolicyRequireGsuiteOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyRequireGsuite) *string { return v.Email }).(pulumi.StringPtrOutput)
+func (o AccessPolicyRequireGsuiteOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequireGsuite) []string { return v.Emails }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyRequireGsuiteOutput) IdentityProviderId() pulumi.StringPtrOutput {
@@ -4288,7 +4360,7 @@ func (o AccessPolicyRequireGsuiteArrayOutput) Index(i pulumi.IntInput) AccessPol
 type AccessPolicyRequireOkta struct {
 	IdentityProviderId *string `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name *string `pulumi:"name"`
+	Names []string `pulumi:"names"`
 }
 
 // AccessPolicyRequireOktaInput is an input type that accepts AccessPolicyRequireOktaArgs and AccessPolicyRequireOktaOutput values.
@@ -4305,7 +4377,7 @@ type AccessPolicyRequireOktaInput interface {
 type AccessPolicyRequireOktaArgs struct {
 	IdentityProviderId pulumi.StringPtrInput `pulumi:"identityProviderId"`
 	// Friendly name of the Access Application.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	Names pulumi.StringArrayInput `pulumi:"names"`
 }
 
 func (AccessPolicyRequireOktaArgs) ElementType() reflect.Type {
@@ -4364,8 +4436,8 @@ func (o AccessPolicyRequireOktaOutput) IdentityProviderId() pulumi.StringPtrOutp
 }
 
 // Friendly name of the Access Application.
-func (o AccessPolicyRequireOktaOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AccessPolicyRequireOkta) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o AccessPolicyRequireOktaOutput) Names() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequireOkta) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
 type AccessPolicyRequireOktaArrayOutput struct{ *pulumi.OutputState }
@@ -5657,7 +5729,6 @@ func (o HealthcheckHeaderArrayOutput) Index(i pulumi.IntInput) HealthcheckHeader
 type IpListItem struct {
 	// A note that can be used to annotate the item.
 	Comment *string `pulumi:"comment"`
-	Id      *string `pulumi:"id"`
 	// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Value string `pulumi:"value"`
 }
@@ -5676,7 +5747,6 @@ type IpListItemInput interface {
 type IpListItemArgs struct {
 	// A note that can be used to annotate the item.
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
-	Id      pulumi.StringPtrInput `pulumi:"id"`
 	// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -5735,10 +5805,6 @@ func (o IpListItemOutput) ToIpListItemOutputWithContext(ctx context.Context) IpL
 // A note that can be used to annotate the item.
 func (o IpListItemOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IpListItem) *string { return v.Comment }).(pulumi.StringPtrOutput)
-}
-
-func (o IpListItemOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpListItem) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
@@ -10735,6 +10801,112 @@ func (o WorkerScriptSecretTextBindingArrayOutput) Index(i pulumi.IntInput) Worke
 	}).(WorkerScriptSecretTextBindingOutput)
 }
 
+type WorkerScriptWebassemblyBinding struct {
+	// The base64 encoded wasm module you want to store.
+	Module string `pulumi:"module"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+}
+
+// WorkerScriptWebassemblyBindingInput is an input type that accepts WorkerScriptWebassemblyBindingArgs and WorkerScriptWebassemblyBindingOutput values.
+// You can construct a concrete instance of `WorkerScriptWebassemblyBindingInput` via:
+//
+//          WorkerScriptWebassemblyBindingArgs{...}
+type WorkerScriptWebassemblyBindingInput interface {
+	pulumi.Input
+
+	ToWorkerScriptWebassemblyBindingOutput() WorkerScriptWebassemblyBindingOutput
+	ToWorkerScriptWebassemblyBindingOutputWithContext(context.Context) WorkerScriptWebassemblyBindingOutput
+}
+
+type WorkerScriptWebassemblyBindingArgs struct {
+	// The base64 encoded wasm module you want to store.
+	Module pulumi.StringInput `pulumi:"module"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkerScriptWebassemblyBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptWebassemblyBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptWebassemblyBindingArgs) ToWorkerScriptWebassemblyBindingOutput() WorkerScriptWebassemblyBindingOutput {
+	return i.ToWorkerScriptWebassemblyBindingOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptWebassemblyBindingArgs) ToWorkerScriptWebassemblyBindingOutputWithContext(ctx context.Context) WorkerScriptWebassemblyBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptWebassemblyBindingOutput)
+}
+
+// WorkerScriptWebassemblyBindingArrayInput is an input type that accepts WorkerScriptWebassemblyBindingArray and WorkerScriptWebassemblyBindingArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptWebassemblyBindingArrayInput` via:
+//
+//          WorkerScriptWebassemblyBindingArray{ WorkerScriptWebassemblyBindingArgs{...} }
+type WorkerScriptWebassemblyBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptWebassemblyBindingArrayOutput() WorkerScriptWebassemblyBindingArrayOutput
+	ToWorkerScriptWebassemblyBindingArrayOutputWithContext(context.Context) WorkerScriptWebassemblyBindingArrayOutput
+}
+
+type WorkerScriptWebassemblyBindingArray []WorkerScriptWebassemblyBindingInput
+
+func (WorkerScriptWebassemblyBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptWebassemblyBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptWebassemblyBindingArray) ToWorkerScriptWebassemblyBindingArrayOutput() WorkerScriptWebassemblyBindingArrayOutput {
+	return i.ToWorkerScriptWebassemblyBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptWebassemblyBindingArray) ToWorkerScriptWebassemblyBindingArrayOutputWithContext(ctx context.Context) WorkerScriptWebassemblyBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptWebassemblyBindingArrayOutput)
+}
+
+type WorkerScriptWebassemblyBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptWebassemblyBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptWebassemblyBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptWebassemblyBindingOutput) ToWorkerScriptWebassemblyBindingOutput() WorkerScriptWebassemblyBindingOutput {
+	return o
+}
+
+func (o WorkerScriptWebassemblyBindingOutput) ToWorkerScriptWebassemblyBindingOutputWithContext(ctx context.Context) WorkerScriptWebassemblyBindingOutput {
+	return o
+}
+
+// The base64 encoded wasm module you want to store.
+func (o WorkerScriptWebassemblyBindingOutput) Module() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptWebassemblyBinding) string { return v.Module }).(pulumi.StringOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptWebassemblyBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptWebassemblyBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkerScriptWebassemblyBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptWebassemblyBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptWebassemblyBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptWebassemblyBindingArrayOutput) ToWorkerScriptWebassemblyBindingArrayOutput() WorkerScriptWebassemblyBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptWebassemblyBindingArrayOutput) ToWorkerScriptWebassemblyBindingArrayOutputWithContext(ctx context.Context) WorkerScriptWebassemblyBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptWebassemblyBindingArrayOutput) Index(i pulumi.IntInput) WorkerScriptWebassemblyBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptWebassemblyBinding {
+		return vs[0].([]WorkerScriptWebassemblyBinding)[vs[1].(int)]
+	}).(WorkerScriptWebassemblyBindingOutput)
+}
+
 type ZoneLockdownConfiguration struct {
 	// The request property to target. Allowed values: "ip", "ipRange"
 	Target string `pulumi:"target"`
@@ -14737,6 +14909,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptSecretTextBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptSecretTextBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptWebassemblyBindingOutput{})
+	pulumi.RegisterOutputType(WorkerScriptWebassemblyBindingArrayOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(ZoneMetaOutput{})

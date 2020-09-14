@@ -11,22 +11,25 @@ namespace Pulumi.Cloudflare.Outputs
 {
 
     [OutputType]
-    public sealed class AccessGroupExcludeOkta
+    public sealed class WorkerScriptWebassemblyBinding
     {
-        public readonly string? IdentityProviderId;
         /// <summary>
-        /// Friendly name of the Access Group.
+        /// The base64 encoded wasm module you want to store.
         /// </summary>
-        public readonly ImmutableArray<string> Names;
+        public readonly string Module;
+        /// <summary>
+        /// The global variable for the binding in your Worker code.
+        /// </summary>
+        public readonly string Name;
 
         [OutputConstructor]
-        private AccessGroupExcludeOkta(
-            string? identityProviderId,
+        private WorkerScriptWebassemblyBinding(
+            string module,
 
-            ImmutableArray<string> names)
+            string name)
         {
-            IdentityProviderId = identityProviderId;
-            Names = names;
+            Module = module;
+            Name = name;
         }
     }
 }

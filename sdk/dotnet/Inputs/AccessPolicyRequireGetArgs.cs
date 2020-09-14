@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("anyValidServiceToken")]
         public Input<bool>? AnyValidServiceToken { get; set; }
 
+        [Input("authMethod")]
+        public Input<string>? AuthMethod { get; set; }
+
         [Input("azures")]
         private InputList<Inputs.AccessPolicyRequireAzureGetArgs>? _azures;
         public InputList<Inputs.AccessPolicyRequireAzureGetArgs> Azures

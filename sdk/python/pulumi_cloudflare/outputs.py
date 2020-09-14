@@ -84,6 +84,7 @@ __all__ = [
     'WorkerScriptKvNamespaceBinding',
     'WorkerScriptPlainTextBinding',
     'WorkerScriptSecretTextBinding',
+    'WorkerScriptWebassemblyBinding',
     'ZoneLockdownConfiguration',
     'ZoneMeta',
     'ZoneSettingsOverrideInitialSettings',
@@ -226,6 +227,7 @@ class AccessApplicationCorsHeader(dict):
 class AccessGroupExclude(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_method: Optional[str] = None,
                  azures: Optional[List['outputs.AccessGroupExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
@@ -241,6 +243,8 @@ class AccessGroupExclude(dict):
                  service_tokens: Optional[List[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -272,6 +276,11 @@ class AccessGroupExclude(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
 
     @property
     @pulumi.getter
@@ -345,22 +354,22 @@ class AccessGroupExclude(dict):
 @pulumi.output_type
 class AccessGroupExcludeAzure(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 identity_provider_id: Optional[str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[List[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -370,7 +379,8 @@ class AccessGroupExcludeAzure(dict):
 class AccessGroupExcludeGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 teams: Optional[List[str]] = None):
         """
         :param str name: Friendly name of the Access Group.
         """
@@ -378,6 +388,8 @@ class AccessGroupExcludeGithub(dict):
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -392,6 +404,11 @@ class AccessGroupExcludeGithub(dict):
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[List[str]]:
+        return pulumi.get(self, "teams")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -399,17 +416,17 @@ class AccessGroupExcludeGithub(dict):
 @pulumi.output_type
 class AccessGroupExcludeGsuite(dict):
     def __init__(__self__, *,
-                 email: Optional[str] = None,
+                 emails: Optional[List[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[List[str]]:
+        return pulumi.get(self, "emails")
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -424,14 +441,14 @@ class AccessGroupExcludeGsuite(dict):
 class AccessGroupExcludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 names: Optional[List[str]] = None):
         """
-        :param str name: Friendly name of the Access Group.
+        :param List[str] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -440,11 +457,11 @@ class AccessGroupExcludeOkta(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def names(self) -> Optional[List[str]]:
         """
         Friendly name of the Access Group.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -486,6 +503,7 @@ class AccessGroupExcludeSaml(dict):
 class AccessGroupInclude(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_method: Optional[str] = None,
                  azures: Optional[List['outputs.AccessGroupIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
@@ -501,6 +519,8 @@ class AccessGroupInclude(dict):
                  service_tokens: Optional[List[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -532,6 +552,11 @@ class AccessGroupInclude(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
 
     @property
     @pulumi.getter
@@ -605,22 +630,22 @@ class AccessGroupInclude(dict):
 @pulumi.output_type
 class AccessGroupIncludeAzure(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 identity_provider_id: Optional[str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[List[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -630,7 +655,8 @@ class AccessGroupIncludeAzure(dict):
 class AccessGroupIncludeGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 teams: Optional[List[str]] = None):
         """
         :param str name: Friendly name of the Access Group.
         """
@@ -638,6 +664,8 @@ class AccessGroupIncludeGithub(dict):
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -652,6 +680,11 @@ class AccessGroupIncludeGithub(dict):
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[List[str]]:
+        return pulumi.get(self, "teams")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -659,17 +692,17 @@ class AccessGroupIncludeGithub(dict):
 @pulumi.output_type
 class AccessGroupIncludeGsuite(dict):
     def __init__(__self__, *,
-                 email: Optional[str] = None,
+                 emails: Optional[List[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[List[str]]:
+        return pulumi.get(self, "emails")
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -684,14 +717,14 @@ class AccessGroupIncludeGsuite(dict):
 class AccessGroupIncludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 names: Optional[List[str]] = None):
         """
-        :param str name: Friendly name of the Access Group.
+        :param List[str] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -700,11 +733,11 @@ class AccessGroupIncludeOkta(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def names(self) -> Optional[List[str]]:
         """
         Friendly name of the Access Group.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -746,6 +779,7 @@ class AccessGroupIncludeSaml(dict):
 class AccessGroupRequire(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_method: Optional[str] = None,
                  azures: Optional[List['outputs.AccessGroupRequireAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
@@ -761,6 +795,8 @@ class AccessGroupRequire(dict):
                  service_tokens: Optional[List[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -792,6 +828,11 @@ class AccessGroupRequire(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
 
     @property
     @pulumi.getter
@@ -865,22 +906,22 @@ class AccessGroupRequire(dict):
 @pulumi.output_type
 class AccessGroupRequireAzure(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 identity_provider_id: Optional[str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[List[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -890,7 +931,8 @@ class AccessGroupRequireAzure(dict):
 class AccessGroupRequireGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 teams: Optional[List[str]] = None):
         """
         :param str name: Friendly name of the Access Group.
         """
@@ -898,6 +940,8 @@ class AccessGroupRequireGithub(dict):
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -912,6 +956,11 @@ class AccessGroupRequireGithub(dict):
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[List[str]]:
+        return pulumi.get(self, "teams")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -919,17 +968,17 @@ class AccessGroupRequireGithub(dict):
 @pulumi.output_type
 class AccessGroupRequireGsuite(dict):
     def __init__(__self__, *,
-                 email: Optional[str] = None,
+                 emails: Optional[List[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[List[str]]:
+        return pulumi.get(self, "emails")
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -944,14 +993,14 @@ class AccessGroupRequireGsuite(dict):
 class AccessGroupRequireOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 names: Optional[List[str]] = None):
         """
-        :param str name: Friendly name of the Access Group.
+        :param List[str] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -960,11 +1009,11 @@ class AccessGroupRequireOkta(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def names(self) -> Optional[List[str]]:
         """
         Friendly name of the Access Group.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1166,6 +1215,7 @@ class AccessIdentityProviderConfig(dict):
 class AccessPolicyExclude(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_method: Optional[str] = None,
                  azures: Optional[List['outputs.AccessPolicyExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
@@ -1181,6 +1231,8 @@ class AccessPolicyExclude(dict):
                  service_tokens: Optional[List[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -1212,6 +1264,11 @@ class AccessPolicyExclude(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
 
     @property
     @pulumi.getter
@@ -1285,22 +1342,22 @@ class AccessPolicyExclude(dict):
 @pulumi.output_type
 class AccessPolicyExcludeAzure(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 identity_provider_id: Optional[str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[List[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1310,7 +1367,8 @@ class AccessPolicyExcludeAzure(dict):
 class AccessPolicyExcludeGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 teams: Optional[List[str]] = None):
         """
         :param str name: Friendly name of the Access Application.
         """
@@ -1318,6 +1376,8 @@ class AccessPolicyExcludeGithub(dict):
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1332,6 +1392,11 @@ class AccessPolicyExcludeGithub(dict):
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[List[str]]:
+        return pulumi.get(self, "teams")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -1339,17 +1404,17 @@ class AccessPolicyExcludeGithub(dict):
 @pulumi.output_type
 class AccessPolicyExcludeGsuite(dict):
     def __init__(__self__, *,
-                 email: Optional[str] = None,
+                 emails: Optional[List[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[List[str]]:
+        return pulumi.get(self, "emails")
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1364,14 +1429,14 @@ class AccessPolicyExcludeGsuite(dict):
 class AccessPolicyExcludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 names: Optional[List[str]] = None):
         """
-        :param str name: Friendly name of the Access Application.
+        :param List[str] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1380,11 +1445,11 @@ class AccessPolicyExcludeOkta(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def names(self) -> Optional[List[str]]:
         """
         Friendly name of the Access Application.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1426,6 +1491,7 @@ class AccessPolicyExcludeSaml(dict):
 class AccessPolicyInclude(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_method: Optional[str] = None,
                  azures: Optional[List['outputs.AccessPolicyIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
@@ -1441,6 +1507,8 @@ class AccessPolicyInclude(dict):
                  service_tokens: Optional[List[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -1472,6 +1540,11 @@ class AccessPolicyInclude(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
 
     @property
     @pulumi.getter
@@ -1545,22 +1618,22 @@ class AccessPolicyInclude(dict):
 @pulumi.output_type
 class AccessPolicyIncludeAzure(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 identity_provider_id: Optional[str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[List[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1570,7 +1643,8 @@ class AccessPolicyIncludeAzure(dict):
 class AccessPolicyIncludeGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 teams: Optional[List[str]] = None):
         """
         :param str name: Friendly name of the Access Application.
         """
@@ -1578,6 +1652,8 @@ class AccessPolicyIncludeGithub(dict):
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1592,6 +1668,11 @@ class AccessPolicyIncludeGithub(dict):
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[List[str]]:
+        return pulumi.get(self, "teams")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -1599,17 +1680,17 @@ class AccessPolicyIncludeGithub(dict):
 @pulumi.output_type
 class AccessPolicyIncludeGsuite(dict):
     def __init__(__self__, *,
-                 email: Optional[str] = None,
+                 emails: Optional[List[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[List[str]]:
+        return pulumi.get(self, "emails")
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1624,14 +1705,14 @@ class AccessPolicyIncludeGsuite(dict):
 class AccessPolicyIncludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 names: Optional[List[str]] = None):
         """
-        :param str name: Friendly name of the Access Application.
+        :param List[str] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1640,11 +1721,11 @@ class AccessPolicyIncludeOkta(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def names(self) -> Optional[List[str]]:
         """
         Friendly name of the Access Application.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1686,6 +1767,7 @@ class AccessPolicyIncludeSaml(dict):
 class AccessPolicyRequire(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_method: Optional[str] = None,
                  azures: Optional[List['outputs.AccessPolicyRequireAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
@@ -1701,6 +1783,8 @@ class AccessPolicyRequire(dict):
                  service_tokens: Optional[List[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -1732,6 +1816,11 @@ class AccessPolicyRequire(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[str]:
+        return pulumi.get(self, "auth_method")
 
     @property
     @pulumi.getter
@@ -1805,22 +1894,22 @@ class AccessPolicyRequire(dict):
 @pulumi.output_type
 class AccessPolicyRequireAzure(dict):
     def __init__(__self__, *,
-                 id: Optional[str] = None,
-                 identity_provider_id: Optional[str] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[str] = None,
+                 ids: Optional[List[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
+
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[List[str]]:
+        return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1830,7 +1919,8 @@ class AccessPolicyRequireAzure(dict):
 class AccessPolicyRequireGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 teams: Optional[List[str]] = None):
         """
         :param str name: Friendly name of the Access Application.
         """
@@ -1838,6 +1928,8 @@ class AccessPolicyRequireGithub(dict):
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1852,6 +1944,11 @@ class AccessPolicyRequireGithub(dict):
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[List[str]]:
+        return pulumi.get(self, "teams")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -1859,17 +1956,17 @@ class AccessPolicyRequireGithub(dict):
 @pulumi.output_type
 class AccessPolicyRequireGsuite(dict):
     def __init__(__self__, *,
-                 email: Optional[str] = None,
+                 emails: Optional[List[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[str]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[List[str]]:
+        return pulumi.get(self, "emails")
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1884,14 +1981,14 @@ class AccessPolicyRequireGsuite(dict):
 class AccessPolicyRequireOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 name: Optional[str] = None):
+                 names: Optional[List[str]] = None):
         """
-        :param str name: Friendly name of the Access Application.
+        :param List[str] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1900,11 +1997,11 @@ class AccessPolicyRequireOkta(dict):
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[str]:
+    def names(self) -> Optional[List[str]]:
         """
         Friendly name of the Access Application.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -2340,8 +2437,7 @@ class HealthcheckHeader(dict):
 class IpListItem(dict):
     def __init__(__self__, *,
                  value: str,
-                 comment: Optional[str] = None,
-                 id: Optional[str] = None):
+                 comment: Optional[str] = None):
         """
         :param str value: The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         :param str comment: A note that can be used to annotate the item.
@@ -2349,8 +2445,6 @@ class IpListItem(dict):
         pulumi.set(__self__, "value", value)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
@@ -2367,11 +2461,6 @@ class IpListItem(dict):
         A note that can be used to annotate the item.
         """
         return pulumi.get(self, "comment")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        return pulumi.get(self, "id")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -4054,6 +4143,38 @@ class WorkerScriptSecretTextBinding(dict):
         The secret text you want to store.
         """
         return pulumi.get(self, "text")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class WorkerScriptWebassemblyBinding(dict):
+    def __init__(__self__, *,
+                 module: str,
+                 name: str):
+        """
+        :param str module: The base64 encoded wasm module you want to store.
+        :param str name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "module", module)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def module(self) -> str:
+        """
+        The base64 encoded wasm module you want to store.
+        """
+        return pulumi.get(self, "module")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

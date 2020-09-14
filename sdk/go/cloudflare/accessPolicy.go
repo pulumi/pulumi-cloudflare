@@ -79,15 +79,15 @@ type AccessPolicy struct {
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision pulumi.StringOutput `pulumi:"decision"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes AccessPolicyExcludeArrayOutput `pulumi:"excludes"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayOutput `pulumi:"includes"`
 	// Friendly name of the Access Application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique precedence for policies on a single application. Integer.
 	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
 	// The DNS zone to which the access rule should be
 	// added.
@@ -141,15 +141,15 @@ type accessPolicyState struct {
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision *string `pulumi:"decision"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes []AccessPolicyExclude `pulumi:"excludes"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes []AccessPolicyInclude `pulumi:"includes"`
 	// Friendly name of the Access Application.
 	Name *string `pulumi:"name"`
 	// The unique precedence for policies on a single application. Integer.
 	Precedence *int `pulumi:"precedence"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
 	// The DNS zone to which the access rule should be
 	// added.
@@ -164,15 +164,15 @@ type AccessPolicyState struct {
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision pulumi.StringPtrInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes AccessPolicyExcludeArrayInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayInput
 	// Friendly name of the Access Application.
 	Name pulumi.StringPtrInput
 	// The unique precedence for policies on a single application. Integer.
 	Precedence pulumi.IntPtrInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
 	// The DNS zone to which the access rule should be
 	// added.
@@ -191,15 +191,15 @@ type accessPolicyArgs struct {
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision string `pulumi:"decision"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes []AccessPolicyExclude `pulumi:"excludes"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes []AccessPolicyInclude `pulumi:"includes"`
 	// Friendly name of the Access Application.
 	Name string `pulumi:"name"`
 	// The unique precedence for policies on a single application. Integer.
 	Precedence *int `pulumi:"precedence"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
 	// The DNS zone to which the access rule should be
 	// added.
@@ -215,15 +215,15 @@ type AccessPolicyArgs struct {
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision pulumi.StringInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes AccessPolicyExcludeArrayInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayInput
 	// Friendly name of the Access Application.
 	Name pulumi.StringInput
 	// The unique precedence for policies on a single application. Integer.
 	Precedence pulumi.IntPtrInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
 	// The DNS zone to which the access rule should be
 	// added.

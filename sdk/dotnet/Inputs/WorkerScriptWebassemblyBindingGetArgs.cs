@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class IpListItemArgs : Pulumi.ResourceArgs
+    public sealed class WorkerScriptWebassemblyBindingGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A note that can be used to annotate the item.
+        /// The base64 encoded wasm module you want to store.
         /// </summary>
-        [Input("comment")]
-        public Input<string>? Comment { get; set; }
+        [Input("module", required: true)]
+        public Input<string> Module { get; set; } = null!;
 
         /// <summary>
-        /// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
-        public IpListItemArgs()
+        public WorkerScriptWebassemblyBindingGetArgs()
         {
         }
     }

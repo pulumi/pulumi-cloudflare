@@ -83,6 +83,7 @@ __all__ = [
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlainTextBindingArgs',
     'WorkerScriptSecretTextBindingArgs',
+    'WorkerScriptWebassemblyBindingArgs',
     'ZoneLockdownConfigurationArgs',
     'ZoneMetaArgs',
     'ZoneSettingsOverrideInitialSettingsArgs',
@@ -250,6 +251,7 @@ class AccessApplicationCorsHeaderArgs:
 class AccessGroupExcludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  azures: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
@@ -265,6 +267,8 @@ class AccessGroupExcludeArgs:
                  service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -300,6 +304,15 @@ class AccessGroupExcludeArgs:
     @any_valid_service_token.setter
     def any_valid_service_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter
@@ -422,21 +435,12 @@ class AccessGroupExcludeArgs:
 @pulumi.input_type
 class AccessGroupExcludeAzureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[pulumi.Input[str]] = None,
+                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -447,12 +451,22 @@ class AccessGroupExcludeAzureArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "ids", value)
+
 
 @pulumi.input_type
 class AccessGroupExcludeGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         """
@@ -460,6 +474,8 @@ class AccessGroupExcludeGithubArgs:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -482,25 +498,34 @@ class AccessGroupExcludeGithubArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
 
 @pulumi.input_type
 class AccessGroupExcludeGsuiteArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None,
+                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "emails")
 
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -516,14 +541,14 @@ class AccessGroupExcludeGsuiteArgs:
 class AccessGroupExcludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] name: Friendly name of the Access Group.
+        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -536,15 +561,15 @@ class AccessGroupExcludeOktaArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Group.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
 
 
 @pulumi.input_type
@@ -592,6 +617,7 @@ class AccessGroupExcludeSamlArgs:
 class AccessGroupIncludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  azures: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
@@ -607,6 +633,8 @@ class AccessGroupIncludeArgs:
                  service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -642,6 +670,15 @@ class AccessGroupIncludeArgs:
     @any_valid_service_token.setter
     def any_valid_service_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter
@@ -764,21 +801,12 @@ class AccessGroupIncludeArgs:
 @pulumi.input_type
 class AccessGroupIncludeAzureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[pulumi.Input[str]] = None,
+                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -789,12 +817,22 @@ class AccessGroupIncludeAzureArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "ids", value)
+
 
 @pulumi.input_type
 class AccessGroupIncludeGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         """
@@ -802,6 +840,8 @@ class AccessGroupIncludeGithubArgs:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -824,25 +864,34 @@ class AccessGroupIncludeGithubArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
 
 @pulumi.input_type
 class AccessGroupIncludeGsuiteArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None,
+                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "emails")
 
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -858,14 +907,14 @@ class AccessGroupIncludeGsuiteArgs:
 class AccessGroupIncludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] name: Friendly name of the Access Group.
+        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -878,15 +927,15 @@ class AccessGroupIncludeOktaArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Group.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
 
 
 @pulumi.input_type
@@ -934,6 +983,7 @@ class AccessGroupIncludeSamlArgs:
 class AccessGroupRequireArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  azures: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
@@ -949,6 +999,8 @@ class AccessGroupRequireArgs:
                  service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -984,6 +1036,15 @@ class AccessGroupRequireArgs:
     @any_valid_service_token.setter
     def any_valid_service_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter
@@ -1106,21 +1167,12 @@ class AccessGroupRequireArgs:
 @pulumi.input_type
 class AccessGroupRequireAzureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[pulumi.Input[str]] = None,
+                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1131,12 +1183,22 @@ class AccessGroupRequireAzureArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "ids", value)
+
 
 @pulumi.input_type
 class AccessGroupRequireGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         """
@@ -1144,6 +1206,8 @@ class AccessGroupRequireGithubArgs:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1166,25 +1230,34 @@ class AccessGroupRequireGithubArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
 
 @pulumi.input_type
 class AccessGroupRequireGsuiteArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None,
+                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "emails")
 
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1200,14 +1273,14 @@ class AccessGroupRequireGsuiteArgs:
 class AccessGroupRequireOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] name: Friendly name of the Access Group.
+        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1220,15 +1293,15 @@ class AccessGroupRequireOktaArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Group.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
 
 
 @pulumi.input_type
@@ -1509,6 +1582,7 @@ class AccessIdentityProviderConfigArgs:
 class AccessPolicyExcludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  azures: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
@@ -1524,6 +1598,8 @@ class AccessPolicyExcludeArgs:
                  service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -1559,6 +1635,15 @@ class AccessPolicyExcludeArgs:
     @any_valid_service_token.setter
     def any_valid_service_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter
@@ -1681,21 +1766,12 @@ class AccessPolicyExcludeArgs:
 @pulumi.input_type
 class AccessPolicyExcludeAzureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[pulumi.Input[str]] = None,
+                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1706,12 +1782,22 @@ class AccessPolicyExcludeAzureArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "ids", value)
+
 
 @pulumi.input_type
 class AccessPolicyExcludeGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         """
@@ -1719,6 +1805,8 @@ class AccessPolicyExcludeGithubArgs:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1741,25 +1829,34 @@ class AccessPolicyExcludeGithubArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
 
 @pulumi.input_type
 class AccessPolicyExcludeGsuiteArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None,
+                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "emails")
 
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1775,14 +1872,14 @@ class AccessPolicyExcludeGsuiteArgs:
 class AccessPolicyExcludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -1795,15 +1892,15 @@ class AccessPolicyExcludeOktaArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Application.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
 
 
 @pulumi.input_type
@@ -1851,6 +1948,7 @@ class AccessPolicyExcludeSamlArgs:
 class AccessPolicyIncludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  azures: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
@@ -1866,6 +1964,8 @@ class AccessPolicyIncludeArgs:
                  service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -1901,6 +2001,15 @@ class AccessPolicyIncludeArgs:
     @any_valid_service_token.setter
     def any_valid_service_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter
@@ -2023,21 +2132,12 @@ class AccessPolicyIncludeArgs:
 @pulumi.input_type
 class AccessPolicyIncludeAzureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[pulumi.Input[str]] = None,
+                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -2048,12 +2148,22 @@ class AccessPolicyIncludeAzureArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "ids", value)
+
 
 @pulumi.input_type
 class AccessPolicyIncludeGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         """
@@ -2061,6 +2171,8 @@ class AccessPolicyIncludeGithubArgs:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -2083,25 +2195,34 @@ class AccessPolicyIncludeGithubArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
 
 @pulumi.input_type
 class AccessPolicyIncludeGsuiteArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None,
+                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "emails")
 
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -2117,14 +2238,14 @@ class AccessPolicyIncludeGsuiteArgs:
 class AccessPolicyIncludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -2137,15 +2258,15 @@ class AccessPolicyIncludeOktaArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Application.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
 
 
 @pulumi.input_type
@@ -2193,6 +2314,7 @@ class AccessPolicyIncludeSamlArgs:
 class AccessPolicyRequireArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
+                 auth_method: Optional[pulumi.Input[str]] = None,
                  azures: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
@@ -2208,6 +2330,8 @@ class AccessPolicyRequireArgs:
                  service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_method is not None:
+            pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
             pulumi.set(__self__, "azures", azures)
         if certificate is not None:
@@ -2243,6 +2367,15 @@ class AccessPolicyRequireArgs:
     @any_valid_service_token.setter
     def any_valid_service_token(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "any_valid_service_token", value)
+
+    @property
+    @pulumi.getter(name="authMethod")
+    def auth_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "auth_method")
+
+    @auth_method.setter
+    def auth_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "auth_method", value)
 
     @property
     @pulumi.getter
@@ -2365,21 +2498,12 @@ class AccessPolicyRequireArgs:
 @pulumi.input_type
 class AccessPolicyRequireAzureArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[str]] = None,
-                 identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if id is not None:
-            pulumi.set(__self__, "id", id)
+                 identity_provider_id: Optional[pulumi.Input[str]] = None,
+                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
+        if ids is not None:
+            pulumi.set(__self__, "ids", ids)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -2390,12 +2514,22 @@ class AccessPolicyRequireAzureArgs:
     def identity_provider_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "identity_provider_id", value)
 
+    @property
+    @pulumi.getter
+    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "ids")
+
+    @ids.setter
+    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "ids", value)
+
 
 @pulumi.input_type
 class AccessPolicyRequireGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         """
@@ -2403,6 +2537,8 @@ class AccessPolicyRequireGithubArgs:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if teams is not None:
+            pulumi.set(__self__, "teams", teams)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -2425,25 +2561,34 @@ class AccessPolicyRequireGithubArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter
+    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "teams")
+
+    @teams.setter
+    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "teams", value)
+
 
 @pulumi.input_type
 class AccessPolicyRequireGsuiteArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None,
+                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "email")
+    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+        return pulumi.get(self, "emails")
 
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "emails", value)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -2459,14 +2604,14 @@ class AccessPolicyRequireGsuiteArgs:
 class AccessPolicyRequireOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        if names is not None:
+            pulumi.set(__self__, "names", names)
 
     @property
     @pulumi.getter(name="identityProviderId")
@@ -2479,15 +2624,15 @@ class AccessPolicyRequireOktaArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Application.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "names")
 
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
 
 
 @pulumi.input_type
@@ -3025,8 +3170,7 @@ class HealthcheckHeaderArgs:
 class IpListItemArgs:
     def __init__(__self__, *,
                  value: pulumi.Input[str],
-                 comment: Optional[pulumi.Input[str]] = None,
-                 id: Optional[pulumi.Input[str]] = None):
+                 comment: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] value: The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         :param pulumi.Input[str] comment: A note that can be used to annotate the item.
@@ -3034,8 +3178,6 @@ class IpListItemArgs:
         pulumi.set(__self__, "value", value)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter
@@ -3060,15 +3202,6 @@ class IpListItemArgs:
     @comment.setter
     def comment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "comment", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
@@ -5198,6 +5331,43 @@ class WorkerScriptSecretTextBindingArgs:
     @text.setter
     def text(self, value: pulumi.Input[str]):
         pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class WorkerScriptWebassemblyBindingArgs:
+    def __init__(__self__, *,
+                 module: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] module: The base64 encoded wasm module you want to store.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "module", module)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def module(self) -> pulumi.Input[str]:
+        """
+        The base64 encoded wasm module you want to store.
+        """
+        return pulumi.get(self, "module")
+
+    @module.setter
+    def module(self, value: pulumi.Input[str]):
+        pulumi.set(self, "module", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

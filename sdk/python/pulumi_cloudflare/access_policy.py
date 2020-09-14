@@ -72,11 +72,11 @@ class AccessPolicy(pulumi.CustomResource):
                associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
                Allowed values: `allow`, `deny`, `non_identity`, `bypass`
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[float] precedence: The unique precedence for policies on a single application. Integer.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
                added.
         """
@@ -144,11 +144,11 @@ class AccessPolicy(pulumi.CustomResource):
                associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
                Allowed values: `allow`, `deny`, `non_identity`, `bypass`
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[float] precedence: The unique precedence for policies on a single application. Integer.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
                added.
         """
@@ -194,7 +194,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def excludes(self) -> pulumi.Output[Optional[List['outputs.AccessPolicyExclude']]]:
         """
-        A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         """
         return pulumi.get(self, "excludes")
 
@@ -202,7 +202,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def includes(self) -> pulumi.Output[List['outputs.AccessPolicyInclude']]:
         """
-        A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         """
         return pulumi.get(self, "includes")
 
@@ -226,7 +226,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter
     def requires(self) -> pulumi.Output[Optional[List['outputs.AccessPolicyRequire']]]:
         """
-        A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         """
         return pulumi.get(self, "requires")
 

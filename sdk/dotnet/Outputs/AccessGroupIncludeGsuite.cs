@@ -13,16 +13,16 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupIncludeGsuite
     {
-        public readonly string? Email;
+        public readonly ImmutableArray<string> Emails;
         public readonly string? IdentityProviderId;
 
         [OutputConstructor]
         private AccessGroupIncludeGsuite(
-            string? email,
+            ImmutableArray<string> emails,
 
             string? identityProviderId)
         {
-            Email = email;
+            Emails = emails;
             IdentityProviderId = identityProviderId;
         }
     }

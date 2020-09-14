@@ -15,11 +15,17 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
+        [Input("names")]
+        private InputList<string>? _names;
+
         /// <summary>
         /// Friendly name of the Access Application.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        public InputList<string> Names
+        {
+            get => _names ?? (_names = new InputList<string>());
+            set => _names = value;
+        }
 
         public AccessPolicyExcludeOktaGetArgs()
         {

@@ -95,13 +95,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Decision { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         [Output("excludes")]
         public Output<ImmutableArray<Outputs.AccessPolicyExclude>> Excludes { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         [Output("includes")]
         public Output<ImmutableArray<Outputs.AccessPolicyInclude>> Includes { get; private set; } = null!;
@@ -119,7 +119,7 @@ namespace Pulumi.Cloudflare
         public Output<int?> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         [Output("requires")]
         public Output<ImmutableArray<Outputs.AccessPolicyRequire>> Requires { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyExcludeArgs>? _excludes;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyExcludeArgs> Excludes
         {
@@ -210,7 +210,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyIncludeArgs>? _includes;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyIncludeArgs> Includes
         {
@@ -234,7 +234,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyRequireArgs>? _requires;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyRequireArgs> Requires
         {
@@ -277,7 +277,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyExcludeGetArgs>? _excludes;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyExcludeGetArgs> Excludes
         {
@@ -289,7 +289,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyIncludeGetArgs>? _includes;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyIncludeGetArgs> Includes
         {
@@ -313,7 +313,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyRequireGetArgs>? _requires;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyRequireGetArgs> Requires
         {

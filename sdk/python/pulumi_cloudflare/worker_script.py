@@ -22,36 +22,12 @@ class WorkerScript(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  plain_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
+                 webassembly_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        my_namespace = cloudflare.WorkersKvNamespace("myNamespace", title="example")
-        # Sets the script with the name "script_1"
-        my_script = cloudflare.WorkerScript("myScript",
-            name="script_1",
-            content=(lambda path: open(path).read())("script.js"),
-            kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
-                name="MY_EXAMPLE_KV_NAMESPACE",
-                namespace_id=my_namespace.id,
-            )],
-            plain_text_bindings=[cloudflare.WorkerScriptPlainTextBindingArgs(
-                name="MY_EXAMPLE_PLAIN_TEXT",
-                text="foobar",
-            )],
-            secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
-                name="MY_EXAMPLE_SECRET_TEXT",
-                text=var["secret_foo_value"],
-            )])
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -84,6 +60,7 @@ class WorkerScript(pulumi.CustomResource):
             __props__['name'] = name
             __props__['plain_text_bindings'] = plain_text_bindings
             __props__['secret_text_bindings'] = secret_text_bindings
+            __props__['webassembly_bindings'] = webassembly_bindings
         super(WorkerScript, __self__).__init__(
             'cloudflare:index/workerScript:WorkerScript',
             resource_name,
@@ -98,7 +75,8 @@ class WorkerScript(pulumi.CustomResource):
             kv_namespace_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             plain_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
-            secret_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None) -> 'WorkerScript':
+            secret_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
+            webassembly_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None) -> 'WorkerScript':
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -118,6 +96,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__["name"] = name
         __props__["plain_text_bindings"] = plain_text_bindings
         __props__["secret_text_bindings"] = secret_text_bindings
+        __props__["webassembly_bindings"] = webassembly_bindings
         return WorkerScript(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -150,6 +129,11 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter(name="secretTextBindings")
     def secret_text_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptSecretTextBinding']]]:
         return pulumi.get(self, "secret_text_bindings")
+
+    @property
+    @pulumi.getter(name="webassemblyBindings")
+    def webassembly_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptWebassemblyBinding']]]:
+        return pulumi.get(self, "webassembly_bindings")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -18,9 +18,10 @@ type WorkerScript struct {
 	Content             pulumi.StringOutput                       `pulumi:"content"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
 	// The global variable for the binding in your Worker code.
-	Name               pulumi.StringOutput                      `pulumi:"name"`
-	PlainTextBindings  WorkerScriptPlainTextBindingArrayOutput  `pulumi:"plainTextBindings"`
-	SecretTextBindings WorkerScriptSecretTextBindingArrayOutput `pulumi:"secretTextBindings"`
+	Name                pulumi.StringOutput                       `pulumi:"name"`
+	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
+	SecretTextBindings  WorkerScriptSecretTextBindingArrayOutput  `pulumi:"secretTextBindings"`
+	WebassemblyBindings WorkerScriptWebassemblyBindingArrayOutput `pulumi:"webassemblyBindings"`
 }
 
 // NewWorkerScript registers a new resource with the given unique name, arguments, and options.
@@ -61,9 +62,10 @@ type workerScriptState struct {
 	Content             *string                          `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// The global variable for the binding in your Worker code.
-	Name               *string                         `pulumi:"name"`
-	PlainTextBindings  []WorkerScriptPlainTextBinding  `pulumi:"plainTextBindings"`
-	SecretTextBindings []WorkerScriptSecretTextBinding `pulumi:"secretTextBindings"`
+	Name                *string                          `pulumi:"name"`
+	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
+	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
+	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
 }
 
 type WorkerScriptState struct {
@@ -71,9 +73,10 @@ type WorkerScriptState struct {
 	Content             pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// The global variable for the binding in your Worker code.
-	Name               pulumi.StringPtrInput
-	PlainTextBindings  WorkerScriptPlainTextBindingArrayInput
-	SecretTextBindings WorkerScriptSecretTextBindingArrayInput
+	Name                pulumi.StringPtrInput
+	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
+	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
+	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
 }
 
 func (WorkerScriptState) ElementType() reflect.Type {
@@ -85,9 +88,10 @@ type workerScriptArgs struct {
 	Content             string                           `pulumi:"content"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// The global variable for the binding in your Worker code.
-	Name               string                          `pulumi:"name"`
-	PlainTextBindings  []WorkerScriptPlainTextBinding  `pulumi:"plainTextBindings"`
-	SecretTextBindings []WorkerScriptSecretTextBinding `pulumi:"secretTextBindings"`
+	Name                string                           `pulumi:"name"`
+	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
+	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
+	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
 }
 
 // The set of arguments for constructing a WorkerScript resource.
@@ -96,9 +100,10 @@ type WorkerScriptArgs struct {
 	Content             pulumi.StringInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// The global variable for the binding in your Worker code.
-	Name               pulumi.StringInput
-	PlainTextBindings  WorkerScriptPlainTextBindingArrayInput
-	SecretTextBindings WorkerScriptSecretTextBindingArrayInput
+	Name                pulumi.StringInput
+	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
+	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
+	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
 }
 
 func (WorkerScriptArgs) ElementType() reflect.Type {

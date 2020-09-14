@@ -203,7 +203,8 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_custom_hostname_fallback_origin": {
 				Tok: makeResource(mainMod, "CustomHostnameFallbackOrigin"),
 			},
-			"cloudflare_ip_list": {Tok: makeResource(mainMod, "IpList")},
+			"cloudflare_ip_list":          {Tok: makeResource(mainMod, "IpList")},
+			"cloudflare_certificate_pack": {Tok: makeResource(mainMod, "CertificatePack")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},

@@ -155,8 +155,12 @@ github.com/cloudflare/cloudflare-go v0.12.0 h1:NJpzvYvJBRBNMlvhxs++aKzy9gUWfZ9j1
 github.com/cloudflare/cloudflare-go v0.12.0/go.mod h1:4h1LTAaXOqJK0eiHXDYsiSeZ+tFbEInZbbAm3VBxfOg=
 github.com/cloudflare/cloudflare-go v0.13.1 h1:8i8E5CubfAlD/2zWM7VGKoIPS2/x/lO/nRnqDl0j5Dk=
 github.com/cloudflare/cloudflare-go v0.13.1/go.mod h1:27kfc1apuifUmJhp069y0+hwlKDg4bd8LWlu7oKeZvM=
+github.com/cloudflare/cloudflare-go v0.13.2 h1:bhMGoNhAg21DuqJjU9jQepRRft6vYfo6pejT3NN4V6A=
+github.com/cloudflare/cloudflare-go v0.13.2/go.mod h1:27kfc1apuifUmJhp069y0+hwlKDg4bd8LWlu7oKeZvM=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20200825002111-8d8b71a700f4 h1:ZJC5mFkkg+Xz5pB19L5uJ/2fIOBi+Ot1hSyF5BRGvKo=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20200825002111-8d8b71a700f4/go.mod h1:MEmKzyMKqaV2ur71D1XskzBpbbevfXfA7X6C5Vl9/iM=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20200910212636-a8dcf713cfbe h1:aq/bPF20CsxdsnvszEAqyOrv7r0xRsR/K+Z/xQotOwU=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20200910212636-a8dcf713cfbe/go.mod h1:k8Z1D3G8MSftceYlI4gfUMlh90a2Dw4qXpcyCGUSdyE=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd h1:qMd81Ts1T2OTKmB4acZcyKaMtRnY5Y44NuXGX2GFJ1w=
 github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd/go.mod h1:sE/e/2PUdi/liOCUjSTXgM1o87ZssimdTWN964YiIeI=
@@ -535,6 +539,8 @@ github.com/pulumi/pulumi-terraform-bridge/v2 v2.7.2 h1:ZgBUEz1zPN1p8el+YDXoRlOPS
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.7.2/go.mod h1:UvbLRW8+YFluKwRZjzP3coPYWQPPYh/q9e2NN2GPbxg=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.7.3 h1:XZxl0fsf9vO45FM+tKPYE9f30fM+q2s6lHsEzkdnBNs=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.7.3/go.mod h1:TW+CNCZHzlH42y0vmRA9gOzeTFh3Cp7MN9DoGcRDLvo=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.8.0 h1:X0ehC9Ot6dHUwIx+1hlgN8FUSk8E5xBNehJlO7C8VWc=
+github.com/pulumi/pulumi-terraform-bridge/v2 v2.8.0/go.mod h1:FuQM6YSFhfuTCJGIdDaE1mz8hSm4R45ewU9eNH65hPE=
 github.com/pulumi/pulumi/pkg/v2 v2.0.0/go.mod h1:kNG9MBTdKP9AzMgkETumR3fmX9gUYB+HpQL767K6jXc=
 github.com/pulumi/pulumi/pkg/v2 v2.2.2-0.20200519081838-f66100ce28b0/go.mod h1:GV88eCIrqfFcBWd5QUdN3qMsR0h+x+iRIBnBhhvB78A=
 github.com/pulumi/pulumi/pkg/v2 v2.3.1-0.20200607162109-9754465b04db h1:5HrO1GNA53QEp+yN1UCX7BUsJD2I5/k1u2KLO4hOxOA=
@@ -548,8 +554,11 @@ github.com/pulumi/pulumi/pkg/v2 v2.9.1-0.20200821035132-629254334213 h1:c8UQ842Z
 github.com/pulumi/pulumi/pkg/v2 v2.9.1-0.20200821035132-629254334213/go.mod h1:Yq1q3nwy/KeU08DyyX0QsMyc6SqPs0jGJb8ev5f45AU=
 github.com/pulumi/pulumi/pkg/v2 v2.9.1-0.20200825190708-910aa96016cd h1:e4nK2jqLm6g7qMW0BInHR3ZM55y1NblvgOlkfNGT2F4=
 github.com/pulumi/pulumi/pkg/v2 v2.9.1-0.20200825190708-910aa96016cd/go.mod h1:Yq1q3nwy/KeU08DyyX0QsMyc6SqPs0jGJb8ev5f45AU=
+github.com/pulumi/pulumi/pkg/v2 v2.10.0 h1:GTUffKvweAzcCZ2Ok44MFY62nT4FY/u+eX8bWlzDs2A=
+github.com/pulumi/pulumi/pkg/v2 v2.10.0/go.mod h1:zQWe2D4tYJDeXNzSclqNmP8/SMSKOh8k22AbWg3+mVc=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0 h1:3VMXbEo3bqeaU+YDt8ufVBLD0WhLYE3tG3t/nIZ3Iac=
 github.com/pulumi/pulumi/sdk/v2 v2.0.0/go.mod h1:W7k1UDYerc5o97mHnlHHp5iQZKEby+oQrQefWt+2RF4=
+github.com/pulumi/pulumi/sdk/v2 v2.2.1/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
 github.com/pulumi/pulumi/sdk/v2 v2.2.2-0.20200519081838-f66100ce28b0/go.mod h1:QNbWpL4gvf3X0lUFT7TXA2Jo1ff/Ti2l97AyFGYwvW4=
 github.com/pulumi/pulumi/sdk/v2 v2.3.1-0.20200607162109-9754465b04db h1:Q1/Azshl983zTcWXMqkbEcFt1UN88unn9tdMv5ouQ80=
 github.com/pulumi/pulumi/sdk/v2 v2.3.1-0.20200607162109-9754465b04db/go.mod h1:llk6tmXss8kJrt3vEXAkwiwgZOuINEFmKIfMveVIwO8=
@@ -563,6 +572,8 @@ github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200821035132-629254334213 h1:h4hBtS6/
 github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200821035132-629254334213/go.mod h1:x84WPiFiuE+G4kJ5jUYkOxmnQJlWoJaHNeEYdqnCKA4=
 github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200825190708-910aa96016cd h1:m5jEWpbr/Q94vCqA/7fw5US7cHZLeQiMQXrnSblZzdU=
 github.com/pulumi/pulumi/sdk/v2 v2.9.1-0.20200825190708-910aa96016cd/go.mod h1:x84WPiFiuE+G4kJ5jUYkOxmnQJlWoJaHNeEYdqnCKA4=
+github.com/pulumi/pulumi/sdk/v2 v2.10.0 h1:+BPDjZYGl3AI2hLkLCig1+q7hvo/TAVBLGlzPb0r0kk=
+github.com/pulumi/pulumi/sdk/v2 v2.10.0/go.mod h1:x84WPiFiuE+G4kJ5jUYkOxmnQJlWoJaHNeEYdqnCKA4=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d h1:1JtzB9Gx0YX2UgKKkqJwTgBXxfg2cbLUEqTJKwKBK7s=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200519092335-cb56a4dfa88d/go.mod h1:yv9XozKsue9ZELHQbrBGgIaFtE3OX3Q4m7koTzTqgpE=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200528170746-c1234defe2b5 h1:h+pUwgEser1Ole6TMCc66njRPcw7SEVXpeoClG+ihEM=
@@ -571,6 +582,8 @@ github.com/pulumi/tf2pulumi v0.8.1-0.20200630203740-1846524be4ec h1:C0l29EHsfhH+
 github.com/pulumi/tf2pulumi v0.8.1-0.20200630203740-1846524be4ec/go.mod h1:lE39suxXfTqjNHg8PxtPUdek3wnTTdnoYXVpQdFGmEo=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200701212620-1e7538fb9a34 h1:u1NyO0NXvl+b6kXq2iuQgU95U3O1muXMZLEglS/k+zM=
 github.com/pulumi/tf2pulumi v0.8.1-0.20200701212620-1e7538fb9a34/go.mod h1:lE39suxXfTqjNHg8PxtPUdek3wnTTdnoYXVpQdFGmEo=
+github.com/pulumi/tf2pulumi v0.9.0 h1:oOvFFYGQVg4fFbHhTOqGhiWyuwW4mHa4fEUcHxAmeHc=
+github.com/pulumi/tf2pulumi v0.9.0/go.mod h1:lE39suxXfTqjNHg8PxtPUdek3wnTTdnoYXVpQdFGmEo=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
@@ -841,6 +854,8 @@ golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2/go.mod h1:NqM8EUOU14njkJ3
 golang.org/x/text v0.3.1-0.20181227161524-e6919f6577db/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
 golang.org/x/text v0.3.2 h1:tW2bmiBqwgJj/UpqtC8EpXEZVYOwU0yG4iWbprSVAcs=
 golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
+golang.org/x/text v0.3.3 h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=
+golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 golang.org/x/time v0.0.0-20181108054448-85acf8d2951c/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/time v0.0.0-20190308202827-9d24e82272b4/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/time v0.0.0-20191024005414-555d28b269f0 h1:/5xXl8Y5W96D+TtHSlonuFqGHIWVuyCkGJLwGh9JJFs=

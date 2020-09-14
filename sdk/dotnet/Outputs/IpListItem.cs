@@ -17,7 +17,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// A note that can be used to annotate the item.
         /// </summary>
         public readonly string? Comment;
-        public readonly string? Id;
         /// <summary>
         /// The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
         /// </summary>
@@ -27,12 +26,9 @@ namespace Pulumi.Cloudflare.Outputs
         private IpListItem(
             string? comment,
 
-            string? id,
-
             string value)
         {
             Comment = comment;
-            Id = id;
             Value = value;
         }
     }
