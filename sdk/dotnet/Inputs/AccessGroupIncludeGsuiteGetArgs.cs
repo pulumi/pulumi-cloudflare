@@ -12,8 +12,13 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessGroupIncludeGsuiteGetArgs : Pulumi.ResourceArgs
     {
-        [Input("email")]
-        public Input<string>? Email { get; set; }
+        [Input("emails")]
+        private InputList<string>? _emails;
+        public InputList<string> Emails
+        {
+            get => _emails ?? (_emails = new InputList<string>());
+            set => _emails = value;
+        }
 
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }

@@ -13,6 +13,7 @@ export * from "./argo";
 export * from "./authenticatedOriginPulls";
 export * from "./authenticatedOriginPullsCertificate";
 export * from "./byoIpPrefix";
+export * from "./certificatePack";
 export * from "./customHostname";
 export * from "./customHostnameFallbackOrigin";
 export * from "./customPages";

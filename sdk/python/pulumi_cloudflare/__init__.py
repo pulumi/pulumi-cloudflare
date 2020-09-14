@@ -14,6 +14,7 @@ from .argo import *
 from .authenticated_origin_pulls import *
 from .authenticated_origin_pulls_certificate import *
 from .byo_ip_prefix import *
+from .certificate_pack import *
 from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *

@@ -17,16 +17,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Friendly name of the Access Application.
         /// </summary>
-        public readonly string? Name;
+        public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]
         private AccessPolicyExcludeOkta(
             string? identityProviderId,
 
-            string? name)
+            ImmutableArray<string> names)
         {
             IdentityProviderId = identityProviderId;
-            Name = name;
+            Names = names;
         }
     }
 }

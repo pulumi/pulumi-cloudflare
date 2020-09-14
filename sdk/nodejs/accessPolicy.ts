@@ -85,11 +85,11 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly decision!: pulumi.Output<string>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     public readonly excludes!: pulumi.Output<outputs.AccessPolicyExclude[] | undefined>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     public readonly includes!: pulumi.Output<outputs.AccessPolicyInclude[]>;
     /**
@@ -101,7 +101,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly precedence!: pulumi.Output<number | undefined>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
@@ -182,11 +182,11 @@ export interface AccessPolicyState {
      */
     readonly decision?: pulumi.Input<string>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     readonly includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
@@ -198,7 +198,7 @@ export interface AccessPolicyState {
      */
     readonly precedence?: pulumi.Input<number>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
@@ -224,11 +224,11 @@ export interface AccessPolicyArgs {
      */
     readonly decision: pulumi.Input<string>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     readonly includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
@@ -240,7 +240,7 @@ export interface AccessPolicyArgs {
      */
     readonly precedence?: pulumi.Input<number>;
     /**
-     * A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).
+     * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
     readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**

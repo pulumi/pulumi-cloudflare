@@ -48,6 +48,7 @@ export interface AccessApplicationCorsHeader {
 
 export interface AccessGroupExclude {
     anyValidServiceToken?: boolean;
+    authMethod?: string;
     azures?: outputs.AccessGroupExcludeAzure[];
     certificate?: boolean;
     commonName?: string;
@@ -64,8 +65,8 @@ export interface AccessGroupExclude {
 }
 
 export interface AccessGroupExcludeAzure {
-    id?: string;
     identityProviderId?: string;
+    ids?: string[];
 }
 
 export interface AccessGroupExcludeGithub {
@@ -74,10 +75,11 @@ export interface AccessGroupExcludeGithub {
      * Friendly name of the Access Group.
      */
     name?: string;
+    teams?: string[];
 }
 
 export interface AccessGroupExcludeGsuite {
-    email?: string;
+    emails?: string[];
     identityProviderId?: string;
 }
 
@@ -86,7 +88,7 @@ export interface AccessGroupExcludeOkta {
     /**
      * Friendly name of the Access Group.
      */
-    name?: string;
+    names?: string[];
 }
 
 export interface AccessGroupExcludeSaml {
@@ -97,6 +99,7 @@ export interface AccessGroupExcludeSaml {
 
 export interface AccessGroupInclude {
     anyValidServiceToken?: boolean;
+    authMethod?: string;
     azures?: outputs.AccessGroupIncludeAzure[];
     certificate?: boolean;
     commonName?: string;
@@ -113,8 +116,8 @@ export interface AccessGroupInclude {
 }
 
 export interface AccessGroupIncludeAzure {
-    id?: string;
     identityProviderId?: string;
+    ids?: string[];
 }
 
 export interface AccessGroupIncludeGithub {
@@ -123,10 +126,11 @@ export interface AccessGroupIncludeGithub {
      * Friendly name of the Access Group.
      */
     name?: string;
+    teams?: string[];
 }
 
 export interface AccessGroupIncludeGsuite {
-    email?: string;
+    emails?: string[];
     identityProviderId?: string;
 }
 
@@ -135,7 +139,7 @@ export interface AccessGroupIncludeOkta {
     /**
      * Friendly name of the Access Group.
      */
-    name?: string;
+    names?: string[];
 }
 
 export interface AccessGroupIncludeSaml {
@@ -146,6 +150,7 @@ export interface AccessGroupIncludeSaml {
 
 export interface AccessGroupRequire {
     anyValidServiceToken?: boolean;
+    authMethod?: string;
     azures?: outputs.AccessGroupRequireAzure[];
     certificate?: boolean;
     commonName?: string;
@@ -162,8 +167,8 @@ export interface AccessGroupRequire {
 }
 
 export interface AccessGroupRequireAzure {
-    id?: string;
     identityProviderId?: string;
+    ids?: string[];
 }
 
 export interface AccessGroupRequireGithub {
@@ -172,10 +177,11 @@ export interface AccessGroupRequireGithub {
      * Friendly name of the Access Group.
      */
     name?: string;
+    teams?: string[];
 }
 
 export interface AccessGroupRequireGsuite {
-    email?: string;
+    emails?: string[];
     identityProviderId?: string;
 }
 
@@ -184,7 +190,7 @@ export interface AccessGroupRequireOkta {
     /**
      * Friendly name of the Access Group.
      */
-    name?: string;
+    names?: string[];
 }
 
 export interface AccessGroupRequireSaml {
@@ -217,6 +223,7 @@ export interface AccessIdentityProviderConfig {
 
 export interface AccessPolicyExclude {
     anyValidServiceToken?: boolean;
+    authMethod?: string;
     azures?: outputs.AccessPolicyExcludeAzure[];
     certificate?: boolean;
     commonName?: string;
@@ -233,8 +240,8 @@ export interface AccessPolicyExclude {
 }
 
 export interface AccessPolicyExcludeAzure {
-    id?: string;
     identityProviderId?: string;
+    ids?: string[];
 }
 
 export interface AccessPolicyExcludeGithub {
@@ -243,10 +250,11 @@ export interface AccessPolicyExcludeGithub {
      * Friendly name of the Access Application.
      */
     name?: string;
+    teams?: string[];
 }
 
 export interface AccessPolicyExcludeGsuite {
-    email?: string;
+    emails?: string[];
     identityProviderId?: string;
 }
 
@@ -255,7 +263,7 @@ export interface AccessPolicyExcludeOkta {
     /**
      * Friendly name of the Access Application.
      */
-    name?: string;
+    names?: string[];
 }
 
 export interface AccessPolicyExcludeSaml {
@@ -266,6 +274,7 @@ export interface AccessPolicyExcludeSaml {
 
 export interface AccessPolicyInclude {
     anyValidServiceToken?: boolean;
+    authMethod?: string;
     azures?: outputs.AccessPolicyIncludeAzure[];
     certificate?: boolean;
     commonName?: string;
@@ -282,8 +291,8 @@ export interface AccessPolicyInclude {
 }
 
 export interface AccessPolicyIncludeAzure {
-    id?: string;
     identityProviderId?: string;
+    ids?: string[];
 }
 
 export interface AccessPolicyIncludeGithub {
@@ -292,10 +301,11 @@ export interface AccessPolicyIncludeGithub {
      * Friendly name of the Access Application.
      */
     name?: string;
+    teams?: string[];
 }
 
 export interface AccessPolicyIncludeGsuite {
-    email?: string;
+    emails?: string[];
     identityProviderId?: string;
 }
 
@@ -304,7 +314,7 @@ export interface AccessPolicyIncludeOkta {
     /**
      * Friendly name of the Access Application.
      */
-    name?: string;
+    names?: string[];
 }
 
 export interface AccessPolicyIncludeSaml {
@@ -315,6 +325,7 @@ export interface AccessPolicyIncludeSaml {
 
 export interface AccessPolicyRequire {
     anyValidServiceToken?: boolean;
+    authMethod?: string;
     azures?: outputs.AccessPolicyRequireAzure[];
     certificate?: boolean;
     commonName?: string;
@@ -331,8 +342,8 @@ export interface AccessPolicyRequire {
 }
 
 export interface AccessPolicyRequireAzure {
-    id?: string;
     identityProviderId?: string;
+    ids?: string[];
 }
 
 export interface AccessPolicyRequireGithub {
@@ -341,10 +352,11 @@ export interface AccessPolicyRequireGithub {
      * Friendly name of the Access Application.
      */
     name?: string;
+    teams?: string[];
 }
 
 export interface AccessPolicyRequireGsuite {
-    email?: string;
+    emails?: string[];
     identityProviderId?: string;
 }
 
@@ -353,7 +365,7 @@ export interface AccessPolicyRequireOkta {
     /**
      * Friendly name of the Access Application.
      */
-    name?: string;
+    names?: string[];
 }
 
 export interface AccessPolicyRequireSaml {
@@ -662,7 +674,6 @@ export interface IpListItem {
      * A note that can be used to annotate the item.
      */
     comment?: string;
-    id: string;
     /**
      * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
@@ -1172,6 +1183,17 @@ export interface WorkerScriptSecretTextBinding {
      * The secret text you want to store.
      */
     text: string;
+}
+
+export interface WorkerScriptWebassemblyBinding {
+    /**
+     * The base64 encoded wasm module you want to store.
+     */
+    module: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
 }
 
 export interface ZoneLockdownConfiguration {

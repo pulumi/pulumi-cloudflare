@@ -48,6 +48,7 @@ export interface AccessApplicationCorsHeader {
 
 export interface AccessGroupExclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
@@ -64,8 +65,8 @@ export interface AccessGroupExclude {
 }
 
 export interface AccessGroupExcludeAzure {
-    id?: pulumi.Input<string>;
     identityProviderId?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupExcludeGithub {
@@ -74,10 +75,11 @@ export interface AccessGroupExcludeGithub {
      * Friendly name of the Access Group.
      */
     name?: pulumi.Input<string>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupExcludeGsuite {
-    email?: pulumi.Input<string>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -86,7 +88,7 @@ export interface AccessGroupExcludeOkta {
     /**
      * Friendly name of the Access Group.
      */
-    name?: pulumi.Input<string>;
+    names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupExcludeSaml {
@@ -97,6 +99,7 @@ export interface AccessGroupExcludeSaml {
 
 export interface AccessGroupInclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
@@ -113,8 +116,8 @@ export interface AccessGroupInclude {
 }
 
 export interface AccessGroupIncludeAzure {
-    id?: pulumi.Input<string>;
     identityProviderId?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupIncludeGithub {
@@ -123,10 +126,11 @@ export interface AccessGroupIncludeGithub {
      * Friendly name of the Access Group.
      */
     name?: pulumi.Input<string>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupIncludeGsuite {
-    email?: pulumi.Input<string>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -135,7 +139,7 @@ export interface AccessGroupIncludeOkta {
     /**
      * Friendly name of the Access Group.
      */
-    name?: pulumi.Input<string>;
+    names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupIncludeSaml {
@@ -146,6 +150,7 @@ export interface AccessGroupIncludeSaml {
 
 export interface AccessGroupRequire {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
@@ -162,8 +167,8 @@ export interface AccessGroupRequire {
 }
 
 export interface AccessGroupRequireAzure {
-    id?: pulumi.Input<string>;
     identityProviderId?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupRequireGithub {
@@ -172,10 +177,11 @@ export interface AccessGroupRequireGithub {
      * Friendly name of the Access Group.
      */
     name?: pulumi.Input<string>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupRequireGsuite {
-    email?: pulumi.Input<string>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -184,7 +190,7 @@ export interface AccessGroupRequireOkta {
     /**
      * Friendly name of the Access Group.
      */
-    name?: pulumi.Input<string>;
+    names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessGroupRequireSaml {
@@ -217,6 +223,7 @@ export interface AccessIdentityProviderConfig {
 
 export interface AccessPolicyExclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
@@ -233,8 +240,8 @@ export interface AccessPolicyExclude {
 }
 
 export interface AccessPolicyExcludeAzure {
-    id?: pulumi.Input<string>;
     identityProviderId?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyExcludeGithub {
@@ -243,10 +250,11 @@ export interface AccessPolicyExcludeGithub {
      * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyExcludeGsuite {
-    email?: pulumi.Input<string>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -255,7 +263,7 @@ export interface AccessPolicyExcludeOkta {
     /**
      * Friendly name of the Access Application.
      */
-    name?: pulumi.Input<string>;
+    names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyExcludeSaml {
@@ -266,6 +274,7 @@ export interface AccessPolicyExcludeSaml {
 
 export interface AccessPolicyInclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
@@ -282,8 +291,8 @@ export interface AccessPolicyInclude {
 }
 
 export interface AccessPolicyIncludeAzure {
-    id?: pulumi.Input<string>;
     identityProviderId?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyIncludeGithub {
@@ -292,10 +301,11 @@ export interface AccessPolicyIncludeGithub {
      * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyIncludeGsuite {
-    email?: pulumi.Input<string>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -304,7 +314,7 @@ export interface AccessPolicyIncludeOkta {
     /**
      * Friendly name of the Access Application.
      */
-    name?: pulumi.Input<string>;
+    names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyIncludeSaml {
@@ -315,6 +325,7 @@ export interface AccessPolicyIncludeSaml {
 
 export interface AccessPolicyRequire {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
@@ -331,8 +342,8 @@ export interface AccessPolicyRequire {
 }
 
 export interface AccessPolicyRequireAzure {
-    id?: pulumi.Input<string>;
     identityProviderId?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyRequireGithub {
@@ -341,10 +352,11 @@ export interface AccessPolicyRequireGithub {
      * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
+    teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyRequireGsuite {
-    email?: pulumi.Input<string>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -353,7 +365,7 @@ export interface AccessPolicyRequireOkta {
     /**
      * Friendly name of the Access Application.
      */
-    name?: pulumi.Input<string>;
+    names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface AccessPolicyRequireSaml {
@@ -558,7 +570,6 @@ export interface IpListItem {
      * A note that can be used to annotate the item.
      */
     comment?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
     /**
      * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
@@ -1068,6 +1079,17 @@ export interface WorkerScriptSecretTextBinding {
      * The secret text you want to store.
      */
     text: pulumi.Input<string>;
+}
+
+export interface WorkerScriptWebassemblyBinding {
+    /**
+     * The base64 encoded wasm module you want to store.
+     */
+    module: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
 }
 
 export interface ZoneLockdownConfiguration {

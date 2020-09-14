@@ -21,6 +21,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("teams")]
+        private InputList<string>? _teams;
+        public InputList<string> Teams
+        {
+            get => _teams ?? (_teams = new InputList<string>());
+            set => _teams = value;
+        }
+
         public AccessPolicyIncludeGithubArgs()
         {
         }

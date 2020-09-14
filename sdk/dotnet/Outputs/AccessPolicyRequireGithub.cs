@@ -18,15 +18,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// Friendly name of the Access Application.
         /// </summary>
         public readonly string? Name;
+        public readonly ImmutableArray<string> Teams;
 
         [OutputConstructor]
         private AccessPolicyRequireGithub(
             string? identityProviderId,
 
-            string? name)
+            string? name,
+
+            ImmutableArray<string> teams)
         {
             IdentityProviderId = identityProviderId;
             Name = name;
+            Teams = teams;
         }
     }
 }

@@ -17,16 +17,16 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Friendly name of the Access Group.
         /// </summary>
-        public readonly string? Name;
+        public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]
         private AccessGroupIncludeOkta(
             string? identityProviderId,
 
-            string? name)
+            ImmutableArray<string> names)
         {
             IdentityProviderId = identityProviderId;
-            Name = name;
+            Names = names;
         }
     }
 }

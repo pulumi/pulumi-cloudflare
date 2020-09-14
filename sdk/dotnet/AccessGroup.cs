@@ -89,8 +89,11 @@ namespace Pulumi.Cloudflare
     /// requests. Example: `everyone = true`
     /// * `certificate` - (Optional) Whether to use mTLS certificate authentication.
     /// * `common_name` - (Optional) Use a certificate common name to authenticate with.
+    /// * `auth_method` - (Optional) A string identifying the authentication
+    /// method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
+    /// Custom values are also supported.
     /// * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
-    /// * `github` - (Optional) Use a GitHub team as the `include` condition. Example:
+    /// * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
     /// * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
     /// * `okta` - (Optional) Use Okta as the `include` condition. Example:
     /// * `saml` - (Optional) Use an external SAML setup as the `include` condition.

@@ -8,33 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * from "fs";
- *
- * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {title: "example"});
- * // Sets the script with the name "script_1"
- * const myScript = new cloudflare.WorkerScript("myScript", {
- *     name: "script_1",
- *     content: fs.readFileSync("script.js"),
- *     kvNamespaceBindings: [{
- *         name: "MY_EXAMPLE_KV_NAMESPACE",
- *         namespaceId: myNamespace.id,
- *     }],
- *     plainTextBindings: [{
- *         name: "MY_EXAMPLE_PLAIN_TEXT",
- *         text: "foobar",
- *     }],
- *     secretTextBindings: [{
- *         name: "MY_EXAMPLE_SECRET_TEXT",
- *         text: _var.secret_foo_value,
- *     }],
- * });
- * ```
  */
 export class WorkerScript extends pulumi.CustomResource {
     /**
@@ -75,6 +48,7 @@ export class WorkerScript extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly plainTextBindings!: pulumi.Output<outputs.WorkerScriptPlainTextBinding[] | undefined>;
     public readonly secretTextBindings!: pulumi.Output<outputs.WorkerScriptSecretTextBinding[] | undefined>;
+    public readonly webassemblyBindings!: pulumi.Output<outputs.WorkerScriptWebassemblyBinding[] | undefined>;
 
     /**
      * Create a WorkerScript resource with the given unique name, arguments, and options.
@@ -93,6 +67,7 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
             inputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
+            inputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
             if (!args || args.content === undefined) {
@@ -106,6 +81,7 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
             inputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
+            inputs["webassemblyBindings"] = args ? args.webassemblyBindings : undefined;
         }
         if (!opts) {
             opts = {}
@@ -133,6 +109,7 @@ export interface WorkerScriptState {
     readonly name?: pulumi.Input<string>;
     readonly plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
     readonly secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
+    readonly webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
 }
 
 /**
@@ -150,4 +127,5 @@ export interface WorkerScriptArgs {
     readonly name: pulumi.Input<string>;
     readonly plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
     readonly secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
+    readonly webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
 }

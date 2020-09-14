@@ -208,6 +208,14 @@
                         }
                     }
                 },
+                "authMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "azures": {
                     "type": "array",
                     "items": {
@@ -347,7 +355,7 @@
         },
         "cloudflare:/AccessGroupExcludeAzure:AccessGroupExcludeAzure": {
             "properties": {
-                "id": {
+                "identityProviderId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -355,8 +363,11 @@
                         }
                     }
                 },
-                "identityProviderId": {
-                    "type": "string",
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -384,14 +395,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "cloudflare:/AccessGroupExcludeGsuite:AccessGroupExcludeGsuite": {
             "properties": {
-                "email": {
-                    "type": "string",
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -419,8 +444,11 @@
                         }
                     }
                 },
-                "name": {
-                    "type": "string",
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Friendly name of the Access Group.\n",
                     "language": {
                         "python": {
@@ -464,6 +492,14 @@
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authMethod": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -609,7 +645,7 @@
         },
         "cloudflare:/AccessGroupIncludeAzure:AccessGroupIncludeAzure": {
             "properties": {
-                "id": {
+                "identityProviderId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -617,8 +653,11 @@
                         }
                     }
                 },
-                "identityProviderId": {
-                    "type": "string",
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -646,14 +685,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "cloudflare:/AccessGroupIncludeGsuite:AccessGroupIncludeGsuite": {
             "properties": {
-                "email": {
-                    "type": "string",
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -681,8 +734,11 @@
                         }
                     }
                 },
-                "name": {
-                    "type": "string",
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Friendly name of the Access Group.\n",
                     "language": {
                         "python": {
@@ -726,6 +782,14 @@
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authMethod": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -871,7 +935,7 @@
         },
         "cloudflare:/AccessGroupRequireAzure:AccessGroupRequireAzure": {
             "properties": {
-                "id": {
+                "identityProviderId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -879,8 +943,11 @@
                         }
                     }
                 },
-                "identityProviderId": {
-                    "type": "string",
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -908,14 +975,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "cloudflare:/AccessGroupRequireGsuite:AccessGroupRequireGsuite": {
             "properties": {
-                "email": {
-                    "type": "string",
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -943,8 +1024,11 @@
                         }
                     }
                 },
-                "name": {
-                    "type": "string",
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Friendly name of the Access Group.\n",
                     "language": {
                         "python": {
@@ -1161,6 +1245,14 @@
                         }
                     }
                 },
+                "authMethod": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "azures": {
                     "type": "array",
                     "items": {
@@ -1300,7 +1392,7 @@
         },
         "cloudflare:/AccessPolicyExcludeAzure:AccessPolicyExcludeAzure": {
             "properties": {
-                "id": {
+                "identityProviderId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -1308,8 +1400,11 @@
                         }
                     }
                 },
-                "identityProviderId": {
-                    "type": "string",
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1337,14 +1432,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "cloudflare:/AccessPolicyExcludeGsuite:AccessPolicyExcludeGsuite": {
             "properties": {
-                "email": {
-                    "type": "string",
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1372,8 +1481,11 @@
                         }
                     }
                 },
-                "name": {
-                    "type": "string",
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Friendly name of the Access Application.\n",
                     "language": {
                         "python": {
@@ -1417,6 +1529,14 @@
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authMethod": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1562,7 +1682,7 @@
         },
         "cloudflare:/AccessPolicyIncludeAzure:AccessPolicyIncludeAzure": {
             "properties": {
-                "id": {
+                "identityProviderId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -1570,8 +1690,11 @@
                         }
                     }
                 },
-                "identityProviderId": {
-                    "type": "string",
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1599,14 +1722,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "cloudflare:/AccessPolicyIncludeGsuite:AccessPolicyIncludeGsuite": {
             "properties": {
-                "email": {
-                    "type": "string",
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1634,8 +1771,11 @@
                         }
                     }
                 },
-                "name": {
-                    "type": "string",
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Friendly name of the Access Application.\n",
                     "language": {
                         "python": {
@@ -1679,6 +1819,14 @@
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authMethod": {
+                    "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1824,7 +1972,7 @@
         },
         "cloudflare:/AccessPolicyRequireAzure:AccessPolicyRequireAzure": {
             "properties": {
-                "id": {
+                "identityProviderId": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -1832,8 +1980,11 @@
                         }
                     }
                 },
-                "identityProviderId": {
-                    "type": "string",
+                "ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1861,14 +2012,28 @@
                             "mapCase": false
                         }
                     }
+                },
+                "teams": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
                 }
             },
             "type": "object"
         },
         "cloudflare:/AccessPolicyRequireGsuite:AccessPolicyRequireGsuite": {
             "properties": {
-                "email": {
-                    "type": "string",
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1896,8 +2061,11 @@
                         }
                     }
                 },
-                "name": {
-                    "type": "string",
+                "names": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "Friendly name of the Access Application.\n",
                     "language": {
                         "python": {
@@ -2226,14 +2394,6 @@
                         }
                     }
                 },
-                "id": {
-                    "type": "string",
-                    "language": {
-                        "python": {
-                            "mapCase": false
-                        }
-                    }
-                },
                 "value": {
                     "type": "string",
                     "description": "The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.\n",
@@ -2247,15 +2407,7 @@
             "type": "object",
             "required": [
                 "value"
-            ],
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "id",
-                        "value"
-                    ]
-                }
-            }
+            ]
         },
         "cloudflare:/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader": {
             "properties": {
@@ -3536,6 +3688,33 @@
             "required": [
                 "name",
                 "text"
+            ]
+        },
+        "cloudflare:/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding": {
+            "properties": {
+                "module": {
+                    "type": "string",
+                    "description": "The base64 encoded wasm module you want to store.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "module",
+                "name"
             ]
         },
         "cloudflare:/ZoneLockdownConfiguration:ZoneLockdownConfiguration": {
@@ -5329,7 +5508,7 @@
             }
         },
         "cloudflare:index/accessGroup:AccessGroup": {
-            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = \"admins@example.com\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub team as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-team-name\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = \"86773093-5feb-48dd-814b-7ccd3676ff50e\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n",
+            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported.\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      team = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -5534,14 +5713,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:/AccessPolicyExclude:AccessPolicyExclude"
                     },
-                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:/AccessPolicyInclude:AccessPolicyInclude"
                     },
-                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
                 "name": {
                     "type": "string",
@@ -5556,7 +5735,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:/AccessPolicyRequire:AccessPolicyRequire"
                     },
-                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -5588,14 +5767,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:/AccessPolicyExclude:AccessPolicyExclude"
                     },
-                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:/AccessPolicyInclude:AccessPolicyInclude"
                     },
-                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
                 "name": {
                     "type": "string",
@@ -5610,7 +5789,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:/AccessPolicyRequire:AccessPolicyRequire"
                     },
-                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                    "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -5642,14 +5821,14 @@
                         "items": {
                             "$ref": "#/types/cloudflare:/AccessPolicyExclude:AccessPolicyExclude"
                         },
-                        "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                        "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                     },
                     "includes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:/AccessPolicyInclude:AccessPolicyInclude"
                         },
-                        "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                        "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                     },
                     "name": {
                         "type": "string",
@@ -5664,7 +5843,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:/AccessPolicyRequire:AccessPolicyRequire"
                         },
-                        "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/docs/providers/cloudflare/r/access_group.html#conditions).\n"
+                        "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -6152,6 +6331,121 @@
                     "prefixId": {
                         "type": "string",
                         "description": "The assigned Bring-Your-Own-IP prefix ID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/certificatePack:CertificatePack": {
+            "properties": {
+                "certificateAuthority": {
+                    "type": "string",
+                    "description": "Which certificate\nauthority to issue the certificate pack. Allowed values: `\"digicert\"`,\n`\"lets_encrypt\"`.\n"
+                },
+                "cloudflareBranding": {
+                    "type": "boolean",
+                    "description": "Whether or not to include\nCloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name\nif set to `true`.\n"
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of hostnames to provision the certificate pack for.\nNote: If using Let's Encrypt, you cannot use individual subdomains and only a\nwildcard for subdomain is available.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Certificate pack configuration type.\nAllowed values: `\"custom\"`, `\"dedicated_custom\"`, `\"advanced\"`.\n"
+                },
+                "validationMethod": {
+                    "type": "string",
+                    "description": "Which validation method to\nuse in order to prove domain ownership. Allowed values: `\"txt\"`, `\"http\"`, `\"email\"`.\n"
+                },
+                "validityDays": {
+                    "type": "integer",
+                    "description": "How long the certificate is valid\nfor. Note: If using Let's Encrypt, this value can only be 90 days.\nAllowed values: 14, 30, 90, 365.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone to which the certificate pack should be added.\n"
+                }
+            },
+            "required": [
+                "hosts",
+                "type",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "certificateAuthority": {
+                    "type": "string",
+                    "description": "Which certificate\nauthority to issue the certificate pack. Allowed values: `\"digicert\"`,\n`\"lets_encrypt\"`.\n"
+                },
+                "cloudflareBranding": {
+                    "type": "boolean",
+                    "description": "Whether or not to include\nCloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name\nif set to `true`.\n"
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of hostnames to provision the certificate pack for.\nNote: If using Let's Encrypt, you cannot use individual subdomains and only a\nwildcard for subdomain is available.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Certificate pack configuration type.\nAllowed values: `\"custom\"`, `\"dedicated_custom\"`, `\"advanced\"`.\n"
+                },
+                "validationMethod": {
+                    "type": "string",
+                    "description": "Which validation method to\nuse in order to prove domain ownership. Allowed values: `\"txt\"`, `\"http\"`, `\"email\"`.\n"
+                },
+                "validityDays": {
+                    "type": "integer",
+                    "description": "How long the certificate is valid\nfor. Note: If using Let's Encrypt, this value can only be 90 days.\nAllowed values: 14, 30, 90, 365.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone to which the certificate pack should be added.\n"
+                }
+            },
+            "requiredInputs": [
+                "hosts",
+                "type",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CertificatePack resources.\n",
+                "properties": {
+                    "certificateAuthority": {
+                        "type": "string",
+                        "description": "Which certificate\nauthority to issue the certificate pack. Allowed values: `\"digicert\"`,\n`\"lets_encrypt\"`.\n"
+                    },
+                    "cloudflareBranding": {
+                        "type": "boolean",
+                        "description": "Whether or not to include\nCloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name\nif set to `true`.\n"
+                    },
+                    "hosts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of hostnames to provision the certificate pack for.\nNote: If using Let's Encrypt, you cannot use individual subdomains and only a\nwildcard for subdomain is available.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Certificate pack configuration type.\nAllowed values: `\"custom\"`, `\"dedicated_custom\"`, `\"advanced\"`.\n"
+                    },
+                    "validationMethod": {
+                        "type": "string",
+                        "description": "Which validation method to\nuse in order to prove domain ownership. Allowed values: `\"txt\"`, `\"http\"`, `\"email\"`.\n"
+                    },
+                    "validityDays": {
+                        "type": "integer",
+                        "description": "How long the certificate is valid\nfor. Note: If using Let's Encrypt, this value can only be 90 days.\nAllowed values: 14, 30, 90, 365.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The DNS zone to which the certificate pack should be added.\n"
                     }
                 },
                 "type": "object"
@@ -9055,7 +9349,7 @@
             }
         },
         "cloudflare:index/workerScript:WorkerScript": {
-            "description": "Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * from \"fs\";\n\nconst myNamespace = new cloudflare.WorkersKvNamespace(\"myNamespace\", {title: \"example\"});\n// Sets the script with the name \"script_1\"\nconst myScript = new cloudflare.WorkerScript(\"myScript\", {\n    name: \"script_1\",\n    content: fs.readFileSync(\"script.js\"),\n    kvNamespaceBindings: [{\n        name: \"MY_EXAMPLE_KV_NAMESPACE\",\n        namespaceId: myNamespace.id,\n    }],\n    plainTextBindings: [{\n        name: \"MY_EXAMPLE_PLAIN_TEXT\",\n        text: \"foobar\",\n    }],\n    secretTextBindings: [{\n        name: \"MY_EXAMPLE_SECRET_TEXT\",\n        text: _var.secret_foo_value,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_namespace = cloudflare.WorkersKvNamespace(\"myNamespace\", title=\"example\")\n# Sets the script with the name \"script_1\"\nmy_script = cloudflare.WorkerScript(\"myScript\",\n    name=\"script_1\",\n    content=(lambda path: open(path).read())(\"script.js\"),\n    kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(\n        name=\"MY_EXAMPLE_KV_NAMESPACE\",\n        namespace_id=my_namespace.id,\n    )],\n    plain_text_bindings=[cloudflare.WorkerScriptPlainTextBindingArgs(\n        name=\"MY_EXAMPLE_PLAIN_TEXT\",\n        text=\"foobar\",\n    )],\n    secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(\n        name=\"MY_EXAMPLE_SECRET_TEXT\",\n        text=var[\"secret_foo_value\"],\n    )])\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myNamespace = new Cloudflare.WorkersKvNamespace(\"myNamespace\", new Cloudflare.WorkersKvNamespaceArgs\n        {\n            Title = \"example\",\n        });\n        // Sets the script with the name \"script_1\"\n        var myScript = new Cloudflare.WorkerScript(\"myScript\", new Cloudflare.WorkerScriptArgs\n        {\n            Name = \"script_1\",\n            Content = File.ReadAllText(\"script.js\"),\n            KvNamespaceBindings = \n            {\n                new Cloudflare.Inputs.WorkerScriptKvNamespaceBindingArgs\n                {\n                    Name = \"MY_EXAMPLE_KV_NAMESPACE\",\n                    NamespaceId = myNamespace.Id,\n                },\n            },\n            PlainTextBindings = \n            {\n                new Cloudflare.Inputs.WorkerScriptPlainTextBindingArgs\n                {\n                    Name = \"MY_EXAMPLE_PLAIN_TEXT\",\n                    Text = \"foobar\",\n                },\n            },\n            SecretTextBindings = \n            {\n                new Cloudflare.Inputs.WorkerScriptSecretTextBindingArgs\n                {\n                    Name = \"MY_EXAMPLE_SECRET_TEXT\",\n                    Text = @var.Secret_foo_value,\n                },\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.\n",
             "properties": {
                 "content": {
                     "type": "string",
@@ -9081,6 +9375,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                    }
+                },
+                "webassemblyBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
                     }
                 }
             },
@@ -9113,6 +9413,12 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                    }
+                },
+                "webassemblyBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
                     }
                 }
             },
@@ -9147,6 +9453,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                        }
+                    },
+                    "webassemblyBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
                         }
                     }
                 },

@@ -13,17 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessPolicyIncludeAzure
     {
-        public readonly string? Id;
         public readonly string? IdentityProviderId;
+        public readonly ImmutableArray<string> Ids;
 
         [OutputConstructor]
         private AccessPolicyIncludeAzure(
-            string? id,
+            string? identityProviderId,
 
-            string? identityProviderId)
+            ImmutableArray<string> ids)
         {
-            Id = id;
             IdentityProviderId = identityProviderId;
+            Ids = ids;
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessGroupRequire
     {
         public readonly bool? AnyValidServiceToken;
+        public readonly string? AuthMethod;
         public readonly ImmutableArray<Outputs.AccessGroupRequireAzure> Azures;
         public readonly bool? Certificate;
         public readonly string? CommonName;
@@ -31,6 +32,8 @@ namespace Pulumi.Cloudflare.Outputs
         [OutputConstructor]
         private AccessGroupRequire(
             bool? anyValidServiceToken,
+
+            string? authMethod,
 
             ImmutableArray<Outputs.AccessGroupRequireAzure> azures,
 
@@ -59,6 +62,7 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> serviceTokens)
         {
             AnyValidServiceToken = anyValidServiceToken;
+            AuthMethod = authMethod;
             Azures = azures;
             Certificate = certificate;
             CommonName = commonName;

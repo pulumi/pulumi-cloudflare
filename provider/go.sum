@@ -155,8 +155,12 @@ github.com/cloudflare/cloudflare-go v0.12.0 h1:NJpzvYvJBRBNMlvhxs++aKzy9gUWfZ9j1
 github.com/cloudflare/cloudflare-go v0.12.0/go.mod h1:4h1LTAaXOqJK0eiHXDYsiSeZ+tFbEInZbbAm3VBxfOg=
 github.com/cloudflare/cloudflare-go v0.13.1 h1:8i8E5CubfAlD/2zWM7VGKoIPS2/x/lO/nRnqDl0j5Dk=
 github.com/cloudflare/cloudflare-go v0.13.1/go.mod h1:27kfc1apuifUmJhp069y0+hwlKDg4bd8LWlu7oKeZvM=
+github.com/cloudflare/cloudflare-go v0.13.2 h1:bhMGoNhAg21DuqJjU9jQepRRft6vYfo6pejT3NN4V6A=
+github.com/cloudflare/cloudflare-go v0.13.2/go.mod h1:27kfc1apuifUmJhp069y0+hwlKDg4bd8LWlu7oKeZvM=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20200825002111-8d8b71a700f4 h1:ZJC5mFkkg+Xz5pB19L5uJ/2fIOBi+Ot1hSyF5BRGvKo=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20200825002111-8d8b71a700f4/go.mod h1:MEmKzyMKqaV2ur71D1XskzBpbbevfXfA7X6C5Vl9/iM=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20200910212636-a8dcf713cfbe h1:aq/bPF20CsxdsnvszEAqyOrv7r0xRsR/K+Z/xQotOwU=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20200910212636-a8dcf713cfbe/go.mod h1:k8Z1D3G8MSftceYlI4gfUMlh90a2Dw4qXpcyCGUSdyE=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd h1:qMd81Ts1T2OTKmB4acZcyKaMtRnY5Y44NuXGX2GFJ1w=
 github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd/go.mod h1:sE/e/2PUdi/liOCUjSTXgM1o87ZssimdTWN964YiIeI=
@@ -841,6 +845,8 @@ golang.org/x/text v0.3.1-0.20180807135948-17ff2d5776d2/go.mod h1:NqM8EUOU14njkJ3
 golang.org/x/text v0.3.1-0.20181227161524-e6919f6577db/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
 golang.org/x/text v0.3.2 h1:tW2bmiBqwgJj/UpqtC8EpXEZVYOwU0yG4iWbprSVAcs=
 golang.org/x/text v0.3.2/go.mod h1:bEr9sfX3Q8Zfm5fL9x+3itogRgK3+ptLWKqgva+5dAk=
+golang.org/x/text v0.3.3 h1:cokOdA+Jmi5PJGXLlLllQSgYigAEfHXJAERHVMaCc2k=
+golang.org/x/text v0.3.3/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
 golang.org/x/time v0.0.0-20181108054448-85acf8d2951c/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/time v0.0.0-20190308202827-9d24e82272b4/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/time v0.0.0-20191024005414-555d28b269f0 h1:/5xXl8Y5W96D+TtHSlonuFqGHIWVuyCkGJLwGh9JJFs=
