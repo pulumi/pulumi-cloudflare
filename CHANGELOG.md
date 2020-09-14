@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.6.0 (2020-09-14)
 * Upgrade to v2.11.0 of the CloudFlare Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.8.0
 * Upgrade to Pulumi v2.10.0
-
----
 
 ## 2.5.0 (2020-08-31)
 * Upgrade to pulumi-terraform-bridge v2.7.3
