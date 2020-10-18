@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class CustomHostname(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 ssls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
+                 ssls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -45,7 +45,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate. See further notes below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate. See further notes below.
         :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
         """
         if __name__ is not None:
@@ -92,7 +92,7 @@ class CustomHostname(pulumi.CustomResource):
             hostname: Optional[pulumi.Input[str]] = None,
             ownership_verification: Optional[pulumi.Input[pulumi.InputType['CustomHostnameOwnershipVerificationArgs']]] = None,
             ownership_verification_http: Optional[pulumi.Input[pulumi.InputType['CustomHostnameOwnershipVerificationHttpArgs']]] = None,
-            ssls: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
+            ssls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'CustomHostname':
         """
@@ -104,7 +104,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate. See further notes below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate. See further notes below.
         :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -148,7 +148,7 @@ class CustomHostname(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ssls(self) -> pulumi.Output[List['outputs.CustomHostnameSsl']]:
+    def ssls(self) -> pulumi.Output[Sequence['outputs.CustomHostnameSsl']]:
         """
         SSL configuration of the certificate. See further notes below.
         """

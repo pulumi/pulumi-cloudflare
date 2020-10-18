@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class CustomSsl(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_ssl_options: Optional[pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']]] = None,
-                 custom_ssl_priorities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
+                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -94,12 +94,12 @@ class CustomSsl(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_ssl_options: Optional[pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']]] = None,
-            custom_ssl_priorities: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
+            custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
             expires_on: Optional[pulumi.Input[str]] = None,
-            hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             issuer: Optional[pulumi.Input[str]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             signature: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             uploaded_on: Optional[pulumi.Input[str]] = None,
@@ -141,7 +141,7 @@ class CustomSsl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customSslPriorities")
-    def custom_ssl_priorities(self) -> pulumi.Output[Optional[List['outputs.CustomSslCustomSslPriority']]]:
+    def custom_ssl_priorities(self) -> pulumi.Output[Optional[Sequence['outputs.CustomSslCustomSslPriority']]]:
         return pulumi.get(self, "custom_ssl_priorities")
 
     @property
@@ -151,7 +151,7 @@ class CustomSsl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hosts(self) -> pulumi.Output[List[str]]:
+    def hosts(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "hosts")
 
     @property
@@ -166,7 +166,7 @@ class CustomSsl(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[float]:
+    def priority(self) -> pulumi.Output[int]:
         return pulumi.get(self, "priority")
 
     @property

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,17 +17,17 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 default_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  fallback_pool_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pop_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerPopPoolArgs']]]]] = None,
+                 pop_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPopPoolArgs']]]]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
-                 region_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]]] = None,
+                 region_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
                  steering_policy: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -71,17 +71,17 @@ class LoadBalancer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] default_pool_ids: A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_pool_ids: A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Enable or disable the load balancer. Defaults to `true` (enabled).
         :param pulumi.Input[str] fallback_pool_id: The pool ID to use when all other pools are detected as unhealthy.
         :param pulumi.Input[str] name: The DNS name (FQDN, including the zone) to associate with the load balancer.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerPopPoolArgs']]]] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPopPoolArgs']]]] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
         :param pulumi.Input[bool] proxied: Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]] region_pools: A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]] region_pools: A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         :param pulumi.Input[str] session_affinity: Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
-        :param pulumi.Input[float] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+        :param pulumi.Input[int] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         :param pulumi.Input[str] zone_id: The zone ID to add the load balancer to.
         """
         if __name__ is not None:
@@ -134,18 +134,18 @@ class LoadBalancer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_on: Optional[pulumi.Input[str]] = None,
-            default_pool_ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            default_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             fallback_pool_id: Optional[pulumi.Input[str]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            pop_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerPopPoolArgs']]]]] = None,
+            pop_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPopPoolArgs']]]]] = None,
             proxied: Optional[pulumi.Input[bool]] = None,
-            region_pools: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]]] = None,
+            region_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
             steering_policy: Optional[pulumi.Input[str]] = None,
-            ttl: Optional[pulumi.Input[float]] = None,
+            ttl: Optional[pulumi.Input[int]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
@@ -155,18 +155,18 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer was created.
-        :param pulumi.Input[List[pulumi.Input[str]]] default_pool_ids: A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_pool_ids: A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Enable or disable the load balancer. Defaults to `true` (enabled).
         :param pulumi.Input[str] fallback_pool_id: The pool ID to use when all other pools are detected as unhealthy.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer was last modified.
         :param pulumi.Input[str] name: The DNS name (FQDN, including the zone) to associate with the load balancer.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerPopPoolArgs']]]] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPopPoolArgs']]]] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
         :param pulumi.Input[bool] proxied: Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]] region_pools: A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]] region_pools: A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         :param pulumi.Input[str] session_affinity: Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
-        :param pulumi.Input[float] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+        :param pulumi.Input[int] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         :param pulumi.Input[str] zone_id: The zone ID to add the load balancer to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -199,7 +199,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="defaultPoolIds")
-    def default_pool_ids(self) -> pulumi.Output[List[str]]:
+    def default_pool_ids(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
         """
@@ -247,7 +247,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="popPools")
-    def pop_pools(self) -> pulumi.Output[List['outputs.LoadBalancerPopPool']]:
+    def pop_pools(self) -> pulumi.Output[Sequence['outputs.LoadBalancerPopPool']]:
         """
         A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
         """
@@ -263,7 +263,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="regionPools")
-    def region_pools(self) -> pulumi.Output[List['outputs.LoadBalancerRegionPool']]:
+    def region_pools(self) -> pulumi.Output[Sequence['outputs.LoadBalancerRegionPool']]:
         """
         A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         """
@@ -287,7 +287,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[float]:
+    def ttl(self) -> pulumi.Output[int]:
         """
         Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         """

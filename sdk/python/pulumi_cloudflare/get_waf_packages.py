@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -50,7 +50,7 @@ class GetWafPackagesResult:
 
     @property
     @pulumi.getter
-    def packages(self) -> List['outputs.GetWafPackagesPackageResult']:
+    def packages(self) -> Sequence['outputs.GetWafPackagesPackageResult']:
         """
         A map of WAF Rule Packages details. Full list below:
         """

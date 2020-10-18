@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,9 +18,9 @@ class AccessApplication(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 allowed_idps: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-                 cors_headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
+                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
@@ -59,11 +59,11 @@ class AccessApplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
                selection if only one is configured in allowed_idps. Defaults to `false`
                (disabled).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
                below for reference structure.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -116,10 +116,10 @@ class AccessApplication(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            allowed_idps: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             aud: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-            cors_headers: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
+            cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
@@ -131,12 +131,12 @@ class AccessApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
                selection if only one is configured in allowed_idps. Defaults to `false`
                (disabled).
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
                below for reference structure.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -167,7 +167,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="allowedIdps")
-    def allowed_idps(self) -> pulumi.Output[Optional[List[str]]]:
+    def allowed_idps(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         The identity providers selected for the application.
         """
@@ -193,7 +193,7 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="corsHeaders")
-    def cors_headers(self) -> pulumi.Output[Optional[List['outputs.AccessApplicationCorsHeader']]]:
+    def cors_headers(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationCorsHeader']]]:
         """
         CORS configuration for the Access Application. See
         below for reference structure.

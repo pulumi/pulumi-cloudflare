@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -107,10 +107,10 @@ class AccessApplicationCorsHeaderArgs:
                  allow_all_methods: Optional[pulumi.Input[bool]] = None,
                  allow_all_origins: Optional[pulumi.Input[bool]] = None,
                  allow_credentials: Optional[pulumi.Input[bool]] = None,
-                 allowed_headers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allowed_methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 allowed_origins: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 max_age: Optional[pulumi.Input[float]] = None):
+                 allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] allow_all_headers: Boolean value to determine whether all
                HTTP headers are exposed.
@@ -121,10 +121,10 @@ class AccessApplicationCorsHeaderArgs:
         :param pulumi.Input[bool] allow_credentials: Boolean value to determine if credentials
                (cookies, authorization headers, or TLS client certificates) are included with
                requests.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_headers: List of HTTP headers to expose via CORS.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_methods: List of methods to expose via CORS.
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_origins: List of origins permitted to make CORS requests.
-        :param pulumi.Input[float] max_age: Integer representing the maximum time a preflight
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_headers: List of HTTP headers to expose via CORS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_methods: List of methods to expose via CORS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: List of origins permitted to make CORS requests.
+        :param pulumi.Input[int] max_age: Integer representing the maximum time a preflight
                request will be cached.
         """
         if allow_all_headers is not None:
@@ -199,43 +199,43 @@ class AccessApplicationCorsHeaderArgs:
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of HTTP headers to expose via CORS.
         """
         return pulumi.get(self, "allowed_headers")
 
     @allowed_headers.setter
-    def allowed_headers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_headers", value)
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of methods to expose via CORS.
         """
         return pulumi.get(self, "allowed_methods")
 
     @allowed_methods.setter
-    def allowed_methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_methods", value)
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of origins permitted to make CORS requests.
         """
         return pulumi.get(self, "allowed_origins")
 
     @allowed_origins.setter
-    def allowed_origins(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def allowed_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_origins", value)
 
     @property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[pulumi.Input[float]]:
+    def max_age(self) -> Optional[pulumi.Input[int]]:
         """
         Integer representing the maximum time a preflight
         request will be cached.
@@ -243,7 +243,7 @@ class AccessApplicationCorsHeaderArgs:
         return pulumi.get(self, "max_age")
 
     @max_age.setter
-    def max_age(self, value: Optional[pulumi.Input[float]]):
+    def max_age(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age", value)
 
 
@@ -252,19 +252,19 @@ class AccessGroupExcludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[str]] = None,
-                 azures: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeAzureArgs']]]] = None,
+                 azures: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
-                 email_domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
-                 githubs: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeGithubArgs']]]] = None,
-                 groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 gsuites: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]] = None,
-                 ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 oktas: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeOktaArgs']]]] = None,
-                 samls: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeSamlArgs']]]] = None,
-                 service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGithubArgs']]]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeOktaArgs']]]] = None,
+                 samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeSamlArgs']]]] = None,
+                 service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -316,11 +316,11 @@ class AccessGroupExcludeArgs:
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeAzureArgs']]]]:
+    def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeAzureArgs']]]]:
         return pulumi.get(self, "azures")
 
     @azures.setter
-    def azures(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeAzureArgs']]]]):
+    def azures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeAzureArgs']]]]):
         pulumi.set(self, "azures", value)
 
     @property
@@ -343,20 +343,20 @@ class AccessGroupExcludeArgs:
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
-    def email_domains(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -370,65 +370,65 @@ class AccessGroupExcludeArgs:
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeGithubArgs']]]]:
+    def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGithubArgs']]]]:
         return pulumi.get(self, "githubs")
 
     @githubs.setter
-    def githubs(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeGithubArgs']]]]):
+    def githubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGithubArgs']]]]):
         pulumi.set(self, "githubs", value)
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "groups", value)
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]]:
+    def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]]:
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
-    def gsuites(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]]):
+    def gsuites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]]):
         pulumi.set(self, "gsuites", value)
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeOktaArgs']]]]:
+    def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeOktaArgs']]]]:
         return pulumi.get(self, "oktas")
 
     @oktas.setter
-    def oktas(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeOktaArgs']]]]):
+    def oktas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeOktaArgs']]]]):
         pulumi.set(self, "oktas", value)
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeSamlArgs']]]]:
+    def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeSamlArgs']]]]:
         return pulumi.get(self, "samls")
 
     @samls.setter
-    def samls(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupExcludeSamlArgs']]]]):
+    def samls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeSamlArgs']]]]):
         pulumi.set(self, "samls", value)
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
-    def service_tokens(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def service_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_tokens", value)
 
 
@@ -436,7 +436,7 @@ class AccessGroupExcludeArgs:
 class AccessGroupExcludeAzureArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -453,11 +453,11 @@ class AccessGroupExcludeAzureArgs:
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ids")
 
     @ids.setter
-    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
 
 
@@ -466,7 +466,7 @@ class AccessGroupExcludeGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         """
@@ -500,18 +500,18 @@ class AccessGroupExcludeGithubArgs:
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
 
 
 @pulumi.input_type
 class AccessGroupExcludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -520,11 +520,11 @@ class AccessGroupExcludeGsuiteArgs:
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -541,9 +541,9 @@ class AccessGroupExcludeGsuiteArgs:
 class AccessGroupExcludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -561,14 +561,14 @@ class AccessGroupExcludeOktaArgs:
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Group.
         """
         return pulumi.get(self, "names")
 
     @names.setter
-    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
 
@@ -618,19 +618,19 @@ class AccessGroupIncludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[str]] = None,
-                 azures: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeAzureArgs']]]] = None,
+                 azures: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
-                 email_domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
-                 githubs: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeGithubArgs']]]] = None,
-                 groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 gsuites: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]] = None,
-                 ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 oktas: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeOktaArgs']]]] = None,
-                 samls: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeSamlArgs']]]] = None,
-                 service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGithubArgs']]]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeOktaArgs']]]] = None,
+                 samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeSamlArgs']]]] = None,
+                 service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -682,11 +682,11 @@ class AccessGroupIncludeArgs:
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeAzureArgs']]]]:
+    def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeAzureArgs']]]]:
         return pulumi.get(self, "azures")
 
     @azures.setter
-    def azures(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeAzureArgs']]]]):
+    def azures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeAzureArgs']]]]):
         pulumi.set(self, "azures", value)
 
     @property
@@ -709,20 +709,20 @@ class AccessGroupIncludeArgs:
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
-    def email_domains(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -736,65 +736,65 @@ class AccessGroupIncludeArgs:
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeGithubArgs']]]]:
+    def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGithubArgs']]]]:
         return pulumi.get(self, "githubs")
 
     @githubs.setter
-    def githubs(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeGithubArgs']]]]):
+    def githubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGithubArgs']]]]):
         pulumi.set(self, "githubs", value)
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "groups", value)
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]]:
+    def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]]:
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
-    def gsuites(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]]):
+    def gsuites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]]):
         pulumi.set(self, "gsuites", value)
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeOktaArgs']]]]:
+    def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeOktaArgs']]]]:
         return pulumi.get(self, "oktas")
 
     @oktas.setter
-    def oktas(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeOktaArgs']]]]):
+    def oktas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeOktaArgs']]]]):
         pulumi.set(self, "oktas", value)
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeSamlArgs']]]]:
+    def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeSamlArgs']]]]:
         return pulumi.get(self, "samls")
 
     @samls.setter
-    def samls(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupIncludeSamlArgs']]]]):
+    def samls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeSamlArgs']]]]):
         pulumi.set(self, "samls", value)
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
-    def service_tokens(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def service_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_tokens", value)
 
 
@@ -802,7 +802,7 @@ class AccessGroupIncludeArgs:
 class AccessGroupIncludeAzureArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -819,11 +819,11 @@ class AccessGroupIncludeAzureArgs:
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ids")
 
     @ids.setter
-    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
 
 
@@ -832,7 +832,7 @@ class AccessGroupIncludeGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         """
@@ -866,18 +866,18 @@ class AccessGroupIncludeGithubArgs:
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
 
 
 @pulumi.input_type
 class AccessGroupIncludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -886,11 +886,11 @@ class AccessGroupIncludeGsuiteArgs:
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -907,9 +907,9 @@ class AccessGroupIncludeGsuiteArgs:
 class AccessGroupIncludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -927,14 +927,14 @@ class AccessGroupIncludeOktaArgs:
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Group.
         """
         return pulumi.get(self, "names")
 
     @names.setter
-    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
 
@@ -984,19 +984,19 @@ class AccessGroupRequireArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[str]] = None,
-                 azures: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireAzureArgs']]]] = None,
+                 azures: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
-                 email_domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
-                 githubs: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireGithubArgs']]]] = None,
-                 groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 gsuites: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireGsuiteArgs']]]] = None,
-                 ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 oktas: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireOktaArgs']]]] = None,
-                 samls: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireSamlArgs']]]] = None,
-                 service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGithubArgs']]]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGsuiteArgs']]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireOktaArgs']]]] = None,
+                 samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireSamlArgs']]]] = None,
+                 service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -1048,11 +1048,11 @@ class AccessGroupRequireArgs:
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireAzureArgs']]]]:
+    def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireAzureArgs']]]]:
         return pulumi.get(self, "azures")
 
     @azures.setter
-    def azures(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireAzureArgs']]]]):
+    def azures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireAzureArgs']]]]):
         pulumi.set(self, "azures", value)
 
     @property
@@ -1075,20 +1075,20 @@ class AccessGroupRequireArgs:
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
-    def email_domains(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -1102,65 +1102,65 @@ class AccessGroupRequireArgs:
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireGithubArgs']]]]:
+    def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGithubArgs']]]]:
         return pulumi.get(self, "githubs")
 
     @githubs.setter
-    def githubs(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireGithubArgs']]]]):
+    def githubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGithubArgs']]]]):
         pulumi.set(self, "githubs", value)
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "groups", value)
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireGsuiteArgs']]]]:
+    def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGsuiteArgs']]]]:
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
-    def gsuites(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireGsuiteArgs']]]]):
+    def gsuites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGsuiteArgs']]]]):
         pulumi.set(self, "gsuites", value)
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireOktaArgs']]]]:
+    def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireOktaArgs']]]]:
         return pulumi.get(self, "oktas")
 
     @oktas.setter
-    def oktas(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireOktaArgs']]]]):
+    def oktas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireOktaArgs']]]]):
         pulumi.set(self, "oktas", value)
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireSamlArgs']]]]:
+    def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireSamlArgs']]]]:
         return pulumi.get(self, "samls")
 
     @samls.setter
-    def samls(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessGroupRequireSamlArgs']]]]):
+    def samls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireSamlArgs']]]]):
         pulumi.set(self, "samls", value)
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
-    def service_tokens(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def service_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_tokens", value)
 
 
@@ -1168,7 +1168,7 @@ class AccessGroupRequireArgs:
 class AccessGroupRequireAzureArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -1185,11 +1185,11 @@ class AccessGroupRequireAzureArgs:
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ids")
 
     @ids.setter
-    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
 
 
@@ -1198,7 +1198,7 @@ class AccessGroupRequireGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         """
@@ -1232,18 +1232,18 @@ class AccessGroupRequireGithubArgs:
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
 
 
 @pulumi.input_type
 class AccessGroupRequireGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -1252,11 +1252,11 @@ class AccessGroupRequireGsuiteArgs:
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -1273,9 +1273,9 @@ class AccessGroupRequireGsuiteArgs:
 class AccessGroupRequireOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -1293,14 +1293,14 @@ class AccessGroupRequireOktaArgs:
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Group.
         """
         return pulumi.get(self, "names")
 
     @names.setter
-    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
 
@@ -1349,7 +1349,7 @@ class AccessGroupRequireSamlArgs:
 class AccessIdentityProviderConfigArgs:
     def __init__(__self__, *,
                  apps_domain: Optional[pulumi.Input[str]] = None,
-                 attributes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auth_url: Optional[pulumi.Input[str]] = None,
                  centrify_account: Optional[pulumi.Input[str]] = None,
                  centrify_app_id: Optional[pulumi.Input[str]] = None,
@@ -1417,11 +1417,11 @@ class AccessIdentityProviderConfigArgs:
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "attributes")
 
     @attributes.setter
-    def attributes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "attributes", value)
 
     @property
@@ -1583,19 +1583,19 @@ class AccessPolicyExcludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[str]] = None,
-                 azures: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeAzureArgs']]]] = None,
+                 azures: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
-                 email_domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
-                 githubs: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeGithubArgs']]]] = None,
-                 groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 gsuites: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]] = None,
-                 ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 oktas: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeOktaArgs']]]] = None,
-                 samls: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeSamlArgs']]]] = None,
-                 service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGithubArgs']]]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeOktaArgs']]]] = None,
+                 samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeSamlArgs']]]] = None,
+                 service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -1647,11 +1647,11 @@ class AccessPolicyExcludeArgs:
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeAzureArgs']]]]:
+    def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeAzureArgs']]]]:
         return pulumi.get(self, "azures")
 
     @azures.setter
-    def azures(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeAzureArgs']]]]):
+    def azures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeAzureArgs']]]]):
         pulumi.set(self, "azures", value)
 
     @property
@@ -1674,20 +1674,20 @@ class AccessPolicyExcludeArgs:
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
-    def email_domains(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -1701,65 +1701,65 @@ class AccessPolicyExcludeArgs:
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeGithubArgs']]]]:
+    def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGithubArgs']]]]:
         return pulumi.get(self, "githubs")
 
     @githubs.setter
-    def githubs(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeGithubArgs']]]]):
+    def githubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGithubArgs']]]]):
         pulumi.set(self, "githubs", value)
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "groups", value)
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]]:
+    def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]]:
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
-    def gsuites(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]]):
+    def gsuites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]]):
         pulumi.set(self, "gsuites", value)
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeOktaArgs']]]]:
+    def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeOktaArgs']]]]:
         return pulumi.get(self, "oktas")
 
     @oktas.setter
-    def oktas(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeOktaArgs']]]]):
+    def oktas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeOktaArgs']]]]):
         pulumi.set(self, "oktas", value)
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeSamlArgs']]]]:
+    def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeSamlArgs']]]]:
         return pulumi.get(self, "samls")
 
     @samls.setter
-    def samls(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyExcludeSamlArgs']]]]):
+    def samls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeSamlArgs']]]]):
         pulumi.set(self, "samls", value)
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
-    def service_tokens(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def service_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_tokens", value)
 
 
@@ -1767,7 +1767,7 @@ class AccessPolicyExcludeArgs:
 class AccessPolicyExcludeAzureArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -1784,11 +1784,11 @@ class AccessPolicyExcludeAzureArgs:
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ids")
 
     @ids.setter
-    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
 
 
@@ -1797,7 +1797,7 @@ class AccessPolicyExcludeGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         """
@@ -1831,18 +1831,18 @@ class AccessPolicyExcludeGithubArgs:
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
 
 
 @pulumi.input_type
 class AccessPolicyExcludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -1851,11 +1851,11 @@ class AccessPolicyExcludeGsuiteArgs:
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -1872,9 +1872,9 @@ class AccessPolicyExcludeGsuiteArgs:
 class AccessPolicyExcludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Application.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -1892,14 +1892,14 @@ class AccessPolicyExcludeOktaArgs:
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Application.
         """
         return pulumi.get(self, "names")
 
     @names.setter
-    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
 
@@ -1949,19 +1949,19 @@ class AccessPolicyIncludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[str]] = None,
-                 azures: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeAzureArgs']]]] = None,
+                 azures: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
-                 email_domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
-                 githubs: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeGithubArgs']]]] = None,
-                 groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 gsuites: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]] = None,
-                 ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 oktas: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeOktaArgs']]]] = None,
-                 samls: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeSamlArgs']]]] = None,
-                 service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGithubArgs']]]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeOktaArgs']]]] = None,
+                 samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeSamlArgs']]]] = None,
+                 service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -2013,11 +2013,11 @@ class AccessPolicyIncludeArgs:
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeAzureArgs']]]]:
+    def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeAzureArgs']]]]:
         return pulumi.get(self, "azures")
 
     @azures.setter
-    def azures(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeAzureArgs']]]]):
+    def azures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeAzureArgs']]]]):
         pulumi.set(self, "azures", value)
 
     @property
@@ -2040,20 +2040,20 @@ class AccessPolicyIncludeArgs:
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
-    def email_domains(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -2067,65 +2067,65 @@ class AccessPolicyIncludeArgs:
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeGithubArgs']]]]:
+    def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGithubArgs']]]]:
         return pulumi.get(self, "githubs")
 
     @githubs.setter
-    def githubs(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeGithubArgs']]]]):
+    def githubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGithubArgs']]]]):
         pulumi.set(self, "githubs", value)
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "groups", value)
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]]:
+    def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]]:
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
-    def gsuites(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]]):
+    def gsuites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]]):
         pulumi.set(self, "gsuites", value)
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeOktaArgs']]]]:
+    def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeOktaArgs']]]]:
         return pulumi.get(self, "oktas")
 
     @oktas.setter
-    def oktas(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeOktaArgs']]]]):
+    def oktas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeOktaArgs']]]]):
         pulumi.set(self, "oktas", value)
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeSamlArgs']]]]:
+    def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeSamlArgs']]]]:
         return pulumi.get(self, "samls")
 
     @samls.setter
-    def samls(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyIncludeSamlArgs']]]]):
+    def samls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeSamlArgs']]]]):
         pulumi.set(self, "samls", value)
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
-    def service_tokens(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def service_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_tokens", value)
 
 
@@ -2133,7 +2133,7 @@ class AccessPolicyIncludeArgs:
 class AccessPolicyIncludeAzureArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -2150,11 +2150,11 @@ class AccessPolicyIncludeAzureArgs:
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ids")
 
     @ids.setter
-    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
 
 
@@ -2163,7 +2163,7 @@ class AccessPolicyIncludeGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         """
@@ -2197,18 +2197,18 @@ class AccessPolicyIncludeGithubArgs:
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
 
 
 @pulumi.input_type
 class AccessPolicyIncludeGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -2217,11 +2217,11 @@ class AccessPolicyIncludeGsuiteArgs:
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -2238,9 +2238,9 @@ class AccessPolicyIncludeGsuiteArgs:
 class AccessPolicyIncludeOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Application.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -2258,14 +2258,14 @@ class AccessPolicyIncludeOktaArgs:
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Application.
         """
         return pulumi.get(self, "names")
 
     @names.setter
-    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
 
@@ -2315,19 +2315,19 @@ class AccessPolicyRequireArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
                  auth_method: Optional[pulumi.Input[str]] = None,
-                 azures: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireAzureArgs']]]] = None,
+                 azures: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireAzureArgs']]]] = None,
                  certificate: Optional[pulumi.Input[bool]] = None,
                  common_name: Optional[pulumi.Input[str]] = None,
-                 email_domains: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
-                 githubs: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireGithubArgs']]]] = None,
-                 groups: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 gsuites: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]] = None,
-                 ips: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 oktas: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireOktaArgs']]]] = None,
-                 samls: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireSamlArgs']]]] = None,
-                 service_tokens: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGithubArgs']]]] = None,
+                 groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireOktaArgs']]]] = None,
+                 samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireSamlArgs']]]] = None,
+                 service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -2379,11 +2379,11 @@ class AccessPolicyRequireArgs:
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireAzureArgs']]]]:
+    def azures(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireAzureArgs']]]]:
         return pulumi.get(self, "azures")
 
     @azures.setter
-    def azures(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireAzureArgs']]]]):
+    def azures(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireAzureArgs']]]]):
         pulumi.set(self, "azures", value)
 
     @property
@@ -2406,20 +2406,20 @@ class AccessPolicyRequireArgs:
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def email_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "email_domains")
 
     @email_domains.setter
-    def email_domains(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -2433,65 +2433,65 @@ class AccessPolicyRequireArgs:
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireGithubArgs']]]]:
+    def githubs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGithubArgs']]]]:
         return pulumi.get(self, "githubs")
 
     @githubs.setter
-    def githubs(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireGithubArgs']]]]):
+    def githubs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGithubArgs']]]]):
         pulumi.set(self, "githubs", value)
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "groups")
 
     @groups.setter
-    def groups(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "groups", value)
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]]:
+    def gsuites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]]:
         return pulumi.get(self, "gsuites")
 
     @gsuites.setter
-    def gsuites(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]]):
+    def gsuites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]]):
         pulumi.set(self, "gsuites", value)
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ips")
 
     @ips.setter
-    def ips(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireOktaArgs']]]]:
+    def oktas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireOktaArgs']]]]:
         return pulumi.get(self, "oktas")
 
     @oktas.setter
-    def oktas(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireOktaArgs']]]]):
+    def oktas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireOktaArgs']]]]):
         pulumi.set(self, "oktas", value)
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireSamlArgs']]]]:
+    def samls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireSamlArgs']]]]:
         return pulumi.get(self, "samls")
 
     @samls.setter
-    def samls(self, value: Optional[pulumi.Input[List[pulumi.Input['AccessPolicyRequireSamlArgs']]]]):
+    def samls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireSamlArgs']]]]):
         pulumi.set(self, "samls", value)
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def service_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "service_tokens")
 
     @service_tokens.setter
-    def service_tokens(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def service_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "service_tokens", value)
 
 
@@ -2499,7 +2499,7 @@ class AccessPolicyRequireArgs:
 class AccessPolicyRequireAzureArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 ids: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -2516,11 +2516,11 @@ class AccessPolicyRequireAzureArgs:
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "ids")
 
     @ids.setter
-    def ids(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
 
 
@@ -2529,7 +2529,7 @@ class AccessPolicyRequireGithubArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 teams: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         """
@@ -2563,18 +2563,18 @@ class AccessPolicyRequireGithubArgs:
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "teams")
 
     @teams.setter
-    def teams(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "teams", value)
 
 
 @pulumi.input_type
 class AccessPolicyRequireGsuiteArgs:
     def __init__(__self__, *,
-                 emails: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity_provider_id: Optional[pulumi.Input[str]] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -2583,11 +2583,11 @@ class AccessPolicyRequireGsuiteArgs:
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         return pulumi.get(self, "emails")
 
     @emails.setter
-    def emails(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "emails", value)
 
     @property
@@ -2604,9 +2604,9 @@ class AccessPolicyRequireGsuiteArgs:
 class AccessPolicyRequireOktaArgs:
     def __init__(__self__, *,
                  identity_provider_id: Optional[pulumi.Input[str]] = None,
-                 names: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] names: Friendly name of the Access Application.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -2624,14 +2624,14 @@ class AccessPolicyRequireOktaArgs:
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Friendly name of the Access Application.
         """
         return pulumi.get(self, "names")
 
     @names.setter
-    def names(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
 
 
@@ -2798,7 +2798,7 @@ class CustomHostnameSslArgs:
                  custom_certificate: Optional[pulumi.Input[str]] = None,
                  custom_key: Optional[pulumi.Input[str]] = None,
                  method: Optional[pulumi.Input[str]] = None,
-                 settings: Optional[pulumi.Input[List[pulumi.Input['CustomHostnameSslSettingArgs']]]] = None,
+                 settings: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslSettingArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  wildcard: Optional[pulumi.Input[bool]] = None):
@@ -2807,7 +2807,7 @@ class CustomHostnameSslArgs:
         :param pulumi.Input[str] custom_key: The key for a custom uploaded certificate.
         :param pulumi.Input[str] method: Domain control validation (DCV) method used for this
                hostname. Valid values are `"txt"`, `"http"` and `"email"`.
-        :param pulumi.Input[List[pulumi.Input['CustomHostnameSslSettingArgs']]] settings: SSL/TLS settings for the certificate. See further notes below.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslSettingArgs']]] settings: SSL/TLS settings for the certificate. See further notes below.
         :param pulumi.Input[str] type: Level of validation to be used for this hostname. Domain validation ("dv") must be used.
         :param pulumi.Input[bool] wildcard: Indicates whether the certificate covers a wildcard.
         """
@@ -2898,14 +2898,14 @@ class CustomHostnameSslArgs:
 
     @property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input[List[pulumi.Input['CustomHostnameSslSettingArgs']]]]:
+    def settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslSettingArgs']]]]:
         """
         SSL/TLS settings for the certificate. See further notes below.
         """
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input[List[pulumi.Input['CustomHostnameSslSettingArgs']]]]):
+    def settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslSettingArgs']]]]):
         pulumi.set(self, "settings", value)
 
     @property
@@ -2945,12 +2945,12 @@ class CustomHostnameSslArgs:
 @pulumi.input_type
 class CustomHostnameSslSettingArgs:
     def __init__(__self__, *,
-                 ciphers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  http2: Optional[pulumi.Input[str]] = None,
                  min_tls_version: Optional[pulumi.Input[str]] = None,
                  tls13: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] ciphers: List of SSL/TLS ciphers to associate with this certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ciphers: List of SSL/TLS ciphers to associate with this certificate.
         :param pulumi.Input[str] http2: Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
         :param pulumi.Input[str] min_tls_version: Lowest version of TLS this certificate should
                support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
@@ -2967,14 +2967,14 @@ class CustomHostnameSslSettingArgs:
 
     @property
     @pulumi.getter
-    def ciphers(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def ciphers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of SSL/TLS ciphers to associate with this certificate.
         """
         return pulumi.get(self, "ciphers")
 
     @ciphers.setter
-    def ciphers(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def ciphers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ciphers", value)
 
     @property
@@ -3104,7 +3104,7 @@ class CustomSslCustomSslOptionsArgs:
 class CustomSslCustomSslPriorityArgs:
     def __init__(__self__, *,
                  id: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None):
+                 priority: Optional[pulumi.Input[int]] = None):
         if id is not None:
             pulumi.set(__self__, "id", id)
         if priority is not None:
@@ -3121,11 +3121,11 @@ class CustomSslCustomSslPriorityArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
 
@@ -3133,10 +3133,10 @@ class CustomSslCustomSslPriorityArgs:
 class HealthcheckHeaderArgs:
     def __init__(__self__, *,
                  header: pulumi.Input[str],
-                 values: pulumi.Input[List[pulumi.Input[str]]]):
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] header: The header name.
-        :param pulumi.Input[List[pulumi.Input[str]]] values: A list of string values for the header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: A list of string values for the header.
         """
         pulumi.set(__self__, "header", header)
         pulumi.set(__self__, "values", values)
@@ -3155,14 +3155,14 @@ class HealthcheckHeaderArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of string values for the header.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
@@ -3208,10 +3208,10 @@ class IpListItemArgs:
 class LoadBalancerMonitorHeaderArgs:
     def __init__(__self__, *,
                  header: pulumi.Input[str],
-                 values: pulumi.Input[List[pulumi.Input[str]]]):
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         :param pulumi.Input[str] header: The header name.
-        :param pulumi.Input[List[pulumi.Input[str]]] values: A list of string values for the header.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: A list of string values for the header.
         """
         pulumi.set(__self__, "header", header)
         pulumi.set(__self__, "values", values)
@@ -3230,14 +3230,14 @@ class LoadBalancerMonitorHeaderArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of string values for the header.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 
@@ -3313,10 +3313,10 @@ class LoadBalancerPoolOriginArgs:
 @pulumi.input_type
 class LoadBalancerPopPoolArgs:
     def __init__(__self__, *,
-                 pool_ids: pulumi.Input[List[pulumi.Input[str]]],
+                 pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  pop: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
         :param pulumi.Input[str] pop: A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
         """
         pulumi.set(__self__, "pool_ids", pool_ids)
@@ -3324,14 +3324,14 @@ class LoadBalancerPopPoolArgs:
 
     @property
     @pulumi.getter(name="poolIds")
-    def pool_ids(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def pool_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of pool IDs in failover priority to use for traffic reaching the given PoP.
         """
         return pulumi.get(self, "pool_ids")
 
     @pool_ids.setter
-    def pool_ids(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def pool_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "pool_ids", value)
 
     @property
@@ -3350,10 +3350,10 @@ class LoadBalancerPopPoolArgs:
 @pulumi.input_type
 class LoadBalancerRegionPoolArgs:
     def __init__(__self__, *,
-                 pool_ids: pulumi.Input[List[pulumi.Input[str]]],
+                 pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  region: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
         :param pulumi.Input[str] region: A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
         """
         pulumi.set(__self__, "pool_ids", pool_ids)
@@ -3361,14 +3361,14 @@ class LoadBalancerRegionPoolArgs:
 
     @property
     @pulumi.getter(name="poolIds")
-    def pool_ids(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def pool_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         A list of pool IDs in failover priority to use for traffic reaching the given PoP.
         """
         return pulumi.get(self, "pool_ids")
 
     @pool_ids.setter
-    def pool_ids(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def pool_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "pool_ids", value)
 
     @property
@@ -3398,18 +3398,18 @@ class PageRuleActionsArgs:
                  cache_key_fields: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsArgs']] = None,
                  cache_level: Optional[pulumi.Input[str]] = None,
                  cache_on_cookie: Optional[pulumi.Input[str]] = None,
-                 cache_ttl_by_statuses: Optional[pulumi.Input[List[pulumi.Input['PageRuleActionsCacheTtlByStatusArgs']]]] = None,
+                 cache_ttl_by_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['PageRuleActionsCacheTtlByStatusArgs']]]] = None,
                  disable_apps: Optional[pulumi.Input[bool]] = None,
                  disable_performance: Optional[pulumi.Input[bool]] = None,
                  disable_railgun: Optional[pulumi.Input[bool]] = None,
                  disable_security: Optional[pulumi.Input[bool]] = None,
-                 edge_cache_ttl: Optional[pulumi.Input[float]] = None,
+                 edge_cache_ttl: Optional[pulumi.Input[int]] = None,
                  email_obfuscation: Optional[pulumi.Input[str]] = None,
                  explicit_cache_control: Optional[pulumi.Input[str]] = None,
                  forwarding_url: Optional[pulumi.Input['PageRuleActionsForwardingUrlArgs']] = None,
                  host_header_override: Optional[pulumi.Input[str]] = None,
                  ip_geolocation: Optional[pulumi.Input[str]] = None,
-                 minifies: Optional[pulumi.Input[List[pulumi.Input['PageRuleActionsMinifyArgs']]]] = None,
+                 minifies: Optional[pulumi.Input[Sequence[pulumi.Input['PageRuleActionsMinifyArgs']]]] = None,
                  mirage: Optional[pulumi.Input[str]] = None,
                  opportunistic_encryption: Optional[pulumi.Input[str]] = None,
                  origin_error_page_pass_thru: Optional[pulumi.Input[str]] = None,
@@ -3436,18 +3436,18 @@ class PageRuleActionsArgs:
         :param pulumi.Input['PageRuleActionsCacheKeyFieldsArgs'] cache_key_fields: Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
         :param pulumi.Input[str] cache_level: Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
         :param pulumi.Input[str] cache_on_cookie: String value of cookie name to conditionally cache the page.
-        :param pulumi.Input[List[pulumi.Input['PageRuleActionsCacheTtlByStatusArgs']]] cache_ttl_by_statuses: Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+        :param pulumi.Input[Sequence[pulumi.Input['PageRuleActionsCacheTtlByStatusArgs']]] cache_ttl_by_statuses: Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
         :param pulumi.Input[bool] disable_apps: Boolean of whether this action is enabled. Default: false.
         :param pulumi.Input[bool] disable_performance: Boolean of whether this action is enabled. Default: false.
         :param pulumi.Input[bool] disable_railgun: Boolean of whether this action is enabled. Default: false.
         :param pulumi.Input[bool] disable_security: Boolean of whether this action is enabled. Default: false.
-        :param pulumi.Input[float] edge_cache_ttl: The Time To Live for the edge cache.
+        :param pulumi.Input[int] edge_cache_ttl: The Time To Live for the edge cache.
         :param pulumi.Input[str] email_obfuscation: Whether this action is `"on"` or `"off"`.
         :param pulumi.Input[str] explicit_cache_control: Whether origin Cache-Control action is `"on"` or `"off"`.
         :param pulumi.Input['PageRuleActionsForwardingUrlArgs'] forwarding_url: The URL to forward to, and with what status. See below.
         :param pulumi.Input[str] host_header_override: Value of the Host header to send.
         :param pulumi.Input[str] ip_geolocation: Whether this action is `"on"` or `"off"`.
-        :param pulumi.Input[List[pulumi.Input['PageRuleActionsMinifyArgs']]] minifies: The configuration for HTML, CSS and JS minification. See below for full list of options.
+        :param pulumi.Input[Sequence[pulumi.Input['PageRuleActionsMinifyArgs']]] minifies: The configuration for HTML, CSS and JS minification. See below for full list of options.
         :param pulumi.Input[str] mirage: Whether this action is `"on"` or `"off"`.
         :param pulumi.Input[str] opportunistic_encryption: Whether this action is `"on"` or `"off"`.
         :param pulumi.Input[str] origin_error_page_pass_thru: Whether this action is `"on"` or `"off"`.
@@ -3672,14 +3672,14 @@ class PageRuleActionsArgs:
 
     @property
     @pulumi.getter(name="cacheTtlByStatuses")
-    def cache_ttl_by_statuses(self) -> Optional[pulumi.Input[List[pulumi.Input['PageRuleActionsCacheTtlByStatusArgs']]]]:
+    def cache_ttl_by_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PageRuleActionsCacheTtlByStatusArgs']]]]:
         """
         Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
         """
         return pulumi.get(self, "cache_ttl_by_statuses")
 
     @cache_ttl_by_statuses.setter
-    def cache_ttl_by_statuses(self, value: Optional[pulumi.Input[List[pulumi.Input['PageRuleActionsCacheTtlByStatusArgs']]]]):
+    def cache_ttl_by_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PageRuleActionsCacheTtlByStatusArgs']]]]):
         pulumi.set(self, "cache_ttl_by_statuses", value)
 
     @property
@@ -3732,14 +3732,14 @@ class PageRuleActionsArgs:
 
     @property
     @pulumi.getter(name="edgeCacheTtl")
-    def edge_cache_ttl(self) -> Optional[pulumi.Input[float]]:
+    def edge_cache_ttl(self) -> Optional[pulumi.Input[int]]:
         """
         The Time To Live for the edge cache.
         """
         return pulumi.get(self, "edge_cache_ttl")
 
     @edge_cache_ttl.setter
-    def edge_cache_ttl(self, value: Optional[pulumi.Input[float]]):
+    def edge_cache_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "edge_cache_ttl", value)
 
     @property
@@ -3804,14 +3804,14 @@ class PageRuleActionsArgs:
 
     @property
     @pulumi.getter
-    def minifies(self) -> Optional[pulumi.Input[List[pulumi.Input['PageRuleActionsMinifyArgs']]]]:
+    def minifies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PageRuleActionsMinifyArgs']]]]:
         """
         The configuration for HTML, CSS and JS minification. See below for full list of options.
         """
         return pulumi.get(self, "minifies")
 
     @minifies.setter
-    def minifies(self, value: Optional[pulumi.Input[List[pulumi.Input['PageRuleActionsMinifyArgs']]]]):
+    def minifies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PageRuleActionsMinifyArgs']]]]):
         pulumi.set(self, "minifies", value)
 
     @property
@@ -4068,11 +4068,11 @@ class PageRuleActionsCacheKeyFieldsArgs:
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsCookieArgs:
     def __init__(__self__, *,
-                 check_presences: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 includes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 check_presences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] check_presences: Check for presence of specified HTTP headers, without including their actual values.
-        :param pulumi.Input[List[pulumi.Input[str]]] includes: Only use values of specified query string parameters in Cache Key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] check_presences: Check for presence of specified HTTP headers, without including their actual values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] includes: Only use values of specified query string parameters in Cache Key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -4081,39 +4081,39 @@ class PageRuleActionsCacheKeyFieldsCookieArgs:
 
     @property
     @pulumi.getter(name="checkPresences")
-    def check_presences(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def check_presences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Check for presence of specified HTTP headers, without including their actual values.
         """
         return pulumi.get(self, "check_presences")
 
     @check_presences.setter
-    def check_presences(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def check_presences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "check_presences", value)
 
     @property
     @pulumi.getter
-    def includes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Only use values of specified query string parameters in Cache Key.
         """
         return pulumi.get(self, "includes")
 
     @includes.setter
-    def includes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
 
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsHeaderArgs:
     def __init__(__self__, *,
-                 check_presences: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 excludes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 includes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 check_presences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] check_presences: Check for presence of specified HTTP headers, without including their actual values.
-        :param pulumi.Input[List[pulumi.Input[str]]] excludes: Exclude these query string parameters from Cache Key.
-        :param pulumi.Input[List[pulumi.Input[str]]] includes: Only use values of specified query string parameters in Cache Key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] check_presences: Check for presence of specified HTTP headers, without including their actual values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: Exclude these query string parameters from Cache Key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] includes: Only use values of specified query string parameters in Cache Key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -4124,38 +4124,38 @@ class PageRuleActionsCacheKeyFieldsHeaderArgs:
 
     @property
     @pulumi.getter(name="checkPresences")
-    def check_presences(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def check_presences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Check for presence of specified HTTP headers, without including their actual values.
         """
         return pulumi.get(self, "check_presences")
 
     @check_presences.setter
-    def check_presences(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def check_presences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "check_presences", value)
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Exclude these query string parameters from Cache Key.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excludes", value)
 
     @property
     @pulumi.getter
-    def includes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Only use values of specified query string parameters in Cache Key.
         """
         return pulumi.get(self, "includes")
 
     @includes.setter
-    def includes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
 
@@ -4185,13 +4185,13 @@ class PageRuleActionsCacheKeyFieldsHostArgs:
 @pulumi.input_type
 class PageRuleActionsCacheKeyFieldsQueryStringArgs:
     def __init__(__self__, *,
-                 excludes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ignore: Optional[pulumi.Input[bool]] = None,
-                 includes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None):
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] excludes: Exclude these query string parameters from Cache Key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excludes: Exclude these query string parameters from Cache Key.
         :param pulumi.Input[bool] ignore: `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
-        :param pulumi.Input[List[pulumi.Input[str]]] includes: Only use values of specified query string parameters in Cache Key.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] includes: Only use values of specified query string parameters in Cache Key.
         """
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
@@ -4202,14 +4202,14 @@ class PageRuleActionsCacheKeyFieldsQueryStringArgs:
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Exclude these query string parameters from Cache Key.
         """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
-    def excludes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "excludes", value)
 
     @property
@@ -4226,14 +4226,14 @@ class PageRuleActionsCacheKeyFieldsQueryStringArgs:
 
     @property
     @pulumi.getter
-    def includes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Only use values of specified query string parameters in Cache Key.
         """
         return pulumi.get(self, "includes")
 
     @includes.setter
-    def includes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def includes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "includes", value)
 
 
@@ -4296,10 +4296,10 @@ class PageRuleActionsCacheKeyFieldsUserArgs:
 class PageRuleActionsCacheTtlByStatusArgs:
     def __init__(__self__, *,
                  codes: pulumi.Input[str],
-                 ttl: pulumi.Input[float]):
+                 ttl: pulumi.Input[int]):
         """
         :param pulumi.Input[str] codes: A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
-        :param pulumi.Input[float] ttl: Duration a resource lives in the Cloudflare cache.
+        :param pulumi.Input[int] ttl: Duration a resource lives in the Cloudflare cache.
                * positive number - cache for specified duration in seconds
         """
         pulumi.set(__self__, "codes", codes)
@@ -4319,7 +4319,7 @@ class PageRuleActionsCacheTtlByStatusArgs:
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Input[float]:
+    def ttl(self) -> pulumi.Input[int]:
         """
         Duration a resource lives in the Cloudflare cache.
         * positive number - cache for specified duration in seconds
@@ -4327,17 +4327,17 @@ class PageRuleActionsCacheTtlByStatusArgs:
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: pulumi.Input[float]):
+    def ttl(self, value: pulumi.Input[int]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
 class PageRuleActionsForwardingUrlArgs:
     def __init__(__self__, *,
-                 status_code: pulumi.Input[float],
+                 status_code: pulumi.Input[int],
                  url: pulumi.Input[str]):
         """
-        :param pulumi.Input[float] status_code: The status code to use for the redirection.
+        :param pulumi.Input[int] status_code: The status code to use for the redirection.
         :param pulumi.Input[str] url: The URL to which the page rule should forward.
         """
         pulumi.set(__self__, "status_code", status_code)
@@ -4345,14 +4345,14 @@ class PageRuleActionsForwardingUrlArgs:
 
     @property
     @pulumi.getter(name="statusCode")
-    def status_code(self) -> pulumi.Input[float]:
+    def status_code(self) -> pulumi.Input[int]:
         """
         The status code to use for the redirection.
         """
         return pulumi.get(self, "status_code")
 
     @status_code.setter
-    def status_code(self, value: pulumi.Input[float]):
+    def status_code(self, value: pulumi.Input[int]):
         pulumi.set(self, "status_code", value)
 
     @property
@@ -4425,11 +4425,11 @@ class RateLimitActionArgs:
     def __init__(__self__, *,
                  mode: pulumi.Input[str],
                  response: Optional[pulumi.Input['RateLimitActionResponseArgs']] = None,
-                 timeout: Optional[pulumi.Input[float]] = None):
+                 timeout: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] mode: The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
         :param pulumi.Input['RateLimitActionResponseArgs'] response: Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
-        :param pulumi.Input[float] timeout: The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
+        :param pulumi.Input[int] timeout: The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
         """
         pulumi.set(__self__, "mode", mode)
         if response is not None:
@@ -4463,14 +4463,14 @@ class RateLimitActionArgs:
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[float]]:
+    def timeout(self) -> Optional[pulumi.Input[int]]:
         """
         The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[float]]):
+    def timeout(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -4576,12 +4576,12 @@ class RateLimitMatchArgs:
 @pulumi.input_type
 class RateLimitMatchRequestArgs:
     def __init__(__self__, *,
-                 methods: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
-                 schemes: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 schemes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  url_pattern: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] methods: HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
-        :param pulumi.Input[List[pulumi.Input[str]]] schemes: HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] methods: HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schemes: HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
         :param pulumi.Input[str] url_pattern: The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use * for all traffic to your zone. Default: '*'.
         """
         if methods is not None:
@@ -4593,26 +4593,26 @@ class RateLimitMatchRequestArgs:
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "methods", value)
 
     @property
     @pulumi.getter
-    def schemes(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def schemes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
         """
         return pulumi.get(self, "schemes")
 
     @schemes.setter
-    def schemes(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def schemes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "schemes", value)
 
     @property
@@ -4632,10 +4632,10 @@ class RateLimitMatchRequestArgs:
 class RateLimitMatchResponseArgs:
     def __init__(__self__, *,
                  origin_traffic: Optional[pulumi.Input[bool]] = None,
-                 statuses: Optional[pulumi.Input[List[pulumi.Input[float]]]] = None):
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[bool] origin_traffic: Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
-        :param pulumi.Input[List[pulumi.Input[float]]] statuses: HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] statuses: HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
         """
         if origin_traffic is not None:
             pulumi.set(__self__, "origin_traffic", origin_traffic)
@@ -4656,61 +4656,61 @@ class RateLimitMatchResponseArgs:
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[pulumi.Input[List[pulumi.Input[float]]]]:
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
         """
         return pulumi.get(self, "statuses")
 
     @statuses.setter
-    def statuses(self, value: Optional[pulumi.Input[List[pulumi.Input[float]]]]):
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "statuses", value)
 
 
 @pulumi.input_type
 class RecordDataArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[float]] = None,
+                 algorithm: Optional[pulumi.Input[int]] = None,
                  altitude: Optional[pulumi.Input[float]] = None,
                  certificate: Optional[pulumi.Input[str]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  digest: Optional[pulumi.Input[str]] = None,
-                 digest_type: Optional[pulumi.Input[float]] = None,
+                 digest_type: Optional[pulumi.Input[int]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  flags: Optional[pulumi.Input[str]] = None,
-                 key_tag: Optional[pulumi.Input[float]] = None,
-                 lat_degrees: Optional[pulumi.Input[float]] = None,
+                 key_tag: Optional[pulumi.Input[int]] = None,
+                 lat_degrees: Optional[pulumi.Input[int]] = None,
                  lat_direction: Optional[pulumi.Input[str]] = None,
-                 lat_minutes: Optional[pulumi.Input[float]] = None,
+                 lat_minutes: Optional[pulumi.Input[int]] = None,
                  lat_seconds: Optional[pulumi.Input[float]] = None,
-                 long_degrees: Optional[pulumi.Input[float]] = None,
+                 long_degrees: Optional[pulumi.Input[int]] = None,
                  long_direction: Optional[pulumi.Input[str]] = None,
-                 long_minutes: Optional[pulumi.Input[float]] = None,
+                 long_minutes: Optional[pulumi.Input[int]] = None,
                  long_seconds: Optional[pulumi.Input[float]] = None,
-                 matching_type: Optional[pulumi.Input[float]] = None,
+                 matching_type: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 order: Optional[pulumi.Input[float]] = None,
-                 port: Optional[pulumi.Input[float]] = None,
+                 order: Optional[pulumi.Input[int]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
                  precision_horz: Optional[pulumi.Input[float]] = None,
                  precision_vert: Optional[pulumi.Input[float]] = None,
-                 preference: Optional[pulumi.Input[float]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 preference: Optional[pulumi.Input[int]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  proto: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[float]] = None,
+                 protocol: Optional[pulumi.Input[int]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[str]] = None,
                  replacement: Optional[pulumi.Input[str]] = None,
-                 selector: Optional[pulumi.Input[float]] = None,
+                 selector: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[float]] = None,
                  target: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[float]] = None,
-                 usage: Optional[pulumi.Input[float]] = None,
-                 weight: Optional[pulumi.Input[float]] = None):
+                 type: Optional[pulumi.Input[int]] = None,
+                 usage: Optional[pulumi.Input[int]] = None,
+                 weight: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[float] priority: The priority of the record
-        :param pulumi.Input[float] type: The type of the record
+        :param pulumi.Input[int] priority: The priority of the record
+        :param pulumi.Input[int] type: The type of the record
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -4789,11 +4789,11 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[float]]:
+    def algorithm(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[float]]):
+    def algorithm(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "algorithm", value)
 
     @property
@@ -4834,11 +4834,11 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter(name="digestType")
-    def digest_type(self) -> Optional[pulumi.Input[float]]:
+    def digest_type(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "digest_type")
 
     @digest_type.setter
-    def digest_type(self, value: Optional[pulumi.Input[float]]):
+    def digest_type(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "digest_type", value)
 
     @property
@@ -4861,20 +4861,20 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter(name="keyTag")
-    def key_tag(self) -> Optional[pulumi.Input[float]]:
+    def key_tag(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "key_tag")
 
     @key_tag.setter
-    def key_tag(self, value: Optional[pulumi.Input[float]]):
+    def key_tag(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "key_tag", value)
 
     @property
     @pulumi.getter(name="latDegrees")
-    def lat_degrees(self) -> Optional[pulumi.Input[float]]:
+    def lat_degrees(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "lat_degrees")
 
     @lat_degrees.setter
-    def lat_degrees(self, value: Optional[pulumi.Input[float]]):
+    def lat_degrees(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lat_degrees", value)
 
     @property
@@ -4888,11 +4888,11 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter(name="latMinutes")
-    def lat_minutes(self) -> Optional[pulumi.Input[float]]:
+    def lat_minutes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "lat_minutes")
 
     @lat_minutes.setter
-    def lat_minutes(self, value: Optional[pulumi.Input[float]]):
+    def lat_minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "lat_minutes", value)
 
     @property
@@ -4906,11 +4906,11 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter(name="longDegrees")
-    def long_degrees(self) -> Optional[pulumi.Input[float]]:
+    def long_degrees(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "long_degrees")
 
     @long_degrees.setter
-    def long_degrees(self, value: Optional[pulumi.Input[float]]):
+    def long_degrees(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "long_degrees", value)
 
     @property
@@ -4924,11 +4924,11 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter(name="longMinutes")
-    def long_minutes(self) -> Optional[pulumi.Input[float]]:
+    def long_minutes(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "long_minutes")
 
     @long_minutes.setter
-    def long_minutes(self, value: Optional[pulumi.Input[float]]):
+    def long_minutes(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "long_minutes", value)
 
     @property
@@ -4942,11 +4942,11 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter(name="matchingType")
-    def matching_type(self) -> Optional[pulumi.Input[float]]:
+    def matching_type(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "matching_type")
 
     @matching_type.setter
-    def matching_type(self, value: Optional[pulumi.Input[float]]):
+    def matching_type(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "matching_type", value)
 
     @property
@@ -4963,20 +4963,20 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[float]]:
+    def order(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[float]]):
+    def order(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "order", value)
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[float]]:
+    def port(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[float]]):
+    def port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "port", value)
 
     @property
@@ -4999,23 +4999,23 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter
-    def preference(self) -> Optional[pulumi.Input[float]]:
+    def preference(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "preference")
 
     @preference.setter
-    def preference(self, value: Optional[pulumi.Input[float]]):
+    def preference(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "preference", value)
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority of the record
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -5029,11 +5029,11 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[float]]:
+    def protocol(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[float]]):
+    def protocol(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "protocol", value)
 
     @property
@@ -5065,11 +5065,11 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter
-    def selector(self) -> Optional[pulumi.Input[float]]:
+    def selector(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "selector")
 
     @selector.setter
-    def selector(self, value: Optional[pulumi.Input[float]]):
+    def selector(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "selector", value)
 
     @property
@@ -5101,32 +5101,32 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[float]]:
+    def type(self) -> Optional[pulumi.Input[int]]:
         """
         The type of the record
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[float]]):
+    def type(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
-    def usage(self) -> Optional[pulumi.Input[float]]:
+    def usage(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "usage")
 
     @usage.setter
-    def usage(self, value: Optional[pulumi.Input[float]]):
+    def usage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "usage", value)
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[float]]:
+    def weight(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[float]]):
+    def weight(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -5192,37 +5192,37 @@ class SpectrumApplicationOriginDnsArgs:
 @pulumi.input_type
 class SpectrumApplicationOriginPortRangeArgs:
     def __init__(__self__, *,
-                 end: pulumi.Input[float],
-                 start: pulumi.Input[float]):
+                 end: pulumi.Input[int],
+                 start: pulumi.Input[int]):
         """
-        :param pulumi.Input[float] end: Upper bound of the origin port range, e.g. `2000`
-        :param pulumi.Input[float] start: Lower bound of the origin port range, e.g. `1000`
+        :param pulumi.Input[int] end: Upper bound of the origin port range, e.g. `2000`
+        :param pulumi.Input[int] start: Lower bound of the origin port range, e.g. `1000`
         """
         pulumi.set(__self__, "end", end)
         pulumi.set(__self__, "start", start)
 
     @property
     @pulumi.getter
-    def end(self) -> pulumi.Input[float]:
+    def end(self) -> pulumi.Input[int]:
         """
         Upper bound of the origin port range, e.g. `2000`
         """
         return pulumi.get(self, "end")
 
     @end.setter
-    def end(self, value: pulumi.Input[float]):
+    def end(self, value: pulumi.Input[int]):
         pulumi.set(self, "end", value)
 
     @property
     @pulumi.getter
-    def start(self) -> pulumi.Input[float]:
+    def start(self) -> pulumi.Input[int]:
         """
         Lower bound of the origin port range, e.g. `1000`
         """
         return pulumi.get(self, "start")
 
     @start.setter
-    def start(self, value: pulumi.Input[float]):
+    def start(self, value: pulumi.Input[int]):
         pulumi.set(self, "start", value)
 
 
@@ -5441,10 +5441,10 @@ class ZoneSettingsOverrideInitialSettingsArgs:
                  always_use_https: Optional[pulumi.Input[str]] = None,
                  automatic_https_rewrites: Optional[pulumi.Input[str]] = None,
                  brotli: Optional[pulumi.Input[str]] = None,
-                 browser_cache_ttl: Optional[pulumi.Input[float]] = None,
+                 browser_cache_ttl: Optional[pulumi.Input[int]] = None,
                  browser_check: Optional[pulumi.Input[str]] = None,
                  cache_level: Optional[pulumi.Input[str]] = None,
-                 challenge_ttl: Optional[pulumi.Input[float]] = None,
+                 challenge_ttl: Optional[pulumi.Input[int]] = None,
                  cname_flattening: Optional[pulumi.Input[str]] = None,
                  development_mode: Optional[pulumi.Input[str]] = None,
                  email_obfuscation: Optional[pulumi.Input[str]] = None,
@@ -5455,7 +5455,7 @@ class ZoneSettingsOverrideInitialSettingsArgs:
                  image_resizing: Optional[pulumi.Input[str]] = None,
                  ip_geolocation: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[str]] = None,
-                 max_upload: Optional[pulumi.Input[float]] = None,
+                 max_upload: Optional[pulumi.Input[int]] = None,
                  min_tls_version: Optional[pulumi.Input[str]] = None,
                  minify: Optional[pulumi.Input['ZoneSettingsOverrideInitialSettingsMinifyArgs']] = None,
                  mirage: Optional[pulumi.Input[str]] = None,
@@ -5620,11 +5620,11 @@ class ZoneSettingsOverrideInitialSettingsArgs:
 
     @property
     @pulumi.getter(name="browserCacheTtl")
-    def browser_cache_ttl(self) -> Optional[pulumi.Input[float]]:
+    def browser_cache_ttl(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "browser_cache_ttl")
 
     @browser_cache_ttl.setter
-    def browser_cache_ttl(self, value: Optional[pulumi.Input[float]]):
+    def browser_cache_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "browser_cache_ttl", value)
 
     @property
@@ -5647,11 +5647,11 @@ class ZoneSettingsOverrideInitialSettingsArgs:
 
     @property
     @pulumi.getter(name="challengeTtl")
-    def challenge_ttl(self) -> Optional[pulumi.Input[float]]:
+    def challenge_ttl(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "challenge_ttl")
 
     @challenge_ttl.setter
-    def challenge_ttl(self, value: Optional[pulumi.Input[float]]):
+    def challenge_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "challenge_ttl", value)
 
     @property
@@ -5746,11 +5746,11 @@ class ZoneSettingsOverrideInitialSettingsArgs:
 
     @property
     @pulumi.getter(name="maxUpload")
-    def max_upload(self) -> Optional[pulumi.Input[float]]:
+    def max_upload(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_upload")
 
     @max_upload.setter
-    def max_upload(self, value: Optional[pulumi.Input[float]]):
+    def max_upload(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_upload", value)
 
     @property
@@ -6109,13 +6109,13 @@ class ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  include_subdomains: Optional[pulumi.Input[bool]] = None,
-                 max_age: Optional[pulumi.Input[float]] = None,
+                 max_age: Optional[pulumi.Input[int]] = None,
                  nosniff: Optional[pulumi.Input[bool]] = None,
                  preload: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enabled: true/false
         :param pulumi.Input[bool] include_subdomains: true/false
-        :param pulumi.Input[float] max_age: Integer
+        :param pulumi.Input[int] max_age: Integer
         :param pulumi.Input[bool] nosniff: true/false
         :param pulumi.Input[bool] preload: true/false
         """
@@ -6156,14 +6156,14 @@ class ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs:
 
     @property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[pulumi.Input[float]]:
+    def max_age(self) -> Optional[pulumi.Input[int]]:
         """
         Integer
         """
         return pulumi.get(self, "max_age")
 
     @max_age.setter
-    def max_age(self, value: Optional[pulumi.Input[float]]):
+    def max_age(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age", value)
 
     @property
@@ -6198,10 +6198,10 @@ class ZoneSettingsOverrideSettingsArgs:
                  always_use_https: Optional[pulumi.Input[str]] = None,
                  automatic_https_rewrites: Optional[pulumi.Input[str]] = None,
                  brotli: Optional[pulumi.Input[str]] = None,
-                 browser_cache_ttl: Optional[pulumi.Input[float]] = None,
+                 browser_cache_ttl: Optional[pulumi.Input[int]] = None,
                  browser_check: Optional[pulumi.Input[str]] = None,
                  cache_level: Optional[pulumi.Input[str]] = None,
-                 challenge_ttl: Optional[pulumi.Input[float]] = None,
+                 challenge_ttl: Optional[pulumi.Input[int]] = None,
                  cname_flattening: Optional[pulumi.Input[str]] = None,
                  development_mode: Optional[pulumi.Input[str]] = None,
                  email_obfuscation: Optional[pulumi.Input[str]] = None,
@@ -6212,7 +6212,7 @@ class ZoneSettingsOverrideSettingsArgs:
                  image_resizing: Optional[pulumi.Input[str]] = None,
                  ip_geolocation: Optional[pulumi.Input[str]] = None,
                  ipv6: Optional[pulumi.Input[str]] = None,
-                 max_upload: Optional[pulumi.Input[float]] = None,
+                 max_upload: Optional[pulumi.Input[int]] = None,
                  min_tls_version: Optional[pulumi.Input[str]] = None,
                  minify: Optional[pulumi.Input['ZoneSettingsOverrideSettingsMinifyArgs']] = None,
                  mirage: Optional[pulumi.Input[str]] = None,
@@ -6377,11 +6377,11 @@ class ZoneSettingsOverrideSettingsArgs:
 
     @property
     @pulumi.getter(name="browserCacheTtl")
-    def browser_cache_ttl(self) -> Optional[pulumi.Input[float]]:
+    def browser_cache_ttl(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "browser_cache_ttl")
 
     @browser_cache_ttl.setter
-    def browser_cache_ttl(self, value: Optional[pulumi.Input[float]]):
+    def browser_cache_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "browser_cache_ttl", value)
 
     @property
@@ -6404,11 +6404,11 @@ class ZoneSettingsOverrideSettingsArgs:
 
     @property
     @pulumi.getter(name="challengeTtl")
-    def challenge_ttl(self) -> Optional[pulumi.Input[float]]:
+    def challenge_ttl(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "challenge_ttl")
 
     @challenge_ttl.setter
-    def challenge_ttl(self, value: Optional[pulumi.Input[float]]):
+    def challenge_ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "challenge_ttl", value)
 
     @property
@@ -6503,11 +6503,11 @@ class ZoneSettingsOverrideSettingsArgs:
 
     @property
     @pulumi.getter(name="maxUpload")
-    def max_upload(self) -> Optional[pulumi.Input[float]]:
+    def max_upload(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "max_upload")
 
     @max_upload.setter
-    def max_upload(self, value: Optional[pulumi.Input[float]]):
+    def max_upload(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_upload", value)
 
     @property
@@ -6866,13 +6866,13 @@ class ZoneSettingsOverrideSettingsSecurityHeaderArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  include_subdomains: Optional[pulumi.Input[bool]] = None,
-                 max_age: Optional[pulumi.Input[float]] = None,
+                 max_age: Optional[pulumi.Input[int]] = None,
                  nosniff: Optional[pulumi.Input[bool]] = None,
                  preload: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] enabled: true/false
         :param pulumi.Input[bool] include_subdomains: true/false
-        :param pulumi.Input[float] max_age: Integer
+        :param pulumi.Input[int] max_age: Integer
         :param pulumi.Input[bool] nosniff: true/false
         :param pulumi.Input[bool] preload: true/false
         """
@@ -6913,14 +6913,14 @@ class ZoneSettingsOverrideSettingsSecurityHeaderArgs:
 
     @property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[pulumi.Input[float]]:
+    def max_age(self) -> Optional[pulumi.Input[int]]:
         """
         Integer
         """
         return pulumi.get(self, "max_age")
 
     @max_age.setter
-    def max_age(self, value: Optional[pulumi.Input[float]]):
+    def max_age(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age", value)
 
     @property

@@ -112,7 +112,7 @@
         }
     },
     "types": {
-        "cloudflare:/AccessApplicationCorsHeader:AccessApplicationCorsHeader": {
+        "cloudflare:index/AccessApplicationCorsHeader:AccessApplicationCorsHeader": {
             "properties": {
                 "allowAllHeaders": {
                     "type": "boolean",
@@ -198,7 +198,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupExclude:AccessGroupExclude": {
+        "cloudflare:index/AccessGroupExclude:AccessGroupExclude": {
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
@@ -219,7 +219,7 @@
                 "azures": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupExcludeAzure:AccessGroupExcludeAzure"
+                        "$ref": "#/types/cloudflare:index/AccessGroupExcludeAzure:AccessGroupExcludeAzure"
                     },
                     "language": {
                         "python": {
@@ -276,7 +276,7 @@
                 "githubs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupExcludeGithub:AccessGroupExcludeGithub"
+                        "$ref": "#/types/cloudflare:index/AccessGroupExcludeGithub:AccessGroupExcludeGithub"
                     },
                     "language": {
                         "python": {
@@ -298,7 +298,7 @@
                 "gsuites": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupExcludeGsuite:AccessGroupExcludeGsuite"
+                        "$ref": "#/types/cloudflare:index/AccessGroupExcludeGsuite:AccessGroupExcludeGsuite"
                     },
                     "language": {
                         "python": {
@@ -320,7 +320,7 @@
                 "oktas": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupExcludeOkta:AccessGroupExcludeOkta"
+                        "$ref": "#/types/cloudflare:index/AccessGroupExcludeOkta:AccessGroupExcludeOkta"
                     },
                     "language": {
                         "python": {
@@ -331,7 +331,7 @@
                 "samls": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupExcludeSaml:AccessGroupExcludeSaml"
+                        "$ref": "#/types/cloudflare:index/AccessGroupExcludeSaml:AccessGroupExcludeSaml"
                     },
                     "language": {
                         "python": {
@@ -353,7 +353,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupExcludeAzure:AccessGroupExcludeAzure": {
+        "cloudflare:index/AccessGroupExcludeAzure:AccessGroupExcludeAzure": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -377,7 +377,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupExcludeGithub:AccessGroupExcludeGithub": {
+        "cloudflare:index/AccessGroupExcludeGithub:AccessGroupExcludeGithub": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -410,7 +410,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupExcludeGsuite:AccessGroupExcludeGsuite": {
+        "cloudflare:index/AccessGroupExcludeGsuite:AccessGroupExcludeGsuite": {
             "properties": {
                 "emails": {
                     "type": "array",
@@ -434,7 +434,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupExcludeOkta:AccessGroupExcludeOkta": {
+        "cloudflare:index/AccessGroupExcludeOkta:AccessGroupExcludeOkta": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -459,7 +459,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupExcludeSaml:AccessGroupExcludeSaml": {
+        "cloudflare:index/AccessGroupExcludeSaml:AccessGroupExcludeSaml": {
             "properties": {
                 "attributeName": {
                     "type": "string",
@@ -488,7 +488,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupInclude:AccessGroupInclude": {
+        "cloudflare:index/AccessGroupInclude:AccessGroupInclude": {
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
@@ -509,7 +509,7 @@
                 "azures": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupIncludeAzure:AccessGroupIncludeAzure"
+                        "$ref": "#/types/cloudflare:index/AccessGroupIncludeAzure:AccessGroupIncludeAzure"
                     },
                     "language": {
                         "python": {
@@ -566,7 +566,7 @@
                 "githubs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupIncludeGithub:AccessGroupIncludeGithub"
+                        "$ref": "#/types/cloudflare:index/AccessGroupIncludeGithub:AccessGroupIncludeGithub"
                     },
                     "language": {
                         "python": {
@@ -588,7 +588,7 @@
                 "gsuites": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupIncludeGsuite:AccessGroupIncludeGsuite"
+                        "$ref": "#/types/cloudflare:index/AccessGroupIncludeGsuite:AccessGroupIncludeGsuite"
                     },
                     "language": {
                         "python": {
@@ -610,7 +610,7 @@
                 "oktas": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupIncludeOkta:AccessGroupIncludeOkta"
+                        "$ref": "#/types/cloudflare:index/AccessGroupIncludeOkta:AccessGroupIncludeOkta"
                     },
                     "language": {
                         "python": {
@@ -621,7 +621,7 @@
                 "samls": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupIncludeSaml:AccessGroupIncludeSaml"
+                        "$ref": "#/types/cloudflare:index/AccessGroupIncludeSaml:AccessGroupIncludeSaml"
                     },
                     "language": {
                         "python": {
@@ -643,7 +643,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupIncludeAzure:AccessGroupIncludeAzure": {
+        "cloudflare:index/AccessGroupIncludeAzure:AccessGroupIncludeAzure": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -667,7 +667,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupIncludeGithub:AccessGroupIncludeGithub": {
+        "cloudflare:index/AccessGroupIncludeGithub:AccessGroupIncludeGithub": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -700,7 +700,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupIncludeGsuite:AccessGroupIncludeGsuite": {
+        "cloudflare:index/AccessGroupIncludeGsuite:AccessGroupIncludeGsuite": {
             "properties": {
                 "emails": {
                     "type": "array",
@@ -724,7 +724,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupIncludeOkta:AccessGroupIncludeOkta": {
+        "cloudflare:index/AccessGroupIncludeOkta:AccessGroupIncludeOkta": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -749,7 +749,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupIncludeSaml:AccessGroupIncludeSaml": {
+        "cloudflare:index/AccessGroupIncludeSaml:AccessGroupIncludeSaml": {
             "properties": {
                 "attributeName": {
                     "type": "string",
@@ -778,7 +778,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupRequire:AccessGroupRequire": {
+        "cloudflare:index/AccessGroupRequire:AccessGroupRequire": {
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
@@ -799,7 +799,7 @@
                 "azures": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupRequireAzure:AccessGroupRequireAzure"
+                        "$ref": "#/types/cloudflare:index/AccessGroupRequireAzure:AccessGroupRequireAzure"
                     },
                     "language": {
                         "python": {
@@ -856,7 +856,7 @@
                 "githubs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupRequireGithub:AccessGroupRequireGithub"
+                        "$ref": "#/types/cloudflare:index/AccessGroupRequireGithub:AccessGroupRequireGithub"
                     },
                     "language": {
                         "python": {
@@ -878,7 +878,7 @@
                 "gsuites": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupRequireGsuite:AccessGroupRequireGsuite"
+                        "$ref": "#/types/cloudflare:index/AccessGroupRequireGsuite:AccessGroupRequireGsuite"
                     },
                     "language": {
                         "python": {
@@ -900,7 +900,7 @@
                 "oktas": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupRequireOkta:AccessGroupRequireOkta"
+                        "$ref": "#/types/cloudflare:index/AccessGroupRequireOkta:AccessGroupRequireOkta"
                     },
                     "language": {
                         "python": {
@@ -911,7 +911,7 @@
                 "samls": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupRequireSaml:AccessGroupRequireSaml"
+                        "$ref": "#/types/cloudflare:index/AccessGroupRequireSaml:AccessGroupRequireSaml"
                     },
                     "language": {
                         "python": {
@@ -933,7 +933,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupRequireAzure:AccessGroupRequireAzure": {
+        "cloudflare:index/AccessGroupRequireAzure:AccessGroupRequireAzure": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -957,7 +957,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupRequireGithub:AccessGroupRequireGithub": {
+        "cloudflare:index/AccessGroupRequireGithub:AccessGroupRequireGithub": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -990,7 +990,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupRequireGsuite:AccessGroupRequireGsuite": {
+        "cloudflare:index/AccessGroupRequireGsuite:AccessGroupRequireGsuite": {
             "properties": {
                 "emails": {
                     "type": "array",
@@ -1014,7 +1014,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupRequireOkta:AccessGroupRequireOkta": {
+        "cloudflare:index/AccessGroupRequireOkta:AccessGroupRequireOkta": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -1039,7 +1039,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessGroupRequireSaml:AccessGroupRequireSaml": {
+        "cloudflare:index/AccessGroupRequireSaml:AccessGroupRequireSaml": {
             "properties": {
                 "attributeName": {
                     "type": "string",
@@ -1068,7 +1068,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessIdentityProviderConfig:AccessIdentityProviderConfig": {
+        "cloudflare:index/AccessIdentityProviderConfig:AccessIdentityProviderConfig": {
             "properties": {
                 "appsDomain": {
                     "type": "string",
@@ -1235,7 +1235,7 @@
                 }
             }
         },
-        "cloudflare:/AccessPolicyExclude:AccessPolicyExclude": {
+        "cloudflare:index/AccessPolicyExclude:AccessPolicyExclude": {
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
@@ -1256,7 +1256,7 @@
                 "azures": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyExcludeAzure:AccessPolicyExcludeAzure"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyExcludeAzure:AccessPolicyExcludeAzure"
                     },
                     "language": {
                         "python": {
@@ -1313,7 +1313,7 @@
                 "githubs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyExcludeGithub:AccessPolicyExcludeGithub"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyExcludeGithub:AccessPolicyExcludeGithub"
                     },
                     "language": {
                         "python": {
@@ -1335,7 +1335,7 @@
                 "gsuites": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyExcludeGsuite:AccessPolicyExcludeGsuite"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyExcludeGsuite:AccessPolicyExcludeGsuite"
                     },
                     "language": {
                         "python": {
@@ -1357,7 +1357,7 @@
                 "oktas": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyExcludeOkta:AccessPolicyExcludeOkta"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyExcludeOkta:AccessPolicyExcludeOkta"
                     },
                     "language": {
                         "python": {
@@ -1368,7 +1368,7 @@
                 "samls": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyExcludeSaml:AccessPolicyExcludeSaml"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyExcludeSaml:AccessPolicyExcludeSaml"
                     },
                     "language": {
                         "python": {
@@ -1390,7 +1390,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyExcludeAzure:AccessPolicyExcludeAzure": {
+        "cloudflare:index/AccessPolicyExcludeAzure:AccessPolicyExcludeAzure": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -1414,7 +1414,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyExcludeGithub:AccessPolicyExcludeGithub": {
+        "cloudflare:index/AccessPolicyExcludeGithub:AccessPolicyExcludeGithub": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -1447,7 +1447,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyExcludeGsuite:AccessPolicyExcludeGsuite": {
+        "cloudflare:index/AccessPolicyExcludeGsuite:AccessPolicyExcludeGsuite": {
             "properties": {
                 "emails": {
                     "type": "array",
@@ -1471,7 +1471,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyExcludeOkta:AccessPolicyExcludeOkta": {
+        "cloudflare:index/AccessPolicyExcludeOkta:AccessPolicyExcludeOkta": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -1496,7 +1496,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyExcludeSaml:AccessPolicyExcludeSaml": {
+        "cloudflare:index/AccessPolicyExcludeSaml:AccessPolicyExcludeSaml": {
             "properties": {
                 "attributeName": {
                     "type": "string",
@@ -1525,7 +1525,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyInclude:AccessPolicyInclude": {
+        "cloudflare:index/AccessPolicyInclude:AccessPolicyInclude": {
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
@@ -1546,7 +1546,7 @@
                 "azures": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyIncludeAzure:AccessPolicyIncludeAzure"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyIncludeAzure:AccessPolicyIncludeAzure"
                     },
                     "language": {
                         "python": {
@@ -1603,7 +1603,7 @@
                 "githubs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyIncludeGithub:AccessPolicyIncludeGithub"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyIncludeGithub:AccessPolicyIncludeGithub"
                     },
                     "language": {
                         "python": {
@@ -1625,7 +1625,7 @@
                 "gsuites": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyIncludeGsuite:AccessPolicyIncludeGsuite"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyIncludeGsuite:AccessPolicyIncludeGsuite"
                     },
                     "language": {
                         "python": {
@@ -1647,7 +1647,7 @@
                 "oktas": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyIncludeOkta:AccessPolicyIncludeOkta"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyIncludeOkta:AccessPolicyIncludeOkta"
                     },
                     "language": {
                         "python": {
@@ -1658,7 +1658,7 @@
                 "samls": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyIncludeSaml:AccessPolicyIncludeSaml"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyIncludeSaml:AccessPolicyIncludeSaml"
                     },
                     "language": {
                         "python": {
@@ -1680,7 +1680,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyIncludeAzure:AccessPolicyIncludeAzure": {
+        "cloudflare:index/AccessPolicyIncludeAzure:AccessPolicyIncludeAzure": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -1704,7 +1704,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyIncludeGithub:AccessPolicyIncludeGithub": {
+        "cloudflare:index/AccessPolicyIncludeGithub:AccessPolicyIncludeGithub": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -1737,7 +1737,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyIncludeGsuite:AccessPolicyIncludeGsuite": {
+        "cloudflare:index/AccessPolicyIncludeGsuite:AccessPolicyIncludeGsuite": {
             "properties": {
                 "emails": {
                     "type": "array",
@@ -1761,7 +1761,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyIncludeOkta:AccessPolicyIncludeOkta": {
+        "cloudflare:index/AccessPolicyIncludeOkta:AccessPolicyIncludeOkta": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -1786,7 +1786,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyIncludeSaml:AccessPolicyIncludeSaml": {
+        "cloudflare:index/AccessPolicyIncludeSaml:AccessPolicyIncludeSaml": {
             "properties": {
                 "attributeName": {
                     "type": "string",
@@ -1815,7 +1815,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyRequire:AccessPolicyRequire": {
+        "cloudflare:index/AccessPolicyRequire:AccessPolicyRequire": {
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean",
@@ -1836,7 +1836,7 @@
                 "azures": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyRequireAzure:AccessPolicyRequireAzure"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyRequireAzure:AccessPolicyRequireAzure"
                     },
                     "language": {
                         "python": {
@@ -1893,7 +1893,7 @@
                 "githubs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyRequireGithub:AccessPolicyRequireGithub"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyRequireGithub:AccessPolicyRequireGithub"
                     },
                     "language": {
                         "python": {
@@ -1915,7 +1915,7 @@
                 "gsuites": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyRequireGsuite:AccessPolicyRequireGsuite"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyRequireGsuite:AccessPolicyRequireGsuite"
                     },
                     "language": {
                         "python": {
@@ -1937,7 +1937,7 @@
                 "oktas": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyRequireOkta:AccessPolicyRequireOkta"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyRequireOkta:AccessPolicyRequireOkta"
                     },
                     "language": {
                         "python": {
@@ -1948,7 +1948,7 @@
                 "samls": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyRequireSaml:AccessPolicyRequireSaml"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyRequireSaml:AccessPolicyRequireSaml"
                     },
                     "language": {
                         "python": {
@@ -1970,7 +1970,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyRequireAzure:AccessPolicyRequireAzure": {
+        "cloudflare:index/AccessPolicyRequireAzure:AccessPolicyRequireAzure": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -1994,7 +1994,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyRequireGithub:AccessPolicyRequireGithub": {
+        "cloudflare:index/AccessPolicyRequireGithub:AccessPolicyRequireGithub": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -2027,7 +2027,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyRequireGsuite:AccessPolicyRequireGsuite": {
+        "cloudflare:index/AccessPolicyRequireGsuite:AccessPolicyRequireGsuite": {
             "properties": {
                 "emails": {
                     "type": "array",
@@ -2051,7 +2051,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyRequireOkta:AccessPolicyRequireOkta": {
+        "cloudflare:index/AccessPolicyRequireOkta:AccessPolicyRequireOkta": {
             "properties": {
                 "identityProviderId": {
                     "type": "string",
@@ -2076,7 +2076,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessPolicyRequireSaml:AccessPolicyRequireSaml": {
+        "cloudflare:index/AccessPolicyRequireSaml:AccessPolicyRequireSaml": {
             "properties": {
                 "attributeName": {
                     "type": "string",
@@ -2105,7 +2105,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/AccessRuleConfiguration:AccessRuleConfiguration": {
+        "cloudflare:index/AccessRuleConfiguration:AccessRuleConfiguration": {
             "properties": {
                 "target": {
                     "type": "string",
@@ -2122,7 +2122,7 @@
                 "value"
             ]
         },
-        "cloudflare:/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification": {
+        "cloudflare:index/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification": {
             "properties": {
                 "name": {
                     "type": "string"
@@ -2146,7 +2146,7 @@
                 }
             }
         },
-        "cloudflare:/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp": {
+        "cloudflare:index/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp": {
             "properties": {
                 "httpBody": {
                     "type": "string"
@@ -2165,7 +2165,7 @@
                 }
             }
         },
-        "cloudflare:/CustomHostnameSsl:CustomHostnameSsl": {
+        "cloudflare:index/CustomHostnameSsl:CustomHostnameSsl": {
             "properties": {
                 "certificateAuthority": {
                     "type": "string",
@@ -2221,7 +2221,7 @@
                 "settings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/CustomHostnameSslSetting:CustomHostnameSslSetting"
+                        "$ref": "#/types/cloudflare:index/CustomHostnameSslSetting:CustomHostnameSslSetting"
                     },
                     "description": "SSL/TLS settings for the certificate. See further notes below.\n",
                     "language": {
@@ -2259,7 +2259,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/CustomHostnameSslSetting:CustomHostnameSslSetting": {
+        "cloudflare:index/CustomHostnameSslSetting:CustomHostnameSslSetting": {
             "properties": {
                 "ciphers": {
                     "type": "array",
@@ -2303,7 +2303,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/CustomSslCustomSslOptions:CustomSslCustomSslOptions": {
+        "cloudflare:index/CustomSslCustomSslOptions:CustomSslCustomSslOptions": {
             "properties": {
                 "bundleMethod": {
                     "type": "string",
@@ -2332,7 +2332,7 @@
                 "privateKey"
             ]
         },
-        "cloudflare:/CustomSslCustomSslPriority:CustomSslCustomSslPriority": {
+        "cloudflare:index/CustomSslCustomSslPriority:CustomSslCustomSslPriority": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -2353,7 +2353,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/HealthcheckHeader:HealthcheckHeader": {
+        "cloudflare:index/HealthcheckHeader:HealthcheckHeader": {
             "properties": {
                 "header": {
                     "type": "string",
@@ -2383,7 +2383,7 @@
                 "values"
             ]
         },
-        "cloudflare:/IpListItem:IpListItem": {
+        "cloudflare:index/IpListItem:IpListItem": {
             "properties": {
                 "comment": {
                     "type": "string",
@@ -2409,7 +2409,7 @@
                 "value"
             ]
         },
-        "cloudflare:/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader": {
+        "cloudflare:index/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader": {
             "properties": {
                 "header": {
                     "type": "string",
@@ -2439,7 +2439,7 @@
                 "values"
             ]
         },
-        "cloudflare:/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin": {
+        "cloudflare:index/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin": {
             "properties": {
                 "address": {
                     "type": "string",
@@ -2484,7 +2484,7 @@
                 "name"
             ]
         },
-        "cloudflare:/LoadBalancerPopPool:LoadBalancerPopPool": {
+        "cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool": {
             "properties": {
                 "poolIds": {
                     "type": "array",
@@ -2514,7 +2514,7 @@
                 "pop"
             ]
         },
-        "cloudflare:/LoadBalancerRegionPool:LoadBalancerRegionPool": {
+        "cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool": {
             "properties": {
                 "poolIds": {
                     "type": "array",
@@ -2544,7 +2544,7 @@
                 "region"
             ]
         },
-        "cloudflare:/PageRuleActions:PageRuleActions": {
+        "cloudflare:index/PageRuleActions:PageRuleActions": {
             "properties": {
                 "alwaysOnline": {
                     "type": "string",
@@ -2619,7 +2619,7 @@
                     }
                 },
                 "cacheKeyFields": {
-                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFields:PageRuleActionsCacheKeyFields",
+                    "$ref": "#/types/cloudflare:index/PageRuleActionsCacheKeyFields:PageRuleActionsCacheKeyFields",
                     "description": "Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.\n",
                     "language": {
                         "python": {
@@ -2648,7 +2648,7 @@
                 "cacheTtlByStatuses": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/PageRuleActionsCacheTtlByStatus:PageRuleActionsCacheTtlByStatus"
+                        "$ref": "#/types/cloudflare:index/PageRuleActionsCacheTtlByStatus:PageRuleActionsCacheTtlByStatus"
                     },
                     "description": "Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.\n",
                     "language": {
@@ -2721,7 +2721,7 @@
                     }
                 },
                 "forwardingUrl": {
-                    "$ref": "#/types/cloudflare:/PageRuleActionsForwardingUrl:PageRuleActionsForwardingUrl",
+                    "$ref": "#/types/cloudflare:index/PageRuleActionsForwardingUrl:PageRuleActionsForwardingUrl",
                     "description": "The URL to forward to, and with what status. See below.\n",
                     "language": {
                         "python": {
@@ -2750,7 +2750,7 @@
                 "minifies": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/PageRuleActionsMinify:PageRuleActionsMinify"
+                        "$ref": "#/types/cloudflare:index/PageRuleActionsMinify:PageRuleActionsMinify"
                     },
                     "description": "The configuration for HTML, CSS and JS minification. See below for full list of options.\n",
                     "language": {
@@ -2888,10 +2888,10 @@
             },
             "type": "object"
         },
-        "cloudflare:/PageRuleActionsCacheKeyFields:PageRuleActionsCacheKeyFields": {
+        "cloudflare:index/PageRuleActionsCacheKeyFields:PageRuleActionsCacheKeyFields": {
             "properties": {
                 "cookie": {
-                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsCookie:PageRuleActionsCacheKeyFieldsCookie",
+                    "$ref": "#/types/cloudflare:index/PageRuleActionsCacheKeyFieldsCookie:PageRuleActionsCacheKeyFieldsCookie",
                     "description": "Controls what cookies go into Cache Key:\n",
                     "language": {
                         "python": {
@@ -2900,7 +2900,7 @@
                     }
                 },
                 "header": {
-                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsHeader:PageRuleActionsCacheKeyFieldsHeader",
+                    "$ref": "#/types/cloudflare:index/PageRuleActionsCacheKeyFieldsHeader:PageRuleActionsCacheKeyFieldsHeader",
                     "description": "Controls what HTTP headers go into Cache Key:\n",
                     "language": {
                         "python": {
@@ -2909,7 +2909,7 @@
                     }
                 },
                 "host": {
-                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsHost:PageRuleActionsCacheKeyFieldsHost",
+                    "$ref": "#/types/cloudflare:index/PageRuleActionsCacheKeyFieldsHost:PageRuleActionsCacheKeyFieldsHost",
                     "description": "Controls which Host header goes into Cache Key:\n",
                     "language": {
                         "python": {
@@ -2918,7 +2918,7 @@
                     }
                 },
                 "queryString": {
-                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString",
+                    "$ref": "#/types/cloudflare:index/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString",
                     "description": "Controls which URL query string parameters go into the Cache Key.\n",
                     "language": {
                         "python": {
@@ -2927,7 +2927,7 @@
                     }
                 },
                 "user": {
-                    "$ref": "#/types/cloudflare:/PageRuleActionsCacheKeyFieldsUser:PageRuleActionsCacheKeyFieldsUser",
+                    "$ref": "#/types/cloudflare:index/PageRuleActionsCacheKeyFieldsUser:PageRuleActionsCacheKeyFieldsUser",
                     "description": "Controls which end user-related features go into the Cache Key.\n",
                     "language": {
                         "python": {
@@ -2945,7 +2945,7 @@
                 "user"
             ]
         },
-        "cloudflare:/PageRuleActionsCacheKeyFieldsCookie:PageRuleActionsCacheKeyFieldsCookie": {
+        "cloudflare:index/PageRuleActionsCacheKeyFieldsCookie:PageRuleActionsCacheKeyFieldsCookie": {
             "properties": {
                 "checkPresences": {
                     "type": "array",
@@ -2982,7 +2982,7 @@
                 }
             }
         },
-        "cloudflare:/PageRuleActionsCacheKeyFieldsHeader:PageRuleActionsCacheKeyFieldsHeader": {
+        "cloudflare:index/PageRuleActionsCacheKeyFieldsHeader:PageRuleActionsCacheKeyFieldsHeader": {
             "properties": {
                 "checkPresences": {
                     "type": "array",
@@ -3032,7 +3032,7 @@
                 }
             }
         },
-        "cloudflare:/PageRuleActionsCacheKeyFieldsHost:PageRuleActionsCacheKeyFieldsHost": {
+        "cloudflare:index/PageRuleActionsCacheKeyFieldsHost:PageRuleActionsCacheKeyFieldsHost": {
             "properties": {
                 "resolved": {
                     "type": "boolean",
@@ -3053,7 +3053,7 @@
                 }
             }
         },
-        "cloudflare:/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString": {
+        "cloudflare:index/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString": {
             "properties": {
                 "excludes": {
                     "type": "array",
@@ -3100,7 +3100,7 @@
                 }
             }
         },
-        "cloudflare:/PageRuleActionsCacheKeyFieldsUser:PageRuleActionsCacheKeyFieldsUser": {
+        "cloudflare:index/PageRuleActionsCacheKeyFieldsUser:PageRuleActionsCacheKeyFieldsUser": {
             "properties": {
                 "deviceType": {
                     "type": "boolean",
@@ -3141,7 +3141,7 @@
                 }
             }
         },
-        "cloudflare:/PageRuleActionsCacheTtlByStatus:PageRuleActionsCacheTtlByStatus": {
+        "cloudflare:index/PageRuleActionsCacheTtlByStatus:PageRuleActionsCacheTtlByStatus": {
             "properties": {
                 "codes": {
                     "type": "string",
@@ -3168,7 +3168,7 @@
                 "ttl"
             ]
         },
-        "cloudflare:/PageRuleActionsForwardingUrl:PageRuleActionsForwardingUrl": {
+        "cloudflare:index/PageRuleActionsForwardingUrl:PageRuleActionsForwardingUrl": {
             "properties": {
                 "statusCode": {
                     "type": "integer",
@@ -3195,7 +3195,7 @@
                 "url"
             ]
         },
-        "cloudflare:/PageRuleActionsMinify:PageRuleActionsMinify": {
+        "cloudflare:index/PageRuleActionsMinify:PageRuleActionsMinify": {
             "properties": {
                 "css": {
                     "type": "string",
@@ -3232,7 +3232,7 @@
                 "js"
             ]
         },
-        "cloudflare:/RateLimitAction:RateLimitAction": {
+        "cloudflare:index/RateLimitAction:RateLimitAction": {
             "properties": {
                 "mode": {
                     "type": "string",
@@ -3244,7 +3244,7 @@
                     }
                 },
                 "response": {
-                    "$ref": "#/types/cloudflare:/RateLimitActionResponse:RateLimitActionResponse",
+                    "$ref": "#/types/cloudflare:index/RateLimitActionResponse:RateLimitActionResponse",
                     "description": "Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.\n",
                     "language": {
                         "python": {
@@ -3267,7 +3267,7 @@
                 "mode"
             ]
         },
-        "cloudflare:/RateLimitActionResponse:RateLimitActionResponse": {
+        "cloudflare:index/RateLimitActionResponse:RateLimitActionResponse": {
             "properties": {
                 "body": {
                     "type": "string",
@@ -3294,7 +3294,7 @@
                 "contentType"
             ]
         },
-        "cloudflare:/RateLimitCorrelate:RateLimitCorrelate": {
+        "cloudflare:index/RateLimitCorrelate:RateLimitCorrelate": {
             "properties": {
                 "by": {
                     "type": "string",
@@ -3308,10 +3308,10 @@
             },
             "type": "object"
         },
-        "cloudflare:/RateLimitMatch:RateLimitMatch": {
+        "cloudflare:index/RateLimitMatch:RateLimitMatch": {
             "properties": {
                 "request": {
-                    "$ref": "#/types/cloudflare:/RateLimitMatchRequest:RateLimitMatchRequest",
+                    "$ref": "#/types/cloudflare:index/RateLimitMatchRequest:RateLimitMatchRequest",
                     "description": "Matches HTTP requests (from the client to Cloudflare). See definition below.\n",
                     "language": {
                         "python": {
@@ -3320,7 +3320,7 @@
                     }
                 },
                 "response": {
-                    "$ref": "#/types/cloudflare:/RateLimitMatchResponse:RateLimitMatchResponse",
+                    "$ref": "#/types/cloudflare:index/RateLimitMatchResponse:RateLimitMatchResponse",
                     "description": "Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.\n",
                     "language": {
                         "python": {
@@ -3339,7 +3339,7 @@
                 }
             }
         },
-        "cloudflare:/RateLimitMatchRequest:RateLimitMatchRequest": {
+        "cloudflare:index/RateLimitMatchRequest:RateLimitMatchRequest": {
             "properties": {
                 "methods": {
                     "type": "array",
@@ -3386,7 +3386,7 @@
                 }
             }
         },
-        "cloudflare:/RateLimitMatchResponse:RateLimitMatchResponse": {
+        "cloudflare:index/RateLimitMatchResponse:RateLimitMatchResponse": {
             "properties": {
                 "originTraffic": {
                     "type": "boolean",
@@ -3420,7 +3420,7 @@
                 }
             }
         },
-        "cloudflare:/RecordData:RecordData": {
+        "cloudflare:index/RecordData:RecordData": {
             "properties": {
                 "algorithm": {
                     "type": "integer"
@@ -3539,7 +3539,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/SpectrumApplicationDns:SpectrumApplicationDns": {
+        "cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -3566,7 +3566,7 @@
                 "type"
             ]
         },
-        "cloudflare:/SpectrumApplicationOriginDns:SpectrumApplicationOriginDns": {
+        "cloudflare:index/SpectrumApplicationOriginDns:SpectrumApplicationOriginDns": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -3583,7 +3583,7 @@
                 "name"
             ]
         },
-        "cloudflare:/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange": {
+        "cloudflare:index/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange": {
             "properties": {
                 "end": {
                     "type": "integer",
@@ -3610,7 +3610,7 @@
                 "start"
             ]
         },
-        "cloudflare:/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding": {
+        "cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -3636,7 +3636,7 @@
                 "namespaceId"
             ]
         },
-        "cloudflare:/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding": {
+        "cloudflare:index/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -3663,7 +3663,7 @@
                 "text"
             ]
         },
-        "cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding": {
+        "cloudflare:index/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -3690,7 +3690,7 @@
                 "text"
             ]
         },
-        "cloudflare:/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding": {
+        "cloudflare:index/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding": {
             "properties": {
                 "module": {
                     "type": "string",
@@ -3717,7 +3717,7 @@
                 "name"
             ]
         },
-        "cloudflare:/ZoneLockdownConfiguration:ZoneLockdownConfiguration": {
+        "cloudflare:index/ZoneLockdownConfiguration:ZoneLockdownConfiguration": {
             "properties": {
                 "target": {
                     "type": "string",
@@ -3744,7 +3744,7 @@
                 "value"
             ]
         },
-        "cloudflare:/ZoneMeta:ZoneMeta": {
+        "cloudflare:index/ZoneMeta:ZoneMeta": {
             "properties": {
                 "phishingDetected": {
                     "type": "boolean"
@@ -3759,7 +3759,7 @@
                 "wildcardProxiable"
             ]
         },
-        "cloudflare:/ZoneSettingsOverrideInitialSettings:ZoneSettingsOverrideInitialSettings": {
+        "cloudflare:index/ZoneSettingsOverrideInitialSettings:ZoneSettingsOverrideInitialSettings": {
             "properties": {
                 "alwaysOnline": {
                     "type": "string",
@@ -3922,7 +3922,7 @@
                     }
                 },
                 "minify": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideInitialSettingsMinify:ZoneSettingsOverrideInitialSettingsMinify",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideInitialSettingsMinify:ZoneSettingsOverrideInitialSettingsMinify",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -3938,7 +3938,7 @@
                     }
                 },
                 "mobileRedirect": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideInitialSettingsMobileRedirect:ZoneSettingsOverrideInitialSettingsMobileRedirect",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideInitialSettingsMobileRedirect:ZoneSettingsOverrideInitialSettingsMobileRedirect",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4018,7 +4018,7 @@
                     }
                 },
                 "securityHeader": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideInitialSettingsSecurityHeader:ZoneSettingsOverrideInitialSettingsSecurityHeader",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideInitialSettingsSecurityHeader:ZoneSettingsOverrideInitialSettingsSecurityHeader",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4186,7 +4186,7 @@
                 }
             }
         },
-        "cloudflare:/ZoneSettingsOverrideInitialSettingsMinify:ZoneSettingsOverrideInitialSettingsMinify": {
+        "cloudflare:index/ZoneSettingsOverrideInitialSettingsMinify:ZoneSettingsOverrideInitialSettingsMinify": {
             "properties": {
                 "css": {
                     "type": "string",
@@ -4223,7 +4223,7 @@
                 "js"
             ]
         },
-        "cloudflare:/ZoneSettingsOverrideInitialSettingsMobileRedirect:ZoneSettingsOverrideInitialSettingsMobileRedirect": {
+        "cloudflare:index/ZoneSettingsOverrideInitialSettingsMobileRedirect:ZoneSettingsOverrideInitialSettingsMobileRedirect": {
             "properties": {
                 "mobileSubdomain": {
                     "type": "string",
@@ -4260,7 +4260,7 @@
                 "stripUri"
             ]
         },
-        "cloudflare:/ZoneSettingsOverrideInitialSettingsSecurityHeader:ZoneSettingsOverrideInitialSettingsSecurityHeader": {
+        "cloudflare:index/ZoneSettingsOverrideInitialSettingsSecurityHeader:ZoneSettingsOverrideInitialSettingsSecurityHeader": {
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -4321,7 +4321,7 @@
                 }
             }
         },
-        "cloudflare:/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings": {
+        "cloudflare:index/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings": {
             "properties": {
                 "alwaysOnline": {
                     "type": "string",
@@ -4484,7 +4484,7 @@
                     }
                 },
                 "minify": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideSettingsMinify:ZoneSettingsOverrideSettingsMinify",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettingsMinify:ZoneSettingsOverrideSettingsMinify",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4500,7 +4500,7 @@
                     }
                 },
                 "mobileRedirect": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideSettingsMobileRedirect:ZoneSettingsOverrideSettingsMobileRedirect",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettingsMobileRedirect:ZoneSettingsOverrideSettingsMobileRedirect",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4580,7 +4580,7 @@
                     }
                 },
                 "securityHeader": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideSettingsSecurityHeader:ZoneSettingsOverrideSettingsSecurityHeader",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettingsSecurityHeader:ZoneSettingsOverrideSettingsSecurityHeader",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4748,7 +4748,7 @@
                 }
             }
         },
-        "cloudflare:/ZoneSettingsOverrideSettingsMinify:ZoneSettingsOverrideSettingsMinify": {
+        "cloudflare:index/ZoneSettingsOverrideSettingsMinify:ZoneSettingsOverrideSettingsMinify": {
             "properties": {
                 "css": {
                     "type": "string",
@@ -4785,7 +4785,7 @@
                 "js"
             ]
         },
-        "cloudflare:/ZoneSettingsOverrideSettingsMobileRedirect:ZoneSettingsOverrideSettingsMobileRedirect": {
+        "cloudflare:index/ZoneSettingsOverrideSettingsMobileRedirect:ZoneSettingsOverrideSettingsMobileRedirect": {
             "properties": {
                 "mobileSubdomain": {
                     "type": "string",
@@ -4822,7 +4822,7 @@
                 "stripUri"
             ]
         },
-        "cloudflare:/ZoneSettingsOverrideSettingsSecurityHeader:ZoneSettingsOverrideSettingsSecurityHeader": {
+        "cloudflare:index/ZoneSettingsOverrideSettingsSecurityHeader:ZoneSettingsOverrideSettingsSecurityHeader": {
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -4883,7 +4883,7 @@
                 }
             }
         },
-        "cloudflare:/getWafGroupsFilter:getWafGroupsFilter": {
+        "cloudflare:index/getWafGroupsFilter:getWafGroupsFilter": {
             "properties": {
                 "mode": {
                     "type": "string",
@@ -4906,7 +4906,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/getWafGroupsGroup:getWafGroupsGroup": {
+        "cloudflare:index/getWafGroupsGroup:getWafGroupsGroup": {
             "properties": {
                 "description": {
                     "type": "string",
@@ -4974,7 +4974,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/getWafPackagesFilter:getWafPackagesFilter": {
+        "cloudflare:index/getWafPackagesFilter:getWafPackagesFilter": {
             "properties": {
                 "actionMode": {
                     "type": "string",
@@ -5015,7 +5015,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/getWafPackagesPackage:getWafPackagesPackage": {
+        "cloudflare:index/getWafPackagesPackage:getWafPackagesPackage": {
             "properties": {
                 "actionMode": {
                     "type": "string",
@@ -5074,7 +5074,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/getWafRulesFilter:getWafRulesFilter": {
+        "cloudflare:index/getWafRulesFilter:getWafRulesFilter": {
             "properties": {
                 "description": {
                     "type": "string",
@@ -5106,7 +5106,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/getWafRulesRule:getWafRulesRule": {
+        "cloudflare:index/getWafRulesRule:getWafRulesRule": {
             "properties": {
                 "allowedModes": {
                     "type": "array",
@@ -5186,7 +5186,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/getZonesFilter:getZonesFilter": {
+        "cloudflare:index/getZonesFilter:getZonesFilter": {
             "properties": {
                 "lookupType": {
                     "type": "string",
@@ -5236,7 +5236,7 @@
             },
             "type": "object"
         },
-        "cloudflare:/getZonesZone:getZonesZone": {
+        "cloudflare:index/getZonesZone:getZonesZone": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -5385,7 +5385,7 @@
                 "corsHeaders": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
+                        "$ref": "#/types/cloudflare:index/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
                     },
                     "description": "CORS configuration for the Access Application. See\nbelow for reference structure.\n"
                 },
@@ -5432,7 +5432,7 @@
                 "corsHeaders": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
+                        "$ref": "#/types/cloudflare:index/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
                     },
                     "description": "CORS configuration for the Access Application. See\nbelow for reference structure.\n"
                 },
@@ -5482,7 +5482,7 @@
                     "corsHeaders": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
+                            "$ref": "#/types/cloudflare:index/AccessApplicationCorsHeader:AccessApplicationCorsHeader"
                         },
                         "description": "CORS configuration for the Access Application. See\nbelow for reference structure.\n"
                     },
@@ -5517,14 +5517,14 @@
                 "excludes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupExclude:AccessGroupExclude"
+                        "$ref": "#/types/cloudflare:index/AccessGroupExclude:AccessGroupExclude"
                     },
                     "description": "A series of access conditions, see below for\nfull list.\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupInclude:AccessGroupInclude"
+                        "$ref": "#/types/cloudflare:index/AccessGroupInclude:AccessGroupInclude"
                     },
                     "description": "A series of access conditions, see below for\nfull list.\n"
                 },
@@ -5535,7 +5535,7 @@
                 "requires": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupRequire:AccessGroupRequire"
+                        "$ref": "#/types/cloudflare:index/AccessGroupRequire:AccessGroupRequire"
                     },
                     "description": "A series of access conditions, see below for\nfull list.\n"
                 }
@@ -5553,14 +5553,14 @@
                 "excludes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupExclude:AccessGroupExclude"
+                        "$ref": "#/types/cloudflare:index/AccessGroupExclude:AccessGroupExclude"
                     },
                     "description": "A series of access conditions, see below for\nfull list.\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupInclude:AccessGroupInclude"
+                        "$ref": "#/types/cloudflare:index/AccessGroupInclude:AccessGroupInclude"
                     },
                     "description": "A series of access conditions, see below for\nfull list.\n"
                 },
@@ -5571,7 +5571,7 @@
                 "requires": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessGroupRequire:AccessGroupRequire"
+                        "$ref": "#/types/cloudflare:index/AccessGroupRequire:AccessGroupRequire"
                     },
                     "description": "A series of access conditions, see below for\nfull list.\n"
                 }
@@ -5591,14 +5591,14 @@
                     "excludes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/AccessGroupExclude:AccessGroupExclude"
+                            "$ref": "#/types/cloudflare:index/AccessGroupExclude:AccessGroupExclude"
                         },
                         "description": "A series of access conditions, see below for\nfull list.\n"
                     },
                     "includes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/AccessGroupInclude:AccessGroupInclude"
+                            "$ref": "#/types/cloudflare:index/AccessGroupInclude:AccessGroupInclude"
                         },
                         "description": "A series of access conditions, see below for\nfull list.\n"
                     },
@@ -5609,7 +5609,7 @@
                     "requires": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/AccessGroupRequire:AccessGroupRequire"
+                            "$ref": "#/types/cloudflare:index/AccessGroupRequire:AccessGroupRequire"
                         },
                         "description": "A series of access conditions, see below for\nfull list.\n"
                     }
@@ -5626,7 +5626,7 @@
                 "configs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessIdentityProviderConfig:AccessIdentityProviderConfig"
+                        "$ref": "#/types/cloudflare:index/AccessIdentityProviderConfig:AccessIdentityProviderConfig"
                     },
                     "description": "Provider configuration from the [developer documentation][access_identity_provider_guide].\n"
                 },
@@ -5651,7 +5651,7 @@
                 "configs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessIdentityProviderConfig:AccessIdentityProviderConfig"
+                        "$ref": "#/types/cloudflare:index/AccessIdentityProviderConfig:AccessIdentityProviderConfig"
                     },
                     "description": "Provider configuration from the [developer documentation][access_identity_provider_guide].\n"
                 },
@@ -5678,7 +5678,7 @@
                     "configs": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/AccessIdentityProviderConfig:AccessIdentityProviderConfig"
+                            "$ref": "#/types/cloudflare:index/AccessIdentityProviderConfig:AccessIdentityProviderConfig"
                         },
                         "description": "Provider configuration from the [developer documentation][access_identity_provider_guide].\n"
                     },
@@ -5711,14 +5711,14 @@
                 "excludes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyExclude:AccessPolicyExclude"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyExclude:AccessPolicyExclude"
                     },
                     "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyInclude:AccessPolicyInclude"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyInclude:AccessPolicyInclude"
                     },
                     "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
@@ -5733,7 +5733,7 @@
                 "requires": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyRequire:AccessPolicyRequire"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyRequire:AccessPolicyRequire"
                     },
                     "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
@@ -5765,14 +5765,14 @@
                 "excludes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyExclude:AccessPolicyExclude"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyExclude:AccessPolicyExclude"
                     },
                     "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyInclude:AccessPolicyInclude"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyInclude:AccessPolicyInclude"
                     },
                     "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
@@ -5787,7 +5787,7 @@
                 "requires": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/AccessPolicyRequire:AccessPolicyRequire"
+                        "$ref": "#/types/cloudflare:index/AccessPolicyRequire:AccessPolicyRequire"
                     },
                     "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                 },
@@ -5819,14 +5819,14 @@
                     "excludes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/AccessPolicyExclude:AccessPolicyExclude"
+                            "$ref": "#/types/cloudflare:index/AccessPolicyExclude:AccessPolicyExclude"
                         },
                         "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                     },
                     "includes": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/AccessPolicyInclude:AccessPolicyInclude"
+                            "$ref": "#/types/cloudflare:index/AccessPolicyInclude:AccessPolicyInclude"
                         },
                         "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                     },
@@ -5841,7 +5841,7 @@
                     "requires": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/AccessPolicyRequire:AccessPolicyRequire"
+                            "$ref": "#/types/cloudflare:index/AccessPolicyRequire:AccessPolicyRequire"
                         },
                         "description": "A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).\n"
                     },
@@ -5857,7 +5857,7 @@
             "description": "Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.\n",
             "properties": {
                 "configuration": {
-                    "$ref": "#/types/cloudflare:/AccessRuleConfiguration:AccessRuleConfiguration",
+                    "$ref": "#/types/cloudflare:index/AccessRuleConfiguration:AccessRuleConfiguration",
                     "description": "Rule configuration to apply to a matched request. It's a complex value. See description below.\n"
                 },
                 "mode": {
@@ -5880,7 +5880,7 @@
             ],
             "inputProperties": {
                 "configuration": {
-                    "$ref": "#/types/cloudflare:/AccessRuleConfiguration:AccessRuleConfiguration",
+                    "$ref": "#/types/cloudflare:index/AccessRuleConfiguration:AccessRuleConfiguration",
                     "description": "Rule configuration to apply to a matched request. It's a complex value. See description below.\n"
                 },
                 "mode": {
@@ -5904,7 +5904,7 @@
                 "description": "Input properties used for looking up and filtering AccessRule resources.\n",
                 "properties": {
                     "configuration": {
-                        "$ref": "#/types/cloudflare:/AccessRuleConfiguration:AccessRuleConfiguration",
+                        "$ref": "#/types/cloudflare:index/AccessRuleConfiguration:AccessRuleConfiguration",
                         "description": "Rule configuration to apply to a matched request. It's a complex value. See description below.\n"
                     },
                     "mode": {
@@ -6463,15 +6463,15 @@
                     "description": "Hostname you intend to request a certificate for.\n"
                 },
                 "ownershipVerification": {
-                    "$ref": "#/types/cloudflare:/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification"
+                    "$ref": "#/types/cloudflare:index/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification"
                 },
                 "ownershipVerificationHttp": {
-                    "$ref": "#/types/cloudflare:/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp"
+                    "$ref": "#/types/cloudflare:index/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp"
                 },
                 "ssls": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/CustomHostnameSsl:CustomHostnameSsl"
+                        "$ref": "#/types/cloudflare:index/CustomHostnameSsl:CustomHostnameSsl"
                     },
                     "description": "SSL configuration of the certificate. See further notes below.\n"
                 },
@@ -6503,7 +6503,7 @@
                 "ssls": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/CustomHostnameSsl:CustomHostnameSsl"
+                        "$ref": "#/types/cloudflare:index/CustomHostnameSsl:CustomHostnameSsl"
                     },
                     "description": "SSL configuration of the certificate. See further notes below.\n"
                 },
@@ -6529,15 +6529,15 @@
                         "description": "Hostname you intend to request a certificate for.\n"
                     },
                     "ownershipVerification": {
-                        "$ref": "#/types/cloudflare:/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification"
+                        "$ref": "#/types/cloudflare:index/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification"
                     },
                     "ownershipVerificationHttp": {
-                        "$ref": "#/types/cloudflare:/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp"
+                        "$ref": "#/types/cloudflare:index/CustomHostnameOwnershipVerificationHttp:CustomHostnameOwnershipVerificationHttp"
                     },
                     "ssls": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/CustomHostnameSsl:CustomHostnameSsl"
+                            "$ref": "#/types/cloudflare:index/CustomHostnameSsl:CustomHostnameSsl"
                         },
                         "description": "SSL configuration of the certificate. See further notes below.\n"
                     },
@@ -6685,16 +6685,16 @@
             }
         },
         "cloudflare:index/customSsl:CustomSsl": {
-            "description": "Provides a Cloudflare custom ssl resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst config = new pulumi.Config();\nconst cloudflareZoneId = config.get(\"cloudflareZoneId\") || \"1d5fdc9e88c8a8c4518b068cd94331fe\";\n\n// Add a custom ssl certificate to the domain\nconst foossl = new cloudflare.CustomSsl(\"foossl\", {\n    customSslOptions: {\n        bundle_method: \"ubiquitous\",\n        certificate: \"-----INSERT CERTIFICATE-----\",\n        geo_restrictions: \"us\",\n        private_key: \"-----INSERT PRIVATE KEY-----\",\n        type: \"legacy_custom\",\n    },\n    zoneId: cloudflareZoneId,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nconfig = pulumi.Config()\ncloudflare_zone_id = config.get(\"cloudflareZoneId\")\nif cloudflare_zone_id is None:\n    cloudflare_zone_id = \"1d5fdc9e88c8a8c4518b068cd94331fe\"\n# Add a custom ssl certificate to the domain\nfoossl = cloudflare.CustomSsl(\"foossl\",\n    custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(\n        bundle_method=\"ubiquitous\",\n        certificate=\"-----INSERT CERTIFICATE-----\",\n        geo_restrictions=\"us\",\n        private_key=\"-----INSERT PRIVATE KEY-----\",\n        type=\"legacy_custom\",\n    ),\n    zone_id=cloudflare_zone_id)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var cloudflareZoneId = config.Get(\"cloudflareZoneId\") ?? \"1d5fdc9e88c8a8c4518b068cd94331fe\";\n        // Add a custom ssl certificate to the domain\n        var foossl = new Cloudflare.CustomSsl(\"foossl\", new Cloudflare.CustomSslArgs\n        {\n            CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs\n            {\n                Bundle_method = \"ubiquitous\",\n                Certificate = \"-----INSERT CERTIFICATE-----\",\n                Geo_restrictions = \"us\",\n                Private_key = \"-----INSERT PRIVATE KEY-----\",\n                Type = \"legacy_custom\",\n            },\n            ZoneId = cloudflareZoneId,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewCustomSsl(ctx, \"foossl\", \u0026cloudflare.CustomSslArgs{\n\t\t\tCustomSslOptions: \u0026cloudflare.CustomSslCustomSslOptionsArgs{\n\t\t\t\tBundle_method:    pulumi.String(\"ubiquitous\"),\n\t\t\t\tCertificate:      pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\t\tGeo_restrictions: pulumi.String(\"us\"),\n\t\t\t\tPrivate_key:      pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\t\tType:             pulumi.String(\"legacy_custom\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.String(cloudflareZoneId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Cloudflare custom ssl resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst config = new pulumi.Config();\nconst cloudflareZoneId = config.get(\"cloudflareZoneId\") || \"1d5fdc9e88c8a8c4518b068cd94331fe\";\n\n// Add a custom ssl certificate to the domain\nconst foossl = new cloudflare.CustomSsl(\"foossl\", {\n    customSslOptions: {\n        bundle_method: \"ubiquitous\",\n        certificate: \"-----INSERT CERTIFICATE-----\",\n        geo_restrictions: \"us\",\n        private_key: \"-----INSERT PRIVATE KEY-----\",\n        type: \"legacy_custom\",\n    },\n    zoneId: cloudflareZoneId,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nconfig = pulumi.Config()\ncloudflare_zone_id = config.get(\"cloudflareZoneId\")\nif cloudflare_zone_id is None:\n    cloudflare_zone_id = \"1d5fdc9e88c8a8c4518b068cd94331fe\"\n# Add a custom ssl certificate to the domain\nfoossl = cloudflare.CustomSsl(\"foossl\",\n    custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(\n        bundle_method=\"ubiquitous\",\n        certificate=\"-----INSERT CERTIFICATE-----\",\n        geo_restrictions=\"us\",\n        private_key=\"-----INSERT PRIVATE KEY-----\",\n        type=\"legacy_custom\",\n    ),\n    zone_id=cloudflare_zone_id)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var config = new Config();\n        var cloudflareZoneId = config.Get(\"cloudflareZoneId\") ?? \"1d5fdc9e88c8a8c4518b068cd94331fe\";\n        // Add a custom ssl certificate to the domain\n        var foossl = new Cloudflare.CustomSsl(\"foossl\", new Cloudflare.CustomSslArgs\n        {\n            CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs\n            {\n                Bundle_method = \"ubiquitous\",\n                Certificate = \"-----INSERT CERTIFICATE-----\",\n                Geo_restrictions = \"us\",\n                Private_key = \"-----INSERT PRIVATE KEY-----\",\n                Type = \"legacy_custom\",\n            },\n            ZoneId = cloudflareZoneId,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcfg := config.New(ctx, \"\")\n\t\tcloudflareZoneId := \"1d5fdc9e88c8a8c4518b068cd94331fe\"\n\t\tif param := cfg.Get(\"cloudflareZoneId\"); param != \"\" {\n\t\t\tcloudflareZoneId = param\n\t\t}\n\t\t_, err := cloudflare.NewCustomSsl(ctx, \"foossl\", \u0026cloudflare.CustomSslArgs{\n\t\t\tCustomSslOptions: \u0026cloudflare.CustomSslCustomSslOptionsArgs{\n\t\t\t\tBundle_method:    pulumi.String(\"ubiquitous\"),\n\t\t\t\tCertificate:      pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\t\tGeo_restrictions: pulumi.String(\"us\"),\n\t\t\t\tPrivate_key:      pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\t\tType:             pulumi.String(\"legacy_custom\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.String(cloudflareZoneId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "customSslOptions": {
-                    "$ref": "#/types/cloudflare:/CustomSslCustomSslOptions:CustomSslCustomSslOptions",
+                    "$ref": "#/types/cloudflare:index/CustomSslCustomSslOptions:CustomSslCustomSslOptions",
                     "description": "The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.\n"
                 },
                 "customSslPriorities": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/CustomSslCustomSslPriority:CustomSslCustomSslPriority"
+                        "$ref": "#/types/cloudflare:index/CustomSslCustomSslPriority:CustomSslCustomSslPriority"
                     }
                 },
                 "expiresOn": {
@@ -6742,13 +6742,13 @@
             ],
             "inputProperties": {
                 "customSslOptions": {
-                    "$ref": "#/types/cloudflare:/CustomSslCustomSslOptions:CustomSslCustomSslOptions",
+                    "$ref": "#/types/cloudflare:index/CustomSslCustomSslOptions:CustomSslCustomSslOptions",
                     "description": "The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.\n"
                 },
                 "customSslPriorities": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/CustomSslCustomSslPriority:CustomSslCustomSslPriority"
+                        "$ref": "#/types/cloudflare:index/CustomSslCustomSslPriority:CustomSslCustomSslPriority"
                     }
                 },
                 "zoneId": {
@@ -6763,13 +6763,13 @@
                 "description": "Input properties used for looking up and filtering CustomSsl resources.\n",
                 "properties": {
                     "customSslOptions": {
-                        "$ref": "#/types/cloudflare:/CustomSslCustomSslOptions:CustomSslCustomSslOptions",
+                        "$ref": "#/types/cloudflare:index/CustomSslCustomSslOptions:CustomSslCustomSslOptions",
                         "description": "The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.\n"
                     },
                     "customSslPriorities": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/CustomSslCustomSslPriority:CustomSslCustomSslPriority"
+                            "$ref": "#/types/cloudflare:index/CustomSslCustomSslPriority:CustomSslCustomSslPriority"
                         }
                     },
                     "expiresOn": {
@@ -7052,7 +7052,7 @@
                 "headers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/HealthcheckHeader:HealthcheckHeader"
+                        "$ref": "#/types/cloudflare:index/HealthcheckHeader:HealthcheckHeader"
                     },
                     "description": "The header name.\n"
                 },
@@ -7167,7 +7167,7 @@
                 "headers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/HealthcheckHeader:HealthcheckHeader"
+                        "$ref": "#/types/cloudflare:index/HealthcheckHeader:HealthcheckHeader"
                     },
                     "description": "The header name.\n"
                 },
@@ -7280,7 +7280,7 @@
                     "headers": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/HealthcheckHeader:HealthcheckHeader"
+                            "$ref": "#/types/cloudflare:index/HealthcheckHeader:HealthcheckHeader"
                         },
                         "description": "The header name.\n"
                     },
@@ -7356,7 +7356,7 @@
                 "items": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/IpListItem:IpListItem"
+                        "$ref": "#/types/cloudflare:index/IpListItem:IpListItem"
                     }
                 },
                 "kind": {
@@ -7385,7 +7385,7 @@
                 "items": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/IpListItem:IpListItem"
+                        "$ref": "#/types/cloudflare:index/IpListItem:IpListItem"
                     }
                 },
                 "kind": {
@@ -7416,7 +7416,7 @@
                     "items": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/IpListItem:IpListItem"
+                            "$ref": "#/types/cloudflare:index/IpListItem:IpListItem"
                         }
                     },
                     "kind": {
@@ -7468,7 +7468,7 @@
                 "popPools": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/LoadBalancerPopPool:LoadBalancerPopPool"
+                        "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                     },
                     "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.\n"
                 },
@@ -7479,7 +7479,7 @@
                 "regionPools": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/LoadBalancerRegionPool:LoadBalancerRegionPool"
+                        "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                     },
                     "description": "A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.\n"
                 },
@@ -7539,7 +7539,7 @@
                 "popPools": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/LoadBalancerPopPool:LoadBalancerPopPool"
+                        "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                     },
                     "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.\n"
                 },
@@ -7550,7 +7550,7 @@
                 "regionPools": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/LoadBalancerRegionPool:LoadBalancerRegionPool"
+                        "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                     },
                     "description": "A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.\n"
                 },
@@ -7614,7 +7614,7 @@
                     "popPools": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/LoadBalancerPopPool:LoadBalancerPopPool"
+                            "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                         },
                         "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.\n"
                     },
@@ -7625,7 +7625,7 @@
                     "regionPools": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/LoadBalancerRegionPool:LoadBalancerRegionPool"
+                            "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                         },
                         "description": "A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.\n"
                     },
@@ -7679,7 +7679,7 @@
                 "headers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
+                        "$ref": "#/types/cloudflare:index/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
                     },
                     "description": "The header name.\n"
                 },
@@ -7745,7 +7745,7 @@
                 "headers": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
+                        "$ref": "#/types/cloudflare:index/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
                     },
                     "description": "The header name.\n"
                 },
@@ -7807,7 +7807,7 @@
                     "headers": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
+                            "$ref": "#/types/cloudflare:index/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
                         },
                         "description": "The header name.\n"
                     },
@@ -7891,7 +7891,7 @@
                 "origins": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin"
+                        "$ref": "#/types/cloudflare:index/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin"
                     },
                     "description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.\n"
                 }
@@ -7938,7 +7938,7 @@
                 "origins": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin"
+                        "$ref": "#/types/cloudflare:index/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin"
                     },
                     "description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.\n"
                 }
@@ -7992,7 +7992,7 @@
                     "origins": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin"
+                            "$ref": "#/types/cloudflare:index/LoadBalancerPoolOrigin:LoadBalancerPoolOrigin"
                         },
                         "description": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.\n"
                     }
@@ -8306,7 +8306,7 @@
             "description": "Provides a Cloudflare page rule resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Add a page rule to the domain\nconst foobar = new cloudflare.PageRule(\"foobar\", {\n    zoneId: _var.cloudflare_zone_id,\n    target: `sub.${_var.cloudflare_zone}/page`,\n    priority: 1,\n    actions: {\n        ssl: \"flexible\",\n        emailObfuscation: \"on\",\n        minifies: [{\n            html: \"off\",\n            css: \"on\",\n            js: \"on\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Add a page rule to the domain\nfoobar = cloudflare.PageRule(\"foobar\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    target=f\"sub.{var['cloudflare_zone']}/page\",\n    priority=1,\n    actions=cloudflare.PageRuleActionsArgs(\n        ssl=\"flexible\",\n        email_obfuscation=\"on\",\n        minifies=[cloudflare.PageRuleActionsMinifyArgs(\n            html=\"off\",\n            css=\"on\",\n            js=\"on\",\n        )],\n    ))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Add a page rule to the domain\n        var foobar = new Cloudflare.PageRule(\"foobar\", new Cloudflare.PageRuleArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Target = $\"sub.{@var.Cloudflare_zone}/page\",\n            Priority = 1,\n            Actions = new Cloudflare.Inputs.PageRuleActionsArgs\n            {\n                Ssl = \"flexible\",\n                EmailObfuscation = \"on\",\n                Minifies = \n                {\n                    new Cloudflare.Inputs.PageRuleActionsMinifyArgs\n                    {\n                        Html = \"off\",\n                        Css = \"on\",\n                        Js = \"on\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewPageRule(ctx, \"foobar\", \u0026cloudflare.PageRuleArgs{\n\t\t\tZoneId:   pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tTarget:   pulumi.String(fmt.Sprintf(\"%v%v%v\", \"sub.\", _var.Cloudflare_zone, \"/page\")),\n\t\t\tPriority: pulumi.Int(1),\n\t\t\tActions: \u0026cloudflare.PageRuleActionsArgs{\n\t\t\t\tSsl:              pulumi.String(\"flexible\"),\n\t\t\t\tEmailObfuscation: pulumi.String(\"on\"),\n\t\t\t\tMinifies: cloudflare.PageRuleActionsMinifyArray{\n\t\t\t\t\t\u0026cloudflare.PageRuleActionsMinifyArgs{\n\t\t\t\t\t\tHtml: pulumi.String(\"off\"),\n\t\t\t\t\t\tCss:  pulumi.String(\"on\"),\n\t\t\t\t\t\tJs:   pulumi.String(\"on\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "actions": {
-                    "$ref": "#/types/cloudflare:/PageRuleActions:PageRuleActions",
+                    "$ref": "#/types/cloudflare:index/PageRuleActions:PageRuleActions",
                     "description": "The actions taken by the page rule, options given below.\n"
                 },
                 "priority": {
@@ -8333,7 +8333,7 @@
             ],
             "inputProperties": {
                 "actions": {
-                    "$ref": "#/types/cloudflare:/PageRuleActions:PageRuleActions",
+                    "$ref": "#/types/cloudflare:index/PageRuleActions:PageRuleActions",
                     "description": "The actions taken by the page rule, options given below.\n"
                 },
                 "priority": {
@@ -8362,7 +8362,7 @@
                 "description": "Input properties used for looking up and filtering PageRule resources.\n",
                 "properties": {
                     "actions": {
-                        "$ref": "#/types/cloudflare:/PageRuleActions:PageRuleActions",
+                        "$ref": "#/types/cloudflare:index/PageRuleActions:PageRuleActions",
                         "description": "The actions taken by the page rule, options given below.\n"
                     },
                     "priority": {
@@ -8389,7 +8389,7 @@
             "description": "Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.RateLimit(\"example\", {\n    zoneId: _var.cloudflare_zone_id,\n    threshold: 2000,\n    period: 2,\n    match: {\n        request: {\n            urlPattern: `${_var.cloudflare_zone}/*`,\n            schemes: [\n                \"HTTP\",\n                \"HTTPS\",\n            ],\n            methods: [\n                \"GET\",\n                \"POST\",\n                \"PUT\",\n                \"DELETE\",\n                \"PATCH\",\n                \"HEAD\",\n            ],\n        },\n        response: {\n            statuses: [\n                200,\n                201,\n                202,\n                301,\n                429,\n            ],\n            originTraffic: false,\n        },\n    },\n    action: {\n        mode: \"simulate\",\n        timeout: 43200,\n        response: {\n            contentType: \"text/plain\",\n            body: \"custom response body\",\n        },\n    },\n    correlate: {\n        by: \"nat\",\n    },\n    disabled: false,\n    description: \"example rate limit for a zone\",\n    bypassUrlPatterns: [\n        `${_var.cloudflare_zone}/bypass1`,\n        `${_var.cloudflare_zone}/bypass2`,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.RateLimit(\"example\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    threshold=2000,\n    period=2,\n    match=cloudflare.RateLimitMatchArgs(\n        request=cloudflare.RateLimitMatchRequestArgs(\n            url_pattern=f\"{var['cloudflare_zone']}/*\",\n            schemes=[\n                \"HTTP\",\n                \"HTTPS\",\n            ],\n            methods=[\n                \"GET\",\n                \"POST\",\n                \"PUT\",\n                \"DELETE\",\n                \"PATCH\",\n                \"HEAD\",\n            ],\n        ),\n        response=cloudflare.RateLimitMatchResponseArgs(\n            statuses=[\n                200,\n                201,\n                202,\n                301,\n                429,\n            ],\n            origin_traffic=False,\n        ),\n    ),\n    action=cloudflare.RateLimitActionArgs(\n        mode=\"simulate\",\n        timeout=43200,\n        response=cloudflare.RateLimitActionResponseArgs(\n            content_type=\"text/plain\",\n            body=\"custom response body\",\n        ),\n    ),\n    correlate=cloudflare.RateLimitCorrelateArgs(\n        by=\"nat\",\n    ),\n    disabled=False,\n    description=\"example rate limit for a zone\",\n    bypass_url_patterns=[\n        f\"{var['cloudflare_zone']}/bypass1\",\n        f\"{var['cloudflare_zone']}/bypass2\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.RateLimit(\"example\", new Cloudflare.RateLimitArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Threshold = 2000,\n            Period = 2,\n            Match = new Cloudflare.Inputs.RateLimitMatchArgs\n            {\n                Request = new Cloudflare.Inputs.RateLimitMatchRequestArgs\n                {\n                    UrlPattern = $\"{@var.Cloudflare_zone}/*\",\n                    Schemes = \n                    {\n                        \"HTTP\",\n                        \"HTTPS\",\n                    },\n                    Methods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"PUT\",\n                        \"DELETE\",\n                        \"PATCH\",\n                        \"HEAD\",\n                    },\n                },\n                Response = new Cloudflare.Inputs.RateLimitMatchResponseArgs\n                {\n                    Statuses = \n                    {\n                        200,\n                        201,\n                        202,\n                        301,\n                        429,\n                    },\n                    OriginTraffic = false,\n                },\n            },\n            Action = new Cloudflare.Inputs.RateLimitActionArgs\n            {\n                Mode = \"simulate\",\n                Timeout = 43200,\n                Response = new Cloudflare.Inputs.RateLimitActionResponseArgs\n                {\n                    ContentType = \"text/plain\",\n                    Body = \"custom response body\",\n                },\n            },\n            Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs\n            {\n                By = \"nat\",\n            },\n            Disabled = false,\n            Description = \"example rate limit for a zone\",\n            BypassUrlPatterns = \n            {\n                $\"{@var.Cloudflare_zone}/bypass1\",\n                $\"{@var.Cloudflare_zone}/bypass2\",\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "action": {
-                    "$ref": "#/types/cloudflare:/RateLimitAction:RateLimitAction",
+                    "$ref": "#/types/cloudflare:index/RateLimitAction:RateLimitAction",
                     "description": "The action to be performed when the threshold of matched traffic within the period defined is exceeded.\n"
                 },
                 "bypassUrlPatterns": {
@@ -8400,7 +8400,7 @@
                     "description": "URLs matching the patterns specified here will be excluded from rate limiting.\n"
                 },
                 "correlate": {
-                    "$ref": "#/types/cloudflare:/RateLimitCorrelate:RateLimitCorrelate",
+                    "$ref": "#/types/cloudflare:index/RateLimitCorrelate:RateLimitCorrelate",
                     "description": "Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.\n"
                 },
                 "description": {
@@ -8412,7 +8412,7 @@
                     "description": "Whether this ratelimit is currently disabled. Default: `false`.\n"
                 },
                 "match": {
-                    "$ref": "#/types/cloudflare:/RateLimitMatch:RateLimitMatch",
+                    "$ref": "#/types/cloudflare:index/RateLimitMatch:RateLimitMatch",
                     "description": "Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.\n"
                 },
                 "period": {
@@ -8437,7 +8437,7 @@
             ],
             "inputProperties": {
                 "action": {
-                    "$ref": "#/types/cloudflare:/RateLimitAction:RateLimitAction",
+                    "$ref": "#/types/cloudflare:index/RateLimitAction:RateLimitAction",
                     "description": "The action to be performed when the threshold of matched traffic within the period defined is exceeded.\n"
                 },
                 "bypassUrlPatterns": {
@@ -8448,7 +8448,7 @@
                     "description": "URLs matching the patterns specified here will be excluded from rate limiting.\n"
                 },
                 "correlate": {
-                    "$ref": "#/types/cloudflare:/RateLimitCorrelate:RateLimitCorrelate",
+                    "$ref": "#/types/cloudflare:index/RateLimitCorrelate:RateLimitCorrelate",
                     "description": "Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.\n"
                 },
                 "description": {
@@ -8460,7 +8460,7 @@
                     "description": "Whether this ratelimit is currently disabled. Default: `false`.\n"
                 },
                 "match": {
-                    "$ref": "#/types/cloudflare:/RateLimitMatch:RateLimitMatch",
+                    "$ref": "#/types/cloudflare:index/RateLimitMatch:RateLimitMatch",
                     "description": "Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.\n"
                 },
                 "period": {
@@ -8486,7 +8486,7 @@
                 "description": "Input properties used for looking up and filtering RateLimit resources.\n",
                 "properties": {
                     "action": {
-                        "$ref": "#/types/cloudflare:/RateLimitAction:RateLimitAction",
+                        "$ref": "#/types/cloudflare:index/RateLimitAction:RateLimitAction",
                         "description": "The action to be performed when the threshold of matched traffic within the period defined is exceeded.\n"
                     },
                     "bypassUrlPatterns": {
@@ -8497,7 +8497,7 @@
                         "description": "URLs matching the patterns specified here will be excluded from rate limiting.\n"
                     },
                     "correlate": {
-                        "$ref": "#/types/cloudflare:/RateLimitCorrelate:RateLimitCorrelate",
+                        "$ref": "#/types/cloudflare:index/RateLimitCorrelate:RateLimitCorrelate",
                         "description": "Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.\n"
                     },
                     "description": {
@@ -8509,7 +8509,7 @@
                         "description": "Whether this ratelimit is currently disabled. Default: `false`.\n"
                     },
                     "match": {
-                        "$ref": "#/types/cloudflare:/RateLimitMatch:RateLimitMatch",
+                        "$ref": "#/types/cloudflare:index/RateLimitMatch:RateLimitMatch",
                         "description": "Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.\n"
                     },
                     "period": {
@@ -8536,7 +8536,7 @@
                     "description": "The RFC3339 timestamp of when the record was created\n"
                 },
                 "data": {
-                    "$ref": "#/types/cloudflare:/RecordData:RecordData",
+                    "$ref": "#/types/cloudflare:index/RecordData:RecordData",
                     "description": "Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified\n"
                 },
                 "hostname": {
@@ -8601,7 +8601,7 @@
             ],
             "inputProperties": {
                 "data": {
-                    "$ref": "#/types/cloudflare:/RecordData:RecordData",
+                    "$ref": "#/types/cloudflare:index/RecordData:RecordData",
                     "description": "Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified\n"
                 },
                 "name": {
@@ -8646,7 +8646,7 @@
                         "description": "The RFC3339 timestamp of when the record was created\n"
                     },
                     "data": {
-                        "$ref": "#/types/cloudflare:/RecordData:RecordData",
+                        "$ref": "#/types/cloudflare:index/RecordData:RecordData",
                         "description": "Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified\n"
                     },
                     "hostname": {
@@ -8708,7 +8708,7 @@
                     "description": ". Enables Argo Smart Routing. Defaults to `false`.\n"
                 },
                 "dns": {
-                    "$ref": "#/types/cloudflare:/SpectrumApplicationDns:SpectrumApplicationDns",
+                    "$ref": "#/types/cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns",
                     "description": "The name and type of DNS record for the Spectrum application. Fields documented below.\n"
                 },
                 "edgeIpConnectivity": {
@@ -8734,7 +8734,7 @@
                     "description": "A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.\n"
                 },
                 "originDns": {
-                    "$ref": "#/types/cloudflare:/SpectrumApplicationOriginDns:SpectrumApplicationOriginDns",
+                    "$ref": "#/types/cloudflare:index/SpectrumApplicationOriginDns:SpectrumApplicationOriginDns",
                     "description": "A destination DNS addresses to the origin. Fields documented below.\n"
                 },
                 "originPort": {
@@ -8742,7 +8742,7 @@
                     "description": "If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
                 },
                 "originPortRange": {
-                    "$ref": "#/types/cloudflare:/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
+                    "$ref": "#/types/cloudflare:index/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
                     "description": "If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.\n"
                 },
                 "protocol": {
@@ -8777,7 +8777,7 @@
                     "description": ". Enables Argo Smart Routing. Defaults to `false`.\n"
                 },
                 "dns": {
-                    "$ref": "#/types/cloudflare:/SpectrumApplicationDns:SpectrumApplicationDns",
+                    "$ref": "#/types/cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns",
                     "description": "The name and type of DNS record for the Spectrum application. Fields documented below.\n"
                 },
                 "edgeIpConnectivity": {
@@ -8803,7 +8803,7 @@
                     "description": "A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.\n"
                 },
                 "originDns": {
-                    "$ref": "#/types/cloudflare:/SpectrumApplicationOriginDns:SpectrumApplicationOriginDns",
+                    "$ref": "#/types/cloudflare:index/SpectrumApplicationOriginDns:SpectrumApplicationOriginDns",
                     "description": "A destination DNS addresses to the origin. Fields documented below.\n"
                 },
                 "originPort": {
@@ -8811,7 +8811,7 @@
                     "description": "If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
                 },
                 "originPortRange": {
-                    "$ref": "#/types/cloudflare:/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
+                    "$ref": "#/types/cloudflare:index/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
                     "description": "If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.\n"
                 },
                 "protocol": {
@@ -8848,7 +8848,7 @@
                         "description": ". Enables Argo Smart Routing. Defaults to `false`.\n"
                     },
                     "dns": {
-                        "$ref": "#/types/cloudflare:/SpectrumApplicationDns:SpectrumApplicationDns",
+                        "$ref": "#/types/cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns",
                         "description": "The name and type of DNS record for the Spectrum application. Fields documented below.\n"
                     },
                     "edgeIpConnectivity": {
@@ -8874,7 +8874,7 @@
                         "description": "A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.\n"
                     },
                     "originDns": {
-                        "$ref": "#/types/cloudflare:/SpectrumApplicationOriginDns:SpectrumApplicationOriginDns",
+                        "$ref": "#/types/cloudflare:index/SpectrumApplicationOriginDns:SpectrumApplicationOriginDns",
                         "description": "A destination DNS addresses to the origin. Fields documented below.\n"
                     },
                     "originPort": {
@@ -8882,7 +8882,7 @@
                         "description": "If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.\n"
                     },
                     "originPortRange": {
-                        "$ref": "#/types/cloudflare:/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
+                        "$ref": "#/types/cloudflare:index/SpectrumApplicationOriginPortRange:SpectrumApplicationOriginPortRange",
                         "description": "If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.\n"
                     },
                     "protocol": {
@@ -9358,7 +9358,7 @@
                 "kvNamespaceBindings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding"
+                        "$ref": "#/types/cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding"
                     }
                 },
                 "name": {
@@ -9368,19 +9368,19 @@
                 "plainTextBindings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
+                        "$ref": "#/types/cloudflare:index/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
                     }
                 },
                 "secretTextBindings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                        "$ref": "#/types/cloudflare:index/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
                     }
                 },
                 "webassemblyBindings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
+                        "$ref": "#/types/cloudflare:index/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
                     }
                 }
             },
@@ -9396,7 +9396,7 @@
                 "kvNamespaceBindings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding"
+                        "$ref": "#/types/cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding"
                     }
                 },
                 "name": {
@@ -9406,19 +9406,19 @@
                 "plainTextBindings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
+                        "$ref": "#/types/cloudflare:index/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
                     }
                 },
                 "secretTextBindings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                        "$ref": "#/types/cloudflare:index/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
                     }
                 },
                 "webassemblyBindings": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
+                        "$ref": "#/types/cloudflare:index/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
                     }
                 }
             },
@@ -9436,7 +9436,7 @@
                     "kvNamespaceBindings": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding"
+                            "$ref": "#/types/cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding"
                         }
                     },
                     "name": {
@@ -9446,19 +9446,19 @@
                     "plainTextBindings": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
+                            "$ref": "#/types/cloudflare:index/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding"
                         }
                     },
                     "secretTextBindings": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
+                            "$ref": "#/types/cloudflare:index/WorkerScriptSecretTextBinding:WorkerScriptSecretTextBinding"
                         }
                     },
                     "webassemblyBindings": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
+                            "$ref": "#/types/cloudflare:index/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
                         }
                     }
                 },
@@ -9563,7 +9563,7 @@
                     "description": "Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.\n"
                 },
                 "meta": {
-                    "$ref": "#/types/cloudflare:/ZoneMeta:ZoneMeta"
+                    "$ref": "#/types/cloudflare:index/ZoneMeta:ZoneMeta"
                 },
                 "nameServers": {
                     "type": "array",
@@ -9656,7 +9656,7 @@
                         "description": "Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.\n"
                     },
                     "meta": {
-                        "$ref": "#/types/cloudflare:/ZoneMeta:ZoneMeta"
+                        "$ref": "#/types/cloudflare:index/ZoneMeta:ZoneMeta"
                     },
                     "nameServers": {
                         "type": "array",
@@ -9711,7 +9711,7 @@
                 "configurations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/ZoneLockdownConfiguration:ZoneLockdownConfiguration"
+                        "$ref": "#/types/cloudflare:index/ZoneLockdownConfiguration:ZoneLockdownConfiguration"
                     },
                     "description": "A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.\n"
                 },
@@ -9747,7 +9747,7 @@
                 "configurations": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:/ZoneLockdownConfiguration:ZoneLockdownConfiguration"
+                        "$ref": "#/types/cloudflare:index/ZoneLockdownConfiguration:ZoneLockdownConfiguration"
                     },
                     "description": "A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.\n"
                 },
@@ -9785,7 +9785,7 @@
                     "configurations": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/ZoneLockdownConfiguration:ZoneLockdownConfiguration"
+                            "$ref": "#/types/cloudflare:index/ZoneLockdownConfiguration:ZoneLockdownConfiguration"
                         },
                         "description": "A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.\n"
                     },
@@ -9819,7 +9819,7 @@
             "description": "Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst test = new cloudflare.ZoneSettingsOverride(\"test\", {\n    zoneId: _var.cloudflare_zone_id,\n    settings: {\n        brotli: \"on\",\n        challengeTtl: 2700,\n        securityLevel: \"high\",\n        opportunisticEncryption: \"on\",\n        automaticHttpsRewrites: \"on\",\n        mirage: \"on\",\n        waf: \"on\",\n        minify: {\n            css: \"on\",\n            js: \"off\",\n            html: \"off\",\n        },\n        securityHeader: {\n            enabled: true,\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ntest = cloudflare.ZoneSettingsOverride(\"test\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    settings=cloudflare.ZoneSettingsOverrideSettingsArgs(\n        brotli=\"on\",\n        challenge_ttl=2700,\n        security_level=\"high\",\n        opportunistic_encryption=\"on\",\n        automatic_https_rewrites=\"on\",\n        mirage=\"on\",\n        waf=\"on\",\n        minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(\n            css=\"on\",\n            js=\"off\",\n            html=\"off\",\n        ),\n        security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(\n            enabled=True,\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = new Cloudflare.ZoneSettingsOverride(\"test\", new Cloudflare.ZoneSettingsOverrideArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Settings = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsArgs\n            {\n                Brotli = \"on\",\n                ChallengeTtl = 2700,\n                SecurityLevel = \"high\",\n                OpportunisticEncryption = \"on\",\n                AutomaticHttpsRewrites = \"on\",\n                Mirage = \"on\",\n                Waf = \"on\",\n                Minify = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsMinifyArgs\n                {\n                    Css = \"on\",\n                    Js = \"off\",\n                    Html = \"off\",\n                },\n                SecurityHeader = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsSecurityHeaderArgs\n                {\n                    Enabled = true,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZoneSettingsOverride(ctx, \"test\", \u0026cloudflare.ZoneSettingsOverrideArgs{\n\t\t\tZoneId: pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tSettings: \u0026cloudflare.ZoneSettingsOverrideSettingsArgs{\n\t\t\t\tBrotli:                  pulumi.String(\"on\"),\n\t\t\t\tChallengeTtl:            pulumi.Int(2700),\n\t\t\t\tSecurityLevel:           pulumi.String(\"high\"),\n\t\t\t\tOpportunisticEncryption: pulumi.String(\"on\"),\n\t\t\t\tAutomaticHttpsRewrites:  pulumi.String(\"on\"),\n\t\t\t\tMirage:                  pulumi.String(\"on\"),\n\t\t\t\tWaf:                     pulumi.String(\"on\"),\n\t\t\t\tMinify: \u0026cloudflare.ZoneSettingsOverrideSettingsMinifyArgs{\n\t\t\t\t\tCss:  pulumi.String(\"on\"),\n\t\t\t\t\tJs:   pulumi.String(\"off\"),\n\t\t\t\t\tHtml: pulumi.String(\"off\"),\n\t\t\t\t},\n\t\t\t\tSecurityHeader: \u0026cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "initialSettings": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideInitialSettings:ZoneSettingsOverrideInitialSettings",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideInitialSettings:ZoneSettingsOverrideInitialSettings",
                     "description": "Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).\n"
                 },
                 "initialSettingsReadAt": {
@@ -9833,7 +9833,7 @@
                     "description": "Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.\n* `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.\n* `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.\n"
                 },
                 "settings": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings",
                     "description": "Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.\n"
                 },
                 "zoneId": {
@@ -9858,7 +9858,7 @@
             ],
             "inputProperties": {
                 "settings": {
-                    "$ref": "#/types/cloudflare:/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings",
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings",
                     "description": "Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.\n"
                 },
                 "zoneId": {
@@ -9873,7 +9873,7 @@
                 "description": "Input properties used for looking up and filtering ZoneSettingsOverride resources.\n",
                 "properties": {
                     "initialSettings": {
-                        "$ref": "#/types/cloudflare:/ZoneSettingsOverrideInitialSettings:ZoneSettingsOverrideInitialSettings",
+                        "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideInitialSettings:ZoneSettingsOverrideInitialSettings",
                         "description": "Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).\n"
                     },
                     "initialSettingsReadAt": {
@@ -9887,7 +9887,7 @@
                         "description": "Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.\n* `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.\n* `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.\n"
                     },
                     "settings": {
-                        "$ref": "#/types/cloudflare:/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings",
+                        "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettings:ZoneSettingsOverrideSettings",
                         "description": "Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.\n"
                     },
                     "zoneId": {
@@ -9952,7 +9952,7 @@
                 "description": "A collection of arguments for invoking getWafGroups.\n",
                 "properties": {
                     "filter": {
-                        "$ref": "#/types/cloudflare:/getWafGroupsFilter:getWafGroupsFilter",
+                        "$ref": "#/types/cloudflare:index/getWafGroupsFilter:getWafGroupsFilter",
                         "description": "One or more values used to look up WAF Rule Groups. If more than one value is given all\nvalues must match in order to be included, see below for full list.\n"
                     },
                     "packageId": {
@@ -9973,12 +9973,12 @@
                 "description": "A collection of values returned by getWafGroups.\n",
                 "properties": {
                     "filter": {
-                        "$ref": "#/types/cloudflare:/getWafGroupsFilter:getWafGroupsFilter"
+                        "$ref": "#/types/cloudflare:index/getWafGroupsFilter:getWafGroupsFilter"
                     },
                     "groups": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/getWafGroupsGroup:getWafGroupsGroup"
+                            "$ref": "#/types/cloudflare:index/getWafGroupsGroup:getWafGroupsGroup"
                         },
                         "description": "A map of WAF Rule Groups details. Full list below:\n"
                     },
@@ -10008,7 +10008,7 @@
                 "description": "A collection of arguments for invoking getWafPackages.\n",
                 "properties": {
                     "filter": {
-                        "$ref": "#/types/cloudflare:/getWafPackagesFilter:getWafPackagesFilter",
+                        "$ref": "#/types/cloudflare:index/getWafPackagesFilter:getWafPackagesFilter",
                         "description": "One or more values used to look up WAF Rule Packages. If more than one value is given all\nvalues must match in order to be included, see below for full list.\n"
                     },
                     "zoneId": {
@@ -10025,7 +10025,7 @@
                 "description": "A collection of values returned by getWafPackages.\n",
                 "properties": {
                     "filter": {
-                        "$ref": "#/types/cloudflare:/getWafPackagesFilter:getWafPackagesFilter"
+                        "$ref": "#/types/cloudflare:index/getWafPackagesFilter:getWafPackagesFilter"
                     },
                     "id": {
                         "type": "string",
@@ -10034,7 +10034,7 @@
                     "packages": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/getWafPackagesPackage:getWafPackagesPackage"
+                            "$ref": "#/types/cloudflare:index/getWafPackagesPackage:getWafPackagesPackage"
                         },
                         "description": "A map of WAF Rule Packages details. Full list below:\n"
                     },
@@ -10056,7 +10056,7 @@
                 "description": "A collection of arguments for invoking getWafRules.\n",
                 "properties": {
                     "filter": {
-                        "$ref": "#/types/cloudflare:/getWafRulesFilter:getWafRulesFilter",
+                        "$ref": "#/types/cloudflare:index/getWafRulesFilter:getWafRulesFilter",
                         "description": "One or more values used to look up WAF Rules. If more than one value is given all\nvalues must match in order to be included, see below for full list.\n"
                     },
                     "packageId": {
@@ -10077,7 +10077,7 @@
                 "description": "A collection of values returned by getWafRules.\n",
                 "properties": {
                     "filter": {
-                        "$ref": "#/types/cloudflare:/getWafRulesFilter:getWafRulesFilter"
+                        "$ref": "#/types/cloudflare:index/getWafRulesFilter:getWafRulesFilter"
                     },
                     "id": {
                         "type": "string",
@@ -10090,7 +10090,7 @@
                     "rules": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/getWafRulesRule:getWafRulesRule"
+                            "$ref": "#/types/cloudflare:index/getWafRulesRule:getWafRulesRule"
                         },
                         "description": "A map of WAF Rules details. Full list below:\n"
                     },
@@ -10112,7 +10112,7 @@
                 "description": "A collection of arguments for invoking getZones.\n",
                 "properties": {
                     "filter": {
-                        "$ref": "#/types/cloudflare:/getZonesFilter:getZonesFilter",
+                        "$ref": "#/types/cloudflare:index/getZonesFilter:getZonesFilter",
                         "description": "One or more values used to look up zone records. If more than one value is given all\nvalues must match in order to be included, see below for full list.\n"
                     }
                 },
@@ -10125,7 +10125,7 @@
                 "description": "A collection of values returned by getZones.\n",
                 "properties": {
                     "filter": {
-                        "$ref": "#/types/cloudflare:/getZonesFilter:getZonesFilter"
+                        "$ref": "#/types/cloudflare:index/getZonesFilter:getZonesFilter"
                     },
                     "id": {
                         "type": "string",
@@ -10134,7 +10134,7 @@
                     "zones": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/cloudflare:/getZonesZone:getZonesZone"
+                            "$ref": "#/types/cloudflare:index/getZonesZone:getZonesZone"
                         },
                         "description": "A map of zone details. Full list below:\n"
                     }

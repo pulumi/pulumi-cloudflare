@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -112,10 +112,10 @@ class AccessApplicationCorsHeader(dict):
                  allow_all_methods: Optional[bool] = None,
                  allow_all_origins: Optional[bool] = None,
                  allow_credentials: Optional[bool] = None,
-                 allowed_headers: Optional[List[str]] = None,
-                 allowed_methods: Optional[List[str]] = None,
-                 allowed_origins: Optional[List[str]] = None,
-                 max_age: Optional[float] = None):
+                 allowed_headers: Optional[Sequence[str]] = None,
+                 allowed_methods: Optional[Sequence[str]] = None,
+                 allowed_origins: Optional[Sequence[str]] = None,
+                 max_age: Optional[int] = None):
         """
         :param bool allow_all_headers: Boolean value to determine whether all
                HTTP headers are exposed.
@@ -126,10 +126,10 @@ class AccessApplicationCorsHeader(dict):
         :param bool allow_credentials: Boolean value to determine if credentials
                (cookies, authorization headers, or TLS client certificates) are included with
                requests.
-        :param List[str] allowed_headers: List of HTTP headers to expose via CORS.
-        :param List[str] allowed_methods: List of methods to expose via CORS.
-        :param List[str] allowed_origins: List of origins permitted to make CORS requests.
-        :param float max_age: Integer representing the maximum time a preflight
+        :param Sequence[str] allowed_headers: List of HTTP headers to expose via CORS.
+        :param Sequence[str] allowed_methods: List of methods to expose via CORS.
+        :param Sequence[str] allowed_origins: List of origins permitted to make CORS requests.
+        :param int max_age: Integer representing the maximum time a preflight
                request will be cached.
         """
         if allow_all_headers is not None:
@@ -188,7 +188,7 @@ class AccessApplicationCorsHeader(dict):
 
     @property
     @pulumi.getter(name="allowedHeaders")
-    def allowed_headers(self) -> Optional[List[str]]:
+    def allowed_headers(self) -> Optional[Sequence[str]]:
         """
         List of HTTP headers to expose via CORS.
         """
@@ -196,7 +196,7 @@ class AccessApplicationCorsHeader(dict):
 
     @property
     @pulumi.getter(name="allowedMethods")
-    def allowed_methods(self) -> Optional[List[str]]:
+    def allowed_methods(self) -> Optional[Sequence[str]]:
         """
         List of methods to expose via CORS.
         """
@@ -204,7 +204,7 @@ class AccessApplicationCorsHeader(dict):
 
     @property
     @pulumi.getter(name="allowedOrigins")
-    def allowed_origins(self) -> Optional[List[str]]:
+    def allowed_origins(self) -> Optional[Sequence[str]]:
         """
         List of origins permitted to make CORS requests.
         """
@@ -212,7 +212,7 @@ class AccessApplicationCorsHeader(dict):
 
     @property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[float]:
+    def max_age(self) -> Optional[int]:
         """
         Integer representing the maximum time a preflight
         request will be cached.
@@ -228,19 +228,19 @@ class AccessGroupExclude(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
-                 azures: Optional[List['outputs.AccessGroupExcludeAzure']] = None,
+                 azures: Optional[Sequence['outputs.AccessGroupExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
-                 email_domains: Optional[List[str]] = None,
-                 emails: Optional[List[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
-                 githubs: Optional[List['outputs.AccessGroupExcludeGithub']] = None,
-                 groups: Optional[List[str]] = None,
-                 gsuites: Optional[List['outputs.AccessGroupExcludeGsuite']] = None,
-                 ips: Optional[List[str]] = None,
-                 oktas: Optional[List['outputs.AccessGroupExcludeOkta']] = None,
-                 samls: Optional[List['outputs.AccessGroupExcludeSaml']] = None,
-                 service_tokens: Optional[List[str]] = None):
+                 githubs: Optional[Sequence['outputs.AccessGroupExcludeGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.AccessGroupExcludeGsuite']] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.AccessGroupExcludeOkta']] = None,
+                 samls: Optional[Sequence['outputs.AccessGroupExcludeSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -284,7 +284,7 @@ class AccessGroupExclude(dict):
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[List['outputs.AccessGroupExcludeAzure']]:
+    def azures(self) -> Optional[Sequence['outputs.AccessGroupExcludeAzure']]:
         return pulumi.get(self, "azures")
 
     @property
@@ -299,12 +299,12 @@ class AccessGroupExclude(dict):
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[List[str]]:
+    def email_domains(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "email_domains")
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -314,37 +314,37 @@ class AccessGroupExclude(dict):
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[List['outputs.AccessGroupExcludeGithub']]:
+    def githubs(self) -> Optional[Sequence['outputs.AccessGroupExcludeGithub']]:
         return pulumi.get(self, "githubs")
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[List[str]]:
+    def groups(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "groups")
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[List['outputs.AccessGroupExcludeGsuite']]:
+    def gsuites(self) -> Optional[Sequence['outputs.AccessGroupExcludeGsuite']]:
         return pulumi.get(self, "gsuites")
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[List[str]]:
+    def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[List['outputs.AccessGroupExcludeOkta']]:
+    def oktas(self) -> Optional[Sequence['outputs.AccessGroupExcludeOkta']]:
         return pulumi.get(self, "oktas")
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[List['outputs.AccessGroupExcludeSaml']]:
+    def samls(self) -> Optional[Sequence['outputs.AccessGroupExcludeSaml']]:
         return pulumi.get(self, "samls")
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[List[str]]:
+    def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
     def _translate_property(self, prop):
@@ -355,7 +355,7 @@ class AccessGroupExclude(dict):
 class AccessGroupExcludeAzure(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 ids: Optional[List[str]] = None):
+                 ids: Optional[Sequence[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -368,7 +368,7 @@ class AccessGroupExcludeAzure(dict):
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[List[str]]:
+    def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
@@ -380,7 +380,7 @@ class AccessGroupExcludeGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 teams: Optional[List[str]] = None):
+                 teams: Optional[Sequence[str]] = None):
         """
         :param str name: Friendly name of the Access Group.
         """
@@ -406,7 +406,7 @@ class AccessGroupExcludeGithub(dict):
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[List[str]]:
+    def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
     def _translate_property(self, prop):
@@ -416,7 +416,7 @@ class AccessGroupExcludeGithub(dict):
 @pulumi.output_type
 class AccessGroupExcludeGsuite(dict):
     def __init__(__self__, *,
-                 emails: Optional[List[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -425,7 +425,7 @@ class AccessGroupExcludeGsuite(dict):
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -441,9 +441,9 @@ class AccessGroupExcludeGsuite(dict):
 class AccessGroupExcludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 names: Optional[List[str]] = None):
+                 names: Optional[Sequence[str]] = None):
         """
-        :param List[str] names: Friendly name of the Access Group.
+        :param Sequence[str] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -457,7 +457,7 @@ class AccessGroupExcludeOkta(dict):
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[List[str]]:
+    def names(self) -> Optional[Sequence[str]]:
         """
         Friendly name of the Access Group.
         """
@@ -504,19 +504,19 @@ class AccessGroupInclude(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
-                 azures: Optional[List['outputs.AccessGroupIncludeAzure']] = None,
+                 azures: Optional[Sequence['outputs.AccessGroupIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
-                 email_domains: Optional[List[str]] = None,
-                 emails: Optional[List[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
-                 githubs: Optional[List['outputs.AccessGroupIncludeGithub']] = None,
-                 groups: Optional[List[str]] = None,
-                 gsuites: Optional[List['outputs.AccessGroupIncludeGsuite']] = None,
-                 ips: Optional[List[str]] = None,
-                 oktas: Optional[List['outputs.AccessGroupIncludeOkta']] = None,
-                 samls: Optional[List['outputs.AccessGroupIncludeSaml']] = None,
-                 service_tokens: Optional[List[str]] = None):
+                 githubs: Optional[Sequence['outputs.AccessGroupIncludeGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.AccessGroupIncludeGsuite']] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.AccessGroupIncludeOkta']] = None,
+                 samls: Optional[Sequence['outputs.AccessGroupIncludeSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -560,7 +560,7 @@ class AccessGroupInclude(dict):
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[List['outputs.AccessGroupIncludeAzure']]:
+    def azures(self) -> Optional[Sequence['outputs.AccessGroupIncludeAzure']]:
         return pulumi.get(self, "azures")
 
     @property
@@ -575,12 +575,12 @@ class AccessGroupInclude(dict):
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[List[str]]:
+    def email_domains(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "email_domains")
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -590,37 +590,37 @@ class AccessGroupInclude(dict):
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[List['outputs.AccessGroupIncludeGithub']]:
+    def githubs(self) -> Optional[Sequence['outputs.AccessGroupIncludeGithub']]:
         return pulumi.get(self, "githubs")
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[List[str]]:
+    def groups(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "groups")
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[List['outputs.AccessGroupIncludeGsuite']]:
+    def gsuites(self) -> Optional[Sequence['outputs.AccessGroupIncludeGsuite']]:
         return pulumi.get(self, "gsuites")
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[List[str]]:
+    def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[List['outputs.AccessGroupIncludeOkta']]:
+    def oktas(self) -> Optional[Sequence['outputs.AccessGroupIncludeOkta']]:
         return pulumi.get(self, "oktas")
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[List['outputs.AccessGroupIncludeSaml']]:
+    def samls(self) -> Optional[Sequence['outputs.AccessGroupIncludeSaml']]:
         return pulumi.get(self, "samls")
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[List[str]]:
+    def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
     def _translate_property(self, prop):
@@ -631,7 +631,7 @@ class AccessGroupInclude(dict):
 class AccessGroupIncludeAzure(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 ids: Optional[List[str]] = None):
+                 ids: Optional[Sequence[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -644,7 +644,7 @@ class AccessGroupIncludeAzure(dict):
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[List[str]]:
+    def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
@@ -656,7 +656,7 @@ class AccessGroupIncludeGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 teams: Optional[List[str]] = None):
+                 teams: Optional[Sequence[str]] = None):
         """
         :param str name: Friendly name of the Access Group.
         """
@@ -682,7 +682,7 @@ class AccessGroupIncludeGithub(dict):
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[List[str]]:
+    def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
     def _translate_property(self, prop):
@@ -692,7 +692,7 @@ class AccessGroupIncludeGithub(dict):
 @pulumi.output_type
 class AccessGroupIncludeGsuite(dict):
     def __init__(__self__, *,
-                 emails: Optional[List[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -701,7 +701,7 @@ class AccessGroupIncludeGsuite(dict):
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -717,9 +717,9 @@ class AccessGroupIncludeGsuite(dict):
 class AccessGroupIncludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 names: Optional[List[str]] = None):
+                 names: Optional[Sequence[str]] = None):
         """
-        :param List[str] names: Friendly name of the Access Group.
+        :param Sequence[str] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -733,7 +733,7 @@ class AccessGroupIncludeOkta(dict):
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[List[str]]:
+    def names(self) -> Optional[Sequence[str]]:
         """
         Friendly name of the Access Group.
         """
@@ -780,19 +780,19 @@ class AccessGroupRequire(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
-                 azures: Optional[List['outputs.AccessGroupRequireAzure']] = None,
+                 azures: Optional[Sequence['outputs.AccessGroupRequireAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
-                 email_domains: Optional[List[str]] = None,
-                 emails: Optional[List[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
-                 githubs: Optional[List['outputs.AccessGroupRequireGithub']] = None,
-                 groups: Optional[List[str]] = None,
-                 gsuites: Optional[List['outputs.AccessGroupRequireGsuite']] = None,
-                 ips: Optional[List[str]] = None,
-                 oktas: Optional[List['outputs.AccessGroupRequireOkta']] = None,
-                 samls: Optional[List['outputs.AccessGroupRequireSaml']] = None,
-                 service_tokens: Optional[List[str]] = None):
+                 githubs: Optional[Sequence['outputs.AccessGroupRequireGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.AccessGroupRequireGsuite']] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.AccessGroupRequireOkta']] = None,
+                 samls: Optional[Sequence['outputs.AccessGroupRequireSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -836,7 +836,7 @@ class AccessGroupRequire(dict):
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[List['outputs.AccessGroupRequireAzure']]:
+    def azures(self) -> Optional[Sequence['outputs.AccessGroupRequireAzure']]:
         return pulumi.get(self, "azures")
 
     @property
@@ -851,12 +851,12 @@ class AccessGroupRequire(dict):
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[List[str]]:
+    def email_domains(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "email_domains")
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -866,37 +866,37 @@ class AccessGroupRequire(dict):
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[List['outputs.AccessGroupRequireGithub']]:
+    def githubs(self) -> Optional[Sequence['outputs.AccessGroupRequireGithub']]:
         return pulumi.get(self, "githubs")
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[List[str]]:
+    def groups(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "groups")
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[List['outputs.AccessGroupRequireGsuite']]:
+    def gsuites(self) -> Optional[Sequence['outputs.AccessGroupRequireGsuite']]:
         return pulumi.get(self, "gsuites")
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[List[str]]:
+    def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[List['outputs.AccessGroupRequireOkta']]:
+    def oktas(self) -> Optional[Sequence['outputs.AccessGroupRequireOkta']]:
         return pulumi.get(self, "oktas")
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[List['outputs.AccessGroupRequireSaml']]:
+    def samls(self) -> Optional[Sequence['outputs.AccessGroupRequireSaml']]:
         return pulumi.get(self, "samls")
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[List[str]]:
+    def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
     def _translate_property(self, prop):
@@ -907,7 +907,7 @@ class AccessGroupRequire(dict):
 class AccessGroupRequireAzure(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 ids: Optional[List[str]] = None):
+                 ids: Optional[Sequence[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -920,7 +920,7 @@ class AccessGroupRequireAzure(dict):
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[List[str]]:
+    def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
@@ -932,7 +932,7 @@ class AccessGroupRequireGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 teams: Optional[List[str]] = None):
+                 teams: Optional[Sequence[str]] = None):
         """
         :param str name: Friendly name of the Access Group.
         """
@@ -958,7 +958,7 @@ class AccessGroupRequireGithub(dict):
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[List[str]]:
+    def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
     def _translate_property(self, prop):
@@ -968,7 +968,7 @@ class AccessGroupRequireGithub(dict):
 @pulumi.output_type
 class AccessGroupRequireGsuite(dict):
     def __init__(__self__, *,
-                 emails: Optional[List[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -977,7 +977,7 @@ class AccessGroupRequireGsuite(dict):
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -993,9 +993,9 @@ class AccessGroupRequireGsuite(dict):
 class AccessGroupRequireOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 names: Optional[List[str]] = None):
+                 names: Optional[Sequence[str]] = None):
         """
-        :param List[str] names: Friendly name of the Access Group.
+        :param Sequence[str] names: Friendly name of the Access Group.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -1009,7 +1009,7 @@ class AccessGroupRequireOkta(dict):
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[List[str]]:
+    def names(self) -> Optional[Sequence[str]]:
         """
         Friendly name of the Access Group.
         """
@@ -1055,7 +1055,7 @@ class AccessGroupRequireSaml(dict):
 class AccessIdentityProviderConfig(dict):
     def __init__(__self__, *,
                  apps_domain: Optional[str] = None,
-                 attributes: Optional[List[str]] = None,
+                 attributes: Optional[Sequence[str]] = None,
                  auth_url: Optional[str] = None,
                  centrify_account: Optional[str] = None,
                  centrify_app_id: Optional[str] = None,
@@ -1119,7 +1119,7 @@ class AccessIdentityProviderConfig(dict):
 
     @property
     @pulumi.getter
-    def attributes(self) -> Optional[List[str]]:
+    def attributes(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "attributes")
 
     @property
@@ -1216,19 +1216,19 @@ class AccessPolicyExclude(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
-                 azures: Optional[List['outputs.AccessPolicyExcludeAzure']] = None,
+                 azures: Optional[Sequence['outputs.AccessPolicyExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
-                 email_domains: Optional[List[str]] = None,
-                 emails: Optional[List[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
-                 githubs: Optional[List['outputs.AccessPolicyExcludeGithub']] = None,
-                 groups: Optional[List[str]] = None,
-                 gsuites: Optional[List['outputs.AccessPolicyExcludeGsuite']] = None,
-                 ips: Optional[List[str]] = None,
-                 oktas: Optional[List['outputs.AccessPolicyExcludeOkta']] = None,
-                 samls: Optional[List['outputs.AccessPolicyExcludeSaml']] = None,
-                 service_tokens: Optional[List[str]] = None):
+                 githubs: Optional[Sequence['outputs.AccessPolicyExcludeGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.AccessPolicyExcludeGsuite']] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.AccessPolicyExcludeOkta']] = None,
+                 samls: Optional[Sequence['outputs.AccessPolicyExcludeSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -1272,7 +1272,7 @@ class AccessPolicyExclude(dict):
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[List['outputs.AccessPolicyExcludeAzure']]:
+    def azures(self) -> Optional[Sequence['outputs.AccessPolicyExcludeAzure']]:
         return pulumi.get(self, "azures")
 
     @property
@@ -1287,12 +1287,12 @@ class AccessPolicyExclude(dict):
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[List[str]]:
+    def email_domains(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "email_domains")
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -1302,37 +1302,37 @@ class AccessPolicyExclude(dict):
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[List['outputs.AccessPolicyExcludeGithub']]:
+    def githubs(self) -> Optional[Sequence['outputs.AccessPolicyExcludeGithub']]:
         return pulumi.get(self, "githubs")
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[List[str]]:
+    def groups(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "groups")
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[List['outputs.AccessPolicyExcludeGsuite']]:
+    def gsuites(self) -> Optional[Sequence['outputs.AccessPolicyExcludeGsuite']]:
         return pulumi.get(self, "gsuites")
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[List[str]]:
+    def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[List['outputs.AccessPolicyExcludeOkta']]:
+    def oktas(self) -> Optional[Sequence['outputs.AccessPolicyExcludeOkta']]:
         return pulumi.get(self, "oktas")
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[List['outputs.AccessPolicyExcludeSaml']]:
+    def samls(self) -> Optional[Sequence['outputs.AccessPolicyExcludeSaml']]:
         return pulumi.get(self, "samls")
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[List[str]]:
+    def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
     def _translate_property(self, prop):
@@ -1343,7 +1343,7 @@ class AccessPolicyExclude(dict):
 class AccessPolicyExcludeAzure(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 ids: Optional[List[str]] = None):
+                 ids: Optional[Sequence[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -1356,7 +1356,7 @@ class AccessPolicyExcludeAzure(dict):
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[List[str]]:
+    def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
@@ -1368,7 +1368,7 @@ class AccessPolicyExcludeGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 teams: Optional[List[str]] = None):
+                 teams: Optional[Sequence[str]] = None):
         """
         :param str name: Friendly name of the Access Application.
         """
@@ -1394,7 +1394,7 @@ class AccessPolicyExcludeGithub(dict):
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[List[str]]:
+    def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
     def _translate_property(self, prop):
@@ -1404,7 +1404,7 @@ class AccessPolicyExcludeGithub(dict):
 @pulumi.output_type
 class AccessPolicyExcludeGsuite(dict):
     def __init__(__self__, *,
-                 emails: Optional[List[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -1413,7 +1413,7 @@ class AccessPolicyExcludeGsuite(dict):
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -1429,9 +1429,9 @@ class AccessPolicyExcludeGsuite(dict):
 class AccessPolicyExcludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 names: Optional[List[str]] = None):
+                 names: Optional[Sequence[str]] = None):
         """
-        :param List[str] names: Friendly name of the Access Application.
+        :param Sequence[str] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -1445,7 +1445,7 @@ class AccessPolicyExcludeOkta(dict):
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[List[str]]:
+    def names(self) -> Optional[Sequence[str]]:
         """
         Friendly name of the Access Application.
         """
@@ -1492,19 +1492,19 @@ class AccessPolicyInclude(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
-                 azures: Optional[List['outputs.AccessPolicyIncludeAzure']] = None,
+                 azures: Optional[Sequence['outputs.AccessPolicyIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
-                 email_domains: Optional[List[str]] = None,
-                 emails: Optional[List[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
-                 githubs: Optional[List['outputs.AccessPolicyIncludeGithub']] = None,
-                 groups: Optional[List[str]] = None,
-                 gsuites: Optional[List['outputs.AccessPolicyIncludeGsuite']] = None,
-                 ips: Optional[List[str]] = None,
-                 oktas: Optional[List['outputs.AccessPolicyIncludeOkta']] = None,
-                 samls: Optional[List['outputs.AccessPolicyIncludeSaml']] = None,
-                 service_tokens: Optional[List[str]] = None):
+                 githubs: Optional[Sequence['outputs.AccessPolicyIncludeGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.AccessPolicyIncludeGsuite']] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.AccessPolicyIncludeOkta']] = None,
+                 samls: Optional[Sequence['outputs.AccessPolicyIncludeSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -1548,7 +1548,7 @@ class AccessPolicyInclude(dict):
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[List['outputs.AccessPolicyIncludeAzure']]:
+    def azures(self) -> Optional[Sequence['outputs.AccessPolicyIncludeAzure']]:
         return pulumi.get(self, "azures")
 
     @property
@@ -1563,12 +1563,12 @@ class AccessPolicyInclude(dict):
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[List[str]]:
+    def email_domains(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "email_domains")
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -1578,37 +1578,37 @@ class AccessPolicyInclude(dict):
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[List['outputs.AccessPolicyIncludeGithub']]:
+    def githubs(self) -> Optional[Sequence['outputs.AccessPolicyIncludeGithub']]:
         return pulumi.get(self, "githubs")
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[List[str]]:
+    def groups(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "groups")
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[List['outputs.AccessPolicyIncludeGsuite']]:
+    def gsuites(self) -> Optional[Sequence['outputs.AccessPolicyIncludeGsuite']]:
         return pulumi.get(self, "gsuites")
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[List[str]]:
+    def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[List['outputs.AccessPolicyIncludeOkta']]:
+    def oktas(self) -> Optional[Sequence['outputs.AccessPolicyIncludeOkta']]:
         return pulumi.get(self, "oktas")
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[List['outputs.AccessPolicyIncludeSaml']]:
+    def samls(self) -> Optional[Sequence['outputs.AccessPolicyIncludeSaml']]:
         return pulumi.get(self, "samls")
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[List[str]]:
+    def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
     def _translate_property(self, prop):
@@ -1619,7 +1619,7 @@ class AccessPolicyInclude(dict):
 class AccessPolicyIncludeAzure(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 ids: Optional[List[str]] = None):
+                 ids: Optional[Sequence[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -1632,7 +1632,7 @@ class AccessPolicyIncludeAzure(dict):
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[List[str]]:
+    def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
@@ -1644,7 +1644,7 @@ class AccessPolicyIncludeGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 teams: Optional[List[str]] = None):
+                 teams: Optional[Sequence[str]] = None):
         """
         :param str name: Friendly name of the Access Application.
         """
@@ -1670,7 +1670,7 @@ class AccessPolicyIncludeGithub(dict):
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[List[str]]:
+    def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
     def _translate_property(self, prop):
@@ -1680,7 +1680,7 @@ class AccessPolicyIncludeGithub(dict):
 @pulumi.output_type
 class AccessPolicyIncludeGsuite(dict):
     def __init__(__self__, *,
-                 emails: Optional[List[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -1689,7 +1689,7 @@ class AccessPolicyIncludeGsuite(dict):
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -1705,9 +1705,9 @@ class AccessPolicyIncludeGsuite(dict):
 class AccessPolicyIncludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 names: Optional[List[str]] = None):
+                 names: Optional[Sequence[str]] = None):
         """
-        :param List[str] names: Friendly name of the Access Application.
+        :param Sequence[str] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -1721,7 +1721,7 @@ class AccessPolicyIncludeOkta(dict):
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[List[str]]:
+    def names(self) -> Optional[Sequence[str]]:
         """
         Friendly name of the Access Application.
         """
@@ -1768,19 +1768,19 @@ class AccessPolicyRequire(dict):
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
-                 azures: Optional[List['outputs.AccessPolicyRequireAzure']] = None,
+                 azures: Optional[Sequence['outputs.AccessPolicyRequireAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
-                 email_domains: Optional[List[str]] = None,
-                 emails: Optional[List[str]] = None,
+                 email_domains: Optional[Sequence[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
-                 githubs: Optional[List['outputs.AccessPolicyRequireGithub']] = None,
-                 groups: Optional[List[str]] = None,
-                 gsuites: Optional[List['outputs.AccessPolicyRequireGsuite']] = None,
-                 ips: Optional[List[str]] = None,
-                 oktas: Optional[List['outputs.AccessPolicyRequireOkta']] = None,
-                 samls: Optional[List['outputs.AccessPolicyRequireSaml']] = None,
-                 service_tokens: Optional[List[str]] = None):
+                 githubs: Optional[Sequence['outputs.AccessPolicyRequireGithub']] = None,
+                 groups: Optional[Sequence[str]] = None,
+                 gsuites: Optional[Sequence['outputs.AccessPolicyRequireGsuite']] = None,
+                 ips: Optional[Sequence[str]] = None,
+                 oktas: Optional[Sequence['outputs.AccessPolicyRequireOkta']] = None,
+                 samls: Optional[Sequence['outputs.AccessPolicyRequireSaml']] = None,
+                 service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_method is not None:
@@ -1824,7 +1824,7 @@ class AccessPolicyRequire(dict):
 
     @property
     @pulumi.getter
-    def azures(self) -> Optional[List['outputs.AccessPolicyRequireAzure']]:
+    def azures(self) -> Optional[Sequence['outputs.AccessPolicyRequireAzure']]:
         return pulumi.get(self, "azures")
 
     @property
@@ -1839,12 +1839,12 @@ class AccessPolicyRequire(dict):
 
     @property
     @pulumi.getter(name="emailDomains")
-    def email_domains(self) -> Optional[List[str]]:
+    def email_domains(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "email_domains")
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -1854,37 +1854,37 @@ class AccessPolicyRequire(dict):
 
     @property
     @pulumi.getter
-    def githubs(self) -> Optional[List['outputs.AccessPolicyRequireGithub']]:
+    def githubs(self) -> Optional[Sequence['outputs.AccessPolicyRequireGithub']]:
         return pulumi.get(self, "githubs")
 
     @property
     @pulumi.getter
-    def groups(self) -> Optional[List[str]]:
+    def groups(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "groups")
 
     @property
     @pulumi.getter
-    def gsuites(self) -> Optional[List['outputs.AccessPolicyRequireGsuite']]:
+    def gsuites(self) -> Optional[Sequence['outputs.AccessPolicyRequireGsuite']]:
         return pulumi.get(self, "gsuites")
 
     @property
     @pulumi.getter
-    def ips(self) -> Optional[List[str]]:
+    def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
 
     @property
     @pulumi.getter
-    def oktas(self) -> Optional[List['outputs.AccessPolicyRequireOkta']]:
+    def oktas(self) -> Optional[Sequence['outputs.AccessPolicyRequireOkta']]:
         return pulumi.get(self, "oktas")
 
     @property
     @pulumi.getter
-    def samls(self) -> Optional[List['outputs.AccessPolicyRequireSaml']]:
+    def samls(self) -> Optional[Sequence['outputs.AccessPolicyRequireSaml']]:
         return pulumi.get(self, "samls")
 
     @property
     @pulumi.getter(name="serviceTokens")
-    def service_tokens(self) -> Optional[List[str]]:
+    def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
     def _translate_property(self, prop):
@@ -1895,7 +1895,7 @@ class AccessPolicyRequire(dict):
 class AccessPolicyRequireAzure(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 ids: Optional[List[str]] = None):
+                 ids: Optional[Sequence[str]] = None):
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if ids is not None:
@@ -1908,7 +1908,7 @@ class AccessPolicyRequireAzure(dict):
 
     @property
     @pulumi.getter
-    def ids(self) -> Optional[List[str]]:
+    def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
     def _translate_property(self, prop):
@@ -1920,7 +1920,7 @@ class AccessPolicyRequireGithub(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
-                 teams: Optional[List[str]] = None):
+                 teams: Optional[Sequence[str]] = None):
         """
         :param str name: Friendly name of the Access Application.
         """
@@ -1946,7 +1946,7 @@ class AccessPolicyRequireGithub(dict):
 
     @property
     @pulumi.getter
-    def teams(self) -> Optional[List[str]]:
+    def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
     def _translate_property(self, prop):
@@ -1956,7 +1956,7 @@ class AccessPolicyRequireGithub(dict):
 @pulumi.output_type
 class AccessPolicyRequireGsuite(dict):
     def __init__(__self__, *,
-                 emails: Optional[List[str]] = None,
+                 emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
@@ -1965,7 +1965,7 @@ class AccessPolicyRequireGsuite(dict):
 
     @property
     @pulumi.getter
-    def emails(self) -> Optional[List[str]]:
+    def emails(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "emails")
 
     @property
@@ -1981,9 +1981,9 @@ class AccessPolicyRequireGsuite(dict):
 class AccessPolicyRequireOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
-                 names: Optional[List[str]] = None):
+                 names: Optional[Sequence[str]] = None):
         """
-        :param List[str] names: Friendly name of the Access Application.
+        :param Sequence[str] names: Friendly name of the Access Application.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -1997,7 +1997,7 @@ class AccessPolicyRequireOkta(dict):
 
     @property
     @pulumi.getter
-    def names(self) -> Optional[List[str]]:
+    def names(self) -> Optional[Sequence[str]]:
         """
         Friendly name of the Access Application.
         """
@@ -2142,7 +2142,7 @@ class CustomHostnameSsl(dict):
                  custom_certificate: Optional[str] = None,
                  custom_key: Optional[str] = None,
                  method: Optional[str] = None,
-                 settings: Optional[List['outputs.CustomHostnameSslSetting']] = None,
+                 settings: Optional[Sequence['outputs.CustomHostnameSslSetting']] = None,
                  status: Optional[str] = None,
                  type: Optional[str] = None,
                  wildcard: Optional[bool] = None):
@@ -2151,7 +2151,7 @@ class CustomHostnameSsl(dict):
         :param str custom_key: The key for a custom uploaded certificate.
         :param str method: Domain control validation (DCV) method used for this
                hostname. Valid values are `"txt"`, `"http"` and `"email"`.
-        :param List['CustomHostnameSslSettingArgs'] settings: SSL/TLS settings for the certificate. See further notes below.
+        :param Sequence['CustomHostnameSslSettingArgs'] settings: SSL/TLS settings for the certificate. See further notes below.
         :param str type: Level of validation to be used for this hostname. Domain validation ("dv") must be used.
         :param bool wildcard: Indicates whether the certificate covers a wildcard.
         """
@@ -2218,7 +2218,7 @@ class CustomHostnameSsl(dict):
 
     @property
     @pulumi.getter
-    def settings(self) -> Optional[List['outputs.CustomHostnameSslSetting']]:
+    def settings(self) -> Optional[Sequence['outputs.CustomHostnameSslSetting']]:
         """
         SSL/TLS settings for the certificate. See further notes below.
         """
@@ -2252,12 +2252,12 @@ class CustomHostnameSsl(dict):
 @pulumi.output_type
 class CustomHostnameSslSetting(dict):
     def __init__(__self__, *,
-                 ciphers: Optional[List[str]] = None,
+                 ciphers: Optional[Sequence[str]] = None,
                  http2: Optional[str] = None,
                  min_tls_version: Optional[str] = None,
                  tls13: Optional[str] = None):
         """
-        :param List[str] ciphers: List of SSL/TLS ciphers to associate with this certificate.
+        :param Sequence[str] ciphers: List of SSL/TLS ciphers to associate with this certificate.
         :param str http2: Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
         :param str min_tls_version: Lowest version of TLS this certificate should
                support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
@@ -2274,7 +2274,7 @@ class CustomHostnameSslSetting(dict):
 
     @property
     @pulumi.getter
-    def ciphers(self) -> Optional[List[str]]:
+    def ciphers(self) -> Optional[Sequence[str]]:
         """
         List of SSL/TLS ciphers to associate with this certificate.
         """
@@ -2381,7 +2381,7 @@ class CustomSslCustomSslOptions(dict):
 class CustomSslCustomSslPriority(dict):
     def __init__(__self__, *,
                  id: Optional[str] = None,
-                 priority: Optional[float] = None):
+                 priority: Optional[int] = None):
         if id is not None:
             pulumi.set(__self__, "id", id)
         if priority is not None:
@@ -2394,7 +2394,7 @@ class CustomSslCustomSslPriority(dict):
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> Optional[int]:
         return pulumi.get(self, "priority")
 
     def _translate_property(self, prop):
@@ -2405,10 +2405,10 @@ class CustomSslCustomSslPriority(dict):
 class HealthcheckHeader(dict):
     def __init__(__self__, *,
                  header: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str header: The header name.
-        :param List[str] values: A list of string values for the header.
+        :param Sequence[str] values: A list of string values for the header.
         """
         pulumi.set(__self__, "header", header)
         pulumi.set(__self__, "values", values)
@@ -2423,7 +2423,7 @@ class HealthcheckHeader(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of string values for the header.
         """
@@ -2470,10 +2470,10 @@ class IpListItem(dict):
 class LoadBalancerMonitorHeader(dict):
     def __init__(__self__, *,
                  header: str,
-                 values: List[str]):
+                 values: Sequence[str]):
         """
         :param str header: The header name.
-        :param List[str] values: A list of string values for the header.
+        :param Sequence[str] values: A list of string values for the header.
         """
         pulumi.set(__self__, "header", header)
         pulumi.set(__self__, "values", values)
@@ -2488,7 +2488,7 @@ class LoadBalancerMonitorHeader(dict):
 
     @property
     @pulumi.getter
-    def values(self) -> List[str]:
+    def values(self) -> Sequence[str]:
         """
         A list of string values for the header.
         """
@@ -2557,10 +2557,10 @@ class LoadBalancerPoolOrigin(dict):
 @pulumi.output_type
 class LoadBalancerPopPool(dict):
     def __init__(__self__, *,
-                 pool_ids: List[str],
+                 pool_ids: Sequence[str],
                  pop: str):
         """
-        :param List[str] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
         :param str pop: A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
         """
         pulumi.set(__self__, "pool_ids", pool_ids)
@@ -2568,7 +2568,7 @@ class LoadBalancerPopPool(dict):
 
     @property
     @pulumi.getter(name="poolIds")
-    def pool_ids(self) -> List[str]:
+    def pool_ids(self) -> Sequence[str]:
         """
         A list of pool IDs in failover priority to use for traffic reaching the given PoP.
         """
@@ -2589,10 +2589,10 @@ class LoadBalancerPopPool(dict):
 @pulumi.output_type
 class LoadBalancerRegionPool(dict):
     def __init__(__self__, *,
-                 pool_ids: List[str],
+                 pool_ids: Sequence[str],
                  region: str):
         """
-        :param List[str] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
         :param str region: A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
         """
         pulumi.set(__self__, "pool_ids", pool_ids)
@@ -2600,7 +2600,7 @@ class LoadBalancerRegionPool(dict):
 
     @property
     @pulumi.getter(name="poolIds")
-    def pool_ids(self) -> List[str]:
+    def pool_ids(self) -> Sequence[str]:
         """
         A list of pool IDs in failover priority to use for traffic reaching the given PoP.
         """
@@ -2632,18 +2632,18 @@ class PageRuleActions(dict):
                  cache_key_fields: Optional['outputs.PageRuleActionsCacheKeyFields'] = None,
                  cache_level: Optional[str] = None,
                  cache_on_cookie: Optional[str] = None,
-                 cache_ttl_by_statuses: Optional[List['outputs.PageRuleActionsCacheTtlByStatus']] = None,
+                 cache_ttl_by_statuses: Optional[Sequence['outputs.PageRuleActionsCacheTtlByStatus']] = None,
                  disable_apps: Optional[bool] = None,
                  disable_performance: Optional[bool] = None,
                  disable_railgun: Optional[bool] = None,
                  disable_security: Optional[bool] = None,
-                 edge_cache_ttl: Optional[float] = None,
+                 edge_cache_ttl: Optional[int] = None,
                  email_obfuscation: Optional[str] = None,
                  explicit_cache_control: Optional[str] = None,
                  forwarding_url: Optional['outputs.PageRuleActionsForwardingUrl'] = None,
                  host_header_override: Optional[str] = None,
                  ip_geolocation: Optional[str] = None,
-                 minifies: Optional[List['outputs.PageRuleActionsMinify']] = None,
+                 minifies: Optional[Sequence['outputs.PageRuleActionsMinify']] = None,
                  mirage: Optional[str] = None,
                  opportunistic_encryption: Optional[str] = None,
                  origin_error_page_pass_thru: Optional[str] = None,
@@ -2670,18 +2670,18 @@ class PageRuleActions(dict):
         :param 'PageRuleActionsCacheKeyFieldsArgs' cache_key_fields: Controls how Cloudflare creates Cache Keys used to identify files in cache. See below for full description.
         :param str cache_level: Whether to set the cache level to `"bypass"`, `"basic"`, `"simplified"`, `"aggressive"`, or `"cache_everything"`.
         :param str cache_on_cookie: String value of cookie name to conditionally cache the page.
-        :param List['PageRuleActionsCacheTtlByStatusArgs'] cache_ttl_by_statuses: Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
+        :param Sequence['PageRuleActionsCacheTtlByStatusArgs'] cache_ttl_by_statuses: Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
         :param bool disable_apps: Boolean of whether this action is enabled. Default: false.
         :param bool disable_performance: Boolean of whether this action is enabled. Default: false.
         :param bool disable_railgun: Boolean of whether this action is enabled. Default: false.
         :param bool disable_security: Boolean of whether this action is enabled. Default: false.
-        :param float edge_cache_ttl: The Time To Live for the edge cache.
+        :param int edge_cache_ttl: The Time To Live for the edge cache.
         :param str email_obfuscation: Whether this action is `"on"` or `"off"`.
         :param str explicit_cache_control: Whether origin Cache-Control action is `"on"` or `"off"`.
         :param 'PageRuleActionsForwardingUrlArgs' forwarding_url: The URL to forward to, and with what status. See below.
         :param str host_header_override: Value of the Host header to send.
         :param str ip_geolocation: Whether this action is `"on"` or `"off"`.
-        :param List['PageRuleActionsMinifyArgs'] minifies: The configuration for HTML, CSS and JS minification. See below for full list of options.
+        :param Sequence['PageRuleActionsMinifyArgs'] minifies: The configuration for HTML, CSS and JS minification. See below for full list of options.
         :param str mirage: Whether this action is `"on"` or `"off"`.
         :param str opportunistic_encryption: Whether this action is `"on"` or `"off"`.
         :param str origin_error_page_pass_thru: Whether this action is `"on"` or `"off"`.
@@ -2862,7 +2862,7 @@ class PageRuleActions(dict):
 
     @property
     @pulumi.getter(name="cacheTtlByStatuses")
-    def cache_ttl_by_statuses(self) -> Optional[List['outputs.PageRuleActionsCacheTtlByStatus']]:
+    def cache_ttl_by_statuses(self) -> Optional[Sequence['outputs.PageRuleActionsCacheTtlByStatus']]:
         """
         Set cache TTL based on the response status from the origin web server. Can be specified multiple times. See below for full description.
         """
@@ -2902,7 +2902,7 @@ class PageRuleActions(dict):
 
     @property
     @pulumi.getter(name="edgeCacheTtl")
-    def edge_cache_ttl(self) -> Optional[float]:
+    def edge_cache_ttl(self) -> Optional[int]:
         """
         The Time To Live for the edge cache.
         """
@@ -2950,7 +2950,7 @@ class PageRuleActions(dict):
 
     @property
     @pulumi.getter
-    def minifies(self) -> Optional[List['outputs.PageRuleActionsMinify']]:
+    def minifies(self) -> Optional[Sequence['outputs.PageRuleActionsMinify']]:
         """
         The configuration for HTML, CSS and JS minification. See below for full list of options.
         """
@@ -3140,11 +3140,11 @@ class PageRuleActionsCacheKeyFields(dict):
 @pulumi.output_type
 class PageRuleActionsCacheKeyFieldsCookie(dict):
     def __init__(__self__, *,
-                 check_presences: Optional[List[str]] = None,
-                 includes: Optional[List[str]] = None):
+                 check_presences: Optional[Sequence[str]] = None,
+                 includes: Optional[Sequence[str]] = None):
         """
-        :param List[str] check_presences: Check for presence of specified HTTP headers, without including their actual values.
-        :param List[str] includes: Only use values of specified query string parameters in Cache Key.
+        :param Sequence[str] check_presences: Check for presence of specified HTTP headers, without including their actual values.
+        :param Sequence[str] includes: Only use values of specified query string parameters in Cache Key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -3153,7 +3153,7 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
 
     @property
     @pulumi.getter(name="checkPresences")
-    def check_presences(self) -> Optional[List[str]]:
+    def check_presences(self) -> Optional[Sequence[str]]:
         """
         Check for presence of specified HTTP headers, without including their actual values.
         """
@@ -3161,7 +3161,7 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
 
     @property
     @pulumi.getter
-    def includes(self) -> Optional[List[str]]:
+    def includes(self) -> Optional[Sequence[str]]:
         """
         Only use values of specified query string parameters in Cache Key.
         """
@@ -3174,13 +3174,13 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
 @pulumi.output_type
 class PageRuleActionsCacheKeyFieldsHeader(dict):
     def __init__(__self__, *,
-                 check_presences: Optional[List[str]] = None,
-                 excludes: Optional[List[str]] = None,
-                 includes: Optional[List[str]] = None):
+                 check_presences: Optional[Sequence[str]] = None,
+                 excludes: Optional[Sequence[str]] = None,
+                 includes: Optional[Sequence[str]] = None):
         """
-        :param List[str] check_presences: Check for presence of specified HTTP headers, without including their actual values.
-        :param List[str] excludes: Exclude these query string parameters from Cache Key.
-        :param List[str] includes: Only use values of specified query string parameters in Cache Key.
+        :param Sequence[str] check_presences: Check for presence of specified HTTP headers, without including their actual values.
+        :param Sequence[str] excludes: Exclude these query string parameters from Cache Key.
+        :param Sequence[str] includes: Only use values of specified query string parameters in Cache Key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -3191,7 +3191,7 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
 
     @property
     @pulumi.getter(name="checkPresences")
-    def check_presences(self) -> Optional[List[str]]:
+    def check_presences(self) -> Optional[Sequence[str]]:
         """
         Check for presence of specified HTTP headers, without including their actual values.
         """
@@ -3199,7 +3199,7 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[List[str]]:
+    def excludes(self) -> Optional[Sequence[str]]:
         """
         Exclude these query string parameters from Cache Key.
         """
@@ -3207,7 +3207,7 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
 
     @property
     @pulumi.getter
-    def includes(self) -> Optional[List[str]]:
+    def includes(self) -> Optional[Sequence[str]]:
         """
         Only use values of specified query string parameters in Cache Key.
         """
@@ -3242,13 +3242,13 @@ class PageRuleActionsCacheKeyFieldsHost(dict):
 @pulumi.output_type
 class PageRuleActionsCacheKeyFieldsQueryString(dict):
     def __init__(__self__, *,
-                 excludes: Optional[List[str]] = None,
+                 excludes: Optional[Sequence[str]] = None,
                  ignore: Optional[bool] = None,
-                 includes: Optional[List[str]] = None):
+                 includes: Optional[Sequence[str]] = None):
         """
-        :param List[str] excludes: Exclude these query string parameters from Cache Key.
+        :param Sequence[str] excludes: Exclude these query string parameters from Cache Key.
         :param bool ignore: `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
-        :param List[str] includes: Only use values of specified query string parameters in Cache Key.
+        :param Sequence[str] includes: Only use values of specified query string parameters in Cache Key.
         """
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
@@ -3259,7 +3259,7 @@ class PageRuleActionsCacheKeyFieldsQueryString(dict):
 
     @property
     @pulumi.getter
-    def excludes(self) -> Optional[List[str]]:
+    def excludes(self) -> Optional[Sequence[str]]:
         """
         Exclude these query string parameters from Cache Key.
         """
@@ -3275,7 +3275,7 @@ class PageRuleActionsCacheKeyFieldsQueryString(dict):
 
     @property
     @pulumi.getter
-    def includes(self) -> Optional[List[str]]:
+    def includes(self) -> Optional[Sequence[str]]:
         """
         Only use values of specified query string parameters in Cache Key.
         """
@@ -3335,10 +3335,10 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
 class PageRuleActionsCacheTtlByStatus(dict):
     def __init__(__self__, *,
                  codes: str,
-                 ttl: float):
+                 ttl: int):
         """
         :param str codes: A HTTP code (e.g. `404`) or range of codes (e.g. `400-499`)
-        :param float ttl: Duration a resource lives in the Cloudflare cache.
+        :param int ttl: Duration a resource lives in the Cloudflare cache.
                * positive number - cache for specified duration in seconds
         """
         pulumi.set(__self__, "codes", codes)
@@ -3354,7 +3354,7 @@ class PageRuleActionsCacheTtlByStatus(dict):
 
     @property
     @pulumi.getter
-    def ttl(self) -> float:
+    def ttl(self) -> int:
         """
         Duration a resource lives in the Cloudflare cache.
         * positive number - cache for specified duration in seconds
@@ -3368,10 +3368,10 @@ class PageRuleActionsCacheTtlByStatus(dict):
 @pulumi.output_type
 class PageRuleActionsForwardingUrl(dict):
     def __init__(__self__, *,
-                 status_code: float,
+                 status_code: int,
                  url: str):
         """
-        :param float status_code: The status code to use for the redirection.
+        :param int status_code: The status code to use for the redirection.
         :param str url: The URL to which the page rule should forward.
         """
         pulumi.set(__self__, "status_code", status_code)
@@ -3379,7 +3379,7 @@ class PageRuleActionsForwardingUrl(dict):
 
     @property
     @pulumi.getter(name="statusCode")
-    def status_code(self) -> float:
+    def status_code(self) -> int:
         """
         The status code to use for the redirection.
         """
@@ -3445,11 +3445,11 @@ class RateLimitAction(dict):
     def __init__(__self__, *,
                  mode: str,
                  response: Optional['outputs.RateLimitActionResponse'] = None,
-                 timeout: Optional[float] = None):
+                 timeout: Optional[int] = None):
         """
         :param str mode: The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
         :param 'RateLimitActionResponseArgs' response: Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
-        :param float timeout: The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
+        :param int timeout: The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
         """
         pulumi.set(__self__, "mode", mode)
         if response is not None:
@@ -3475,7 +3475,7 @@ class RateLimitAction(dict):
 
     @property
     @pulumi.getter
-    def timeout(self) -> Optional[float]:
+    def timeout(self) -> Optional[int]:
         """
         The time in seconds as an integer to perform the mitigation action. This field is required if the `mode` is either `simulate` or `ban`. Must be the same or greater than the period (min: 1, max: 86400).
         """
@@ -3576,12 +3576,12 @@ class RateLimitMatch(dict):
 @pulumi.output_type
 class RateLimitMatchRequest(dict):
     def __init__(__self__, *,
-                 methods: Optional[List[str]] = None,
-                 schemes: Optional[List[str]] = None,
+                 methods: Optional[Sequence[str]] = None,
+                 schemes: Optional[Sequence[str]] = None,
                  url_pattern: Optional[str] = None):
         """
-        :param List[str] methods: HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
-        :param List[str] schemes: HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
+        :param Sequence[str] methods: HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
+        :param Sequence[str] schemes: HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
         :param str url_pattern: The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use * for all traffic to your zone. Default: '*'.
         """
         if methods is not None:
@@ -3593,7 +3593,7 @@ class RateLimitMatchRequest(dict):
 
     @property
     @pulumi.getter
-    def methods(self) -> Optional[List[str]]:
+    def methods(self) -> Optional[Sequence[str]]:
         """
         HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
         """
@@ -3601,7 +3601,7 @@ class RateLimitMatchRequest(dict):
 
     @property
     @pulumi.getter
-    def schemes(self) -> Optional[List[str]]:
+    def schemes(self) -> Optional[Sequence[str]]:
         """
         HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
         """
@@ -3623,10 +3623,10 @@ class RateLimitMatchRequest(dict):
 class RateLimitMatchResponse(dict):
     def __init__(__self__, *,
                  origin_traffic: Optional[bool] = None,
-                 statuses: Optional[List[float]] = None):
+                 statuses: Optional[Sequence[int]] = None):
         """
         :param bool origin_traffic: Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
-        :param List[float] statuses: HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
+        :param Sequence[int] statuses: HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
         """
         if origin_traffic is not None:
             pulumi.set(__self__, "origin_traffic", origin_traffic)
@@ -3643,7 +3643,7 @@ class RateLimitMatchResponse(dict):
 
     @property
     @pulumi.getter
-    def statuses(self) -> Optional[List[float]]:
+    def statuses(self) -> Optional[Sequence[int]]:
         """
         HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
         """
@@ -3656,47 +3656,47 @@ class RateLimitMatchResponse(dict):
 @pulumi.output_type
 class RecordData(dict):
     def __init__(__self__, *,
-                 algorithm: Optional[float] = None,
+                 algorithm: Optional[int] = None,
                  altitude: Optional[float] = None,
                  certificate: Optional[str] = None,
                  content: Optional[str] = None,
                  digest: Optional[str] = None,
-                 digest_type: Optional[float] = None,
+                 digest_type: Optional[int] = None,
                  fingerprint: Optional[str] = None,
                  flags: Optional[str] = None,
-                 key_tag: Optional[float] = None,
-                 lat_degrees: Optional[float] = None,
+                 key_tag: Optional[int] = None,
+                 lat_degrees: Optional[int] = None,
                  lat_direction: Optional[str] = None,
-                 lat_minutes: Optional[float] = None,
+                 lat_minutes: Optional[int] = None,
                  lat_seconds: Optional[float] = None,
-                 long_degrees: Optional[float] = None,
+                 long_degrees: Optional[int] = None,
                  long_direction: Optional[str] = None,
-                 long_minutes: Optional[float] = None,
+                 long_minutes: Optional[int] = None,
                  long_seconds: Optional[float] = None,
-                 matching_type: Optional[float] = None,
+                 matching_type: Optional[int] = None,
                  name: Optional[str] = None,
-                 order: Optional[float] = None,
-                 port: Optional[float] = None,
+                 order: Optional[int] = None,
+                 port: Optional[int] = None,
                  precision_horz: Optional[float] = None,
                  precision_vert: Optional[float] = None,
-                 preference: Optional[float] = None,
-                 priority: Optional[float] = None,
+                 preference: Optional[int] = None,
+                 priority: Optional[int] = None,
                  proto: Optional[str] = None,
-                 protocol: Optional[float] = None,
+                 protocol: Optional[int] = None,
                  public_key: Optional[str] = None,
                  regex: Optional[str] = None,
                  replacement: Optional[str] = None,
-                 selector: Optional[float] = None,
+                 selector: Optional[int] = None,
                  service: Optional[str] = None,
                  size: Optional[float] = None,
                  target: Optional[str] = None,
-                 type: Optional[float] = None,
-                 usage: Optional[float] = None,
-                 weight: Optional[float] = None):
+                 type: Optional[int] = None,
+                 usage: Optional[int] = None,
+                 weight: Optional[int] = None):
         """
         :param str name: The name of the record
-        :param float priority: The priority of the record
-        :param float type: The type of the record
+        :param int priority: The priority of the record
+        :param int type: The type of the record
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -3775,7 +3775,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[float]:
+    def algorithm(self) -> Optional[int]:
         return pulumi.get(self, "algorithm")
 
     @property
@@ -3800,7 +3800,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter(name="digestType")
-    def digest_type(self) -> Optional[float]:
+    def digest_type(self) -> Optional[int]:
         return pulumi.get(self, "digest_type")
 
     @property
@@ -3815,12 +3815,12 @@ class RecordData(dict):
 
     @property
     @pulumi.getter(name="keyTag")
-    def key_tag(self) -> Optional[float]:
+    def key_tag(self) -> Optional[int]:
         return pulumi.get(self, "key_tag")
 
     @property
     @pulumi.getter(name="latDegrees")
-    def lat_degrees(self) -> Optional[float]:
+    def lat_degrees(self) -> Optional[int]:
         return pulumi.get(self, "lat_degrees")
 
     @property
@@ -3830,7 +3830,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter(name="latMinutes")
-    def lat_minutes(self) -> Optional[float]:
+    def lat_minutes(self) -> Optional[int]:
         return pulumi.get(self, "lat_minutes")
 
     @property
@@ -3840,7 +3840,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter(name="longDegrees")
-    def long_degrees(self) -> Optional[float]:
+    def long_degrees(self) -> Optional[int]:
         return pulumi.get(self, "long_degrees")
 
     @property
@@ -3850,7 +3850,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter(name="longMinutes")
-    def long_minutes(self) -> Optional[float]:
+    def long_minutes(self) -> Optional[int]:
         return pulumi.get(self, "long_minutes")
 
     @property
@@ -3860,7 +3860,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter(name="matchingType")
-    def matching_type(self) -> Optional[float]:
+    def matching_type(self) -> Optional[int]:
         return pulumi.get(self, "matching_type")
 
     @property
@@ -3873,12 +3873,12 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
-    def order(self) -> Optional[float]:
+    def order(self) -> Optional[int]:
         return pulumi.get(self, "order")
 
     @property
     @pulumi.getter
-    def port(self) -> Optional[float]:
+    def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
 
     @property
@@ -3893,12 +3893,12 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
-    def preference(self) -> Optional[float]:
+    def preference(self) -> Optional[int]:
         return pulumi.get(self, "preference")
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[float]:
+    def priority(self) -> Optional[int]:
         """
         The priority of the record
         """
@@ -3911,7 +3911,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
-    def protocol(self) -> Optional[float]:
+    def protocol(self) -> Optional[int]:
         return pulumi.get(self, "protocol")
 
     @property
@@ -3931,7 +3931,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
-    def selector(self) -> Optional[float]:
+    def selector(self) -> Optional[int]:
         return pulumi.get(self, "selector")
 
     @property
@@ -3951,7 +3951,7 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[float]:
+    def type(self) -> Optional[int]:
         """
         The type of the record
         """
@@ -3959,12 +3959,12 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
-    def usage(self) -> Optional[float]:
+    def usage(self) -> Optional[int]:
         return pulumi.get(self, "usage")
 
     @property
     @pulumi.getter
-    def weight(self) -> Optional[float]:
+    def weight(self) -> Optional[int]:
         return pulumi.get(self, "weight")
 
     def _translate_property(self, prop):
@@ -4027,18 +4027,18 @@ class SpectrumApplicationOriginDns(dict):
 @pulumi.output_type
 class SpectrumApplicationOriginPortRange(dict):
     def __init__(__self__, *,
-                 end: float,
-                 start: float):
+                 end: int,
+                 start: int):
         """
-        :param float end: Upper bound of the origin port range, e.g. `2000`
-        :param float start: Lower bound of the origin port range, e.g. `1000`
+        :param int end: Upper bound of the origin port range, e.g. `2000`
+        :param int start: Lower bound of the origin port range, e.g. `1000`
         """
         pulumi.set(__self__, "end", end)
         pulumi.set(__self__, "start", start)
 
     @property
     @pulumi.getter
-    def end(self) -> float:
+    def end(self) -> int:
         """
         Upper bound of the origin port range, e.g. `2000`
         """
@@ -4046,7 +4046,7 @@ class SpectrumApplicationOriginPortRange(dict):
 
     @property
     @pulumi.getter
-    def start(self) -> float:
+    def start(self) -> int:
         """
         Lower bound of the origin port range, e.g. `1000`
         """
@@ -4241,10 +4241,10 @@ class ZoneSettingsOverrideInitialSettings(dict):
                  always_use_https: Optional[str] = None,
                  automatic_https_rewrites: Optional[str] = None,
                  brotli: Optional[str] = None,
-                 browser_cache_ttl: Optional[float] = None,
+                 browser_cache_ttl: Optional[int] = None,
                  browser_check: Optional[str] = None,
                  cache_level: Optional[str] = None,
-                 challenge_ttl: Optional[float] = None,
+                 challenge_ttl: Optional[int] = None,
                  cname_flattening: Optional[str] = None,
                  development_mode: Optional[str] = None,
                  email_obfuscation: Optional[str] = None,
@@ -4255,7 +4255,7 @@ class ZoneSettingsOverrideInitialSettings(dict):
                  image_resizing: Optional[str] = None,
                  ip_geolocation: Optional[str] = None,
                  ipv6: Optional[str] = None,
-                 max_upload: Optional[float] = None,
+                 max_upload: Optional[int] = None,
                  min_tls_version: Optional[str] = None,
                  minify: Optional['outputs.ZoneSettingsOverrideInitialSettingsMinify'] = None,
                  mirage: Optional[str] = None,
@@ -4401,7 +4401,7 @@ class ZoneSettingsOverrideInitialSettings(dict):
 
     @property
     @pulumi.getter(name="browserCacheTtl")
-    def browser_cache_ttl(self) -> Optional[float]:
+    def browser_cache_ttl(self) -> Optional[int]:
         return pulumi.get(self, "browser_cache_ttl")
 
     @property
@@ -4416,7 +4416,7 @@ class ZoneSettingsOverrideInitialSettings(dict):
 
     @property
     @pulumi.getter(name="challengeTtl")
-    def challenge_ttl(self) -> Optional[float]:
+    def challenge_ttl(self) -> Optional[int]:
         return pulumi.get(self, "challenge_ttl")
 
     @property
@@ -4471,7 +4471,7 @@ class ZoneSettingsOverrideInitialSettings(dict):
 
     @property
     @pulumi.getter(name="maxUpload")
-    def max_upload(self) -> Optional[float]:
+    def max_upload(self) -> Optional[int]:
         return pulumi.get(self, "max_upload")
 
     @property
@@ -4707,13 +4707,13 @@ class ZoneSettingsOverrideInitialSettingsSecurityHeader(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  include_subdomains: Optional[bool] = None,
-                 max_age: Optional[float] = None,
+                 max_age: Optional[int] = None,
                  nosniff: Optional[bool] = None,
                  preload: Optional[bool] = None):
         """
         :param bool enabled: true/false
         :param bool include_subdomains: true/false
-        :param float max_age: Integer
+        :param int max_age: Integer
         :param bool nosniff: true/false
         :param bool preload: true/false
         """
@@ -4746,7 +4746,7 @@ class ZoneSettingsOverrideInitialSettingsSecurityHeader(dict):
 
     @property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[float]:
+    def max_age(self) -> Optional[int]:
         """
         Integer
         """
@@ -4779,10 +4779,10 @@ class ZoneSettingsOverrideSettings(dict):
                  always_use_https: Optional[str] = None,
                  automatic_https_rewrites: Optional[str] = None,
                  brotli: Optional[str] = None,
-                 browser_cache_ttl: Optional[float] = None,
+                 browser_cache_ttl: Optional[int] = None,
                  browser_check: Optional[str] = None,
                  cache_level: Optional[str] = None,
-                 challenge_ttl: Optional[float] = None,
+                 challenge_ttl: Optional[int] = None,
                  cname_flattening: Optional[str] = None,
                  development_mode: Optional[str] = None,
                  email_obfuscation: Optional[str] = None,
@@ -4793,7 +4793,7 @@ class ZoneSettingsOverrideSettings(dict):
                  image_resizing: Optional[str] = None,
                  ip_geolocation: Optional[str] = None,
                  ipv6: Optional[str] = None,
-                 max_upload: Optional[float] = None,
+                 max_upload: Optional[int] = None,
                  min_tls_version: Optional[str] = None,
                  minify: Optional['outputs.ZoneSettingsOverrideSettingsMinify'] = None,
                  mirage: Optional[str] = None,
@@ -4939,7 +4939,7 @@ class ZoneSettingsOverrideSettings(dict):
 
     @property
     @pulumi.getter(name="browserCacheTtl")
-    def browser_cache_ttl(self) -> Optional[float]:
+    def browser_cache_ttl(self) -> Optional[int]:
         return pulumi.get(self, "browser_cache_ttl")
 
     @property
@@ -4954,7 +4954,7 @@ class ZoneSettingsOverrideSettings(dict):
 
     @property
     @pulumi.getter(name="challengeTtl")
-    def challenge_ttl(self) -> Optional[float]:
+    def challenge_ttl(self) -> Optional[int]:
         return pulumi.get(self, "challenge_ttl")
 
     @property
@@ -5009,7 +5009,7 @@ class ZoneSettingsOverrideSettings(dict):
 
     @property
     @pulumi.getter(name="maxUpload")
-    def max_upload(self) -> Optional[float]:
+    def max_upload(self) -> Optional[int]:
         return pulumi.get(self, "max_upload")
 
     @property
@@ -5245,13 +5245,13 @@ class ZoneSettingsOverrideSettingsSecurityHeader(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  include_subdomains: Optional[bool] = None,
-                 max_age: Optional[float] = None,
+                 max_age: Optional[int] = None,
                  nosniff: Optional[bool] = None,
                  preload: Optional[bool] = None):
         """
         :param bool enabled: true/false
         :param bool include_subdomains: true/false
-        :param float max_age: Integer
+        :param int max_age: Integer
         :param bool nosniff: true/false
         :param bool preload: true/false
         """
@@ -5284,7 +5284,7 @@ class ZoneSettingsOverrideSettingsSecurityHeader(dict):
 
     @property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[float]:
+    def max_age(self) -> Optional[int]:
         """
         Integer
         """
@@ -5347,18 +5347,18 @@ class GetWafGroupsGroupResult(dict):
                  description: Optional[str] = None,
                  id: Optional[str] = None,
                  mode: Optional[str] = None,
-                 modified_rules_count: Optional[float] = None,
+                 modified_rules_count: Optional[int] = None,
                  name: Optional[str] = None,
                  package_id: Optional[str] = None,
-                 rules_count: Optional[float] = None):
+                 rules_count: Optional[int] = None):
         """
         :param str description: The WAF Rule Group description
         :param str id: The WAF Rule Group ID
         :param str mode: Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-        :param float modified_rules_count: The number of modified rules in the WAF Rule Group
+        :param int modified_rules_count: The number of modified rules in the WAF Rule Group
         :param str name: A regular expression matching the name of the WAF Rule Groups to lookup.
         :param str package_id: The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-        :param float rules_count: The number of rules in the WAF Rule Group
+        :param int rules_count: The number of rules in the WAF Rule Group
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -5401,7 +5401,7 @@ class GetWafGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="modifiedRulesCount")
-    def modified_rules_count(self) -> Optional[float]:
+    def modified_rules_count(self) -> Optional[int]:
         """
         The number of modified rules in the WAF Rule Group
         """
@@ -5425,7 +5425,7 @@ class GetWafGroupsGroupResult(dict):
 
     @property
     @pulumi.getter(name="rulesCount")
-    def rules_count(self) -> Optional[float]:
+    def rules_count(self) -> Optional[int]:
         """
         The number of rules in the WAF Rule Group
         """
@@ -5612,7 +5612,7 @@ class GetWafRulesFilterResult(dict):
 @pulumi.output_type
 class GetWafRulesRuleResult(dict):
     def __init__(__self__, *,
-                 allowed_modes: Optional[List[str]] = None,
+                 allowed_modes: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
                  group_id: Optional[str] = None,
                  group_name: Optional[str] = None,
@@ -5621,7 +5621,7 @@ class GetWafRulesRuleResult(dict):
                  package_id: Optional[str] = None,
                  priority: Optional[str] = None):
         """
-        :param List[str] allowed_modes: The list of allowed `mode` values for the WAF Rule
+        :param Sequence[str] allowed_modes: The list of allowed `mode` values for the WAF Rule
         :param str description: A regular expression matching the description of the WAF Rules to lookup.
         :param str group_id: The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
         :param str group_name: The Name of the WAF Rule Group that contains the WAF Rule
@@ -5649,7 +5649,7 @@ class GetWafRulesRuleResult(dict):
 
     @property
     @pulumi.getter(name="allowedModes")
-    def allowed_modes(self) -> Optional[List[str]]:
+    def allowed_modes(self) -> Optional[Sequence[str]]:
         """
         The list of allowed `mode` values for the WAF Rule
         """
