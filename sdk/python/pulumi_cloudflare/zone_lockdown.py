@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -17,11 +17,11 @@ class ZoneLockdown(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
-                 urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -49,10 +49,10 @@ class ZoneLockdown(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
-        :param pulumi.Input[List[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
         """
         if __name__ is not None:
@@ -94,11 +94,11 @@ class ZoneLockdown(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configurations: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
+            configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
-            urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
+            urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'ZoneLockdown':
         """
         Get an existing ZoneLockdown resource's state with the given name, id, and optional extra
@@ -107,10 +107,10 @@ class ZoneLockdown(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
-        :param pulumi.Input[List[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -127,7 +127,7 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configurations(self) -> pulumi.Output[List['outputs.ZoneLockdownConfiguration']]:
+    def configurations(self) -> pulumi.Output[Sequence['outputs.ZoneLockdownConfiguration']]:
         """
         A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
         """
@@ -151,12 +151,12 @@ class ZoneLockdown(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter
-    def urls(self) -> pulumi.Output[List[str]]:
+    def urls(self) -> pulumi.Output[Sequence[str]]:
         """
         A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         """

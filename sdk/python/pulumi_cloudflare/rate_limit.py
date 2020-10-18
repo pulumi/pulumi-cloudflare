@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,13 +18,13 @@ class RateLimit(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: Optional[pulumi.Input[pulumi.InputType['RateLimitActionArgs']]] = None,
-                 bypass_url_patterns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  correlate: Optional[pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  match: Optional[pulumi.Input[pulumi.InputType['RateLimitMatchArgs']]] = None,
-                 period: Optional[pulumi.Input[float]] = None,
-                 threshold: Optional[pulumi.Input[float]] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 threshold: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -91,13 +91,13 @@ class RateLimit(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RateLimitActionArgs']] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-        :param pulumi.Input[List[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
         :param pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
         :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
         :param pulumi.Input[pulumi.InputType['RateLimitMatchArgs']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
-        :param pulumi.Input[float] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
-        :param pulumi.Input[float] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
         :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
         """
         if __name__ is not None:
@@ -145,13 +145,13 @@ class RateLimit(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             action: Optional[pulumi.Input[pulumi.InputType['RateLimitActionArgs']]] = None,
-            bypass_url_patterns: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             correlate: Optional[pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             match: Optional[pulumi.Input[pulumi.InputType['RateLimitMatchArgs']]] = None,
-            period: Optional[pulumi.Input[float]] = None,
-            threshold: Optional[pulumi.Input[float]] = None,
+            period: Optional[pulumi.Input[int]] = None,
+            threshold: Optional[pulumi.Input[int]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'RateLimit':
         """
         Get an existing RateLimit resource's state with the given name, id, and optional extra
@@ -161,13 +161,13 @@ class RateLimit(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RateLimitActionArgs']] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
-        :param pulumi.Input[List[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
         :param pulumi.Input[pulumi.InputType['RateLimitCorrelateArgs']] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
         :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
         :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
         :param pulumi.Input[pulumi.InputType['RateLimitMatchArgs']] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
-        :param pulumi.Input[float] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
-        :param pulumi.Input[float] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
         :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -195,7 +195,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bypassUrlPatterns")
-    def bypass_url_patterns(self) -> pulumi.Output[Optional[List[str]]]:
+    def bypass_url_patterns(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         URLs matching the patterns specified here will be excluded from rate limiting.
         """
@@ -235,7 +235,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def period(self) -> pulumi.Output[float]:
+    def period(self) -> pulumi.Output[int]:
         """
         The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
         """
@@ -243,7 +243,7 @@ class RateLimit(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def threshold(self) -> pulumi.Output[float]:
+    def threshold(self) -> pulumi.Output[int]:
         """
         The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -47,7 +47,7 @@ class GetZonesResult:
 
     @property
     @pulumi.getter
-    def zones(self) -> List['outputs.GetZonesZoneResult']:
+    def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
         """
         A map of zone details. Full list below:
         """

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['WafOverride']
@@ -18,10 +18,10 @@ class WafOverride(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  groups: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  rewrite_action: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -59,10 +59,10 @@ class WafOverride(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of what the WAF override does.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] groups: Similar to `rules`; which WAF groups you want to alter.
         :param pulumi.Input[bool] paused: Whether this package is currently paused.
-        :param pulumi.Input[float] priority: Relative priority of this configuration when multiple configurations match a single URL.
+        :param pulumi.Input[int] priority: Relative priority of this configuration when multiple configurations match a single URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rewrite_action: When a WAF rule matches, substitute its configured action for a different action specified by this definition.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rules: A list of WAF rule ID to rule action you intend to apply.
-        :param pulumi.Input[List[pulumi.Input[str]]] urls: An array of URLs to apply the WAF override to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: An array of URLs to apply the WAF override to.
         :param pulumi.Input[str] zone_id: The DNS zone to which the WAF override condition should be added.
         """
         if __name__ is not None:
@@ -111,10 +111,10 @@ class WafOverride(pulumi.CustomResource):
             groups: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             override_id: Optional[pulumi.Input[str]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             rewrite_action: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-            urls: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'WafOverride':
         """
         Get an existing WafOverride resource's state with the given name, id, and optional extra
@@ -126,10 +126,10 @@ class WafOverride(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of what the WAF override does.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] groups: Similar to `rules`; which WAF groups you want to alter.
         :param pulumi.Input[bool] paused: Whether this package is currently paused.
-        :param pulumi.Input[float] priority: Relative priority of this configuration when multiple configurations match a single URL.
+        :param pulumi.Input[int] priority: Relative priority of this configuration when multiple configurations match a single URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rewrite_action: When a WAF rule matches, substitute its configured action for a different action specified by this definition.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rules: A list of WAF rule ID to rule action you intend to apply.
-        :param pulumi.Input[List[pulumi.Input[str]]] urls: An array of URLs to apply the WAF override to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: An array of URLs to apply the WAF override to.
         :param pulumi.Input[str] zone_id: The DNS zone to which the WAF override condition should be added.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -178,7 +178,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[Optional[float]]:
+    def priority(self) -> pulumi.Output[Optional[int]]:
         """
         Relative priority of this configuration when multiple configurations match a single URL.
         """
@@ -202,7 +202,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def urls(self) -> pulumi.Output[List[str]]:
+    def urls(self) -> pulumi.Output[Sequence[str]]:
         """
         An array of URLs to apply the WAF override to.
         """

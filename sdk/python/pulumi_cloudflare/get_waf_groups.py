@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -45,7 +45,7 @@ class GetWafGroupsResult:
 
     @property
     @pulumi.getter
-    def groups(self) -> List['outputs.GetWafGroupsGroupResult']:
+    def groups(self) -> Sequence['outputs.GetWafGroupsGroupResult']:
         """
         A map of WAF Rule Groups details. Full list below:
         """

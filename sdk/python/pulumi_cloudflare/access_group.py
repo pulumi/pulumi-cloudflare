@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,10 +18,10 @@ class AccessGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 excludes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
-                 includes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 requires: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None,
+                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -90,12 +90,12 @@ class AccessGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account the group is
                associated with.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]] excludes: A series of access conditions, see below for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]] excludes: A series of access conditions, see below for
                full list.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]] includes: A series of access conditions, see below for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]] includes: A series of access conditions, see below for
                full list.
         :param pulumi.Input[str] name: Friendly name of the Access Group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]] requires: A series of access conditions, see below for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]] requires: A series of access conditions, see below for
                full list.
         """
         if __name__ is not None:
@@ -137,10 +137,10 @@ class AccessGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            excludes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
-            includes: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
+            excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
+            includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            requires: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None) -> 'AccessGroup':
+            requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None) -> 'AccessGroup':
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -150,12 +150,12 @@ class AccessGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account the group is
                associated with.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]] excludes: A series of access conditions, see below for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]] excludes: A series of access conditions, see below for
                full list.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]] includes: A series of access conditions, see below for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]] includes: A series of access conditions, see below for
                full list.
         :param pulumi.Input[str] name: Friendly name of the Access Group.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]] requires: A series of access conditions, see below for
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]] requires: A series of access conditions, see below for
                full list.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -180,7 +180,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def excludes(self) -> pulumi.Output[Optional[List['outputs.AccessGroupExclude']]]:
+    def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.AccessGroupExclude']]]:
         """
         A series of access conditions, see below for
         full list.
@@ -189,7 +189,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def includes(self) -> pulumi.Output[List['outputs.AccessGroupInclude']]:
+    def includes(self) -> pulumi.Output[Sequence['outputs.AccessGroupInclude']]:
         """
         A series of access conditions, see below for
         full list.
@@ -206,7 +206,7 @@ class AccessGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def requires(self) -> pulumi.Output[Optional[List['outputs.AccessGroupRequire']]]:
+    def requires(self) -> pulumi.Output[Optional[Sequence['outputs.AccessGroupRequire']]]:
         """
         A series of access conditions, see below for
         full list.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['OriginCaCertificate']
@@ -16,9 +16,9 @@ class OriginCaCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  csr: Optional[pulumi.Input[str]] = None,
-                 hostnames: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  request_type: Optional[pulumi.Input[str]] = None,
-                 requested_validity: Optional[pulumi.Input[float]] = None,
+                 requested_validity: Optional[pulumi.Input[int]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -53,9 +53,9 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded.
-        :param pulumi.Input[List[pulumi.Input[str]]] hostnames: An array of hostnames or wildcard names bound to the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: An array of hostnames or wildcard names bound to the certificate.
         :param pulumi.Input[str] request_type: The signature type desired on the certificate.
-        :param pulumi.Input[float] requested_validity: The number of days for which the certificate should be valid.
+        :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -99,9 +99,9 @@ class OriginCaCertificate(pulumi.CustomResource):
             certificate: Optional[pulumi.Input[str]] = None,
             csr: Optional[pulumi.Input[str]] = None,
             expires_on: Optional[pulumi.Input[str]] = None,
-            hostnames: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             request_type: Optional[pulumi.Input[str]] = None,
-            requested_validity: Optional[pulumi.Input[float]] = None) -> 'OriginCaCertificate':
+            requested_validity: Optional[pulumi.Input[int]] = None) -> 'OriginCaCertificate':
         """
         Get an existing OriginCaCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -112,9 +112,9 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] certificate: The Origin CA certificate
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded.
         :param pulumi.Input[str] expires_on: The datetime when the certificate will expire.
-        :param pulumi.Input[List[pulumi.Input[str]]] hostnames: An array of hostnames or wildcard names bound to the certificate.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: An array of hostnames or wildcard names bound to the certificate.
         :param pulumi.Input[str] request_type: The signature type desired on the certificate.
-        :param pulumi.Input[float] requested_validity: The number of days for which the certificate should be valid.
+        :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -154,7 +154,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostnames(self) -> pulumi.Output[List[str]]:
+    def hostnames(self) -> pulumi.Output[Sequence[str]]:
         """
         An array of hostnames or wildcard names bound to the certificate.
         """
@@ -170,7 +170,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestedValidity")
-    def requested_validity(self) -> pulumi.Output[Optional[float]]:
+    def requested_validity(self) -> pulumi.Output[Optional[int]]:
         """
         The number of days for which the certificate should be valid.
         """

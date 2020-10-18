@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,11 +18,11 @@ class WorkerScript(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content: Optional[pulumi.Input[str]] = None,
-                 kv_namespace_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+                 kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 plain_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
-                 secret_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
-                 webassembly_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
+                 plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
+                 secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
+                 webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -72,11 +72,11 @@ class WorkerScript(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             content: Optional[pulumi.Input[str]] = None,
-            kv_namespace_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+            kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            plain_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
-            secret_text_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
-            webassembly_bindings: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None) -> 'WorkerScript':
+            plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
+            secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
+            webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None) -> 'WorkerScript':
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -109,7 +109,7 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
-    def kv_namespace_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptKvNamespaceBinding']]]:
+    def kv_namespace_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptKvNamespaceBinding']]]:
         return pulumi.get(self, "kv_namespace_bindings")
 
     @property
@@ -122,17 +122,17 @@ class WorkerScript(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="plainTextBindings")
-    def plain_text_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptPlainTextBinding']]]:
+    def plain_text_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptPlainTextBinding']]]:
         return pulumi.get(self, "plain_text_bindings")
 
     @property
     @pulumi.getter(name="secretTextBindings")
-    def secret_text_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptSecretTextBinding']]]:
+    def secret_text_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptSecretTextBinding']]]:
         return pulumi.get(self, "secret_text_bindings")
 
     @property
     @pulumi.getter(name="webassemblyBindings")
-    def webassembly_bindings(self) -> pulumi.Output[Optional[List['outputs.WorkerScriptWebassemblyBinding']]]:
+    def webassembly_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptWebassemblyBinding']]]:
         return pulumi.get(self, "webassembly_bindings")
 
     def translate_output_property(self, prop):

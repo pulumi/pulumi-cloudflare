@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -86,12 +86,12 @@ class Zone(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             jump_start: Optional[pulumi.Input[bool]] = None,
             meta: Optional[pulumi.Input[pulumi.InputType['ZoneMetaArgs']]] = None,
-            name_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             plan: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            vanity_name_servers: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             verification_key: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Zone':
         """
@@ -102,12 +102,12 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] jump_start: Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
-        :param pulumi.Input[List[pulumi.Input[str]]] name_servers: Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
         :param pulumi.Input[bool] paused: Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
         :param pulumi.Input[str] status: Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
-        :param pulumi.Input[List[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
                * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
                * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
@@ -144,7 +144,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="nameServers")
-    def name_servers(self) -> pulumi.Output[List[str]]:
+    def name_servers(self) -> pulumi.Output[Sequence[str]]:
         """
         Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
         """
@@ -184,7 +184,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="vanityNameServers")
-    def vanity_name_servers(self) -> pulumi.Output[List[str]]:
+    def vanity_name_servers(self) -> pulumi.Output[Sequence[str]]:
         """
         List of Vanity Nameservers (if set).
         * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.

@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,7 +19,7 @@ class IpList(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IpListItemArgs']]]]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpListItemArgs']]]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -99,7 +99,7 @@ class IpList(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            items: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['IpListItemArgs']]]]] = None,
+            items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpListItemArgs']]]]] = None,
             kind: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None) -> 'IpList':
         """
@@ -143,7 +143,7 @@ class IpList(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def items(self) -> pulumi.Output[Optional[List['outputs.IpListItem']]]:
+    def items(self) -> pulumi.Output[Optional[Sequence['outputs.IpListItem']]]:
         return pulumi.get(self, "items")
 
     @property

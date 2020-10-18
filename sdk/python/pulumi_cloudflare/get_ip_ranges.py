@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -35,7 +35,7 @@ class GetIpRangesResult:
 
     @property
     @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> List[str]:
+    def cidr_blocks(self) -> Sequence[str]:
         """
         The lexically ordered list of all CIDR blocks.
         """
@@ -51,7 +51,7 @@ class GetIpRangesResult:
 
     @property
     @pulumi.getter(name="ipv4CidrBlocks")
-    def ipv4_cidr_blocks(self) -> List[str]:
+    def ipv4_cidr_blocks(self) -> Sequence[str]:
         """
         The lexically ordered list of only the IPv4 CIDR blocks.
         """
@@ -59,7 +59,7 @@ class GetIpRangesResult:
 
     @property
     @pulumi.getter(name="ipv6CidrBlocks")
-    def ipv6_cidr_blocks(self) -> List[str]:
+    def ipv6_cidr_blocks(self) -> Sequence[str]:
         """
         The lexically ordered list of only the IPv6 CIDR blocks.
         """

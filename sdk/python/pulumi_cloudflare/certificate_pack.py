@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['CertificatePack']
@@ -17,10 +17,10 @@ class CertificatePack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  cloudflare_branding: Optional[pulumi.Input[bool]] = None,
-                 hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  validation_method: Optional[pulumi.Input[str]] = None,
-                 validity_days: Optional[pulumi.Input[float]] = None,
+                 validity_days: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -35,14 +35,14 @@ class CertificatePack(pulumi.CustomResource):
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to include
                Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
                if set to `true`.
-        :param pulumi.Input[List[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for.
                Note: If using Let's Encrypt, you cannot use individual subdomains and only a
                wildcard for subdomain is available.
         :param pulumi.Input[str] type: Certificate pack configuration type.
                Allowed values: `"custom"`, `"dedicated_custom"`, `"advanced"`.
         :param pulumi.Input[str] validation_method: Which validation method to
                use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-        :param pulumi.Input[float] validity_days: How long the certificate is valid
+        :param pulumi.Input[int] validity_days: How long the certificate is valid
                for. Note: If using Let's Encrypt, this value can only be 90 days.
                Allowed values: 14, 30, 90, 365.
         :param pulumi.Input[str] zone_id: The DNS zone to which the certificate pack should be added.
@@ -89,10 +89,10 @@ class CertificatePack(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             certificate_authority: Optional[pulumi.Input[str]] = None,
             cloudflare_branding: Optional[pulumi.Input[bool]] = None,
-            hosts: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             validation_method: Optional[pulumi.Input[str]] = None,
-            validity_days: Optional[pulumi.Input[float]] = None,
+            validity_days: Optional[pulumi.Input[int]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'CertificatePack':
         """
         Get an existing CertificatePack resource's state with the given name, id, and optional extra
@@ -107,14 +107,14 @@ class CertificatePack(pulumi.CustomResource):
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to include
                Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
                if set to `true`.
-        :param pulumi.Input[List[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for.
                Note: If using Let's Encrypt, you cannot use individual subdomains and only a
                wildcard for subdomain is available.
         :param pulumi.Input[str] type: Certificate pack configuration type.
                Allowed values: `"custom"`, `"dedicated_custom"`, `"advanced"`.
         :param pulumi.Input[str] validation_method: Which validation method to
                use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-        :param pulumi.Input[float] validity_days: How long the certificate is valid
+        :param pulumi.Input[int] validity_days: How long the certificate is valid
                for. Note: If using Let's Encrypt, this value can only be 90 days.
                Allowed values: 14, 30, 90, 365.
         :param pulumi.Input[str] zone_id: The DNS zone to which the certificate pack should be added.
@@ -154,7 +154,7 @@ class CertificatePack(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hosts(self) -> pulumi.Output[List[str]]:
+    def hosts(self) -> pulumi.Output[Sequence[str]]:
         """
         List of hostnames to provision the certificate pack for.
         Note: If using Let's Encrypt, you cannot use individual subdomains and only a
@@ -182,7 +182,7 @@ class CertificatePack(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validityDays")
-    def validity_days(self) -> pulumi.Output[Optional[float]]:
+    def validity_days(self) -> pulumi.Output[Optional[int]]:
         """
         How long the certificate is valid
         for. Note: If using Let's Encrypt, this value can only be 90 days.

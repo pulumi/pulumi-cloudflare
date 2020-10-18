@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -95,7 +95,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             initial_settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideInitialSettingsArgs']]] = None,
             initial_settings_read_at: Optional[pulumi.Input[str]] = None,
-            readonly_settings: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            readonly_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']]] = None,
             zone_id: Optional[pulumi.Input[str]] = None,
             zone_status: Optional[pulumi.Input[str]] = None,
@@ -108,7 +108,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ZoneSettingsOverrideInitialSettingsArgs']] initial_settings: Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-        :param pulumi.Input[List[pulumi.Input[str]]] readonly_settings: Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_settings: Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
                * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
                * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
         :param pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
@@ -142,7 +142,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="readonlySettings")
-    def readonly_settings(self) -> pulumi.Output[List[str]]:
+    def readonly_settings(self) -> pulumi.Output[Sequence[str]]:
         """
         Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
         * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.

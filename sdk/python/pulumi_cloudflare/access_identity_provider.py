@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -18,7 +18,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -72,7 +72,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
         :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
                `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
@@ -116,7 +116,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            configs: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
+            configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'AccessIdentityProvider':
         """
@@ -126,7 +126,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
         :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
                `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
@@ -149,7 +149,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configs(self) -> pulumi.Output[Optional[List['outputs.AccessIdentityProviderConfig']]]:
+    def configs(self) -> pulumi.Output[Optional[Sequence['outputs.AccessIdentityProviderConfig']]]:
         """
         Provider configuration from the [developer documentation][access_identity_provider_guide].
         """
