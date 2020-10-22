@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string? GroupId { get; set; }
 
         /// <summary>
-        /// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+        /// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         /// </summary>
         [Input("mode")]
         public string? Mode { get; set; }

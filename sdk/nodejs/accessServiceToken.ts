@@ -49,10 +49,9 @@ export class AccessServiceToken extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the account where the Access
-     * Service is being created.
+     * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * UUID client ID associated with the Service Token.
      */
@@ -65,6 +64,10 @@ export class AccessServiceToken extends pulumi.CustomResource {
      * Friendly name of the token's intent.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+     */
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessServiceToken resource with the given unique name, arguments, and options.
@@ -82,16 +85,15 @@ export class AccessServiceToken extends pulumi.CustomResource {
             inputs["clientId"] = state ? state.clientId : undefined;
             inputs["clientSecret"] = state ? state.clientSecret : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessServiceTokenArgs | undefined;
-            if (!args || args.accountId === undefined) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (!args || args.name === undefined) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["clientId"] = undefined /*out*/;
             inputs["clientSecret"] = undefined /*out*/;
         }
@@ -111,8 +113,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
  */
 export interface AccessServiceTokenState {
     /**
-     * The ID of the account where the Access
-     * Service is being created.
+     * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
      */
     readonly accountId?: pulumi.Input<string>;
     /**
@@ -127,6 +128,10 @@ export interface AccessServiceTokenState {
      * Friendly name of the token's intent.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -134,12 +139,15 @@ export interface AccessServiceTokenState {
  */
 export interface AccessServiceTokenArgs {
     /**
-     * The ID of the account where the Access
-     * Service is being created.
+     * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
      */
-    readonly accountId: pulumi.Input<string>;
+    readonly accountId?: pulumi.Input<string>;
     /**
      * Friendly name of the token's intent.
      */
     readonly name: pulumi.Input<string>;
+    /**
+     * The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }

@@ -62,6 +62,7 @@ import * as utilities from "./utilities";
  * * `authMethod` - (Optional) A string identifying the authentication
  * method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
  * Custom values are also supported.
+ * * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
  * * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
  * * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
  * * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
@@ -98,10 +99,9 @@ export class AccessGroup extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the account the group is
-     * associated with.
+     * The ID of the account the group is associated with. Conflicts with `zoneId`.
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * A series of access conditions, see below for
      * full list.
@@ -121,6 +121,10 @@ export class AccessGroup extends pulumi.CustomResource {
      * full list.
      */
     public readonly requires!: pulumi.Output<outputs.AccessGroupRequire[] | undefined>;
+    /**
+     * The ID of the zone the group is associated with. Conflicts with `accountId`.
+     */
+    public readonly zoneId!: pulumi.Output<string>;
 
     /**
      * Create a AccessGroup resource with the given unique name, arguments, and options.
@@ -139,11 +143,9 @@ export class AccessGroup extends pulumi.CustomResource {
             inputs["includes"] = state ? state.includes : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["requires"] = state ? state.requires : undefined;
+            inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
-            if (!args || args.accountId === undefined) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (!args || args.includes === undefined) {
                 throw new Error("Missing required property 'includes'");
             }
@@ -155,6 +157,7 @@ export class AccessGroup extends pulumi.CustomResource {
             inputs["includes"] = args ? args.includes : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["requires"] = args ? args.requires : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
             opts = {}
@@ -172,8 +175,7 @@ export class AccessGroup extends pulumi.CustomResource {
  */
 export interface AccessGroupState {
     /**
-     * The ID of the account the group is
-     * associated with.
+     * The ID of the account the group is associated with. Conflicts with `zoneId`.
      */
     readonly accountId?: pulumi.Input<string>;
     /**
@@ -195,6 +197,10 @@ export interface AccessGroupState {
      * full list.
      */
     readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
+    /**
+     * The ID of the zone the group is associated with. Conflicts with `accountId`.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -202,10 +208,9 @@ export interface AccessGroupState {
  */
 export interface AccessGroupArgs {
     /**
-     * The ID of the account the group is
-     * associated with.
+     * The ID of the account the group is associated with. Conflicts with `zoneId`.
      */
-    readonly accountId: pulumi.Input<string>;
+    readonly accountId?: pulumi.Input<string>;
     /**
      * A series of access conditions, see below for
      * full list.
@@ -225,4 +230,8 @@ export interface AccessGroupArgs {
      * full list.
      */
     readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
+    /**
+     * The ID of the zone the group is associated with. Conflicts with `accountId`.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }

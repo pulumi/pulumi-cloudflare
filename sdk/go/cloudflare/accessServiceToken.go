@@ -39,23 +39,21 @@ import (
 type AccessServiceToken struct {
 	pulumi.CustomResourceState
 
-	// The ID of the account where the Access
-	// Service is being created.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// UUID client ID associated with the Service Token.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// A secret for interacting with Access protocols.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// Friendly name of the token's intent.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewAccessServiceToken registers a new resource with the given unique name, arguments, and options.
 func NewAccessServiceToken(ctx *pulumi.Context,
 	name string, args *AccessServiceTokenArgs, opts ...pulumi.ResourceOption) (*AccessServiceToken, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
 	if args == nil || args.Name == nil {
 		return nil, errors.New("missing required argument 'Name'")
 	}
@@ -84,8 +82,7 @@ func GetAccessServiceToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessServiceToken resources.
 type accessServiceTokenState struct {
-	// The ID of the account where the Access
-	// Service is being created.
+	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// UUID client ID associated with the Service Token.
 	ClientId *string `pulumi:"clientId"`
@@ -93,11 +90,12 @@ type accessServiceTokenState struct {
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Friendly name of the token's intent.
 	Name *string `pulumi:"name"`
+	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessServiceTokenState struct {
-	// The ID of the account where the Access
-	// Service is being created.
+	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// UUID client ID associated with the Service Token.
 	ClientId pulumi.StringPtrInput
@@ -105,6 +103,8 @@ type AccessServiceTokenState struct {
 	ClientSecret pulumi.StringPtrInput
 	// Friendly name of the token's intent.
 	Name pulumi.StringPtrInput
+	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessServiceTokenState) ElementType() reflect.Type {
@@ -112,20 +112,22 @@ func (AccessServiceTokenState) ElementType() reflect.Type {
 }
 
 type accessServiceTokenArgs struct {
-	// The ID of the account where the Access
-	// Service is being created.
-	AccountId string `pulumi:"accountId"`
+	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+	AccountId *string `pulumi:"accountId"`
 	// Friendly name of the token's intent.
 	Name string `pulumi:"name"`
+	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessServiceToken resource.
 type AccessServiceTokenArgs struct {
-	// The ID of the account where the Access
-	// Service is being created.
-	AccountId pulumi.StringInput
+	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+	AccountId pulumi.StringPtrInput
 	// Friendly name of the token's intent.
 	Name pulumi.StringInput
+	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessServiceTokenArgs) ElementType() reflect.Type {

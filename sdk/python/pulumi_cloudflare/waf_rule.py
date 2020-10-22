@@ -39,7 +39,7 @@ class WafRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] mode: The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+        :param pulumi.Input[str] mode: The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         :param pulumi.Input[str] package_id: The ID of the WAF Rule Package that contains the rule.
         :param pulumi.Input[str] rule_id: The WAF Rule ID.
         :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
@@ -95,7 +95,7 @@ class WafRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_id: The ID of the WAF Rule Group that contains the rule.
-        :param pulumi.Input[str] mode: The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+        :param pulumi.Input[str] mode: The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         :param pulumi.Input[str] package_id: The ID of the WAF Rule Package that contains the rule.
         :param pulumi.Input[str] rule_id: The WAF Rule ID.
         :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
@@ -123,7 +123,7 @@ class WafRule(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[str]:
         """
-        The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+        The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         """
         return pulumi.get(self, "mode")
 

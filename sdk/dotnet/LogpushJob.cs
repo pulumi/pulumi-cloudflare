@@ -23,6 +23,9 @@ namespace Pulumi.Cloudflare
         [Output("destinationConf")]
         public Output<string> DestinationConf { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether to enable the job.
+        /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
@@ -108,6 +111,9 @@ namespace Pulumi.Cloudflare
         [Input("destinationConf", required: true)]
         public Input<string> DestinationConf { get; set; } = null!;
 
+        /// <summary>
+        /// Whether to enable the job.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -154,6 +160,9 @@ namespace Pulumi.Cloudflare
         [Input("destinationConf")]
         public Input<string>? DestinationConf { get; set; }
 
+        /// <summary>
+        /// Whether to enable the job.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

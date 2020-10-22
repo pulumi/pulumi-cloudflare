@@ -17,6 +17,7 @@ class AccessServiceToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -37,9 +38,9 @@ class AccessServiceToken(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account where the Access
-               Service is being created.
+        :param pulumi.Input[str] account_id: The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
         :param pulumi.Input[str] name: Friendly name of the token's intent.
+        :param pulumi.Input[str] zone_id: The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -58,12 +59,11 @@ class AccessServiceToken(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if account_id is None:
-                raise TypeError("Missing required property 'account_id'")
             __props__['account_id'] = account_id
             if name is None:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
+            __props__['zone_id'] = zone_id
             __props__['client_id'] = None
             __props__['client_secret'] = None
         super(AccessServiceToken, __self__).__init__(
@@ -79,7 +79,8 @@ class AccessServiceToken(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             client_id: Optional[pulumi.Input[str]] = None,
             client_secret: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None) -> 'AccessServiceToken':
+            name: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessServiceToken':
         """
         Get an existing AccessServiceToken resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -87,11 +88,11 @@ class AccessServiceToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account where the Access
-               Service is being created.
+        :param pulumi.Input[str] account_id: The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token.
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols.
         :param pulumi.Input[str] name: Friendly name of the token's intent.
+        :param pulumi.Input[str] zone_id: The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -101,14 +102,14 @@ class AccessServiceToken(pulumi.CustomResource):
         __props__["client_id"] = client_id
         __props__["client_secret"] = client_secret
         __props__["name"] = name
+        __props__["zone_id"] = zone_id
         return AccessServiceToken(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the account where the Access
-        Service is being created.
+        The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
         """
         return pulumi.get(self, "account_id")
 
@@ -135,6 +136,14 @@ class AccessServiceToken(pulumi.CustomResource):
         Friendly name of the token's intent.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        """
+        return pulumi.get(self, "zone_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

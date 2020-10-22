@@ -56,6 +56,7 @@ import (
 type AccessApplication struct {
 	pulumi.CustomResourceState
 
+	// The account to which the access application should be added. Conflicts with `zoneId`.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayOutput `pulumi:"allowedIdps"`
@@ -71,14 +72,14 @@ type AccessApplication struct {
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringOutput `pulumi:"domain"`
+	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
 	// Friendly name of the Access Application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How often a user will be forced to
 	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
-	// The DNS zone to which the access rule should be added.
-	//
-	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
+	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -116,6 +117,7 @@ func GetAccessApplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessApplication resources.
 type accessApplicationState struct {
+	// The account to which the access application should be added. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps []string `pulumi:"allowedIdps"`
@@ -131,18 +133,19 @@ type accessApplicationState struct {
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain *string `pulumi:"domain"`
+	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
 	// Friendly name of the Access Application.
 	Name *string `pulumi:"name"`
 	// How often a user will be forced to
 	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// The DNS zone to which the access rule should be added.
-	//
-	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
+	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessApplicationState struct {
+	// The account to which the access application should be added. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayInput
@@ -158,14 +161,14 @@ type AccessApplicationState struct {
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringPtrInput
+	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	EnableBindingCookie pulumi.BoolPtrInput
 	// Friendly name of the Access Application.
 	Name pulumi.StringPtrInput
 	// How often a user will be forced to
 	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration pulumi.StringPtrInput
-	// The DNS zone to which the access rule should be added.
-	//
-	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
+	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -174,6 +177,7 @@ func (AccessApplicationState) ElementType() reflect.Type {
 }
 
 type accessApplicationArgs struct {
+	// The account to which the access application should be added. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps []string `pulumi:"allowedIdps"`
@@ -187,19 +191,20 @@ type accessApplicationArgs struct {
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain string `pulumi:"domain"`
+	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
 	// Friendly name of the Access Application.
 	Name string `pulumi:"name"`
 	// How often a user will be forced to
 	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
-	// The DNS zone to which the access rule should be added.
-	//
-	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
+	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessApplication resource.
 type AccessApplicationArgs struct {
+	// The account to which the access application should be added. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayInput
@@ -213,14 +218,14 @@ type AccessApplicationArgs struct {
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringInput
+	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+	EnableBindingCookie pulumi.BoolPtrInput
 	// Friendly name of the Access Application.
 	Name pulumi.StringInput
 	// How often a user will be forced to
 	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
 	SessionDuration pulumi.StringPtrInput
-	// The DNS zone to which the access rule should be added.
-	//
-	// Deprecated: This field will be removed in version 3 and replaced with the account_id field.
+	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 

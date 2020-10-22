@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+        /// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         /// </summary>
         public readonly string? Mode;
         /// <summary>

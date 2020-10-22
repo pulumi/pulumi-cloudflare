@@ -64,6 +64,9 @@ export class AccessApplication extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessApplication.__pulumiType;
     }
 
+    /**
+     * The account to which the access application should be added. Conflicts with `zoneId`.
+     */
     public readonly accountId!: pulumi.Output<string>;
     /**
      * The identity providers selected for the application.
@@ -90,6 +93,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+     */
+    public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
+    /**
      * Friendly name of the Access Application.
      */
     public readonly name!: pulumi.Output<string>;
@@ -99,9 +106,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone to which the access rule should be added.
-     *
-     * @deprecated This field will be removed in version 3 and replaced with the account_id field.
+     * The DNS zone to which the access application should be added. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -123,6 +128,7 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
             inputs["corsHeaders"] = state ? state.corsHeaders : undefined;
             inputs["domain"] = state ? state.domain : undefined;
+            inputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -139,6 +145,7 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
             inputs["corsHeaders"] = args ? args.corsHeaders : undefined;
             inputs["domain"] = args ? args.domain : undefined;
+            inputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
@@ -159,6 +166,9 @@ export class AccessApplication extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessApplication resources.
  */
 export interface AccessApplicationState {
+    /**
+     * The account to which the access application should be added. Conflicts with `zoneId`.
+     */
     readonly accountId?: pulumi.Input<string>;
     /**
      * The identity providers selected for the application.
@@ -185,6 +195,10 @@ export interface AccessApplicationState {
      */
     readonly domain?: pulumi.Input<string>;
     /**
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+     */
+    readonly enableBindingCookie?: pulumi.Input<boolean>;
+    /**
      * Friendly name of the Access Application.
      */
     readonly name?: pulumi.Input<string>;
@@ -194,9 +208,7 @@ export interface AccessApplicationState {
      */
     readonly sessionDuration?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the access rule should be added.
-     *
-     * @deprecated This field will be removed in version 3 and replaced with the account_id field.
+     * The DNS zone to which the access application should be added. Conflicts with `accountId`.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -205,6 +217,9 @@ export interface AccessApplicationState {
  * The set of arguments for constructing a AccessApplication resource.
  */
 export interface AccessApplicationArgs {
+    /**
+     * The account to which the access application should be added. Conflicts with `zoneId`.
+     */
     readonly accountId?: pulumi.Input<string>;
     /**
      * The identity providers selected for the application.
@@ -227,6 +242,10 @@ export interface AccessApplicationArgs {
      */
     readonly domain: pulumi.Input<string>;
     /**
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+     */
+    readonly enableBindingCookie?: pulumi.Input<boolean>;
+    /**
      * Friendly name of the Access Application.
      */
     readonly name: pulumi.Input<string>;
@@ -236,9 +255,7 @@ export interface AccessApplicationArgs {
      */
     readonly sessionDuration?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the access rule should be added.
-     *
-     * @deprecated This field will be removed in version 3 and replaced with the account_id field.
+     * The DNS zone to which the access application should be added. Conflicts with `accountId`.
      */
     readonly zoneId?: pulumi.Input<string>;
 }

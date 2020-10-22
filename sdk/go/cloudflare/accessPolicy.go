@@ -72,9 +72,9 @@ import (
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
+	// The account to which the access rule should be added. Conflicts with `zoneId`.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The ID of the application the policy is
-	// associated with.
+	// The ID of the application the policy is associated with.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
@@ -89,8 +89,7 @@ type AccessPolicy struct {
 	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
 	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
-	// The DNS zone to which the access rule should be
-	// added.
+	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -134,9 +133,9 @@ func GetAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicy resources.
 type accessPolicyState struct {
+	// The account to which the access rule should be added. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
-	// The ID of the application the policy is
-	// associated with.
+	// The ID of the application the policy is associated with.
 	ApplicationId *string `pulumi:"applicationId"`
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
@@ -151,15 +150,14 @@ type accessPolicyState struct {
 	Precedence *int `pulumi:"precedence"`
 	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
-	// The DNS zone to which the access rule should be
-	// added.
+	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessPolicyState struct {
+	// The account to which the access rule should be added. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
-	// The ID of the application the policy is
-	// associated with.
+	// The ID of the application the policy is associated with.
 	ApplicationId pulumi.StringPtrInput
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
@@ -174,8 +172,7 @@ type AccessPolicyState struct {
 	Precedence pulumi.IntPtrInput
 	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
-	// The DNS zone to which the access rule should be
-	// added.
+	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -184,9 +181,9 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
+	// The account to which the access rule should be added. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
-	// The ID of the application the policy is
-	// associated with.
+	// The ID of the application the policy is associated with.
 	ApplicationId string `pulumi:"applicationId"`
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
@@ -201,16 +198,15 @@ type accessPolicyArgs struct {
 	Precedence *int `pulumi:"precedence"`
 	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
-	// The DNS zone to which the access rule should be
-	// added.
+	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
+	// The account to which the access rule should be added. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
-	// The ID of the application the policy is
-	// associated with.
+	// The ID of the application the policy is associated with.
 	ApplicationId pulumi.StringInput
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
@@ -225,8 +221,7 @@ type AccessPolicyArgs struct {
 	Precedence pulumi.IntPtrInput
 	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
-	// The DNS zone to which the access rule should be
-	// added.
+	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
 

@@ -40,6 +40,9 @@ export class LogpushJob extends pulumi.CustomResource {
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
      */
     public readonly destinationConf!: pulumi.Output<string>;
+    /**
+     * Whether to enable the job.
+     */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -122,6 +125,9 @@ export interface LogpushJobState {
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
      */
     readonly destinationConf?: pulumi.Input<string>;
+    /**
+     * Whether to enable the job.
+     */
     readonly enabled?: pulumi.Input<boolean>;
     /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -153,6 +159,9 @@ export interface LogpushJobArgs {
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
      */
     readonly destinationConf: pulumi.Input<string>;
+    /**
+     * Whether to enable the job.
+     */
     readonly enabled?: pulumi.Input<boolean>;
     /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).

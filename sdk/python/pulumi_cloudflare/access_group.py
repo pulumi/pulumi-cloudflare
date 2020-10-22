@@ -22,6 +22,7 @@ class AccessGroup(pulumi.CustomResource):
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -79,6 +80,7 @@ class AccessGroup(pulumi.CustomResource):
         * `auth_method` - (Optional) A string identifying the authentication
         method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
         Custom values are also supported.
+        * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
         * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
         * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
         * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
@@ -88,8 +90,7 @@ class AccessGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account the group is
-               associated with.
+        :param pulumi.Input[str] account_id: The ID of the account the group is associated with. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]] excludes: A series of access conditions, see below for
                full list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]] includes: A series of access conditions, see below for
@@ -97,6 +98,7 @@ class AccessGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]] requires: A series of access conditions, see below for
                full list.
+        :param pulumi.Input[str] zone_id: The ID of the zone the group is associated with. Conflicts with `account_id`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -115,8 +117,6 @@ class AccessGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if account_id is None:
-                raise TypeError("Missing required property 'account_id'")
             __props__['account_id'] = account_id
             __props__['excludes'] = excludes
             if includes is None:
@@ -126,6 +126,7 @@ class AccessGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['requires'] = requires
+            __props__['zone_id'] = zone_id
         super(AccessGroup, __self__).__init__(
             'cloudflare:index/accessGroup:AccessGroup',
             resource_name,
@@ -140,7 +141,8 @@ class AccessGroup(pulumi.CustomResource):
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None) -> 'AccessGroup':
+            requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessGroup':
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -148,8 +150,7 @@ class AccessGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account the group is
-               associated with.
+        :param pulumi.Input[str] account_id: The ID of the account the group is associated with. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]] excludes: A series of access conditions, see below for
                full list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]] includes: A series of access conditions, see below for
@@ -157,6 +158,7 @@ class AccessGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: Friendly name of the Access Group.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]] requires: A series of access conditions, see below for
                full list.
+        :param pulumi.Input[str] zone_id: The ID of the zone the group is associated with. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -167,14 +169,14 @@ class AccessGroup(pulumi.CustomResource):
         __props__["includes"] = includes
         __props__["name"] = name
         __props__["requires"] = requires
+        __props__["zone_id"] = zone_id
         return AccessGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the account the group is
-        associated with.
+        The ID of the account the group is associated with. Conflicts with `zone_id`.
         """
         return pulumi.get(self, "account_id")
 
@@ -212,6 +214,14 @@ class AccessGroup(pulumi.CustomResource):
         full list.
         """
         return pulumi.get(self, "requires")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the zone the group is associated with. Conflicts with `account_id`.
+        """
+        return pulumi.get(self, "zone_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

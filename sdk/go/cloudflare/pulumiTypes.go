@@ -197,6 +197,7 @@ type AccessGroupExclude struct {
 	EmailDomains         []string                   `pulumi:"emailDomains"`
 	Emails               []string                   `pulumi:"emails"`
 	Everyone             *bool                      `pulumi:"everyone"`
+	Geos                 []string                   `pulumi:"geos"`
 	Githubs              []AccessGroupExcludeGithub `pulumi:"githubs"`
 	Groups               []string                   `pulumi:"groups"`
 	Gsuites              []AccessGroupExcludeGsuite `pulumi:"gsuites"`
@@ -226,6 +227,7 @@ type AccessGroupExcludeArgs struct {
 	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
+	Geos                 pulumi.StringArrayInput            `pulumi:"geos"`
 	Githubs              AccessGroupExcludeGithubArrayInput `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
 	Gsuites              AccessGroupExcludeGsuiteArrayInput `pulumi:"gsuites"`
@@ -316,6 +318,10 @@ func (o AccessGroupExcludeOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessGroupExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupExcludeOutput) Geos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupExcludeOutput) Githubs() AccessGroupExcludeGithubArrayOutput {
@@ -893,6 +899,7 @@ type AccessGroupInclude struct {
 	EmailDomains         []string                   `pulumi:"emailDomains"`
 	Emails               []string                   `pulumi:"emails"`
 	Everyone             *bool                      `pulumi:"everyone"`
+	Geos                 []string                   `pulumi:"geos"`
 	Githubs              []AccessGroupIncludeGithub `pulumi:"githubs"`
 	Groups               []string                   `pulumi:"groups"`
 	Gsuites              []AccessGroupIncludeGsuite `pulumi:"gsuites"`
@@ -922,6 +929,7 @@ type AccessGroupIncludeArgs struct {
 	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
+	Geos                 pulumi.StringArrayInput            `pulumi:"geos"`
 	Githubs              AccessGroupIncludeGithubArrayInput `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
 	Gsuites              AccessGroupIncludeGsuiteArrayInput `pulumi:"gsuites"`
@@ -1012,6 +1020,10 @@ func (o AccessGroupIncludeOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessGroupIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupIncludeOutput) Geos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupIncludeOutput) Githubs() AccessGroupIncludeGithubArrayOutput {
@@ -1589,6 +1601,7 @@ type AccessGroupRequire struct {
 	EmailDomains         []string                   `pulumi:"emailDomains"`
 	Emails               []string                   `pulumi:"emails"`
 	Everyone             *bool                      `pulumi:"everyone"`
+	Geos                 []string                   `pulumi:"geos"`
 	Githubs              []AccessGroupRequireGithub `pulumi:"githubs"`
 	Groups               []string                   `pulumi:"groups"`
 	Gsuites              []AccessGroupRequireGsuite `pulumi:"gsuites"`
@@ -1618,6 +1631,7 @@ type AccessGroupRequireArgs struct {
 	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
+	Geos                 pulumi.StringArrayInput            `pulumi:"geos"`
 	Githubs              AccessGroupRequireGithubArrayInput `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
 	Gsuites              AccessGroupRequireGsuiteArrayInput `pulumi:"gsuites"`
@@ -1708,6 +1722,10 @@ func (o AccessGroupRequireOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessGroupRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupRequireOutput) Geos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupRequireOutput) Githubs() AccessGroupRequireGithubArrayOutput {
@@ -2487,6 +2505,7 @@ type AccessPolicyExclude struct {
 	EmailDomains         []string                    `pulumi:"emailDomains"`
 	Emails               []string                    `pulumi:"emails"`
 	Everyone             *bool                       `pulumi:"everyone"`
+	Geos                 []string                    `pulumi:"geos"`
 	Githubs              []AccessPolicyExcludeGithub `pulumi:"githubs"`
 	Groups               []string                    `pulumi:"groups"`
 	Gsuites              []AccessPolicyExcludeGsuite `pulumi:"gsuites"`
@@ -2516,6 +2535,7 @@ type AccessPolicyExcludeArgs struct {
 	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
+	Geos                 pulumi.StringArrayInput             `pulumi:"geos"`
 	Githubs              AccessPolicyExcludeGithubArrayInput `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
 	Gsuites              AccessPolicyExcludeGsuiteArrayInput `pulumi:"gsuites"`
@@ -2606,6 +2626,10 @@ func (o AccessPolicyExcludeOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessPolicyExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyExcludeOutput) Geos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyExcludeOutput) Githubs() AccessPolicyExcludeGithubArrayOutput {
@@ -3183,6 +3207,7 @@ type AccessPolicyInclude struct {
 	EmailDomains         []string                    `pulumi:"emailDomains"`
 	Emails               []string                    `pulumi:"emails"`
 	Everyone             *bool                       `pulumi:"everyone"`
+	Geos                 []string                    `pulumi:"geos"`
 	Githubs              []AccessPolicyIncludeGithub `pulumi:"githubs"`
 	Groups               []string                    `pulumi:"groups"`
 	Gsuites              []AccessPolicyIncludeGsuite `pulumi:"gsuites"`
@@ -3212,6 +3237,7 @@ type AccessPolicyIncludeArgs struct {
 	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
+	Geos                 pulumi.StringArrayInput             `pulumi:"geos"`
 	Githubs              AccessPolicyIncludeGithubArrayInput `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
 	Gsuites              AccessPolicyIncludeGsuiteArrayInput `pulumi:"gsuites"`
@@ -3302,6 +3328,10 @@ func (o AccessPolicyIncludeOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessPolicyIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyIncludeOutput) Geos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyIncludeOutput) Githubs() AccessPolicyIncludeGithubArrayOutput {
@@ -3879,6 +3909,7 @@ type AccessPolicyRequire struct {
 	EmailDomains         []string                    `pulumi:"emailDomains"`
 	Emails               []string                    `pulumi:"emails"`
 	Everyone             *bool                       `pulumi:"everyone"`
+	Geos                 []string                    `pulumi:"geos"`
 	Githubs              []AccessPolicyRequireGithub `pulumi:"githubs"`
 	Groups               []string                    `pulumi:"groups"`
 	Gsuites              []AccessPolicyRequireGsuite `pulumi:"gsuites"`
@@ -3908,6 +3939,7 @@ type AccessPolicyRequireArgs struct {
 	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
+	Geos                 pulumi.StringArrayInput             `pulumi:"geos"`
 	Githubs              AccessPolicyRequireGithubArrayInput `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
 	Gsuites              AccessPolicyRequireGsuiteArrayInput `pulumi:"gsuites"`
@@ -3998,6 +4030,10 @@ func (o AccessPolicyRequireOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessPolicyRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyRequireOutput) Geos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.Geos }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyRequireOutput) Githubs() AccessPolicyRequireGithubArrayOutput {
@@ -14320,7 +14356,7 @@ type GetWafRulesFilter struct {
 	Description *string `pulumi:"description"`
 	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
 	GroupId *string `pulumi:"groupId"`
-	// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+	// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode *string `pulumi:"mode"`
 }
 
@@ -14340,7 +14376,7 @@ type GetWafRulesFilterArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
 	GroupId pulumi.StringPtrInput `pulumi:"groupId"`
-	// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+	// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 }
 
@@ -14380,7 +14416,7 @@ func (o GetWafRulesFilterOutput) GroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.GroupId }).(pulumi.StringPtrOutput)
 }
 
-// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 func (o GetWafRulesFilterOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -14396,7 +14432,7 @@ type GetWafRulesRule struct {
 	GroupName *string `pulumi:"groupName"`
 	// The WAF Rule ID
 	Id *string `pulumi:"id"`
-	// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+	// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode *string `pulumi:"mode"`
 	// The ID of the WAF Rule Package in which to search for the WAF Rules.
 	PackageId *string `pulumi:"packageId"`
@@ -14426,7 +14462,7 @@ type GetWafRulesRuleArgs struct {
 	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
 	// The WAF Rule ID
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+	// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// The ID of the WAF Rule Package in which to search for the WAF Rules.
 	PackageId pulumi.StringPtrInput `pulumi:"packageId"`
@@ -14510,7 +14546,7 @@ func (o GetWafRulesRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 func (o GetWafRulesRuleOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesRule) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }

@@ -21,6 +21,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> EmailDomains;
         public readonly ImmutableArray<string> Emails;
         public readonly bool? Everyone;
+        public readonly ImmutableArray<string> Geos;
         public readonly ImmutableArray<Outputs.AccessGroupExcludeGithub> Githubs;
         public readonly ImmutableArray<string> Groups;
         public readonly ImmutableArray<Outputs.AccessGroupExcludeGsuite> Gsuites;
@@ -47,6 +48,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? everyone,
 
+            ImmutableArray<string> geos,
+
             ImmutableArray<Outputs.AccessGroupExcludeGithub> githubs,
 
             ImmutableArray<string> groups,
@@ -69,6 +72,7 @@ namespace Pulumi.Cloudflare.Outputs
             EmailDomains = emailDomains;
             Emails = emails;
             Everyone = everyone;
+            Geos = geos;
             Githubs = githubs;
             Groups = groups;
             Gsuites = gsuites;

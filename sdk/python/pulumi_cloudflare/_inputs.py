@@ -258,6 +258,7 @@ class AccessGroupExcludeArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]] = None,
@@ -281,6 +282,8 @@ class AccessGroupExcludeArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
         if githubs is not None:
             pulumi.set(__self__, "githubs", githubs)
         if groups is not None:
@@ -367,6 +370,15 @@ class AccessGroupExcludeArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "geos")
+
+    @geos.setter
+    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "geos", value)
 
     @property
     @pulumi.getter
@@ -624,6 +636,7 @@ class AccessGroupIncludeArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]] = None,
@@ -647,6 +660,8 @@ class AccessGroupIncludeArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
         if githubs is not None:
             pulumi.set(__self__, "githubs", githubs)
         if groups is not None:
@@ -733,6 +748,15 @@ class AccessGroupIncludeArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "geos")
+
+    @geos.setter
+    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "geos", value)
 
     @property
     @pulumi.getter
@@ -990,6 +1014,7 @@ class AccessGroupRequireArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGsuiteArgs']]]] = None,
@@ -1013,6 +1038,8 @@ class AccessGroupRequireArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
         if githubs is not None:
             pulumi.set(__self__, "githubs", githubs)
         if groups is not None:
@@ -1099,6 +1126,15 @@ class AccessGroupRequireArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "geos")
+
+    @geos.setter
+    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "geos", value)
 
     @property
     @pulumi.getter
@@ -1589,6 +1625,7 @@ class AccessPolicyExcludeArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]] = None,
@@ -1612,6 +1649,8 @@ class AccessPolicyExcludeArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
         if githubs is not None:
             pulumi.set(__self__, "githubs", githubs)
         if groups is not None:
@@ -1698,6 +1737,15 @@ class AccessPolicyExcludeArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "geos")
+
+    @geos.setter
+    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "geos", value)
 
     @property
     @pulumi.getter
@@ -1955,6 +2003,7 @@ class AccessPolicyIncludeArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]] = None,
@@ -1978,6 +2027,8 @@ class AccessPolicyIncludeArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
         if githubs is not None:
             pulumi.set(__self__, "githubs", githubs)
         if groups is not None:
@@ -2064,6 +2115,15 @@ class AccessPolicyIncludeArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "geos")
+
+    @geos.setter
+    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "geos", value)
 
     @property
     @pulumi.getter
@@ -2321,6 +2381,7 @@ class AccessPolicyRequireArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]] = None,
@@ -2344,6 +2405,8 @@ class AccessPolicyRequireArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if geos is not None:
+            pulumi.set(__self__, "geos", geos)
         if githubs is not None:
             pulumi.set(__self__, "githubs", githubs)
         if groups is not None:
@@ -2430,6 +2493,15 @@ class AccessPolicyRequireArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter
+    def geos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "geos")
+
+    @geos.setter
+    def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "geos", value)
 
     @property
     @pulumi.getter
@@ -7067,7 +7139,7 @@ class GetWafRulesFilterArgs:
         """
         :param str description: A regular expression matching the description of the WAF Rules to lookup.
         :param str group_id: The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-        :param str mode: Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+        :param str mode: Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -7104,7 +7176,7 @@ class GetWafRulesFilterArgs:
     @pulumi.getter
     def mode(self) -> Optional[str]:
         """
-        Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+        Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         """
         return pulumi.get(self, "mode")
 

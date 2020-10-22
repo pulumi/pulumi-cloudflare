@@ -57,6 +57,9 @@ namespace Pulumi.Cloudflare
     /// </summary>
     public partial class AccessApplication : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account to which the access application should be added. Conflicts with `zone_id`.
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
@@ -95,6 +98,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
+        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        /// </summary>
+        [Output("enableBindingCookie")]
+        public Output<bool?> EnableBindingCookie { get; private set; } = null!;
+
+        /// <summary>
         /// Friendly name of the Access Application.
         /// </summary>
         [Output("name")]
@@ -108,7 +117,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added.
+        /// The DNS zone to which the access application should be added. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -159,6 +168,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessApplicationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account to which the access application should be added. Conflicts with `zone_id`.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -203,6 +215,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
+        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        /// </summary>
+        [Input("enableBindingCookie")]
+        public Input<bool>? EnableBindingCookie { get; set; }
+
+        /// <summary>
         /// Friendly name of the Access Application.
         /// </summary>
         [Input("name", required: true)]
@@ -216,7 +234,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added.
+        /// The DNS zone to which the access application should be added. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -228,6 +246,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessApplicationState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account to which the access application should be added. Conflicts with `zone_id`.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -278,6 +299,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Domain { get; set; }
 
         /// <summary>
+        /// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        /// </summary>
+        [Input("enableBindingCookie")]
+        public Input<bool>? EnableBindingCookie { get; set; }
+
+        /// <summary>
         /// Friendly name of the Access Application.
         /// </summary>
         [Input("name")]
@@ -291,7 +318,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added.
+        /// The DNS zone to which the access application should be added. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
