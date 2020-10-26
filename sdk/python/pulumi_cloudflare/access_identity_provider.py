@@ -21,6 +21,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -72,11 +73,13 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account ID the provider should be associated with. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
         :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
                `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
                `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+        :param pulumi.Input[str] zone_id: The zone ID the provider should be associated with. Conflicts with `account_id`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -95,8 +98,6 @@ class AccessIdentityProvider(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if account_id is None:
-                raise TypeError("Missing required property 'account_id'")
             __props__['account_id'] = account_id
             __props__['configs'] = configs
             if name is None:
@@ -105,6 +106,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
             if type is None:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
+            __props__['zone_id'] = zone_id
         super(AccessIdentityProvider, __self__).__init__(
             'cloudflare:index/accessIdentityProvider:AccessIdentityProvider',
             resource_name,
@@ -118,7 +120,8 @@ class AccessIdentityProvider(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None) -> 'AccessIdentityProvider':
+            type: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessIdentityProvider':
         """
         Get an existing AccessIdentityProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -126,11 +129,13 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account ID the provider should be associated with. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
         :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
                `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
                `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+        :param pulumi.Input[str] zone_id: The zone ID the provider should be associated with. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -140,11 +145,15 @@ class AccessIdentityProvider(pulumi.CustomResource):
         __props__["configs"] = configs
         __props__["name"] = name
         __props__["type"] = type
+        __props__["zone_id"] = zone_id
         return AccessIdentityProvider(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The account ID the provider should be associated with. Conflicts with `zone_id`.
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -172,6 +181,14 @@ class AccessIdentityProvider(pulumi.CustomResource):
         `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The zone ID the provider should be associated with. Conflicts with `account_id`.
+        """
+        return pulumi.get(self, "zone_id")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

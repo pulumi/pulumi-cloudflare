@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+        /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.Cloudflare
     public sealed class WafRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+        /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+        /// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

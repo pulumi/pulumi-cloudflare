@@ -77,12 +77,14 @@ namespace Pulumi.Cloudflare
     /// </summary>
     public partial class AccessPolicy : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account to which the access rule should be added. Conflicts with `zone_id`.
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the application the policy is
-        /// associated with.
+        /// The ID of the application the policy is associated with.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
@@ -125,8 +127,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.AccessPolicyRequire>> Requires { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the access rule should be
-        /// added.
+        /// The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -177,12 +178,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account to which the access rule should be added. Conflicts with `zone_id`.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The ID of the application the policy is
-        /// associated with.
+        /// The ID of the application the policy is associated with.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
@@ -243,8 +246,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone to which the access rule should be
-        /// added.
+        /// The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -256,12 +258,14 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessPolicyState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account to which the access rule should be added. Conflicts with `zone_id`.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The ID of the application the policy is
-        /// associated with.
+        /// The ID of the application the policy is associated with.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
@@ -322,8 +326,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone to which the access rule should be
-        /// added.
+        /// The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -82,7 +82,10 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessIdentityProvider.__pulumiType;
     }
 
-    public readonly accountId!: pulumi.Output<string>;
+    /**
+     * The account ID the provider should be associated with. Conflicts with `zoneId`.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * Provider configuration from the [developer documentation][accessIdentityProviderGuide].
      */
@@ -97,6 +100,10 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
      * `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * The zone ID the provider should be associated with. Conflicts with `accountId`.
+     */
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessIdentityProvider resource with the given unique name, arguments, and options.
@@ -114,11 +121,9 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
             inputs["configs"] = state ? state.configs : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["type"] = state ? state.type : undefined;
+            inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessIdentityProviderArgs | undefined;
-            if (!args || args.accountId === undefined) {
-                throw new Error("Missing required property 'accountId'");
-            }
             if (!args || args.name === undefined) {
                 throw new Error("Missing required property 'name'");
             }
@@ -129,6 +134,7 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
             inputs["configs"] = args ? args.configs : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["zoneId"] = args ? args.zoneId : undefined;
         }
         if (!opts) {
             opts = {}
@@ -145,6 +151,9 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessIdentityProvider resources.
  */
 export interface AccessIdentityProviderState {
+    /**
+     * The account ID the provider should be associated with. Conflicts with `zoneId`.
+     */
     readonly accountId?: pulumi.Input<string>;
     /**
      * Provider configuration from the [developer documentation][accessIdentityProviderGuide].
@@ -160,13 +169,20 @@ export interface AccessIdentityProviderState {
      * `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
      */
     readonly type?: pulumi.Input<string>;
+    /**
+     * The zone ID the provider should be associated with. Conflicts with `accountId`.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a AccessIdentityProvider resource.
  */
 export interface AccessIdentityProviderArgs {
-    readonly accountId: pulumi.Input<string>;
+    /**
+     * The account ID the provider should be associated with. Conflicts with `zoneId`.
+     */
+    readonly accountId?: pulumi.Input<string>;
     /**
      * Provider configuration from the [developer documentation][accessIdentityProviderGuide].
      */
@@ -181,4 +197,8 @@ export interface AccessIdentityProviderArgs {
      * `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
      */
     readonly type: pulumi.Input<string>;
+    /**
+     * The zone ID the provider should be associated with. Conflicts with `accountId`.
+     */
+    readonly zoneId?: pulumi.Input<string>;
 }

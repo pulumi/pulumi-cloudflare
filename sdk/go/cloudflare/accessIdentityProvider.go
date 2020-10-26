@@ -79,7 +79,8 @@ import (
 type AccessIdentityProvider struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The account ID the provider should be associated with. Conflicts with `zoneId`.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Provider configuration from the [developer documentation][accessIdentityProviderGuide].
 	Configs AccessIdentityProviderConfigArrayOutput `pulumi:"configs"`
 	// Friendly name of the Access Identity Provider configuration.
@@ -88,14 +89,13 @@ type AccessIdentityProvider struct {
 	// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
 	// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The zone ID the provider should be associated with. Conflicts with `accountId`.
+	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
 // NewAccessIdentityProvider registers a new resource with the given unique name, arguments, and options.
 func NewAccessIdentityProvider(ctx *pulumi.Context,
 	name string, args *AccessIdentityProviderArgs, opts ...pulumi.ResourceOption) (*AccessIdentityProvider, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
 	if args == nil || args.Name == nil {
 		return nil, errors.New("missing required argument 'Name'")
 	}
@@ -127,6 +127,7 @@ func GetAccessIdentityProvider(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessIdentityProvider resources.
 type accessIdentityProviderState struct {
+	// The account ID the provider should be associated with. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// Provider configuration from the [developer documentation][accessIdentityProviderGuide].
 	Configs []AccessIdentityProviderConfig `pulumi:"configs"`
@@ -136,9 +137,12 @@ type accessIdentityProviderState struct {
 	// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
 	// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
 	Type *string `pulumi:"type"`
+	// The zone ID the provider should be associated with. Conflicts with `accountId`.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessIdentityProviderState struct {
+	// The account ID the provider should be associated with. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// Provider configuration from the [developer documentation][accessIdentityProviderGuide].
 	Configs AccessIdentityProviderConfigArrayInput
@@ -148,6 +152,8 @@ type AccessIdentityProviderState struct {
 	// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
 	// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
 	Type pulumi.StringPtrInput
+	// The zone ID the provider should be associated with. Conflicts with `accountId`.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessIdentityProviderState) ElementType() reflect.Type {
@@ -155,7 +161,8 @@ func (AccessIdentityProviderState) ElementType() reflect.Type {
 }
 
 type accessIdentityProviderArgs struct {
-	AccountId string `pulumi:"accountId"`
+	// The account ID the provider should be associated with. Conflicts with `zoneId`.
+	AccountId *string `pulumi:"accountId"`
 	// Provider configuration from the [developer documentation][accessIdentityProviderGuide].
 	Configs []AccessIdentityProviderConfig `pulumi:"configs"`
 	// Friendly name of the Access Identity Provider configuration.
@@ -164,11 +171,14 @@ type accessIdentityProviderArgs struct {
 	// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
 	// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
 	Type string `pulumi:"type"`
+	// The zone ID the provider should be associated with. Conflicts with `accountId`.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessIdentityProvider resource.
 type AccessIdentityProviderArgs struct {
-	AccountId pulumi.StringInput
+	// The account ID the provider should be associated with. Conflicts with `zoneId`.
+	AccountId pulumi.StringPtrInput
 	// Provider configuration from the [developer documentation][accessIdentityProviderGuide].
 	Configs AccessIdentityProviderConfigArrayInput
 	// Friendly name of the Access Identity Provider configuration.
@@ -177,6 +187,8 @@ type AccessIdentityProviderArgs struct {
 	// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
 	// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
 	Type pulumi.StringInput
+	// The zone ID the provider should be associated with. Conflicts with `accountId`.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessIdentityProviderArgs) ElementType() reflect.Type {

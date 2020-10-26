@@ -51,6 +51,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("geos")]
+        private InputList<string>? _geos;
+        public InputList<string> Geos
+        {
+            get => _geos ?? (_geos = new InputList<string>());
+            set => _geos = value;
+        }
+
         [Input("githubs")]
         private InputList<Inputs.AccessPolicyIncludeGithubGetArgs>? _githubs;
         public InputList<Inputs.AccessPolicyIncludeGithubGetArgs> Githubs

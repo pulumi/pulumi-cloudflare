@@ -16,8 +16,9 @@ type LogpushJob struct {
 	// Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
-	DestinationConf pulumi.StringOutput  `pulumi:"destinationConf"`
-	Enabled         pulumi.BoolPtrOutput `pulumi:"enabled"`
+	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
+	// Whether to enable the job.
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -72,7 +73,8 @@ type logpushJobState struct {
 	Dataset *string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf *string `pulumi:"destinationConf"`
-	Enabled         *bool   `pulumi:"enabled"`
+	// Whether to enable the job.
+	Enabled *bool `pulumi:"enabled"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -88,7 +90,8 @@ type LogpushJobState struct {
 	Dataset pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf pulumi.StringPtrInput
-	Enabled         pulumi.BoolPtrInput
+	// Whether to enable the job.
+	Enabled pulumi.BoolPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -108,7 +111,8 @@ type logpushJobArgs struct {
 	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf string `pulumi:"destinationConf"`
-	Enabled         *bool  `pulumi:"enabled"`
+	// Whether to enable the job.
+	Enabled *bool `pulumi:"enabled"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -125,7 +129,8 @@ type LogpushJobArgs struct {
 	Dataset pulumi.StringInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
 	DestinationConf pulumi.StringInput
-	Enabled         pulumi.BoolPtrInput
+	// Whether to enable the job.
+	Enabled pulumi.BoolPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.

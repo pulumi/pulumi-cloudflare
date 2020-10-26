@@ -73,10 +73,12 @@ export class AccessPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessPolicy.__pulumiType;
     }
 
+    /**
+     * The account to which the access rule should be added. Conflicts with `zoneId`.
+     */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The ID of the application the policy is
-     * associated with.
+     * The ID of the application the policy is associated with.
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
@@ -105,8 +107,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
-     * The DNS zone to which the access rule should be
-     * added.
+     * The DNS zone to which the access rule should be added. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -170,10 +171,12 @@ export class AccessPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessPolicy resources.
  */
 export interface AccessPolicyState {
+    /**
+     * The account to which the access rule should be added. Conflicts with `zoneId`.
+     */
     readonly accountId?: pulumi.Input<string>;
     /**
-     * The ID of the application the policy is
-     * associated with.
+     * The ID of the application the policy is associated with.
      */
     readonly applicationId?: pulumi.Input<string>;
     /**
@@ -202,8 +205,7 @@ export interface AccessPolicyState {
      */
     readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
-     * The DNS zone to which the access rule should be
-     * added.
+     * The DNS zone to which the access rule should be added. Conflicts with `accountId`.
      */
     readonly zoneId?: pulumi.Input<string>;
 }
@@ -212,10 +214,12 @@ export interface AccessPolicyState {
  * The set of arguments for constructing a AccessPolicy resource.
  */
 export interface AccessPolicyArgs {
+    /**
+     * The account to which the access rule should be added. Conflicts with `zoneId`.
+     */
     readonly accountId?: pulumi.Input<string>;
     /**
-     * The ID of the application the policy is
-     * associated with.
+     * The ID of the application the policy is associated with.
      */
     readonly applicationId: pulumi.Input<string>;
     /**
@@ -244,8 +248,7 @@ export interface AccessPolicyArgs {
      */
     readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
-     * The DNS zone to which the access rule should be
-     * added.
+     * The DNS zone to which the access rule should be added. Conflicts with `accountId`.
      */
     readonly zoneId?: pulumi.Input<string>;
 }

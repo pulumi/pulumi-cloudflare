@@ -92,6 +92,7 @@ namespace Pulumi.Cloudflare
     /// * `auth_method` - (Optional) A string identifying the authentication
     /// method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
     /// Custom values are also supported.
+    /// * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
     /// * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
     /// * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
     /// * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
@@ -102,11 +103,10 @@ namespace Pulumi.Cloudflare
     public partial class AccessGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the account the group is
-        /// associated with.
+        /// The ID of the account the group is associated with. Conflicts with `zone_id`.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// A series of access conditions, see below for
@@ -134,6 +134,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("requires")]
         public Output<ImmutableArray<Outputs.AccessGroupRequire>> Requires { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the zone the group is associated with. Conflicts with `account_id`.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -182,11 +188,10 @@ namespace Pulumi.Cloudflare
     public sealed class AccessGroupArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account the group is
-        /// associated with.
+        /// The ID of the account the group is associated with. Conflicts with `zone_id`.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("excludes")]
         private InputList<Inputs.AccessGroupExcludeArgs>? _excludes;
@@ -233,6 +238,12 @@ namespace Pulumi.Cloudflare
             set => _requires = value;
         }
 
+        /// <summary>
+        /// The ID of the zone the group is associated with. Conflicts with `account_id`.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public AccessGroupArgs()
         {
         }
@@ -241,8 +252,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessGroupState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account the group is
-        /// associated with.
+        /// The ID of the account the group is associated with. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -291,6 +301,12 @@ namespace Pulumi.Cloudflare
             get => _requires ?? (_requires = new InputList<Inputs.AccessGroupRequireGetArgs>());
             set => _requires = value;
         }
+
+        /// <summary>
+        /// The ID of the zone the group is associated with. Conflicts with `account_id`.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public AccessGroupState()
         {

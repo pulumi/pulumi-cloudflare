@@ -79,8 +79,11 @@ namespace Pulumi.Cloudflare
     /// </summary>
     public partial class AccessIdentityProvider : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account ID the provider should be associated with. Conflicts with `zone_id`.
+        /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// Provider configuration from the [developer documentation][access_identity_provider_guide].
@@ -101,6 +104,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone ID the provider should be associated with. Conflicts with `account_id`.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,8 +157,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessIdentityProviderArgs : Pulumi.ResourceArgs
     {
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        /// <summary>
+        /// The account ID the provider should be associated with. Conflicts with `zone_id`.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         [Input("configs")]
         private InputList<Inputs.AccessIdentityProviderConfigArgs>? _configs;
@@ -177,6 +189,12 @@ namespace Pulumi.Cloudflare
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        /// <summary>
+        /// The zone ID the provider should be associated with. Conflicts with `account_id`.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
         public AccessIdentityProviderArgs()
         {
         }
@@ -184,6 +202,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessIdentityProviderState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account ID the provider should be associated with. Conflicts with `zone_id`.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
@@ -212,6 +233,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// The zone ID the provider should be associated with. Conflicts with `account_id`.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public AccessIdentityProviderState()
         {

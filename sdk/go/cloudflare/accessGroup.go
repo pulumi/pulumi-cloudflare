@@ -87,6 +87,7 @@ import (
 // * `authMethod` - (Optional) A string identifying the authentication
 // method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
 // Custom values are also supported.
+// * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
 // * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
 // * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
 // * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
@@ -96,9 +97,8 @@ import (
 type AccessGroup struct {
 	pulumi.CustomResourceState
 
-	// The ID of the account the group is
-	// associated with.
-	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// The ID of the account the group is associated with. Conflicts with `zoneId`.
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// A series of access conditions, see below for
 	// full list.
 	Excludes AccessGroupExcludeArrayOutput `pulumi:"excludes"`
@@ -110,14 +110,13 @@ type AccessGroup struct {
 	// A series of access conditions, see below for
 	// full list.
 	Requires AccessGroupRequireArrayOutput `pulumi:"requires"`
+	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewAccessGroup registers a new resource with the given unique name, arguments, and options.
 func NewAccessGroup(ctx *pulumi.Context,
 	name string, args *AccessGroupArgs, opts ...pulumi.ResourceOption) (*AccessGroup, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
 	if args == nil || args.Includes == nil {
 		return nil, errors.New("missing required argument 'Includes'")
 	}
@@ -149,8 +148,7 @@ func GetAccessGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessGroup resources.
 type accessGroupState struct {
-	// The ID of the account the group is
-	// associated with.
+	// The ID of the account the group is associated with. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// A series of access conditions, see below for
 	// full list.
@@ -163,11 +161,12 @@ type accessGroupState struct {
 	// A series of access conditions, see below for
 	// full list.
 	Requires []AccessGroupRequire `pulumi:"requires"`
+	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessGroupState struct {
-	// The ID of the account the group is
-	// associated with.
+	// The ID of the account the group is associated with. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// A series of access conditions, see below for
 	// full list.
@@ -180,6 +179,8 @@ type AccessGroupState struct {
 	// A series of access conditions, see below for
 	// full list.
 	Requires AccessGroupRequireArrayInput
+	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessGroupState) ElementType() reflect.Type {
@@ -187,9 +188,8 @@ func (AccessGroupState) ElementType() reflect.Type {
 }
 
 type accessGroupArgs struct {
-	// The ID of the account the group is
-	// associated with.
-	AccountId string `pulumi:"accountId"`
+	// The ID of the account the group is associated with. Conflicts with `zoneId`.
+	AccountId *string `pulumi:"accountId"`
 	// A series of access conditions, see below for
 	// full list.
 	Excludes []AccessGroupExclude `pulumi:"excludes"`
@@ -201,13 +201,14 @@ type accessGroupArgs struct {
 	// A series of access conditions, see below for
 	// full list.
 	Requires []AccessGroupRequire `pulumi:"requires"`
+	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessGroup resource.
 type AccessGroupArgs struct {
-	// The ID of the account the group is
-	// associated with.
-	AccountId pulumi.StringInput
+	// The ID of the account the group is associated with. Conflicts with `zoneId`.
+	AccountId pulumi.StringPtrInput
 	// A series of access conditions, see below for
 	// full list.
 	Excludes AccessGroupExcludeArrayInput
@@ -219,6 +220,8 @@ type AccessGroupArgs struct {
 	// A series of access conditions, see below for
 	// full list.
 	Requires AccessGroupRequireArrayInput
+	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	ZoneId pulumi.StringPtrInput
 }
 
 func (AccessGroupArgs) ElementType() reflect.Type {

@@ -53,7 +53,7 @@ export class WafRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly groupId!: pulumi.Output<string>;
     /**
-     * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+     * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
     public readonly mode!: pulumi.Output<string>;
     /**
@@ -123,7 +123,7 @@ export interface WafRuleState {
      */
     readonly groupId?: pulumi.Input<string>;
     /**
-     * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+     * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
     readonly mode?: pulumi.Input<string>;
     /**
@@ -145,7 +145,7 @@ export interface WafRuleState {
  */
 export interface WafRuleArgs {
     /**
-     * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+     * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
     readonly mode: pulumi.Input<string>;
     /**

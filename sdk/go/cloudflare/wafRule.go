@@ -41,7 +41,7 @@ type WafRule struct {
 
 	// The ID of the WAF Rule Group that contains the rule.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The ID of the WAF Rule Package that contains the rule.
 	PackageId pulumi.StringOutput `pulumi:"packageId"`
@@ -90,7 +90,7 @@ func GetWafRule(ctx *pulumi.Context,
 type wafRuleState struct {
 	// The ID of the WAF Rule Group that contains the rule.
 	GroupId *string `pulumi:"groupId"`
-	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode *string `pulumi:"mode"`
 	// The ID of the WAF Rule Package that contains the rule.
 	PackageId *string `pulumi:"packageId"`
@@ -103,7 +103,7 @@ type wafRuleState struct {
 type WafRuleState struct {
 	// The ID of the WAF Rule Group that contains the rule.
 	GroupId pulumi.StringPtrInput
-	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode pulumi.StringPtrInput
 	// The ID of the WAF Rule Package that contains the rule.
 	PackageId pulumi.StringPtrInput
@@ -118,7 +118,7 @@ func (WafRuleState) ElementType() reflect.Type {
 }
 
 type wafRuleArgs struct {
-	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode string `pulumi:"mode"`
 	// The ID of the WAF Rule Package that contains the rule.
 	PackageId *string `pulumi:"packageId"`
@@ -130,7 +130,7 @@ type wafRuleArgs struct {
 
 // The set of arguments for constructing a WafRule resource.
 type WafRuleArgs struct {
-	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"].
+	// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 	Mode pulumi.StringInput
 	// The ID of the WAF Rule Package that contains the rule.
 	PackageId pulumi.StringPtrInput

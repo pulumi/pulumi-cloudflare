@@ -36,11 +36,10 @@ namespace Pulumi.Cloudflare
     public partial class AccessServiceToken : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the account where the Access
-        /// Service is being created.
+        /// The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
         /// UUID client ID associated with the Service Token.
@@ -59,6 +58,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -107,17 +112,22 @@ namespace Pulumi.Cloudflare
     public sealed class AccessServiceTokenArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account where the Access
-        /// Service is being created.
+        /// The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
         /// </summary>
-        [Input("accountId", required: true)]
-        public Input<string> AccountId { get; set; } = null!;
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
 
         /// <summary>
         /// Friendly name of the token's intent.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public AccessServiceTokenArgs()
         {
@@ -127,8 +137,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessServiceTokenState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account where the Access
-        /// Service is being created.
+        /// The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -150,6 +159,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public AccessServiceTokenState()
         {

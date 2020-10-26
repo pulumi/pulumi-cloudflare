@@ -68,8 +68,8 @@ class AccessPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: The ID of the application the policy is
-               associated with.
+        :param pulumi.Input[str] account_id: The account to which the access rule should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
                Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -77,8 +77,7 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Integer.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
-               added.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -140,8 +139,8 @@ class AccessPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_id: The ID of the application the policy is
-               associated with.
+        :param pulumi.Input[str] account_id: The account to which the access rule should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
                Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -149,8 +148,7 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Integer.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be
-               added.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -170,14 +168,16 @@ class AccessPolicy(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account to which the access rule should be added. Conflicts with `zone_id`.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        The ID of the application the policy is
-        associated with.
+        The ID of the application the policy is associated with.
         """
         return pulumi.get(self, "application_id")
 
@@ -234,8 +234,7 @@ class AccessPolicy(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone to which the access rule should be
-        added.
+        The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         """
         return pulumi.get(self, "zone_id")
 

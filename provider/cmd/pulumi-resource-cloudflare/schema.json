@@ -273,6 +273,17 @@
                         }
                     }
                 },
+                "geos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "githubs": {
                     "type": "array",
                     "items": {
@@ -563,6 +574,17 @@
                         }
                     }
                 },
+                "geos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "githubs": {
                     "type": "array",
                     "items": {
@@ -847,6 +869,17 @@
                 },
                 "everyone": {
                     "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "geos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1310,6 +1343,17 @@
                         }
                     }
                 },
+                "geos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "githubs": {
                     "type": "array",
                     "items": {
@@ -1600,6 +1644,17 @@
                         }
                     }
                 },
+                "geos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "githubs": {
                     "type": "array",
                     "items": {
@@ -1884,6 +1939,17 @@
                 },
                 "everyone": {
                     "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "geos": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5096,7 +5162,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "Mode of the WAF Rules to lookup. Valid values: `\"on\"` and `\"off\"`.\n",
+                    "description": "Mode of the WAF Rules to lookup. Valid values: one of [\"block\", \"challenge\", \"default\", \"disable\", \"simulate\"] or [\"on\", \"off\"] depending on the WAF Rule type.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5158,7 +5224,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "Mode of the WAF Rules to lookup. Valid values: `\"on\"` and `\"off\"`.\n",
+                    "description": "Mode of the WAF Rules to lookup. Valid values: one of [\"block\", \"challenge\", \"default\", \"disable\", \"simulate\"] or [\"on\", \"off\"] depending on the WAF Rule type.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5365,7 +5431,8 @@
             "description": "Provides a Cloudflare Access Application resource. Access Applications\nare used to restrict access to a whole application using an\nauthorisation gateway managed by Cloudflare.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// With CORS configuration\nconst stagingApp = new cloudflare.AccessApplication(\"staging_app\", {\n    corsHeaders: [{\n        allowCredentials: true,\n        allowedMethods: [\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowedOrigins: [\"https://example.com\"],\n        maxAge: 10,\n    }],\n    domain: \"staging.example.com\",\n    name: \"staging application\",\n    sessionDuration: \"24h\",\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# With CORS configuration\nstaging_app = cloudflare.AccessApplication(\"stagingApp\",\n    cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(\n        allow_credentials=True,\n        allowed_methods=[\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowed_origins=[\"https://example.com\"],\n        max_age=10,\n    )],\n    domain=\"staging.example.com\",\n    name=\"staging application\",\n    session_duration=\"24h\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // With CORS configuration\n        var stagingApp = new Cloudflare.AccessApplication(\"stagingApp\", new Cloudflare.AccessApplicationArgs\n        {\n            CorsHeaders = \n            {\n                new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs\n                {\n                    AllowCredentials = true,\n                    AllowedMethods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"OPTIONS\",\n                    },\n                    AllowedOrigins = \n                    {\n                        \"https://example.com\",\n                    },\n                    MaxAge = 10,\n                },\n            },\n            Domain = \"staging.example.com\",\n            Name = \"staging application\",\n            SessionDuration = \"24h\",\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessApplication(ctx, \"stagingApp\", \u0026cloudflare.AccessApplicationArgs{\n\t\t\tCorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{\n\t\t\t\t\u0026cloudflare.AccessApplicationCorsHeaderArgs{\n\t\t\t\t\tAllowCredentials: pulumi.Bool(true),\n\t\t\t\t\tAllowedMethods: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"GET\"),\n\t\t\t\t\t\tpulumi.String(\"POST\"),\n\t\t\t\t\t\tpulumi.String(\"OPTIONS\"),\n\t\t\t\t\t},\n\t\t\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tMaxAge: pulumi.Int(10),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDomain:          pulumi.String(\"staging.example.com\"),\n\t\t\tName:            pulumi.String(\"staging application\"),\n\t\t\tSessionDuration: pulumi.String(\"24h\"),\n\t\t\tZoneId:          pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The account to which the access application should be added. Conflicts with `zone_id`.\n"
                 },
                 "allowedIdps": {
                     "type": "array",
@@ -5393,6 +5460,10 @@
                     "type": "string",
                     "description": "The complete URL of the asset you wish to put\nCloudflare Access in front of. Can include subdomains or paths. Or both.\n"
                 },
+                "enableBindingCookie": {
+                    "type": "boolean",
+                    "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Friendly name of the Access Application.\n"
@@ -5403,8 +5474,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The DNS zone to which the access rule should be added.\n",
-                    "deprecationMessage": "This field will be removed in version 3 and replaced with the account_id field."
+                    "description": "The DNS zone to which the access application should be added. Conflicts with `account_id`.\n"
                 }
             },
             "required": [
@@ -5416,7 +5486,8 @@
             ],
             "inputProperties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The account to which the access application should be added. Conflicts with `zone_id`.\n"
                 },
                 "allowedIdps": {
                     "type": "array",
@@ -5440,6 +5511,10 @@
                     "type": "string",
                     "description": "The complete URL of the asset you wish to put\nCloudflare Access in front of. Can include subdomains or paths. Or both.\n"
                 },
+                "enableBindingCookie": {
+                    "type": "boolean",
+                    "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Friendly name of the Access Application.\n"
@@ -5450,8 +5525,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The DNS zone to which the access rule should be added.\n",
-                    "deprecationMessage": "This field will be removed in version 3 and replaced with the account_id field."
+                    "description": "The DNS zone to which the access application should be added. Conflicts with `account_id`.\n"
                 }
             },
             "requiredInputs": [
@@ -5462,7 +5536,8 @@
                 "description": "Input properties used for looking up and filtering AccessApplication resources.\n",
                 "properties": {
                     "accountId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The account to which the access application should be added. Conflicts with `zone_id`.\n"
                     },
                     "allowedIdps": {
                         "type": "array",
@@ -5490,6 +5565,10 @@
                         "type": "string",
                         "description": "The complete URL of the asset you wish to put\nCloudflare Access in front of. Can include subdomains or paths. Or both.\n"
                     },
+                    "enableBindingCookie": {
+                        "type": "boolean",
+                        "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Friendly name of the Access Application.\n"
@@ -5500,19 +5579,18 @@
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The DNS zone to which the access rule should be added.\n",
-                        "deprecationMessage": "This field will be removed in version 3 and replaced with the account_id field."
+                        "description": "The DNS zone to which the access application should be added. Conflicts with `account_id`.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "cloudflare:index/accessGroup:AccessGroup": {
-            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported.\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      team = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n",
+            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported.\n* `geo` - (Optional) A list of country codes. Example: `geo = [\"US\"]`\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      team = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n",
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The ID of the account the group is\nassociated with.\n"
+                    "description": "The ID of the account the group is associated with. Conflicts with `zone_id`.\n"
                 },
                 "excludes": {
                     "type": "array",
@@ -5538,17 +5616,21 @@
                         "$ref": "#/types/cloudflare:index/AccessGroupRequire:AccessGroupRequire"
                     },
                     "description": "A series of access conditions, see below for\nfull list.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the zone the group is associated with. Conflicts with `account_id`.\n"
                 }
             },
             "required": [
-                "accountId",
                 "includes",
-                "name"
+                "name",
+                "zoneId"
             ],
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The ID of the account the group is\nassociated with.\n"
+                    "description": "The ID of the account the group is associated with. Conflicts with `zone_id`.\n"
                 },
                 "excludes": {
                     "type": "array",
@@ -5574,10 +5656,13 @@
                         "$ref": "#/types/cloudflare:index/AccessGroupRequire:AccessGroupRequire"
                     },
                     "description": "A series of access conditions, see below for\nfull list.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the zone the group is associated with. Conflicts with `account_id`.\n"
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "includes",
                 "name"
             ],
@@ -5586,7 +5671,7 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "The ID of the account the group is\nassociated with.\n"
+                        "description": "The ID of the account the group is associated with. Conflicts with `zone_id`.\n"
                     },
                     "excludes": {
                         "type": "array",
@@ -5612,6 +5697,10 @@
                             "$ref": "#/types/cloudflare:index/AccessGroupRequire:AccessGroupRequire"
                         },
                         "description": "A series of access conditions, see below for\nfull list.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The ID of the zone the group is associated with. Conflicts with `account_id`.\n"
                     }
                 },
                 "type": "object"
@@ -5621,7 +5710,8 @@
             "description": "Provides a Cloudflare Access Identity Provider resource. Identity Providers are\nused as an authentication or authorisation source within Access.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// one time pin\nconst pinLogin = new cloudflare.AccessIdentityProvider(\"pin_login\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name: \"PIN login\",\n    type: \"onetimepin\",\n});\n// oauth\nconst githubOauth = new cloudflare.AccessIdentityProvider(\"github_oauth\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    configs: [{\n        clientId: \"example\",\n        clientSecret: \"secret_key\",\n    }],\n    name: \"GitHub OAuth\",\n    type: \"github\",\n});\n// saml\nconst jumpcloudSaml = new cloudflare.AccessIdentityProvider(\"jumpcloud_saml\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    configs: [{\n        attributes: [\n            \"email\",\n            \"username\",\n        ],\n        idpPublicCert: `MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o`,\n        issuerUrl: \"jumpcloud\",\n        signRequest: false,\n        ssoTargetUrl: \"https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess\",\n    }],\n    name: \"JumpCloud SAML\",\n    type: \"saml\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# one time pin\npin_login = cloudflare.AccessIdentityProvider(\"pinLogin\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name=\"PIN login\",\n    type=\"onetimepin\")\n# oauth\ngithub_oauth = cloudflare.AccessIdentityProvider(\"githubOauth\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    configs=[cloudflare.AccessIdentityProviderConfigArgs(\n        client_id=\"example\",\n        client_secret=\"secret_key\",\n    )],\n    name=\"GitHub OAuth\",\n    type=\"github\")\n# saml\njumpcloud_saml = cloudflare.AccessIdentityProvider(\"jumpcloudSaml\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    configs=[cloudflare.AccessIdentityProviderConfigArgs(\n        attributes=[\n            \"email\",\n            \"username\",\n        ],\n        idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\n\"\"\",\n        issuer_url=\"jumpcloud\",\n        sign_request=False,\n        sso_target_url=\"https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess\",\n    )],\n    name=\"JumpCloud SAML\",\n    type=\"saml\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // one time pin\n        var pinLogin = new Cloudflare.AccessIdentityProvider(\"pinLogin\", new Cloudflare.AccessIdentityProviderArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Name = \"PIN login\",\n            Type = \"onetimepin\",\n        });\n        // oauth\n        var githubOauth = new Cloudflare.AccessIdentityProvider(\"githubOauth\", new Cloudflare.AccessIdentityProviderArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Configs = \n            {\n                new Cloudflare.Inputs.AccessIdentityProviderConfigArgs\n                {\n                    ClientId = \"example\",\n                    ClientSecret = \"secret_key\",\n                },\n            },\n            Name = \"GitHub OAuth\",\n            Type = \"github\",\n        });\n        // saml\n        var jumpcloudSaml = new Cloudflare.AccessIdentityProvider(\"jumpcloudSaml\", new Cloudflare.AccessIdentityProviderArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Configs = \n            {\n                new Cloudflare.Inputs.AccessIdentityProviderConfigArgs\n                {\n                    Attributes = \n                    {\n                        \"email\",\n                        \"username\",\n                    },\n                    IdpPublicCert = @\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\n\",\n                    IssuerUrl = \"jumpcloud\",\n                    SignRequest = false,\n                    SsoTargetUrl = \"https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess\",\n                },\n            },\n            Name = \"JumpCloud SAML\",\n            Type = \"saml\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessIdentityProvider(ctx, \"pinLogin\", \u0026cloudflare.AccessIdentityProviderArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tName:      pulumi.String(\"PIN login\"),\n\t\t\tType:      pulumi.String(\"onetimepin\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessIdentityProvider(ctx, \"githubOauth\", \u0026cloudflare.AccessIdentityProviderArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tConfigs: cloudflare.AccessIdentityProviderConfigArray{\n\t\t\t\t\u0026cloudflare.AccessIdentityProviderConfigArgs{\n\t\t\t\t\tClientId:     pulumi.String(\"example\"),\n\t\t\t\t\tClientSecret: pulumi.String(\"secret_key\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tName: pulumi.String(\"GitHub OAuth\"),\n\t\t\tType: pulumi.String(\"github\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessIdentityProvider(ctx, \"jumpcloudSaml\", \u0026cloudflare.AccessIdentityProviderArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tConfigs: cloudflare.AccessIdentityProviderConfigArray{\n\t\t\t\t\u0026cloudflare.AccessIdentityProviderConfigArgs{\n\t\t\t\t\tAttributes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"email\"),\n\t\t\t\t\t\tpulumi.String(\"username\"),\n\t\t\t\t\t},\n\t\t\t\t\tIdpPublicCert: pulumi.String(fmt.Sprintf(\"%v%v\", \"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\\n\", \"uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\\n\")),\n\t\t\t\t\tIssuerUrl:     pulumi.String(\"jumpcloud\"),\n\t\t\t\t\tSignRequest:   pulumi.Bool(false),\n\t\t\t\t\tSsoTargetUrl:  pulumi.String(\"https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tName: pulumi.String(\"JumpCloud SAML\"),\n\t\t\tType: pulumi.String(\"saml\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\nPlease refer to the [developers.cloudflare.com Access documentation][access_identity_provider_guide]\nfor full reference on what is available and how to configure your provider.\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The account ID the provider should be associated with. Conflicts with `zone_id`.\n"
                 },
                 "configs": {
                     "type": "array",
@@ -5637,16 +5727,20 @@
                 "type": {
                     "type": "string",
                     "description": "The provider type to use. Must be one of: `\"centrify\"`,\n`\"facebook\"`, `\"google-apps\"`, `\"oidc\"`, `\"github\"`, `\"google\"`, `\"saml\"`,\n`\"linkedin\"`, `\"azureAD\"`, `\"okta\"`, `\"onetimepin\"`, `\"onelogin\"`, `\"yandex\"`.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID the provider should be associated with. Conflicts with `account_id`.\n"
                 }
             },
             "required": [
-                "accountId",
                 "name",
                 "type"
             ],
             "inputProperties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The account ID the provider should be associated with. Conflicts with `zone_id`.\n"
                 },
                 "configs": {
                     "type": "array",
@@ -5662,10 +5756,13 @@
                 "type": {
                     "type": "string",
                     "description": "The provider type to use. Must be one of: `\"centrify\"`,\n`\"facebook\"`, `\"google-apps\"`, `\"oidc\"`, `\"github\"`, `\"google\"`, `\"saml\"`,\n`\"linkedin\"`, `\"azureAD\"`, `\"okta\"`, `\"onetimepin\"`, `\"onelogin\"`, `\"yandex\"`.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID the provider should be associated with. Conflicts with `account_id`.\n"
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "name",
                 "type"
             ],
@@ -5673,7 +5770,8 @@
                 "description": "Input properties used for looking up and filtering AccessIdentityProvider resources.\n",
                 "properties": {
                     "accountId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The account ID the provider should be associated with. Conflicts with `zone_id`.\n"
                     },
                     "configs": {
                         "type": "array",
@@ -5689,6 +5787,10 @@
                     "type": {
                         "type": "string",
                         "description": "The provider type to use. Must be one of: `\"centrify\"`,\n`\"facebook\"`, `\"google-apps\"`, `\"oidc\"`, `\"github\"`, `\"google\"`, `\"saml\"`,\n`\"linkedin\"`, `\"azureAD\"`, `\"okta\"`, `\"onetimepin\"`, `\"onelogin\"`, `\"yandex\"`.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID the provider should be associated with. Conflicts with `account_id`.\n"
                     }
                 },
                 "type": "object"
@@ -5698,11 +5800,12 @@
             "description": "Provides a Cloudflare Access Policy resource. Access Policies are used\nin conjunction with Access Applications to restrict access to a\nparticular resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_policy_index_access_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessPolicy(ctx, \"testPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessPolicy(ctx, \"testPolicyIndex_accessPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessPolicyRequireArray{\n\t\t\t\tIps: cloudflare.AccessPolicyRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The account to which the access rule should be added. Conflicts with `zone_id`.\n"
                 },
                 "applicationId": {
                     "type": "string",
-                    "description": "The ID of the application the policy is\nassociated with.\n"
+                    "description": "The ID of the application the policy is associated with.\n"
                 },
                 "decision": {
                     "type": "string",
@@ -5739,7 +5842,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The DNS zone to which the access rule should be\nadded.\n"
+                    "description": "The DNS zone to which the access rule should be added. Conflicts with `account_id`.\n"
                 }
             },
             "required": [
@@ -5752,11 +5855,12 @@
             ],
             "inputProperties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The account to which the access rule should be added. Conflicts with `zone_id`.\n"
                 },
                 "applicationId": {
                     "type": "string",
-                    "description": "The ID of the application the policy is\nassociated with.\n"
+                    "description": "The ID of the application the policy is associated with.\n"
                 },
                 "decision": {
                     "type": "string",
@@ -5793,7 +5897,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The DNS zone to which the access rule should be\nadded.\n"
+                    "description": "The DNS zone to which the access rule should be added. Conflicts with `account_id`.\n"
                 }
             },
             "requiredInputs": [
@@ -5806,11 +5910,12 @@
                 "description": "Input properties used for looking up and filtering AccessPolicy resources.\n",
                 "properties": {
                     "accountId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The account to which the access rule should be added. Conflicts with `zone_id`.\n"
                     },
                     "applicationId": {
                         "type": "string",
-                        "description": "The ID of the application the policy is\nassociated with.\n"
+                        "description": "The ID of the application the policy is associated with.\n"
                     },
                     "decision": {
                         "type": "string",
@@ -5847,7 +5952,7 @@
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The DNS zone to which the access rule should be\nadded.\n"
+                        "description": "The DNS zone to which the access rule should be added. Conflicts with `account_id`.\n"
                     }
                 },
                 "type": "object"
@@ -5928,7 +6033,7 @@
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The ID of the account where the Access\nService is being created.\n"
+                    "description": "The ID of the account where the Access Service is being created. Conflicts with `zone_id`.\n"
                 },
                 "clientId": {
                     "type": "string",
@@ -5941,10 +6046,13 @@
                 "name": {
                     "type": "string",
                     "description": "Friendly name of the token's intent.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the zone where the Access Service is being created. Conflicts with `account_id`.\n"
                 }
             },
             "required": [
-                "accountId",
                 "clientId",
                 "clientSecret",
                 "name"
@@ -5952,15 +6060,18 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The ID of the account where the Access\nService is being created.\n"
+                    "description": "The ID of the account where the Access Service is being created. Conflicts with `zone_id`.\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "Friendly name of the token's intent.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the zone where the Access Service is being created. Conflicts with `account_id`.\n"
                 }
             },
             "requiredInputs": [
-                "accountId",
                 "name"
             ],
             "stateInputs": {
@@ -5968,7 +6079,7 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "The ID of the account where the Access\nService is being created.\n"
+                        "description": "The ID of the account where the Access Service is being created. Conflicts with `zone_id`.\n"
                     },
                     "clientId": {
                         "type": "string",
@@ -5981,6 +6092,10 @@
                     "name": {
                         "type": "string",
                         "description": "Friendly name of the token's intent.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The ID of the zone where the Access Service is being created. Conflicts with `account_id`.\n"
                     }
                 },
                 "type": "object"
@@ -8110,7 +8225,8 @@
                     "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether to enable the job.\n"
                 },
                 "logpullOptions": {
                     "type": "string",
@@ -8145,7 +8261,8 @@
                     "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether to enable the job.\n"
                 },
                 "logpullOptions": {
                     "type": "string",
@@ -8182,7 +8299,8 @@
                         "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
                     },
                     "enabled": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether to enable the job.\n"
                     },
                     "logpullOptions": {
                         "type": "string",
@@ -9219,7 +9337,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "The mode of the rule, can be one of [\"block\", \"challenge\", \"default\", \"disable\", \"simulate\"].\n"
+                    "description": "The mode of the rule, can be one of [\"block\", \"challenge\", \"default\", \"disable\", \"simulate\"] or [\"on\", \"off\"] depending on the WAF Rule type.\n"
                 },
                 "packageId": {
                     "type": "string",
@@ -9244,7 +9362,7 @@
             "inputProperties": {
                 "mode": {
                     "type": "string",
-                    "description": "The mode of the rule, can be one of [\"block\", \"challenge\", \"default\", \"disable\", \"simulate\"].\n"
+                    "description": "The mode of the rule, can be one of [\"block\", \"challenge\", \"default\", \"disable\", \"simulate\"] or [\"on\", \"off\"] depending on the WAF Rule type.\n"
                 },
                 "packageId": {
                     "type": "string",
@@ -9273,7 +9391,7 @@
                     },
                     "mode": {
                         "type": "string",
-                        "description": "The mode of the rule, can be one of [\"block\", \"challenge\", \"default\", \"disable\", \"simulate\"].\n"
+                        "description": "The mode of the rule, can be one of [\"block\", \"challenge\", \"default\", \"disable\", \"simulate\"] or [\"on\", \"off\"] depending on the WAF Rule type.\n"
                     },
                     "packageId": {
                         "type": "string",

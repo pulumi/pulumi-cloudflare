@@ -22,6 +22,7 @@ class AccessApplication(pulumi.CustomResource):
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
+                 enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -59,6 +60,7 @@ class AccessApplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
                selection if only one is configured in allowed_idps. Defaults to `false`
@@ -67,10 +69,11 @@ class AccessApplication(pulumi.CustomResource):
                below for reference structure.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,13 +99,11 @@ class AccessApplication(pulumi.CustomResource):
             if domain is None:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
+            __props__['enable_binding_cookie'] = enable_binding_cookie
             if name is None:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['session_duration'] = session_duration
-            if zone_id is not None:
-                warnings.warn("This field will be removed in version 3 and replaced with the account_id field.", DeprecationWarning)
-                pulumi.log.warn("zone_id is deprecated: This field will be removed in version 3 and replaced with the account_id field.")
             __props__['zone_id'] = zone_id
             __props__['aud'] = None
         super(AccessApplication, __self__).__init__(
@@ -121,6 +122,7 @@ class AccessApplication(pulumi.CustomResource):
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
             cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
+            enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessApplication':
@@ -131,6 +133,7 @@ class AccessApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
@@ -140,10 +143,11 @@ class AccessApplication(pulumi.CustomResource):
                below for reference structure.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -155,6 +159,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__["cors_headers"] = cors_headers
         __props__["domain"] = domain
+        __props__["enable_binding_cookie"] = enable_binding_cookie
         __props__["name"] = name
         __props__["session_duration"] = session_duration
         __props__["zone_id"] = zone_id
@@ -163,6 +168,9 @@ class AccessApplication(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account to which the access application should be added. Conflicts with `zone_id`.
+        """
         return pulumi.get(self, "account_id")
 
     @property
@@ -210,6 +218,14 @@ class AccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "domain")
 
     @property
+    @pulumi.getter(name="enableBindingCookie")
+    def enable_binding_cookie(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_binding_cookie")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
@@ -230,7 +246,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone to which the access rule should be added.
+        The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         return pulumi.get(self, "zone_id")
 

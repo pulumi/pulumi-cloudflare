@@ -55,6 +55,7 @@ export interface AccessGroupExclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    geos?: string[];
     githubs?: outputs.AccessGroupExcludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupExcludeGsuite[];
@@ -106,6 +107,7 @@ export interface AccessGroupInclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    geos?: string[];
     githubs?: outputs.AccessGroupIncludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupIncludeGsuite[];
@@ -157,6 +159,7 @@ export interface AccessGroupRequire {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    geos?: string[];
     githubs?: outputs.AccessGroupRequireGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupRequireGsuite[];
@@ -230,6 +233,7 @@ export interface AccessPolicyExclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    geos?: string[];
     githubs?: outputs.AccessPolicyExcludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyExcludeGsuite[];
@@ -281,6 +285,7 @@ export interface AccessPolicyInclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    geos?: string[];
     githubs?: outputs.AccessPolicyIncludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyIncludeGsuite[];
@@ -332,6 +337,7 @@ export interface AccessPolicyRequire {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    geos?: string[];
     githubs?: outputs.AccessPolicyRequireGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyRequireGsuite[];
@@ -577,7 +583,7 @@ export interface GetWafRulesFilter {
      */
     groupId?: string;
     /**
-     * Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
     mode?: string;
 }
@@ -604,7 +610,7 @@ export interface GetWafRulesRule {
      */
     id?: string;
     /**
-     * Mode of the WAF Rules to lookup. Valid values: `"on"` and `"off"`.
+     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
     mode?: string;
     /**
