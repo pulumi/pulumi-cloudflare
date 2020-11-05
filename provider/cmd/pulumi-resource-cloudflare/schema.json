@@ -3110,14 +3110,7 @@
                     }
                 }
             },
-            "type": "object",
-            "language": {
-                "nodejs": {
-                    "requiredOutputs": [
-                        "resolved"
-                    ]
-                }
-            }
+            "type": "object"
         },
         "cloudflare:index/PageRuleActionsCacheKeyFieldsQueryString:PageRuleActionsCacheKeyFieldsQueryString": {
             "properties": {
@@ -8323,7 +8316,7 @@
             }
         },
         "cloudflare:index/originCaCertificate:OriginCaCertificate": {
-            "description": "Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.\n\n**This resource requires you use your Origin CA Key as the `api_user_service_key`.**\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as tls from \"@pulumi/tls\";\n\n// Create a CSR and generate a CA certificate\nconst examplePrivateKey = new tls.PrivateKey(\"examplePrivateKey\", {algorithm: \"RSA\"});\nconst exampleCertRequest = new tls.CertRequest(\"exampleCertRequest\", {\n    keyAlgorithm: examplePrivateKey.algorithm,\n    privateKeyPem: examplePrivateKey.privateKeyPem,\n    subjects: [{\n        commonName: \"\",\n        organization: \"Terraform Test\",\n    }],\n});\nconst exampleOriginCaCertificate = new cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", {\n    csr: exampleCertRequest.certRequestPem,\n    hostnames: [\"example.com\"],\n    requestType: \"origin-rsa\",\n    requestedValidity: 7,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_tls as tls\n\n# Create a CSR and generate a CA certificate\nexample_private_key = tls.PrivateKey(\"examplePrivateKey\", algorithm=\"RSA\")\nexample_cert_request = tls.CertRequest(\"exampleCertRequest\",\n    key_algorithm=example_private_key.algorithm,\n    private_key_pem=example_private_key.private_key_pem,\n    subjects=[{\n        \"commonName\": \"\",\n        \"organization\": \"Terraform Test\",\n    }])\nexample_origin_ca_certificate = cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\",\n    csr=example_cert_request.cert_request_pem,\n    hostnames=[\"example.com\"],\n    request_type=\"origin-rsa\",\n    requested_validity=7)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Tls = Pulumi.Tls;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a CSR and generate a CA certificate\n        var examplePrivateKey = new Tls.PrivateKey(\"examplePrivateKey\", new Tls.PrivateKeyArgs\n        {\n            Algorithm = \"RSA\",\n        });\n        var exampleCertRequest = new Tls.CertRequest(\"exampleCertRequest\", new Tls.CertRequestArgs\n        {\n            KeyAlgorithm = examplePrivateKey.Algorithm,\n            PrivateKeyPem = examplePrivateKey.PrivateKeyPem,\n            Subjects = \n            {\n                new Tls.Inputs.CertRequestSubjectArgs\n                {\n                    CommonName = \"\",\n                    Organization = \"Terraform Test\",\n                },\n            },\n        });\n        var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", new Cloudflare.OriginCaCertificateArgs\n        {\n            Csr = exampleCertRequest.CertRequestPem,\n            Hostnames = \n            {\n                \"example.com\",\n            },\n            RequestType = \"origin-rsa\",\n            RequestedValidity = 7,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-tls/sdk/v2/go/tls\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePrivateKey, err := tls.NewPrivateKey(ctx, \"examplePrivateKey\", \u0026tls.PrivateKeyArgs{\n\t\t\tAlgorithm: pulumi.String(\"RSA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleCertRequest, err := tls.NewCertRequest(ctx, \"exampleCertRequest\", \u0026tls.CertRequestArgs{\n\t\t\tKeyAlgorithm:  examplePrivateKey.Algorithm,\n\t\t\tPrivateKeyPem: examplePrivateKey.PrivateKeyPem,\n\t\t\tSubjects: tls.CertRequestSubjectArray{\n\t\t\t\t\u0026tls.CertRequestSubjectArgs{\n\t\t\t\t\tCommonName:   pulumi.String(\"\"),\n\t\t\t\t\tOrganization: pulumi.String(\"Terraform Test\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewOriginCaCertificate(ctx, \"exampleOriginCaCertificate\", \u0026cloudflare.OriginCaCertificateArgs{\n\t\t\tCsr: exampleCertRequest.CertRequestPem,\n\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t\tRequestType:       pulumi.String(\"origin-rsa\"),\n\t\t\tRequestedValidity: pulumi.Int(7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.\n\n**This resource requires you use your Origin CA Key as the `api_user_service_key`, in conjunction with an `api_token` or `email` and `api_key`.**\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as tls from \"@pulumi/tls\";\n\n// Create a CSR and generate a CA certificate\nconst examplePrivateKey = new tls.PrivateKey(\"examplePrivateKey\", {algorithm: \"RSA\"});\nconst exampleCertRequest = new tls.CertRequest(\"exampleCertRequest\", {\n    keyAlgorithm: examplePrivateKey.algorithm,\n    privateKeyPem: examplePrivateKey.privateKeyPem,\n    subjects: [{\n        commonName: \"\",\n        organization: \"Terraform Test\",\n    }],\n});\nconst exampleOriginCaCertificate = new cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", {\n    csr: exampleCertRequest.certRequestPem,\n    hostnames: [\"example.com\"],\n    requestType: \"origin-rsa\",\n    requestedValidity: 7,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_tls as tls\n\n# Create a CSR and generate a CA certificate\nexample_private_key = tls.PrivateKey(\"examplePrivateKey\", algorithm=\"RSA\")\nexample_cert_request = tls.CertRequest(\"exampleCertRequest\",\n    key_algorithm=example_private_key.algorithm,\n    private_key_pem=example_private_key.private_key_pem,\n    subjects=[{\n        \"commonName\": \"\",\n        \"organization\": \"Terraform Test\",\n    }])\nexample_origin_ca_certificate = cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\",\n    csr=example_cert_request.cert_request_pem,\n    hostnames=[\"example.com\"],\n    request_type=\"origin-rsa\",\n    requested_validity=7)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Tls = Pulumi.Tls;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a CSR and generate a CA certificate\n        var examplePrivateKey = new Tls.PrivateKey(\"examplePrivateKey\", new Tls.PrivateKeyArgs\n        {\n            Algorithm = \"RSA\",\n        });\n        var exampleCertRequest = new Tls.CertRequest(\"exampleCertRequest\", new Tls.CertRequestArgs\n        {\n            KeyAlgorithm = examplePrivateKey.Algorithm,\n            PrivateKeyPem = examplePrivateKey.PrivateKeyPem,\n            Subjects = \n            {\n                new Tls.Inputs.CertRequestSubjectArgs\n                {\n                    CommonName = \"\",\n                    Organization = \"Terraform Test\",\n                },\n            },\n        });\n        var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", new Cloudflare.OriginCaCertificateArgs\n        {\n            Csr = exampleCertRequest.CertRequestPem,\n            Hostnames = \n            {\n                \"example.com\",\n            },\n            RequestType = \"origin-rsa\",\n            RequestedValidity = 7,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-tls/sdk/v2/go/tls\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePrivateKey, err := tls.NewPrivateKey(ctx, \"examplePrivateKey\", \u0026tls.PrivateKeyArgs{\n\t\t\tAlgorithm: pulumi.String(\"RSA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleCertRequest, err := tls.NewCertRequest(ctx, \"exampleCertRequest\", \u0026tls.CertRequestArgs{\n\t\t\tKeyAlgorithm:  examplePrivateKey.Algorithm,\n\t\t\tPrivateKeyPem: examplePrivateKey.PrivateKeyPem,\n\t\t\tSubjects: tls.CertRequestSubjectArray{\n\t\t\t\t\u0026tls.CertRequestSubjectArgs{\n\t\t\t\t\tCommonName:   pulumi.String(\"\"),\n\t\t\t\t\tOrganization: pulumi.String(\"Terraform Test\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewOriginCaCertificate(ctx, \"exampleOriginCaCertificate\", \u0026cloudflare.OriginCaCertificateArgs{\n\t\t\tCsr: exampleCertRequest.CertRequestPem,\n\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t\tRequestType:       pulumi.String(\"origin-rsa\"),\n\t\t\tRequestedValidity: pulumi.Int(7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "certificate": {
                     "type": "string",
@@ -10029,12 +10022,26 @@
             "outputs": {
                 "description": "A collection of values returned by getIpRanges.\n",
                 "properties": {
+                    "chinaIpv4CidrBlocks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The lexically ordered list of only the IPv4 China CIDR blocks.\n"
+                    },
+                    "chinaIpv6CidrBlocks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The lexically ordered list of only the IPv6 China CIDR blocks.\n"
+                    },
                     "cidrBlocks": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The lexically ordered list of all CIDR blocks.\n"
+                        "description": "The lexically ordered list of all non-China CIDR blocks.\n"
                     },
                     "id": {
                         "type": "string",
@@ -10057,6 +10064,8 @@
                 },
                 "type": "object",
                 "required": [
+                    "chinaIpv4CidrBlocks",
+                    "chinaIpv6CidrBlocks",
                     "cidrBlocks",
                     "ipv4CidrBlocks",
                     "ipv6CidrBlocks",

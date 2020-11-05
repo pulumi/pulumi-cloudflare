@@ -19,7 +19,13 @@ class GetIpRangesResult:
     """
     A collection of values returned by getIpRanges.
     """
-    def __init__(__self__, cidr_blocks=None, id=None, ipv4_cidr_blocks=None, ipv6_cidr_blocks=None):
+    def __init__(__self__, china_ipv4_cidr_blocks=None, china_ipv6_cidr_blocks=None, cidr_blocks=None, id=None, ipv4_cidr_blocks=None, ipv6_cidr_blocks=None):
+        if china_ipv4_cidr_blocks and not isinstance(china_ipv4_cidr_blocks, list):
+            raise TypeError("Expected argument 'china_ipv4_cidr_blocks' to be a list")
+        pulumi.set(__self__, "china_ipv4_cidr_blocks", china_ipv4_cidr_blocks)
+        if china_ipv6_cidr_blocks and not isinstance(china_ipv6_cidr_blocks, list):
+            raise TypeError("Expected argument 'china_ipv6_cidr_blocks' to be a list")
+        pulumi.set(__self__, "china_ipv6_cidr_blocks", china_ipv6_cidr_blocks)
         if cidr_blocks and not isinstance(cidr_blocks, list):
             raise TypeError("Expected argument 'cidr_blocks' to be a list")
         pulumi.set(__self__, "cidr_blocks", cidr_blocks)
@@ -34,10 +40,26 @@ class GetIpRangesResult:
         pulumi.set(__self__, "ipv6_cidr_blocks", ipv6_cidr_blocks)
 
     @property
+    @pulumi.getter(name="chinaIpv4CidrBlocks")
+    def china_ipv4_cidr_blocks(self) -> Sequence[str]:
+        """
+        The lexically ordered list of only the IPv4 China CIDR blocks.
+        """
+        return pulumi.get(self, "china_ipv4_cidr_blocks")
+
+    @property
+    @pulumi.getter(name="chinaIpv6CidrBlocks")
+    def china_ipv6_cidr_blocks(self) -> Sequence[str]:
+        """
+        The lexically ordered list of only the IPv6 China CIDR blocks.
+        """
+        return pulumi.get(self, "china_ipv6_cidr_blocks")
+
+    @property
     @pulumi.getter(name="cidrBlocks")
     def cidr_blocks(self) -> Sequence[str]:
         """
-        The lexically ordered list of all CIDR blocks.
+        The lexically ordered list of all non-China CIDR blocks.
         """
         return pulumi.get(self, "cidr_blocks")
 
@@ -72,6 +94,8 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
         if False:
             yield self
         return GetIpRangesResult(
+            china_ipv4_cidr_blocks=self.china_ipv4_cidr_blocks,
+            china_ipv6_cidr_blocks=self.china_ipv6_cidr_blocks,
             cidr_blocks=self.cidr_blocks,
             id=self.id,
             ipv4_cidr_blocks=self.ipv4_cidr_blocks,
@@ -107,6 +131,8 @@ def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIp
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getIpRanges:getIpRanges', __args__, opts=opts, typ=GetIpRangesResult).value
 
     return AwaitableGetIpRangesResult(
+        china_ipv4_cidr_blocks=__ret__.china_ipv4_cidr_blocks,
+        china_ipv6_cidr_blocks=__ret__.china_ipv6_cidr_blocks,
         cidr_blocks=__ret__.cidr_blocks,
         id=__ret__.id,
         ipv4_cidr_blocks=__ret__.ipv4_cidr_blocks,
