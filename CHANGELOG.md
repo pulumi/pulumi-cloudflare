@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.13.1 of the CloudFlare Terraform Provider
+* Upgrade to v2.13.2 of the CloudFlare Terraform Provider
 
 ---
 
