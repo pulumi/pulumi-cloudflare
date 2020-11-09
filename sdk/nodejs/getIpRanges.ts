@@ -44,7 +44,15 @@ export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesRes
  */
 export interface GetIpRangesResult {
     /**
-     * The lexically ordered list of all CIDR blocks.
+     * The lexically ordered list of only the IPv4 China CIDR blocks.
+     */
+    readonly chinaIpv4CidrBlocks: string[];
+    /**
+     * The lexically ordered list of only the IPv6 China CIDR blocks.
+     */
+    readonly chinaIpv6CidrBlocks: string[];
+    /**
+     * The lexically ordered list of all non-China CIDR blocks.
      */
     readonly cidrBlocks: string[];
     /**

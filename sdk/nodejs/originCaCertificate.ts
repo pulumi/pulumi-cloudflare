@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
  *
- * **This resource requires you use your Origin CA Key as the `apiUserServiceKey`.**
+ * **This resource requires you use your Origin CA Key as the `apiUserServiceKey`, in conjunction with an `apiToken` or `email` and `apiKey`.**
  *
  * ## Example Usage
  *

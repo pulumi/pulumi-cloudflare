@@ -57,7 +57,15 @@ namespace Pulumi.Cloudflare
     public sealed class GetIpRangesResult
     {
         /// <summary>
-        /// The lexically ordered list of all CIDR blocks.
+        /// The lexically ordered list of only the IPv4 China CIDR blocks.
+        /// </summary>
+        public readonly ImmutableArray<string> ChinaIpv4CidrBlocks;
+        /// <summary>
+        /// The lexically ordered list of only the IPv6 China CIDR blocks.
+        /// </summary>
+        public readonly ImmutableArray<string> ChinaIpv6CidrBlocks;
+        /// <summary>
+        /// The lexically ordered list of all non-China CIDR blocks.
         /// </summary>
         public readonly ImmutableArray<string> CidrBlocks;
         /// <summary>
@@ -75,6 +83,10 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetIpRangesResult(
+            ImmutableArray<string> chinaIpv4CidrBlocks,
+
+            ImmutableArray<string> chinaIpv6CidrBlocks,
+
             ImmutableArray<string> cidrBlocks,
 
             string id,
@@ -83,6 +95,8 @@ namespace Pulumi.Cloudflare
 
             ImmutableArray<string> ipv6CidrBlocks)
         {
+            ChinaIpv4CidrBlocks = chinaIpv4CidrBlocks;
+            ChinaIpv6CidrBlocks = chinaIpv6CidrBlocks;
             CidrBlocks = cidrBlocks;
             Id = id;
             Ipv4CidrBlocks = ipv4CidrBlocks;

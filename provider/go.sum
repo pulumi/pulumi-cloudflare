@@ -144,8 +144,8 @@ github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1/go.mod h1:Q3SI9o4m/ZMn
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/cloudflare/cloudflare-go v0.13.4 h1:3Dm3p31K/BxKZhy+Ll2Pf7yStprJtgBKi52ee0NPcAU=
 github.com/cloudflare/cloudflare-go v0.13.4/go.mod h1:jGTn0jEGfm8MVoTjBdbVDPHDkLmHdvcVIbYWTklYTvs=
-github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20201020235801-b29fccfeba64 h1:GCptDdjtvjygV2mf/XSYIqSgPvkvlv4Rc+5ktwNUdMg=
-github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20201020235801-b29fccfeba64/go.mod h1:a/Jfat9rJWrD+Nyr2DDanRl970VkrpLFjCpUM8n+hro=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20201105212844-fc1a24a2bd7a h1:ErpfMyw/5N4q1hl40cgtiQJmzV4zyr/Bb6WFylS2Rk0=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20201105212844-fc1a24a2bd7a/go.mod h1:a/Jfat9rJWrD+Nyr2DDanRl970VkrpLFjCpUM8n+hro=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd h1:qMd81Ts1T2OTKmB4acZcyKaMtRnY5Y44NuXGX2GFJ1w=
 github.com/codahale/hdrhistogram v0.0.0-20161010025455-3a0bb77429bd/go.mod h1:sE/e/2PUdi/liOCUjSTXgM1o87ZssimdTWN964YiIeI=
