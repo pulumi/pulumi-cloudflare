@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.8.0 (2020-11-23)
 * Upgrade to v2.13.2 of the CloudFlare Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.13.2  
   * This adds support for import specific examples in documentation
-
----
 
 ## 2.7.0 (2020-10-26)
 * Upgrade to v2.12.0 of the CloudFlare Terraform Provider
