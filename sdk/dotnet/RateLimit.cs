@@ -86,6 +86,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+    /// ```
     /// </summary>
     public partial class RateLimit : Pulumi.CustomResource
     {

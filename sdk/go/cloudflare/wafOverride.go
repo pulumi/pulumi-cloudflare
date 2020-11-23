@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// WAF Overrides can be imported using a composite ID formed of zone ID and override ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/wafOverride:WafOverride my_example_waf_override 3abe5b950053dbddf1516d89f9ef1e8a/9d4e66d7649c178663bf62e06dbacb23
 // ```
 type WafOverride struct {
 	pulumi.CustomResourceState
@@ -192,4 +201,43 @@ type WafOverrideArgs struct {
 
 func (WafOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafOverrideArgs)(nil)).Elem()
+}
+
+type WafOverrideInput interface {
+	pulumi.Input
+
+	ToWafOverrideOutput() WafOverrideOutput
+	ToWafOverrideOutputWithContext(ctx context.Context) WafOverrideOutput
+}
+
+func (WafOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafOverride)(nil)).Elem()
+}
+
+func (i WafOverride) ToWafOverrideOutput() WafOverrideOutput {
+	return i.ToWafOverrideOutputWithContext(context.Background())
+}
+
+func (i WafOverride) ToWafOverrideOutputWithContext(ctx context.Context) WafOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafOverrideOutput)
+}
+
+type WafOverrideOutput struct {
+	*pulumi.OutputState
+}
+
+func (WafOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafOverrideOutput)(nil)).Elem()
+}
+
+func (o WafOverrideOutput) ToWafOverrideOutput() WafOverrideOutput {
+	return o
+}
+
+func (o WafOverrideOutput) ToWafOverrideOutputWithContext(ctx context.Context) WafOverrideOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WafOverrideOutput{})
 }

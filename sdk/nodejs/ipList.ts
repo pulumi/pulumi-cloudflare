@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -32,6 +31,14 @@ import * as utilities from "./utilities";
  *     kind: "ip",
  *     name: "example_list",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * An existing IP List can be imported using the account ID and list ID
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/ipList:IpList example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
  * ```
  */
 export class IpList extends pulumi.CustomResource {

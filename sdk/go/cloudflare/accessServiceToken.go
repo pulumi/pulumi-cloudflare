@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ~> **Important:** If you are importing an Access Service Token you will not have the `client_secret` available in the state for use. The `client_secret` is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources. Access Service Tokens can be imported using a composite ID formed of account ID and Service Token ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken my_app cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+// ```
+//
+//  where * `cb029e245cfdd66dc8d2e570d5dd3322` - Account ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Service Token ID
 type AccessServiceToken struct {
 	pulumi.CustomResourceState
 
@@ -132,4 +143,43 @@ type AccessServiceTokenArgs struct {
 
 func (AccessServiceTokenArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessServiceTokenArgs)(nil)).Elem()
+}
+
+type AccessServiceTokenInput interface {
+	pulumi.Input
+
+	ToAccessServiceTokenOutput() AccessServiceTokenOutput
+	ToAccessServiceTokenOutputWithContext(ctx context.Context) AccessServiceTokenOutput
+}
+
+func (AccessServiceToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessServiceToken)(nil)).Elem()
+}
+
+func (i AccessServiceToken) ToAccessServiceTokenOutput() AccessServiceTokenOutput {
+	return i.ToAccessServiceTokenOutputWithContext(context.Background())
+}
+
+func (i AccessServiceToken) ToAccessServiceTokenOutputWithContext(ctx context.Context) AccessServiceTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessServiceTokenOutput)
+}
+
+type AccessServiceTokenOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessServiceTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessServiceTokenOutput)(nil)).Elem()
+}
+
+func (o AccessServiceTokenOutput) ToAccessServiceTokenOutput() AccessServiceTokenOutput {
+	return o
+}
+
+func (o AccessServiceTokenOutput) ToAccessServiceTokenOutputWithContext(ctx context.Context) AccessServiceTokenOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessServiceTokenOutput{})
 }

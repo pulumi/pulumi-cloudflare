@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// WAF Rule Groups can be imported using a composite ID formed of zone ID and the WAF Rule Group ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/wafGroup:WafGroup honey_pot ae36f999674d196762efcc5abb06b345/de677e5818985db1285d0e80225f06e5
 // ```
 type WafGroup struct {
 	pulumi.CustomResourceState
@@ -133,4 +142,43 @@ type WafGroupArgs struct {
 
 func (WafGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafGroupArgs)(nil)).Elem()
+}
+
+type WafGroupInput interface {
+	pulumi.Input
+
+	ToWafGroupOutput() WafGroupOutput
+	ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutput
+}
+
+func (WafGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafGroup)(nil)).Elem()
+}
+
+func (i WafGroup) ToWafGroupOutput() WafGroupOutput {
+	return i.ToWafGroupOutputWithContext(context.Background())
+}
+
+func (i WafGroup) ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafGroupOutput)
+}
+
+type WafGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (WafGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafGroupOutput)(nil)).Elem()
+}
+
+func (o WafGroupOutput) ToWafGroupOutput() WafGroupOutput {
+	return o
+}
+
+func (o WafGroupOutput) ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WafGroupOutput{})
 }

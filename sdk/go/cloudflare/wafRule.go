@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Rules can be imported using a composite ID formed of zone ID and the WAF Rule ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/wafRule:WafRule 100000 ae36f999674d196762efcc5abb06b345/100000
 // ```
 type WafRule struct {
 	pulumi.CustomResourceState
@@ -142,4 +151,43 @@ type WafRuleArgs struct {
 
 func (WafRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafRuleArgs)(nil)).Elem()
+}
+
+type WafRuleInput interface {
+	pulumi.Input
+
+	ToWafRuleOutput() WafRuleOutput
+	ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput
+}
+
+func (WafRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRule)(nil)).Elem()
+}
+
+func (i WafRule) ToWafRuleOutput() WafRuleOutput {
+	return i.ToWafRuleOutputWithContext(context.Background())
+}
+
+func (i WafRule) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleOutput)
+}
+
+type WafRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (WafRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRuleOutput)(nil)).Elem()
+}
+
+func (o WafRuleOutput) ToWafRuleOutput() WafRuleOutput {
+	return o
+}
+
+func (o WafRuleOutput) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WafRuleOutput{})
 }

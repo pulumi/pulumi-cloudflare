@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -404,4 +405,43 @@ type HealthcheckArgs struct {
 
 func (HealthcheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*healthcheckArgs)(nil)).Elem()
+}
+
+type HealthcheckInput interface {
+	pulumi.Input
+
+	ToHealthcheckOutput() HealthcheckOutput
+	ToHealthcheckOutputWithContext(ctx context.Context) HealthcheckOutput
+}
+
+func (Healthcheck) ElementType() reflect.Type {
+	return reflect.TypeOf((*Healthcheck)(nil)).Elem()
+}
+
+func (i Healthcheck) ToHealthcheckOutput() HealthcheckOutput {
+	return i.ToHealthcheckOutputWithContext(context.Background())
+}
+
+func (i Healthcheck) ToHealthcheckOutputWithContext(ctx context.Context) HealthcheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckOutput)
+}
+
+type HealthcheckOutput struct {
+	*pulumi.OutputState
+}
+
+func (HealthcheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HealthcheckOutput)(nil)).Elem()
+}
+
+func (o HealthcheckOutput) ToHealthcheckOutput() HealthcheckOutput {
+	return o
+}
+
+func (o HealthcheckOutput) ToHealthcheckOutputWithContext(ctx context.Context) HealthcheckOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HealthcheckOutput{})
 }

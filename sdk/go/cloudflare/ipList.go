@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -47,6 +48,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// An existing IP List can be imported using the account ID and list ID
+//
+// ```sh
+//  $ pulumi import cloudflare:index/ipList:IpList example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
 // ```
 type IpList struct {
 	pulumi.CustomResourceState
@@ -153,4 +162,43 @@ type IpListArgs struct {
 
 func (IpListArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ipListArgs)(nil)).Elem()
+}
+
+type IpListInput interface {
+	pulumi.Input
+
+	ToIpListOutput() IpListOutput
+	ToIpListOutputWithContext(ctx context.Context) IpListOutput
+}
+
+func (IpList) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpList)(nil)).Elem()
+}
+
+func (i IpList) ToIpListOutput() IpListOutput {
+	return i.ToIpListOutputWithContext(context.Background())
+}
+
+func (i IpList) ToIpListOutputWithContext(ctx context.Context) IpListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpListOutput)
+}
+
+type IpListOutput struct {
+	*pulumi.OutputState
+}
+
+func (IpListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpListOutput)(nil)).Elem()
+}
+
+func (o IpListOutput) ToIpListOutput() IpListOutput {
+	return o
+}
+
+func (o IpListOutput) ToIpListOutputWithContext(ctx context.Context) IpListOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IpListOutput{})
 }

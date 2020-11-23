@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -265,4 +266,43 @@ type LoadBalancerMonitorArgs struct {
 
 func (LoadBalancerMonitorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerMonitorArgs)(nil)).Elem()
+}
+
+type LoadBalancerMonitorInput interface {
+	pulumi.Input
+
+	ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput
+	ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput
+}
+
+func (LoadBalancerMonitor) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerMonitor)(nil)).Elem()
+}
+
+func (i LoadBalancerMonitor) ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput {
+	return i.ToLoadBalancerMonitorOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerMonitor) ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorOutput)
+}
+
+type LoadBalancerMonitorOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoadBalancerMonitorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerMonitorOutput)(nil)).Elem()
+}
+
+func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput {
+	return o
+}
+
+func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LoadBalancerMonitorOutput{})
 }

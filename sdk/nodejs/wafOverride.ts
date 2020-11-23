@@ -32,6 +32,14 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * WAF Overrides can be imported using a composite ID formed of zone ID and override ID.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/wafOverride:WafOverride my_example_waf_override 3abe5b950053dbddf1516d89f9ef1e8a/9d4e66d7649c178663bf62e06dbacb23
+ * ```
  */
 export class WafOverride extends pulumi.CustomResource {
     /**

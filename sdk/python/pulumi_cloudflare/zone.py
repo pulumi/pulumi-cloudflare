@@ -37,6 +37,16 @@ class Zone(pulumi.CustomResource):
         example = cloudflare.Zone("example", zone="example.com")
         ```
 
+        ## Import
+
+        Zone resource can be imported using a zone ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
+        ```
+
+         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] jump_start: Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.

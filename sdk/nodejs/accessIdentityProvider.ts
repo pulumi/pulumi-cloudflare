@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -53,6 +52,16 @@ import * as utilities from "./utilities";
  *
  * Please refer to the [developers.cloudflare.com Access documentation][accessIdentityProviderGuide]
  * for full reference on what is available and how to configure your provider.
+ *
+ * ## Import
+ *
+ * Access Identity Providers can be imported using a composite ID formed of account ID and Access Identity Provider ID.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider my_idp cb029e245cfdd66dc8d2e570d5dd3322/e00e1c13-e350-44fe-96c5-fb75c954871c
+ * ```
+ *
+ *  [access_identity_provider_guide]https://developers.cloudflare.com/access/configuring-identity-providers/
  */
 export class AccessIdentityProvider extends pulumi.CustomResource {
     /**

@@ -33,6 +33,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Packages can be imported using a composite ID formed of zone ID and the WAF Package ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/wafPackage:WafPackage owasp ae36f999674d196762efcc5abb06b345/a25a9a7e9c00afc1fb2e0245519d725b
+    /// ```
     /// </summary>
     public partial class WafPackage : Pulumi.CustomResource
     {

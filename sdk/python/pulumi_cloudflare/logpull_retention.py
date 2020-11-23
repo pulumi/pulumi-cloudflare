@@ -34,6 +34,14 @@ class LogpullRetention(pulumi.CustomResource):
             zone_id="fb54f084ca7f7b732d3d3ecbd8ef7bf2")
         ```
 
+        ## Import
+
+        You can import existing Logpull Retention using the zone ID as the identifier.
+
+        ```sh
+         $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: Whether you wish to retain logs or not.

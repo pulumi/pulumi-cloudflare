@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -34,6 +35,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Custom hostname fallback origins can be imported using a composite ID formed of the zone ID and [fallback origin](https://api.cloudflare.com/#custom-hostname-fallback-origin-for-a-zone-properties), separated by a "/" e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
 // ```
 type CustomHostnameFallbackOrigin struct {
 	pulumi.CustomResourceState
@@ -118,4 +127,43 @@ type CustomHostnameFallbackOriginArgs struct {
 
 func (CustomHostnameFallbackOriginArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customHostnameFallbackOriginArgs)(nil)).Elem()
+}
+
+type CustomHostnameFallbackOriginInput interface {
+	pulumi.Input
+
+	ToCustomHostnameFallbackOriginOutput() CustomHostnameFallbackOriginOutput
+	ToCustomHostnameFallbackOriginOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginOutput
+}
+
+func (CustomHostnameFallbackOrigin) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameFallbackOrigin)(nil)).Elem()
+}
+
+func (i CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutput() CustomHostnameFallbackOriginOutput {
+	return i.ToCustomHostnameFallbackOriginOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameFallbackOriginOutput)
+}
+
+type CustomHostnameFallbackOriginOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomHostnameFallbackOriginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameFallbackOriginOutput)(nil)).Elem()
+}
+
+func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginOutput() CustomHostnameFallbackOriginOutput {
+	return o
+}
+
+func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomHostnameFallbackOriginOutput{})
 }

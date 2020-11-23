@@ -20,6 +20,14 @@ import * as utilities from "./utilities";
  *     value: "test value",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6_test-key
+ * ```
+ *
+ *  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
  */
 export class WorkersKv extends pulumi.CustomResource {
     /**

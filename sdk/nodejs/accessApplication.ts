@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -34,6 +33,14 @@ import * as utilities from "./utilities";
  *     sessionDuration: "24h",
  *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Access Applications can be imported using a composite ID formed of zone ID and application ID.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
  * ```
  */
 export class AccessApplication extends pulumi.CustomResource {

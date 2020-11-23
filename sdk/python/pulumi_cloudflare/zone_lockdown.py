@@ -47,6 +47,16 @@ class ZoneLockdown(pulumi.CustomResource):
             zone_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
 
+        ## Import
+
+        Records can be imported using a composite ID formed of zone name and record ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
+        ```
+
+         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.

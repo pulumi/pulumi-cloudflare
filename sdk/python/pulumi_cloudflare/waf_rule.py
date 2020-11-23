@@ -37,6 +37,14 @@ class WafRule(pulumi.CustomResource):
             zone_id="ae36f999674d196762efcc5abb06b345")
         ```
 
+        ## Import
+
+        Rules can be imported using a composite ID formed of zone ID and the WAF Rule ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/wafRule:WafRule 100000 ae36f999674d196762efcc5abb06b345/100000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] mode: The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.

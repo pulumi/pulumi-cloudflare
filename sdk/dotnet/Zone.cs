@@ -30,6 +30,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Zone resource can be imported using a zone ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
+    /// ```
+    /// 
+    ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
     /// </summary>
     public partial class Zone : Pulumi.CustomResource
     {

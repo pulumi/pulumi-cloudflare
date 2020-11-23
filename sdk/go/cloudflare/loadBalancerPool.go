@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -198,4 +199,43 @@ type LoadBalancerPoolArgs struct {
 
 func (LoadBalancerPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadBalancerPoolArgs)(nil)).Elem()
+}
+
+type LoadBalancerPoolInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolOutput() LoadBalancerPoolOutput
+	ToLoadBalancerPoolOutputWithContext(ctx context.Context) LoadBalancerPoolOutput
+}
+
+func (LoadBalancerPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPool)(nil)).Elem()
+}
+
+func (i LoadBalancerPool) ToLoadBalancerPoolOutput() LoadBalancerPoolOutput {
+	return i.ToLoadBalancerPoolOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPool) ToLoadBalancerPoolOutputWithContext(ctx context.Context) LoadBalancerPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolOutput)
+}
+
+type LoadBalancerPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoadBalancerPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPoolOutput)(nil)).Elem()
+}
+
+func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutput() LoadBalancerPoolOutput {
+	return o
+}
+
+func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.Context) LoadBalancerPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LoadBalancerPoolOutput{})
 }

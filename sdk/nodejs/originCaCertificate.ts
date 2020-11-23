@@ -33,6 +33,14 @@ import * as utilities from "./utilities";
  *     requestedValidity: 7,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Origin CA certificate resource can be imported using an ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
+ * ```
  */
 export class OriginCaCertificate extends pulumi.CustomResource {
     /**

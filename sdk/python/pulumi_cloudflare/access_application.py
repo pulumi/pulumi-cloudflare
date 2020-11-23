@@ -58,6 +58,14 @@ class AccessApplication(pulumi.CustomResource):
             zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
         ```
 
+        ## Import
+
+        Access Applications can be imported using a composite ID formed of zone ID and application ID.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.

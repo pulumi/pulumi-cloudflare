@@ -88,6 +88,16 @@ class AccessGroup(pulumi.CustomResource):
         * `saml` - (Optional) Use an external SAML setup as the `include` condition.
         Example:
 
+        ## Import
+
+        Access Groups can be imported using a composite ID formed of account ID and group ID.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d
+        ```
+
+         where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account the group is associated with. Conflicts with `zone_id`.

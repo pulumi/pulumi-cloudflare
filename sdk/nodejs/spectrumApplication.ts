@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -27,6 +26,16 @@ import * as utilities from "./utilities";
  *     originDirects: ["tcp://109.151.40.129:22"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Spectrum resource can be imported using a zone ID and Application ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+ * ```
+ *
+ *  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) * `9a7806061c88ada191ed06f989cc3dac` - Application ID
  */
 export class SpectrumApplication extends pulumi.CustomResource {
     /**

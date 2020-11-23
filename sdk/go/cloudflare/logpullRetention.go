@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -34,6 +35,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// You can import existing Logpull Retention using the zone ID as the identifier.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
 // ```
 type LogpullRetention struct {
 	pulumi.CustomResourceState
@@ -112,4 +121,43 @@ type LogpullRetentionArgs struct {
 
 func (LogpullRetentionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logpullRetentionArgs)(nil)).Elem()
+}
+
+type LogpullRetentionInput interface {
+	pulumi.Input
+
+	ToLogpullRetentionOutput() LogpullRetentionOutput
+	ToLogpullRetentionOutputWithContext(ctx context.Context) LogpullRetentionOutput
+}
+
+func (LogpullRetention) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogpullRetention)(nil)).Elem()
+}
+
+func (i LogpullRetention) ToLogpullRetentionOutput() LogpullRetentionOutput {
+	return i.ToLogpullRetentionOutputWithContext(context.Background())
+}
+
+func (i LogpullRetention) ToLogpullRetentionOutputWithContext(ctx context.Context) LogpullRetentionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpullRetentionOutput)
+}
+
+type LogpullRetentionOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogpullRetentionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogpullRetentionOutput)(nil)).Elem()
+}
+
+func (o LogpullRetentionOutput) ToLogpullRetentionOutput() LogpullRetentionOutput {
+	return o
+}
+
+func (o LogpullRetentionOutput) ToLogpullRetentionOutputWithContext(ctx context.Context) LogpullRetentionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogpullRetentionOutput{})
 }

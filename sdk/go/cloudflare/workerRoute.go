@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -40,6 +41,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Records can be imported using a composite ID formed of zone ID and route ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+// ```
+//
+//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
 type WorkerRoute struct {
 	pulumi.CustomResourceState
 
@@ -127,4 +138,43 @@ type WorkerRouteArgs struct {
 
 func (WorkerRouteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerRouteArgs)(nil)).Elem()
+}
+
+type WorkerRouteInput interface {
+	pulumi.Input
+
+	ToWorkerRouteOutput() WorkerRouteOutput
+	ToWorkerRouteOutputWithContext(ctx context.Context) WorkerRouteOutput
+}
+
+func (WorkerRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerRoute)(nil)).Elem()
+}
+
+func (i WorkerRoute) ToWorkerRouteOutput() WorkerRouteOutput {
+	return i.ToWorkerRouteOutputWithContext(context.Background())
+}
+
+func (i WorkerRoute) ToWorkerRouteOutputWithContext(ctx context.Context) WorkerRouteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerRouteOutput)
+}
+
+type WorkerRouteOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkerRouteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerRouteOutput)(nil)).Elem()
+}
+
+func (o WorkerRouteOutput) ToWorkerRouteOutput() WorkerRouteOutput {
+	return o
+}
+
+func (o WorkerRouteOutput) ToWorkerRouteOutputWithContext(ctx context.Context) WorkerRouteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkerRouteOutput{})
 }

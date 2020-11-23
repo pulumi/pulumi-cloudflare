@@ -30,6 +30,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Workers KV Namespace settings can be imported using it's ID
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
+    /// ```
+    /// 
+    ///  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
     /// </summary>
     public partial class WorkersKvNamespace : Pulumi.CustomResource
     {

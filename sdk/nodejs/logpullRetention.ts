@@ -18,6 +18,14 @@ import * as utilities from "./utilities";
  *     zoneId: "fb54f084ca7f7b732d3d3ecbd8ef7bf2",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * You can import existing Logpull Retention using the zone ID as the identifier.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+ * ```
  */
 export class LogpullRetention extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -152,4 +153,43 @@ type ZoneSettingsOverrideArgs struct {
 
 func (ZoneSettingsOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneSettingsOverrideArgs)(nil)).Elem()
+}
+
+type ZoneSettingsOverrideInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideOutput() ZoneSettingsOverrideOutput
+	ToZoneSettingsOverrideOutputWithContext(ctx context.Context) ZoneSettingsOverrideOutput
+}
+
+func (ZoneSettingsOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverride)(nil)).Elem()
+}
+
+func (i ZoneSettingsOverride) ToZoneSettingsOverrideOutput() ZoneSettingsOverrideOutput {
+	return i.ToZoneSettingsOverrideOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverride) ToZoneSettingsOverrideOutputWithContext(ctx context.Context) ZoneSettingsOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideOutput)
+}
+
+type ZoneSettingsOverrideOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneSettingsOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideOutput)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverrideOutput() ZoneSettingsOverrideOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverrideOutputWithContext(ctx context.Context) ZoneSettingsOverrideOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneSettingsOverrideOutput{})
 }

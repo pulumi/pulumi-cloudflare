@@ -32,6 +32,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// WAF Rule Groups can be imported using a composite ID formed of zone ID and the WAF Rule Group ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/wafGroup:WafGroup honey_pot ae36f999674d196762efcc5abb06b345/de677e5818985db1285d0e80225f06e5
+    /// ```
     /// </summary>
     public partial class WafGroup : Pulumi.CustomResource
     {

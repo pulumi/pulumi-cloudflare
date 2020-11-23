@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -69,6 +70,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Access Policies can be imported using a composite ID formed of zone ID, application ID and policy ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+// ```
+//
+//  where * `cb029e245cfdd66dc8d2e570d5dd3322` - Zone ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Application ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Policy ID
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
@@ -227,4 +238,43 @@ type AccessPolicyArgs struct {
 
 func (AccessPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPolicyArgs)(nil)).Elem()
+}
+
+type AccessPolicyInput interface {
+	pulumi.Input
+
+	ToAccessPolicyOutput() AccessPolicyOutput
+	ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput
+}
+
+func (AccessPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicy)(nil)).Elem()
+}
+
+func (i AccessPolicy) ToAccessPolicyOutput() AccessPolicyOutput {
+	return i.ToAccessPolicyOutputWithContext(context.Background())
+}
+
+func (i AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
+}
+
+type AccessPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyOutput)(nil)).Elem()
+}
+
+func (o AccessPolicyOutput) ToAccessPolicyOutput() AccessPolicyOutput {
+	return o
+}
+
+func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context) AccessPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessPolicyOutput{})
 }

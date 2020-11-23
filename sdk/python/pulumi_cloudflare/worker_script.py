@@ -29,6 +29,16 @@ class WorkerScript(pulumi.CustomResource):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
+        ## Import
+
+        To import a script, use a script name, e.g. `script_name`
+
+        ```sh
+         $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+        ```
+
+         where* `script_name` - the script name
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The script content.

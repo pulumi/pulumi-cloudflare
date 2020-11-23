@@ -19,6 +19,14 @@ import * as utilities from "./utilities";
  *     prefixId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * The current settings for Bring-Your-Own-IP prefixes can be imported using the prefix ID.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example d41d8cd98f00b204e9800998ecf8427e
+ * ```
  */
 export class ByoIpPrefix extends pulumi.CustomResource {
     /**

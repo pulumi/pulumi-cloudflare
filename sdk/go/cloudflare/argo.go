@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Argo settings can be imported the zone ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/argo:Argo example d41d8cd98f00b204e9800998ecf8427e
+// ```
+//
+//  where `d41d8cd98f00b204e9800998ecf8427e` is the zone ID.
 type Argo struct {
 	pulumi.CustomResourceState
 
@@ -120,4 +131,43 @@ type ArgoArgs struct {
 
 func (ArgoArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*argoArgs)(nil)).Elem()
+}
+
+type ArgoInput interface {
+	pulumi.Input
+
+	ToArgoOutput() ArgoOutput
+	ToArgoOutputWithContext(ctx context.Context) ArgoOutput
+}
+
+func (Argo) ElementType() reflect.Type {
+	return reflect.TypeOf((*Argo)(nil)).Elem()
+}
+
+func (i Argo) ToArgoOutput() ArgoOutput {
+	return i.ToArgoOutputWithContext(context.Background())
+}
+
+func (i Argo) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgoOutput)
+}
+
+type ArgoOutput struct {
+	*pulumi.OutputState
+}
+
+func (ArgoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArgoOutput)(nil)).Elem()
+}
+
+func (o ArgoOutput) ToArgoOutput() ArgoOutput {
+	return o
+}
+
+func (o ArgoOutput) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ArgoOutput{})
 }

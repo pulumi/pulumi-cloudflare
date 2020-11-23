@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -76,6 +77,16 @@ import (
 //
 // Please refer to the [developers.cloudflare.com Access documentation][accessIdentityProviderGuide]
 // for full reference on what is available and how to configure your provider.
+//
+// ## Import
+//
+// Access Identity Providers can be imported using a composite ID formed of account ID and Access Identity Provider ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider my_idp cb029e245cfdd66dc8d2e570d5dd3322/e00e1c13-e350-44fe-96c5-fb75c954871c
+// ```
+//
+//  [access_identity_provider_guide]https://developers.cloudflare.com/access/configuring-identity-providers/
 type AccessIdentityProvider struct {
 	pulumi.CustomResourceState
 
@@ -193,4 +204,43 @@ type AccessIdentityProviderArgs struct {
 
 func (AccessIdentityProviderArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessIdentityProviderArgs)(nil)).Elem()
+}
+
+type AccessIdentityProviderInput interface {
+	pulumi.Input
+
+	ToAccessIdentityProviderOutput() AccessIdentityProviderOutput
+	ToAccessIdentityProviderOutputWithContext(ctx context.Context) AccessIdentityProviderOutput
+}
+
+func (AccessIdentityProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessIdentityProvider)(nil)).Elem()
+}
+
+func (i AccessIdentityProvider) ToAccessIdentityProviderOutput() AccessIdentityProviderOutput {
+	return i.ToAccessIdentityProviderOutputWithContext(context.Background())
+}
+
+func (i AccessIdentityProvider) ToAccessIdentityProviderOutputWithContext(ctx context.Context) AccessIdentityProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderOutput)
+}
+
+type AccessIdentityProviderOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessIdentityProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessIdentityProviderOutput)(nil)).Elem()
+}
+
+func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutput() AccessIdentityProviderOutput {
+	return o
+}
+
+func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutputWithContext(ctx context.Context) AccessIdentityProviderOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessIdentityProviderOutput{})
 }

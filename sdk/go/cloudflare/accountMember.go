@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -38,6 +39,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Account members can be imported using a composite ID formed of account ID and account member ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accountMember:AccountMember example_user d41d8cd98f00b204e9800998ecf8427e/b58c6f14d292556214bd64909bcdb118
+// ```
+//
+//  where* `d41d8cd98f00b204e9800998ecf8427e` - account ID as returned by the [API](https://api.cloudflare.com/#accounts-account-details) * `b58c6f14d292556214bd64909bcdb118` - account member ID as returned by the [API](https://api.cloudflare.com/#account-members-member-details)
 type AccountMember struct {
 	pulumi.CustomResourceState
 
@@ -115,4 +126,43 @@ type AccountMemberArgs struct {
 
 func (AccountMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountMemberArgs)(nil)).Elem()
+}
+
+type AccountMemberInput interface {
+	pulumi.Input
+
+	ToAccountMemberOutput() AccountMemberOutput
+	ToAccountMemberOutputWithContext(ctx context.Context) AccountMemberOutput
+}
+
+func (AccountMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountMember)(nil)).Elem()
+}
+
+func (i AccountMember) ToAccountMemberOutput() AccountMemberOutput {
+	return i.ToAccountMemberOutputWithContext(context.Background())
+}
+
+func (i AccountMember) ToAccountMemberOutputWithContext(ctx context.Context) AccountMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountMemberOutput)
+}
+
+type AccountMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountMemberOutput)(nil)).Elem()
+}
+
+func (o AccountMemberOutput) ToAccountMemberOutput() AccountMemberOutput {
+	return o
+}
+
+func (o AccountMemberOutput) ToAccountMemberOutputWithContext(ctx context.Context) AccountMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountMemberOutput{})
 }

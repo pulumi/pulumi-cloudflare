@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
 // ```
 type PageRule struct {
 	pulumi.CustomResourceState
@@ -159,4 +168,43 @@ type PageRuleArgs struct {
 
 func (PageRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pageRuleArgs)(nil)).Elem()
+}
+
+type PageRuleInput interface {
+	pulumi.Input
+
+	ToPageRuleOutput() PageRuleOutput
+	ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutput
+}
+
+func (PageRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRule)(nil)).Elem()
+}
+
+func (i PageRule) ToPageRuleOutput() PageRuleOutput {
+	return i.ToPageRuleOutputWithContext(context.Background())
+}
+
+func (i PageRule) ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleOutput)
+}
+
+type PageRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (PageRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRuleOutput)(nil)).Elem()
+}
+
+func (o PageRuleOutput) ToPageRuleOutput() PageRuleOutput {
+	return o
+}
+
+func (o PageRuleOutput) ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PageRuleOutput{})
 }

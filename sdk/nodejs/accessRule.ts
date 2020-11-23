@@ -2,12 +2,25 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
+ *
+ * ## Import
+ *
+ * Records can be imported using a composite ID formed of access rule type, access rule type identifier and identifer value, e.g.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ * ```
+ *
+ *  where* `zone` - access rule type (`account`, `zone` or `user`) * `cb029e245cfdd66dc8d2e570d5dd3322` - access rule type ID (i.e the zone ID
+ *
+ *  or account ID you wish to target) * `d41d8cd98f00b204e9800998ecf8427e` - access rule ID as returned by
+ *
+ *  respective API endpoint for the type you are attempting to import.
  */
 export class AccessRule extends pulumi.CustomResource {
     /**

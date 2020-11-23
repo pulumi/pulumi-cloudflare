@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -94,6 +95,16 @@ import (
 // * `okta` - (Optional) Use Okta as the `include` condition. Example:
 // * `saml` - (Optional) Use an external SAML setup as the `include` condition.
 // Example:
+//
+// ## Import
+//
+// Access Groups can be imported using a composite ID formed of account ID and group ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d
+// ```
+//
+//  where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID
 type AccessGroup struct {
 	pulumi.CustomResourceState
 
@@ -226,4 +237,43 @@ type AccessGroupArgs struct {
 
 func (AccessGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessGroupArgs)(nil)).Elem()
+}
+
+type AccessGroupInput interface {
+	pulumi.Input
+
+	ToAccessGroupOutput() AccessGroupOutput
+	ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput
+}
+
+func (AccessGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroup)(nil)).Elem()
+}
+
+func (i AccessGroup) ToAccessGroupOutput() AccessGroupOutput {
+	return i.ToAccessGroupOutputWithContext(context.Background())
+}
+
+func (i AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupOutput)
+}
+
+type AccessGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupOutput)(nil)).Elem()
+}
+
+func (o AccessGroupOutput) ToAccessGroupOutput() AccessGroupOutput {
+	return o
+}
+
+func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessGroupOutput{})
 }

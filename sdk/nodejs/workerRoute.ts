@@ -22,6 +22,16 @@ import * as utilities from "./utilities";
  *     scriptName: myScript.name,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Records can be imported using a composite ID formed of zone ID and route ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+ * ```
+ *
+ *  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
  */
 export class WorkerRoute extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -11,6 +12,16 @@ import (
 )
 
 // Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
+//
+// ## Import
+//
+// To import a script, use a script name, e.g. `script_name`
+//
+// ```sh
+//  $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+// ```
+//
+//  where* `script_name` - the script name
 type WorkerScript struct {
 	pulumi.CustomResourceState
 
@@ -108,4 +119,43 @@ type WorkerScriptArgs struct {
 
 func (WorkerScriptArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workerScriptArgs)(nil)).Elem()
+}
+
+type WorkerScriptInput interface {
+	pulumi.Input
+
+	ToWorkerScriptOutput() WorkerScriptOutput
+	ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput
+}
+
+func (WorkerScript) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScript)(nil)).Elem()
+}
+
+func (i WorkerScript) ToWorkerScriptOutput() WorkerScriptOutput {
+	return i.ToWorkerScriptOutputWithContext(context.Background())
+}
+
+func (i WorkerScript) ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptOutput)
+}
+
+type WorkerScriptOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkerScriptOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptOutput)(nil)).Elem()
+}
+
+func (o WorkerScriptOutput) ToWorkerScriptOutput() WorkerScriptOutput {
+	return o
+}
+
+func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkerScriptOutput{})
 }

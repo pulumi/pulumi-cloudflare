@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -46,6 +47,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a "/" e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
 // ```
 type CustomSsl struct {
 	pulumi.CustomResourceState
@@ -150,4 +159,43 @@ type CustomSslArgs struct {
 
 func (CustomSslArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customSslArgs)(nil)).Elem()
+}
+
+type CustomSslInput interface {
+	pulumi.Input
+
+	ToCustomSslOutput() CustomSslOutput
+	ToCustomSslOutputWithContext(ctx context.Context) CustomSslOutput
+}
+
+func (CustomSsl) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSsl)(nil)).Elem()
+}
+
+func (i CustomSsl) ToCustomSslOutput() CustomSslOutput {
+	return i.ToCustomSslOutputWithContext(context.Background())
+}
+
+func (i CustomSsl) ToCustomSslOutputWithContext(ctx context.Context) CustomSslOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSslOutput)
+}
+
+type CustomSslOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomSslOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSslOutput)(nil)).Elem()
+}
+
+func (o CustomSslOutput) ToCustomSslOutput() CustomSslOutput {
+	return o
+}
+
+func (o CustomSslOutput) ToCustomSslOutputWithContext(ctx context.Context) CustomSslOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomSslOutput{})
 }

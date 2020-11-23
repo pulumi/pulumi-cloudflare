@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -64,6 +63,14 @@ import * as utilities from "./utilities";
  *         `${_var.cloudflare_zone}/bypass2`,
  *     ],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
  * ```
  */
 export class RateLimit extends pulumi.CustomResource {

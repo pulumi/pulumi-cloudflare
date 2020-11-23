@@ -32,6 +32,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Rules can be imported using a composite ID formed of zone ID and the WAF Rule ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/wafRule:WafRule 100000 ae36f999674d196762efcc5abb06b345/100000
+    /// ```
     /// </summary>
     public partial class WafRule : Pulumi.CustomResource
     {
