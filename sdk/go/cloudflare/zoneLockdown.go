@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Records can be imported using a composite ID formed of zone name and record ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
+// ```
+//
+//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
 type ZoneLockdown struct {
 	pulumi.CustomResourceState
 
@@ -160,4 +171,43 @@ type ZoneLockdownArgs struct {
 
 func (ZoneLockdownArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneLockdownArgs)(nil)).Elem()
+}
+
+type ZoneLockdownInput interface {
+	pulumi.Input
+
+	ToZoneLockdownOutput() ZoneLockdownOutput
+	ToZoneLockdownOutputWithContext(ctx context.Context) ZoneLockdownOutput
+}
+
+func (ZoneLockdown) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneLockdown)(nil)).Elem()
+}
+
+func (i ZoneLockdown) ToZoneLockdownOutput() ZoneLockdownOutput {
+	return i.ToZoneLockdownOutputWithContext(context.Background())
+}
+
+func (i ZoneLockdown) ToZoneLockdownOutputWithContext(ctx context.Context) ZoneLockdownOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneLockdownOutput)
+}
+
+type ZoneLockdownOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneLockdownOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneLockdownOutput)(nil)).Elem()
+}
+
+func (o ZoneLockdownOutput) ToZoneLockdownOutput() ZoneLockdownOutput {
+	return o
+}
+
+func (o ZoneLockdownOutput) ToZoneLockdownOutputWithContext(ctx context.Context) ZoneLockdownOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneLockdownOutput{})
 }

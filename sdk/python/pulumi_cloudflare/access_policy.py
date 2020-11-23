@@ -66,6 +66,16 @@ class AccessPolicy(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        Access Policies can be imported using a composite ID formed of zone ID, application ID and policy ID.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+        ```
+
+         where * `cb029e245cfdd66dc8d2e570d5dd3322` - Zone ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Application ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Policy ID
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the access rule should be added. Conflicts with `zone_id`.

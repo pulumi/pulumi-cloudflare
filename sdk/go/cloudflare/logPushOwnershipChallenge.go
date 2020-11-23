@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -123,4 +124,43 @@ type LogPushOwnershipChallengeArgs struct {
 
 func (LogPushOwnershipChallengeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logPushOwnershipChallengeArgs)(nil)).Elem()
+}
+
+type LogPushOwnershipChallengeInput interface {
+	pulumi.Input
+
+	ToLogPushOwnershipChallengeOutput() LogPushOwnershipChallengeOutput
+	ToLogPushOwnershipChallengeOutputWithContext(ctx context.Context) LogPushOwnershipChallengeOutput
+}
+
+func (LogPushOwnershipChallenge) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogPushOwnershipChallenge)(nil)).Elem()
+}
+
+func (i LogPushOwnershipChallenge) ToLogPushOwnershipChallengeOutput() LogPushOwnershipChallengeOutput {
+	return i.ToLogPushOwnershipChallengeOutputWithContext(context.Background())
+}
+
+func (i LogPushOwnershipChallenge) ToLogPushOwnershipChallengeOutputWithContext(ctx context.Context) LogPushOwnershipChallengeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogPushOwnershipChallengeOutput)
+}
+
+type LogPushOwnershipChallengeOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogPushOwnershipChallengeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogPushOwnershipChallengeOutput)(nil)).Elem()
+}
+
+func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengeOutput() LogPushOwnershipChallengeOutput {
+	return o
+}
+
+func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengeOutputWithContext(ctx context.Context) LogPushOwnershipChallengeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogPushOwnershipChallengeOutput{})
 }

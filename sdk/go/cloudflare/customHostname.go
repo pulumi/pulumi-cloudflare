@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -39,6 +40,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Custom hostname certificates can be imported using a composite ID formed of the zone ID and [hostname ID](https://api.cloudflare.com/#custom-hostname-for-a-zone-properties), separated by a "/" e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/customHostname:CustomHostname example d41d8cd98f00b204e9800998ecf8427e/0d89c70d-ad9f-4843-b99f-6cc0252067e9
 // ```
 type CustomHostname struct {
 	pulumi.CustomResourceState
@@ -149,4 +158,43 @@ type CustomHostnameArgs struct {
 
 func (CustomHostnameArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customHostnameArgs)(nil)).Elem()
+}
+
+type CustomHostnameInput interface {
+	pulumi.Input
+
+	ToCustomHostnameOutput() CustomHostnameOutput
+	ToCustomHostnameOutputWithContext(ctx context.Context) CustomHostnameOutput
+}
+
+func (CustomHostname) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostname)(nil)).Elem()
+}
+
+func (i CustomHostname) ToCustomHostnameOutput() CustomHostnameOutput {
+	return i.ToCustomHostnameOutputWithContext(context.Background())
+}
+
+func (i CustomHostname) ToCustomHostnameOutputWithContext(ctx context.Context) CustomHostnameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOutput)
+}
+
+type CustomHostnameOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomHostnameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameOutput)(nil)).Elem()
+}
+
+func (o CustomHostnameOutput) ToCustomHostnameOutput() CustomHostnameOutput {
+	return o
+}
+
+func (o CustomHostnameOutput) ToCustomHostnameOutputWithContext(ctx context.Context) CustomHostnameOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomHostnameOutput{})
 }

@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Packages can be imported using a composite ID formed of zone ID and the WAF Package ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/wafPackage:WafPackage owasp ae36f999674d196762efcc5abb06b345/a25a9a7e9c00afc1fb2e0245519d725b
 // ```
 type WafPackage struct {
 	pulumi.CustomResourceState
@@ -134,4 +143,43 @@ type WafPackageArgs struct {
 
 func (WafPackageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*wafPackageArgs)(nil)).Elem()
+}
+
+type WafPackageInput interface {
+	pulumi.Input
+
+	ToWafPackageOutput() WafPackageOutput
+	ToWafPackageOutputWithContext(ctx context.Context) WafPackageOutput
+}
+
+func (WafPackage) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafPackage)(nil)).Elem()
+}
+
+func (i WafPackage) ToWafPackageOutput() WafPackageOutput {
+	return i.ToWafPackageOutputWithContext(context.Background())
+}
+
+func (i WafPackage) ToWafPackageOutputWithContext(ctx context.Context) WafPackageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafPackageOutput)
+}
+
+type WafPackageOutput struct {
+	*pulumi.OutputState
+}
+
+func (WafPackageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafPackageOutput)(nil)).Elem()
+}
+
+func (o WafPackageOutput) ToWafPackageOutput() WafPackageOutput {
+	return o
+}
+
+func (o WafPackageOutput) ToWafPackageOutputWithContext(ctx context.Context) WafPackageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WafPackageOutput{})
 }

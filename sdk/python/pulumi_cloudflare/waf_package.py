@@ -38,6 +38,14 @@ class WafPackage(pulumi.CustomResource):
             zone_id="ae36f999674d196762efcc5abb06b345")
         ```
 
+        ## Import
+
+        Packages can be imported using a composite ID formed of zone ID and the WAF Package ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/wafPackage:WafPackage owasp ae36f999674d196762efcc5abb06b345/a25a9a7e9c00afc1fb2e0245519d725b
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action_mode: The action mode of the package, can be one of ["block", "challenge", "simulate"].

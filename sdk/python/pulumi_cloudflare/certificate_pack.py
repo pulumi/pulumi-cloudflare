@@ -26,7 +26,14 @@ class CertificatePack(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a CertificatePack resource with the given unique name, props, and options.
+        ## Import
+
+        Certificate packs can be imported using a composite ID of the zone ID and certificate pack ID. This isn't recommended and it is advised to replace the certificate entirely instead.
+
+        ```sh
+         $ pulumi import cloudflare:index/certificatePack:CertificatePack example cb029e245cfdd66dc8d2e570d5dd3322/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_authority: Which certificate

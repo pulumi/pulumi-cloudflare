@@ -2,12 +2,21 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
  * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
+ *
+ * ## Import
+ *
+ * To import a script, use a script name, e.g. `script_name`
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+ * ```
+ *
+ *  where* `script_name` - the script name
  */
 export class WorkerScript extends pulumi.CustomResource {
     /**

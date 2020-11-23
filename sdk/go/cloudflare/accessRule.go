@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -11,6 +12,20 @@ import (
 )
 
 // Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
+//
+// ## Import
+//
+// Records can be imported using a composite ID formed of access rule type, access rule type identifier and identifer value, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+// ```
+//
+//  where* `zone` - access rule type (`account`, `zone` or `user`) * `cb029e245cfdd66dc8d2e570d5dd3322` - access rule type ID (i.e the zone ID
+//
+//  or account ID you wish to target) * `d41d8cd98f00b204e9800998ecf8427e` - access rule ID as returned by
+//
+//  respective API endpoint for the type you are attempting to import.
 type AccessRule struct {
 	pulumi.CustomResourceState
 
@@ -108,4 +123,43 @@ type AccessRuleArgs struct {
 
 func (AccessRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessRuleArgs)(nil)).Elem()
+}
+
+type AccessRuleInput interface {
+	pulumi.Input
+
+	ToAccessRuleOutput() AccessRuleOutput
+	ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput
+}
+
+func (AccessRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessRule)(nil)).Elem()
+}
+
+func (i AccessRule) ToAccessRuleOutput() AccessRuleOutput {
+	return i.ToAccessRuleOutputWithContext(context.Background())
+}
+
+func (i AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleOutput)
+}
+
+type AccessRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessRuleOutput)(nil)).Elem()
+}
+
+func (o AccessRuleOutput) ToAccessRuleOutput() AccessRuleOutput {
+	return o
+}
+
+func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessRuleOutput{})
 }

@@ -52,6 +52,14 @@ class IpList(pulumi.CustomResource):
             name="example_list")
         ```
 
+        ## Import
+
+        An existing IP List can be imported using the account ID and list ID
+
+        ```sh
+         $ pulumi import cloudflare:index/ipList:IpList example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account where the IP List is being created.

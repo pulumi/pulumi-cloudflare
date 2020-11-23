@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Filter can be imported using a composite ID formed of zone ID and filter ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+// ```
+//
+//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
 type Filter struct {
 	pulumi.CustomResourceState
 
@@ -143,4 +154,43 @@ type FilterArgs struct {
 
 func (FilterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*filterArgs)(nil)).Elem()
+}
+
+type FilterInput interface {
+	pulumi.Input
+
+	ToFilterOutput() FilterOutput
+	ToFilterOutputWithContext(ctx context.Context) FilterOutput
+}
+
+func (Filter) ElementType() reflect.Type {
+	return reflect.TypeOf((*Filter)(nil)).Elem()
+}
+
+func (i Filter) ToFilterOutput() FilterOutput {
+	return i.ToFilterOutputWithContext(context.Background())
+}
+
+func (i Filter) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FilterOutput)
+}
+
+type FilterOutput struct {
+	*pulumi.OutputState
+}
+
+func (FilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterOutput)(nil)).Elem()
+}
+
+func (o FilterOutput) ToFilterOutput() FilterOutput {
+	return o
+}
+
+func (o FilterOutput) ToFilterOutputWithContext(ctx context.Context) FilterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FilterOutput{})
 }

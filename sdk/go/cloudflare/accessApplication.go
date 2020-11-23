@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -52,6 +53,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Access Applications can be imported using a composite ID formed of zone ID and application ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
 // ```
 type AccessApplication struct {
 	pulumi.CustomResourceState
@@ -231,4 +240,43 @@ type AccessApplicationArgs struct {
 
 func (AccessApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessApplicationArgs)(nil)).Elem()
+}
+
+type AccessApplicationInput interface {
+	pulumi.Input
+
+	ToAccessApplicationOutput() AccessApplicationOutput
+	ToAccessApplicationOutputWithContext(ctx context.Context) AccessApplicationOutput
+}
+
+func (AccessApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplication)(nil)).Elem()
+}
+
+func (i AccessApplication) ToAccessApplicationOutput() AccessApplicationOutput {
+	return i.ToAccessApplicationOutputWithContext(context.Background())
+}
+
+func (i AccessApplication) ToAccessApplicationOutputWithContext(ctx context.Context) AccessApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationOutput)
+}
+
+type AccessApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationOutput)(nil)).Elem()
+}
+
+func (o AccessApplicationOutput) ToAccessApplicationOutput() AccessApplicationOutput {
+	return o
+}
+
+func (o AccessApplicationOutput) ToAccessApplicationOutputWithContext(ctx context.Context) AccessApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessApplicationOutput{})
 }

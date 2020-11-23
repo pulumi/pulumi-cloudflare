@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -42,6 +43,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6_test-key
+// ```
+//
+//  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
 type WorkersKv struct {
 	pulumi.CustomResourceState
 
@@ -132,4 +141,43 @@ type WorkersKvArgs struct {
 
 func (WorkersKvArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersKvArgs)(nil)).Elem()
+}
+
+type WorkersKvInput interface {
+	pulumi.Input
+
+	ToWorkersKvOutput() WorkersKvOutput
+	ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvOutput
+}
+
+func (WorkersKv) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersKv)(nil)).Elem()
+}
+
+func (i WorkersKv) ToWorkersKvOutput() WorkersKvOutput {
+	return i.ToWorkersKvOutputWithContext(context.Background())
+}
+
+func (i WorkersKv) ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvOutput)
+}
+
+type WorkersKvOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkersKvOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersKvOutput)(nil)).Elem()
+}
+
+func (o WorkersKvOutput) ToWorkersKvOutput() WorkersKvOutput {
+	return o
+}
+
+func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkersKvOutput{})
 }

@@ -36,6 +36,16 @@ class Argo(pulumi.CustomResource):
             zone_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
 
+        ## Import
+
+        Argo settings can be imported the zone ID.
+
+        ```sh
+         $ pulumi import cloudflare:index/argo:Argo example d41d8cd98f00b204e9800998ecf8427e
+        ```
+
+         where `d41d8cd98f00b204e9800998ecf8427e` is the zone ID.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Valid values: `on` or `off`.

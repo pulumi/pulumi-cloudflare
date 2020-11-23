@@ -39,6 +39,20 @@ class CustomPages(pulumi.CustomResource):
             zone_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
 
+        ## Import
+
+        Custom pages can be imported using a composite ID formed of* `customPageLevel` - Either `account` or `zone`. * `identifier` - The ID of the account or zone you intend to manage. * `pageType` - The value from the `type` argument. Example for a zone
+
+        ```sh
+         $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge zone/d41d8cd98f00b204e9800998ecf8427e/basic_challenge
+        ```
+
+         Example for an account
+
+        ```sh
+         $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account ID where the custom pages should be

@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,20 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Custom pages can be imported using a composite ID formed of* `customPageLevel` - Either `account` or `zone`. * `identifier` - The ID of the account or zone you intend to manage. * `pageType` - The value from the `type` argument. Example for a zone
+//
+// ```sh
+//  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge zone/d41d8cd98f00b204e9800998ecf8427e/basic_challenge
+// ```
+//
+//  Example for an account
+//
+// ```sh
+//  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
 // ```
 type CustomPages struct {
 	pulumi.CustomResourceState
@@ -169,4 +184,43 @@ type CustomPagesArgs struct {
 
 func (CustomPagesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customPagesArgs)(nil)).Elem()
+}
+
+type CustomPagesInput interface {
+	pulumi.Input
+
+	ToCustomPagesOutput() CustomPagesOutput
+	ToCustomPagesOutputWithContext(ctx context.Context) CustomPagesOutput
+}
+
+func (CustomPages) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPages)(nil)).Elem()
+}
+
+func (i CustomPages) ToCustomPagesOutput() CustomPagesOutput {
+	return i.ToCustomPagesOutputWithContext(context.Background())
+}
+
+func (i CustomPages) ToCustomPagesOutputWithContext(ctx context.Context) CustomPagesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesOutput)
+}
+
+type CustomPagesOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomPagesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPagesOutput)(nil)).Elem()
+}
+
+func (o CustomPagesOutput) ToCustomPagesOutput() CustomPagesOutput {
+	return o
+}
+
+func (o CustomPagesOutput) ToCustomPagesOutputWithContext(ctx context.Context) CustomPagesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomPagesOutput{})
 }

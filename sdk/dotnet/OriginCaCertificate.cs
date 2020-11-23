@@ -57,6 +57,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Origin CA certificate resource can be imported using an ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
+    /// ```
     /// </summary>
     public partial class OriginCaCertificate : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -11,6 +12,14 @@ import (
 )
 
 // Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
+//
+// ## Import
+//
+// Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+// ```
 type RateLimit struct {
 	pulumi.CustomResourceState
 
@@ -164,4 +173,43 @@ type RateLimitArgs struct {
 
 func (RateLimitArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*rateLimitArgs)(nil)).Elem()
+}
+
+type RateLimitInput interface {
+	pulumi.Input
+
+	ToRateLimitOutput() RateLimitOutput
+	ToRateLimitOutputWithContext(ctx context.Context) RateLimitOutput
+}
+
+func (RateLimit) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimit)(nil)).Elem()
+}
+
+func (i RateLimit) ToRateLimitOutput() RateLimitOutput {
+	return i.ToRateLimitOutputWithContext(context.Background())
+}
+
+func (i RateLimit) ToRateLimitOutputWithContext(ctx context.Context) RateLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RateLimitOutput)
+}
+
+type RateLimitOutput struct {
+	*pulumi.OutputState
+}
+
+func (RateLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimitOutput)(nil)).Elem()
+}
+
+func (o RateLimitOutput) ToRateLimitOutput() RateLimitOutput {
+	return o
+}
+
+func (o RateLimitOutput) ToRateLimitOutputWithContext(ctx context.Context) RateLimitOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RateLimitOutput{})
 }

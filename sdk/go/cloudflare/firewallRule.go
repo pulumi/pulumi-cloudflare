@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -48,6 +49,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Firewall Rule can be imported using a composite ID formed of zone ID and rule ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/firewallRule:FirewallRule default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+// ```
+//
+//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules)
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -173,4 +184,43 @@ type FirewallRuleArgs struct {
 
 func (FirewallRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallRuleArgs)(nil)).Elem()
+}
+
+type FirewallRuleInput interface {
+	pulumi.Input
+
+	ToFirewallRuleOutput() FirewallRuleOutput
+	ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput
+}
+
+func (FirewallRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRule)(nil)).Elem()
+}
+
+func (i FirewallRule) ToFirewallRuleOutput() FirewallRuleOutput {
+	return i.ToFirewallRuleOutputWithContext(context.Background())
+}
+
+func (i FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
+}
+
+type FirewallRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRuleOutput)(nil)).Elem()
+}
+
+func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
+	return o
+}
+
+func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallRuleOutput{})
 }

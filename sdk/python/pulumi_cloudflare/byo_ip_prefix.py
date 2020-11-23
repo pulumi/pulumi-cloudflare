@@ -36,6 +36,14 @@ class ByoIpPrefix(pulumi.CustomResource):
             prefix_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
 
+        ## Import
+
+        The current settings for Bring-Your-Own-IP prefixes can be imported using the prefix ID.
+
+        ```sh
+         $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example d41d8cd98f00b204e9800998ecf8427e
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.

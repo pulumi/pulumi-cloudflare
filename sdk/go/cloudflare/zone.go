@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -34,6 +35,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Zone resource can be imported using a zone ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
+// ```
+//
+//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -171,4 +182,43 @@ type ZoneArgs struct {
 
 func (ZoneArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneArgs)(nil)).Elem()
+}
+
+type ZoneInput interface {
+	pulumi.Input
+
+	ToZoneOutput() ZoneOutput
+	ToZoneOutputWithContext(ctx context.Context) ZoneOutput
+}
+
+func (Zone) ElementType() reflect.Type {
+	return reflect.TypeOf((*Zone)(nil)).Elem()
+}
+
+func (i Zone) ToZoneOutput() ZoneOutput {
+	return i.ToZoneOutputWithContext(context.Background())
+}
+
+func (i Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneOutput)
+}
+
+type ZoneOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneOutput)(nil)).Elem()
+}
+
+func (o ZoneOutput) ToZoneOutput() ZoneOutput {
+	return o
+}
+
+func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ZoneOutput{})
 }

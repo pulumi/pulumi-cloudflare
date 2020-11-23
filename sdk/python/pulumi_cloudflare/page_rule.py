@@ -50,6 +50,14 @@ class PageRule(pulumi.CustomResource):
             ))
         ```
 
+        ## Import
+
+        Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['PageRuleActionsArgs']] actions: The actions taken by the page rule, options given below.

@@ -76,6 +76,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// Please refer to the [developers.cloudflare.com Access documentation][access_identity_provider_guide]
     /// for full reference on what is available and how to configure your provider.
+    /// 
+    /// ## Import
+    /// 
+    /// Access Identity Providers can be imported using a composite ID formed of account ID and Access Identity Provider ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider my_idp cb029e245cfdd66dc8d2e570d5dd3322/e00e1c13-e350-44fe-96c5-fb75c954871c
+    /// ```
+    /// 
+    ///  [access_identity_provider_guide]https://developers.cloudflare.com/access/configuring-identity-providers/
     /// </summary>
     public partial class AccessIdentityProvider : Pulumi.CustomResource
     {

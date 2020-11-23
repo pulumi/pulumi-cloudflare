@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -60,6 +61,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Origin CA certificate resource can be imported using an ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
 // ```
 type OriginCaCertificate struct {
 	pulumi.CustomResourceState
@@ -173,4 +182,43 @@ type OriginCaCertificateArgs struct {
 
 func (OriginCaCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*originCaCertificateArgs)(nil)).Elem()
+}
+
+type OriginCaCertificateInput interface {
+	pulumi.Input
+
+	ToOriginCaCertificateOutput() OriginCaCertificateOutput
+	ToOriginCaCertificateOutputWithContext(ctx context.Context) OriginCaCertificateOutput
+}
+
+func (OriginCaCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginCaCertificate)(nil)).Elem()
+}
+
+func (i OriginCaCertificate) ToOriginCaCertificateOutput() OriginCaCertificateOutput {
+	return i.ToOriginCaCertificateOutputWithContext(context.Background())
+}
+
+func (i OriginCaCertificate) ToOriginCaCertificateOutputWithContext(ctx context.Context) OriginCaCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificateOutput)
+}
+
+type OriginCaCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (OriginCaCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginCaCertificateOutput)(nil)).Elem()
+}
+
+func (o OriginCaCertificateOutput) ToOriginCaCertificateOutput() OriginCaCertificateOutput {
+	return o
+}
+
+func (o OriginCaCertificateOutput) ToOriginCaCertificateOutputWithContext(ctx context.Context) OriginCaCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OriginCaCertificateOutput{})
 }

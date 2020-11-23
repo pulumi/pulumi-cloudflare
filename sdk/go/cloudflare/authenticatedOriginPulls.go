@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -71,6 +72,26 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Authenticated Origin Pull configuration can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, with each section filled or left blank e.g. # Import Authenticated Origin Pull configuration
+//
+// ```sh
+//  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop 023e105f4ecef8ad9ca31a8372d0c353//
+// ```
+//
+// # Import Per-Zone Authenticated Origin Pull configuration
+//
+// ```sh
+//  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/
+// ```
+//
+// # Import Per-Hostname Authenticated Origin Pull configuration
+//
+// ```sh
+//  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop 023e105f4ecef8ad9ca31a8372d0c353/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60/aop.example.com
 // ```
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState
@@ -169,4 +190,43 @@ type AuthenticatedOriginPullsArgs struct {
 
 func (AuthenticatedOriginPullsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authenticatedOriginPullsArgs)(nil)).Elem()
+}
+
+type AuthenticatedOriginPullsInput interface {
+	pulumi.Input
+
+	ToAuthenticatedOriginPullsOutput() AuthenticatedOriginPullsOutput
+	ToAuthenticatedOriginPullsOutputWithContext(ctx context.Context) AuthenticatedOriginPullsOutput
+}
+
+func (AuthenticatedOriginPulls) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticatedOriginPulls)(nil)).Elem()
+}
+
+func (i AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutput() AuthenticatedOriginPullsOutput {
+	return i.ToAuthenticatedOriginPullsOutputWithContext(context.Background())
+}
+
+func (i AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutputWithContext(ctx context.Context) AuthenticatedOriginPullsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsOutput)
+}
+
+type AuthenticatedOriginPullsOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthenticatedOriginPullsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticatedOriginPullsOutput)(nil)).Elem()
+}
+
+func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutput() AuthenticatedOriginPullsOutput {
+	return o
+}
+
+func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutputWithContext(ctx context.Context) AuthenticatedOriginPullsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthenticatedOriginPullsOutput{})
 }

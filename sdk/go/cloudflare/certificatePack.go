@@ -4,12 +4,20 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Certificate packs can be imported using a composite ID of the zone ID and certificate pack ID. This isn't recommended and it is advised to replace the certificate entirely instead.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/certificatePack:CertificatePack example cb029e245cfdd66dc8d2e570d5dd3322/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
+// ```
 type CertificatePack struct {
 	pulumi.CustomResourceState
 
@@ -190,4 +198,43 @@ type CertificatePackArgs struct {
 
 func (CertificatePackArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*certificatePackArgs)(nil)).Elem()
+}
+
+type CertificatePackInput interface {
+	pulumi.Input
+
+	ToCertificatePackOutput() CertificatePackOutput
+	ToCertificatePackOutputWithContext(ctx context.Context) CertificatePackOutput
+}
+
+func (CertificatePack) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificatePack)(nil)).Elem()
+}
+
+func (i CertificatePack) ToCertificatePackOutput() CertificatePackOutput {
+	return i.ToCertificatePackOutputWithContext(context.Background())
+}
+
+func (i CertificatePack) ToCertificatePackOutputWithContext(ctx context.Context) CertificatePackOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackOutput)
+}
+
+type CertificatePackOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificatePackOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificatePackOutput)(nil)).Elem()
+}
+
+func (o CertificatePackOutput) ToCertificatePackOutput() CertificatePackOutput {
+	return o
+}
+
+func (o CertificatePackOutput) ToCertificatePackOutputWithContext(ctx context.Context) CertificatePackOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CertificatePackOutput{})
 }

@@ -99,6 +99,16 @@ namespace Pulumi.Cloudflare
     /// * `okta` - (Optional) Use Okta as the `include` condition. Example:
     /// * `saml` - (Optional) Use an external SAML setup as the `include` condition.
     /// Example:
+    /// 
+    /// ## Import
+    /// 
+    /// Access Groups can be imported using a composite ID formed of account ID and group ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d
+    /// ```
+    /// 
+    ///  where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID
     /// </summary>
     public partial class AccessGroup : Pulumi.CustomResource
     {

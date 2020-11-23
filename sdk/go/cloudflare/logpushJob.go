@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -143,4 +144,43 @@ type LogpushJobArgs struct {
 
 func (LogpushJobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*logpushJobArgs)(nil)).Elem()
+}
+
+type LogpushJobInput interface {
+	pulumi.Input
+
+	ToLogpushJobOutput() LogpushJobOutput
+	ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput
+}
+
+func (LogpushJob) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogpushJob)(nil)).Elem()
+}
+
+func (i LogpushJob) ToLogpushJobOutput() LogpushJobOutput {
+	return i.ToLogpushJobOutputWithContext(context.Background())
+}
+
+func (i LogpushJob) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobOutput)
+}
+
+type LogpushJobOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogpushJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogpushJobOutput)(nil)).Elem()
+}
+
+func (o LogpushJobOutput) ToLogpushJobOutput() LogpushJobOutput {
+	return o
+}
+
+func (o LogpushJobOutput) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LogpushJobOutput{})
 }

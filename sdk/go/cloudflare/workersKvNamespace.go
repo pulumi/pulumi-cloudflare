@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -34,6 +35,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Workers KV Namespace settings can be imported using it's ID
+//
+// ```sh
+//  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example beaeb6716c9443eaa4deef11763ccca6
+// ```
+//
+//  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
 type WorkersKvNamespace struct {
 	pulumi.CustomResourceState
 
@@ -98,4 +109,43 @@ type WorkersKvNamespaceArgs struct {
 
 func (WorkersKvNamespaceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workersKvNamespaceArgs)(nil)).Elem()
+}
+
+type WorkersKvNamespaceInput interface {
+	pulumi.Input
+
+	ToWorkersKvNamespaceOutput() WorkersKvNamespaceOutput
+	ToWorkersKvNamespaceOutputWithContext(ctx context.Context) WorkersKvNamespaceOutput
+}
+
+func (WorkersKvNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersKvNamespace)(nil)).Elem()
+}
+
+func (i WorkersKvNamespace) ToWorkersKvNamespaceOutput() WorkersKvNamespaceOutput {
+	return i.ToWorkersKvNamespaceOutputWithContext(context.Background())
+}
+
+func (i WorkersKvNamespace) ToWorkersKvNamespaceOutputWithContext(ctx context.Context) WorkersKvNamespaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceOutput)
+}
+
+type WorkersKvNamespaceOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkersKvNamespaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersKvNamespaceOutput)(nil)).Elem()
+}
+
+func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutput() WorkersKvNamespaceOutput {
+	return o
+}
+
+func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx context.Context) WorkersKvNamespaceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkersKvNamespaceOutput{})
 }

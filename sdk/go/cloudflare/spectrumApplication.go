@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -43,6 +44,16 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Spectrum resource can be imported using a zone ID and Application ID, e.g.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
+// ```
+//
+//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) * `9a7806061c88ada191ed06f989cc3dac` - Application ID
 type SpectrumApplication struct {
 	pulumi.CustomResourceState
 
@@ -243,4 +254,43 @@ type SpectrumApplicationArgs struct {
 
 func (SpectrumApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*spectrumApplicationArgs)(nil)).Elem()
+}
+
+type SpectrumApplicationInput interface {
+	pulumi.Input
+
+	ToSpectrumApplicationOutput() SpectrumApplicationOutput
+	ToSpectrumApplicationOutputWithContext(ctx context.Context) SpectrumApplicationOutput
+}
+
+func (SpectrumApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpectrumApplication)(nil)).Elem()
+}
+
+func (i SpectrumApplication) ToSpectrumApplicationOutput() SpectrumApplicationOutput {
+	return i.ToSpectrumApplicationOutputWithContext(context.Background())
+}
+
+func (i SpectrumApplication) ToSpectrumApplicationOutputWithContext(ctx context.Context) SpectrumApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationOutput)
+}
+
+type SpectrumApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (SpectrumApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpectrumApplicationOutput)(nil)).Elem()
+}
+
+func (o SpectrumApplicationOutput) ToSpectrumApplicationOutput() SpectrumApplicationOutput {
+	return o
+}
+
+func (o SpectrumApplicationOutput) ToSpectrumApplicationOutputWithContext(ctx context.Context) SpectrumApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SpectrumApplicationOutput{})
 }

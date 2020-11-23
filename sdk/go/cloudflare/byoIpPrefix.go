@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,14 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// The current settings for Bring-Your-Own-IP prefixes can be imported using the prefix ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example d41d8cd98f00b204e9800998ecf8427e
 // ```
 type ByoIpPrefix struct {
 	pulumi.CustomResourceState
@@ -120,4 +129,43 @@ type ByoIpPrefixArgs struct {
 
 func (ByoIpPrefixArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*byoIpPrefixArgs)(nil)).Elem()
+}
+
+type ByoIpPrefixInput interface {
+	pulumi.Input
+
+	ToByoIpPrefixOutput() ByoIpPrefixOutput
+	ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpPrefixOutput
+}
+
+func (ByoIpPrefix) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByoIpPrefix)(nil)).Elem()
+}
+
+func (i ByoIpPrefix) ToByoIpPrefixOutput() ByoIpPrefixOutput {
+	return i.ToByoIpPrefixOutputWithContext(context.Background())
+}
+
+func (i ByoIpPrefix) ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpPrefixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixOutput)
+}
+
+type ByoIpPrefixOutput struct {
+	*pulumi.OutputState
+}
+
+func (ByoIpPrefixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByoIpPrefixOutput)(nil)).Elem()
+}
+
+func (o ByoIpPrefixOutput) ToByoIpPrefixOutput() ByoIpPrefixOutput {
+	return o
+}
+
+func (o ByoIpPrefixOutput) ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpPrefixOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ByoIpPrefixOutput{})
 }

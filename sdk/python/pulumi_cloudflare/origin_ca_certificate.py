@@ -50,6 +50,14 @@ class OriginCaCertificate(pulumi.CustomResource):
             requested_validity=7)
         ```
 
+        ## Import
+
+        Origin CA certificate resource can be imported using an ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded.

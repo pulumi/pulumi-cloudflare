@@ -4,6 +4,7 @@
 package cloudflare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -45,6 +46,20 @@ import (
 // 		return nil
 // 	})
 // }
+// ```
+//
+// ## Import
+//
+// Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. # Import Per-Zone Authenticated Origin Pull certificate
+//
+// ```sh
+//  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+// ```
+//
+// # Import Per-Hostname Authenticated Origin Pull certificate
+//
+// ```sh
+//  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
 // ```
 type AuthenticatedOriginPullsCertificate struct {
 	pulumi.CustomResourceState
@@ -167,4 +182,43 @@ type AuthenticatedOriginPullsCertificateArgs struct {
 
 func (AuthenticatedOriginPullsCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*authenticatedOriginPullsCertificateArgs)(nil)).Elem()
+}
+
+type AuthenticatedOriginPullsCertificateInput interface {
+	pulumi.Input
+
+	ToAuthenticatedOriginPullsCertificateOutput() AuthenticatedOriginPullsCertificateOutput
+	ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateOutput
+}
+
+func (AuthenticatedOriginPullsCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticatedOriginPullsCertificate)(nil)).Elem()
+}
+
+func (i AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificateOutput() AuthenticatedOriginPullsCertificateOutput {
+	return i.ToAuthenticatedOriginPullsCertificateOutputWithContext(context.Background())
+}
+
+func (i AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateOutput)
+}
+
+type AuthenticatedOriginPullsCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthenticatedOriginPullsCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticatedOriginPullsCertificateOutput)(nil)).Elem()
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificateOutput() AuthenticatedOriginPullsCertificateOutput {
+	return o
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificateOutput{})
 }

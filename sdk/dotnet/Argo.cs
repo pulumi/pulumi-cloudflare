@@ -32,6 +32,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Argo settings can be imported the zone ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/argo:Argo example d41d8cd98f00b204e9800998ecf8427e
+    /// ```
+    /// 
+    ///  where `d41d8cd98f00b204e9800998ecf8427e` is the zone ID.
     /// </summary>
     public partial class Argo : Pulumi.CustomResource
     {

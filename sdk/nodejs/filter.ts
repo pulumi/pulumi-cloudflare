@@ -19,6 +19,16 @@ import * as utilities from "./utilities";
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Filter can be imported using a composite ID formed of zone ID and filter ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+ * ```
+ *
+ *  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
  */
 export class Filter extends pulumi.CustomResource {
     /**

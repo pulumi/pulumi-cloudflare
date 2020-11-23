@@ -38,6 +38,16 @@ class Filter(pulumi.CustomResource):
             zone_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
 
+        ## Import
+
+        Filter can be imported using a composite ID formed of zone ID and filter ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+        ```
+
+         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
