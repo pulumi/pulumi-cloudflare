@@ -390,6 +390,44 @@ export interface AccessRuleConfiguration {
     value: pulumi.Input<string>;
 }
 
+export interface ApiTokenCondition {
+    /**
+     * Request IP related conditions. See the definition below.
+     */
+    requestIp?: pulumi.Input<inputs.ApiTokenConditionRequestIp>;
+}
+
+export interface ApiTokenConditionRequestIp {
+    /**
+     * List of IPv4/IPv6 CIDR addresses where
+     * the Token can be used from.
+     */
+    ins?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of IPv4/IPv6 CIDR addresses where
+     * the Token cannot be used from.
+     */
+    notIns?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ApiTokenPolicy {
+    /**
+     * Policy effect. Valid values are `allow` or `deny`. `allow`
+     * is set as default.
+     */
+    effect?: pulumi.Input<string>;
+    /**
+     * List of permissions groups
+     * ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+     */
+    permissionGroups: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Map describes what operations against which resources
+     * are allowed or denied.
+     */
+    resources: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+}
+
 export interface CustomHostnameOwnershipVerification {
     name?: pulumi.Input<string>;
     /**
@@ -1018,12 +1056,17 @@ export interface RecordData {
     selector?: pulumi.Input<number>;
     service?: pulumi.Input<string>;
     size?: pulumi.Input<number>;
+    tag?: pulumi.Input<string>;
     target?: pulumi.Input<string>;
     /**
      * The type of the record
      */
     type?: pulumi.Input<number>;
     usage?: pulumi.Input<number>;
+    /**
+     * The (string) value of the record. Either this or `data` must be specified
+     */
+    value?: pulumi.Input<string>;
     weight?: pulumi.Input<number>;
 }
 

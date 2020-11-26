@@ -117,6 +117,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("size")]
         public Input<double>? Size { get; set; }
 
+        [Input("tag")]
+        public Input<string>? Tag { get; set; }
+
         [Input("target")]
         public Input<string>? Target { get; set; }
 
@@ -128,6 +131,12 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("usage")]
         public Input<int>? Usage { get; set; }
+
+        /// <summary>
+        /// The (string) value of the record. Either this or `data` must be specified
+        /// </summary>
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         [Input("weight")]
         public Input<int>? Weight { get; set; }

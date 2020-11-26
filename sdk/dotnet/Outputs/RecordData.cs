@@ -52,12 +52,17 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int? Selector;
         public readonly string? Service;
         public readonly double? Size;
+        public readonly string? Tag;
         public readonly string? Target;
         /// <summary>
         /// The type of the record
         /// </summary>
         public readonly int? Type;
         public readonly int? Usage;
+        /// <summary>
+        /// The (string) value of the record. Either this or `data` must be specified
+        /// </summary>
+        public readonly string? Value;
         public readonly int? Weight;
 
         [OutputConstructor]
@@ -128,11 +133,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             double? size,
 
+            string? tag,
+
             string? target,
 
             int? type,
 
             int? usage,
+
+            string? value,
 
             int? weight)
         {
@@ -169,9 +178,11 @@ namespace Pulumi.Cloudflare.Outputs
             Selector = selector;
             Service = service;
             Size = size;
+            Tag = tag;
             Target = target;
             Type = type;
             Usage = usage;
+            Value = value;
             Weight = weight;
         }
     }

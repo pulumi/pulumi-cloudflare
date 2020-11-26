@@ -48,6 +48,9 @@ __all__ = [
     'AccessPolicyRequireOktaArgs',
     'AccessPolicyRequireSamlArgs',
     'AccessRuleConfigurationArgs',
+    'ApiTokenConditionArgs',
+    'ApiTokenConditionRequestIpArgs',
+    'ApiTokenPolicyArgs',
     'CustomHostnameOwnershipVerificationArgs',
     'CustomHostnameOwnershipVerificationHttpArgs',
     'CustomHostnameSslArgs',
@@ -2786,6 +2789,131 @@ class AccessRuleConfigurationArgs:
 
 
 @pulumi.input_type
+class ApiTokenConditionArgs:
+    def __init__(__self__, *,
+                 request_ip: Optional[pulumi.Input['ApiTokenConditionRequestIpArgs']] = None):
+        """
+        :param pulumi.Input['ApiTokenConditionRequestIpArgs'] request_ip: Request IP related conditions. See the definition below.
+        """
+        if request_ip is not None:
+            pulumi.set(__self__, "request_ip", request_ip)
+
+    @property
+    @pulumi.getter(name="requestIp")
+    def request_ip(self) -> Optional[pulumi.Input['ApiTokenConditionRequestIpArgs']]:
+        """
+        Request IP related conditions. See the definition below.
+        """
+        return pulumi.get(self, "request_ip")
+
+    @request_ip.setter
+    def request_ip(self, value: Optional[pulumi.Input['ApiTokenConditionRequestIpArgs']]):
+        pulumi.set(self, "request_ip", value)
+
+
+@pulumi.input_type
+class ApiTokenConditionRequestIpArgs:
+    def __init__(__self__, *,
+                 ins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 not_ins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ins: List of IPv4/IPv6 CIDR addresses where
+               the Token can be used from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] not_ins: List of IPv4/IPv6 CIDR addresses where
+               the Token cannot be used from.
+        """
+        if ins is not None:
+            pulumi.set(__self__, "ins", ins)
+        if not_ins is not None:
+            pulumi.set(__self__, "not_ins", not_ins)
+
+    @property
+    @pulumi.getter
+    def ins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IPv4/IPv6 CIDR addresses where
+        the Token can be used from.
+        """
+        return pulumi.get(self, "ins")
+
+    @ins.setter
+    def ins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ins", value)
+
+    @property
+    @pulumi.getter(name="notIns")
+    def not_ins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of IPv4/IPv6 CIDR addresses where
+        the Token cannot be used from.
+        """
+        return pulumi.get(self, "not_ins")
+
+    @not_ins.setter
+    def not_ins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "not_ins", value)
+
+
+@pulumi.input_type
+class ApiTokenPolicyArgs:
+    def __init__(__self__, *,
+                 permission_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 resources: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 effect: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_groups: List of permissions groups
+               ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resources: Map describes what operations against which resources
+               are allowed or denied.
+        :param pulumi.Input[str] effect: Policy effect. Valid values are `allow` or `deny`. `allow`
+               is set as default.
+        """
+        pulumi.set(__self__, "permission_groups", permission_groups)
+        pulumi.set(__self__, "resources", resources)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+
+    @property
+    @pulumi.getter(name="permissionGroups")
+    def permission_groups(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of permissions groups
+        ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+        """
+        return pulumi.get(self, "permission_groups")
+
+    @permission_groups.setter
+    def permission_groups(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "permission_groups", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Map describes what operations against which resources
+        are allowed or denied.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy effect. Valid values are `allow` or `deny`. `allow`
+        is set as default.
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "effect", value)
+
+
+@pulumi.input_type
 class CustomHostnameOwnershipVerificationArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
@@ -4775,14 +4903,17 @@ class RecordDataArgs:
                  selector: Optional[pulumi.Input[int]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[float]] = None,
+                 tag: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[int]] = None,
                  usage: Optional[pulumi.Input[int]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] name: The name of the record
         :param pulumi.Input[int] priority: The priority of the record
         :param pulumi.Input[int] type: The type of the record
+        :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -4850,12 +4981,16 @@ class RecordDataArgs:
             pulumi.set(__self__, "service", service)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
         if target is not None:
             pulumi.set(__self__, "target", target)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if usage is not None:
             pulumi.set(__self__, "usage", usage)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
@@ -5164,6 +5299,15 @@ class RecordDataArgs:
 
     @property
     @pulumi.getter
+    def tag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag")
+
+    @tag.setter
+    def tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag", value)
+
+    @property
+    @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "target")
 
@@ -5191,6 +5335,18 @@ class RecordDataArgs:
     @usage.setter
     def usage(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "usage", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The (string) value of the record. Either this or `data` must be specified
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
     @property
     @pulumi.getter

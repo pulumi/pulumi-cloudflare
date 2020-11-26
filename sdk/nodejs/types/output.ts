@@ -390,6 +390,44 @@ export interface AccessRuleConfiguration {
     value: string;
 }
 
+export interface ApiTokenCondition {
+    /**
+     * Request IP related conditions. See the definition below.
+     */
+    requestIp?: outputs.ApiTokenConditionRequestIp;
+}
+
+export interface ApiTokenConditionRequestIp {
+    /**
+     * List of IPv4/IPv6 CIDR addresses where
+     * the Token can be used from.
+     */
+    ins?: string[];
+    /**
+     * List of IPv4/IPv6 CIDR addresses where
+     * the Token cannot be used from.
+     */
+    notIns?: string[];
+}
+
+export interface ApiTokenPolicy {
+    /**
+     * Policy effect. Valid values are `allow` or `deny`. `allow`
+     * is set as default.
+     */
+    effect?: string;
+    /**
+     * List of permissions groups
+     * ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+     */
+    permissionGroups: string[];
+    /**
+     * Map describes what operations against which resources
+     * are allowed or denied.
+     */
+    resources: {[key: string]: string};
+}
+
 export interface CustomHostnameOwnershipVerification {
     name: string;
     /**
@@ -1122,12 +1160,17 @@ export interface RecordData {
     selector?: number;
     service?: string;
     size?: number;
+    tag?: string;
     target?: string;
     /**
      * The type of the record
      */
     type?: number;
     usage?: number;
+    /**
+     * The (string) value of the record. Either this or `data` must be specified
+     */
+    value?: string;
     weight?: number;
 }
 
