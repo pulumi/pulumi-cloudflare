@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.14.0 of the CloudFlare Terraform Provider
+_(none)_
 
 ---
+
+## 2.9.0 (2020-12-08)
+* Upgrade to v2.14.0 of the CloudFlare Terraform Provider
 
 ## 2.8.0 (2020-11-23)
 * Upgrade to v2.13.2 of the CloudFlare Terraform Provider
