@@ -49,6 +49,9 @@ __all__ = [
     'AccessPolicyRequireOkta',
     'AccessPolicyRequireSaml',
     'AccessRuleConfiguration',
+    'ApiTokenCondition',
+    'ApiTokenConditionRequestIp',
+    'ApiTokenPolicy',
     'CustomHostnameOwnershipVerification',
     'CustomHostnameOwnershipVerificationHttp',
     'CustomHostnameSsl',
@@ -2120,6 +2123,116 @@ class AccessRuleConfiguration(dict):
 
 
 @pulumi.output_type
+class ApiTokenCondition(dict):
+    def __init__(__self__, *,
+                 request_ip: Optional['outputs.ApiTokenConditionRequestIp'] = None):
+        """
+        :param 'ApiTokenConditionRequestIpArgs' request_ip: Request IP related conditions. See the definition below.
+        """
+        if request_ip is not None:
+            pulumi.set(__self__, "request_ip", request_ip)
+
+    @property
+    @pulumi.getter(name="requestIp")
+    def request_ip(self) -> Optional['outputs.ApiTokenConditionRequestIp']:
+        """
+        Request IP related conditions. See the definition below.
+        """
+        return pulumi.get(self, "request_ip")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ApiTokenConditionRequestIp(dict):
+    def __init__(__self__, *,
+                 ins: Optional[Sequence[str]] = None,
+                 not_ins: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ins: List of IPv4/IPv6 CIDR addresses where
+               the Token can be used from.
+        :param Sequence[str] not_ins: List of IPv4/IPv6 CIDR addresses where
+               the Token cannot be used from.
+        """
+        if ins is not None:
+            pulumi.set(__self__, "ins", ins)
+        if not_ins is not None:
+            pulumi.set(__self__, "not_ins", not_ins)
+
+    @property
+    @pulumi.getter
+    def ins(self) -> Optional[Sequence[str]]:
+        """
+        List of IPv4/IPv6 CIDR addresses where
+        the Token can be used from.
+        """
+        return pulumi.get(self, "ins")
+
+    @property
+    @pulumi.getter(name="notIns")
+    def not_ins(self) -> Optional[Sequence[str]]:
+        """
+        List of IPv4/IPv6 CIDR addresses where
+        the Token cannot be used from.
+        """
+        return pulumi.get(self, "not_ins")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ApiTokenPolicy(dict):
+    def __init__(__self__, *,
+                 permission_groups: Sequence[str],
+                 resources: Mapping[str, str],
+                 effect: Optional[str] = None):
+        """
+        :param Sequence[str] permission_groups: List of permissions groups
+               ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+        :param Mapping[str, str] resources: Map describes what operations against which resources
+               are allowed or denied.
+        :param str effect: Policy effect. Valid values are `allow` or `deny`. `allow`
+               is set as default.
+        """
+        pulumi.set(__self__, "permission_groups", permission_groups)
+        pulumi.set(__self__, "resources", resources)
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+
+    @property
+    @pulumi.getter(name="permissionGroups")
+    def permission_groups(self) -> Sequence[str]:
+        """
+        List of permissions groups
+        ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+        """
+        return pulumi.get(self, "permission_groups")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Mapping[str, str]:
+        """
+        Map describes what operations against which resources
+        are allowed or denied.
+        """
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        Policy effect. Valid values are `allow` or `deny`. `allow`
+        is set as default.
+        """
+        return pulumi.get(self, "effect")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class CustomHostnameOwnershipVerification(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
@@ -3737,14 +3850,17 @@ class RecordData(dict):
                  selector: Optional[int] = None,
                  service: Optional[str] = None,
                  size: Optional[float] = None,
+                 tag: Optional[str] = None,
                  target: Optional[str] = None,
                  type: Optional[int] = None,
                  usage: Optional[int] = None,
+                 value: Optional[str] = None,
                  weight: Optional[int] = None):
         """
         :param str name: The name of the record
         :param int priority: The priority of the record
         :param int type: The type of the record
+        :param str value: The (string) value of the record. Either this or `data` must be specified
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -3812,12 +3928,16 @@ class RecordData(dict):
             pulumi.set(__self__, "service", service)
         if size is not None:
             pulumi.set(__self__, "size", size)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
         if target is not None:
             pulumi.set(__self__, "target", target)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if usage is not None:
             pulumi.set(__self__, "usage", usage)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
@@ -3994,6 +4114,11 @@ class RecordData(dict):
 
     @property
     @pulumi.getter
+    def tag(self) -> Optional[str]:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
     def target(self) -> Optional[str]:
         return pulumi.get(self, "target")
 
@@ -4009,6 +4134,14 @@ class RecordData(dict):
     @pulumi.getter
     def usage(self) -> Optional[int]:
         return pulumi.get(self, "usage")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The (string) value of the record. Either this or `data` must be specified
+        """
+        return pulumi.get(self, "value")
 
     @property
     @pulumi.getter

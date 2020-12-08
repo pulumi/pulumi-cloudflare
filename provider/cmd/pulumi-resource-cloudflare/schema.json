@@ -2188,6 +2188,91 @@
                 "value"
             ]
         },
+        "cloudflare:index/ApiTokenCondition:ApiTokenCondition": {
+            "properties": {
+                "requestIp": {
+                    "$ref": "#/types/cloudflare:index/ApiTokenConditionRequestIp:ApiTokenConditionRequestIp",
+                    "description": "Request IP related conditions. See the definition below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/ApiTokenConditionRequestIp:ApiTokenConditionRequestIp": {
+            "properties": {
+                "ins": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of IPv4/IPv6 CIDR addresses where\nthe Token can be used from.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "notIns": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of IPv4/IPv6 CIDR addresses where\nthe Token cannot be used from.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/ApiTokenPolicy:ApiTokenPolicy": {
+            "properties": {
+                "effect": {
+                    "type": "string",
+                    "description": "Policy effect. Valid values are `allow` or `deny`. `allow`\nis set as default.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "permissionGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of permissions groups\nids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resources": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map describes what operations against which resources\nare allowed or denied.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "permissionGroups",
+                "resources"
+            ]
+        },
         "cloudflare:index/CustomHostnameOwnershipVerification:CustomHostnameOwnershipVerification": {
             "properties": {
                 "name": {
@@ -3582,6 +3667,9 @@
                 "size": {
                     "type": "number"
                 },
+                "tag": {
+                    "type": "string"
+                },
                 "target": {
                     "type": "string"
                 },
@@ -3591,6 +3679,10 @@
                 },
                 "usage": {
                     "type": "integer"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The (string) value of the record. Either this or `data` must be specified\n"
                 },
                 "weight": {
                     "type": "integer"
@@ -6143,6 +6235,106 @@
                             "type": "string"
                         },
                         "description": "Array of account role IDs that you want to assign to a member.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/apiToken:ApiToken": {
+            "description": "Provides a resource which manages Cloudflare API tokens.\n\nRead more about permission groups and their applicable scopes in\n[the official documentation](https://developers.cloudflare.com/api/tokens/create/permissions).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### User Permissions\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst all = cloudflare.getApiTokenPermissionGroups({});\n// Token allowed to create new tokens.\n// Can only be used from specific ip range.\nconst apiTokenCreate = new cloudflare.ApiToken(\"apiTokenCreate\", {\n    name: \"api_token_create\",\n    policies: [{\n        permissionGroups: [all.then(all =\u003e all.permissions[\"API Tokens Write\"])],\n        resources: {\n            `com.cloudflare.api.user.${_var.user_id}`: \"*\",\n        },\n    }],\n    condition: {\n        requestIp: {\n            ins: [\"192.0.2.1/32\"],\n            notIns: [\"198.51.100.1/32\"],\n        },\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nall = cloudflare.get_api_token_permission_groups()\n# Token allowed to create new tokens.\n# Can only be used from specific ip range.\napi_token_create = cloudflare.ApiToken(\"apiTokenCreate\",\n    name=\"api_token_create\",\n    policies=[cloudflare.ApiTokenPolicyArgs(\n        permission_groups=[all.permissions[\"API Tokens Write\"]],\n        resources={\n            f\"com.cloudflare.api.user.{var['user_id']}\": \"*\",\n        },\n    )],\n    condition=cloudflare.ApiTokenConditionArgs(\n        request_ip=cloudflare.ApiTokenConditionRequestIpArgs(\n            ins=[\"192.0.2.1/32\"],\n            not_ins=[\"198.51.100.1/32\"],\n        ),\n    ))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var all = Output.Create(Cloudflare.GetApiTokenPermissionGroups.InvokeAsync());\n        // Token allowed to create new tokens.\n        // Can only be used from specific ip range.\n        var apiTokenCreate = new Cloudflare.ApiToken(\"apiTokenCreate\", new Cloudflare.ApiTokenArgs\n        {\n            Name = \"api_token_create\",\n            Policies = \n            {\n                new Cloudflare.Inputs.ApiTokenPolicyArgs\n                {\n                    PermissionGroups = \n                    {\n                        all.Apply(all =\u003e all.Permissions.API_Tokens_Write),\n                    },\n                    Resources = \n                    {\n                        { $\"com.cloudflare.api.user.{@var.User_id}\", \"*\" },\n                    },\n                },\n            },\n            Condition = new Cloudflare.Inputs.ApiTokenConditionArgs\n            {\n                RequestIp = new Cloudflare.Inputs.ApiTokenConditionRequestIpArgs\n                {\n                    Ins = \n                    {\n                        \"192.0.2.1/32\",\n                    },\n                    NotIns = \n                    {\n                        \"198.51.100.1/32\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% example %}}\n### Account permissions\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst all = cloudflare.getApiTokenPermissionGroups({});\n// Token allowed to read audit logs from all accounts.\nconst logsAccountAll = new cloudflare.ApiToken(\"logsAccountAll\", {\n    name: \"logs_account_all\",\n    policies: [{\n        permissionGroups: [all.then(all =\u003e all.permissions[\"Access: Audit Logs Read\"])],\n        resources: {\n            \"com.cloudflare.api.account.*\": \"*\",\n        },\n    }],\n});\n// Token allowed to read audit logs from specific account.\nconst logsAccount = new cloudflare.ApiToken(\"logsAccount\", {\n    name: \"logs_account\",\n    policies: [{\n        permissionGroups: [all.then(all =\u003e all.permissions[\"Access: Audit Logs Read\"])],\n        resources: {\n            `com.cloudflare.api.account.${_var.account_id}`: \"*\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nall = cloudflare.get_api_token_permission_groups()\n# Token allowed to read audit logs from all accounts.\nlogs_account_all = cloudflare.ApiToken(\"logsAccountAll\",\n    name=\"logs_account_all\",\n    policies=[cloudflare.ApiTokenPolicyArgs(\n        permission_groups=[all.permissions[\"Access: Audit Logs Read\"]],\n        resources={\n            \"com.cloudflare.api.account.*\": \"*\",\n        },\n    )])\n# Token allowed to read audit logs from specific account.\nlogs_account = cloudflare.ApiToken(\"logsAccount\",\n    name=\"logs_account\",\n    policies=[cloudflare.ApiTokenPolicyArgs(\n        permission_groups=[all.permissions[\"Access: Audit Logs Read\"]],\n        resources={\n            f\"com.cloudflare.api.account.{var['account_id']}\": \"*\",\n        },\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var all = Output.Create(Cloudflare.GetApiTokenPermissionGroups.InvokeAsync());\n        // Token allowed to read audit logs from all accounts.\n        var logsAccountAll = new Cloudflare.ApiToken(\"logsAccountAll\", new Cloudflare.ApiTokenArgs\n        {\n            Name = \"logs_account_all\",\n            Policies = \n            {\n                new Cloudflare.Inputs.ApiTokenPolicyArgs\n                {\n                    PermissionGroups = \n                    {\n                        all.Apply(all =\u003e all.Permissions.Access__Audit_Logs_Read),\n                    },\n                    Resources = \n                    {\n                        { \"com.cloudflare.api.account.*\", \"*\" },\n                    },\n                },\n            },\n        });\n        // Token allowed to read audit logs from specific account.\n        var logsAccount = new Cloudflare.ApiToken(\"logsAccount\", new Cloudflare.ApiTokenArgs\n        {\n            Name = \"logs_account\",\n            Policies = \n            {\n                new Cloudflare.Inputs.ApiTokenPolicyArgs\n                {\n                    PermissionGroups = \n                    {\n                        all.Apply(all =\u003e all.Permissions.Access__Audit_Logs_Read),\n                    },\n                    Resources = \n                    {\n                        { $\"com.cloudflare.api.account.{@var.Account_id}\", \"*\" },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% example %}}\n### Zone Permissions\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst all = cloudflare.getApiTokenPermissionGroups({});\n// Token allowed to edit DNS entries and TLS certs for specific zone.\nconst dnsTlsEdit = new cloudflare.ApiToken(\"dnsTlsEdit\", {\n    name: \"dns_tls_edit\",\n    policies: [{\n        permissionGroups: [\n            all.then(all =\u003e all.permissions[\"DNS Write\"]),\n            all.then(all =\u003e all.permissions[\"SSL and Certificates Write\"]),\n        ],\n        resources: {\n            `com.cloudflare.api.account.zone.${_var.zone_id}`: \"*\",\n        },\n    }],\n});\n// Token allowed to edit DNS entries for all zones except one.\nconst dnsTlsEditAllExceptOne = new cloudflare.ApiToken(\"dnsTlsEditAllExceptOne\", {\n    name: \"dns_tls_edit_all_except_one\",\n    policies: [\n        {\n            permissionGroups: [all.then(all =\u003e all.permissions[\"DNS Write\"])],\n            resources: {\n                \"com.cloudflare.api.account.zone.*\": \"*\",\n            },\n        },\n        {\n            permissionGroups: [all.then(all =\u003e all.permissions[\"DNS Write\"])],\n            resources: {\n                `com.cloudflare.api.account.zone.${_var.zone_id}`: \"*\",\n            },\n            effect: \"deny\",\n        },\n    ],\n});\n// Token allowed to edit DNS entries for all zones from specific account.\nconst dnsEditAllAccount = new cloudflare.ApiToken(\"dnsEditAllAccount\", {\n    name: \"dns_edit_all_account\",\n    policies: [{\n        permissionGroups: [all.then(all =\u003e all.permissions[\"DNS Write\"])],\n        resources: {\n            `com.cloudflare.api.account.${_var.account_id}`: JSON.stringify({\n                \"com.cloudflare.api.account.zone.*\": \"*\",\n            }),\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport json\nimport pulumi_cloudflare as cloudflare\n\nall = cloudflare.get_api_token_permission_groups()\n# Token allowed to edit DNS entries and TLS certs for specific zone.\ndns_tls_edit = cloudflare.ApiToken(\"dnsTlsEdit\",\n    name=\"dns_tls_edit\",\n    policies=[cloudflare.ApiTokenPolicyArgs(\n        permission_groups=[\n            all.permissions[\"DNS Write\"],\n            all.permissions[\"SSL and Certificates Write\"],\n        ],\n        resources={\n            f\"com.cloudflare.api.account.zone.{var['zone_id']}\": \"*\",\n        },\n    )])\n# Token allowed to edit DNS entries for all zones except one.\ndns_tls_edit_all_except_one = cloudflare.ApiToken(\"dnsTlsEditAllExceptOne\",\n    name=\"dns_tls_edit_all_except_one\",\n    policies=[\n        cloudflare.ApiTokenPolicyArgs(\n            permission_groups=[all.permissions[\"DNS Write\"]],\n            resources={\n                \"com.cloudflare.api.account.zone.*\": \"*\",\n            },\n        ),\n        cloudflare.ApiTokenPolicyArgs(\n            permission_groups=[all.permissions[\"DNS Write\"]],\n            resources={\n                f\"com.cloudflare.api.account.zone.{var['zone_id']}\": \"*\",\n            },\n            effect=\"deny\",\n        ),\n    ])\n# Token allowed to edit DNS entries for all zones from specific account.\ndns_edit_all_account = cloudflare.ApiToken(\"dnsEditAllAccount\",\n    name=\"dns_edit_all_account\",\n    policies=[cloudflare.ApiTokenPolicyArgs(\n        permission_groups=[all.permissions[\"DNS Write\"]],\n        resources={\n            f\"com.cloudflare.api.account.{var['account_id']}\": json.dumps({\n                \"com.cloudflare.api.account.zone.*\": \"*\",\n            }),\n        },\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Text.Json;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var all = Output.Create(Cloudflare.GetApiTokenPermissionGroups.InvokeAsync());\n        // Token allowed to edit DNS entries and TLS certs for specific zone.\n        var dnsTlsEdit = new Cloudflare.ApiToken(\"dnsTlsEdit\", new Cloudflare.ApiTokenArgs\n        {\n            Name = \"dns_tls_edit\",\n            Policies = \n            {\n                new Cloudflare.Inputs.ApiTokenPolicyArgs\n                {\n                    PermissionGroups = \n                    {\n                        all.Apply(all =\u003e all.Permissions.DNS_Write),\n                        all.Apply(all =\u003e all.Permissions.SSL_and_Certificates_Write),\n                    },\n                    Resources = \n                    {\n                        { $\"com.cloudflare.api.account.zone.{@var.Zone_id}\", \"*\" },\n                    },\n                },\n            },\n        });\n        // Token allowed to edit DNS entries for all zones except one.\n        var dnsTlsEditAllExceptOne = new Cloudflare.ApiToken(\"dnsTlsEditAllExceptOne\", new Cloudflare.ApiTokenArgs\n        {\n            Name = \"dns_tls_edit_all_except_one\",\n            Policies = \n            {\n                new Cloudflare.Inputs.ApiTokenPolicyArgs\n                {\n                    PermissionGroups = \n                    {\n                        all.Apply(all =\u003e all.Permissions.DNS_Write),\n                    },\n                    Resources = \n                    {\n                        { \"com.cloudflare.api.account.zone.*\", \"*\" },\n                    },\n                },\n                new Cloudflare.Inputs.ApiTokenPolicyArgs\n                {\n                    PermissionGroups = \n                    {\n                        all.Apply(all =\u003e all.Permissions.DNS_Write),\n                    },\n                    Resources = \n                    {\n                        { $\"com.cloudflare.api.account.zone.{@var.Zone_id}\", \"*\" },\n                    },\n                    Effect = \"deny\",\n                },\n            },\n        });\n        // Token allowed to edit DNS entries for all zones from specific account.\n        var dnsEditAllAccount = new Cloudflare.ApiToken(\"dnsEditAllAccount\", new Cloudflare.ApiTokenArgs\n        {\n            Name = \"dns_edit_all_account\",\n            Policies = \n            {\n                new Cloudflare.Inputs.ApiTokenPolicyArgs\n                {\n                    PermissionGroups = \n                    {\n                        all.Apply(all =\u003e all.Permissions.DNS_Write),\n                    },\n                    Resources = \n                    {\n                        { $\"com.cloudflare.api.account.{@var.Account_id}\", JsonSerializer.Serialize(new Dictionary\u003cstring, object?\u003e\n                        {\n                            { \"com.cloudflare.api.account.zone.*\", \"*\" },\n                        }) },\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "condition": {
+                    "$ref": "#/types/cloudflare:index/ApiTokenCondition:ApiTokenCondition",
+                    "description": "Condition block. See the definition below.\n"
+                },
+                "issuedOn": {
+                    "type": "string",
+                    "description": "The RFC3339 timestamp of when the API Token was issued.\n"
+                },
+                "modifiedOn": {
+                    "type": "string",
+                    "description": "The RFC3339 timestamp of when the API Token was last modified.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the APIToken.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ApiTokenPolicy:ApiTokenPolicy"
+                    },
+                    "description": "Permissions policy. Multiple policy blocks can be defined.\nSee the definition below.\n"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the API Token.\n"
+                }
+            },
+            "required": [
+                "issuedOn",
+                "modifiedOn",
+                "name",
+                "policies",
+                "status",
+                "value"
+            ],
+            "inputProperties": {
+                "condition": {
+                    "$ref": "#/types/cloudflare:index/ApiTokenCondition:ApiTokenCondition",
+                    "description": "Condition block. See the definition below.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the APIToken.\n"
+                },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/ApiTokenPolicy:ApiTokenPolicy"
+                    },
+                    "description": "Permissions policy. Multiple policy blocks can be defined.\nSee the definition below.\n"
+                }
+            },
+            "requiredInputs": [
+                "name",
+                "policies"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiToken resources.\n",
+                "properties": {
+                    "condition": {
+                        "$ref": "#/types/cloudflare:index/ApiTokenCondition:ApiTokenCondition",
+                        "description": "Condition block. See the definition below.\n"
+                    },
+                    "issuedOn": {
+                        "type": "string",
+                        "description": "The RFC3339 timestamp of when the API Token was issued.\n"
+                    },
+                    "modifiedOn": {
+                        "type": "string",
+                        "description": "The RFC3339 timestamp of when the API Token was last modified.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the APIToken.\n"
+                    },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/ApiTokenPolicy:ApiTokenPolicy"
+                        },
+                        "description": "Permissions policy. Multiple policy blocks can be defined.\nSee the definition below.\n"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of the API Token.\n"
                     }
                 },
                 "type": "object"
@@ -9817,6 +10009,140 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/zoneDnssec:ZoneDnssec": {
+            "description": "Provides a Cloudflare Zone DNSSEC resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleZone = new cloudflare.Zone(\"exampleZone\", {zone: \"example.com\"});\nconst exampleZoneDnssec = new cloudflare.ZoneDnssec(\"exampleZoneDnssec\", {zoneId: exampleZone.id});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_zone = cloudflare.Zone(\"exampleZone\", zone=\"example.com\")\nexample_zone_dnssec = cloudflare.ZoneDnssec(\"exampleZoneDnssec\", zone_id=example_zone.id)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleZone = new Cloudflare.Zone(\"exampleZone\", new Cloudflare.ZoneArgs\n        {\n            Zone = \"example.com\",\n        });\n        var exampleZoneDnssec = new Cloudflare.ZoneDnssec(\"exampleZoneDnssec\", new Cloudflare.ZoneDnssecArgs\n        {\n            ZoneId = exampleZone.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleZone, err := cloudflare.NewZone(ctx, \"exampleZone\", \u0026cloudflare.ZoneArgs{\n\t\t\tZone: pulumi.String(\"example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewZoneDnssec(ctx, \"exampleZoneDnssec\", \u0026cloudflare.ZoneDnssecArgs{\n\t\t\tZoneId: exampleZone.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nZone DNSSEC resource can be imported using a zone ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) ",
+            "properties": {
+                "algorithm": {
+                    "type": "string",
+                    "description": "Zone DNSSEC algorithm.\n"
+                },
+                "digest": {
+                    "type": "string",
+                    "description": "Zone DNSSEC digest.\n"
+                },
+                "digestAlgorithm": {
+                    "type": "string",
+                    "description": "Digest algorithm use for Zone DNSSEC.\n"
+                },
+                "digestType": {
+                    "type": "string",
+                    "description": "Digest Type for Zone DNSSEC.\n"
+                },
+                "ds": {
+                    "type": "string",
+                    "description": "DS for the Zone DNSSEC.\n"
+                },
+                "flags": {
+                    "type": "integer",
+                    "description": "Zone DNSSEC flags.\n"
+                },
+                "keyTag": {
+                    "type": "integer",
+                    "description": "Key Tag for the Zone DNSSEC.\n"
+                },
+                "keyType": {
+                    "type": "string",
+                    "description": "Key type used for Zone DNSSEC.\n"
+                },
+                "modifiedOn": {
+                    "type": "string",
+                    "description": "Zone DNSSEC updated time.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public Key for the Zone DNSSEC.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the Zone DNSSEC.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone id for the zone.\n"
+                }
+            },
+            "required": [
+                "algorithm",
+                "digest",
+                "digestAlgorithm",
+                "digestType",
+                "ds",
+                "flags",
+                "keyTag",
+                "keyType",
+                "modifiedOn",
+                "publicKey",
+                "status",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "modifiedOn": {
+                    "type": "string",
+                    "description": "Zone DNSSEC updated time.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone id for the zone.\n"
+                }
+            },
+            "requiredInputs": [
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ZoneDnssec resources.\n",
+                "properties": {
+                    "algorithm": {
+                        "type": "string",
+                        "description": "Zone DNSSEC algorithm.\n"
+                    },
+                    "digest": {
+                        "type": "string",
+                        "description": "Zone DNSSEC digest.\n"
+                    },
+                    "digestAlgorithm": {
+                        "type": "string",
+                        "description": "Digest algorithm use for Zone DNSSEC.\n"
+                    },
+                    "digestType": {
+                        "type": "string",
+                        "description": "Digest Type for Zone DNSSEC.\n"
+                    },
+                    "ds": {
+                        "type": "string",
+                        "description": "DS for the Zone DNSSEC.\n"
+                    },
+                    "flags": {
+                        "type": "integer",
+                        "description": "Zone DNSSEC flags.\n"
+                    },
+                    "keyTag": {
+                        "type": "integer",
+                        "description": "Key Tag for the Zone DNSSEC.\n"
+                    },
+                    "keyType": {
+                        "type": "string",
+                        "description": "Key type used for Zone DNSSEC.\n"
+                    },
+                    "modifiedOn": {
+                        "type": "string",
+                        "description": "Zone DNSSEC updated time.\n"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "Public Key for the Zone DNSSEC.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the Zone DNSSEC.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone id for the zone.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/zoneLockdown:ZoneLockdown": {
             "description": "Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Restrict access to these endpoints to requests from a known IP address.\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpoint_lockdown\", {\n    configurations: [{\n        target: \"ip\",\n        value: \"198.51.100.4\",\n    }],\n    description: \"Restrict access to these endpoints to requests from a known IP address\",\n    paused: false,\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Restrict access to these endpoints to requests from a known IP address.\nendpoint_lockdown = cloudflare.ZoneLockdown(\"endpointLockdown\",\n    configurations=[cloudflare.ZoneLockdownConfigurationArgs(\n        target=\"ip\",\n        value=\"198.51.100.4\",\n    )],\n    description=\"Restrict access to these endpoints to requests from a known IP address\",\n    paused=False,\n    urls=[\"api.mysite.com/some/endpoint*\"],\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Restrict access to these endpoints to requests from a known IP address.\n        var endpointLockdown = new Cloudflare.ZoneLockdown(\"endpointLockdown\", new Cloudflare.ZoneLockdownArgs\n        {\n            Configurations = \n            {\n                new Cloudflare.Inputs.ZoneLockdownConfigurationArgs\n                {\n                    Target = \"ip\",\n                    Value = \"198.51.100.4\",\n                },\n            },\n            Description = \"Restrict access to these endpoints to requests from a known IP address\",\n            Paused = false,\n            Urls = \n            {\n                \"api.mysite.com/some/endpoint*\",\n            },\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZoneLockdown(ctx, \"endpointLockdown\", \u0026cloudflare.ZoneLockdownArgs{\n\t\t\tConfigurations: cloudflare.ZoneLockdownConfigurationArray{\n\t\t\t\t\u0026cloudflare.ZoneLockdownConfigurationArgs{\n\t\t\t\t\tTarget: pulumi.String(\"ip\"),\n\t\t\t\t\tValue:  pulumi.String(\"198.51.100.4\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Restrict access to these endpoints to requests from a known IP address\"),\n\t\t\tPaused:      pulumi.Bool(false),\n\t\t\tUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api.mysite.com/some/endpoint*\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRecords can be imported using a composite ID formed of zone name and record ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules) ",
             "properties": {
@@ -10018,6 +10344,30 @@
         }
     },
     "functions": {
+        "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups": {
+            "description": "Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst test = cloudflare.getApiTokenPermissionGroups({});\nexport const dnsReadPermissionId = test.then(test =\u003e test.permissions[\"DNS Read\"]);\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ntest = cloudflare.get_api_token_permission_groups()\npulumi.export(\"dnsReadPermissionId\", test.permissions[\"DNS Read\"])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = Output.Create(Cloudflare.GetApiTokenPermissionGroups.InvokeAsync());\n        this.DnsReadPermissionId = test.Apply(test =\u003e test.Permissions.DNS_Read);\n    }\n\n    [Output(\"dnsReadPermissionId\")]\n    public Output\u003cstring\u003e DnsReadPermissionId { get; set; }\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "outputs": {
+                "description": "A collection of values returned by getApiTokenPermissionGroups.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "permissions": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "description": "A map of permission groups where keys are human-readable permission names\nand values are permission IDs.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "permissions",
+                    "id"
+                ]
+            }
+        },
         "cloudflare:index/getIpRanges:getIpRanges": {
             "description": "Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as gcp from \"@pulumi/gcp\";\n\nconst cloudflare = cloudflare.getIpRanges({});\nconst allowCloudflareIngress = new gcp.compute.Firewall(\"allowCloudflareIngress\", {\n    network: \"default\",\n    sourceRanges: cloudflare.then(cloudflare =\u003e cloudflare.ipv4CidrBlocks),\n    allows: [{\n        ports: \"443\",\n        protocol: \"tcp\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_gcp as gcp\n\ncloudflare = cloudflare.get_ip_ranges()\nallow_cloudflare_ingress = gcp.compute.Firewall(\"allowCloudflareIngress\",\n    network=\"default\",\n    source_ranges=cloudflare.ipv4_cidr_blocks,\n    allows=[{\n        \"ports\": \"443\",\n        \"protocol\": \"tcp\",\n    }])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Gcp = Pulumi.Gcp;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cloudflare = Output.Create(Cloudflare.GetIpRanges.InvokeAsync());\n        var allowCloudflareIngress = new Gcp.Compute.Firewall(\"allowCloudflareIngress\", new Gcp.Compute.FirewallArgs\n        {\n            Network = \"default\",\n            SourceRanges = cloudflare.Apply(cloudflare =\u003e cloudflare.Ipv4CidrBlocks),\n            Allows = \n            {\n                new Gcp.Compute.Inputs.FirewallAllowArgs\n                {\n                    Ports = \"443\",\n                    Protocol = \"tcp\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcloudflare, err := cloudflare.GetIpRanges(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewFirewall(ctx, \"allowCloudflareIngress\", \u0026compute.FirewallArgs{\n\t\t\tNetwork:      pulumi.String(\"default\"),\n\t\t\tSourceRanges: toPulumiStringArray(cloudflare.Ipv4CidrBlocks),\n\t\t\tAllows: compute.FirewallAllowArray{\n\t\t\t\t\u0026compute.FirewallAllowArgs{\n\t\t\t\t\tPorts:    \"443\",\n\t\t\t\t\tProtocol: pulumi.String(\"tcp\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\nfunc toPulumiStringArray(arr []string) pulumi.StringArray {\n\tvar pulumiArr pulumi.StringArray\n\tfor _, v := range arr {\n\t\tpulumiArr = append(pulumiArr, pulumi.String(v))\n\t}\n\treturn pulumiArr\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "outputs": {
@@ -10229,6 +10579,89 @@
                 "type": "object",
                 "required": [
                     "rules",
+                    "zoneId",
+                    "id"
+                ]
+            }
+        },
+        "cloudflare:index/getZoneDnssec:getZoneDnssec": {
+            "description": "Use this data source to look up [Zone][1] DNSSEC settings.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = pulumi.output(cloudflare.getZoneDnssec({\n    zoneId: \"\u003czone_id\u003e\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zone_dnssec(zone_id=\"\u003czone_id\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZoneDnssec.InvokeAsync(new Cloudflare.GetZoneDnssecArgs\n        {\n            ZoneId = \"\u003czone_id\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.LookupZoneDnssec(ctx, \u0026cloudflare.LookupZoneDnssecArgs{\n\t\t\tZoneId: \"\u003czone_id\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getZoneDnssec.\n",
+                "properties": {
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone id for the zone.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "zoneId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getZoneDnssec.\n",
+                "properties": {
+                    "algorithm": {
+                        "type": "string",
+                        "description": "Zone DNSSEC algorithm.\n"
+                    },
+                    "digest": {
+                        "type": "string",
+                        "description": "Zone DNSSEC digest.\n"
+                    },
+                    "digestAlgorithm": {
+                        "type": "string",
+                        "description": "Digest algorithm use for Zone DNSSEC.\n"
+                    },
+                    "digestType": {
+                        "type": "string",
+                        "description": "Digest Type for Zone DNSSEC.\n"
+                    },
+                    "ds": {
+                        "type": "string",
+                        "description": "DS for the Zone DNSSEC.\n"
+                    },
+                    "flags": {
+                        "type": "integer",
+                        "description": "Zone DNSSEC flags.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "keyTag": {
+                        "type": "integer",
+                        "description": "Key Tag for the Zone DNSSEC.\n"
+                    },
+                    "keyType": {
+                        "type": "string",
+                        "description": "Key type used for Zone DNSSEC.\n"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "Public Key for the Zone DNSSEC.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the Zone DNSSEC.\n"
+                    },
+                    "zoneId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "algorithm",
+                    "digest",
+                    "digestAlgorithm",
+                    "digestType",
+                    "ds",
+                    "flags",
+                    "keyTag",
+                    "keyType",
+                    "publicKey",
+                    "status",
                     "zoneId",
                     "id"
                 ]

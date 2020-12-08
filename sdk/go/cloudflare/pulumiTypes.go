@@ -4752,6 +4752,419 @@ func (o AccessRuleConfigurationPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ApiTokenCondition struct {
+	// Request IP related conditions. See the definition below.
+	RequestIp *ApiTokenConditionRequestIp `pulumi:"requestIp"`
+}
+
+// ApiTokenConditionInput is an input type that accepts ApiTokenConditionArgs and ApiTokenConditionOutput values.
+// You can construct a concrete instance of `ApiTokenConditionInput` via:
+//
+//          ApiTokenConditionArgs{...}
+type ApiTokenConditionInput interface {
+	pulumi.Input
+
+	ToApiTokenConditionOutput() ApiTokenConditionOutput
+	ToApiTokenConditionOutputWithContext(context.Context) ApiTokenConditionOutput
+}
+
+type ApiTokenConditionArgs struct {
+	// Request IP related conditions. See the definition below.
+	RequestIp ApiTokenConditionRequestIpPtrInput `pulumi:"requestIp"`
+}
+
+func (ApiTokenConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiTokenCondition)(nil)).Elem()
+}
+
+func (i ApiTokenConditionArgs) ToApiTokenConditionOutput() ApiTokenConditionOutput {
+	return i.ToApiTokenConditionOutputWithContext(context.Background())
+}
+
+func (i ApiTokenConditionArgs) ToApiTokenConditionOutputWithContext(ctx context.Context) ApiTokenConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenConditionOutput)
+}
+
+func (i ApiTokenConditionArgs) ToApiTokenConditionPtrOutput() ApiTokenConditionPtrOutput {
+	return i.ToApiTokenConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ApiTokenConditionArgs) ToApiTokenConditionPtrOutputWithContext(ctx context.Context) ApiTokenConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenConditionOutput).ToApiTokenConditionPtrOutputWithContext(ctx)
+}
+
+// ApiTokenConditionPtrInput is an input type that accepts ApiTokenConditionArgs, ApiTokenConditionPtr and ApiTokenConditionPtrOutput values.
+// You can construct a concrete instance of `ApiTokenConditionPtrInput` via:
+//
+//          ApiTokenConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type ApiTokenConditionPtrInput interface {
+	pulumi.Input
+
+	ToApiTokenConditionPtrOutput() ApiTokenConditionPtrOutput
+	ToApiTokenConditionPtrOutputWithContext(context.Context) ApiTokenConditionPtrOutput
+}
+
+type apiTokenConditionPtrType ApiTokenConditionArgs
+
+func ApiTokenConditionPtr(v *ApiTokenConditionArgs) ApiTokenConditionPtrInput {
+	return (*apiTokenConditionPtrType)(v)
+}
+
+func (*apiTokenConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiTokenCondition)(nil)).Elem()
+}
+
+func (i *apiTokenConditionPtrType) ToApiTokenConditionPtrOutput() ApiTokenConditionPtrOutput {
+	return i.ToApiTokenConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *apiTokenConditionPtrType) ToApiTokenConditionPtrOutputWithContext(ctx context.Context) ApiTokenConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenConditionPtrOutput)
+}
+
+type ApiTokenConditionOutput struct{ *pulumi.OutputState }
+
+func (ApiTokenConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiTokenCondition)(nil)).Elem()
+}
+
+func (o ApiTokenConditionOutput) ToApiTokenConditionOutput() ApiTokenConditionOutput {
+	return o
+}
+
+func (o ApiTokenConditionOutput) ToApiTokenConditionOutputWithContext(ctx context.Context) ApiTokenConditionOutput {
+	return o
+}
+
+func (o ApiTokenConditionOutput) ToApiTokenConditionPtrOutput() ApiTokenConditionPtrOutput {
+	return o.ToApiTokenConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ApiTokenConditionOutput) ToApiTokenConditionPtrOutputWithContext(ctx context.Context) ApiTokenConditionPtrOutput {
+	return o.ApplyT(func(v ApiTokenCondition) *ApiTokenCondition {
+		return &v
+	}).(ApiTokenConditionPtrOutput)
+}
+
+// Request IP related conditions. See the definition below.
+func (o ApiTokenConditionOutput) RequestIp() ApiTokenConditionRequestIpPtrOutput {
+	return o.ApplyT(func(v ApiTokenCondition) *ApiTokenConditionRequestIp { return v.RequestIp }).(ApiTokenConditionRequestIpPtrOutput)
+}
+
+type ApiTokenConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiTokenConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiTokenCondition)(nil)).Elem()
+}
+
+func (o ApiTokenConditionPtrOutput) ToApiTokenConditionPtrOutput() ApiTokenConditionPtrOutput {
+	return o
+}
+
+func (o ApiTokenConditionPtrOutput) ToApiTokenConditionPtrOutputWithContext(ctx context.Context) ApiTokenConditionPtrOutput {
+	return o
+}
+
+func (o ApiTokenConditionPtrOutput) Elem() ApiTokenConditionOutput {
+	return o.ApplyT(func(v *ApiTokenCondition) ApiTokenCondition { return *v }).(ApiTokenConditionOutput)
+}
+
+// Request IP related conditions. See the definition below.
+func (o ApiTokenConditionPtrOutput) RequestIp() ApiTokenConditionRequestIpPtrOutput {
+	return o.ApplyT(func(v *ApiTokenCondition) *ApiTokenConditionRequestIp {
+		if v == nil {
+			return nil
+		}
+		return v.RequestIp
+	}).(ApiTokenConditionRequestIpPtrOutput)
+}
+
+type ApiTokenConditionRequestIp struct {
+	// List of IPv4/IPv6 CIDR addresses where
+	// the Token can be used from.
+	Ins []string `pulumi:"ins"`
+	// List of IPv4/IPv6 CIDR addresses where
+	// the Token cannot be used from.
+	NotIns []string `pulumi:"notIns"`
+}
+
+// ApiTokenConditionRequestIpInput is an input type that accepts ApiTokenConditionRequestIpArgs and ApiTokenConditionRequestIpOutput values.
+// You can construct a concrete instance of `ApiTokenConditionRequestIpInput` via:
+//
+//          ApiTokenConditionRequestIpArgs{...}
+type ApiTokenConditionRequestIpInput interface {
+	pulumi.Input
+
+	ToApiTokenConditionRequestIpOutput() ApiTokenConditionRequestIpOutput
+	ToApiTokenConditionRequestIpOutputWithContext(context.Context) ApiTokenConditionRequestIpOutput
+}
+
+type ApiTokenConditionRequestIpArgs struct {
+	// List of IPv4/IPv6 CIDR addresses where
+	// the Token can be used from.
+	Ins pulumi.StringArrayInput `pulumi:"ins"`
+	// List of IPv4/IPv6 CIDR addresses where
+	// the Token cannot be used from.
+	NotIns pulumi.StringArrayInput `pulumi:"notIns"`
+}
+
+func (ApiTokenConditionRequestIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiTokenConditionRequestIp)(nil)).Elem()
+}
+
+func (i ApiTokenConditionRequestIpArgs) ToApiTokenConditionRequestIpOutput() ApiTokenConditionRequestIpOutput {
+	return i.ToApiTokenConditionRequestIpOutputWithContext(context.Background())
+}
+
+func (i ApiTokenConditionRequestIpArgs) ToApiTokenConditionRequestIpOutputWithContext(ctx context.Context) ApiTokenConditionRequestIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenConditionRequestIpOutput)
+}
+
+func (i ApiTokenConditionRequestIpArgs) ToApiTokenConditionRequestIpPtrOutput() ApiTokenConditionRequestIpPtrOutput {
+	return i.ToApiTokenConditionRequestIpPtrOutputWithContext(context.Background())
+}
+
+func (i ApiTokenConditionRequestIpArgs) ToApiTokenConditionRequestIpPtrOutputWithContext(ctx context.Context) ApiTokenConditionRequestIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenConditionRequestIpOutput).ToApiTokenConditionRequestIpPtrOutputWithContext(ctx)
+}
+
+// ApiTokenConditionRequestIpPtrInput is an input type that accepts ApiTokenConditionRequestIpArgs, ApiTokenConditionRequestIpPtr and ApiTokenConditionRequestIpPtrOutput values.
+// You can construct a concrete instance of `ApiTokenConditionRequestIpPtrInput` via:
+//
+//          ApiTokenConditionRequestIpArgs{...}
+//
+//  or:
+//
+//          nil
+type ApiTokenConditionRequestIpPtrInput interface {
+	pulumi.Input
+
+	ToApiTokenConditionRequestIpPtrOutput() ApiTokenConditionRequestIpPtrOutput
+	ToApiTokenConditionRequestIpPtrOutputWithContext(context.Context) ApiTokenConditionRequestIpPtrOutput
+}
+
+type apiTokenConditionRequestIpPtrType ApiTokenConditionRequestIpArgs
+
+func ApiTokenConditionRequestIpPtr(v *ApiTokenConditionRequestIpArgs) ApiTokenConditionRequestIpPtrInput {
+	return (*apiTokenConditionRequestIpPtrType)(v)
+}
+
+func (*apiTokenConditionRequestIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiTokenConditionRequestIp)(nil)).Elem()
+}
+
+func (i *apiTokenConditionRequestIpPtrType) ToApiTokenConditionRequestIpPtrOutput() ApiTokenConditionRequestIpPtrOutput {
+	return i.ToApiTokenConditionRequestIpPtrOutputWithContext(context.Background())
+}
+
+func (i *apiTokenConditionRequestIpPtrType) ToApiTokenConditionRequestIpPtrOutputWithContext(ctx context.Context) ApiTokenConditionRequestIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenConditionRequestIpPtrOutput)
+}
+
+type ApiTokenConditionRequestIpOutput struct{ *pulumi.OutputState }
+
+func (ApiTokenConditionRequestIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiTokenConditionRequestIp)(nil)).Elem()
+}
+
+func (o ApiTokenConditionRequestIpOutput) ToApiTokenConditionRequestIpOutput() ApiTokenConditionRequestIpOutput {
+	return o
+}
+
+func (o ApiTokenConditionRequestIpOutput) ToApiTokenConditionRequestIpOutputWithContext(ctx context.Context) ApiTokenConditionRequestIpOutput {
+	return o
+}
+
+func (o ApiTokenConditionRequestIpOutput) ToApiTokenConditionRequestIpPtrOutput() ApiTokenConditionRequestIpPtrOutput {
+	return o.ToApiTokenConditionRequestIpPtrOutputWithContext(context.Background())
+}
+
+func (o ApiTokenConditionRequestIpOutput) ToApiTokenConditionRequestIpPtrOutputWithContext(ctx context.Context) ApiTokenConditionRequestIpPtrOutput {
+	return o.ApplyT(func(v ApiTokenConditionRequestIp) *ApiTokenConditionRequestIp {
+		return &v
+	}).(ApiTokenConditionRequestIpPtrOutput)
+}
+
+// List of IPv4/IPv6 CIDR addresses where
+// the Token can be used from.
+func (o ApiTokenConditionRequestIpOutput) Ins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiTokenConditionRequestIp) []string { return v.Ins }).(pulumi.StringArrayOutput)
+}
+
+// List of IPv4/IPv6 CIDR addresses where
+// the Token cannot be used from.
+func (o ApiTokenConditionRequestIpOutput) NotIns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiTokenConditionRequestIp) []string { return v.NotIns }).(pulumi.StringArrayOutput)
+}
+
+type ApiTokenConditionRequestIpPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiTokenConditionRequestIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiTokenConditionRequestIp)(nil)).Elem()
+}
+
+func (o ApiTokenConditionRequestIpPtrOutput) ToApiTokenConditionRequestIpPtrOutput() ApiTokenConditionRequestIpPtrOutput {
+	return o
+}
+
+func (o ApiTokenConditionRequestIpPtrOutput) ToApiTokenConditionRequestIpPtrOutputWithContext(ctx context.Context) ApiTokenConditionRequestIpPtrOutput {
+	return o
+}
+
+func (o ApiTokenConditionRequestIpPtrOutput) Elem() ApiTokenConditionRequestIpOutput {
+	return o.ApplyT(func(v *ApiTokenConditionRequestIp) ApiTokenConditionRequestIp { return *v }).(ApiTokenConditionRequestIpOutput)
+}
+
+// List of IPv4/IPv6 CIDR addresses where
+// the Token can be used from.
+func (o ApiTokenConditionRequestIpPtrOutput) Ins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApiTokenConditionRequestIp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ins
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of IPv4/IPv6 CIDR addresses where
+// the Token cannot be used from.
+func (o ApiTokenConditionRequestIpPtrOutput) NotIns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApiTokenConditionRequestIp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NotIns
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApiTokenPolicy struct {
+	// Policy effect. Valid values are `allow` or `deny`. `allow`
+	// is set as default.
+	Effect *string `pulumi:"effect"`
+	// List of permissions groups
+	// ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+	PermissionGroups []string `pulumi:"permissionGroups"`
+	// Map describes what operations against which resources
+	// are allowed or denied.
+	Resources map[string]string `pulumi:"resources"`
+}
+
+// ApiTokenPolicyInput is an input type that accepts ApiTokenPolicyArgs and ApiTokenPolicyOutput values.
+// You can construct a concrete instance of `ApiTokenPolicyInput` via:
+//
+//          ApiTokenPolicyArgs{...}
+type ApiTokenPolicyInput interface {
+	pulumi.Input
+
+	ToApiTokenPolicyOutput() ApiTokenPolicyOutput
+	ToApiTokenPolicyOutputWithContext(context.Context) ApiTokenPolicyOutput
+}
+
+type ApiTokenPolicyArgs struct {
+	// Policy effect. Valid values are `allow` or `deny`. `allow`
+	// is set as default.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// List of permissions groups
+	// ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+	PermissionGroups pulumi.StringArrayInput `pulumi:"permissionGroups"`
+	// Map describes what operations against which resources
+	// are allowed or denied.
+	Resources pulumi.StringMapInput `pulumi:"resources"`
+}
+
+func (ApiTokenPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiTokenPolicy)(nil)).Elem()
+}
+
+func (i ApiTokenPolicyArgs) ToApiTokenPolicyOutput() ApiTokenPolicyOutput {
+	return i.ToApiTokenPolicyOutputWithContext(context.Background())
+}
+
+func (i ApiTokenPolicyArgs) ToApiTokenPolicyOutputWithContext(ctx context.Context) ApiTokenPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenPolicyOutput)
+}
+
+// ApiTokenPolicyArrayInput is an input type that accepts ApiTokenPolicyArray and ApiTokenPolicyArrayOutput values.
+// You can construct a concrete instance of `ApiTokenPolicyArrayInput` via:
+//
+//          ApiTokenPolicyArray{ ApiTokenPolicyArgs{...} }
+type ApiTokenPolicyArrayInput interface {
+	pulumi.Input
+
+	ToApiTokenPolicyArrayOutput() ApiTokenPolicyArrayOutput
+	ToApiTokenPolicyArrayOutputWithContext(context.Context) ApiTokenPolicyArrayOutput
+}
+
+type ApiTokenPolicyArray []ApiTokenPolicyInput
+
+func (ApiTokenPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiTokenPolicy)(nil)).Elem()
+}
+
+func (i ApiTokenPolicyArray) ToApiTokenPolicyArrayOutput() ApiTokenPolicyArrayOutput {
+	return i.ToApiTokenPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ApiTokenPolicyArray) ToApiTokenPolicyArrayOutputWithContext(ctx context.Context) ApiTokenPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenPolicyArrayOutput)
+}
+
+type ApiTokenPolicyOutput struct{ *pulumi.OutputState }
+
+func (ApiTokenPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiTokenPolicy)(nil)).Elem()
+}
+
+func (o ApiTokenPolicyOutput) ToApiTokenPolicyOutput() ApiTokenPolicyOutput {
+	return o
+}
+
+func (o ApiTokenPolicyOutput) ToApiTokenPolicyOutputWithContext(ctx context.Context) ApiTokenPolicyOutput {
+	return o
+}
+
+// Policy effect. Valid values are `allow` or `deny`. `allow`
+// is set as default.
+func (o ApiTokenPolicyOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiTokenPolicy) *string { return v.Effect }).(pulumi.StringPtrOutput)
+}
+
+// List of permissions groups
+// ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
+func (o ApiTokenPolicyOutput) PermissionGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiTokenPolicy) []string { return v.PermissionGroups }).(pulumi.StringArrayOutput)
+}
+
+// Map describes what operations against which resources
+// are allowed or denied.
+func (o ApiTokenPolicyOutput) Resources() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ApiTokenPolicy) map[string]string { return v.Resources }).(pulumi.StringMapOutput)
+}
+
+type ApiTokenPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiTokenPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiTokenPolicy)(nil)).Elem()
+}
+
+func (o ApiTokenPolicyArrayOutput) ToApiTokenPolicyArrayOutput() ApiTokenPolicyArrayOutput {
+	return o
+}
+
+func (o ApiTokenPolicyArrayOutput) ToApiTokenPolicyArrayOutputWithContext(ctx context.Context) ApiTokenPolicyArrayOutput {
+	return o
+}
+
+func (o ApiTokenPolicyArrayOutput) Index(i pulumi.IntInput) ApiTokenPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiTokenPolicy {
+		return vs[0].([]ApiTokenPolicy)[vs[1].(int)]
+	}).(ApiTokenPolicyOutput)
+}
+
 type CustomHostnameOwnershipVerification struct {
 	Name *string `pulumi:"name"`
 	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
@@ -9449,11 +9862,14 @@ type RecordData struct {
 	Selector    *int     `pulumi:"selector"`
 	Service     *string  `pulumi:"service"`
 	Size        *float64 `pulumi:"size"`
+	Tag         *string  `pulumi:"tag"`
 	Target      *string  `pulumi:"target"`
 	// The type of the record
-	Type   *int `pulumi:"type"`
-	Usage  *int `pulumi:"usage"`
-	Weight *int `pulumi:"weight"`
+	Type  *int `pulumi:"type"`
+	Usage *int `pulumi:"usage"`
+	// The (string) value of the record. Either this or `data` must be specified
+	Value  *string `pulumi:"value"`
+	Weight *int    `pulumi:"weight"`
 }
 
 // RecordDataInput is an input type that accepts RecordDataArgs and RecordDataOutput values.
@@ -9503,11 +9919,14 @@ type RecordDataArgs struct {
 	Selector    pulumi.IntPtrInput     `pulumi:"selector"`
 	Service     pulumi.StringPtrInput  `pulumi:"service"`
 	Size        pulumi.Float64PtrInput `pulumi:"size"`
+	Tag         pulumi.StringPtrInput  `pulumi:"tag"`
 	Target      pulumi.StringPtrInput  `pulumi:"target"`
 	// The type of the record
-	Type   pulumi.IntPtrInput `pulumi:"type"`
-	Usage  pulumi.IntPtrInput `pulumi:"usage"`
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
+	Type  pulumi.IntPtrInput `pulumi:"type"`
+	Usage pulumi.IntPtrInput `pulumi:"usage"`
+	// The (string) value of the record. Either this or `data` must be specified
+	Value  pulumi.StringPtrInput `pulumi:"value"`
+	Weight pulumi.IntPtrInput    `pulumi:"weight"`
 }
 
 func (RecordDataArgs) ElementType() reflect.Type {
@@ -9720,6 +10139,10 @@ func (o RecordDataOutput) Size() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v RecordData) *float64 { return v.Size }).(pulumi.Float64PtrOutput)
 }
 
+func (o RecordDataOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
 func (o RecordDataOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecordData) *string { return v.Target }).(pulumi.StringPtrOutput)
 }
@@ -9731,6 +10154,11 @@ func (o RecordDataOutput) Type() pulumi.IntPtrOutput {
 
 func (o RecordDataOutput) Usage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RecordData) *int { return v.Usage }).(pulumi.IntPtrOutput)
+}
+
+// The (string) value of the record. Either this or `data` must be specified
+func (o RecordDataOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordData) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataOutput) Weight() pulumi.IntPtrOutput {
@@ -10054,6 +10482,15 @@ func (o RecordDataPtrOutput) Size() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+func (o RecordDataPtrOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tag
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o RecordDataPtrOutput) Target() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RecordData) *string {
 		if v == nil {
@@ -10080,6 +10517,16 @@ func (o RecordDataPtrOutput) Usage() pulumi.IntPtrOutput {
 		}
 		return v.Usage
 	}).(pulumi.IntPtrOutput)
+}
+
+// The (string) value of the record. Either this or `data` must be specified
+func (o RecordDataPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
@@ -14875,6 +15322,12 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyRequireSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessRuleConfigurationOutput{})
 	pulumi.RegisterOutputType(AccessRuleConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(ApiTokenConditionOutput{})
+	pulumi.RegisterOutputType(ApiTokenConditionPtrOutput{})
+	pulumi.RegisterOutputType(ApiTokenConditionRequestIpOutput{})
+	pulumi.RegisterOutputType(ApiTokenConditionRequestIpPtrOutput{})
+	pulumi.RegisterOutputType(ApiTokenPolicyOutput{})
+	pulumi.RegisterOutputType(ApiTokenPolicyArrayOutput{})
 	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationOutput{})
 	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationPtrOutput{})
 	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationHttpOutput{})

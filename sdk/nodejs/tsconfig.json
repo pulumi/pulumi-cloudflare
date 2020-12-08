@@ -20,6 +20,7 @@
         "accessRule.ts",
         "accessServiceToken.ts",
         "accountMember.ts",
+        "apiToken.ts",
         "argo.ts",
         "authenticatedOriginPulls.ts",
         "authenticatedOriginPullsCertificate.ts",
@@ -33,10 +34,12 @@
         "customSsl.ts",
         "filter.ts",
         "firewallRule.ts",
+        "getApiTokenPermissionGroups.ts",
         "getIpRanges.ts",
         "getWafGroups.ts",
         "getWafPackages.ts",
         "getWafRules.ts",
+        "getZoneDnssec.ts",
         "getZones.ts",
         "healthcheck.ts",
         "index.ts",
@@ -66,6 +69,7 @@
         "workersKv.ts",
         "workersKvNamespace.ts",
         "zone.ts",
+        "zoneDnssec.ts",
         "zoneLockdown.ts",
         "zoneSettingsOverride.ts"
     ]

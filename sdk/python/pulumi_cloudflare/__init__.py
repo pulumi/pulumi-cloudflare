@@ -10,6 +10,7 @@ from .access_policy import *
 from .access_rule import *
 from .access_service_token import *
 from .account_member import *
+from .api_token import *
 from .argo import *
 from .authenticated_origin_pulls import *
 from .authenticated_origin_pulls_certificate import *
@@ -21,10 +22,12 @@ from .custom_pages import *
 from .custom_ssl import *
 from .filter import *
 from .firewall_rule import *
+from .get_api_token_permission_groups import *
 from .get_ip_ranges import *
 from .get_waf_groups import *
 from .get_waf_packages import *
 from .get_waf_rules import *
+from .get_zone_dnssec import *
 from .get_zones import *
 from .healthcheck import *
 from .ip_list import *
@@ -49,6 +52,7 @@ from .worker_script import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .zone import *
+from .zone_dnssec import *
 from .zone_lockdown import *
 from .zone_settings_override import *
 from ._inputs import *

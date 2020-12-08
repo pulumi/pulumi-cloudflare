@@ -206,13 +206,17 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"cloudflare_ip_list":          {Tok: makeResource(mainMod, "IpList")},
 			"cloudflare_certificate_pack": {Tok: makeResource(mainMod, "CertificatePack")},
+			"cloudflare_api_token":        {Tok: makeResource(mainMod, "ApiToken")},
+			"cloudflare_zone_dnssec":      {Tok: makeResource(mainMod, "ZoneDnssec")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"cloudflare_ip_ranges":    {Tok: makeDataSource(mainMod, "getIpRanges")},
-			"cloudflare_zones":        {Tok: makeDataSource(mainMod, "getZones")},
-			"cloudflare_waf_groups":   {Tok: makeDataSource(mainMod, "getWafGroups")},
-			"cloudflare_waf_packages": {Tok: makeDataSource(mainMod, "getWafPackages")},
-			"cloudflare_waf_rules":    {Tok: makeDataSource(mainMod, "getWafRules")},
+			"cloudflare_ip_ranges":                   {Tok: makeDataSource(mainMod, "getIpRanges")},
+			"cloudflare_zones":                       {Tok: makeDataSource(mainMod, "getZones")},
+			"cloudflare_waf_groups":                  {Tok: makeDataSource(mainMod, "getWafGroups")},
+			"cloudflare_waf_packages":                {Tok: makeDataSource(mainMod, "getWafPackages")},
+			"cloudflare_waf_rules":                   {Tok: makeDataSource(mainMod, "getWafRules")},
+			"cloudflare_api_token_permission_groups": {Tok: makeDataSource(mainMod, "getApiTokenPermissionGroups")},
+			"cloudflare_zone_dnssec":                 {Tok: makeDataSource(mainMod, "getZoneDnssec")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
