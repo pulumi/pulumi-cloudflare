@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * // Within each pop or region we can define multiple pools in failover order
  * const bar = new cloudflare.LoadBalancer("bar", {
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- *     name: "example-load-balancer",
+ *     name: "example-load-balancer.example.com",
  *     fallbackPoolId: foo.id,
  *     defaultPoolIds: [foo.id],
  *     description: "example load balancer using geo-balancing",
@@ -117,6 +117,14 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly sessionAffinity!: pulumi.Output<string | undefined>;
     /**
+     * Configure cookie attributes for session affinity cookie. See the field documentation below.
+     */
+    public readonly sessionAffinityAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+     */
+    public readonly sessionAffinityTtl!: pulumi.Output<number | undefined>;
+    /**
      * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
      */
     public readonly steeringPolicy!: pulumi.Output<string>;
@@ -152,6 +160,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["proxied"] = state ? state.proxied : undefined;
             inputs["regionPools"] = state ? state.regionPools : undefined;
             inputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
+            inputs["sessionAffinityAttributes"] = state ? state.sessionAffinityAttributes : undefined;
+            inputs["sessionAffinityTtl"] = state ? state.sessionAffinityTtl : undefined;
             inputs["steeringPolicy"] = state ? state.steeringPolicy : undefined;
             inputs["ttl"] = state ? state.ttl : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
@@ -178,6 +188,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["proxied"] = args ? args.proxied : undefined;
             inputs["regionPools"] = args ? args.regionPools : undefined;
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            inputs["sessionAffinityAttributes"] = args ? args.sessionAffinityAttributes : undefined;
+            inputs["sessionAffinityTtl"] = args ? args.sessionAffinityTtl : undefined;
             inputs["steeringPolicy"] = args ? args.steeringPolicy : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
@@ -244,6 +256,14 @@ export interface LoadBalancerState {
      */
     readonly sessionAffinity?: pulumi.Input<string>;
     /**
+     * Configure cookie attributes for session affinity cookie. See the field documentation below.
+     */
+    readonly sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+     */
+    readonly sessionAffinityTtl?: pulumi.Input<number>;
+    /**
      * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
      */
     readonly steeringPolicy?: pulumi.Input<string>;
@@ -297,6 +317,14 @@ export interface LoadBalancerArgs {
      * Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
+    /**
+     * Configure cookie attributes for session affinity cookie. See the field documentation below.
+     */
+    readonly sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+     */
+    readonly sessionAffinityTtl?: pulumi.Input<number>;
     /**
      * Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
      */

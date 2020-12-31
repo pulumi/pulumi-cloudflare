@@ -221,7 +221,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Path { get; private set; } = null!;
 
         /// <summary>
-        /// Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+        /// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
@@ -423,7 +423,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+        /// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
@@ -592,7 +592,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+        /// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

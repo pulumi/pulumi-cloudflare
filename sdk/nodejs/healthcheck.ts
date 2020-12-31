@@ -175,7 +175,7 @@ export class Healthcheck extends pulumi.CustomResource {
      */
     public readonly path!: pulumi.Output<string | undefined>;
     /**
-     * Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+     * Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
@@ -356,7 +356,7 @@ export interface HealthcheckState {
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+     * Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
      */
     readonly port?: pulumi.Input<number>;
     /**
@@ -450,7 +450,7 @@ export interface HealthcheckArgs {
      */
     readonly path?: pulumi.Input<string>;
     /**
-     * Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+     * Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
      */
     readonly port?: pulumi.Input<number>;
     /**

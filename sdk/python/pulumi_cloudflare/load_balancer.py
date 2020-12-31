@@ -26,6 +26,8 @@ class LoadBalancer(pulumi.CustomResource):
                  proxied: Optional[pulumi.Input[bool]] = None,
                  region_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]]] = None,
                  session_affinity: Optional[pulumi.Input[str]] = None,
+                 session_affinity_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 session_affinity_ttl: Optional[pulumi.Input[int]] = None,
                  steering_policy: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -53,7 +55,7 @@ class LoadBalancer(pulumi.CustomResource):
         # Within each pop or region we can define multiple pools in failover order
         bar = cloudflare.LoadBalancer("bar",
             zone_id="d41d8cd98f00b204e9800998ecf8427e",
-            name="example-load-balancer",
+            name="example-load-balancer.example.com",
             fallback_pool_id=foo.id,
             default_pool_ids=[foo.id],
             description="example load balancer using geo-balancing",
@@ -80,6 +82,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] proxied: Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]] region_pools: A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         :param pulumi.Input[str] session_affinity: Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_affinity_attributes: Configure cookie attributes for session affinity cookie. See the field documentation below.
+        :param pulumi.Input[int] session_affinity_ttl: Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
         :param pulumi.Input[int] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         :param pulumi.Input[str] zone_id: The zone ID to add the load balancer to.
@@ -116,6 +120,8 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['proxied'] = proxied
             __props__['region_pools'] = region_pools
             __props__['session_affinity'] = session_affinity
+            __props__['session_affinity_attributes'] = session_affinity_attributes
+            __props__['session_affinity_ttl'] = session_affinity_ttl
             __props__['steering_policy'] = steering_policy
             __props__['ttl'] = ttl
             if zone_id is None:
@@ -144,6 +150,8 @@ class LoadBalancer(pulumi.CustomResource):
             proxied: Optional[pulumi.Input[bool]] = None,
             region_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]]] = None,
             session_affinity: Optional[pulumi.Input[str]] = None,
+            session_affinity_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            session_affinity_ttl: Optional[pulumi.Input[int]] = None,
             steering_policy: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[int]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'LoadBalancer':
@@ -165,6 +173,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[bool] proxied: Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerRegionPoolArgs']]]] region_pools: A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
         :param pulumi.Input[str] session_affinity: Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_affinity_attributes: Configure cookie attributes for session affinity cookie. See the field documentation below.
+        :param pulumi.Input[int] session_affinity_ttl: Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
         :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
         :param pulumi.Input[int] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
         :param pulumi.Input[str] zone_id: The zone ID to add the load balancer to.
@@ -184,6 +194,8 @@ class LoadBalancer(pulumi.CustomResource):
         __props__["proxied"] = proxied
         __props__["region_pools"] = region_pools
         __props__["session_affinity"] = session_affinity
+        __props__["session_affinity_attributes"] = session_affinity_attributes
+        __props__["session_affinity_ttl"] = session_affinity_ttl
         __props__["steering_policy"] = steering_policy
         __props__["ttl"] = ttl
         __props__["zone_id"] = zone_id
@@ -276,6 +288,22 @@ class LoadBalancer(pulumi.CustomResource):
         Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
         """
         return pulumi.get(self, "session_affinity")
+
+    @property
+    @pulumi.getter(name="sessionAffinityAttributes")
+    def session_affinity_attributes(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Configure cookie attributes for session affinity cookie. See the field documentation below.
+        """
+        return pulumi.get(self, "session_affinity_attributes")
+
+    @property
+    @pulumi.getter(name="sessionAffinityTtl")
+    def session_affinity_ttl(self) -> pulumi.Output[Optional[int]]:
+        """
+        Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        """
+        return pulumi.get(self, "session_affinity_ttl")
 
     @property
     @pulumi.getter(name="steeringPolicy")

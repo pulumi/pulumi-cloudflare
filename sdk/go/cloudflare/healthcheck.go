@@ -153,7 +153,7 @@ type Healthcheck struct {
 	NotificationSuspended pulumi.BoolPtrOutput `pulumi:"notificationSuspended"`
 	// The endpoint path to health check against. (Default: `/`)
 	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+	// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
 	Retries pulumi.IntPtrOutput `pulumi:"retries"`
@@ -241,7 +241,7 @@ type healthcheckState struct {
 	NotificationSuspended *bool `pulumi:"notificationSuspended"`
 	// The endpoint path to health check against. (Default: `/`)
 	Path *string `pulumi:"path"`
-	// Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+	// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
 	Port *int `pulumi:"port"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
 	Retries *int `pulumi:"retries"`
@@ -290,7 +290,7 @@ type HealthcheckState struct {
 	NotificationSuspended pulumi.BoolPtrInput
 	// The endpoint path to health check against. (Default: `/`)
 	Path pulumi.StringPtrInput
-	// Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+	// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
 	Port pulumi.IntPtrInput
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
 	Retries pulumi.IntPtrInput
@@ -341,7 +341,7 @@ type healthcheckArgs struct {
 	NotificationSuspended *bool `pulumi:"notificationSuspended"`
 	// The endpoint path to health check against. (Default: `/`)
 	Path *string `pulumi:"path"`
-	// Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+	// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
 	Port *int `pulumi:"port"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
 	Retries *int `pulumi:"retries"`
@@ -389,7 +389,7 @@ type HealthcheckArgs struct {
 	NotificationSuspended pulumi.BoolPtrInput
 	// The endpoint path to health check against. (Default: `/`)
 	Path pulumi.StringPtrInput
-	// Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+	// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
 	Port pulumi.IntPtrInput
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
 	Retries pulumi.IntPtrInput
