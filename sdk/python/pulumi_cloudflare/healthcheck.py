@@ -133,7 +133,7 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to.
         :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
         :param pulumi.Input[str] path: The endpoint path to health check against. (Default: `/`)
-        :param pulumi.Input[int] port: Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+        :param pulumi.Input[int] port: Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
         :param pulumi.Input[bool] suspended: If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. (Default: `5`)
@@ -246,7 +246,7 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to.
         :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
         :param pulumi.Input[str] path: The endpoint path to health check against. (Default: `/`)
-        :param pulumi.Input[int] port: Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+        :param pulumi.Input[int] port: Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
         :param pulumi.Input[bool] suspended: If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. (Default: `5`)
@@ -425,7 +425,7 @@ class Healthcheck(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[Optional[int]]:
         """
-        Port number to connect to for the health check.  Valid values are in the rage `0-65535` (Default: `80`).
+        Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         """
         return pulumi.get(self, "port")
 

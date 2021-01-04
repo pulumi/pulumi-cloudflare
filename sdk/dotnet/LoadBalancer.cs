@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     ///         var bar = new Cloudflare.LoadBalancer("bar", new Cloudflare.LoadBalancerArgs
     ///         {
     ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Name = "example-load-balancer",
+    ///             Name = "example-load-balancer.example.com",
     ///             FallbackPoolId = foo.Id,
     ///             DefaultPoolIds = 
     ///             {
@@ -145,6 +145,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string?> SessionAffinity { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure cookie attributes for session affinity cookie. See the field documentation below.
+        /// </summary>
+        [Output("sessionAffinityAttributes")]
+        public Output<ImmutableDictionary<string, string>?> SessionAffinityAttributes { get; private set; } = null!;
+
+        /// <summary>
+        /// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        /// </summary>
+        [Output("sessionAffinityTtl")]
+        public Output<int?> SessionAffinityTtl { get; private set; } = null!;
 
         /// <summary>
         /// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
@@ -282,6 +294,24 @@ namespace Pulumi.Cloudflare
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
 
+        [Input("sessionAffinityAttributes")]
+        private InputMap<string>? _sessionAffinityAttributes;
+
+        /// <summary>
+        /// Configure cookie attributes for session affinity cookie. See the field documentation below.
+        /// </summary>
+        public InputMap<string> SessionAffinityAttributes
+        {
+            get => _sessionAffinityAttributes ?? (_sessionAffinityAttributes = new InputMap<string>());
+            set => _sessionAffinityAttributes = value;
+        }
+
+        /// <summary>
+        /// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        /// </summary>
+        [Input("sessionAffinityTtl")]
+        public Input<int>? SessionAffinityTtl { get; set; }
+
         /// <summary>
         /// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
         /// </summary>
@@ -390,6 +420,24 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
+
+        [Input("sessionAffinityAttributes")]
+        private InputMap<string>? _sessionAffinityAttributes;
+
+        /// <summary>
+        /// Configure cookie attributes for session affinity cookie. See the field documentation below.
+        /// </summary>
+        public InputMap<string> SessionAffinityAttributes
+        {
+            get => _sessionAffinityAttributes ?? (_sessionAffinityAttributes = new InputMap<string>());
+            set => _sessionAffinityAttributes = value;
+        }
+
+        /// <summary>
+        /// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        /// </summary>
+        [Input("sessionAffinityTtl")]
+        public Input<int>? SessionAffinityTtl { get; set; }
 
         /// <summary>
         /// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.

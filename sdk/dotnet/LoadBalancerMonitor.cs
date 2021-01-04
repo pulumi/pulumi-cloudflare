@@ -12,6 +12,8 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
     /// 
+    /// &gt; **Note:** When creating a monitor, you have to pass `account_id` to the provider configuration in order to create account level resources. Otherwise, by default, it will be a user level resource.
+    /// 
     /// ## Example Usage
     /// ### HTTP Monitor
     /// ```csharp
@@ -65,6 +67,7 @@ namespace Pulumi.Cloudflare
     ///             Description = "example tcp load balancer",
     ///             Interval = 60,
     ///             Method = "connection_established",
+    ///             Port = 8080,
     ///             Retries = 5,
     ///             Timeout = 7,
     ///             Type = "tcp",
@@ -142,6 +145,9 @@ namespace Pulumi.Cloudflare
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
+        /// <summary>
+        /// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
 
@@ -269,6 +275,9 @@ namespace Pulumi.Cloudflare
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
@@ -369,6 +378,9 @@ namespace Pulumi.Cloudflare
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

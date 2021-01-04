@@ -12,6 +12,8 @@ import (
 
 // If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
 //
+// > **Note:** When creating a monitor, you have to pass `accountId` to the provider configuration in order to create account level resources. Otherwise, by default, it will be a user level resource.
+//
 // ## Example Usage
 // ### HTTP Monitor
 // ```go
@@ -67,6 +69,7 @@ import (
 // 			Description: pulumi.String("example tcp load balancer"),
 // 			Interval:    pulumi.Int(60),
 // 			Method:      pulumi.String("connection_established"),
+// 			Port:        pulumi.Int(8080),
 // 			Retries:     pulumi.Int(5),
 // 			Timeout:     pulumi.Int(7),
 // 			Type:        pulumi.String("tcp"),
@@ -103,6 +106,7 @@ type LoadBalancerMonitor struct {
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path pulumi.StringOutput `pulumi:"path"`
+	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries pulumi.IntPtrOutput `pulumi:"retries"`
@@ -162,7 +166,8 @@ type loadBalancerMonitorState struct {
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path *string `pulumi:"path"`
-	Port *int    `pulumi:"port"`
+	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+	Port *int `pulumi:"port"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries *int `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
@@ -194,6 +199,7 @@ type LoadBalancerMonitorState struct {
 	ModifiedOn pulumi.StringPtrInput
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path pulumi.StringPtrInput
+	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
 	Port pulumi.IntPtrInput
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries pulumi.IntPtrInput
@@ -226,7 +232,8 @@ type loadBalancerMonitorArgs struct {
 	Method *string `pulumi:"method"`
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path *string `pulumi:"path"`
-	Port *int    `pulumi:"port"`
+	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+	Port *int `pulumi:"port"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries *int `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
@@ -255,6 +262,7 @@ type LoadBalancerMonitorArgs struct {
 	Method pulumi.StringPtrInput
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path pulumi.StringPtrInput
+	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
 	Port pulumi.IntPtrInput
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries pulumi.IntPtrInput

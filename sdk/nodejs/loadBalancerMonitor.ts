@@ -8,6 +8,8 @@ import * as utilities from "./utilities";
 /**
  * If you're using Cloudflare's Load Balancing to load-balance across multiple origin servers or data centers, you configure one of these Monitors to actively check the availability of those servers over HTTP(S) or TCP.
  *
+ * > **Note:** When creating a monitor, you have to pass `accountId` to the provider configuration in order to create account level resources. Otherwise, by default, it will be a user level resource.
+ *
  * ## Example Usage
  * ### HTTP Monitor
  * ```typescript
@@ -41,6 +43,7 @@ import * as utilities from "./utilities";
  *     description: "example tcp load balancer",
  *     interval: 60,
  *     method: "connection_established",
+ *     port: 8080,
  *     retries: 5,
  *     timeout: 7,
  *     type: "tcp",
@@ -119,6 +122,9 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
      */
     public readonly path!: pulumi.Output<string>;
+    /**
+     * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
@@ -237,6 +243,9 @@ export interface LoadBalancerMonitorState {
      * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
      */
     readonly path?: pulumi.Input<string>;
+    /**
+     * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     */
     readonly port?: pulumi.Input<number>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
@@ -292,6 +301,9 @@ export interface LoadBalancerMonitorArgs {
      * The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
      */
     readonly path?: pulumi.Input<string>;
+    /**
+     * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+     */
     readonly port?: pulumi.Input<number>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.

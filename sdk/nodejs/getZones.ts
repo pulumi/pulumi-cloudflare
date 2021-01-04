@@ -71,23 +71,30 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const test = pulumi.output(cloudflare.getZones({
+ * const test = cloudflare.getZones({
  *     filter: {
- *         lookupType: "contains",
- *         match: ".com$",
  *         name: "example",
+ *         lookupType: "contains",
+ *         match: `.com$`,
  *         status: "active",
  *     },
- * }, { async: true }));
- * const endpointLockdown = new cloudflare.ZoneLockdown("endpoint_lockdown", {
+ * });
+ * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
+ *     zone: test.then(test => test.zones[0])["name"],
+ *     paused: "false",
+ *     description: "Restrict access to these endpoints to requests from a known IP address",
+ *     urls: ["api.mysite.com/some/endpoint*"],
  *     configurations: [{
  *         target: "ip",
  *         value: "198.51.100.4",
  *     }],
- *     description: "Restrict access to these endpoints to requests from a known IP address",
- *     paused: false,
- *     urls: ["api.mysite.com/some/endpoint*"],
- *     zone: test.apply(test => (<any>test.zones[0])["name"]),
+ * });
+ * const example = new cloudflare.Zone("example", {
+ *     zoneId: test.then(test => test.zones[0])["id"],
+ *     name: "www",
+ *     value: "203.0.113.1",
+ *     type: "A",
+ *     proxied: false,
  * });
  * ```
  */

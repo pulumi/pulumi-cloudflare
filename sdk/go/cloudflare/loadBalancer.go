@@ -40,7 +40,7 @@ import (
 // 		}
 // 		_, err = cloudflare.NewLoadBalancer(ctx, "bar", &cloudflare.LoadBalancerArgs{
 // 			ZoneId:         pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:           pulumi.String("example-load-balancer"),
+// 			Name:           pulumi.String("example-load-balancer.example.com"),
 // 			FallbackPoolId: foo.ID(),
 // 			DefaultPoolIds: pulumi.StringArray{
 // 				foo.ID(),
@@ -97,6 +97,10 @@ type LoadBalancer struct {
 	RegionPools LoadBalancerRegionPoolArrayOutput `pulumi:"regionPools"`
 	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity pulumi.StringPtrOutput `pulumi:"sessionAffinity"`
+	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	SessionAffinityAttributes pulumi.StringMapOutput `pulumi:"sessionAffinityAttributes"`
+	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	SessionAffinityTtl pulumi.IntPtrOutput `pulumi:"sessionAffinityTtl"`
 	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy pulumi.StringOutput `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
@@ -167,6 +171,10 @@ type loadBalancerState struct {
 	RegionPools []LoadBalancerRegionPool `pulumi:"regionPools"`
 	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	SessionAffinityAttributes map[string]string `pulumi:"sessionAffinityAttributes"`
+	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
 	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
@@ -198,6 +206,10 @@ type LoadBalancerState struct {
 	RegionPools LoadBalancerRegionPoolArrayInput
 	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity pulumi.StringPtrInput
+	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	SessionAffinityAttributes pulumi.StringMapInput
+	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	SessionAffinityTtl pulumi.IntPtrInput
 	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy pulumi.StringPtrInput
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
@@ -229,6 +241,10 @@ type loadBalancerArgs struct {
 	RegionPools []LoadBalancerRegionPool `pulumi:"regionPools"`
 	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	SessionAffinityAttributes map[string]string `pulumi:"sessionAffinityAttributes"`
+	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
 	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
@@ -257,6 +273,10 @@ type LoadBalancerArgs struct {
 	RegionPools LoadBalancerRegionPoolArrayInput
 	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
 	SessionAffinity pulumi.StringPtrInput
+	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	SessionAffinityAttributes pulumi.StringMapInput
+	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	SessionAffinityTtl pulumi.IntPtrInput
 	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
 	SteeringPolicy pulumi.StringPtrInput
 	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
