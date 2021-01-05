@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     ///             Interval = 60,
     ///             Method = "GET",
     ///             Path = "/health",
+    ///             ProbeZone = "example.com",
     ///             Retries = 5,
     ///             Timeout = 7,
     ///             Type = "http",
@@ -150,6 +151,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("port")]
         public Output<int?> Port { get; private set; } = null!;
+
+        /// <summary>
+        /// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        /// </summary>
+        [Output("probeZone")]
+        public Output<string?> ProbeZone { get; private set; } = null!;
 
         /// <summary>
         /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
@@ -282,6 +289,12 @@ namespace Pulumi.Cloudflare
         public Input<int>? Port { get; set; }
 
         /// <summary>
+        /// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        /// </summary>
+        [Input("probeZone")]
+        public Input<string>? ProbeZone { get; set; }
+
+        /// <summary>
         /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
         /// </summary>
         [Input("retries")]
@@ -383,6 +396,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        /// </summary>
+        [Input("probeZone")]
+        public Input<string>? ProbeZone { get; set; }
 
         /// <summary>
         /// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.

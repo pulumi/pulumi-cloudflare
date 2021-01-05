@@ -78,6 +78,10 @@ type AccessApplication struct {
 	// CORS configuration for the Access Application. See
 	// below for reference structure.
 	CorsHeaders AccessApplicationCorsHeaderArrayOutput `pulumi:"corsHeaders"`
+	// Option that returns a custom error message when a user is denied access to the application.
+	CustomDenyMessage pulumi.StringPtrOutput `pulumi:"customDenyMessage"`
+	// Option that redirects to a custom URL when a user is denied access to the application.
+	CustomDenyUrl pulumi.StringPtrOutput `pulumi:"customDenyUrl"`
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringOutput `pulumi:"domain"`
@@ -139,6 +143,10 @@ type accessApplicationState struct {
 	// CORS configuration for the Access Application. See
 	// below for reference structure.
 	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
+	// Option that returns a custom error message when a user is denied access to the application.
+	CustomDenyMessage *string `pulumi:"customDenyMessage"`
+	// Option that redirects to a custom URL when a user is denied access to the application.
+	CustomDenyUrl *string `pulumi:"customDenyUrl"`
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain *string `pulumi:"domain"`
@@ -167,6 +175,10 @@ type AccessApplicationState struct {
 	// CORS configuration for the Access Application. See
 	// below for reference structure.
 	CorsHeaders AccessApplicationCorsHeaderArrayInput
+	// Option that returns a custom error message when a user is denied access to the application.
+	CustomDenyMessage pulumi.StringPtrInput
+	// Option that redirects to a custom URL when a user is denied access to the application.
+	CustomDenyUrl pulumi.StringPtrInput
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringPtrInput
@@ -197,6 +209,10 @@ type accessApplicationArgs struct {
 	// CORS configuration for the Access Application. See
 	// below for reference structure.
 	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
+	// Option that returns a custom error message when a user is denied access to the application.
+	CustomDenyMessage *string `pulumi:"customDenyMessage"`
+	// Option that redirects to a custom URL when a user is denied access to the application.
+	CustomDenyUrl *string `pulumi:"customDenyUrl"`
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain string `pulumi:"domain"`
@@ -224,6 +240,10 @@ type AccessApplicationArgs struct {
 	// CORS configuration for the Access Application. See
 	// below for reference structure.
 	CorsHeaders AccessApplicationCorsHeaderArrayInput
+	// Option that returns a custom error message when a user is denied access to the application.
+	CustomDenyMessage pulumi.StringPtrInput
+	// Option that redirects to a custom URL when a user is denied access to the application.
+	CustomDenyUrl pulumi.StringPtrInput
 	// The complete URL of the asset you wish to put
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringInput

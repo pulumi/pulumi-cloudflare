@@ -95,6 +95,14 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly corsHeaders!: pulumi.Output<outputs.AccessApplicationCorsHeader[] | undefined>;
     /**
+     * Option that returns a custom error message when a user is denied access to the application.
+     */
+    public readonly customDenyMessage!: pulumi.Output<string | undefined>;
+    /**
+     * Option that redirects to a custom URL when a user is denied access to the application.
+     */
+    public readonly customDenyUrl!: pulumi.Output<string | undefined>;
+    /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.
      */
@@ -134,6 +142,8 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["aud"] = state ? state.aud : undefined;
             inputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
             inputs["corsHeaders"] = state ? state.corsHeaders : undefined;
+            inputs["customDenyMessage"] = state ? state.customDenyMessage : undefined;
+            inputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
             inputs["domain"] = state ? state.domain : undefined;
             inputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -151,6 +161,8 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["allowedIdps"] = args ? args.allowedIdps : undefined;
             inputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
             inputs["corsHeaders"] = args ? args.corsHeaders : undefined;
+            inputs["customDenyMessage"] = args ? args.customDenyMessage : undefined;
+            inputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
             inputs["domain"] = args ? args.domain : undefined;
             inputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -196,6 +208,14 @@ export interface AccessApplicationState {
      * below for reference structure.
      */
     readonly corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
+    /**
+     * Option that returns a custom error message when a user is denied access to the application.
+     */
+    readonly customDenyMessage?: pulumi.Input<string>;
+    /**
+     * Option that redirects to a custom URL when a user is denied access to the application.
+     */
+    readonly customDenyUrl?: pulumi.Input<string>;
     /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.
@@ -243,6 +263,14 @@ export interface AccessApplicationArgs {
      * below for reference structure.
      */
     readonly corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
+    /**
+     * Option that returns a custom error message when a user is denied access to the application.
+     */
+    readonly customDenyMessage?: pulumi.Input<string>;
+    /**
+     * Option that redirects to a custom URL when a user is denied access to the application.
+     */
+    readonly customDenyUrl?: pulumi.Input<string>;
     /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.

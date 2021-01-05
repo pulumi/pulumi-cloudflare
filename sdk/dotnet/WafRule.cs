@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
-    ///         var _00000 = new Cloudflare.WafRule("100000", new Cloudflare.WafRuleArgs
+    ///         var rule100000 = new Cloudflare.WafRule("rule100000", new Cloudflare.WafRuleArgs
     ///         {
     ///             Mode = "simulate",
     ///             RuleId = "100000",

@@ -37,6 +37,7 @@ from .load_balancer_pool import *
 from .log_push_ownership_challenge import *
 from .logpull_retention import *
 from .logpush_job import *
+from .magic_firewall_ruleset import *
 from .origin_ca_certificate import *
 from .page_rule import *
 from .provider import *

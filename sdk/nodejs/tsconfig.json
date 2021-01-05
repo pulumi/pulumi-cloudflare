@@ -50,6 +50,7 @@
         "logPushOwnershipChallenge.ts",
         "logpullRetention.ts",
         "logpushJob.ts",
+        "magicFirewallRuleset.ts",
         "originCaCertificate.ts",
         "pageRule.ts",
         "provider.ts",

@@ -21,6 +21,8 @@ class AccessApplication(pulumi.CustomResource):
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
+                 custom_deny_message: Optional[pulumi.Input[str]] = None,
+                 custom_deny_url: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -75,6 +77,8 @@ class AccessApplication(pulumi.CustomResource):
                (disabled).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
                below for reference structure.
+        :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -104,6 +108,8 @@ class AccessApplication(pulumi.CustomResource):
             __props__['allowed_idps'] = allowed_idps
             __props__['auto_redirect_to_identity'] = auto_redirect_to_identity
             __props__['cors_headers'] = cors_headers
+            __props__['custom_deny_message'] = custom_deny_message
+            __props__['custom_deny_url'] = custom_deny_url
             if domain is None:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
@@ -129,6 +135,8 @@ class AccessApplication(pulumi.CustomResource):
             aud: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
             cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
+            custom_deny_message: Optional[pulumi.Input[str]] = None,
+            custom_deny_url: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -149,6 +157,8 @@ class AccessApplication(pulumi.CustomResource):
                (disabled).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
                below for reference structure.
+        :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -166,6 +176,8 @@ class AccessApplication(pulumi.CustomResource):
         __props__["aud"] = aud
         __props__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__["cors_headers"] = cors_headers
+        __props__["custom_deny_message"] = custom_deny_message
+        __props__["custom_deny_url"] = custom_deny_url
         __props__["domain"] = domain
         __props__["enable_binding_cookie"] = enable_binding_cookie
         __props__["name"] = name
@@ -215,6 +227,22 @@ class AccessApplication(pulumi.CustomResource):
         below for reference structure.
         """
         return pulumi.get(self, "cors_headers")
+
+    @property
+    @pulumi.getter(name="customDenyMessage")
+    def custom_deny_message(self) -> pulumi.Output[Optional[str]]:
+        """
+        Option that returns a custom error message when a user is denied access to the application.
+        """
+        return pulumi.get(self, "custom_deny_message")
+
+    @property
+    @pulumi.getter(name="customDenyUrl")
+    def custom_deny_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        Option that redirects to a custom URL when a user is denied access to the application.
+        """
+        return pulumi.get(self, "custom_deny_url")
 
     @property
     @pulumi.getter

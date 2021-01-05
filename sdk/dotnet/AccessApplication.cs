@@ -99,6 +99,18 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.AccessApplicationCorsHeader>> CorsHeaders { get; private set; } = null!;
 
         /// <summary>
+        /// Option that returns a custom error message when a user is denied access to the application.
+        /// </summary>
+        [Output("customDenyMessage")]
+        public Output<string?> CustomDenyMessage { get; private set; } = null!;
+
+        /// <summary>
+        /// Option that redirects to a custom URL when a user is denied access to the application.
+        /// </summary>
+        [Output("customDenyUrl")]
+        public Output<string?> CustomDenyUrl { get; private set; } = null!;
+
+        /// <summary>
         /// The complete URL of the asset you wish to put
         /// Cloudflare Access in front of. Can include subdomains or paths. Or both.
         /// </summary>
@@ -216,6 +228,18 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Option that returns a custom error message when a user is denied access to the application.
+        /// </summary>
+        [Input("customDenyMessage")]
+        public Input<string>? CustomDenyMessage { get; set; }
+
+        /// <summary>
+        /// Option that redirects to a custom URL when a user is denied access to the application.
+        /// </summary>
+        [Input("customDenyUrl")]
+        public Input<string>? CustomDenyUrl { get; set; }
+
+        /// <summary>
         /// The complete URL of the asset you wish to put
         /// Cloudflare Access in front of. Can include subdomains or paths. Or both.
         /// </summary>
@@ -298,6 +322,18 @@ namespace Pulumi.Cloudflare
             get => _corsHeaders ?? (_corsHeaders = new InputList<Inputs.AccessApplicationCorsHeaderGetArgs>());
             set => _corsHeaders = value;
         }
+
+        /// <summary>
+        /// Option that returns a custom error message when a user is denied access to the application.
+        /// </summary>
+        [Input("customDenyMessage")]
+        public Input<string>? CustomDenyMessage { get; set; }
+
+        /// <summary>
+        /// Option that redirects to a custom URL when a user is denied access to the application.
+        /// </summary>
+        [Input("customDenyUrl")]
+        public Input<string>? CustomDenyUrl { get; set; }
 
         /// <summary>
         /// The complete URL of the asset you wish to put
