@@ -29,6 +29,7 @@ import * as utilities from "./utilities";
  *     interval: 60,
  *     method: "GET",
  *     path: "/health",
+ *     probeZone: "example.com",
  *     retries: 5,
  *     timeout: 7,
  *     type: "http",
@@ -127,6 +128,10 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number | undefined>;
     /**
+     * Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+     */
+    public readonly probeZone!: pulumi.Output<string | undefined>;
+    /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
      */
     public readonly retries!: pulumi.Output<number | undefined>;
@@ -163,6 +168,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             inputs["path"] = state ? state.path : undefined;
             inputs["port"] = state ? state.port : undefined;
+            inputs["probeZone"] = state ? state.probeZone : undefined;
             inputs["retries"] = state ? state.retries : undefined;
             inputs["timeout"] = state ? state.timeout : undefined;
             inputs["type"] = state ? state.type : undefined;
@@ -178,6 +184,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             inputs["method"] = args ? args.method : undefined;
             inputs["path"] = args ? args.path : undefined;
             inputs["port"] = args ? args.port : undefined;
+            inputs["probeZone"] = args ? args.probeZone : undefined;
             inputs["retries"] = args ? args.retries : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -248,6 +255,10 @@ export interface LoadBalancerMonitorState {
      */
     readonly port?: pulumi.Input<number>;
     /**
+     * Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+     */
+    readonly probeZone?: pulumi.Input<string>;
+    /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
      */
     readonly retries?: pulumi.Input<number>;
@@ -305,6 +316,10 @@ export interface LoadBalancerMonitorArgs {
      * The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
      */
     readonly port?: pulumi.Input<number>;
+    /**
+     * Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+     */
+    readonly probeZone?: pulumi.Input<string>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
      */

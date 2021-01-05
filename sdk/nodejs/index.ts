@@ -36,6 +36,7 @@ export * from "./loadBalancerPool";
 export * from "./logPushOwnershipChallenge";
 export * from "./logpullRetention";
 export * from "./logpushJob";
+export * from "./magicFirewallRuleset";
 export * from "./originCaCertificate";
 export * from "./pageRule";
 export * from "./provider";

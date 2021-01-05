@@ -27,6 +27,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                  method: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 probe_zone: Optional[pulumi.Input[str]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -57,6 +58,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             interval=60,
             method="GET",
             path="/health",
+            probe_zone="example.com",
             retries=5,
             timeout=7,
             type="http")
@@ -88,6 +90,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] method: The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
         :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
         :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        :param pulumi.Input[str] probe_zone: Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
@@ -119,6 +122,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             __props__['method'] = method
             __props__['path'] = path
             __props__['port'] = port
+            __props__['probe_zone'] = probe_zone
             __props__['retries'] = retries
             __props__['timeout'] = timeout
             __props__['type'] = type
@@ -146,6 +150,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             modified_on: Optional[pulumi.Input[str]] = None,
             path: Optional[pulumi.Input[str]] = None,
             port: Optional[pulumi.Input[int]] = None,
+            probe_zone: Optional[pulumi.Input[str]] = None,
             retries: Optional[pulumi.Input[int]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'LoadBalancerMonitor':
@@ -168,6 +173,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer monitor was last modified.
         :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
         :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        :param pulumi.Input[str] probe_zone: Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
@@ -188,6 +194,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         __props__["modified_on"] = modified_on
         __props__["path"] = path
         __props__["port"] = port
+        __props__["probe_zone"] = probe_zone
         __props__["retries"] = retries
         __props__["timeout"] = timeout
         __props__["type"] = type
@@ -288,6 +295,14 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="probeZone")
+    def probe_zone(self) -> pulumi.Output[Optional[str]]:
+        """
+        Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        """
+        return pulumi.get(self, "probe_zone")
 
     @property
     @pulumi.getter

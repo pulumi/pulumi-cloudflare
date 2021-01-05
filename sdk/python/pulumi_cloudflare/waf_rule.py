@@ -31,7 +31,7 @@ class WafRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        _100000 = cloudflare.WafRule("100000",
+        rule100000 = cloudflare.WafRule("rule100000",
             mode="simulate",
             rule_id="100000",
             zone_id="ae36f999674d196762efcc5abb06b345")

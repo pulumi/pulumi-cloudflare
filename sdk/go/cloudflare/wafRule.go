@@ -25,7 +25,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewWafRule(ctx, "_00000", &cloudflare.WafRuleArgs{
+// 		_, err := cloudflare.NewWafRule(ctx, "rule100000", &cloudflare.WafRuleArgs{
 // 			Mode:   pulumi.String("simulate"),
 // 			RuleId: pulumi.String("100000"),
 // 			ZoneId: pulumi.String("ae36f999674d196762efcc5abb06b345"),

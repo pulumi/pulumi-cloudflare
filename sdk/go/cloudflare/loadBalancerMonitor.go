@@ -40,12 +40,13 @@ import (
 // 					},
 // 				},
 // 			},
-// 			Interval: pulumi.Int(60),
-// 			Method:   pulumi.String("GET"),
-// 			Path:     pulumi.String("/health"),
-// 			Retries:  pulumi.Int(5),
-// 			Timeout:  pulumi.Int(7),
-// 			Type:     pulumi.String("http"),
+// 			Interval:  pulumi.Int(60),
+// 			Method:    pulumi.String("GET"),
+// 			Path:      pulumi.String("/health"),
+// 			ProbeZone: pulumi.String("example.com"),
+// 			Retries:   pulumi.Int(5),
+// 			Timeout:   pulumi.Int(7),
+// 			Type:      pulumi.String("http"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -108,6 +109,8 @@ type LoadBalancerMonitor struct {
 	Path pulumi.StringOutput `pulumi:"path"`
 	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
 	Port pulumi.IntPtrOutput `pulumi:"port"`
+	// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+	ProbeZone pulumi.StringPtrOutput `pulumi:"probeZone"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries pulumi.IntPtrOutput `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
@@ -168,6 +171,8 @@ type loadBalancerMonitorState struct {
 	Path *string `pulumi:"path"`
 	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
 	Port *int `pulumi:"port"`
+	// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+	ProbeZone *string `pulumi:"probeZone"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries *int `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
@@ -201,6 +206,8 @@ type LoadBalancerMonitorState struct {
 	Path pulumi.StringPtrInput
 	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
 	Port pulumi.IntPtrInput
+	// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+	ProbeZone pulumi.StringPtrInput
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries pulumi.IntPtrInput
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
@@ -234,6 +241,8 @@ type loadBalancerMonitorArgs struct {
 	Path *string `pulumi:"path"`
 	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
 	Port *int `pulumi:"port"`
+	// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+	ProbeZone *string `pulumi:"probeZone"`
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries *int `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
@@ -264,6 +273,8 @@ type LoadBalancerMonitorArgs struct {
 	Path pulumi.StringPtrInput
 	// The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
 	Port pulumi.IntPtrInput
+	// Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+	ProbeZone pulumi.StringPtrInput
 	// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
 	Retries pulumi.IntPtrInput
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
