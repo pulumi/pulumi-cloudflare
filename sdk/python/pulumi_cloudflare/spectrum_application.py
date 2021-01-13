@@ -100,7 +100,7 @@ class SpectrumApplication(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['argo_smart_routing'] = argo_smart_routing
-            if dns is None:
+            if dns is None and not opts.urn:
                 raise TypeError("Missing required property 'dns'")
             __props__['dns'] = dns
             __props__['edge_ip_connectivity'] = edge_ip_connectivity
@@ -110,13 +110,13 @@ class SpectrumApplication(pulumi.CustomResource):
             __props__['origin_dns'] = origin_dns
             __props__['origin_port'] = origin_port
             __props__['origin_port_range'] = origin_port_range
-            if protocol is None:
+            if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")
             __props__['protocol'] = protocol
             __props__['proxy_protocol'] = proxy_protocol
             __props__['tls'] = tls
             __props__['traffic_type'] = traffic_type
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(SpectrumApplication, __self__).__init__(

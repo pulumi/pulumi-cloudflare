@@ -39,14 +39,15 @@ type ApiToken struct {
 // NewApiToken registers a new resource with the given unique name, arguments, and options.
 func NewApiToken(ctx *pulumi.Context,
 	name string, args *ApiTokenArgs, opts ...pulumi.ResourceOption) (*ApiToken, error) {
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
-	if args == nil || args.Policies == nil {
-		return nil, errors.New("missing required argument 'Policies'")
-	}
 	if args == nil {
-		args = &ApiTokenArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Policies == nil {
+		return nil, errors.New("invalid value for required argument 'Policies'")
 	}
 	var resource ApiToken
 	err := ctx.RegisterResource("cloudflare:index/apiToken:ApiToken", name, args, &resource, opts...)

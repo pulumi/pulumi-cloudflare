@@ -107,13 +107,13 @@ export class ZoneLockdown extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneLockdownArgs | undefined;
-            if (!args || args.configurations === undefined) {
+            if ((!args || args.configurations === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'configurations'");
             }
-            if (!args || args.urls === undefined) {
+            if ((!args || args.urls === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'urls'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["configurations"] = args ? args.configurations : undefined;

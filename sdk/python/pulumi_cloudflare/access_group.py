@@ -129,10 +129,10 @@ class AccessGroup(pulumi.CustomResource):
 
             __props__['account_id'] = account_id
             __props__['excludes'] = excludes
-            if includes is None:
+            if includes is None and not opts.urn:
                 raise TypeError("Missing required property 'includes'")
             __props__['includes'] = includes
-            if name is None:
+            if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['requires'] = requires

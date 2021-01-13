@@ -125,6 +125,7 @@ func NewLoadBalancerMonitor(ctx *pulumi.Context,
 	if args == nil {
 		args = &LoadBalancerMonitorArgs{}
 	}
+
 	var resource LoadBalancerMonitor
 	err := ctx.RegisterResource("cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor", name, args, &resource, opts...)
 	if err != nil {

@@ -127,10 +127,10 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["origins"] = state ? state.origins : undefined;
         } else {
             const args = argsOrState as LoadBalancerPoolArgs | undefined;
-            if (!args || args.name === undefined) {
+            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'name'");
             }
-            if (!args || args.origins === undefined) {
+            if ((!args || args.origins === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'origins'");
             }
             inputs["checkRegions"] = args ? args.checkRegions : undefined;

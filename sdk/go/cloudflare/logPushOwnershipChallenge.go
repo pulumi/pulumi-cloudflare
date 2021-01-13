@@ -53,14 +53,15 @@ type LogPushOwnershipChallenge struct {
 // NewLogPushOwnershipChallenge registers a new resource with the given unique name, arguments, and options.
 func NewLogPushOwnershipChallenge(ctx *pulumi.Context,
 	name string, args *LogPushOwnershipChallengeArgs, opts ...pulumi.ResourceOption) (*LogPushOwnershipChallenge, error) {
-	if args == nil || args.DestinationConf == nil {
-		return nil, errors.New("missing required argument 'DestinationConf'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &LogPushOwnershipChallengeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DestinationConf == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationConf'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource LogPushOwnershipChallenge
 	err := ctx.RegisterResource("cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge", name, args, &resource, opts...)

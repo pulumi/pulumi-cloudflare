@@ -84,17 +84,17 @@ class FirewallRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if action is None:
+            if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
             __props__['description'] = description
-            if filter_id is None:
+            if filter_id is None and not opts.urn:
                 raise TypeError("Missing required property 'filter_id'")
             __props__['filter_id'] = filter_id
             __props__['paused'] = paused
             __props__['priority'] = priority
             __props__['products'] = products
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(FirewallRule, __self__).__init__(

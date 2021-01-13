@@ -76,14 +76,15 @@ type MagicFirewallRuleset struct {
 // NewMagicFirewallRuleset registers a new resource with the given unique name, arguments, and options.
 func NewMagicFirewallRuleset(ctx *pulumi.Context,
 	name string, args *MagicFirewallRulesetArgs, opts ...pulumi.ResourceOption) (*MagicFirewallRuleset, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
 	if args == nil {
-		args = &MagicFirewallRulesetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	var resource MagicFirewallRuleset
 	err := ctx.RegisterResource("cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset", name, args, &resource, opts...)

@@ -143,16 +143,16 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
-            if (!args || args.applicationId === undefined) {
+            if ((!args || args.applicationId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if (!args || args.decision === undefined) {
+            if ((!args || args.decision === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'decision'");
             }
-            if (!args || args.includes === undefined) {
+            if ((!args || args.includes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'includes'");
             }
-            if (!args || args.name === undefined) {
+            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;

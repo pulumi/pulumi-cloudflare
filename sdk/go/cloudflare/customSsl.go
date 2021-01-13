@@ -77,11 +77,12 @@ type CustomSsl struct {
 // NewCustomSsl registers a new resource with the given unique name, arguments, and options.
 func NewCustomSsl(ctx *pulumi.Context,
 	name string, args *CustomSslArgs, opts ...pulumi.ResourceOption) (*CustomSsl, error) {
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &CustomSslArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource CustomSsl
 	err := ctx.RegisterResource("cloudflare:index/customSsl:CustomSsl", name, args, &resource, opts...)

@@ -99,17 +99,17 @@ class Record(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['data'] = data
-            if name is None:
+            if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['priority'] = priority
             __props__['proxied'] = proxied
             __props__['ttl'] = ttl
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['value'] = value
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['created_on'] = None

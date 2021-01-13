@@ -38,14 +38,15 @@ type WorkerScript struct {
 // NewWorkerScript registers a new resource with the given unique name, arguments, and options.
 func NewWorkerScript(ctx *pulumi.Context,
 	name string, args *WorkerScriptArgs, opts ...pulumi.ResourceOption) (*WorkerScript, error) {
-	if args == nil || args.Content == nil {
-		return nil, errors.New("missing required argument 'Content'")
-	}
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
 	if args == nil {
-		args = &WorkerScriptArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Content == nil {
+		return nil, errors.New("invalid value for required argument 'Content'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	var resource WorkerScript
 	err := ctx.RegisterResource("cloudflare:index/workerScript:WorkerScript", name, args, &resource, opts...)

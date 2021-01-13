@@ -75,14 +75,15 @@ type CustomPages struct {
 // NewCustomPages registers a new resource with the given unique name, arguments, and options.
 func NewCustomPages(ctx *pulumi.Context,
 	name string, args *CustomPagesArgs, opts ...pulumi.ResourceOption) (*CustomPages, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.Url == nil {
-		return nil, errors.New("missing required argument 'Url'")
-	}
 	if args == nil {
-		args = &CustomPagesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.Url == nil {
+		return nil, errors.New("invalid value for required argument 'Url'")
 	}
 	var resource CustomPages
 	err := ctx.RegisterResource("cloudflare:index/customPages:CustomPages", name, args, &resource, opts...)

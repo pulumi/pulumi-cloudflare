@@ -55,11 +55,12 @@ type WorkersKvNamespace struct {
 // NewWorkersKvNamespace registers a new resource with the given unique name, arguments, and options.
 func NewWorkersKvNamespace(ctx *pulumi.Context,
 	name string, args *WorkersKvNamespaceArgs, opts ...pulumi.ResourceOption) (*WorkersKvNamespace, error) {
-	if args == nil || args.Title == nil {
-		return nil, errors.New("missing required argument 'Title'")
-	}
 	if args == nil {
-		args = &WorkersKvNamespaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Title == nil {
+		return nil, errors.New("invalid value for required argument 'Title'")
 	}
 	var resource WorkersKvNamespace
 	err := ctx.RegisterResource("cloudflare:index/workersKvNamespace:WorkersKvNamespace", name, args, &resource, opts...)

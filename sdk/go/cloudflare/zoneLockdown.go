@@ -75,17 +75,18 @@ type ZoneLockdown struct {
 // NewZoneLockdown registers a new resource with the given unique name, arguments, and options.
 func NewZoneLockdown(ctx *pulumi.Context,
 	name string, args *ZoneLockdownArgs, opts ...pulumi.ResourceOption) (*ZoneLockdown, error) {
-	if args == nil || args.Configurations == nil {
-		return nil, errors.New("missing required argument 'Configurations'")
-	}
-	if args == nil || args.Urls == nil {
-		return nil, errors.New("missing required argument 'Urls'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &ZoneLockdownArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Configurations == nil {
+		return nil, errors.New("invalid value for required argument 'Configurations'")
+	}
+	if args.Urls == nil {
+		return nil, errors.New("invalid value for required argument 'Urls'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource ZoneLockdown
 	err := ctx.RegisterResource("cloudflare:index/zoneLockdown:ZoneLockdown", name, args, &resource, opts...)

@@ -50,17 +50,18 @@ type CertificatePack struct {
 // NewCertificatePack registers a new resource with the given unique name, arguments, and options.
 func NewCertificatePack(ctx *pulumi.Context,
 	name string, args *CertificatePackArgs, opts ...pulumi.ResourceOption) (*CertificatePack, error) {
-	if args == nil || args.Hosts == nil {
-		return nil, errors.New("missing required argument 'Hosts'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &CertificatePackArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Hosts == nil {
+		return nil, errors.New("invalid value for required argument 'Hosts'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource CertificatePack
 	err := ctx.RegisterResource("cloudflare:index/certificatePack:CertificatePack", name, args, &resource, opts...)

@@ -107,17 +107,17 @@ class AccessPolicy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['account_id'] = account_id
-            if application_id is None:
+            if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__['application_id'] = application_id
-            if decision is None:
+            if decision is None and not opts.urn:
                 raise TypeError("Missing required property 'decision'")
             __props__['decision'] = decision
             __props__['excludes'] = excludes
-            if includes is None:
+            if includes is None and not opts.urn:
                 raise TypeError("Missing required property 'includes'")
             __props__['includes'] = includes
-            if name is None:
+            if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['precedence'] = precedence

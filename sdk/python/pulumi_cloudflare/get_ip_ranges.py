@@ -117,10 +117,10 @@ def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIp
     allow_cloudflare_ingress = gcp.compute.Firewall("allowCloudflareIngress",
         network="default",
         source_ranges=cloudflare.ipv4_cidr_blocks,
-        allows=[{
-            "ports": "443",
-            "protocol": "tcp",
-        }])
+        allows=[gcp.compute.FirewallAllowArgs(
+            ports="443",
+            protocol="tcp",
+        )])
     ```
     """
     __args__ = dict()

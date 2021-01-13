@@ -74,11 +74,12 @@ type Zone struct {
 // NewZone registers a new resource with the given unique name, arguments, and options.
 func NewZone(ctx *pulumi.Context,
 	name string, args *ZoneArgs, opts ...pulumi.ResourceOption) (*Zone, error) {
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	if args == nil {
-		args = &ZoneArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource Zone
 	err := ctx.RegisterResource("cloudflare:index/zone:Zone", name, args, &resource, opts...)

@@ -150,13 +150,13 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SpectrumApplicationArgs | undefined;
-            if (!args || args.dns === undefined) {
+            if ((!args || args.dns === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dns'");
             }
-            if (!args || args.protocol === undefined) {
+            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["argoSmartRouting"] = args ? args.argoSmartRouting : undefined;

@@ -74,17 +74,18 @@ type IpList struct {
 // NewIpList registers a new resource with the given unique name, arguments, and options.
 func NewIpList(ctx *pulumi.Context,
 	name string, args *IpListArgs, opts ...pulumi.ResourceOption) (*IpList, error) {
-	if args == nil || args.AccountId == nil {
-		return nil, errors.New("missing required argument 'AccountId'")
-	}
-	if args == nil || args.Kind == nil {
-		return nil, errors.New("missing required argument 'Kind'")
-	}
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
 	if args == nil {
-		args = &IpListArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	var resource IpList
 	err := ctx.RegisterResource("cloudflare:index/ipList:IpList", name, args, &resource, opts...)

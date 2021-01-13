@@ -112,20 +112,21 @@ type LoadBalancer struct {
 // NewLoadBalancer registers a new resource with the given unique name, arguments, and options.
 func NewLoadBalancer(ctx *pulumi.Context,
 	name string, args *LoadBalancerArgs, opts ...pulumi.ResourceOption) (*LoadBalancer, error) {
-	if args == nil || args.DefaultPoolIds == nil {
-		return nil, errors.New("missing required argument 'DefaultPoolIds'")
-	}
-	if args == nil || args.FallbackPoolId == nil {
-		return nil, errors.New("missing required argument 'FallbackPoolId'")
-	}
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &LoadBalancerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DefaultPoolIds == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultPoolIds'")
+	}
+	if args.FallbackPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'FallbackPoolId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource LoadBalancer
 	err := ctx.RegisterResource("cloudflare:index/loadBalancer:LoadBalancer", name, args, &resource, opts...)

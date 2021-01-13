@@ -76,7 +76,7 @@ class Zone(pulumi.CustomResource):
             __props__['paused'] = paused
             __props__['plan'] = plan
             __props__['type'] = type
-            if zone is None:
+            if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
             __props__['meta'] = None

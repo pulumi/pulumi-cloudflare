@@ -65,14 +65,15 @@ type WorkerRoute struct {
 // NewWorkerRoute registers a new resource with the given unique name, arguments, and options.
 func NewWorkerRoute(ctx *pulumi.Context,
 	name string, args *WorkerRouteArgs, opts ...pulumi.ResourceOption) (*WorkerRoute, error) {
-	if args == nil || args.Pattern == nil {
-		return nil, errors.New("missing required argument 'Pattern'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &WorkerRouteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Pattern == nil {
+		return nil, errors.New("invalid value for required argument 'Pattern'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource WorkerRoute
 	err := ctx.RegisterResource("cloudflare:index/workerRoute:WorkerRoute", name, args, &resource, opts...)

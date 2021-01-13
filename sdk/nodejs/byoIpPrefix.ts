@@ -86,7 +86,7 @@ export class ByoIpPrefix extends pulumi.CustomResource {
             inputs["prefixId"] = state ? state.prefixId : undefined;
         } else {
             const args = argsOrState as ByoIpPrefixArgs | undefined;
-            if (!args || args.prefixId === undefined) {
+            if ((!args || args.prefixId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'prefixId'");
             }
             inputs["advertisement"] = args ? args.advertisement : undefined;

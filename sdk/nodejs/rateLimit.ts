@@ -161,16 +161,16 @@ export class RateLimit extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RateLimitArgs | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.period === undefined) {
+            if ((!args || args.period === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'period'");
             }
-            if (!args || args.threshold === undefined) {
+            if ((!args || args.threshold === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'threshold'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["action"] = args ? args.action : undefined;

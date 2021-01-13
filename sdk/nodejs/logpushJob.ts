@@ -82,16 +82,16 @@ export class LogpushJob extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LogpushJobArgs | undefined;
-            if (!args || args.dataset === undefined) {
+            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataset'");
             }
-            if (!args || args.destinationConf === undefined) {
+            if ((!args || args.destinationConf === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destinationConf'");
             }
-            if (!args || args.ownershipChallenge === undefined) {
+            if ((!args || args.ownershipChallenge === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ownershipChallenge'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["dataset"] = args ? args.dataset : undefined;

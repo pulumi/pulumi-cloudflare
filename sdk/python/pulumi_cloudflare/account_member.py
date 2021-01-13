@@ -69,10 +69,10 @@ class AccountMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if email_address is None:
+            if email_address is None and not opts.urn:
                 raise TypeError("Missing required property 'email_address'")
             __props__['email_address'] = email_address
-            if role_ids is None:
+            if role_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'role_ids'")
             __props__['role_ids'] = role_ids
         super(AccountMember, __self__).__init__(

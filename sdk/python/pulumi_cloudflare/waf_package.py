@@ -71,11 +71,11 @@ class WafPackage(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['action_mode'] = action_mode
-            if package_id is None:
+            if package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'package_id'")
             __props__['package_id'] = package_id
             __props__['sensitivity'] = sensitivity
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(WafPackage, __self__).__init__(

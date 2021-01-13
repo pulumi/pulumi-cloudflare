@@ -90,17 +90,18 @@ type SpectrumApplication struct {
 // NewSpectrumApplication registers a new resource with the given unique name, arguments, and options.
 func NewSpectrumApplication(ctx *pulumi.Context,
 	name string, args *SpectrumApplicationArgs, opts ...pulumi.ResourceOption) (*SpectrumApplication, error) {
-	if args == nil || args.Dns == nil {
-		return nil, errors.New("missing required argument 'Dns'")
-	}
-	if args == nil || args.Protocol == nil {
-		return nil, errors.New("missing required argument 'Protocol'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &SpectrumApplicationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Dns == nil {
+		return nil, errors.New("invalid value for required argument 'Dns'")
+	}
+	if args.Protocol == nil {
+		return nil, errors.New("invalid value for required argument 'Protocol'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource SpectrumApplication
 	err := ctx.RegisterResource("cloudflare:index/spectrumApplication:SpectrumApplication", name, args, &resource, opts...)

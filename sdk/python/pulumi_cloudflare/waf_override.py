@@ -95,13 +95,13 @@ class WafOverride(pulumi.CustomResource):
             __props__['paused'] = paused
             __props__['priority'] = priority
             __props__['rewrite_action'] = rewrite_action
-            if rules is None:
+            if rules is None and not opts.urn:
                 raise TypeError("Missing required property 'rules'")
             __props__['rules'] = rules
-            if urls is None:
+            if urls is None and not opts.urn:
                 raise TypeError("Missing required property 'urls'")
             __props__['urls'] = urls
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['override_id'] = None

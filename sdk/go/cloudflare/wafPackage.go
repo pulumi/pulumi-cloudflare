@@ -62,14 +62,15 @@ type WafPackage struct {
 // NewWafPackage registers a new resource with the given unique name, arguments, and options.
 func NewWafPackage(ctx *pulumi.Context,
 	name string, args *WafPackageArgs, opts ...pulumi.ResourceOption) (*WafPackage, error) {
-	if args == nil || args.PackageId == nil {
-		return nil, errors.New("missing required argument 'PackageId'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &WafPackageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PackageId == nil {
+		return nil, errors.New("invalid value for required argument 'PackageId'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource WafPackage
 	err := ctx.RegisterResource("cloudflare:index/wafPackage:WafPackage", name, args, &resource, opts...)

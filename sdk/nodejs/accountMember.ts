@@ -85,10 +85,10 @@ export class AccountMember extends pulumi.CustomResource {
             inputs["roleIds"] = state ? state.roleIds : undefined;
         } else {
             const args = argsOrState as AccountMemberArgs | undefined;
-            if (!args || args.emailAddress === undefined) {
+            if ((!args || args.emailAddress === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'emailAddress'");
             }
-            if (!args || args.roleIds === undefined) {
+            if ((!args || args.roleIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleIds'");
             }
             inputs["emailAddress"] = args ? args.emailAddress : undefined;

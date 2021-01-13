@@ -69,14 +69,14 @@ class WafRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if mode is None:
+            if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
             __props__['mode'] = mode
             __props__['package_id'] = package_id
-            if rule_id is None:
+            if rule_id is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_id'")
             __props__['rule_id'] = rule_id
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['group_id'] = None

@@ -76,17 +76,18 @@ type PageRule struct {
 // NewPageRule registers a new resource with the given unique name, arguments, and options.
 func NewPageRule(ctx *pulumi.Context,
 	name string, args *PageRuleArgs, opts ...pulumi.ResourceOption) (*PageRule, error) {
-	if args == nil || args.Actions == nil {
-		return nil, errors.New("missing required argument 'Actions'")
-	}
-	if args == nil || args.Target == nil {
-		return nil, errors.New("missing required argument 'Target'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &PageRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Actions == nil {
+		return nil, errors.New("invalid value for required argument 'Actions'")
+	}
+	if args.Target == nil {
+		return nil, errors.New("invalid value for required argument 'Target'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource PageRule
 	err := ctx.RegisterResource("cloudflare:index/pageRule:PageRule", name, args, &resource, opts...)

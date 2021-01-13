@@ -72,11 +72,11 @@ class WorkerRoute(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if pattern is None:
+            if pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'pattern'")
             __props__['pattern'] = pattern
             __props__['script_name'] = script_name
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(WorkerRoute, __self__).__init__(

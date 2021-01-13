@@ -89,11 +89,11 @@ class LoadBalancerPool(pulumi.CustomResource):
             __props__['enabled'] = enabled
             __props__['minimum_origins'] = minimum_origins
             __props__['monitor'] = monitor
-            if name is None:
+            if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['notification_email'] = notification_email
-            if origins is None:
+            if origins is None and not opts.urn:
                 raise TypeError("Missing required property 'origins'")
             __props__['origins'] = origins
             __props__['created_on'] = None

@@ -100,13 +100,13 @@ export class CustomHostname extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomHostnameArgs | undefined;
-            if (!args || args.hostname === undefined) {
+            if ((!args || args.hostname === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostname'");
             }
-            if (!args || args.ssls === undefined) {
+            if ((!args || args.ssls === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ssls'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["customOriginServer"] = args ? args.customOriginServer : undefined;

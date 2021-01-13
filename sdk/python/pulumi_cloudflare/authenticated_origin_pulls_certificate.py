@@ -83,16 +83,16 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if certificate is None:
+            if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
             __props__['certificate'] = certificate
-            if private_key is None:
+            if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
             __props__['private_key'] = private_key
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['expires_on'] = None

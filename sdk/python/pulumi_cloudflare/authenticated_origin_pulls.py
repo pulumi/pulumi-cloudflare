@@ -105,11 +105,11 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['authenticated_origin_pulls_certificate'] = authenticated_origin_pulls_certificate
-            if enabled is None:
+            if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__['enabled'] = enabled
             __props__['hostname'] = hostname
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(AuthenticatedOriginPulls, __self__).__init__(

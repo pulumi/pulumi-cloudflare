@@ -155,10 +155,10 @@ export class AccessGroup extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
-            if (!args || args.includes === undefined) {
+            if ((!args || args.includes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'includes'");
             }
-            if (!args || args.name === undefined) {
+            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;

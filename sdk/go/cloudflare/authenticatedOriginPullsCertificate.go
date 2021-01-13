@@ -83,20 +83,21 @@ type AuthenticatedOriginPullsCertificate struct {
 // NewAuthenticatedOriginPullsCertificate registers a new resource with the given unique name, arguments, and options.
 func NewAuthenticatedOriginPullsCertificate(ctx *pulumi.Context,
 	name string, args *AuthenticatedOriginPullsCertificateArgs, opts ...pulumi.ResourceOption) (*AuthenticatedOriginPullsCertificate, error) {
-	if args == nil || args.Certificate == nil {
-		return nil, errors.New("missing required argument 'Certificate'")
-	}
-	if args == nil || args.PrivateKey == nil {
-		return nil, errors.New("missing required argument 'PrivateKey'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &AuthenticatedOriginPullsCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Certificate == nil {
+		return nil, errors.New("invalid value for required argument 'Certificate'")
+	}
+	if args.PrivateKey == nil {
+		return nil, errors.New("invalid value for required argument 'PrivateKey'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource AuthenticatedOriginPullsCertificate
 	err := ctx.RegisterResource("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate", name, args, &resource, opts...)

@@ -71,7 +71,7 @@ class Argo(pulumi.CustomResource):
 
             __props__['smart_routing'] = smart_routing
             __props__['tiered_caching'] = tiered_caching
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(Argo, __self__).__init__(

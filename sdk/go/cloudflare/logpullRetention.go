@@ -56,14 +56,15 @@ type LogpullRetention struct {
 // NewLogpullRetention registers a new resource with the given unique name, arguments, and options.
 func NewLogpullRetention(ctx *pulumi.Context,
 	name string, args *LogpullRetentionArgs, opts ...pulumi.ResourceOption) (*LogpullRetention, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &LogpullRetentionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource LogpullRetention
 	err := ctx.RegisterResource("cloudflare:index/logpullRetention:LogpullRetention", name, args, &resource, opts...)

@@ -126,13 +126,13 @@ export class WafOverride extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafOverrideArgs | undefined;
-            if (!args || args.rules === undefined) {
+            if ((!args || args.rules === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rules'");
             }
-            if (!args || args.urls === undefined) {
+            if ((!args || args.urls === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'urls'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["description"] = args ? args.description : undefined;

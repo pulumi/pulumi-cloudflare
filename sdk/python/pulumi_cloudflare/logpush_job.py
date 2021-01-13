@@ -54,19 +54,19 @@ class LogpushJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if dataset is None:
+            if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
             __props__['dataset'] = dataset
-            if destination_conf is None:
+            if destination_conf is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_conf'")
             __props__['destination_conf'] = destination_conf
             __props__['enabled'] = enabled
             __props__['logpull_options'] = logpull_options
             __props__['name'] = name
-            if ownership_challenge is None:
+            if ownership_challenge is None and not opts.urn:
                 raise TypeError("Missing required property 'ownership_challenge'")
             __props__['ownership_challenge'] = ownership_challenge
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(LogpushJob, __self__).__init__(
