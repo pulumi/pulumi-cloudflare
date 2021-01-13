@@ -76,7 +76,7 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
             inputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as WorkersKvNamespaceArgs | undefined;
-            if (!args || args.title === undefined) {
+            if ((!args || args.title === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'title'");
             }
             inputs["title"] = args ? args.title : undefined;

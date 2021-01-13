@@ -82,16 +82,16 @@ class ZoneLockdown(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if configurations is None:
+            if configurations is None and not opts.urn:
                 raise TypeError("Missing required property 'configurations'")
             __props__['configurations'] = configurations
             __props__['description'] = description
             __props__['paused'] = paused
             __props__['priority'] = priority
-            if urls is None:
+            if urls is None and not opts.urn:
                 raise TypeError("Missing required property 'urls'")
             __props__['urls'] = urls
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(ZoneLockdown, __self__).__init__(

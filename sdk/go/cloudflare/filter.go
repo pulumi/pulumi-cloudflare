@@ -65,14 +65,15 @@ type Filter struct {
 // NewFilter registers a new resource with the given unique name, arguments, and options.
 func NewFilter(ctx *pulumi.Context,
 	name string, args *FilterArgs, opts ...pulumi.ResourceOption) (*Filter, error) {
-	if args == nil || args.Expression == nil {
-		return nil, errors.New("missing required argument 'Expression'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &FilterArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Expression == nil {
+		return nil, errors.New("invalid value for required argument 'Expression'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource Filter
 	err := ctx.RegisterResource("cloudflare:index/filter:Filter", name, args, &resource, opts...)

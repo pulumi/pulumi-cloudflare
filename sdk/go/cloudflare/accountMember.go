@@ -61,14 +61,15 @@ type AccountMember struct {
 // NewAccountMember registers a new resource with the given unique name, arguments, and options.
 func NewAccountMember(ctx *pulumi.Context,
 	name string, args *AccountMemberArgs, opts ...pulumi.ResourceOption) (*AccountMember, error) {
-	if args == nil || args.EmailAddress == nil {
-		return nil, errors.New("missing required argument 'EmailAddress'")
-	}
-	if args == nil || args.RoleIds == nil {
-		return nil, errors.New("missing required argument 'RoleIds'")
-	}
 	if args == nil {
-		args = &AccountMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EmailAddress == nil {
+		return nil, errors.New("invalid value for required argument 'EmailAddress'")
+	}
+	if args.RoleIds == nil {
+		return nil, errors.New("invalid value for required argument 'RoleIds'")
 	}
 	var resource AccountMember
 	err := ctx.RegisterResource("cloudflare:index/accountMember:AccountMember", name, args, &resource, opts...)

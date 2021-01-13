@@ -58,14 +58,15 @@ type CustomHostnameFallbackOrigin struct {
 // NewCustomHostnameFallbackOrigin registers a new resource with the given unique name, arguments, and options.
 func NewCustomHostnameFallbackOrigin(ctx *pulumi.Context,
 	name string, args *CustomHostnameFallbackOriginArgs, opts ...pulumi.ResourceOption) (*CustomHostnameFallbackOrigin, error) {
-	if args == nil || args.Origin == nil {
-		return nil, errors.New("missing required argument 'Origin'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &CustomHostnameFallbackOriginArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Origin == nil {
+		return nil, errors.New("invalid value for required argument 'Origin'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource CustomHostnameFallbackOrigin
 	err := ctx.RegisterResource("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin", name, args, &resource, opts...)

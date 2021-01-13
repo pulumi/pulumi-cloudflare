@@ -109,14 +109,15 @@ type AuthenticatedOriginPulls struct {
 // NewAuthenticatedOriginPulls registers a new resource with the given unique name, arguments, and options.
 func NewAuthenticatedOriginPulls(ctx *pulumi.Context,
 	name string, args *AuthenticatedOriginPullsArgs, opts ...pulumi.ResourceOption) (*AuthenticatedOriginPulls, error) {
-	if args == nil || args.Enabled == nil {
-		return nil, errors.New("missing required argument 'Enabled'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &AuthenticatedOriginPullsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Enabled == nil {
+		return nil, errors.New("invalid value for required argument 'Enabled'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource AuthenticatedOriginPulls
 	err := ctx.RegisterResource("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls", name, args, &resource, opts...)

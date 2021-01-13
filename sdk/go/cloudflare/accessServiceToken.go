@@ -65,11 +65,12 @@ type AccessServiceToken struct {
 // NewAccessServiceToken registers a new resource with the given unique name, arguments, and options.
 func NewAccessServiceToken(ctx *pulumi.Context,
 	name string, args *AccessServiceTokenArgs, opts ...pulumi.ResourceOption) (*AccessServiceToken, error) {
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
 	if args == nil {
-		args = &AccessServiceTokenArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	var resource AccessServiceToken
 	err := ctx.RegisterResource("cloudflare:index/accessServiceToken:AccessServiceToken", name, args, &resource, opts...)

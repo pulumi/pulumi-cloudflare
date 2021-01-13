@@ -59,11 +59,12 @@ type ByoIpPrefix struct {
 // NewByoIpPrefix registers a new resource with the given unique name, arguments, and options.
 func NewByoIpPrefix(ctx *pulumi.Context,
 	name string, args *ByoIpPrefixArgs, opts ...pulumi.ResourceOption) (*ByoIpPrefix, error) {
-	if args == nil || args.PrefixId == nil {
-		return nil, errors.New("missing required argument 'PrefixId'")
-	}
 	if args == nil {
-		args = &ByoIpPrefixArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PrefixId == nil {
+		return nil, errors.New("invalid value for required argument 'PrefixId'")
 	}
 	var resource ByoIpPrefix
 	err := ctx.RegisterResource("cloudflare:index/byoIpPrefix:ByoIpPrefix", name, args, &resource, opts...)

@@ -73,11 +73,12 @@ type ZoneSettingsOverride struct {
 // NewZoneSettingsOverride registers a new resource with the given unique name, arguments, and options.
 func NewZoneSettingsOverride(ctx *pulumi.Context,
 	name string, args *ZoneSettingsOverrideArgs, opts ...pulumi.ResourceOption) (*ZoneSettingsOverride, error) {
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &ZoneSettingsOverrideArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource ZoneSettingsOverride
 	err := ctx.RegisterResource("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride", name, args, &resource, opts...)

@@ -33,20 +33,21 @@ type LogpushJob struct {
 // NewLogpushJob registers a new resource with the given unique name, arguments, and options.
 func NewLogpushJob(ctx *pulumi.Context,
 	name string, args *LogpushJobArgs, opts ...pulumi.ResourceOption) (*LogpushJob, error) {
-	if args == nil || args.Dataset == nil {
-		return nil, errors.New("missing required argument 'Dataset'")
-	}
-	if args == nil || args.DestinationConf == nil {
-		return nil, errors.New("missing required argument 'DestinationConf'")
-	}
-	if args == nil || args.OwnershipChallenge == nil {
-		return nil, errors.New("missing required argument 'OwnershipChallenge'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &LogpushJobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Dataset == nil {
+		return nil, errors.New("invalid value for required argument 'Dataset'")
+	}
+	if args.DestinationConf == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationConf'")
+	}
+	if args.OwnershipChallenge == nil {
+		return nil, errors.New("invalid value for required argument 'OwnershipChallenge'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource LogpushJob
 	err := ctx.RegisterResource("cloudflare:index/logpushJob:LogpushJob", name, args, &resource, opts...)

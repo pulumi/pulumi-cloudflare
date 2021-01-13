@@ -79,10 +79,10 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
-            if (!args || args.content === undefined) {
+            if ((!args || args.content === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'content'");
             }
-            if (!args || args.name === undefined) {
+            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["content"] = args ? args.content : undefined;

@@ -78,14 +78,15 @@ type LoadBalancerPool struct {
 // NewLoadBalancerPool registers a new resource with the given unique name, arguments, and options.
 func NewLoadBalancerPool(ctx *pulumi.Context,
 	name string, args *LoadBalancerPoolArgs, opts ...pulumi.ResourceOption) (*LoadBalancerPool, error) {
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
-	if args == nil || args.Origins == nil {
-		return nil, errors.New("missing required argument 'Origins'")
-	}
 	if args == nil {
-		args = &LoadBalancerPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Origins == nil {
+		return nil, errors.New("invalid value for required argument 'Origins'")
 	}
 	var resource LoadBalancerPool
 	err := ctx.RegisterResource("cloudflare:index/loadBalancerPool:LoadBalancerPool", name, args, &resource, opts...)

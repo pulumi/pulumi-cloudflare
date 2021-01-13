@@ -125,7 +125,7 @@ class RateLimit(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if action is None:
+            if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
             __props__['bypass_url_patterns'] = bypass_url_patterns
@@ -133,13 +133,13 @@ class RateLimit(pulumi.CustomResource):
             __props__['description'] = description
             __props__['disabled'] = disabled
             __props__['match'] = match
-            if period is None:
+            if period is None and not opts.urn:
                 raise TypeError("Missing required property 'period'")
             __props__['period'] = period
-            if threshold is None:
+            if threshold is None and not opts.urn:
                 raise TypeError("Missing required property 'threshold'")
             __props__['threshold'] = threshold
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(RateLimit, __self__).__init__(

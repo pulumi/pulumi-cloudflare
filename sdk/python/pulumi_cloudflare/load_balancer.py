@@ -105,15 +105,15 @@ class LoadBalancer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if default_pool_ids is None:
+            if default_pool_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'default_pool_ids'")
             __props__['default_pool_ids'] = default_pool_ids
             __props__['description'] = description
             __props__['enabled'] = enabled
-            if fallback_pool_id is None:
+            if fallback_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fallback_pool_id'")
             __props__['fallback_pool_id'] = fallback_pool_id
-            if name is None:
+            if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['pop_pools'] = pop_pools
@@ -124,7 +124,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__['session_affinity_ttl'] = session_affinity_ttl
             __props__['steering_policy'] = steering_policy
             __props__['ttl'] = ttl
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['created_on'] = None

@@ -167,16 +167,16 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if (!args || args.defaultPoolIds === undefined) {
+            if ((!args || args.defaultPoolIds === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'defaultPoolIds'");
             }
-            if (!args || args.fallbackPoolId === undefined) {
+            if ((!args || args.fallbackPoolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fallbackPoolId'");
             }
-            if (!args || args.name === undefined) {
+            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'name'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;

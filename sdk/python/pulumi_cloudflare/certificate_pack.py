@@ -73,15 +73,15 @@ class CertificatePack(pulumi.CustomResource):
 
             __props__['certificate_authority'] = certificate_authority
             __props__['cloudflare_branding'] = cloudflare_branding
-            if hosts is None:
+            if hosts is None and not opts.urn:
                 raise TypeError("Missing required property 'hosts'")
             __props__['hosts'] = hosts
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['validation_method'] = validation_method
             __props__['validity_days'] = validity_days
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
         super(CertificatePack, __self__).__init__(

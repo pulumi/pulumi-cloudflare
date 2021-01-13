@@ -118,16 +118,16 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AuthenticatedOriginPullsCertificateArgs | undefined;
-            if (!args || args.certificate === undefined) {
+            if ((!args || args.certificate === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if (!args || args.privateKey === undefined) {
+            if ((!args || args.privateKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["certificate"] = args ? args.certificate : undefined;

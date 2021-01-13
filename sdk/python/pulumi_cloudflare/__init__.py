@@ -63,3 +63,173 @@ from . import outputs
 from . import (
     config,
 )
+
+def _register_module():
+    import pulumi
+    from . import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "cloudflare:index/accessApplication:AccessApplication":
+                return AccessApplication(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/accessGroup:AccessGroup":
+                return AccessGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
+                return AccessIdentityProvider(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/accessPolicy:AccessPolicy":
+                return AccessPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/accessRule:AccessRule":
+                return AccessRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/accessServiceToken:AccessServiceToken":
+                return AccessServiceToken(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/accountMember:AccountMember":
+                return AccountMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/apiToken:ApiToken":
+                return ApiToken(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/argo:Argo":
+                return Argo(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls":
+                return AuthenticatedOriginPulls(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
+                return AuthenticatedOriginPullsCertificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/byoIpPrefix:ByoIpPrefix":
+                return ByoIpPrefix(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/certificatePack:CertificatePack":
+                return CertificatePack(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/customHostname:CustomHostname":
+                return CustomHostname(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
+                return CustomHostnameFallbackOrigin(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/customPages:CustomPages":
+                return CustomPages(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/customSsl:CustomSsl":
+                return CustomSsl(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/filter:Filter":
+                return Filter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/firewallRule:FirewallRule":
+                return FirewallRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/healthcheck:Healthcheck":
+                return Healthcheck(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/ipList:IpList":
+                return IpList(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/loadBalancer:LoadBalancer":
+                return LoadBalancer(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
+                return LoadBalancerMonitor(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/loadBalancerPool:LoadBalancerPool":
+                return LoadBalancerPool(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge":
+                return LogPushOwnershipChallenge(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/logpullRetention:LogpullRetention":
+                return LogpullRetention(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/logpushJob:LogpushJob":
+                return LogpushJob(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
+                return MagicFirewallRuleset(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/originCaCertificate:OriginCaCertificate":
+                return OriginCaCertificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/pageRule:PageRule":
+                return PageRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/rateLimit:RateLimit":
+                return RateLimit(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/record:Record":
+                return Record(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/spectrumApplication:SpectrumApplication":
+                return SpectrumApplication(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/wafGroup:WafGroup":
+                return WafGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/wafOverride:WafOverride":
+                return WafOverride(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/wafPackage:WafPackage":
+                return WafPackage(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/wafRule:WafRule":
+                return WafRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/workerRoute:WorkerRoute":
+                return WorkerRoute(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/workerScript:WorkerScript":
+                return WorkerScript(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/workersKv:WorkersKv":
+                return WorkersKv(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
+                return WorkersKvNamespace(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/zone:Zone":
+                return Zone(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/zoneDnssec:ZoneDnssec":
+                return ZoneDnssec(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/zoneLockdown:ZoneLockdown":
+                return ZoneLockdown(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride":
+                return ZoneSettingsOverride(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("cloudflare", "index/accessApplication", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/accessGroup", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/accessIdentityProvider", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/accessPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/accessRule", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/accessServiceToken", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/accountMember", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/apiToken", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/argo", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/authenticatedOriginPulls", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/authenticatedOriginPullsCertificate", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/byoIpPrefix", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/certificatePack", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/customHostname", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/customHostnameFallbackOrigin", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/customPages", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/customSsl", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/filter", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/firewallRule", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/healthcheck", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/ipList", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/loadBalancer", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/loadBalancerMonitor", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/loadBalancerPool", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/logPushOwnershipChallenge", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/logpullRetention", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/logpushJob", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/magicFirewallRuleset", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/originCaCertificate", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/pageRule", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/rateLimit", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/record", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/spectrumApplication", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/wafGroup", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/wafOverride", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/wafPackage", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/wafRule", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/workerRoute", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/workerScript", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/workersKv", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/workersKvNamespace", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/zone", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/zoneDnssec", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/zoneLockdown", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/zoneSettingsOverride", _module_instance)
+
+
+    class Package(pulumi.runtime.ResourcePackage):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Package._version
+
+        def construct_provider(self, name: str, typ: str, urn: str) -> pulumi.ProviderResource:
+            if typ != "pulumi:providers:cloudflare":
+                raise Exception(f"unknown provider type {typ}")
+            return Provider(name, pulumi.ResourceOptions(urn=urn))
+
+
+    pulumi.runtime.register_resource_package("cloudflare", Package())
+
+_register_module()

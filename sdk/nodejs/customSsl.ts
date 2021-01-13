@@ -109,7 +109,7 @@ export class CustomSsl extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomSslArgs | undefined;
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["customSslOptions"] = args ? args.customSslOptions : undefined;

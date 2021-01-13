@@ -107,7 +107,7 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
             inputs["zoneType"] = state ? state.zoneType : undefined;
         } else {
             const args = argsOrState as ZoneSettingsOverrideArgs | undefined;
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["settings"] = args ? args.settings : undefined;

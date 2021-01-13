@@ -80,7 +80,7 @@ class CustomSsl(pulumi.CustomResource):
 
             __props__['custom_ssl_options'] = custom_ssl_options
             __props__['custom_ssl_priorities'] = custom_ssl_priorities
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['expires_on'] = None

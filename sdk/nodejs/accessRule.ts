@@ -85,10 +85,10 @@ export class AccessRule extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
-            if (!args || args.configuration === undefined) {
+            if ((!args || args.configuration === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'configuration'");
             }
-            if (!args || args.mode === undefined) {
+            if ((!args || args.mode === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'mode'");
             }
             inputs["configuration"] = args ? args.configuration : undefined;

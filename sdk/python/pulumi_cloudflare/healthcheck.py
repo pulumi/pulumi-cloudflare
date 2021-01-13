@@ -157,7 +157,7 @@ class Healthcheck(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if address is None:
+            if address is None and not opts.urn:
                 raise TypeError("Missing required property 'address'")
             __props__['address'] = address
             __props__['allow_insecure'] = allow_insecure
@@ -171,7 +171,7 @@ class Healthcheck(pulumi.CustomResource):
             __props__['headers'] = headers
             __props__['interval'] = interval
             __props__['method'] = method
-            if name is None:
+            if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['notification_email_addresses'] = notification_email_addresses
@@ -181,10 +181,10 @@ class Healthcheck(pulumi.CustomResource):
             __props__['retries'] = retries
             __props__['suspended'] = suspended
             __props__['timeout'] = timeout
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['created_on'] = None

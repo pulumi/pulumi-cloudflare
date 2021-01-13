@@ -194,10 +194,10 @@ export class ApiToken extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApiTokenArgs | undefined;
-            if (!args || args.name === undefined) {
+            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'name'");
             }
-            if (!args || args.policies === undefined) {
+            if ((!args || args.policies === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policies'");
             }
             inputs["condition"] = args ? args.condition : undefined;

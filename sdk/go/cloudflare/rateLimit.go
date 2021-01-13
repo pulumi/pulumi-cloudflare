@@ -46,20 +46,21 @@ type RateLimit struct {
 // NewRateLimit registers a new resource with the given unique name, arguments, and options.
 func NewRateLimit(ctx *pulumi.Context,
 	name string, args *RateLimitArgs, opts ...pulumi.ResourceOption) (*RateLimit, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.Period == nil {
-		return nil, errors.New("missing required argument 'Period'")
-	}
-	if args == nil || args.Threshold == nil {
-		return nil, errors.New("missing required argument 'Threshold'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &RateLimitArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.Period == nil {
+		return nil, errors.New("invalid value for required argument 'Period'")
+	}
+	if args.Threshold == nil {
+		return nil, errors.New("invalid value for required argument 'Threshold'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource RateLimit
 	err := ctx.RegisterResource("cloudflare:index/rateLimit:RateLimit", name, args, &resource, opts...)

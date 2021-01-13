@@ -68,17 +68,18 @@ type CustomHostname struct {
 // NewCustomHostname registers a new resource with the given unique name, arguments, and options.
 func NewCustomHostname(ctx *pulumi.Context,
 	name string, args *CustomHostnameArgs, opts ...pulumi.ResourceOption) (*CustomHostname, error) {
-	if args == nil || args.Hostname == nil {
-		return nil, errors.New("missing required argument 'Hostname'")
-	}
-	if args == nil || args.Ssls == nil {
-		return nil, errors.New("missing required argument 'Ssls'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &CustomHostnameArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Hostname == nil {
+		return nil, errors.New("invalid value for required argument 'Hostname'")
+	}
+	if args.Ssls == nil {
+		return nil, errors.New("invalid value for required argument 'Ssls'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource CustomHostname
 	err := ctx.RegisterResource("cloudflare:index/customHostname:CustomHostname", name, args, &resource, opts...)

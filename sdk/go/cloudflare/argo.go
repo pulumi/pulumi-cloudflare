@@ -61,11 +61,12 @@ type Argo struct {
 // NewArgo registers a new resource with the given unique name, arguments, and options.
 func NewArgo(ctx *pulumi.Context,
 	name string, args *ArgoArgs, opts ...pulumi.ResourceOption) (*Argo, error) {
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &ArgoArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource Argo
 	err := ctx.RegisterResource("cloudflare:index/argo:Argo", name, args, &resource, opts...)

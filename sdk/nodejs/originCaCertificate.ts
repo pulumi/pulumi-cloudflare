@@ -115,13 +115,13 @@ export class OriginCaCertificate extends pulumi.CustomResource {
             inputs["requestedValidity"] = state ? state.requestedValidity : undefined;
         } else {
             const args = argsOrState as OriginCaCertificateArgs | undefined;
-            if (!args || args.csr === undefined) {
+            if ((!args || args.csr === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'csr'");
             }
-            if (!args || args.hostnames === undefined) {
+            if ((!args || args.hostnames === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostnames'");
             }
-            if (!args || args.requestType === undefined) {
+            if ((!args || args.requestType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'requestType'");
             }
             inputs["csr"] = args ? args.csr : undefined;

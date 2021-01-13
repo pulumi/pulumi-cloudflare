@@ -61,14 +61,15 @@ type WafGroup struct {
 // NewWafGroup registers a new resource with the given unique name, arguments, and options.
 func NewWafGroup(ctx *pulumi.Context,
 	name string, args *WafGroupArgs, opts ...pulumi.ResourceOption) (*WafGroup, error) {
-	if args == nil || args.GroupId == nil {
-		return nil, errors.New("missing required argument 'GroupId'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &WafGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.GroupId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource WafGroup
 	err := ctx.RegisterResource("cloudflare:index/wafGroup:WafGroup", name, args, &resource, opts...)

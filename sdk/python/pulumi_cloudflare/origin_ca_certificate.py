@@ -39,10 +39,10 @@ class OriginCaCertificate(pulumi.CustomResource):
         example_cert_request = tls.CertRequest("exampleCertRequest",
             key_algorithm=example_private_key.algorithm,
             private_key_pem=example_private_key.private_key_pem,
-            subjects=[{
-                "commonName": "",
-                "organization": "Terraform Test",
-            }])
+            subjects=[tls.CertRequestSubjectArgs(
+                common_name="",
+                organization="Terraform Test",
+            )])
         example_origin_ca_certificate = cloudflare.OriginCaCertificate("exampleOriginCaCertificate",
             csr=example_cert_request.cert_request_pem,
             hostnames=["example.com"],
@@ -82,13 +82,13 @@ class OriginCaCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if csr is None:
+            if csr is None and not opts.urn:
                 raise TypeError("Missing required property 'csr'")
             __props__['csr'] = csr
-            if hostnames is None:
+            if hostnames is None and not opts.urn:
                 raise TypeError("Missing required property 'hostnames'")
             __props__['hostnames'] = hostnames
-            if request_type is None:
+            if request_type is None and not opts.urn:
                 raise TypeError("Missing required property 'request_type'")
             __props__['request_type'] = request_type
             __props__['requested_validity'] = requested_validity

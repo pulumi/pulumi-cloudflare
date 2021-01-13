@@ -110,10 +110,10 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
             __props__['account_id'] = account_id
             __props__['configs'] = configs
-            if name is None:
+            if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['zone_id'] = zone_id

@@ -69,7 +69,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
             __props__['advertisement'] = advertisement
             __props__['description'] = description
-            if prefix_id is None:
+            if prefix_id is None and not opts.urn:
                 raise TypeError("Missing required property 'prefix_id'")
             __props__['prefix_id'] = prefix_id
         super(ByoIpPrefix, __self__).__init__(

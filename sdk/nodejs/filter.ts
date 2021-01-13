@@ -98,10 +98,10 @@ export class Filter extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FilterArgs | undefined;
-            if (!args || args.expression === undefined) {
+            if ((!args || args.expression === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'expression'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["description"] = args ? args.description : undefined;

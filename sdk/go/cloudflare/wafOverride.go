@@ -83,17 +83,18 @@ type WafOverride struct {
 // NewWafOverride registers a new resource with the given unique name, arguments, and options.
 func NewWafOverride(ctx *pulumi.Context,
 	name string, args *WafOverrideArgs, opts ...pulumi.ResourceOption) (*WafOverride, error) {
-	if args == nil || args.Rules == nil {
-		return nil, errors.New("missing required argument 'Rules'")
-	}
-	if args == nil || args.Urls == nil {
-		return nil, errors.New("missing required argument 'Urls'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &WafOverrideArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Rules == nil {
+		return nil, errors.New("invalid value for required argument 'Rules'")
+	}
+	if args.Urls == nil {
+		return nil, errors.New("invalid value for required argument 'Urls'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource WafOverride
 	err := ctx.RegisterResource("cloudflare:index/wafOverride:WafOverride", name, args, &resource, opts...)

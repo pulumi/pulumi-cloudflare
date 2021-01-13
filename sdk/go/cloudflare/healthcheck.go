@@ -170,20 +170,21 @@ type Healthcheck struct {
 // NewHealthcheck registers a new resource with the given unique name, arguments, and options.
 func NewHealthcheck(ctx *pulumi.Context,
 	name string, args *HealthcheckArgs, opts ...pulumi.ResourceOption) (*Healthcheck, error) {
-	if args == nil || args.Address == nil {
-		return nil, errors.New("missing required argument 'Address'")
-	}
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &HealthcheckArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Address == nil {
+		return nil, errors.New("invalid value for required argument 'Address'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource Healthcheck
 	err := ctx.RegisterResource("cloudflare:index/healthcheck:Healthcheck", name, args, &resource, opts...)

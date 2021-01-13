@@ -85,10 +85,10 @@ class CustomPages(pulumi.CustomResource):
 
             __props__['account_id'] = account_id
             __props__['state'] = state
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
-            if url is None:
+            if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
             __props__['url'] = url
             __props__['zone_id'] = zone_id

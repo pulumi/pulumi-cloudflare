@@ -63,17 +63,18 @@ type WafRule struct {
 // NewWafRule registers a new resource with the given unique name, arguments, and options.
 func NewWafRule(ctx *pulumi.Context,
 	name string, args *WafRuleArgs, opts ...pulumi.ResourceOption) (*WafRule, error) {
-	if args == nil || args.Mode == nil {
-		return nil, errors.New("missing required argument 'Mode'")
-	}
-	if args == nil || args.RuleId == nil {
-		return nil, errors.New("missing required argument 'RuleId'")
-	}
-	if args == nil || args.ZoneId == nil {
-		return nil, errors.New("missing required argument 'ZoneId'")
-	}
 	if args == nil {
-		args = &WafRuleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Mode == nil {
+		return nil, errors.New("invalid value for required argument 'Mode'")
+	}
+	if args.RuleId == nil {
+		return nil, errors.New("invalid value for required argument 'RuleId'")
+	}
+	if args.ZoneId == nil {
+		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}
 	var resource WafRule
 	err := ctx.RegisterResource("cloudflare:index/wafRule:WafRule", name, args, &resource, opts...)

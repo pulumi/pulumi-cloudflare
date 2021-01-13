@@ -58,10 +58,10 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if destination_conf is None:
+            if destination_conf is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_conf'")
             __props__['destination_conf'] = destination_conf
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['ownership_challenge_filename'] = None

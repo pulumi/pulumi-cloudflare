@@ -90,17 +90,18 @@ type OriginCaCertificate struct {
 // NewOriginCaCertificate registers a new resource with the given unique name, arguments, and options.
 func NewOriginCaCertificate(ctx *pulumi.Context,
 	name string, args *OriginCaCertificateArgs, opts ...pulumi.ResourceOption) (*OriginCaCertificate, error) {
-	if args == nil || args.Csr == nil {
-		return nil, errors.New("missing required argument 'Csr'")
-	}
-	if args == nil || args.Hostnames == nil {
-		return nil, errors.New("missing required argument 'Hostnames'")
-	}
-	if args == nil || args.RequestType == nil {
-		return nil, errors.New("missing required argument 'RequestType'")
-	}
 	if args == nil {
-		args = &OriginCaCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Csr == nil {
+		return nil, errors.New("invalid value for required argument 'Csr'")
+	}
+	if args.Hostnames == nil {
+		return nil, errors.New("invalid value for required argument 'Hostnames'")
+	}
+	if args.RequestType == nil {
+		return nil, errors.New("invalid value for required argument 'RequestType'")
 	}
 	var resource OriginCaCertificate
 	err := ctx.RegisterResource("cloudflare:index/originCaCertificate:OriginCaCertificate", name, args, &resource, opts...)

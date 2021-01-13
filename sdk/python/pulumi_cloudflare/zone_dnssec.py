@@ -66,7 +66,7 @@ class ZoneDnssec(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['modified_on'] = modified_on
-            if zone_id is None:
+            if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
             __props__['zone_id'] = zone_id
             __props__['algorithm'] = None

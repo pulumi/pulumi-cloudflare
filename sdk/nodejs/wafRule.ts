@@ -96,13 +96,13 @@ export class WafRule extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafRuleArgs | undefined;
-            if (!args || args.mode === undefined) {
+            if ((!args || args.mode === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'mode'");
             }
-            if (!args || args.ruleId === undefined) {
+            if ((!args || args.ruleId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ruleId'");
             }
-            if (!args || args.zoneId === undefined) {
+            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["mode"] = args ? args.mode : undefined;

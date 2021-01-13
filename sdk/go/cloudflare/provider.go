@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.AccountId == nil {
 		args.AccountId = pulumi.StringPtr(getEnvOrDefault("", nil, "CLOUDFLARE_ACCOUNT_ID").(string))
 	}

@@ -110,11 +110,11 @@ class AccessApplication(pulumi.CustomResource):
             __props__['cors_headers'] = cors_headers
             __props__['custom_deny_message'] = custom_deny_message
             __props__['custom_deny_url'] = custom_deny_url
-            if domain is None:
+            if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
             __props__['enable_binding_cookie'] = enable_binding_cookie
-            if name is None:
+            if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['session_duration'] = session_duration

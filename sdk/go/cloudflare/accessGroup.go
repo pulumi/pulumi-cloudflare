@@ -128,14 +128,15 @@ type AccessGroup struct {
 // NewAccessGroup registers a new resource with the given unique name, arguments, and options.
 func NewAccessGroup(ctx *pulumi.Context,
 	name string, args *AccessGroupArgs, opts ...pulumi.ResourceOption) (*AccessGroup, error) {
-	if args == nil || args.Includes == nil {
-		return nil, errors.New("missing required argument 'Includes'")
-	}
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
 	if args == nil {
-		args = &AccessGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Includes == nil {
+		return nil, errors.New("invalid value for required argument 'Includes'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	var resource AccessGroup
 	err := ctx.RegisterResource("cloudflare:index/accessGroup:AccessGroup", name, args, &resource, opts...)

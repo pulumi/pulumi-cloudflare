@@ -107,14 +107,15 @@ type AccessIdentityProvider struct {
 // NewAccessIdentityProvider registers a new resource with the given unique name, arguments, and options.
 func NewAccessIdentityProvider(ctx *pulumi.Context,
 	name string, args *AccessIdentityProviderArgs, opts ...pulumi.ResourceOption) (*AccessIdentityProvider, error) {
-	if args == nil || args.Name == nil {
-		return nil, errors.New("missing required argument 'Name'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &AccessIdentityProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource AccessIdentityProvider
 	err := ctx.RegisterResource("cloudflare:index/accessIdentityProvider:AccessIdentityProvider", name, args, &resource, opts...)
