@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/logpullRetention:LogpullRetention")]
     public partial class LogpullRetention : Pulumi.CustomResource
     {
         /// <summary>

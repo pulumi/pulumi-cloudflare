@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -139,15 +139,15 @@ type ByoIpPrefixInput interface {
 	ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpPrefixOutput
 }
 
-func (ByoIpPrefix) ElementType() reflect.Type {
-	return reflect.TypeOf((*ByoIpPrefix)(nil)).Elem()
+func (*ByoIpPrefix) ElementType() reflect.Type {
+	return reflect.TypeOf((*ByoIpPrefix)(nil))
 }
 
-func (i ByoIpPrefix) ToByoIpPrefixOutput() ByoIpPrefixOutput {
+func (i *ByoIpPrefix) ToByoIpPrefixOutput() ByoIpPrefixOutput {
 	return i.ToByoIpPrefixOutputWithContext(context.Background())
 }
 
-func (i ByoIpPrefix) ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpPrefixOutput {
+func (i *ByoIpPrefix) ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpPrefixOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixOutput)
 }
 
@@ -156,7 +156,7 @@ type ByoIpPrefixOutput struct {
 }
 
 func (ByoIpPrefixOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ByoIpPrefixOutput)(nil)).Elem()
+	return reflect.TypeOf((*ByoIpPrefix)(nil))
 }
 
 func (o ByoIpPrefixOutput) ToByoIpPrefixOutput() ByoIpPrefixOutput {

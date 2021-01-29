@@ -21,6 +21,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -60,7 +61,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -295,15 +296,15 @@ type LoadBalancerMonitorInput interface {
 	ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput
 }
 
-func (LoadBalancerMonitor) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerMonitor)(nil)).Elem()
+func (*LoadBalancerMonitor) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerMonitor)(nil))
 }
 
-func (i LoadBalancerMonitor) ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput {
+func (i *LoadBalancerMonitor) ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput {
 	return i.ToLoadBalancerMonitorOutputWithContext(context.Background())
 }
 
-func (i LoadBalancerMonitor) ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput {
+func (i *LoadBalancerMonitor) ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorOutput)
 }
 
@@ -312,7 +313,7 @@ type LoadBalancerMonitorOutput struct {
 }
 
 func (LoadBalancerMonitorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerMonitorOutput)(nil)).Elem()
+	return reflect.TypeOf((*LoadBalancerMonitor)(nil))
 }
 
 func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutput() LoadBalancerMonitorOutput {

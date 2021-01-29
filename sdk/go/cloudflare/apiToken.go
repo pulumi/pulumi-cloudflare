@@ -140,15 +140,15 @@ type ApiTokenInput interface {
 	ToApiTokenOutputWithContext(ctx context.Context) ApiTokenOutput
 }
 
-func (ApiToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiToken)(nil)).Elem()
+func (*ApiToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiToken)(nil))
 }
 
-func (i ApiToken) ToApiTokenOutput() ApiTokenOutput {
+func (i *ApiToken) ToApiTokenOutput() ApiTokenOutput {
 	return i.ToApiTokenOutputWithContext(context.Background())
 }
 
-func (i ApiToken) ToApiTokenOutputWithContext(ctx context.Context) ApiTokenOutput {
+func (i *ApiToken) ToApiTokenOutputWithContext(ctx context.Context) ApiTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenOutput)
 }
 
@@ -157,7 +157,7 @@ type ApiTokenOutput struct {
 }
 
 func (ApiTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiTokenOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApiToken)(nil))
 }
 
 func (o ApiTokenOutput) ToApiTokenOutput() ApiTokenOutput {

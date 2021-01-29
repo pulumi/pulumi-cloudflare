@@ -56,6 +56,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/zoneLockdown:ZoneLockdown")]
     public partial class ZoneLockdown : Pulumi.CustomResource
     {
         /// <summary>

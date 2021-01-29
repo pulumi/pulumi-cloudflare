@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/customPages:CustomPages basic_challenge account/e268443e43d93dab7ebef303bbe9642f/basic_challenge
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/customPages:CustomPages")]
     public partial class CustomPages : Pulumi.CustomResource
     {
         /// <summary>

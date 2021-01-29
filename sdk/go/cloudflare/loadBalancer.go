@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -297,15 +298,15 @@ type LoadBalancerInput interface {
 	ToLoadBalancerOutputWithContext(ctx context.Context) LoadBalancerOutput
 }
 
-func (LoadBalancer) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancer)(nil)).Elem()
+func (*LoadBalancer) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancer)(nil))
 }
 
-func (i LoadBalancer) ToLoadBalancerOutput() LoadBalancerOutput {
+func (i *LoadBalancer) ToLoadBalancerOutput() LoadBalancerOutput {
 	return i.ToLoadBalancerOutputWithContext(context.Background())
 }
 
-func (i LoadBalancer) ToLoadBalancerOutputWithContext(ctx context.Context) LoadBalancerOutput {
+func (i *LoadBalancer) ToLoadBalancerOutputWithContext(ctx context.Context) LoadBalancerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerOutput)
 }
 
@@ -314,7 +315,7 @@ type LoadBalancerOutput struct {
 }
 
 func (LoadBalancerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerOutput)(nil)).Elem()
+	return reflect.TypeOf((*LoadBalancer)(nil))
 }
 
 func (o LoadBalancerOutput) ToLoadBalancerOutput() LoadBalancerOutput {

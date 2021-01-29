@@ -34,6 +34,7 @@ namespace Pulumi.Cloudflare
     /// }
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge")]
     public partial class LogPushOwnershipChallenge : Pulumi.CustomResource
     {
         /// <summary>

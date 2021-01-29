@@ -110,6 +110,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/accessGroup:AccessGroup")]
     public partial class AccessGroup : Pulumi.CustomResource
     {
         /// <summary>

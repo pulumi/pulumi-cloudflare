@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/wafGroup:WafGroup honey_pot ae36f999674d196762efcc5abb06b345/de677e5818985db1285d0e80225f06e5
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/wafGroup:WafGroup")]
     public partial class WafGroup : Pulumi.CustomResource
     {
         /// <summary>

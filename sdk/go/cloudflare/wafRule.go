@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -161,15 +161,15 @@ type WafRuleInput interface {
 	ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput
 }
 
-func (WafRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafRule)(nil)).Elem()
+func (*WafRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafRule)(nil))
 }
 
-func (i WafRule) ToWafRuleOutput() WafRuleOutput {
+func (i *WafRule) ToWafRuleOutput() WafRuleOutput {
 	return i.ToWafRuleOutputWithContext(context.Background())
 }
 
-func (i WafRule) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput {
+func (i *WafRule) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleOutput)
 }
 
@@ -178,7 +178,7 @@ type WafRuleOutput struct {
 }
 
 func (WafRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*WafRule)(nil))
 }
 
 func (o WafRuleOutput) ToWafRuleOutput() WafRuleOutput {

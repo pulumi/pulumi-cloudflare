@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -151,15 +151,15 @@ type WorkersKvInput interface {
 	ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvOutput
 }
 
-func (WorkersKv) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkersKv)(nil)).Elem()
+func (*WorkersKv) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersKv)(nil))
 }
 
-func (i WorkersKv) ToWorkersKvOutput() WorkersKvOutput {
+func (i *WorkersKv) ToWorkersKvOutput() WorkersKvOutput {
 	return i.ToWorkersKvOutputWithContext(context.Background())
 }
 
-func (i WorkersKv) ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvOutput {
+func (i *WorkersKv) ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvOutput)
 }
 
@@ -168,7 +168,7 @@ type WorkersKvOutput struct {
 }
 
 func (WorkersKvOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkersKvOutput)(nil)).Elem()
+	return reflect.TypeOf((*WorkersKv)(nil))
 }
 
 func (o WorkersKvOutput) ToWorkersKvOutput() WorkersKvOutput {

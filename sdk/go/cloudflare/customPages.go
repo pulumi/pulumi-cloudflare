@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -194,15 +194,15 @@ type CustomPagesInput interface {
 	ToCustomPagesOutputWithContext(ctx context.Context) CustomPagesOutput
 }
 
-func (CustomPages) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomPages)(nil)).Elem()
+func (*CustomPages) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPages)(nil))
 }
 
-func (i CustomPages) ToCustomPagesOutput() CustomPagesOutput {
+func (i *CustomPages) ToCustomPagesOutput() CustomPagesOutput {
 	return i.ToCustomPagesOutputWithContext(context.Background())
 }
 
-func (i CustomPages) ToCustomPagesOutputWithContext(ctx context.Context) CustomPagesOutput {
+func (i *CustomPages) ToCustomPagesOutputWithContext(ctx context.Context) CustomPagesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesOutput)
 }
 
@@ -211,7 +211,7 @@ type CustomPagesOutput struct {
 }
 
 func (CustomPagesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomPagesOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomPages)(nil))
 }
 
 func (o CustomPagesOutput) ToCustomPagesOutput() CustomPagesOutput {

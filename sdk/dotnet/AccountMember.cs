@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where* `d41d8cd98f00b204e9800998ecf8427e` - account ID as returned by the [API](https://api.cloudflare.com/#accounts-account-details) * `b58c6f14d292556214bd64909bcdb118` - account member ID as returned by the [API](https://api.cloudflare.com/#account-members-member-details)
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/accountMember:AccountMember")]
     public partial class AccountMember : Pulumi.CustomResource
     {
         /// <summary>

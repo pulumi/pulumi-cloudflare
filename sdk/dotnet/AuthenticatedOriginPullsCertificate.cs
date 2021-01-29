@@ -57,6 +57,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")]
     public partial class AuthenticatedOriginPullsCertificate : Pulumi.CustomResource
     {
         /// <summary>

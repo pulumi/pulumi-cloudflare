@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -168,15 +169,15 @@ type CustomHostnameInput interface {
 	ToCustomHostnameOutputWithContext(ctx context.Context) CustomHostnameOutput
 }
 
-func (CustomHostname) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostname)(nil)).Elem()
+func (*CustomHostname) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostname)(nil))
 }
 
-func (i CustomHostname) ToCustomHostnameOutput() CustomHostnameOutput {
+func (i *CustomHostname) ToCustomHostnameOutput() CustomHostnameOutput {
 	return i.ToCustomHostnameOutputWithContext(context.Background())
 }
 
-func (i CustomHostname) ToCustomHostnameOutputWithContext(ctx context.Context) CustomHostnameOutput {
+func (i *CustomHostname) ToCustomHostnameOutputWithContext(ctx context.Context) CustomHostnameOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOutput)
 }
 
@@ -185,7 +186,7 @@ type CustomHostnameOutput struct {
 }
 
 func (CustomHostnameOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomHostname)(nil))
 }
 
 func (o CustomHostnameOutput) ToCustomHostnameOutput() CustomHostnameOutput {

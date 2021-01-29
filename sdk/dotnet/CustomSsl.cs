@@ -50,6 +50,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/customSsl:CustomSsl")]
     public partial class CustomSsl : Pulumi.CustomResource
     {
         /// <summary>

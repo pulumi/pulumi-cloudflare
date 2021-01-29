@@ -53,6 +53,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) * `9a7806061c88ada191ed06f989cc3dac` - Application ID
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/spectrumApplication:SpectrumApplication")]
     public partial class SpectrumApplication : Pulumi.CustomResource
     {
         /// <summary>

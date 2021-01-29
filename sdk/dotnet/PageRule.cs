@@ -56,6 +56,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/pageRule:PageRule")]
     public partial class PageRule : Pulumi.CustomResource
     {
         /// <summary>

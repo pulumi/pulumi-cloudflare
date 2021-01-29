@@ -154,15 +154,15 @@ type LogpushJobInput interface {
 	ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput
 }
 
-func (LogpushJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogpushJob)(nil)).Elem()
+func (*LogpushJob) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogpushJob)(nil))
 }
 
-func (i LogpushJob) ToLogpushJobOutput() LogpushJobOutput {
+func (i *LogpushJob) ToLogpushJobOutput() LogpushJobOutput {
 	return i.ToLogpushJobOutputWithContext(context.Background())
 }
 
-func (i LogpushJob) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput {
+func (i *LogpushJob) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobOutput)
 }
 
@@ -171,7 +171,7 @@ type LogpushJobOutput struct {
 }
 
 func (LogpushJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogpushJobOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogpushJob)(nil))
 }
 
 func (o LogpushJobOutput) ToLogpushJobOutput() LogpushJobOutput {

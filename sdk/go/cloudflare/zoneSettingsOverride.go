@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -163,15 +164,15 @@ type ZoneSettingsOverrideInput interface {
 	ToZoneSettingsOverrideOutputWithContext(ctx context.Context) ZoneSettingsOverrideOutput
 }
 
-func (ZoneSettingsOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverride)(nil)).Elem()
+func (*ZoneSettingsOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverride)(nil))
 }
 
-func (i ZoneSettingsOverride) ToZoneSettingsOverrideOutput() ZoneSettingsOverrideOutput {
+func (i *ZoneSettingsOverride) ToZoneSettingsOverrideOutput() ZoneSettingsOverrideOutput {
 	return i.ToZoneSettingsOverrideOutputWithContext(context.Background())
 }
 
-func (i ZoneSettingsOverride) ToZoneSettingsOverrideOutputWithContext(ctx context.Context) ZoneSettingsOverrideOutput {
+func (i *ZoneSettingsOverride) ToZoneSettingsOverrideOutputWithContext(ctx context.Context) ZoneSettingsOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideOutput)
 }
 
@@ -180,7 +181,7 @@ type ZoneSettingsOverrideOutput struct {
 }
 
 func (ZoneSettingsOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideOutput)(nil)).Elem()
+	return reflect.TypeOf((*ZoneSettingsOverride)(nil))
 }
 
 func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverrideOutput() ZoneSettingsOverrideOutput {

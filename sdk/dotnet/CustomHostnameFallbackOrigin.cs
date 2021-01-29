@@ -40,6 +40,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin example d41d8cd98f00b204e9800998ecf8427e/fallback.example.com
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin")]
     public partial class CustomHostnameFallbackOrigin : Pulumi.CustomResource
     {
         /// <summary>

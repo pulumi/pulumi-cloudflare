@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -153,15 +153,15 @@ type AccessServiceTokenInput interface {
 	ToAccessServiceTokenOutputWithContext(ctx context.Context) AccessServiceTokenOutput
 }
 
-func (AccessServiceToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessServiceToken)(nil)).Elem()
+func (*AccessServiceToken) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessServiceToken)(nil))
 }
 
-func (i AccessServiceToken) ToAccessServiceTokenOutput() AccessServiceTokenOutput {
+func (i *AccessServiceToken) ToAccessServiceTokenOutput() AccessServiceTokenOutput {
 	return i.ToAccessServiceTokenOutputWithContext(context.Background())
 }
 
-func (i AccessServiceToken) ToAccessServiceTokenOutputWithContext(ctx context.Context) AccessServiceTokenOutput {
+func (i *AccessServiceToken) ToAccessServiceTokenOutputWithContext(ctx context.Context) AccessServiceTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessServiceTokenOutput)
 }
 
@@ -170,7 +170,7 @@ type AccessServiceTokenOutput struct {
 }
 
 func (AccessServiceTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessServiceTokenOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessServiceToken)(nil))
 }
 
 func (o AccessServiceTokenOutput) ToAccessServiceTokenOutput() AccessServiceTokenOutput {

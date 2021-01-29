@@ -47,6 +47,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/customHostname:CustomHostname example d41d8cd98f00b204e9800998ecf8427e/0d89c70d-ad9f-4843-b99f-6cc0252067e9
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/customHostname:CustomHostname")]
     public partial class CustomHostname : Pulumi.CustomResource
     {
         /// <summary>

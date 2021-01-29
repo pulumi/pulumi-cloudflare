@@ -23,6 +23,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -80,7 +81,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -415,15 +416,15 @@ type HealthcheckInput interface {
 	ToHealthcheckOutputWithContext(ctx context.Context) HealthcheckOutput
 }
 
-func (Healthcheck) ElementType() reflect.Type {
-	return reflect.TypeOf((*Healthcheck)(nil)).Elem()
+func (*Healthcheck) ElementType() reflect.Type {
+	return reflect.TypeOf((*Healthcheck)(nil))
 }
 
-func (i Healthcheck) ToHealthcheckOutput() HealthcheckOutput {
+func (i *Healthcheck) ToHealthcheckOutput() HealthcheckOutput {
 	return i.ToHealthcheckOutputWithContext(context.Background())
 }
 
-func (i Healthcheck) ToHealthcheckOutputWithContext(ctx context.Context) HealthcheckOutput {
+func (i *Healthcheck) ToHealthcheckOutputWithContext(ctx context.Context) HealthcheckOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckOutput)
 }
 
@@ -432,7 +433,7 @@ type HealthcheckOutput struct {
 }
 
 func (HealthcheckOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HealthcheckOutput)(nil)).Elem()
+	return reflect.TypeOf((*Healthcheck)(nil))
 }
 
 func (o HealthcheckOutput) ToHealthcheckOutput() HealthcheckOutput {

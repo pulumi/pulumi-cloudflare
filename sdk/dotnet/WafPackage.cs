@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/wafPackage:WafPackage owasp ae36f999674d196762efcc5abb06b345/a25a9a7e9c00afc1fb2e0245519d725b
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/wafPackage:WafPackage")]
     public partial class WafPackage : Pulumi.CustomResource
     {
         /// <summary>

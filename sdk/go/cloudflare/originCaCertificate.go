@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi-tls/sdk/v2/go/tls"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -192,15 +192,15 @@ type OriginCaCertificateInput interface {
 	ToOriginCaCertificateOutputWithContext(ctx context.Context) OriginCaCertificateOutput
 }
 
-func (OriginCaCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginCaCertificate)(nil)).Elem()
+func (*OriginCaCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*OriginCaCertificate)(nil))
 }
 
-func (i OriginCaCertificate) ToOriginCaCertificateOutput() OriginCaCertificateOutput {
+func (i *OriginCaCertificate) ToOriginCaCertificateOutput() OriginCaCertificateOutput {
 	return i.ToOriginCaCertificateOutputWithContext(context.Background())
 }
 
-func (i OriginCaCertificate) ToOriginCaCertificateOutputWithContext(ctx context.Context) OriginCaCertificateOutput {
+func (i *OriginCaCertificate) ToOriginCaCertificateOutputWithContext(ctx context.Context) OriginCaCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificateOutput)
 }
 
@@ -209,7 +209,7 @@ type OriginCaCertificateOutput struct {
 }
 
 func (OriginCaCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginCaCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*OriginCaCertificate)(nil))
 }
 
 func (o OriginCaCertificateOutput) ToOriginCaCertificateOutput() OriginCaCertificateOutput {

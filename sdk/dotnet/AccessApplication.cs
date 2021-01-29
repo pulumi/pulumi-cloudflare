@@ -63,6 +63,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/accessApplication:AccessApplication")]
     public partial class AccessApplication : Pulumi.CustomResource
     {
         /// <summary>

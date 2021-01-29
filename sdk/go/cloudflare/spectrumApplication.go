@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -264,15 +265,15 @@ type SpectrumApplicationInput interface {
 	ToSpectrumApplicationOutputWithContext(ctx context.Context) SpectrumApplicationOutput
 }
 
-func (SpectrumApplication) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpectrumApplication)(nil)).Elem()
+func (*SpectrumApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpectrumApplication)(nil))
 }
 
-func (i SpectrumApplication) ToSpectrumApplicationOutput() SpectrumApplicationOutput {
+func (i *SpectrumApplication) ToSpectrumApplicationOutput() SpectrumApplicationOutput {
 	return i.ToSpectrumApplicationOutputWithContext(context.Background())
 }
 
-func (i SpectrumApplication) ToSpectrumApplicationOutputWithContext(ctx context.Context) SpectrumApplicationOutput {
+func (i *SpectrumApplication) ToSpectrumApplicationOutputWithContext(ctx context.Context) SpectrumApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationOutput)
 }
 
@@ -281,7 +282,7 @@ type SpectrumApplicationOutput struct {
 }
 
 func (SpectrumApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpectrumApplicationOutput)(nil)).Elem()
+	return reflect.TypeOf((*SpectrumApplication)(nil))
 }
 
 func (o SpectrumApplicationOutput) ToSpectrumApplicationOutput() SpectrumApplicationOutput {

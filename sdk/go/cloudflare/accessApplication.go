@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -270,15 +271,15 @@ type AccessApplicationInput interface {
 	ToAccessApplicationOutputWithContext(ctx context.Context) AccessApplicationOutput
 }
 
-func (AccessApplication) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessApplication)(nil)).Elem()
+func (*AccessApplication) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplication)(nil))
 }
 
-func (i AccessApplication) ToAccessApplicationOutput() AccessApplicationOutput {
+func (i *AccessApplication) ToAccessApplicationOutput() AccessApplicationOutput {
 	return i.ToAccessApplicationOutputWithContext(context.Background())
 }
 
-func (i AccessApplication) ToAccessApplicationOutputWithContext(ctx context.Context) AccessApplicationOutput {
+func (i *AccessApplication) ToAccessApplicationOutputWithContext(ctx context.Context) AccessApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationOutput)
 }
 
@@ -287,7 +288,7 @@ type AccessApplicationOutput struct {
 }
 
 func (AccessApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessApplicationOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessApplication)(nil))
 }
 
 func (o AccessApplicationOutput) ToAccessApplicationOutput() AccessApplicationOutput {

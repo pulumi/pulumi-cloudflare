@@ -43,6 +43,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where `d41d8cd98f00b204e9800998ecf8427e` is the zone ID.
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/argo:Argo")]
     public partial class Argo : Pulumi.CustomResource
     {
         /// <summary>

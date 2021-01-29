@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -119,15 +119,15 @@ type WorkersKvNamespaceInput interface {
 	ToWorkersKvNamespaceOutputWithContext(ctx context.Context) WorkersKvNamespaceOutput
 }
 
-func (WorkersKvNamespace) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkersKvNamespace)(nil)).Elem()
+func (*WorkersKvNamespace) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkersKvNamespace)(nil))
 }
 
-func (i WorkersKvNamespace) ToWorkersKvNamespaceOutput() WorkersKvNamespaceOutput {
+func (i *WorkersKvNamespace) ToWorkersKvNamespaceOutput() WorkersKvNamespaceOutput {
 	return i.ToWorkersKvNamespaceOutputWithContext(context.Background())
 }
 
-func (i WorkersKvNamespace) ToWorkersKvNamespaceOutputWithContext(ctx context.Context) WorkersKvNamespaceOutput {
+func (i *WorkersKvNamespace) ToWorkersKvNamespaceOutputWithContext(ctx context.Context) WorkersKvNamespaceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceOutput)
 }
 
@@ -136,7 +136,7 @@ type WorkersKvNamespaceOutput struct {
 }
 
 func (WorkersKvNamespaceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkersKvNamespaceOutput)(nil)).Elem()
+	return reflect.TypeOf((*WorkersKvNamespace)(nil))
 }
 
 func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutput() WorkersKvNamespaceOutput {

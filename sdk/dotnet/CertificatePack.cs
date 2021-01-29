@@ -18,6 +18,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/certificatePack:CertificatePack example cb029e245cfdd66dc8d2e570d5dd3322/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/certificatePack:CertificatePack")]
     public partial class CertificatePack : Pulumi.CustomResource
     {
         /// <summary>

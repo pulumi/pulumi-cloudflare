@@ -23,6 +23,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -214,15 +215,15 @@ type AccessIdentityProviderInput interface {
 	ToAccessIdentityProviderOutputWithContext(ctx context.Context) AccessIdentityProviderOutput
 }
 
-func (AccessIdentityProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessIdentityProvider)(nil)).Elem()
+func (*AccessIdentityProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessIdentityProvider)(nil))
 }
 
-func (i AccessIdentityProvider) ToAccessIdentityProviderOutput() AccessIdentityProviderOutput {
+func (i *AccessIdentityProvider) ToAccessIdentityProviderOutput() AccessIdentityProviderOutput {
 	return i.ToAccessIdentityProviderOutputWithContext(context.Background())
 }
 
-func (i AccessIdentityProvider) ToAccessIdentityProviderOutputWithContext(ctx context.Context) AccessIdentityProviderOutput {
+func (i *AccessIdentityProvider) ToAccessIdentityProviderOutputWithContext(ctx context.Context) AccessIdentityProviderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderOutput)
 }
 
@@ -231,7 +232,7 @@ type AccessIdentityProviderOutput struct {
 }
 
 func (AccessIdentityProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessIdentityProviderOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessIdentityProvider)(nil))
 }
 
 func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutput() AccessIdentityProviderOutput {

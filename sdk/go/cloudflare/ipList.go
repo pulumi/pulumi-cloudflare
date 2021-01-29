@@ -21,6 +21,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -172,15 +173,15 @@ type IpListInput interface {
 	ToIpListOutputWithContext(ctx context.Context) IpListOutput
 }
 
-func (IpList) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpList)(nil)).Elem()
+func (*IpList) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpList)(nil))
 }
 
-func (i IpList) ToIpListOutput() IpListOutput {
+func (i *IpList) ToIpListOutput() IpListOutput {
 	return i.ToIpListOutputWithContext(context.Background())
 }
 
-func (i IpList) ToIpListOutputWithContext(ctx context.Context) IpListOutput {
+func (i *IpList) ToIpListOutputWithContext(ctx context.Context) IpListOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpListOutput)
 }
 
@@ -189,7 +190,7 @@ type IpListOutput struct {
 }
 
 func (IpListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpListOutput)(nil)).Elem()
+	return reflect.TypeOf((*IpList)(nil))
 }
 
 func (o IpListOutput) ToIpListOutput() IpListOutput {
