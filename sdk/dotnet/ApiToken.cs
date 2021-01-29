@@ -209,6 +209,7 @@ namespace Pulumi.Cloudflare
     /// }
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/apiToken:ApiToken")]
     public partial class ApiToken : Pulumi.CustomResource
     {
         /// <summary>

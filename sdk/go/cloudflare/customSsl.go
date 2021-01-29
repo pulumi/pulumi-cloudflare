@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
@@ -169,15 +170,15 @@ type CustomSslInput interface {
 	ToCustomSslOutputWithContext(ctx context.Context) CustomSslOutput
 }
 
-func (CustomSsl) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomSsl)(nil)).Elem()
+func (*CustomSsl) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSsl)(nil))
 }
 
-func (i CustomSsl) ToCustomSslOutput() CustomSslOutput {
+func (i *CustomSsl) ToCustomSslOutput() CustomSslOutput {
 	return i.ToCustomSslOutputWithContext(context.Background())
 }
 
-func (i CustomSsl) ToCustomSslOutputWithContext(ctx context.Context) CustomSslOutput {
+func (i *CustomSsl) ToCustomSslOutputWithContext(ctx context.Context) CustomSslOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomSslOutput)
 }
 
@@ -186,7 +187,7 @@ type CustomSslOutput struct {
 }
 
 func (CustomSslOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomSslOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomSsl)(nil))
 }
 
 func (o CustomSslOutput) ToCustomSslOutput() CustomSslOutput {

@@ -22,6 +22,7 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -178,15 +179,15 @@ type PageRuleInput interface {
 	ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutput
 }
 
-func (PageRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*PageRule)(nil)).Elem()
+func (*PageRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*PageRule)(nil))
 }
 
-func (i PageRule) ToPageRuleOutput() PageRuleOutput {
+func (i *PageRule) ToPageRuleOutput() PageRuleOutput {
 	return i.ToPageRuleOutputWithContext(context.Background())
 }
 
-func (i PageRule) ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutput {
+func (i *PageRule) ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PageRuleOutput)
 }
 
@@ -195,7 +196,7 @@ type PageRuleOutput struct {
 }
 
 func (PageRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PageRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*PageRule)(nil))
 }
 
 func (o PageRuleOutput) ToPageRuleOutput() PageRuleOutput {

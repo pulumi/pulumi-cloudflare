@@ -77,4 +77,11 @@ namespace Pulumi.Cloudflare
             }
         }
     }
+
+    internal sealed class CloudflareResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public CloudflareResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

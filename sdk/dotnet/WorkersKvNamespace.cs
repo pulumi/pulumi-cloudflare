@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/workersKvNamespace:WorkersKvNamespace")]
     public partial class WorkersKvNamespace : Pulumi.CustomResource
     {
         /// <summary>

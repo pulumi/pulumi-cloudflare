@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -192,15 +192,15 @@ type ZoneInput interface {
 	ToZoneOutputWithContext(ctx context.Context) ZoneOutput
 }
 
-func (Zone) ElementType() reflect.Type {
-	return reflect.TypeOf((*Zone)(nil)).Elem()
+func (*Zone) ElementType() reflect.Type {
+	return reflect.TypeOf((*Zone)(nil))
 }
 
-func (i Zone) ToZoneOutput() ZoneOutput {
+func (i *Zone) ToZoneOutput() ZoneOutput {
 	return i.ToZoneOutputWithContext(context.Background())
 }
 
-func (i Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
+func (i *Zone) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneOutput)
 }
 
@@ -209,7 +209,7 @@ type ZoneOutput struct {
 }
 
 func (ZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneOutput)(nil)).Elem()
+	return reflect.TypeOf((*Zone)(nil))
 }
 
 func (o ZoneOutput) ToZoneOutput() ZoneOutput {

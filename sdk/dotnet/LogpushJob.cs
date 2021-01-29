@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    [CloudflareResourceType("cloudflare:index/logpushJob:LogpushJob")]
     public partial class LogpushJob : Pulumi.CustomResource
     {
         /// <summary>

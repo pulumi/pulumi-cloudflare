@@ -58,6 +58,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/wafOverride:WafOverride my_example_waf_override 3abe5b950053dbddf1516d89f9ef1e8a/9d4e66d7649c178663bf62e06dbacb23
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/wafOverride:WafOverride")]
     public partial class WafOverride : Pulumi.CustomResource
     {
         /// <summary>

@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/workerRoute:WorkerRoute")]
     public partial class WorkerRoute : Pulumi.CustomResource
     {
         /// <summary>

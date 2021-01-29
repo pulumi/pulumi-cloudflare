@@ -208,15 +208,15 @@ type CertificatePackInput interface {
 	ToCertificatePackOutputWithContext(ctx context.Context) CertificatePackOutput
 }
 
-func (CertificatePack) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificatePack)(nil)).Elem()
+func (*CertificatePack) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificatePack)(nil))
 }
 
-func (i CertificatePack) ToCertificatePackOutput() CertificatePackOutput {
+func (i *CertificatePack) ToCertificatePackOutput() CertificatePackOutput {
 	return i.ToCertificatePackOutputWithContext(context.Background())
 }
 
-func (i CertificatePack) ToCertificatePackOutputWithContext(ctx context.Context) CertificatePackOutput {
+func (i *CertificatePack) ToCertificatePackOutputWithContext(ctx context.Context) CertificatePackOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackOutput)
 }
 
@@ -225,7 +225,7 @@ type CertificatePackOutput struct {
 }
 
 func (CertificatePackOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificatePackOutput)(nil)).Elem()
+	return reflect.TypeOf((*CertificatePack)(nil))
 }
 
 func (o CertificatePackOutput) ToCertificatePackOutput() CertificatePackOutput {

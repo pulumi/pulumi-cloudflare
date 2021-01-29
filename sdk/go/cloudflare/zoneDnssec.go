@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -195,15 +195,15 @@ type ZoneDnssecInput interface {
 	ToZoneDnssecOutputWithContext(ctx context.Context) ZoneDnssecOutput
 }
 
-func (ZoneDnssec) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneDnssec)(nil)).Elem()
+func (*ZoneDnssec) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneDnssec)(nil))
 }
 
-func (i ZoneDnssec) ToZoneDnssecOutput() ZoneDnssecOutput {
+func (i *ZoneDnssec) ToZoneDnssecOutput() ZoneDnssecOutput {
 	return i.ToZoneDnssecOutputWithContext(context.Background())
 }
 
-func (i ZoneDnssec) ToZoneDnssecOutputWithContext(ctx context.Context) ZoneDnssecOutput {
+func (i *ZoneDnssec) ToZoneDnssecOutputWithContext(ctx context.Context) ZoneDnssecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecOutput)
 }
 
@@ -212,7 +212,7 @@ type ZoneDnssecOutput struct {
 }
 
 func (ZoneDnssecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneDnssecOutput)(nil)).Elem()
+	return reflect.TypeOf((*ZoneDnssec)(nil))
 }
 
 func (o ZoneDnssecOutput) ToZoneDnssecOutput() ZoneDnssecOutput {

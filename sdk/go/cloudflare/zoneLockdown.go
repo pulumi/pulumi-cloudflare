@@ -20,6 +20,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -181,15 +182,15 @@ type ZoneLockdownInput interface {
 	ToZoneLockdownOutputWithContext(ctx context.Context) ZoneLockdownOutput
 }
 
-func (ZoneLockdown) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneLockdown)(nil)).Elem()
+func (*ZoneLockdown) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneLockdown)(nil))
 }
 
-func (i ZoneLockdown) ToZoneLockdownOutput() ZoneLockdownOutput {
+func (i *ZoneLockdown) ToZoneLockdownOutput() ZoneLockdownOutput {
 	return i.ToZoneLockdownOutputWithContext(context.Background())
 }
 
-func (i ZoneLockdown) ToZoneLockdownOutputWithContext(ctx context.Context) ZoneLockdownOutput {
+func (i *ZoneLockdown) ToZoneLockdownOutputWithContext(ctx context.Context) ZoneLockdownOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneLockdownOutput)
 }
 
@@ -198,7 +199,7 @@ type ZoneLockdownOutput struct {
 }
 
 func (ZoneLockdownOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneLockdownOutput)(nil)).Elem()
+	return reflect.TypeOf((*ZoneLockdown)(nil))
 }
 
 func (o ZoneLockdownOutput) ToZoneLockdownOutput() ZoneLockdownOutput {

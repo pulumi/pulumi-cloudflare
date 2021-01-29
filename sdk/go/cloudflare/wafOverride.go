@@ -20,7 +20,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -211,15 +211,15 @@ type WafOverrideInput interface {
 	ToWafOverrideOutputWithContext(ctx context.Context) WafOverrideOutput
 }
 
-func (WafOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafOverride)(nil)).Elem()
+func (*WafOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafOverride)(nil))
 }
 
-func (i WafOverride) ToWafOverrideOutput() WafOverrideOutput {
+func (i *WafOverride) ToWafOverrideOutput() WafOverrideOutput {
 	return i.ToWafOverrideOutputWithContext(context.Background())
 }
 
-func (i WafOverride) ToWafOverrideOutputWithContext(ctx context.Context) WafOverrideOutput {
+func (i *WafOverride) ToWafOverrideOutputWithContext(ctx context.Context) WafOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafOverrideOutput)
 }
 
@@ -228,7 +228,7 @@ type WafOverrideOutput struct {
 }
 
 func (WafOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafOverrideOutput)(nil)).Elem()
+	return reflect.TypeOf((*WafOverride)(nil))
 }
 
 func (o WafOverrideOutput) ToWafOverrideOutput() WafOverrideOutput {

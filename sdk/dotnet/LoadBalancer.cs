@@ -78,6 +78,7 @@ namespace Pulumi.Cloudflare
     /// }
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/loadBalancer:LoadBalancer")]
     public partial class LoadBalancer : Pulumi.CustomResource
     {
         /// <summary>

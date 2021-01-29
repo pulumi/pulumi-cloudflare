@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -136,15 +136,15 @@ type AccountMemberInput interface {
 	ToAccountMemberOutputWithContext(ctx context.Context) AccountMemberOutput
 }
 
-func (AccountMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountMember)(nil)).Elem()
+func (*AccountMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountMember)(nil))
 }
 
-func (i AccountMember) ToAccountMemberOutput() AccountMemberOutput {
+func (i *AccountMember) ToAccountMemberOutput() AccountMemberOutput {
 	return i.ToAccountMemberOutputWithContext(context.Background())
 }
 
-func (i AccountMember) ToAccountMemberOutputWithContext(ctx context.Context) AccountMemberOutput {
+func (i *AccountMember) ToAccountMemberOutputWithContext(ctx context.Context) AccountMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountMemberOutput)
 }
 
@@ -153,7 +153,7 @@ type AccountMemberOutput struct {
 }
 
 func (AccountMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountMember)(nil))
 }
 
 func (o AccountMemberOutput) ToAccountMemberOutput() AccountMemberOutput {

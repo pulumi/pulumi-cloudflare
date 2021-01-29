@@ -116,6 +116,7 @@ namespace Pulumi.Cloudflare
     /// }
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/healthcheck:Healthcheck")]
     public partial class Healthcheck : Pulumi.CustomResource
     {
         /// <summary>

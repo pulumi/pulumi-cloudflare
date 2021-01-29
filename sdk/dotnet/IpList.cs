@@ -56,6 +56,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/ipList:IpList example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/ipList:IpList")]
     public partial class IpList : Pulumi.CustomResource
     {
         /// <summary>

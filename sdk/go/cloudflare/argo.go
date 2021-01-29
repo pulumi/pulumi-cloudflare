@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -141,15 +141,15 @@ type ArgoInput interface {
 	ToArgoOutputWithContext(ctx context.Context) ArgoOutput
 }
 
-func (Argo) ElementType() reflect.Type {
-	return reflect.TypeOf((*Argo)(nil)).Elem()
+func (*Argo) ElementType() reflect.Type {
+	return reflect.TypeOf((*Argo)(nil))
 }
 
-func (i Argo) ToArgoOutput() ArgoOutput {
+func (i *Argo) ToArgoOutput() ArgoOutput {
 	return i.ToArgoOutputWithContext(context.Background())
 }
 
-func (i Argo) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
+func (i *Argo) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ArgoOutput)
 }
 
@@ -158,7 +158,7 @@ type ArgoOutput struct {
 }
 
 func (ArgoOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArgoOutput)(nil)).Elem()
+	return reflect.TypeOf((*Argo)(nil))
 }
 
 func (o ArgoOutput) ToArgoOutput() ArgoOutput {

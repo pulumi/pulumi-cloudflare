@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -134,15 +134,15 @@ type LogPushOwnershipChallengeInput interface {
 	ToLogPushOwnershipChallengeOutputWithContext(ctx context.Context) LogPushOwnershipChallengeOutput
 }
 
-func (LogPushOwnershipChallenge) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogPushOwnershipChallenge)(nil)).Elem()
+func (*LogPushOwnershipChallenge) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogPushOwnershipChallenge)(nil))
 }
 
-func (i LogPushOwnershipChallenge) ToLogPushOwnershipChallengeOutput() LogPushOwnershipChallengeOutput {
+func (i *LogPushOwnershipChallenge) ToLogPushOwnershipChallengeOutput() LogPushOwnershipChallengeOutput {
 	return i.ToLogPushOwnershipChallengeOutputWithContext(context.Background())
 }
 
-func (i LogPushOwnershipChallenge) ToLogPushOwnershipChallengeOutputWithContext(ctx context.Context) LogPushOwnershipChallengeOutput {
+func (i *LogPushOwnershipChallenge) ToLogPushOwnershipChallengeOutputWithContext(ctx context.Context) LogPushOwnershipChallengeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogPushOwnershipChallengeOutput)
 }
 
@@ -151,7 +151,7 @@ type LogPushOwnershipChallengeOutput struct {
 }
 
 func (LogPushOwnershipChallengeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogPushOwnershipChallengeOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogPushOwnershipChallenge)(nil))
 }
 
 func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengeOutput() LogPushOwnershipChallengeOutput {

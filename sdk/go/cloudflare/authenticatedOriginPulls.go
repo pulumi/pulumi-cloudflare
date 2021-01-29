@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -200,15 +200,15 @@ type AuthenticatedOriginPullsInput interface {
 	ToAuthenticatedOriginPullsOutputWithContext(ctx context.Context) AuthenticatedOriginPullsOutput
 }
 
-func (AuthenticatedOriginPulls) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticatedOriginPulls)(nil)).Elem()
+func (*AuthenticatedOriginPulls) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticatedOriginPulls)(nil))
 }
 
-func (i AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutput() AuthenticatedOriginPullsOutput {
+func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutput() AuthenticatedOriginPullsOutput {
 	return i.ToAuthenticatedOriginPullsOutputWithContext(context.Background())
 }
 
-func (i AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutputWithContext(ctx context.Context) AuthenticatedOriginPullsOutput {
+func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutputWithContext(ctx context.Context) AuthenticatedOriginPullsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsOutput)
 }
 
@@ -217,7 +217,7 @@ type AuthenticatedOriginPullsOutput struct {
 }
 
 func (AuthenticatedOriginPullsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticatedOriginPullsOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthenticatedOriginPulls)(nil))
 }
 
 func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutput() AuthenticatedOriginPullsOutput {

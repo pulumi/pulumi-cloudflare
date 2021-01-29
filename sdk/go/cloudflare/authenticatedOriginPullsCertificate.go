@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -192,15 +192,15 @@ type AuthenticatedOriginPullsCertificateInput interface {
 	ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateOutput
 }
 
-func (AuthenticatedOriginPullsCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticatedOriginPullsCertificate)(nil)).Elem()
+func (*AuthenticatedOriginPullsCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthenticatedOriginPullsCertificate)(nil))
 }
 
-func (i AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificateOutput() AuthenticatedOriginPullsCertificateOutput {
+func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificateOutput() AuthenticatedOriginPullsCertificateOutput {
 	return i.ToAuthenticatedOriginPullsCertificateOutputWithContext(context.Background())
 }
 
-func (i AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateOutput {
+func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateOutput)
 }
 
@@ -209,7 +209,7 @@ type AuthenticatedOriginPullsCertificateOutput struct {
 }
 
 func (AuthenticatedOriginPullsCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticatedOriginPullsCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthenticatedOriginPullsCertificate)(nil))
 }
 
 func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificateOutput() AuthenticatedOriginPullsCertificateOutput {

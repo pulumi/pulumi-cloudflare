@@ -129,15 +129,15 @@ type WorkerScriptInput interface {
 	ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput
 }
 
-func (WorkerScript) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerScript)(nil)).Elem()
+func (*WorkerScript) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScript)(nil))
 }
 
-func (i WorkerScript) ToWorkerScriptOutput() WorkerScriptOutput {
+func (i *WorkerScript) ToWorkerScriptOutput() WorkerScriptOutput {
 	return i.ToWorkerScriptOutputWithContext(context.Background())
 }
 
-func (i WorkerScript) ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput {
+func (i *WorkerScript) ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptOutput)
 }
 
@@ -146,7 +146,7 @@ type WorkerScriptOutput struct {
 }
 
 func (WorkerScriptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerScriptOutput)(nil)).Elem()
+	return reflect.TypeOf((*WorkerScript)(nil))
 }
 
 func (o WorkerScriptOutput) ToWorkerScriptOutput() WorkerScriptOutput {

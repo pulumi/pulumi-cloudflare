@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -131,15 +131,15 @@ type LogpullRetentionInput interface {
 	ToLogpullRetentionOutputWithContext(ctx context.Context) LogpullRetentionOutput
 }
 
-func (LogpullRetention) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogpullRetention)(nil)).Elem()
+func (*LogpullRetention) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogpullRetention)(nil))
 }
 
-func (i LogpullRetention) ToLogpullRetentionOutput() LogpullRetentionOutput {
+func (i *LogpullRetention) ToLogpullRetentionOutput() LogpullRetentionOutput {
 	return i.ToLogpullRetentionOutputWithContext(context.Background())
 }
 
-func (i LogpullRetention) ToLogpullRetentionOutputWithContext(ctx context.Context) LogpullRetentionOutput {
+func (i *LogpullRetention) ToLogpullRetentionOutputWithContext(ctx context.Context) LogpullRetentionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogpullRetentionOutput)
 }
 
@@ -148,7 +148,7 @@ type LogpullRetentionOutput struct {
 }
 
 func (LogpullRetentionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogpullRetentionOutput)(nil)).Elem()
+	return reflect.TypeOf((*LogpullRetention)(nil))
 }
 
 func (o LogpullRetentionOutput) ToLogpullRetentionOutput() LogpullRetentionOutput {

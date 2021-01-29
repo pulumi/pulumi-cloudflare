@@ -22,6 +22,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where* `script_name` - the script name
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/workerScript:WorkerScript")]
     public partial class WorkerScript : Pulumi.CustomResource
     {
         /// <summary>

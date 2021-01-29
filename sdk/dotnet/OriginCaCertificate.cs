@@ -66,6 +66,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/originCaCertificate:OriginCaCertificate")]
     public partial class OriginCaCertificate : Pulumi.CustomResource
     {
         /// <summary>

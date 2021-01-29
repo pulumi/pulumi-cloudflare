@@ -51,6 +51,7 @@ namespace Pulumi.Cloudflare
     /// }
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride")]
     public partial class ZoneSettingsOverride : Pulumi.CustomResource
     {
         /// <summary>

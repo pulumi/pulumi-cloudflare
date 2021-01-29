@@ -45,6 +45,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/workersKv:WorkersKv")]
     public partial class WorkersKv : Pulumi.CustomResource
     {
         /// <summary>

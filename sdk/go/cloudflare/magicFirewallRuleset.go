@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -163,15 +163,15 @@ type MagicFirewallRulesetInput interface {
 	ToMagicFirewallRulesetOutputWithContext(ctx context.Context) MagicFirewallRulesetOutput
 }
 
-func (MagicFirewallRuleset) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicFirewallRuleset)(nil)).Elem()
+func (*MagicFirewallRuleset) ElementType() reflect.Type {
+	return reflect.TypeOf((*MagicFirewallRuleset)(nil))
 }
 
-func (i MagicFirewallRuleset) ToMagicFirewallRulesetOutput() MagicFirewallRulesetOutput {
+func (i *MagicFirewallRuleset) ToMagicFirewallRulesetOutput() MagicFirewallRulesetOutput {
 	return i.ToMagicFirewallRulesetOutputWithContext(context.Background())
 }
 
-func (i MagicFirewallRuleset) ToMagicFirewallRulesetOutputWithContext(ctx context.Context) MagicFirewallRulesetOutput {
+func (i *MagicFirewallRuleset) ToMagicFirewallRulesetOutputWithContext(ctx context.Context) MagicFirewallRulesetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetOutput)
 }
 
@@ -180,7 +180,7 @@ type MagicFirewallRulesetOutput struct {
 }
 
 func (MagicFirewallRulesetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MagicFirewallRulesetOutput)(nil)).Elem()
+	return reflect.TypeOf((*MagicFirewallRuleset)(nil))
 }
 
 func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetOutput() MagicFirewallRulesetOutput {

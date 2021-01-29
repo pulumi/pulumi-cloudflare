@@ -87,6 +87,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  [access_identity_provider_guide]https://developers.cloudflare.com/access/configuring-identity-providers/
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/accessIdentityProvider:AccessIdentityProvider")]
     public partial class AccessIdentityProvider : Pulumi.CustomResource
     {
         /// <summary>

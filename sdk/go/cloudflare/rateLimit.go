@@ -183,15 +183,15 @@ type RateLimitInput interface {
 	ToRateLimitOutputWithContext(ctx context.Context) RateLimitOutput
 }
 
-func (RateLimit) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimit)(nil)).Elem()
+func (*RateLimit) ElementType() reflect.Type {
+	return reflect.TypeOf((*RateLimit)(nil))
 }
 
-func (i RateLimit) ToRateLimitOutput() RateLimitOutput {
+func (i *RateLimit) ToRateLimitOutput() RateLimitOutput {
 	return i.ToRateLimitOutputWithContext(context.Background())
 }
 
-func (i RateLimit) ToRateLimitOutputWithContext(ctx context.Context) RateLimitOutput {
+func (i *RateLimit) ToRateLimitOutputWithContext(ctx context.Context) RateLimitOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RateLimitOutput)
 }
 
@@ -200,7 +200,7 @@ type RateLimitOutput struct {
 }
 
 func (RateLimitOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RateLimitOutput)(nil)).Elem()
+	return reflect.TypeOf((*RateLimit)(nil))
 }
 
 func (o RateLimitOutput) ToRateLimitOutput() RateLimitOutput {

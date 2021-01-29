@@ -41,6 +41,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/wafRule:WafRule 100000 ae36f999674d196762efcc5abb06b345/100000
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/wafRule:WafRule")]
     public partial class WafRule : Pulumi.CustomResource
     {
         /// <summary>

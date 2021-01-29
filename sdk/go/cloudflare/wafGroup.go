@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -152,15 +152,15 @@ type WafGroupInput interface {
 	ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutput
 }
 
-func (WafGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafGroup)(nil)).Elem()
+func (*WafGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*WafGroup)(nil))
 }
 
-func (i WafGroup) ToWafGroupOutput() WafGroupOutput {
+func (i *WafGroup) ToWafGroupOutput() WafGroupOutput {
 	return i.ToWafGroupOutputWithContext(context.Background())
 }
 
-func (i WafGroup) ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutput {
+func (i *WafGroup) ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafGroupOutput)
 }
 
@@ -169,7 +169,7 @@ type WafGroupOutput struct {
 }
 
 func (WafGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*WafGroup)(nil))
 }
 
 func (o WafGroupOutput) ToWafGroupOutput() WafGroupOutput {

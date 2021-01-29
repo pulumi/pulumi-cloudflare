@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -137,15 +137,15 @@ type CustomHostnameFallbackOriginInput interface {
 	ToCustomHostnameFallbackOriginOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginOutput
 }
 
-func (CustomHostnameFallbackOrigin) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameFallbackOrigin)(nil)).Elem()
+func (*CustomHostnameFallbackOrigin) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameFallbackOrigin)(nil))
 }
 
-func (i CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutput() CustomHostnameFallbackOriginOutput {
+func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutput() CustomHostnameFallbackOriginOutput {
 	return i.ToCustomHostnameFallbackOriginOutputWithContext(context.Background())
 }
 
-func (i CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginOutput {
+func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameFallbackOriginOutput)
 }
 
@@ -154,7 +154,7 @@ type CustomHostnameFallbackOriginOutput struct {
 }
 
 func (CustomHostnameFallbackOriginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameFallbackOriginOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomHostnameFallbackOrigin)(nil))
 }
 
 func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginOutput() CustomHostnameFallbackOriginOutput {

@@ -85,6 +85,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  where * `cb029e245cfdd66dc8d2e570d5dd3322` - Zone ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Application ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Policy ID
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/accessPolicy:AccessPolicy")]
     public partial class AccessPolicy : Pulumi.CustomResource
     {
         /// <summary>

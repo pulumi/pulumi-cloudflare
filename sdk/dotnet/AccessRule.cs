@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare
     /// 
     ///  respective API endpoint for the type you are attempting to import.
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/accessRule:AccessRule")]
     public partial class AccessRule : Pulumi.CustomResource
     {
         /// <summary>

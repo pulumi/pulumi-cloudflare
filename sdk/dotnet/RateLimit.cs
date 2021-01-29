@@ -95,6 +95,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43
     /// ```
     /// </summary>
+    [CloudflareResourceType("cloudflare:index/rateLimit:RateLimit")]
     public partial class RateLimit : Pulumi.CustomResource
     {
         /// <summary>

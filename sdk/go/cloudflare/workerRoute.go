@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -148,15 +148,15 @@ type WorkerRouteInput interface {
 	ToWorkerRouteOutputWithContext(ctx context.Context) WorkerRouteOutput
 }
 
-func (WorkerRoute) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerRoute)(nil)).Elem()
+func (*WorkerRoute) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerRoute)(nil))
 }
 
-func (i WorkerRoute) ToWorkerRouteOutput() WorkerRouteOutput {
+func (i *WorkerRoute) ToWorkerRouteOutput() WorkerRouteOutput {
 	return i.ToWorkerRouteOutputWithContext(context.Background())
 }
 
-func (i WorkerRoute) ToWorkerRouteOutputWithContext(ctx context.Context) WorkerRouteOutput {
+func (i *WorkerRoute) ToWorkerRouteOutputWithContext(ctx context.Context) WorkerRouteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerRouteOutput)
 }
 
@@ -165,7 +165,7 @@ type WorkerRouteOutput struct {
 }
 
 func (WorkerRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerRouteOutput)(nil)).Elem()
+	return reflect.TypeOf((*WorkerRoute)(nil))
 }
 
 func (o WorkerRouteOutput) ToWorkerRouteOutput() WorkerRouteOutput {
