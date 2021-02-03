@@ -84,7 +84,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
-               re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+               re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+               Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         if __name__ is not None:
@@ -164,7 +165,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
-               re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+               re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+               Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -274,7 +276,8 @@ class AccessApplication(pulumi.CustomResource):
     def session_duration(self) -> pulumi.Output[Optional[str]]:
         """
         How often a user will be forced to
-        re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+        Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         """
         return pulumi.get(self, "session_duration")
 

@@ -9677,6 +9677,8 @@ func (o RateLimitMatchRequestPtrOutput) UrlPattern() pulumi.StringPtrOutput {
 }
 
 type RateLimitMatchResponse struct {
+	// block is a list of maps with the following attributes:
+	Headers []map[string]string `pulumi:"headers"`
 	// Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
 	OriginTraffic *bool `pulumi:"originTraffic"`
 	// HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
@@ -9695,6 +9697,8 @@ type RateLimitMatchResponseInput interface {
 }
 
 type RateLimitMatchResponseArgs struct {
+	// block is a list of maps with the following attributes:
+	Headers pulumi.StringMapArrayInput `pulumi:"headers"`
 	// Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
 	OriginTraffic pulumi.BoolPtrInput `pulumi:"originTraffic"`
 	// HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
@@ -9778,6 +9782,11 @@ func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponsePtrOutputWithConte
 	}).(RateLimitMatchResponsePtrOutput)
 }
 
+// block is a list of maps with the following attributes:
+func (o RateLimitMatchResponseOutput) Headers() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v RateLimitMatchResponse) []map[string]string { return v.Headers }).(pulumi.StringMapArrayOutput)
+}
+
 // Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
 func (o RateLimitMatchResponseOutput) OriginTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RateLimitMatchResponse) *bool { return v.OriginTraffic }).(pulumi.BoolPtrOutput)
@@ -9804,6 +9813,16 @@ func (o RateLimitMatchResponsePtrOutput) ToRateLimitMatchResponsePtrOutputWithCo
 
 func (o RateLimitMatchResponsePtrOutput) Elem() RateLimitMatchResponseOutput {
 	return o.ApplyT(func(v *RateLimitMatchResponse) RateLimitMatchResponse { return *v }).(RateLimitMatchResponseOutput)
+}
+
+// block is a list of maps with the following attributes:
+func (o RateLimitMatchResponsePtrOutput) Headers() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *RateLimitMatchResponse) []map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(pulumi.StringMapArrayOutput)
 }
 
 // Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.

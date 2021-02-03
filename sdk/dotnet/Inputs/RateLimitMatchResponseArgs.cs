@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RateLimitMatchResponseArgs : Pulumi.ResourceArgs
     {
+        [Input("headers")]
+        private InputList<ImmutableDictionary<string, string>>? _headers;
+
+        /// <summary>
+        /// block is a list of maps with the following attributes:
+        /// </summary>
+        public InputList<ImmutableDictionary<string, string>> Headers
+        {
+            get => _headers ?? (_headers = new InputList<ImmutableDictionary<string, string>>());
+            set => _headers = value;
+        }
+
         /// <summary>
         /// Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
         /// </summary>

@@ -3532,6 +3532,21 @@
         },
         "cloudflare:index/RateLimitMatchResponse:RateLimitMatchResponse": {
             "properties": {
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "block is a list of maps with the following attributes:\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "originTraffic": {
                     "type": "boolean",
                     "description": "Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.\n",
@@ -5563,7 +5578,7 @@
                 },
                 "sessionDuration": {
                     "type": "string",
-                    "description": "How often a user will be forced to\nre-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
+                    "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -5622,7 +5637,7 @@
                 },
                 "sessionDuration": {
                     "type": "string",
-                    "description": "How often a user will be forced to\nre-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
+                    "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -5684,7 +5699,7 @@
                     },
                     "sessionDuration": {
                         "type": "string",
-                        "description": "How often a user will be forced to\nre-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.\n"
+                        "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -6414,6 +6429,65 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The DNS zone ID that you wish to manage Argo on.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/argoTunnel:ArgoTunnel": {
+            "description": "Argo Tunnel exposes applications running on your local web server on any network with an internet connection without manually adding DNS records or configuring a firewall or router.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ArgoTunnel(\"example\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"my-tunnel\",\n    secret: \"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ArgoTunnel(\"example\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"my-tunnel\",\n    secret=\"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.ArgoTunnel(\"example\", new Cloudflare.ArgoTunnelArgs\n        {\n            AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"my-tunnel\",\n            Secret = \"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewArgoTunnel(ctx, \"example\", \u0026cloudflare.ArgoTunnelArgs{\n\t\t\tAccountId: pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:      pulumi.String(\"my-tunnel\"),\n\t\t\tSecret:    pulumi.String(\"AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nArgo Tunnels can be imported a composite ID of the account ID and tunnel UUID.\n\n```sh\n $ pulumi import cloudflare:index/argoTunnel:ArgoTunnel example d41d8cd98f00b204e9800998ecf8427e/fd2455cb-5fcc-4c13-8738-8d8d2605237f\n```\n\n where - `d41d8cd98f00b204e9800998ecf8427e` is the account ID - `fd2455cb-5fcc-4c13-8738-8d8d2605237f` is the Argo Tunnel UUID ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The Cloudflare account ID that you wish to manage the Argo Tunnel on.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A user-friendly name chosen when the tunnel is created. Cannot be empty.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "name",
+                "secret"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The Cloudflare account ID that you wish to manage the Argo Tunnel on.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A user-friendly name chosen when the tunnel is created. Cannot be empty.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name",
+                "secret"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ArgoTunnel resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The Cloudflare account ID that you wish to manage the Argo Tunnel on.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A user-friendly name chosen when the tunnel is created. Cannot be empty.\n"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.\n"
                     }
                 },
                 "type": "object"
@@ -8846,7 +8920,7 @@
             }
         },
         "cloudflare:index/rateLimit:RateLimit": {
-            "description": "Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.RateLimit(\"example\", {\n    zoneId: _var.cloudflare_zone_id,\n    threshold: 2000,\n    period: 2,\n    match: {\n        request: {\n            urlPattern: `${_var.cloudflare_zone}/*`,\n            schemes: [\n                \"HTTP\",\n                \"HTTPS\",\n            ],\n            methods: [\n                \"GET\",\n                \"POST\",\n                \"PUT\",\n                \"DELETE\",\n                \"PATCH\",\n                \"HEAD\",\n            ],\n        },\n        response: {\n            statuses: [\n                200,\n                201,\n                202,\n                301,\n                429,\n            ],\n            originTraffic: false,\n        },\n    },\n    action: {\n        mode: \"simulate\",\n        timeout: 43200,\n        response: {\n            contentType: \"text/plain\",\n            body: \"custom response body\",\n        },\n    },\n    correlate: {\n        by: \"nat\",\n    },\n    disabled: false,\n    description: \"example rate limit for a zone\",\n    bypassUrlPatterns: [\n        `${_var.cloudflare_zone}/bypass1`,\n        `${_var.cloudflare_zone}/bypass2`,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.RateLimit(\"example\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    threshold=2000,\n    period=2,\n    match=cloudflare.RateLimitMatchArgs(\n        request=cloudflare.RateLimitMatchRequestArgs(\n            url_pattern=f\"{var['cloudflare_zone']}/*\",\n            schemes=[\n                \"HTTP\",\n                \"HTTPS\",\n            ],\n            methods=[\n                \"GET\",\n                \"POST\",\n                \"PUT\",\n                \"DELETE\",\n                \"PATCH\",\n                \"HEAD\",\n            ],\n        ),\n        response=cloudflare.RateLimitMatchResponseArgs(\n            statuses=[\n                200,\n                201,\n                202,\n                301,\n                429,\n            ],\n            origin_traffic=False,\n        ),\n    ),\n    action=cloudflare.RateLimitActionArgs(\n        mode=\"simulate\",\n        timeout=43200,\n        response=cloudflare.RateLimitActionResponseArgs(\n            content_type=\"text/plain\",\n            body=\"custom response body\",\n        ),\n    ),\n    correlate=cloudflare.RateLimitCorrelateArgs(\n        by=\"nat\",\n    ),\n    disabled=False,\n    description=\"example rate limit for a zone\",\n    bypass_url_patterns=[\n        f\"{var['cloudflare_zone']}/bypass1\",\n        f\"{var['cloudflare_zone']}/bypass2\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.RateLimit(\"example\", new Cloudflare.RateLimitArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Threshold = 2000,\n            Period = 2,\n            Match = new Cloudflare.Inputs.RateLimitMatchArgs\n            {\n                Request = new Cloudflare.Inputs.RateLimitMatchRequestArgs\n                {\n                    UrlPattern = $\"{@var.Cloudflare_zone}/*\",\n                    Schemes = \n                    {\n                        \"HTTP\",\n                        \"HTTPS\",\n                    },\n                    Methods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"PUT\",\n                        \"DELETE\",\n                        \"PATCH\",\n                        \"HEAD\",\n                    },\n                },\n                Response = new Cloudflare.Inputs.RateLimitMatchResponseArgs\n                {\n                    Statuses = \n                    {\n                        200,\n                        201,\n                        202,\n                        301,\n                        429,\n                    },\n                    OriginTraffic = false,\n                },\n            },\n            Action = new Cloudflare.Inputs.RateLimitActionArgs\n            {\n                Mode = \"simulate\",\n                Timeout = 43200,\n                Response = new Cloudflare.Inputs.RateLimitActionResponseArgs\n                {\n                    ContentType = \"text/plain\",\n                    Body = \"custom response body\",\n                },\n            },\n            Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs\n            {\n                By = \"nat\",\n            },\n            Disabled = false,\n            Description = \"example rate limit for a zone\",\n            BypassUrlPatterns = \n            {\n                $\"{@var.Cloudflare_zone}/bypass1\",\n                $\"{@var.Cloudflare_zone}/bypass2\",\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43\n```\n\n ",
+            "description": "Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.RateLimit(\"example\", {\n    zoneId: _var.cloudflare_zone_id,\n    threshold: 2000,\n    period: 2,\n    match: {\n        request: {\n            urlPattern: `${_var.cloudflare_zone}/*`,\n            schemes: [\n                \"HTTP\",\n                \"HTTPS\",\n            ],\n            methods: [\n                \"GET\",\n                \"POST\",\n                \"PUT\",\n                \"DELETE\",\n                \"PATCH\",\n                \"HEAD\",\n            ],\n        },\n        response: {\n            statuses: [\n                200,\n                201,\n                202,\n                301,\n                429,\n            ],\n            originTraffic: false,\n            headers: [\n                {\n                    name: \"Host\",\n                    op: \"eq\",\n                    value: \"localhost\",\n                },\n                {\n                    name: \"X-Example\",\n                    op: \"ne\",\n                    value: \"my-example\",\n                },\n            ],\n        },\n    },\n    action: {\n        mode: \"simulate\",\n        timeout: 43200,\n        response: {\n            contentType: \"text/plain\",\n            body: \"custom response body\",\n        },\n    },\n    correlate: {\n        by: \"nat\",\n    },\n    disabled: false,\n    description: \"example rate limit for a zone\",\n    bypassUrlPatterns: [\n        `${_var.cloudflare_zone}/bypass1`,\n        `${_var.cloudflare_zone}/bypass2`,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.RateLimit(\"example\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    threshold=2000,\n    period=2,\n    match=cloudflare.RateLimitMatchArgs(\n        request=cloudflare.RateLimitMatchRequestArgs(\n            url_pattern=f\"{var['cloudflare_zone']}/*\",\n            schemes=[\n                \"HTTP\",\n                \"HTTPS\",\n            ],\n            methods=[\n                \"GET\",\n                \"POST\",\n                \"PUT\",\n                \"DELETE\",\n                \"PATCH\",\n                \"HEAD\",\n            ],\n        ),\n        response=cloudflare.RateLimitMatchResponseArgs(\n            statuses=[\n                200,\n                201,\n                202,\n                301,\n                429,\n            ],\n            origin_traffic=False,\n            headers=[\n                {\n                    \"name\": \"Host\",\n                    \"op\": \"eq\",\n                    \"value\": \"localhost\",\n                },\n                {\n                    \"name\": \"X-Example\",\n                    \"op\": \"ne\",\n                    \"value\": \"my-example\",\n                },\n            ],\n        ),\n    ),\n    action=cloudflare.RateLimitActionArgs(\n        mode=\"simulate\",\n        timeout=43200,\n        response=cloudflare.RateLimitActionResponseArgs(\n            content_type=\"text/plain\",\n            body=\"custom response body\",\n        ),\n    ),\n    correlate=cloudflare.RateLimitCorrelateArgs(\n        by=\"nat\",\n    ),\n    disabled=False,\n    description=\"example rate limit for a zone\",\n    bypass_url_patterns=[\n        f\"{var['cloudflare_zone']}/bypass1\",\n        f\"{var['cloudflare_zone']}/bypass2\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.RateLimit(\"example\", new Cloudflare.RateLimitArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Threshold = 2000,\n            Period = 2,\n            Match = new Cloudflare.Inputs.RateLimitMatchArgs\n            {\n                Request = new Cloudflare.Inputs.RateLimitMatchRequestArgs\n                {\n                    UrlPattern = $\"{@var.Cloudflare_zone}/*\",\n                    Schemes = \n                    {\n                        \"HTTP\",\n                        \"HTTPS\",\n                    },\n                    Methods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"PUT\",\n                        \"DELETE\",\n                        \"PATCH\",\n                        \"HEAD\",\n                    },\n                },\n                Response = new Cloudflare.Inputs.RateLimitMatchResponseArgs\n                {\n                    Statuses = \n                    {\n                        200,\n                        201,\n                        202,\n                        301,\n                        429,\n                    },\n                    OriginTraffic = false,\n                    Headers = \n                    {\n                        \n                        {\n                            { \"name\", \"Host\" },\n                            { \"op\", \"eq\" },\n                            { \"value\", \"localhost\" },\n                        },\n                        \n                        {\n                            { \"name\", \"X-Example\" },\n                            { \"op\", \"ne\" },\n                            { \"value\", \"my-example\" },\n                        },\n                    },\n                },\n            },\n            Action = new Cloudflare.Inputs.RateLimitActionArgs\n            {\n                Mode = \"simulate\",\n                Timeout = 43200,\n                Response = new Cloudflare.Inputs.RateLimitActionResponseArgs\n                {\n                    ContentType = \"text/plain\",\n                    Body = \"custom response body\",\n                },\n            },\n            Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs\n            {\n                By = \"nat\",\n            },\n            Disabled = false,\n            Description = \"example rate limit for a zone\",\n            BypassUrlPatterns = \n            {\n                $\"{@var.Cloudflare_zone}/bypass1\",\n                $\"{@var.Cloudflare_zone}/bypass2\",\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/rateLimit:RateLimit default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43\n```\n\n ",
             "properties": {
                 "action": {
                     "$ref": "#/types/cloudflare:index/RateLimitAction:RateLimitAction",
@@ -9746,6 +9820,60 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The DNS zone ID to apply to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/workerCronTrigger:WorkerCronTrigger": {
+            "description": "Worker Cron Triggers allow users to map a cron expression to a Worker script\nusing a `ScheduledEvent` listener that enables Workers to be executed on a\nschedule. Worker Cron Triggers are ideal for running periodic jobs for\nmaintenance or calling third-party APIs to collect up-to-date data.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * from \"fs\";\n\nconst exampleScript = new cloudflare.WorkerScript(\"exampleScript\", {\n    name: \"example-script\",\n    content: fs.readFileSync(\"path/to/my.js\"),\n});\nconst exampleTrigger = new cloudflare.WorkerCronTrigger(\"exampleTrigger\", {\n    scriptName: exampleScript.name,\n    schedules: [\n        \"*/5 * * * *\",\n        \"10 7 * * mon-fri\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_script = cloudflare.WorkerScript(\"exampleScript\",\n    name=\"example-script\",\n    content=(lambda path: open(path).read())(\"path/to/my.js\"))\nexample_trigger = cloudflare.WorkerCronTrigger(\"exampleTrigger\",\n    script_name=example_script.name,\n    schedules=[\n        \"*/5 * * * *\",\n        \"10 7 * * mon-fri\",\n    ])\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleScript = new Cloudflare.WorkerScript(\"exampleScript\", new Cloudflare.WorkerScriptArgs\n        {\n            Name = \"example-script\",\n            Content = File.ReadAllText(\"path/to/my.js\"),\n        });\n        var exampleTrigger = new Cloudflare.WorkerCronTrigger(\"exampleTrigger\", new Cloudflare.WorkerCronTriggerArgs\n        {\n            ScriptName = exampleScript.Name,\n            Schedules = \n            {\n                \"*/5 * * * *\",\n                \"10 7 * * mon-fri\",\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nWorker Cron Triggers can be imported using the script name of the Worker they are targeting.\n\n```sh\n $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script\n```\n\n ",
+            "properties": {
+                "schedules": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of cron expressions to execute the Worker Script\n"
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "Worker script to target for the schedules\n"
+                }
+            },
+            "required": [
+                "schedules",
+                "scriptName"
+            ],
+            "inputProperties": {
+                "schedules": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of cron expressions to execute the Worker Script\n"
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "Worker script to target for the schedules\n"
+                }
+            },
+            "requiredInputs": [
+                "schedules",
+                "scriptName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkerCronTrigger resources.\n",
+                "properties": {
+                    "schedules": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of cron expressions to execute the Worker Script\n"
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "Worker script to target for the schedules\n"
                     }
                 },
                 "type": "object"

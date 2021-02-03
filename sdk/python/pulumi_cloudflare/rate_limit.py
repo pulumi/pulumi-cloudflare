@@ -67,6 +67,18 @@ class RateLimit(pulumi.CustomResource):
                         429,
                     ],
                     origin_traffic=False,
+                    headers=[
+                        {
+                            "name": "Host",
+                            "op": "eq",
+                            "value": "localhost",
+                        },
+                        {
+                            "name": "X-Example",
+                            "op": "ne",
+                            "value": "my-example",
+                        },
+                    ],
                 ),
             ),
             action=cloudflare.RateLimitActionArgs(

@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RateLimitMatchResponse
     {
         /// <summary>
+        /// block is a list of maps with the following attributes:
+        /// </summary>
+        public readonly ImmutableArray<ImmutableDictionary<string, string>> Headers;
+        /// <summary>
         /// Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
         /// </summary>
         public readonly bool? OriginTraffic;
@@ -24,10 +28,13 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private RateLimitMatchResponse(
+            ImmutableArray<ImmutableDictionary<string, string>> headers,
+
             bool? originTraffic,
 
             ImmutableArray<int> statuses)
         {
+            Headers = headers;
             OriginTraffic = originTraffic;
             Statuses = statuses;
         }

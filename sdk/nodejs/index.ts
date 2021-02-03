@@ -14,6 +14,7 @@ export * from "./accessServiceToken";
 export * from "./accountMember";
 export * from "./apiToken";
 export * from "./argo";
+export * from "./argoTunnel";
 export * from "./authenticatedOriginPulls";
 export * from "./authenticatedOriginPullsCertificate";
 export * from "./byoIpPrefix";
@@ -50,6 +51,7 @@ export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
 export * from "./wafRule";
+export * from "./workerCronTrigger";
 export * from "./workerRoute";
 export * from "./workerScript";
 export * from "./workersKv";
@@ -78,6 +80,7 @@ import { AccessServiceToken } from "./accessServiceToken";
 import { AccountMember } from "./accountMember";
 import { ApiToken } from "./apiToken";
 import { Argo } from "./argo";
+import { ArgoTunnel } from "./argoTunnel";
 import { AuthenticatedOriginPulls } from "./authenticatedOriginPulls";
 import { AuthenticatedOriginPullsCertificate } from "./authenticatedOriginPullsCertificate";
 import { ByoIpPrefix } from "./byoIpPrefix";
@@ -106,6 +109,7 @@ import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
 import { WafRule } from "./wafRule";
+import { WorkerCronTrigger } from "./workerCronTrigger";
 import { WorkerRoute } from "./workerRoute";
 import { WorkerScript } from "./workerScript";
 import { WorkersKv } from "./workersKv";
@@ -137,6 +141,8 @@ const _module = {
                 return new ApiToken(name, <any>undefined, { urn })
             case "cloudflare:index/argo:Argo":
                 return new Argo(name, <any>undefined, { urn })
+            case "cloudflare:index/argoTunnel:ArgoTunnel":
+                return new ArgoTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls":
                 return new AuthenticatedOriginPulls(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
@@ -193,6 +199,8 @@ const _module = {
                 return new WafPackage(name, <any>undefined, { urn })
             case "cloudflare:index/wafRule:WafRule":
                 return new WafRule(name, <any>undefined, { urn })
+            case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
+                return new WorkerCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workerRoute:WorkerRoute":
                 return new WorkerRoute(name, <any>undefined, { urn })
             case "cloudflare:index/workerScript:WorkerScript":
@@ -223,6 +231,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accessServiceToken", 
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/argoTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPulls", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/byoIpPrefix", _module)
@@ -251,6 +260,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)

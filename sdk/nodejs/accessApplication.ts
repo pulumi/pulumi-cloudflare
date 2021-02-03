@@ -117,7 +117,8 @@ export class AccessApplication extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * How often a user will be forced to
-     * re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+     * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+     * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
@@ -231,7 +232,8 @@ export interface AccessApplicationState {
     readonly name?: pulumi.Input<string>;
     /**
      * How often a user will be forced to
-     * re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+     * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+     * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     readonly sessionDuration?: pulumi.Input<string>;
     /**
@@ -286,7 +288,8 @@ export interface AccessApplicationArgs {
     readonly name: pulumi.Input<string>;
     /**
      * How often a user will be forced to
-     * re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+     * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+     * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     readonly sessionDuration?: pulumi.Input<string>;
     /**

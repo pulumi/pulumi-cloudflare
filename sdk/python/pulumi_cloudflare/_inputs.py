@@ -4831,16 +4831,32 @@ class RateLimitMatchRequestArgs:
 @pulumi.input_type
 class RateLimitMatchResponseArgs:
     def __init__(__self__, *,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  origin_traffic: Optional[pulumi.Input[bool]] = None,
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] headers: block is a list of maps with the following attributes:
         :param pulumi.Input[bool] origin_traffic: Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] statuses: HTTP Status codes, can be one [403], many [401,403] or indicate all by not providing this value.
         """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if origin_traffic is not None:
             pulumi.set(__self__, "origin_traffic", origin_traffic)
         if statuses is not None:
             pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        block is a list of maps with the following attributes:
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "headers", value)
 
     @property
     @pulumi.getter(name="originTraffic")

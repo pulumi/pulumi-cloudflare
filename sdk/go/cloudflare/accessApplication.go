@@ -91,7 +91,8 @@ type AccessApplication struct {
 	// Friendly name of the Access Application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// How often a user will be forced to
-	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -157,7 +158,8 @@ type accessApplicationState struct {
 	// Friendly name of the Access Application.
 	Name *string `pulumi:"name"`
 	// How often a user will be forced to
-	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -189,7 +191,8 @@ type AccessApplicationState struct {
 	// Friendly name of the Access Application.
 	Name pulumi.StringPtrInput
 	// How often a user will be forced to
-	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrInput
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
@@ -223,7 +226,8 @@ type accessApplicationArgs struct {
 	// Friendly name of the Access Application.
 	Name string `pulumi:"name"`
 	// How often a user will be forced to
-	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -254,7 +258,8 @@ type AccessApplicationArgs struct {
 	// Friendly name of the Access Application.
 	Name pulumi.StringInput
 	// How often a user will be forced to
-	// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrInput
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
