@@ -38,6 +38,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewApiToken(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/argo:Argo":
 		r, err = NewArgo(ctx, name, nil, pulumi.URN_(urn))
+	case "cloudflare:index/argoTunnel:ArgoTunnel":
+		r, err = NewArgoTunnel(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls":
 		r, err = NewAuthenticatedOriginPulls(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
@@ -94,6 +96,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewWafPackage(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/wafRule:WafRule":
 		r, err = NewWafRule(ctx, name, nil, pulumi.URN_(urn))
+	case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
+		r, err = NewWorkerCronTrigger(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/workerRoute:WorkerRoute":
 		r, err = NewWorkerRoute(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/workerScript:WorkerScript":
@@ -181,6 +185,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/argo",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/argoTunnel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -321,6 +330,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/wafRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workerCronTrigger",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -12,6 +12,7 @@ from .access_service_token import *
 from .account_member import *
 from .api_token import *
 from .argo import *
+from .argo_tunnel import *
 from .authenticated_origin_pulls import *
 from .authenticated_origin_pulls_certificate import *
 from .byo_ip_prefix import *
@@ -48,6 +49,7 @@ from .waf_group import *
 from .waf_override import *
 from .waf_package import *
 from .waf_rule import *
+from .worker_cron_trigger import *
 from .worker_route import *
 from .worker_script import *
 from .workers_kv import *
@@ -94,6 +96,8 @@ def _register_module():
                 return ApiToken(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/argo:Argo":
                 return Argo(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/argoTunnel:ArgoTunnel":
+                return ArgoTunnel(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls":
                 return AuthenticatedOriginPulls(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
@@ -150,6 +154,8 @@ def _register_module():
                 return WafPackage(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/wafRule:WafRule":
                 return WafRule(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
+                return WorkerCronTrigger(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/workerRoute:WorkerRoute":
                 return WorkerRoute(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/workerScript:WorkerScript":
@@ -180,6 +186,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("cloudflare", "index/accountMember", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/apiToken", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/argo", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/argoTunnel", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/authenticatedOriginPulls", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/authenticatedOriginPullsCertificate", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/byoIpPrefix", _module_instance)
@@ -208,6 +215,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("cloudflare", "index/wafOverride", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/wafPackage", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/wafRule", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/workerCronTrigger", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/workerRoute", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/workerScript", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/workersKv", _module_instance)

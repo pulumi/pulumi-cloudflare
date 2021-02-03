@@ -58,6 +58,21 @@ namespace Pulumi.Cloudflare
     ///                         429,
     ///                     },
     ///                     OriginTraffic = false,
+    ///                     Headers = 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "name", "Host" },
+    ///                             { "op", "eq" },
+    ///                             { "value", "localhost" },
+    ///                         },
+    ///                         
+    ///                         {
+    ///                             { "name", "X-Example" },
+    ///                             { "op", "ne" },
+    ///                             { "value", "my-example" },
+    ///                         },
+    ///                     },
     ///                 },
     ///             },
     ///             Action = new Cloudflare.Inputs.RateLimitActionArgs

@@ -132,7 +132,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// How often a user will be forced to
-        /// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        /// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+        /// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
@@ -261,7 +262,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// How often a user will be forced to
-        /// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        /// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+        /// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
@@ -357,7 +359,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// How often a user will be forced to
-        /// re-authorise. Must be one of `0s`, `15m`, `30m`, `6h`, `12h`, `24h`, `168h`, `730h`.
+        /// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+        /// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }

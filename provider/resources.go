@@ -139,6 +139,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_access_rule":           {Tok: makeResource(mainMod, "AccessRule")},
 			"cloudflare_account_member":        {Tok: makeResource(mainMod, "AccountMember")},
 			"cloudflare_argo":                  {Tok: makeResource(mainMod, "Argo")},
+			"cloudflare_argo_tunnel":           {Tok: makeResource(mainMod, "ArgoTunnel")},
 			"cloudflare_custom_pages":          {Tok: makeResource(mainMod, "CustomPages")},
 			"cloudflare_filter":                {Tok: makeResource(mainMod, "Filter")},
 			"cloudflare_firewall_rule":         {Tok: makeResource(mainMod, "FirewallRule")},
@@ -152,6 +153,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_spectrum_application":  {Tok: makeResource(mainMod, "SpectrumApplication")},
 			"cloudflare_waf_rule":              {Tok: makeResource(mainMod, "WafRule")},
 			"cloudflare_worker_route":          {Tok: makeResource(mainMod, "WorkerRoute")},
+			"cloudflare_worker_cron_trigger":   {Tok: makeResource(mainMod, "WorkerCronTrigger")},
 			"cloudflare_worker_script":         {Tok: makeResource(mainMod, "WorkerScript")},
 			"cloudflare_zone_lockdown":         {Tok: makeResource(mainMod, "ZoneLockdown")},
 			"cloudflare_zone_settings_override": {

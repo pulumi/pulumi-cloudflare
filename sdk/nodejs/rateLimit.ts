@@ -43,6 +43,18 @@ import * as utilities from "./utilities";
  *                 429,
  *             ],
  *             originTraffic: false,
+ *             headers: [
+ *                 {
+ *                     name: "Host",
+ *                     op: "eq",
+ *                     value: "localhost",
+ *                 },
+ *                 {
+ *                     name: "X-Example",
+ *                     op: "ne",
+ *                     value: "my-example",
+ *                 },
+ *             ],
  *         },
  *     },
  *     action: {

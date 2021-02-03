@@ -1111,6 +1111,10 @@ export interface RateLimitMatchRequest {
 
 export interface RateLimitMatchResponse {
     /**
+     * block is a list of maps with the following attributes:
+     */
+    headers?: {[key: string]: string}[];
+    /**
      * Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting. Default: `true`.
      */
     originTraffic: boolean;
