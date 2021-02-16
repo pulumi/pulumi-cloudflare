@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 // )
@@ -182,6 +181,85 @@ func (i *CustomSsl) ToCustomSslOutputWithContext(ctx context.Context) CustomSslO
 	return pulumi.ToOutputWithContext(ctx, i).(CustomSslOutput)
 }
 
+func (i *CustomSsl) ToCustomSslPtrOutput() CustomSslPtrOutput {
+	return i.ToCustomSslPtrOutputWithContext(context.Background())
+}
+
+func (i *CustomSsl) ToCustomSslPtrOutputWithContext(ctx context.Context) CustomSslPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSslPtrOutput)
+}
+
+type CustomSslPtrInput interface {
+	pulumi.Input
+
+	ToCustomSslPtrOutput() CustomSslPtrOutput
+	ToCustomSslPtrOutputWithContext(ctx context.Context) CustomSslPtrOutput
+}
+
+type customSslPtrType CustomSslArgs
+
+func (*customSslPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomSsl)(nil))
+}
+
+func (i *customSslPtrType) ToCustomSslPtrOutput() CustomSslPtrOutput {
+	return i.ToCustomSslPtrOutputWithContext(context.Background())
+}
+
+func (i *customSslPtrType) ToCustomSslPtrOutputWithContext(ctx context.Context) CustomSslPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSslPtrOutput)
+}
+
+// CustomSslArrayInput is an input type that accepts CustomSslArray and CustomSslArrayOutput values.
+// You can construct a concrete instance of `CustomSslArrayInput` via:
+//
+//          CustomSslArray{ CustomSslArgs{...} }
+type CustomSslArrayInput interface {
+	pulumi.Input
+
+	ToCustomSslArrayOutput() CustomSslArrayOutput
+	ToCustomSslArrayOutputWithContext(context.Context) CustomSslArrayOutput
+}
+
+type CustomSslArray []CustomSslInput
+
+func (CustomSslArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CustomSsl)(nil))
+}
+
+func (i CustomSslArray) ToCustomSslArrayOutput() CustomSslArrayOutput {
+	return i.ToCustomSslArrayOutputWithContext(context.Background())
+}
+
+func (i CustomSslArray) ToCustomSslArrayOutputWithContext(ctx context.Context) CustomSslArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSslArrayOutput)
+}
+
+// CustomSslMapInput is an input type that accepts CustomSslMap and CustomSslMapOutput values.
+// You can construct a concrete instance of `CustomSslMapInput` via:
+//
+//          CustomSslMap{ "key": CustomSslArgs{...} }
+type CustomSslMapInput interface {
+	pulumi.Input
+
+	ToCustomSslMapOutput() CustomSslMapOutput
+	ToCustomSslMapOutputWithContext(context.Context) CustomSslMapOutput
+}
+
+type CustomSslMap map[string]CustomSslInput
+
+func (CustomSslMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CustomSsl)(nil))
+}
+
+func (i CustomSslMap) ToCustomSslMapOutput() CustomSslMapOutput {
+	return i.ToCustomSslMapOutputWithContext(context.Background())
+}
+
+func (i CustomSslMap) ToCustomSslMapOutputWithContext(ctx context.Context) CustomSslMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSslMapOutput)
+}
+
 type CustomSslOutput struct {
 	*pulumi.OutputState
 }
@@ -198,6 +276,75 @@ func (o CustomSslOutput) ToCustomSslOutputWithContext(ctx context.Context) Custo
 	return o
 }
 
+func (o CustomSslOutput) ToCustomSslPtrOutput() CustomSslPtrOutput {
+	return o.ToCustomSslPtrOutputWithContext(context.Background())
+}
+
+func (o CustomSslOutput) ToCustomSslPtrOutputWithContext(ctx context.Context) CustomSslPtrOutput {
+	return o.ApplyT(func(v CustomSsl) *CustomSsl {
+		return &v
+	}).(CustomSslPtrOutput)
+}
+
+type CustomSslPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomSslPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomSsl)(nil))
+}
+
+func (o CustomSslPtrOutput) ToCustomSslPtrOutput() CustomSslPtrOutput {
+	return o
+}
+
+func (o CustomSslPtrOutput) ToCustomSslPtrOutputWithContext(ctx context.Context) CustomSslPtrOutput {
+	return o
+}
+
+type CustomSslArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomSslArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomSsl)(nil))
+}
+
+func (o CustomSslArrayOutput) ToCustomSslArrayOutput() CustomSslArrayOutput {
+	return o
+}
+
+func (o CustomSslArrayOutput) ToCustomSslArrayOutputWithContext(ctx context.Context) CustomSslArrayOutput {
+	return o
+}
+
+func (o CustomSslArrayOutput) Index(i pulumi.IntInput) CustomSslOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomSsl {
+		return vs[0].([]CustomSsl)[vs[1].(int)]
+	}).(CustomSslOutput)
+}
+
+type CustomSslMapOutput struct{ *pulumi.OutputState }
+
+func (CustomSslMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CustomSsl)(nil))
+}
+
+func (o CustomSslMapOutput) ToCustomSslMapOutput() CustomSslMapOutput {
+	return o
+}
+
+func (o CustomSslMapOutput) ToCustomSslMapOutputWithContext(ctx context.Context) CustomSslMapOutput {
+	return o
+}
+
+func (o CustomSslMapOutput) MapIndex(k pulumi.StringInput) CustomSslOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomSsl {
+		return vs[0].(map[string]CustomSsl)[vs[1].(string)]
+	}).(CustomSslOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomSslOutput{})
+	pulumi.RegisterOutputType(CustomSslPtrOutput{})
+	pulumi.RegisterOutputType(CustomSslArrayOutput{})
+	pulumi.RegisterOutputType(CustomSslMapOutput{})
 }

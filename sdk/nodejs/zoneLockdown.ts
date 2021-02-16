@@ -97,7 +97,8 @@ export class ZoneLockdown extends pulumi.CustomResource {
     constructor(name: string, args: ZoneLockdownArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneLockdownArgs | ZoneLockdownState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ZoneLockdownState | undefined;
             inputs["configurations"] = state ? state.configurations : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -107,13 +108,13 @@ export class ZoneLockdown extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneLockdownArgs | undefined;
-            if ((!args || args.configurations === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.configurations === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configurations'");
             }
-            if ((!args || args.urls === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.urls === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urls'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["configurations"] = args ? args.configurations : undefined;
@@ -123,12 +124,8 @@ export class ZoneLockdown extends pulumi.CustomResource {
             inputs["urls"] = args ? args.urls : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ZoneLockdown.__pulumiType, name, inputs, opts);
     }

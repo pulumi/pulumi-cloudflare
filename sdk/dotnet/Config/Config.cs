@@ -11,7 +11,7 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Configure API client to always use that account.
         /// </summary>
-        public static string? AccountId { get; set; } = __config.Get("accountId") ?? Utilities.GetEnv("CLOUDFLARE_ACCOUNT_ID");
+        public static string? AccountId { get; set; } = __config.Get("accountId");
 
         /// <summary>
         /// Whether to print logs from the API client (using the default log library logger)
@@ -21,22 +21,22 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The API key for operations.
         /// </summary>
-        public static string? ApiKey { get; set; } = __config.Get("apiKey") ?? Utilities.GetEnv("CLOUDFLARE_API_KEY");
+        public static string? ApiKey { get; set; } = __config.Get("apiKey");
 
         /// <summary>
         /// The API Token for operations.
         /// </summary>
-        public static string? ApiToken { get; set; } = __config.Get("apiToken") ?? Utilities.GetEnv("CLOUDFLARE_API_TOKEN");
+        public static string? ApiToken { get; set; } = __config.Get("apiToken");
 
         /// <summary>
         /// A special Cloudflare API key good for a restricted set of endpoints.
         /// </summary>
-        public static string? ApiUserServiceKey { get; set; } = __config.Get("apiUserServiceKey") ?? Utilities.GetEnv("CLOUDFLARE_API_USER_SERVICE_KEY");
+        public static string? ApiUserServiceKey { get; set; } = __config.Get("apiUserServiceKey");
 
         /// <summary>
         /// A registered Cloudflare email address.
         /// </summary>
-        public static string? Email { get; set; } = __config.Get("email") ?? Utilities.GetEnv("CLOUDFLARE_EMAIL");
+        public static string? Email { get; set; } = __config.Get("email");
 
         /// <summary>
         /// Maximum backoff period in seconds after failed API calls

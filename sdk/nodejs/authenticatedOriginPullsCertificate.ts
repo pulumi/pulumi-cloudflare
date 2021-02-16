@@ -104,7 +104,8 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
     constructor(name: string, args: AuthenticatedOriginPullsCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthenticatedOriginPullsCertificateArgs | AuthenticatedOriginPullsCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AuthenticatedOriginPullsCertificateState | undefined;
             inputs["certificate"] = state ? state.certificate : undefined;
             inputs["expiresOn"] = state ? state.expiresOn : undefined;
@@ -118,16 +119,16 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AuthenticatedOriginPullsCertificateArgs | undefined;
-            if ((!args || args.certificate === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.certificate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if ((!args || args.privateKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.privateKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["certificate"] = args ? args.certificate : undefined;
@@ -141,12 +142,8 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["uploadedOn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AuthenticatedOriginPullsCertificate.__pulumiType, name, inputs, opts);
     }

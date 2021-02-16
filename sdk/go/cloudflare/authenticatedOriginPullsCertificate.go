@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -204,6 +204,85 @@ func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertific
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateOutput)
 }
 
+func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput {
+	return i.ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificatePtrOutput)
+}
+
+type AuthenticatedOriginPullsCertificatePtrInput interface {
+	pulumi.Input
+
+	ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput
+	ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput
+}
+
+type authenticatedOriginPullsCertificatePtrType AuthenticatedOriginPullsCertificateArgs
+
+func (*authenticatedOriginPullsCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticatedOriginPullsCertificate)(nil))
+}
+
+func (i *authenticatedOriginPullsCertificatePtrType) ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput {
+	return i.ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *authenticatedOriginPullsCertificatePtrType) ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificatePtrOutput)
+}
+
+// AuthenticatedOriginPullsCertificateArrayInput is an input type that accepts AuthenticatedOriginPullsCertificateArray and AuthenticatedOriginPullsCertificateArrayOutput values.
+// You can construct a concrete instance of `AuthenticatedOriginPullsCertificateArrayInput` via:
+//
+//          AuthenticatedOriginPullsCertificateArray{ AuthenticatedOriginPullsCertificateArgs{...} }
+type AuthenticatedOriginPullsCertificateArrayInput interface {
+	pulumi.Input
+
+	ToAuthenticatedOriginPullsCertificateArrayOutput() AuthenticatedOriginPullsCertificateArrayOutput
+	ToAuthenticatedOriginPullsCertificateArrayOutputWithContext(context.Context) AuthenticatedOriginPullsCertificateArrayOutput
+}
+
+type AuthenticatedOriginPullsCertificateArray []AuthenticatedOriginPullsCertificateInput
+
+func (AuthenticatedOriginPullsCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthenticatedOriginPullsCertificate)(nil))
+}
+
+func (i AuthenticatedOriginPullsCertificateArray) ToAuthenticatedOriginPullsCertificateArrayOutput() AuthenticatedOriginPullsCertificateArrayOutput {
+	return i.ToAuthenticatedOriginPullsCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i AuthenticatedOriginPullsCertificateArray) ToAuthenticatedOriginPullsCertificateArrayOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateArrayOutput)
+}
+
+// AuthenticatedOriginPullsCertificateMapInput is an input type that accepts AuthenticatedOriginPullsCertificateMap and AuthenticatedOriginPullsCertificateMapOutput values.
+// You can construct a concrete instance of `AuthenticatedOriginPullsCertificateMapInput` via:
+//
+//          AuthenticatedOriginPullsCertificateMap{ "key": AuthenticatedOriginPullsCertificateArgs{...} }
+type AuthenticatedOriginPullsCertificateMapInput interface {
+	pulumi.Input
+
+	ToAuthenticatedOriginPullsCertificateMapOutput() AuthenticatedOriginPullsCertificateMapOutput
+	ToAuthenticatedOriginPullsCertificateMapOutputWithContext(context.Context) AuthenticatedOriginPullsCertificateMapOutput
+}
+
+type AuthenticatedOriginPullsCertificateMap map[string]AuthenticatedOriginPullsCertificateInput
+
+func (AuthenticatedOriginPullsCertificateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthenticatedOriginPullsCertificate)(nil))
+}
+
+func (i AuthenticatedOriginPullsCertificateMap) ToAuthenticatedOriginPullsCertificateMapOutput() AuthenticatedOriginPullsCertificateMapOutput {
+	return i.ToAuthenticatedOriginPullsCertificateMapOutputWithContext(context.Background())
+}
+
+func (i AuthenticatedOriginPullsCertificateMap) ToAuthenticatedOriginPullsCertificateMapOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateMapOutput)
+}
+
 type AuthenticatedOriginPullsCertificateOutput struct {
 	*pulumi.OutputState
 }
@@ -220,6 +299,75 @@ func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCer
 	return o
 }
 
+func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput {
+	return o.ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput {
+	return o.ApplyT(func(v AuthenticatedOriginPullsCertificate) *AuthenticatedOriginPullsCertificate {
+		return &v
+	}).(AuthenticatedOriginPullsCertificatePtrOutput)
+}
+
+type AuthenticatedOriginPullsCertificatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthenticatedOriginPullsCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthenticatedOriginPullsCertificate)(nil))
+}
+
+func (o AuthenticatedOriginPullsCertificatePtrOutput) ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput {
+	return o
+}
+
+func (o AuthenticatedOriginPullsCertificatePtrOutput) ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput {
+	return o
+}
+
+type AuthenticatedOriginPullsCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthenticatedOriginPullsCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthenticatedOriginPullsCertificate)(nil))
+}
+
+func (o AuthenticatedOriginPullsCertificateArrayOutput) ToAuthenticatedOriginPullsCertificateArrayOutput() AuthenticatedOriginPullsCertificateArrayOutput {
+	return o
+}
+
+func (o AuthenticatedOriginPullsCertificateArrayOutput) ToAuthenticatedOriginPullsCertificateArrayOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateArrayOutput {
+	return o
+}
+
+func (o AuthenticatedOriginPullsCertificateArrayOutput) Index(i pulumi.IntInput) AuthenticatedOriginPullsCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthenticatedOriginPullsCertificate {
+		return vs[0].([]AuthenticatedOriginPullsCertificate)[vs[1].(int)]
+	}).(AuthenticatedOriginPullsCertificateOutput)
+}
+
+type AuthenticatedOriginPullsCertificateMapOutput struct{ *pulumi.OutputState }
+
+func (AuthenticatedOriginPullsCertificateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthenticatedOriginPullsCertificate)(nil))
+}
+
+func (o AuthenticatedOriginPullsCertificateMapOutput) ToAuthenticatedOriginPullsCertificateMapOutput() AuthenticatedOriginPullsCertificateMapOutput {
+	return o
+}
+
+func (o AuthenticatedOriginPullsCertificateMapOutput) ToAuthenticatedOriginPullsCertificateMapOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateMapOutput {
+	return o
+}
+
+func (o AuthenticatedOriginPullsCertificateMapOutput) MapIndex(k pulumi.StringInput) AuthenticatedOriginPullsCertificateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthenticatedOriginPullsCertificate {
+		return vs[0].(map[string]AuthenticatedOriginPullsCertificate)[vs[1].(string)]
+	}).(AuthenticatedOriginPullsCertificateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificateOutput{})
+	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificatePtrOutput{})
+	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificateArrayOutput{})
+	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificateMapOutput{})
 }

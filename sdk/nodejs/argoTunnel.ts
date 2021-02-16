@@ -81,32 +81,29 @@ export class ArgoTunnel extends pulumi.CustomResource {
     constructor(name: string, args: ArgoTunnelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ArgoTunnelArgs | ArgoTunnelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ArgoTunnelState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["secret"] = state ? state.secret : undefined;
         } else {
             const args = argsOrState as ArgoTunnelArgs | undefined;
-            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.secret === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.secret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["secret"] = args ? args.secret : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ArgoTunnel.__pulumiType, name, inputs, opts);
     }

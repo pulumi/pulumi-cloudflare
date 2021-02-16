@@ -132,7 +132,8 @@ export class SpectrumApplication extends pulumi.CustomResource {
     constructor(name: string, args: SpectrumApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SpectrumApplicationArgs | SpectrumApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SpectrumApplicationState | undefined;
             inputs["argoSmartRouting"] = state ? state.argoSmartRouting : undefined;
             inputs["dns"] = state ? state.dns : undefined;
@@ -150,13 +151,13 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SpectrumApplicationArgs | undefined;
-            if ((!args || args.dns === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dns === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dns'");
             }
-            if ((!args || args.protocol === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protocol === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protocol'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["argoSmartRouting"] = args ? args.argoSmartRouting : undefined;
@@ -174,12 +175,8 @@ export class SpectrumApplication extends pulumi.CustomResource {
             inputs["trafficType"] = args ? args.trafficType : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SpectrumApplication.__pulumiType, name, inputs, opts);
     }

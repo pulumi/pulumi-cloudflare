@@ -10,11 +10,7 @@ import (
 
 // Configure API client to always use that account.
 func GetAccountId(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "cloudflare:accountId")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CLOUDFLARE_ACCOUNT_ID").(string)
+	return config.Get(ctx, "cloudflare:accountId")
 }
 
 // Whether to print logs from the API client (using the default log library logger)
@@ -28,38 +24,22 @@ func GetApiClientLogging(ctx *pulumi.Context) bool {
 
 // The API key for operations.
 func GetApiKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "cloudflare:apiKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CLOUDFLARE_API_KEY").(string)
+	return config.Get(ctx, "cloudflare:apiKey")
 }
 
 // The API Token for operations.
 func GetApiToken(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "cloudflare:apiToken")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CLOUDFLARE_API_TOKEN").(string)
+	return config.Get(ctx, "cloudflare:apiToken")
 }
 
 // A special Cloudflare API key good for a restricted set of endpoints.
 func GetApiUserServiceKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "cloudflare:apiUserServiceKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CLOUDFLARE_API_USER_SERVICE_KEY").(string)
+	return config.Get(ctx, "cloudflare:apiUserServiceKey")
 }
 
 // A registered Cloudflare email address.
 func GetEmail(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "cloudflare:email")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "CLOUDFLARE_EMAIL").(string)
+	return config.Get(ctx, "cloudflare:email")
 }
 
 // Maximum backoff period in seconds after failed API calls

@@ -87,7 +87,8 @@ export class WafRule extends pulumi.CustomResource {
     constructor(name: string, args: WafRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WafRuleArgs | WafRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WafRuleState | undefined;
             inputs["groupId"] = state ? state.groupId : undefined;
             inputs["mode"] = state ? state.mode : undefined;
@@ -96,13 +97,13 @@ export class WafRule extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafRuleArgs | undefined;
-            if ((!args || args.mode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.mode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            if ((!args || args.ruleId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ruleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ruleId'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["mode"] = args ? args.mode : undefined;
@@ -111,12 +112,8 @@ export class WafRule extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["groupId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WafRule.__pulumiType, name, inputs, opts);
     }

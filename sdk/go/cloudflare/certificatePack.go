@@ -220,6 +220,85 @@ func (i *CertificatePack) ToCertificatePackOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackOutput)
 }
 
+func (i *CertificatePack) ToCertificatePackPtrOutput() CertificatePackPtrOutput {
+	return i.ToCertificatePackPtrOutputWithContext(context.Background())
+}
+
+func (i *CertificatePack) ToCertificatePackPtrOutputWithContext(ctx context.Context) CertificatePackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackPtrOutput)
+}
+
+type CertificatePackPtrInput interface {
+	pulumi.Input
+
+	ToCertificatePackPtrOutput() CertificatePackPtrOutput
+	ToCertificatePackPtrOutputWithContext(ctx context.Context) CertificatePackPtrOutput
+}
+
+type certificatePackPtrType CertificatePackArgs
+
+func (*certificatePackPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificatePack)(nil))
+}
+
+func (i *certificatePackPtrType) ToCertificatePackPtrOutput() CertificatePackPtrOutput {
+	return i.ToCertificatePackPtrOutputWithContext(context.Background())
+}
+
+func (i *certificatePackPtrType) ToCertificatePackPtrOutputWithContext(ctx context.Context) CertificatePackPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackPtrOutput)
+}
+
+// CertificatePackArrayInput is an input type that accepts CertificatePackArray and CertificatePackArrayOutput values.
+// You can construct a concrete instance of `CertificatePackArrayInput` via:
+//
+//          CertificatePackArray{ CertificatePackArgs{...} }
+type CertificatePackArrayInput interface {
+	pulumi.Input
+
+	ToCertificatePackArrayOutput() CertificatePackArrayOutput
+	ToCertificatePackArrayOutputWithContext(context.Context) CertificatePackArrayOutput
+}
+
+type CertificatePackArray []CertificatePackInput
+
+func (CertificatePackArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CertificatePack)(nil))
+}
+
+func (i CertificatePackArray) ToCertificatePackArrayOutput() CertificatePackArrayOutput {
+	return i.ToCertificatePackArrayOutputWithContext(context.Background())
+}
+
+func (i CertificatePackArray) ToCertificatePackArrayOutputWithContext(ctx context.Context) CertificatePackArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackArrayOutput)
+}
+
+// CertificatePackMapInput is an input type that accepts CertificatePackMap and CertificatePackMapOutput values.
+// You can construct a concrete instance of `CertificatePackMapInput` via:
+//
+//          CertificatePackMap{ "key": CertificatePackArgs{...} }
+type CertificatePackMapInput interface {
+	pulumi.Input
+
+	ToCertificatePackMapOutput() CertificatePackMapOutput
+	ToCertificatePackMapOutputWithContext(context.Context) CertificatePackMapOutput
+}
+
+type CertificatePackMap map[string]CertificatePackInput
+
+func (CertificatePackMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CertificatePack)(nil))
+}
+
+func (i CertificatePackMap) ToCertificatePackMapOutput() CertificatePackMapOutput {
+	return i.ToCertificatePackMapOutputWithContext(context.Background())
+}
+
+func (i CertificatePackMap) ToCertificatePackMapOutputWithContext(ctx context.Context) CertificatePackMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackMapOutput)
+}
+
 type CertificatePackOutput struct {
 	*pulumi.OutputState
 }
@@ -236,6 +315,75 @@ func (o CertificatePackOutput) ToCertificatePackOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o CertificatePackOutput) ToCertificatePackPtrOutput() CertificatePackPtrOutput {
+	return o.ToCertificatePackPtrOutputWithContext(context.Background())
+}
+
+func (o CertificatePackOutput) ToCertificatePackPtrOutputWithContext(ctx context.Context) CertificatePackPtrOutput {
+	return o.ApplyT(func(v CertificatePack) *CertificatePack {
+		return &v
+	}).(CertificatePackPtrOutput)
+}
+
+type CertificatePackPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CertificatePackPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificatePack)(nil))
+}
+
+func (o CertificatePackPtrOutput) ToCertificatePackPtrOutput() CertificatePackPtrOutput {
+	return o
+}
+
+func (o CertificatePackPtrOutput) ToCertificatePackPtrOutputWithContext(ctx context.Context) CertificatePackPtrOutput {
+	return o
+}
+
+type CertificatePackArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificatePackArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificatePack)(nil))
+}
+
+func (o CertificatePackArrayOutput) ToCertificatePackArrayOutput() CertificatePackArrayOutput {
+	return o
+}
+
+func (o CertificatePackArrayOutput) ToCertificatePackArrayOutputWithContext(ctx context.Context) CertificatePackArrayOutput {
+	return o
+}
+
+func (o CertificatePackArrayOutput) Index(i pulumi.IntInput) CertificatePackOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificatePack {
+		return vs[0].([]CertificatePack)[vs[1].(int)]
+	}).(CertificatePackOutput)
+}
+
+type CertificatePackMapOutput struct{ *pulumi.OutputState }
+
+func (CertificatePackMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CertificatePack)(nil))
+}
+
+func (o CertificatePackMapOutput) ToCertificatePackMapOutput() CertificatePackMapOutput {
+	return o
+}
+
+func (o CertificatePackMapOutput) ToCertificatePackMapOutputWithContext(ctx context.Context) CertificatePackMapOutput {
+	return o
+}
+
+func (o CertificatePackMapOutput) MapIndex(k pulumi.StringInput) CertificatePackOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CertificatePack {
+		return vs[0].(map[string]CertificatePack)[vs[1].(string)]
+	}).(CertificatePackOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CertificatePackOutput{})
+	pulumi.RegisterOutputType(CertificatePackPtrOutput{})
+	pulumi.RegisterOutputType(CertificatePackArrayOutput{})
+	pulumi.RegisterOutputType(CertificatePackMapOutput{})
 }

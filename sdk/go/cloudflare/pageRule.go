@@ -22,7 +22,6 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -191,6 +190,85 @@ func (i *PageRule) ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PageRuleOutput)
 }
 
+func (i *PageRule) ToPageRulePtrOutput() PageRulePtrOutput {
+	return i.ToPageRulePtrOutputWithContext(context.Background())
+}
+
+func (i *PageRule) ToPageRulePtrOutputWithContext(ctx context.Context) PageRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRulePtrOutput)
+}
+
+type PageRulePtrInput interface {
+	pulumi.Input
+
+	ToPageRulePtrOutput() PageRulePtrOutput
+	ToPageRulePtrOutputWithContext(ctx context.Context) PageRulePtrOutput
+}
+
+type pageRulePtrType PageRuleArgs
+
+func (*pageRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRule)(nil))
+}
+
+func (i *pageRulePtrType) ToPageRulePtrOutput() PageRulePtrOutput {
+	return i.ToPageRulePtrOutputWithContext(context.Background())
+}
+
+func (i *pageRulePtrType) ToPageRulePtrOutputWithContext(ctx context.Context) PageRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRulePtrOutput)
+}
+
+// PageRuleArrayInput is an input type that accepts PageRuleArray and PageRuleArrayOutput values.
+// You can construct a concrete instance of `PageRuleArrayInput` via:
+//
+//          PageRuleArray{ PageRuleArgs{...} }
+type PageRuleArrayInput interface {
+	pulumi.Input
+
+	ToPageRuleArrayOutput() PageRuleArrayOutput
+	ToPageRuleArrayOutputWithContext(context.Context) PageRuleArrayOutput
+}
+
+type PageRuleArray []PageRuleInput
+
+func (PageRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PageRule)(nil))
+}
+
+func (i PageRuleArray) ToPageRuleArrayOutput() PageRuleArrayOutput {
+	return i.ToPageRuleArrayOutputWithContext(context.Background())
+}
+
+func (i PageRuleArray) ToPageRuleArrayOutputWithContext(ctx context.Context) PageRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleArrayOutput)
+}
+
+// PageRuleMapInput is an input type that accepts PageRuleMap and PageRuleMapOutput values.
+// You can construct a concrete instance of `PageRuleMapInput` via:
+//
+//          PageRuleMap{ "key": PageRuleArgs{...} }
+type PageRuleMapInput interface {
+	pulumi.Input
+
+	ToPageRuleMapOutput() PageRuleMapOutput
+	ToPageRuleMapOutputWithContext(context.Context) PageRuleMapOutput
+}
+
+type PageRuleMap map[string]PageRuleInput
+
+func (PageRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PageRule)(nil))
+}
+
+func (i PageRuleMap) ToPageRuleMapOutput() PageRuleMapOutput {
+	return i.ToPageRuleMapOutputWithContext(context.Background())
+}
+
+func (i PageRuleMap) ToPageRuleMapOutputWithContext(ctx context.Context) PageRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PageRuleMapOutput)
+}
+
 type PageRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -207,6 +285,75 @@ func (o PageRuleOutput) ToPageRuleOutputWithContext(ctx context.Context) PageRul
 	return o
 }
 
+func (o PageRuleOutput) ToPageRulePtrOutput() PageRulePtrOutput {
+	return o.ToPageRulePtrOutputWithContext(context.Background())
+}
+
+func (o PageRuleOutput) ToPageRulePtrOutputWithContext(ctx context.Context) PageRulePtrOutput {
+	return o.ApplyT(func(v PageRule) *PageRule {
+		return &v
+	}).(PageRulePtrOutput)
+}
+
+type PageRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PageRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PageRule)(nil))
+}
+
+func (o PageRulePtrOutput) ToPageRulePtrOutput() PageRulePtrOutput {
+	return o
+}
+
+func (o PageRulePtrOutput) ToPageRulePtrOutputWithContext(ctx context.Context) PageRulePtrOutput {
+	return o
+}
+
+type PageRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (PageRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PageRule)(nil))
+}
+
+func (o PageRuleArrayOutput) ToPageRuleArrayOutput() PageRuleArrayOutput {
+	return o
+}
+
+func (o PageRuleArrayOutput) ToPageRuleArrayOutputWithContext(ctx context.Context) PageRuleArrayOutput {
+	return o
+}
+
+func (o PageRuleArrayOutput) Index(i pulumi.IntInput) PageRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PageRule {
+		return vs[0].([]PageRule)[vs[1].(int)]
+	}).(PageRuleOutput)
+}
+
+type PageRuleMapOutput struct{ *pulumi.OutputState }
+
+func (PageRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PageRule)(nil))
+}
+
+func (o PageRuleMapOutput) ToPageRuleMapOutput() PageRuleMapOutput {
+	return o
+}
+
+func (o PageRuleMapOutput) ToPageRuleMapOutputWithContext(ctx context.Context) PageRuleMapOutput {
+	return o
+}
+
+func (o PageRuleMapOutput) MapIndex(k pulumi.StringInput) PageRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PageRule {
+		return vs[0].(map[string]PageRule)[vs[1].(string)]
+	}).(PageRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PageRuleOutput{})
+	pulumi.RegisterOutputType(PageRulePtrOutput{})
+	pulumi.RegisterOutputType(PageRuleArrayOutput{})
+	pulumi.RegisterOutputType(PageRuleMapOutput{})
 }

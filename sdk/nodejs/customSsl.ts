@@ -94,7 +94,8 @@ export class CustomSsl extends pulumi.CustomResource {
     constructor(name: string, args: CustomSslArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomSslArgs | CustomSslState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CustomSslState | undefined;
             inputs["customSslOptions"] = state ? state.customSslOptions : undefined;
             inputs["customSslPriorities"] = state ? state.customSslPriorities : undefined;
@@ -109,7 +110,7 @@ export class CustomSsl extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomSslArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["customSslOptions"] = args ? args.customSslOptions : undefined;
@@ -124,12 +125,8 @@ export class CustomSsl extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["uploadedOn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CustomSsl.__pulumiType, name, inputs, opts);
     }

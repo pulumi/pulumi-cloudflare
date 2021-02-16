@@ -90,7 +90,8 @@ export class CertificatePack extends pulumi.CustomResource {
     constructor(name: string, args: CertificatePackArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificatePackArgs | CertificatePackState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CertificatePackState | undefined;
             inputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
             inputs["cloudflareBranding"] = state ? state.cloudflareBranding : undefined;
@@ -101,13 +102,13 @@ export class CertificatePack extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CertificatePackArgs | undefined;
-            if ((!args || args.hosts === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hosts === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hosts'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
@@ -118,12 +119,8 @@ export class CertificatePack extends pulumi.CustomResource {
             inputs["validityDays"] = args ? args.validityDays : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CertificatePack.__pulumiType, name, inputs, opts);
     }

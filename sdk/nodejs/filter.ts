@@ -89,7 +89,8 @@ export class Filter extends pulumi.CustomResource {
     constructor(name: string, args: FilterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FilterArgs | FilterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FilterState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["expression"] = state ? state.expression : undefined;
@@ -98,10 +99,10 @@ export class Filter extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FilterArgs | undefined;
-            if ((!args || args.expression === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.expression === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'expression'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -110,12 +111,8 @@ export class Filter extends pulumi.CustomResource {
             inputs["ref"] = args ? args.ref : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Filter.__pulumiType, name, inputs, opts);
     }

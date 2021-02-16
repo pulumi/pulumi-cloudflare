@@ -122,6 +122,85 @@ func (i *WorkerCronTrigger) ToWorkerCronTriggerOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerOutput)
 }
 
+func (i *WorkerCronTrigger) ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput {
+	return i.ToWorkerCronTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *WorkerCronTrigger) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerPtrOutput)
+}
+
+type WorkerCronTriggerPtrInput interface {
+	pulumi.Input
+
+	ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput
+	ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput
+}
+
+type workerCronTriggerPtrType WorkerCronTriggerArgs
+
+func (*workerCronTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerCronTrigger)(nil))
+}
+
+func (i *workerCronTriggerPtrType) ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput {
+	return i.ToWorkerCronTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *workerCronTriggerPtrType) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerPtrOutput)
+}
+
+// WorkerCronTriggerArrayInput is an input type that accepts WorkerCronTriggerArray and WorkerCronTriggerArrayOutput values.
+// You can construct a concrete instance of `WorkerCronTriggerArrayInput` via:
+//
+//          WorkerCronTriggerArray{ WorkerCronTriggerArgs{...} }
+type WorkerCronTriggerArrayInput interface {
+	pulumi.Input
+
+	ToWorkerCronTriggerArrayOutput() WorkerCronTriggerArrayOutput
+	ToWorkerCronTriggerArrayOutputWithContext(context.Context) WorkerCronTriggerArrayOutput
+}
+
+type WorkerCronTriggerArray []WorkerCronTriggerInput
+
+func (WorkerCronTriggerArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WorkerCronTrigger)(nil))
+}
+
+func (i WorkerCronTriggerArray) ToWorkerCronTriggerArrayOutput() WorkerCronTriggerArrayOutput {
+	return i.ToWorkerCronTriggerArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerCronTriggerArray) ToWorkerCronTriggerArrayOutputWithContext(ctx context.Context) WorkerCronTriggerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerArrayOutput)
+}
+
+// WorkerCronTriggerMapInput is an input type that accepts WorkerCronTriggerMap and WorkerCronTriggerMapOutput values.
+// You can construct a concrete instance of `WorkerCronTriggerMapInput` via:
+//
+//          WorkerCronTriggerMap{ "key": WorkerCronTriggerArgs{...} }
+type WorkerCronTriggerMapInput interface {
+	pulumi.Input
+
+	ToWorkerCronTriggerMapOutput() WorkerCronTriggerMapOutput
+	ToWorkerCronTriggerMapOutputWithContext(context.Context) WorkerCronTriggerMapOutput
+}
+
+type WorkerCronTriggerMap map[string]WorkerCronTriggerInput
+
+func (WorkerCronTriggerMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WorkerCronTrigger)(nil))
+}
+
+func (i WorkerCronTriggerMap) ToWorkerCronTriggerMapOutput() WorkerCronTriggerMapOutput {
+	return i.ToWorkerCronTriggerMapOutputWithContext(context.Background())
+}
+
+func (i WorkerCronTriggerMap) ToWorkerCronTriggerMapOutputWithContext(ctx context.Context) WorkerCronTriggerMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerMapOutput)
+}
+
 type WorkerCronTriggerOutput struct {
 	*pulumi.OutputState
 }
@@ -138,6 +217,75 @@ func (o WorkerCronTriggerOutput) ToWorkerCronTriggerOutputWithContext(ctx contex
 	return o
 }
 
+func (o WorkerCronTriggerOutput) ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput {
+	return o.ToWorkerCronTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerCronTriggerOutput) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
+	return o.ApplyT(func(v WorkerCronTrigger) *WorkerCronTrigger {
+		return &v
+	}).(WorkerCronTriggerPtrOutput)
+}
+
+type WorkerCronTriggerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkerCronTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerCronTrigger)(nil))
+}
+
+func (o WorkerCronTriggerPtrOutput) ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput {
+	return o
+}
+
+func (o WorkerCronTriggerPtrOutput) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
+	return o
+}
+
+type WorkerCronTriggerArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerCronTriggerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerCronTrigger)(nil))
+}
+
+func (o WorkerCronTriggerArrayOutput) ToWorkerCronTriggerArrayOutput() WorkerCronTriggerArrayOutput {
+	return o
+}
+
+func (o WorkerCronTriggerArrayOutput) ToWorkerCronTriggerArrayOutputWithContext(ctx context.Context) WorkerCronTriggerArrayOutput {
+	return o
+}
+
+func (o WorkerCronTriggerArrayOutput) Index(i pulumi.IntInput) WorkerCronTriggerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerCronTrigger {
+		return vs[0].([]WorkerCronTrigger)[vs[1].(int)]
+	}).(WorkerCronTriggerOutput)
+}
+
+type WorkerCronTriggerMapOutput struct{ *pulumi.OutputState }
+
+func (WorkerCronTriggerMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WorkerCronTrigger)(nil))
+}
+
+func (o WorkerCronTriggerMapOutput) ToWorkerCronTriggerMapOutput() WorkerCronTriggerMapOutput {
+	return o
+}
+
+func (o WorkerCronTriggerMapOutput) ToWorkerCronTriggerMapOutputWithContext(ctx context.Context) WorkerCronTriggerMapOutput {
+	return o
+}
+
+func (o WorkerCronTriggerMapOutput) MapIndex(k pulumi.StringInput) WorkerCronTriggerOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkerCronTrigger {
+		return vs[0].(map[string]WorkerCronTrigger)[vs[1].(string)]
+	}).(WorkerCronTriggerOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkerCronTriggerOutput{})
+	pulumi.RegisterOutputType(WorkerCronTriggerPtrOutput{})
+	pulumi.RegisterOutputType(WorkerCronTriggerArrayOutput{})
+	pulumi.RegisterOutputType(WorkerCronTriggerMapOutput{})
 }

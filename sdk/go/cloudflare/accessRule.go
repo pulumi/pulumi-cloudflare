@@ -145,6 +145,85 @@ func (i *AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRu
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleOutput)
 }
 
+func (i *AccessRule) ToAccessRulePtrOutput() AccessRulePtrOutput {
+	return i.ToAccessRulePtrOutputWithContext(context.Background())
+}
+
+func (i *AccessRule) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessRulePtrOutput)
+}
+
+type AccessRulePtrInput interface {
+	pulumi.Input
+
+	ToAccessRulePtrOutput() AccessRulePtrOutput
+	ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput
+}
+
+type accessRulePtrType AccessRuleArgs
+
+func (*accessRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessRule)(nil))
+}
+
+func (i *accessRulePtrType) ToAccessRulePtrOutput() AccessRulePtrOutput {
+	return i.ToAccessRulePtrOutputWithContext(context.Background())
+}
+
+func (i *accessRulePtrType) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessRulePtrOutput)
+}
+
+// AccessRuleArrayInput is an input type that accepts AccessRuleArray and AccessRuleArrayOutput values.
+// You can construct a concrete instance of `AccessRuleArrayInput` via:
+//
+//          AccessRuleArray{ AccessRuleArgs{...} }
+type AccessRuleArrayInput interface {
+	pulumi.Input
+
+	ToAccessRuleArrayOutput() AccessRuleArrayOutput
+	ToAccessRuleArrayOutputWithContext(context.Context) AccessRuleArrayOutput
+}
+
+type AccessRuleArray []AccessRuleInput
+
+func (AccessRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccessRule)(nil))
+}
+
+func (i AccessRuleArray) ToAccessRuleArrayOutput() AccessRuleArrayOutput {
+	return i.ToAccessRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AccessRuleArray) ToAccessRuleArrayOutputWithContext(ctx context.Context) AccessRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleArrayOutput)
+}
+
+// AccessRuleMapInput is an input type that accepts AccessRuleMap and AccessRuleMapOutput values.
+// You can construct a concrete instance of `AccessRuleMapInput` via:
+//
+//          AccessRuleMap{ "key": AccessRuleArgs{...} }
+type AccessRuleMapInput interface {
+	pulumi.Input
+
+	ToAccessRuleMapOutput() AccessRuleMapOutput
+	ToAccessRuleMapOutputWithContext(context.Context) AccessRuleMapOutput
+}
+
+type AccessRuleMap map[string]AccessRuleInput
+
+func (AccessRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccessRule)(nil))
+}
+
+func (i AccessRuleMap) ToAccessRuleMapOutput() AccessRuleMapOutput {
+	return i.ToAccessRuleMapOutputWithContext(context.Background())
+}
+
+func (i AccessRuleMap) ToAccessRuleMapOutputWithContext(ctx context.Context) AccessRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleMapOutput)
+}
+
 type AccessRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -161,6 +240,75 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
+func (o AccessRuleOutput) ToAccessRulePtrOutput() AccessRulePtrOutput {
+	return o.ToAccessRulePtrOutputWithContext(context.Background())
+}
+
+func (o AccessRuleOutput) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
+	return o.ApplyT(func(v AccessRule) *AccessRule {
+		return &v
+	}).(AccessRulePtrOutput)
+}
+
+type AccessRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessRule)(nil))
+}
+
+func (o AccessRulePtrOutput) ToAccessRulePtrOutput() AccessRulePtrOutput {
+	return o
+}
+
+func (o AccessRulePtrOutput) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
+	return o
+}
+
+type AccessRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessRule)(nil))
+}
+
+func (o AccessRuleArrayOutput) ToAccessRuleArrayOutput() AccessRuleArrayOutput {
+	return o
+}
+
+func (o AccessRuleArrayOutput) ToAccessRuleArrayOutputWithContext(ctx context.Context) AccessRuleArrayOutput {
+	return o
+}
+
+func (o AccessRuleArrayOutput) Index(i pulumi.IntInput) AccessRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessRule {
+		return vs[0].([]AccessRule)[vs[1].(int)]
+	}).(AccessRuleOutput)
+}
+
+type AccessRuleMapOutput struct{ *pulumi.OutputState }
+
+func (AccessRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccessRule)(nil))
+}
+
+func (o AccessRuleMapOutput) ToAccessRuleMapOutput() AccessRuleMapOutput {
+	return o
+}
+
+func (o AccessRuleMapOutput) ToAccessRuleMapOutputWithContext(ctx context.Context) AccessRuleMapOutput {
+	return o
+}
+
+func (o AccessRuleMapOutput) MapIndex(k pulumi.StringInput) AccessRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessRule {
+		return vs[0].(map[string]AccessRule)[vs[1].(string)]
+	}).(AccessRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessRuleOutput{})
+	pulumi.RegisterOutputType(AccessRulePtrOutput{})
+	pulumi.RegisterOutputType(AccessRuleArrayOutput{})
+	pulumi.RegisterOutputType(AccessRuleMapOutput{})
 }

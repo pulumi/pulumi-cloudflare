@@ -154,7 +154,8 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
     constructor(name: string, args?: LoadBalancerMonitorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerMonitorArgs | LoadBalancerMonitorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LoadBalancerMonitorState | undefined;
             inputs["allowInsecure"] = state ? state.allowInsecure : undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
@@ -191,12 +192,8 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LoadBalancerMonitor.__pulumiType, name, inputs, opts);
     }

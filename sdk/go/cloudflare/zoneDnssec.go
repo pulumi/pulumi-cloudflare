@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -207,6 +207,85 @@ func (i *ZoneDnssec) ToZoneDnssecOutputWithContext(ctx context.Context) ZoneDnss
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecOutput)
 }
 
+func (i *ZoneDnssec) ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput {
+	return i.ToZoneDnssecPtrOutputWithContext(context.Background())
+}
+
+func (i *ZoneDnssec) ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecPtrOutput)
+}
+
+type ZoneDnssecPtrInput interface {
+	pulumi.Input
+
+	ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput
+	ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput
+}
+
+type zoneDnssecPtrType ZoneDnssecArgs
+
+func (*zoneDnssecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneDnssec)(nil))
+}
+
+func (i *zoneDnssecPtrType) ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput {
+	return i.ToZoneDnssecPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneDnssecPtrType) ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecPtrOutput)
+}
+
+// ZoneDnssecArrayInput is an input type that accepts ZoneDnssecArray and ZoneDnssecArrayOutput values.
+// You can construct a concrete instance of `ZoneDnssecArrayInput` via:
+//
+//          ZoneDnssecArray{ ZoneDnssecArgs{...} }
+type ZoneDnssecArrayInput interface {
+	pulumi.Input
+
+	ToZoneDnssecArrayOutput() ZoneDnssecArrayOutput
+	ToZoneDnssecArrayOutputWithContext(context.Context) ZoneDnssecArrayOutput
+}
+
+type ZoneDnssecArray []ZoneDnssecInput
+
+func (ZoneDnssecArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ZoneDnssec)(nil))
+}
+
+func (i ZoneDnssecArray) ToZoneDnssecArrayOutput() ZoneDnssecArrayOutput {
+	return i.ToZoneDnssecArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneDnssecArray) ToZoneDnssecArrayOutputWithContext(ctx context.Context) ZoneDnssecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecArrayOutput)
+}
+
+// ZoneDnssecMapInput is an input type that accepts ZoneDnssecMap and ZoneDnssecMapOutput values.
+// You can construct a concrete instance of `ZoneDnssecMapInput` via:
+//
+//          ZoneDnssecMap{ "key": ZoneDnssecArgs{...} }
+type ZoneDnssecMapInput interface {
+	pulumi.Input
+
+	ToZoneDnssecMapOutput() ZoneDnssecMapOutput
+	ToZoneDnssecMapOutputWithContext(context.Context) ZoneDnssecMapOutput
+}
+
+type ZoneDnssecMap map[string]ZoneDnssecInput
+
+func (ZoneDnssecMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ZoneDnssec)(nil))
+}
+
+func (i ZoneDnssecMap) ToZoneDnssecMapOutput() ZoneDnssecMapOutput {
+	return i.ToZoneDnssecMapOutputWithContext(context.Background())
+}
+
+func (i ZoneDnssecMap) ToZoneDnssecMapOutputWithContext(ctx context.Context) ZoneDnssecMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecMapOutput)
+}
+
 type ZoneDnssecOutput struct {
 	*pulumi.OutputState
 }
@@ -223,6 +302,75 @@ func (o ZoneDnssecOutput) ToZoneDnssecOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
+func (o ZoneDnssecOutput) ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput {
+	return o.ToZoneDnssecPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneDnssecOutput) ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput {
+	return o.ApplyT(func(v ZoneDnssec) *ZoneDnssec {
+		return &v
+	}).(ZoneDnssecPtrOutput)
+}
+
+type ZoneDnssecPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneDnssecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneDnssec)(nil))
+}
+
+func (o ZoneDnssecPtrOutput) ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput {
+	return o
+}
+
+func (o ZoneDnssecPtrOutput) ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput {
+	return o
+}
+
+type ZoneDnssecArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneDnssecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneDnssec)(nil))
+}
+
+func (o ZoneDnssecArrayOutput) ToZoneDnssecArrayOutput() ZoneDnssecArrayOutput {
+	return o
+}
+
+func (o ZoneDnssecArrayOutput) ToZoneDnssecArrayOutputWithContext(ctx context.Context) ZoneDnssecArrayOutput {
+	return o
+}
+
+func (o ZoneDnssecArrayOutput) Index(i pulumi.IntInput) ZoneDnssecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneDnssec {
+		return vs[0].([]ZoneDnssec)[vs[1].(int)]
+	}).(ZoneDnssecOutput)
+}
+
+type ZoneDnssecMapOutput struct{ *pulumi.OutputState }
+
+func (ZoneDnssecMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ZoneDnssec)(nil))
+}
+
+func (o ZoneDnssecMapOutput) ToZoneDnssecMapOutput() ZoneDnssecMapOutput {
+	return o
+}
+
+func (o ZoneDnssecMapOutput) ToZoneDnssecMapOutputWithContext(ctx context.Context) ZoneDnssecMapOutput {
+	return o
+}
+
+func (o ZoneDnssecMapOutput) MapIndex(k pulumi.StringInput) ZoneDnssecOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ZoneDnssec {
+		return vs[0].(map[string]ZoneDnssec)[vs[1].(string)]
+	}).(ZoneDnssecOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ZoneDnssecOutput{})
+	pulumi.RegisterOutputType(ZoneDnssecPtrOutput{})
+	pulumi.RegisterOutputType(ZoneDnssecArrayOutput{})
+	pulumi.RegisterOutputType(ZoneDnssecMapOutput{})
 }

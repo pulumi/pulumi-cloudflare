@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -176,6 +175,85 @@ func (i *ZoneSettingsOverride) ToZoneSettingsOverrideOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideOutput)
 }
 
+func (i *ZoneSettingsOverride) ToZoneSettingsOverridePtrOutput() ZoneSettingsOverridePtrOutput {
+	return i.ToZoneSettingsOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *ZoneSettingsOverride) ToZoneSettingsOverridePtrOutputWithContext(ctx context.Context) ZoneSettingsOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverridePtrOutput)
+}
+
+type ZoneSettingsOverridePtrInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverridePtrOutput() ZoneSettingsOverridePtrOutput
+	ToZoneSettingsOverridePtrOutputWithContext(ctx context.Context) ZoneSettingsOverridePtrOutput
+}
+
+type zoneSettingsOverridePtrType ZoneSettingsOverrideArgs
+
+func (*zoneSettingsOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverride)(nil))
+}
+
+func (i *zoneSettingsOverridePtrType) ToZoneSettingsOverridePtrOutput() ZoneSettingsOverridePtrOutput {
+	return i.ToZoneSettingsOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *zoneSettingsOverridePtrType) ToZoneSettingsOverridePtrOutputWithContext(ctx context.Context) ZoneSettingsOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverridePtrOutput)
+}
+
+// ZoneSettingsOverrideArrayInput is an input type that accepts ZoneSettingsOverrideArray and ZoneSettingsOverrideArrayOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideArrayInput` via:
+//
+//          ZoneSettingsOverrideArray{ ZoneSettingsOverrideArgs{...} }
+type ZoneSettingsOverrideArrayInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideArrayOutput() ZoneSettingsOverrideArrayOutput
+	ToZoneSettingsOverrideArrayOutputWithContext(context.Context) ZoneSettingsOverrideArrayOutput
+}
+
+type ZoneSettingsOverrideArray []ZoneSettingsOverrideInput
+
+func (ZoneSettingsOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ZoneSettingsOverride)(nil))
+}
+
+func (i ZoneSettingsOverrideArray) ToZoneSettingsOverrideArrayOutput() ZoneSettingsOverrideArrayOutput {
+	return i.ToZoneSettingsOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideArray) ToZoneSettingsOverrideArrayOutputWithContext(ctx context.Context) ZoneSettingsOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideArrayOutput)
+}
+
+// ZoneSettingsOverrideMapInput is an input type that accepts ZoneSettingsOverrideMap and ZoneSettingsOverrideMapOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideMapInput` via:
+//
+//          ZoneSettingsOverrideMap{ "key": ZoneSettingsOverrideArgs{...} }
+type ZoneSettingsOverrideMapInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideMapOutput() ZoneSettingsOverrideMapOutput
+	ToZoneSettingsOverrideMapOutputWithContext(context.Context) ZoneSettingsOverrideMapOutput
+}
+
+type ZoneSettingsOverrideMap map[string]ZoneSettingsOverrideInput
+
+func (ZoneSettingsOverrideMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ZoneSettingsOverride)(nil))
+}
+
+func (i ZoneSettingsOverrideMap) ToZoneSettingsOverrideMapOutput() ZoneSettingsOverrideMapOutput {
+	return i.ToZoneSettingsOverrideMapOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideMap) ToZoneSettingsOverrideMapOutputWithContext(ctx context.Context) ZoneSettingsOverrideMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideMapOutput)
+}
+
 type ZoneSettingsOverrideOutput struct {
 	*pulumi.OutputState
 }
@@ -192,6 +270,75 @@ func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverrideOutputWithContext(ctx 
 	return o
 }
 
+func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverridePtrOutput() ZoneSettingsOverridePtrOutput {
+	return o.ToZoneSettingsOverridePtrOutputWithContext(context.Background())
+}
+
+func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverridePtrOutputWithContext(ctx context.Context) ZoneSettingsOverridePtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverride) *ZoneSettingsOverride {
+		return &v
+	}).(ZoneSettingsOverridePtrOutput)
+}
+
+type ZoneSettingsOverridePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ZoneSettingsOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverride)(nil))
+}
+
+func (o ZoneSettingsOverridePtrOutput) ToZoneSettingsOverridePtrOutput() ZoneSettingsOverridePtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverridePtrOutput) ToZoneSettingsOverridePtrOutputWithContext(ctx context.Context) ZoneSettingsOverridePtrOutput {
+	return o
+}
+
+type ZoneSettingsOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneSettingsOverride)(nil))
+}
+
+func (o ZoneSettingsOverrideArrayOutput) ToZoneSettingsOverrideArrayOutput() ZoneSettingsOverrideArrayOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideArrayOutput) ToZoneSettingsOverrideArrayOutputWithContext(ctx context.Context) ZoneSettingsOverrideArrayOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideArrayOutput) Index(i pulumi.IntInput) ZoneSettingsOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneSettingsOverride {
+		return vs[0].([]ZoneSettingsOverride)[vs[1].(int)]
+	}).(ZoneSettingsOverrideOutput)
+}
+
+type ZoneSettingsOverrideMapOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ZoneSettingsOverride)(nil))
+}
+
+func (o ZoneSettingsOverrideMapOutput) ToZoneSettingsOverrideMapOutput() ZoneSettingsOverrideMapOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideMapOutput) ToZoneSettingsOverrideMapOutputWithContext(ctx context.Context) ZoneSettingsOverrideMapOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideMapOutput) MapIndex(k pulumi.StringInput) ZoneSettingsOverrideOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ZoneSettingsOverride {
+		return vs[0].(map[string]ZoneSettingsOverride)[vs[1].(string)]
+	}).(ZoneSettingsOverrideOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ZoneSettingsOverrideOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverridePtrOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideArrayOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideMapOutput{})
 }

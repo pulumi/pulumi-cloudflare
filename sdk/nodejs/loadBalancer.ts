@@ -147,7 +147,8 @@ export class LoadBalancer extends pulumi.CustomResource {
     constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["defaultPoolIds"] = state ? state.defaultPoolIds : undefined;
@@ -167,16 +168,16 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            if ((!args || args.defaultPoolIds === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.defaultPoolIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultPoolIds'");
             }
-            if ((!args || args.fallbackPoolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.fallbackPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fallbackPoolId'");
             }
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;
@@ -196,12 +197,8 @@ export class LoadBalancer extends pulumi.CustomResource {
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LoadBalancer.__pulumiType, name, inputs, opts);
     }

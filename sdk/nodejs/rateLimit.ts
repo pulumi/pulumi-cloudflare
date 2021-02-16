@@ -160,7 +160,8 @@ export class RateLimit extends pulumi.CustomResource {
     constructor(name: string, args: RateLimitArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RateLimitArgs | RateLimitState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RateLimitState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["bypassUrlPatterns"] = state ? state.bypassUrlPatterns : undefined;
@@ -173,16 +174,16 @@ export class RateLimit extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RateLimitArgs | undefined;
-            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.period === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.period === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'period'");
             }
-            if ((!args || args.threshold === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.threshold === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'threshold'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -195,12 +196,8 @@ export class RateLimit extends pulumi.CustomResource {
             inputs["threshold"] = args ? args.threshold : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RateLimit.__pulumiType, name, inputs, opts);
     }

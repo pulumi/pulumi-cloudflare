@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -164,6 +164,85 @@ func (i *WafGroup) ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutp
 	return pulumi.ToOutputWithContext(ctx, i).(WafGroupOutput)
 }
 
+func (i *WafGroup) ToWafGroupPtrOutput() WafGroupPtrOutput {
+	return i.ToWafGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *WafGroup) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafGroupPtrOutput)
+}
+
+type WafGroupPtrInput interface {
+	pulumi.Input
+
+	ToWafGroupPtrOutput() WafGroupPtrOutput
+	ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput
+}
+
+type wafGroupPtrType WafGroupArgs
+
+func (*wafGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafGroup)(nil))
+}
+
+func (i *wafGroupPtrType) ToWafGroupPtrOutput() WafGroupPtrOutput {
+	return i.ToWafGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *wafGroupPtrType) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafGroupPtrOutput)
+}
+
+// WafGroupArrayInput is an input type that accepts WafGroupArray and WafGroupArrayOutput values.
+// You can construct a concrete instance of `WafGroupArrayInput` via:
+//
+//          WafGroupArray{ WafGroupArgs{...} }
+type WafGroupArrayInput interface {
+	pulumi.Input
+
+	ToWafGroupArrayOutput() WafGroupArrayOutput
+	ToWafGroupArrayOutputWithContext(context.Context) WafGroupArrayOutput
+}
+
+type WafGroupArray []WafGroupInput
+
+func (WafGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WafGroup)(nil))
+}
+
+func (i WafGroupArray) ToWafGroupArrayOutput() WafGroupArrayOutput {
+	return i.ToWafGroupArrayOutputWithContext(context.Background())
+}
+
+func (i WafGroupArray) ToWafGroupArrayOutputWithContext(ctx context.Context) WafGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafGroupArrayOutput)
+}
+
+// WafGroupMapInput is an input type that accepts WafGroupMap and WafGroupMapOutput values.
+// You can construct a concrete instance of `WafGroupMapInput` via:
+//
+//          WafGroupMap{ "key": WafGroupArgs{...} }
+type WafGroupMapInput interface {
+	pulumi.Input
+
+	ToWafGroupMapOutput() WafGroupMapOutput
+	ToWafGroupMapOutputWithContext(context.Context) WafGroupMapOutput
+}
+
+type WafGroupMap map[string]WafGroupInput
+
+func (WafGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WafGroup)(nil))
+}
+
+func (i WafGroupMap) ToWafGroupMapOutput() WafGroupMapOutput {
+	return i.ToWafGroupMapOutputWithContext(context.Background())
+}
+
+func (i WafGroupMap) ToWafGroupMapOutputWithContext(ctx context.Context) WafGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafGroupMapOutput)
+}
+
 type WafGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -180,6 +259,75 @@ func (o WafGroupOutput) ToWafGroupOutputWithContext(ctx context.Context) WafGrou
 	return o
 }
 
+func (o WafGroupOutput) ToWafGroupPtrOutput() WafGroupPtrOutput {
+	return o.ToWafGroupPtrOutputWithContext(context.Background())
+}
+
+func (o WafGroupOutput) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
+	return o.ApplyT(func(v WafGroup) *WafGroup {
+		return &v
+	}).(WafGroupPtrOutput)
+}
+
+type WafGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WafGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafGroup)(nil))
+}
+
+func (o WafGroupPtrOutput) ToWafGroupPtrOutput() WafGroupPtrOutput {
+	return o
+}
+
+func (o WafGroupPtrOutput) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
+	return o
+}
+
+type WafGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (WafGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafGroup)(nil))
+}
+
+func (o WafGroupArrayOutput) ToWafGroupArrayOutput() WafGroupArrayOutput {
+	return o
+}
+
+func (o WafGroupArrayOutput) ToWafGroupArrayOutputWithContext(ctx context.Context) WafGroupArrayOutput {
+	return o
+}
+
+func (o WafGroupArrayOutput) Index(i pulumi.IntInput) WafGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafGroup {
+		return vs[0].([]WafGroup)[vs[1].(int)]
+	}).(WafGroupOutput)
+}
+
+type WafGroupMapOutput struct{ *pulumi.OutputState }
+
+func (WafGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WafGroup)(nil))
+}
+
+func (o WafGroupMapOutput) ToWafGroupMapOutput() WafGroupMapOutput {
+	return o
+}
+
+func (o WafGroupMapOutput) ToWafGroupMapOutputWithContext(ctx context.Context) WafGroupMapOutput {
+	return o
+}
+
+func (o WafGroupMapOutput) MapIndex(k pulumi.StringInput) WafGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WafGroup {
+		return vs[0].(map[string]WafGroup)[vs[1].(string)]
+	}).(WafGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WafGroupOutput{})
+	pulumi.RegisterOutputType(WafGroupPtrOutput{})
+	pulumi.RegisterOutputType(WafGroupArrayOutput{})
+	pulumi.RegisterOutputType(WafGroupMapOutput{})
 }

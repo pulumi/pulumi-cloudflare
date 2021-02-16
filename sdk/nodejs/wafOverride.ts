@@ -113,7 +113,8 @@ export class WafOverride extends pulumi.CustomResource {
     constructor(name: string, args: WafOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WafOverrideArgs | WafOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WafOverrideState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["groups"] = state ? state.groups : undefined;
@@ -126,13 +127,13 @@ export class WafOverride extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafOverrideArgs | undefined;
-            if ((!args || args.rules === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.rules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            if ((!args || args.urls === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.urls === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urls'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -145,12 +146,8 @@ export class WafOverride extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["overrideId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WafOverride.__pulumiType, name, inputs, opts);
     }

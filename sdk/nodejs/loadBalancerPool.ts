@@ -113,7 +113,8 @@ export class LoadBalancerPool extends pulumi.CustomResource {
     constructor(name: string, args: LoadBalancerPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerPoolArgs | LoadBalancerPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LoadBalancerPoolState | undefined;
             inputs["checkRegions"] = state ? state.checkRegions : undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
@@ -127,10 +128,10 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["origins"] = state ? state.origins : undefined;
         } else {
             const args = argsOrState as LoadBalancerPoolArgs | undefined;
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.origins === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.origins === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'origins'");
             }
             inputs["checkRegions"] = args ? args.checkRegions : undefined;
@@ -144,12 +145,8 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LoadBalancerPool.__pulumiType, name, inputs, opts);
     }

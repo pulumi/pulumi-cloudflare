@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -181,6 +180,85 @@ func (i *CustomHostname) ToCustomHostnameOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOutput)
 }
 
+func (i *CustomHostname) ToCustomHostnamePtrOutput() CustomHostnamePtrOutput {
+	return i.ToCustomHostnamePtrOutputWithContext(context.Background())
+}
+
+func (i *CustomHostname) ToCustomHostnamePtrOutputWithContext(ctx context.Context) CustomHostnamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnamePtrOutput)
+}
+
+type CustomHostnamePtrInput interface {
+	pulumi.Input
+
+	ToCustomHostnamePtrOutput() CustomHostnamePtrOutput
+	ToCustomHostnamePtrOutputWithContext(ctx context.Context) CustomHostnamePtrOutput
+}
+
+type customHostnamePtrType CustomHostnameArgs
+
+func (*customHostnamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomHostname)(nil))
+}
+
+func (i *customHostnamePtrType) ToCustomHostnamePtrOutput() CustomHostnamePtrOutput {
+	return i.ToCustomHostnamePtrOutputWithContext(context.Background())
+}
+
+func (i *customHostnamePtrType) ToCustomHostnamePtrOutputWithContext(ctx context.Context) CustomHostnamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnamePtrOutput)
+}
+
+// CustomHostnameArrayInput is an input type that accepts CustomHostnameArray and CustomHostnameArrayOutput values.
+// You can construct a concrete instance of `CustomHostnameArrayInput` via:
+//
+//          CustomHostnameArray{ CustomHostnameArgs{...} }
+type CustomHostnameArrayInput interface {
+	pulumi.Input
+
+	ToCustomHostnameArrayOutput() CustomHostnameArrayOutput
+	ToCustomHostnameArrayOutputWithContext(context.Context) CustomHostnameArrayOutput
+}
+
+type CustomHostnameArray []CustomHostnameInput
+
+func (CustomHostnameArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CustomHostname)(nil))
+}
+
+func (i CustomHostnameArray) ToCustomHostnameArrayOutput() CustomHostnameArrayOutput {
+	return i.ToCustomHostnameArrayOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameArray) ToCustomHostnameArrayOutputWithContext(ctx context.Context) CustomHostnameArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameArrayOutput)
+}
+
+// CustomHostnameMapInput is an input type that accepts CustomHostnameMap and CustomHostnameMapOutput values.
+// You can construct a concrete instance of `CustomHostnameMapInput` via:
+//
+//          CustomHostnameMap{ "key": CustomHostnameArgs{...} }
+type CustomHostnameMapInput interface {
+	pulumi.Input
+
+	ToCustomHostnameMapOutput() CustomHostnameMapOutput
+	ToCustomHostnameMapOutputWithContext(context.Context) CustomHostnameMapOutput
+}
+
+type CustomHostnameMap map[string]CustomHostnameInput
+
+func (CustomHostnameMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CustomHostname)(nil))
+}
+
+func (i CustomHostnameMap) ToCustomHostnameMapOutput() CustomHostnameMapOutput {
+	return i.ToCustomHostnameMapOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameMap) ToCustomHostnameMapOutputWithContext(ctx context.Context) CustomHostnameMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameMapOutput)
+}
+
 type CustomHostnameOutput struct {
 	*pulumi.OutputState
 }
@@ -197,6 +275,75 @@ func (o CustomHostnameOutput) ToCustomHostnameOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o CustomHostnameOutput) ToCustomHostnamePtrOutput() CustomHostnamePtrOutput {
+	return o.ToCustomHostnamePtrOutputWithContext(context.Background())
+}
+
+func (o CustomHostnameOutput) ToCustomHostnamePtrOutputWithContext(ctx context.Context) CustomHostnamePtrOutput {
+	return o.ApplyT(func(v CustomHostname) *CustomHostname {
+		return &v
+	}).(CustomHostnamePtrOutput)
+}
+
+type CustomHostnamePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomHostnamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomHostname)(nil))
+}
+
+func (o CustomHostnamePtrOutput) ToCustomHostnamePtrOutput() CustomHostnamePtrOutput {
+	return o
+}
+
+func (o CustomHostnamePtrOutput) ToCustomHostnamePtrOutputWithContext(ctx context.Context) CustomHostnamePtrOutput {
+	return o
+}
+
+type CustomHostnameArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostname)(nil))
+}
+
+func (o CustomHostnameArrayOutput) ToCustomHostnameArrayOutput() CustomHostnameArrayOutput {
+	return o
+}
+
+func (o CustomHostnameArrayOutput) ToCustomHostnameArrayOutputWithContext(ctx context.Context) CustomHostnameArrayOutput {
+	return o
+}
+
+func (o CustomHostnameArrayOutput) Index(i pulumi.IntInput) CustomHostnameOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomHostname {
+		return vs[0].([]CustomHostname)[vs[1].(int)]
+	}).(CustomHostnameOutput)
+}
+
+type CustomHostnameMapOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CustomHostname)(nil))
+}
+
+func (o CustomHostnameMapOutput) ToCustomHostnameMapOutput() CustomHostnameMapOutput {
+	return o
+}
+
+func (o CustomHostnameMapOutput) ToCustomHostnameMapOutputWithContext(ctx context.Context) CustomHostnameMapOutput {
+	return o
+}
+
+func (o CustomHostnameMapOutput) MapIndex(k pulumi.StringInput) CustomHostnameOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomHostname {
+		return vs[0].(map[string]CustomHostname)[vs[1].(string)]
+	}).(CustomHostnameOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomHostnameOutput{})
+	pulumi.RegisterOutputType(CustomHostnamePtrOutput{})
+	pulumi.RegisterOutputType(CustomHostnameArrayOutput{})
+	pulumi.RegisterOutputType(CustomHostnameMapOutput{})
 }

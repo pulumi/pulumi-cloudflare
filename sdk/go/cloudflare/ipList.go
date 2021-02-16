@@ -21,7 +21,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -185,6 +184,85 @@ func (i *IpList) ToIpListOutputWithContext(ctx context.Context) IpListOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpListOutput)
 }
 
+func (i *IpList) ToIpListPtrOutput() IpListPtrOutput {
+	return i.ToIpListPtrOutputWithContext(context.Background())
+}
+
+func (i *IpList) ToIpListPtrOutputWithContext(ctx context.Context) IpListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpListPtrOutput)
+}
+
+type IpListPtrInput interface {
+	pulumi.Input
+
+	ToIpListPtrOutput() IpListPtrOutput
+	ToIpListPtrOutputWithContext(ctx context.Context) IpListPtrOutput
+}
+
+type ipListPtrType IpListArgs
+
+func (*ipListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpList)(nil))
+}
+
+func (i *ipListPtrType) ToIpListPtrOutput() IpListPtrOutput {
+	return i.ToIpListPtrOutputWithContext(context.Background())
+}
+
+func (i *ipListPtrType) ToIpListPtrOutputWithContext(ctx context.Context) IpListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpListPtrOutput)
+}
+
+// IpListArrayInput is an input type that accepts IpListArray and IpListArrayOutput values.
+// You can construct a concrete instance of `IpListArrayInput` via:
+//
+//          IpListArray{ IpListArgs{...} }
+type IpListArrayInput interface {
+	pulumi.Input
+
+	ToIpListArrayOutput() IpListArrayOutput
+	ToIpListArrayOutputWithContext(context.Context) IpListArrayOutput
+}
+
+type IpListArray []IpListInput
+
+func (IpListArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*IpList)(nil))
+}
+
+func (i IpListArray) ToIpListArrayOutput() IpListArrayOutput {
+	return i.ToIpListArrayOutputWithContext(context.Background())
+}
+
+func (i IpListArray) ToIpListArrayOutputWithContext(ctx context.Context) IpListArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpListArrayOutput)
+}
+
+// IpListMapInput is an input type that accepts IpListMap and IpListMapOutput values.
+// You can construct a concrete instance of `IpListMapInput` via:
+//
+//          IpListMap{ "key": IpListArgs{...} }
+type IpListMapInput interface {
+	pulumi.Input
+
+	ToIpListMapOutput() IpListMapOutput
+	ToIpListMapOutputWithContext(context.Context) IpListMapOutput
+}
+
+type IpListMap map[string]IpListInput
+
+func (IpListMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*IpList)(nil))
+}
+
+func (i IpListMap) ToIpListMapOutput() IpListMapOutput {
+	return i.ToIpListMapOutputWithContext(context.Background())
+}
+
+func (i IpListMap) ToIpListMapOutputWithContext(ctx context.Context) IpListMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IpListMapOutput)
+}
+
 type IpListOutput struct {
 	*pulumi.OutputState
 }
@@ -201,6 +279,75 @@ func (o IpListOutput) ToIpListOutputWithContext(ctx context.Context) IpListOutpu
 	return o
 }
 
+func (o IpListOutput) ToIpListPtrOutput() IpListPtrOutput {
+	return o.ToIpListPtrOutputWithContext(context.Background())
+}
+
+func (o IpListOutput) ToIpListPtrOutputWithContext(ctx context.Context) IpListPtrOutput {
+	return o.ApplyT(func(v IpList) *IpList {
+		return &v
+	}).(IpListPtrOutput)
+}
+
+type IpListPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IpListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpList)(nil))
+}
+
+func (o IpListPtrOutput) ToIpListPtrOutput() IpListPtrOutput {
+	return o
+}
+
+func (o IpListPtrOutput) ToIpListPtrOutputWithContext(ctx context.Context) IpListPtrOutput {
+	return o
+}
+
+type IpListArrayOutput struct{ *pulumi.OutputState }
+
+func (IpListArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IpList)(nil))
+}
+
+func (o IpListArrayOutput) ToIpListArrayOutput() IpListArrayOutput {
+	return o
+}
+
+func (o IpListArrayOutput) ToIpListArrayOutputWithContext(ctx context.Context) IpListArrayOutput {
+	return o
+}
+
+func (o IpListArrayOutput) Index(i pulumi.IntInput) IpListOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpList {
+		return vs[0].([]IpList)[vs[1].(int)]
+	}).(IpListOutput)
+}
+
+type IpListMapOutput struct{ *pulumi.OutputState }
+
+func (IpListMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IpList)(nil))
+}
+
+func (o IpListMapOutput) ToIpListMapOutput() IpListMapOutput {
+	return o
+}
+
+func (o IpListMapOutput) ToIpListMapOutputWithContext(ctx context.Context) IpListMapOutput {
+	return o
+}
+
+func (o IpListMapOutput) MapIndex(k pulumi.StringInput) IpListOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IpList {
+		return vs[0].(map[string]IpList)[vs[1].(string)]
+	}).(IpListOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(IpListOutput{})
+	pulumi.RegisterOutputType(IpListPtrOutput{})
+	pulumi.RegisterOutputType(IpListArrayOutput{})
+	pulumi.RegisterOutputType(IpListMapOutput{})
 }

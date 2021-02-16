@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -153,6 +153,85 @@ func (i *Argo) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ArgoOutput)
 }
 
+func (i *Argo) ToArgoPtrOutput() ArgoPtrOutput {
+	return i.ToArgoPtrOutputWithContext(context.Background())
+}
+
+func (i *Argo) ToArgoPtrOutputWithContext(ctx context.Context) ArgoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgoPtrOutput)
+}
+
+type ArgoPtrInput interface {
+	pulumi.Input
+
+	ToArgoPtrOutput() ArgoPtrOutput
+	ToArgoPtrOutputWithContext(ctx context.Context) ArgoPtrOutput
+}
+
+type argoPtrType ArgoArgs
+
+func (*argoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Argo)(nil))
+}
+
+func (i *argoPtrType) ToArgoPtrOutput() ArgoPtrOutput {
+	return i.ToArgoPtrOutputWithContext(context.Background())
+}
+
+func (i *argoPtrType) ToArgoPtrOutputWithContext(ctx context.Context) ArgoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgoPtrOutput)
+}
+
+// ArgoArrayInput is an input type that accepts ArgoArray and ArgoArrayOutput values.
+// You can construct a concrete instance of `ArgoArrayInput` via:
+//
+//          ArgoArray{ ArgoArgs{...} }
+type ArgoArrayInput interface {
+	pulumi.Input
+
+	ToArgoArrayOutput() ArgoArrayOutput
+	ToArgoArrayOutputWithContext(context.Context) ArgoArrayOutput
+}
+
+type ArgoArray []ArgoInput
+
+func (ArgoArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Argo)(nil))
+}
+
+func (i ArgoArray) ToArgoArrayOutput() ArgoArrayOutput {
+	return i.ToArgoArrayOutputWithContext(context.Background())
+}
+
+func (i ArgoArray) ToArgoArrayOutputWithContext(ctx context.Context) ArgoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgoArrayOutput)
+}
+
+// ArgoMapInput is an input type that accepts ArgoMap and ArgoMapOutput values.
+// You can construct a concrete instance of `ArgoMapInput` via:
+//
+//          ArgoMap{ "key": ArgoArgs{...} }
+type ArgoMapInput interface {
+	pulumi.Input
+
+	ToArgoMapOutput() ArgoMapOutput
+	ToArgoMapOutputWithContext(context.Context) ArgoMapOutput
+}
+
+type ArgoMap map[string]ArgoInput
+
+func (ArgoMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Argo)(nil))
+}
+
+func (i ArgoMap) ToArgoMapOutput() ArgoMapOutput {
+	return i.ToArgoMapOutputWithContext(context.Background())
+}
+
+func (i ArgoMap) ToArgoMapOutputWithContext(ctx context.Context) ArgoMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ArgoMapOutput)
+}
+
 type ArgoOutput struct {
 	*pulumi.OutputState
 }
@@ -169,6 +248,75 @@ func (o ArgoOutput) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 	return o
 }
 
+func (o ArgoOutput) ToArgoPtrOutput() ArgoPtrOutput {
+	return o.ToArgoPtrOutputWithContext(context.Background())
+}
+
+func (o ArgoOutput) ToArgoPtrOutputWithContext(ctx context.Context) ArgoPtrOutput {
+	return o.ApplyT(func(v Argo) *Argo {
+		return &v
+	}).(ArgoPtrOutput)
+}
+
+type ArgoPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ArgoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Argo)(nil))
+}
+
+func (o ArgoPtrOutput) ToArgoPtrOutput() ArgoPtrOutput {
+	return o
+}
+
+func (o ArgoPtrOutput) ToArgoPtrOutputWithContext(ctx context.Context) ArgoPtrOutput {
+	return o
+}
+
+type ArgoArrayOutput struct{ *pulumi.OutputState }
+
+func (ArgoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Argo)(nil))
+}
+
+func (o ArgoArrayOutput) ToArgoArrayOutput() ArgoArrayOutput {
+	return o
+}
+
+func (o ArgoArrayOutput) ToArgoArrayOutputWithContext(ctx context.Context) ArgoArrayOutput {
+	return o
+}
+
+func (o ArgoArrayOutput) Index(i pulumi.IntInput) ArgoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Argo {
+		return vs[0].([]Argo)[vs[1].(int)]
+	}).(ArgoOutput)
+}
+
+type ArgoMapOutput struct{ *pulumi.OutputState }
+
+func (ArgoMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Argo)(nil))
+}
+
+func (o ArgoMapOutput) ToArgoMapOutput() ArgoMapOutput {
+	return o
+}
+
+func (o ArgoMapOutput) ToArgoMapOutputWithContext(ctx context.Context) ArgoMapOutput {
+	return o
+}
+
+func (o ArgoMapOutput) MapIndex(k pulumi.StringInput) ArgoOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Argo {
+		return vs[0].(map[string]Argo)[vs[1].(string)]
+	}).(ArgoOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ArgoOutput{})
+	pulumi.RegisterOutputType(ArgoPtrOutput{})
+	pulumi.RegisterOutputType(ArgoArrayOutput{})
+	pulumi.RegisterOutputType(ArgoMapOutput{})
 }

@@ -89,7 +89,8 @@ export class AccessServiceToken extends pulumi.CustomResource {
     constructor(name: string, args: AccessServiceTokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessServiceTokenArgs | AccessServiceTokenState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccessServiceTokenState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["clientId"] = state ? state.clientId : undefined;
@@ -98,7 +99,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessServiceTokenArgs | undefined;
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -107,12 +108,8 @@ export class AccessServiceToken extends pulumi.CustomResource {
             inputs["clientId"] = undefined /*out*/;
             inputs["clientSecret"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccessServiceToken.__pulumiType, name, inputs, opts);
     }

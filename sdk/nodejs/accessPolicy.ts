@@ -130,7 +130,8 @@ export class AccessPolicy extends pulumi.CustomResource {
     constructor(name: string, args: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessPolicyArgs | AccessPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
@@ -143,16 +144,16 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            if ((!args || args.decision === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.decision === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
             }
-            if ((!args || args.includes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.includes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'includes'");
             }
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -165,12 +166,8 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["requires"] = args ? args.requires : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccessPolicy.__pulumiType, name, inputs, opts);
     }

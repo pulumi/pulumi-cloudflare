@@ -81,26 +81,23 @@ export class Argo extends pulumi.CustomResource {
     constructor(name: string, args: ArgoArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ArgoArgs | ArgoState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ArgoState | undefined;
             inputs["smartRouting"] = state ? state.smartRouting : undefined;
             inputs["tieredCaching"] = state ? state.tieredCaching : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ArgoArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["smartRouting"] = args ? args.smartRouting : undefined;
             inputs["tieredCaching"] = args ? args.tieredCaching : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Argo.__pulumiType, name, inputs, opts);
     }

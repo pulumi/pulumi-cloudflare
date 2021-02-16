@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -163,6 +163,85 @@ func (i *WorkersKv) ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvO
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvOutput)
 }
 
+func (i *WorkersKv) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
+	return i.ToWorkersKvPtrOutputWithContext(context.Background())
+}
+
+func (i *WorkersKv) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvPtrOutput)
+}
+
+type WorkersKvPtrInput interface {
+	pulumi.Input
+
+	ToWorkersKvPtrOutput() WorkersKvPtrOutput
+	ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput
+}
+
+type workersKvPtrType WorkersKvArgs
+
+func (*workersKvPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkersKv)(nil))
+}
+
+func (i *workersKvPtrType) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
+	return i.ToWorkersKvPtrOutputWithContext(context.Background())
+}
+
+func (i *workersKvPtrType) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvPtrOutput)
+}
+
+// WorkersKvArrayInput is an input type that accepts WorkersKvArray and WorkersKvArrayOutput values.
+// You can construct a concrete instance of `WorkersKvArrayInput` via:
+//
+//          WorkersKvArray{ WorkersKvArgs{...} }
+type WorkersKvArrayInput interface {
+	pulumi.Input
+
+	ToWorkersKvArrayOutput() WorkersKvArrayOutput
+	ToWorkersKvArrayOutputWithContext(context.Context) WorkersKvArrayOutput
+}
+
+type WorkersKvArray []WorkersKvInput
+
+func (WorkersKvArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WorkersKv)(nil))
+}
+
+func (i WorkersKvArray) ToWorkersKvArrayOutput() WorkersKvArrayOutput {
+	return i.ToWorkersKvArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersKvArray) ToWorkersKvArrayOutputWithContext(ctx context.Context) WorkersKvArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvArrayOutput)
+}
+
+// WorkersKvMapInput is an input type that accepts WorkersKvMap and WorkersKvMapOutput values.
+// You can construct a concrete instance of `WorkersKvMapInput` via:
+//
+//          WorkersKvMap{ "key": WorkersKvArgs{...} }
+type WorkersKvMapInput interface {
+	pulumi.Input
+
+	ToWorkersKvMapOutput() WorkersKvMapOutput
+	ToWorkersKvMapOutputWithContext(context.Context) WorkersKvMapOutput
+}
+
+type WorkersKvMap map[string]WorkersKvInput
+
+func (WorkersKvMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WorkersKv)(nil))
+}
+
+func (i WorkersKvMap) ToWorkersKvMapOutput() WorkersKvMapOutput {
+	return i.ToWorkersKvMapOutputWithContext(context.Background())
+}
+
+func (i WorkersKvMap) ToWorkersKvMapOutputWithContext(ctx context.Context) WorkersKvMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvMapOutput)
+}
+
 type WorkersKvOutput struct {
 	*pulumi.OutputState
 }
@@ -179,6 +258,75 @@ func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) Worke
 	return o
 }
 
+func (o WorkersKvOutput) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
+	return o.ToWorkersKvPtrOutputWithContext(context.Background())
+}
+
+func (o WorkersKvOutput) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
+	return o.ApplyT(func(v WorkersKv) *WorkersKv {
+		return &v
+	}).(WorkersKvPtrOutput)
+}
+
+type WorkersKvPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkersKvPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkersKv)(nil))
+}
+
+func (o WorkersKvPtrOutput) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
+	return o
+}
+
+func (o WorkersKvPtrOutput) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
+	return o
+}
+
+type WorkersKvArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersKvArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersKv)(nil))
+}
+
+func (o WorkersKvArrayOutput) ToWorkersKvArrayOutput() WorkersKvArrayOutput {
+	return o
+}
+
+func (o WorkersKvArrayOutput) ToWorkersKvArrayOutputWithContext(ctx context.Context) WorkersKvArrayOutput {
+	return o
+}
+
+func (o WorkersKvArrayOutput) Index(i pulumi.IntInput) WorkersKvOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersKv {
+		return vs[0].([]WorkersKv)[vs[1].(int)]
+	}).(WorkersKvOutput)
+}
+
+type WorkersKvMapOutput struct{ *pulumi.OutputState }
+
+func (WorkersKvMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WorkersKv)(nil))
+}
+
+func (o WorkersKvMapOutput) ToWorkersKvMapOutput() WorkersKvMapOutput {
+	return o
+}
+
+func (o WorkersKvMapOutput) ToWorkersKvMapOutputWithContext(ctx context.Context) WorkersKvMapOutput {
+	return o
+}
+
+func (o WorkersKvMapOutput) MapIndex(k pulumi.StringInput) WorkersKvOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkersKv {
+		return vs[0].(map[string]WorkersKv)[vs[1].(string)]
+	}).(WorkersKvOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkersKvOutput{})
+	pulumi.RegisterOutputType(WorkersKvPtrOutput{})
+	pulumi.RegisterOutputType(WorkersKvArrayOutput{})
+	pulumi.RegisterOutputType(WorkersKvMapOutput{})
 }

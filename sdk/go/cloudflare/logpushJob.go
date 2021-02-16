@@ -166,6 +166,85 @@ func (i *LogpushJob) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJ
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobOutput)
 }
 
+func (i *LogpushJob) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
+	return i.ToLogpushJobPtrOutputWithContext(context.Background())
+}
+
+func (i *LogpushJob) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobPtrOutput)
+}
+
+type LogpushJobPtrInput interface {
+	pulumi.Input
+
+	ToLogpushJobPtrOutput() LogpushJobPtrOutput
+	ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput
+}
+
+type logpushJobPtrType LogpushJobArgs
+
+func (*logpushJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogpushJob)(nil))
+}
+
+func (i *logpushJobPtrType) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
+	return i.ToLogpushJobPtrOutputWithContext(context.Background())
+}
+
+func (i *logpushJobPtrType) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobPtrOutput)
+}
+
+// LogpushJobArrayInput is an input type that accepts LogpushJobArray and LogpushJobArrayOutput values.
+// You can construct a concrete instance of `LogpushJobArrayInput` via:
+//
+//          LogpushJobArray{ LogpushJobArgs{...} }
+type LogpushJobArrayInput interface {
+	pulumi.Input
+
+	ToLogpushJobArrayOutput() LogpushJobArrayOutput
+	ToLogpushJobArrayOutputWithContext(context.Context) LogpushJobArrayOutput
+}
+
+type LogpushJobArray []LogpushJobInput
+
+func (LogpushJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*LogpushJob)(nil))
+}
+
+func (i LogpushJobArray) ToLogpushJobArrayOutput() LogpushJobArrayOutput {
+	return i.ToLogpushJobArrayOutputWithContext(context.Background())
+}
+
+func (i LogpushJobArray) ToLogpushJobArrayOutputWithContext(ctx context.Context) LogpushJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobArrayOutput)
+}
+
+// LogpushJobMapInput is an input type that accepts LogpushJobMap and LogpushJobMapOutput values.
+// You can construct a concrete instance of `LogpushJobMapInput` via:
+//
+//          LogpushJobMap{ "key": LogpushJobArgs{...} }
+type LogpushJobMapInput interface {
+	pulumi.Input
+
+	ToLogpushJobMapOutput() LogpushJobMapOutput
+	ToLogpushJobMapOutputWithContext(context.Context) LogpushJobMapOutput
+}
+
+type LogpushJobMap map[string]LogpushJobInput
+
+func (LogpushJobMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*LogpushJob)(nil))
+}
+
+func (i LogpushJobMap) ToLogpushJobMapOutput() LogpushJobMapOutput {
+	return i.ToLogpushJobMapOutputWithContext(context.Background())
+}
+
+func (i LogpushJobMap) ToLogpushJobMapOutputWithContext(ctx context.Context) LogpushJobMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobMapOutput)
+}
+
 type LogpushJobOutput struct {
 	*pulumi.OutputState
 }
@@ -182,6 +261,75 @@ func (o LogpushJobOutput) ToLogpushJobOutputWithContext(ctx context.Context) Log
 	return o
 }
 
+func (o LogpushJobOutput) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
+	return o.ToLogpushJobPtrOutputWithContext(context.Background())
+}
+
+func (o LogpushJobOutput) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
+	return o.ApplyT(func(v LogpushJob) *LogpushJob {
+		return &v
+	}).(LogpushJobPtrOutput)
+}
+
+type LogpushJobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogpushJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogpushJob)(nil))
+}
+
+func (o LogpushJobPtrOutput) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
+	return o
+}
+
+func (o LogpushJobPtrOutput) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
+	return o
+}
+
+type LogpushJobArrayOutput struct{ *pulumi.OutputState }
+
+func (LogpushJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogpushJob)(nil))
+}
+
+func (o LogpushJobArrayOutput) ToLogpushJobArrayOutput() LogpushJobArrayOutput {
+	return o
+}
+
+func (o LogpushJobArrayOutput) ToLogpushJobArrayOutputWithContext(ctx context.Context) LogpushJobArrayOutput {
+	return o
+}
+
+func (o LogpushJobArrayOutput) Index(i pulumi.IntInput) LogpushJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogpushJob {
+		return vs[0].([]LogpushJob)[vs[1].(int)]
+	}).(LogpushJobOutput)
+}
+
+type LogpushJobMapOutput struct{ *pulumi.OutputState }
+
+func (LogpushJobMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LogpushJob)(nil))
+}
+
+func (o LogpushJobMapOutput) ToLogpushJobMapOutput() LogpushJobMapOutput {
+	return o
+}
+
+func (o LogpushJobMapOutput) ToLogpushJobMapOutputWithContext(ctx context.Context) LogpushJobMapOutput {
+	return o
+}
+
+func (o LogpushJobMapOutput) MapIndex(k pulumi.StringInput) LogpushJobOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogpushJob {
+		return vs[0].(map[string]LogpushJob)[vs[1].(string)]
+	}).(LogpushJobOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogpushJobOutput{})
+	pulumi.RegisterOutputType(LogpushJobPtrOutput{})
+	pulumi.RegisterOutputType(LogpushJobArrayOutput{})
+	pulumi.RegisterOutputType(LogpushJobMapOutput{})
 }
