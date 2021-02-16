@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -288,6 +287,85 @@ func (i *AccessApplication) ToAccessApplicationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationOutput)
 }
 
+func (i *AccessApplication) ToAccessApplicationPtrOutput() AccessApplicationPtrOutput {
+	return i.ToAccessApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *AccessApplication) ToAccessApplicationPtrOutputWithContext(ctx context.Context) AccessApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPtrOutput)
+}
+
+type AccessApplicationPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationPtrOutput() AccessApplicationPtrOutput
+	ToAccessApplicationPtrOutputWithContext(ctx context.Context) AccessApplicationPtrOutput
+}
+
+type accessApplicationPtrType AccessApplicationArgs
+
+func (*accessApplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplication)(nil))
+}
+
+func (i *accessApplicationPtrType) ToAccessApplicationPtrOutput() AccessApplicationPtrOutput {
+	return i.ToAccessApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationPtrType) ToAccessApplicationPtrOutputWithContext(ctx context.Context) AccessApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationPtrOutput)
+}
+
+// AccessApplicationArrayInput is an input type that accepts AccessApplicationArray and AccessApplicationArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationArrayInput` via:
+//
+//          AccessApplicationArray{ AccessApplicationArgs{...} }
+type AccessApplicationArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationArrayOutput() AccessApplicationArrayOutput
+	ToAccessApplicationArrayOutputWithContext(context.Context) AccessApplicationArrayOutput
+}
+
+type AccessApplicationArray []AccessApplicationInput
+
+func (AccessApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccessApplication)(nil))
+}
+
+func (i AccessApplicationArray) ToAccessApplicationArrayOutput() AccessApplicationArrayOutput {
+	return i.ToAccessApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationArray) ToAccessApplicationArrayOutputWithContext(ctx context.Context) AccessApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationArrayOutput)
+}
+
+// AccessApplicationMapInput is an input type that accepts AccessApplicationMap and AccessApplicationMapOutput values.
+// You can construct a concrete instance of `AccessApplicationMapInput` via:
+//
+//          AccessApplicationMap{ "key": AccessApplicationArgs{...} }
+type AccessApplicationMapInput interface {
+	pulumi.Input
+
+	ToAccessApplicationMapOutput() AccessApplicationMapOutput
+	ToAccessApplicationMapOutputWithContext(context.Context) AccessApplicationMapOutput
+}
+
+type AccessApplicationMap map[string]AccessApplicationInput
+
+func (AccessApplicationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccessApplication)(nil))
+}
+
+func (i AccessApplicationMap) ToAccessApplicationMapOutput() AccessApplicationMapOutput {
+	return i.ToAccessApplicationMapOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationMap) ToAccessApplicationMapOutputWithContext(ctx context.Context) AccessApplicationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationMapOutput)
+}
+
 type AccessApplicationOutput struct {
 	*pulumi.OutputState
 }
@@ -304,6 +382,75 @@ func (o AccessApplicationOutput) ToAccessApplicationOutputWithContext(ctx contex
 	return o
 }
 
+func (o AccessApplicationOutput) ToAccessApplicationPtrOutput() AccessApplicationPtrOutput {
+	return o.ToAccessApplicationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationOutput) ToAccessApplicationPtrOutputWithContext(ctx context.Context) AccessApplicationPtrOutput {
+	return o.ApplyT(func(v AccessApplication) *AccessApplication {
+		return &v
+	}).(AccessApplicationPtrOutput)
+}
+
+type AccessApplicationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplication)(nil))
+}
+
+func (o AccessApplicationPtrOutput) ToAccessApplicationPtrOutput() AccessApplicationPtrOutput {
+	return o
+}
+
+func (o AccessApplicationPtrOutput) ToAccessApplicationPtrOutputWithContext(ctx context.Context) AccessApplicationPtrOutput {
+	return o
+}
+
+type AccessApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplication)(nil))
+}
+
+func (o AccessApplicationArrayOutput) ToAccessApplicationArrayOutput() AccessApplicationArrayOutput {
+	return o
+}
+
+func (o AccessApplicationArrayOutput) ToAccessApplicationArrayOutputWithContext(ctx context.Context) AccessApplicationArrayOutput {
+	return o
+}
+
+func (o AccessApplicationArrayOutput) Index(i pulumi.IntInput) AccessApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplication {
+		return vs[0].([]AccessApplication)[vs[1].(int)]
+	}).(AccessApplicationOutput)
+}
+
+type AccessApplicationMapOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccessApplication)(nil))
+}
+
+func (o AccessApplicationMapOutput) ToAccessApplicationMapOutput() AccessApplicationMapOutput {
+	return o
+}
+
+func (o AccessApplicationMapOutput) ToAccessApplicationMapOutputWithContext(ctx context.Context) AccessApplicationMapOutput {
+	return o
+}
+
+func (o AccessApplicationMapOutput) MapIndex(k pulumi.StringInput) AccessApplicationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessApplication {
+		return vs[0].(map[string]AccessApplication)[vs[1].(string)]
+	}).(AccessApplicationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessApplicationOutput{})
+	pulumi.RegisterOutputType(AccessApplicationPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationMapOutput{})
 }

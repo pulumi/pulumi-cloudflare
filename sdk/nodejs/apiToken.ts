@@ -183,7 +183,8 @@ export class ApiToken extends pulumi.CustomResource {
     constructor(name: string, args: ApiTokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiTokenArgs | ApiTokenState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApiTokenState | undefined;
             inputs["condition"] = state ? state.condition : undefined;
             inputs["issuedOn"] = state ? state.issuedOn : undefined;
@@ -194,10 +195,10 @@ export class ApiToken extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApiTokenArgs | undefined;
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.policies === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policies === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policies'");
             }
             inputs["condition"] = args ? args.condition : undefined;
@@ -208,12 +209,8 @@ export class ApiToken extends pulumi.CustomResource {
             inputs["status"] = undefined /*out*/;
             inputs["value"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApiToken.__pulumiType, name, inputs, opts);
     }

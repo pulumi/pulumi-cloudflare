@@ -23,7 +23,6 @@ import (
 // 	"fmt"
 //
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -227,6 +226,85 @@ func (i *AccessIdentityProvider) ToAccessIdentityProviderOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderOutput)
 }
 
+func (i *AccessIdentityProvider) ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput {
+	return i.ToAccessIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *AccessIdentityProvider) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderPtrOutput)
+}
+
+type AccessIdentityProviderPtrInput interface {
+	pulumi.Input
+
+	ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput
+	ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput
+}
+
+type accessIdentityProviderPtrType AccessIdentityProviderArgs
+
+func (*accessIdentityProviderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessIdentityProvider)(nil))
+}
+
+func (i *accessIdentityProviderPtrType) ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput {
+	return i.ToAccessIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *accessIdentityProviderPtrType) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderPtrOutput)
+}
+
+// AccessIdentityProviderArrayInput is an input type that accepts AccessIdentityProviderArray and AccessIdentityProviderArrayOutput values.
+// You can construct a concrete instance of `AccessIdentityProviderArrayInput` via:
+//
+//          AccessIdentityProviderArray{ AccessIdentityProviderArgs{...} }
+type AccessIdentityProviderArrayInput interface {
+	pulumi.Input
+
+	ToAccessIdentityProviderArrayOutput() AccessIdentityProviderArrayOutput
+	ToAccessIdentityProviderArrayOutputWithContext(context.Context) AccessIdentityProviderArrayOutput
+}
+
+type AccessIdentityProviderArray []AccessIdentityProviderInput
+
+func (AccessIdentityProviderArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccessIdentityProvider)(nil))
+}
+
+func (i AccessIdentityProviderArray) ToAccessIdentityProviderArrayOutput() AccessIdentityProviderArrayOutput {
+	return i.ToAccessIdentityProviderArrayOutputWithContext(context.Background())
+}
+
+func (i AccessIdentityProviderArray) ToAccessIdentityProviderArrayOutputWithContext(ctx context.Context) AccessIdentityProviderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderArrayOutput)
+}
+
+// AccessIdentityProviderMapInput is an input type that accepts AccessIdentityProviderMap and AccessIdentityProviderMapOutput values.
+// You can construct a concrete instance of `AccessIdentityProviderMapInput` via:
+//
+//          AccessIdentityProviderMap{ "key": AccessIdentityProviderArgs{...} }
+type AccessIdentityProviderMapInput interface {
+	pulumi.Input
+
+	ToAccessIdentityProviderMapOutput() AccessIdentityProviderMapOutput
+	ToAccessIdentityProviderMapOutputWithContext(context.Context) AccessIdentityProviderMapOutput
+}
+
+type AccessIdentityProviderMap map[string]AccessIdentityProviderInput
+
+func (AccessIdentityProviderMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccessIdentityProvider)(nil))
+}
+
+func (i AccessIdentityProviderMap) ToAccessIdentityProviderMapOutput() AccessIdentityProviderMapOutput {
+	return i.ToAccessIdentityProviderMapOutputWithContext(context.Background())
+}
+
+func (i AccessIdentityProviderMap) ToAccessIdentityProviderMapOutputWithContext(ctx context.Context) AccessIdentityProviderMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderMapOutput)
+}
+
 type AccessIdentityProviderOutput struct {
 	*pulumi.OutputState
 }
@@ -243,6 +321,75 @@ func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutputWithContext(
 	return o
 }
 
+func (o AccessIdentityProviderOutput) ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput {
+	return o.ToAccessIdentityProviderPtrOutputWithContext(context.Background())
+}
+
+func (o AccessIdentityProviderOutput) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProvider) *AccessIdentityProvider {
+		return &v
+	}).(AccessIdentityProviderPtrOutput)
+}
+
+type AccessIdentityProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessIdentityProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessIdentityProvider)(nil))
+}
+
+func (o AccessIdentityProviderPtrOutput) ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput {
+	return o
+}
+
+func (o AccessIdentityProviderPtrOutput) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
+	return o
+}
+
+type AccessIdentityProviderArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessIdentityProviderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessIdentityProvider)(nil))
+}
+
+func (o AccessIdentityProviderArrayOutput) ToAccessIdentityProviderArrayOutput() AccessIdentityProviderArrayOutput {
+	return o
+}
+
+func (o AccessIdentityProviderArrayOutput) ToAccessIdentityProviderArrayOutputWithContext(ctx context.Context) AccessIdentityProviderArrayOutput {
+	return o
+}
+
+func (o AccessIdentityProviderArrayOutput) Index(i pulumi.IntInput) AccessIdentityProviderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessIdentityProvider {
+		return vs[0].([]AccessIdentityProvider)[vs[1].(int)]
+	}).(AccessIdentityProviderOutput)
+}
+
+type AccessIdentityProviderMapOutput struct{ *pulumi.OutputState }
+
+func (AccessIdentityProviderMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccessIdentityProvider)(nil))
+}
+
+func (o AccessIdentityProviderMapOutput) ToAccessIdentityProviderMapOutput() AccessIdentityProviderMapOutput {
+	return o
+}
+
+func (o AccessIdentityProviderMapOutput) ToAccessIdentityProviderMapOutputWithContext(ctx context.Context) AccessIdentityProviderMapOutput {
+	return o
+}
+
+func (o AccessIdentityProviderMapOutput) MapIndex(k pulumi.StringInput) AccessIdentityProviderOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessIdentityProvider {
+		return vs[0].(map[string]AccessIdentityProvider)[vs[1].(string)]
+	}).(AccessIdentityProviderOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessIdentityProviderOutput{})
+	pulumi.RegisterOutputType(AccessIdentityProviderPtrOutput{})
+	pulumi.RegisterOutputType(AccessIdentityProviderArrayOutput{})
+	pulumi.RegisterOutputType(AccessIdentityProviderMapOutput{})
 }

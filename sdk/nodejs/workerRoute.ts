@@ -84,29 +84,26 @@ export class WorkerRoute extends pulumi.CustomResource {
     constructor(name: string, args: WorkerRouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkerRouteArgs | WorkerRouteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WorkerRouteState | undefined;
             inputs["pattern"] = state ? state.pattern : undefined;
             inputs["scriptName"] = state ? state.scriptName : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WorkerRouteArgs | undefined;
-            if ((!args || args.pattern === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.pattern === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'pattern'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["pattern"] = args ? args.pattern : undefined;
             inputs["scriptName"] = args ? args.scriptName : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WorkerRoute.__pulumiType, name, inputs, opts);
     }

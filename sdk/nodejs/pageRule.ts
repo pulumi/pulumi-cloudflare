@@ -98,7 +98,8 @@ export class PageRule extends pulumi.CustomResource {
     constructor(name: string, args: PageRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PageRuleArgs | PageRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PageRuleState | undefined;
             inputs["actions"] = state ? state.actions : undefined;
             inputs["priority"] = state ? state.priority : undefined;
@@ -107,13 +108,13 @@ export class PageRule extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as PageRuleArgs | undefined;
-            if ((!args || args.actions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.actions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'actions'");
             }
-            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["actions"] = args ? args.actions : undefined;
@@ -122,12 +123,8 @@ export class PageRule extends pulumi.CustomResource {
             inputs["target"] = args ? args.target : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PageRule.__pulumiType, name, inputs, opts);
     }

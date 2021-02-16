@@ -141,6 +141,85 @@ func (i *WorkerScript) ToWorkerScriptOutputWithContext(ctx context.Context) Work
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptOutput)
 }
 
+func (i *WorkerScript) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
+	return i.ToWorkerScriptPtrOutputWithContext(context.Background())
+}
+
+func (i *WorkerScript) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptPtrOutput)
+}
+
+type WorkerScriptPtrInput interface {
+	pulumi.Input
+
+	ToWorkerScriptPtrOutput() WorkerScriptPtrOutput
+	ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput
+}
+
+type workerScriptPtrType WorkerScriptArgs
+
+func (*workerScriptPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerScript)(nil))
+}
+
+func (i *workerScriptPtrType) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
+	return i.ToWorkerScriptPtrOutputWithContext(context.Background())
+}
+
+func (i *workerScriptPtrType) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptPtrOutput)
+}
+
+// WorkerScriptArrayInput is an input type that accepts WorkerScriptArray and WorkerScriptArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptArrayInput` via:
+//
+//          WorkerScriptArray{ WorkerScriptArgs{...} }
+type WorkerScriptArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptArrayOutput() WorkerScriptArrayOutput
+	ToWorkerScriptArrayOutputWithContext(context.Context) WorkerScriptArrayOutput
+}
+
+type WorkerScriptArray []WorkerScriptInput
+
+func (WorkerScriptArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WorkerScript)(nil))
+}
+
+func (i WorkerScriptArray) ToWorkerScriptArrayOutput() WorkerScriptArrayOutput {
+	return i.ToWorkerScriptArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptArray) ToWorkerScriptArrayOutputWithContext(ctx context.Context) WorkerScriptArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptArrayOutput)
+}
+
+// WorkerScriptMapInput is an input type that accepts WorkerScriptMap and WorkerScriptMapOutput values.
+// You can construct a concrete instance of `WorkerScriptMapInput` via:
+//
+//          WorkerScriptMap{ "key": WorkerScriptArgs{...} }
+type WorkerScriptMapInput interface {
+	pulumi.Input
+
+	ToWorkerScriptMapOutput() WorkerScriptMapOutput
+	ToWorkerScriptMapOutputWithContext(context.Context) WorkerScriptMapOutput
+}
+
+type WorkerScriptMap map[string]WorkerScriptInput
+
+func (WorkerScriptMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WorkerScript)(nil))
+}
+
+func (i WorkerScriptMap) ToWorkerScriptMapOutput() WorkerScriptMapOutput {
+	return i.ToWorkerScriptMapOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptMap) ToWorkerScriptMapOutputWithContext(ctx context.Context) WorkerScriptMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptMapOutput)
+}
+
 type WorkerScriptOutput struct {
 	*pulumi.OutputState
 }
@@ -157,6 +236,75 @@ func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o WorkerScriptOutput) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
+	return o.ToWorkerScriptPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerScriptOutput) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
+	return o.ApplyT(func(v WorkerScript) *WorkerScript {
+		return &v
+	}).(WorkerScriptPtrOutput)
+}
+
+type WorkerScriptPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkerScriptPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerScript)(nil))
+}
+
+func (o WorkerScriptPtrOutput) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
+	return o
+}
+
+func (o WorkerScriptPtrOutput) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
+	return o
+}
+
+type WorkerScriptArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScript)(nil))
+}
+
+func (o WorkerScriptArrayOutput) ToWorkerScriptArrayOutput() WorkerScriptArrayOutput {
+	return o
+}
+
+func (o WorkerScriptArrayOutput) ToWorkerScriptArrayOutputWithContext(ctx context.Context) WorkerScriptArrayOutput {
+	return o
+}
+
+func (o WorkerScriptArrayOutput) Index(i pulumi.IntInput) WorkerScriptOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScript {
+		return vs[0].([]WorkerScript)[vs[1].(int)]
+	}).(WorkerScriptOutput)
+}
+
+type WorkerScriptMapOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WorkerScript)(nil))
+}
+
+func (o WorkerScriptMapOutput) ToWorkerScriptMapOutput() WorkerScriptMapOutput {
+	return o
+}
+
+func (o WorkerScriptMapOutput) ToWorkerScriptMapOutputWithContext(ctx context.Context) WorkerScriptMapOutput {
+	return o
+}
+
+func (o WorkerScriptMapOutput) MapIndex(k pulumi.StringInput) WorkerScriptOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkerScript {
+		return vs[0].(map[string]WorkerScript)[vs[1].(string)]
+	}).(WorkerScriptOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkerScriptOutput{})
+	pulumi.RegisterOutputType(WorkerScriptPtrOutput{})
+	pulumi.RegisterOutputType(WorkerScriptArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptMapOutput{})
 }

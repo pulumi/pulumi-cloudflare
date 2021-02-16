@@ -96,7 +96,8 @@ export class MagicFirewallRuleset extends pulumi.CustomResource {
     constructor(name: string, args: MagicFirewallRulesetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MagicFirewallRulesetArgs | MagicFirewallRulesetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MagicFirewallRulesetState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -104,10 +105,10 @@ export class MagicFirewallRuleset extends pulumi.CustomResource {
             inputs["rules"] = state ? state.rules : undefined;
         } else {
             const args = argsOrState as MagicFirewallRulesetArgs | undefined;
-            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -115,12 +116,8 @@ export class MagicFirewallRuleset extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["rules"] = args ? args.rules : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MagicFirewallRuleset.__pulumiType, name, inputs, opts);
     }

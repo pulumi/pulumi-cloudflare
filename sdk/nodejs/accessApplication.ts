@@ -136,7 +136,8 @@ export class AccessApplication extends pulumi.CustomResource {
     constructor(name: string, args: AccessApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessApplicationArgs | AccessApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccessApplicationState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["allowedIdps"] = state ? state.allowedIdps : undefined;
@@ -152,10 +153,10 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessApplicationArgs | undefined;
-            if ((!args || args.domain === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -171,12 +172,8 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["aud"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccessApplication.__pulumiType, name, inputs, opts);
     }

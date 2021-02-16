@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -165,6 +165,85 @@ func (i *WafPackage) ToWafPackageOutputWithContext(ctx context.Context) WafPacka
 	return pulumi.ToOutputWithContext(ctx, i).(WafPackageOutput)
 }
 
+func (i *WafPackage) ToWafPackagePtrOutput() WafPackagePtrOutput {
+	return i.ToWafPackagePtrOutputWithContext(context.Background())
+}
+
+func (i *WafPackage) ToWafPackagePtrOutputWithContext(ctx context.Context) WafPackagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafPackagePtrOutput)
+}
+
+type WafPackagePtrInput interface {
+	pulumi.Input
+
+	ToWafPackagePtrOutput() WafPackagePtrOutput
+	ToWafPackagePtrOutputWithContext(ctx context.Context) WafPackagePtrOutput
+}
+
+type wafPackagePtrType WafPackageArgs
+
+func (*wafPackagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafPackage)(nil))
+}
+
+func (i *wafPackagePtrType) ToWafPackagePtrOutput() WafPackagePtrOutput {
+	return i.ToWafPackagePtrOutputWithContext(context.Background())
+}
+
+func (i *wafPackagePtrType) ToWafPackagePtrOutputWithContext(ctx context.Context) WafPackagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafPackagePtrOutput)
+}
+
+// WafPackageArrayInput is an input type that accepts WafPackageArray and WafPackageArrayOutput values.
+// You can construct a concrete instance of `WafPackageArrayInput` via:
+//
+//          WafPackageArray{ WafPackageArgs{...} }
+type WafPackageArrayInput interface {
+	pulumi.Input
+
+	ToWafPackageArrayOutput() WafPackageArrayOutput
+	ToWafPackageArrayOutputWithContext(context.Context) WafPackageArrayOutput
+}
+
+type WafPackageArray []WafPackageInput
+
+func (WafPackageArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WafPackage)(nil))
+}
+
+func (i WafPackageArray) ToWafPackageArrayOutput() WafPackageArrayOutput {
+	return i.ToWafPackageArrayOutputWithContext(context.Background())
+}
+
+func (i WafPackageArray) ToWafPackageArrayOutputWithContext(ctx context.Context) WafPackageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafPackageArrayOutput)
+}
+
+// WafPackageMapInput is an input type that accepts WafPackageMap and WafPackageMapOutput values.
+// You can construct a concrete instance of `WafPackageMapInput` via:
+//
+//          WafPackageMap{ "key": WafPackageArgs{...} }
+type WafPackageMapInput interface {
+	pulumi.Input
+
+	ToWafPackageMapOutput() WafPackageMapOutput
+	ToWafPackageMapOutputWithContext(context.Context) WafPackageMapOutput
+}
+
+type WafPackageMap map[string]WafPackageInput
+
+func (WafPackageMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WafPackage)(nil))
+}
+
+func (i WafPackageMap) ToWafPackageMapOutput() WafPackageMapOutput {
+	return i.ToWafPackageMapOutputWithContext(context.Background())
+}
+
+func (i WafPackageMap) ToWafPackageMapOutputWithContext(ctx context.Context) WafPackageMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafPackageMapOutput)
+}
+
 type WafPackageOutput struct {
 	*pulumi.OutputState
 }
@@ -181,6 +260,75 @@ func (o WafPackageOutput) ToWafPackageOutputWithContext(ctx context.Context) Waf
 	return o
 }
 
+func (o WafPackageOutput) ToWafPackagePtrOutput() WafPackagePtrOutput {
+	return o.ToWafPackagePtrOutputWithContext(context.Background())
+}
+
+func (o WafPackageOutput) ToWafPackagePtrOutputWithContext(ctx context.Context) WafPackagePtrOutput {
+	return o.ApplyT(func(v WafPackage) *WafPackage {
+		return &v
+	}).(WafPackagePtrOutput)
+}
+
+type WafPackagePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WafPackagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafPackage)(nil))
+}
+
+func (o WafPackagePtrOutput) ToWafPackagePtrOutput() WafPackagePtrOutput {
+	return o
+}
+
+func (o WafPackagePtrOutput) ToWafPackagePtrOutputWithContext(ctx context.Context) WafPackagePtrOutput {
+	return o
+}
+
+type WafPackageArrayOutput struct{ *pulumi.OutputState }
+
+func (WafPackageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafPackage)(nil))
+}
+
+func (o WafPackageArrayOutput) ToWafPackageArrayOutput() WafPackageArrayOutput {
+	return o
+}
+
+func (o WafPackageArrayOutput) ToWafPackageArrayOutputWithContext(ctx context.Context) WafPackageArrayOutput {
+	return o
+}
+
+func (o WafPackageArrayOutput) Index(i pulumi.IntInput) WafPackageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafPackage {
+		return vs[0].([]WafPackage)[vs[1].(int)]
+	}).(WafPackageOutput)
+}
+
+type WafPackageMapOutput struct{ *pulumi.OutputState }
+
+func (WafPackageMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WafPackage)(nil))
+}
+
+func (o WafPackageMapOutput) ToWafPackageMapOutput() WafPackageMapOutput {
+	return o
+}
+
+func (o WafPackageMapOutput) ToWafPackageMapOutputWithContext(ctx context.Context) WafPackageMapOutput {
+	return o
+}
+
+func (o WafPackageMapOutput) MapIndex(k pulumi.StringInput) WafPackageOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WafPackage {
+		return vs[0].(map[string]WafPackage)[vs[1].(string)]
+	}).(WafPackageOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WafPackageOutput{})
+	pulumi.RegisterOutputType(WafPackagePtrOutput{})
+	pulumi.RegisterOutputType(WafPackageArrayOutput{})
+	pulumi.RegisterOutputType(WafPackageMapOutput{})
 }

@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -206,6 +206,85 @@ func (i *CustomPages) ToCustomPagesOutputWithContext(ctx context.Context) Custom
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesOutput)
 }
 
+func (i *CustomPages) ToCustomPagesPtrOutput() CustomPagesPtrOutput {
+	return i.ToCustomPagesPtrOutputWithContext(context.Background())
+}
+
+func (i *CustomPages) ToCustomPagesPtrOutputWithContext(ctx context.Context) CustomPagesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesPtrOutput)
+}
+
+type CustomPagesPtrInput interface {
+	pulumi.Input
+
+	ToCustomPagesPtrOutput() CustomPagesPtrOutput
+	ToCustomPagesPtrOutputWithContext(ctx context.Context) CustomPagesPtrOutput
+}
+
+type customPagesPtrType CustomPagesArgs
+
+func (*customPagesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomPages)(nil))
+}
+
+func (i *customPagesPtrType) ToCustomPagesPtrOutput() CustomPagesPtrOutput {
+	return i.ToCustomPagesPtrOutputWithContext(context.Background())
+}
+
+func (i *customPagesPtrType) ToCustomPagesPtrOutputWithContext(ctx context.Context) CustomPagesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesPtrOutput)
+}
+
+// CustomPagesArrayInput is an input type that accepts CustomPagesArray and CustomPagesArrayOutput values.
+// You can construct a concrete instance of `CustomPagesArrayInput` via:
+//
+//          CustomPagesArray{ CustomPagesArgs{...} }
+type CustomPagesArrayInput interface {
+	pulumi.Input
+
+	ToCustomPagesArrayOutput() CustomPagesArrayOutput
+	ToCustomPagesArrayOutputWithContext(context.Context) CustomPagesArrayOutput
+}
+
+type CustomPagesArray []CustomPagesInput
+
+func (CustomPagesArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CustomPages)(nil))
+}
+
+func (i CustomPagesArray) ToCustomPagesArrayOutput() CustomPagesArrayOutput {
+	return i.ToCustomPagesArrayOutputWithContext(context.Background())
+}
+
+func (i CustomPagesArray) ToCustomPagesArrayOutputWithContext(ctx context.Context) CustomPagesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesArrayOutput)
+}
+
+// CustomPagesMapInput is an input type that accepts CustomPagesMap and CustomPagesMapOutput values.
+// You can construct a concrete instance of `CustomPagesMapInput` via:
+//
+//          CustomPagesMap{ "key": CustomPagesArgs{...} }
+type CustomPagesMapInput interface {
+	pulumi.Input
+
+	ToCustomPagesMapOutput() CustomPagesMapOutput
+	ToCustomPagesMapOutputWithContext(context.Context) CustomPagesMapOutput
+}
+
+type CustomPagesMap map[string]CustomPagesInput
+
+func (CustomPagesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CustomPages)(nil))
+}
+
+func (i CustomPagesMap) ToCustomPagesMapOutput() CustomPagesMapOutput {
+	return i.ToCustomPagesMapOutputWithContext(context.Background())
+}
+
+func (i CustomPagesMap) ToCustomPagesMapOutputWithContext(ctx context.Context) CustomPagesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesMapOutput)
+}
+
 type CustomPagesOutput struct {
 	*pulumi.OutputState
 }
@@ -222,6 +301,75 @@ func (o CustomPagesOutput) ToCustomPagesOutputWithContext(ctx context.Context) C
 	return o
 }
 
+func (o CustomPagesOutput) ToCustomPagesPtrOutput() CustomPagesPtrOutput {
+	return o.ToCustomPagesPtrOutputWithContext(context.Background())
+}
+
+func (o CustomPagesOutput) ToCustomPagesPtrOutputWithContext(ctx context.Context) CustomPagesPtrOutput {
+	return o.ApplyT(func(v CustomPages) *CustomPages {
+		return &v
+	}).(CustomPagesPtrOutput)
+}
+
+type CustomPagesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomPagesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomPages)(nil))
+}
+
+func (o CustomPagesPtrOutput) ToCustomPagesPtrOutput() CustomPagesPtrOutput {
+	return o
+}
+
+func (o CustomPagesPtrOutput) ToCustomPagesPtrOutputWithContext(ctx context.Context) CustomPagesPtrOutput {
+	return o
+}
+
+type CustomPagesArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomPagesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomPages)(nil))
+}
+
+func (o CustomPagesArrayOutput) ToCustomPagesArrayOutput() CustomPagesArrayOutput {
+	return o
+}
+
+func (o CustomPagesArrayOutput) ToCustomPagesArrayOutputWithContext(ctx context.Context) CustomPagesArrayOutput {
+	return o
+}
+
+func (o CustomPagesArrayOutput) Index(i pulumi.IntInput) CustomPagesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomPages {
+		return vs[0].([]CustomPages)[vs[1].(int)]
+	}).(CustomPagesOutput)
+}
+
+type CustomPagesMapOutput struct{ *pulumi.OutputState }
+
+func (CustomPagesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CustomPages)(nil))
+}
+
+func (o CustomPagesMapOutput) ToCustomPagesMapOutput() CustomPagesMapOutput {
+	return o
+}
+
+func (o CustomPagesMapOutput) ToCustomPagesMapOutputWithContext(ctx context.Context) CustomPagesMapOutput {
+	return o
+}
+
+func (o CustomPagesMapOutput) MapIndex(k pulumi.StringInput) CustomPagesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomPages {
+		return vs[0].(map[string]CustomPages)[vs[1].(string)]
+	}).(CustomPagesOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomPagesOutput{})
+	pulumi.RegisterOutputType(CustomPagesPtrOutput{})
+	pulumi.RegisterOutputType(CustomPagesArrayOutput{})
+	pulumi.RegisterOutputType(CustomPagesMapOutput{})
 }

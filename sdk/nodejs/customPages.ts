@@ -97,7 +97,8 @@ export class CustomPages extends pulumi.CustomResource {
     constructor(name: string, args: CustomPagesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomPagesArgs | CustomPagesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CustomPagesState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["state"] = state ? state.state : undefined;
@@ -106,10 +107,10 @@ export class CustomPages extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomPagesArgs | undefined;
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.url === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
@@ -118,12 +119,8 @@ export class CustomPages extends pulumi.CustomResource {
             inputs["url"] = args ? args.url : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CustomPages.__pulumiType, name, inputs, opts);
     }

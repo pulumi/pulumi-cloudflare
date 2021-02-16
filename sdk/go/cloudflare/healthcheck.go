@@ -23,7 +23,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -81,7 +80,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -428,6 +427,85 @@ func (i *Healthcheck) ToHealthcheckOutputWithContext(ctx context.Context) Health
 	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckOutput)
 }
 
+func (i *Healthcheck) ToHealthcheckPtrOutput() HealthcheckPtrOutput {
+	return i.ToHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *Healthcheck) ToHealthcheckPtrOutputWithContext(ctx context.Context) HealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckPtrOutput)
+}
+
+type HealthcheckPtrInput interface {
+	pulumi.Input
+
+	ToHealthcheckPtrOutput() HealthcheckPtrOutput
+	ToHealthcheckPtrOutputWithContext(ctx context.Context) HealthcheckPtrOutput
+}
+
+type healthcheckPtrType HealthcheckArgs
+
+func (*healthcheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Healthcheck)(nil))
+}
+
+func (i *healthcheckPtrType) ToHealthcheckPtrOutput() HealthcheckPtrOutput {
+	return i.ToHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (i *healthcheckPtrType) ToHealthcheckPtrOutputWithContext(ctx context.Context) HealthcheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckPtrOutput)
+}
+
+// HealthcheckArrayInput is an input type that accepts HealthcheckArray and HealthcheckArrayOutput values.
+// You can construct a concrete instance of `HealthcheckArrayInput` via:
+//
+//          HealthcheckArray{ HealthcheckArgs{...} }
+type HealthcheckArrayInput interface {
+	pulumi.Input
+
+	ToHealthcheckArrayOutput() HealthcheckArrayOutput
+	ToHealthcheckArrayOutputWithContext(context.Context) HealthcheckArrayOutput
+}
+
+type HealthcheckArray []HealthcheckInput
+
+func (HealthcheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Healthcheck)(nil))
+}
+
+func (i HealthcheckArray) ToHealthcheckArrayOutput() HealthcheckArrayOutput {
+	return i.ToHealthcheckArrayOutputWithContext(context.Background())
+}
+
+func (i HealthcheckArray) ToHealthcheckArrayOutputWithContext(ctx context.Context) HealthcheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckArrayOutput)
+}
+
+// HealthcheckMapInput is an input type that accepts HealthcheckMap and HealthcheckMapOutput values.
+// You can construct a concrete instance of `HealthcheckMapInput` via:
+//
+//          HealthcheckMap{ "key": HealthcheckArgs{...} }
+type HealthcheckMapInput interface {
+	pulumi.Input
+
+	ToHealthcheckMapOutput() HealthcheckMapOutput
+	ToHealthcheckMapOutputWithContext(context.Context) HealthcheckMapOutput
+}
+
+type HealthcheckMap map[string]HealthcheckInput
+
+func (HealthcheckMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Healthcheck)(nil))
+}
+
+func (i HealthcheckMap) ToHealthcheckMapOutput() HealthcheckMapOutput {
+	return i.ToHealthcheckMapOutputWithContext(context.Background())
+}
+
+func (i HealthcheckMap) ToHealthcheckMapOutputWithContext(ctx context.Context) HealthcheckMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckMapOutput)
+}
+
 type HealthcheckOutput struct {
 	*pulumi.OutputState
 }
@@ -444,6 +522,75 @@ func (o HealthcheckOutput) ToHealthcheckOutputWithContext(ctx context.Context) H
 	return o
 }
 
+func (o HealthcheckOutput) ToHealthcheckPtrOutput() HealthcheckPtrOutput {
+	return o.ToHealthcheckPtrOutputWithContext(context.Background())
+}
+
+func (o HealthcheckOutput) ToHealthcheckPtrOutputWithContext(ctx context.Context) HealthcheckPtrOutput {
+	return o.ApplyT(func(v Healthcheck) *Healthcheck {
+		return &v
+	}).(HealthcheckPtrOutput)
+}
+
+type HealthcheckPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HealthcheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Healthcheck)(nil))
+}
+
+func (o HealthcheckPtrOutput) ToHealthcheckPtrOutput() HealthcheckPtrOutput {
+	return o
+}
+
+func (o HealthcheckPtrOutput) ToHealthcheckPtrOutputWithContext(ctx context.Context) HealthcheckPtrOutput {
+	return o
+}
+
+type HealthcheckArrayOutput struct{ *pulumi.OutputState }
+
+func (HealthcheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Healthcheck)(nil))
+}
+
+func (o HealthcheckArrayOutput) ToHealthcheckArrayOutput() HealthcheckArrayOutput {
+	return o
+}
+
+func (o HealthcheckArrayOutput) ToHealthcheckArrayOutputWithContext(ctx context.Context) HealthcheckArrayOutput {
+	return o
+}
+
+func (o HealthcheckArrayOutput) Index(i pulumi.IntInput) HealthcheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Healthcheck {
+		return vs[0].([]Healthcheck)[vs[1].(int)]
+	}).(HealthcheckOutput)
+}
+
+type HealthcheckMapOutput struct{ *pulumi.OutputState }
+
+func (HealthcheckMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Healthcheck)(nil))
+}
+
+func (o HealthcheckMapOutput) ToHealthcheckMapOutput() HealthcheckMapOutput {
+	return o
+}
+
+func (o HealthcheckMapOutput) ToHealthcheckMapOutputWithContext(ctx context.Context) HealthcheckMapOutput {
+	return o
+}
+
+func (o HealthcheckMapOutput) MapIndex(k pulumi.StringInput) HealthcheckOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Healthcheck {
+		return vs[0].(map[string]Healthcheck)[vs[1].(string)]
+	}).(HealthcheckOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(HealthcheckOutput{})
+	pulumi.RegisterOutputType(HealthcheckPtrOutput{})
+	pulumi.RegisterOutputType(HealthcheckArrayOutput{})
+	pulumi.RegisterOutputType(HealthcheckMapOutput{})
 }

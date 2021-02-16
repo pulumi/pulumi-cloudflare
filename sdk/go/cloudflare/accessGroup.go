@@ -22,7 +22,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -260,6 +259,85 @@ func (i *AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) Access
 	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupOutput)
 }
 
+func (i *AccessGroup) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
+	return i.ToAccessGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *AccessGroup) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupPtrOutput)
+}
+
+type AccessGroupPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupPtrOutput() AccessGroupPtrOutput
+	ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput
+}
+
+type accessGroupPtrType AccessGroupArgs
+
+func (*accessGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroup)(nil))
+}
+
+func (i *accessGroupPtrType) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
+	return i.ToAccessGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupPtrType) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupPtrOutput)
+}
+
+// AccessGroupArrayInput is an input type that accepts AccessGroupArray and AccessGroupArrayOutput values.
+// You can construct a concrete instance of `AccessGroupArrayInput` via:
+//
+//          AccessGroupArray{ AccessGroupArgs{...} }
+type AccessGroupArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupArrayOutput() AccessGroupArrayOutput
+	ToAccessGroupArrayOutputWithContext(context.Context) AccessGroupArrayOutput
+}
+
+type AccessGroupArray []AccessGroupInput
+
+func (AccessGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccessGroup)(nil))
+}
+
+func (i AccessGroupArray) ToAccessGroupArrayOutput() AccessGroupArrayOutput {
+	return i.ToAccessGroupArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupArray) ToAccessGroupArrayOutputWithContext(ctx context.Context) AccessGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupArrayOutput)
+}
+
+// AccessGroupMapInput is an input type that accepts AccessGroupMap and AccessGroupMapOutput values.
+// You can construct a concrete instance of `AccessGroupMapInput` via:
+//
+//          AccessGroupMap{ "key": AccessGroupArgs{...} }
+type AccessGroupMapInput interface {
+	pulumi.Input
+
+	ToAccessGroupMapOutput() AccessGroupMapOutput
+	ToAccessGroupMapOutputWithContext(context.Context) AccessGroupMapOutput
+}
+
+type AccessGroupMap map[string]AccessGroupInput
+
+func (AccessGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccessGroup)(nil))
+}
+
+func (i AccessGroupMap) ToAccessGroupMapOutput() AccessGroupMapOutput {
+	return i.ToAccessGroupMapOutputWithContext(context.Background())
+}
+
+func (i AccessGroupMap) ToAccessGroupMapOutputWithContext(ctx context.Context) AccessGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupMapOutput)
+}
+
 type AccessGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -276,6 +354,75 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o AccessGroupOutput) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
+	return o.ToAccessGroupPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupOutput) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
+	return o.ApplyT(func(v AccessGroup) *AccessGroup {
+		return &v
+	}).(AccessGroupPtrOutput)
+}
+
+type AccessGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroup)(nil))
+}
+
+func (o AccessGroupPtrOutput) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
+	return o
+}
+
+func (o AccessGroupPtrOutput) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
+	return o
+}
+
+type AccessGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroup)(nil))
+}
+
+func (o AccessGroupArrayOutput) ToAccessGroupArrayOutput() AccessGroupArrayOutput {
+	return o
+}
+
+func (o AccessGroupArrayOutput) ToAccessGroupArrayOutputWithContext(ctx context.Context) AccessGroupArrayOutput {
+	return o
+}
+
+func (o AccessGroupArrayOutput) Index(i pulumi.IntInput) AccessGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroup {
+		return vs[0].([]AccessGroup)[vs[1].(int)]
+	}).(AccessGroupOutput)
+}
+
+type AccessGroupMapOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccessGroup)(nil))
+}
+
+func (o AccessGroupMapOutput) ToAccessGroupMapOutput() AccessGroupMapOutput {
+	return o
+}
+
+func (o AccessGroupMapOutput) ToAccessGroupMapOutputWithContext(ctx context.Context) AccessGroupMapOutput {
+	return o
+}
+
+func (o AccessGroupMapOutput) MapIndex(k pulumi.StringInput) AccessGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessGroup {
+		return vs[0].(map[string]AccessGroup)[vs[1].(string)]
+	}).(AccessGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessGroupOutput{})
+	pulumi.RegisterOutputType(AccessGroupPtrOutput{})
+	pulumi.RegisterOutputType(AccessGroupArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupMapOutput{})
 }

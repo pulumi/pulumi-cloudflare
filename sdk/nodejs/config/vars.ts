@@ -9,7 +9,7 @@ let __config = new pulumi.Config("cloudflare");
 /**
  * Configure API client to always use that account.
  */
-export let accountId: string | undefined = __config.get("accountId") || utilities.getEnv("CLOUDFLARE_ACCOUNT_ID");
+export let accountId: string | undefined = __config.get("accountId");
 /**
  * Whether to print logs from the API client (using the default log library logger)
  */
@@ -17,19 +17,19 @@ export let apiClientLogging: boolean | undefined = __config.getObject<boolean>("
 /**
  * The API key for operations.
  */
-export let apiKey: string | undefined = __config.get("apiKey") || utilities.getEnv("CLOUDFLARE_API_KEY");
+export let apiKey: string | undefined = __config.get("apiKey");
 /**
  * The API Token for operations.
  */
-export let apiToken: string | undefined = __config.get("apiToken") || utilities.getEnv("CLOUDFLARE_API_TOKEN");
+export let apiToken: string | undefined = __config.get("apiToken");
 /**
  * A special Cloudflare API key good for a restricted set of endpoints.
  */
-export let apiUserServiceKey: string | undefined = __config.get("apiUserServiceKey") || utilities.getEnv("CLOUDFLARE_API_USER_SERVICE_KEY");
+export let apiUserServiceKey: string | undefined = __config.get("apiUserServiceKey");
 /**
  * A registered Cloudflare email address.
  */
-export let email: string | undefined = __config.get("email") || utilities.getEnv("CLOUDFLARE_EMAIL");
+export let email: string | undefined = __config.get("email");
 /**
  * Maximum backoff period in seconds after failed API calls
  */

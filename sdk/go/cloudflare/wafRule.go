@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -173,6 +173,85 @@ func (i *WafRule) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleOutput)
 }
 
+func (i *WafRule) ToWafRulePtrOutput() WafRulePtrOutput {
+	return i.ToWafRulePtrOutputWithContext(context.Background())
+}
+
+func (i *WafRule) ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRulePtrOutput)
+}
+
+type WafRulePtrInput interface {
+	pulumi.Input
+
+	ToWafRulePtrOutput() WafRulePtrOutput
+	ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput
+}
+
+type wafRulePtrType WafRuleArgs
+
+func (*wafRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRule)(nil))
+}
+
+func (i *wafRulePtrType) ToWafRulePtrOutput() WafRulePtrOutput {
+	return i.ToWafRulePtrOutputWithContext(context.Background())
+}
+
+func (i *wafRulePtrType) ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRulePtrOutput)
+}
+
+// WafRuleArrayInput is an input type that accepts WafRuleArray and WafRuleArrayOutput values.
+// You can construct a concrete instance of `WafRuleArrayInput` via:
+//
+//          WafRuleArray{ WafRuleArgs{...} }
+type WafRuleArrayInput interface {
+	pulumi.Input
+
+	ToWafRuleArrayOutput() WafRuleArrayOutput
+	ToWafRuleArrayOutputWithContext(context.Context) WafRuleArrayOutput
+}
+
+type WafRuleArray []WafRuleInput
+
+func (WafRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WafRule)(nil))
+}
+
+func (i WafRuleArray) ToWafRuleArrayOutput() WafRuleArrayOutput {
+	return i.ToWafRuleArrayOutputWithContext(context.Background())
+}
+
+func (i WafRuleArray) ToWafRuleArrayOutputWithContext(ctx context.Context) WafRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleArrayOutput)
+}
+
+// WafRuleMapInput is an input type that accepts WafRuleMap and WafRuleMapOutput values.
+// You can construct a concrete instance of `WafRuleMapInput` via:
+//
+//          WafRuleMap{ "key": WafRuleArgs{...} }
+type WafRuleMapInput interface {
+	pulumi.Input
+
+	ToWafRuleMapOutput() WafRuleMapOutput
+	ToWafRuleMapOutputWithContext(context.Context) WafRuleMapOutput
+}
+
+type WafRuleMap map[string]WafRuleInput
+
+func (WafRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WafRule)(nil))
+}
+
+func (i WafRuleMap) ToWafRuleMapOutput() WafRuleMapOutput {
+	return i.ToWafRuleMapOutputWithContext(context.Background())
+}
+
+func (i WafRuleMap) ToWafRuleMapOutputWithContext(ctx context.Context) WafRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WafRuleMapOutput)
+}
+
 type WafRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -189,6 +268,75 @@ func (o WafRuleOutput) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOu
 	return o
 }
 
+func (o WafRuleOutput) ToWafRulePtrOutput() WafRulePtrOutput {
+	return o.ToWafRulePtrOutputWithContext(context.Background())
+}
+
+func (o WafRuleOutput) ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput {
+	return o.ApplyT(func(v WafRule) *WafRule {
+		return &v
+	}).(WafRulePtrOutput)
+}
+
+type WafRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WafRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WafRule)(nil))
+}
+
+func (o WafRulePtrOutput) ToWafRulePtrOutput() WafRulePtrOutput {
+	return o
+}
+
+func (o WafRulePtrOutput) ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput {
+	return o
+}
+
+type WafRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (WafRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WafRule)(nil))
+}
+
+func (o WafRuleArrayOutput) ToWafRuleArrayOutput() WafRuleArrayOutput {
+	return o
+}
+
+func (o WafRuleArrayOutput) ToWafRuleArrayOutputWithContext(ctx context.Context) WafRuleArrayOutput {
+	return o
+}
+
+func (o WafRuleArrayOutput) Index(i pulumi.IntInput) WafRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRule {
+		return vs[0].([]WafRule)[vs[1].(int)]
+	}).(WafRuleOutput)
+}
+
+type WafRuleMapOutput struct{ *pulumi.OutputState }
+
+func (WafRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WafRule)(nil))
+}
+
+func (o WafRuleMapOutput) ToWafRuleMapOutput() WafRuleMapOutput {
+	return o
+}
+
+func (o WafRuleMapOutput) ToWafRuleMapOutputWithContext(ctx context.Context) WafRuleMapOutput {
+	return o
+}
+
+func (o WafRuleMapOutput) MapIndex(k pulumi.StringInput) WafRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WafRule {
+		return vs[0].(map[string]WafRule)[vs[1].(string)]
+	}).(WafRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WafRuleOutput{})
+	pulumi.RegisterOutputType(WafRulePtrOutput{})
+	pulumi.RegisterOutputType(WafRuleArrayOutput{})
+	pulumi.RegisterOutputType(WafRuleMapOutput{})
 }

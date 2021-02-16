@@ -64,23 +64,13 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if account_id is None:
-                account_id = _utilities.get_env('CLOUDFLARE_ACCOUNT_ID')
             __props__['account_id'] = account_id
             if api_client_logging is None:
                 api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
             __props__['api_client_logging'] = pulumi.Output.from_input(api_client_logging).apply(pulumi.runtime.to_json) if api_client_logging is not None else None
-            if api_key is None:
-                api_key = _utilities.get_env('CLOUDFLARE_API_KEY')
             __props__['api_key'] = api_key
-            if api_token is None:
-                api_token = _utilities.get_env('CLOUDFLARE_API_TOKEN')
             __props__['api_token'] = api_token
-            if api_user_service_key is None:
-                api_user_service_key = _utilities.get_env('CLOUDFLARE_API_USER_SERVICE_KEY')
             __props__['api_user_service_key'] = api_user_service_key
-            if email is None:
-                email = _utilities.get_env('CLOUDFLARE_EMAIL')
             __props__['email'] = email
             if max_backoff is None:
                 max_backoff = (_utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)

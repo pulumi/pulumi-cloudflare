@@ -23,7 +23,7 @@ __all__ = [
 
 __config__ = pulumi.Config('cloudflare')
 
-account_id = __config__.get('accountId') or _utilities.get_env('CLOUDFLARE_ACCOUNT_ID')
+account_id = __config__.get('accountId')
 """
 Configure API client to always use that account.
 """
@@ -33,22 +33,22 @@ api_client_logging = __config__.get('apiClientLogging') or (_utilities.get_env_b
 Whether to print logs from the API client (using the default log library logger)
 """
 
-api_key = __config__.get('apiKey') or _utilities.get_env('CLOUDFLARE_API_KEY')
+api_key = __config__.get('apiKey')
 """
 The API key for operations.
 """
 
-api_token = __config__.get('apiToken') or _utilities.get_env('CLOUDFLARE_API_TOKEN')
+api_token = __config__.get('apiToken')
 """
 The API Token for operations.
 """
 
-api_user_service_key = __config__.get('apiUserServiceKey') or _utilities.get_env('CLOUDFLARE_API_USER_SERVICE_KEY')
+api_user_service_key = __config__.get('apiUserServiceKey')
 """
 A special Cloudflare API key good for a restricted set of endpoints.
 """
 
-email = __config__.get('email') or _utilities.get_env('CLOUDFLARE_EMAIL')
+email = __config__.get('email')
 """
 A registered Cloudflare email address.
 """

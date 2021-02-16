@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -131,6 +131,85 @@ func (i *WorkersKvNamespace) ToWorkersKvNamespaceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceOutput)
 }
 
+func (i *WorkersKvNamespace) ToWorkersKvNamespacePtrOutput() WorkersKvNamespacePtrOutput {
+	return i.ToWorkersKvNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *WorkersKvNamespace) ToWorkersKvNamespacePtrOutputWithContext(ctx context.Context) WorkersKvNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespacePtrOutput)
+}
+
+type WorkersKvNamespacePtrInput interface {
+	pulumi.Input
+
+	ToWorkersKvNamespacePtrOutput() WorkersKvNamespacePtrOutput
+	ToWorkersKvNamespacePtrOutputWithContext(ctx context.Context) WorkersKvNamespacePtrOutput
+}
+
+type workersKvNamespacePtrType WorkersKvNamespaceArgs
+
+func (*workersKvNamespacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkersKvNamespace)(nil))
+}
+
+func (i *workersKvNamespacePtrType) ToWorkersKvNamespacePtrOutput() WorkersKvNamespacePtrOutput {
+	return i.ToWorkersKvNamespacePtrOutputWithContext(context.Background())
+}
+
+func (i *workersKvNamespacePtrType) ToWorkersKvNamespacePtrOutputWithContext(ctx context.Context) WorkersKvNamespacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespacePtrOutput)
+}
+
+// WorkersKvNamespaceArrayInput is an input type that accepts WorkersKvNamespaceArray and WorkersKvNamespaceArrayOutput values.
+// You can construct a concrete instance of `WorkersKvNamespaceArrayInput` via:
+//
+//          WorkersKvNamespaceArray{ WorkersKvNamespaceArgs{...} }
+type WorkersKvNamespaceArrayInput interface {
+	pulumi.Input
+
+	ToWorkersKvNamespaceArrayOutput() WorkersKvNamespaceArrayOutput
+	ToWorkersKvNamespaceArrayOutputWithContext(context.Context) WorkersKvNamespaceArrayOutput
+}
+
+type WorkersKvNamespaceArray []WorkersKvNamespaceInput
+
+func (WorkersKvNamespaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WorkersKvNamespace)(nil))
+}
+
+func (i WorkersKvNamespaceArray) ToWorkersKvNamespaceArrayOutput() WorkersKvNamespaceArrayOutput {
+	return i.ToWorkersKvNamespaceArrayOutputWithContext(context.Background())
+}
+
+func (i WorkersKvNamespaceArray) ToWorkersKvNamespaceArrayOutputWithContext(ctx context.Context) WorkersKvNamespaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceArrayOutput)
+}
+
+// WorkersKvNamespaceMapInput is an input type that accepts WorkersKvNamespaceMap and WorkersKvNamespaceMapOutput values.
+// You can construct a concrete instance of `WorkersKvNamespaceMapInput` via:
+//
+//          WorkersKvNamespaceMap{ "key": WorkersKvNamespaceArgs{...} }
+type WorkersKvNamespaceMapInput interface {
+	pulumi.Input
+
+	ToWorkersKvNamespaceMapOutput() WorkersKvNamespaceMapOutput
+	ToWorkersKvNamespaceMapOutputWithContext(context.Context) WorkersKvNamespaceMapOutput
+}
+
+type WorkersKvNamespaceMap map[string]WorkersKvNamespaceInput
+
+func (WorkersKvNamespaceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WorkersKvNamespace)(nil))
+}
+
+func (i WorkersKvNamespaceMap) ToWorkersKvNamespaceMapOutput() WorkersKvNamespaceMapOutput {
+	return i.ToWorkersKvNamespaceMapOutputWithContext(context.Background())
+}
+
+func (i WorkersKvNamespaceMap) ToWorkersKvNamespaceMapOutputWithContext(ctx context.Context) WorkersKvNamespaceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceMapOutput)
+}
+
 type WorkersKvNamespaceOutput struct {
 	*pulumi.OutputState
 }
@@ -147,6 +226,75 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 	return o
 }
 
+func (o WorkersKvNamespaceOutput) ToWorkersKvNamespacePtrOutput() WorkersKvNamespacePtrOutput {
+	return o.ToWorkersKvNamespacePtrOutputWithContext(context.Background())
+}
+
+func (o WorkersKvNamespaceOutput) ToWorkersKvNamespacePtrOutputWithContext(ctx context.Context) WorkersKvNamespacePtrOutput {
+	return o.ApplyT(func(v WorkersKvNamespace) *WorkersKvNamespace {
+		return &v
+	}).(WorkersKvNamespacePtrOutput)
+}
+
+type WorkersKvNamespacePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkersKvNamespacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkersKvNamespace)(nil))
+}
+
+func (o WorkersKvNamespacePtrOutput) ToWorkersKvNamespacePtrOutput() WorkersKvNamespacePtrOutput {
+	return o
+}
+
+func (o WorkersKvNamespacePtrOutput) ToWorkersKvNamespacePtrOutputWithContext(ctx context.Context) WorkersKvNamespacePtrOutput {
+	return o
+}
+
+type WorkersKvNamespaceArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkersKvNamespaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkersKvNamespace)(nil))
+}
+
+func (o WorkersKvNamespaceArrayOutput) ToWorkersKvNamespaceArrayOutput() WorkersKvNamespaceArrayOutput {
+	return o
+}
+
+func (o WorkersKvNamespaceArrayOutput) ToWorkersKvNamespaceArrayOutputWithContext(ctx context.Context) WorkersKvNamespaceArrayOutput {
+	return o
+}
+
+func (o WorkersKvNamespaceArrayOutput) Index(i pulumi.IntInput) WorkersKvNamespaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersKvNamespace {
+		return vs[0].([]WorkersKvNamespace)[vs[1].(int)]
+	}).(WorkersKvNamespaceOutput)
+}
+
+type WorkersKvNamespaceMapOutput struct{ *pulumi.OutputState }
+
+func (WorkersKvNamespaceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WorkersKvNamespace)(nil))
+}
+
+func (o WorkersKvNamespaceMapOutput) ToWorkersKvNamespaceMapOutput() WorkersKvNamespaceMapOutput {
+	return o
+}
+
+func (o WorkersKvNamespaceMapOutput) ToWorkersKvNamespaceMapOutputWithContext(ctx context.Context) WorkersKvNamespaceMapOutput {
+	return o
+}
+
+func (o WorkersKvNamespaceMapOutput) MapIndex(k pulumi.StringInput) WorkersKvNamespaceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkersKvNamespace {
+		return vs[0].(map[string]WorkersKvNamespace)[vs[1].(string)]
+	}).(WorkersKvNamespaceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WorkersKvNamespaceOutput{})
+	pulumi.RegisterOutputType(WorkersKvNamespacePtrOutput{})
+	pulumi.RegisterOutputType(WorkersKvNamespaceArrayOutput{})
+	pulumi.RegisterOutputType(WorkersKvNamespaceMapOutput{})
 }

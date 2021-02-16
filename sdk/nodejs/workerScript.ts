@@ -69,7 +69,8 @@ export class WorkerScript extends pulumi.CustomResource {
     constructor(name: string, args: WorkerScriptArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkerScriptArgs | WorkerScriptState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WorkerScriptState | undefined;
             inputs["content"] = state ? state.content : undefined;
             inputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
@@ -79,10 +80,10 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
-            if ((!args || args.content === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.content === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'content'");
             }
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
             inputs["content"] = args ? args.content : undefined;
@@ -92,12 +93,8 @@ export class WorkerScript extends pulumi.CustomResource {
             inputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
             inputs["webassemblyBindings"] = args ? args.webassemblyBindings : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WorkerScript.__pulumiType, name, inputs, opts);
     }

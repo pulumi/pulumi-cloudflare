@@ -80,32 +80,29 @@ export class WorkersKv extends pulumi.CustomResource {
     constructor(name: string, args: WorkersKvArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkersKvArgs | WorkersKvState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WorkersKvState | undefined;
             inputs["key"] = state ? state.key : undefined;
             inputs["namespaceId"] = state ? state.namespaceId : undefined;
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as WorkersKvArgs | undefined;
-            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.key === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.namespaceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["key"] = args ? args.key : undefined;
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WorkersKv.__pulumiType, name, inputs, opts);
     }

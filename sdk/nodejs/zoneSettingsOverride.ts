@@ -96,7 +96,8 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
     constructor(name: string, args: ZoneSettingsOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneSettingsOverrideArgs | ZoneSettingsOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ZoneSettingsOverrideState | undefined;
             inputs["initialSettings"] = state ? state.initialSettings : undefined;
             inputs["initialSettingsReadAt"] = state ? state.initialSettingsReadAt : undefined;
@@ -107,7 +108,7 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
             inputs["zoneType"] = state ? state.zoneType : undefined;
         } else {
             const args = argsOrState as ZoneSettingsOverrideArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["settings"] = args ? args.settings : undefined;
@@ -118,12 +119,8 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
             inputs["zoneStatus"] = undefined /*out*/;
             inputs["zoneType"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ZoneSettingsOverride.__pulumiType, name, inputs, opts);
     }

@@ -77,21 +77,6 @@ func Provider() tfbridge.ProviderInfo {
 		GitHubOrg:   "cloudflare",
 		Repository:  "https://github.com/pulumi/pulumi-cloudflare",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"email": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CLOUDFLARE_EMAIL"},
-				},
-			},
-			"api_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CLOUDFLARE_API_KEY"},
-				},
-			},
-			"api_token": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CLOUDFLARE_API_TOKEN"},
-				},
-			},
 			"rps": {
 				Default: &tfbridge.DefaultInfo{
 					Value:   4,
@@ -120,16 +105,6 @@ func Provider() tfbridge.ProviderInfo {
 				Default: &tfbridge.DefaultInfo{
 					Value:   false,
 					EnvVars: []string{"CLOUDFLARE_API_CLIENT_LOGGING"},
-				},
-			},
-			"account_id": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CLOUDFLARE_ACCOUNT_ID"},
-				},
-			},
-			"api_user_service_key": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"CLOUDFLARE_API_USER_SERVICE_KEY"},
 				},
 			},
 		},

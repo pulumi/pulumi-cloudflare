@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -151,6 +151,85 @@ func (i *ByoIpPrefix) ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpP
 	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixOutput)
 }
 
+func (i *ByoIpPrefix) ToByoIpPrefixPtrOutput() ByoIpPrefixPtrOutput {
+	return i.ToByoIpPrefixPtrOutputWithContext(context.Background())
+}
+
+func (i *ByoIpPrefix) ToByoIpPrefixPtrOutputWithContext(ctx context.Context) ByoIpPrefixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixPtrOutput)
+}
+
+type ByoIpPrefixPtrInput interface {
+	pulumi.Input
+
+	ToByoIpPrefixPtrOutput() ByoIpPrefixPtrOutput
+	ToByoIpPrefixPtrOutputWithContext(ctx context.Context) ByoIpPrefixPtrOutput
+}
+
+type byoIpPrefixPtrType ByoIpPrefixArgs
+
+func (*byoIpPrefixPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ByoIpPrefix)(nil))
+}
+
+func (i *byoIpPrefixPtrType) ToByoIpPrefixPtrOutput() ByoIpPrefixPtrOutput {
+	return i.ToByoIpPrefixPtrOutputWithContext(context.Background())
+}
+
+func (i *byoIpPrefixPtrType) ToByoIpPrefixPtrOutputWithContext(ctx context.Context) ByoIpPrefixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixPtrOutput)
+}
+
+// ByoIpPrefixArrayInput is an input type that accepts ByoIpPrefixArray and ByoIpPrefixArrayOutput values.
+// You can construct a concrete instance of `ByoIpPrefixArrayInput` via:
+//
+//          ByoIpPrefixArray{ ByoIpPrefixArgs{...} }
+type ByoIpPrefixArrayInput interface {
+	pulumi.Input
+
+	ToByoIpPrefixArrayOutput() ByoIpPrefixArrayOutput
+	ToByoIpPrefixArrayOutputWithContext(context.Context) ByoIpPrefixArrayOutput
+}
+
+type ByoIpPrefixArray []ByoIpPrefixInput
+
+func (ByoIpPrefixArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ByoIpPrefix)(nil))
+}
+
+func (i ByoIpPrefixArray) ToByoIpPrefixArrayOutput() ByoIpPrefixArrayOutput {
+	return i.ToByoIpPrefixArrayOutputWithContext(context.Background())
+}
+
+func (i ByoIpPrefixArray) ToByoIpPrefixArrayOutputWithContext(ctx context.Context) ByoIpPrefixArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixArrayOutput)
+}
+
+// ByoIpPrefixMapInput is an input type that accepts ByoIpPrefixMap and ByoIpPrefixMapOutput values.
+// You can construct a concrete instance of `ByoIpPrefixMapInput` via:
+//
+//          ByoIpPrefixMap{ "key": ByoIpPrefixArgs{...} }
+type ByoIpPrefixMapInput interface {
+	pulumi.Input
+
+	ToByoIpPrefixMapOutput() ByoIpPrefixMapOutput
+	ToByoIpPrefixMapOutputWithContext(context.Context) ByoIpPrefixMapOutput
+}
+
+type ByoIpPrefixMap map[string]ByoIpPrefixInput
+
+func (ByoIpPrefixMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ByoIpPrefix)(nil))
+}
+
+func (i ByoIpPrefixMap) ToByoIpPrefixMapOutput() ByoIpPrefixMapOutput {
+	return i.ToByoIpPrefixMapOutputWithContext(context.Background())
+}
+
+func (i ByoIpPrefixMap) ToByoIpPrefixMapOutputWithContext(ctx context.Context) ByoIpPrefixMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixMapOutput)
+}
+
 type ByoIpPrefixOutput struct {
 	*pulumi.OutputState
 }
@@ -167,6 +246,75 @@ func (o ByoIpPrefixOutput) ToByoIpPrefixOutputWithContext(ctx context.Context) B
 	return o
 }
 
+func (o ByoIpPrefixOutput) ToByoIpPrefixPtrOutput() ByoIpPrefixPtrOutput {
+	return o.ToByoIpPrefixPtrOutputWithContext(context.Background())
+}
+
+func (o ByoIpPrefixOutput) ToByoIpPrefixPtrOutputWithContext(ctx context.Context) ByoIpPrefixPtrOutput {
+	return o.ApplyT(func(v ByoIpPrefix) *ByoIpPrefix {
+		return &v
+	}).(ByoIpPrefixPtrOutput)
+}
+
+type ByoIpPrefixPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ByoIpPrefixPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ByoIpPrefix)(nil))
+}
+
+func (o ByoIpPrefixPtrOutput) ToByoIpPrefixPtrOutput() ByoIpPrefixPtrOutput {
+	return o
+}
+
+func (o ByoIpPrefixPtrOutput) ToByoIpPrefixPtrOutputWithContext(ctx context.Context) ByoIpPrefixPtrOutput {
+	return o
+}
+
+type ByoIpPrefixArrayOutput struct{ *pulumi.OutputState }
+
+func (ByoIpPrefixArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ByoIpPrefix)(nil))
+}
+
+func (o ByoIpPrefixArrayOutput) ToByoIpPrefixArrayOutput() ByoIpPrefixArrayOutput {
+	return o
+}
+
+func (o ByoIpPrefixArrayOutput) ToByoIpPrefixArrayOutputWithContext(ctx context.Context) ByoIpPrefixArrayOutput {
+	return o
+}
+
+func (o ByoIpPrefixArrayOutput) Index(i pulumi.IntInput) ByoIpPrefixOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ByoIpPrefix {
+		return vs[0].([]ByoIpPrefix)[vs[1].(int)]
+	}).(ByoIpPrefixOutput)
+}
+
+type ByoIpPrefixMapOutput struct{ *pulumi.OutputState }
+
+func (ByoIpPrefixMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ByoIpPrefix)(nil))
+}
+
+func (o ByoIpPrefixMapOutput) ToByoIpPrefixMapOutput() ByoIpPrefixMapOutput {
+	return o
+}
+
+func (o ByoIpPrefixMapOutput) ToByoIpPrefixMapOutputWithContext(ctx context.Context) ByoIpPrefixMapOutput {
+	return o
+}
+
+func (o ByoIpPrefixMapOutput) MapIndex(k pulumi.StringInput) ByoIpPrefixOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ByoIpPrefix {
+		return vs[0].(map[string]ByoIpPrefix)[vs[1].(string)]
+	}).(ByoIpPrefixOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ByoIpPrefixOutput{})
+	pulumi.RegisterOutputType(ByoIpPrefixPtrOutput{})
+	pulumi.RegisterOutputType(ByoIpPrefixArrayOutput{})
+	pulumi.RegisterOutputType(ByoIpPrefixMapOutput{})
 }

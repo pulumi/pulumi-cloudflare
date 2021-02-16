@@ -114,7 +114,8 @@ export class ZoneDnssec extends pulumi.CustomResource {
     constructor(name: string, args: ZoneDnssecArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneDnssecArgs | ZoneDnssecState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ZoneDnssecState | undefined;
             inputs["algorithm"] = state ? state.algorithm : undefined;
             inputs["digest"] = state ? state.digest : undefined;
@@ -130,7 +131,7 @@ export class ZoneDnssec extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneDnssecArgs | undefined;
-            if ((!args || args.zoneId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
             inputs["modifiedOn"] = args ? args.modifiedOn : undefined;
@@ -146,12 +147,8 @@ export class ZoneDnssec extends pulumi.CustomResource {
             inputs["publicKey"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ZoneDnssec.__pulumiType, name, inputs, opts);
     }

@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -146,6 +146,85 @@ func (i *LogPushOwnershipChallenge) ToLogPushOwnershipChallengeOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(LogPushOwnershipChallengeOutput)
 }
 
+func (i *LogPushOwnershipChallenge) ToLogPushOwnershipChallengePtrOutput() LogPushOwnershipChallengePtrOutput {
+	return i.ToLogPushOwnershipChallengePtrOutputWithContext(context.Background())
+}
+
+func (i *LogPushOwnershipChallenge) ToLogPushOwnershipChallengePtrOutputWithContext(ctx context.Context) LogPushOwnershipChallengePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogPushOwnershipChallengePtrOutput)
+}
+
+type LogPushOwnershipChallengePtrInput interface {
+	pulumi.Input
+
+	ToLogPushOwnershipChallengePtrOutput() LogPushOwnershipChallengePtrOutput
+	ToLogPushOwnershipChallengePtrOutputWithContext(ctx context.Context) LogPushOwnershipChallengePtrOutput
+}
+
+type logPushOwnershipChallengePtrType LogPushOwnershipChallengeArgs
+
+func (*logPushOwnershipChallengePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogPushOwnershipChallenge)(nil))
+}
+
+func (i *logPushOwnershipChallengePtrType) ToLogPushOwnershipChallengePtrOutput() LogPushOwnershipChallengePtrOutput {
+	return i.ToLogPushOwnershipChallengePtrOutputWithContext(context.Background())
+}
+
+func (i *logPushOwnershipChallengePtrType) ToLogPushOwnershipChallengePtrOutputWithContext(ctx context.Context) LogPushOwnershipChallengePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogPushOwnershipChallengePtrOutput)
+}
+
+// LogPushOwnershipChallengeArrayInput is an input type that accepts LogPushOwnershipChallengeArray and LogPushOwnershipChallengeArrayOutput values.
+// You can construct a concrete instance of `LogPushOwnershipChallengeArrayInput` via:
+//
+//          LogPushOwnershipChallengeArray{ LogPushOwnershipChallengeArgs{...} }
+type LogPushOwnershipChallengeArrayInput interface {
+	pulumi.Input
+
+	ToLogPushOwnershipChallengeArrayOutput() LogPushOwnershipChallengeArrayOutput
+	ToLogPushOwnershipChallengeArrayOutputWithContext(context.Context) LogPushOwnershipChallengeArrayOutput
+}
+
+type LogPushOwnershipChallengeArray []LogPushOwnershipChallengeInput
+
+func (LogPushOwnershipChallengeArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*LogPushOwnershipChallenge)(nil))
+}
+
+func (i LogPushOwnershipChallengeArray) ToLogPushOwnershipChallengeArrayOutput() LogPushOwnershipChallengeArrayOutput {
+	return i.ToLogPushOwnershipChallengeArrayOutputWithContext(context.Background())
+}
+
+func (i LogPushOwnershipChallengeArray) ToLogPushOwnershipChallengeArrayOutputWithContext(ctx context.Context) LogPushOwnershipChallengeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogPushOwnershipChallengeArrayOutput)
+}
+
+// LogPushOwnershipChallengeMapInput is an input type that accepts LogPushOwnershipChallengeMap and LogPushOwnershipChallengeMapOutput values.
+// You can construct a concrete instance of `LogPushOwnershipChallengeMapInput` via:
+//
+//          LogPushOwnershipChallengeMap{ "key": LogPushOwnershipChallengeArgs{...} }
+type LogPushOwnershipChallengeMapInput interface {
+	pulumi.Input
+
+	ToLogPushOwnershipChallengeMapOutput() LogPushOwnershipChallengeMapOutput
+	ToLogPushOwnershipChallengeMapOutputWithContext(context.Context) LogPushOwnershipChallengeMapOutput
+}
+
+type LogPushOwnershipChallengeMap map[string]LogPushOwnershipChallengeInput
+
+func (LogPushOwnershipChallengeMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*LogPushOwnershipChallenge)(nil))
+}
+
+func (i LogPushOwnershipChallengeMap) ToLogPushOwnershipChallengeMapOutput() LogPushOwnershipChallengeMapOutput {
+	return i.ToLogPushOwnershipChallengeMapOutputWithContext(context.Background())
+}
+
+func (i LogPushOwnershipChallengeMap) ToLogPushOwnershipChallengeMapOutputWithContext(ctx context.Context) LogPushOwnershipChallengeMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogPushOwnershipChallengeMapOutput)
+}
+
 type LogPushOwnershipChallengeOutput struct {
 	*pulumi.OutputState
 }
@@ -162,6 +241,75 @@ func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengeOutputWithCo
 	return o
 }
 
+func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengePtrOutput() LogPushOwnershipChallengePtrOutput {
+	return o.ToLogPushOwnershipChallengePtrOutputWithContext(context.Background())
+}
+
+func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengePtrOutputWithContext(ctx context.Context) LogPushOwnershipChallengePtrOutput {
+	return o.ApplyT(func(v LogPushOwnershipChallenge) *LogPushOwnershipChallenge {
+		return &v
+	}).(LogPushOwnershipChallengePtrOutput)
+}
+
+type LogPushOwnershipChallengePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LogPushOwnershipChallengePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogPushOwnershipChallenge)(nil))
+}
+
+func (o LogPushOwnershipChallengePtrOutput) ToLogPushOwnershipChallengePtrOutput() LogPushOwnershipChallengePtrOutput {
+	return o
+}
+
+func (o LogPushOwnershipChallengePtrOutput) ToLogPushOwnershipChallengePtrOutputWithContext(ctx context.Context) LogPushOwnershipChallengePtrOutput {
+	return o
+}
+
+type LogPushOwnershipChallengeArrayOutput struct{ *pulumi.OutputState }
+
+func (LogPushOwnershipChallengeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LogPushOwnershipChallenge)(nil))
+}
+
+func (o LogPushOwnershipChallengeArrayOutput) ToLogPushOwnershipChallengeArrayOutput() LogPushOwnershipChallengeArrayOutput {
+	return o
+}
+
+func (o LogPushOwnershipChallengeArrayOutput) ToLogPushOwnershipChallengeArrayOutputWithContext(ctx context.Context) LogPushOwnershipChallengeArrayOutput {
+	return o
+}
+
+func (o LogPushOwnershipChallengeArrayOutput) Index(i pulumi.IntInput) LogPushOwnershipChallengeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogPushOwnershipChallenge {
+		return vs[0].([]LogPushOwnershipChallenge)[vs[1].(int)]
+	}).(LogPushOwnershipChallengeOutput)
+}
+
+type LogPushOwnershipChallengeMapOutput struct{ *pulumi.OutputState }
+
+func (LogPushOwnershipChallengeMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LogPushOwnershipChallenge)(nil))
+}
+
+func (o LogPushOwnershipChallengeMapOutput) ToLogPushOwnershipChallengeMapOutput() LogPushOwnershipChallengeMapOutput {
+	return o
+}
+
+func (o LogPushOwnershipChallengeMapOutput) ToLogPushOwnershipChallengeMapOutputWithContext(ctx context.Context) LogPushOwnershipChallengeMapOutput {
+	return o
+}
+
+func (o LogPushOwnershipChallengeMapOutput) MapIndex(k pulumi.StringInput) LogPushOwnershipChallengeOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogPushOwnershipChallenge {
+		return vs[0].(map[string]LogPushOwnershipChallenge)[vs[1].(string)]
+	}).(LogPushOwnershipChallengeOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LogPushOwnershipChallengeOutput{})
+	pulumi.RegisterOutputType(LogPushOwnershipChallengePtrOutput{})
+	pulumi.RegisterOutputType(LogPushOwnershipChallengeArrayOutput{})
+	pulumi.RegisterOutputType(LogPushOwnershipChallengeMapOutput{})
 }

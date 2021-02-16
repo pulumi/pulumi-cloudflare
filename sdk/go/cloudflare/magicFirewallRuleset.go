@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -175,6 +175,85 @@ func (i *MagicFirewallRuleset) ToMagicFirewallRulesetOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetOutput)
 }
 
+func (i *MagicFirewallRuleset) ToMagicFirewallRulesetPtrOutput() MagicFirewallRulesetPtrOutput {
+	return i.ToMagicFirewallRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i *MagicFirewallRuleset) ToMagicFirewallRulesetPtrOutputWithContext(ctx context.Context) MagicFirewallRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetPtrOutput)
+}
+
+type MagicFirewallRulesetPtrInput interface {
+	pulumi.Input
+
+	ToMagicFirewallRulesetPtrOutput() MagicFirewallRulesetPtrOutput
+	ToMagicFirewallRulesetPtrOutputWithContext(ctx context.Context) MagicFirewallRulesetPtrOutput
+}
+
+type magicFirewallRulesetPtrType MagicFirewallRulesetArgs
+
+func (*magicFirewallRulesetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicFirewallRuleset)(nil))
+}
+
+func (i *magicFirewallRulesetPtrType) ToMagicFirewallRulesetPtrOutput() MagicFirewallRulesetPtrOutput {
+	return i.ToMagicFirewallRulesetPtrOutputWithContext(context.Background())
+}
+
+func (i *magicFirewallRulesetPtrType) ToMagicFirewallRulesetPtrOutputWithContext(ctx context.Context) MagicFirewallRulesetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetPtrOutput)
+}
+
+// MagicFirewallRulesetArrayInput is an input type that accepts MagicFirewallRulesetArray and MagicFirewallRulesetArrayOutput values.
+// You can construct a concrete instance of `MagicFirewallRulesetArrayInput` via:
+//
+//          MagicFirewallRulesetArray{ MagicFirewallRulesetArgs{...} }
+type MagicFirewallRulesetArrayInput interface {
+	pulumi.Input
+
+	ToMagicFirewallRulesetArrayOutput() MagicFirewallRulesetArrayOutput
+	ToMagicFirewallRulesetArrayOutputWithContext(context.Context) MagicFirewallRulesetArrayOutput
+}
+
+type MagicFirewallRulesetArray []MagicFirewallRulesetInput
+
+func (MagicFirewallRulesetArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MagicFirewallRuleset)(nil))
+}
+
+func (i MagicFirewallRulesetArray) ToMagicFirewallRulesetArrayOutput() MagicFirewallRulesetArrayOutput {
+	return i.ToMagicFirewallRulesetArrayOutputWithContext(context.Background())
+}
+
+func (i MagicFirewallRulesetArray) ToMagicFirewallRulesetArrayOutputWithContext(ctx context.Context) MagicFirewallRulesetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetArrayOutput)
+}
+
+// MagicFirewallRulesetMapInput is an input type that accepts MagicFirewallRulesetMap and MagicFirewallRulesetMapOutput values.
+// You can construct a concrete instance of `MagicFirewallRulesetMapInput` via:
+//
+//          MagicFirewallRulesetMap{ "key": MagicFirewallRulesetArgs{...} }
+type MagicFirewallRulesetMapInput interface {
+	pulumi.Input
+
+	ToMagicFirewallRulesetMapOutput() MagicFirewallRulesetMapOutput
+	ToMagicFirewallRulesetMapOutputWithContext(context.Context) MagicFirewallRulesetMapOutput
+}
+
+type MagicFirewallRulesetMap map[string]MagicFirewallRulesetInput
+
+func (MagicFirewallRulesetMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MagicFirewallRuleset)(nil))
+}
+
+func (i MagicFirewallRulesetMap) ToMagicFirewallRulesetMapOutput() MagicFirewallRulesetMapOutput {
+	return i.ToMagicFirewallRulesetMapOutputWithContext(context.Background())
+}
+
+func (i MagicFirewallRulesetMap) ToMagicFirewallRulesetMapOutputWithContext(ctx context.Context) MagicFirewallRulesetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetMapOutput)
+}
+
 type MagicFirewallRulesetOutput struct {
 	*pulumi.OutputState
 }
@@ -191,6 +270,75 @@ func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetOutputWithContext(ctx 
 	return o
 }
 
+func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetPtrOutput() MagicFirewallRulesetPtrOutput {
+	return o.ToMagicFirewallRulesetPtrOutputWithContext(context.Background())
+}
+
+func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetPtrOutputWithContext(ctx context.Context) MagicFirewallRulesetPtrOutput {
+	return o.ApplyT(func(v MagicFirewallRuleset) *MagicFirewallRuleset {
+		return &v
+	}).(MagicFirewallRulesetPtrOutput)
+}
+
+type MagicFirewallRulesetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MagicFirewallRulesetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MagicFirewallRuleset)(nil))
+}
+
+func (o MagicFirewallRulesetPtrOutput) ToMagicFirewallRulesetPtrOutput() MagicFirewallRulesetPtrOutput {
+	return o
+}
+
+func (o MagicFirewallRulesetPtrOutput) ToMagicFirewallRulesetPtrOutputWithContext(ctx context.Context) MagicFirewallRulesetPtrOutput {
+	return o
+}
+
+type MagicFirewallRulesetArrayOutput struct{ *pulumi.OutputState }
+
+func (MagicFirewallRulesetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MagicFirewallRuleset)(nil))
+}
+
+func (o MagicFirewallRulesetArrayOutput) ToMagicFirewallRulesetArrayOutput() MagicFirewallRulesetArrayOutput {
+	return o
+}
+
+func (o MagicFirewallRulesetArrayOutput) ToMagicFirewallRulesetArrayOutputWithContext(ctx context.Context) MagicFirewallRulesetArrayOutput {
+	return o
+}
+
+func (o MagicFirewallRulesetArrayOutput) Index(i pulumi.IntInput) MagicFirewallRulesetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MagicFirewallRuleset {
+		return vs[0].([]MagicFirewallRuleset)[vs[1].(int)]
+	}).(MagicFirewallRulesetOutput)
+}
+
+type MagicFirewallRulesetMapOutput struct{ *pulumi.OutputState }
+
+func (MagicFirewallRulesetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MagicFirewallRuleset)(nil))
+}
+
+func (o MagicFirewallRulesetMapOutput) ToMagicFirewallRulesetMapOutput() MagicFirewallRulesetMapOutput {
+	return o
+}
+
+func (o MagicFirewallRulesetMapOutput) ToMagicFirewallRulesetMapOutputWithContext(ctx context.Context) MagicFirewallRulesetMapOutput {
+	return o
+}
+
+func (o MagicFirewallRulesetMapOutput) MapIndex(k pulumi.StringInput) MagicFirewallRulesetOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MagicFirewallRuleset {
+		return vs[0].(map[string]MagicFirewallRuleset)[vs[1].(string)]
+	}).(MagicFirewallRulesetOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MagicFirewallRulesetOutput{})
+	pulumi.RegisterOutputType(MagicFirewallRulesetPtrOutput{})
+	pulumi.RegisterOutputType(MagicFirewallRulesetArrayOutput{})
+	pulumi.RegisterOutputType(MagicFirewallRulesetMapOutput{})
 }

@@ -20,7 +20,6 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare"
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -222,6 +221,85 @@ func (i *LoadBalancerPool) ToLoadBalancerPoolOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolOutput)
 }
 
+func (i *LoadBalancerPool) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput {
+	return i.ToLoadBalancerPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *LoadBalancerPool) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolPtrOutput)
+}
+
+type LoadBalancerPoolPtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput
+	ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput
+}
+
+type loadBalancerPoolPtrType LoadBalancerPoolArgs
+
+func (*loadBalancerPoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerPool)(nil))
+}
+
+func (i *loadBalancerPoolPtrType) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput {
+	return i.ToLoadBalancerPoolPtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerPoolPtrType) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolPtrOutput)
+}
+
+// LoadBalancerPoolArrayInput is an input type that accepts LoadBalancerPoolArray and LoadBalancerPoolArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerPoolArrayInput` via:
+//
+//          LoadBalancerPoolArray{ LoadBalancerPoolArgs{...} }
+type LoadBalancerPoolArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolArrayOutput() LoadBalancerPoolArrayOutput
+	ToLoadBalancerPoolArrayOutputWithContext(context.Context) LoadBalancerPoolArrayOutput
+}
+
+type LoadBalancerPoolArray []LoadBalancerPoolInput
+
+func (LoadBalancerPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*LoadBalancerPool)(nil))
+}
+
+func (i LoadBalancerPoolArray) ToLoadBalancerPoolArrayOutput() LoadBalancerPoolArrayOutput {
+	return i.ToLoadBalancerPoolArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPoolArray) ToLoadBalancerPoolArrayOutputWithContext(ctx context.Context) LoadBalancerPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolArrayOutput)
+}
+
+// LoadBalancerPoolMapInput is an input type that accepts LoadBalancerPoolMap and LoadBalancerPoolMapOutput values.
+// You can construct a concrete instance of `LoadBalancerPoolMapInput` via:
+//
+//          LoadBalancerPoolMap{ "key": LoadBalancerPoolArgs{...} }
+type LoadBalancerPoolMapInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolMapOutput() LoadBalancerPoolMapOutput
+	ToLoadBalancerPoolMapOutputWithContext(context.Context) LoadBalancerPoolMapOutput
+}
+
+type LoadBalancerPoolMap map[string]LoadBalancerPoolInput
+
+func (LoadBalancerPoolMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*LoadBalancerPool)(nil))
+}
+
+func (i LoadBalancerPoolMap) ToLoadBalancerPoolMapOutput() LoadBalancerPoolMapOutput {
+	return i.ToLoadBalancerPoolMapOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPoolMap) ToLoadBalancerPoolMapOutputWithContext(ctx context.Context) LoadBalancerPoolMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolMapOutput)
+}
+
 type LoadBalancerPoolOutput struct {
 	*pulumi.OutputState
 }
@@ -238,6 +316,75 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.
 	return o
 }
 
+func (o LoadBalancerPoolOutput) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput {
+	return o.ToLoadBalancerPoolPtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerPoolOutput) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPool) *LoadBalancerPool {
+		return &v
+	}).(LoadBalancerPoolPtrOutput)
+}
+
+type LoadBalancerPoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LoadBalancerPoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerPool)(nil))
+}
+
+func (o LoadBalancerPoolPtrOutput) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput {
+	return o
+}
+
+func (o LoadBalancerPoolPtrOutput) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
+	return o
+}
+
+type LoadBalancerPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerPool)(nil))
+}
+
+func (o LoadBalancerPoolArrayOutput) ToLoadBalancerPoolArrayOutput() LoadBalancerPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerPoolArrayOutput) ToLoadBalancerPoolArrayOutputWithContext(ctx context.Context) LoadBalancerPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerPool {
+		return vs[0].([]LoadBalancerPool)[vs[1].(int)]
+	}).(LoadBalancerPoolOutput)
+}
+
+type LoadBalancerPoolMapOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPoolMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LoadBalancerPool)(nil))
+}
+
+func (o LoadBalancerPoolMapOutput) ToLoadBalancerPoolMapOutput() LoadBalancerPoolMapOutput {
+	return o
+}
+
+func (o LoadBalancerPoolMapOutput) ToLoadBalancerPoolMapOutputWithContext(ctx context.Context) LoadBalancerPoolMapOutput {
+	return o
+}
+
+func (o LoadBalancerPoolMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerPoolOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LoadBalancerPool {
+		return vs[0].(map[string]LoadBalancerPool)[vs[1].(string)]
+	}).(LoadBalancerPoolOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LoadBalancerPoolOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolPtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolMapOutput{})
 }
