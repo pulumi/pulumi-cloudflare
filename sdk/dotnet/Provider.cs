@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configure API client to always use that account.
+        /// Configure API client to always use that account
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -70,13 +70,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? ApiToken { get; set; }
 
         /// <summary>
-        /// A special Cloudflare API key good for a restricted set of endpoints.
+        /// A special Cloudflare API key good for a restricted set of endpoints
         /// </summary>
         [Input("apiUserServiceKey")]
         public Input<string>? ApiUserServiceKey { get; set; }
 
         /// <summary>
-        /// A registered Cloudflare email address.
+        /// A registered Cloudflare email address
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }

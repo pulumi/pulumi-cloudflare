@@ -76,7 +76,7 @@ type OriginCaCertificate struct {
 	// The Origin CA certificate
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// The Certificate Signing Request. Must be newline-encoded.
-	Csr pulumi.StringOutput `pulumi:"csr"`
+	Csr pulumi.StringPtrOutput `pulumi:"csr"`
 	// The datetime when the certificate will expire.
 	ExpiresOn pulumi.StringOutput `pulumi:"expiresOn"`
 	// An array of hostnames or wildcard names bound to the certificate.
@@ -94,9 +94,6 @@ func NewOriginCaCertificate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Csr == nil {
-		return nil, errors.New("invalid value for required argument 'Csr'")
-	}
 	if args.Hostnames == nil {
 		return nil, errors.New("invalid value for required argument 'Hostnames'")
 	}
@@ -160,7 +157,7 @@ func (OriginCaCertificateState) ElementType() reflect.Type {
 
 type originCaCertificateArgs struct {
 	// The Certificate Signing Request. Must be newline-encoded.
-	Csr string `pulumi:"csr"`
+	Csr *string `pulumi:"csr"`
 	// An array of hostnames or wildcard names bound to the certificate.
 	Hostnames []string `pulumi:"hostnames"`
 	// The signature type desired on the certificate.
@@ -172,7 +169,7 @@ type originCaCertificateArgs struct {
 // The set of arguments for constructing a OriginCaCertificate resource.
 type OriginCaCertificateArgs struct {
 	// The Certificate Signing Request. Must be newline-encoded.
-	Csr pulumi.StringInput
+	Csr pulumi.StringPtrInput
 	// An array of hostnames or wildcard names bound to the certificate.
 	Hostnames pulumi.StringArrayInput
 	// The signature type desired on the certificate.

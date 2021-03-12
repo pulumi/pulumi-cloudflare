@@ -79,7 +79,7 @@ namespace Pulumi.Cloudflare
         /// The Certificate Signing Request. Must be newline-encoded.
         /// </summary>
         [Output("csr")]
-        public Output<string> Csr { get; private set; } = null!;
+        public Output<string?> Csr { get; private set; } = null!;
 
         /// <summary>
         /// The datetime when the certificate will expire.
@@ -154,8 +154,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The Certificate Signing Request. Must be newline-encoded.
         /// </summary>
-        [Input("csr", required: true)]
-        public Input<string> Csr { get; set; } = null!;
+        [Input("csr")]
+        public Input<string>? Csr { get; set; }
 
         [Input("hostnames", required: true)]
         private InputList<string>? _hostnames;

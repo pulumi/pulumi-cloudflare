@@ -77,7 +77,7 @@ export class OriginCaCertificate extends pulumi.CustomResource {
     /**
      * The Certificate Signing Request. Must be newline-encoded.
      */
-    public readonly csr!: pulumi.Output<string>;
+    public readonly csr!: pulumi.Output<string | undefined>;
     /**
      * The datetime when the certificate will expire.
      */
@@ -116,9 +116,6 @@ export class OriginCaCertificate extends pulumi.CustomResource {
             inputs["requestedValidity"] = state ? state.requestedValidity : undefined;
         } else {
             const args = argsOrState as OriginCaCertificateArgs | undefined;
-            if ((!args || args.csr === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'csr'");
-            }
             if ((!args || args.hostnames === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostnames'");
             }
@@ -176,7 +173,7 @@ export interface OriginCaCertificateArgs {
     /**
      * The Certificate Signing Request. Must be newline-encoded.
      */
-    readonly csr: pulumi.Input<string>;
+    readonly csr?: pulumi.Input<string>;
     /**
      * An array of hostnames or wildcard names bound to the certificate.
      */

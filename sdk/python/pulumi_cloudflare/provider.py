@@ -36,12 +36,12 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Configure API client to always use that account.
+        :param pulumi.Input[str] account_id: Configure API client to always use that account
         :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger)
         :param pulumi.Input[str] api_key: The API key for operations.
         :param pulumi.Input[str] api_token: The API Token for operations.
-        :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints.
-        :param pulumi.Input[str] email: A registered Cloudflare email address.
+        :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints
+        :param pulumi.Input[str] email: A registered Cloudflare email address
         :param pulumi.Input[int] max_backoff: Maximum backoff period in seconds after failed API calls
         :param pulumi.Input[int] min_backoff: Minimum backoff period in seconds after failed API calls
         :param pulumi.Input[int] retries: Maximum number of retries to perform when an API request fails

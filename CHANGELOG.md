@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v2.19.1 of the CloudFlare Terraform Provider
 
 ---
 

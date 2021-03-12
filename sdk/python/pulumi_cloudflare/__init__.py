@@ -6,6 +6,7 @@
 from .access_application import *
 from .access_group import *
 from .access_identity_provider import *
+from .access_mutual_tls_certificate import *
 from .access_policy import *
 from .access_rule import *
 from .access_service_token import *
@@ -84,6 +85,8 @@ def _register_module():
                 return AccessGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
                 return AccessIdentityProvider(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
+                return AccessMutualTlsCertificate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/accessPolicy:AccessPolicy":
                 return AccessPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/accessRule:AccessRule":
@@ -180,6 +183,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("cloudflare", "index/accessApplication", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/accessGroup", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/accessIdentityProvider", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/accessMutualTlsCertificate", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/accessPolicy", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/accessRule", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/accessServiceToken", _module_instance)

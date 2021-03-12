@@ -68,13 +68,17 @@ class AccessPolicy(pulumi.CustomResource):
 
         ## Import
 
-        Access Policies can be imported using a composite ID formed of zone ID, application ID and policy ID.
+        Access Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy
 
         ```sh
-         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
         ```
 
-         where * `cb029e245cfdd66dc8d2e570d5dd3322` - Zone ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Application ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Policy ID
+        # import an account level Access policy
+
+        ```sh
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -120,6 +124,8 @@ class AccessPolicy(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__['name'] = name
+            if precedence is None and not opts.urn:
+                raise TypeError("Missing required property 'precedence'")
             __props__['precedence'] = precedence
             __props__['requires'] = requires
             __props__['zone_id'] = zone_id
@@ -226,7 +232,7 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def precedence(self) -> pulumi.Output[Optional[int]]:
+    def precedence(self) -> pulumi.Output[int]:
         """
         The unique precedence for policies on a single application. Integer.
         """

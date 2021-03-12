@@ -73,13 +73,17 @@ import (
 //
 // ## Import
 //
-// Access Policies can be imported using a composite ID formed of zone ID, application ID and policy ID.
+// Access Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
 // ```
 //
-//  where * `cb029e245cfdd66dc8d2e570d5dd3322` - Zone ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Application ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Policy ID
+// # import an account level Access policy
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+// ```
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
@@ -97,7 +101,7 @@ type AccessPolicy struct {
 	// Friendly name of the Access Application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique precedence for policies on a single application. Integer.
-	Precedence pulumi.IntPtrOutput `pulumi:"precedence"`
+	Precedence pulumi.IntOutput `pulumi:"precedence"`
 	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
 	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
@@ -122,6 +126,9 @@ func NewAccessPolicy(ctx *pulumi.Context,
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Precedence == nil {
+		return nil, errors.New("invalid value for required argument 'Precedence'")
 	}
 	var resource AccessPolicy
 	err := ctx.RegisterResource("cloudflare:index/accessPolicy:AccessPolicy", name, args, &resource, opts...)
@@ -207,7 +214,7 @@ type accessPolicyArgs struct {
 	// Friendly name of the Access Application.
 	Name string `pulumi:"name"`
 	// The unique precedence for policies on a single application. Integer.
-	Precedence *int `pulumi:"precedence"`
+	Precedence int `pulumi:"precedence"`
 	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
 	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
@@ -230,7 +237,7 @@ type AccessPolicyArgs struct {
 	// Friendly name of the Access Application.
 	Name pulumi.StringInput
 	// The unique precedence for policies on a single application. Integer.
-	Precedence pulumi.IntPtrInput
+	Precedence pulumi.IntInput
 	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
 	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.

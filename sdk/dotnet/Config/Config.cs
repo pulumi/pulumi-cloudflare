@@ -9,7 +9,7 @@ namespace Pulumi.Cloudflare
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("cloudflare");
         /// <summary>
-        /// Configure API client to always use that account.
+        /// Configure API client to always use that account
         /// </summary>
         public static string? AccountId { get; set; } = __config.Get("accountId");
 
@@ -29,12 +29,12 @@ namespace Pulumi.Cloudflare
         public static string? ApiToken { get; set; } = __config.Get("apiToken");
 
         /// <summary>
-        /// A special Cloudflare API key good for a restricted set of endpoints.
+        /// A special Cloudflare API key good for a restricted set of endpoints
         /// </summary>
         public static string? ApiUserServiceKey { get; set; } = __config.Get("apiUserServiceKey");
 
         /// <summary>
-        /// A registered Cloudflare email address.
+        /// A registered Cloudflare email address
         /// </summary>
         public static string? Email { get; set; } = __config.Get("email");
 

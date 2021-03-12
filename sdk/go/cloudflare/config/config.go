@@ -8,7 +8,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
-// Configure API client to always use that account.
+// Configure API client to always use that account
 func GetAccountId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:accountId")
 }
@@ -32,12 +32,12 @@ func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiToken")
 }
 
-// A special Cloudflare API key good for a restricted set of endpoints.
+// A special Cloudflare API key good for a restricted set of endpoints
 func GetApiUserServiceKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiUserServiceKey")
 }
 
-// A registered Cloudflare email address.
+// A registered Cloudflare email address
 func GetEmail(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:email")
 }

@@ -46,13 +46,17 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Access Policies can be imported using a composite ID formed of zone ID, application ID and policy ID.
+ * Access Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+ *  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
  * ```
  *
- *  where * `cb029e245cfdd66dc8d2e570d5dd3322` - Zone ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Application ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Policy ID
+ * # import an account level Access policy
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+ * ```
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**
@@ -110,7 +114,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * The unique precedence for policies on a single application. Integer.
      */
-    public readonly precedence!: pulumi.Output<number | undefined>;
+    public readonly precedence!: pulumi.Output<number>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
@@ -155,6 +159,9 @@ export class AccessPolicy extends pulumi.CustomResource {
             }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
+            }
+            if ((!args || args.precedence === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'precedence'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["applicationId"] = args ? args.applicationId : undefined;
@@ -248,7 +255,7 @@ export interface AccessPolicyArgs {
     /**
      * The unique precedence for policies on a single application. Integer.
      */
-    readonly precedence?: pulumi.Input<number>;
+    readonly precedence: pulumi.Input<number>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
