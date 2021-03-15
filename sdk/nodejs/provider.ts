@@ -38,15 +38,15 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) || (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
+            inputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) ?? (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
             inputs["apiKey"] = args ? args.apiKey : undefined;
             inputs["apiToken"] = args ? args.apiToken : undefined;
             inputs["apiUserServiceKey"] = args ? args.apiUserServiceKey : undefined;
             inputs["email"] = args ? args.email : undefined;
-            inputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) || (<any>utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
-            inputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) || (<any>utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
-            inputs["retries"] = pulumi.output((args ? args.retries : undefined) || (<any>utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3)).apply(JSON.stringify);
-            inputs["rps"] = pulumi.output((args ? args.rps : undefined) || (<any>utilities.getEnvNumber("CLOUDFLARE_RPS") || 4)).apply(JSON.stringify);
+            inputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) ?? (<any>utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
+            inputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) ?? (<any>utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
+            inputs["retries"] = pulumi.output((args ? args.retries : undefined) ?? (<any>utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3)).apply(JSON.stringify);
+            inputs["rps"] = pulumi.output((args ? args.rps : undefined) ?? (<any>utilities.getEnvNumber("CLOUDFLARE_RPS") || 4)).apply(JSON.stringify);
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
