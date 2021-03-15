@@ -8,6 +8,7 @@ import * as utilities from "./utilities";
 export * from "./accessApplication";
 export * from "./accessGroup";
 export * from "./accessIdentityProvider";
+export * from "./accessMutualTlsCertificate";
 export * from "./accessPolicy";
 export * from "./accessRule";
 export * from "./accessServiceToken";
@@ -74,6 +75,7 @@ export {
 import { AccessApplication } from "./accessApplication";
 import { AccessGroup } from "./accessGroup";
 import { AccessIdentityProvider } from "./accessIdentityProvider";
+import { AccessMutualTlsCertificate } from "./accessMutualTlsCertificate";
 import { AccessPolicy } from "./accessPolicy";
 import { AccessRule } from "./accessRule";
 import { AccessServiceToken } from "./accessServiceToken";
@@ -129,6 +131,8 @@ const _module = {
                 return new AccessGroup(name, <any>undefined, { urn })
             case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
                 return new AccessIdentityProvider(name, <any>undefined, { urn })
+            case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
+                return new AccessMutualTlsCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/accessPolicy:AccessPolicy":
                 return new AccessPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/accessRule:AccessRule":
@@ -225,6 +229,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessServiceToken", _module)

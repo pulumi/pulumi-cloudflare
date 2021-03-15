@@ -16,7 +16,7 @@
         "variables": {
             "accountId": {
                 "type": "string",
-                "description": "Configure API client to always use that account.\n"
+                "description": "Configure API client to always use that account\n"
             },
             "apiClientLogging": {
                 "type": "boolean",
@@ -38,11 +38,11 @@
             },
             "apiUserServiceKey": {
                 "type": "string",
-                "description": "A special Cloudflare API key good for a restricted set of endpoints.\n"
+                "description": "A special Cloudflare API key good for a restricted set of endpoints\n"
             },
             "email": {
                 "type": "string",
-                "description": "A registered Cloudflare email address.\n"
+                "description": "A registered Cloudflare email address\n"
             },
             "maxBackoff": {
                 "type": "integer",
@@ -5406,7 +5406,7 @@
         "inputProperties": {
             "accountId": {
                 "type": "string",
-                "description": "Configure API client to always use that account.\n"
+                "description": "Configure API client to always use that account\n"
             },
             "apiClientLogging": {
                 "type": "boolean",
@@ -5428,11 +5428,11 @@
             },
             "apiUserServiceKey": {
                 "type": "string",
-                "description": "A special Cloudflare API key good for a restricted set of endpoints.\n"
+                "description": "A special Cloudflare API key good for a restricted set of endpoints\n"
             },
             "email": {
                 "type": "string",
-                "description": "A registered Cloudflare email address.\n"
+                "description": "A registered Cloudflare email address\n"
             },
             "maxBackoff": {
                 "type": "integer",
@@ -5870,8 +5870,105 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate": {
+            "description": "Provides a Cloudflare Access Mutual TLS Certificate resource. Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server and can be used with Access to only allows requests from devices with a corresponding client certificate.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst myCert = new cloudflare.AccessMutualTlsCertificate(\"myCert\", {\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name: \"My Root Cert\",\n    certificate: _var.ca_pem,\n    associatedHostnames: [\"staging.example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_cert = cloudflare.AccessMutualTlsCertificate(\"myCert\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name=\"My Root Cert\",\n    certificate=var[\"ca_pem\"],\n    associated_hostnames=[\"staging.example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myCert = new Cloudflare.AccessMutualTlsCertificate(\"myCert\", new Cloudflare.AccessMutualTlsCertificateArgs\n        {\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Name = \"My Root Cert\",\n            Certificate = @var.Ca_pem,\n            AssociatedHostnames = \n            {\n                \"staging.example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessMutualTlsCertificate(ctx, \"myCert\", \u0026cloudflare.AccessMutualTlsCertificateArgs{\n\t\t\tZoneId:      pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tName:        pulumi.String(\"My Root Cert\"),\n\t\t\tCertificate: pulumi.Any(_var.Ca_pem),\n\t\t\tAssociatedHostnames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"staging.example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Mutual TLS Certificate can be imported using a composite ID composed of the account or zone and the mutual TLS certificate ID in the form of`account/ACCOUNT_ID/MUTUAL_TLS_CERTIFICATE_ID` or `zone/ZONE_ID/MUTUAL_TLS_CERTIFICATE_ID`.\n\n```sh\n $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate staging account/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the certificate should be added. Conflicts with `zone_id`.\n"
+                },
+                "associatedHostnames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The hostnames that will be prompted for this certificate.\n"
+                },
+                "certificate": {
+                    "type": "string",
+                    "description": "The Root CA for your certificates.\n"
+                },
+                "fingerprint": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the certificate.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone to which the certificate should be added. Conflicts with `account_id`.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "fingerprint",
+                "name",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the certificate should be added. Conflicts with `zone_id`.\n"
+                },
+                "associatedHostnames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The hostnames that will be prompted for this certificate.\n"
+                },
+                "certificate": {
+                    "type": "string",
+                    "description": "The Root CA for your certificates.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the certificate.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone to which the certificate should be added. Conflicts with `account_id`.\n"
+                }
+            },
+            "requiredInputs": [
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessMutualTlsCertificate resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the certificate should be added. Conflicts with `zone_id`.\n"
+                    },
+                    "associatedHostnames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The hostnames that will be prompted for this certificate.\n"
+                    },
+                    "certificate": {
+                        "type": "string",
+                        "description": "The Root CA for your certificates.\n"
+                    },
+                    "fingerprint": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the certificate.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The DNS zone to which the certificate should be added. Conflicts with `account_id`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/accessPolicy:AccessPolicy": {
-            "description": "Provides a Cloudflare Access Policy resource. Access Policies are used\nin conjunction with Access Applications to restrict access to a\nparticular resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_policy_index_access_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessPolicy(ctx, \"testPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessPolicy(ctx, \"testPolicyIndex_accessPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessPolicyRequireArray{\n\t\t\t\tIps: cloudflare.AccessPolicyRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Policies can be imported using a composite ID formed of zone ID, application ID and policy ID.\n\n```sh\n $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n where * `cb029e245cfdd66dc8d2e570d5dd3322` - Zone ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Application ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Policy ID ",
+            "description": "Provides a Cloudflare Access Policy resource. Access Policies are used\nin conjunction with Access Applications to restrict access to a\nparticular resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_policy_index_access_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessPolicy(ctx, \"testPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessPolicy(ctx, \"testPolicyIndex_accessPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessPolicyRequireArray{\n\t\t\t\tIps: cloudflare.AccessPolicyRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy\n\n```sh\n $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n # import an account level Access policy\n\n```sh\n $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -5925,6 +6022,7 @@
                 "decision",
                 "includes",
                 "name",
+                "precedence",
                 "zoneId"
             ],
             "inputProperties": {
@@ -5978,7 +6076,8 @@
                 "applicationId",
                 "decision",
                 "includes",
-                "name"
+                "name",
+                "precedence"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AccessPolicy resources.\n",
@@ -8721,7 +8820,6 @@
             },
             "required": [
                 "certificate",
-                "csr",
                 "expiresOn",
                 "hostnames",
                 "requestType"
@@ -8748,7 +8846,6 @@
                 }
             },
             "requiredInputs": [
-                "csr",
                 "hostnames",
                 "requestType"
             ],
@@ -10902,7 +10999,7 @@
             }
         },
         "cloudflare:index/getZones:getZones": {
-            "description": "Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGiven you have the following zones in Cloudflare.\n\n- example.com\n- example.net\n- not-example.com\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for a single zone that you know exists using an exact match.\n// API request will be for zones?name=example.com. Will not match not-example.com\n// or example.net.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        name: \"example.com\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    name=\"example.com\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                Name = \"example.com\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tName: \"example.com\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\".\n// API request will be for zones?name=contains:example. Will return all three\n// zones.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        name: \"example\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\" but start with \"not-\".\n// API request will be for zones?name=contains:example. Will perform client side\n// filtering using the provided regex and will only match the single zone,\n// not-example.com.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        match: \"^not-\",\n        name: \"example\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    match=\"^not-\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Match = \"^not-\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tMatch:      \"^not-\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Example usage with other resources\n\nThe example below matches all zones which have \"example\" in their value, end\nwith \".com\" and are active. The matched zone is then referenced in the zone\nlockdown resource.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst test = cloudflare.getZones({\n    filter: {\n        name: \"example\",\n        lookupType: \"contains\",\n        match: `.com$`,\n        status: \"active\",\n    },\n});\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpointLockdown\", {\n    zone: test.then(test =\u003e test.zones[0])[\"name\"],\n    paused: \"false\",\n    description: \"Restrict access to these endpoints to requests from a known IP address\",\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    configurations: [{\n        target: \"ip\",\n        value: \"198.51.100.4\",\n    }],\n});\nconst example = new cloudflare.Zone(\"example\", {\n    zoneId: test.then(test =\u003e test.zones[0])[\"id\"],\n    name: \"www\",\n    value: \"203.0.113.1\",\n    type: \"A\",\n    proxied: false,\n});\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGiven you have the following zones in Cloudflare.\n\n- example.com\n- example.net\n- not-example.com\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for a single zone that you know exists using an exact match.\n// API request will be for zones?name=example.com. Will not match not-example.com\n// or example.net.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        name: \"example.com\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    name=\"example.com\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                Name = \"example.com\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tName: \"example.com\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\".\n// API request will be for zones?name=contains:example. Will return all three\n// zones.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        name: \"example\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\" but start with \"not-\".\n// API request will be for zones?name=contains:example. Will perform client side\n// filtering using the provided regex and will only match the single zone,\n// not-example.com.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        match: \"^not-\",\n        name: \"example\",\n    },\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    match=\"^not-\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Match = \"^not-\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v2/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026cloudflare.GetZonesArgs{\n\t\t\tFilter: cloudflare.GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tMatch:      \"^not-\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Example usage with other resources\n\nThe example below matches all zones which have \"example\" in their value, end\nwith \".com\" and are active. The matched zone is then referenced in the zone\nlockdown resource.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst test = cloudflare.getZones({\n    filter: {\n        name: \"example\",\n        lookupType: \"contains\",\n        match: `.com$`,\n        status: \"active\",\n    },\n});\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpointLockdown\", {\n    zone: test.then(test =\u003e test.zones[0])[\"name\"],\n    paused: \"false\",\n    description: \"Restrict access to these endpoints to requests from a known IP address\",\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    configurations: [{\n        target: \"ip\",\n        value: \"198.51.100.4\",\n    }],\n});\nconst example = new cloudflare.Record(\"example\", {\n    zoneId: test.then(test =\u003e test.zones[0])[\"id\"],\n    name: \"www\",\n    value: \"203.0.113.1\",\n    type: \"A\",\n    proxied: false,\n});\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getZones.\n",
                 "properties": {

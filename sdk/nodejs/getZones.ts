@@ -89,7 +89,7 @@ import * as utilities from "./utilities";
  *         value: "198.51.100.4",
  *     }],
  * });
- * const example = new cloudflare.Zone("example", {
+ * const example = new cloudflare.Record("example", {
  *     zoneId: test.then(test => test.zones[0])["id"],
  *     name: "www",
  *     value: "203.0.113.1",

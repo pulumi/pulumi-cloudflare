@@ -26,6 +26,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewAccessGroup(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
 		r, err = NewAccessIdentityProvider(ctx, name, nil, pulumi.URN_(urn))
+	case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
+		r, err = NewAccessMutualTlsCertificate(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/accessPolicy:AccessPolicy":
 		r, err = NewAccessPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "cloudflare:index/accessRule:AccessRule":
@@ -155,6 +157,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessIdentityProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessMutualTlsCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

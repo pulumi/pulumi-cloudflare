@@ -60,7 +60,7 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Configure API client to always use that account.
+     * Configure API client to always use that account
      */
     readonly accountId?: pulumi.Input<string>;
     /**
@@ -76,11 +76,11 @@ export interface ProviderArgs {
      */
     readonly apiToken?: pulumi.Input<string>;
     /**
-     * A special Cloudflare API key good for a restricted set of endpoints.
+     * A special Cloudflare API key good for a restricted set of endpoints
      */
     readonly apiUserServiceKey?: pulumi.Input<string>;
     /**
-     * A registered Cloudflare email address.
+     * A registered Cloudflare email address
      */
     readonly email?: pulumi.Input<string>;
     /**

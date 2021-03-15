@@ -16,6 +16,7 @@
         "accessApplication.ts",
         "accessGroup.ts",
         "accessIdentityProvider.ts",
+        "accessMutualTlsCertificate.ts",
         "accessPolicy.ts",
         "accessRule.ts",
         "accessServiceToken.ts",

@@ -25,7 +25,7 @@ __config__ = pulumi.Config('cloudflare')
 
 account_id = __config__.get('accountId')
 """
-Configure API client to always use that account.
+Configure API client to always use that account
 """
 
 api_client_logging = __config__.get('apiClientLogging') or (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
@@ -45,12 +45,12 @@ The API Token for operations.
 
 api_user_service_key = __config__.get('apiUserServiceKey')
 """
-A special Cloudflare API key good for a restricted set of endpoints.
+A special Cloudflare API key good for a restricted set of endpoints
 """
 
 email = __config__.get('email')
 """
-A registered Cloudflare email address.
+A registered Cloudflare email address
 """
 
 max_backoff = __config__.get('maxBackoff') or (_utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)

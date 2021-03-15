@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 let __config = new pulumi.Config("cloudflare");
 
 /**
- * Configure API client to always use that account.
+ * Configure API client to always use that account
  */
 export let accountId: string | undefined = __config.get("accountId");
 /**
@@ -23,11 +23,11 @@ export let apiKey: string | undefined = __config.get("apiKey");
  */
 export let apiToken: string | undefined = __config.get("apiToken");
 /**
- * A special Cloudflare API key good for a restricted set of endpoints.
+ * A special Cloudflare API key good for a restricted set of endpoints
  */
 export let apiUserServiceKey: string | undefined = __config.get("apiUserServiceKey");
 /**
- * A registered Cloudflare email address.
+ * A registered Cloudflare email address
  */
 export let email: string | undefined = __config.get("email");
 /**

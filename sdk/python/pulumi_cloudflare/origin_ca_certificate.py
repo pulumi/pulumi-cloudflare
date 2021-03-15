@@ -82,8 +82,6 @@ class OriginCaCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if csr is None and not opts.urn:
-                raise TypeError("Missing required property 'csr'")
             __props__['csr'] = csr
             if hostnames is None and not opts.urn:
                 raise TypeError("Missing required property 'hostnames'")
@@ -146,7 +144,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def csr(self) -> pulumi.Output[str]:
+    def csr(self) -> pulumi.Output[Optional[str]]:
         """
         The Certificate Signing Request. Must be newline-encoded.
         """

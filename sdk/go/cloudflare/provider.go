@@ -49,7 +49,7 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Configure API client to always use that account.
+	// Configure API client to always use that account
 	AccountId *string `pulumi:"accountId"`
 	// Whether to print logs from the API client (using the default log library logger)
 	ApiClientLogging *bool `pulumi:"apiClientLogging"`
@@ -57,9 +57,9 @@ type providerArgs struct {
 	ApiKey *string `pulumi:"apiKey"`
 	// The API Token for operations.
 	ApiToken *string `pulumi:"apiToken"`
-	// A special Cloudflare API key good for a restricted set of endpoints.
+	// A special Cloudflare API key good for a restricted set of endpoints
 	ApiUserServiceKey *string `pulumi:"apiUserServiceKey"`
-	// A registered Cloudflare email address.
+	// A registered Cloudflare email address
 	Email *string `pulumi:"email"`
 	// Maximum backoff period in seconds after failed API calls
 	MaxBackoff *int `pulumi:"maxBackoff"`
@@ -73,7 +73,7 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Configure API client to always use that account.
+	// Configure API client to always use that account
 	AccountId pulumi.StringPtrInput
 	// Whether to print logs from the API client (using the default log library logger)
 	ApiClientLogging pulumi.BoolPtrInput
@@ -81,9 +81,9 @@ type ProviderArgs struct {
 	ApiKey pulumi.StringPtrInput
 	// The API Token for operations.
 	ApiToken pulumi.StringPtrInput
-	// A special Cloudflare API key good for a restricted set of endpoints.
+	// A special Cloudflare API key good for a restricted set of endpoints
 	ApiUserServiceKey pulumi.StringPtrInput
-	// A registered Cloudflare email address.
+	// A registered Cloudflare email address
 	Email pulumi.StringPtrInput
 	// Maximum backoff period in seconds after failed API calls
 	MaxBackoff pulumi.IntPtrInput
