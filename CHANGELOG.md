@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 2.14.0 (2021-03-16)
 * Upgrade to v2.19.1 of the CloudFlare Terraform Provider
 * Upgrade to pulumi-terraform-bridge v2.21.0
 * Release macOS arm64 binary
-
----
 
 ## 2.13.1 (2021-02-16)
 * Upgrade to pulumi-terraform-bridge v2.19.0  
