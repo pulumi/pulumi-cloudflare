@@ -5806,7 +5806,7 @@ class ZoneSettingsOverrideInitialSettingsArgs:
             pulumi.set(__self__, "ssl", ssl)
         if tls12_only is not None:
             warnings.warn("""tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""", DeprecationWarning)
-            pulumi.log.warn("tls12_only is deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.")
+            pulumi.log.warn("""tls12_only is deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""")
         if tls12_only is not None:
             pulumi.set(__self__, "tls12_only", tls12_only)
         if tls13 is not None:
@@ -6563,7 +6563,7 @@ class ZoneSettingsOverrideSettingsArgs:
             pulumi.set(__self__, "ssl", ssl)
         if tls12_only is not None:
             warnings.warn("""tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""", DeprecationWarning)
-            pulumi.log.warn("tls12_only is deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.")
+            pulumi.log.warn("""tls12_only is deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = \"1.2\"` instead.""")
         if tls12_only is not None:
             pulumi.set(__self__, "tls12_only", tls12_only)
         if tls13 is not None:
