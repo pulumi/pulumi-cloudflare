@@ -5,13 +5,52 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ZoneDnssec']
+__all__ = ['ZoneDnssecArgs', 'ZoneDnssec']
+
+@pulumi.input_type
+class ZoneDnssecArgs:
+    def __init__(__self__, *,
+                 zone_id: pulumi.Input[str],
+                 modified_on: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ZoneDnssec resource.
+        :param pulumi.Input[str] zone_id: The zone id for the zone.
+        :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
+        """
+        pulumi.set(__self__, "zone_id", zone_id)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The zone id for the zone.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone DNSSEC updated time.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
 
 
 class ZoneDnssec(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +87,55 @@ class ZoneDnssec(pulumi.CustomResource):
         :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
         :param pulumi.Input[str] zone_id: The zone id for the zone.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ZoneDnssecArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare Zone DNSSEC resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone = cloudflare.Zone("exampleZone", zone="example.com")
+        example_zone_dnssec = cloudflare.ZoneDnssec("exampleZoneDnssec", zone_id=example_zone.id)
+        ```
+
+        ## Import
+
+        Zone DNSSEC resource can be imported using a zone ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
+        ```
+
+         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+
+        :param str resource_name: The name of the resource.
+        :param ZoneDnssecArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneDnssecArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

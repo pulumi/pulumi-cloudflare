@@ -5,15 +5,54 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ZoneSettingsOverride']
+__all__ = ['ZoneSettingsOverrideArgs', 'ZoneSettingsOverride']
+
+@pulumi.input_type
+class ZoneSettingsOverrideArgs:
+    def __init__(__self__, *,
+                 zone_id: pulumi.Input[str],
+                 settings: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']] = None):
+        """
+        The set of arguments for constructing a ZoneSettingsOverride resource.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to which apply settings.
+        :param pulumi.Input['ZoneSettingsOverrideSettingsArgs'] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        """
+        pulumi.set(__self__, "zone_id", zone_id)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The DNS zone ID to which apply settings.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']]:
+        """
+        Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']]):
+        pulumi.set(self, "settings", value)
 
 
 class ZoneSettingsOverride(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -57,6 +96,62 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which apply settings.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ZoneSettingsOverrideArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        test = cloudflare.ZoneSettingsOverride("test",
+            zone_id=var["cloudflare_zone_id"],
+            settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
+                brotli="on",
+                challenge_ttl=2700,
+                security_level="high",
+                opportunistic_encryption="on",
+                automatic_https_rewrites="on",
+                mirage="on",
+                waf="on",
+                minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(
+                    css="on",
+                    js="off",
+                    html="off",
+                ),
+                security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(
+                    enabled=True,
+                ),
+            ))
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ZoneSettingsOverrideArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneSettingsOverrideArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 settings: Optional[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideSettingsArgs']]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

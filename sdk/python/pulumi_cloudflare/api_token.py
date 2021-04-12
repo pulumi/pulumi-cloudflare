@@ -5,15 +5,71 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ApiToken']
+__all__ = ['ApiTokenArgs', 'ApiToken']
+
+@pulumi.input_type
+class ApiTokenArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 policies: pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]],
+                 condition: Optional[pulumi.Input['ApiTokenConditionArgs']] = None):
+        """
+        The set of arguments for constructing a ApiToken resource.
+        :param pulumi.Input[str] name: Name of the APIToken.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Permissions policy. Multiple policy blocks can be defined.
+               See the definition below.
+        :param pulumi.Input['ApiTokenConditionArgs'] condition: Condition block. See the definition below.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "policies", policies)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the APIToken.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]:
+        """
+        Permissions policy. Multiple policy blocks can be defined.
+        See the definition below.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]):
+        pulumi.set(self, "policies", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['ApiTokenConditionArgs']]:
+        """
+        Condition block. See the definition below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['ApiTokenConditionArgs']]):
+        pulumi.set(self, "condition", value)
 
 
 class ApiToken(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -138,6 +194,141 @@ class ApiToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]] policies: Permissions policy. Multiple policy blocks can be defined.
                See the definition below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApiTokenArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a resource which manages Cloudflare API tokens.
+
+        Read more about permission groups and their applicable scopes in
+        [the official documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
+
+        ## Example Usage
+        ### User Permissions
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        all = cloudflare.get_api_token_permission_groups()
+        # Token allowed to create new tokens.
+        # Can only be used from specific ip range.
+        api_token_create = cloudflare.ApiToken("apiTokenCreate",
+            name="api_token_create",
+            policies=[cloudflare.ApiTokenPolicyArgs(
+                permission_groups=[all.permissions["API Tokens Write"]],
+                resources={
+                    f"com.cloudflare.api.user.{var['user_id']}": "*",
+                },
+            )],
+            condition=cloudflare.ApiTokenConditionArgs(
+                request_ip=cloudflare.ApiTokenConditionRequestIpArgs(
+                    ins=["192.0.2.1/32"],
+                    not_ins=["198.51.100.1/32"],
+                ),
+            ))
+        ```
+        ### Account permissions
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        all = cloudflare.get_api_token_permission_groups()
+        # Token allowed to read audit logs from all accounts.
+        logs_account_all = cloudflare.ApiToken("logsAccountAll",
+            name="logs_account_all",
+            policies=[cloudflare.ApiTokenPolicyArgs(
+                permission_groups=[all.permissions["Access: Audit Logs Read"]],
+                resources={
+                    "com.cloudflare.api.account.*": "*",
+                },
+            )])
+        # Token allowed to read audit logs from specific account.
+        logs_account = cloudflare.ApiToken("logsAccount",
+            name="logs_account",
+            policies=[cloudflare.ApiTokenPolicyArgs(
+                permission_groups=[all.permissions["Access: Audit Logs Read"]],
+                resources={
+                    f"com.cloudflare.api.account.{var['account_id']}": "*",
+                },
+            )])
+        ```
+        ### Zone Permissions
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_cloudflare as cloudflare
+
+        all = cloudflare.get_api_token_permission_groups()
+        # Token allowed to edit DNS entries and TLS certs for specific zone.
+        dns_tls_edit = cloudflare.ApiToken("dnsTlsEdit",
+            name="dns_tls_edit",
+            policies=[cloudflare.ApiTokenPolicyArgs(
+                permission_groups=[
+                    all.permissions["DNS Write"],
+                    all.permissions["SSL and Certificates Write"],
+                ],
+                resources={
+                    f"com.cloudflare.api.account.zone.{var['zone_id']}": "*",
+                },
+            )])
+        # Token allowed to edit DNS entries for all zones except one.
+        dns_tls_edit_all_except_one = cloudflare.ApiToken("dnsTlsEditAllExceptOne",
+            name="dns_tls_edit_all_except_one",
+            policies=[
+                cloudflare.ApiTokenPolicyArgs(
+                    permission_groups=[all.permissions["DNS Write"]],
+                    resources={
+                        "com.cloudflare.api.account.zone.*": "*",
+                    },
+                ),
+                cloudflare.ApiTokenPolicyArgs(
+                    permission_groups=[all.permissions["DNS Write"]],
+                    resources={
+                        f"com.cloudflare.api.account.zone.{var['zone_id']}": "*",
+                    },
+                    effect="deny",
+                ),
+            ])
+        # Token allowed to edit DNS entries for all zones from specific account.
+        dns_edit_all_account = cloudflare.ApiToken("dnsEditAllAccount",
+            name="dns_edit_all_account",
+            policies=[cloudflare.ApiTokenPolicyArgs(
+                permission_groups=[all.permissions["DNS Write"]],
+                resources={
+                    f"com.cloudflare.api.account.{var['account_id']}": json.dumps({
+                        "com.cloudflare.api.account.zone.*": "*",
+                    }),
+                },
+            )])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ApiTokenArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApiTokenArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

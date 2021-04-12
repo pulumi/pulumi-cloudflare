@@ -5,15 +5,149 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LoadBalancerPool']
+__all__ = ['LoadBalancerPoolArgs', 'LoadBalancerPool']
+
+@pulumi.input_type
+class LoadBalancerPoolArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 origins: pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]],
+                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 minimum_origins: Optional[pulumi.Input[int]] = None,
+                 monitor: Optional[pulumi.Input[str]] = None,
+                 notification_email: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LoadBalancerPool resource.
+        :param pulumi.Input[str] name: A human-identifiable name for the origin.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] check_regions: A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+        :param pulumi.Input[str] description: Free text description.
+        :param pulumi.Input[bool] enabled: Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+        :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
+        :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "origins", origins)
+        if check_regions is not None:
+            pulumi.set(__self__, "check_regions", check_regions)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if minimum_origins is not None:
+            pulumi.set(__self__, "minimum_origins", minimum_origins)
+        if monitor is not None:
+            pulumi.set(__self__, "monitor", monitor)
+        if notification_email is not None:
+            pulumi.set(__self__, "notification_email", notification_email)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        A human-identifiable name for the origin.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def origins(self) -> pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]:
+        """
+        The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+        """
+        return pulumi.get(self, "origins")
+
+    @origins.setter
+    def origins(self, value: pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]):
+        pulumi.set(self, "origins", value)
+
+    @property
+    @pulumi.getter(name="checkRegions")
+    def check_regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+        """
+        return pulumi.get(self, "check_regions")
+
+    @check_regions.setter
+    def check_regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "check_regions", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free text description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="minimumOrigins")
+    def minimum_origins(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+        """
+        return pulumi.get(self, "minimum_origins")
+
+    @minimum_origins.setter
+    def minimum_origins(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "minimum_origins", value)
+
+    @property
+    @pulumi.getter
+    def monitor(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Monitor to use for health checking origins within this pool.
+        """
+        return pulumi.get(self, "monitor")
+
+    @monitor.setter
+    def monitor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "monitor", value)
+
+    @property
+    @pulumi.getter(name="notificationEmail")
+    def notification_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        """
+        return pulumi.get(self, "notification_email")
+
+    @notification_email.setter
+    def notification_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notification_email", value)
 
 
 class LoadBalancerPool(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +201,66 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LoadBalancerPoolArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        foo = cloudflare.LoadBalancerPool("foo",
+            description="example load balancer pool",
+            enabled=False,
+            minimum_origins=1,
+            name="example-pool",
+            notification_email="someone@example.com",
+            origins=[
+                cloudflare.LoadBalancerPoolOriginArgs(
+                    address="192.0.2.1",
+                    enabled=False,
+                    name="example-1",
+                ),
+                cloudflare.LoadBalancerPoolOriginArgs(
+                    address="192.0.2.2",
+                    name="example-2",
+                ),
+            ])
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LoadBalancerPoolArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LoadBalancerPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 minimum_origins: Optional[pulumi.Input[int]] = None,
+                 monitor: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_email: Optional[pulumi.Input[str]] = None,
+                 origins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -21,105 +21,106 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "cloudflare:index/accessApplication:AccessApplication":
-		r, err = NewAccessApplication(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessApplication{}
 	case "cloudflare:index/accessGroup:AccessGroup":
-		r, err = NewAccessGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessGroup{}
 	case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
-		r, err = NewAccessIdentityProvider(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessIdentityProvider{}
 	case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
-		r, err = NewAccessMutualTlsCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessMutualTlsCertificate{}
 	case "cloudflare:index/accessPolicy:AccessPolicy":
-		r, err = NewAccessPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessPolicy{}
 	case "cloudflare:index/accessRule:AccessRule":
-		r, err = NewAccessRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessRule{}
 	case "cloudflare:index/accessServiceToken:AccessServiceToken":
-		r, err = NewAccessServiceToken(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessServiceToken{}
 	case "cloudflare:index/accountMember:AccountMember":
-		r, err = NewAccountMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountMember{}
 	case "cloudflare:index/apiToken:ApiToken":
-		r, err = NewApiToken(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiToken{}
 	case "cloudflare:index/argo:Argo":
-		r, err = NewArgo(ctx, name, nil, pulumi.URN_(urn))
+		r = &Argo{}
 	case "cloudflare:index/argoTunnel:ArgoTunnel":
-		r, err = NewArgoTunnel(ctx, name, nil, pulumi.URN_(urn))
+		r = &ArgoTunnel{}
 	case "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls":
-		r, err = NewAuthenticatedOriginPulls(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthenticatedOriginPulls{}
 	case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
-		r, err = NewAuthenticatedOriginPullsCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &AuthenticatedOriginPullsCertificate{}
 	case "cloudflare:index/byoIpPrefix:ByoIpPrefix":
-		r, err = NewByoIpPrefix(ctx, name, nil, pulumi.URN_(urn))
+		r = &ByoIpPrefix{}
 	case "cloudflare:index/certificatePack:CertificatePack":
-		r, err = NewCertificatePack(ctx, name, nil, pulumi.URN_(urn))
+		r = &CertificatePack{}
 	case "cloudflare:index/customHostname:CustomHostname":
-		r, err = NewCustomHostname(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomHostname{}
 	case "cloudflare:index/customHostnameFallbackOrigin:CustomHostnameFallbackOrigin":
-		r, err = NewCustomHostnameFallbackOrigin(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomHostnameFallbackOrigin{}
 	case "cloudflare:index/customPages:CustomPages":
-		r, err = NewCustomPages(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
-		r, err = NewCustomSsl(ctx, name, nil, pulumi.URN_(urn))
+		r = &CustomSsl{}
 	case "cloudflare:index/filter:Filter":
-		r, err = NewFilter(ctx, name, nil, pulumi.URN_(urn))
+		r = &Filter{}
 	case "cloudflare:index/firewallRule:FirewallRule":
-		r, err = NewFirewallRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &FirewallRule{}
 	case "cloudflare:index/healthcheck:Healthcheck":
-		r, err = NewHealthcheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &Healthcheck{}
 	case "cloudflare:index/ipList:IpList":
-		r, err = NewIpList(ctx, name, nil, pulumi.URN_(urn))
+		r = &IpList{}
 	case "cloudflare:index/loadBalancer:LoadBalancer":
-		r, err = NewLoadBalancer(ctx, name, nil, pulumi.URN_(urn))
+		r = &LoadBalancer{}
 	case "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
-		r, err = NewLoadBalancerMonitor(ctx, name, nil, pulumi.URN_(urn))
+		r = &LoadBalancerMonitor{}
 	case "cloudflare:index/loadBalancerPool:LoadBalancerPool":
-		r, err = NewLoadBalancerPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &LoadBalancerPool{}
 	case "cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge":
-		r, err = NewLogPushOwnershipChallenge(ctx, name, nil, pulumi.URN_(urn))
+		r = &LogPushOwnershipChallenge{}
 	case "cloudflare:index/logpullRetention:LogpullRetention":
-		r, err = NewLogpullRetention(ctx, name, nil, pulumi.URN_(urn))
+		r = &LogpullRetention{}
 	case "cloudflare:index/logpushJob:LogpushJob":
-		r, err = NewLogpushJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &LogpushJob{}
 	case "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
-		r, err = NewMagicFirewallRuleset(ctx, name, nil, pulumi.URN_(urn))
+		r = &MagicFirewallRuleset{}
 	case "cloudflare:index/originCaCertificate:OriginCaCertificate":
-		r, err = NewOriginCaCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &OriginCaCertificate{}
 	case "cloudflare:index/pageRule:PageRule":
-		r, err = NewPageRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &PageRule{}
 	case "cloudflare:index/rateLimit:RateLimit":
-		r, err = NewRateLimit(ctx, name, nil, pulumi.URN_(urn))
+		r = &RateLimit{}
 	case "cloudflare:index/record:Record":
-		r, err = NewRecord(ctx, name, nil, pulumi.URN_(urn))
+		r = &Record{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
-		r, err = NewSpectrumApplication(ctx, name, nil, pulumi.URN_(urn))
+		r = &SpectrumApplication{}
 	case "cloudflare:index/wafGroup:WafGroup":
-		r, err = NewWafGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &WafGroup{}
 	case "cloudflare:index/wafOverride:WafOverride":
-		r, err = NewWafOverride(ctx, name, nil, pulumi.URN_(urn))
+		r = &WafOverride{}
 	case "cloudflare:index/wafPackage:WafPackage":
-		r, err = NewWafPackage(ctx, name, nil, pulumi.URN_(urn))
+		r = &WafPackage{}
 	case "cloudflare:index/wafRule:WafRule":
-		r, err = NewWafRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &WafRule{}
 	case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
-		r, err = NewWorkerCronTrigger(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkerCronTrigger{}
 	case "cloudflare:index/workerRoute:WorkerRoute":
-		r, err = NewWorkerRoute(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkerRoute{}
 	case "cloudflare:index/workerScript:WorkerScript":
-		r, err = NewWorkerScript(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkerScript{}
 	case "cloudflare:index/workersKv:WorkersKv":
-		r, err = NewWorkersKv(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
-		r, err = NewWorkersKvNamespace(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkersKvNamespace{}
 	case "cloudflare:index/zone:Zone":
-		r, err = NewZone(ctx, name, nil, pulumi.URN_(urn))
+		r = &Zone{}
 	case "cloudflare:index/zoneDnssec:ZoneDnssec":
-		r, err = NewZoneDnssec(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneDnssec{}
 	case "cloudflare:index/zoneLockdown:ZoneLockdown":
-		r, err = NewZoneLockdown(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneLockdown{}
 	case "cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride":
-		r, err = NewZoneSettingsOverride(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneSettingsOverride{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
@@ -136,7 +137,9 @@ func (p *pkg) ConstructProvider(ctx *pulumi.Context, name, typ, urn string) (pul
 		return nil, fmt.Errorf("unknown provider type: %s", typ)
 	}
 
-	return NewProvider(ctx, name, nil, pulumi.URN_(urn))
+	r := &Provider{}
+	err := ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
+	return r, err
 }
 
 func init() {

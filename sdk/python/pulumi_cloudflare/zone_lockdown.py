@@ -5,15 +5,112 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ZoneLockdown']
+__all__ = ['ZoneLockdownArgs', 'ZoneLockdown']
+
+@pulumi.input_type
+class ZoneLockdownArgs:
+    def __init__(__self__, *,
+                 configurations: pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]],
+                 urls: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 zone_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 priority: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a ZoneLockdown resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
+        :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
+        """
+        pulumi.set(__self__, "configurations", configurations)
+        pulumi.set(__self__, "urls", urls)
+        pulumi.set(__self__, "zone_id", zone_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]:
+        """
+        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        """
+        return pulumi.get(self, "configurations")
+
+    @configurations.setter
+    def configurations(self, value: pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]):
+        pulumi.set(self, "configurations", value)
+
+    @property
+    @pulumi.getter
+    def urls(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        """
+        return pulumi.get(self, "urls")
+
+    @urls.setter
+    def urls(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "urls", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The DNS zone ID to which the access rule should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean of whether this zone lockdown is currently paused. Default: false.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
 
 
 class ZoneLockdown(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +162,67 @@ class ZoneLockdown(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ZoneLockdownArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Restrict access to these endpoints to requests from a known IP address.
+        endpoint_lockdown = cloudflare.ZoneLockdown("endpointLockdown",
+            configurations=[cloudflare.ZoneLockdownConfigurationArgs(
+                target="ip",
+                value="198.51.100.4",
+            )],
+            description="Restrict access to these endpoints to requests from a known IP address",
+            paused=False,
+            urls=["api.mysite.com/some/endpoint*"],
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
+
+        ## Import
+
+        Records can be imported using a composite ID formed of zone name and record ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
+        ```
+
+         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
+
+        :param str resource_name: The name of the resource.
+        :param ZoneLockdownArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneLockdownArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

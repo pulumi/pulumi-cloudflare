@@ -5,15 +5,101 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkerScript']
+__all__ = ['WorkerScriptArgs', 'WorkerScript']
+
+@pulumi.input_type
+class WorkerScriptArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
+                 plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
+                 secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
+                 webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None):
+        """
+        The set of arguments for constructing a WorkerScript resource.
+        :param pulumi.Input[str] content: The script content.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "name", name)
+        if kv_namespace_bindings is not None:
+            pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
+        if plain_text_bindings is not None:
+            pulumi.set(__self__, "plain_text_bindings", plain_text_bindings)
+        if secret_text_bindings is not None:
+            pulumi.set(__self__, "secret_text_bindings", secret_text_bindings)
+        if webassembly_bindings is not None:
+            pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[str]:
+        """
+        The script content.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="kvNamespaceBindings")
+    def kv_namespace_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]]:
+        return pulumi.get(self, "kv_namespace_bindings")
+
+    @kv_namespace_bindings.setter
+    def kv_namespace_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]]):
+        pulumi.set(self, "kv_namespace_bindings", value)
+
+    @property
+    @pulumi.getter(name="plainTextBindings")
+    def plain_text_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]]:
+        return pulumi.get(self, "plain_text_bindings")
+
+    @plain_text_bindings.setter
+    def plain_text_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]]):
+        pulumi.set(self, "plain_text_bindings", value)
+
+    @property
+    @pulumi.getter(name="secretTextBindings")
+    def secret_text_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]]:
+        return pulumi.get(self, "secret_text_bindings")
+
+    @secret_text_bindings.setter
+    def secret_text_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]]):
+        pulumi.set(self, "secret_text_bindings", value)
+
+    @property
+    @pulumi.getter(name="webassemblyBindings")
+    def webassembly_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]]:
+        return pulumi.get(self, "webassembly_bindings")
+
+    @webassembly_bindings.setter
+    def webassembly_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]]):
+        pulumi.set(self, "webassembly_bindings", value)
 
 
 class WorkerScript(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -44,6 +130,49 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WorkerScriptArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+
+        ## Import
+
+        To import a script, use a script name, e.g. `script_name`
+
+        ```sh
+         $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
+        ```
+
+         where* `script_name` - the script name
+
+        :param str resource_name: The name of the resource.
+        :param WorkerScriptArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkerScriptArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 content: Optional[pulumi.Input[str]] = None,
+                 kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
+                 secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
+                 webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,146 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['WafOverride']
+__all__ = ['WafOverrideArgs', 'WafOverride']
+
+@pulumi.input_type
+class WafOverrideArgs:
+    def __init__(__self__, *,
+                 rules: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 urls: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 zone_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 groups: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 rewrite_action: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a WafOverride resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rules: A list of WAF rule ID to rule action you intend to apply.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: An array of URLs to apply the WAF override to.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the WAF override condition should be added.
+        :param pulumi.Input[str] description: Description of what the WAF override does.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] groups: Similar to `rules`; which WAF groups you want to alter.
+        :param pulumi.Input[bool] paused: Whether this package is currently paused.
+        :param pulumi.Input[int] priority: Relative priority of this configuration when multiple configurations match a single URL.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rewrite_action: When a WAF rule matches, substitute its configured action for a different action specified by this definition.
+        """
+        pulumi.set(__self__, "rules", rules)
+        pulumi.set(__self__, "urls", urls)
+        pulumi.set(__self__, "zone_id", zone_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if rewrite_action is not None:
+            pulumi.set(__self__, "rewrite_action", rewrite_action)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        A list of WAF rule ID to rule action you intend to apply.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter
+    def urls(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array of URLs to apply the WAF override to.
+        """
+        return pulumi.get(self, "urls")
+
+    @urls.setter
+    def urls(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "urls", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The DNS zone to which the WAF override condition should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of what the WAF override does.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Similar to `rules`; which WAF groups you want to alter.
+        """
+        return pulumi.get(self, "groups")
+
+    @groups.setter
+    def groups(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "groups", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this package is currently paused.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Relative priority of this configuration when multiple configurations match a single URL.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="rewriteAction")
+    def rewrite_action(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        When a WAF rule matches, substitute its configured action for a different action specified by this definition.
+        """
+        return pulumi.get(self, "rewrite_action")
+
+    @rewrite_action.setter
+    def rewrite_action(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "rewrite_action", value)
 
 
 class WafOverride(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -73,6 +206,74 @@ class WafOverride(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: An array of URLs to apply the WAF override to.
         :param pulumi.Input[str] zone_id: The DNS zone to which the WAF override condition should be added.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WafOverrideArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare WAF override resource. This enables the ability to toggle
+        WAF rules and groups on or off based on URIs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        shop_ecxample = cloudflare.WafOverride("shopEcxample",
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            urls=[
+                "example.com/no-waf-here",
+                "example.com/another/path/*",
+            ],
+            rules={
+                "100015": "disable",
+            },
+            groups={
+                "ea8687e59929c1fd05ba97574ad43f77": "default",
+            },
+            rewrite_action={
+                "default": "block",
+                "challenge": "block",
+            })
+        ```
+
+        ## Import
+
+        WAF Overrides can be imported using a composite ID formed of zone ID and override ID.
+
+        ```sh
+         $ pulumi import cloudflare:index/wafOverride:WafOverride my_example_waf_override 3abe5b950053dbddf1516d89f9ef1e8a/9d4e66d7649c178663bf62e06dbacb23
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param WafOverrideArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WafOverrideArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 groups: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 rewrite_action: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['WorkerCronTrigger']
+__all__ = ['WorkerCronTriggerArgs', 'WorkerCronTrigger']
+
+@pulumi.input_type
+class WorkerCronTriggerArgs:
+    def __init__(__self__, *,
+                 schedules: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 script_name: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a WorkerCronTrigger resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
+        :param pulumi.Input[str] script_name: Worker script to target for the schedules
+        """
+        pulumi.set(__self__, "schedules", schedules)
+        pulumi.set(__self__, "script_name", script_name)
+
+    @property
+    @pulumi.getter
+    def schedules(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of cron expressions to execute the Worker Script
+        """
+        return pulumi.get(self, "schedules")
+
+    @schedules.setter
+    def schedules(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "schedules", value)
+
+    @property
+    @pulumi.getter(name="scriptName")
+    def script_name(self) -> pulumi.Input[str]:
+        """
+        Worker script to target for the schedules
+        """
+        return pulumi.get(self, "script_name")
+
+    @script_name.setter
+    def script_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "script_name", value)
 
 
 class WorkerCronTrigger(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -56,6 +94,63 @@ class WorkerCronTrigger(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
         :param pulumi.Input[str] script_name: Worker script to target for the schedules
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WorkerCronTriggerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Worker Cron Triggers allow users to map a cron expression to a Worker script
+        using a `ScheduledEvent` listener that enables Workers to be executed on a
+        schedule. Worker Cron Triggers are ideal for running periodic jobs for
+        maintenance or calling third-party APIs to collect up-to-date data.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_script = cloudflare.WorkerScript("exampleScript",
+            name="example-script",
+            content=(lambda path: open(path).read())("path/to/my.js"))
+        example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
+            script_name=example_script.name,
+            schedules=[
+                "*/5 * * * *",
+                "10 7 * * mon-fri",
+            ])
+        ```
+
+        ## Import
+
+        Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
+
+        ```sh
+         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example my-script
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param WorkerCronTriggerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkerCronTriggerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 script_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
