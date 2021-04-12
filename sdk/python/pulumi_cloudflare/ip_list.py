@@ -5,15 +5,96 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['IpList']
+__all__ = ['IpListArgs', 'IpList']
+
+@pulumi.input_type
+class IpListArgs:
+    def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
+                 kind: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['IpListItemArgs']]]] = None):
+        """
+        The set of arguments for constructing a IpList resource.
+        :param pulumi.Input[str] account_id: The ID of the account where the IP List is being created.
+        :param pulumi.Input[str] kind: The kind of values in the List. Valid values: `ip`.
+        :param pulumi.Input[str] name: The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
+        :param pulumi.Input[str] description: A note that can be used to annotate the List. Maximum Length: 500
+        """
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the account where the IP List is being created.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Input[str]:
+        """
+        The kind of values in the List. Valid values: `ip`.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A note that can be used to annotate the List. Maximum Length: 500
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpListItemArgs']]]]:
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpListItemArgs']]]]):
+        pulumi.set(self, "items", value)
 
 
 class IpList(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +148,70 @@ class IpList(pulumi.CustomResource):
         :param pulumi.Input[str] kind: The kind of values in the List. Valid values: `ip`.
         :param pulumi.Input[str] name: The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IpListArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        IP Lists are a set of IP addresses or CIDR ranges that are configured on the account level. Once created, IP Lists can be
+        used in Firewall Rules across all zones within the same account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.IpList("example",
+            account_id="d41d8cd98f00b204e9800998ecf8427e",
+            description="list description",
+            items=[
+                cloudflare.IpListItemArgs(
+                    comment="Office IP",
+                    value="192.0.2.1",
+                ),
+                cloudflare.IpListItemArgs(
+                    comment="Datacenter range",
+                    value="203.0.113.0/24",
+                ),
+            ],
+            kind="ip",
+            name="example_list")
+        ```
+
+        ## Import
+
+        An existing IP List can be imported using the account ID and list ID
+
+        ```sh
+         $ pulumi import cloudflare:index/ipList:IpList example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param IpListArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IpListArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpListItemArgs']]]]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

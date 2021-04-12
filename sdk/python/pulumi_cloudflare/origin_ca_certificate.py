@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['OriginCaCertificate']
+__all__ = ['OriginCaCertificateArgs', 'OriginCaCertificate']
+
+@pulumi.input_type
+class OriginCaCertificateArgs:
+    def __init__(__self__, *,
+                 hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 request_type: pulumi.Input[str],
+                 csr: Optional[pulumi.Input[str]] = None,
+                 requested_validity: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a OriginCaCertificate resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: An array of hostnames or wildcard names bound to the certificate.
+        :param pulumi.Input[str] request_type: The signature type desired on the certificate.
+        :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded.
+        :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid.
+        """
+        pulumi.set(__self__, "hostnames", hostnames)
+        pulumi.set(__self__, "request_type", request_type)
+        if csr is not None:
+            pulumi.set(__self__, "csr", csr)
+        if requested_validity is not None:
+            pulumi.set(__self__, "requested_validity", requested_validity)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        An array of hostnames or wildcard names bound to the certificate.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "hostnames", value)
+
+    @property
+    @pulumi.getter(name="requestType")
+    def request_type(self) -> pulumi.Input[str]:
+        """
+        The signature type desired on the certificate.
+        """
+        return pulumi.get(self, "request_type")
+
+    @request_type.setter
+    def request_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "request_type", value)
+
+    @property
+    @pulumi.getter
+    def csr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Signing Request. Must be newline-encoded.
+        """
+        return pulumi.get(self, "csr")
+
+    @csr.setter
+    def csr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "csr", value)
+
+    @property
+    @pulumi.getter(name="requestedValidity")
+    def requested_validity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days for which the certificate should be valid.
+        """
+        return pulumi.get(self, "requested_validity")
+
+    @requested_validity.setter
+    def requested_validity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "requested_validity", value)
 
 
 class OriginCaCertificate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +135,70 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] request_type: The signature type desired on the certificate.
         :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OriginCaCertificateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
+
+        **This resource requires you use your Origin CA Key as the `api_user_service_key`, in conjunction with an `api_token` or `email` and `api_key`.**
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+        import pulumi_tls as tls
+
+        # Create a CSR and generate a CA certificate
+        example_private_key = tls.PrivateKey("examplePrivateKey", algorithm="RSA")
+        example_cert_request = tls.CertRequest("exampleCertRequest",
+            key_algorithm=example_private_key.algorithm,
+            private_key_pem=example_private_key.private_key_pem,
+            subjects=[tls.CertRequestSubjectArgs(
+                common_name="",
+                organization="Terraform Test",
+            )])
+        example_origin_ca_certificate = cloudflare.OriginCaCertificate("exampleOriginCaCertificate",
+            csr=example_cert_request.cert_request_pem,
+            hostnames=["example.com"],
+            request_type="origin-rsa",
+            requested_validity=7)
+        ```
+
+        ## Import
+
+        Origin CA certificate resource can be imported using an ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param OriginCaCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OriginCaCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 csr: Optional[pulumi.Input[str]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_type: Optional[pulumi.Input[str]] = None,
+                 requested_validity: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

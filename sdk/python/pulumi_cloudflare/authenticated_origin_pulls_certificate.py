@@ -5,13 +5,81 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['AuthenticatedOriginPullsCertificate']
+__all__ = ['AuthenticatedOriginPullsCertificateArgs', 'AuthenticatedOriginPullsCertificate']
+
+@pulumi.input_type
+class AuthenticatedOriginPullsCertificateArgs:
+    def __init__(__self__, *,
+                 certificate: pulumi.Input[str],
+                 private_key: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 zone_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a AuthenticatedOriginPullsCertificate resource.
+        :param pulumi.Input[str] certificate: The public client certificate.
+        :param pulumi.Input[str] private_key: The private key of the client certificate.
+        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to.
+        :param pulumi.Input[str] zone_id: The zone ID to upload the certificate to.
+        """
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> pulumi.Input[str]:
+        """
+        The public client certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[str]:
+        """
+        The private key of the client certificate.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The form of Authenticated Origin Pulls to upload the certificate to.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The zone ID to upload the certificate to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
 
 
 class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -66,6 +134,71 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to.
         :param pulumi.Input[str] zone_id: The zone ID to upload the certificate to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AuthenticatedOriginPullsCertificateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare Authenticated Origin Pulls certificate resource. An uploaded client certificate is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Per-Zone Authenticated Origin Pulls certificate
+        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-zone",
+            zone_id=var["cloudflare_zone_id"])
+        # Per-Hostname Authenticated Origin Pulls certificate
+        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-hostname",
+            zone_id=var["cloudflare_zone_id"])
+        ```
+
+        ## Import
+
+        Authenticated Origin Pull certificates can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, e.g. # Import Per-Zone Authenticated Origin Pull certificate
+
+        ```sh
+         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-zone/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+        ```
+
+        # Import Per-Hostname Authenticated Origin Pull certificate
+
+        ```sh
+         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 023e105f4ecef8ad9ca31a8372d0c353/per-hostname/2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AuthenticatedOriginPullsCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AuthenticatedOriginPullsCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

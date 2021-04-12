@@ -5,15 +5,164 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessPolicy']
+__all__ = ['AccessPolicyArgs', 'AccessPolicy']
+
+@pulumi.input_type
+class AccessPolicyArgs:
+    def __init__(__self__, *,
+                 application_id: pulumi.Input[str],
+                 decision: pulumi.Input[str],
+                 includes: pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]],
+                 name: pulumi.Input[str],
+                 precedence: pulumi.Input[int],
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
+                 requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AccessPolicy resource.
+        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
+        :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
+               Allowed values: `allow`, `deny`, `non_identity`, `bypass`
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Integer.
+        :param pulumi.Input[str] account_id: The account to which the access rule should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added. Conflicts with `account_id`.
+        """
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "decision", decision)
+        pulumi.set(__self__, "includes", includes)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "precedence", precedence)
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if excludes is not None:
+            pulumi.set(__self__, "excludes", excludes)
+        if requires is not None:
+            pulumi.set(__self__, "requires", requires)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the application the policy is associated with.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter
+    def decision(self) -> pulumi.Input[str]:
+        """
+        Defines the action Access will take if the policy matches the user.
+        Allowed values: `allow`, `deny`, `non_identity`, `bypass`
+        """
+        return pulumi.get(self, "decision")
+
+    @decision.setter
+    def decision(self, value: pulumi.Input[str]):
+        pulumi.set(self, "decision", value)
+
+    @property
+    @pulumi.getter
+    def includes(self) -> pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]:
+        """
+        A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        """
+        return pulumi.get(self, "includes")
+
+    @includes.setter
+    def includes(self, value: pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]):
+        pulumi.set(self, "includes", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def precedence(self) -> pulumi.Input[int]:
+        """
+        The unique precedence for policies on a single application. Integer.
+        """
+        return pulumi.get(self, "precedence")
+
+    @precedence.setter
+    def precedence(self, value: pulumi.Input[int]):
+        pulumi.set(self, "precedence", value)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account to which the access rule should be added. Conflicts with `zone_id`.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]:
+        """
+        A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        """
+        return pulumi.get(self, "excludes")
+
+    @excludes.setter
+    def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]):
+        pulumi.set(self, "excludes", value)
+
+    @property
+    @pulumi.getter
+    def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]]:
+        """
+        A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        """
+        return pulumi.get(self, "requires")
+
+    @requires.setter
+    def requires(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]]):
+        pulumi.set(self, "requires", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone to which the access rule should be added. Conflicts with `account_id`.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class AccessPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -93,6 +242,90 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccessPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare Access Policy resource. Access Policies are used
+        in conjunction with Access Applications to restrict access to a
+        particular resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        test_policy_access_policy = cloudflare.AccessPolicy("testPolicyAccessPolicy",
+            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            name="staging policy",
+            precedence=1,
+            decision="allow",
+            includes=[cloudflare.AccessPolicyIncludeArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        test_policy_index_access_policy_access_policy = cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy",
+            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            name="staging policy",
+            precedence=1,
+            decision="allow",
+            includes=[cloudflare.AccessPolicyIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires={
+                "ips": [var["office_ip"]],
+            })
+        ```
+
+        ## Import
+
+        Access Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy
+
+        ```sh
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+        ```
+
+        # import an account level Access policy
+
+        ```sh
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AccessPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccessPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 decision: Optional[pulumi.Input[str]] = None,
+                 excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
+                 includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 precedence: Optional[pulumi.Input[int]] = None,
+                 requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

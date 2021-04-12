@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['LogpullRetention']
+__all__ = ['LogpullRetentionArgs', 'LogpullRetention']
+
+@pulumi.input_type
+class LogpullRetentionArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 zone_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a LogpullRetention resource.
+        :param pulumi.Input[bool] enabled: Whether you wish to retain logs or not.
+        :param pulumi.Input[str] zone_id: The zone ID to apply the log retention to.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether you wish to retain logs or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The zone ID to apply the log retention to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
 
 
 class LogpullRetention(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -47,6 +85,54 @@ class LogpullRetention(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether you wish to retain logs or not.
         :param pulumi.Input[str] zone_id: The zone ID to apply the log retention to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LogpullRetentionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.LogpullRetention("example",
+            enabled=True,
+            zone_id="fb54f084ca7f7b732d3d3ecbd8ef7bf2")
+        ```
+
+        ## Import
+
+        You can import existing Logpull Retention using the zone ID as the identifier.
+
+        ```sh
+         $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example fb54f084ca7f7b732d3d3ecbd8ef7bf2
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LogpullRetentionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LogpullRetentionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

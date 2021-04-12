@@ -5,15 +5,148 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Record']
+__all__ = ['RecordArgs', 'Record']
+
+@pulumi.input_type
+class RecordArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 zone_id: pulumi.Input[str],
+                 data: Optional[pulumi.Input['RecordDataArgs']] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 proxied: Optional[pulumi.Input[bool]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Record resource.
+        :param pulumi.Input[str] name: The name of the record
+        :param pulumi.Input[str] type: The type of the record
+        :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
+        :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        :param pulumi.Input[int] priority: The priority of the record
+        :param pulumi.Input[bool] proxied: Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        :param pulumi.Input[int] ttl: The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_id", zone_id)
+        if data is not None:
+            pulumi.set(__self__, "data", data)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if proxied is not None:
+            pulumi.set(__self__, "proxied", proxied)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the record
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the record
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The DNS zone ID to add the record to
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter
+    def data(self) -> Optional[pulumi.Input['RecordDataArgs']]:
+        """
+        Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: Optional[pulumi.Input['RecordDataArgs']]):
+        pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the record
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def proxied(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the record gets Cloudflare's origin protection; defaults to `false`.
+        """
+        return pulumi.get(self, "proxied")
+
+    @proxied.setter
+    def proxied(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxied", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The (string) value of the record. Either this or `data` must be specified
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 class Record(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -81,6 +214,80 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RecordArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare record resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Add a record to the domain
+        foobar = cloudflare.Record("foobar",
+            zone_id=var["cloudflare_zone_id"],
+            name="terraform",
+            value="192.168.0.11",
+            type="A",
+            ttl=3600)
+        # Add a record requiring a data map
+        _sip_tls = cloudflare.Record("_sipTls",
+            zone_id=var["cloudflare_zone_id"],
+            name="_sip._tls",
+            type="SRV",
+            data=cloudflare.RecordDataArgs(
+                service="_sip",
+                proto="_tls",
+                name="terraform-srv",
+                priority=0,
+                weight=0,
+                port=443,
+                target="example.com",
+            ))
+        ```
+
+        ## Import
+
+        Records can be imported using a composite ID formed of zone ID and record ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/record:Record default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+        ```
+
+         where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - record ID as returned by [API](https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records)
+
+        :param str resource_name: The name of the resource.
+        :param RecordArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RecordArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 proxied: Optional[pulumi.Input[bool]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

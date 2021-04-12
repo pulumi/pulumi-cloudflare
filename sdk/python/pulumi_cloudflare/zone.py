@@ -5,15 +5,102 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Zone']
+__all__ = ['ZoneArgs', 'Zone']
+
+@pulumi.input_type
+class ZoneArgs:
+    def __init__(__self__, *,
+                 zone: pulumi.Input[str],
+                 jump_start: Optional[pulumi.Input[bool]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 plan: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Zone resource.
+        :param pulumi.Input[str] zone: The DNS zone name which will be added.
+        :param pulumi.Input[bool] jump_start: Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+        :param pulumi.Input[bool] paused: Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+        :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+        :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+        """
+        pulumi.set(__self__, "zone", zone)
+        if jump_start is not None:
+            pulumi.set(__self__, "jump_start", jump_start)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[str]:
+        """
+        The DNS zone name which will be added.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone", value)
+
+    @property
+    @pulumi.getter(name="jumpStart")
+    def jump_start(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+        """
+        return pulumi.get(self, "jump_start")
+
+    @jump_start.setter
+    def jump_start(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "jump_start", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+        """
+        return pulumi.get(self, "plan")
+
+    @plan.setter
+    def plan(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class Zone(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +142,57 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ZoneArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare Zone resource. Zone is the basic resource for working with Cloudflare and is roughly equivalent to a domain name that the user purchases.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Zone("example", zone="example.com")
+        ```
+
+        ## Import
+
+        Zone resource can be imported using a zone ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
+        ```
+
+         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+
+        :param str resource_name: The name of the resource.
+        :param ZoneArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 jump_start: Optional[pulumi.Input[bool]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 plan: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

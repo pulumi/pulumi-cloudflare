@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['LogPushOwnershipChallenge']
+__all__ = ['LogPushOwnershipChallengeArgs', 'LogPushOwnershipChallenge']
+
+@pulumi.input_type
+class LogPushOwnershipChallengeArgs:
+    def __init__(__self__, *,
+                 destination_conf: pulumi.Input[str],
+                 zone_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a LogPushOwnershipChallenge resource.
+        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+        :param pulumi.Input[str] zone_id: The zone ID where the logpush ownership challenge should be created.
+        """
+        pulumi.set(__self__, "destination_conf", destination_conf)
+        pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="destinationConf")
+    def destination_conf(self) -> pulumi.Input[str]:
+        """
+        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+        """
+        return pulumi.get(self, "destination_conf")
+
+    @destination_conf.setter
+    def destination_conf(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_conf", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The zone ID where the logpush ownership challenge should be created.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
 
 
 class LogPushOwnershipChallenge(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -41,6 +79,48 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[str] zone_id: The zone ID where the logpush ownership challenge should be created.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LogPushOwnershipChallengeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a resource which manages Cloudflare Logpush ownership challenges to use
+        in a Logpush Job. On it's own, doesn't do much however this resource should
+        be used in conjunction to create Logpush jobs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.LogPushOwnershipChallenge("example",
+            destination_conf="s3://my-bucket-path?region=us-west-2",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LogPushOwnershipChallengeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LogPushOwnershipChallengeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination_conf: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

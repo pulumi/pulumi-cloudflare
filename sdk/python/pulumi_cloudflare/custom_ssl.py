@@ -5,15 +5,66 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CustomSsl']
+__all__ = ['CustomSslArgs', 'CustomSsl']
+
+@pulumi.input_type
+class CustomSslArgs:
+    def __init__(__self__, *,
+                 zone_id: pulumi.Input[str],
+                 custom_ssl_options: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']] = None,
+                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]] = None):
+        """
+        The set of arguments for constructing a CustomSsl resource.
+        :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
+        :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        """
+        pulumi.set(__self__, "zone_id", zone_id)
+        if custom_ssl_options is not None:
+            pulumi.set(__self__, "custom_ssl_options", custom_ssl_options)
+        if custom_ssl_priorities is not None:
+            pulumi.set(__self__, "custom_ssl_priorities", custom_ssl_priorities)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The DNS zone id to the custom ssl cert should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="customSslOptions")
+    def custom_ssl_options(self) -> Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]:
+        """
+        The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        """
+        return pulumi.get(self, "custom_ssl_options")
+
+    @custom_ssl_options.setter
+    def custom_ssl_options(self, value: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]):
+        pulumi.set(self, "custom_ssl_options", value)
+
+    @property
+    @pulumi.getter(name="customSslPriorities")
+    def custom_ssl_priorities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]:
+        return pulumi.get(self, "custom_ssl_priorities")
+
+    @custom_ssl_priorities.setter
+    def custom_ssl_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]):
+        pulumi.set(self, "custom_ssl_priorities", value)
 
 
 class CustomSsl(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -61,6 +112,66 @@ class CustomSsl(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
         :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CustomSslArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare custom ssl resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        config = pulumi.Config()
+        cloudflare_zone_id = config.get("cloudflareZoneId")
+        if cloudflare_zone_id is None:
+            cloudflare_zone_id = "1d5fdc9e88c8a8c4518b068cd94331fe"
+        # Add a custom ssl certificate to the domain
+        foossl = cloudflare.CustomSsl("foossl",
+            custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
+                bundle_method="ubiquitous",
+                certificate="-----INSERT CERTIFICATE-----",
+                geo_restrictions="us",
+                private_key="-----INSERT PRIVATE KEY-----",
+                type="legacy_custom",
+            ),
+            zone_id=cloudflare_zone_id)
+        ```
+
+        ## Import
+
+        Custom SSL Certs can be imported using a composite ID formed of the zone ID and [certificate ID](https://api.cloudflare.com/#custom-ssl-for-a-zone-properties), separated by a "/" e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/customSsl:CustomSsl default 1d5fdc9e88c8a8c4518b068cd94331fe/0123f0ab-9cde-45b2-80bd-4da3010f1337
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param CustomSslArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CustomSslArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_ssl_options: Optional[pulumi.Input[pulumi.InputType['CustomSslCustomSslOptionsArgs']]] = None,
+                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomSslCustomSslPriorityArgs']]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

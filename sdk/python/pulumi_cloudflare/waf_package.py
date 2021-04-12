@@ -5,13 +5,83 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['WafPackage']
+__all__ = ['WafPackageArgs', 'WafPackage']
+
+@pulumi.input_type
+class WafPackageArgs:
+    def __init__(__self__, *,
+                 package_id: pulumi.Input[str],
+                 zone_id: pulumi.Input[str],
+                 action_mode: Optional[pulumi.Input[str]] = None,
+                 sensitivity: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WafPackage resource.
+        :param pulumi.Input[str] package_id: The WAF Package ID.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
+        :param pulumi.Input[str] action_mode: The action mode of the package, can be one of ["block", "challenge", "simulate"].
+        :param pulumi.Input[str] sensitivity: The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
+        """
+        pulumi.set(__self__, "package_id", package_id)
+        pulumi.set(__self__, "zone_id", zone_id)
+        if action_mode is not None:
+            pulumi.set(__self__, "action_mode", action_mode)
+        if sensitivity is not None:
+            pulumi.set(__self__, "sensitivity", sensitivity)
+
+    @property
+    @pulumi.getter(name="packageId")
+    def package_id(self) -> pulumi.Input[str]:
+        """
+        The WAF Package ID.
+        """
+        return pulumi.get(self, "package_id")
+
+    @package_id.setter
+    def package_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "package_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Input[str]:
+        """
+        The DNS zone ID to apply to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="actionMode")
+    def action_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action mode of the package, can be one of ["block", "challenge", "simulate"].
+        """
+        return pulumi.get(self, "action_mode")
+
+    @action_mode.setter
+    def action_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action_mode", value)
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
+        """
+        return pulumi.get(self, "sensitivity")
+
+    @sensitivity.setter
+    def sensitivity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sensitivity", value)
 
 
 class WafPackage(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -53,6 +123,58 @@ class WafPackage(pulumi.CustomResource):
         :param pulumi.Input[str] sensitivity: The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
         :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WafPackageArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Cloudflare WAF rule package resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall packages.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        owasp = cloudflare.WafPackage("owasp",
+            action_mode="simulate",
+            package_id="a25a9a7e9c00afc1fb2e0245519d725b",
+            sensitivity="medium",
+            zone_id="ae36f999674d196762efcc5abb06b345")
+        ```
+
+        ## Import
+
+        Packages can be imported using a composite ID formed of zone ID and the WAF Package ID, e.g.
+
+        ```sh
+         $ pulumi import cloudflare:index/wafPackage:WafPackage owasp ae36f999674d196762efcc5abb06b345/a25a9a7e9c00afc1fb2e0245519d725b
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param WafPackageArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WafPackageArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action_mode: Optional[pulumi.Input[str]] = None,
+                 package_id: Optional[pulumi.Input[str]] = None,
+                 sensitivity: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
