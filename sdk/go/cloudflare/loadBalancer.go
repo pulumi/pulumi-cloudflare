@@ -64,6 +64,18 @@ import (
 // 					},
 // 				},
 // 			},
+// 			Rules: cloudflare.LoadBalancerRuleArray{
+// 				&cloudflare.LoadBalancerRuleArgs{
+// 					Name:      pulumi.String("example rule"),
+// 					Condition: pulumi.String("http.request.uri.path contains \"testing\""),
+// 					FixedResponse: &cloudflare.LoadBalancerRuleFixedResponseArgs{
+// 						Message_body: pulumi.String("hello"),
+// 						Status_code:  pulumi.Float64(200),
+// 						Content_type: pulumi.String("html"),
+// 						Location:     pulumi.String("www.example.com"),
+// 					},
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -87,23 +99,25 @@ type LoadBalancer struct {
 	FallbackPoolId pulumi.StringOutput `pulumi:"fallbackPoolId"`
 	// The RFC3339 timestamp of when the load balancer was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// The DNS name (FQDN, including the zone) to associate with the load balancer.
+	// Human readable name for this rule.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+	// See popPools above.
 	PopPools LoadBalancerPopPoolArrayOutput `pulumi:"popPools"`
 	// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
 	Proxied pulumi.BoolPtrOutput `pulumi:"proxied"`
-	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+	// See regionPools above.
 	RegionPools LoadBalancerRegionPoolArrayOutput `pulumi:"regionPools"`
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
+	// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+	Rules LoadBalancerRuleArrayOutput `pulumi:"rules"`
+	// See field above.
 	SessionAffinity pulumi.StringPtrOutput `pulumi:"sessionAffinity"`
-	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	// See field above.
 	SessionAffinityAttributes pulumi.StringMapOutput `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	// See field above.
 	SessionAffinityTtl pulumi.IntPtrOutput `pulumi:"sessionAffinityTtl"`
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// See field above.
 	SteeringPolicy pulumi.StringOutput `pulumi:"steeringPolicy"`
-	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+	// See field above.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
 	// The zone ID to add the load balancer to.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -162,23 +176,25 @@ type loadBalancerState struct {
 	FallbackPoolId *string `pulumi:"fallbackPoolId"`
 	// The RFC3339 timestamp of when the load balancer was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The DNS name (FQDN, including the zone) to associate with the load balancer.
+	// Human readable name for this rule.
 	Name *string `pulumi:"name"`
-	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+	// See popPools above.
 	PopPools []LoadBalancerPopPool `pulumi:"popPools"`
 	// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
 	Proxied *bool `pulumi:"proxied"`
-	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+	// See regionPools above.
 	RegionPools []LoadBalancerRegionPool `pulumi:"regionPools"`
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
+	// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+	Rules []LoadBalancerRule `pulumi:"rules"`
+	// See field above.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	// See field above.
 	SessionAffinityAttributes map[string]string `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	// See field above.
 	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// See field above.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
-	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+	// See field above.
 	Ttl *int `pulumi:"ttl"`
 	// The zone ID to add the load balancer to.
 	ZoneId *string `pulumi:"zoneId"`
@@ -197,23 +213,25 @@ type LoadBalancerState struct {
 	FallbackPoolId pulumi.StringPtrInput
 	// The RFC3339 timestamp of when the load balancer was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// The DNS name (FQDN, including the zone) to associate with the load balancer.
+	// Human readable name for this rule.
 	Name pulumi.StringPtrInput
-	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+	// See popPools above.
 	PopPools LoadBalancerPopPoolArrayInput
 	// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
 	Proxied pulumi.BoolPtrInput
-	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+	// See regionPools above.
 	RegionPools LoadBalancerRegionPoolArrayInput
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
+	// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+	Rules LoadBalancerRuleArrayInput
+	// See field above.
 	SessionAffinity pulumi.StringPtrInput
-	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	// See field above.
 	SessionAffinityAttributes pulumi.StringMapInput
-	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	// See field above.
 	SessionAffinityTtl pulumi.IntPtrInput
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// See field above.
 	SteeringPolicy pulumi.StringPtrInput
-	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+	// See field above.
 	Ttl pulumi.IntPtrInput
 	// The zone ID to add the load balancer to.
 	ZoneId pulumi.StringPtrInput
@@ -232,23 +250,25 @@ type loadBalancerArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPoolId string `pulumi:"fallbackPoolId"`
-	// The DNS name (FQDN, including the zone) to associate with the load balancer.
+	// Human readable name for this rule.
 	Name string `pulumi:"name"`
-	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+	// See popPools above.
 	PopPools []LoadBalancerPopPool `pulumi:"popPools"`
 	// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
 	Proxied *bool `pulumi:"proxied"`
-	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+	// See regionPools above.
 	RegionPools []LoadBalancerRegionPool `pulumi:"regionPools"`
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
+	// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+	Rules []LoadBalancerRule `pulumi:"rules"`
+	// See field above.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	// See field above.
 	SessionAffinityAttributes map[string]string `pulumi:"sessionAffinityAttributes"`
-	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	// See field above.
 	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// See field above.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
-	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+	// See field above.
 	Ttl *int `pulumi:"ttl"`
 	// The zone ID to add the load balancer to.
 	ZoneId string `pulumi:"zoneId"`
@@ -264,23 +284,25 @@ type LoadBalancerArgs struct {
 	Enabled pulumi.BoolPtrInput
 	// The pool ID to use when all other pools are detected as unhealthy.
 	FallbackPoolId pulumi.StringInput
-	// The DNS name (FQDN, including the zone) to associate with the load balancer.
+	// Human readable name for this rule.
 	Name pulumi.StringInput
-	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+	// See popPools above.
 	PopPools LoadBalancerPopPoolArrayInput
 	// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
 	Proxied pulumi.BoolPtrInput
-	// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+	// See regionPools above.
 	RegionPools LoadBalancerRegionPoolArrayInput
-	// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ipCookie"`.  Default is `""`.
+	// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+	Rules LoadBalancerRuleArrayInput
+	// See field above.
 	SessionAffinity pulumi.StringPtrInput
-	// Configure cookie attributes for session affinity cookie. See the field documentation below.
+	// See field above.
 	SessionAffinityAttributes pulumi.StringMapInput
-	// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+	// See field above.
 	SessionAffinityTtl pulumi.IntPtrInput
-	// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamicLatency"`, `"random"` or `""`. Default is `""`.
+	// See field above.
 	SteeringPolicy pulumi.StringPtrInput
-	// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+	// See field above.
 	Ttl pulumi.IntPtrInput
 	// The zone ID to add the load balancer to.
 	ZoneId pulumi.StringInput

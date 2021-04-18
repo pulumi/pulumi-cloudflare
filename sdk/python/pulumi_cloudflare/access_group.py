@@ -297,8 +297,9 @@ class AccessGroup(pulumi.CustomResource):
         * `common_name` - (Optional) Use a certificate common name to authenticate with.
         * `auth_method` - (Optional) A string identifying the authentication
         method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
-        Custom values are also supported.
+        Custom values are also supported. Example: `auth_method = ["swk"]`
         * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
+        * `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`
         * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
         * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
         * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
@@ -387,8 +388,9 @@ class AccessGroup(pulumi.CustomResource):
         * `common_name` - (Optional) Use a certificate common name to authenticate with.
         * `auth_method` - (Optional) A string identifying the authentication
         method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
-        Custom values are also supported.
+        Custom values are also supported. Example: `auth_method = ["swk"]`
         * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
+        * `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`
         * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
         * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
         * `azure` - (Optional) Use Azure AD as the `include` condition. Example:

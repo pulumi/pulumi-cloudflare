@@ -49,7 +49,7 @@ class GetZonesResult:
     @pulumi.getter
     def zones(self) -> Sequence['outputs.GetZonesZoneResult']:
         """
-        A map of zone details. Full list below:
+        A list of zone objects. Object format:
         """
         return pulumi.get(self, "zones")
 

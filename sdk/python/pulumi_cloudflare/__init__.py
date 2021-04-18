@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .access_application import *
+from .access_ca_certificate import *
 from .access_group import *
 from .access_identity_provider import *
 from .access_mutual_tls_certificate import *
@@ -81,6 +82,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "cloudflare:index/accessApplication:AccessApplication":
                 return AccessApplication(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "cloudflare:index/accessCaCertificate:AccessCaCertificate":
+                return AccessCaCertificate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/accessGroup:AccessGroup":
                 return AccessGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
@@ -181,6 +184,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("cloudflare", "index/accessApplication", _module_instance)
+    pulumi.runtime.register_resource_module("cloudflare", "index/accessCaCertificate", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/accessGroup", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/accessIdentityProvider", _module_instance)
     pulumi.runtime.register_resource_module("cloudflare", "index/accessMutualTlsCertificate", _module_instance)

@@ -59,6 +59,7 @@ export interface AccessGroupExclude {
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
@@ -111,6 +112,7 @@ export interface AccessGroupInclude {
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
@@ -163,6 +165,7 @@ export interface AccessGroupRequire {
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
@@ -237,6 +240,7 @@ export interface AccessPolicyExclude {
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
@@ -289,6 +293,7 @@ export interface AccessPolicyInclude {
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
@@ -341,6 +346,7 @@ export interface AccessPolicyRequire {
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGsuite>[]>;
     ips?: pulumi.Input<pulumi.Input<string>[]>;
+    loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
@@ -661,6 +667,117 @@ export interface LoadBalancerPopPool {
 }
 
 export interface LoadBalancerRegionPool {
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     */
+    poolIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+     */
+    region: pulumi.Input<string>;
+}
+
+export interface LoadBalancerRule {
+    /**
+     * The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+     */
+    condition?: pulumi.Input<string>;
+    /**
+     * A disabled rule will be be executed.
+     */
+    disabled?: pulumi.Input<boolean>;
+    /**
+     * Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+     */
+    fixedResponse?: pulumi.Input<inputs.LoadBalancerRuleFixedResponse>;
+    /**
+     * Human readable name for this rule.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+     */
+    overrides?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverride>[]>;
+    /**
+     * Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixedResponse forces this field to true.
+     */
+    terminates?: pulumi.Input<boolean>;
+}
+
+export interface LoadBalancerRuleFixedResponse {
+    /**
+     * The value of the HTTP context-type header for this fixed response.
+     */
+    contentType?: pulumi.Input<string>;
+    /**
+     * The value of the HTTP location header for this fixed response.
+     */
+    location?: pulumi.Input<string>;
+    /**
+     * The text used as the html body for this fixed response.
+     */
+    messageBody?: pulumi.Input<string>;
+    /**
+     * The HTTP status code used for this fixed response.
+     */
+    statusCode?: pulumi.Input<number>;
+}
+
+export interface LoadBalancerRuleOverride {
+    /**
+     * See defaultPoolIds above.
+     */
+    defaultPools?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * See fallbackPoolId above.
+     */
+    fallbackPool?: pulumi.Input<string>;
+    /**
+     * See popPools above.
+     */
+    popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverridePopPool>[]>;
+    /**
+     * See regionPools above.
+     */
+    regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideRegionPool>[]>;
+    /**
+     * See field above.
+     */
+    sessionAffinity?: pulumi.Input<string>;
+    /**
+     * See field above.
+     */
+    sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * See field above.
+     */
+    sessionAffinityTtl?: pulumi.Input<number>;
+    /**
+     * See field above.
+     */
+    steeringPolicy?: pulumi.Input<string>;
+    /**
+     * See field above.
+     */
+    ttl?: pulumi.Input<number>;
+}
+
+export interface LoadBalancerRuleOverridePopPool {
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     */
+    poolIds: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+     */
+    pop: pulumi.Input<string>;
+}
+
+export interface LoadBalancerRuleOverrideRegionPool {
     /**
      * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
      */
