@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['CertificatePackArgs', 'CertificatePack']
 
@@ -147,6 +147,146 @@ class CertificatePackArgs:
         pulumi.set(self, "validity_days", value)
 
 
+@pulumi.input_type
+class _CertificatePackState:
+    def __init__(__self__, *,
+                 certificate_authority: Optional[pulumi.Input[str]] = None,
+                 cloudflare_branding: Optional[pulumi.Input[bool]] = None,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 validation_method: Optional[pulumi.Input[str]] = None,
+                 validity_days: Optional[pulumi.Input[int]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering CertificatePack resources.
+        :param pulumi.Input[str] certificate_authority: Which certificate
+               authority to issue the certificate pack. Allowed values: `"digicert"`,
+               `"lets_encrypt"`.
+        :param pulumi.Input[bool] cloudflare_branding: Whether or not to include
+               Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
+               if set to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hosts: List of hostnames to provision the certificate pack for.
+               Note: If using Let's Encrypt, you cannot use individual subdomains and only a
+               wildcard for subdomain is available.
+        :param pulumi.Input[str] type: Certificate pack configuration type.
+               Allowed values: `"custom"`, `"dedicated_custom"`, `"advanced"`.
+        :param pulumi.Input[str] validation_method: Which validation method to
+               use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
+        :param pulumi.Input[int] validity_days: How long the certificate is valid
+               for. Note: If using Let's Encrypt, this value can only be 90 days.
+               Allowed values: 14, 30, 90, 365.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the certificate pack should be added.
+        """
+        if certificate_authority is not None:
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
+        if cloudflare_branding is not None:
+            pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if validation_method is not None:
+            pulumi.set(__self__, "validation_method", validation_method)
+        if validity_days is not None:
+            pulumi.set(__self__, "validity_days", validity_days)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="certificateAuthority")
+    def certificate_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which certificate
+        authority to issue the certificate pack. Allowed values: `"digicert"`,
+        `"lets_encrypt"`.
+        """
+        return pulumi.get(self, "certificate_authority")
+
+    @certificate_authority.setter
+    def certificate_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority", value)
+
+    @property
+    @pulumi.getter(name="cloudflareBranding")
+    def cloudflare_branding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to include
+        Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
+        if set to `true`.
+        """
+        return pulumi.get(self, "cloudflare_branding")
+
+    @cloudflare_branding.setter
+    def cloudflare_branding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cloudflare_branding", value)
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of hostnames to provision the certificate pack for.
+        Note: If using Let's Encrypt, you cannot use individual subdomains and only a
+        wildcard for subdomain is available.
+        """
+        return pulumi.get(self, "hosts")
+
+    @hosts.setter
+    def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hosts", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Certificate pack configuration type.
+        Allowed values: `"custom"`, `"dedicated_custom"`, `"advanced"`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="validationMethod")
+    def validation_method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which validation method to
+        use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
+        """
+        return pulumi.get(self, "validation_method")
+
+    @validation_method.setter
+    def validation_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validation_method", value)
+
+    @property
+    @pulumi.getter(name="validityDays")
+    def validity_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long the certificate is valid
+        for. Note: If using Let's Encrypt, this value can only be 90 days.
+        Allowed values: 14, 30, 90, 365.
+        """
+        return pulumi.get(self, "validity_days")
+
+    @validity_days.setter
+    def validity_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "validity_days", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone to which the certificate pack should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
 class CertificatePack(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -246,21 +386,21 @@ class CertificatePack(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CertificatePackArgs.__new__(CertificatePackArgs)
 
-            __props__['certificate_authority'] = certificate_authority
-            __props__['cloudflare_branding'] = cloudflare_branding
+            __props__.__dict__["certificate_authority"] = certificate_authority
+            __props__.__dict__["cloudflare_branding"] = cloudflare_branding
             if hosts is None and not opts.urn:
                 raise TypeError("Missing required property 'hosts'")
-            __props__['hosts'] = hosts
+            __props__.__dict__["hosts"] = hosts
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
-            __props__['validation_method'] = validation_method
-            __props__['validity_days'] = validity_days
+            __props__.__dict__["type"] = type
+            __props__.__dict__["validation_method"] = validation_method
+            __props__.__dict__["validity_days"] = validity_days
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(CertificatePack, __self__).__init__(
             'cloudflare:index/certificatePack:CertificatePack',
             resource_name,
@@ -305,15 +445,15 @@ class CertificatePack(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CertificatePackState.__new__(_CertificatePackState)
 
-        __props__["certificate_authority"] = certificate_authority
-        __props__["cloudflare_branding"] = cloudflare_branding
-        __props__["hosts"] = hosts
-        __props__["type"] = type
-        __props__["validation_method"] = validation_method
-        __props__["validity_days"] = validity_days
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["certificate_authority"] = certificate_authority
+        __props__.__dict__["cloudflare_branding"] = cloudflare_branding
+        __props__.__dict__["hosts"] = hosts
+        __props__.__dict__["type"] = type
+        __props__.__dict__["validation_method"] = validation_method
+        __props__.__dict__["validity_days"] = validity_days
+        __props__.__dict__["zone_id"] = zone_id
         return CertificatePack(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -381,10 +521,4 @@ class CertificatePack(pulumi.CustomResource):
         The DNS zone to which the certificate pack should be added.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

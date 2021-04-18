@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['WorkersKvArgs', 'WorkersKv']
 
@@ -60,6 +60,62 @@ class WorkersKvArgs:
 
     @value.setter
     def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class _WorkersKvState:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering WorkersKv resources.
+        :param pulumi.Input[str] key: The key name
+        :param pulumi.Input[str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair
+        :param pulumi.Input[str] value: The string value to be stored in the key
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if namespace_id is not None:
+            pulumi.set(__self__, "namespace_id", namespace_id)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key name
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the Workers KV namespace in which you want to create the KV pair
+        """
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace_id", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The string value to be stored in the key
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
 
@@ -170,17 +226,17 @@ class WorkersKv(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WorkersKvArgs.__new__(WorkersKvArgs)
 
             if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
-            __props__['key'] = key
+            __props__.__dict__["key"] = key
             if namespace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_id'")
-            __props__['namespace_id'] = namespace_id
+            __props__.__dict__["namespace_id"] = namespace_id
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__['value'] = value
+            __props__.__dict__["value"] = value
         super(WorkersKv, __self__).__init__(
             'cloudflare:index/workersKv:WorkersKv',
             resource_name,
@@ -207,11 +263,11 @@ class WorkersKv(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WorkersKvState.__new__(_WorkersKvState)
 
-        __props__["key"] = key
-        __props__["namespace_id"] = namespace_id
-        __props__["value"] = value
+        __props__.__dict__["key"] = key
+        __props__.__dict__["namespace_id"] = namespace_id
+        __props__.__dict__["value"] = value
         return WorkersKv(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -237,10 +293,4 @@ class WorkersKv(pulumi.CustomResource):
         The string value to be stored in the key
         """
         return pulumi.get(self, "value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

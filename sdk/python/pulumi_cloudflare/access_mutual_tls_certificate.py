@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AccessMutualTlsCertificateArgs', 'AccessMutualTlsCertificate']
 
@@ -83,6 +83,106 @@ class AccessMutualTlsCertificateArgs:
     @certificate.setter
     def certificate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone to which the certificate should be added. Conflicts with `account_id`.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class _AccessMutualTlsCertificateState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 associated_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccessMutualTlsCertificate resources.
+        :param pulumi.Input[str] account_id: The account to which the certificate should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] associated_hostnames: The hostnames that will be prompted for this certificate.
+        :param pulumi.Input[str] certificate: The Root CA for your certificates.
+        :param pulumi.Input[str] name: The name of the certificate.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the certificate should be added. Conflicts with `account_id`.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if associated_hostnames is not None:
+            pulumi.set(__self__, "associated_hostnames", associated_hostnames)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account to which the certificate should be added. Conflicts with `zone_id`.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="associatedHostnames")
+    def associated_hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The hostnames that will be prompted for this certificate.
+        """
+        return pulumi.get(self, "associated_hostnames")
+
+    @associated_hostnames.setter
+    def associated_hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "associated_hostnames", value)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Root CA for your certificates.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the certificate.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -210,16 +310,16 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessMutualTlsCertificateArgs.__new__(AccessMutualTlsCertificateArgs)
 
-            __props__['account_id'] = account_id
-            __props__['associated_hostnames'] = associated_hostnames
-            __props__['certificate'] = certificate
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["associated_hostnames"] = associated_hostnames
+            __props__.__dict__["certificate"] = certificate
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
-            __props__['zone_id'] = zone_id
-            __props__['fingerprint'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["fingerprint"] = None
         super(AccessMutualTlsCertificate, __self__).__init__(
             'cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate',
             resource_name,
@@ -251,14 +351,14 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessMutualTlsCertificateState.__new__(_AccessMutualTlsCertificateState)
 
-        __props__["account_id"] = account_id
-        __props__["associated_hostnames"] = associated_hostnames
-        __props__["certificate"] = certificate
-        __props__["fingerprint"] = fingerprint
-        __props__["name"] = name
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["associated_hostnames"] = associated_hostnames
+        __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["name"] = name
+        __props__.__dict__["zone_id"] = zone_id
         return AccessMutualTlsCertificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -305,10 +405,4 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         The DNS zone to which the certificate should be added. Conflicts with `account_id`.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['WorkerCronTriggerArgs', 'WorkerCronTrigger']
 
@@ -45,6 +45,46 @@ class WorkerCronTriggerArgs:
 
     @script_name.setter
     def script_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "script_name", value)
+
+
+@pulumi.input_type
+class _WorkerCronTriggerState:
+    def __init__(__self__, *,
+                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 script_name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering WorkerCronTrigger resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
+        :param pulumi.Input[str] script_name: Worker script to target for the schedules
+        """
+        if schedules is not None:
+            pulumi.set(__self__, "schedules", schedules)
+        if script_name is not None:
+            pulumi.set(__self__, "script_name", script_name)
+
+    @property
+    @pulumi.getter
+    def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of cron expressions to execute the Worker Script
+        """
+        return pulumi.get(self, "schedules")
+
+    @schedules.setter
+    def schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "schedules", value)
+
+    @property
+    @pulumi.getter(name="scriptName")
+    def script_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Worker script to target for the schedules
+        """
+        return pulumi.get(self, "script_name")
+
+    @script_name.setter
+    def script_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "script_name", value)
 
 
@@ -166,14 +206,14 @@ class WorkerCronTrigger(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WorkerCronTriggerArgs.__new__(WorkerCronTriggerArgs)
 
             if schedules is None and not opts.urn:
                 raise TypeError("Missing required property 'schedules'")
-            __props__['schedules'] = schedules
+            __props__.__dict__["schedules"] = schedules
             if script_name is None and not opts.urn:
                 raise TypeError("Missing required property 'script_name'")
-            __props__['script_name'] = script_name
+            __props__.__dict__["script_name"] = script_name
         super(WorkerCronTrigger, __self__).__init__(
             'cloudflare:index/workerCronTrigger:WorkerCronTrigger',
             resource_name,
@@ -198,10 +238,10 @@ class WorkerCronTrigger(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WorkerCronTriggerState.__new__(_WorkerCronTriggerState)
 
-        __props__["schedules"] = schedules
-        __props__["script_name"] = script_name
+        __props__.__dict__["schedules"] = schedules
+        __props__.__dict__["script_name"] = script_name
         return WorkerCronTrigger(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -219,10 +259,4 @@ class WorkerCronTrigger(pulumi.CustomResource):
         Worker script to target for the schedules
         """
         return pulumi.get(self, "script_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -280,37 +280,31 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__['account_id'] = account_id
+            __props__.__dict__["account_id"] = account_id
             if api_client_logging is None:
                 api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
-            __props__['api_client_logging'] = pulumi.Output.from_input(api_client_logging).apply(pulumi.runtime.to_json) if api_client_logging is not None else None
-            __props__['api_key'] = api_key
-            __props__['api_token'] = api_token
-            __props__['api_user_service_key'] = api_user_service_key
-            __props__['email'] = email
+            __props__.__dict__["api_client_logging"] = pulumi.Output.from_input(api_client_logging).apply(pulumi.runtime.to_json) if api_client_logging is not None else None
+            __props__.__dict__["api_key"] = api_key
+            __props__.__dict__["api_token"] = api_token
+            __props__.__dict__["api_user_service_key"] = api_user_service_key
+            __props__.__dict__["email"] = email
             if max_backoff is None:
                 max_backoff = (_utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)
-            __props__['max_backoff'] = pulumi.Output.from_input(max_backoff).apply(pulumi.runtime.to_json) if max_backoff is not None else None
+            __props__.__dict__["max_backoff"] = pulumi.Output.from_input(max_backoff).apply(pulumi.runtime.to_json) if max_backoff is not None else None
             if min_backoff is None:
                 min_backoff = (_utilities.get_env_int('CLOUDFLARE_MIN_BACKOFF') or 1)
-            __props__['min_backoff'] = pulumi.Output.from_input(min_backoff).apply(pulumi.runtime.to_json) if min_backoff is not None else None
+            __props__.__dict__["min_backoff"] = pulumi.Output.from_input(min_backoff).apply(pulumi.runtime.to_json) if min_backoff is not None else None
             if retries is None:
                 retries = (_utilities.get_env_int('CLOUDFLARE_RETRIES') or 3)
-            __props__['retries'] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
+            __props__.__dict__["retries"] = pulumi.Output.from_input(retries).apply(pulumi.runtime.to_json) if retries is not None else None
             if rps is None:
                 rps = (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
-            __props__['rps'] = pulumi.Output.from_input(rps).apply(pulumi.runtime.to_json) if rps is not None else None
+            __props__.__dict__["rps"] = pulumi.Output.from_input(rps).apply(pulumi.runtime.to_json) if rps is not None else None
         super(Provider, __self__).__init__(
             'cloudflare',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

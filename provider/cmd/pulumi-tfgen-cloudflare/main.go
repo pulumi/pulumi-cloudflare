@@ -15,9 +15,9 @@
 package main
 
 import (
-	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v2"
-	"github.com/pulumi/pulumi-cloudflare/provider/v2/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfgen"
+	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v3"
+	"github.com/pulumi/pulumi-cloudflare/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
 func main() {

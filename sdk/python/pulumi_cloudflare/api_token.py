@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -66,6 +66,124 @@ class ApiTokenArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input['ApiTokenConditionArgs']]):
         pulumi.set(self, "condition", value)
+
+
+@pulumi.input_type
+class _ApiTokenState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['ApiTokenConditionArgs']] = None,
+                 issued_on: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ApiToken resources.
+        :param pulumi.Input['ApiTokenConditionArgs'] condition: Condition block. See the definition below.
+        :param pulumi.Input[str] issued_on: The RFC3339 timestamp of when the API Token was issued.
+        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the API Token was last modified.
+        :param pulumi.Input[str] name: Name of the APIToken.
+        :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Permissions policy. Multiple policy blocks can be defined.
+               See the definition below.
+        :param pulumi.Input[str] value: The value of the API Token.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if issued_on is not None:
+            pulumi.set(__self__, "issued_on", issued_on)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['ApiTokenConditionArgs']]:
+        """
+        Condition block. See the definition below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['ApiTokenConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="issuedOn")
+    def issued_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC3339 timestamp of when the API Token was issued.
+        """
+        return pulumi.get(self, "issued_on")
+
+    @issued_on.setter
+    def issued_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issued_on", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC3339 timestamp of when the API Token was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the APIToken.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]]:
+        """
+        Permissions policy. Multiple policy blocks can be defined.
+        See the definition below.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]]):
+        pulumi.set(self, "policies", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the API Token.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 class ApiToken(pulumi.CustomResource):
@@ -344,19 +462,19 @@ class ApiToken(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApiTokenArgs.__new__(ApiTokenArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            __props__.__dict__["name"] = name
             if policies is None and not opts.urn:
                 raise TypeError("Missing required property 'policies'")
-            __props__['policies'] = policies
-            __props__['issued_on'] = None
-            __props__['modified_on'] = None
-            __props__['status'] = None
-            __props__['value'] = None
+            __props__.__dict__["policies"] = policies
+            __props__.__dict__["issued_on"] = None
+            __props__.__dict__["modified_on"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["value"] = None
         super(ApiToken, __self__).__init__(
             'cloudflare:index/apiToken:ApiToken',
             resource_name,
@@ -391,15 +509,15 @@ class ApiToken(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApiTokenState.__new__(_ApiTokenState)
 
-        __props__["condition"] = condition
-        __props__["issued_on"] = issued_on
-        __props__["modified_on"] = modified_on
-        __props__["name"] = name
-        __props__["policies"] = policies
-        __props__["status"] = status
-        __props__["value"] = value
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["issued_on"] = issued_on
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["name"] = name
+        __props__.__dict__["policies"] = policies
+        __props__.__dict__["status"] = status
+        __props__.__dict__["value"] = value
         return ApiToken(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -455,10 +573,4 @@ class ApiToken(pulumi.CustomResource):
         The value of the API Token.
         """
         return pulumi.get(self, "value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

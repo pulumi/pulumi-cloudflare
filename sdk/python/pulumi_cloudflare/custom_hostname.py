@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -79,6 +79,114 @@ class CustomHostnameArgs:
     @custom_origin_server.setter
     def custom_origin_server(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_origin_server", value)
+
+
+@pulumi.input_type
+class _CustomHostnameState:
+    def __init__(__self__, *,
+                 custom_origin_server: Optional[pulumi.Input[str]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 ownership_verification: Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']] = None,
+                 ownership_verification_http: Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']] = None,
+                 ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering CustomHostname resources.
+        :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
+        :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate. See further notes below.
+        :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
+        """
+        if custom_origin_server is not None:
+            pulumi.set(__self__, "custom_origin_server", custom_origin_server)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if ownership_verification is not None:
+            pulumi.set(__self__, "ownership_verification", ownership_verification)
+        if ownership_verification_http is not None:
+            pulumi.set(__self__, "ownership_verification_http", ownership_verification_http)
+        if ssls is not None:
+            pulumi.set(__self__, "ssls", ssls)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="customOriginServer")
+    def custom_origin_server(self) -> Optional[pulumi.Input[str]]:
+        """
+        The custom origin server used for certificates.
+        """
+        return pulumi.get(self, "custom_origin_server")
+
+    @custom_origin_server.setter
+    def custom_origin_server(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_origin_server", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname you intend to request a certificate for.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="ownershipVerification")
+    def ownership_verification(self) -> Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']]:
+        return pulumi.get(self, "ownership_verification")
+
+    @ownership_verification.setter
+    def ownership_verification(self, value: Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']]):
+        pulumi.set(self, "ownership_verification", value)
+
+    @property
+    @pulumi.getter(name="ownershipVerificationHttp")
+    def ownership_verification_http(self) -> Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']]:
+        return pulumi.get(self, "ownership_verification_http")
+
+    @ownership_verification_http.setter
+    def ownership_verification_http(self, value: Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']]):
+        pulumi.set(self, "ownership_verification_http", value)
+
+    @property
+    @pulumi.getter
+    def ssls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]]:
+        """
+        SSL configuration of the certificate. See further notes below.
+        """
+        return pulumi.get(self, "ssls")
+
+    @ssls.setter
+    def ssls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]]):
+        pulumi.set(self, "ssls", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone ID where the custom hostname should be assigned.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class CustomHostname(pulumi.CustomResource):
@@ -193,21 +301,21 @@ class CustomHostname(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CustomHostnameArgs.__new__(CustomHostnameArgs)
 
-            __props__['custom_origin_server'] = custom_origin_server
+            __props__.__dict__["custom_origin_server"] = custom_origin_server
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
-            __props__['hostname'] = hostname
+            __props__.__dict__["hostname"] = hostname
             if ssls is None and not opts.urn:
                 raise TypeError("Missing required property 'ssls'")
-            __props__['ssls'] = ssls
+            __props__.__dict__["ssls"] = ssls
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
-            __props__['ownership_verification'] = None
-            __props__['ownership_verification_http'] = None
-            __props__['status'] = None
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["ownership_verification"] = None
+            __props__.__dict__["ownership_verification_http"] = None
+            __props__.__dict__["status"] = None
         super(CustomHostname, __self__).__init__(
             'cloudflare:index/customHostname:CustomHostname',
             resource_name,
@@ -239,15 +347,15 @@ class CustomHostname(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CustomHostnameState.__new__(_CustomHostnameState)
 
-        __props__["custom_origin_server"] = custom_origin_server
-        __props__["hostname"] = hostname
-        __props__["ownership_verification"] = ownership_verification
-        __props__["ownership_verification_http"] = ownership_verification_http
-        __props__["ssls"] = ssls
-        __props__["status"] = status
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["custom_origin_server"] = custom_origin_server
+        __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["ownership_verification"] = ownership_verification
+        __props__.__dict__["ownership_verification_http"] = ownership_verification_http
+        __props__.__dict__["ssls"] = ssls
+        __props__.__dict__["status"] = status
+        __props__.__dict__["zone_id"] = zone_id
         return CustomHostname(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -296,10 +404,4 @@ class CustomHostname(pulumi.CustomResource):
         The DNS zone ID where the custom hostname should be assigned.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

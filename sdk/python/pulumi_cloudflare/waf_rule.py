@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['WafRuleArgs', 'WafRule']
 
@@ -77,6 +77,94 @@ class WafRuleArgs:
     @package_id.setter
     def package_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "package_id", value)
+
+
+@pulumi.input_type
+class _WafRuleState:
+    def __init__(__self__, *,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 package_id: Optional[pulumi.Input[str]] = None,
+                 rule_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering WafRule resources.
+        :param pulumi.Input[str] group_id: The ID of the WAF Rule Group that contains the rule.
+        :param pulumi.Input[str] mode: The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+        :param pulumi.Input[str] package_id: The ID of the WAF Rule Package that contains the rule.
+        :param pulumi.Input[str] rule_id: The WAF Rule ID.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if package_id is not None:
+            pulumi.set(__self__, "package_id", package_id)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the WAF Rule Group that contains the rule.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="packageId")
+    def package_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the WAF Rule Package that contains the rule.
+        """
+        return pulumi.get(self, "package_id")
+
+    @package_id.setter
+    def package_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_id", value)
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The WAF Rule ID.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @rule_id.setter
+    def rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone ID to apply to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class WafRule(pulumi.CustomResource):
@@ -187,19 +275,19 @@ class WafRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WafRuleArgs.__new__(WafRuleArgs)
 
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
-            __props__['mode'] = mode
-            __props__['package_id'] = package_id
+            __props__.__dict__["mode"] = mode
+            __props__.__dict__["package_id"] = package_id
             if rule_id is None and not opts.urn:
                 raise TypeError("Missing required property 'rule_id'")
-            __props__['rule_id'] = rule_id
+            __props__.__dict__["rule_id"] = rule_id
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
-            __props__['group_id'] = None
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["group_id"] = None
         super(WafRule, __self__).__init__(
             'cloudflare:index/wafRule:WafRule',
             resource_name,
@@ -230,13 +318,13 @@ class WafRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WafRuleState.__new__(_WafRuleState)
 
-        __props__["group_id"] = group_id
-        __props__["mode"] = mode
-        __props__["package_id"] = package_id
-        __props__["rule_id"] = rule_id
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["mode"] = mode
+        __props__.__dict__["package_id"] = package_id
+        __props__.__dict__["rule_id"] = rule_id
+        __props__.__dict__["zone_id"] = zone_id
         return WafRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -278,10 +366,4 @@ class WafRule(pulumi.CustomResource):
         The DNS zone ID to apply to.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

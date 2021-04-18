@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -110,6 +110,37 @@ __all__ = [
 
 @pulumi.output_type
 class AccessApplicationCorsHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowAllHeaders":
+            suggest = "allow_all_headers"
+        elif key == "allowAllMethods":
+            suggest = "allow_all_methods"
+        elif key == "allowAllOrigins":
+            suggest = "allow_all_origins"
+        elif key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowedHeaders":
+            suggest = "allowed_headers"
+        elif key == "allowedMethods":
+            suggest = "allowed_methods"
+        elif key == "allowedOrigins":
+            suggest = "allowed_origins"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApplicationCorsHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApplicationCorsHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApplicationCorsHeader.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_all_headers: Optional[bool] = None,
                  allow_all_methods: Optional[bool] = None,
@@ -222,12 +253,34 @@ class AccessApplicationCorsHeader(dict):
         """
         return pulumi.get(self, "max_age")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupExclude(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupExclude. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupExclude.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupExclude.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
@@ -358,12 +411,26 @@ class AccessGroupExclude(dict):
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupExcludeAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupExcludeAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupExcludeAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupExcludeAzure.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None):
@@ -382,12 +449,26 @@ class AccessGroupExcludeAzure(dict):
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupExcludeGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupExcludeGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupExcludeGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupExcludeGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -420,12 +501,26 @@ class AccessGroupExcludeGithub(dict):
     def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupExcludeGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupExcludeGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupExcludeGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupExcludeGsuite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
@@ -444,12 +539,26 @@ class AccessGroupExcludeGsuite(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupExcludeOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupExcludeOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupExcludeOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupExcludeOkta.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
@@ -474,12 +583,30 @@ class AccessGroupExcludeOkta(dict):
         """
         return pulumi.get(self, "names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupExcludeSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupExcludeSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupExcludeSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupExcludeSaml.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
@@ -506,12 +633,34 @@ class AccessGroupExcludeSaml(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupInclude(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupInclude. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupInclude.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupInclude.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
@@ -642,12 +791,26 @@ class AccessGroupInclude(dict):
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupIncludeAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupIncludeAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupIncludeAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupIncludeAzure.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None):
@@ -666,12 +829,26 @@ class AccessGroupIncludeAzure(dict):
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupIncludeGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupIncludeGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupIncludeGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupIncludeGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -704,12 +881,26 @@ class AccessGroupIncludeGithub(dict):
     def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupIncludeGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupIncludeGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupIncludeGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupIncludeGsuite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
@@ -728,12 +919,26 @@ class AccessGroupIncludeGsuite(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupIncludeOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupIncludeOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupIncludeOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupIncludeOkta.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
@@ -758,12 +963,30 @@ class AccessGroupIncludeOkta(dict):
         """
         return pulumi.get(self, "names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupIncludeSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupIncludeSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupIncludeSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupIncludeSaml.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
@@ -790,12 +1013,34 @@ class AccessGroupIncludeSaml(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupRequire(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequire. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupRequire.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupRequire.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
@@ -926,12 +1171,26 @@ class AccessGroupRequire(dict):
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupRequireAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequireAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupRequireAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupRequireAzure.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None):
@@ -950,12 +1209,26 @@ class AccessGroupRequireAzure(dict):
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupRequireGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequireGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupRequireGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupRequireGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -988,12 +1261,26 @@ class AccessGroupRequireGithub(dict):
     def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupRequireGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequireGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupRequireGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupRequireGsuite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
@@ -1012,12 +1299,26 @@ class AccessGroupRequireGsuite(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupRequireOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequireOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupRequireOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupRequireOkta.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
@@ -1042,12 +1343,30 @@ class AccessGroupRequireOkta(dict):
         """
         return pulumi.get(self, "names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessGroupRequireSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequireSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupRequireSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupRequireSaml.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
@@ -1074,12 +1393,60 @@ class AccessGroupRequireSaml(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessIdentityProviderConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appsDomain":
+            suggest = "apps_domain"
+        elif key == "authUrl":
+            suggest = "auth_url"
+        elif key == "centrifyAccount":
+            suggest = "centrify_account"
+        elif key == "centrifyAppId":
+            suggest = "centrify_app_id"
+        elif key == "certsUrl":
+            suggest = "certs_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "directoryId":
+            suggest = "directory_id"
+        elif key == "emailAttributeName":
+            suggest = "email_attribute_name"
+        elif key == "idpPublicCert":
+            suggest = "idp_public_cert"
+        elif key == "issuerUrl":
+            suggest = "issuer_url"
+        elif key == "oktaAccount":
+            suggest = "okta_account"
+        elif key == "oneloginAccount":
+            suggest = "onelogin_account"
+        elif key == "redirectUrl":
+            suggest = "redirect_url"
+        elif key == "signRequest":
+            suggest = "sign_request"
+        elif key == "ssoTargetUrl":
+            suggest = "sso_target_url"
+        elif key == "supportGroups":
+            suggest = "support_groups"
+        elif key == "tokenUrl":
+            suggest = "token_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessIdentityProviderConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessIdentityProviderConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessIdentityProviderConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  apps_domain: Optional[str] = None,
                  attributes: Optional[Sequence[str]] = None,
@@ -1234,12 +1601,34 @@ class AccessIdentityProviderConfig(dict):
     def token_url(self) -> Optional[str]:
         return pulumi.get(self, "token_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyExclude(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExclude. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyExclude.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyExclude.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
@@ -1370,12 +1759,26 @@ class AccessPolicyExclude(dict):
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyExcludeAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExcludeAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyExcludeAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyExcludeAzure.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None):
@@ -1394,12 +1797,26 @@ class AccessPolicyExcludeAzure(dict):
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyExcludeGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExcludeGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyExcludeGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyExcludeGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -1432,12 +1849,26 @@ class AccessPolicyExcludeGithub(dict):
     def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyExcludeGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExcludeGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyExcludeGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyExcludeGsuite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
@@ -1456,12 +1887,26 @@ class AccessPolicyExcludeGsuite(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyExcludeOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExcludeOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyExcludeOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyExcludeOkta.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
@@ -1486,12 +1931,30 @@ class AccessPolicyExcludeOkta(dict):
         """
         return pulumi.get(self, "names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyExcludeSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExcludeSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyExcludeSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyExcludeSaml.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
@@ -1518,12 +1981,34 @@ class AccessPolicyExcludeSaml(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyInclude(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyInclude. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyInclude.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyInclude.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
@@ -1654,12 +2139,26 @@ class AccessPolicyInclude(dict):
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyIncludeAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyIncludeAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyIncludeAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyIncludeAzure.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None):
@@ -1678,12 +2177,26 @@ class AccessPolicyIncludeAzure(dict):
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyIncludeGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyIncludeGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyIncludeGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyIncludeGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -1716,12 +2229,26 @@ class AccessPolicyIncludeGithub(dict):
     def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyIncludeGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyIncludeGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyIncludeGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyIncludeGsuite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
@@ -1740,12 +2267,26 @@ class AccessPolicyIncludeGsuite(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyIncludeOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyIncludeOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyIncludeOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyIncludeOkta.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
@@ -1770,12 +2311,30 @@ class AccessPolicyIncludeOkta(dict):
         """
         return pulumi.get(self, "names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyIncludeSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyIncludeSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyIncludeSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyIncludeSaml.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
@@ -1802,12 +2361,34 @@ class AccessPolicyIncludeSaml(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyRequire(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "anyValidServiceToken":
+            suggest = "any_valid_service_token"
+        elif key == "authMethod":
+            suggest = "auth_method"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "emailDomains":
+            suggest = "email_domains"
+        elif key == "serviceTokens":
+            suggest = "service_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequire. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyRequire.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyRequire.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
                  auth_method: Optional[str] = None,
@@ -1938,12 +2519,26 @@ class AccessPolicyRequire(dict):
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyRequireAzure(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequireAzure. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyRequireAzure.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyRequireAzure.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  ids: Optional[Sequence[str]] = None):
@@ -1962,12 +2557,26 @@ class AccessPolicyRequireAzure(dict):
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyRequireGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequireGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyRequireGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyRequireGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
@@ -2000,12 +2609,26 @@ class AccessPolicyRequireGithub(dict):
     def teams(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "teams")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyRequireGsuite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequireGsuite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyRequireGsuite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyRequireGsuite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
@@ -2024,12 +2647,26 @@ class AccessPolicyRequireGsuite(dict):
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyRequireOkta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequireOkta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyRequireOkta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyRequireOkta.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
@@ -2054,12 +2691,30 @@ class AccessPolicyRequireOkta(dict):
         """
         return pulumi.get(self, "names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessPolicyRequireSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeName":
+            suggest = "attribute_name"
+        elif key == "attributeValue":
+            suggest = "attribute_value"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequireSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyRequireSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyRequireSaml.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
@@ -2085,9 +2740,6 @@ class AccessPolicyRequireSaml(dict):
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
         return pulumi.get(self, "identity_provider_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2118,12 +2770,26 @@ class AccessRuleConfiguration(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiTokenCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestIp":
+            suggest = "request_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiTokenCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiTokenCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiTokenCondition.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  request_ip: Optional['outputs.ApiTokenConditionRequestIp'] = None):
         """
@@ -2140,12 +2806,26 @@ class ApiTokenCondition(dict):
         """
         return pulumi.get(self, "request_ip")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiTokenConditionRequestIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notIns":
+            suggest = "not_ins"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiTokenConditionRequestIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiTokenConditionRequestIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiTokenConditionRequestIp.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ins: Optional[Sequence[str]] = None,
                  not_ins: Optional[Sequence[str]] = None):
@@ -2178,12 +2858,26 @@ class ApiTokenConditionRequestIp(dict):
         """
         return pulumi.get(self, "not_ins")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiTokenPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "permissionGroups":
+            suggest = "permission_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiTokenPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiTokenPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiTokenPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  permission_groups: Sequence[str],
                  resources: Mapping[str, str],
@@ -2228,9 +2922,6 @@ class ApiTokenPolicy(dict):
         """
         return pulumi.get(self, "effect")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomHostnameOwnershipVerification(dict):
@@ -2266,12 +2957,28 @@ class CustomHostnameOwnershipVerification(dict):
     def value(self) -> Optional[str]:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomHostnameOwnershipVerificationHttp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpBody":
+            suggest = "http_body"
+        elif key == "httpUrl":
+            suggest = "http_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomHostnameOwnershipVerificationHttp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomHostnameOwnershipVerificationHttp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomHostnameOwnershipVerificationHttp.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  http_body: Optional[str] = None,
                  http_url: Optional[str] = None):
@@ -2290,12 +2997,34 @@ class CustomHostnameOwnershipVerificationHttp(dict):
     def http_url(self) -> Optional[str]:
         return pulumi.get(self, "http_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomHostnameSsl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthority":
+            suggest = "certificate_authority"
+        elif key == "cnameName":
+            suggest = "cname_name"
+        elif key == "cnameTarget":
+            suggest = "cname_target"
+        elif key == "customCertificate":
+            suggest = "custom_certificate"
+        elif key == "customKey":
+            suggest = "custom_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomHostnameSsl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomHostnameSsl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomHostnameSsl.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate_authority: Optional[str] = None,
                  cname_name: Optional[str] = None,
@@ -2406,12 +3135,26 @@ class CustomHostnameSsl(dict):
         """
         return pulumi.get(self, "wildcard")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomHostnameSslSetting(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minTlsVersion":
+            suggest = "min_tls_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomHostnameSslSetting. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomHostnameSslSetting.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomHostnameSslSetting.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ciphers: Optional[Sequence[str]] = None,
                  http2: Optional[str] = None,
@@ -2466,12 +3209,30 @@ class CustomHostnameSslSetting(dict):
         """
         return pulumi.get(self, "tls13")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomSslCustomSslOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+        elif key == "bundleMethod":
+            suggest = "bundle_method"
+        elif key == "geoRestrictions":
+            suggest = "geo_restrictions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomSslCustomSslOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomSslCustomSslOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomSslCustomSslOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate: str,
                  private_key: str,
@@ -2534,9 +3295,6 @@ class CustomSslCustomSslOptions(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomSslCustomSslPriority(dict):
@@ -2557,9 +3315,6 @@ class CustomSslCustomSslPriority(dict):
     @pulumi.getter
     def priority(self) -> Optional[int]:
         return pulumi.get(self, "priority")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2589,9 +3344,6 @@ class HealthcheckHeader(dict):
         A list of string values for the header.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2623,9 +3375,6 @@ class IpListItem(dict):
         """
         return pulumi.get(self, "comment")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerMonitorHeader(dict):
@@ -2654,9 +3403,6 @@ class LoadBalancerMonitorHeader(dict):
         A list of string values for the header.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2711,12 +3457,26 @@ class LoadBalancerPoolOrigin(dict):
         """
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerPopPool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "poolIds":
+            suggest = "pool_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerPopPool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerPopPool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerPopPool.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pool_ids: Sequence[str],
                  pop: str):
@@ -2743,12 +3503,26 @@ class LoadBalancerPopPool(dict):
         """
         return pulumi.get(self, "pop")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoadBalancerRegionPool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "poolIds":
+            suggest = "pool_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRegionPool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRegionPool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRegionPool.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pool_ids: Sequence[str],
                  region: str):
@@ -2775,12 +3549,88 @@ class LoadBalancerRegionPool(dict):
         """
         return pulumi.get(self, "region")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PageRuleActions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alwaysOnline":
+            suggest = "always_online"
+        elif key == "alwaysUseHttps":
+            suggest = "always_use_https"
+        elif key == "automaticHttpsRewrites":
+            suggest = "automatic_https_rewrites"
+        elif key == "browserCacheTtl":
+            suggest = "browser_cache_ttl"
+        elif key == "browserCheck":
+            suggest = "browser_check"
+        elif key == "bypassCacheOnCookie":
+            suggest = "bypass_cache_on_cookie"
+        elif key == "cacheByDeviceType":
+            suggest = "cache_by_device_type"
+        elif key == "cacheDeceptionArmor":
+            suggest = "cache_deception_armor"
+        elif key == "cacheKeyFields":
+            suggest = "cache_key_fields"
+        elif key == "cacheLevel":
+            suggest = "cache_level"
+        elif key == "cacheOnCookie":
+            suggest = "cache_on_cookie"
+        elif key == "cacheTtlByStatuses":
+            suggest = "cache_ttl_by_statuses"
+        elif key == "disableApps":
+            suggest = "disable_apps"
+        elif key == "disablePerformance":
+            suggest = "disable_performance"
+        elif key == "disableRailgun":
+            suggest = "disable_railgun"
+        elif key == "disableSecurity":
+            suggest = "disable_security"
+        elif key == "edgeCacheTtl":
+            suggest = "edge_cache_ttl"
+        elif key == "emailObfuscation":
+            suggest = "email_obfuscation"
+        elif key == "explicitCacheControl":
+            suggest = "explicit_cache_control"
+        elif key == "forwardingUrl":
+            suggest = "forwarding_url"
+        elif key == "hostHeaderOverride":
+            suggest = "host_header_override"
+        elif key == "ipGeolocation":
+            suggest = "ip_geolocation"
+        elif key == "opportunisticEncryption":
+            suggest = "opportunistic_encryption"
+        elif key == "originErrorPagePassThru":
+            suggest = "origin_error_page_pass_thru"
+        elif key == "resolveOverride":
+            suggest = "resolve_override"
+        elif key == "respectStrongEtag":
+            suggest = "respect_strong_etag"
+        elif key == "responseBuffering":
+            suggest = "response_buffering"
+        elif key == "rocketLoader":
+            suggest = "rocket_loader"
+        elif key == "securityLevel":
+            suggest = "security_level"
+        elif key == "serverSideExclude":
+            suggest = "server_side_exclude"
+        elif key == "sortQueryStringForCache":
+            suggest = "sort_query_string_for_cache"
+        elif key == "trueClientIpHeader":
+            suggest = "true_client_ip_header"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PageRuleActions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PageRuleActions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PageRuleActions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  always_online: Optional[str] = None,
                  always_use_https: Optional[bool] = None,
@@ -3229,12 +4079,26 @@ class PageRuleActions(dict):
         """
         return pulumi.get(self, "waf")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PageRuleActionsCacheKeyFields(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryString":
+            suggest = "query_string"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PageRuleActionsCacheKeyFields. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PageRuleActionsCacheKeyFields.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PageRuleActionsCacheKeyFields.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cookie: 'outputs.PageRuleActionsCacheKeyFieldsCookie',
                  header: 'outputs.PageRuleActionsCacheKeyFieldsHeader',
@@ -3294,12 +4158,26 @@ class PageRuleActionsCacheKeyFields(dict):
         """
         return pulumi.get(self, "user")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PageRuleActionsCacheKeyFieldsCookie(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkPresences":
+            suggest = "check_presences"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PageRuleActionsCacheKeyFieldsCookie. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PageRuleActionsCacheKeyFieldsCookie.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PageRuleActionsCacheKeyFieldsCookie.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  check_presences: Optional[Sequence[str]] = None,
                  includes: Optional[Sequence[str]] = None):
@@ -3328,12 +4206,26 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
         """
         return pulumi.get(self, "includes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PageRuleActionsCacheKeyFieldsHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkPresences":
+            suggest = "check_presences"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PageRuleActionsCacheKeyFieldsHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PageRuleActionsCacheKeyFieldsHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PageRuleActionsCacheKeyFieldsHeader.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  check_presences: Optional[Sequence[str]] = None,
                  excludes: Optional[Sequence[str]] = None,
@@ -3374,9 +4266,6 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
         """
         return pulumi.get(self, "includes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PageRuleActionsCacheKeyFieldsHost(dict):
@@ -3395,9 +4284,6 @@ class PageRuleActionsCacheKeyFieldsHost(dict):
         `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
         """
         return pulumi.get(self, "resolved")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3442,12 +4328,26 @@ class PageRuleActionsCacheKeyFieldsQueryString(dict):
         """
         return pulumi.get(self, "includes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PageRuleActionsCacheKeyFieldsUser(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceType":
+            suggest = "device_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PageRuleActionsCacheKeyFieldsUser. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PageRuleActionsCacheKeyFieldsUser.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PageRuleActionsCacheKeyFieldsUser.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device_type: Optional[bool] = None,
                  geo: Optional[bool] = None,
@@ -3488,9 +4388,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
         """
         return pulumi.get(self, "lang")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PageRuleActionsCacheTtlByStatus(dict):
@@ -3522,12 +4419,26 @@ class PageRuleActionsCacheTtlByStatus(dict):
         """
         return pulumi.get(self, "ttl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PageRuleActionsForwardingUrl(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PageRuleActionsForwardingUrl. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PageRuleActionsForwardingUrl.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PageRuleActionsForwardingUrl.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  status_code: int,
                  url: str):
@@ -3553,9 +4464,6 @@ class PageRuleActionsForwardingUrl(dict):
         The URL to which the page rule should forward.
         """
         return pulumi.get(self, "url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3596,9 +4504,6 @@ class PageRuleActionsMinify(dict):
         Whether Javascript should be minified. Valid values are `"on"` or `"off"`.
         """
         return pulumi.get(self, "js")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3642,12 +4547,26 @@ class RateLimitAction(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RateLimitActionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RateLimitActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RateLimitActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RateLimitActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  body: str,
                  content_type: str):
@@ -3674,9 +4593,6 @@ class RateLimitActionResponse(dict):
         """
         return pulumi.get(self, "content_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RateLimitCorrelate(dict):
@@ -3695,9 +4611,6 @@ class RateLimitCorrelate(dict):
         If set to 'nat', NAT support will be enabled for rate limiting.
         """
         return pulumi.get(self, "by")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3730,12 +4643,26 @@ class RateLimitMatch(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RateLimitMatchRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlPattern":
+            suggest = "url_pattern"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RateLimitMatchRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RateLimitMatchRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RateLimitMatchRequest.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  methods: Optional[Sequence[str]] = None,
                  schemes: Optional[Sequence[str]] = None,
@@ -3776,12 +4703,26 @@ class RateLimitMatchRequest(dict):
         """
         return pulumi.get(self, "url_pattern")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RateLimitMatchResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "originTraffic":
+            suggest = "origin_traffic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RateLimitMatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RateLimitMatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RateLimitMatchResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  headers: Optional[Sequence[Mapping[str, str]]] = None,
                  origin_traffic: Optional[bool] = None,
@@ -3822,12 +4763,52 @@ class RateLimitMatchResponse(dict):
         """
         return pulumi.get(self, "statuses")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RecordData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "digestType":
+            suggest = "digest_type"
+        elif key == "keyTag":
+            suggest = "key_tag"
+        elif key == "latDegrees":
+            suggest = "lat_degrees"
+        elif key == "latDirection":
+            suggest = "lat_direction"
+        elif key == "latMinutes":
+            suggest = "lat_minutes"
+        elif key == "latSeconds":
+            suggest = "lat_seconds"
+        elif key == "longDegrees":
+            suggest = "long_degrees"
+        elif key == "longDirection":
+            suggest = "long_direction"
+        elif key == "longMinutes":
+            suggest = "long_minutes"
+        elif key == "longSeconds":
+            suggest = "long_seconds"
+        elif key == "matchingType":
+            suggest = "matching_type"
+        elif key == "precisionHorz":
+            suggest = "precision_horz"
+        elif key == "precisionVert":
+            suggest = "precision_vert"
+        elif key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecordData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecordData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecordData.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: Optional[int] = None,
                  altitude: Optional[float] = None,
@@ -4160,9 +5141,6 @@ class RecordData(dict):
     def weight(self) -> Optional[int]:
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpectrumApplicationDns(dict):
@@ -4192,9 +5170,6 @@ class SpectrumApplicationDns(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpectrumApplicationOriginDns(dict):
@@ -4212,9 +5187,6 @@ class SpectrumApplicationOriginDns(dict):
         Fully qualified domain name of the origin e.g. origin-ssh.example.com.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4245,12 +5217,26 @@ class SpectrumApplicationOriginPortRange(dict):
         """
         return pulumi.get(self, "start")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkerScriptKvNamespaceBinding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceId":
+            suggest = "namespace_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerScriptKvNamespaceBinding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerScriptKvNamespaceBinding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerScriptKvNamespaceBinding.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  namespace_id: str):
@@ -4272,9 +5258,6 @@ class WorkerScriptKvNamespaceBinding(dict):
     @pulumi.getter(name="namespaceId")
     def namespace_id(self) -> str:
         return pulumi.get(self, "namespace_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4305,9 +5288,6 @@ class WorkerScriptPlainTextBinding(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkerScriptSecretTextBinding(dict):
@@ -4336,9 +5316,6 @@ class WorkerScriptSecretTextBinding(dict):
         The secret text you want to store.
         """
         return pulumi.get(self, "text")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4369,9 +5346,6 @@ class WorkerScriptWebassemblyBinding(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneLockdownConfiguration(dict):
@@ -4401,12 +5375,28 @@ class ZoneLockdownConfiguration(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneMeta(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phishingDetected":
+            suggest = "phishing_detected"
+        elif key == "wildcardProxiable":
+            suggest = "wildcard_proxiable"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneMeta. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneMeta.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneMeta.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  phishing_detected: bool,
                  wildcard_proxiable: bool):
@@ -4423,12 +5413,92 @@ class ZoneMeta(dict):
     def wildcard_proxiable(self) -> bool:
         return pulumi.get(self, "wildcard_proxiable")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneSettingsOverrideInitialSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alwaysOnline":
+            suggest = "always_online"
+        elif key == "alwaysUseHttps":
+            suggest = "always_use_https"
+        elif key == "automaticHttpsRewrites":
+            suggest = "automatic_https_rewrites"
+        elif key == "browserCacheTtl":
+            suggest = "browser_cache_ttl"
+        elif key == "browserCheck":
+            suggest = "browser_check"
+        elif key == "cacheLevel":
+            suggest = "cache_level"
+        elif key == "challengeTtl":
+            suggest = "challenge_ttl"
+        elif key == "cnameFlattening":
+            suggest = "cname_flattening"
+        elif key == "developmentMode":
+            suggest = "development_mode"
+        elif key == "emailObfuscation":
+            suggest = "email_obfuscation"
+        elif key == "h2Prioritization":
+            suggest = "h2_prioritization"
+        elif key == "hotlinkProtection":
+            suggest = "hotlink_protection"
+        elif key == "imageResizing":
+            suggest = "image_resizing"
+        elif key == "ipGeolocation":
+            suggest = "ip_geolocation"
+        elif key == "maxUpload":
+            suggest = "max_upload"
+        elif key == "minTlsVersion":
+            suggest = "min_tls_version"
+        elif key == "mobileRedirect":
+            suggest = "mobile_redirect"
+        elif key == "opportunisticEncryption":
+            suggest = "opportunistic_encryption"
+        elif key == "opportunisticOnion":
+            suggest = "opportunistic_onion"
+        elif key == "originErrorPagePassThru":
+            suggest = "origin_error_page_pass_thru"
+        elif key == "prefetchPreload":
+            suggest = "prefetch_preload"
+        elif key == "privacyPass":
+            suggest = "privacy_pass"
+        elif key == "pseudoIpv4":
+            suggest = "pseudo_ipv4"
+        elif key == "responseBuffering":
+            suggest = "response_buffering"
+        elif key == "rocketLoader":
+            suggest = "rocket_loader"
+        elif key == "securityHeader":
+            suggest = "security_header"
+        elif key == "securityLevel":
+            suggest = "security_level"
+        elif key == "serverSideExclude":
+            suggest = "server_side_exclude"
+        elif key == "sortQueryStringForCache":
+            suggest = "sort_query_string_for_cache"
+        elif key == "tls12Only":
+            suggest = "tls12_only"
+        elif key == "tlsClientAuth":
+            suggest = "tls_client_auth"
+        elif key == "trueClientIpHeader":
+            suggest = "true_client_ip_header"
+        elif key == "universalSsl":
+            suggest = "universal_ssl"
+        elif key == "zeroRtt":
+            suggest = "zero_rtt"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneSettingsOverrideInitialSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneSettingsOverrideInitialSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneSettingsOverrideInitialSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  always_online: Optional[str] = None,
                  always_use_https: Optional[str] = None,
@@ -4805,9 +5875,6 @@ class ZoneSettingsOverrideInitialSettings(dict):
     def zero_rtt(self) -> Optional[str]:
         return pulumi.get(self, "zero_rtt")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneSettingsOverrideInitialSettingsMinify(dict):
@@ -4848,12 +5915,28 @@ class ZoneSettingsOverrideInitialSettingsMinify(dict):
         """
         return pulumi.get(self, "js")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneSettingsOverrideInitialSettingsMobileRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mobileSubdomain":
+            suggest = "mobile_subdomain"
+        elif key == "stripUri":
+            suggest = "strip_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneSettingsOverrideInitialSettingsMobileRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneSettingsOverrideInitialSettingsMobileRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneSettingsOverrideInitialSettingsMobileRedirect.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mobile_subdomain: str,
                  status: str,
@@ -4891,12 +5974,28 @@ class ZoneSettingsOverrideInitialSettingsMobileRedirect(dict):
         """
         return pulumi.get(self, "strip_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneSettingsOverrideInitialSettingsSecurityHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeSubdomains":
+            suggest = "include_subdomains"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneSettingsOverrideInitialSettingsSecurityHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneSettingsOverrideInitialSettingsSecurityHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneSettingsOverrideInitialSettingsSecurityHeader.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  include_subdomains: Optional[bool] = None,
@@ -4961,12 +6060,92 @@ class ZoneSettingsOverrideInitialSettingsSecurityHeader(dict):
         """
         return pulumi.get(self, "preload")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneSettingsOverrideSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alwaysOnline":
+            suggest = "always_online"
+        elif key == "alwaysUseHttps":
+            suggest = "always_use_https"
+        elif key == "automaticHttpsRewrites":
+            suggest = "automatic_https_rewrites"
+        elif key == "browserCacheTtl":
+            suggest = "browser_cache_ttl"
+        elif key == "browserCheck":
+            suggest = "browser_check"
+        elif key == "cacheLevel":
+            suggest = "cache_level"
+        elif key == "challengeTtl":
+            suggest = "challenge_ttl"
+        elif key == "cnameFlattening":
+            suggest = "cname_flattening"
+        elif key == "developmentMode":
+            suggest = "development_mode"
+        elif key == "emailObfuscation":
+            suggest = "email_obfuscation"
+        elif key == "h2Prioritization":
+            suggest = "h2_prioritization"
+        elif key == "hotlinkProtection":
+            suggest = "hotlink_protection"
+        elif key == "imageResizing":
+            suggest = "image_resizing"
+        elif key == "ipGeolocation":
+            suggest = "ip_geolocation"
+        elif key == "maxUpload":
+            suggest = "max_upload"
+        elif key == "minTlsVersion":
+            suggest = "min_tls_version"
+        elif key == "mobileRedirect":
+            suggest = "mobile_redirect"
+        elif key == "opportunisticEncryption":
+            suggest = "opportunistic_encryption"
+        elif key == "opportunisticOnion":
+            suggest = "opportunistic_onion"
+        elif key == "originErrorPagePassThru":
+            suggest = "origin_error_page_pass_thru"
+        elif key == "prefetchPreload":
+            suggest = "prefetch_preload"
+        elif key == "privacyPass":
+            suggest = "privacy_pass"
+        elif key == "pseudoIpv4":
+            suggest = "pseudo_ipv4"
+        elif key == "responseBuffering":
+            suggest = "response_buffering"
+        elif key == "rocketLoader":
+            suggest = "rocket_loader"
+        elif key == "securityHeader":
+            suggest = "security_header"
+        elif key == "securityLevel":
+            suggest = "security_level"
+        elif key == "serverSideExclude":
+            suggest = "server_side_exclude"
+        elif key == "sortQueryStringForCache":
+            suggest = "sort_query_string_for_cache"
+        elif key == "tls12Only":
+            suggest = "tls12_only"
+        elif key == "tlsClientAuth":
+            suggest = "tls_client_auth"
+        elif key == "trueClientIpHeader":
+            suggest = "true_client_ip_header"
+        elif key == "universalSsl":
+            suggest = "universal_ssl"
+        elif key == "zeroRtt":
+            suggest = "zero_rtt"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneSettingsOverrideSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneSettingsOverrideSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneSettingsOverrideSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  always_online: Optional[str] = None,
                  always_use_https: Optional[str] = None,
@@ -5343,9 +6522,6 @@ class ZoneSettingsOverrideSettings(dict):
     def zero_rtt(self) -> Optional[str]:
         return pulumi.get(self, "zero_rtt")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneSettingsOverrideSettingsMinify(dict):
@@ -5386,12 +6562,28 @@ class ZoneSettingsOverrideSettingsMinify(dict):
         """
         return pulumi.get(self, "js")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneSettingsOverrideSettingsMobileRedirect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mobileSubdomain":
+            suggest = "mobile_subdomain"
+        elif key == "stripUri":
+            suggest = "strip_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneSettingsOverrideSettingsMobileRedirect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneSettingsOverrideSettingsMobileRedirect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneSettingsOverrideSettingsMobileRedirect.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mobile_subdomain: str,
                  status: str,
@@ -5429,12 +6621,28 @@ class ZoneSettingsOverrideSettingsMobileRedirect(dict):
         """
         return pulumi.get(self, "strip_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZoneSettingsOverrideSettingsSecurityHeader(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeSubdomains":
+            suggest = "include_subdomains"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZoneSettingsOverrideSettingsSecurityHeader. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZoneSettingsOverrideSettingsSecurityHeader.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZoneSettingsOverrideSettingsSecurityHeader.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  include_subdomains: Optional[bool] = None,
@@ -5498,9 +6706,6 @@ class ZoneSettingsOverrideSettingsSecurityHeader(dict):
         true/false
         """
         return pulumi.get(self, "preload")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

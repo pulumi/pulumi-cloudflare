@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -107,6 +107,106 @@ class ZoneLockdownArgs:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
+
+
+@pulumi.input_type
+class _ZoneLockdownState:
+    def __init__(__self__, *,
+                 configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ZoneLockdown resources.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
+        """
+        if configurations is not None:
+            pulumi.set(__self__, "configurations", configurations)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if urls is not None:
+            pulumi.set(__self__, "urls", urls)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]]:
+        """
+        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        """
+        return pulumi.get(self, "configurations")
+
+    @configurations.setter
+    def configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]]):
+        pulumi.set(self, "configurations", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean of whether this zone lockdown is currently paused. Default: false.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+        """
+        return pulumi.get(self, "urls")
+
+    @urls.setter
+    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "urls", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone ID to which the access rule should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class ZoneLockdown(pulumi.CustomResource):
@@ -238,20 +338,20 @@ class ZoneLockdown(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ZoneLockdownArgs.__new__(ZoneLockdownArgs)
 
             if configurations is None and not opts.urn:
                 raise TypeError("Missing required property 'configurations'")
-            __props__['configurations'] = configurations
-            __props__['description'] = description
-            __props__['paused'] = paused
-            __props__['priority'] = priority
+            __props__.__dict__["configurations"] = configurations
+            __props__.__dict__["description"] = description
+            __props__.__dict__["paused"] = paused
+            __props__.__dict__["priority"] = priority
             if urls is None and not opts.urn:
                 raise TypeError("Missing required property 'urls'")
-            __props__['urls'] = urls
+            __props__.__dict__["urls"] = urls
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(ZoneLockdown, __self__).__init__(
             'cloudflare:index/zoneLockdown:ZoneLockdown',
             resource_name,
@@ -283,14 +383,14 @@ class ZoneLockdown(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ZoneLockdownState.__new__(_ZoneLockdownState)
 
-        __props__["configurations"] = configurations
-        __props__["description"] = description
-        __props__["paused"] = paused
-        __props__["priority"] = priority
-        __props__["urls"] = urls
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["configurations"] = configurations
+        __props__.__dict__["description"] = description
+        __props__.__dict__["paused"] = paused
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["urls"] = urls
+        __props__.__dict__["zone_id"] = zone_id
         return ZoneLockdown(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -337,10 +437,4 @@ class ZoneLockdown(pulumi.CustomResource):
         The DNS zone ID to which the access rule should be added.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

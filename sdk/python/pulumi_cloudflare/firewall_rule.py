@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['FirewallRuleArgs', 'FirewallRule']
 
@@ -121,6 +121,122 @@ class FirewallRuleArgs:
     @products.setter
     def products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "products", value)
+
+
+@pulumi.input_type
+class _FirewallRuleState:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 filter_id: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering FirewallRule resources.
+        :param pulumi.Input[str] action: The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
+        :param pulumi.Input[str] description: A description of the rule to help identify it.
+        :param pulumi.Input[bool] paused: Whether this filter based firewall rule is currently paused. Boolean value.
+        :param pulumi.Input[int] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] products: List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+        :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if filter_id is not None:
+            pulumi.set(__self__, "filter_id", filter_id)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if products is not None:
+            pulumi.set(__self__, "products", products)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the rule to help identify it.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="filterId")
+    def filter_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "filter_id")
+
+    @filter_id.setter
+    def filter_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter_id", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this filter based firewall rule is currently paused. Boolean value.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def products(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+        """
+        return pulumi.get(self, "products")
+
+    @products.setter
+    def products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "products", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone to which the Filter should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class FirewallRule(pulumi.CustomResource):
@@ -259,21 +375,21 @@ class FirewallRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FirewallRuleArgs.__new__(FirewallRuleArgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
-            __props__['action'] = action
-            __props__['description'] = description
+            __props__.__dict__["action"] = action
+            __props__.__dict__["description"] = description
             if filter_id is None and not opts.urn:
                 raise TypeError("Missing required property 'filter_id'")
-            __props__['filter_id'] = filter_id
-            __props__['paused'] = paused
-            __props__['priority'] = priority
-            __props__['products'] = products
+            __props__.__dict__["filter_id"] = filter_id
+            __props__.__dict__["paused"] = paused
+            __props__.__dict__["priority"] = priority
+            __props__.__dict__["products"] = products
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(FirewallRule, __self__).__init__(
             'cloudflare:index/firewallRule:FirewallRule',
             resource_name,
@@ -307,15 +423,15 @@ class FirewallRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FirewallRuleState.__new__(_FirewallRuleState)
 
-        __props__["action"] = action
-        __props__["description"] = description
-        __props__["filter_id"] = filter_id
-        __props__["paused"] = paused
-        __props__["priority"] = priority
-        __props__["products"] = products
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["action"] = action
+        __props__.__dict__["description"] = description
+        __props__.__dict__["filter_id"] = filter_id
+        __props__.__dict__["paused"] = paused
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["products"] = products
+        __props__.__dict__["zone_id"] = zone_id
         return FirewallRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -370,10 +486,4 @@ class FirewallRule(pulumi.CustomResource):
         The DNS zone to which the Filter should be added.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

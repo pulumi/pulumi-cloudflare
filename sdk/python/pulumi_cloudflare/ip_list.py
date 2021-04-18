@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -91,6 +91,90 @@ class IpListArgs:
     @items.setter
     def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpListItemArgs']]]]):
         pulumi.set(self, "items", value)
+
+
+@pulumi.input_type
+class _IpListState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input['IpListItemArgs']]]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering IpList resources.
+        :param pulumi.Input[str] account_id: The ID of the account where the IP List is being created.
+        :param pulumi.Input[str] description: A note that can be used to annotate the List. Maximum Length: 500
+        :param pulumi.Input[str] kind: The kind of values in the List. Valid values: `ip`.
+        :param pulumi.Input[str] name: The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if items is not None:
+            pulumi.set(__self__, "items", items)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the account where the IP List is being created.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A note that can be used to annotate the List. Maximum Length: 500
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpListItemArgs']]]]:
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpListItemArgs']]]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of values in the List. Valid values: `ip`.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class IpList(pulumi.CustomResource):
@@ -227,19 +311,19 @@ class IpList(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IpListArgs.__new__(IpListArgs)
 
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
-            __props__['account_id'] = account_id
-            __props__['description'] = description
-            __props__['items'] = items
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["items"] = items
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
-            __props__['kind'] = kind
+            __props__.__dict__["kind"] = kind
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            __props__.__dict__["name"] = name
         super(IpList, __self__).__init__(
             'cloudflare:index/ipList:IpList',
             resource_name,
@@ -269,13 +353,13 @@ class IpList(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _IpListState.__new__(_IpListState)
 
-        __props__["account_id"] = account_id
-        __props__["description"] = description
-        __props__["items"] = items
-        __props__["kind"] = kind
-        __props__["name"] = name
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["items"] = items
+        __props__.__dict__["kind"] = kind
+        __props__.__dict__["name"] = name
         return IpList(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -314,10 +398,4 @@ class IpList(pulumi.CustomResource):
         The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

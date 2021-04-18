@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ByoIpPrefixArgs', 'ByoIpPrefix']
 
@@ -63,6 +63,62 @@ class ByoIpPrefixArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class _ByoIpPrefixState:
+    def __init__(__self__, *,
+                 advertisement: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 prefix_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ByoIpPrefix resources.
+        :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+        :param pulumi.Input[str] description: The description of the prefix.
+        :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
+        """
+        if advertisement is not None:
+            pulumi.set(__self__, "advertisement", advertisement)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if prefix_id is not None:
+            pulumi.set(__self__, "prefix_id", prefix_id)
+
+    @property
+    @pulumi.getter
+    def advertisement(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
+        """
+        return pulumi.get(self, "advertisement")
+
+    @advertisement.setter
+    def advertisement(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "advertisement", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the prefix.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="prefixId")
+    def prefix_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The assigned Bring-Your-Own-IP prefix ID.
+        """
+        return pulumi.get(self, "prefix_id")
+
+    @prefix_id.setter
+    def prefix_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "prefix_id", value)
 
 
 class ByoIpPrefix(pulumi.CustomResource):
@@ -170,13 +226,13 @@ class ByoIpPrefix(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ByoIpPrefixArgs.__new__(ByoIpPrefixArgs)
 
-            __props__['advertisement'] = advertisement
-            __props__['description'] = description
+            __props__.__dict__["advertisement"] = advertisement
+            __props__.__dict__["description"] = description
             if prefix_id is None and not opts.urn:
                 raise TypeError("Missing required property 'prefix_id'")
-            __props__['prefix_id'] = prefix_id
+            __props__.__dict__["prefix_id"] = prefix_id
         super(ByoIpPrefix, __self__).__init__(
             'cloudflare:index/byoIpPrefix:ByoIpPrefix',
             resource_name,
@@ -203,11 +259,11 @@ class ByoIpPrefix(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ByoIpPrefixState.__new__(_ByoIpPrefixState)
 
-        __props__["advertisement"] = advertisement
-        __props__["description"] = description
-        __props__["prefix_id"] = prefix_id
+        __props__.__dict__["advertisement"] = advertisement
+        __props__.__dict__["description"] = description
+        __props__.__dict__["prefix_id"] = prefix_id
         return ByoIpPrefix(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -233,10 +289,4 @@ class ByoIpPrefix(pulumi.CustomResource):
         The assigned Bring-Your-Own-IP prefix ID.
         """
         return pulumi.get(self, "prefix_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

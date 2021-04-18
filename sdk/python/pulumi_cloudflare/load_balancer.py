@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -240,6 +240,270 @@ class LoadBalancerArgs:
         pulumi.set(self, "ttl", value)
 
 
+@pulumi.input_type
+class _LoadBalancerState:
+    def __init__(__self__, *,
+                 created_on: Optional[pulumi.Input[str]] = None,
+                 default_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 fallback_pool_id: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pop_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPopPoolArgs']]]] = None,
+                 proxied: Optional[pulumi.Input[bool]] = None,
+                 region_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRegionPoolArgs']]]] = None,
+                 session_affinity: Optional[pulumi.Input[str]] = None,
+                 session_affinity_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 session_affinity_ttl: Optional[pulumi.Input[int]] = None,
+                 steering_policy: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LoadBalancer resources.
+        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer was created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_pool_ids: A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
+        :param pulumi.Input[str] description: Free text description.
+        :param pulumi.Input[bool] enabled: Enable or disable the load balancer. Defaults to `true` (enabled).
+        :param pulumi.Input[str] fallback_pool_id: The pool ID to use when all other pools are detected as unhealthy.
+        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer was last modified.
+        :param pulumi.Input[str] name: The DNS name (FQDN, including the zone) to associate with the load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPopPoolArgs']]] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+        :param pulumi.Input[bool] proxied: Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRegionPoolArgs']]] region_pools: A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+        :param pulumi.Input[str] session_affinity: Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_affinity_attributes: Configure cookie attributes for session affinity cookie. See the field documentation below.
+        :param pulumi.Input[int] session_affinity_ttl: Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        :param pulumi.Input[str] steering_policy: Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
+        :param pulumi.Input[int] ttl: Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+        :param pulumi.Input[str] zone_id: The zone ID to add the load balancer to.
+        """
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if default_pool_ids is not None:
+            pulumi.set(__self__, "default_pool_ids", default_pool_ids)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if fallback_pool_id is not None:
+            pulumi.set(__self__, "fallback_pool_id", fallback_pool_id)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pop_pools is not None:
+            pulumi.set(__self__, "pop_pools", pop_pools)
+        if proxied is not None:
+            pulumi.set(__self__, "proxied", proxied)
+        if region_pools is not None:
+            pulumi.set(__self__, "region_pools", region_pools)
+        if session_affinity is not None:
+            pulumi.set(__self__, "session_affinity", session_affinity)
+        if session_affinity_attributes is not None:
+            pulumi.set(__self__, "session_affinity_attributes", session_affinity_attributes)
+        if session_affinity_ttl is not None:
+            pulumi.set(__self__, "session_affinity_ttl", session_affinity_ttl)
+        if steering_policy is not None:
+            pulumi.set(__self__, "steering_policy", steering_policy)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC3339 timestamp of when the load balancer was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter(name="defaultPoolIds")
+    def default_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
+        """
+        return pulumi.get(self, "default_pool_ids")
+
+    @default_pool_ids.setter
+    def default_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "default_pool_ids", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free text description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable the load balancer. Defaults to `true` (enabled).
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="fallbackPoolId")
+    def fallback_pool_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pool ID to use when all other pools are detected as unhealthy.
+        """
+        return pulumi.get(self, "fallback_pool_id")
+
+    @fallback_pool_id.setter
+    def fallback_pool_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fallback_pool_id", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC3339 timestamp of when the load balancer was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS name (FQDN, including the zone) to associate with the load balancer.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="popPools")
+    def pop_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPopPoolArgs']]]]:
+        """
+        A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+        """
+        return pulumi.get(self, "pop_pools")
+
+    @pop_pools.setter
+    def pop_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPopPoolArgs']]]]):
+        pulumi.set(self, "pop_pools", value)
+
+    @property
+    @pulumi.getter
+    def proxied(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
+        """
+        return pulumi.get(self, "proxied")
+
+    @proxied.setter
+    def proxied(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "proxied", value)
+
+    @property
+    @pulumi.getter(name="regionPools")
+    def region_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRegionPoolArgs']]]]:
+        """
+        A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+        """
+        return pulumi.get(self, "region_pools")
+
+    @region_pools.setter
+    def region_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRegionPoolArgs']]]]):
+        pulumi.set(self, "region_pools", value)
+
+    @property
+    @pulumi.getter(name="sessionAffinity")
+    def session_affinity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
+        """
+        return pulumi.get(self, "session_affinity")
+
+    @session_affinity.setter
+    def session_affinity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_affinity", value)
+
+    @property
+    @pulumi.getter(name="sessionAffinityAttributes")
+    def session_affinity_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Configure cookie attributes for session affinity cookie. See the field documentation below.
+        """
+        return pulumi.get(self, "session_affinity_attributes")
+
+    @session_affinity_attributes.setter
+    def session_affinity_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "session_affinity_attributes", value)
+
+    @property
+    @pulumi.getter(name="sessionAffinityTtl")
+    def session_affinity_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        """
+        return pulumi.get(self, "session_affinity_ttl")
+
+    @session_affinity_ttl.setter
+    def session_affinity_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "session_affinity_ttl", value)
+
+    @property
+    @pulumi.getter(name="steeringPolicy")
+    def steering_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
+        """
+        return pulumi.get(self, "steering_policy")
+
+    @steering_policy.setter
+    def steering_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "steering_policy", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID to add the load balancer to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
 class LoadBalancer(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -406,32 +670,32 @@ class LoadBalancer(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LoadBalancerArgs.__new__(LoadBalancerArgs)
 
             if default_pool_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'default_pool_ids'")
-            __props__['default_pool_ids'] = default_pool_ids
-            __props__['description'] = description
-            __props__['enabled'] = enabled
+            __props__.__dict__["default_pool_ids"] = default_pool_ids
+            __props__.__dict__["description"] = description
+            __props__.__dict__["enabled"] = enabled
             if fallback_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fallback_pool_id'")
-            __props__['fallback_pool_id'] = fallback_pool_id
+            __props__.__dict__["fallback_pool_id"] = fallback_pool_id
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
-            __props__['pop_pools'] = pop_pools
-            __props__['proxied'] = proxied
-            __props__['region_pools'] = region_pools
-            __props__['session_affinity'] = session_affinity
-            __props__['session_affinity_attributes'] = session_affinity_attributes
-            __props__['session_affinity_ttl'] = session_affinity_ttl
-            __props__['steering_policy'] = steering_policy
-            __props__['ttl'] = ttl
+            __props__.__dict__["name"] = name
+            __props__.__dict__["pop_pools"] = pop_pools
+            __props__.__dict__["proxied"] = proxied
+            __props__.__dict__["region_pools"] = region_pools
+            __props__.__dict__["session_affinity"] = session_affinity
+            __props__.__dict__["session_affinity_attributes"] = session_affinity_attributes
+            __props__.__dict__["session_affinity_ttl"] = session_affinity_ttl
+            __props__.__dict__["steering_policy"] = steering_policy
+            __props__.__dict__["ttl"] = ttl
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
-            __props__['created_on'] = None
-            __props__['modified_on'] = None
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_on"] = None
         super(LoadBalancer, __self__).__init__(
             'cloudflare:index/loadBalancer:LoadBalancer',
             resource_name,
@@ -484,24 +748,24 @@ class LoadBalancer(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LoadBalancerState.__new__(_LoadBalancerState)
 
-        __props__["created_on"] = created_on
-        __props__["default_pool_ids"] = default_pool_ids
-        __props__["description"] = description
-        __props__["enabled"] = enabled
-        __props__["fallback_pool_id"] = fallback_pool_id
-        __props__["modified_on"] = modified_on
-        __props__["name"] = name
-        __props__["pop_pools"] = pop_pools
-        __props__["proxied"] = proxied
-        __props__["region_pools"] = region_pools
-        __props__["session_affinity"] = session_affinity
-        __props__["session_affinity_attributes"] = session_affinity_attributes
-        __props__["session_affinity_ttl"] = session_affinity_ttl
-        __props__["steering_policy"] = steering_policy
-        __props__["ttl"] = ttl
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["default_pool_ids"] = default_pool_ids
+        __props__.__dict__["description"] = description
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["fallback_pool_id"] = fallback_pool_id
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["name"] = name
+        __props__.__dict__["pop_pools"] = pop_pools
+        __props__.__dict__["proxied"] = proxied
+        __props__.__dict__["region_pools"] = region_pools
+        __props__.__dict__["session_affinity"] = session_affinity
+        __props__.__dict__["session_affinity_attributes"] = session_affinity_attributes
+        __props__.__dict__["session_affinity_ttl"] = session_affinity_ttl
+        __props__.__dict__["steering_policy"] = steering_policy
+        __props__.__dict__["ttl"] = ttl
+        __props__.__dict__["zone_id"] = zone_id
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -631,10 +895,4 @@ class LoadBalancer(pulumi.CustomResource):
         The zone ID to add the load balancer to.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

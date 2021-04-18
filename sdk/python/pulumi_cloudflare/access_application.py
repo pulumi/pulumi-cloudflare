@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -206,6 +206,218 @@ class AccessApplicationArgs:
         pulumi.set(self, "zone_id", value)
 
 
+@pulumi.input_type
+class _AccessApplicationState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 aud: Optional[pulumi.Input[str]] = None,
+                 auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
+                 custom_deny_message: Optional[pulumi.Input[str]] = None,
+                 custom_deny_url: Optional[pulumi.Input[str]] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccessApplication resources.
+        :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
+        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
+               selection if only one is configured in allowed_idps. Defaults to `false`
+               (disabled).
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See
+               below for reference structure.
+        :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
+        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
+               Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to
+               re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+               Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if allowed_idps is not None:
+            pulumi.set(__self__, "allowed_idps", allowed_idps)
+        if aud is not None:
+            pulumi.set(__self__, "aud", aud)
+        if auto_redirect_to_identity is not None:
+            pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
+        if cors_headers is not None:
+            pulumi.set(__self__, "cors_headers", cors_headers)
+        if custom_deny_message is not None:
+            pulumi.set(__self__, "custom_deny_message", custom_deny_message)
+        if custom_deny_url is not None:
+            pulumi.set(__self__, "custom_deny_url", custom_deny_url)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if enable_binding_cookie is not None:
+            pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if session_duration is not None:
+            pulumi.set(__self__, "session_duration", session_duration)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account to which the access application should be added. Conflicts with `zone_id`.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="allowedIdps")
+    def allowed_idps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The identity providers selected for the application.
+        """
+        return pulumi.get(self, "allowed_idps")
+
+    @allowed_idps.setter
+    def allowed_idps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_idps", value)
+
+    @property
+    @pulumi.getter
+    def aud(self) -> Optional[pulumi.Input[str]]:
+        """
+        Application Audience (AUD) Tag of the application
+        """
+        return pulumi.get(self, "aud")
+
+    @aud.setter
+    def aud(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aud", value)
+
+    @property
+    @pulumi.getter(name="autoRedirectToIdentity")
+    def auto_redirect_to_identity(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to skip identity provider
+        selection if only one is configured in allowed_idps. Defaults to `false`
+        (disabled).
+        """
+        return pulumi.get(self, "auto_redirect_to_identity")
+
+    @auto_redirect_to_identity.setter
+    def auto_redirect_to_identity(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_redirect_to_identity", value)
+
+    @property
+    @pulumi.getter(name="corsHeaders")
+    def cors_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]]:
+        """
+        CORS configuration for the Access Application. See
+        below for reference structure.
+        """
+        return pulumi.get(self, "cors_headers")
+
+    @cors_headers.setter
+    def cors_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]]):
+        pulumi.set(self, "cors_headers", value)
+
+    @property
+    @pulumi.getter(name="customDenyMessage")
+    def custom_deny_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Option that returns a custom error message when a user is denied access to the application.
+        """
+        return pulumi.get(self, "custom_deny_message")
+
+    @custom_deny_message.setter
+    def custom_deny_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_deny_message", value)
+
+    @property
+    @pulumi.getter(name="customDenyUrl")
+    def custom_deny_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Option that redirects to a custom URL when a user is denied access to the application.
+        """
+        return pulumi.get(self, "custom_deny_url")
+
+    @custom_deny_url.setter
+    def custom_deny_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_deny_url", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The complete URL of the asset you wish to put
+        Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="enableBindingCookie")
+    def enable_binding_cookie(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        """
+        return pulumi.get(self, "enable_binding_cookie")
+
+    @enable_binding_cookie.setter
+    def enable_binding_cookie(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_binding_cookie", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        How often a user will be forced to
+        re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+        Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        """
+        return pulumi.get(self, "session_duration")
+
+    @session_duration.setter
+    def session_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_duration", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
 class AccessApplication(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -369,24 +581,24 @@ class AccessApplication(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessApplicationArgs.__new__(AccessApplicationArgs)
 
-            __props__['account_id'] = account_id
-            __props__['allowed_idps'] = allowed_idps
-            __props__['auto_redirect_to_identity'] = auto_redirect_to_identity
-            __props__['cors_headers'] = cors_headers
-            __props__['custom_deny_message'] = custom_deny_message
-            __props__['custom_deny_url'] = custom_deny_url
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["allowed_idps"] = allowed_idps
+            __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
+            __props__.__dict__["cors_headers"] = cors_headers
+            __props__.__dict__["custom_deny_message"] = custom_deny_message
+            __props__.__dict__["custom_deny_url"] = custom_deny_url
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
-            __props__['domain'] = domain
-            __props__['enable_binding_cookie'] = enable_binding_cookie
+            __props__.__dict__["domain"] = domain
+            __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
-            __props__['session_duration'] = session_duration
-            __props__['zone_id'] = zone_id
-            __props__['aud'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["session_duration"] = session_duration
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["aud"] = None
         super(AccessApplication, __self__).__init__(
             'cloudflare:index/accessApplication:AccessApplication',
             resource_name,
@@ -437,20 +649,20 @@ class AccessApplication(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessApplicationState.__new__(_AccessApplicationState)
 
-        __props__["account_id"] = account_id
-        __props__["allowed_idps"] = allowed_idps
-        __props__["aud"] = aud
-        __props__["auto_redirect_to_identity"] = auto_redirect_to_identity
-        __props__["cors_headers"] = cors_headers
-        __props__["custom_deny_message"] = custom_deny_message
-        __props__["custom_deny_url"] = custom_deny_url
-        __props__["domain"] = domain
-        __props__["enable_binding_cookie"] = enable_binding_cookie
-        __props__["name"] = name
-        __props__["session_duration"] = session_duration
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["allowed_idps"] = allowed_idps
+        __props__.__dict__["aud"] = aud
+        __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
+        __props__.__dict__["cors_headers"] = cors_headers
+        __props__.__dict__["custom_deny_message"] = custom_deny_message
+        __props__.__dict__["custom_deny_url"] = custom_deny_url
+        __props__.__dict__["domain"] = domain
+        __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
+        __props__.__dict__["name"] = name
+        __props__.__dict__["session_duration"] = session_duration
+        __props__.__dict__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -554,10 +766,4 @@ class AccessApplication(pulumi.CustomResource):
         The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

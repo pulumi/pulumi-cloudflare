@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['OriginCaCertificateArgs', 'OriginCaCertificate']
 
@@ -66,6 +66,110 @@ class OriginCaCertificateArgs:
     @csr.setter
     def csr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "csr", value)
+
+    @property
+    @pulumi.getter(name="requestedValidity")
+    def requested_validity(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days for which the certificate should be valid.
+        """
+        return pulumi.get(self, "requested_validity")
+
+    @requested_validity.setter
+    def requested_validity(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "requested_validity", value)
+
+
+@pulumi.input_type
+class _OriginCaCertificateState:
+    def __init__(__self__, *,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 csr: Optional[pulumi.Input[str]] = None,
+                 expires_on: Optional[pulumi.Input[str]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_type: Optional[pulumi.Input[str]] = None,
+                 requested_validity: Optional[pulumi.Input[int]] = None):
+        """
+        Input properties used for looking up and filtering OriginCaCertificate resources.
+        :param pulumi.Input[str] certificate: The Origin CA certificate
+        :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded.
+        :param pulumi.Input[str] expires_on: The datetime when the certificate will expire.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: An array of hostnames or wildcard names bound to the certificate.
+        :param pulumi.Input[str] request_type: The signature type desired on the certificate.
+        :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid.
+        """
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if csr is not None:
+            pulumi.set(__self__, "csr", csr)
+        if expires_on is not None:
+            pulumi.set(__self__, "expires_on", expires_on)
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
+        if request_type is not None:
+            pulumi.set(__self__, "request_type", request_type)
+        if requested_validity is not None:
+            pulumi.set(__self__, "requested_validity", requested_validity)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Origin CA certificate
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter
+    def csr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Certificate Signing Request. Must be newline-encoded.
+        """
+        return pulumi.get(self, "csr")
+
+    @csr.setter
+    def csr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "csr", value)
+
+    @property
+    @pulumi.getter(name="expiresOn")
+    def expires_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datetime when the certificate will expire.
+        """
+        return pulumi.get(self, "expires_on")
+
+    @expires_on.setter
+    def expires_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_on", value)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An array of hostnames or wildcard names bound to the certificate.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hostnames", value)
+
+    @property
+    @pulumi.getter(name="requestType")
+    def request_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The signature type desired on the certificate.
+        """
+        return pulumi.get(self, "request_type")
+
+    @request_type.setter
+    def request_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_type", value)
 
     @property
     @pulumi.getter(name="requestedValidity")
@@ -214,18 +318,18 @@ class OriginCaCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OriginCaCertificateArgs.__new__(OriginCaCertificateArgs)
 
-            __props__['csr'] = csr
+            __props__.__dict__["csr"] = csr
             if hostnames is None and not opts.urn:
                 raise TypeError("Missing required property 'hostnames'")
-            __props__['hostnames'] = hostnames
+            __props__.__dict__["hostnames"] = hostnames
             if request_type is None and not opts.urn:
                 raise TypeError("Missing required property 'request_type'")
-            __props__['request_type'] = request_type
-            __props__['requested_validity'] = requested_validity
-            __props__['certificate'] = None
-            __props__['expires_on'] = None
+            __props__.__dict__["request_type"] = request_type
+            __props__.__dict__["requested_validity"] = requested_validity
+            __props__.__dict__["certificate"] = None
+            __props__.__dict__["expires_on"] = None
         super(OriginCaCertificate, __self__).__init__(
             'cloudflare:index/originCaCertificate:OriginCaCertificate',
             resource_name,
@@ -258,14 +362,14 @@ class OriginCaCertificate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _OriginCaCertificateState.__new__(_OriginCaCertificateState)
 
-        __props__["certificate"] = certificate
-        __props__["csr"] = csr
-        __props__["expires_on"] = expires_on
-        __props__["hostnames"] = hostnames
-        __props__["request_type"] = request_type
-        __props__["requested_validity"] = requested_validity
+        __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["csr"] = csr
+        __props__.__dict__["expires_on"] = expires_on
+        __props__.__dict__["hostnames"] = hostnames
+        __props__.__dict__["request_type"] = request_type
+        __props__.__dict__["requested_validity"] = requested_validity
         return OriginCaCertificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -315,10 +419,4 @@ class OriginCaCertificate(pulumi.CustomResource):
         The number of days for which the certificate should be valid.
         """
         return pulumi.get(self, "requested_validity")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
