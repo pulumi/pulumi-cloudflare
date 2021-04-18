@@ -64,6 +64,11 @@ __all__ = [
     'LoadBalancerPoolOrigin',
     'LoadBalancerPopPool',
     'LoadBalancerRegionPool',
+    'LoadBalancerRule',
+    'LoadBalancerRuleFixedResponse',
+    'LoadBalancerRuleOverride',
+    'LoadBalancerRuleOverridePopPool',
+    'LoadBalancerRuleOverrideRegionPool',
     'PageRuleActions',
     'PageRuleActionsCacheKeyFields',
     'PageRuleActionsCacheKeyFieldsCookie',
@@ -267,6 +272,8 @@ class AccessGroupExclude(dict):
             suggest = "common_name"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "loginMethods":
+            suggest = "login_methods"
         elif key == "serviceTokens":
             suggest = "service_tokens"
 
@@ -295,6 +302,7 @@ class AccessGroupExclude(dict):
                  groups: Optional[Sequence[str]] = None,
                  gsuites: Optional[Sequence['outputs.AccessGroupExcludeGsuite']] = None,
                  ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
                  oktas: Optional[Sequence['outputs.AccessGroupExcludeOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessGroupExcludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
@@ -324,6 +332,8 @@ class AccessGroupExclude(dict):
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -395,6 +405,11 @@ class AccessGroupExclude(dict):
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
 
     @property
     @pulumi.getter
@@ -647,6 +662,8 @@ class AccessGroupInclude(dict):
             suggest = "common_name"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "loginMethods":
+            suggest = "login_methods"
         elif key == "serviceTokens":
             suggest = "service_tokens"
 
@@ -675,6 +692,7 @@ class AccessGroupInclude(dict):
                  groups: Optional[Sequence[str]] = None,
                  gsuites: Optional[Sequence['outputs.AccessGroupIncludeGsuite']] = None,
                  ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
                  oktas: Optional[Sequence['outputs.AccessGroupIncludeOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessGroupIncludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
@@ -704,6 +722,8 @@ class AccessGroupInclude(dict):
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -775,6 +795,11 @@ class AccessGroupInclude(dict):
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
 
     @property
     @pulumi.getter
@@ -1027,6 +1052,8 @@ class AccessGroupRequire(dict):
             suggest = "common_name"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "loginMethods":
+            suggest = "login_methods"
         elif key == "serviceTokens":
             suggest = "service_tokens"
 
@@ -1055,6 +1082,7 @@ class AccessGroupRequire(dict):
                  groups: Optional[Sequence[str]] = None,
                  gsuites: Optional[Sequence['outputs.AccessGroupRequireGsuite']] = None,
                  ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
                  oktas: Optional[Sequence['outputs.AccessGroupRequireOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessGroupRequireSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
@@ -1084,6 +1112,8 @@ class AccessGroupRequire(dict):
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -1155,6 +1185,11 @@ class AccessGroupRequire(dict):
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
 
     @property
     @pulumi.getter
@@ -1615,6 +1650,8 @@ class AccessPolicyExclude(dict):
             suggest = "common_name"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "loginMethods":
+            suggest = "login_methods"
         elif key == "serviceTokens":
             suggest = "service_tokens"
 
@@ -1643,6 +1680,7 @@ class AccessPolicyExclude(dict):
                  groups: Optional[Sequence[str]] = None,
                  gsuites: Optional[Sequence['outputs.AccessPolicyExcludeGsuite']] = None,
                  ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
                  oktas: Optional[Sequence['outputs.AccessPolicyExcludeOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessPolicyExcludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
@@ -1672,6 +1710,8 @@ class AccessPolicyExclude(dict):
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -1743,6 +1783,11 @@ class AccessPolicyExclude(dict):
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
 
     @property
     @pulumi.getter
@@ -1995,6 +2040,8 @@ class AccessPolicyInclude(dict):
             suggest = "common_name"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "loginMethods":
+            suggest = "login_methods"
         elif key == "serviceTokens":
             suggest = "service_tokens"
 
@@ -2023,6 +2070,7 @@ class AccessPolicyInclude(dict):
                  groups: Optional[Sequence[str]] = None,
                  gsuites: Optional[Sequence['outputs.AccessPolicyIncludeGsuite']] = None,
                  ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
                  oktas: Optional[Sequence['outputs.AccessPolicyIncludeOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessPolicyIncludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
@@ -2052,6 +2100,8 @@ class AccessPolicyInclude(dict):
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -2123,6 +2173,11 @@ class AccessPolicyInclude(dict):
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
 
     @property
     @pulumi.getter
@@ -2375,6 +2430,8 @@ class AccessPolicyRequire(dict):
             suggest = "common_name"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "loginMethods":
+            suggest = "login_methods"
         elif key == "serviceTokens":
             suggest = "service_tokens"
 
@@ -2403,6 +2460,7 @@ class AccessPolicyRequire(dict):
                  groups: Optional[Sequence[str]] = None,
                  gsuites: Optional[Sequence['outputs.AccessPolicyRequireGsuite']] = None,
                  ips: Optional[Sequence[str]] = None,
+                 login_methods: Optional[Sequence[str]] = None,
                  oktas: Optional[Sequence['outputs.AccessPolicyRequireOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessPolicyRequireSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
@@ -2432,6 +2490,8 @@ class AccessPolicyRequire(dict):
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -2503,6 +2563,11 @@ class AccessPolicyRequire(dict):
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ips")
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "login_methods")
 
     @property
     @pulumi.getter
@@ -3521,6 +3586,427 @@ class LoadBalancerRegionPool(dict):
 
     def get(self, key: str, default = None) -> Any:
         LoadBalancerRegionPool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pool_ids: Sequence[str],
+                 region: str):
+        """
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param str region: A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+        """
+        pulumi.set(__self__, "pool_ids", pool_ids)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="poolIds")
+    def pool_ids(self) -> Sequence[str]:
+        """
+        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        """
+        return pulumi.get(self, "pool_ids")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class LoadBalancerRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedResponse":
+            suggest = "fixed_response"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 condition: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 fixed_response: Optional['outputs.LoadBalancerRuleFixedResponse'] = None,
+                 overrides: Optional[Sequence['outputs.LoadBalancerRuleOverride']] = None,
+                 priority: Optional[int] = None,
+                 terminates: Optional[bool] = None):
+        """
+        :param str name: Human readable name for this rule.
+        :param str condition: The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        :param bool disabled: A disabled rule will be be executed.
+        :param 'LoadBalancerRuleFixedResponseArgs' fixed_response: Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        :param Sequence['LoadBalancerRuleOverrideArgs'] overrides: The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        :param int priority: Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+        :param bool terminates: Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixed_response forces this field to true.
+        """
+        pulumi.set(__self__, "name", name)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if fixed_response is not None:
+            pulumi.set(__self__, "fixed_response", fixed_response)
+        if overrides is not None:
+            pulumi.set(__self__, "overrides", overrides)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if terminates is not None:
+            pulumi.set(__self__, "terminates", terminates)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Human readable name for this rule.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[str]:
+        """
+        The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        A disabled rule will be be executed.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="fixedResponse")
+    def fixed_response(self) -> Optional['outputs.LoadBalancerRuleFixedResponse']:
+        """
+        Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        """
+        return pulumi.get(self, "fixed_response")
+
+    @property
+    @pulumi.getter
+    def overrides(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverride']]:
+        """
+        The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        """
+        return pulumi.get(self, "overrides")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[int]:
+        """
+        Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def terminates(self) -> Optional[bool]:
+        """
+        Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixed_response forces this field to true.
+        """
+        return pulumi.get(self, "terminates")
+
+
+@pulumi.output_type
+class LoadBalancerRuleFixedResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+        elif key == "messageBody":
+            suggest = "message_body"
+        elif key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRuleFixedResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRuleFixedResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRuleFixedResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_type: Optional[str] = None,
+                 location: Optional[str] = None,
+                 message_body: Optional[str] = None,
+                 status_code: Optional[int] = None):
+        """
+        :param str content_type: The value of the HTTP context-type header for this fixed response.
+        :param str location: The value of the HTTP location header for this fixed response.
+        :param str message_body: The text used as the html body for this fixed response.
+        :param int status_code: The HTTP status code used for this fixed response.
+        """
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message_body is not None:
+            pulumi.set(__self__, "message_body", message_body)
+        if status_code is not None:
+            pulumi.set(__self__, "status_code", status_code)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[str]:
+        """
+        The value of the HTTP context-type header for this fixed response.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        The value of the HTTP location header for this fixed response.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="messageBody")
+    def message_body(self) -> Optional[str]:
+        """
+        The text used as the html body for this fixed response.
+        """
+        return pulumi.get(self, "message_body")
+
+    @property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> Optional[int]:
+        """
+        The HTTP status code used for this fixed response.
+        """
+        return pulumi.get(self, "status_code")
+
+
+@pulumi.output_type
+class LoadBalancerRuleOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultPools":
+            suggest = "default_pools"
+        elif key == "fallbackPool":
+            suggest = "fallback_pool"
+        elif key == "popPools":
+            suggest = "pop_pools"
+        elif key == "regionPools":
+            suggest = "region_pools"
+        elif key == "sessionAffinity":
+            suggest = "session_affinity"
+        elif key == "sessionAffinityAttributes":
+            suggest = "session_affinity_attributes"
+        elif key == "sessionAffinityTtl":
+            suggest = "session_affinity_ttl"
+        elif key == "steeringPolicy":
+            suggest = "steering_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRuleOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRuleOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRuleOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_pools: Optional[Sequence[str]] = None,
+                 fallback_pool: Optional[str] = None,
+                 pop_pools: Optional[Sequence['outputs.LoadBalancerRuleOverridePopPool']] = None,
+                 region_pools: Optional[Sequence['outputs.LoadBalancerRuleOverrideRegionPool']] = None,
+                 session_affinity: Optional[str] = None,
+                 session_affinity_attributes: Optional[Mapping[str, str]] = None,
+                 session_affinity_ttl: Optional[int] = None,
+                 steering_policy: Optional[str] = None,
+                 ttl: Optional[int] = None):
+        """
+        :param Sequence[str] default_pools: See default_pool_ids above.
+        :param str fallback_pool: See fallback_pool_id above.
+        :param Sequence['LoadBalancerRuleOverridePopPoolArgs'] pop_pools: See pop_pools above.
+        :param Sequence['LoadBalancerRuleOverrideRegionPoolArgs'] region_pools: See region_pools above.
+        :param str session_affinity: See field above.
+        :param Mapping[str, str] session_affinity_attributes: See field above.
+        :param int session_affinity_ttl: See field above.
+        :param str steering_policy: See field above.
+        :param int ttl: See field above.
+        """
+        if default_pools is not None:
+            pulumi.set(__self__, "default_pools", default_pools)
+        if fallback_pool is not None:
+            pulumi.set(__self__, "fallback_pool", fallback_pool)
+        if pop_pools is not None:
+            pulumi.set(__self__, "pop_pools", pop_pools)
+        if region_pools is not None:
+            pulumi.set(__self__, "region_pools", region_pools)
+        if session_affinity is not None:
+            pulumi.set(__self__, "session_affinity", session_affinity)
+        if session_affinity_attributes is not None:
+            pulumi.set(__self__, "session_affinity_attributes", session_affinity_attributes)
+        if session_affinity_ttl is not None:
+            pulumi.set(__self__, "session_affinity_ttl", session_affinity_ttl)
+        if steering_policy is not None:
+            pulumi.set(__self__, "steering_policy", steering_policy)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="defaultPools")
+    def default_pools(self) -> Optional[Sequence[str]]:
+        """
+        See default_pool_ids above.
+        """
+        return pulumi.get(self, "default_pools")
+
+    @property
+    @pulumi.getter(name="fallbackPool")
+    def fallback_pool(self) -> Optional[str]:
+        """
+        See fallback_pool_id above.
+        """
+        return pulumi.get(self, "fallback_pool")
+
+    @property
+    @pulumi.getter(name="popPools")
+    def pop_pools(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverridePopPool']]:
+        """
+        See pop_pools above.
+        """
+        return pulumi.get(self, "pop_pools")
+
+    @property
+    @pulumi.getter(name="regionPools")
+    def region_pools(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideRegionPool']]:
+        """
+        See region_pools above.
+        """
+        return pulumi.get(self, "region_pools")
+
+    @property
+    @pulumi.getter(name="sessionAffinity")
+    def session_affinity(self) -> Optional[str]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "session_affinity")
+
+    @property
+    @pulumi.getter(name="sessionAffinityAttributes")
+    def session_affinity_attributes(self) -> Optional[Mapping[str, str]]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "session_affinity_attributes")
+
+    @property
+    @pulumi.getter(name="sessionAffinityTtl")
+    def session_affinity_ttl(self) -> Optional[int]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "session_affinity_ttl")
+
+    @property
+    @pulumi.getter(name="steeringPolicy")
+    def steering_policy(self) -> Optional[str]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "steering_policy")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[int]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "ttl")
+
+
+@pulumi.output_type
+class LoadBalancerRuleOverridePopPool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "poolIds":
+            suggest = "pool_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRuleOverridePopPool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRuleOverridePopPool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRuleOverridePopPool.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pool_ids: Sequence[str],
+                 pop: str):
+        """
+        :param Sequence[str] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param str pop: A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
+        pulumi.set(__self__, "pool_ids", pool_ids)
+        pulumi.set(__self__, "pop", pop)
+
+    @property
+    @pulumi.getter(name="poolIds")
+    def pool_ids(self) -> Sequence[str]:
+        """
+        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        """
+        return pulumi.get(self, "pool_ids")
+
+    @property
+    @pulumi.getter
+    def pop(self) -> str:
+        """
+        A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
+        return pulumi.get(self, "pop")
+
+
+@pulumi.output_type
+class LoadBalancerRuleOverrideRegionPool(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "poolIds":
+            suggest = "pool_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerRuleOverrideRegionPool. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerRuleOverrideRegionPool.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerRuleOverrideRegionPool.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,

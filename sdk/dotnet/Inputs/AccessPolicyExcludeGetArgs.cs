@@ -91,6 +91,14 @@ namespace Pulumi.Cloudflare.Inputs
             set => _ips = value;
         }
 
+        [Input("loginMethods")]
+        private InputList<string>? _loginMethods;
+        public InputList<string> LoginMethods
+        {
+            get => _loginMethods ?? (_loginMethods = new InputList<string>());
+            set => _loginMethods = value;
+        }
+
         [Input("oktas")]
         private InputList<Inputs.AccessPolicyExcludeOktaGetArgs>? _oktas;
         public InputList<Inputs.AccessPolicyExcludeOktaGetArgs> Oktas

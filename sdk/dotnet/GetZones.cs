@@ -118,7 +118,7 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A map of zone details. Full list below:
+        /// A list of zone objects. Object format:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetZonesZoneResult> Zones;
 

@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./accessApplication";
+export * from "./accessCaCertificate";
 export * from "./accessGroup";
 export * from "./accessIdentityProvider";
 export * from "./accessMutualTlsCertificate";
@@ -73,6 +74,7 @@ export {
 
 // Import resources to register:
 import { AccessApplication } from "./accessApplication";
+import { AccessCaCertificate } from "./accessCaCertificate";
 import { AccessGroup } from "./accessGroup";
 import { AccessIdentityProvider } from "./accessIdentityProvider";
 import { AccessMutualTlsCertificate } from "./accessMutualTlsCertificate";
@@ -127,6 +129,8 @@ const _module = {
         switch (type) {
             case "cloudflare:index/accessApplication:AccessApplication":
                 return new AccessApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
+                return new AccessCaCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/accessGroup:AccessGroup":
                 return new AccessGroup(name, <any>undefined, { urn })
             case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
@@ -227,6 +231,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsCertificate", _module)

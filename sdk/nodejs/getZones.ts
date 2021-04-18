@@ -132,7 +132,7 @@ export interface GetZonesResult {
      */
     readonly id: string;
     /**
-     * A map of zone details. Full list below:
+     * A list of zone objects. Object format:
      */
     readonly zones: outputs.GetZonesZone[];
 }

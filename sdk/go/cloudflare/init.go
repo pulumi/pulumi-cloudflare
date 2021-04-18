@@ -22,6 +22,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "cloudflare:index/accessApplication:AccessApplication":
 		r = &AccessApplication{}
+	case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
+		r = &AccessCaCertificate{}
 	case "cloudflare:index/accessGroup:AccessGroup":
 		r = &AccessGroup{}
 	case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
@@ -150,6 +152,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessCaCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

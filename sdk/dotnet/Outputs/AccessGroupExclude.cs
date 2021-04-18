@@ -26,6 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Groups;
         public readonly ImmutableArray<Outputs.AccessGroupExcludeGsuite> Gsuites;
         public readonly ImmutableArray<string> Ips;
+        public readonly ImmutableArray<string> LoginMethods;
         public readonly ImmutableArray<Outputs.AccessGroupExcludeOkta> Oktas;
         public readonly ImmutableArray<Outputs.AccessGroupExcludeSaml> Samls;
         public readonly ImmutableArray<string> ServiceTokens;
@@ -58,6 +59,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> ips,
 
+            ImmutableArray<string> loginMethods,
+
             ImmutableArray<Outputs.AccessGroupExcludeOkta> oktas,
 
             ImmutableArray<Outputs.AccessGroupExcludeSaml> samls,
@@ -77,6 +80,7 @@ namespace Pulumi.Cloudflare.Outputs
             Groups = groups;
             Gsuites = gsuites;
             Ips = ips;
+            LoginMethods = loginMethods;
             Oktas = oktas;
             Samls = samls;
             ServiceTokens = serviceTokens;

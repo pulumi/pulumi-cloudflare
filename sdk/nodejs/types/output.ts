@@ -59,6 +59,7 @@ export interface AccessGroupExclude {
     groups?: string[];
     gsuites?: outputs.AccessGroupExcludeGsuite[];
     ips?: string[];
+    loginMethods?: string[];
     oktas?: outputs.AccessGroupExcludeOkta[];
     samls?: outputs.AccessGroupExcludeSaml[];
     serviceTokens?: string[];
@@ -111,6 +112,7 @@ export interface AccessGroupInclude {
     groups?: string[];
     gsuites?: outputs.AccessGroupIncludeGsuite[];
     ips?: string[];
+    loginMethods?: string[];
     oktas?: outputs.AccessGroupIncludeOkta[];
     samls?: outputs.AccessGroupIncludeSaml[];
     serviceTokens?: string[];
@@ -163,6 +165,7 @@ export interface AccessGroupRequire {
     groups?: string[];
     gsuites?: outputs.AccessGroupRequireGsuite[];
     ips?: string[];
+    loginMethods?: string[];
     oktas?: outputs.AccessGroupRequireOkta[];
     samls?: outputs.AccessGroupRequireSaml[];
     serviceTokens?: string[];
@@ -237,6 +240,7 @@ export interface AccessPolicyExclude {
     groups?: string[];
     gsuites?: outputs.AccessPolicyExcludeGsuite[];
     ips?: string[];
+    loginMethods?: string[];
     oktas?: outputs.AccessPolicyExcludeOkta[];
     samls?: outputs.AccessPolicyExcludeSaml[];
     serviceTokens?: string[];
@@ -289,6 +293,7 @@ export interface AccessPolicyInclude {
     groups?: string[];
     gsuites?: outputs.AccessPolicyIncludeGsuite[];
     ips?: string[];
+    loginMethods?: string[];
     oktas?: outputs.AccessPolicyIncludeOkta[];
     samls?: outputs.AccessPolicyIncludeSaml[];
     serviceTokens?: string[];
@@ -341,6 +346,7 @@ export interface AccessPolicyRequire {
     groups?: string[];
     gsuites?: outputs.AccessPolicyRequireGsuite[];
     ips?: string[];
+    loginMethods?: string[];
     oktas?: outputs.AccessPolicyRequireOkta[];
     samls?: outputs.AccessPolicyRequireSaml[];
     serviceTokens?: string[];
@@ -765,6 +771,117 @@ export interface LoadBalancerPopPool {
 }
 
 export interface LoadBalancerRegionPool {
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     */
+    poolIds: string[];
+    /**
+     * A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+     */
+    region: string;
+}
+
+export interface LoadBalancerRule {
+    /**
+     * The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+     */
+    condition?: string;
+    /**
+     * A disabled rule will be be executed.
+     */
+    disabled?: boolean;
+    /**
+     * Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+     */
+    fixedResponse?: outputs.LoadBalancerRuleFixedResponse;
+    /**
+     * Human readable name for this rule.
+     */
+    name: string;
+    /**
+     * The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+     */
+    overrides?: outputs.LoadBalancerRuleOverride[];
+    /**
+     * Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+     */
+    priority: number;
+    /**
+     * Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixedResponse forces this field to true.
+     */
+    terminates: boolean;
+}
+
+export interface LoadBalancerRuleFixedResponse {
+    /**
+     * The value of the HTTP context-type header for this fixed response.
+     */
+    contentType?: string;
+    /**
+     * The value of the HTTP location header for this fixed response.
+     */
+    location?: string;
+    /**
+     * The text used as the html body for this fixed response.
+     */
+    messageBody?: string;
+    /**
+     * The HTTP status code used for this fixed response.
+     */
+    statusCode?: number;
+}
+
+export interface LoadBalancerRuleOverride {
+    /**
+     * See defaultPoolIds above.
+     */
+    defaultPools?: string[];
+    /**
+     * See fallbackPoolId above.
+     */
+    fallbackPool?: string;
+    /**
+     * See popPools above.
+     */
+    popPools?: outputs.LoadBalancerRuleOverridePopPool[];
+    /**
+     * See regionPools above.
+     */
+    regionPools?: outputs.LoadBalancerRuleOverrideRegionPool[];
+    /**
+     * See field above.
+     */
+    sessionAffinity?: string;
+    /**
+     * See field above.
+     */
+    sessionAffinityAttributes?: {[key: string]: string};
+    /**
+     * See field above.
+     */
+    sessionAffinityTtl?: number;
+    /**
+     * See field above.
+     */
+    steeringPolicy?: string;
+    /**
+     * See field above.
+     */
+    ttl?: number;
+}
+
+export interface LoadBalancerRuleOverridePopPool {
+    /**
+     * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+     */
+    poolIds: string[];
+    /**
+     * A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+     */
+    pop: string;
+}
+
+export interface LoadBalancerRuleOverrideRegionPool {
     /**
      * A list of pool IDs in failover priority to use for traffic reaching the given PoP.
      */

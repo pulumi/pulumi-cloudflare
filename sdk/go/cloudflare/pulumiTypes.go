@@ -202,6 +202,7 @@ type AccessGroupExclude struct {
 	Groups               []string                   `pulumi:"groups"`
 	Gsuites              []AccessGroupExcludeGsuite `pulumi:"gsuites"`
 	Ips                  []string                   `pulumi:"ips"`
+	LoginMethods         []string                   `pulumi:"loginMethods"`
 	Oktas                []AccessGroupExcludeOkta   `pulumi:"oktas"`
 	Samls                []AccessGroupExcludeSaml   `pulumi:"samls"`
 	ServiceTokens        []string                   `pulumi:"serviceTokens"`
@@ -232,6 +233,7 @@ type AccessGroupExcludeArgs struct {
 	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
 	Gsuites              AccessGroupExcludeGsuiteArrayInput `pulumi:"gsuites"`
 	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput            `pulumi:"loginMethods"`
 	Oktas                AccessGroupExcludeOktaArrayInput   `pulumi:"oktas"`
 	Samls                AccessGroupExcludeSamlArrayInput   `pulumi:"samls"`
 	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
@@ -338,6 +340,10 @@ func (o AccessGroupExcludeOutput) Gsuites() AccessGroupExcludeGsuiteArrayOutput 
 
 func (o AccessGroupExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupExcludeOutput) LoginMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupExcludeOutput) Oktas() AccessGroupExcludeOktaArrayOutput {
@@ -904,6 +910,7 @@ type AccessGroupInclude struct {
 	Groups               []string                   `pulumi:"groups"`
 	Gsuites              []AccessGroupIncludeGsuite `pulumi:"gsuites"`
 	Ips                  []string                   `pulumi:"ips"`
+	LoginMethods         []string                   `pulumi:"loginMethods"`
 	Oktas                []AccessGroupIncludeOkta   `pulumi:"oktas"`
 	Samls                []AccessGroupIncludeSaml   `pulumi:"samls"`
 	ServiceTokens        []string                   `pulumi:"serviceTokens"`
@@ -934,6 +941,7 @@ type AccessGroupIncludeArgs struct {
 	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
 	Gsuites              AccessGroupIncludeGsuiteArrayInput `pulumi:"gsuites"`
 	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput            `pulumi:"loginMethods"`
 	Oktas                AccessGroupIncludeOktaArrayInput   `pulumi:"oktas"`
 	Samls                AccessGroupIncludeSamlArrayInput   `pulumi:"samls"`
 	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
@@ -1040,6 +1048,10 @@ func (o AccessGroupIncludeOutput) Gsuites() AccessGroupIncludeGsuiteArrayOutput 
 
 func (o AccessGroupIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupIncludeOutput) LoginMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupIncludeOutput) Oktas() AccessGroupIncludeOktaArrayOutput {
@@ -1606,6 +1618,7 @@ type AccessGroupRequire struct {
 	Groups               []string                   `pulumi:"groups"`
 	Gsuites              []AccessGroupRequireGsuite `pulumi:"gsuites"`
 	Ips                  []string                   `pulumi:"ips"`
+	LoginMethods         []string                   `pulumi:"loginMethods"`
 	Oktas                []AccessGroupRequireOkta   `pulumi:"oktas"`
 	Samls                []AccessGroupRequireSaml   `pulumi:"samls"`
 	ServiceTokens        []string                   `pulumi:"serviceTokens"`
@@ -1636,6 +1649,7 @@ type AccessGroupRequireArgs struct {
 	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
 	Gsuites              AccessGroupRequireGsuiteArrayInput `pulumi:"gsuites"`
 	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput            `pulumi:"loginMethods"`
 	Oktas                AccessGroupRequireOktaArrayInput   `pulumi:"oktas"`
 	Samls                AccessGroupRequireSamlArrayInput   `pulumi:"samls"`
 	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
@@ -1742,6 +1756,10 @@ func (o AccessGroupRequireOutput) Gsuites() AccessGroupRequireGsuiteArrayOutput 
 
 func (o AccessGroupRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupRequireOutput) LoginMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupRequireOutput) Oktas() AccessGroupRequireOktaArrayOutput {
@@ -2510,6 +2528,7 @@ type AccessPolicyExclude struct {
 	Groups               []string                    `pulumi:"groups"`
 	Gsuites              []AccessPolicyExcludeGsuite `pulumi:"gsuites"`
 	Ips                  []string                    `pulumi:"ips"`
+	LoginMethods         []string                    `pulumi:"loginMethods"`
 	Oktas                []AccessPolicyExcludeOkta   `pulumi:"oktas"`
 	Samls                []AccessPolicyExcludeSaml   `pulumi:"samls"`
 	ServiceTokens        []string                    `pulumi:"serviceTokens"`
@@ -2540,6 +2559,7 @@ type AccessPolicyExcludeArgs struct {
 	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
 	Gsuites              AccessPolicyExcludeGsuiteArrayInput `pulumi:"gsuites"`
 	Ips                  pulumi.StringArrayInput             `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput             `pulumi:"loginMethods"`
 	Oktas                AccessPolicyExcludeOktaArrayInput   `pulumi:"oktas"`
 	Samls                AccessPolicyExcludeSamlArrayInput   `pulumi:"samls"`
 	ServiceTokens        pulumi.StringArrayInput             `pulumi:"serviceTokens"`
@@ -2646,6 +2666,10 @@ func (o AccessPolicyExcludeOutput) Gsuites() AccessPolicyExcludeGsuiteArrayOutpu
 
 func (o AccessPolicyExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyExcludeOutput) LoginMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyExcludeOutput) Oktas() AccessPolicyExcludeOktaArrayOutput {
@@ -3212,6 +3236,7 @@ type AccessPolicyInclude struct {
 	Groups               []string                    `pulumi:"groups"`
 	Gsuites              []AccessPolicyIncludeGsuite `pulumi:"gsuites"`
 	Ips                  []string                    `pulumi:"ips"`
+	LoginMethods         []string                    `pulumi:"loginMethods"`
 	Oktas                []AccessPolicyIncludeOkta   `pulumi:"oktas"`
 	Samls                []AccessPolicyIncludeSaml   `pulumi:"samls"`
 	ServiceTokens        []string                    `pulumi:"serviceTokens"`
@@ -3242,6 +3267,7 @@ type AccessPolicyIncludeArgs struct {
 	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
 	Gsuites              AccessPolicyIncludeGsuiteArrayInput `pulumi:"gsuites"`
 	Ips                  pulumi.StringArrayInput             `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput             `pulumi:"loginMethods"`
 	Oktas                AccessPolicyIncludeOktaArrayInput   `pulumi:"oktas"`
 	Samls                AccessPolicyIncludeSamlArrayInput   `pulumi:"samls"`
 	ServiceTokens        pulumi.StringArrayInput             `pulumi:"serviceTokens"`
@@ -3348,6 +3374,10 @@ func (o AccessPolicyIncludeOutput) Gsuites() AccessPolicyIncludeGsuiteArrayOutpu
 
 func (o AccessPolicyIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyIncludeOutput) LoginMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyIncludeOutput) Oktas() AccessPolicyIncludeOktaArrayOutput {
@@ -3914,6 +3944,7 @@ type AccessPolicyRequire struct {
 	Groups               []string                    `pulumi:"groups"`
 	Gsuites              []AccessPolicyRequireGsuite `pulumi:"gsuites"`
 	Ips                  []string                    `pulumi:"ips"`
+	LoginMethods         []string                    `pulumi:"loginMethods"`
 	Oktas                []AccessPolicyRequireOkta   `pulumi:"oktas"`
 	Samls                []AccessPolicyRequireSaml   `pulumi:"samls"`
 	ServiceTokens        []string                    `pulumi:"serviceTokens"`
@@ -3944,6 +3975,7 @@ type AccessPolicyRequireArgs struct {
 	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
 	Gsuites              AccessPolicyRequireGsuiteArrayInput `pulumi:"gsuites"`
 	Ips                  pulumi.StringArrayInput             `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput             `pulumi:"loginMethods"`
 	Oktas                AccessPolicyRequireOktaArrayInput   `pulumi:"oktas"`
 	Samls                AccessPolicyRequireSamlArrayInput   `pulumi:"samls"`
 	ServiceTokens        pulumi.StringArrayInput             `pulumi:"serviceTokens"`
@@ -4050,6 +4082,10 @@ func (o AccessPolicyRequireOutput) Gsuites() AccessPolicyRequireGsuiteArrayOutpu
 
 func (o AccessPolicyRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyRequireOutput) LoginMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.LoginMethods }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyRequireOutput) Oktas() AccessPolicyRequireOktaArrayOutput {
@@ -6721,6 +6757,726 @@ func (o LoadBalancerRegionPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRegionPool {
 		return vs[0].([]LoadBalancerRegionPool)[vs[1].(int)]
 	}).(LoadBalancerRegionPoolOutput)
+}
+
+type LoadBalancerRule struct {
+	// The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+	Condition *string `pulumi:"condition"`
+	// A disabled rule will be be executed.
+	Disabled *bool `pulumi:"disabled"`
+	// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+	FixedResponse *LoadBalancerRuleFixedResponse `pulumi:"fixedResponse"`
+	// Human readable name for this rule.
+	Name string `pulumi:"name"`
+	// The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+	Overrides []LoadBalancerRuleOverride `pulumi:"overrides"`
+	// Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+	Priority *int `pulumi:"priority"`
+	// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixedResponse forces this field to true.
+	Terminates *bool `pulumi:"terminates"`
+}
+
+// LoadBalancerRuleInput is an input type that accepts LoadBalancerRuleArgs and LoadBalancerRuleOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleInput` via:
+//
+//          LoadBalancerRuleArgs{...}
+type LoadBalancerRuleInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOutput() LoadBalancerRuleOutput
+	ToLoadBalancerRuleOutputWithContext(context.Context) LoadBalancerRuleOutput
+}
+
+type LoadBalancerRuleArgs struct {
+	// The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+	Condition pulumi.StringPtrInput `pulumi:"condition"`
+	// A disabled rule will be be executed.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+	FixedResponse LoadBalancerRuleFixedResponsePtrInput `pulumi:"fixedResponse"`
+	// Human readable name for this rule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+	Overrides LoadBalancerRuleOverrideArrayInput `pulumi:"overrides"`
+	// Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixedResponse forces this field to true.
+	Terminates pulumi.BoolPtrInput `pulumi:"terminates"`
+}
+
+func (LoadBalancerRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRule)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleArgs) ToLoadBalancerRuleOutput() LoadBalancerRuleOutput {
+	return i.ToLoadBalancerRuleOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleArgs) ToLoadBalancerRuleOutputWithContext(ctx context.Context) LoadBalancerRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOutput)
+}
+
+// LoadBalancerRuleArrayInput is an input type that accepts LoadBalancerRuleArray and LoadBalancerRuleArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleArrayInput` via:
+//
+//          LoadBalancerRuleArray{ LoadBalancerRuleArgs{...} }
+type LoadBalancerRuleArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleArrayOutput() LoadBalancerRuleArrayOutput
+	ToLoadBalancerRuleArrayOutputWithContext(context.Context) LoadBalancerRuleArrayOutput
+}
+
+type LoadBalancerRuleArray []LoadBalancerRuleInput
+
+func (LoadBalancerRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRule)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleArray) ToLoadBalancerRuleArrayOutput() LoadBalancerRuleArrayOutput {
+	return i.ToLoadBalancerRuleArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleArray) ToLoadBalancerRuleArrayOutputWithContext(ctx context.Context) LoadBalancerRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleArrayOutput)
+}
+
+type LoadBalancerRuleOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRule)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOutput) ToLoadBalancerRuleOutput() LoadBalancerRuleOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOutput) ToLoadBalancerRuleOutputWithContext(ctx context.Context) LoadBalancerRuleOutput {
+	return o
+}
+
+// The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+func (o LoadBalancerRuleOutput) Condition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *string { return v.Condition }).(pulumi.StringPtrOutput)
+}
+
+// A disabled rule will be be executed.
+func (o LoadBalancerRuleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+func (o LoadBalancerRuleOutput) FixedResponse() LoadBalancerRuleFixedResponsePtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *LoadBalancerRuleFixedResponse { return v.FixedResponse }).(LoadBalancerRuleFixedResponsePtrOutput)
+}
+
+// Human readable name for this rule.
+func (o LoadBalancerRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerRule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixedResponse must be set. See the field documentation below.
+func (o LoadBalancerRuleOutput) Overrides() LoadBalancerRuleOverrideArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRule) []LoadBalancerRuleOverride { return v.Overrides }).(LoadBalancerRuleOverrideArrayOutput)
+}
+
+// Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+func (o LoadBalancerRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixedResponse forces this field to true.
+func (o LoadBalancerRuleOutput) Terminates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRule) *bool { return v.Terminates }).(pulumi.BoolPtrOutput)
+}
+
+type LoadBalancerRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRule)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleArrayOutput) ToLoadBalancerRuleArrayOutput() LoadBalancerRuleArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleArrayOutput) ToLoadBalancerRuleArrayOutputWithContext(ctx context.Context) LoadBalancerRuleArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleArrayOutput) Index(i pulumi.IntInput) LoadBalancerRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRule {
+		return vs[0].([]LoadBalancerRule)[vs[1].(int)]
+	}).(LoadBalancerRuleOutput)
+}
+
+type LoadBalancerRuleFixedResponse struct {
+	// The value of the HTTP context-type header for this fixed response.
+	ContentType *string `pulumi:"contentType"`
+	// The value of the HTTP location header for this fixed response.
+	Location *string `pulumi:"location"`
+	// The text used as the html body for this fixed response.
+	MessageBody *string `pulumi:"messageBody"`
+	// The HTTP status code used for this fixed response.
+	StatusCode *int `pulumi:"statusCode"`
+}
+
+// LoadBalancerRuleFixedResponseInput is an input type that accepts LoadBalancerRuleFixedResponseArgs and LoadBalancerRuleFixedResponseOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleFixedResponseInput` via:
+//
+//          LoadBalancerRuleFixedResponseArgs{...}
+type LoadBalancerRuleFixedResponseInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleFixedResponseOutput() LoadBalancerRuleFixedResponseOutput
+	ToLoadBalancerRuleFixedResponseOutputWithContext(context.Context) LoadBalancerRuleFixedResponseOutput
+}
+
+type LoadBalancerRuleFixedResponseArgs struct {
+	// The value of the HTTP context-type header for this fixed response.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// The value of the HTTP location header for this fixed response.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// The text used as the html body for this fixed response.
+	MessageBody pulumi.StringPtrInput `pulumi:"messageBody"`
+	// The HTTP status code used for this fixed response.
+	StatusCode pulumi.IntPtrInput `pulumi:"statusCode"`
+}
+
+func (LoadBalancerRuleFixedResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleFixedResponse)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponseOutput() LoadBalancerRuleFixedResponseOutput {
+	return i.ToLoadBalancerRuleFixedResponseOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponseOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleFixedResponseOutput)
+}
+
+func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput {
+	return i.ToLoadBalancerRuleFixedResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleFixedResponseArgs) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleFixedResponseOutput).ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx)
+}
+
+// LoadBalancerRuleFixedResponsePtrInput is an input type that accepts LoadBalancerRuleFixedResponseArgs, LoadBalancerRuleFixedResponsePtr and LoadBalancerRuleFixedResponsePtrOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleFixedResponsePtrInput` via:
+//
+//          LoadBalancerRuleFixedResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LoadBalancerRuleFixedResponsePtrInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput
+	ToLoadBalancerRuleFixedResponsePtrOutputWithContext(context.Context) LoadBalancerRuleFixedResponsePtrOutput
+}
+
+type loadBalancerRuleFixedResponsePtrType LoadBalancerRuleFixedResponseArgs
+
+func LoadBalancerRuleFixedResponsePtr(v *LoadBalancerRuleFixedResponseArgs) LoadBalancerRuleFixedResponsePtrInput {
+	return (*loadBalancerRuleFixedResponsePtrType)(v)
+}
+
+func (*loadBalancerRuleFixedResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerRuleFixedResponse)(nil)).Elem()
+}
+
+func (i *loadBalancerRuleFixedResponsePtrType) ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput {
+	return i.ToLoadBalancerRuleFixedResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *loadBalancerRuleFixedResponsePtrType) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleFixedResponsePtrOutput)
+}
+
+type LoadBalancerRuleFixedResponseOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleFixedResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleFixedResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponseOutput() LoadBalancerRuleFixedResponseOutput {
+	return o
+}
+
+func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponseOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponseOutput {
+	return o
+}
+
+func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput {
+	return o.ToLoadBalancerRuleFixedResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *LoadBalancerRuleFixedResponse {
+		return &v
+	}).(LoadBalancerRuleFixedResponsePtrOutput)
+}
+
+// The value of the HTTP context-type header for this fixed response.
+func (o LoadBalancerRuleFixedResponseOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// The value of the HTTP location header for this fixed response.
+func (o LoadBalancerRuleFixedResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The text used as the html body for this fixed response.
+func (o LoadBalancerRuleFixedResponseOutput) MessageBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *string { return v.MessageBody }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code used for this fixed response.
+func (o LoadBalancerRuleFixedResponseOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+}
+
+type LoadBalancerRuleFixedResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleFixedResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadBalancerRuleFixedResponse)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleFixedResponsePtrOutput) ToLoadBalancerRuleFixedResponsePtrOutput() LoadBalancerRuleFixedResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerRuleFixedResponsePtrOutput) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
+	return o
+}
+
+func (o LoadBalancerRuleFixedResponsePtrOutput) Elem() LoadBalancerRuleFixedResponseOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) LoadBalancerRuleFixedResponse { return *v }).(LoadBalancerRuleFixedResponseOutput)
+}
+
+// The value of the HTTP context-type header for this fixed response.
+func (o LoadBalancerRuleFixedResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The value of the HTTP location header for this fixed response.
+func (o LoadBalancerRuleFixedResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// The text used as the html body for this fixed response.
+func (o LoadBalancerRuleFixedResponsePtrOutput) MessageBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MessageBody
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code used for this fixed response.
+func (o LoadBalancerRuleFixedResponsePtrOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StatusCode
+	}).(pulumi.IntPtrOutput)
+}
+
+type LoadBalancerRuleOverride struct {
+	// See defaultPoolIds above.
+	DefaultPools []string `pulumi:"defaultPools"`
+	// See fallbackPoolId above.
+	FallbackPool *string `pulumi:"fallbackPool"`
+	// See popPools above.
+	PopPools []LoadBalancerRuleOverridePopPool `pulumi:"popPools"`
+	// See regionPools above.
+	RegionPools []LoadBalancerRuleOverrideRegionPool `pulumi:"regionPools"`
+	// See field above.
+	SessionAffinity *string `pulumi:"sessionAffinity"`
+	// See field above.
+	SessionAffinityAttributes map[string]string `pulumi:"sessionAffinityAttributes"`
+	// See field above.
+	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
+	// See field above.
+	SteeringPolicy *string `pulumi:"steeringPolicy"`
+	// See field above.
+	Ttl *int `pulumi:"ttl"`
+}
+
+// LoadBalancerRuleOverrideInput is an input type that accepts LoadBalancerRuleOverrideArgs and LoadBalancerRuleOverrideOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverrideInput` via:
+//
+//          LoadBalancerRuleOverrideArgs{...}
+type LoadBalancerRuleOverrideInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverrideOutput() LoadBalancerRuleOverrideOutput
+	ToLoadBalancerRuleOverrideOutputWithContext(context.Context) LoadBalancerRuleOverrideOutput
+}
+
+type LoadBalancerRuleOverrideArgs struct {
+	// See defaultPoolIds above.
+	DefaultPools pulumi.StringArrayInput `pulumi:"defaultPools"`
+	// See fallbackPoolId above.
+	FallbackPool pulumi.StringPtrInput `pulumi:"fallbackPool"`
+	// See popPools above.
+	PopPools LoadBalancerRuleOverridePopPoolArrayInput `pulumi:"popPools"`
+	// See regionPools above.
+	RegionPools LoadBalancerRuleOverrideRegionPoolArrayInput `pulumi:"regionPools"`
+	// See field above.
+	SessionAffinity pulumi.StringPtrInput `pulumi:"sessionAffinity"`
+	// See field above.
+	SessionAffinityAttributes pulumi.StringMapInput `pulumi:"sessionAffinityAttributes"`
+	// See field above.
+	SessionAffinityTtl pulumi.IntPtrInput `pulumi:"sessionAffinityTtl"`
+	// See field above.
+	SteeringPolicy pulumi.StringPtrInput `pulumi:"steeringPolicy"`
+	// See field above.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (LoadBalancerRuleOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverride)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverrideArgs) ToLoadBalancerRuleOverrideOutput() LoadBalancerRuleOverrideOutput {
+	return i.ToLoadBalancerRuleOverrideOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverrideArgs) ToLoadBalancerRuleOverrideOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverrideOutput)
+}
+
+// LoadBalancerRuleOverrideArrayInput is an input type that accepts LoadBalancerRuleOverrideArray and LoadBalancerRuleOverrideArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverrideArrayInput` via:
+//
+//          LoadBalancerRuleOverrideArray{ LoadBalancerRuleOverrideArgs{...} }
+type LoadBalancerRuleOverrideArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverrideArrayOutput() LoadBalancerRuleOverrideArrayOutput
+	ToLoadBalancerRuleOverrideArrayOutputWithContext(context.Context) LoadBalancerRuleOverrideArrayOutput
+}
+
+type LoadBalancerRuleOverrideArray []LoadBalancerRuleOverrideInput
+
+func (LoadBalancerRuleOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverride)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverrideArray) ToLoadBalancerRuleOverrideArrayOutput() LoadBalancerRuleOverrideArrayOutput {
+	return i.ToLoadBalancerRuleOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverrideArray) ToLoadBalancerRuleOverrideArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverrideArrayOutput)
+}
+
+type LoadBalancerRuleOverrideOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverride)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverrideOutput) ToLoadBalancerRuleOverrideOutput() LoadBalancerRuleOverrideOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideOutput) ToLoadBalancerRuleOverrideOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideOutput {
+	return o
+}
+
+// See defaultPoolIds above.
+func (o LoadBalancerRuleOverrideOutput) DefaultPools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) []string { return v.DefaultPools }).(pulumi.StringArrayOutput)
+}
+
+// See fallbackPoolId above.
+func (o LoadBalancerRuleOverrideOutput) FallbackPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.FallbackPool }).(pulumi.StringPtrOutput)
+}
+
+// See popPools above.
+func (o LoadBalancerRuleOverrideOutput) PopPools() LoadBalancerRuleOverridePopPoolArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverridePopPool { return v.PopPools }).(LoadBalancerRuleOverridePopPoolArrayOutput)
+}
+
+// See regionPools above.
+func (o LoadBalancerRuleOverrideOutput) RegionPools() LoadBalancerRuleOverrideRegionPoolArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideRegionPool { return v.RegionPools }).(LoadBalancerRuleOverrideRegionPoolArrayOutput)
+}
+
+// See field above.
+func (o LoadBalancerRuleOverrideOutput) SessionAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.SessionAffinity }).(pulumi.StringPtrOutput)
+}
+
+// See field above.
+func (o LoadBalancerRuleOverrideOutput) SessionAffinityAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) map[string]string { return v.SessionAffinityAttributes }).(pulumi.StringMapOutput)
+}
+
+// See field above.
+func (o LoadBalancerRuleOverrideOutput) SessionAffinityTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) *int { return v.SessionAffinityTtl }).(pulumi.IntPtrOutput)
+}
+
+// See field above.
+func (o LoadBalancerRuleOverrideOutput) SteeringPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.SteeringPolicy }).(pulumi.StringPtrOutput)
+}
+
+// See field above.
+func (o LoadBalancerRuleOverrideOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverride) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type LoadBalancerRuleOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverride)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverrideArrayOutput) ToLoadBalancerRuleOverrideArrayOutput() LoadBalancerRuleOverrideArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideArrayOutput) ToLoadBalancerRuleOverrideArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideArrayOutput) Index(i pulumi.IntInput) LoadBalancerRuleOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRuleOverride {
+		return vs[0].([]LoadBalancerRuleOverride)[vs[1].(int)]
+	}).(LoadBalancerRuleOverrideOutput)
+}
+
+type LoadBalancerRuleOverridePopPool struct {
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+	PoolIds []string `pulumi:"poolIds"`
+	// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+	Pop string `pulumi:"pop"`
+}
+
+// LoadBalancerRuleOverridePopPoolInput is an input type that accepts LoadBalancerRuleOverridePopPoolArgs and LoadBalancerRuleOverridePopPoolOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverridePopPoolInput` via:
+//
+//          LoadBalancerRuleOverridePopPoolArgs{...}
+type LoadBalancerRuleOverridePopPoolInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverridePopPoolOutput() LoadBalancerRuleOverridePopPoolOutput
+	ToLoadBalancerRuleOverridePopPoolOutputWithContext(context.Context) LoadBalancerRuleOverridePopPoolOutput
+}
+
+type LoadBalancerRuleOverridePopPoolArgs struct {
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
+	// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+	Pop pulumi.StringInput `pulumi:"pop"`
+}
+
+func (LoadBalancerRuleOverridePopPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverridePopPool)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverridePopPoolArgs) ToLoadBalancerRuleOverridePopPoolOutput() LoadBalancerRuleOverridePopPoolOutput {
+	return i.ToLoadBalancerRuleOverridePopPoolOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverridePopPoolArgs) ToLoadBalancerRuleOverridePopPoolOutputWithContext(ctx context.Context) LoadBalancerRuleOverridePopPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverridePopPoolOutput)
+}
+
+// LoadBalancerRuleOverridePopPoolArrayInput is an input type that accepts LoadBalancerRuleOverridePopPoolArray and LoadBalancerRuleOverridePopPoolArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverridePopPoolArrayInput` via:
+//
+//          LoadBalancerRuleOverridePopPoolArray{ LoadBalancerRuleOverridePopPoolArgs{...} }
+type LoadBalancerRuleOverridePopPoolArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverridePopPoolArrayOutput() LoadBalancerRuleOverridePopPoolArrayOutput
+	ToLoadBalancerRuleOverridePopPoolArrayOutputWithContext(context.Context) LoadBalancerRuleOverridePopPoolArrayOutput
+}
+
+type LoadBalancerRuleOverridePopPoolArray []LoadBalancerRuleOverridePopPoolInput
+
+func (LoadBalancerRuleOverridePopPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverridePopPool)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverridePopPoolArray) ToLoadBalancerRuleOverridePopPoolArrayOutput() LoadBalancerRuleOverridePopPoolArrayOutput {
+	return i.ToLoadBalancerRuleOverridePopPoolArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverridePopPoolArray) ToLoadBalancerRuleOverridePopPoolArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverridePopPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverridePopPoolArrayOutput)
+}
+
+type LoadBalancerRuleOverridePopPoolOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverridePopPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverridePopPool)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverridePopPoolOutput) ToLoadBalancerRuleOverridePopPoolOutput() LoadBalancerRuleOverridePopPoolOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverridePopPoolOutput) ToLoadBalancerRuleOverridePopPoolOutputWithContext(ctx context.Context) LoadBalancerRuleOverridePopPoolOutput {
+	return o
+}
+
+// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+func (o LoadBalancerRuleOverridePopPoolOutput) PoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverridePopPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
+}
+
+// A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+func (o LoadBalancerRuleOverridePopPoolOutput) Pop() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverridePopPool) string { return v.Pop }).(pulumi.StringOutput)
+}
+
+type LoadBalancerRuleOverridePopPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverridePopPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverridePopPool)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverridePopPoolArrayOutput) ToLoadBalancerRuleOverridePopPoolArrayOutput() LoadBalancerRuleOverridePopPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverridePopPoolArrayOutput) ToLoadBalancerRuleOverridePopPoolArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverridePopPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverridePopPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerRuleOverridePopPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRuleOverridePopPool {
+		return vs[0].([]LoadBalancerRuleOverridePopPool)[vs[1].(int)]
+	}).(LoadBalancerRuleOverridePopPoolOutput)
+}
+
+type LoadBalancerRuleOverrideRegionPool struct {
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+	PoolIds []string `pulumi:"poolIds"`
+	// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+	Region string `pulumi:"region"`
+}
+
+// LoadBalancerRuleOverrideRegionPoolInput is an input type that accepts LoadBalancerRuleOverrideRegionPoolArgs and LoadBalancerRuleOverrideRegionPoolOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverrideRegionPoolInput` via:
+//
+//          LoadBalancerRuleOverrideRegionPoolArgs{...}
+type LoadBalancerRuleOverrideRegionPoolInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverrideRegionPoolOutput() LoadBalancerRuleOverrideRegionPoolOutput
+	ToLoadBalancerRuleOverrideRegionPoolOutputWithContext(context.Context) LoadBalancerRuleOverrideRegionPoolOutput
+}
+
+type LoadBalancerRuleOverrideRegionPoolArgs struct {
+	// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
+	// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (LoadBalancerRuleOverrideRegionPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverrideRegionPool)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverrideRegionPoolArgs) ToLoadBalancerRuleOverrideRegionPoolOutput() LoadBalancerRuleOverrideRegionPoolOutput {
+	return i.ToLoadBalancerRuleOverrideRegionPoolOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverrideRegionPoolArgs) ToLoadBalancerRuleOverrideRegionPoolOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideRegionPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverrideRegionPoolOutput)
+}
+
+// LoadBalancerRuleOverrideRegionPoolArrayInput is an input type that accepts LoadBalancerRuleOverrideRegionPoolArray and LoadBalancerRuleOverrideRegionPoolArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerRuleOverrideRegionPoolArrayInput` via:
+//
+//          LoadBalancerRuleOverrideRegionPoolArray{ LoadBalancerRuleOverrideRegionPoolArgs{...} }
+type LoadBalancerRuleOverrideRegionPoolArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerRuleOverrideRegionPoolArrayOutput() LoadBalancerRuleOverrideRegionPoolArrayOutput
+	ToLoadBalancerRuleOverrideRegionPoolArrayOutputWithContext(context.Context) LoadBalancerRuleOverrideRegionPoolArrayOutput
+}
+
+type LoadBalancerRuleOverrideRegionPoolArray []LoadBalancerRuleOverrideRegionPoolInput
+
+func (LoadBalancerRuleOverrideRegionPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverrideRegionPool)(nil)).Elem()
+}
+
+func (i LoadBalancerRuleOverrideRegionPoolArray) ToLoadBalancerRuleOverrideRegionPoolArrayOutput() LoadBalancerRuleOverrideRegionPoolArrayOutput {
+	return i.ToLoadBalancerRuleOverrideRegionPoolArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerRuleOverrideRegionPoolArray) ToLoadBalancerRuleOverrideRegionPoolArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideRegionPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerRuleOverrideRegionPoolArrayOutput)
+}
+
+type LoadBalancerRuleOverrideRegionPoolOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverrideRegionPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerRuleOverrideRegionPool)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverrideRegionPoolOutput) ToLoadBalancerRuleOverrideRegionPoolOutput() LoadBalancerRuleOverrideRegionPoolOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideRegionPoolOutput) ToLoadBalancerRuleOverrideRegionPoolOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideRegionPoolOutput {
+	return o
+}
+
+// A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+func (o LoadBalancerRuleOverrideRegionPoolOutput) PoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverrideRegionPool) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
+}
+
+// A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+func (o LoadBalancerRuleOverrideRegionPoolOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerRuleOverrideRegionPool) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type LoadBalancerRuleOverrideRegionPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerRuleOverrideRegionPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerRuleOverrideRegionPool)(nil)).Elem()
+}
+
+func (o LoadBalancerRuleOverrideRegionPoolArrayOutput) ToLoadBalancerRuleOverrideRegionPoolArrayOutput() LoadBalancerRuleOverrideRegionPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideRegionPoolArrayOutput) ToLoadBalancerRuleOverrideRegionPoolArrayOutputWithContext(ctx context.Context) LoadBalancerRuleOverrideRegionPoolArrayOutput {
+	return o
+}
+
+func (o LoadBalancerRuleOverrideRegionPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerRuleOverrideRegionPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerRuleOverrideRegionPool {
+		return vs[0].([]LoadBalancerRuleOverrideRegionPool)[vs[1].(int)]
+	}).(LoadBalancerRuleOverrideRegionPoolOutput)
 }
 
 type PageRuleActions struct {
@@ -15371,6 +16127,16 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerPopPoolArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRegionPoolOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRegionPoolArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleFixedResponseOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleFixedResponsePtrOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverrideOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverrideArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverridePopPoolOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverridePopPoolArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverrideRegionPoolOutput{})
+	pulumi.RegisterOutputType(LoadBalancerRuleOverrideRegionPoolArrayOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsPtrOutput{})
 	pulumi.RegisterOutputType(PageRuleActionsCacheKeyFieldsOutput{})

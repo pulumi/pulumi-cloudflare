@@ -87,8 +87,9 @@ import (
 // * `commonName` - (Optional) Use a certificate common name to authenticate with.
 // * `authMethod` - (Optional) A string identifying the authentication
 // method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
-// Custom values are also supported.
+// Custom values are also supported. Example: `authMethod = ["swk"]`
 // * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
+// * `loginMethod` - (Optional) A list of identity provider ids. Example: `loginMethod = [cloudflare_access_identity_provider.my_idp.id]`
 // * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
 // * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
 // * `azure` - (Optional) Use Azure AD as the `include` condition. Example:

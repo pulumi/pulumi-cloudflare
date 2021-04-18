@@ -303,6 +303,17 @@
                         }
                     }
                 },
+                "loginMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "oktas": {
                     "type": "array",
                     "items": {
@@ -604,6 +615,17 @@
                         }
                     }
                 },
+                "loginMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "oktas": {
                     "type": "array",
                     "items": {
@@ -895,6 +917,17 @@
                     }
                 },
                 "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "loginMethods": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -1373,6 +1406,17 @@
                         }
                     }
                 },
+                "loginMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "oktas": {
                     "type": "array",
                     "items": {
@@ -1674,6 +1718,17 @@
                         }
                     }
                 },
+                "loginMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "oktas": {
                     "type": "array",
                     "items": {
@@ -1965,6 +2020,17 @@
                     }
                 },
                 "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "loginMethods": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -2641,6 +2707,288 @@
             ]
         },
         "cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool": {
+            "properties": {
+                "poolIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of pool IDs in failover priority to use for traffic reaching the given PoP.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "region": {
+                    "type": "string",
+                    "description": "A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "poolIds",
+                "region"
+            ]
+        },
+        "cloudflare:index/LoadBalancerRule:LoadBalancerRule": {
+            "properties": {
+                "condition": {
+                    "type": "string",
+                    "description": "The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disabled": {
+                    "type": "boolean",
+                    "description": "A disabled rule will be be executed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fixedResponse": {
+                    "$ref": "#/types/cloudflare:index/LoadBalancerRuleFixedResponse:LoadBalancerRuleFixedResponse",
+                    "description": "Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixed_response must be set. See the field documentation below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Human readable name for this rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "overrides": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverride:LoadBalancerRuleOverride"
+                    },
+                    "description": "The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixed_response must be set. See the field documentation below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "terminates": {
+                    "type": "boolean",
+                    "description": "Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixed_response forces this field to true.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "priority",
+                        "terminates"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/LoadBalancerRuleFixedResponse:LoadBalancerRuleFixedResponse": {
+            "properties": {
+                "contentType": {
+                    "type": "string",
+                    "description": "The value of the HTTP context-type header for this fixed response.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "location": {
+                    "type": "string",
+                    "description": "The value of the HTTP location header for this fixed response.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "messageBody": {
+                    "type": "string",
+                    "description": "The text used as the html body for this fixed response.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "description": "The HTTP status code used for this fixed response.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/LoadBalancerRuleOverride:LoadBalancerRuleOverride": {
+            "properties": {
+                "defaultPools": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "See default_pool_ids above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "fallbackPool": {
+                    "type": "string",
+                    "description": "See fallback_pool_id above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "popPools": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverridePopPool:LoadBalancerRuleOverridePopPool"
+                    },
+                    "description": "See pop_pools above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "regionPools": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverrideRegionPool:LoadBalancerRuleOverrideRegionPool"
+                    },
+                    "description": "See region_pools above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionAffinity": {
+                    "type": "string",
+                    "description": "See field above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionAffinityAttributes": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "See field above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sessionAffinityTtl": {
+                    "type": "integer",
+                    "description": "See field above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "steeringPolicy": {
+                    "type": "string",
+                    "description": "See field above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "See field above.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/LoadBalancerRuleOverridePopPool:LoadBalancerRuleOverridePopPool": {
+            "properties": {
+                "poolIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of pool IDs in failover priority to use for traffic reaching the given PoP.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "pop": {
+                    "type": "string",
+                    "description": "A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "poolIds",
+                "pop"
+            ]
+        },
+        "cloudflare:index/LoadBalancerRuleOverrideRegionPool:LoadBalancerRuleOverrideRegionPool": {
             "properties": {
                 "poolIds": {
                     "type": "array",
@@ -5478,7 +5826,7 @@
     },
     "resources": {
         "cloudflare:index/accessApplication:AccessApplication": {
-            "description": "Provides a Cloudflare Access Application resource. Access Applications\nare used to restrict access to a whole application using an\nauthorisation gateway managed by Cloudflare.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// With CORS configuration\nconst stagingApp = new cloudflare.AccessApplication(\"staging_app\", {\n    corsHeaders: [{\n        allowCredentials: true,\n        allowedMethods: [\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowedOrigins: [\"https://example.com\"],\n        maxAge: 10,\n    }],\n    domain: \"staging.example.com\",\n    name: \"staging application\",\n    sessionDuration: \"24h\",\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# With CORS configuration\nstaging_app = cloudflare.AccessApplication(\"stagingApp\",\n    cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(\n        allow_credentials=True,\n        allowed_methods=[\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowed_origins=[\"https://example.com\"],\n        max_age=10,\n    )],\n    domain=\"staging.example.com\",\n    name=\"staging application\",\n    session_duration=\"24h\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // With CORS configuration\n        var stagingApp = new Cloudflare.AccessApplication(\"stagingApp\", new Cloudflare.AccessApplicationArgs\n        {\n            CorsHeaders = \n            {\n                new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs\n                {\n                    AllowCredentials = true,\n                    AllowedMethods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"OPTIONS\",\n                    },\n                    AllowedOrigins = \n                    {\n                        \"https://example.com\",\n                    },\n                    MaxAge = 10,\n                },\n            },\n            Domain = \"staging.example.com\",\n            Name = \"staging application\",\n            SessionDuration = \"24h\",\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessApplication(ctx, \"stagingApp\", \u0026cloudflare.AccessApplicationArgs{\n\t\t\tCorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{\n\t\t\t\t\u0026cloudflare.AccessApplicationCorsHeaderArgs{\n\t\t\t\t\tAllowCredentials: pulumi.Bool(true),\n\t\t\t\t\tAllowedMethods: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"GET\"),\n\t\t\t\t\t\tpulumi.String(\"POST\"),\n\t\t\t\t\t\tpulumi.String(\"OPTIONS\"),\n\t\t\t\t\t},\n\t\t\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tMaxAge: pulumi.Int(10),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDomain:          pulumi.String(\"staging.example.com\"),\n\t\t\tName:            pulumi.String(\"staging application\"),\n\t\t\tSessionDuration: pulumi.String(\"24h\"),\n\t\t\tZoneId:          pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Applications can be imported using a composite ID formed of zone ID and application ID.\n\n```sh\n $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
+            "description": "Provides a Cloudflare Access Application resource. Access Applications\nare used to restrict access to a whole application using an\nauthorisation gateway managed by Cloudflare.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// With CORS configuration\nconst stagingApp = new cloudflare.AccessApplication(\"staging_app\", {\n    corsHeaders: [{\n        allowCredentials: true,\n        allowedMethods: [\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowedOrigins: [\"https://example.com\"],\n        maxAge: 10,\n    }],\n    domain: \"staging.example.com\",\n    name: \"staging application\",\n    sessionDuration: \"24h\",\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# With CORS configuration\nstaging_app = cloudflare.AccessApplication(\"stagingApp\",\n    cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(\n        allow_credentials=True,\n        allowed_methods=[\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowed_origins=[\"https://example.com\"],\n        max_age=10,\n    )],\n    domain=\"staging.example.com\",\n    name=\"staging application\",\n    session_duration=\"24h\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // With CORS configuration\n        var stagingApp = new Cloudflare.AccessApplication(\"stagingApp\", new Cloudflare.AccessApplicationArgs\n        {\n            CorsHeaders = \n            {\n                new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs\n                {\n                    AllowCredentials = true,\n                    AllowedMethods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"OPTIONS\",\n                    },\n                    AllowedOrigins = \n                    {\n                        \"https://example.com\",\n                    },\n                    MaxAge = 10,\n                },\n            },\n            Domain = \"staging.example.com\",\n            Name = \"staging application\",\n            SessionDuration = \"24h\",\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessApplication(ctx, \"stagingApp\", \u0026cloudflare.AccessApplicationArgs{\n\t\t\tCorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{\n\t\t\t\t\u0026cloudflare.AccessApplicationCorsHeaderArgs{\n\t\t\t\t\tAllowCredentials: pulumi.Bool(true),\n\t\t\t\t\tAllowedMethods: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"GET\"),\n\t\t\t\t\t\tpulumi.String(\"POST\"),\n\t\t\t\t\t\tpulumi.String(\"OPTIONS\"),\n\t\t\t\t\t},\n\t\t\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tMaxAge: pulumi.Int(10),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDomain:          pulumi.String(\"staging.example.com\"),\n\t\t\tName:            pulumi.String(\"staging application\"),\n\t\t\tSessionDuration: pulumi.String(\"24h\"),\n\t\t\tZoneId:          pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Applications can be imported using a composite ID formed of account ID and application ID.\n\n```sh\n $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -5659,8 +6007,83 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/accessCaCertificate:AccessCaCertificate": {
+            "description": "Cloudflare Access can replace traditional SSH key models with short-lived\ncertificates issued to your users based on the token generated by their Access\nlogin.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// account level\nconst example = new cloudflare.AccessCaCertificate(\"example\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    applicationId: \"6cd6cea3-3ef2-4542-9aea-85a0bbcd5414\",\n});\n// zone level\nconst anotherExample = new cloudflare.AccessCaCertificate(\"another_example\", {\n    applicationId: \"fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2\",\n    zoneId: \"b6bc7eb6027c792a6bca3dc91fd2d7e0\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# account level\nexample = cloudflare.AccessCaCertificate(\"example\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    application_id=\"6cd6cea3-3ef2-4542-9aea-85a0bbcd5414\")\n# zone level\nanother_example = cloudflare.AccessCaCertificate(\"anotherExample\",\n    application_id=\"fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2\",\n    zone_id=\"b6bc7eb6027c792a6bca3dc91fd2d7e0\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // account level\n        var example = new Cloudflare.AccessCaCertificate(\"example\", new Cloudflare.AccessCaCertificateArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            ApplicationId = \"6cd6cea3-3ef2-4542-9aea-85a0bbcd5414\",\n        });\n        // zone level\n        var anotherExample = new Cloudflare.AccessCaCertificate(\"anotherExample\", new Cloudflare.AccessCaCertificateArgs\n        {\n            ApplicationId = \"fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2\",\n            ZoneId = \"b6bc7eb6027c792a6bca3dc91fd2d7e0\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessCaCertificate(ctx, \"example\", \u0026cloudflare.AccessCaCertificateArgs{\n\t\t\tAccountId:     pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tApplicationId: pulumi.String(\"6cd6cea3-3ef2-4542-9aea-85a0bbcd5414\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessCaCertificate(ctx, \"anotherExample\", \u0026cloudflare.AccessCaCertificateArgs{\n\t\t\tApplicationId: pulumi.String(\"fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2\"),\n\t\t\tZoneId:        pulumi.String(\"b6bc7eb6027c792a6bca3dc91fd2d7e0\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess CA certificates can be imported using a composite ID formed of identifer (\"account\" or \"zone\"), identifier ID and the CA certificate ID.\n\n```sh\n $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/1d5fdc9e88c8a8c4518b068cd94331fe/edc1e4e24567217764b4322669c44df985dddffdf03ac781\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the Access CA certificate should be added. Conflicts with `zone_id`.\n"
+                },
+                "applicationId": {
+                    "type": "string",
+                    "description": "The Access Application ID to associate with the CA certificate.\n"
+                },
+                "aud": {
+                    "type": "string",
+                    "description": "Application Audience (AUD) Tag of the CA certificate\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "Cryptographic public key of the generated CA certificate\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone to which the Access CA certificate should be added. Conflicts with `account_id`.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "applicationId",
+                "aud",
+                "publicKey",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the Access CA certificate should be added. Conflicts with `zone_id`.\n"
+                },
+                "applicationId": {
+                    "type": "string",
+                    "description": "The Access Application ID to associate with the CA certificate.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone to which the Access CA certificate should be added. Conflicts with `account_id`.\n"
+                }
+            },
+            "requiredInputs": [
+                "applicationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessCaCertificate resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the Access CA certificate should be added. Conflicts with `zone_id`.\n"
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "description": "The Access Application ID to associate with the CA certificate.\n"
+                    },
+                    "aud": {
+                        "type": "string",
+                        "description": "Application Audience (AUD) Tag of the CA certificate\n"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "Cryptographic public key of the generated CA certificate\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The DNS zone to which the Access CA certificate should be added. Conflicts with `account_id`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/accessGroup:AccessGroup": {
-            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported.\n* `geo` - (Optional) A list of country codes. Example: `geo = [\"US\"]`\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      team = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n\n\n## Import\n\nAccess Groups can be imported using a composite ID formed of account ID and group ID.\n\n```sh\n $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID ",
+            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported. Example: `auth_method = [\"swk\"]`\n* `geo` - (Optional) A list of country codes. Example: `geo = [\"US\"]`\n* `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      team = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n\n\n## Import\n\nAccess Groups can be imported using a composite ID formed of account ID and group ID.\n\n```sh\n $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -7880,7 +8303,7 @@
             }
         },
         "cloudflare:index/loadBalancer:LoadBalancer": {
-            "description": "Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst foo = new cloudflare.LoadBalancerPool(\"foo\", {\n    name: \"example-lb-pool\",\n    origins: [{\n        name: \"example-1\",\n        address: \"192.0.2.1\",\n        enabled: false,\n    }],\n});\n// Define a load balancer which always points to a pool we define below\n// In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions\n// Within each pop or region we can define multiple pools in failover order\nconst bar = new cloudflare.LoadBalancer(\"bar\", {\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"example-load-balancer.example.com\",\n    fallbackPoolId: foo.id,\n    defaultPoolIds: [foo.id],\n    description: \"example load balancer using geo-balancing\",\n    proxied: true,\n    steeringPolicy: \"geo\",\n    popPools: [{\n        pop: \"LAX\",\n        poolIds: [foo.id],\n    }],\n    regionPools: [{\n        region: \"WNAM\",\n        poolIds: [foo.id],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nfoo = cloudflare.LoadBalancerPool(\"foo\",\n    name=\"example-lb-pool\",\n    origins=[cloudflare.LoadBalancerPoolOriginArgs(\n        name=\"example-1\",\n        address=\"192.0.2.1\",\n        enabled=False,\n    )])\n# Define a load balancer which always points to a pool we define below\n# In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions\n# Within each pop or region we can define multiple pools in failover order\nbar = cloudflare.LoadBalancer(\"bar\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"example-load-balancer.example.com\",\n    fallback_pool_id=foo.id,\n    default_pool_ids=[foo.id],\n    description=\"example load balancer using geo-balancing\",\n    proxied=True,\n    steering_policy=\"geo\",\n    pop_pools=[cloudflare.LoadBalancerPopPoolArgs(\n        pop=\"LAX\",\n        pool_ids=[foo.id],\n    )],\n    region_pools=[cloudflare.LoadBalancerRegionPoolArgs(\n        region=\"WNAM\",\n        pool_ids=[foo.id],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Cloudflare.LoadBalancerPool(\"foo\", new Cloudflare.LoadBalancerPoolArgs\n        {\n            Name = \"example-lb-pool\",\n            Origins = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Name = \"example-1\",\n                    Address = \"192.0.2.1\",\n                    Enabled = false,\n                },\n            },\n        });\n        // Define a load balancer which always points to a pool we define below\n        // In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions\n        // Within each pop or region we can define multiple pools in failover order\n        var bar = new Cloudflare.LoadBalancer(\"bar\", new Cloudflare.LoadBalancerArgs\n        {\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"example-load-balancer.example.com\",\n            FallbackPoolId = foo.Id,\n            DefaultPoolIds = \n            {\n                foo.Id,\n            },\n            Description = \"example load balancer using geo-balancing\",\n            Proxied = true,\n            SteeringPolicy = \"geo\",\n            PopPools = \n            {\n                new Cloudflare.Inputs.LoadBalancerPopPoolArgs\n                {\n                    Pop = \"LAX\",\n                    PoolIds = \n                    {\n                        foo.Id,\n                    },\n                },\n            },\n            RegionPools = \n            {\n                new Cloudflare.Inputs.LoadBalancerRegionPoolArgs\n                {\n                    Region = \"WNAM\",\n                    PoolIds = \n                    {\n                        foo.Id,\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := cloudflare.NewLoadBalancerPool(ctx, \"foo\", \u0026cloudflare.LoadBalancerPoolArgs{\n\t\t\tName: pulumi.String(\"example-lb-pool\"),\n\t\t\tOrigins: cloudflare.LoadBalancerPoolOriginArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerPoolOriginArgs{\n\t\t\t\t\tName:    pulumi.String(\"example-1\"),\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.1\"),\n\t\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewLoadBalancer(ctx, \"bar\", \u0026cloudflare.LoadBalancerArgs{\n\t\t\tZoneId:         pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:           pulumi.String(\"example-load-balancer.example.com\"),\n\t\t\tFallbackPoolId: foo.ID(),\n\t\t\tDefaultPoolIds: pulumi.StringArray{\n\t\t\t\tfoo.ID(),\n\t\t\t},\n\t\t\tDescription:    pulumi.String(\"example load balancer using geo-balancing\"),\n\t\t\tProxied:        pulumi.Bool(true),\n\t\t\tSteeringPolicy: pulumi.String(\"geo\"),\n\t\t\tPopPools: cloudflare.LoadBalancerPopPoolArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerPopPoolArgs{\n\t\t\t\t\tPop: pulumi.String(\"LAX\"),\n\t\t\t\t\tPoolIds: pulumi.StringArray{\n\t\t\t\t\t\tfoo.ID(),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegionPools: cloudflare.LoadBalancerRegionPoolArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerRegionPoolArgs{\n\t\t\t\t\tRegion: pulumi.String(\"WNAM\"),\n\t\t\t\t\tPoolIds: pulumi.StringArray{\n\t\t\t\t\t\tfoo.ID(),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Cloudflare Load Balancer resource. This sits in front of a number of defined pools of origins and provides various options for geographically-aware load balancing. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst foo = new cloudflare.LoadBalancerPool(\"foo\", {\n    name: \"example-lb-pool\",\n    origins: [{\n        name: \"example-1\",\n        address: \"192.0.2.1\",\n        enabled: false,\n    }],\n});\n// Define a load balancer which always points to a pool we define below\n// In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions\n// Within each pop or region we can define multiple pools in failover order\nconst bar = new cloudflare.LoadBalancer(\"bar\", {\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"example-load-balancer.example.com\",\n    fallbackPoolId: foo.id,\n    defaultPoolIds: [foo.id],\n    description: \"example load balancer using geo-balancing\",\n    proxied: true,\n    steeringPolicy: \"geo\",\n    popPools: [{\n        pop: \"LAX\",\n        poolIds: [foo.id],\n    }],\n    regionPools: [{\n        region: \"WNAM\",\n        poolIds: [foo.id],\n    }],\n    rules: [{\n        name: \"example rule\",\n        condition: \"http.request.uri.path contains \\\"testing\\\"\",\n        fixedResponse: {\n            message_body: \"hello\",\n            status_code: 200,\n            content_type: \"html\",\n            location: \"www.example.com\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nfoo = cloudflare.LoadBalancerPool(\"foo\",\n    name=\"example-lb-pool\",\n    origins=[cloudflare.LoadBalancerPoolOriginArgs(\n        name=\"example-1\",\n        address=\"192.0.2.1\",\n        enabled=False,\n    )])\n# Define a load balancer which always points to a pool we define below\n# In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions\n# Within each pop or region we can define multiple pools in failover order\nbar = cloudflare.LoadBalancer(\"bar\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"example-load-balancer.example.com\",\n    fallback_pool_id=foo.id,\n    default_pool_ids=[foo.id],\n    description=\"example load balancer using geo-balancing\",\n    proxied=True,\n    steering_policy=\"geo\",\n    pop_pools=[cloudflare.LoadBalancerPopPoolArgs(\n        pop=\"LAX\",\n        pool_ids=[foo.id],\n    )],\n    region_pools=[cloudflare.LoadBalancerRegionPoolArgs(\n        region=\"WNAM\",\n        pool_ids=[foo.id],\n    )],\n    rules=[cloudflare.LoadBalancerRuleArgs(\n        name=\"example rule\",\n        condition=\"http.request.uri.path contains \\\"testing\\\"\",\n        fixed_response=cloudflare.LoadBalancerRuleFixedResponseArgs(\n            message_body=\"hello\",\n            status_code=200,\n            content_type=\"html\",\n            location=\"www.example.com\",\n        ),\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Cloudflare.LoadBalancerPool(\"foo\", new Cloudflare.LoadBalancerPoolArgs\n        {\n            Name = \"example-lb-pool\",\n            Origins = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Name = \"example-1\",\n                    Address = \"192.0.2.1\",\n                    Enabled = false,\n                },\n            },\n        });\n        // Define a load balancer which always points to a pool we define below\n        // In normal usage, would have different pools set for different pops (cloudflare points-of-presence) and/or for different regions\n        // Within each pop or region we can define multiple pools in failover order\n        var bar = new Cloudflare.LoadBalancer(\"bar\", new Cloudflare.LoadBalancerArgs\n        {\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"example-load-balancer.example.com\",\n            FallbackPoolId = foo.Id,\n            DefaultPoolIds = \n            {\n                foo.Id,\n            },\n            Description = \"example load balancer using geo-balancing\",\n            Proxied = true,\n            SteeringPolicy = \"geo\",\n            PopPools = \n            {\n                new Cloudflare.Inputs.LoadBalancerPopPoolArgs\n                {\n                    Pop = \"LAX\",\n                    PoolIds = \n                    {\n                        foo.Id,\n                    },\n                },\n            },\n            RegionPools = \n            {\n                new Cloudflare.Inputs.LoadBalancerRegionPoolArgs\n                {\n                    Region = \"WNAM\",\n                    PoolIds = \n                    {\n                        foo.Id,\n                    },\n                },\n            },\n            Rules = \n            {\n                new Cloudflare.Inputs.LoadBalancerRuleArgs\n                {\n                    Name = \"example rule\",\n                    Condition = \"http.request.uri.path contains \\\"testing\\\"\",\n                    FixedResponse = new Cloudflare.Inputs.LoadBalancerRuleFixedResponseArgs\n                    {\n                        Message_body = \"hello\",\n                        Status_code = 200,\n                        Content_type = \"html\",\n                        Location = \"www.example.com\",\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := cloudflare.NewLoadBalancerPool(ctx, \"foo\", \u0026cloudflare.LoadBalancerPoolArgs{\n\t\t\tName: pulumi.String(\"example-lb-pool\"),\n\t\t\tOrigins: cloudflare.LoadBalancerPoolOriginArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerPoolOriginArgs{\n\t\t\t\t\tName:    pulumi.String(\"example-1\"),\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.1\"),\n\t\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewLoadBalancer(ctx, \"bar\", \u0026cloudflare.LoadBalancerArgs{\n\t\t\tZoneId:         pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:           pulumi.String(\"example-load-balancer.example.com\"),\n\t\t\tFallbackPoolId: foo.ID(),\n\t\t\tDefaultPoolIds: pulumi.StringArray{\n\t\t\t\tfoo.ID(),\n\t\t\t},\n\t\t\tDescription:    pulumi.String(\"example load balancer using geo-balancing\"),\n\t\t\tProxied:        pulumi.Bool(true),\n\t\t\tSteeringPolicy: pulumi.String(\"geo\"),\n\t\t\tPopPools: cloudflare.LoadBalancerPopPoolArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerPopPoolArgs{\n\t\t\t\t\tPop: pulumi.String(\"LAX\"),\n\t\t\t\t\tPoolIds: pulumi.StringArray{\n\t\t\t\t\t\tfoo.ID(),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRegionPools: cloudflare.LoadBalancerRegionPoolArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerRegionPoolArgs{\n\t\t\t\t\tRegion: pulumi.String(\"WNAM\"),\n\t\t\t\t\tPoolIds: pulumi.StringArray{\n\t\t\t\t\t\tfoo.ID(),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRules: cloudflare.LoadBalancerRuleArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerRuleArgs{\n\t\t\t\t\tName:      pulumi.String(\"example rule\"),\n\t\t\t\t\tCondition: pulumi.String(\"http.request.uri.path contains \\\"testing\\\"\"),\n\t\t\t\t\tFixedResponse: \u0026cloudflare.LoadBalancerRuleFixedResponseArgs{\n\t\t\t\t\t\tMessage_body: pulumi.String(\"hello\"),\n\t\t\t\t\t\tStatus_code:  pulumi.Float64(200),\n\t\t\t\t\t\tContent_type: pulumi.String(\"html\"),\n\t\t\t\t\t\tLocation:     pulumi.String(\"www.example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "createdOn": {
                     "type": "string",
@@ -7911,14 +8334,14 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The DNS name (FQDN, including the zone) to associate with the load balancer.\n"
+                    "description": "Human readable name for this rule.\n"
                 },
                 "popPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                     },
-                    "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.\n"
+                    "description": "See pop_pools above.\n"
                 },
                 "proxied": {
                     "type": "boolean",
@@ -7929,30 +8352,37 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                     },
-                    "description": "A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.\n"
+                    "description": "See region_pools above.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/LoadBalancerRule:LoadBalancerRule"
+                    },
+                    "description": "A list of conditions and overrides for each load balancer operation. See the field documentation below.\n"
                 },
                 "sessionAffinity": {
                     "type": "string",
-                    "description": "Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `\"\"`, `\"none\"`, `\"cookie\"`, and `\"ip_cookie\"`.  Default is `\"\"`.\n"
+                    "description": "See field above.\n"
                 },
                 "sessionAffinityAttributes": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Configure cookie attributes for session affinity cookie. See the field documentation below.\n"
+                    "description": "See field above.\n"
                 },
                 "sessionAffinityTtl": {
                     "type": "integer",
-                    "description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.\n"
+                    "description": "See field above.\n"
                 },
                 "steeringPolicy": {
                     "type": "string",
-                    "description": "Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `\"off\"`, `\"geo\"`, `\"dynamic_latency\"`, `\"random\"` or `\"\"`. Default is `\"\"`.\n"
+                    "description": "See field above.\n"
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.\n"
+                    "description": "See field above.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -7993,14 +8423,14 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The DNS name (FQDN, including the zone) to associate with the load balancer.\n"
+                    "description": "Human readable name for this rule.\n"
                 },
                 "popPools": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                     },
-                    "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.\n"
+                    "description": "See pop_pools above.\n"
                 },
                 "proxied": {
                     "type": "boolean",
@@ -8011,30 +8441,37 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                     },
-                    "description": "A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.\n"
+                    "description": "See region_pools above.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/LoadBalancerRule:LoadBalancerRule"
+                    },
+                    "description": "A list of conditions and overrides for each load balancer operation. See the field documentation below.\n"
                 },
                 "sessionAffinity": {
                     "type": "string",
-                    "description": "Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `\"\"`, `\"none\"`, `\"cookie\"`, and `\"ip_cookie\"`.  Default is `\"\"`.\n"
+                    "description": "See field above.\n"
                 },
                 "sessionAffinityAttributes": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Configure cookie attributes for session affinity cookie. See the field documentation below.\n"
+                    "description": "See field above.\n"
                 },
                 "sessionAffinityTtl": {
                     "type": "integer",
-                    "description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.\n"
+                    "description": "See field above.\n"
                 },
                 "steeringPolicy": {
                     "type": "string",
-                    "description": "Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `\"off\"`, `\"geo\"`, `\"dynamic_latency\"`, `\"random\"` or `\"\"`. Default is `\"\"`.\n"
+                    "description": "See field above.\n"
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.\n"
+                    "description": "See field above.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -8079,14 +8516,14 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The DNS name (FQDN, including the zone) to associate with the load balancer.\n"
+                        "description": "Human readable name for this rule.\n"
                     },
                     "popPools": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool"
                         },
-                        "description": "A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.\n"
+                        "description": "See pop_pools above.\n"
                     },
                     "proxied": {
                         "type": "boolean",
@@ -8097,30 +8534,37 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerRegionPool:LoadBalancerRegionPool"
                         },
-                        "description": "A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.\n"
+                        "description": "See region_pools above.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/LoadBalancerRule:LoadBalancerRule"
+                        },
+                        "description": "A list of conditions and overrides for each load balancer operation. See the field documentation below.\n"
                     },
                     "sessionAffinity": {
                         "type": "string",
-                        "description": "Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `\"\"`, `\"none\"`, `\"cookie\"`, and `\"ip_cookie\"`.  Default is `\"\"`.\n"
+                        "description": "See field above.\n"
                     },
                     "sessionAffinityAttributes": {
                         "type": "object",
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "Configure cookie attributes for session affinity cookie. See the field documentation below.\n"
+                        "description": "See field above.\n"
                     },
                     "sessionAffinityTtl": {
                         "type": "integer",
-                        "description": "Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.\n"
+                        "description": "See field above.\n"
                     },
                     "steeringPolicy": {
                         "type": "string",
-                        "description": "Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `\"off\"`, `\"geo\"`, `\"dynamic_latency\"`, `\"random\"` or `\"\"`. Default is `\"\"`.\n"
+                        "description": "See field above.\n"
                     },
                     "ttl": {
                         "type": "integer",
-                        "description": "Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.\n"
+                        "description": "See field above.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -11028,7 +11472,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/getZonesZone:getZonesZone"
                         },
-                        "description": "A map of zone details. Full list below:\n"
+                        "description": "A list of zone objects. Object format:\n"
                     }
                 },
                 "type": "object",

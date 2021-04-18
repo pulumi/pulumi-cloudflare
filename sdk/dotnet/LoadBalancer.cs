@@ -72,6 +72,21 @@ namespace Pulumi.Cloudflare
     ///                     },
     ///                 },
     ///             },
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.LoadBalancerRuleArgs
+    ///                 {
+    ///                     Name = "example rule",
+    ///                     Condition = "http.request.uri.path contains \"testing\"",
+    ///                     FixedResponse = new Cloudflare.Inputs.LoadBalancerRuleFixedResponseArgs
+    ///                     {
+    ///                         Message_body = "hello",
+    ///                         Status_code = 200,
+    ///                         Content_type = "html",
+    ///                         Location = "www.example.com",
+    ///                     },
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -118,13 +133,13 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS name (FQDN, including the zone) to associate with the load balancer.
+        /// Human readable name for this rule.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+        /// See pop_pools above.
         /// </summary>
         [Output("popPools")]
         public Output<ImmutableArray<Outputs.LoadBalancerPopPool>> PopPools { get; private set; } = null!;
@@ -136,37 +151,43 @@ namespace Pulumi.Cloudflare
         public Output<bool?> Proxied { get; private set; } = null!;
 
         /// <summary>
-        /// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+        /// See region_pools above.
         /// </summary>
         [Output("regionPools")]
         public Output<ImmutableArray<Outputs.LoadBalancerRegionPool>> RegionPools { get; private set; } = null!;
 
         /// <summary>
-        /// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
+        /// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+        /// </summary>
+        [Output("rules")]
+        public Output<ImmutableArray<Outputs.LoadBalancerRule>> Rules { get; private set; } = null!;
+
+        /// <summary>
+        /// See field above.
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string?> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// Configure cookie attributes for session affinity cookie. See the field documentation below.
+        /// See field above.
         /// </summary>
         [Output("sessionAffinityAttributes")]
         public Output<ImmutableDictionary<string, string>?> SessionAffinityAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        /// See field above.
         /// </summary>
         [Output("sessionAffinityTtl")]
         public Output<int?> SessionAffinityTtl { get; private set; } = null!;
 
         /// <summary>
-        /// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
+        /// See field above.
         /// </summary>
         [Output("steeringPolicy")]
         public Output<string> SteeringPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+        /// See field above.
         /// </summary>
         [Output("ttl")]
         public Output<int> Ttl { get; private set; } = null!;
@@ -254,7 +275,7 @@ namespace Pulumi.Cloudflare
         public Input<string> FallbackPoolId { get; set; } = null!;
 
         /// <summary>
-        /// The DNS name (FQDN, including the zone) to associate with the load balancer.
+        /// Human readable name for this rule.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -263,7 +284,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerPopPoolArgs>? _popPools;
 
         /// <summary>
-        /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+        /// See pop_pools above.
         /// </summary>
         public InputList<Inputs.LoadBalancerPopPoolArgs> PopPools
         {
@@ -281,7 +302,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerRegionPoolArgs>? _regionPools;
 
         /// <summary>
-        /// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+        /// See region_pools above.
         /// </summary>
         public InputList<Inputs.LoadBalancerRegionPoolArgs> RegionPools
         {
@@ -289,8 +310,20 @@ namespace Pulumi.Cloudflare
             set => _regionPools = value;
         }
 
+        [Input("rules")]
+        private InputList<Inputs.LoadBalancerRuleArgs>? _rules;
+
         /// <summary>
-        /// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
+        /// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerRuleArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.LoadBalancerRuleArgs>());
+            set => _rules = value;
+        }
+
+        /// <summary>
+        /// See field above.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -299,7 +332,7 @@ namespace Pulumi.Cloudflare
         private InputMap<string>? _sessionAffinityAttributes;
 
         /// <summary>
-        /// Configure cookie attributes for session affinity cookie. See the field documentation below.
+        /// See field above.
         /// </summary>
         public InputMap<string> SessionAffinityAttributes
         {
@@ -308,19 +341,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        /// See field above.
         /// </summary>
         [Input("sessionAffinityTtl")]
         public Input<int>? SessionAffinityTtl { get; set; }
 
         /// <summary>
-        /// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
+        /// See field above.
         /// </summary>
         [Input("steeringPolicy")]
         public Input<string>? SteeringPolicy { get; set; }
 
         /// <summary>
-        /// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+        /// See field above.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -381,7 +414,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// The DNS name (FQDN, including the zone) to associate with the load balancer.
+        /// Human readable name for this rule.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -390,7 +423,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerPopPoolGetArgs>? _popPools;
 
         /// <summary>
-        /// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers. Fields documented below.
+        /// See pop_pools above.
         /// </summary>
         public InputList<Inputs.LoadBalancerPopPoolGetArgs> PopPools
         {
@@ -408,7 +441,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerRegionPoolGetArgs>? _regionPools;
 
         /// <summary>
-        /// A set containing mappings of region/country codes to a list of pool IDs (ordered by their failover priority) for the given region. Fields documented below.
+        /// See region_pools above.
         /// </summary>
         public InputList<Inputs.LoadBalancerRegionPoolGetArgs> RegionPools
         {
@@ -416,8 +449,20 @@ namespace Pulumi.Cloudflare
             set => _regionPools = value;
         }
 
+        [Input("rules")]
+        private InputList<Inputs.LoadBalancerRuleGetArgs>? _rules;
+
         /// <summary>
-        /// Associates all requests coming from an end-user with a single origin. Cloudflare will set a cookie on the initial response to the client, such that consequent requests with the cookie in the request will go to the same origin, so long as it is available.  Valid values are: `""`, `"none"`, `"cookie"`, and `"ip_cookie"`.  Default is `""`.
+        /// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerRuleGetArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.LoadBalancerRuleGetArgs>());
+            set => _rules = value;
+        }
+
+        /// <summary>
+        /// See field above.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -426,7 +471,7 @@ namespace Pulumi.Cloudflare
         private InputMap<string>? _sessionAffinityAttributes;
 
         /// <summary>
-        /// Configure cookie attributes for session affinity cookie. See the field documentation below.
+        /// See field above.
         /// </summary>
         public InputMap<string> SessionAffinityAttributes
         {
@@ -435,19 +480,19 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Time, in seconds, until this load balancers session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of 23 hours will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between 1800 and 604800.
+        /// See field above.
         /// </summary>
         [Input("sessionAffinityTtl")]
         public Input<int>? SessionAffinityTtl { get; set; }
 
         /// <summary>
-        /// Determine which method the load balancer uses to determine the fastest route to your origin. Valid values are: `"off"`, `"geo"`, `"dynamic_latency"`, `"random"` or `""`. Default is `""`.
+        /// See field above.
         /// </summary>
         [Input("steeringPolicy")]
         public Input<string>? SteeringPolicy { get; set; }
 
         /// <summary>
-        /// Time to live (TTL) of this load balancer's DNS `name`. Conflicts with `proxied` - this cannot be set for proxied load balancers. Default is `30`.
+        /// See field above.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }

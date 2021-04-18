@@ -63,6 +63,11 @@ __all__ = [
     'LoadBalancerPoolOriginArgs',
     'LoadBalancerPopPoolArgs',
     'LoadBalancerRegionPoolArgs',
+    'LoadBalancerRuleArgs',
+    'LoadBalancerRuleFixedResponseArgs',
+    'LoadBalancerRuleOverrideArgs',
+    'LoadBalancerRuleOverridePopPoolArgs',
+    'LoadBalancerRuleOverrideRegionPoolArgs',
     'PageRuleActionsArgs',
     'PageRuleActionsCacheKeyFieldsArgs',
     'PageRuleActionsCacheKeyFieldsCookieArgs',
@@ -266,6 +271,7 @@ class AccessGroupExcludeArgs:
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGsuiteArgs']]]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 login_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeOktaArgs']]]] = None,
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -295,6 +301,8 @@ class AccessGroupExcludeArgs:
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -418,6 +426,15 @@ class AccessGroupExcludeArgs:
     @ips.setter
     def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "login_methods")
+
+    @login_methods.setter
+    def login_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "login_methods", value)
 
     @property
     @pulumi.getter
@@ -644,6 +661,7 @@ class AccessGroupIncludeArgs:
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGsuiteArgs']]]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 login_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeOktaArgs']]]] = None,
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -673,6 +691,8 @@ class AccessGroupIncludeArgs:
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -796,6 +816,15 @@ class AccessGroupIncludeArgs:
     @ips.setter
     def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "login_methods")
+
+    @login_methods.setter
+    def login_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "login_methods", value)
 
     @property
     @pulumi.getter
@@ -1022,6 +1051,7 @@ class AccessGroupRequireArgs:
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGsuiteArgs']]]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 login_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireOktaArgs']]]] = None,
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1051,6 +1081,8 @@ class AccessGroupRequireArgs:
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -1174,6 +1206,15 @@ class AccessGroupRequireArgs:
     @ips.setter
     def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "login_methods")
+
+    @login_methods.setter
+    def login_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "login_methods", value)
 
     @property
     @pulumi.getter
@@ -1633,6 +1674,7 @@ class AccessPolicyExcludeArgs:
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGsuiteArgs']]]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 login_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeOktaArgs']]]] = None,
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1662,6 +1704,8 @@ class AccessPolicyExcludeArgs:
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -1785,6 +1829,15 @@ class AccessPolicyExcludeArgs:
     @ips.setter
     def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "login_methods")
+
+    @login_methods.setter
+    def login_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "login_methods", value)
 
     @property
     @pulumi.getter
@@ -2011,6 +2064,7 @@ class AccessPolicyIncludeArgs:
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGsuiteArgs']]]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 login_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeOktaArgs']]]] = None,
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2040,6 +2094,8 @@ class AccessPolicyIncludeArgs:
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -2163,6 +2219,15 @@ class AccessPolicyIncludeArgs:
     @ips.setter
     def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "login_methods")
+
+    @login_methods.setter
+    def login_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "login_methods", value)
 
     @property
     @pulumi.getter
@@ -2389,6 +2454,7 @@ class AccessPolicyRequireArgs:
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  gsuites: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGsuiteArgs']]]] = None,
                  ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 login_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  oktas: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireOktaArgs']]]] = None,
                  samls: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireSamlArgs']]]] = None,
                  service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -2418,6 +2484,8 @@ class AccessPolicyRequireArgs:
             pulumi.set(__self__, "gsuites", gsuites)
         if ips is not None:
             pulumi.set(__self__, "ips", ips)
+        if login_methods is not None:
+            pulumi.set(__self__, "login_methods", login_methods)
         if oktas is not None:
             pulumi.set(__self__, "oktas", oktas)
         if samls is not None:
@@ -2541,6 +2609,15 @@ class AccessPolicyRequireArgs:
     @ips.setter
     def ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ips", value)
+
+    @property
+    @pulumi.getter(name="loginMethods")
+    def login_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "login_methods")
+
+    @login_methods.setter
+    def login_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "login_methods", value)
 
     @property
     @pulumi.getter
@@ -3549,6 +3626,420 @@ class LoadBalancerPopPoolArgs:
 
 @pulumi.input_type
 class LoadBalancerRegionPoolArgs:
+    def __init__(__self__, *,
+                 pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 region: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param pulumi.Input[str] region: A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+        """
+        pulumi.set(__self__, "pool_ids", pool_ids)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="poolIds")
+    def pool_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        """
+        return pulumi.get(self, "pool_ids")
+
+    @pool_ids.setter
+    def pool_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "pool_ids", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        A region code which must be in the list defined [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions). Multiple entries should not be specified with the same region.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class LoadBalancerRuleArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 condition: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 fixed_response: Optional[pulumi.Input['LoadBalancerRuleFixedResponseArgs']] = None,
+                 overrides: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideArgs']]]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 terminates: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] name: Human readable name for this rule.
+        :param pulumi.Input[str] condition: The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        :param pulumi.Input[bool] disabled: A disabled rule will be be executed.
+        :param pulumi.Input['LoadBalancerRuleFixedResponseArgs'] fixed_response: Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideArgs']]] overrides: The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        :param pulumi.Input[int] priority: Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+        :param pulumi.Input[bool] terminates: Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixed_response forces this field to true.
+        """
+        pulumi.set(__self__, "name", name)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if fixed_response is not None:
+            pulumi.set(__self__, "fixed_response", fixed_response)
+        if overrides is not None:
+            pulumi.set(__self__, "overrides", overrides)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if terminates is not None:
+            pulumi.set(__self__, "terminates", terminates)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Human readable name for this rule.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The statement to evaluate to determine if this rules effects should be applied. An empty condition is always true. See [load balancing rules](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules).
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        A disabled rule will be be executed.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="fixedResponse")
+    def fixed_response(self) -> Optional[pulumi.Input['LoadBalancerRuleFixedResponseArgs']]:
+        """
+        Settings for a HTTP response to return directly to the eyeball if the condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        """
+        return pulumi.get(self, "fixed_response")
+
+    @fixed_response.setter
+    def fixed_response(self, value: Optional[pulumi.Input['LoadBalancerRuleFixedResponseArgs']]):
+        pulumi.set(self, "fixed_response", value)
+
+    @property
+    @pulumi.getter
+    def overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideArgs']]]]:
+        """
+        The Load Balancer settings to alter if this rules condition is true. Note: overrides or fixed_response must be set. See the field documentation below.
+        """
+        return pulumi.get(self, "overrides")
+
+    @overrides.setter
+    def overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideArgs']]]]):
+        pulumi.set(self, "overrides", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Priority used when determining the order of rule execution. Lower values are executed first. If not provided list order will be used.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def terminates(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Terminates indicates that if this rule is true no further rules should be executed. Note: setting a fixed_response forces this field to true.
+        """
+        return pulumi.get(self, "terminates")
+
+    @terminates.setter
+    def terminates(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "terminates", value)
+
+
+@pulumi.input_type
+class LoadBalancerRuleFixedResponseArgs:
+    def __init__(__self__, *,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 message_body: Optional[pulumi.Input[str]] = None,
+                 status_code: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] content_type: The value of the HTTP context-type header for this fixed response.
+        :param pulumi.Input[str] location: The value of the HTTP location header for this fixed response.
+        :param pulumi.Input[str] message_body: The text used as the html body for this fixed response.
+        :param pulumi.Input[int] status_code: The HTTP status code used for this fixed response.
+        """
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message_body is not None:
+            pulumi.set(__self__, "message_body", message_body)
+        if status_code is not None:
+            pulumi.set(__self__, "status_code", status_code)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the HTTP context-type header for this fixed response.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the HTTP location header for this fixed response.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="messageBody")
+    def message_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text used as the html body for this fixed response.
+        """
+        return pulumi.get(self, "message_body")
+
+    @message_body.setter
+    def message_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_body", value)
+
+    @property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code used for this fixed response.
+        """
+        return pulumi.get(self, "status_code")
+
+    @status_code.setter
+    def status_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "status_code", value)
+
+
+@pulumi.input_type
+class LoadBalancerRuleOverrideArgs:
+    def __init__(__self__, *,
+                 default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 fallback_pool: Optional[pulumi.Input[str]] = None,
+                 pop_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]]] = None,
+                 region_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]]] = None,
+                 session_affinity: Optional[pulumi.Input[str]] = None,
+                 session_affinity_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 session_affinity_ttl: Optional[pulumi.Input[int]] = None,
+                 steering_policy: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_pools: See default_pool_ids above.
+        :param pulumi.Input[str] fallback_pool: See fallback_pool_id above.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]] pop_pools: See pop_pools above.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]] region_pools: See region_pools above.
+        :param pulumi.Input[str] session_affinity: See field above.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] session_affinity_attributes: See field above.
+        :param pulumi.Input[int] session_affinity_ttl: See field above.
+        :param pulumi.Input[str] steering_policy: See field above.
+        :param pulumi.Input[int] ttl: See field above.
+        """
+        if default_pools is not None:
+            pulumi.set(__self__, "default_pools", default_pools)
+        if fallback_pool is not None:
+            pulumi.set(__self__, "fallback_pool", fallback_pool)
+        if pop_pools is not None:
+            pulumi.set(__self__, "pop_pools", pop_pools)
+        if region_pools is not None:
+            pulumi.set(__self__, "region_pools", region_pools)
+        if session_affinity is not None:
+            pulumi.set(__self__, "session_affinity", session_affinity)
+        if session_affinity_attributes is not None:
+            pulumi.set(__self__, "session_affinity_attributes", session_affinity_attributes)
+        if session_affinity_ttl is not None:
+            pulumi.set(__self__, "session_affinity_ttl", session_affinity_ttl)
+        if steering_policy is not None:
+            pulumi.set(__self__, "steering_policy", steering_policy)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="defaultPools")
+    def default_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        See default_pool_ids above.
+        """
+        return pulumi.get(self, "default_pools")
+
+    @default_pools.setter
+    def default_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "default_pools", value)
+
+    @property
+    @pulumi.getter(name="fallbackPool")
+    def fallback_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        See fallback_pool_id above.
+        """
+        return pulumi.get(self, "fallback_pool")
+
+    @fallback_pool.setter
+    def fallback_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fallback_pool", value)
+
+    @property
+    @pulumi.getter(name="popPools")
+    def pop_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]]]:
+        """
+        See pop_pools above.
+        """
+        return pulumi.get(self, "pop_pools")
+
+    @pop_pools.setter
+    def pop_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverridePopPoolArgs']]]]):
+        pulumi.set(self, "pop_pools", value)
+
+    @property
+    @pulumi.getter(name="regionPools")
+    def region_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]]]:
+        """
+        See region_pools above.
+        """
+        return pulumi.get(self, "region_pools")
+
+    @region_pools.setter
+    def region_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleOverrideRegionPoolArgs']]]]):
+        pulumi.set(self, "region_pools", value)
+
+    @property
+    @pulumi.getter(name="sessionAffinity")
+    def session_affinity(self) -> Optional[pulumi.Input[str]]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "session_affinity")
+
+    @session_affinity.setter
+    def session_affinity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_affinity", value)
+
+    @property
+    @pulumi.getter(name="sessionAffinityAttributes")
+    def session_affinity_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "session_affinity_attributes")
+
+    @session_affinity_attributes.setter
+    def session_affinity_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "session_affinity_attributes", value)
+
+    @property
+    @pulumi.getter(name="sessionAffinityTtl")
+    def session_affinity_ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "session_affinity_ttl")
+
+    @session_affinity_ttl.setter
+    def session_affinity_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "session_affinity_ttl", value)
+
+    @property
+    @pulumi.getter(name="steeringPolicy")
+    def steering_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "steering_policy")
+
+    @steering_policy.setter
+    def steering_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "steering_policy", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        See field above.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+
+@pulumi.input_type
+class LoadBalancerRuleOverridePopPoolArgs:
+    def __init__(__self__, *,
+                 pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 pop: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        :param pulumi.Input[str] pop: A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
+        pulumi.set(__self__, "pool_ids", pool_ids)
+        pulumi.set(__self__, "pop", pop)
+
+    @property
+    @pulumi.getter(name="poolIds")
+    def pool_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of pool IDs in failover priority to use for traffic reaching the given PoP.
+        """
+        return pulumi.get(self, "pool_ids")
+
+    @pool_ids.setter
+    def pool_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "pool_ids", value)
+
+    @property
+    @pulumi.getter
+    def pop(self) -> pulumi.Input[str]:
+        """
+        A 3-letter code for the Point-of-Presence. Allowed values can be found in the list of datacenters on the [status page](https://www.cloudflarestatus.com/). Multiple entries should not be specified with the same PoP.
+        """
+        return pulumi.get(self, "pop")
+
+    @pop.setter
+    def pop(self, value: pulumi.Input[str]):
+        pulumi.set(self, "pop", value)
+
+
+@pulumi.input_type
+class LoadBalancerRuleOverrideRegionPoolArgs:
     def __init__(__self__, *,
                  pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  region: pulumi.Input[str]):

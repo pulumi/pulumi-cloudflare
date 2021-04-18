@@ -109,6 +109,6 @@ type GetZonesResult struct {
 	Filter GetZonesFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A map of zone details. Full list below:
+	// A list of zone objects. Object format:
 	Zones []GetZonesZone `pulumi:"zones"`
 }
