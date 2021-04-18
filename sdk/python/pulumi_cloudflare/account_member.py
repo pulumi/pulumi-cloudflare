@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AccountMemberArgs', 'AccountMember']
 
@@ -45,6 +45,46 @@ class AccountMemberArgs:
 
     @role_ids.setter
     def role_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "role_ids", value)
+
+
+@pulumi.input_type
+class _AccountMemberState:
+    def __init__(__self__, *,
+                 email_address: Optional[pulumi.Input[str]] = None,
+                 role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering AccountMember resources.
+        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: Array of account role IDs that you want to assign to a member.
+        """
+        if email_address is not None:
+            pulumi.set(__self__, "email_address", email_address)
+        if role_ids is not None:
+            pulumi.set(__self__, "role_ids", role_ids)
+
+    @property
+    @pulumi.getter(name="emailAddress")
+    def email_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+        """
+        return pulumi.get(self, "email_address")
+
+    @email_address.setter
+    def email_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email_address", value)
+
+    @property
+    @pulumi.getter(name="roleIds")
+    def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Array of account role IDs that you want to assign to a member.
+        """
+        return pulumi.get(self, "role_ids")
+
+    @role_ids.setter
+    def role_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "role_ids", value)
 
 
@@ -158,14 +198,14 @@ class AccountMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountMemberArgs.__new__(AccountMemberArgs)
 
             if email_address is None and not opts.urn:
                 raise TypeError("Missing required property 'email_address'")
-            __props__['email_address'] = email_address
+            __props__.__dict__["email_address"] = email_address
             if role_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'role_ids'")
-            __props__['role_ids'] = role_ids
+            __props__.__dict__["role_ids"] = role_ids
         super(AccountMember, __self__).__init__(
             'cloudflare:index/accountMember:AccountMember',
             resource_name,
@@ -190,10 +230,10 @@ class AccountMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccountMemberState.__new__(_AccountMemberState)
 
-        __props__["email_address"] = email_address
-        __props__["role_ids"] = role_ids
+        __props__.__dict__["email_address"] = email_address
+        __props__.__dict__["role_ids"] = role_ids
         return AccountMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -211,10 +251,4 @@ class AccountMember(pulumi.CustomResource):
         Array of account role IDs that you want to assign to a member.
         """
         return pulumi.get(self, "role_ids")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

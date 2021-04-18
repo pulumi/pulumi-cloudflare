@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ArgoArgs', 'Argo']
 
@@ -63,6 +63,62 @@ class ArgoArgs:
     @tiered_caching.setter
     def tiered_caching(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tiered_caching", value)
+
+
+@pulumi.input_type
+class _ArgoState:
+    def __init__(__self__, *,
+                 smart_routing: Optional[pulumi.Input[str]] = None,
+                 tiered_caching: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Argo resources.
+        :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Valid values: `on` or `off`.
+        :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Valid values: `on` or `off`.
+        :param pulumi.Input[str] zone_id: The DNS zone ID that you wish to manage Argo on.
+        """
+        if smart_routing is not None:
+            pulumi.set(__self__, "smart_routing", smart_routing)
+        if tiered_caching is not None:
+            pulumi.set(__self__, "tiered_caching", tiered_caching)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="smartRouting")
+    def smart_routing(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether smart routing is enabled. Valid values: `on` or `off`.
+        """
+        return pulumi.get(self, "smart_routing")
+
+    @smart_routing.setter
+    def smart_routing(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "smart_routing", value)
+
+    @property
+    @pulumi.getter(name="tieredCaching")
+    def tiered_caching(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether tiered caching is enabled. Valid values: `on` or `off`.
+        """
+        return pulumi.get(self, "tiered_caching")
+
+    @tiered_caching.setter
+    def tiered_caching(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tiered_caching", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone ID that you wish to manage Argo on.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class Argo(pulumi.CustomResource):
@@ -174,13 +230,13 @@ class Argo(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ArgoArgs.__new__(ArgoArgs)
 
-            __props__['smart_routing'] = smart_routing
-            __props__['tiered_caching'] = tiered_caching
+            __props__.__dict__["smart_routing"] = smart_routing
+            __props__.__dict__["tiered_caching"] = tiered_caching
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(Argo, __self__).__init__(
             'cloudflare:index/argo:Argo',
             resource_name,
@@ -207,11 +263,11 @@ class Argo(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ArgoState.__new__(_ArgoState)
 
-        __props__["smart_routing"] = smart_routing
-        __props__["tiered_caching"] = tiered_caching
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["smart_routing"] = smart_routing
+        __props__.__dict__["tiered_caching"] = tiered_caching
+        __props__.__dict__["zone_id"] = zone_id
         return Argo(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -237,10 +293,4 @@ class Argo(pulumi.CustomResource):
         The DNS zone ID that you wish to manage Argo on.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

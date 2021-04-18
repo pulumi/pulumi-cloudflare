@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ZoneDnssecArgs', 'ZoneDnssec']
 
@@ -47,6 +47,206 @@ class ZoneDnssecArgs:
     @modified_on.setter
     def modified_on(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "modified_on", value)
+
+
+@pulumi.input_type
+class _ZoneDnssecState:
+    def __init__(__self__, *,
+                 algorithm: Optional[pulumi.Input[str]] = None,
+                 digest: Optional[pulumi.Input[str]] = None,
+                 digest_algorithm: Optional[pulumi.Input[str]] = None,
+                 digest_type: Optional[pulumi.Input[str]] = None,
+                 ds: Optional[pulumi.Input[str]] = None,
+                 flags: Optional[pulumi.Input[int]] = None,
+                 key_tag: Optional[pulumi.Input[int]] = None,
+                 key_type: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 public_key: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ZoneDnssec resources.
+        :param pulumi.Input[str] algorithm: Zone DNSSEC algorithm.
+        :param pulumi.Input[str] digest: Zone DNSSEC digest.
+        :param pulumi.Input[str] digest_algorithm: Digest algorithm use for Zone DNSSEC.
+        :param pulumi.Input[str] digest_type: Digest Type for Zone DNSSEC.
+        :param pulumi.Input[str] ds: DS for the Zone DNSSEC.
+        :param pulumi.Input[int] flags: Zone DNSSEC flags.
+        :param pulumi.Input[int] key_tag: Key Tag for the Zone DNSSEC.
+        :param pulumi.Input[str] key_type: Key type used for Zone DNSSEC.
+        :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
+        :param pulumi.Input[str] public_key: Public Key for the Zone DNSSEC.
+        :param pulumi.Input[str] status: The status of the Zone DNSSEC.
+        :param pulumi.Input[str] zone_id: The zone id for the zone.
+        """
+        if algorithm is not None:
+            pulumi.set(__self__, "algorithm", algorithm)
+        if digest is not None:
+            pulumi.set(__self__, "digest", digest)
+        if digest_algorithm is not None:
+            pulumi.set(__self__, "digest_algorithm", digest_algorithm)
+        if digest_type is not None:
+            pulumi.set(__self__, "digest_type", digest_type)
+        if ds is not None:
+            pulumi.set(__self__, "ds", ds)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if key_tag is not None:
+            pulumi.set(__self__, "key_tag", key_tag)
+        if key_type is not None:
+            pulumi.set(__self__, "key_type", key_type)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone DNSSEC algorithm.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @algorithm.setter
+    def algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "algorithm", value)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone DNSSEC digest.
+        """
+        return pulumi.get(self, "digest")
+
+    @digest.setter
+    def digest(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest", value)
+
+    @property
+    @pulumi.getter(name="digestAlgorithm")
+    def digest_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Digest algorithm use for Zone DNSSEC.
+        """
+        return pulumi.get(self, "digest_algorithm")
+
+    @digest_algorithm.setter
+    def digest_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest_algorithm", value)
+
+    @property
+    @pulumi.getter(name="digestType")
+    def digest_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Digest Type for Zone DNSSEC.
+        """
+        return pulumi.get(self, "digest_type")
+
+    @digest_type.setter
+    def digest_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "digest_type", value)
+
+    @property
+    @pulumi.getter
+    def ds(self) -> Optional[pulumi.Input[str]]:
+        """
+        DS for the Zone DNSSEC.
+        """
+        return pulumi.get(self, "ds")
+
+    @ds.setter
+    def ds(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ds", value)
+
+    @property
+    @pulumi.getter
+    def flags(self) -> Optional[pulumi.Input[int]]:
+        """
+        Zone DNSSEC flags.
+        """
+        return pulumi.get(self, "flags")
+
+    @flags.setter
+    def flags(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "flags", value)
+
+    @property
+    @pulumi.getter(name="keyTag")
+    def key_tag(self) -> Optional[pulumi.Input[int]]:
+        """
+        Key Tag for the Zone DNSSEC.
+        """
+        return pulumi.get(self, "key_tag")
+
+    @key_tag.setter
+    def key_tag(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "key_tag", value)
+
+    @property
+    @pulumi.getter(name="keyType")
+    def key_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key type used for Zone DNSSEC.
+        """
+        return pulumi.get(self, "key_type")
+
+    @key_type.setter
+    def key_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_type", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        Zone DNSSEC updated time.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Public Key for the Zone DNSSEC.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of the Zone DNSSEC.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone id for the zone.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class ZoneDnssec(pulumi.CustomResource):
@@ -151,22 +351,22 @@ class ZoneDnssec(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ZoneDnssecArgs.__new__(ZoneDnssecArgs)
 
-            __props__['modified_on'] = modified_on
+            __props__.__dict__["modified_on"] = modified_on
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
-            __props__['algorithm'] = None
-            __props__['digest'] = None
-            __props__['digest_algorithm'] = None
-            __props__['digest_type'] = None
-            __props__['ds'] = None
-            __props__['flags'] = None
-            __props__['key_tag'] = None
-            __props__['key_type'] = None
-            __props__['public_key'] = None
-            __props__['status'] = None
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["algorithm"] = None
+            __props__.__dict__["digest"] = None
+            __props__.__dict__["digest_algorithm"] = None
+            __props__.__dict__["digest_type"] = None
+            __props__.__dict__["ds"] = None
+            __props__.__dict__["flags"] = None
+            __props__.__dict__["key_tag"] = None
+            __props__.__dict__["key_type"] = None
+            __props__.__dict__["public_key"] = None
+            __props__.__dict__["status"] = None
         super(ZoneDnssec, __self__).__init__(
             'cloudflare:index/zoneDnssec:ZoneDnssec',
             resource_name,
@@ -211,20 +411,20 @@ class ZoneDnssec(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ZoneDnssecState.__new__(_ZoneDnssecState)
 
-        __props__["algorithm"] = algorithm
-        __props__["digest"] = digest
-        __props__["digest_algorithm"] = digest_algorithm
-        __props__["digest_type"] = digest_type
-        __props__["ds"] = ds
-        __props__["flags"] = flags
-        __props__["key_tag"] = key_tag
-        __props__["key_type"] = key_type
-        __props__["modified_on"] = modified_on
-        __props__["public_key"] = public_key
-        __props__["status"] = status
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["algorithm"] = algorithm
+        __props__.__dict__["digest"] = digest
+        __props__.__dict__["digest_algorithm"] = digest_algorithm
+        __props__.__dict__["digest_type"] = digest_type
+        __props__.__dict__["ds"] = ds
+        __props__.__dict__["flags"] = flags
+        __props__.__dict__["key_tag"] = key_tag
+        __props__.__dict__["key_type"] = key_type
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["public_key"] = public_key
+        __props__.__dict__["status"] = status
+        __props__.__dict__["zone_id"] = zone_id
         return ZoneDnssec(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -322,10 +522,4 @@ class ZoneDnssec(pulumi.CustomResource):
         The zone id for the zone.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

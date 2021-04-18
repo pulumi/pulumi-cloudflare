@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['FilterArgs', 'Filter']
 
@@ -94,6 +94,94 @@ class FilterArgs:
     @ref.setter
     def ref(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ref", value)
+
+
+@pulumi.input_type
+class _FilterState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 paused: Optional[pulumi.Input[bool]] = None,
+                 ref: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Filter resources.
+        :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
+        :param pulumi.Input[str] expression: The filter expression to be used.
+        :param pulumi.Input[bool] paused: Whether this filter is currently paused. Boolean value.
+        :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if paused is not None:
+            pulumi.set(__self__, "paused", paused)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A note that you can use to describe the purpose of the filter.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The filter expression to be used.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def paused(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this filter is currently paused. Boolean value.
+        """
+        return pulumi.get(self, "paused")
+
+    @paused.setter
+    def paused(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "paused", value)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Short reference tag to quickly select related rules.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ref", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone to which the Filter should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class Filter(pulumi.CustomResource):
@@ -211,17 +299,17 @@ class Filter(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FilterArgs.__new__(FilterArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if expression is None and not opts.urn:
                 raise TypeError("Missing required property 'expression'")
-            __props__['expression'] = expression
-            __props__['paused'] = paused
-            __props__['ref'] = ref
+            __props__.__dict__["expression"] = expression
+            __props__.__dict__["paused"] = paused
+            __props__.__dict__["ref"] = ref
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(Filter, __self__).__init__(
             'cloudflare:index/filter:Filter',
             resource_name,
@@ -252,13 +340,13 @@ class Filter(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FilterState.__new__(_FilterState)
 
-        __props__["description"] = description
-        __props__["expression"] = expression
-        __props__["paused"] = paused
-        __props__["ref"] = ref
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["expression"] = expression
+        __props__.__dict__["paused"] = paused
+        __props__.__dict__["ref"] = ref
+        __props__.__dict__["zone_id"] = zone_id
         return Filter(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -300,10 +388,4 @@ class Filter(pulumi.CustomResource):
         The DNS zone to which the Filter should be added.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

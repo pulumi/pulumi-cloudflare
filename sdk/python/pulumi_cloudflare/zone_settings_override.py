@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -49,6 +49,118 @@ class ZoneSettingsOverrideArgs:
     @settings.setter
     def settings(self, value: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']]):
         pulumi.set(self, "settings", value)
+
+
+@pulumi.input_type
+class _ZoneSettingsOverrideState:
+    def __init__(__self__, *,
+                 initial_settings: Optional[pulumi.Input['ZoneSettingsOverrideInitialSettingsArgs']] = None,
+                 initial_settings_read_at: Optional[pulumi.Input[str]] = None,
+                 readonly_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 settings: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_status: Optional[pulumi.Input[str]] = None,
+                 zone_type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ZoneSettingsOverride resources.
+        :param pulumi.Input['ZoneSettingsOverrideInitialSettingsArgs'] initial_settings: Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_settings: Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
+               * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+               * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+        :param pulumi.Input['ZoneSettingsOverrideSettingsArgs'] settings: Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to which apply settings.
+        """
+        if initial_settings is not None:
+            pulumi.set(__self__, "initial_settings", initial_settings)
+        if initial_settings_read_at is not None:
+            pulumi.set(__self__, "initial_settings_read_at", initial_settings_read_at)
+        if readonly_settings is not None:
+            pulumi.set(__self__, "readonly_settings", readonly_settings)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+        if zone_status is not None:
+            pulumi.set(__self__, "zone_status", zone_status)
+        if zone_type is not None:
+            pulumi.set(__self__, "zone_type", zone_type)
+
+    @property
+    @pulumi.getter(name="initialSettings")
+    def initial_settings(self) -> Optional[pulumi.Input['ZoneSettingsOverrideInitialSettingsArgs']]:
+        """
+        Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+        """
+        return pulumi.get(self, "initial_settings")
+
+    @initial_settings.setter
+    def initial_settings(self, value: Optional[pulumi.Input['ZoneSettingsOverrideInitialSettingsArgs']]):
+        pulumi.set(self, "initial_settings", value)
+
+    @property
+    @pulumi.getter(name="initialSettingsReadAt")
+    def initial_settings_read_at(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "initial_settings_read_at")
+
+    @initial_settings_read_at.setter
+    def initial_settings_read_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initial_settings_read_at", value)
+
+    @property
+    @pulumi.getter(name="readonlySettings")
+    def readonly_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
+        * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+        * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+        """
+        return pulumi.get(self, "readonly_settings")
+
+    @readonly_settings.setter
+    def readonly_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "readonly_settings", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']]:
+        """
+        Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone ID to which apply settings.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="zoneStatus")
+    def zone_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone_status")
+
+    @zone_status.setter
+    def zone_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_status", value)
+
+    @property
+    @pulumi.getter(name="zoneType")
+    def zone_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone_type")
+
+    @zone_type.setter
+    def zone_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_type", value)
 
 
 class ZoneSettingsOverride(pulumi.CustomResource):
@@ -167,17 +279,17 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ZoneSettingsOverrideArgs.__new__(ZoneSettingsOverrideArgs)
 
-            __props__['settings'] = settings
+            __props__.__dict__["settings"] = settings
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
-            __props__['initial_settings'] = None
-            __props__['initial_settings_read_at'] = None
-            __props__['readonly_settings'] = None
-            __props__['zone_status'] = None
-            __props__['zone_type'] = None
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["initial_settings"] = None
+            __props__.__dict__["initial_settings_read_at"] = None
+            __props__.__dict__["readonly_settings"] = None
+            __props__.__dict__["zone_status"] = None
+            __props__.__dict__["zone_type"] = None
         super(ZoneSettingsOverride, __self__).__init__(
             'cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride',
             resource_name,
@@ -211,15 +323,15 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ZoneSettingsOverrideState.__new__(_ZoneSettingsOverrideState)
 
-        __props__["initial_settings"] = initial_settings
-        __props__["initial_settings_read_at"] = initial_settings_read_at
-        __props__["readonly_settings"] = readonly_settings
-        __props__["settings"] = settings
-        __props__["zone_id"] = zone_id
-        __props__["zone_status"] = zone_status
-        __props__["zone_type"] = zone_type
+        __props__.__dict__["initial_settings"] = initial_settings
+        __props__.__dict__["initial_settings_read_at"] = initial_settings_read_at
+        __props__.__dict__["readonly_settings"] = readonly_settings
+        __props__.__dict__["settings"] = settings
+        __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["zone_status"] = zone_status
+        __props__.__dict__["zone_type"] = zone_type
         return ZoneSettingsOverride(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -270,10 +382,4 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     @pulumi.getter(name="zoneType")
     def zone_type(self) -> pulumi.Output[str]:
         return pulumi.get(self, "zone_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

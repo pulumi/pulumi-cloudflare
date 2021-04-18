@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AuthenticatedOriginPullsArgs', 'AuthenticatedOriginPulls']
 
@@ -78,6 +78,78 @@ class AuthenticatedOriginPullsArgs:
     @hostname.setter
     def hostname(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "hostname", value)
+
+
+@pulumi.input_type
+class _AuthenticatedOriginPullsState:
+    def __init__(__self__, *,
+                 authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AuthenticatedOriginPulls resources.
+        :param pulumi.Input[str] authenticated_origin_pulls_certificate: The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        :param pulumi.Input[bool] enabled: Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+        :param pulumi.Input[str] hostname: Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        :param pulumi.Input[str] zone_id: The zone ID to upload the certificate to.
+        """
+        if authenticated_origin_pulls_certificate is not None:
+            pulumi.set(__self__, "authenticated_origin_pulls_certificate", authenticated_origin_pulls_certificate)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="authenticatedOriginPullsCertificate")
+    def authenticated_origin_pulls_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+        """
+        return pulumi.get(self, "authenticated_origin_pulls_certificate")
+
+    @authenticated_origin_pulls_certificate.setter
+    def authenticated_origin_pulls_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authenticated_origin_pulls_certificate", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID to upload the certificate to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class AuthenticatedOriginPulls(pulumi.CustomResource):
@@ -258,16 +330,16 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AuthenticatedOriginPullsArgs.__new__(AuthenticatedOriginPullsArgs)
 
-            __props__['authenticated_origin_pulls_certificate'] = authenticated_origin_pulls_certificate
+            __props__.__dict__["authenticated_origin_pulls_certificate"] = authenticated_origin_pulls_certificate
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
-            __props__['enabled'] = enabled
-            __props__['hostname'] = hostname
+            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["hostname"] = hostname
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(AuthenticatedOriginPulls, __self__).__init__(
             'cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls',
             resource_name,
@@ -296,12 +368,12 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AuthenticatedOriginPullsState.__new__(_AuthenticatedOriginPullsState)
 
-        __props__["authenticated_origin_pulls_certificate"] = authenticated_origin_pulls_certificate
-        __props__["enabled"] = enabled
-        __props__["hostname"] = hostname
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["authenticated_origin_pulls_certificate"] = authenticated_origin_pulls_certificate
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["zone_id"] = zone_id
         return AuthenticatedOriginPulls(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -335,10 +407,4 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         The zone ID to upload the certificate to.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

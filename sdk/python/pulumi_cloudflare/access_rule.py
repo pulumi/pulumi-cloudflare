@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -55,6 +55,78 @@ class AccessRuleArgs:
 
     @mode.setter
     def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def notes(self) -> Optional[pulumi.Input[str]]:
+        """
+        A personal note about the rule. Typically used as a reminder or explanation for the rule.
+        """
+        return pulumi.get(self, "notes")
+
+    @notes.setter
+    def notes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notes", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone to which the access rule should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class _AccessRuleState:
+    def __init__(__self__, *,
+                 configuration: Optional[pulumi.Input['AccessRuleConfigurationArgs']] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccessRule resources.
+        :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: Rule configuration to apply to a matched request. It's a complex value. See description below.
+        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
+        :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
+        """
+        if configuration is not None:
+            pulumi.set(__self__, "configuration", configuration)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def configuration(self) -> Optional[pulumi.Input['AccessRuleConfigurationArgs']]:
+        """
+        Rule configuration to apply to a matched request. It's a complex value. See description below.
+        """
+        return pulumi.get(self, "configuration")
+
+    @configuration.setter
+    def configuration(self, value: Optional[pulumi.Input['AccessRuleConfigurationArgs']]):
+        pulumi.set(self, "configuration", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
 
     @property
@@ -178,16 +250,16 @@ class AccessRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessRuleArgs.__new__(AccessRuleArgs)
 
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
-            __props__['configuration'] = configuration
+            __props__.__dict__["configuration"] = configuration
             if mode is None and not opts.urn:
                 raise TypeError("Missing required property 'mode'")
-            __props__['mode'] = mode
-            __props__['notes'] = notes
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["mode"] = mode
+            __props__.__dict__["notes"] = notes
+            __props__.__dict__["zone_id"] = zone_id
         super(AccessRule, __self__).__init__(
             'cloudflare:index/accessRule:AccessRule',
             resource_name,
@@ -216,12 +288,12 @@ class AccessRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessRuleState.__new__(_AccessRuleState)
 
-        __props__["configuration"] = configuration
-        __props__["mode"] = mode
-        __props__["notes"] = notes
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["configuration"] = configuration
+        __props__.__dict__["mode"] = mode
+        __props__.__dict__["notes"] = notes
+        __props__.__dict__["zone_id"] = zone_id
         return AccessRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -255,10 +327,4 @@ class AccessRule(pulumi.CustomResource):
         The DNS zone to which the access rule should be added.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

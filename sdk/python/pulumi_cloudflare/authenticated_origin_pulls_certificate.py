@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['AuthenticatedOriginPullsCertificateArgs', 'AuthenticatedOriginPullsCertificate']
 
@@ -75,6 +75,150 @@ class AuthenticatedOriginPullsCertificateArgs:
 
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class _AuthenticatedOriginPullsCertificateState:
+    def __init__(__self__, *,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 expires_on: Optional[pulumi.Input[str]] = None,
+                 issuer: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 serial_number: Optional[pulumi.Input[str]] = None,
+                 signature: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 uploaded_on: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AuthenticatedOriginPullsCertificate resources.
+        :param pulumi.Input[str] certificate: The public client certificate.
+        :param pulumi.Input[str] private_key: The private key of the client certificate.
+        :param pulumi.Input[str] type: The form of Authenticated Origin Pulls to upload the certificate to.
+        :param pulumi.Input[str] zone_id: The zone ID to upload the certificate to.
+        """
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if expires_on is not None:
+            pulumi.set(__self__, "expires_on", expires_on)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
+        if signature is not None:
+            pulumi.set(__self__, "signature", signature)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uploaded_on is not None:
+            pulumi.set(__self__, "uploaded_on", uploaded_on)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The public client certificate.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="expiresOn")
+    def expires_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expires_on")
+
+    @expires_on.setter
+    def expires_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_on", value)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The private key of the client certificate.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "serial_number")
+
+    @serial_number.setter
+    def serial_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serial_number", value)
+
+    @property
+    @pulumi.getter
+    def signature(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "signature")
+
+    @signature.setter
+    def signature(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signature", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The form of Authenticated Origin Pulls to upload the certificate to.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="uploadedOn")
+    def uploaded_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uploaded_on")
+
+    @uploaded_on.setter
+    def uploaded_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uploaded_on", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID to upload the certificate to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -214,26 +358,26 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AuthenticatedOriginPullsCertificateArgs.__new__(AuthenticatedOriginPullsCertificateArgs)
 
             if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
-            __props__['certificate'] = certificate
+            __props__.__dict__["certificate"] = certificate
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__['private_key'] = private_key
+            __props__.__dict__["private_key"] = private_key
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
+            __props__.__dict__["type"] = type
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
-            __props__['expires_on'] = None
-            __props__['issuer'] = None
-            __props__['serial_number'] = None
-            __props__['signature'] = None
-            __props__['status'] = None
-            __props__['uploaded_on'] = None
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["expires_on"] = None
+            __props__.__dict__["issuer"] = None
+            __props__.__dict__["serial_number"] = None
+            __props__.__dict__["signature"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["uploaded_on"] = None
         super(AuthenticatedOriginPullsCertificate, __self__).__init__(
             'cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate',
             resource_name,
@@ -268,18 +412,18 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AuthenticatedOriginPullsCertificateState.__new__(_AuthenticatedOriginPullsCertificateState)
 
-        __props__["certificate"] = certificate
-        __props__["expires_on"] = expires_on
-        __props__["issuer"] = issuer
-        __props__["private_key"] = private_key
-        __props__["serial_number"] = serial_number
-        __props__["signature"] = signature
-        __props__["status"] = status
-        __props__["type"] = type
-        __props__["uploaded_on"] = uploaded_on
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["expires_on"] = expires_on
+        __props__.__dict__["issuer"] = issuer
+        __props__.__dict__["private_key"] = private_key
+        __props__.__dict__["serial_number"] = serial_number
+        __props__.__dict__["signature"] = signature
+        __props__.__dict__["status"] = status
+        __props__.__dict__["type"] = type
+        __props__.__dict__["uploaded_on"] = uploaded_on
+        __props__.__dict__["zone_id"] = zone_id
         return AuthenticatedOriginPullsCertificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -343,10 +487,4 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         The zone ID to upload the certificate to.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

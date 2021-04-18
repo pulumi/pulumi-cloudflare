@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -170,6 +170,270 @@ class LoadBalancerMonitorArgs:
     @method.setter
     def method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter(name="probeZone")
+    def probe_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        """
+        return pulumi.get(self, "probe_zone")
+
+    @probe_zone.setter
+    def probe_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "probe_zone", value)
+
+    @property
+    @pulumi.getter
+    def retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+        """
+        return pulumi.get(self, "retries")
+
+    @retries.setter
+    def retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retries", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timeout (in seconds) before marking the health check as failed. Default: 5.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "timeout", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class _LoadBalancerMonitorState:
+    def __init__(__self__, *,
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 created_on: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 expected_body: Optional[pulumi.Input[str]] = None,
+                 expected_codes: Optional[pulumi.Input[str]] = None,
+                 follow_redirects: Optional[pulumi.Input[bool]] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]] = None,
+                 interval: Optional[pulumi.Input[int]] = None,
+                 method: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None,
+                 probe_zone: Optional[pulumi.Input[str]] = None,
+                 retries: Optional[pulumi.Input[int]] = None,
+                 timeout: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LoadBalancerMonitor resources.
+        :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
+        :param pulumi.Input[str] description: Free text description.
+        :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
+        :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The header name.
+        :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+        :param pulumi.Input[str] method: The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
+        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer monitor was last modified.
+        :param pulumi.Input[str] path: The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
+        :param pulumi.Input[int] port: The port number to use for the healthcheck, required when creating a TCP monitor. Valid values are in the range `0-65535`.
+        :param pulumi.Input[str] probe_zone: Assign this monitor to emulate the specified zone while probing. Only valid if `type` is "http" or "https".
+        :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. Default: 2.
+        :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Default: 5.
+        :param pulumi.Input[str] type: The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+        """
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if created_on is not None:
+            pulumi.set(__self__, "created_on", created_on)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expected_body is not None:
+            pulumi.set(__self__, "expected_body", expected_body)
+        if expected_codes is not None:
+            pulumi.set(__self__, "expected_codes", expected_codes)
+        if follow_redirects is not None:
+            pulumi.set(__self__, "follow_redirects", follow_redirects)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if probe_zone is not None:
+            pulumi.set(__self__, "probe_zone", probe_zone)
+        if retries is not None:
+            pulumi.set(__self__, "retries", retries)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Do not validate the certificate when monitor use HTTPS. Only valid if `type` is "http" or "https".
+        """
+        return pulumi.get(self, "allow_insecure")
+
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter(name="createdOn")
+    def created_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC3339 timestamp of when the load balancer monitor was created.
+        """
+        return pulumi.get(self, "created_on")
+
+    @created_on.setter
+    def created_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "created_on", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Free text description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="expectedBody")
+    def expected_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https". Default: "".
+        """
+        return pulumi.get(self, "expected_body")
+
+    @expected_body.setter
+    def expected_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expected_body", value)
+
+    @property
+    @pulumi.getter(name="expectedCodes")
+    def expected_codes(self) -> Optional[pulumi.Input[str]]:
+        """
+        The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
+        """
+        return pulumi.get(self, "expected_codes")
+
+    @expected_codes.setter
+    def expected_codes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expected_codes", value)
+
+    @property
+    @pulumi.getter(name="followRedirects")
+    def follow_redirects(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
+        """
+        return pulumi.get(self, "follow_redirects")
+
+    @follow_redirects.setter
+    def follow_redirects(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "follow_redirects", value)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]]:
+        """
+        The header name.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[int]]:
+        """
+        The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        The RFC3339 timestamp of when the load balancer monitor was last modified.
+        """
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
 
     @property
     @pulumi.getter
@@ -424,24 +688,24 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LoadBalancerMonitorArgs.__new__(LoadBalancerMonitorArgs)
 
-            __props__['allow_insecure'] = allow_insecure
-            __props__['description'] = description
-            __props__['expected_body'] = expected_body
-            __props__['expected_codes'] = expected_codes
-            __props__['follow_redirects'] = follow_redirects
-            __props__['headers'] = headers
-            __props__['interval'] = interval
-            __props__['method'] = method
-            __props__['path'] = path
-            __props__['port'] = port
-            __props__['probe_zone'] = probe_zone
-            __props__['retries'] = retries
-            __props__['timeout'] = timeout
-            __props__['type'] = type
-            __props__['created_on'] = None
-            __props__['modified_on'] = None
+            __props__.__dict__["allow_insecure"] = allow_insecure
+            __props__.__dict__["description"] = description
+            __props__.__dict__["expected_body"] = expected_body
+            __props__.__dict__["expected_codes"] = expected_codes
+            __props__.__dict__["follow_redirects"] = follow_redirects
+            __props__.__dict__["headers"] = headers
+            __props__.__dict__["interval"] = interval
+            __props__.__dict__["method"] = method
+            __props__.__dict__["path"] = path
+            __props__.__dict__["port"] = port
+            __props__.__dict__["probe_zone"] = probe_zone
+            __props__.__dict__["retries"] = retries
+            __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["type"] = type
+            __props__.__dict__["created_on"] = None
+            __props__.__dict__["modified_on"] = None
         super(LoadBalancerMonitor, __self__).__init__(
             'cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor',
             resource_name,
@@ -494,24 +758,24 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LoadBalancerMonitorState.__new__(_LoadBalancerMonitorState)
 
-        __props__["allow_insecure"] = allow_insecure
-        __props__["created_on"] = created_on
-        __props__["description"] = description
-        __props__["expected_body"] = expected_body
-        __props__["expected_codes"] = expected_codes
-        __props__["follow_redirects"] = follow_redirects
-        __props__["headers"] = headers
-        __props__["interval"] = interval
-        __props__["method"] = method
-        __props__["modified_on"] = modified_on
-        __props__["path"] = path
-        __props__["port"] = port
-        __props__["probe_zone"] = probe_zone
-        __props__["retries"] = retries
-        __props__["timeout"] = timeout
-        __props__["type"] = type
+        __props__.__dict__["allow_insecure"] = allow_insecure
+        __props__.__dict__["created_on"] = created_on
+        __props__.__dict__["description"] = description
+        __props__.__dict__["expected_body"] = expected_body
+        __props__.__dict__["expected_codes"] = expected_codes
+        __props__.__dict__["follow_redirects"] = follow_redirects
+        __props__.__dict__["headers"] = headers
+        __props__.__dict__["interval"] = interval
+        __props__.__dict__["method"] = method
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["path"] = path
+        __props__.__dict__["port"] = port
+        __props__.__dict__["probe_zone"] = probe_zone
+        __props__.__dict__["retries"] = retries
+        __props__.__dict__["timeout"] = timeout
+        __props__.__dict__["type"] = type
         return LoadBalancerMonitor(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -641,10 +905,4 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

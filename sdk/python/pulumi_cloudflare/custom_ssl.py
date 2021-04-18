@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -61,6 +61,154 @@ class CustomSslArgs:
     @custom_ssl_priorities.setter
     def custom_ssl_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]):
         pulumi.set(self, "custom_ssl_priorities", value)
+
+
+@pulumi.input_type
+class _CustomSslState:
+    def __init__(__self__, *,
+                 custom_ssl_options: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']] = None,
+                 custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]] = None,
+                 expires_on: Optional[pulumi.Input[str]] = None,
+                 hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 issuer: Optional[pulumi.Input[str]] = None,
+                 modified_on: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 signature: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 uploaded_on: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering CustomSsl resources.
+        :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        :param pulumi.Input[str] zone_id: The DNS zone id to the custom ssl cert should be added.
+        """
+        if custom_ssl_options is not None:
+            pulumi.set(__self__, "custom_ssl_options", custom_ssl_options)
+        if custom_ssl_priorities is not None:
+            pulumi.set(__self__, "custom_ssl_priorities", custom_ssl_priorities)
+        if expires_on is not None:
+            pulumi.set(__self__, "expires_on", expires_on)
+        if hosts is not None:
+            pulumi.set(__self__, "hosts", hosts)
+        if issuer is not None:
+            pulumi.set(__self__, "issuer", issuer)
+        if modified_on is not None:
+            pulumi.set(__self__, "modified_on", modified_on)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if signature is not None:
+            pulumi.set(__self__, "signature", signature)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if uploaded_on is not None:
+            pulumi.set(__self__, "uploaded_on", uploaded_on)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="customSslOptions")
+    def custom_ssl_options(self) -> Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]:
+        """
+        The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+        """
+        return pulumi.get(self, "custom_ssl_options")
+
+    @custom_ssl_options.setter
+    def custom_ssl_options(self, value: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']]):
+        pulumi.set(self, "custom_ssl_options", value)
+
+    @property
+    @pulumi.getter(name="customSslPriorities")
+    def custom_ssl_priorities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]:
+        return pulumi.get(self, "custom_ssl_priorities")
+
+    @custom_ssl_priorities.setter
+    def custom_ssl_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]]):
+        pulumi.set(self, "custom_ssl_priorities", value)
+
+    @property
+    @pulumi.getter(name="expiresOn")
+    def expires_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "expires_on")
+
+    @expires_on.setter
+    def expires_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_on", value)
+
+    @property
+    @pulumi.getter
+    def hosts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "hosts")
+
+    @hosts.setter
+    def hosts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hosts", value)
+
+    @property
+    @pulumi.getter
+    def issuer(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "issuer")
+
+    @issuer.setter
+    def issuer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter(name="modifiedOn")
+    def modified_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "modified_on")
+
+    @modified_on.setter
+    def modified_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "modified_on", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def signature(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "signature")
+
+    @signature.setter
+    def signature(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signature", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="uploadedOn")
+    def uploaded_on(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "uploaded_on")
+
+    @uploaded_on.setter
+    def uploaded_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uploaded_on", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone id to the custom ssl cert should be added.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class CustomSsl(pulumi.CustomResource):
@@ -187,21 +335,21 @@ class CustomSsl(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CustomSslArgs.__new__(CustomSslArgs)
 
-            __props__['custom_ssl_options'] = custom_ssl_options
-            __props__['custom_ssl_priorities'] = custom_ssl_priorities
+            __props__.__dict__["custom_ssl_options"] = custom_ssl_options
+            __props__.__dict__["custom_ssl_priorities"] = custom_ssl_priorities
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
-            __props__['expires_on'] = None
-            __props__['hosts'] = None
-            __props__['issuer'] = None
-            __props__['modified_on'] = None
-            __props__['priority'] = None
-            __props__['signature'] = None
-            __props__['status'] = None
-            __props__['uploaded_on'] = None
+            __props__.__dict__["zone_id"] = zone_id
+            __props__.__dict__["expires_on"] = None
+            __props__.__dict__["hosts"] = None
+            __props__.__dict__["issuer"] = None
+            __props__.__dict__["modified_on"] = None
+            __props__.__dict__["priority"] = None
+            __props__.__dict__["signature"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["uploaded_on"] = None
         super(CustomSsl, __self__).__init__(
             'cloudflare:index/customSsl:CustomSsl',
             resource_name,
@@ -235,19 +383,19 @@ class CustomSsl(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CustomSslState.__new__(_CustomSslState)
 
-        __props__["custom_ssl_options"] = custom_ssl_options
-        __props__["custom_ssl_priorities"] = custom_ssl_priorities
-        __props__["expires_on"] = expires_on
-        __props__["hosts"] = hosts
-        __props__["issuer"] = issuer
-        __props__["modified_on"] = modified_on
-        __props__["priority"] = priority
-        __props__["signature"] = signature
-        __props__["status"] = status
-        __props__["uploaded_on"] = uploaded_on
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["custom_ssl_options"] = custom_ssl_options
+        __props__.__dict__["custom_ssl_priorities"] = custom_ssl_priorities
+        __props__.__dict__["expires_on"] = expires_on
+        __props__.__dict__["hosts"] = hosts
+        __props__.__dict__["issuer"] = issuer
+        __props__.__dict__["modified_on"] = modified_on
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["signature"] = signature
+        __props__.__dict__["status"] = status
+        __props__.__dict__["uploaded_on"] = uploaded_on
+        __props__.__dict__["zone_id"] = zone_id
         return CustomSsl(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -310,10 +458,4 @@ class CustomSsl(pulumi.CustomResource):
         The DNS zone id to the custom ssl cert should be added.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

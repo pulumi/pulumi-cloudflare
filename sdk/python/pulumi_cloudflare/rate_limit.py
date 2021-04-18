@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -158,6 +158,158 @@ class RateLimitArgs:
     @match.setter
     def match(self, value: Optional[pulumi.Input['RateLimitMatchArgs']]):
         pulumi.set(self, "match", value)
+
+
+@pulumi.input_type
+class _RateLimitState:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input['RateLimitActionArgs']] = None,
+                 bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 correlate: Optional[pulumi.Input['RateLimitCorrelateArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 match: Optional[pulumi.Input['RateLimitMatchArgs']] = None,
+                 period: Optional[pulumi.Input[int]] = None,
+                 threshold: Optional[pulumi.Input[int]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RateLimit resources.
+        :param pulumi.Input['RateLimitActionArgs'] action: The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] bypass_url_patterns: URLs matching the patterns specified here will be excluded from rate limiting.
+        :param pulumi.Input['RateLimitCorrelateArgs'] correlate: Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+        :param pulumi.Input[str] description: A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+        :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Default: `false`.
+        :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        :param pulumi.Input[int] period: The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply rate limiting to.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if bypass_url_patterns is not None:
+            pulumi.set(__self__, "bypass_url_patterns", bypass_url_patterns)
+        if correlate is not None:
+            pulumi.set(__self__, "correlate", correlate)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if match is not None:
+            pulumi.set(__self__, "match", match)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input['RateLimitActionArgs']]:
+        """
+        The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input['RateLimitActionArgs']]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="bypassUrlPatterns")
+    def bypass_url_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        URLs matching the patterns specified here will be excluded from rate limiting.
+        """
+        return pulumi.get(self, "bypass_url_patterns")
+
+    @bypass_url_patterns.setter
+    def bypass_url_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "bypass_url_patterns", value)
+
+    @property
+    @pulumi.getter
+    def correlate(self) -> Optional[pulumi.Input['RateLimitCorrelateArgs']]:
+        """
+        Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+        """
+        return pulumi.get(self, "correlate")
+
+    @correlate.setter
+    def correlate(self, value: Optional[pulumi.Input['RateLimitCorrelateArgs']]):
+        pulumi.set(self, "correlate", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this ratelimit is currently disabled. Default: `false`.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def match(self) -> Optional[pulumi.Input['RateLimitMatchArgs']]:
+        """
+        Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+        """
+        return pulumi.get(self, "match")
+
+    @match.setter
+    def match(self, value: Optional[pulumi.Input['RateLimitMatchArgs']]):
+        pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[int]]:
+        """
+        The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "period", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone ID to apply rate limiting to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class RateLimit(pulumi.CustomResource):
@@ -395,25 +547,25 @@ class RateLimit(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RateLimitArgs.__new__(RateLimitArgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
-            __props__['action'] = action
-            __props__['bypass_url_patterns'] = bypass_url_patterns
-            __props__['correlate'] = correlate
-            __props__['description'] = description
-            __props__['disabled'] = disabled
-            __props__['match'] = match
+            __props__.__dict__["action"] = action
+            __props__.__dict__["bypass_url_patterns"] = bypass_url_patterns
+            __props__.__dict__["correlate"] = correlate
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disabled"] = disabled
+            __props__.__dict__["match"] = match
             if period is None and not opts.urn:
                 raise TypeError("Missing required property 'period'")
-            __props__['period'] = period
+            __props__.__dict__["period"] = period
             if threshold is None and not opts.urn:
                 raise TypeError("Missing required property 'threshold'")
-            __props__['threshold'] = threshold
+            __props__.__dict__["threshold"] = threshold
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(RateLimit, __self__).__init__(
             'cloudflare:index/rateLimit:RateLimit',
             resource_name,
@@ -452,17 +604,17 @@ class RateLimit(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RateLimitState.__new__(_RateLimitState)
 
-        __props__["action"] = action
-        __props__["bypass_url_patterns"] = bypass_url_patterns
-        __props__["correlate"] = correlate
-        __props__["description"] = description
-        __props__["disabled"] = disabled
-        __props__["match"] = match
-        __props__["period"] = period
-        __props__["threshold"] = threshold
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["action"] = action
+        __props__.__dict__["bypass_url_patterns"] = bypass_url_patterns
+        __props__.__dict__["correlate"] = correlate
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disabled"] = disabled
+        __props__.__dict__["match"] = match
+        __props__.__dict__["period"] = period
+        __props__.__dict__["threshold"] = threshold
+        __props__.__dict__["zone_id"] = zone_id
         return RateLimit(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -536,10 +688,4 @@ class RateLimit(pulumi.CustomResource):
         The DNS zone ID to apply rate limiting to.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

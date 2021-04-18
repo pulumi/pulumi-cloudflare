@@ -13,11 +13,11 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^2.15.0"
+        "@pulumi/pulumi": "^3.0.0-alpha.0"
     },
     "devDependencies": {
         "@types/mime": "^2.0.0",
-        "@types/node": "^8.0.25"
+        "@types/node": "^10.0.0"
     },
     "pulumi": {
         "resource": true

@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['LogpushJobArgs', 'LogpushJob']
 
@@ -126,6 +126,126 @@ class LogpushJobArgs:
         pulumi.set(self, "name", value)
 
 
+@pulumi.input_type
+class _LogpushJobState:
+    def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input[str]] = None,
+                 destination_conf: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 logpull_options: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 ownership_challenge: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LogpushJob resources.
+        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+        :param pulumi.Input[bool] enabled: Whether to enable the job.
+        :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        :param pulumi.Input[str] zone_id: The zone ID where the logpush job should be created.
+        """
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if destination_conf is not None:
+            pulumi.set(__self__, "destination_conf", destination_conf)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if logpull_options is not None:
+            pulumi.set(__self__, "logpull_options", logpull_options)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ownership_challenge is not None:
+            pulumi.set(__self__, "ownership_challenge", ownership_challenge)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter(name="destinationConf")
+    def destination_conf(self) -> Optional[pulumi.Input[str]]:
+        """
+        Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+        """
+        return pulumi.get(self, "destination_conf")
+
+    @destination_conf.setter
+    def destination_conf(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_conf", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable the job.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="logpullOptions")
+    def logpull_options(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        """
+        return pulumi.get(self, "logpull_options")
+
+    @logpull_options.setter
+    def logpull_options(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logpull_options", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="ownershipChallenge")
+    def ownership_challenge(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        """
+        return pulumi.get(self, "ownership_challenge")
+
+    @ownership_challenge.setter
+    def ownership_challenge(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ownership_challenge", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID where the logpush job should be created.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
 class LogpushJob(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -201,23 +321,23 @@ class LogpushJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LogpushJobArgs.__new__(LogpushJobArgs)
 
             if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
-            __props__['dataset'] = dataset
+            __props__.__dict__["dataset"] = dataset
             if destination_conf is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_conf'")
-            __props__['destination_conf'] = destination_conf
-            __props__['enabled'] = enabled
-            __props__['logpull_options'] = logpull_options
-            __props__['name'] = name
+            __props__.__dict__["destination_conf"] = destination_conf
+            __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["logpull_options"] = logpull_options
+            __props__.__dict__["name"] = name
             if ownership_challenge is None and not opts.urn:
                 raise TypeError("Missing required property 'ownership_challenge'")
-            __props__['ownership_challenge'] = ownership_challenge
+            __props__.__dict__["ownership_challenge"] = ownership_challenge
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(LogpushJob, __self__).__init__(
             'cloudflare:index/logpushJob:LogpushJob',
             resource_name,
@@ -252,15 +372,15 @@ class LogpushJob(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LogpushJobState.__new__(_LogpushJobState)
 
-        __props__["dataset"] = dataset
-        __props__["destination_conf"] = destination_conf
-        __props__["enabled"] = enabled
-        __props__["logpull_options"] = logpull_options
-        __props__["name"] = name
-        __props__["ownership_challenge"] = ownership_challenge
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["dataset"] = dataset
+        __props__.__dict__["destination_conf"] = destination_conf
+        __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["logpull_options"] = logpull_options
+        __props__.__dict__["name"] = name
+        __props__.__dict__["ownership_challenge"] = ownership_challenge
+        __props__.__dict__["zone_id"] = zone_id
         return LogpushJob(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -318,10 +438,4 @@ class LogpushJob(pulumi.CustomResource):
         The zone ID where the logpush job should be created.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

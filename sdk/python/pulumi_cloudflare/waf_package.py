@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['WafPackageArgs', 'WafPackage']
 
@@ -78,6 +78,78 @@ class WafPackageArgs:
     @sensitivity.setter
     def sensitivity(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sensitivity", value)
+
+
+@pulumi.input_type
+class _WafPackageState:
+    def __init__(__self__, *,
+                 action_mode: Optional[pulumi.Input[str]] = None,
+                 package_id: Optional[pulumi.Input[str]] = None,
+                 sensitivity: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering WafPackage resources.
+        :param pulumi.Input[str] action_mode: The action mode of the package, can be one of ["block", "challenge", "simulate"].
+        :param pulumi.Input[str] package_id: The WAF Package ID.
+        :param pulumi.Input[str] sensitivity: The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
+        """
+        if action_mode is not None:
+            pulumi.set(__self__, "action_mode", action_mode)
+        if package_id is not None:
+            pulumi.set(__self__, "package_id", package_id)
+        if sensitivity is not None:
+            pulumi.set(__self__, "sensitivity", sensitivity)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="actionMode")
+    def action_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action mode of the package, can be one of ["block", "challenge", "simulate"].
+        """
+        return pulumi.get(self, "action_mode")
+
+    @action_mode.setter
+    def action_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action_mode", value)
+
+    @property
+    @pulumi.getter(name="packageId")
+    def package_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The WAF Package ID.
+        """
+        return pulumi.get(self, "package_id")
+
+    @package_id.setter
+    def package_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_id", value)
+
+    @property
+    @pulumi.getter
+    def sensitivity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
+        """
+        return pulumi.get(self, "sensitivity")
+
+    @sensitivity.setter
+    def sensitivity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sensitivity", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone ID to apply to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class WafPackage(pulumi.CustomResource):
@@ -190,16 +262,16 @@ class WafPackage(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WafPackageArgs.__new__(WafPackageArgs)
 
-            __props__['action_mode'] = action_mode
+            __props__.__dict__["action_mode"] = action_mode
             if package_id is None and not opts.urn:
                 raise TypeError("Missing required property 'package_id'")
-            __props__['package_id'] = package_id
-            __props__['sensitivity'] = sensitivity
+            __props__.__dict__["package_id"] = package_id
+            __props__.__dict__["sensitivity"] = sensitivity
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(WafPackage, __self__).__init__(
             'cloudflare:index/wafPackage:WafPackage',
             resource_name,
@@ -228,12 +300,12 @@ class WafPackage(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WafPackageState.__new__(_WafPackageState)
 
-        __props__["action_mode"] = action_mode
-        __props__["package_id"] = package_id
-        __props__["sensitivity"] = sensitivity
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["action_mode"] = action_mode
+        __props__.__dict__["package_id"] = package_id
+        __props__.__dict__["sensitivity"] = sensitivity
+        __props__.__dict__["zone_id"] = zone_id
         return WafPackage(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -267,10 +339,4 @@ class WafPackage(pulumi.CustomResource):
         The DNS zone ID to apply to.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

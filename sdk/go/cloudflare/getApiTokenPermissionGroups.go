@@ -4,7 +4,7 @@
 package cloudflare
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.

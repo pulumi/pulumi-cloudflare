@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['CustomPagesArgs', 'CustomPages']
 
@@ -89,6 +89,102 @@ class CustomPagesArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID where the custom pages should be
+        updated. Either `zone_id` or `account_id` must be provided.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+
+@pulumi.input_type
+class _CustomPagesState:
+    def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering CustomPages resources.
+        :param pulumi.Input[str] account_id: The account ID where the custom pages should be
+               updated. Either `account_id` or `zone_id` must be provided. If
+               `account_id` is present, it will override the zone setting.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Must
+               be one of `basic_challenge`, `waf_challenge`, `waf_block`,
+               `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
+               `500_errors`, `1000_errors`, `always_online`.
+        :param pulumi.Input[str] url: URL of where the custom page source is located.
+        :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
+               updated. Either `zone_id` or `account_id` must be provided.
+        """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account ID where the custom pages should be
+        updated. Either `account_id` or `zone_id` must be provided. If
+        `account_id` is present, it will override the zone setting.
+        """
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of custom page you wish to update. Must
+        be one of `basic_challenge`, `waf_challenge`, `waf_block`,
+        `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
+        `500_errors`, `1000_errors`, `always_online`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of where the custom page source is located.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -234,17 +330,17 @@ class CustomPages(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CustomPagesArgs.__new__(CustomPagesArgs)
 
-            __props__['account_id'] = account_id
-            __props__['state'] = state
+            __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["state"] = state
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
+            __props__.__dict__["type"] = type
             if url is None and not opts.urn:
                 raise TypeError("Missing required property 'url'")
-            __props__['url'] = url
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["url"] = url
+            __props__.__dict__["zone_id"] = zone_id
         super(CustomPages, __self__).__init__(
             'cloudflare:index/customPages:CustomPages',
             resource_name,
@@ -280,13 +376,13 @@ class CustomPages(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _CustomPagesState.__new__(_CustomPagesState)
 
-        __props__["account_id"] = account_id
-        __props__["state"] = state
-        __props__["type"] = type
-        __props__["url"] = url
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["state"] = state
+        __props__.__dict__["type"] = type
+        __props__.__dict__["url"] = url
+        __props__.__dict__["zone_id"] = zone_id
         return CustomPages(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -331,10 +427,4 @@ class CustomPages(pulumi.CustomResource):
         updated. Either `zone_id` or `account_id` must be provided.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

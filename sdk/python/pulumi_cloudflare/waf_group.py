@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['WafGroupArgs', 'WafGroup']
 
@@ -78,6 +78,78 @@ class WafGroupArgs:
     @package_id.setter
     def package_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "package_id", value)
+
+
+@pulumi.input_type
+class _WafGroupState:
+    def __init__(__self__, *,
+                 group_id: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 package_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering WafGroup resources.
+        :param pulumi.Input[str] group_id: The WAF Rule Group ID.
+        :param pulumi.Input[str] mode: The mode of the group, can be one of ["on", "off"].
+        :param pulumi.Input[str] package_id: The ID of the WAF Rule Package that contains the group.
+        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
+        """
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if package_id is not None:
+            pulumi.set(__self__, "package_id", package_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The WAF Rule Group ID.
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of the group, can be one of ["on", "off"].
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="packageId")
+    def package_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the WAF Rule Package that contains the group.
+        """
+        return pulumi.get(self, "package_id")
+
+    @package_id.setter
+    def package_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "package_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS zone ID to apply to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class WafGroup(pulumi.CustomResource):
@@ -188,16 +260,16 @@ class WafGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WafGroupArgs.__new__(WafGroupArgs)
 
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
-            __props__['group_id'] = group_id
-            __props__['mode'] = mode
-            __props__['package_id'] = package_id
+            __props__.__dict__["group_id"] = group_id
+            __props__.__dict__["mode"] = mode
+            __props__.__dict__["package_id"] = package_id
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(WafGroup, __self__).__init__(
             'cloudflare:index/wafGroup:WafGroup',
             resource_name,
@@ -226,12 +298,12 @@ class WafGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WafGroupState.__new__(_WafGroupState)
 
-        __props__["group_id"] = group_id
-        __props__["mode"] = mode
-        __props__["package_id"] = package_id
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["group_id"] = group_id
+        __props__.__dict__["mode"] = mode
+        __props__.__dict__["package_id"] = package_id
+        __props__.__dict__["zone_id"] = zone_id
         return WafGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -265,10 +337,4 @@ class WafGroup(pulumi.CustomResource):
         The DNS zone ID to apply to.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

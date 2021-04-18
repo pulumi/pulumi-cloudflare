@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['WorkerRouteArgs', 'WorkerRoute']
 
@@ -62,6 +62,62 @@ class WorkerRouteArgs:
     @script_name.setter
     def script_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "script_name", value)
+
+
+@pulumi.input_type
+class _WorkerRouteState:
+    def __init__(__self__, *,
+                 pattern: Optional[pulumi.Input[str]] = None,
+                 script_name: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering WorkerRoute resources.
+        :param pulumi.Input[str] pattern: The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+        :param pulumi.Input[str] script_name: Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        :param pulumi.Input[str] zone_id: The zone ID to add the route to.
+        """
+        if pattern is not None:
+            pulumi.set(__self__, "pattern", pattern)
+        if script_name is not None:
+            pulumi.set(__self__, "script_name", script_name)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter
+    def pattern(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+        """
+        return pulumi.get(self, "pattern")
+
+    @pattern.setter
+    def pattern(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pattern", value)
+
+    @property
+    @pulumi.getter(name="scriptName")
+    def script_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which worker script to run for requests that match the route pattern. If `script_name` is empty, workers will be skipped for matching requests.
+        """
+        return pulumi.get(self, "script_name")
+
+    @script_name.setter
+    def script_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "script_name", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone ID to add the route to.
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class WorkerRoute(pulumi.CustomResource):
@@ -179,15 +235,15 @@ class WorkerRoute(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WorkerRouteArgs.__new__(WorkerRouteArgs)
 
             if pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'pattern'")
-            __props__['pattern'] = pattern
-            __props__['script_name'] = script_name
+            __props__.__dict__["pattern"] = pattern
+            __props__.__dict__["script_name"] = script_name
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
-            __props__['zone_id'] = zone_id
+            __props__.__dict__["zone_id"] = zone_id
         super(WorkerRoute, __self__).__init__(
             'cloudflare:index/workerRoute:WorkerRoute',
             resource_name,
@@ -214,11 +270,11 @@ class WorkerRoute(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WorkerRouteState.__new__(_WorkerRouteState)
 
-        __props__["pattern"] = pattern
-        __props__["script_name"] = script_name
-        __props__["zone_id"] = zone_id
+        __props__.__dict__["pattern"] = pattern
+        __props__.__dict__["script_name"] = script_name
+        __props__.__dict__["zone_id"] = zone_id
         return WorkerRoute(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -244,10 +300,4 @@ class WorkerRoute(pulumi.CustomResource):
         The zone ID to add the route to.
         """
         return pulumi.get(self, "zone_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
