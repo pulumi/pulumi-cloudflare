@@ -9,17 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare.Inputs
 {
-
-    public sealed class CustomHostnameOwnershipVerificationHttpArgs : Pulumi.ResourceArgs
-    {
-        [Input("httpBody")]
-        public Input<string>? HttpBody { get; set; }
-
-        [Input("httpUrl")]
-        public Input<string>? HttpUrl { get; set; }
-
-        public CustomHostnameOwnershipVerificationHttpArgs()
-        {
-        }
-    }
 }

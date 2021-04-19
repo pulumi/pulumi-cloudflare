@@ -9,17 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare.Inputs
 {
-
-    public sealed class ZoneMetaArgs : Pulumi.ResourceArgs
-    {
-        [Input("phishingDetected", required: true)]
-        public Input<bool> PhishingDetected { get; set; } = null!;
-
-        [Input("wildcardProxiable", required: true)]
-        public Input<bool> WildcardProxiable { get; set; } = null!;
-
-        public ZoneMetaArgs()
-        {
-        }
-    }
 }

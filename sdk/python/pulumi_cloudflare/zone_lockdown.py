@@ -220,9 +220,7 @@ class ZoneLockdown(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.
 
@@ -320,15 +318,7 @@ class ZoneLockdown(pulumi.CustomResource):
                  priority: Optional[pulumi.Input[int]] = None,
                  urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

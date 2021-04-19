@@ -9,23 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare.Inputs
 {
-
-    public sealed class CustomHostnameOwnershipVerificationArgs : Pulumi.ResourceArgs
-    {
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
-        /// <summary>
-        /// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public CustomHostnameOwnershipVerificationArgs()
-        {
-        }
-    }
 }

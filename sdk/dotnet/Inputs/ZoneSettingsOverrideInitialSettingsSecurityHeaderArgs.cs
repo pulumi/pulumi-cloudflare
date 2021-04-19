@@ -9,41 +9,4 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare.Inputs
 {
-
-    public sealed class ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// true/false
-        /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
-
-        /// <summary>
-        /// true/false
-        /// </summary>
-        [Input("includeSubdomains")]
-        public Input<bool>? IncludeSubdomains { get; set; }
-
-        /// <summary>
-        /// Integer
-        /// </summary>
-        [Input("maxAge")]
-        public Input<int>? MaxAge { get; set; }
-
-        /// <summary>
-        /// true/false
-        /// </summary>
-        [Input("nosniff")]
-        public Input<bool>? Nosniff { get; set; }
-
-        /// <summary>
-        /// true/false
-        /// </summary>
-        [Input("preload")]
-        public Input<bool>? Preload { get; set; }
-
-        public ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs()
-        {
-        }
-    }
 }
