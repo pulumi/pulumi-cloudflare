@@ -139,20 +139,20 @@ export interface CustomSslState {
     /**
      * The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
      */
-    readonly customSslOptions?: pulumi.Input<inputs.CustomSslCustomSslOptions>;
-    readonly customSslPriorities?: pulumi.Input<pulumi.Input<inputs.CustomSslCustomSslPriority>[]>;
-    readonly expiresOn?: pulumi.Input<string>;
-    readonly hosts?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly issuer?: pulumi.Input<string>;
-    readonly modifiedOn?: pulumi.Input<string>;
-    readonly priority?: pulumi.Input<number>;
-    readonly signature?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
-    readonly uploadedOn?: pulumi.Input<string>;
+    customSslOptions?: pulumi.Input<inputs.CustomSslCustomSslOptions>;
+    customSslPriorities?: pulumi.Input<pulumi.Input<inputs.CustomSslCustomSslPriority>[]>;
+    expiresOn?: pulumi.Input<string>;
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    issuer?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
+    priority?: pulumi.Input<number>;
+    signature?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
+    uploadedOn?: pulumi.Input<string>;
     /**
      * The DNS zone id to the custom ssl cert should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -162,10 +162,10 @@ export interface CustomSslArgs {
     /**
      * The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
      */
-    readonly customSslOptions?: pulumi.Input<inputs.CustomSslCustomSslOptions>;
-    readonly customSslPriorities?: pulumi.Input<pulumi.Input<inputs.CustomSslCustomSslPriority>[]>;
+    customSslOptions?: pulumi.Input<inputs.CustomSslCustomSslOptions>;
+    customSslPriorities?: pulumi.Input<pulumi.Input<inputs.CustomSslCustomSslPriority>[]>;
     /**
      * The DNS zone id to the custom ssl cert should be added.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

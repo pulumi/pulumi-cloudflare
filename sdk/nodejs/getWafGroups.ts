@@ -31,15 +31,15 @@ export interface GetWafGroupsArgs {
      * One or more values used to look up WAF Rule Groups. If more than one value is given all
      * values must match in order to be included, see below for full list.
      */
-    readonly filter?: inputs.GetWafGroupsFilter;
+    filter?: inputs.GetWafGroupsFilter;
     /**
      * The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
      */
-    readonly packageId?: string;
+    packageId?: string;
     /**
      * The ID of the DNS zone in which to search for the WAF Rule Groups.
      */
-    readonly zoneId: string;
+    zoneId: string;
 }
 
 /**

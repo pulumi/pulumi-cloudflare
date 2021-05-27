@@ -109,11 +109,11 @@ export interface AccountMemberState {
     /**
      * The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
      */
-    readonly emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string>;
     /**
      * Array of account role IDs that you want to assign to a member.
      */
-    readonly roleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    roleIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -123,9 +123,9 @@ export interface AccountMemberArgs {
     /**
      * The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
      */
-    readonly emailAddress: pulumi.Input<string>;
+    emailAddress: pulumi.Input<string>;
     /**
      * Array of account role IDs that you want to assign to a member.
      */
-    readonly roleIds: pulumi.Input<pulumi.Input<string>[]>;
+    roleIds: pulumi.Input<pulumi.Input<string>[]>;
 }

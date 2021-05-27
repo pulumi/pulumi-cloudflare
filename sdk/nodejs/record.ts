@@ -195,55 +195,55 @@ export interface RecordState {
     /**
      * The RFC3339 timestamp of when the record was created
      */
-    readonly createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string>;
     /**
      * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
      */
-    readonly data?: pulumi.Input<inputs.RecordData>;
+    data?: pulumi.Input<inputs.RecordData>;
     /**
      * The FQDN of the record
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * A key-value map of string metadata Cloudflare associates with the record
      */
-    readonly metadata?: pulumi.Input<{[key: string]: any}>;
+    metadata?: pulumi.Input<{[key: string]: any}>;
     /**
      * The RFC3339 timestamp of when the record was last modified
      */
-    readonly modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
     /**
      * The name of the record
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The priority of the record
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * Shows whether this record can be proxied, must be true if setting `proxied=true`
      */
-    readonly proxiable?: pulumi.Input<boolean>;
+    proxiable?: pulumi.Input<boolean>;
     /**
      * Whether the record gets Cloudflare's origin protection; defaults to `false`.
      */
-    readonly proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean>;
     /**
      * The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of the record
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The (string) value of the record. Either this or `data` must be specified
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
      * The DNS zone ID to add the record to
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -253,33 +253,33 @@ export interface RecordArgs {
     /**
      * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
      */
-    readonly data?: pulumi.Input<inputs.RecordData>;
+    data?: pulumi.Input<inputs.RecordData>;
     /**
      * The name of the record
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The priority of the record
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * Whether the record gets Cloudflare's origin protection; defaults to `false`.
      */
-    readonly proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean>;
     /**
      * The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The type of the record
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The (string) value of the record. Either this or `data` must be specified
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
     /**
      * The DNS zone ID to add the record to
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

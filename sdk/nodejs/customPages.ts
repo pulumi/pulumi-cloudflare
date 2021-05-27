@@ -135,24 +135,24 @@ export interface CustomPagesState {
      * updated. Either `accountId` or `zoneId` must be provided. If
      * `accountId` is present, it will override the zone setting.
      */
-    readonly accountId?: pulumi.Input<string>;
-    readonly state?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The type of custom page you wish to update. Must
      * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
      * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
      * `500Errors`, `1000Errors`, `alwaysOnline`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * URL of where the custom page source is located.
      */
-    readonly url?: pulumi.Input<string>;
+    url?: pulumi.Input<string>;
     /**
      * The zone ID where the custom pages should be
      * updated. Either `zoneId` or `accountId` must be provided.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -164,22 +164,22 @@ export interface CustomPagesArgs {
      * updated. Either `accountId` or `zoneId` must be provided. If
      * `accountId` is present, it will override the zone setting.
      */
-    readonly accountId?: pulumi.Input<string>;
-    readonly state?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The type of custom page you wish to update. Must
      * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
      * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
      * `500Errors`, `1000Errors`, `alwaysOnline`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * URL of where the custom page source is located.
      */
-    readonly url: pulumi.Input<string>;
+    url: pulumi.Input<string>;
     /**
      * The zone ID where the custom pages should be
      * updated. Either `zoneId` or `accountId` must be provided.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

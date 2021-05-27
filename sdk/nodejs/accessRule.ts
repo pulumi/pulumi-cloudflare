@@ -111,19 +111,19 @@ export interface AccessRuleState {
     /**
      * Rule configuration to apply to a matched request. It's a complex value. See description below.
      */
-    readonly configuration?: pulumi.Input<inputs.AccessRuleConfiguration>;
+    configuration?: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * A personal note about the rule. Typically used as a reminder or explanation for the rule.
      */
-    readonly notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string>;
     /**
      * The DNS zone to which the access rule should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -133,17 +133,17 @@ export interface AccessRuleArgs {
     /**
      * Rule configuration to apply to a matched request. It's a complex value. See description below.
      */
-    readonly configuration: pulumi.Input<inputs.AccessRuleConfiguration>;
+    configuration: pulumi.Input<inputs.AccessRuleConfiguration>;
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
      */
-    readonly mode: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
     /**
      * A personal note about the rule. Typically used as a reminder or explanation for the rule.
      */
-    readonly notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string>;
     /**
      * The DNS zone to which the access rule should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

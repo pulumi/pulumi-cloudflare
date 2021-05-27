@@ -143,27 +143,27 @@ export interface OriginCaCertificateState {
     /**
      * The Origin CA certificate
      */
-    readonly certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * The Certificate Signing Request. Must be newline-encoded.
      */
-    readonly csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string>;
     /**
      * The datetime when the certificate will expire.
      */
-    readonly expiresOn?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string>;
     /**
      * An array of hostnames or wildcard names bound to the certificate.
      */
-    readonly hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The signature type desired on the certificate.
      */
-    readonly requestType?: pulumi.Input<string>;
+    requestType?: pulumi.Input<string>;
     /**
      * The number of days for which the certificate should be valid.
      */
-    readonly requestedValidity?: pulumi.Input<number>;
+    requestedValidity?: pulumi.Input<number>;
 }
 
 /**
@@ -173,17 +173,17 @@ export interface OriginCaCertificateArgs {
     /**
      * The Certificate Signing Request. Must be newline-encoded.
      */
-    readonly csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string>;
     /**
      * An array of hostnames or wildcard names bound to the certificate.
      */
-    readonly hostnames: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The signature type desired on the certificate.
      */
-    readonly requestType: pulumi.Input<string>;
+    requestType: pulumi.Input<string>;
     /**
      * The number of days for which the certificate should be valid.
      */
-    readonly requestedValidity?: pulumi.Input<number>;
+    requestedValidity?: pulumi.Input<number>;
 }

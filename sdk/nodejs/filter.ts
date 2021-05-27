@@ -125,23 +125,23 @@ export interface FilterState {
     /**
      * A note that you can use to describe the purpose of the filter.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The filter expression to be used.
      */
-    readonly expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string>;
     /**
      * Whether this filter is currently paused. Boolean value.
      */
-    readonly paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * Short reference tag to quickly select related rules.
      */
-    readonly ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string>;
     /**
      * The DNS zone to which the Filter should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -151,21 +151,21 @@ export interface FilterArgs {
     /**
      * A note that you can use to describe the purpose of the filter.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The filter expression to be used.
      */
-    readonly expression: pulumi.Input<string>;
+    expression: pulumi.Input<string>;
     /**
      * Whether this filter is currently paused. Boolean value.
      */
-    readonly paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * Short reference tag to quickly select related rules.
      */
-    readonly ref?: pulumi.Input<string>;
+    ref?: pulumi.Input<string>;
     /**
      * The DNS zone to which the Filter should be added.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

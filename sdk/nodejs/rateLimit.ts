@@ -210,39 +210,39 @@ export interface RateLimitState {
     /**
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
-    readonly action?: pulumi.Input<inputs.RateLimitAction>;
+    action?: pulumi.Input<inputs.RateLimitAction>;
     /**
      * URLs matching the patterns specified here will be excluded from rate limiting.
      */
-    readonly bypassUrlPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    bypassUrlPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
      */
-    readonly correlate?: pulumi.Input<inputs.RateLimitCorrelate>;
+    correlate?: pulumi.Input<inputs.RateLimitCorrelate>;
     /**
      * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether this ratelimit is currently disabled. Default: `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
      */
-    readonly match?: pulumi.Input<inputs.RateLimitMatch>;
+    match?: pulumi.Input<inputs.RateLimitMatch>;
     /**
      * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
      */
-    readonly period?: pulumi.Input<number>;
+    period?: pulumi.Input<number>;
     /**
      * The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
      */
-    readonly threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number>;
     /**
      * The DNS zone ID to apply rate limiting to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -252,37 +252,37 @@ export interface RateLimitArgs {
     /**
      * The action to be performed when the threshold of matched traffic within the period defined is exceeded.
      */
-    readonly action: pulumi.Input<inputs.RateLimitAction>;
+    action: pulumi.Input<inputs.RateLimitAction>;
     /**
      * URLs matching the patterns specified here will be excluded from rate limiting.
      */
-    readonly bypassUrlPatterns?: pulumi.Input<pulumi.Input<string>[]>;
+    bypassUrlPatterns?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
      */
-    readonly correlate?: pulumi.Input<inputs.RateLimitCorrelate>;
+    correlate?: pulumi.Input<inputs.RateLimitCorrelate>;
     /**
      * A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether this ratelimit is currently disabled. Default: `false`.
      */
-    readonly disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean>;
     /**
      * Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
      */
-    readonly match?: pulumi.Input<inputs.RateLimitMatch>;
+    match?: pulumi.Input<inputs.RateLimitMatch>;
     /**
      * The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
      */
-    readonly period: pulumi.Input<number>;
+    period: pulumi.Input<number>;
     /**
      * The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
      */
-    readonly threshold: pulumi.Input<number>;
+    threshold: pulumi.Input<number>;
     /**
      * The DNS zone ID to apply rate limiting to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

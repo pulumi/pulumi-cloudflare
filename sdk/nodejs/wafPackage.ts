@@ -118,19 +118,19 @@ export interface WafPackageState {
     /**
      * The action mode of the package, can be one of ["block", "challenge", "simulate"].
      */
-    readonly actionMode?: pulumi.Input<string>;
+    actionMode?: pulumi.Input<string>;
     /**
      * The WAF Package ID.
      */
-    readonly packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string>;
     /**
      * The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
      */
-    readonly sensitivity?: pulumi.Input<string>;
+    sensitivity?: pulumi.Input<string>;
     /**
      * The DNS zone ID to apply to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -140,17 +140,17 @@ export interface WafPackageArgs {
     /**
      * The action mode of the package, can be one of ["block", "challenge", "simulate"].
      */
-    readonly actionMode?: pulumi.Input<string>;
+    actionMode?: pulumi.Input<string>;
     /**
      * The WAF Package ID.
      */
-    readonly packageId: pulumi.Input<string>;
+    packageId: pulumi.Input<string>;
     /**
      * The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
      */
-    readonly sensitivity?: pulumi.Input<string>;
+    sensitivity?: pulumi.Input<string>;
     /**
      * The DNS zone ID to apply to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

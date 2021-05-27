@@ -135,39 +135,39 @@ export interface CertificatePackState {
      * authority to issue the certificate pack. Allowed values: `"digicert"`,
      * `"letsEncrypt"`.
      */
-    readonly certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string>;
     /**
      * Whether or not to include
      * Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
      * if set to `true`.
      */
-    readonly cloudflareBranding?: pulumi.Input<boolean>;
+    cloudflareBranding?: pulumi.Input<boolean>;
     /**
      * List of hostnames to provision the certificate pack for.
      * Note: If using Let's Encrypt, you cannot use individual subdomains and only a
      * wildcard for subdomain is available.
      */
-    readonly hosts?: pulumi.Input<pulumi.Input<string>[]>;
+    hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Certificate pack configuration type.
      * Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Which validation method to
      * use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
      */
-    readonly validationMethod?: pulumi.Input<string>;
+    validationMethod?: pulumi.Input<string>;
     /**
      * How long the certificate is valid
      * for. Note: If using Let's Encrypt, this value can only be 90 days.
      * Allowed values: 14, 30, 90, 365.
      */
-    readonly validityDays?: pulumi.Input<number>;
+    validityDays?: pulumi.Input<number>;
     /**
      * The DNS zone to which the certificate pack should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -179,37 +179,37 @@ export interface CertificatePackArgs {
      * authority to issue the certificate pack. Allowed values: `"digicert"`,
      * `"letsEncrypt"`.
      */
-    readonly certificateAuthority?: pulumi.Input<string>;
+    certificateAuthority?: pulumi.Input<string>;
     /**
      * Whether or not to include
      * Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
      * if set to `true`.
      */
-    readonly cloudflareBranding?: pulumi.Input<boolean>;
+    cloudflareBranding?: pulumi.Input<boolean>;
     /**
      * List of hostnames to provision the certificate pack for.
      * Note: If using Let's Encrypt, you cannot use individual subdomains and only a
      * wildcard for subdomain is available.
      */
-    readonly hosts: pulumi.Input<pulumi.Input<string>[]>;
+    hosts: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Certificate pack configuration type.
      * Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * Which validation method to
      * use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
      */
-    readonly validationMethod?: pulumi.Input<string>;
+    validationMethod?: pulumi.Input<string>;
     /**
      * How long the certificate is valid
      * for. Note: If using Let's Encrypt, this value can only be 90 days.
      * Allowed values: 14, 30, 90, 365.
      */
-    readonly validityDays?: pulumi.Input<number>;
+    validityDays?: pulumi.Input<number>;
     /**
      * The DNS zone to which the certificate pack should be added.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

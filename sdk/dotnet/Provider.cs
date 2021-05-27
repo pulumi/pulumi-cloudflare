@@ -19,6 +19,37 @@ namespace Pulumi.Cloudflare
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// Configure API client to always use that account
+        /// </summary>
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
+        /// <summary>
+        /// The API key for operations.
+        /// </summary>
+        [Output("apiKey")]
+        public Output<string?> ApiKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The API Token for operations.
+        /// </summary>
+        [Output("apiToken")]
+        public Output<string?> ApiToken { get; private set; } = null!;
+
+        /// <summary>
+        /// A special Cloudflare API key good for a restricted set of endpoints
+        /// </summary>
+        [Output("apiUserServiceKey")]
+        public Output<string?> ApiUserServiceKey { get; private set; } = null!;
+
+        /// <summary>
+        /// A registered Cloudflare email address
+        /// </summary>
+        [Output("email")]
+        public Output<string?> Email { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///

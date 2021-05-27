@@ -136,20 +136,20 @@ export interface IpListState {
     /**
      * The ID of the account where the IP List is being created.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A note that can be used to annotate the List. Maximum Length: 500
      */
-    readonly description?: pulumi.Input<string>;
-    readonly items?: pulumi.Input<pulumi.Input<inputs.IpListItem>[]>;
+    description?: pulumi.Input<string>;
+    items?: pulumi.Input<pulumi.Input<inputs.IpListItem>[]>;
     /**
      * The kind of values in the List. Valid values: `ip`.
      */
-    readonly kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string>;
     /**
      * The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }
 
 /**
@@ -159,18 +159,18 @@ export interface IpListArgs {
     /**
      * The ID of the account where the IP List is being created.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * A note that can be used to annotate the List. Maximum Length: 500
      */
-    readonly description?: pulumi.Input<string>;
-    readonly items?: pulumi.Input<pulumi.Input<inputs.IpListItem>[]>;
+    description?: pulumi.Input<string>;
+    items?: pulumi.Input<pulumi.Input<inputs.IpListItem>[]>;
     /**
      * The kind of values in the List. Valid values: `ip`.
      */
-    readonly kind: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     /**
      * The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
 }

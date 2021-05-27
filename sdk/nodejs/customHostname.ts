@@ -132,22 +132,22 @@ export interface CustomHostnameState {
     /**
      * The custom origin server used for certificates.
      */
-    readonly customOriginServer?: pulumi.Input<string>;
+    customOriginServer?: pulumi.Input<string>;
     /**
      * Hostname you intend to request a certificate for.
      */
-    readonly hostname?: pulumi.Input<string>;
-    readonly ownershipVerification?: pulumi.Input<inputs.CustomHostnameOwnershipVerification>;
-    readonly ownershipVerificationHttp?: pulumi.Input<inputs.CustomHostnameOwnershipVerificationHttp>;
+    hostname?: pulumi.Input<string>;
+    ownershipVerification?: pulumi.Input<inputs.CustomHostnameOwnershipVerification>;
+    ownershipVerificationHttp?: pulumi.Input<inputs.CustomHostnameOwnershipVerificationHttp>;
     /**
      * SSL configuration of the certificate. See further notes below.
      */
-    readonly ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
-    readonly status?: pulumi.Input<string>;
+    ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
+    status?: pulumi.Input<string>;
     /**
      * The DNS zone ID where the custom hostname should be assigned.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -157,17 +157,17 @@ export interface CustomHostnameArgs {
     /**
      * The custom origin server used for certificates.
      */
-    readonly customOriginServer?: pulumi.Input<string>;
+    customOriginServer?: pulumi.Input<string>;
     /**
      * Hostname you intend to request a certificate for.
      */
-    readonly hostname: pulumi.Input<string>;
+    hostname: pulumi.Input<string>;
     /**
      * SSL configuration of the certificate. See further notes below.
      */
-    readonly ssls: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
+    ssls: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
     /**
      * The DNS zone ID where the custom hostname should be assigned.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

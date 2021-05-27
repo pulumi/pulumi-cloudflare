@@ -289,93 +289,93 @@ export interface HealthcheckState {
     /**
      * The hostname or IP address of the origin server to run health checks on.
      */
-    readonly address?: pulumi.Input<string>;
+    address?: pulumi.Input<string>;
     /**
      * Do not validate the certificate when the health check uses HTTPS. Valid values: `true` or `false` (Default: `false`).
      */
-    readonly allowInsecure?: pulumi.Input<boolean>;
+    allowInsecure?: pulumi.Input<boolean>;
     /**
      * A list of regions from which to run health checks. If not set Cloudflare will pick a default region. Valid values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
      */
-    readonly checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of consecutive fails required from a health check before changing the health to unhealthy. (Default: `1`)
      */
-    readonly consecutiveFails?: pulumi.Input<number>;
+    consecutiveFails?: pulumi.Input<number>;
     /**
      * The number of consecutive successes required from a health check before changing the health to healthy. (Default: `1`)
      */
-    readonly consecutiveSuccesses?: pulumi.Input<number>;
-    readonly createdOn?: pulumi.Input<string>;
+    consecutiveSuccesses?: pulumi.Input<number>;
+    createdOn?: pulumi.Input<string>;
     /**
      * A human-readable description of the health check.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
      */
-    readonly expectedBody?: pulumi.Input<string>;
+    expectedBody?: pulumi.Input<string>;
     /**
      * The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. (Default: `["200"]`)
      */
-    readonly expectedCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    expectedCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Follow redirects if the origin returns a 3xx status code. Valid values: `true` or `false` (Default: `false`).
      */
-    readonly followRedirects?: pulumi.Input<boolean>;
+    followRedirects?: pulumi.Input<boolean>;
     /**
      * The header name.
      */
-    readonly headers?: pulumi.Input<pulumi.Input<inputs.HealthcheckHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.HealthcheckHeader>[]>;
     /**
      * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)
      */
-    readonly interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number>;
     /**
      * The TCP connection method to use for the health check. Valid values: `connectionEstablished` (Default: `connectionEstablished`).
      */
-    readonly method?: pulumi.Input<string>;
-    readonly modifiedOn?: pulumi.Input<string>;
+    method?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
     /**
      * A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of email addresses we want to send the notifications to.
      */
-    readonly notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
      */
-    readonly notificationSuspended?: pulumi.Input<boolean>;
+    notificationSuspended?: pulumi.Input<boolean>;
     /**
      * The endpoint path to health check against. (Default: `/`)
      */
-    readonly path?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
     /**
      * Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
      */
-    readonly retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number>;
     /**
      * If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).
      */
-    readonly suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean>;
     /**
      * The timeout (in seconds) before marking the health check as failed. (Default: `5`)
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * The protocol to use for the health check. Valid values: `HTTP`, `HTTPS`, `TCP`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The DNS zone ID to which apply settings.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -385,89 +385,89 @@ export interface HealthcheckArgs {
     /**
      * The hostname or IP address of the origin server to run health checks on.
      */
-    readonly address: pulumi.Input<string>;
+    address: pulumi.Input<string>;
     /**
      * Do not validate the certificate when the health check uses HTTPS. Valid values: `true` or `false` (Default: `false`).
      */
-    readonly allowInsecure?: pulumi.Input<boolean>;
+    allowInsecure?: pulumi.Input<boolean>;
     /**
      * A list of regions from which to run health checks. If not set Cloudflare will pick a default region. Valid values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
      */
-    readonly checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of consecutive fails required from a health check before changing the health to unhealthy. (Default: `1`)
      */
-    readonly consecutiveFails?: pulumi.Input<number>;
+    consecutiveFails?: pulumi.Input<number>;
     /**
      * The number of consecutive successes required from a health check before changing the health to healthy. (Default: `1`)
      */
-    readonly consecutiveSuccesses?: pulumi.Input<number>;
+    consecutiveSuccesses?: pulumi.Input<number>;
     /**
      * A human-readable description of the health check.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
      */
-    readonly expectedBody?: pulumi.Input<string>;
+    expectedBody?: pulumi.Input<string>;
     /**
      * The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. (Default: `["200"]`)
      */
-    readonly expectedCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    expectedCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Follow redirects if the origin returns a 3xx status code. Valid values: `true` or `false` (Default: `false`).
      */
-    readonly followRedirects?: pulumi.Input<boolean>;
+    followRedirects?: pulumi.Input<boolean>;
     /**
      * The header name.
      */
-    readonly headers?: pulumi.Input<pulumi.Input<inputs.HealthcheckHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.HealthcheckHeader>[]>;
     /**
      * The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)
      */
-    readonly interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number>;
     /**
      * The TCP connection method to use for the health check. Valid values: `connectionEstablished` (Default: `connectionEstablished`).
      */
-    readonly method?: pulumi.Input<string>;
+    method?: pulumi.Input<string>;
     /**
      * A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * A list of email addresses we want to send the notifications to.
      */
-    readonly notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
      */
-    readonly notificationSuspended?: pulumi.Input<boolean>;
+    notificationSuspended?: pulumi.Input<boolean>;
     /**
      * The endpoint path to health check against. (Default: `/`)
      */
-    readonly path?: pulumi.Input<string>;
+    path?: pulumi.Input<string>;
     /**
      * Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
      */
-    readonly port?: pulumi.Input<number>;
+    port?: pulumi.Input<number>;
     /**
      * The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
      */
-    readonly retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number>;
     /**
      * If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).
      */
-    readonly suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean>;
     /**
      * The timeout (in seconds) before marking the health check as failed. (Default: `5`)
      */
-    readonly timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number>;
     /**
      * The protocol to use for the health check. Valid values: `HTTP`, `HTTPS`, `TCP`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The DNS zone ID to which apply settings.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

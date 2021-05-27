@@ -115,11 +115,11 @@ export interface WorkerCronTriggerState {
     /**
      * List of cron expressions to execute the Worker Script
      */
-    readonly schedules?: pulumi.Input<pulumi.Input<string>[]>;
+    schedules?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Worker script to target for the schedules
      */
-    readonly scriptName?: pulumi.Input<string>;
+    scriptName?: pulumi.Input<string>;
 }
 
 /**
@@ -129,9 +129,9 @@ export interface WorkerCronTriggerArgs {
     /**
      * List of cron expressions to execute the Worker Script
      */
-    readonly schedules: pulumi.Input<pulumi.Input<string>[]>;
+    schedules: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Worker script to target for the schedules
      */
-    readonly scriptName: pulumi.Input<string>;
+    scriptName: pulumi.Input<string>;
 }

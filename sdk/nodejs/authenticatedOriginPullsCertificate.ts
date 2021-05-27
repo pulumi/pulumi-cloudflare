@@ -156,25 +156,25 @@ export interface AuthenticatedOriginPullsCertificateState {
     /**
      * The public client certificate.
      */
-    readonly certificate?: pulumi.Input<string>;
-    readonly expiresOn?: pulumi.Input<string>;
-    readonly issuer?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
+    expiresOn?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string>;
     /**
      * The private key of the client certificate.
      */
-    readonly privateKey?: pulumi.Input<string>;
-    readonly serialNumber?: pulumi.Input<string>;
-    readonly signature?: pulumi.Input<string>;
-    readonly status?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
+    serialNumber?: pulumi.Input<string>;
+    signature?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The form of Authenticated Origin Pulls to upload the certificate to.
      */
-    readonly type?: pulumi.Input<string>;
-    readonly uploadedOn?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
+    uploadedOn?: pulumi.Input<string>;
     /**
      * The zone ID to upload the certificate to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -184,17 +184,17 @@ export interface AuthenticatedOriginPullsCertificateArgs {
     /**
      * The public client certificate.
      */
-    readonly certificate: pulumi.Input<string>;
+    certificate: pulumi.Input<string>;
     /**
      * The private key of the client certificate.
      */
-    readonly privateKey: pulumi.Input<string>;
+    privateKey: pulumi.Input<string>;
     /**
      * The form of Authenticated Origin Pulls to upload the certificate to.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The zone ID to upload the certificate to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

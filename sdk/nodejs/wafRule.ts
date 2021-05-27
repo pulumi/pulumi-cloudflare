@@ -126,23 +126,23 @@ export interface WafRuleState {
     /**
      * The ID of the WAF Rule Group that contains the rule.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The ID of the WAF Rule Package that contains the rule.
      */
-    readonly packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string>;
     /**
      * The WAF Rule ID.
      */
-    readonly ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string>;
     /**
      * The DNS zone ID to apply to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -152,17 +152,17 @@ export interface WafRuleArgs {
     /**
      * The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
-    readonly mode: pulumi.Input<string>;
+    mode: pulumi.Input<string>;
     /**
      * The ID of the WAF Rule Package that contains the rule.
      */
-    readonly packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string>;
     /**
      * The WAF Rule ID.
      */
-    readonly ruleId: pulumi.Input<string>;
+    ruleId: pulumi.Input<string>;
     /**
      * The DNS zone ID to apply to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

@@ -22,7 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
-// 	"github.com/pulumi/pulumi-tls/sdk/v2/go/tls"
+// 	"github.com/pulumi/pulumi-tls/sdk/v4/go/tls"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //

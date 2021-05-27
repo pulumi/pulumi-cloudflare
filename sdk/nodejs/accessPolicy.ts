@@ -187,40 +187,40 @@ export interface AccessPolicyState {
     /**
      * The account to which the access rule should be added. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The ID of the application the policy is associated with.
      */
-    readonly applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
     /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
      */
-    readonly decision?: pulumi.Input<string>;
+    decision?: pulumi.Input<string>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
-    readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
-    readonly includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
+    includes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
      * Friendly name of the Access Application.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The unique precedence for policies on a single application. Integer.
      */
-    readonly precedence?: pulumi.Input<number>;
+    precedence?: pulumi.Input<number>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
-    readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
+    requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
      * The DNS zone to which the access rule should be added. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -230,38 +230,38 @@ export interface AccessPolicyArgs {
     /**
      * The account to which the access rule should be added. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The ID of the application the policy is associated with.
      */
-    readonly applicationId: pulumi.Input<string>;
+    applicationId: pulumi.Input<string>;
     /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
      */
-    readonly decision: pulumi.Input<string>;
+    decision: pulumi.Input<string>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
-    readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExclude>[]>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
-    readonly includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
+    includes: pulumi.Input<pulumi.Input<inputs.AccessPolicyInclude>[]>;
     /**
      * Friendly name of the Access Application.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The unique precedence for policies on a single application. Integer.
      */
-    readonly precedence: pulumi.Input<number>;
+    precedence: pulumi.Input<number>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
-    readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
+    requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
      * The DNS zone to which the access rule should be added. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

@@ -117,19 +117,19 @@ export interface WafGroupState {
     /**
      * The WAF Rule Group ID.
      */
-    readonly groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
      * The mode of the group, can be one of ["on", "off"].
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The ID of the WAF Rule Package that contains the group.
      */
-    readonly packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string>;
     /**
      * The DNS zone ID to apply to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -139,17 +139,17 @@ export interface WafGroupArgs {
     /**
      * The WAF Rule Group ID.
      */
-    readonly groupId: pulumi.Input<string>;
+    groupId: pulumi.Input<string>;
     /**
      * The mode of the group, can be one of ["on", "off"].
      */
-    readonly mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
     /**
      * The ID of the WAF Rule Package that contains the group.
      */
-    readonly packageId?: pulumi.Input<string>;
+    packageId?: pulumi.Input<string>;
     /**
      * The DNS zone ID to apply to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

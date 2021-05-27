@@ -156,19 +156,19 @@ export interface AuthenticatedOriginPullsState {
     /**
      * The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
      */
-    readonly authenticatedOriginPullsCertificate?: pulumi.Input<string>;
+    authenticatedOriginPullsCertificate?: pulumi.Input<string>;
     /**
      * Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * The zone ID to upload the certificate to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -178,17 +178,17 @@ export interface AuthenticatedOriginPullsArgs {
     /**
      * The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
      */
-    readonly authenticatedOriginPullsCertificate?: pulumi.Input<string>;
+    authenticatedOriginPullsCertificate?: pulumi.Input<string>;
     /**
      * Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * The zone ID to upload the certificate to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

@@ -124,24 +124,24 @@ export interface AccessMutualTlsCertificateState {
     /**
      * The account to which the certificate should be added. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The hostnames that will be prompted for this certificate.
      */
-    readonly associatedHostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedHostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Root CA for your certificates.
      */
-    readonly certificate?: pulumi.Input<string>;
-    readonly fingerprint?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
     /**
      * The name of the certificate.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The DNS zone to which the certificate should be added. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -151,21 +151,21 @@ export interface AccessMutualTlsCertificateArgs {
     /**
      * The account to which the certificate should be added. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The hostnames that will be prompted for this certificate.
      */
-    readonly associatedHostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedHostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Root CA for your certificates.
      */
-    readonly certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * The name of the certificate.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The DNS zone to which the certificate should be added. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
