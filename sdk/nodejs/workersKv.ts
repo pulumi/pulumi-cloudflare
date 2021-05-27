@@ -115,15 +115,15 @@ export interface WorkersKvState {
     /**
      * The key name
      */
-    readonly key?: pulumi.Input<string>;
+    key?: pulumi.Input<string>;
     /**
      * The ID of the Workers KV namespace in which you want to create the KV pair
      */
-    readonly namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string>;
     /**
      * The string value to be stored in the key
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -133,13 +133,13 @@ export interface WorkersKvArgs {
     /**
      * The key name
      */
-    readonly key: pulumi.Input<string>;
+    key: pulumi.Input<string>;
     /**
      * The ID of the Workers KV namespace in which you want to create the KV pair
      */
-    readonly namespaceId: pulumi.Input<string>;
+    namespaceId: pulumi.Input<string>;
     /**
      * The string value to be stored in the key
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }

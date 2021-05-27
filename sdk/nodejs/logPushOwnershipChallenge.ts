@@ -105,16 +105,16 @@ export interface LogPushOwnershipChallengeState {
     /**
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
      */
-    readonly destinationConf?: pulumi.Input<string>;
+    destinationConf?: pulumi.Input<string>;
     /**
      * The filename of the ownership challenge which
      * contains the contents required for Logpush Job creation.
      */
-    readonly ownershipChallengeFilename?: pulumi.Input<string>;
+    ownershipChallengeFilename?: pulumi.Input<string>;
     /**
      * The zone ID where the logpush ownership challenge should be created.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -124,9 +124,9 @@ export interface LogPushOwnershipChallengeArgs {
     /**
      * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
      */
-    readonly destinationConf: pulumi.Input<string>;
+    destinationConf: pulumi.Input<string>;
     /**
      * The zone ID where the logpush ownership challenge should be created.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

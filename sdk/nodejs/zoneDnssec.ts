@@ -161,51 +161,51 @@ export interface ZoneDnssecState {
     /**
      * Zone DNSSEC algorithm.
      */
-    readonly algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string>;
     /**
      * Zone DNSSEC digest.
      */
-    readonly digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string>;
     /**
      * Digest algorithm use for Zone DNSSEC.
      */
-    readonly digestAlgorithm?: pulumi.Input<string>;
+    digestAlgorithm?: pulumi.Input<string>;
     /**
      * Digest Type for Zone DNSSEC.
      */
-    readonly digestType?: pulumi.Input<string>;
+    digestType?: pulumi.Input<string>;
     /**
      * DS for the Zone DNSSEC.
      */
-    readonly ds?: pulumi.Input<string>;
+    ds?: pulumi.Input<string>;
     /**
      * Zone DNSSEC flags.
      */
-    readonly flags?: pulumi.Input<number>;
+    flags?: pulumi.Input<number>;
     /**
      * Key Tag for the Zone DNSSEC.
      */
-    readonly keyTag?: pulumi.Input<number>;
+    keyTag?: pulumi.Input<number>;
     /**
      * Key type used for Zone DNSSEC.
      */
-    readonly keyType?: pulumi.Input<string>;
+    keyType?: pulumi.Input<string>;
     /**
      * Zone DNSSEC updated time.
      */
-    readonly modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
     /**
      * Public Key for the Zone DNSSEC.
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * The status of the Zone DNSSEC.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The zone id for the zone.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -215,9 +215,9 @@ export interface ZoneDnssecArgs {
     /**
      * Zone DNSSEC updated time.
      */
-    readonly modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
     /**
      * The zone id for the zone.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

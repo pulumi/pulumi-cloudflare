@@ -146,28 +146,28 @@ export interface FirewallRuleState {
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
      */
-    readonly action?: pulumi.Input<string>;
+    action?: pulumi.Input<string>;
     /**
      * A description of the rule to help identify it.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly filterId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    filterId?: pulumi.Input<string>;
     /**
      * Whether this filter based firewall rule is currently paused. Boolean value.
      */
-    readonly paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
      */
-    readonly products?: pulumi.Input<pulumi.Input<string>[]>;
+    products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS zone to which the Filter should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -177,26 +177,26 @@ export interface FirewallRuleArgs {
     /**
      * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
      */
-    readonly action: pulumi.Input<string>;
+    action: pulumi.Input<string>;
     /**
      * A description of the rule to help identify it.
      */
-    readonly description?: pulumi.Input<string>;
-    readonly filterId: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
+    filterId: pulumi.Input<string>;
     /**
      * Whether this filter based firewall rule is currently paused. Boolean value.
      */
-    readonly paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
      */
-    readonly products?: pulumi.Input<pulumi.Input<string>[]>;
+    products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS zone to which the Filter should be added.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

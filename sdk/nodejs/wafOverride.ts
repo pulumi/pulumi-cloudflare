@@ -160,36 +160,36 @@ export interface WafOverrideState {
     /**
      * Description of what the WAF override does.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Similar to `rules`; which WAF groups you want to alter.
      */
-    readonly groups?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly overrideId?: pulumi.Input<string>;
+    groups?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    overrideId?: pulumi.Input<string>;
     /**
      * Whether this package is currently paused.
      */
-    readonly paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * Relative priority of this configuration when multiple configurations match a single URL.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * When a WAF rule matches, substitute its configured action for a different action specified by this definition.
      */
-    readonly rewriteAction?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rewriteAction?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of WAF rule ID to rule action you intend to apply.
      */
-    readonly rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An array of URLs to apply the WAF override to.
      */
-    readonly urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS zone to which the WAF override condition should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -199,33 +199,33 @@ export interface WafOverrideArgs {
     /**
      * Description of what the WAF override does.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Similar to `rules`; which WAF groups you want to alter.
      */
-    readonly groups?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    groups?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Whether this package is currently paused.
      */
-    readonly paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * Relative priority of this configuration when multiple configurations match a single URL.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * When a WAF rule matches, substitute its configured action for a different action specified by this definition.
      */
-    readonly rewriteAction?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rewriteAction?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A list of WAF rule ID to rule action you intend to apply.
      */
-    readonly rules: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rules: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An array of URLs to apply the WAF override to.
      */
-    readonly urls: pulumi.Input<pulumi.Input<string>[]>;
+    urls: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS zone to which the WAF override condition should be added.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

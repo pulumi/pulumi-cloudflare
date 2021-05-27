@@ -298,3 +298,43 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Configure API client to always use that account
+        """
+        return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        The API key for operations.
+        """
+        return pulumi.get(self, "api_key")
+
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The API Token for operations.
+        """
+        return pulumi.get(self, "api_token")
+
+    @property
+    @pulumi.getter(name="apiUserServiceKey")
+    def api_user_service_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        A special Cloudflare API key good for a restricted set of endpoints
+        """
+        return pulumi.get(self, "api_user_service_key")
+
+    @property
+    @pulumi.getter
+    def email(self) -> pulumi.Output[Optional[str]]:
+        """
+        A registered Cloudflare email address
+        """
+        return pulumi.get(self, "email")
+

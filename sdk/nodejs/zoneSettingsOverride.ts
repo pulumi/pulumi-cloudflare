@@ -133,24 +133,24 @@ export interface ZoneSettingsOverrideState {
     /**
      * Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
      */
-    readonly initialSettings?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettings>;
-    readonly initialSettingsReadAt?: pulumi.Input<string>;
+    initialSettings?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettings>;
+    initialSettingsReadAt?: pulumi.Input<string>;
     /**
      * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
      * * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
      * * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
      */
-    readonly readonlySettings?: pulumi.Input<pulumi.Input<string>[]>;
+    readonlySettings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
      */
-    readonly settings?: pulumi.Input<inputs.ZoneSettingsOverrideSettings>;
+    settings?: pulumi.Input<inputs.ZoneSettingsOverrideSettings>;
     /**
      * The DNS zone ID to which apply settings.
      */
-    readonly zoneId?: pulumi.Input<string>;
-    readonly zoneStatus?: pulumi.Input<string>;
-    readonly zoneType?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
+    zoneStatus?: pulumi.Input<string>;
+    zoneType?: pulumi.Input<string>;
 }
 
 /**
@@ -160,9 +160,9 @@ export interface ZoneSettingsOverrideArgs {
     /**
      * Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
      */
-    readonly settings?: pulumi.Input<inputs.ZoneSettingsOverrideSettings>;
+    settings?: pulumi.Input<inputs.ZoneSettingsOverrideSettings>;
     /**
      * The DNS zone ID to which apply settings.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

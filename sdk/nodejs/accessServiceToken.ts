@@ -122,23 +122,23 @@ export interface AccessServiceTokenState {
     /**
      * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * UUID client ID associated with the Service Token.
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * A secret for interacting with Access protocols.
      */
-    readonly clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * Friendly name of the token's intent.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -148,13 +148,13 @@ export interface AccessServiceTokenArgs {
     /**
      * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Friendly name of the token's intent.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

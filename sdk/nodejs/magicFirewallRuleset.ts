@@ -130,16 +130,16 @@ export interface MagicFirewallRulesetState {
     /**
      * The ID of the account where the ruleset is being created.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A note that can be used to annotate the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the ruleset.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly rules?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    name?: pulumi.Input<string>;
+    rules?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
 }
 
 /**
@@ -149,14 +149,14 @@ export interface MagicFirewallRulesetArgs {
     /**
      * The ID of the account where the ruleset is being created.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * A note that can be used to annotate the rule.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The name of the ruleset.
      */
-    readonly name: pulumi.Input<string>;
-    readonly rules?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    name: pulumi.Input<string>;
+    rules?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
 }

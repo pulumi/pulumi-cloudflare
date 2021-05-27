@@ -184,30 +184,30 @@ export interface AccessGroupState {
     /**
      * The ID of the account the group is associated with. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    readonly includes?: pulumi.Input<pulumi.Input<inputs.AccessGroupInclude>[]>;
+    includes?: pulumi.Input<pulumi.Input<inputs.AccessGroupInclude>[]>;
     /**
      * Friendly name of the Access Group.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
+    requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
     /**
      * The ID of the zone the group is associated with. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -217,28 +217,28 @@ export interface AccessGroupArgs {
     /**
      * The ID of the account the group is associated with. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    readonly excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
+    excludes?: pulumi.Input<pulumi.Input<inputs.AccessGroupExclude>[]>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    readonly includes: pulumi.Input<pulumi.Input<inputs.AccessGroupInclude>[]>;
+    includes: pulumi.Input<pulumi.Input<inputs.AccessGroupInclude>[]>;
     /**
      * Friendly name of the Access Group.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * A series of access conditions, see below for
      * full list.
      */
-    readonly requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
+    requires?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequire>[]>;
     /**
      * The ID of the zone the group is associated with. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

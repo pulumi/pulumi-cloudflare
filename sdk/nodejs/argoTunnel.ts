@@ -116,15 +116,15 @@ export interface ArgoTunnelState {
     /**
      * The Cloudflare account ID that you wish to manage the Argo Tunnel on.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * A user-friendly name chosen when the tunnel is created. Cannot be empty.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
      */
-    readonly secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string>;
 }
 
 /**
@@ -134,13 +134,13 @@ export interface ArgoTunnelArgs {
     /**
      * The Cloudflare account ID that you wish to manage the Argo Tunnel on.
      */
-    readonly accountId: pulumi.Input<string>;
+    accountId: pulumi.Input<string>;
     /**
      * A user-friendly name chosen when the tunnel is created. Cannot be empty.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
      */
-    readonly secret: pulumi.Input<string>;
+    secret: pulumi.Input<string>;
 }

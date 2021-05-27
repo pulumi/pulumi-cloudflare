@@ -227,71 +227,71 @@ export interface LoadBalancerState {
     /**
      * The RFC3339 timestamp of when the load balancer was created.
      */
-    readonly createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string>;
     /**
      * A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
      */
-    readonly defaultPoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultPoolIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Free text description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Enable or disable the load balancer. Defaults to `true` (enabled).
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
-    readonly fallbackPoolId?: pulumi.Input<string>;
+    fallbackPoolId?: pulumi.Input<string>;
     /**
      * The RFC3339 timestamp of when the load balancer was last modified.
      */
-    readonly modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
     /**
      * Human readable name for this rule.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * See popPools above.
      */
-    readonly popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPopPool>[]>;
+    popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPopPool>[]>;
     /**
      * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
      */
-    readonly proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean>;
     /**
      * See regionPools above.
      */
-    readonly regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
+    regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
     /**
      * A list of conditions and overrides for each load balancer operation. See the field documentation below.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
     /**
      * See field above.
      */
-    readonly sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string>;
     /**
      * See field above.
      */
-    readonly sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * See field above.
      */
-    readonly sessionAffinityTtl?: pulumi.Input<number>;
+    sessionAffinityTtl?: pulumi.Input<number>;
     /**
      * See field above.
      */
-    readonly steeringPolicy?: pulumi.Input<string>;
+    steeringPolicy?: pulumi.Input<string>;
     /**
      * See field above.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The zone ID to add the load balancer to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -301,61 +301,61 @@ export interface LoadBalancerArgs {
     /**
      * A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
      */
-    readonly defaultPoolIds: pulumi.Input<pulumi.Input<string>[]>;
+    defaultPoolIds: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Free text description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Enable or disable the load balancer. Defaults to `true` (enabled).
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The pool ID to use when all other pools are detected as unhealthy.
      */
-    readonly fallbackPoolId: pulumi.Input<string>;
+    fallbackPoolId: pulumi.Input<string>;
     /**
      * Human readable name for this rule.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * See popPools above.
      */
-    readonly popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPopPool>[]>;
+    popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPopPool>[]>;
     /**
      * Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
      */
-    readonly proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean>;
     /**
      * See regionPools above.
      */
-    readonly regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
+    regionPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRegionPool>[]>;
     /**
      * A list of conditions and overrides for each load balancer operation. See the field documentation below.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
     /**
      * See field above.
      */
-    readonly sessionAffinity?: pulumi.Input<string>;
+    sessionAffinity?: pulumi.Input<string>;
     /**
      * See field above.
      */
-    readonly sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    sessionAffinityAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * See field above.
      */
-    readonly sessionAffinityTtl?: pulumi.Input<number>;
+    sessionAffinityTtl?: pulumi.Input<number>;
     /**
      * See field above.
      */
-    readonly steeringPolicy?: pulumi.Input<string>;
+    steeringPolicy?: pulumi.Input<string>;
     /**
      * See field above.
      */
-    readonly ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number>;
     /**
      * The zone ID to add the load balancer to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

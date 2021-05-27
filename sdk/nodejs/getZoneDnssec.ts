@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(cloudflare.getZoneDnssec({
  *     zoneId: "<zone_id>",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getZoneDnssec(args: GetZoneDnssecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnssecResult> {
@@ -39,7 +39,7 @@ export interface GetZoneDnssecArgs {
     /**
      * The zone id for the zone.
      */
-    readonly zoneId: string;
+    zoneId: string;
 }
 
 /**

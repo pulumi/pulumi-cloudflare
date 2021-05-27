@@ -110,15 +110,15 @@ export interface ArgoState {
     /**
      * Whether smart routing is enabled. Valid values: `on` or `off`.
      */
-    readonly smartRouting?: pulumi.Input<string>;
+    smartRouting?: pulumi.Input<string>;
     /**
      * Whether tiered caching is enabled. Valid values: `on` or `off`.
      */
-    readonly tieredCaching?: pulumi.Input<string>;
+    tieredCaching?: pulumi.Input<string>;
     /**
      * The DNS zone ID that you wish to manage Argo on.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -128,13 +128,13 @@ export interface ArgoArgs {
     /**
      * Whether smart routing is enabled. Valid values: `on` or `off`.
      */
-    readonly smartRouting?: pulumi.Input<string>;
+    smartRouting?: pulumi.Input<string>;
     /**
      * Whether tiered caching is enabled. Valid values: `on` or `off`.
      */
-    readonly tieredCaching?: pulumi.Input<string>;
+    tieredCaching?: pulumi.Input<string>;
     /**
      * The DNS zone ID that you wish to manage Argo on.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

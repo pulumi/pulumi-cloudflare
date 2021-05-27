@@ -116,15 +116,15 @@ export interface WorkerRouteState {
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
      */
-    readonly pattern?: pulumi.Input<string>;
+    pattern?: pulumi.Input<string>;
     /**
      * Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
-    readonly scriptName?: pulumi.Input<string>;
+    scriptName?: pulumi.Input<string>;
     /**
      * The zone ID to add the route to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -134,13 +134,13 @@ export interface WorkerRouteArgs {
     /**
      * The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
      */
-    readonly pattern: pulumi.Input<string>;
+    pattern: pulumi.Input<string>;
     /**
      * Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
      */
-    readonly scriptName?: pulumi.Input<string>;
+    scriptName?: pulumi.Input<string>;
     /**
      * The zone ID to add the route to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

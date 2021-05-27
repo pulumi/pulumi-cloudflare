@@ -108,15 +108,15 @@ export interface ByoIpPrefixState {
     /**
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
      */
-    readonly advertisement?: pulumi.Input<string>;
+    advertisement?: pulumi.Input<string>;
     /**
      * The description of the prefix.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The assigned Bring-Your-Own-IP prefix ID.
      */
-    readonly prefixId?: pulumi.Input<string>;
+    prefixId?: pulumi.Input<string>;
 }
 
 /**
@@ -126,13 +126,13 @@ export interface ByoIpPrefixArgs {
     /**
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
      */
-    readonly advertisement?: pulumi.Input<string>;
+    advertisement?: pulumi.Input<string>;
     /**
      * The description of the prefix.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The assigned Bring-Your-Own-IP prefix ID.
      */
-    readonly prefixId: pulumi.Input<string>;
+    prefixId: pulumi.Input<string>;
 }

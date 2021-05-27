@@ -104,11 +104,11 @@ export interface LogpullRetentionState {
     /**
      * Whether you wish to retain logs or not.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The zone ID to apply the log retention to.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -118,9 +118,9 @@ export interface LogpullRetentionArgs {
     /**
      * Whether you wish to retain logs or not.
      */
-    readonly enabled: pulumi.Input<boolean>;
+    enabled: pulumi.Input<boolean>;
     /**
      * The zone ID to apply the log retention to.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

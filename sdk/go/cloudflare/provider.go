@@ -16,6 +16,17 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// Configure API client to always use that account
+	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// The API key for operations.
+	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
+	// The API Token for operations.
+	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
+	// A special Cloudflare API key good for a restricted set of endpoints
+	ApiUserServiceKey pulumi.StringPtrOutput `pulumi:"apiUserServiceKey"`
+	// A registered Cloudflare email address
+	Email pulumi.StringPtrOutput `pulumi:"email"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

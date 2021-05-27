@@ -150,42 +150,42 @@ export interface ZoneState {
     /**
      * Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
      */
-    readonly jumpStart?: pulumi.Input<boolean>;
-    readonly meta?: pulumi.Input<inputs.ZoneMeta>;
+    jumpStart?: pulumi.Input<boolean>;
+    meta?: pulumi.Input<inputs.ZoneMeta>;
     /**
      * Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
      */
-    readonly nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    nameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
      */
-    readonly paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
      */
-    readonly plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
     /**
      * Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * List of Vanity Nameservers (if set).
      * * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
      * * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
      */
-    readonly vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
      */
-    readonly verificationKey?: pulumi.Input<string>;
+    verificationKey?: pulumi.Input<string>;
     /**
      * The DNS zone name which will be added.
      */
-    readonly zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string>;
 }
 
 /**
@@ -195,21 +195,21 @@ export interface ZoneArgs {
     /**
      * Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
      */
-    readonly jumpStart?: pulumi.Input<boolean>;
+    jumpStart?: pulumi.Input<boolean>;
     /**
      * Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
      */
-    readonly paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean>;
     /**
      * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
      */
-    readonly plan?: pulumi.Input<string>;
+    plan?: pulumi.Input<string>;
     /**
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The DNS zone name which will be added.
      */
-    readonly zone: pulumi.Input<string>;
+    zone: pulumi.Input<string>;
 }

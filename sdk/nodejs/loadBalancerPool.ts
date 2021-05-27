@@ -159,43 +159,43 @@ export interface LoadBalancerPoolState {
     /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
      */
-    readonly checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The RFC3339 timestamp of when the load balancer was created.
      */
-    readonly createdOn?: pulumi.Input<string>;
+    createdOn?: pulumi.Input<string>;
     /**
      * Free text description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
      */
-    readonly minimumOrigins?: pulumi.Input<number>;
+    minimumOrigins?: pulumi.Input<number>;
     /**
      * The RFC3339 timestamp of when the load balancer was last modified.
      */
-    readonly modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
     /**
      * The ID of the Monitor to use for health checking origins within this pool.
      */
-    readonly monitor?: pulumi.Input<string>;
+    monitor?: pulumi.Input<string>;
     /**
      * A human-identifiable name for the origin.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
-    readonly notificationEmail?: pulumi.Input<string>;
+    notificationEmail?: pulumi.Input<string>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */
-    readonly origins?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[]>;
+    origins?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[]>;
 }
 
 /**
@@ -205,33 +205,33 @@ export interface LoadBalancerPoolArgs {
     /**
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
      */
-    readonly checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    checkRegions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Free text description.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
      */
-    readonly minimumOrigins?: pulumi.Input<number>;
+    minimumOrigins?: pulumi.Input<number>;
     /**
      * The ID of the Monitor to use for health checking origins within this pool.
      */
-    readonly monitor?: pulumi.Input<string>;
+    monitor?: pulumi.Input<string>;
     /**
      * A human-identifiable name for the origin.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
-    readonly notificationEmail?: pulumi.Input<string>;
+    notificationEmail?: pulumi.Input<string>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */
-    readonly origins: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[]>;
+    origins: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[]>;
 }

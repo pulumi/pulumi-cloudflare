@@ -110,15 +110,15 @@ export interface CustomHostnameFallbackOriginState {
     /**
      * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
      */
-    readonly origin?: pulumi.Input<string>;
+    origin?: pulumi.Input<string>;
     /**
      * Status of the fallback origin's activation.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The DNS zone ID where the custom hostname should be assigned.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -128,9 +128,9 @@ export interface CustomHostnameFallbackOriginArgs {
     /**
      * Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
      */
-    readonly origin: pulumi.Input<string>;
+    origin: pulumi.Input<string>;
     /**
      * The DNS zone ID where the custom hostname should be assigned.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

@@ -107,15 +107,15 @@ export interface WorkerScriptState {
     /**
      * The script content.
      */
-    readonly content?: pulumi.Input<string>;
-    readonly kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
+    content?: pulumi.Input<string>;
+    kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
      * The global variable for the binding in your Worker code.
      */
-    readonly name?: pulumi.Input<string>;
-    readonly plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
-    readonly secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
-    readonly webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
+    name?: pulumi.Input<string>;
+    plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
+    secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
+    webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
 }
 
 /**
@@ -125,13 +125,13 @@ export interface WorkerScriptArgs {
     /**
      * The script content.
      */
-    readonly content: pulumi.Input<string>;
-    readonly kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
+    content: pulumi.Input<string>;
+    kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
      * The global variable for the binding in your Worker code.
      */
-    readonly name: pulumi.Input<string>;
-    readonly plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
-    readonly secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
-    readonly webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
+    name: pulumi.Input<string>;
+    plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
+    secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
+    webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
 }

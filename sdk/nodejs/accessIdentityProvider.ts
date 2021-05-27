@@ -160,25 +160,25 @@ export interface AccessIdentityProviderState {
     /**
      * The account ID the provider should be associated with. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Provider configuration from the [developer documentation][accessIdentityProviderGuide].
      */
-    readonly configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
     /**
      * Friendly name of the Access Identity Provider configuration.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The provider type to use. Must be one of: `"centrify"`,
      * `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
      * `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * The zone ID the provider should be associated with. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -188,23 +188,23 @@ export interface AccessIdentityProviderArgs {
     /**
      * The account ID the provider should be associated with. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Provider configuration from the [developer documentation][accessIdentityProviderGuide].
      */
-    readonly configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
     /**
      * Friendly name of the Access Identity Provider configuration.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The provider type to use. Must be one of: `"centrify"`,
      * `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
      * `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * The zone ID the provider should be associated with. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

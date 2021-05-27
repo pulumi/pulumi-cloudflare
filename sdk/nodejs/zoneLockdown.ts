@@ -138,24 +138,24 @@ export interface ZoneLockdownState {
     /**
      * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
      */
-    readonly configurations?: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
+    configurations?: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
      * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Boolean of whether this zone lockdown is currently paused. Default: false.
      */
-    readonly paused?: pulumi.Input<boolean>;
-    readonly priority?: pulumi.Input<number>;
+    paused?: pulumi.Input<boolean>;
+    priority?: pulumi.Input<number>;
     /**
      * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
      */
-    readonly urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS zone ID to which the access rule should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -165,22 +165,22 @@ export interface ZoneLockdownArgs {
     /**
      * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
      */
-    readonly configurations: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
+    configurations: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
      * A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Boolean of whether this zone lockdown is currently paused. Default: false.
      */
-    readonly paused?: pulumi.Input<boolean>;
-    readonly priority?: pulumi.Input<number>;
+    paused?: pulumi.Input<boolean>;
+    priority?: pulumi.Input<number>;
     /**
      * A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
      */
-    readonly urls: pulumi.Input<pulumi.Input<string>[]>;
+    urls: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS zone ID to which the access rule should be added.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }

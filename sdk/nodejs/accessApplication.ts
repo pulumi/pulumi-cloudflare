@@ -186,57 +186,57 @@ export interface AccessApplicationState {
     /**
      * The account to which the access application should be added. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The identity providers selected for the application.
      */
-    readonly allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Application Audience (AUD) Tag of the application
      */
-    readonly aud?: pulumi.Input<string>;
+    aud?: pulumi.Input<string>;
     /**
      * Option to skip identity provider
      * selection if only one is configured in allowed_idps. Defaults to `false`
      * (disabled).
      */
-    readonly autoRedirectToIdentity?: pulumi.Input<boolean>;
+    autoRedirectToIdentity?: pulumi.Input<boolean>;
     /**
      * CORS configuration for the Access Application. See
      * below for reference structure.
      */
-    readonly corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
+    corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
     /**
      * Option that returns a custom error message when a user is denied access to the application.
      */
-    readonly customDenyMessage?: pulumi.Input<string>;
+    customDenyMessage?: pulumi.Input<string>;
     /**
      * Option that redirects to a custom URL when a user is denied access to the application.
      */
-    readonly customDenyUrl?: pulumi.Input<string>;
+    customDenyUrl?: pulumi.Input<string>;
     /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
-    readonly enableBindingCookie?: pulumi.Input<boolean>;
+    enableBindingCookie?: pulumi.Input<boolean>;
     /**
      * Friendly name of the Access Application.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
-    readonly sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string>;
     /**
      * The DNS zone to which the access application should be added. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -246,51 +246,51 @@ export interface AccessApplicationArgs {
     /**
      * The account to which the access application should be added. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The identity providers selected for the application.
      */
-    readonly allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Option to skip identity provider
      * selection if only one is configured in allowed_idps. Defaults to `false`
      * (disabled).
      */
-    readonly autoRedirectToIdentity?: pulumi.Input<boolean>;
+    autoRedirectToIdentity?: pulumi.Input<boolean>;
     /**
      * CORS configuration for the Access Application. See
      * below for reference structure.
      */
-    readonly corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
+    corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
     /**
      * Option that returns a custom error message when a user is denied access to the application.
      */
-    readonly customDenyMessage?: pulumi.Input<string>;
+    customDenyMessage?: pulumi.Input<string>;
     /**
      * Option that redirects to a custom URL when a user is denied access to the application.
      */
-    readonly customDenyUrl?: pulumi.Input<string>;
+    customDenyUrl?: pulumi.Input<string>;
     /**
      * The complete URL of the asset you wish to put
      * Cloudflare Access in front of. Can include subdomains or paths. Or both.
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
-    readonly enableBindingCookie?: pulumi.Input<boolean>;
+    enableBindingCookie?: pulumi.Input<boolean>;
     /**
      * Friendly name of the Access Application.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
-    readonly sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string>;
     /**
      * The DNS zone to which the access application should be added. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

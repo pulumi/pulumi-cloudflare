@@ -96,7 +96,7 @@ export interface WorkersKvNamespaceState {
     /**
      * The name of the namespace you wish to create.
      */
-    readonly title?: pulumi.Input<string>;
+    title?: pulumi.Input<string>;
 }
 
 /**
@@ -106,5 +106,5 @@ export interface WorkersKvNamespaceArgs {
     /**
      * The name of the namespace you wish to create.
      */
-    readonly title: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

@@ -223,29 +223,29 @@ export interface ApiTokenState {
     /**
      * Condition block. See the definition below.
      */
-    readonly condition?: pulumi.Input<inputs.ApiTokenCondition>;
+    condition?: pulumi.Input<inputs.ApiTokenCondition>;
     /**
      * The RFC3339 timestamp of when the API Token was issued.
      */
-    readonly issuedOn?: pulumi.Input<string>;
+    issuedOn?: pulumi.Input<string>;
     /**
      * The RFC3339 timestamp of when the API Token was last modified.
      */
-    readonly modifiedOn?: pulumi.Input<string>;
+    modifiedOn?: pulumi.Input<string>;
     /**
      * Name of the APIToken.
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Permissions policy. Multiple policy blocks can be defined.
      * See the definition below.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
-    readonly status?: pulumi.Input<string>;
+    policies?: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
+    status?: pulumi.Input<string>;
     /**
      * The value of the API Token.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -255,14 +255,14 @@ export interface ApiTokenArgs {
     /**
      * Condition block. See the definition below.
      */
-    readonly condition?: pulumi.Input<inputs.ApiTokenCondition>;
+    condition?: pulumi.Input<inputs.ApiTokenCondition>;
     /**
      * Name of the APIToken.
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Permissions policy. Multiple policy blocks can be defined.
      * See the definition below.
      */
-    readonly policies: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
+    policies: pulumi.Input<pulumi.Input<inputs.ApiTokenPolicy>[]>;
 }

@@ -51,15 +51,15 @@ export interface GetWafRulesArgs {
      * One or more values used to look up WAF Rules. If more than one value is given all
      * values must match in order to be included, see below for full list.
      */
-    readonly filter?: inputs.GetWafRulesFilter;
+    filter?: inputs.GetWafRulesFilter;
     /**
      * The ID of the WAF Rule Package in which to search for the WAF Rules.
      */
-    readonly packageId?: string;
+    packageId?: string;
     /**
      * The ID of the DNS zone in which to search for the WAF Rules.
      */
-    readonly zoneId: string;
+    zoneId: string;
 }
 
 /**

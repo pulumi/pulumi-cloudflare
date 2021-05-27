@@ -127,23 +127,23 @@ export interface AccessCaCertificateState {
     /**
      * The account to which the Access CA certificate should be added. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The Access Application ID to associate with the CA certificate.
      */
-    readonly applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
     /**
      * Application Audience (AUD) Tag of the CA certificate
      */
-    readonly aud?: pulumi.Input<string>;
+    aud?: pulumi.Input<string>;
     /**
      * Cryptographic public key of the generated CA certificate
      */
-    readonly publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string>;
     /**
      * The DNS zone to which the Access CA certificate should be added. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -153,13 +153,13 @@ export interface AccessCaCertificateArgs {
     /**
      * The account to which the Access CA certificate should be added. Conflicts with `zoneId`.
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * The Access Application ID to associate with the CA certificate.
      */
-    readonly applicationId: pulumi.Input<string>;
+    applicationId: pulumi.Input<string>;
     /**
      * The DNS zone to which the Access CA certificate should be added. Conflicts with `accountId`.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }

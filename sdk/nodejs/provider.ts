@@ -25,6 +25,26 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * Configure API client to always use that account
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * The API key for operations.
+     */
+    public readonly apiKey!: pulumi.Output<string | undefined>;
+    /**
+     * The API Token for operations.
+     */
+    public readonly apiToken!: pulumi.Output<string | undefined>;
+    /**
+     * A special Cloudflare API key good for a restricted set of endpoints
+     */
+    public readonly apiUserServiceKey!: pulumi.Output<string | undefined>;
+    /**
+     * A registered Cloudflare email address
+     */
+    public readonly email!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -62,41 +82,41 @@ export interface ProviderArgs {
     /**
      * Configure API client to always use that account
      */
-    readonly accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
     /**
      * Whether to print logs from the API client (using the default log library logger)
      */
-    readonly apiClientLogging?: pulumi.Input<boolean>;
+    apiClientLogging?: pulumi.Input<boolean>;
     /**
      * The API key for operations.
      */
-    readonly apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string>;
     /**
      * The API Token for operations.
      */
-    readonly apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string>;
     /**
      * A special Cloudflare API key good for a restricted set of endpoints
      */
-    readonly apiUserServiceKey?: pulumi.Input<string>;
+    apiUserServiceKey?: pulumi.Input<string>;
     /**
      * A registered Cloudflare email address
      */
-    readonly email?: pulumi.Input<string>;
+    email?: pulumi.Input<string>;
     /**
      * Maximum backoff period in seconds after failed API calls
      */
-    readonly maxBackoff?: pulumi.Input<number>;
+    maxBackoff?: pulumi.Input<number>;
     /**
      * Minimum backoff period in seconds after failed API calls
      */
-    readonly minBackoff?: pulumi.Input<number>;
+    minBackoff?: pulumi.Input<number>;
     /**
      * Maximum number of retries to perform when an API request fails
      */
-    readonly retries?: pulumi.Input<number>;
+    retries?: pulumi.Input<number>;
     /**
      * RPS limit to apply when making calls to the API
      */
-    readonly rps?: pulumi.Input<number>;
+    rps?: pulumi.Input<number>;
 }

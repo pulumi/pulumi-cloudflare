@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *     filter: {
  *         name: "example.com",
  *     },
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  *         lookupType: "contains",
  *         name: "example",
  *     },
- * }, { async: true }));
+ * }));
  * ```
  *
  * ```typescript
@@ -59,7 +59,7 @@ import * as utilities from "./utilities";
  *         match: "^not-",
  *         name: "example",
  *     },
- * }, { async: true }));
+ * }));
  * ```
  * ### Example usage with other resources
  *
@@ -119,7 +119,7 @@ export interface GetZonesArgs {
      * One or more values used to look up zone records. If more than one value is given all
      * values must match in order to be included, see below for full list.
      */
-    readonly filter: inputs.GetZonesFilter;
+    filter: inputs.GetZonesFilter;
 }
 
 /**

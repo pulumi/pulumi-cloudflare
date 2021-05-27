@@ -137,23 +137,23 @@ export interface PageRuleState {
     /**
      * The actions taken by the page rule, options given below.
      */
-    readonly actions?: pulumi.Input<inputs.PageRuleActions>;
+    actions?: pulumi.Input<inputs.PageRuleActions>;
     /**
      * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * Whether the page rule is active or disabled.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The URL pattern to target with the page rule.
      */
-    readonly target?: pulumi.Input<string>;
+    target?: pulumi.Input<string>;
     /**
      * The DNS zone ID to which the page rule should be added.
      */
-    readonly zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
 
 /**
@@ -163,21 +163,21 @@ export interface PageRuleArgs {
     /**
      * The actions taken by the page rule, options given below.
      */
-    readonly actions: pulumi.Input<inputs.PageRuleActions>;
+    actions: pulumi.Input<inputs.PageRuleActions>;
     /**
      * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * Whether the page rule is active or disabled.
      */
-    readonly status?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
     /**
      * The URL pattern to target with the page rule.
      */
-    readonly target: pulumi.Input<string>;
+    target: pulumi.Input<string>;
     /**
      * The DNS zone ID to which the page rule should be added.
      */
-    readonly zoneId: pulumi.Input<string>;
+    zoneId: pulumi.Input<string>;
 }
