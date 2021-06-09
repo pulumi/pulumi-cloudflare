@@ -4,13 +4,23 @@
 package examples
 
 import (
+	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
+func TestAccRecordCSharp(t *testing.T) {
+	test := getCsharpBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "record", "csharp"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func getCsharpBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	base := getBaseOptions()
+	base := getBaseOptions(t)
 	baseCsharp := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			"Pulumi.Cloudflare",

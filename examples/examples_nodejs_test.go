@@ -4,28 +4,25 @@
 package examples
 
 import (
-	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
-func TestAccRecord(t *testing.T) {
+func TestAccRecordTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "record"),
+			Dir: filepath.Join(getCwd(t), "record", "ts"),
 		})
 
 	integration.ProgramTest(t, &test)
 }
 
 func getJSBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	zoneId := getZoneId(t)
-	base := getBaseOptions()
+	base := getBaseOptions(t)
 	baseJS := base.With(integration.ProgramTestOptions{
-		Config: map[string]string{
-			"zone_id": zoneId,
-		},
+		RunUpdateTest: true,
 		Dependencies: []string{
 			"@pulumi/cloudflare",
 		},
