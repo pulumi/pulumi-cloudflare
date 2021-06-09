@@ -71,7 +71,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+     * The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
      */
     public readonly plan!: pulumi.Output<string>;
     /**
@@ -161,7 +161,7 @@ export interface ZoneState {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+     * The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
      */
     plan?: pulumi.Input<string>;
     /**
@@ -201,7 +201,7 @@ export interface ZoneArgs {
      */
     paused?: pulumi.Input<boolean>;
     /**
-     * The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+     * The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
      */
     plan?: pulumi.Input<string>;
     /**

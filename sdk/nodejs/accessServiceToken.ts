@@ -14,9 +14,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
+ * // Generate a service token that will renew if terraform is ran within 30 days of expiration
  * const myApp = new cloudflare.AccessServiceToken("my_app", {
  *     accountId: "d41d8cd98f00b204e9800998ecf8427e",
- *     name: "CI/CD app",
+ *     minDaysForRenewal: 30,
+ *     name: "CI/CD app renewed",
  * });
  * ```
  *
@@ -71,6 +73,11 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
     /**
+     * Date when the token expires
+     */
+    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    public readonly minDaysForRenewal!: pulumi.Output<number | undefined>;
+    /**
      * Friendly name of the token's intent.
      */
     public readonly name!: pulumi.Output<string>;
@@ -95,6 +102,8 @@ export class AccessServiceToken extends pulumi.CustomResource {
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["clientId"] = state ? state.clientId : undefined;
             inputs["clientSecret"] = state ? state.clientSecret : undefined;
+            inputs["expiresAt"] = state ? state.expiresAt : undefined;
+            inputs["minDaysForRenewal"] = state ? state.minDaysForRenewal : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -103,10 +112,12 @@ export class AccessServiceToken extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
+            inputs["minDaysForRenewal"] = args ? args.minDaysForRenewal : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["clientId"] = undefined /*out*/;
             inputs["clientSecret"] = undefined /*out*/;
+            inputs["expiresAt"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -132,6 +143,11 @@ export interface AccessServiceTokenState {
      */
     clientSecret?: pulumi.Input<string>;
     /**
+     * Date when the token expires
+     */
+    expiresAt?: pulumi.Input<string>;
+    minDaysForRenewal?: pulumi.Input<number>;
+    /**
      * Friendly name of the token's intent.
      */
     name?: pulumi.Input<string>;
@@ -149,6 +165,7 @@ export interface AccessServiceTokenArgs {
      * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
+    minDaysForRenewal?: pulumi.Input<number>;
     /**
      * Friendly name of the token's intent.
      */

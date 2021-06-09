@@ -18,6 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.AccessPolicyIncludeAzure> Azures;
         public readonly bool? Certificate;
         public readonly string? CommonName;
+        public readonly ImmutableArray<string> DevicePostures;
         public readonly ImmutableArray<string> EmailDomains;
         public readonly ImmutableArray<string> Emails;
         public readonly bool? Everyone;
@@ -42,6 +43,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool? certificate,
 
             string? commonName,
+
+            ImmutableArray<string> devicePostures,
 
             ImmutableArray<string> emailDomains,
 
@@ -72,6 +75,7 @@ namespace Pulumi.Cloudflare.Outputs
             Azures = azures;
             Certificate = certificate;
             CommonName = commonName;
+            DevicePostures = devicePostures;
             EmailDomains = emailDomains;
             Emails = emails;
             Everyone = everyone;

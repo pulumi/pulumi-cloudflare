@@ -42,6 +42,16 @@ namespace Pulumi.Cloudflare
     ///                     },
     ///                 },
     ///             },
+    ///             Requires = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessPolicyRequireArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
     ///         });
     ///         // Allowing `test@example.com` to access but only when coming from a
     ///         // specific IP.
@@ -64,10 +74,13 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             Requires = 
     ///             {
-    ///                 { "ips", 
+    ///                 new Cloudflare.Inputs.AccessPolicyRequireArgs
     ///                 {
-    ///                     @var.Office_ip,
-    ///                 } },
+    ///                     Ips = 
+    ///                     {
+    ///                         @var.Office_ip,
+    ///                     },
+    ///                 },
     ///             },
     ///         });
     ///     }

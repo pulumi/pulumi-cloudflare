@@ -350,6 +350,9 @@ class AccessPolicy(pulumi.CustomResource):
             decision="allow",
             includes=[cloudflare.AccessPolicyIncludeArgs(
                 emails=["test@example.com"],
+            )],
+            requires=[cloudflare.AccessPolicyRequireArgs(
+                emails=["test@example.com"],
             )])
         # Allowing `test@example.com` to access but only when coming from a
         # specific IP.
@@ -362,9 +365,9 @@ class AccessPolicy(pulumi.CustomResource):
             includes=[cloudflare.AccessPolicyIncludeArgs(
                 emails=["test@example.com"],
             )],
-            requires={
-                "ips": [var["office_ip"]],
-            })
+            requires=[cloudflare.AccessPolicyRequireArgs(
+                ips=[var["office_ip"]],
+            )])
         ```
 
         ## Import
@@ -420,6 +423,9 @@ class AccessPolicy(pulumi.CustomResource):
             decision="allow",
             includes=[cloudflare.AccessPolicyIncludeArgs(
                 emails=["test@example.com"],
+            )],
+            requires=[cloudflare.AccessPolicyRequireArgs(
+                emails=["test@example.com"],
             )])
         # Allowing `test@example.com` to access but only when coming from a
         # specific IP.
@@ -432,9 +438,9 @@ class AccessPolicy(pulumi.CustomResource):
             includes=[cloudflare.AccessPolicyIncludeArgs(
                 emails=["test@example.com"],
             )],
-            requires={
-                "ips": [var["office_ip"]],
-            })
+            requires=[cloudflare.AccessPolicyRequireArgs(
+                ips=[var["office_ip"]],
+            )])
         ```
 
         ## Import

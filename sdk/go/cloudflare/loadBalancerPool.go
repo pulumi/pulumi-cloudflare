@@ -35,11 +35,27 @@ import (
 // 				&cloudflare.LoadBalancerPoolOriginArgs{
 // 					Address: pulumi.String("192.0.2.1"),
 // 					Enabled: pulumi.Bool(false),
-// 					Name:    pulumi.String("example-1"),
+// 					Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
+// 						&cloudflare.LoadBalancerPoolOriginHeaderArgs{
+// 							Header: pulumi.String("Host"),
+// 							Values: pulumi.StringArray{
+// 								pulumi.String("example-1"),
+// 							},
+// 						},
+// 					},
+// 					Name: pulumi.String("example-1"),
 // 				},
 // 				&cloudflare.LoadBalancerPoolOriginArgs{
 // 					Address: pulumi.String("192.0.2.2"),
-// 					Name:    pulumi.String("example-2"),
+// 					Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
+// 						&cloudflare.LoadBalancerPoolOriginHeaderArgs{
+// 							Header: pulumi.String("Host"),
+// 							Values: pulumi.StringArray{
+// 								pulumi.String("example-2"),
+// 							},
+// 						},
+// 					},
+// 					Name: pulumi.String("example-2"),
 // 				},
 // 			},
 // 		})

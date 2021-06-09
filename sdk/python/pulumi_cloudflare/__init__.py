@@ -25,6 +25,7 @@ from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
+from .device_posture_rule import *
 from .filter import *
 from .firewall_rule import *
 from .get_api_token_permission_groups import *
@@ -49,6 +50,7 @@ from .provider import *
 from .rate_limit import *
 from .record import *
 from .spectrum_application import *
+from .teams_list import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
@@ -236,6 +238,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/devicePostureRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/devicePostureRule:DevicePostureRule": "DevicePostureRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/filter",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -360,6 +370,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/spectrumApplication:SpectrumApplication": "SpectrumApplication"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/teamsList",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsList:TeamsList": "TeamsList"
   }
  },
  {

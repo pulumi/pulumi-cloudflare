@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
+        /// The header name.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.LoadBalancerPoolOriginHeader> Headers;
+        /// <summary>
         /// A human-identifiable name for the origin.
         /// </summary>
         public readonly string Name;
@@ -36,12 +40,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? enabled,
 
+            ImmutableArray<Outputs.LoadBalancerPoolOriginHeader> headers,
+
             string name,
 
             double? weight)
         {
             Address = address;
             Enabled = enabled;
+            Headers = headers;
             Name = name;
             Weight = weight;
         }

@@ -191,6 +191,8 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_magic_firewall_ruleset":        {Tok: makeResource(mainMod, "MagicFirewallRuleset")},
 			"cloudflare_access_mutual_tls_certificate": {Tok: makeResource(mainMod, "AccessMutualTlsCertificate")},
 			"cloudflare_access_ca_certificate":         {Tok: makeResource(mainMod, "AccessCaCertificate")},
+			"cloudflare_device_posture_rule":           {Tok: makeResource(mainMod, "DevicePostureRule")},
+			"cloudflare_teams_list":                    {Tok: makeResource(mainMod, "TeamsList")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":                   {Tok: makeDataSource(mainMod, "getIpRanges")},

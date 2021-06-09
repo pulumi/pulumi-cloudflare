@@ -55,7 +55,7 @@ type Zone struct {
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
 	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
-	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+	// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -110,7 +110,7 @@ type zoneState struct {
 	NameServers []string `pulumi:"nameServers"`
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
 	Paused *bool `pulumi:"paused"`
-	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+	// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
 	Plan *string `pulumi:"plan"`
 	// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
 	Status *string `pulumi:"status"`
@@ -134,7 +134,7 @@ type ZoneState struct {
 	NameServers pulumi.StringArrayInput
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
 	Paused pulumi.BoolPtrInput
-	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+	// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
 	Plan pulumi.StringPtrInput
 	// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
 	Status pulumi.StringPtrInput
@@ -159,7 +159,7 @@ type zoneArgs struct {
 	JumpStart *bool `pulumi:"jumpStart"`
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
 	Paused *bool `pulumi:"paused"`
-	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+	// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
 	Plan *string `pulumi:"plan"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
 	Type *string `pulumi:"type"`
@@ -173,7 +173,7 @@ type ZoneArgs struct {
 	JumpStart pulumi.BoolPtrInput
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
 	Paused pulumi.BoolPtrInput
-	// The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.
+	// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
 	Plan pulumi.StringPtrInput
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
 	Type pulumi.StringPtrInput

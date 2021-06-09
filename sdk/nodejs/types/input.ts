@@ -51,6 +51,7 @@ export interface AccessGroupExclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
@@ -104,6 +105,7 @@ export interface AccessGroupInclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
@@ -157,6 +159,7 @@ export interface AccessGroupRequire {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
@@ -232,6 +235,7 @@ export interface AccessPolicyExclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
@@ -285,6 +289,7 @@ export interface AccessPolicyInclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
@@ -338,6 +343,7 @@ export interface AccessPolicyRequire {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
@@ -528,6 +534,40 @@ export interface CustomSslCustomSslPriority {
     priority?: pulumi.Input<number>;
 }
 
+export interface DevicePostureRuleInput {
+    /**
+     * Checks if the file should exist.
+     */
+    exists?: pulumi.Input<boolean>;
+    /**
+     * The Teams List id.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The path to the application.
+     */
+    path?: pulumi.Input<string>;
+    /**
+     * Checks if the application should be running.
+     */
+    running?: pulumi.Input<boolean>;
+    /**
+     * The sha256 hash of the file.
+     */
+    sha256?: pulumi.Input<string>;
+    /**
+     * The thumbprint of the application certificate.
+     */
+    thumbprint?: pulumi.Input<string>;
+}
+
+export interface DevicePostureRuleMatch {
+    /**
+     * The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+     */
+    platform?: pulumi.Input<string>;
+}
+
 export interface GetWafGroupsFilter {
     /**
      * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
@@ -646,6 +686,10 @@ export interface LoadBalancerPoolOrigin {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * The header name.
+     */
+    headers?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOriginHeader>[]>;
+    /**
      * A human-identifiable name for the origin.
      */
     name: pulumi.Input<string>;
@@ -653,6 +697,17 @@ export interface LoadBalancerPoolOrigin {
      * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
      */
     weight?: pulumi.Input<number>;
+}
+
+export interface LoadBalancerPoolOriginHeader {
+    /**
+     * The header name.
+     */
+    header: pulumi.Input<string>;
+    /**
+     * A list of string values for the header.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface LoadBalancerPopPool {

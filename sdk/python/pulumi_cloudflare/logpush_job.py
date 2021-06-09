@@ -15,24 +15,24 @@ class LogpushJobArgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[str],
                  destination_conf: pulumi.Input[str],
-                 ownership_challenge: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[bool]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 ownership_challenge: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogpushJob resource.
         :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
-        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone ID where the logpush job should be created.
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+               Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         """
         pulumi.set(__self__, "dataset", dataset)
         pulumi.set(__self__, "destination_conf", destination_conf)
-        pulumi.set(__self__, "ownership_challenge", ownership_challenge)
         pulumi.set(__self__, "zone_id", zone_id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -40,6 +40,8 @@ class LogpushJobArgs:
             pulumi.set(__self__, "logpull_options", logpull_options)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if ownership_challenge is not None:
+            pulumi.set(__self__, "ownership_challenge", ownership_challenge)
 
     @property
     @pulumi.getter
@@ -64,18 +66,6 @@ class LogpushJobArgs:
     @destination_conf.setter
     def destination_conf(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination_conf", value)
-
-    @property
-    @pulumi.getter(name="ownershipChallenge")
-    def ownership_challenge(self) -> pulumi.Input[str]:
-        """
-        Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-        """
-        return pulumi.get(self, "ownership_challenge")
-
-    @ownership_challenge.setter
-    def ownership_challenge(self, value: pulumi.Input[str]):
-        pulumi.set(self, "ownership_challenge", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -125,6 +115,19 @@ class LogpushJobArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="ownershipChallenge")
+    def ownership_challenge(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+        Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        """
+        return pulumi.get(self, "ownership_challenge")
+
+    @ownership_challenge.setter
+    def ownership_challenge(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ownership_challenge", value)
+
 
 @pulumi.input_type
 class _LogpushJobState:
@@ -143,7 +146,8 @@ class _LogpushJobState:
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
-        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+               Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone ID where the logpush job should be created.
         """
         if dataset is not None:
@@ -225,7 +229,8 @@ class _LogpushJobState:
     @pulumi.getter(name="ownershipChallenge")
     def ownership_challenge(self) -> Optional[pulumi.Input[str]]:
         """
-        Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+        Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         """
         return pulumi.get(self, "ownership_challenge")
 
@@ -268,7 +273,8 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
-        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+               Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone ID where the logpush job should be created.
         """
         ...
@@ -322,8 +328,6 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["logpull_options"] = logpull_options
             __props__.__dict__["name"] = name
-            if ownership_challenge is None and not opts.urn:
-                raise TypeError("Missing required property 'ownership_challenge'")
             __props__.__dict__["ownership_challenge"] = ownership_challenge
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -357,7 +361,8 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
-        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+               Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone ID where the logpush job should be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -415,9 +420,10 @@ class LogpushJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownershipChallenge")
-    def ownership_challenge(self) -> pulumi.Output[str]:
+    def ownership_challenge(self) -> pulumi.Output[Optional[str]]:
         """
-        Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+        Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         """
         return pulumi.get(self, "ownership_challenge")
 

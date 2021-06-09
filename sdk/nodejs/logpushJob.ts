@@ -53,9 +53,10 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+     * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+     * Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */
-    public readonly ownershipChallenge!: pulumi.Output<string>;
+    public readonly ownershipChallenge!: pulumi.Output<string | undefined>;
     /**
      * The zone ID where the logpush job should be created.
      */
@@ -88,9 +89,6 @@ export class LogpushJob extends pulumi.CustomResource {
             }
             if ((!args || args.destinationConf === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationConf'");
-            }
-            if ((!args || args.ownershipChallenge === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ownershipChallenge'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
@@ -135,7 +133,8 @@ export interface LogpushJobState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+     * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+     * Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */
     ownershipChallenge?: pulumi.Input<string>;
     /**
@@ -169,9 +168,10 @@ export interface LogpushJobArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+     * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+     * Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */
-    ownershipChallenge: pulumi.Input<string>;
+    ownershipChallenge?: pulumi.Input<string>;
     /**
      * The zone ID where the logpush job should be created.
      */

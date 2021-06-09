@@ -43,10 +43,11 @@ namespace Pulumi.Cloudflare
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        /// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+        /// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         /// </summary>
         [Output("ownershipChallenge")]
-        public Output<string> OwnershipChallenge { get; private set; } = null!;
+        public Output<string?> OwnershipChallenge { get; private set; } = null!;
 
         /// <summary>
         /// The zone ID where the logpush job should be created.
@@ -131,10 +132,11 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        /// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+        /// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         /// </summary>
-        [Input("ownershipChallenge", required: true)]
-        public Input<string> OwnershipChallenge { get; set; } = null!;
+        [Input("ownershipChallenge")]
+        public Input<string>? OwnershipChallenge { get; set; }
 
         /// <summary>
         /// The zone ID where the logpush job should be created.
@@ -180,7 +182,8 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        /// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+        /// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         /// </summary>
         [Input("ownershipChallenge")]
         public Input<string>? OwnershipChallenge { get; set; }

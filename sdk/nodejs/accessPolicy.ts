@@ -26,6 +26,9 @@ import * as utilities from "./utilities";
  *     includes: [{
  *         emails: ["test@example.com"],
  *     }],
+ *     requires: [{
+ *         emails: ["test@example.com"],
+ *     }],
  * });
  * // Allowing `test@example.com` to access but only when coming from a
  * // specific IP.
@@ -38,9 +41,9 @@ import * as utilities from "./utilities";
  *     includes: [{
  *         emails: ["test@example.com"],
  *     }],
- *     requires: {
+ *     requires: [{
  *         ips: [_var.office_ip],
- *     },
+ *     }],
  * });
  * ```
  *

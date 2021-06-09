@@ -218,6 +218,17 @@
                         }
                     }
                 },
+                "devicePostures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "emailDomains": {
                     "type": "array",
                     "items": {
@@ -530,6 +541,17 @@
                         }
                     }
                 },
+                "devicePostures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "emailDomains": {
                     "type": "array",
                     "items": {
@@ -836,6 +858,17 @@
                 },
                 "commonName": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "devicePostures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1321,6 +1354,17 @@
                         }
                     }
                 },
+                "devicePostures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "emailDomains": {
                     "type": "array",
                     "items": {
@@ -1633,6 +1677,17 @@
                         }
                     }
                 },
+                "devicePostures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "emailDomains": {
                     "type": "array",
                     "items": {
@@ -1939,6 +1994,17 @@
                 },
                 "commonName": {
                     "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "devicePostures": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2545,6 +2611,79 @@
             },
             "type": "object"
         },
+        "cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput": {
+            "properties": {
+                "exists": {
+                    "type": "boolean",
+                    "description": "Checks if the file should exist.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The Teams List id.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path to the application.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "running": {
+                    "type": "boolean",
+                    "description": "Checks if the application should be running.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sha256": {
+                    "type": "string",
+                    "description": "The sha256 hash of the file.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "thumbprint": {
+                    "type": "string",
+                    "description": "The thumbprint of the application certificate.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/DevicePostureRuleMatch:DevicePostureRuleMatch": {
+            "properties": {
+                "platform": {
+                    "type": "string",
+                    "description": "The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/HealthcheckHeader:HealthcheckHeader": {
             "properties": {
                 "header": {
@@ -2651,6 +2790,18 @@
                         }
                     }
                 },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/LoadBalancerPoolOriginHeader:LoadBalancerPoolOriginHeader"
+                    },
+                    "description": "The header name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "name": {
                     "type": "string",
                     "description": "A human-identifiable name for the origin.\n",
@@ -2674,6 +2825,36 @@
             "required": [
                 "address",
                 "name"
+            ]
+        },
+        "cloudflare:index/LoadBalancerPoolOriginHeader:LoadBalancerPoolOriginHeader": {
+            "properties": {
+                "header": {
+                    "type": "string",
+                    "description": "The header name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of string values for the header.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "header",
+                "values"
             ]
         },
         "cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool": {
@@ -6125,7 +6306,7 @@
             }
         },
         "cloudflare:index/accessGroup:AccessGroup": {
-            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported. Example: `auth_method = [\"swk\"]`\n* `geo` - (Optional) A list of country codes. Example: `geo = [\"US\"]`\n* `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      team = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n\n\n## Import\n\nAccess Groups can be imported using a composite ID formed of account ID and group ID.\n\n```sh\n $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID ",
+            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported. Example: `auth_method = [\"swk\"]`\n* `geo` - (Optional) A list of country codes. Example: `geo = [\"US\"]`\n* `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`\n* `device_posture` - (Optional) A list of device_posture integration_uids. Example: `device_posture = [cloudflare_device_posture_rule.my_posture_rule.id]`\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      team = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n\n\n## Import\n\nAccess Groups can be imported using a composite ID formed of account ID and group ID.\n\n```sh\n $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -6433,7 +6614,7 @@
             }
         },
         "cloudflare:index/accessPolicy:AccessPolicy": {
-            "description": "Provides a Cloudflare Access Policy resource. Access Policies are used\nin conjunction with Access Applications to restrict access to a\nparticular resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_policy_index_access_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessPolicy(ctx, \"testPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessPolicy(ctx, \"testPolicyIndex_accessPolicyAccessPolicy\", \u0026cloudflare.AccessPolicyArgs{\n\t\t\tApplicationId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t\tZoneId:        pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:          pulumi.String(\"staging policy\"),\n\t\t\tPrecedence:    pulumi.Int(1),\n\t\t\tDecision:      pulumi.String(\"allow\"),\n\t\t\tIncludes: cloudflare.AccessPolicyIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessPolicyIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessPolicyRequireArray{\n\t\t\t\tIps: cloudflare.AccessPolicyRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy\n\n```sh\n $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n # import an account level Access policy\n\n```sh\n $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n ",
+            "description": "Provides a Cloudflare Access Policy resource. Access Policies are used\nin conjunction with Access Applications to restrict access to a\nparticular resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", {\n    applicationId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"staging policy\",\n    precedence: \"1\",\n    decision: \"allow\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: [{\n        ips: [_var.office_ip],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires=[cloudflare.AccessPolicyRequireArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_policy_index_access_policy_access_policy = cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\",\n    application_id=\"cb029e245cfdd66dc8d2e570d5dd3322\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"staging policy\",\n    precedence=1,\n    decision=\"allow\",\n    includes=[cloudflare.AccessPolicyIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires=[cloudflare.AccessPolicyRequireArgs(\n        ips=[var[\"office_ip\"]],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                new Cloudflare.Inputs.AccessPolicyRequireArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy(\"testPolicyIndex/accessPolicyAccessPolicy\", new Cloudflare.AccessPolicyArgs\n        {\n            ApplicationId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"staging policy\",\n            Precedence = 1,\n            Decision = \"allow\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessPolicyIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                new Cloudflare.Inputs.AccessPolicyRequireArgs\n                {\n                    Ips = \n                    {\n                        @var.Office_ip,\n                    },\n                },\n            },\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy\n\n```sh\n $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n # import an account level Access policy\n\n```sh\n $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -6667,7 +6848,7 @@
             }
         },
         "cloudflare:index/accessServiceToken:AccessServiceToken": {
-            "description": "Access Service Tokens are used for service-to-service communication\nwhen an application is behind Cloudflare Access.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst myApp = new cloudflare.AccessServiceToken(\"my_app\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    name: \"CI/CD app\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_app = cloudflare.AccessServiceToken(\"myApp\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    name=\"CI/CD app\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myApp = new Cloudflare.AccessServiceToken(\"myApp\", new Cloudflare.AccessServiceTokenArgs\n        {\n            AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Name = \"CI/CD app\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessServiceToken(ctx, \"myApp\", \u0026cloudflare.AccessServiceTokenArgs{\n\t\t\tAccountId: pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tName:      pulumi.String(\"CI/CD app\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n~\u003e **Important:** If you are importing an Access Service Token you will not have the `client_secret` available in the state for use. The `client_secret` is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources. Access Service Tokens can be imported using a composite ID formed of account ID and Service Token ID.\n\n```sh\n $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken my_app cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n where * `cb029e245cfdd66dc8d2e570d5dd3322` - Account ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Service Token ID ",
+            "description": "Access Service Tokens are used for service-to-service communication\nwhen an application is behind Cloudflare Access.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Generate a service token that will renew if terraform is ran within 30 days of expiration\nconst myApp = new cloudflare.AccessServiceToken(\"my_app\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    minDaysForRenewal: 30,\n    name: \"CI/CD app renewed\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Generate a service token that will renew if terraform is ran within 30 days of expiration\nmy_app = cloudflare.AccessServiceToken(\"myApp\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    min_days_for_renewal=30,\n    name=\"CI/CD app renewed\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Generate a service token that will renew if terraform is ran within 30 days of expiration\n        var myApp = new Cloudflare.AccessServiceToken(\"myApp\", new Cloudflare.AccessServiceTokenArgs\n        {\n            AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            MinDaysForRenewal = 30,\n            Name = \"CI/CD app renewed\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessServiceToken(ctx, \"myApp\", \u0026cloudflare.AccessServiceTokenArgs{\n\t\t\tAccountId:         pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tMinDaysForRenewal: pulumi.Int(30),\n\t\t\tName:              pulumi.String(\"CI/CD app renewed\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n~\u003e **Important:** If you are importing an Access Service Token you will not have the `client_secret` available in the state for use. The `client_secret` is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources. Access Service Tokens can be imported using a composite ID formed of account ID and Service Token ID.\n\n```sh\n $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken my_app cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n where * `cb029e245cfdd66dc8d2e570d5dd3322` - Account ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Service Token ID ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -6681,6 +6862,13 @@
                     "type": "string",
                     "description": "A secret for interacting with Access protocols.\n"
                 },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "Date when the token expires\n"
+                },
+                "minDaysForRenewal": {
+                    "type": "integer"
+                },
                 "name": {
                     "type": "string",
                     "description": "Friendly name of the token's intent.\n"
@@ -6693,12 +6881,16 @@
             "required": [
                 "clientId",
                 "clientSecret",
+                "expiresAt",
                 "name"
             ],
             "inputProperties": {
                 "accountId": {
                     "type": "string",
                     "description": "The ID of the account where the Access Service is being created. Conflicts with `zone_id`.\n"
+                },
+                "minDaysForRenewal": {
+                    "type": "integer"
                 },
                 "name": {
                     "type": "string",
@@ -6726,6 +6918,13 @@
                     "clientSecret": {
                         "type": "string",
                         "description": "A secret for interacting with Access protocols.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "Date when the token expires\n"
+                    },
+                    "minDaysForRenewal": {
+                        "type": "integer"
                     },
                     "name": {
                         "type": "string",
@@ -7715,6 +7914,131 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The DNS zone id to the custom ssl cert should be added.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/devicePostureRule:DevicePostureRule": {
+            "description": "Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst corporateDevicesPostureRule = new cloudflare.DevicePostureRule(\"corporateDevicesPostureRule\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name: \"Corporate devices posture rule\",\n    type: \"serial_number\",\n    description: \"Device posture rule for corporate devices.\",\n    schedule: \"24h\",\n    matches: [{\n        platform: \"mac\",\n    }],\n    inputs: [{\n        id: cloudflare_teams_list.corporate_devices.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ncorporate_devices_posture_rule = cloudflare.DevicePostureRule(\"corporateDevicesPostureRule\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name=\"Corporate devices posture rule\",\n    type=\"serial_number\",\n    description=\"Device posture rule for corporate devices.\",\n    schedule=\"24h\",\n    matches=[cloudflare.DevicePostureRuleMatchArgs(\n        platform=\"mac\",\n    )],\n    inputs=[cloudflare.DevicePostureRuleInputArgs(\n        id=cloudflare_teams_list[\"corporate_devices\"][\"id\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var corporateDevicesPostureRule = new Cloudflare.DevicePostureRule(\"corporateDevicesPostureRule\", new Cloudflare.DevicePostureRuleArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Name = \"Corporate devices posture rule\",\n            Type = \"serial_number\",\n            Description = \"Device posture rule for corporate devices.\",\n            Schedule = \"24h\",\n            Matches = \n            {\n                new Cloudflare.Inputs.DevicePostureRuleMatchArgs\n                {\n                    Platform = \"mac\",\n                },\n            },\n            Inputs = \n            {\n                new Cloudflare.Inputs.DevicePostureRuleInputArgs\n                {\n                    Id = cloudflare_teams_list.Corporate_devices.Id,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDevicePostureRule(ctx, \"corporateDevicesPostureRule\", \u0026cloudflare.DevicePostureRuleArgs{\n\t\t\tAccountId:   pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tName:        pulumi.String(\"Corporate devices posture rule\"),\n\t\t\tType:        pulumi.String(\"serial_number\"),\n\t\t\tDescription: pulumi.String(\"Device posture rule for corporate devices.\"),\n\t\t\tSchedule:    pulumi.String(\"24h\"),\n\t\t\tMatches: cloudflare.DevicePostureRuleMatchArray{\n\t\t\t\t\u0026cloudflare.DevicePostureRuleMatchArgs{\n\t\t\t\t\tPlatform: pulumi.String(\"mac\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tInputs: cloudflare.DevicePostureRuleInputArray{\n\t\t\t\t\u0026cloudflare.DevicePostureRuleInputArgs{\n\t\t\t\t\tId: pulumi.Any(cloudflare_teams_list.Corporate_devices.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDevice posture rules can be imported using a composite ID formed of account ID and device posture rule ID.\n\n```sh\n $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the device posture rule should be added.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the device posture rule.\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput"
+                    },
+                    "description": "The value to be checked against. See below for reference\nstructure.\n"
+                },
+                "matches": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/DevicePostureRuleMatch:DevicePostureRuleMatch"
+                    },
+                    "description": "The conditions that the client must match to run the rule. See below for reference structure.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the device posture rule.\n"
+                },
+                "schedule": {
+                    "type": "string",
+                    "description": "Tells the client when to run the device posture check.\nMust be in the format `\"1h\"` or `\"30m\"`. Valid units are `h` and `m`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The device posture rule type. Valid values are `file`, `application`, and `serial_number`.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "inputs",
+                "type"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the device posture rule should be added.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the device posture rule.\n"
+                },
+                "inputs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput"
+                    },
+                    "description": "The value to be checked against. See below for reference\nstructure.\n"
+                },
+                "matches": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/DevicePostureRuleMatch:DevicePostureRuleMatch"
+                    },
+                    "description": "The conditions that the client must match to run the rule. See below for reference structure.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the device posture rule.\n"
+                },
+                "schedule": {
+                    "type": "string",
+                    "description": "Tells the client when to run the device posture check.\nMust be in the format `\"1h\"` or `\"30m\"`. Valid units are `h` and `m`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The device posture rule type. Valid values are `file`, `application`, and `serial_number`.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "inputs",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DevicePostureRule resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the device posture rule should be added.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the device posture rule.\n"
+                    },
+                    "inputs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput"
+                        },
+                        "description": "The value to be checked against. See below for reference\nstructure.\n"
+                    },
+                    "matches": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/DevicePostureRuleMatch:DevicePostureRuleMatch"
+                        },
+                        "description": "The conditions that the client must match to run the rule. See below for reference structure.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the device posture rule.\n"
+                    },
+                    "schedule": {
+                        "type": "string",
+                        "description": "Tells the client when to run the device posture check.\nMust be in the format `\"1h\"` or `\"30m\"`. Valid units are `h` and `m`.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The device posture rule type. Valid values are `file`, `application`, and `serial_number`.\n"
                     }
                 },
                 "type": "object"
@@ -8829,7 +9153,7 @@
             }
         },
         "cloudflare:index/loadBalancerPool:LoadBalancerPool": {
-            "description": "Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst foo = new cloudflare.LoadBalancerPool(\"foo\", {\n    description: \"example load balancer pool\",\n    enabled: false,\n    minimumOrigins: 1,\n    name: \"example-pool\",\n    notificationEmail: \"someone@example.com\",\n    origins: [\n        {\n            address: \"192.0.2.1\",\n            enabled: false,\n            name: \"example-1\",\n        },\n        {\n            address: \"192.0.2.2\",\n            name: \"example-2\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nfoo = cloudflare.LoadBalancerPool(\"foo\",\n    description=\"example load balancer pool\",\n    enabled=False,\n    minimum_origins=1,\n    name=\"example-pool\",\n    notification_email=\"someone@example.com\",\n    origins=[\n        cloudflare.LoadBalancerPoolOriginArgs(\n            address=\"192.0.2.1\",\n            enabled=False,\n            name=\"example-1\",\n        ),\n        cloudflare.LoadBalancerPoolOriginArgs(\n            address=\"192.0.2.2\",\n            name=\"example-2\",\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Cloudflare.LoadBalancerPool(\"foo\", new Cloudflare.LoadBalancerPoolArgs\n        {\n            Description = \"example load balancer pool\",\n            Enabled = false,\n            MinimumOrigins = 1,\n            Name = \"example-pool\",\n            NotificationEmail = \"someone@example.com\",\n            Origins = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Address = \"192.0.2.1\",\n                    Enabled = false,\n                    Name = \"example-1\",\n                },\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Address = \"192.0.2.2\",\n                    Name = \"example-2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewLoadBalancerPool(ctx, \"foo\", \u0026cloudflare.LoadBalancerPoolArgs{\n\t\t\tDescription:       pulumi.String(\"example load balancer pool\"),\n\t\t\tEnabled:           pulumi.Bool(false),\n\t\t\tMinimumOrigins:    pulumi.Int(1),\n\t\t\tName:              pulumi.String(\"example-pool\"),\n\t\t\tNotificationEmail: pulumi.String(\"someone@example.com\"),\n\t\t\tOrigins: cloudflare.LoadBalancerPoolOriginArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerPoolOriginArgs{\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.1\"),\n\t\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\t\tName:    pulumi.String(\"example-1\"),\n\t\t\t\t},\n\t\t\t\t\u0026cloudflare.LoadBalancerPoolOriginArgs{\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.2\"),\n\t\t\t\t\tName:    pulumi.String(\"example-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst foo = new cloudflare.LoadBalancerPool(\"foo\", {\n    description: \"example load balancer pool\",\n    enabled: false,\n    minimumOrigins: 1,\n    name: \"example-pool\",\n    notificationEmail: \"someone@example.com\",\n    origins: [\n        {\n            address: \"192.0.2.1\",\n            enabled: false,\n            headers: [{\n                header: \"Host\",\n                values: [\"example-1\"],\n            }],\n            name: \"example-1\",\n        },\n        {\n            address: \"192.0.2.2\",\n            headers: [{\n                header: \"Host\",\n                values: [\"example-2\"],\n            }],\n            name: \"example-2\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nfoo = cloudflare.LoadBalancerPool(\"foo\",\n    description=\"example load balancer pool\",\n    enabled=False,\n    minimum_origins=1,\n    name=\"example-pool\",\n    notification_email=\"someone@example.com\",\n    origins=[\n        cloudflare.LoadBalancerPoolOriginArgs(\n            address=\"192.0.2.1\",\n            enabled=False,\n            headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(\n                header=\"Host\",\n                values=[\"example-1\"],\n            )],\n            name=\"example-1\",\n        ),\n        cloudflare.LoadBalancerPoolOriginArgs(\n            address=\"192.0.2.2\",\n            headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(\n                header=\"Host\",\n                values=[\"example-2\"],\n            )],\n            name=\"example-2\",\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Cloudflare.LoadBalancerPool(\"foo\", new Cloudflare.LoadBalancerPoolArgs\n        {\n            Description = \"example load balancer pool\",\n            Enabled = false,\n            MinimumOrigins = 1,\n            Name = \"example-pool\",\n            NotificationEmail = \"someone@example.com\",\n            Origins = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Address = \"192.0.2.1\",\n                    Enabled = false,\n                    Headers = \n                    {\n                        new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs\n                        {\n                            Header = \"Host\",\n                            Values = \n                            {\n                                \"example-1\",\n                            },\n                        },\n                    },\n                    Name = \"example-1\",\n                },\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Address = \"192.0.2.2\",\n                    Headers = \n                    {\n                        new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs\n                        {\n                            Header = \"Host\",\n                            Values = \n                            {\n                                \"example-2\",\n                            },\n                        },\n                    },\n                    Name = \"example-2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewLoadBalancerPool(ctx, \"foo\", \u0026cloudflare.LoadBalancerPoolArgs{\n\t\t\tDescription:       pulumi.String(\"example load balancer pool\"),\n\t\t\tEnabled:           pulumi.Bool(false),\n\t\t\tMinimumOrigins:    pulumi.Int(1),\n\t\t\tName:              pulumi.String(\"example-pool\"),\n\t\t\tNotificationEmail: pulumi.String(\"someone@example.com\"),\n\t\t\tOrigins: cloudflare.LoadBalancerPoolOriginArray{\n\t\t\t\t\u0026cloudflare.LoadBalancerPoolOriginArgs{\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.1\"),\n\t\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\t\tHeaders: cloudflare.LoadBalancerPoolOriginHeaderArray{\n\t\t\t\t\t\t\u0026cloudflare.LoadBalancerPoolOriginHeaderArgs{\n\t\t\t\t\t\t\tHeader: pulumi.String(\"Host\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"example-1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tName: pulumi.String(\"example-1\"),\n\t\t\t\t},\n\t\t\t\t\u0026cloudflare.LoadBalancerPoolOriginArgs{\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.2\"),\n\t\t\t\t\tHeaders: cloudflare.LoadBalancerPoolOriginHeaderArray{\n\t\t\t\t\t\t\u0026cloudflare.LoadBalancerPoolOriginHeaderArgs{\n\t\t\t\t\t\t\tHeader: pulumi.String(\"Host\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"example-2\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tName: pulumi.String(\"example-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "checkRegions": {
                     "type": "array",
@@ -9105,7 +9429,7 @@
                 },
                 "ownershipChallenge": {
                     "type": "string",
-                    "description": "Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).\n"
+                    "description": "Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,\nMicrosoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -9115,7 +9439,6 @@
             "required": [
                 "dataset",
                 "destinationConf",
-                "ownershipChallenge",
                 "zoneId"
             ],
             "inputProperties": {
@@ -9141,7 +9464,7 @@
                 },
                 "ownershipChallenge": {
                     "type": "string",
-                    "description": "Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).\n"
+                    "description": "Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,\nMicrosoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -9151,7 +9474,6 @@
             "requiredInputs": [
                 "dataset",
                 "destinationConf",
-                "ownershipChallenge",
                 "zoneId"
             ],
             "stateInputs": {
@@ -9179,7 +9501,7 @@
                     },
                     "ownershipChallenge": {
                         "type": "string",
-                        "description": "Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).\n"
+                        "description": "Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,\nMicrosoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -9976,6 +10298,98 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/teamsList:TeamsList": {
+            "description": "Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst corporateDevices = new cloudflare.TeamsList(\"corporate_devices\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    description: \"Serial numbers for all corporate devices.\",\n    items: [\n        \"8GE8721REF\",\n        \"5RE8543EGG\",\n        \"1YE2880LNP\",\n    ],\n    name: \"Corporate devices\",\n    type: \"SERIAL\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ncorporate_devices = cloudflare.TeamsList(\"corporateDevices\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    description=\"Serial numbers for all corporate devices.\",\n    items=[\n        \"8GE8721REF\",\n        \"5RE8543EGG\",\n        \"1YE2880LNP\",\n    ],\n    name=\"Corporate devices\",\n    type=\"SERIAL\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var corporateDevices = new Cloudflare.TeamsList(\"corporateDevices\", new Cloudflare.TeamsListArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Description = \"Serial numbers for all corporate devices.\",\n            Items = \n            {\n                \"8GE8721REF\",\n                \"5RE8543EGG\",\n                \"1YE2880LNP\",\n            },\n            Name = \"Corporate devices\",\n            Type = \"SERIAL\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsList(ctx, \"corporateDevices\", \u0026cloudflare.TeamsListArgs{\n\t\t\tAccountId:   pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tDescription: pulumi.String(\"Serial numbers for all corporate devices.\"),\n\t\t\tItems: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"8GE8721REF\"),\n\t\t\t\tpulumi.String(\"5RE8543EGG\"),\n\t\t\t\tpulumi.String(\"1YE2880LNP\"),\n\t\t\t},\n\t\t\tName: pulumi.String(\"Corporate devices\"),\n\t\t\tType: pulumi.String(\"SERIAL\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTeams lists can be imported using a composite ID formed of account ID and teams list ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the teams list should be added.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the teams list.\n"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The items of the teams list.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the teams list.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "name",
+                "type"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the teams list should be added.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the teams list.\n"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The items of the teams list.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the teams list.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamsList resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the teams list should be added.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the teams list.\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The items of the teams list.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the teams list.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/wafGroup:WafGroup": {
             "description": "Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst honeyPot = new cloudflare.WafGroup(\"honey_pot\", {\n    groupId: \"de677e5818985db1285d0e80225f06e5\",\n    mode: \"on\",\n    zoneId: \"ae36f999674d196762efcc5abb06b345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nhoney_pot = cloudflare.WafGroup(\"honeyPot\",\n    group_id=\"de677e5818985db1285d0e80225f06e5\",\n    mode=\"on\",\n    zone_id=\"ae36f999674d196762efcc5abb06b345\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var honeyPot = new Cloudflare.WafGroup(\"honeyPot\", new Cloudflare.WafGroupArgs\n        {\n            GroupId = \"de677e5818985db1285d0e80225f06e5\",\n            Mode = \"on\",\n            ZoneId = \"ae36f999674d196762efcc5abb06b345\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWafGroup(ctx, \"honeyPot\", \u0026cloudflare.WafGroupArgs{\n\t\t\tGroupId: pulumi.String(\"de677e5818985db1285d0e80225f06e5\"),\n\t\t\tMode:    pulumi.String(\"on\"),\n\t\t\tZoneId:  pulumi.String(\"ae36f999674d196762efcc5abb06b345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nWAF Rule Groups can be imported using a composite ID formed of zone ID and the WAF Rule Group ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/wafGroup:WafGroup honey_pot ae36f999674d196762efcc5abb06b345/de677e5818985db1285d0e80225f06e5\n```\n\n ",
             "properties": {
@@ -10699,7 +11113,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.\n"
+                    "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.\n"
                 },
                 "status": {
                     "type": "string",
@@ -10750,7 +11164,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.\n"
+                    "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.\n"
                 },
                 "type": {
                     "type": "string",
@@ -10792,7 +11206,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "The name of the commercial plan to apply to the zone, can be updated once the one is created; one of `free`, `pro`, `business`, `enterprise`.\n"
+                        "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.\n"
                     },
                     "status": {
                         "type": "string",
