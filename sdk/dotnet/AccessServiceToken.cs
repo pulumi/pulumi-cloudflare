@@ -23,10 +23,12 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Generate a service token that will renew if terraform is ran within 30 days of expiration
     ///         var myApp = new Cloudflare.AccessServiceToken("myApp", new Cloudflare.AccessServiceTokenArgs
     ///         {
     ///             AccountId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///             Name = "CI/CD app",
+    ///             MinDaysForRenewal = 30,
+    ///             Name = "CI/CD app renewed",
     ///         });
     ///     }
     /// 
@@ -63,6 +65,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// Date when the token expires
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string> ExpiresAt { get; private set; } = null!;
+
+        [Output("minDaysForRenewal")]
+        public Output<int?> MinDaysForRenewal { get; private set; } = null!;
 
         /// <summary>
         /// Friendly name of the token's intent.
@@ -128,6 +139,9 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        [Input("minDaysForRenewal")]
+        public Input<int>? MinDaysForRenewal { get; set; }
+
         /// <summary>
         /// Friendly name of the token's intent.
         /// </summary>
@@ -164,6 +178,15 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
+        /// Date when the token expires
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
+
+        [Input("minDaysForRenewal")]
+        public Input<int>? MinDaysForRenewal { get; set; }
 
         /// <summary>
         /// Friendly name of the token's intent.

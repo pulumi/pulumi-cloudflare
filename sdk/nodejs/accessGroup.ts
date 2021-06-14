@@ -63,6 +63,7 @@ import * as utilities from "./utilities";
  * Custom values are also supported. Example: `authMethod = ["swk"]`
  * * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
  * * `loginMethod` - (Optional) A list of identity provider ids. Example: `loginMethod = [cloudflare_access_identity_provider.my_idp.id]`
+ * * `devicePosture` - (Optional) A list of devicePosture integration_uids. Example: `devicePosture = [cloudflare_device_posture_rule.my_posture_rule.id]`
  * * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
  * * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
  * * `azure` - (Optional) Use Azure AD as the `include` condition. Example:

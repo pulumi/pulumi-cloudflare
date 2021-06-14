@@ -298,6 +298,7 @@ class AccessGroup(pulumi.CustomResource):
         Custom values are also supported. Example: `auth_method = ["swk"]`
         * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
         * `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`
+        * `device_posture` - (Optional) A list of device_posture integration_uids. Example: `device_posture = [cloudflare_device_posture_rule.my_posture_rule.id]`
         * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
         * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
         * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
@@ -389,6 +390,7 @@ class AccessGroup(pulumi.CustomResource):
         Custom values are also supported. Example: `auth_method = ["swk"]`
         * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
         * `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`
+        * `device_posture` - (Optional) A list of device_posture integration_uids. Example: `device_posture = [cloudflare_device_posture_rule.my_posture_rule.id]`
         * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
         * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
         * `azure` - (Optional) Use Azure AD as the `include` condition. Example:

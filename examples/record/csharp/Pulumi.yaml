@@ -1,0 +1,3 @@
+name: cloudflare-record-csharp
+runtime: dotnet
+description: A simple addition of a DNS record to a CloudFlare zone in CSharp

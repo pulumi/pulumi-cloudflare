@@ -35,11 +35,33 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     Address = "192.0.2.1",
     ///                     Enabled = false,
+    ///                     Headers = 
+    ///                     {
+    ///                         new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
+    ///                         {
+    ///                             Header = "Host",
+    ///                             Values = 
+    ///                             {
+    ///                                 "example-1",
+    ///                             },
+    ///                         },
+    ///                     },
     ///                     Name = "example-1",
     ///                 },
     ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
     ///                 {
     ///                     Address = "192.0.2.2",
+    ///                     Headers = 
+    ///                     {
+    ///                         new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs
+    ///                         {
+    ///                             Header = "Host",
+    ///                             Values = 
+    ///                             {
+    ///                                 "example-2",
+    ///                             },
+    ///                         },
+    ///                     },
     ///                     Name = "example-2",
     ///                 },
     ///             },

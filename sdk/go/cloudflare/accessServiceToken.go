@@ -27,8 +27,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewAccessServiceToken(ctx, "myApp", &cloudflare.AccessServiceTokenArgs{
-// 			AccountId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:      pulumi.String("CI/CD app"),
+// 			AccountId:         pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 			MinDaysForRenewal: pulumi.Int(30),
+// 			Name:              pulumi.String("CI/CD app renewed"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -56,6 +57,9 @@ type AccessServiceToken struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// A secret for interacting with Access protocols.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	// Date when the token expires
+	ExpiresAt         pulumi.StringOutput `pulumi:"expiresAt"`
+	MinDaysForRenewal pulumi.IntPtrOutput `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
@@ -100,6 +104,9 @@ type accessServiceTokenState struct {
 	ClientId *string `pulumi:"clientId"`
 	// A secret for interacting with Access protocols.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Date when the token expires
+	ExpiresAt         *string `pulumi:"expiresAt"`
+	MinDaysForRenewal *int    `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name *string `pulumi:"name"`
 	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
@@ -113,6 +120,9 @@ type AccessServiceTokenState struct {
 	ClientId pulumi.StringPtrInput
 	// A secret for interacting with Access protocols.
 	ClientSecret pulumi.StringPtrInput
+	// Date when the token expires
+	ExpiresAt         pulumi.StringPtrInput
+	MinDaysForRenewal pulumi.IntPtrInput
 	// Friendly name of the token's intent.
 	Name pulumi.StringPtrInput
 	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
@@ -125,7 +135,8 @@ func (AccessServiceTokenState) ElementType() reflect.Type {
 
 type accessServiceTokenArgs struct {
 	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
-	AccountId *string `pulumi:"accountId"`
+	AccountId         *string `pulumi:"accountId"`
+	MinDaysForRenewal *int    `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name string `pulumi:"name"`
 	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
@@ -135,7 +146,8 @@ type accessServiceTokenArgs struct {
 // The set of arguments for constructing a AccessServiceToken resource.
 type AccessServiceTokenArgs struct {
 	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
-	AccountId pulumi.StringPtrInput
+	AccountId         pulumi.StringPtrInput
+	MinDaysForRenewal pulumi.IntPtrInput
 	// Friendly name of the token's intent.
 	Name pulumi.StringInput
 	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.

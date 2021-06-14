@@ -194,6 +194,7 @@ type AccessGroupExclude struct {
 	Azures               []AccessGroupExcludeAzure  `pulumi:"azures"`
 	Certificate          *bool                      `pulumi:"certificate"`
 	CommonName           *string                    `pulumi:"commonName"`
+	DevicePostures       []string                   `pulumi:"devicePostures"`
 	EmailDomains         []string                   `pulumi:"emailDomains"`
 	Emails               []string                   `pulumi:"emails"`
 	Everyone             *bool                      `pulumi:"everyone"`
@@ -225,6 +226,7 @@ type AccessGroupExcludeArgs struct {
 	Azures               AccessGroupExcludeAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput            `pulumi:"devicePostures"`
 	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
@@ -308,6 +310,10 @@ func (o AccessGroupExcludeOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessGroupExcludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
@@ -902,6 +908,7 @@ type AccessGroupInclude struct {
 	Azures               []AccessGroupIncludeAzure  `pulumi:"azures"`
 	Certificate          *bool                      `pulumi:"certificate"`
 	CommonName           *string                    `pulumi:"commonName"`
+	DevicePostures       []string                   `pulumi:"devicePostures"`
 	EmailDomains         []string                   `pulumi:"emailDomains"`
 	Emails               []string                   `pulumi:"emails"`
 	Everyone             *bool                      `pulumi:"everyone"`
@@ -933,6 +940,7 @@ type AccessGroupIncludeArgs struct {
 	Azures               AccessGroupIncludeAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput            `pulumi:"devicePostures"`
 	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
@@ -1016,6 +1024,10 @@ func (o AccessGroupIncludeOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessGroupIncludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
@@ -1610,6 +1622,7 @@ type AccessGroupRequire struct {
 	Azures               []AccessGroupRequireAzure  `pulumi:"azures"`
 	Certificate          *bool                      `pulumi:"certificate"`
 	CommonName           *string                    `pulumi:"commonName"`
+	DevicePostures       []string                   `pulumi:"devicePostures"`
 	EmailDomains         []string                   `pulumi:"emailDomains"`
 	Emails               []string                   `pulumi:"emails"`
 	Everyone             *bool                      `pulumi:"everyone"`
@@ -1641,6 +1654,7 @@ type AccessGroupRequireArgs struct {
 	Azures               AccessGroupRequireAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput            `pulumi:"devicePostures"`
 	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
@@ -1724,6 +1738,10 @@ func (o AccessGroupRequireOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessGroupRequireOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupRequireOutput) DevicePostures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupRequireOutput) EmailDomains() pulumi.StringArrayOutput {
@@ -2520,6 +2538,7 @@ type AccessPolicyExclude struct {
 	Azures               []AccessPolicyExcludeAzure  `pulumi:"azures"`
 	Certificate          *bool                       `pulumi:"certificate"`
 	CommonName           *string                     `pulumi:"commonName"`
+	DevicePostures       []string                    `pulumi:"devicePostures"`
 	EmailDomains         []string                    `pulumi:"emailDomains"`
 	Emails               []string                    `pulumi:"emails"`
 	Everyone             *bool                       `pulumi:"everyone"`
@@ -2551,6 +2570,7 @@ type AccessPolicyExcludeArgs struct {
 	Azures               AccessPolicyExcludeAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput             `pulumi:"devicePostures"`
 	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
@@ -2634,6 +2654,10 @@ func (o AccessPolicyExcludeOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessPolicyExcludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
@@ -3228,6 +3252,7 @@ type AccessPolicyInclude struct {
 	Azures               []AccessPolicyIncludeAzure  `pulumi:"azures"`
 	Certificate          *bool                       `pulumi:"certificate"`
 	CommonName           *string                     `pulumi:"commonName"`
+	DevicePostures       []string                    `pulumi:"devicePostures"`
 	EmailDomains         []string                    `pulumi:"emailDomains"`
 	Emails               []string                    `pulumi:"emails"`
 	Everyone             *bool                       `pulumi:"everyone"`
@@ -3259,6 +3284,7 @@ type AccessPolicyIncludeArgs struct {
 	Azures               AccessPolicyIncludeAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput             `pulumi:"devicePostures"`
 	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
@@ -3342,6 +3368,10 @@ func (o AccessPolicyIncludeOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessPolicyIncludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
@@ -3936,6 +3966,7 @@ type AccessPolicyRequire struct {
 	Azures               []AccessPolicyRequireAzure  `pulumi:"azures"`
 	Certificate          *bool                       `pulumi:"certificate"`
 	CommonName           *string                     `pulumi:"commonName"`
+	DevicePostures       []string                    `pulumi:"devicePostures"`
 	EmailDomains         []string                    `pulumi:"emailDomains"`
 	Emails               []string                    `pulumi:"emails"`
 	Everyone             *bool                       `pulumi:"everyone"`
@@ -3967,6 +3998,7 @@ type AccessPolicyRequireArgs struct {
 	Azures               AccessPolicyRequireAzureArrayInput  `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
 	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput             `pulumi:"devicePostures"`
 	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
 	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
 	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
@@ -4050,6 +4082,10 @@ func (o AccessPolicyRequireOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessPolicyRequireOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyRequireOutput) DevicePostures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.DevicePostures }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyRequireOutput) EmailDomains() pulumi.StringArrayOutput {
@@ -6105,6 +6141,245 @@ func (o CustomSslCustomSslPriorityArrayOutput) Index(i pulumi.IntInput) CustomSs
 	}).(CustomSslCustomSslPriorityOutput)
 }
 
+type DevicePostureRuleInputType struct {
+	// Checks if the file should exist.
+	Exists *bool `pulumi:"exists"`
+	// The Teams List id.
+	Id *string `pulumi:"id"`
+	// The path to the application.
+	Path *string `pulumi:"path"`
+	// Checks if the application should be running.
+	Running *bool `pulumi:"running"`
+	// The sha256 hash of the file.
+	Sha256 *string `pulumi:"sha256"`
+	// The thumbprint of the application certificate.
+	Thumbprint *string `pulumi:"thumbprint"`
+}
+
+// DevicePostureRuleInputTypeInput is an input type that accepts DevicePostureRuleInputTypeArgs and DevicePostureRuleInputTypeOutput values.
+// You can construct a concrete instance of `DevicePostureRuleInputTypeInput` via:
+//
+//          DevicePostureRuleInputTypeArgs{...}
+type DevicePostureRuleInputTypeInput interface {
+	pulumi.Input
+
+	ToDevicePostureRuleInputTypeOutput() DevicePostureRuleInputTypeOutput
+	ToDevicePostureRuleInputTypeOutputWithContext(context.Context) DevicePostureRuleInputTypeOutput
+}
+
+type DevicePostureRuleInputTypeArgs struct {
+	// Checks if the file should exist.
+	Exists pulumi.BoolPtrInput `pulumi:"exists"`
+	// The Teams List id.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The path to the application.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Checks if the application should be running.
+	Running pulumi.BoolPtrInput `pulumi:"running"`
+	// The sha256 hash of the file.
+	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
+	// The thumbprint of the application certificate.
+	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
+}
+
+func (DevicePostureRuleInputTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePostureRuleInputType)(nil)).Elem()
+}
+
+func (i DevicePostureRuleInputTypeArgs) ToDevicePostureRuleInputTypeOutput() DevicePostureRuleInputTypeOutput {
+	return i.ToDevicePostureRuleInputTypeOutputWithContext(context.Background())
+}
+
+func (i DevicePostureRuleInputTypeArgs) ToDevicePostureRuleInputTypeOutputWithContext(ctx context.Context) DevicePostureRuleInputTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureRuleInputTypeOutput)
+}
+
+// DevicePostureRuleInputTypeArrayInput is an input type that accepts DevicePostureRuleInputTypeArray and DevicePostureRuleInputTypeArrayOutput values.
+// You can construct a concrete instance of `DevicePostureRuleInputTypeArrayInput` via:
+//
+//          DevicePostureRuleInputTypeArray{ DevicePostureRuleInputTypeArgs{...} }
+type DevicePostureRuleInputTypeArrayInput interface {
+	pulumi.Input
+
+	ToDevicePostureRuleInputTypeArrayOutput() DevicePostureRuleInputTypeArrayOutput
+	ToDevicePostureRuleInputTypeArrayOutputWithContext(context.Context) DevicePostureRuleInputTypeArrayOutput
+}
+
+type DevicePostureRuleInputTypeArray []DevicePostureRuleInputTypeInput
+
+func (DevicePostureRuleInputTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevicePostureRuleInputType)(nil)).Elem()
+}
+
+func (i DevicePostureRuleInputTypeArray) ToDevicePostureRuleInputTypeArrayOutput() DevicePostureRuleInputTypeArrayOutput {
+	return i.ToDevicePostureRuleInputTypeArrayOutputWithContext(context.Background())
+}
+
+func (i DevicePostureRuleInputTypeArray) ToDevicePostureRuleInputTypeArrayOutputWithContext(ctx context.Context) DevicePostureRuleInputTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureRuleInputTypeArrayOutput)
+}
+
+type DevicePostureRuleInputTypeOutput struct{ *pulumi.OutputState }
+
+func (DevicePostureRuleInputTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePostureRuleInputType)(nil)).Elem()
+}
+
+func (o DevicePostureRuleInputTypeOutput) ToDevicePostureRuleInputTypeOutput() DevicePostureRuleInputTypeOutput {
+	return o
+}
+
+func (o DevicePostureRuleInputTypeOutput) ToDevicePostureRuleInputTypeOutputWithContext(ctx context.Context) DevicePostureRuleInputTypeOutput {
+	return o
+}
+
+// Checks if the file should exist.
+func (o DevicePostureRuleInputTypeOutput) Exists() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Exists }).(pulumi.BoolPtrOutput)
+}
+
+// The Teams List id.
+func (o DevicePostureRuleInputTypeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The path to the application.
+func (o DevicePostureRuleInputTypeOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Checks if the application should be running.
+func (o DevicePostureRuleInputTypeOutput) Running() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Running }).(pulumi.BoolPtrOutput)
+}
+
+// The sha256 hash of the file.
+func (o DevicePostureRuleInputTypeOutput) Sha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Sha256 }).(pulumi.StringPtrOutput)
+}
+
+// The thumbprint of the application certificate.
+func (o DevicePostureRuleInputTypeOutput) Thumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
+}
+
+type DevicePostureRuleInputTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (DevicePostureRuleInputTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevicePostureRuleInputType)(nil)).Elem()
+}
+
+func (o DevicePostureRuleInputTypeArrayOutput) ToDevicePostureRuleInputTypeArrayOutput() DevicePostureRuleInputTypeArrayOutput {
+	return o
+}
+
+func (o DevicePostureRuleInputTypeArrayOutput) ToDevicePostureRuleInputTypeArrayOutputWithContext(ctx context.Context) DevicePostureRuleInputTypeArrayOutput {
+	return o
+}
+
+func (o DevicePostureRuleInputTypeArrayOutput) Index(i pulumi.IntInput) DevicePostureRuleInputTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevicePostureRuleInputType {
+		return vs[0].([]DevicePostureRuleInputType)[vs[1].(int)]
+	}).(DevicePostureRuleInputTypeOutput)
+}
+
+type DevicePostureRuleMatch struct {
+	// The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+	Platform *string `pulumi:"platform"`
+}
+
+// DevicePostureRuleMatchInput is an input type that accepts DevicePostureRuleMatchArgs and DevicePostureRuleMatchOutput values.
+// You can construct a concrete instance of `DevicePostureRuleMatchInput` via:
+//
+//          DevicePostureRuleMatchArgs{...}
+type DevicePostureRuleMatchInput interface {
+	pulumi.Input
+
+	ToDevicePostureRuleMatchOutput() DevicePostureRuleMatchOutput
+	ToDevicePostureRuleMatchOutputWithContext(context.Context) DevicePostureRuleMatchOutput
+}
+
+type DevicePostureRuleMatchArgs struct {
+	// The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+	Platform pulumi.StringPtrInput `pulumi:"platform"`
+}
+
+func (DevicePostureRuleMatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePostureRuleMatch)(nil)).Elem()
+}
+
+func (i DevicePostureRuleMatchArgs) ToDevicePostureRuleMatchOutput() DevicePostureRuleMatchOutput {
+	return i.ToDevicePostureRuleMatchOutputWithContext(context.Background())
+}
+
+func (i DevicePostureRuleMatchArgs) ToDevicePostureRuleMatchOutputWithContext(ctx context.Context) DevicePostureRuleMatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureRuleMatchOutput)
+}
+
+// DevicePostureRuleMatchArrayInput is an input type that accepts DevicePostureRuleMatchArray and DevicePostureRuleMatchArrayOutput values.
+// You can construct a concrete instance of `DevicePostureRuleMatchArrayInput` via:
+//
+//          DevicePostureRuleMatchArray{ DevicePostureRuleMatchArgs{...} }
+type DevicePostureRuleMatchArrayInput interface {
+	pulumi.Input
+
+	ToDevicePostureRuleMatchArrayOutput() DevicePostureRuleMatchArrayOutput
+	ToDevicePostureRuleMatchArrayOutputWithContext(context.Context) DevicePostureRuleMatchArrayOutput
+}
+
+type DevicePostureRuleMatchArray []DevicePostureRuleMatchInput
+
+func (DevicePostureRuleMatchArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevicePostureRuleMatch)(nil)).Elem()
+}
+
+func (i DevicePostureRuleMatchArray) ToDevicePostureRuleMatchArrayOutput() DevicePostureRuleMatchArrayOutput {
+	return i.ToDevicePostureRuleMatchArrayOutputWithContext(context.Background())
+}
+
+func (i DevicePostureRuleMatchArray) ToDevicePostureRuleMatchArrayOutputWithContext(ctx context.Context) DevicePostureRuleMatchArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureRuleMatchArrayOutput)
+}
+
+type DevicePostureRuleMatchOutput struct{ *pulumi.OutputState }
+
+func (DevicePostureRuleMatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePostureRuleMatch)(nil)).Elem()
+}
+
+func (o DevicePostureRuleMatchOutput) ToDevicePostureRuleMatchOutput() DevicePostureRuleMatchOutput {
+	return o
+}
+
+func (o DevicePostureRuleMatchOutput) ToDevicePostureRuleMatchOutputWithContext(ctx context.Context) DevicePostureRuleMatchOutput {
+	return o
+}
+
+// The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+func (o DevicePostureRuleMatchOutput) Platform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleMatch) *string { return v.Platform }).(pulumi.StringPtrOutput)
+}
+
+type DevicePostureRuleMatchArrayOutput struct{ *pulumi.OutputState }
+
+func (DevicePostureRuleMatchArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevicePostureRuleMatch)(nil)).Elem()
+}
+
+func (o DevicePostureRuleMatchArrayOutput) ToDevicePostureRuleMatchArrayOutput() DevicePostureRuleMatchArrayOutput {
+	return o
+}
+
+func (o DevicePostureRuleMatchArrayOutput) ToDevicePostureRuleMatchArrayOutputWithContext(ctx context.Context) DevicePostureRuleMatchArrayOutput {
+	return o
+}
+
+func (o DevicePostureRuleMatchArrayOutput) Index(i pulumi.IntInput) DevicePostureRuleMatchOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevicePostureRuleMatch {
+		return vs[0].([]DevicePostureRuleMatch)[vs[1].(int)]
+	}).(DevicePostureRuleMatchOutput)
+}
+
 type HealthcheckHeader struct {
 	// The header name.
 	Header string `pulumi:"header"`
@@ -6428,6 +6703,8 @@ type LoadBalancerPoolOrigin struct {
 	Address string `pulumi:"address"`
 	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
 	Enabled *bool `pulumi:"enabled"`
+	// The header name.
+	Headers []LoadBalancerPoolOriginHeader `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name string `pulumi:"name"`
 	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
@@ -6450,6 +6727,8 @@ type LoadBalancerPoolOriginArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The header name.
+	Headers LoadBalancerPoolOriginHeaderArrayInput `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
@@ -6517,6 +6796,11 @@ func (o LoadBalancerPoolOriginOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOrigin) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The header name.
+func (o LoadBalancerPoolOriginOutput) Headers() LoadBalancerPoolOriginHeaderArrayOutput {
+	return o.ApplyT(func(v LoadBalancerPoolOrigin) []LoadBalancerPoolOriginHeader { return v.Headers }).(LoadBalancerPoolOriginHeaderArrayOutput)
+}
+
 // A human-identifiable name for the origin.
 func (o LoadBalancerPoolOriginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOrigin) string { return v.Name }).(pulumi.StringOutput)
@@ -6545,6 +6829,112 @@ func (o LoadBalancerPoolOriginArrayOutput) Index(i pulumi.IntInput) LoadBalancer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerPoolOrigin {
 		return vs[0].([]LoadBalancerPoolOrigin)[vs[1].(int)]
 	}).(LoadBalancerPoolOriginOutput)
+}
+
+type LoadBalancerPoolOriginHeader struct {
+	// The header name.
+	Header string `pulumi:"header"`
+	// A list of string values for the header.
+	Values []string `pulumi:"values"`
+}
+
+// LoadBalancerPoolOriginHeaderInput is an input type that accepts LoadBalancerPoolOriginHeaderArgs and LoadBalancerPoolOriginHeaderOutput values.
+// You can construct a concrete instance of `LoadBalancerPoolOriginHeaderInput` via:
+//
+//          LoadBalancerPoolOriginHeaderArgs{...}
+type LoadBalancerPoolOriginHeaderInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolOriginHeaderOutput() LoadBalancerPoolOriginHeaderOutput
+	ToLoadBalancerPoolOriginHeaderOutputWithContext(context.Context) LoadBalancerPoolOriginHeaderOutput
+}
+
+type LoadBalancerPoolOriginHeaderArgs struct {
+	// The header name.
+	Header pulumi.StringInput `pulumi:"header"`
+	// A list of string values for the header.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (LoadBalancerPoolOriginHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPoolOriginHeader)(nil)).Elem()
+}
+
+func (i LoadBalancerPoolOriginHeaderArgs) ToLoadBalancerPoolOriginHeaderOutput() LoadBalancerPoolOriginHeaderOutput {
+	return i.ToLoadBalancerPoolOriginHeaderOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPoolOriginHeaderArgs) ToLoadBalancerPoolOriginHeaderOutputWithContext(ctx context.Context) LoadBalancerPoolOriginHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolOriginHeaderOutput)
+}
+
+// LoadBalancerPoolOriginHeaderArrayInput is an input type that accepts LoadBalancerPoolOriginHeaderArray and LoadBalancerPoolOriginHeaderArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerPoolOriginHeaderArrayInput` via:
+//
+//          LoadBalancerPoolOriginHeaderArray{ LoadBalancerPoolOriginHeaderArgs{...} }
+type LoadBalancerPoolOriginHeaderArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolOriginHeaderArrayOutput() LoadBalancerPoolOriginHeaderArrayOutput
+	ToLoadBalancerPoolOriginHeaderArrayOutputWithContext(context.Context) LoadBalancerPoolOriginHeaderArrayOutput
+}
+
+type LoadBalancerPoolOriginHeaderArray []LoadBalancerPoolOriginHeaderInput
+
+func (LoadBalancerPoolOriginHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerPoolOriginHeader)(nil)).Elem()
+}
+
+func (i LoadBalancerPoolOriginHeaderArray) ToLoadBalancerPoolOriginHeaderArrayOutput() LoadBalancerPoolOriginHeaderArrayOutput {
+	return i.ToLoadBalancerPoolOriginHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPoolOriginHeaderArray) ToLoadBalancerPoolOriginHeaderArrayOutputWithContext(ctx context.Context) LoadBalancerPoolOriginHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolOriginHeaderArrayOutput)
+}
+
+type LoadBalancerPoolOriginHeaderOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPoolOriginHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPoolOriginHeader)(nil)).Elem()
+}
+
+func (o LoadBalancerPoolOriginHeaderOutput) ToLoadBalancerPoolOriginHeaderOutput() LoadBalancerPoolOriginHeaderOutput {
+	return o
+}
+
+func (o LoadBalancerPoolOriginHeaderOutput) ToLoadBalancerPoolOriginHeaderOutputWithContext(ctx context.Context) LoadBalancerPoolOriginHeaderOutput {
+	return o
+}
+
+// The header name.
+func (o LoadBalancerPoolOriginHeaderOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v LoadBalancerPoolOriginHeader) string { return v.Header }).(pulumi.StringOutput)
+}
+
+// A list of string values for the header.
+func (o LoadBalancerPoolOriginHeaderOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LoadBalancerPoolOriginHeader) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type LoadBalancerPoolOriginHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPoolOriginHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerPoolOriginHeader)(nil)).Elem()
+}
+
+func (o LoadBalancerPoolOriginHeaderArrayOutput) ToLoadBalancerPoolOriginHeaderArrayOutput() LoadBalancerPoolOriginHeaderArrayOutput {
+	return o
+}
+
+func (o LoadBalancerPoolOriginHeaderArrayOutput) ToLoadBalancerPoolOriginHeaderArrayOutputWithContext(ctx context.Context) LoadBalancerPoolOriginHeaderArrayOutput {
+	return o
+}
+
+func (o LoadBalancerPoolOriginHeaderArrayOutput) Index(i pulumi.IntInput) LoadBalancerPoolOriginHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerPoolOriginHeader {
+		return vs[0].([]LoadBalancerPoolOriginHeader)[vs[1].(int)]
+	}).(LoadBalancerPoolOriginHeaderOutput)
 }
 
 type LoadBalancerPopPool struct {
@@ -16115,6 +16505,10 @@ func init() {
 	pulumi.RegisterOutputType(CustomSslCustomSslOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityArrayOutput{})
+	pulumi.RegisterOutputType(DevicePostureRuleInputTypeOutput{})
+	pulumi.RegisterOutputType(DevicePostureRuleInputTypeArrayOutput{})
+	pulumi.RegisterOutputType(DevicePostureRuleMatchOutput{})
+	pulumi.RegisterOutputType(DevicePostureRuleMatchArrayOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderArrayOutput{})
 	pulumi.RegisterOutputType(IpListItemOutput{})
@@ -16123,6 +16517,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolOriginHeaderOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolOriginHeaderArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPopPoolOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPopPoolArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRegionPoolOutput{})

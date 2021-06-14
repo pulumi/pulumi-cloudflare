@@ -25,6 +25,7 @@ export * from "./customHostname";
 export * from "./customHostnameFallbackOrigin";
 export * from "./customPages";
 export * from "./customSsl";
+export * from "./devicePostureRule";
 export * from "./filter";
 export * from "./firewallRule";
 export * from "./getApiTokenPermissionGroups";
@@ -49,6 +50,7 @@ export * from "./provider";
 export * from "./rateLimit";
 export * from "./record";
 export * from "./spectrumApplication";
+export * from "./teamsList";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
@@ -93,6 +95,7 @@ import { CustomHostname } from "./customHostname";
 import { CustomHostnameFallbackOrigin } from "./customHostnameFallbackOrigin";
 import { CustomPages } from "./customPages";
 import { CustomSsl } from "./customSsl";
+import { DevicePostureRule } from "./devicePostureRule";
 import { Filter } from "./filter";
 import { FirewallRule } from "./firewallRule";
 import { Healthcheck } from "./healthcheck";
@@ -109,6 +112,7 @@ import { PageRule } from "./pageRule";
 import { RateLimit } from "./rateLimit";
 import { Record } from "./record";
 import { SpectrumApplication } from "./spectrumApplication";
+import { TeamsList } from "./teamsList";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
@@ -167,6 +171,8 @@ const _module = {
                 return new CustomPages(name, <any>undefined, { urn })
             case "cloudflare:index/customSsl:CustomSsl":
                 return new CustomSsl(name, <any>undefined, { urn })
+            case "cloudflare:index/devicePostureRule:DevicePostureRule":
+                return new DevicePostureRule(name, <any>undefined, { urn })
             case "cloudflare:index/filter:Filter":
                 return new Filter(name, <any>undefined, { urn })
             case "cloudflare:index/firewallRule:FirewallRule":
@@ -199,6 +205,8 @@ const _module = {
                 return new Record(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
                 return new SpectrumApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsList:TeamsList":
+                return new TeamsList(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
                 return new WafGroup(name, <any>undefined, { urn })
             case "cloudflare:index/wafOverride:WafOverride":
@@ -250,6 +258,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _mod
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/filter", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/firewallRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module)
@@ -266,6 +275,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)

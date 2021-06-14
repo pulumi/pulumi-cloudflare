@@ -24,6 +24,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        [Input("headers")]
+        private InputList<Inputs.LoadBalancerPoolOriginHeaderArgs>? _headers;
+
+        /// <summary>
+        /// The header name.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerPoolOriginHeaderArgs> Headers
+        {
+            get => _headers ?? (_headers = new InputList<Inputs.LoadBalancerPoolOriginHeaderArgs>());
+            set => _headers = value;
+        }
+
         /// <summary>
         /// A human-identifiable name for the origin.
         /// </summary>

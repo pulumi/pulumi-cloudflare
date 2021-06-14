@@ -24,10 +24,18 @@ import * as utilities from "./utilities";
  *         {
  *             address: "192.0.2.1",
  *             enabled: false,
+ *             headers: [{
+ *                 header: "Host",
+ *                 values: ["example-1"],
+ *             }],
  *             name: "example-1",
  *         },
  *         {
  *             address: "192.0.2.2",
+ *             headers: [{
+ *                 header: "Host",
+ *                 values: ["example-2"],
+ *             }],
  *             name: "example-2",
  *         },
  *     ],

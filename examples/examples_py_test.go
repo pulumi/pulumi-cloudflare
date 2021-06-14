@@ -10,9 +10,19 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
+func TestAccRecordPy(t *testing.T) {
+	test := getPythonBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "record", "python"),
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	base := getBaseOptions()
+	base := getBaseOptions(t)
 	basePython := base.With(integration.ProgramTestOptions{
+		RunUpdateTest: true,
 		Dependencies: []string{
 			filepath.Join("..", "sdk", "python", "bin"),
 		},

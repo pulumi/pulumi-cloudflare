@@ -51,6 +51,7 @@ export interface AccessGroupExclude {
     azures?: outputs.AccessGroupExcludeAzure[];
     certificate?: boolean;
     commonName?: string;
+    devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
@@ -104,6 +105,7 @@ export interface AccessGroupInclude {
     azures?: outputs.AccessGroupIncludeAzure[];
     certificate?: boolean;
     commonName?: string;
+    devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
@@ -157,6 +159,7 @@ export interface AccessGroupRequire {
     azures?: outputs.AccessGroupRequireAzure[];
     certificate?: boolean;
     commonName?: string;
+    devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
@@ -232,6 +235,7 @@ export interface AccessPolicyExclude {
     azures?: outputs.AccessPolicyExcludeAzure[];
     certificate?: boolean;
     commonName?: string;
+    devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
@@ -285,6 +289,7 @@ export interface AccessPolicyInclude {
     azures?: outputs.AccessPolicyIncludeAzure[];
     certificate?: boolean;
     commonName?: string;
+    devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
@@ -338,6 +343,7 @@ export interface AccessPolicyRequire {
     azures?: outputs.AccessPolicyRequireAzure[];
     certificate?: boolean;
     commonName?: string;
+    devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
@@ -526,6 +532,40 @@ export interface CustomSslCustomSslOptions {
 export interface CustomSslCustomSslPriority {
     id?: string;
     priority?: number;
+}
+
+export interface DevicePostureRuleInput {
+    /**
+     * Checks if the file should exist.
+     */
+    exists?: boolean;
+    /**
+     * The Teams List id.
+     */
+    id?: string;
+    /**
+     * The path to the application.
+     */
+    path?: string;
+    /**
+     * Checks if the application should be running.
+     */
+    running?: boolean;
+    /**
+     * The sha256 hash of the file.
+     */
+    sha256?: string;
+    /**
+     * The thumbprint of the application certificate.
+     */
+    thumbprint?: string;
+}
+
+export interface DevicePostureRuleMatch {
+    /**
+     * The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+     */
+    platform?: string;
 }
 
 export interface GetWafGroupsFilter {
@@ -750,6 +790,10 @@ export interface LoadBalancerPoolOrigin {
      */
     enabled?: boolean;
     /**
+     * The header name.
+     */
+    headers?: outputs.LoadBalancerPoolOriginHeader[];
+    /**
      * A human-identifiable name for the origin.
      */
     name: string;
@@ -757,6 +801,17 @@ export interface LoadBalancerPoolOrigin {
      * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
      */
     weight?: number;
+}
+
+export interface LoadBalancerPoolOriginHeader {
+    /**
+     * The header name.
+     */
+    header: string;
+    /**
+     * A list of string values for the header.
+     */
+    values: string[];
 }
 
 export interface LoadBalancerPopPool {

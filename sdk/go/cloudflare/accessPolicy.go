@@ -15,62 +15,6 @@ import (
 // in conjunction with Access Applications to restrict access to a
 // particular resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessPolicy(ctx, "testPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
-// 			ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 			ZoneId:        pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:          pulumi.String("staging policy"),
-// 			Precedence:    pulumi.Int(1),
-// 			Decision:      pulumi.String("allow"),
-// 			Includes: cloudflare.AccessPolicyIncludeArray{
-// 				&cloudflare.AccessPolicyIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAccessPolicy(ctx, "testPolicyIndex_accessPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
-// 			ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 			ZoneId:        pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:          pulumi.String("staging policy"),
-// 			Precedence:    pulumi.Int(1),
-// 			Decision:      pulumi.String("allow"),
-// 			Includes: cloudflare.AccessPolicyIncludeArray{
-// 				&cloudflare.AccessPolicyIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 			Requires: cloudflare.AccessPolicyRequireArray{
-// 				Ips: cloudflare.AccessPolicyRequireArgs{
-// 					pulumi.Any(_var.Office_ip),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Access Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy

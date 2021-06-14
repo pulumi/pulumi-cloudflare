@@ -347,10 +347,18 @@ class LoadBalancerPool(pulumi.CustomResource):
                 cloudflare.LoadBalancerPoolOriginArgs(
                     address="192.0.2.1",
                     enabled=False,
+                    headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
+                        header="Host",
+                        values=["example-1"],
+                    )],
                     name="example-1",
                 ),
                 cloudflare.LoadBalancerPoolOriginArgs(
                     address="192.0.2.2",
+                    headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
+                        header="Host",
+                        values=["example-2"],
+                    )],
                     name="example-2",
                 ),
             ])
@@ -392,10 +400,18 @@ class LoadBalancerPool(pulumi.CustomResource):
                 cloudflare.LoadBalancerPoolOriginArgs(
                     address="192.0.2.1",
                     enabled=False,
+                    headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
+                        header="Host",
+                        values=["example-1"],
+                    )],
                     name="example-1",
                 ),
                 cloudflare.LoadBalancerPoolOriginArgs(
                     address="192.0.2.2",
+                    headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
+                        header="Host",
+                        values=["example-2"],
+                    )],
                     name="example-2",
                 ),
             ])

@@ -1,0 +1,8 @@
+{
+  "name": "cloudflare-record",
+  "version": "0.1.0",
+  "dependencies": {
+    "@pulumi/pulumi": "^3.0.0",
+    "@pulumi/cloudflare": "^3.0.0"
+  }
+}

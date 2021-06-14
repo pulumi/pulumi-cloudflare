@@ -32,6 +32,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("commonName")]
         public Input<string>? CommonName { get; set; }
 
+        [Input("devicePostures")]
+        private InputList<string>? _devicePostures;
+        public InputList<string> DevicePostures
+        {
+            get => _devicePostures ?? (_devicePostures = new InputList<string>());
+            set => _devicePostures = value;
+        }
+
         [Input("emailDomains")]
         private InputList<string>? _emailDomains;
         public InputList<string> EmailDomains

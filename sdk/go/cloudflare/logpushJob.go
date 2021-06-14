@@ -24,8 +24,9 @@ type LogpushJob struct {
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-	OwnershipChallenge pulumi.StringOutput `pulumi:"ownershipChallenge"`
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+	// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	OwnershipChallenge pulumi.StringPtrOutput `pulumi:"ownershipChallenge"`
 	// The zone ID where the logpush job should be created.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -42,9 +43,6 @@ func NewLogpushJob(ctx *pulumi.Context,
 	}
 	if args.DestinationConf == nil {
 		return nil, errors.New("invalid value for required argument 'DestinationConf'")
-	}
-	if args.OwnershipChallenge == nil {
-		return nil, errors.New("invalid value for required argument 'OwnershipChallenge'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
@@ -81,7 +79,8 @@ type logpushJobState struct {
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
 	Name *string `pulumi:"name"`
-	// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+	// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge *string `pulumi:"ownershipChallenge"`
 	// The zone ID where the logpush job should be created.
 	ZoneId *string `pulumi:"zoneId"`
@@ -98,7 +97,8 @@ type LogpushJobState struct {
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
 	Name pulumi.StringPtrInput
-	// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+	// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrInput
 	// The zone ID where the logpush job should be created.
 	ZoneId pulumi.StringPtrInput
@@ -119,8 +119,9 @@ type logpushJobArgs struct {
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
 	Name *string `pulumi:"name"`
-	// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-	OwnershipChallenge string `pulumi:"ownershipChallenge"`
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+	// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	OwnershipChallenge *string `pulumi:"ownershipChallenge"`
 	// The zone ID where the logpush job should be created.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -137,8 +138,9 @@ type LogpushJobArgs struct {
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
 	Name pulumi.StringPtrInput
-	// Ownership challenge token to prove destination ownership. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
-	OwnershipChallenge pulumi.StringInput
+	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+	// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+	OwnershipChallenge pulumi.StringPtrInput
 	// The zone ID where the logpush job should be created.
 	ZoneId pulumi.StringInput
 }

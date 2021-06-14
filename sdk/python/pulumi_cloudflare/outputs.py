@@ -58,10 +58,13 @@ __all__ = [
     'CustomHostnameSslSetting',
     'CustomSslCustomSslOptions',
     'CustomSslCustomSslPriority',
+    'DevicePostureRuleInput',
+    'DevicePostureRuleMatch',
     'HealthcheckHeader',
     'IpListItem',
     'LoadBalancerMonitorHeader',
     'LoadBalancerPoolOrigin',
+    'LoadBalancerPoolOriginHeader',
     'LoadBalancerPopPool',
     'LoadBalancerRegionPool',
     'LoadBalancerRule',
@@ -270,6 +273,8 @@ class AccessGroupExclude(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "devicePostures":
+            suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
         elif key == "loginMethods":
@@ -294,6 +299,7 @@ class AccessGroupExclude(dict):
                  azures: Optional[Sequence['outputs.AccessGroupExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
@@ -316,6 +322,8 @@ class AccessGroupExclude(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
         if emails is not None:
@@ -365,6 +373,11 @@ class AccessGroupExclude(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
 
     @property
     @pulumi.getter(name="emailDomains")
@@ -660,6 +673,8 @@ class AccessGroupInclude(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "devicePostures":
+            suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
         elif key == "loginMethods":
@@ -684,6 +699,7 @@ class AccessGroupInclude(dict):
                  azures: Optional[Sequence['outputs.AccessGroupIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
@@ -706,6 +722,8 @@ class AccessGroupInclude(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
         if emails is not None:
@@ -755,6 +773,11 @@ class AccessGroupInclude(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
 
     @property
     @pulumi.getter(name="emailDomains")
@@ -1050,6 +1073,8 @@ class AccessGroupRequire(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "devicePostures":
+            suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
         elif key == "loginMethods":
@@ -1074,6 +1099,7 @@ class AccessGroupRequire(dict):
                  azures: Optional[Sequence['outputs.AccessGroupRequireAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
@@ -1096,6 +1122,8 @@ class AccessGroupRequire(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
         if emails is not None:
@@ -1145,6 +1173,11 @@ class AccessGroupRequire(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
 
     @property
     @pulumi.getter(name="emailDomains")
@@ -1648,6 +1681,8 @@ class AccessPolicyExclude(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "devicePostures":
+            suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
         elif key == "loginMethods":
@@ -1672,6 +1707,7 @@ class AccessPolicyExclude(dict):
                  azures: Optional[Sequence['outputs.AccessPolicyExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
@@ -1694,6 +1730,8 @@ class AccessPolicyExclude(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
         if emails is not None:
@@ -1743,6 +1781,11 @@ class AccessPolicyExclude(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
 
     @property
     @pulumi.getter(name="emailDomains")
@@ -2038,6 +2081,8 @@ class AccessPolicyInclude(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "devicePostures":
+            suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
         elif key == "loginMethods":
@@ -2062,6 +2107,7 @@ class AccessPolicyInclude(dict):
                  azures: Optional[Sequence['outputs.AccessPolicyIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
@@ -2084,6 +2130,8 @@ class AccessPolicyInclude(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
         if emails is not None:
@@ -2133,6 +2181,11 @@ class AccessPolicyInclude(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
 
     @property
     @pulumi.getter(name="emailDomains")
@@ -2428,6 +2481,8 @@ class AccessPolicyRequire(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "devicePostures":
+            suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
         elif key == "loginMethods":
@@ -2452,6 +2507,7 @@ class AccessPolicyRequire(dict):
                  azures: Optional[Sequence['outputs.AccessPolicyRequireAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
@@ -2474,6 +2530,8 @@ class AccessPolicyRequire(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if device_postures is not None:
+            pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
         if emails is not None:
@@ -2523,6 +2581,11 @@ class AccessPolicyRequire(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="devicePostures")
+    def device_postures(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "device_postures")
 
     @property
     @pulumi.getter(name="emailDomains")
@@ -3383,6 +3446,104 @@ class CustomSslCustomSslPriority(dict):
 
 
 @pulumi.output_type
+class DevicePostureRuleInput(dict):
+    def __init__(__self__, *,
+                 exists: Optional[bool] = None,
+                 id: Optional[str] = None,
+                 path: Optional[str] = None,
+                 running: Optional[bool] = None,
+                 sha256: Optional[str] = None,
+                 thumbprint: Optional[str] = None):
+        """
+        :param bool exists: Checks if the file should exist.
+        :param str id: The Teams List id.
+        :param str path: The path to the application.
+        :param bool running: Checks if the application should be running.
+        :param str sha256: The sha256 hash of the file.
+        :param str thumbprint: The thumbprint of the application certificate.
+        """
+        if exists is not None:
+            pulumi.set(__self__, "exists", exists)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if running is not None:
+            pulumi.set(__self__, "running", running)
+        if sha256 is not None:
+            pulumi.set(__self__, "sha256", sha256)
+        if thumbprint is not None:
+            pulumi.set(__self__, "thumbprint", thumbprint)
+
+    @property
+    @pulumi.getter
+    def exists(self) -> Optional[bool]:
+        """
+        Checks if the file should exist.
+        """
+        return pulumi.get(self, "exists")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The Teams List id.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        The path to the application.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def running(self) -> Optional[bool]:
+        """
+        Checks if the application should be running.
+        """
+        return pulumi.get(self, "running")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> Optional[str]:
+        """
+        The sha256 hash of the file.
+        """
+        return pulumi.get(self, "sha256")
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[str]:
+        """
+        The thumbprint of the application certificate.
+        """
+        return pulumi.get(self, "thumbprint")
+
+
+@pulumi.output_type
+class DevicePostureRuleMatch(dict):
+    def __init__(__self__, *,
+                 platform: Optional[str] = None):
+        """
+        :param str platform: The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+        """
+        if platform is not None:
+            pulumi.set(__self__, "platform", platform)
+
+    @property
+    @pulumi.getter
+    def platform(self) -> Optional[str]:
+        """
+        The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.
+        """
+        return pulumi.get(self, "platform")
+
+
+@pulumi.output_type
 class HealthcheckHeader(dict):
     def __init__(__self__, *,
                  header: str,
@@ -3476,17 +3637,21 @@ class LoadBalancerPoolOrigin(dict):
                  address: str,
                  name: str,
                  enabled: Optional[bool] = None,
+                 headers: Optional[Sequence['outputs.LoadBalancerPoolOriginHeader']] = None,
                  weight: Optional[float] = None):
         """
         :param str address: The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare.
         :param str name: A human-identifiable name for the origin.
         :param bool enabled: Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        :param Sequence['LoadBalancerPoolOriginHeaderArgs'] headers: The header name.
         :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
@@ -3516,11 +3681,48 @@ class LoadBalancerPoolOrigin(dict):
 
     @property
     @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.LoadBalancerPoolOriginHeader']]:
+        """
+        The header name.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
     def weight(self) -> Optional[float]:
         """
         The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. Default: 1.
         """
         return pulumi.get(self, "weight")
+
+
+@pulumi.output_type
+class LoadBalancerPoolOriginHeader(dict):
+    def __init__(__self__, *,
+                 header: str,
+                 values: Sequence[str]):
+        """
+        :param str header: The header name.
+        :param Sequence[str] values: A list of string values for the header.
+        """
+        pulumi.set(__self__, "header", header)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def header(self) -> str:
+        """
+        The header name.
+        """
+        return pulumi.get(self, "header")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        A list of string values for the header.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

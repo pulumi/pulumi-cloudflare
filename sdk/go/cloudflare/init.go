@@ -60,6 +60,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
 		r = &CustomSsl{}
+	case "cloudflare:index/devicePostureRule:DevicePostureRule":
+		r = &DevicePostureRule{}
 	case "cloudflare:index/filter:Filter":
 		r = &Filter{}
 	case "cloudflare:index/firewallRule:FirewallRule":
@@ -92,6 +94,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Record{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
 		r = &SpectrumApplication{}
+	case "cloudflare:index/teamsList:TeamsList":
+		r = &TeamsList{}
 	case "cloudflare:index/wafGroup:WafGroup":
 		r = &WafGroup{}
 	case "cloudflare:index/wafOverride:WafOverride":
@@ -251,6 +255,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/devicePostureRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/filter",
 		&module{version},
 	)
@@ -327,6 +336,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/spectrumApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/teamsList",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
