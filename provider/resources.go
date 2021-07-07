@@ -193,6 +193,8 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_access_ca_certificate":         {Tok: makeResource(mainMod, "AccessCaCertificate")},
 			"cloudflare_device_posture_rule":           {Tok: makeResource(mainMod, "DevicePostureRule")},
 			"cloudflare_teams_list":                    {Tok: makeResource(mainMod, "TeamsList")},
+			"cloudflare_waiting_room":                  {Tok: makeResource(mainMod, "WaitingRoom")},
+			"cloudflare_static_route":                  {Tok: makeResource(mainMod, "StaticRoute")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":                   {Tok: makeDataSource(mainMod, "getIpRanges")},
@@ -228,8 +230,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*",
-				"System.Collections.Immutable": "1.6.0",
+				"Pulumi": "3.*",
 			},
 			Namespaces: map[string]string{
 				mainPkg: "Cloudflare",

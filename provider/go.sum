@@ -209,12 +209,16 @@ github.com/cloudflare/cloudflare-go v0.16.0 h1:Z6sTsoDXSFYNdbj0JVK0s4CRnlhQagmNq
 github.com/cloudflare/cloudflare-go v0.16.0/go.mod h1:EnwdgGMaFOruiPZRFSgn+TsQ3hQ7C/YWzIGLeu5c304=
 github.com/cloudflare/cloudflare-go v0.17.0 h1:lbNR+leC9ZHZteksrTwYVlxg+4eMx5f8wW4jnyMvicM=
 github.com/cloudflare/cloudflare-go v0.17.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
+github.com/cloudflare/cloudflare-go v0.18.0 h1:9q1yV4XuYqAZKsMUygRFH1rmmDq5rpaVXL+WWfeliao=
+github.com/cloudflare/cloudflare-go v0.18.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210314203411-171cd8e62b8c h1:Be2/ZmO/LLwznZcynWP2DRVQyq1pQOUtSTjevwOm+rU=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210314203411-171cd8e62b8c/go.mod h1:N9KKdr7iGYpGx2hLJ2W00e3FF7ACCl3f0npxttvkYhc=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210415001236-a117eb773c30 h1:fdKLtLYJh1RulqLAyovZGVYlznxuPiUqicTgM/kB4iU=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210415001236-a117eb773c30/go.mod h1:cXsZqPDJOTu/sJuZRY5Kh9bwfFbr7LXtDt6VDjkkwQY=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210526012626-497dc00cb3c3 h1:/QRNIiXdiYs3YHRjO55Jl6P0pK3c/AmGU/9eqWjqMLU=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210526012626-497dc00cb3c3/go.mod h1:7cIEdvBabnc8xNxaSCm+ClNowC+AauISc0rN/+lCefo=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210629212356-ea44f8e06e30 h1:jGAxiRYE5zNKUyi2sl9lPvZWSJbtuzOGNvb5L7J0KX0=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210629212356-ea44f8e06e30/go.mod h1:Dk7yRL8N0P5/N9CHc96iOV3FT8jzZNr/mSlC46nI2Bs=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/cncf/udpa/go v0.0.0-20200629203442-efcf912fb354 h1:9kRtNpqLHbZVO/NNxhHp2ymxFxsHOe3x2efJGn//Tas=
 github.com/cncf/udpa/go v0.0.0-20200629203442-efcf912fb354/go.mod h1:WmhPx2Nbnhtbo57+VJT5O0JRkEi1Wbu0z5j0R8u5Hbk=

@@ -16036,6 +16036,8 @@ func (o GetWafRulesFilterOutput) Mode() pulumi.StringPtrOutput {
 type GetWafRulesRule struct {
 	// The list of allowed `mode` values for the WAF Rule
 	AllowedModes []string `pulumi:"allowedModes"`
+	// The default `mode` value for the WAF Rule
+	DefaultMode *string `pulumi:"defaultMode"`
 	// A regular expression matching the description of the WAF Rules to lookup.
 	Description *string `pulumi:"description"`
 	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
@@ -16066,6 +16068,8 @@ type GetWafRulesRuleInput interface {
 type GetWafRulesRuleArgs struct {
 	// The list of allowed `mode` values for the WAF Rule
 	AllowedModes pulumi.StringArrayInput `pulumi:"allowedModes"`
+	// The default `mode` value for the WAF Rule
+	DefaultMode pulumi.StringPtrInput `pulumi:"defaultMode"`
 	// A regular expression matching the description of the WAF Rules to lookup.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
@@ -16136,6 +16140,11 @@ func (o GetWafRulesRuleOutput) ToGetWafRulesRuleOutputWithContext(ctx context.Co
 // The list of allowed `mode` values for the WAF Rule
 func (o GetWafRulesRuleOutput) AllowedModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetWafRulesRule) []string { return v.AllowedModes }).(pulumi.StringArrayOutput)
+}
+
+// The default `mode` value for the WAF Rule
+func (o GetWafRulesRuleOutput) DefaultMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWafRulesRule) *string { return v.DefaultMode }).(pulumi.StringPtrOutput)
 }
 
 // A regular expression matching the description of the WAF Rules to lookup.

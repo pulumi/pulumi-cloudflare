@@ -94,6 +94,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Record{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
 		r = &SpectrumApplication{}
+	case "cloudflare:index/staticRoute:StaticRoute":
+		r = &StaticRoute{}
 	case "cloudflare:index/teamsList:TeamsList":
 		r = &TeamsList{}
 	case "cloudflare:index/wafGroup:WafGroup":
@@ -104,6 +106,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WafPackage{}
 	case "cloudflare:index/wafRule:WafRule":
 		r = &WafRule{}
+	case "cloudflare:index/waitingRoom:WaitingRoom":
+		r = &WaitingRoom{}
 	case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
 		r = &WorkerCronTrigger{}
 	case "cloudflare:index/workerRoute:WorkerRoute":
@@ -340,6 +344,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/staticRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/teamsList",
 		&module{version},
 	)
@@ -361,6 +370,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/wafRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/waitingRoom",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

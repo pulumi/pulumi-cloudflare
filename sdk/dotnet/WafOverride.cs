@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
         /// A list of WAF rule ID to rule action you intend to apply.
         /// </summary>
         [Output("rules")]
-        public Output<ImmutableDictionary<string, string>> Rules { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>?> Rules { get; private set; } = null!;
 
         /// <summary>
         /// An array of URLs to apply the WAF override to.
@@ -200,7 +200,7 @@ namespace Pulumi.Cloudflare
             set => _rewriteAction = value;
         }
 
-        [Input("rules", required: true)]
+        [Input("rules")]
         private InputMap<string>? _rules;
 
         /// <summary>

@@ -25,6 +25,7 @@ class AccessApplicationArgs:
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessApplication resource.
@@ -44,6 +45,8 @@ class AccessApplicationArgs:
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
+               values are `self_hosted`, `ssh`, `vnc`, or `file`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "domain", domain)
@@ -64,6 +67,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -194,6 +199,19 @@ class AccessApplicationArgs:
         pulumi.set(self, "session_duration", value)
 
     @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application type. Defaults to `self_hosted`. Valid
+        values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -220,6 +238,7 @@ class _AccessApplicationState:
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessApplication resources.
@@ -240,6 +259,8 @@ class _AccessApplicationState:
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
+               values are `self_hosted`, `ssh`, `vnc`, or `file`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         if account_id is not None:
@@ -264,6 +285,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "name", name)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -406,6 +429,19 @@ class _AccessApplicationState:
         pulumi.set(self, "session_duration", value)
 
     @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The application type. Defaults to `self_hosted`. Valid
+        values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -433,6 +469,7 @@ class AccessApplication(pulumi.CustomResource):
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -461,6 +498,7 @@ class AccessApplication(pulumi.CustomResource):
             domain="staging.example.com",
             name="staging application",
             session_duration="24h",
+            type="self_hosted",
             zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
         ```
 
@@ -490,6 +528,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
+               values are `self_hosted`, `ssh`, `vnc`, or `file`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         ...
@@ -524,6 +564,7 @@ class AccessApplication(pulumi.CustomResource):
             domain="staging.example.com",
             name="staging application",
             session_duration="24h",
+            type="self_hosted",
             zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
         ```
 
@@ -560,6 +601,7 @@ class AccessApplication(pulumi.CustomResource):
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -587,6 +629,7 @@ class AccessApplication(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["session_duration"] = session_duration
+            __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
         super(AccessApplication, __self__).__init__(
@@ -610,6 +653,7 @@ class AccessApplication(pulumi.CustomResource):
             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessApplication':
         """
         Get an existing AccessApplication resource's state with the given name, id, and optional extra
@@ -635,6 +679,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
+               values are `self_hosted`, `ssh`, `vnc`, or `file`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -652,6 +698,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
         __props__.__dict__["name"] = name
         __props__.__dict__["session_duration"] = session_duration
+        __props__.__dict__["type"] = type
         __props__.__dict__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
 
@@ -748,6 +795,15 @@ class AccessApplication(pulumi.CustomResource):
         Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         """
         return pulumi.get(self, "session_duration")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The application type. Defaults to `self_hosted`. Valid
+        values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter(name="zoneId")

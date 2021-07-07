@@ -50,11 +50,13 @@ from .provider import *
 from .rate_limit import *
 from .record import *
 from .spectrum_application import *
+from .static_route import *
 from .teams_list import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
 from .waf_rule import *
+from .waiting_room import *
 from .worker_cron_trigger import *
 from .worker_route import *
 from .worker_script import *
@@ -374,6 +376,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/staticRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/staticRoute:StaticRoute": "StaticRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/teamsList",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -410,6 +420,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/wafRule:WafRule": "WafRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/waitingRoom",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/waitingRoom:WaitingRoom": "WaitingRoom"
   }
  },
  {

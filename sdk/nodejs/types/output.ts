@@ -677,6 +677,10 @@ export interface GetWafRulesRule {
      */
     allowedModes?: string[];
     /**
+     * The default `mode` value for the WAF Rule
+     */
+    defaultMode?: string;
+    /**
      * A regular expression matching the description of the WAF Rules to lookup.
      */
     description?: string;

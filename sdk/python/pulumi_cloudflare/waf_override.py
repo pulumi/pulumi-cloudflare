@@ -13,17 +13,16 @@ __all__ = ['WafOverrideArgs', 'WafOverride']
 @pulumi.input_type
 class WafOverrideArgs:
     def __init__(__self__, *,
-                 rules: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  urls: pulumi.Input[Sequence[pulumi.Input[str]]],
                  zone_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  groups: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
-                 rewrite_action: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 rewrite_action: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a WafOverride resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rules: A list of WAF rule ID to rule action you intend to apply.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: An array of URLs to apply the WAF override to.
         :param pulumi.Input[str] zone_id: The DNS zone to which the WAF override condition should be added.
         :param pulumi.Input[str] description: Description of what the WAF override does.
@@ -31,8 +30,8 @@ class WafOverrideArgs:
         :param pulumi.Input[bool] paused: Whether this package is currently paused.
         :param pulumi.Input[int] priority: Relative priority of this configuration when multiple configurations match a single URL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rewrite_action: When a WAF rule matches, substitute its configured action for a different action specified by this definition.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rules: A list of WAF rule ID to rule action you intend to apply.
         """
-        pulumi.set(__self__, "rules", rules)
         pulumi.set(__self__, "urls", urls)
         pulumi.set(__self__, "zone_id", zone_id)
         if description is not None:
@@ -45,18 +44,8 @@ class WafOverrideArgs:
             pulumi.set(__self__, "priority", priority)
         if rewrite_action is not None:
             pulumi.set(__self__, "rewrite_action", rewrite_action)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
-        """
-        A list of WAF rule ID to rule action you intend to apply.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
-        pulumi.set(self, "rules", value)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
 
     @property
     @pulumi.getter
@@ -141,6 +130,18 @@ class WafOverrideArgs:
     @rewrite_action.setter
     def rewrite_action(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "rewrite_action", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A list of WAF rule ID to rule action you intend to apply.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type
@@ -434,8 +435,6 @@ class WafOverride(pulumi.CustomResource):
             __props__.__dict__["paused"] = paused
             __props__.__dict__["priority"] = priority
             __props__.__dict__["rewrite_action"] = rewrite_action
-            if rules is None and not opts.urn:
-                raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
             if urls is None and not opts.urn:
                 raise TypeError("Missing required property 'urls'")
@@ -541,7 +540,7 @@ class WafOverride(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Mapping[str, str]]:
+    def rules(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         A list of WAF rule ID to rule action you intend to apply.
         """

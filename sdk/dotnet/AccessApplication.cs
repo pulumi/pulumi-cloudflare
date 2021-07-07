@@ -48,6 +48,7 @@ namespace Pulumi.Cloudflare
     ///             Domain = "staging.example.com",
     ///             Name = "staging application",
     ///             SessionDuration = "24h",
+    ///             Type = "self_hosted",
     ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
     ///         });
     ///     }
@@ -137,6 +138,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// The application type. Defaults to `self_hosted`. Valid
+        /// values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// The DNS zone to which the access application should be added. Conflicts with `account_id`.
@@ -269,6 +277,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
+        /// The application type. Defaults to `self_hosted`. Valid
+        /// values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
         /// The DNS zone to which the access application should be added. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
@@ -364,6 +379,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
+
+        /// <summary>
+        /// The application type. Defaults to `self_hosted`. Valid
+        /// values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// The DNS zone to which the access application should be added. Conflicts with `account_id`.

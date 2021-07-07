@@ -14,13 +14,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Restrict access to these endpoints to requests from a known IP address.
+ * // Restrict access to these endpoints to requests from a known IP address range.
  * const endpointLockdown = new cloudflare.ZoneLockdown("endpoint_lockdown", {
  *     configurations: [{
- *         target: "ip",
- *         value: "198.51.100.4",
+ *         target: "ip_range",
+ *         value: "198.51.100.0/16",
  *     }],
- *     description: "Restrict access to these endpoints to requests from a known IP address",
+ *     description: "Restrict access to these endpoints to requests from a known IP address range",
  *     paused: false,
  *     urls: ["api.mysite.com/some/endpoint*"],
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",

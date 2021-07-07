@@ -50,11 +50,13 @@ export * from "./provider";
 export * from "./rateLimit";
 export * from "./record";
 export * from "./spectrumApplication";
+export * from "./staticRoute";
 export * from "./teamsList";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
 export * from "./wafRule";
+export * from "./waitingRoom";
 export * from "./workerCronTrigger";
 export * from "./workerRoute";
 export * from "./workerScript";
@@ -112,11 +114,13 @@ import { PageRule } from "./pageRule";
 import { RateLimit } from "./rateLimit";
 import { Record } from "./record";
 import { SpectrumApplication } from "./spectrumApplication";
+import { StaticRoute } from "./staticRoute";
 import { TeamsList } from "./teamsList";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
 import { WafRule } from "./wafRule";
+import { WaitingRoom } from "./waitingRoom";
 import { WorkerCronTrigger } from "./workerCronTrigger";
 import { WorkerRoute } from "./workerRoute";
 import { WorkerScript } from "./workerScript";
@@ -205,6 +209,8 @@ const _module = {
                 return new Record(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
                 return new SpectrumApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/staticRoute:StaticRoute":
+                return new StaticRoute(name, <any>undefined, { urn })
             case "cloudflare:index/teamsList:TeamsList":
                 return new TeamsList(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
@@ -215,6 +221,8 @@ const _module = {
                 return new WafPackage(name, <any>undefined, { urn })
             case "cloudflare:index/wafRule:WafRule":
                 return new WafRule(name, <any>undefined, { urn })
+            case "cloudflare:index/waitingRoom:WaitingRoom":
+                return new WaitingRoom(name, <any>undefined, { urn })
             case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
                 return new WorkerCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workerRoute:WorkerRoute":
@@ -275,11 +283,13 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/staticRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoom", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)

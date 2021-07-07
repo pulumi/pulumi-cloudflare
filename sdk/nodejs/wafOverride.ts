@@ -93,7 +93,7 @@ export class WafOverride extends pulumi.CustomResource {
     /**
      * A list of WAF rule ID to rule action you intend to apply.
      */
-    public readonly rules!: pulumi.Output<{[key: string]: string}>;
+    public readonly rules!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * An array of URLs to apply the WAF override to.
      */
@@ -127,9 +127,6 @@ export class WafOverride extends pulumi.CustomResource {
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafOverrideArgs | undefined;
-            if ((!args || args.rules === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rules'");
-            }
             if ((!args || args.urls === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urls'");
             }
@@ -219,7 +216,7 @@ export interface WafOverrideArgs {
     /**
      * A list of WAF rule ID to rule action you intend to apply.
      */
-    rules: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * An array of URLs to apply the WAF override to.
      */
