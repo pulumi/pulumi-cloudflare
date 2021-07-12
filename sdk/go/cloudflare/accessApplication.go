@@ -45,6 +45,7 @@ import (
 // 			Domain:          pulumi.String("staging.example.com"),
 // 			Name:            pulumi.String("staging application"),
 // 			SessionDuration: pulumi.String("24h"),
+// 			Type:            pulumi.String("self_hosted"),
 // 			ZoneId:          pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
 // 		})
 // 		if err != nil {
@@ -93,6 +94,9 @@ type AccessApplication struct {
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
+	// The application type. Defaults to `selfHosted`. Valid
+	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -160,6 +164,9 @@ type accessApplicationState struct {
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
+	// The application type. Defaults to `selfHosted`. Valid
+	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	Type *string `pulumi:"type"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -193,6 +200,9 @@ type AccessApplicationState struct {
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrInput
+	// The application type. Defaults to `selfHosted`. Valid
+	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	Type pulumi.StringPtrInput
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
@@ -228,6 +238,9 @@ type accessApplicationArgs struct {
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration *string `pulumi:"sessionDuration"`
+	// The application type. Defaults to `selfHosted`. Valid
+	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	Type *string `pulumi:"type"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -260,6 +273,9 @@ type AccessApplicationArgs struct {
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
 	SessionDuration pulumi.StringPtrInput
+	// The application type. Defaults to `selfHosted`. Valid
+	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	Type pulumi.StringPtrInput
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }

@@ -230,13 +230,13 @@ class ZoneLockdown(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Restrict access to these endpoints to requests from a known IP address.
+        # Restrict access to these endpoints to requests from a known IP address range.
         endpoint_lockdown = cloudflare.ZoneLockdown("endpointLockdown",
             configurations=[cloudflare.ZoneLockdownConfigurationArgs(
-                target="ip",
-                value="198.51.100.4",
+                target="ip_range",
+                value="198.51.100.0/16",
             )],
-            description="Restrict access to these endpoints to requests from a known IP address",
+            description="Restrict access to these endpoints to requests from a known IP address range",
             paused=False,
             urls=["api.mysite.com/some/endpoint*"],
             zone_id="d41d8cd98f00b204e9800998ecf8427e")
@@ -275,13 +275,13 @@ class ZoneLockdown(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Restrict access to these endpoints to requests from a known IP address.
+        # Restrict access to these endpoints to requests from a known IP address range.
         endpoint_lockdown = cloudflare.ZoneLockdown("endpointLockdown",
             configurations=[cloudflare.ZoneLockdownConfigurationArgs(
-                target="ip",
-                value="198.51.100.4",
+                target="ip_range",
+                value="198.51.100.0/16",
             )],
-            description="Restrict access to these endpoints to requests from a known IP address",
+            description="Restrict access to these endpoints to requests from a known IP address range",
             paused=False,
             urls=["api.mysite.com/some/endpoint*"],
             zone_id="d41d8cd98f00b204e9800998ecf8427e")

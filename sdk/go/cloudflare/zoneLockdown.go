@@ -28,11 +28,11 @@ import (
 // 		_, err := cloudflare.NewZoneLockdown(ctx, "endpointLockdown", &cloudflare.ZoneLockdownArgs{
 // 			Configurations: cloudflare.ZoneLockdownConfigurationArray{
 // 				&cloudflare.ZoneLockdownConfigurationArgs{
-// 					Target: pulumi.String("ip"),
-// 					Value:  pulumi.String("198.51.100.4"),
+// 					Target: pulumi.String("ip_range"),
+// 					Value:  pulumi.String("198.51.100.0/16"),
 // 				},
 // 			},
-// 			Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address"),
+// 			Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address range"),
 // 			Paused:      pulumi.Bool(false),
 // 			Urls: pulumi.StringArray{
 // 				pulumi.String("api.mysite.com/some/endpoint*"),

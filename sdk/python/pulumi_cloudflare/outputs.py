@@ -7699,6 +7699,7 @@ class GetWafRulesFilterResult(dict):
 class GetWafRulesRuleResult(dict):
     def __init__(__self__, *,
                  allowed_modes: Optional[Sequence[str]] = None,
+                 default_mode: Optional[str] = None,
                  description: Optional[str] = None,
                  group_id: Optional[str] = None,
                  group_name: Optional[str] = None,
@@ -7708,6 +7709,7 @@ class GetWafRulesRuleResult(dict):
                  priority: Optional[str] = None):
         """
         :param Sequence[str] allowed_modes: The list of allowed `mode` values for the WAF Rule
+        :param str default_mode: The default `mode` value for the WAF Rule
         :param str description: A regular expression matching the description of the WAF Rules to lookup.
         :param str group_id: The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
         :param str group_name: The Name of the WAF Rule Group that contains the WAF Rule
@@ -7718,6 +7720,8 @@ class GetWafRulesRuleResult(dict):
         """
         if allowed_modes is not None:
             pulumi.set(__self__, "allowed_modes", allowed_modes)
+        if default_mode is not None:
+            pulumi.set(__self__, "default_mode", default_mode)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if group_id is not None:
@@ -7740,6 +7744,14 @@ class GetWafRulesRuleResult(dict):
         The list of allowed `mode` values for the WAF Rule
         """
         return pulumi.get(self, "allowed_modes")
+
+    @property
+    @pulumi.getter(name="defaultMode")
+    def default_mode(self) -> Optional[str]:
+        """
+        The default `mode` value for the WAF Rule
+        """
+        return pulumi.get(self, "default_mode")
 
     @property
     @pulumi.getter

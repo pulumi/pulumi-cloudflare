@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedModes;
         /// <summary>
+        /// The default `mode` value for the WAF Rule
+        /// </summary>
+        public readonly string? DefaultMode;
+        /// <summary>
         /// A regular expression matching the description of the WAF Rules to lookup.
         /// </summary>
         public readonly string? Description;
@@ -50,6 +54,8 @@ namespace Pulumi.Cloudflare.Outputs
         private GetWafRulesRuleResult(
             ImmutableArray<string> allowedModes,
 
+            string? defaultMode,
+
             string? description,
 
             string? groupId,
@@ -65,6 +71,7 @@ namespace Pulumi.Cloudflare.Outputs
             string? priority)
         {
             AllowedModes = allowedModes;
+            DefaultMode = defaultMode;
             Description = description;
             GroupId = groupId;
             GroupName = groupName;

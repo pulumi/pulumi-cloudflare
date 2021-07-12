@@ -22,18 +22,18 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
-    ///         // Restrict access to these endpoints to requests from a known IP address.
+    ///         // Restrict access to these endpoints to requests from a known IP address range.
     ///         var endpointLockdown = new Cloudflare.ZoneLockdown("endpointLockdown", new Cloudflare.ZoneLockdownArgs
     ///         {
     ///             Configurations = 
     ///             {
     ///                 new Cloudflare.Inputs.ZoneLockdownConfigurationArgs
     ///                 {
-    ///                     Target = "ip",
-    ///                     Value = "198.51.100.4",
+    ///                     Target = "ip_range",
+    ///                     Value = "198.51.100.0/16",
     ///                 },
     ///             },
-    ///             Description = "Restrict access to these endpoints to requests from a known IP address",
+    ///             Description = "Restrict access to these endpoints to requests from a known IP address range",
     ///             Paused = false,
     ///             Urls = 
     ///             {

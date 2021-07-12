@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *     domain: "staging.example.com",
  *     name: "staging application",
  *     sessionDuration: "24h",
+ *     type: "self_hosted",
  *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  * });
  * ```
@@ -122,6 +123,11 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
+     * The application type. Defaults to `selfHosted`. Valid
+     * values are `selfHosted`, `ssh`, `vnc`, or `file`.
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
+    /**
      * The DNS zone to which the access application should be added. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -150,6 +156,7 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["sessionDuration"] = state ? state.sessionDuration : undefined;
+            inputs["type"] = state ? state.type : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessApplicationArgs | undefined;
@@ -169,6 +176,7 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["sessionDuration"] = args ? args.sessionDuration : undefined;
+            inputs["type"] = args ? args.type : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["aud"] = undefined /*out*/;
         }
@@ -234,6 +242,11 @@ export interface AccessApplicationState {
      */
     sessionDuration?: pulumi.Input<string>;
     /**
+     * The application type. Defaults to `selfHosted`. Valid
+     * values are `selfHosted`, `ssh`, `vnc`, or `file`.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * The DNS zone to which the access application should be added. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
@@ -289,6 +302,11 @@ export interface AccessApplicationArgs {
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
+    /**
+     * The application type. Defaults to `selfHosted`. Valid
+     * values are `selfHosted`, `ssh`, `vnc`, or `file`.
+     */
+    type?: pulumi.Input<string>;
     /**
      * The DNS zone to which the access application should be added. Conflicts with `accountId`.
      */

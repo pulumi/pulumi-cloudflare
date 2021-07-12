@@ -5790,6 +5790,15 @@
                         }
                     }
                 },
+                "defaultMode": {
+                    "type": "string",
+                    "description": "The default `mode` value for the WAF Rule\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "description": {
                     "type": "string",
                     "description": "A regular expression matching the description of the WAF Rules to lookup.\n",
@@ -6049,7 +6058,7 @@
     },
     "resources": {
         "cloudflare:index/accessApplication:AccessApplication": {
-            "description": "Provides a Cloudflare Access Application resource. Access Applications\nare used to restrict access to a whole application using an\nauthorisation gateway managed by Cloudflare.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// With CORS configuration\nconst stagingApp = new cloudflare.AccessApplication(\"staging_app\", {\n    corsHeaders: [{\n        allowCredentials: true,\n        allowedMethods: [\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowedOrigins: [\"https://example.com\"],\n        maxAge: 10,\n    }],\n    domain: \"staging.example.com\",\n    name: \"staging application\",\n    sessionDuration: \"24h\",\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# With CORS configuration\nstaging_app = cloudflare.AccessApplication(\"stagingApp\",\n    cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(\n        allow_credentials=True,\n        allowed_methods=[\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowed_origins=[\"https://example.com\"],\n        max_age=10,\n    )],\n    domain=\"staging.example.com\",\n    name=\"staging application\",\n    session_duration=\"24h\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // With CORS configuration\n        var stagingApp = new Cloudflare.AccessApplication(\"stagingApp\", new Cloudflare.AccessApplicationArgs\n        {\n            CorsHeaders = \n            {\n                new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs\n                {\n                    AllowCredentials = true,\n                    AllowedMethods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"OPTIONS\",\n                    },\n                    AllowedOrigins = \n                    {\n                        \"https://example.com\",\n                    },\n                    MaxAge = 10,\n                },\n            },\n            Domain = \"staging.example.com\",\n            Name = \"staging application\",\n            SessionDuration = \"24h\",\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessApplication(ctx, \"stagingApp\", \u0026cloudflare.AccessApplicationArgs{\n\t\t\tCorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{\n\t\t\t\t\u0026cloudflare.AccessApplicationCorsHeaderArgs{\n\t\t\t\t\tAllowCredentials: pulumi.Bool(true),\n\t\t\t\t\tAllowedMethods: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"GET\"),\n\t\t\t\t\t\tpulumi.String(\"POST\"),\n\t\t\t\t\t\tpulumi.String(\"OPTIONS\"),\n\t\t\t\t\t},\n\t\t\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tMaxAge: pulumi.Int(10),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDomain:          pulumi.String(\"staging.example.com\"),\n\t\t\tName:            pulumi.String(\"staging application\"),\n\t\t\tSessionDuration: pulumi.String(\"24h\"),\n\t\t\tZoneId:          pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Applications can be imported using a composite ID formed of account ID and application ID.\n\n```sh\n $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
+            "description": "Provides a Cloudflare Access Application resource. Access Applications\nare used to restrict access to a whole application using an\nauthorisation gateway managed by Cloudflare.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// With CORS configuration\nconst stagingApp = new cloudflare.AccessApplication(\"staging_app\", {\n    corsHeaders: [{\n        allowCredentials: true,\n        allowedMethods: [\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowedOrigins: [\"https://example.com\"],\n        maxAge: 10,\n    }],\n    domain: \"staging.example.com\",\n    name: \"staging application\",\n    sessionDuration: \"24h\",\n    type: \"self_hosted\",\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# With CORS configuration\nstaging_app = cloudflare.AccessApplication(\"stagingApp\",\n    cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(\n        allow_credentials=True,\n        allowed_methods=[\n            \"GET\",\n            \"POST\",\n            \"OPTIONS\",\n        ],\n        allowed_origins=[\"https://example.com\"],\n        max_age=10,\n    )],\n    domain=\"staging.example.com\",\n    name=\"staging application\",\n    session_duration=\"24h\",\n    type=\"self_hosted\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // With CORS configuration\n        var stagingApp = new Cloudflare.AccessApplication(\"stagingApp\", new Cloudflare.AccessApplicationArgs\n        {\n            CorsHeaders = \n            {\n                new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs\n                {\n                    AllowCredentials = true,\n                    AllowedMethods = \n                    {\n                        \"GET\",\n                        \"POST\",\n                        \"OPTIONS\",\n                    },\n                    AllowedOrigins = \n                    {\n                        \"https://example.com\",\n                    },\n                    MaxAge = 10,\n                },\n            },\n            Domain = \"staging.example.com\",\n            Name = \"staging application\",\n            SessionDuration = \"24h\",\n            Type = \"self_hosted\",\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessApplication(ctx, \"stagingApp\", \u0026cloudflare.AccessApplicationArgs{\n\t\t\tCorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{\n\t\t\t\t\u0026cloudflare.AccessApplicationCorsHeaderArgs{\n\t\t\t\t\tAllowCredentials: pulumi.Bool(true),\n\t\t\t\t\tAllowedMethods: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"GET\"),\n\t\t\t\t\t\tpulumi.String(\"POST\"),\n\t\t\t\t\t\tpulumi.String(\"OPTIONS\"),\n\t\t\t\t\t},\n\t\t\t\t\tAllowedOrigins: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t\t\t},\n\t\t\t\t\tMaxAge: pulumi.Int(10),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDomain:          pulumi.String(\"staging.example.com\"),\n\t\t\tName:            pulumi.String(\"staging application\"),\n\t\t\tSessionDuration: pulumi.String(\"24h\"),\n\t\t\tType:            pulumi.String(\"self_hosted\"),\n\t\t\tZoneId:          pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Applications can be imported using a composite ID formed of account ID and application ID.\n\n```sh\n $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -6100,6 +6109,10 @@
                 "sessionDuration": {
                     "type": "string",
                     "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, or `file`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -6159,6 +6172,10 @@
                 "sessionDuration": {
                     "type": "string",
                     "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, or `file`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -6221,6 +6238,10 @@
                     "sessionDuration": {
                         "type": "string",
                         "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, or `file`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -10298,6 +10319,143 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/staticRoute:StaticRoute": {
+            "description": "Provides a resource, that manages Cloudflare static routes for Magic Transit or Magic WAN. \nStatic routes are used to route traffic through GRE tunnels.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.StaticRoute(\"example\", {\n    accountId: \"c4a7362d577a6c3019a474fd6f485821\",\n    coloNames: [\"den01\"],\n    coloRegions: [\"APAC\"],\n    description: \"New route for new prefix 192.0.2.0/24\",\n    nexthop: \"10.0.0.0\",\n    prefix: \"192.0.2.0/24\",\n    priority: 100,\n    weight: 10,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.StaticRoute(\"example\",\n    account_id=\"c4a7362d577a6c3019a474fd6f485821\",\n    colo_names=[\"den01\"],\n    colo_regions=[\"APAC\"],\n    description=\"New route for new prefix 192.0.2.0/24\",\n    nexthop=\"10.0.0.0\",\n    prefix=\"192.0.2.0/24\",\n    priority=100,\n    weight=10)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.StaticRoute(\"example\", new Cloudflare.StaticRouteArgs\n        {\n            AccountId = \"c4a7362d577a6c3019a474fd6f485821\",\n            ColoNames = \n            {\n                \"den01\",\n            },\n            ColoRegions = \n            {\n                \"APAC\",\n            },\n            Description = \"New route for new prefix 192.0.2.0/24\",\n            Nexthop = \"10.0.0.0\",\n            Prefix = \"192.0.2.0/24\",\n            Priority = 100,\n            Weight = 10,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewStaticRoute(ctx, \"example\", \u0026cloudflare.StaticRouteArgs{\n\t\t\tAccountId: pulumi.String(\"c4a7362d577a6c3019a474fd6f485821\"),\n\t\t\tColoNames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"den01\"),\n\t\t\t},\n\t\t\tColoRegions: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"APAC\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"New route for new prefix 192.0.2.0/24\"),\n\t\t\tNexthop:     pulumi.String(\"10.0.0.0\"),\n\t\t\tPrefix:      pulumi.String(\"192.0.2.0/24\"),\n\t\t\tPriority:    pulumi.Int(100),\n\t\t\tWeight:      pulumi.Int(10),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing static route can be imported using the account ID and static route ID\n\n```sh\n $ pulumi import cloudflare:index/staticRoute:StaticRoute example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the static route is being created.\n"
+                },
+                "coloNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Optional list of Cloudflare colocation names for this static route.\n"
+                },
+                "coloRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Optional list of Cloudflare colocation regions for this static route.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the static route.\n"
+                },
+                "nexthop": {
+                    "type": "string",
+                    "description": "The nexthop IP address where traffic will be routed to.\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "Your network prefix using CIDR notation.\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority for the static route.\n"
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "The optional weight for ECMP routes.\n"
+                }
+            },
+            "required": [
+                "nexthop",
+                "prefix",
+                "priority"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the static route is being created.\n"
+                },
+                "coloNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Optional list of Cloudflare colocation names for this static route.\n"
+                },
+                "coloRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Optional list of Cloudflare colocation regions for this static route.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the static route.\n"
+                },
+                "nexthop": {
+                    "type": "string",
+                    "description": "The nexthop IP address where traffic will be routed to.\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "Your network prefix using CIDR notation.\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "The priority for the static route.\n"
+                },
+                "weight": {
+                    "type": "integer",
+                    "description": "The optional weight for ECMP routes.\n"
+                }
+            },
+            "requiredInputs": [
+                "nexthop",
+                "prefix",
+                "priority"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering StaticRoute resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account where the static route is being created.\n"
+                    },
+                    "coloNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Optional list of Cloudflare colocation names for this static route.\n"
+                    },
+                    "coloRegions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Optional list of Cloudflare colocation regions for this static route.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the static route.\n"
+                    },
+                    "nexthop": {
+                        "type": "string",
+                        "description": "The nexthop IP address where traffic will be routed to.\n"
+                    },
+                    "prefix": {
+                        "type": "string",
+                        "description": "Your network prefix using CIDR notation.\n"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "description": "The priority for the static route.\n"
+                    },
+                    "weight": {
+                        "type": "integer",
+                        "description": "The optional weight for ECMP routes.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/teamsList:TeamsList": {
             "description": "Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst corporateDevices = new cloudflare.TeamsList(\"corporate_devices\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    description: \"Serial numbers for all corporate devices.\",\n    items: [\n        \"8GE8721REF\",\n        \"5RE8543EGG\",\n        \"1YE2880LNP\",\n    ],\n    name: \"Corporate devices\",\n    type: \"SERIAL\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ncorporate_devices = cloudflare.TeamsList(\"corporateDevices\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    description=\"Serial numbers for all corporate devices.\",\n    items=[\n        \"8GE8721REF\",\n        \"5RE8543EGG\",\n        \"1YE2880LNP\",\n    ],\n    name=\"Corporate devices\",\n    type=\"SERIAL\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var corporateDevices = new Cloudflare.TeamsList(\"corporateDevices\", new Cloudflare.TeamsListArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Description = \"Serial numbers for all corporate devices.\",\n            Items = \n            {\n                \"8GE8721REF\",\n                \"5RE8543EGG\",\n                \"1YE2880LNP\",\n            },\n            Name = \"Corporate devices\",\n            Type = \"SERIAL\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsList(ctx, \"corporateDevices\", \u0026cloudflare.TeamsListArgs{\n\t\t\tAccountId:   pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tDescription: pulumi.String(\"Serial numbers for all corporate devices.\"),\n\t\t\tItems: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"8GE8721REF\"),\n\t\t\t\tpulumi.String(\"5RE8543EGG\"),\n\t\t\t\tpulumi.String(\"1YE2880LNP\"),\n\t\t\t},\n\t\t\tName: pulumi.String(\"Corporate devices\"),\n\t\t\tType: pulumi.String(\"SERIAL\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTeams lists can be imported using a composite ID formed of account ID and teams list ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
             "properties": {
@@ -10513,7 +10671,6 @@
             },
             "required": [
                 "overrideId",
-                "rules",
                 "urls",
                 "zoneId"
             ],
@@ -10564,7 +10721,6 @@
                 }
             },
             "requiredInputs": [
-                "rules",
                 "urls",
                 "zoneId"
             ],
@@ -10763,6 +10919,177 @@
                     "ruleId": {
                         "type": "string",
                         "description": "The WAF Rule ID.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The DNS zone ID to apply to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/waitingRoom:WaitingRoom": {
+            "description": "Provides a Cloudflare Waiting Room resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.WaitingRoom(\"example\", {\n    host: \"foo.example.com\",\n    name: \"foo\",\n    newUsersPerMinute: 200,\n    path: \"/\",\n    totalActiveUsers: 200,\n    zoneId: \"ae36f999674d196762efcc5abb06b345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.WaitingRoom(\"example\",\n    host=\"foo.example.com\",\n    name=\"foo\",\n    new_users_per_minute=200,\n    path=\"/\",\n    total_active_users=200,\n    zone_id=\"ae36f999674d196762efcc5abb06b345\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.WaitingRoom(\"example\", new Cloudflare.WaitingRoomArgs\n        {\n            Host = \"foo.example.com\",\n            Name = \"foo\",\n            NewUsersPerMinute = 200,\n            Path = \"/\",\n            TotalActiveUsers = 200,\n            ZoneId = \"ae36f999674d196762efcc5abb06b345\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWaitingRoom(ctx, \"example\", \u0026cloudflare.WaitingRoomArgs{\n\t\t\tHost:              pulumi.String(\"foo.example.com\"),\n\t\t\tName:              pulumi.String(\"foo\"),\n\t\t\tNewUsersPerMinute: pulumi.Int(200),\n\t\t\tPath:              pulumi.String(\"/\"),\n\t\t\tTotalActiveUsers:  pulumi.Int(200),\n\t\t\tZoneId:            pulumi.String(\"ae36f999674d196762efcc5abb06b345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nWaiting rooms can be imported using a composite ID formed of zone ID and waiting room ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e\n```\n\n where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - waiting room ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-waiting-rooms) ",
+            "properties": {
+                "customPageHtml": {
+                    "type": "string",
+                    "description": "This a templated html file that will be rendered at the edge.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description to let users add more details about the waiting room.\n"
+                },
+                "disableSessionRenewal": {
+                    "type": "boolean",
+                    "description": "Disables automatic renewal of session cookies. Default: false.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Host name for which the waiting room will be applied (no wildcards).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name to identify the waiting room.\n"
+                },
+                "newUsersPerMinute": {
+                    "type": "integer",
+                    "description": "The number of new users that will be let into the route every minute.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path within the host to enable the waiting room on. Default: \"/\".\n"
+                },
+                "queueAll": {
+                    "type": "boolean",
+                    "description": "If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.\n"
+                },
+                "sessionDuration": {
+                    "type": "integer",
+                    "description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "If suspended, the traffic doesn't go to the waiting room. Default: false.\n"
+                },
+                "totalActiveUsers": {
+                    "type": "integer",
+                    "description": "The total number of active user sessions on the route at a point in time.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone ID to apply to.\n"
+                }
+            },
+            "required": [
+                "host",
+                "name",
+                "newUsersPerMinute",
+                "totalActiveUsers",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "customPageHtml": {
+                    "type": "string",
+                    "description": "This a templated html file that will be rendered at the edge.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description to let users add more details about the waiting room.\n"
+                },
+                "disableSessionRenewal": {
+                    "type": "boolean",
+                    "description": "Disables automatic renewal of session cookies. Default: false.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "Host name for which the waiting room will be applied (no wildcards).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name to identify the waiting room.\n"
+                },
+                "newUsersPerMinute": {
+                    "type": "integer",
+                    "description": "The number of new users that will be let into the route every minute.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "The path within the host to enable the waiting room on. Default: \"/\".\n"
+                },
+                "queueAll": {
+                    "type": "boolean",
+                    "description": "If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.\n"
+                },
+                "sessionDuration": {
+                    "type": "integer",
+                    "description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "If suspended, the traffic doesn't go to the waiting room. Default: false.\n"
+                },
+                "totalActiveUsers": {
+                    "type": "integer",
+                    "description": "The total number of active user sessions on the route at a point in time.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The DNS zone ID to apply to.\n"
+                }
+            },
+            "requiredInputs": [
+                "host",
+                "name",
+                "newUsersPerMinute",
+                "totalActiveUsers",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WaitingRoom resources.\n",
+                "properties": {
+                    "customPageHtml": {
+                        "type": "string",
+                        "description": "This a templated html file that will be rendered at the edge.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description to let users add more details about the waiting room.\n"
+                    },
+                    "disableSessionRenewal": {
+                        "type": "boolean",
+                        "description": "Disables automatic renewal of session cookies. Default: false.\n"
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "Host name for which the waiting room will be applied (no wildcards).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A unique name to identify the waiting room.\n"
+                    },
+                    "newUsersPerMinute": {
+                        "type": "integer",
+                        "description": "The number of new users that will be let into the route every minute.\n"
+                    },
+                    "path": {
+                        "type": "string",
+                        "description": "The path within the host to enable the waiting room on. Default: \"/\".\n"
+                    },
+                    "queueAll": {
+                        "type": "boolean",
+                        "description": "If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.\n"
+                    },
+                    "sessionDuration": {
+                        "type": "integer",
+                        "description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5\n"
+                    },
+                    "suspended": {
+                        "type": "boolean",
+                        "description": "If suspended, the traffic doesn't go to the waiting room. Default: false.\n"
+                    },
+                    "totalActiveUsers": {
+                        "type": "integer",
+                        "description": "The total number of active user sessions on the route at a point in time.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -11375,7 +11702,7 @@
             }
         },
         "cloudflare:index/zoneLockdown:ZoneLockdown": {
-            "description": "Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Restrict access to these endpoints to requests from a known IP address.\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpoint_lockdown\", {\n    configurations: [{\n        target: \"ip\",\n        value: \"198.51.100.4\",\n    }],\n    description: \"Restrict access to these endpoints to requests from a known IP address\",\n    paused: false,\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Restrict access to these endpoints to requests from a known IP address.\nendpoint_lockdown = cloudflare.ZoneLockdown(\"endpointLockdown\",\n    configurations=[cloudflare.ZoneLockdownConfigurationArgs(\n        target=\"ip\",\n        value=\"198.51.100.4\",\n    )],\n    description=\"Restrict access to these endpoints to requests from a known IP address\",\n    paused=False,\n    urls=[\"api.mysite.com/some/endpoint*\"],\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Restrict access to these endpoints to requests from a known IP address.\n        var endpointLockdown = new Cloudflare.ZoneLockdown(\"endpointLockdown\", new Cloudflare.ZoneLockdownArgs\n        {\n            Configurations = \n            {\n                new Cloudflare.Inputs.ZoneLockdownConfigurationArgs\n                {\n                    Target = \"ip\",\n                    Value = \"198.51.100.4\",\n                },\n            },\n            Description = \"Restrict access to these endpoints to requests from a known IP address\",\n            Paused = false,\n            Urls = \n            {\n                \"api.mysite.com/some/endpoint*\",\n            },\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZoneLockdown(ctx, \"endpointLockdown\", \u0026cloudflare.ZoneLockdownArgs{\n\t\t\tConfigurations: cloudflare.ZoneLockdownConfigurationArray{\n\t\t\t\t\u0026cloudflare.ZoneLockdownConfigurationArgs{\n\t\t\t\t\tTarget: pulumi.String(\"ip\"),\n\t\t\t\t\tValue:  pulumi.String(\"198.51.100.4\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Restrict access to these endpoints to requests from a known IP address\"),\n\t\t\tPaused:      pulumi.Bool(false),\n\t\t\tUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api.mysite.com/some/endpoint*\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRecords can be imported using a composite ID formed of zone name and record ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules) ",
+            "description": "Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows you to define one or more URLs (with wildcard matching on the domain or path) that will only permit access if the request originates from an IP address that matches a safelist of one or more IP addresses and/or IP ranges.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Restrict access to these endpoints to requests from a known IP address range.\nconst endpointLockdown = new cloudflare.ZoneLockdown(\"endpoint_lockdown\", {\n    configurations: [{\n        target: \"ip_range\",\n        value: \"198.51.100.0/16\",\n    }],\n    description: \"Restrict access to these endpoints to requests from a known IP address range\",\n    paused: false,\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Restrict access to these endpoints to requests from a known IP address range.\nendpoint_lockdown = cloudflare.ZoneLockdown(\"endpointLockdown\",\n    configurations=[cloudflare.ZoneLockdownConfigurationArgs(\n        target=\"ip_range\",\n        value=\"198.51.100.0/16\",\n    )],\n    description=\"Restrict access to these endpoints to requests from a known IP address range\",\n    paused=False,\n    urls=[\"api.mysite.com/some/endpoint*\"],\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Restrict access to these endpoints to requests from a known IP address range.\n        var endpointLockdown = new Cloudflare.ZoneLockdown(\"endpointLockdown\", new Cloudflare.ZoneLockdownArgs\n        {\n            Configurations = \n            {\n                new Cloudflare.Inputs.ZoneLockdownConfigurationArgs\n                {\n                    Target = \"ip_range\",\n                    Value = \"198.51.100.0/16\",\n                },\n            },\n            Description = \"Restrict access to these endpoints to requests from a known IP address range\",\n            Paused = false,\n            Urls = \n            {\n                \"api.mysite.com/some/endpoint*\",\n            },\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZoneLockdown(ctx, \"endpointLockdown\", \u0026cloudflare.ZoneLockdownArgs{\n\t\t\tConfigurations: cloudflare.ZoneLockdownConfigurationArray{\n\t\t\t\t\u0026cloudflare.ZoneLockdownConfigurationArgs{\n\t\t\t\t\tTarget: pulumi.String(\"ip_range\"),\n\t\t\t\t\tValue:  pulumi.String(\"198.51.100.0/16\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Restrict access to these endpoints to requests from a known IP address range\"),\n\t\t\tPaused:      pulumi.Bool(false),\n\t\t\tUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api.mysite.com/some/endpoint*\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nRecords can be imported using a composite ID formed of zone name and record ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules) ",
             "properties": {
                 "configurations": {
                     "type": "array",
@@ -11947,8 +12274,7 @@
                 "cloudflare": "Cloudflare"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {
