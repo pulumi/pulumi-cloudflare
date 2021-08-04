@@ -121,9 +121,6 @@ export class DevicePostureRule extends pulumi.CustomResource {
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.inputs === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'inputs'");
-            }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
@@ -194,7 +191,7 @@ export interface DevicePostureRuleArgs {
      * The value to be checked against. See below for reference
      * structure.
      */
-    inputs: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInput>[]>;
+    inputs?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInput>[]>;
     /**
      * The conditions that the client must match to run the rule. See below for reference structure.
      */

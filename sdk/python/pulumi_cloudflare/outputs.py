@@ -63,6 +63,7 @@ __all__ = [
     'HealthcheckHeader',
     'IpListItem',
     'LoadBalancerMonitorHeader',
+    'LoadBalancerPoolLoadShedding',
     'LoadBalancerPoolOrigin',
     'LoadBalancerPoolOriginHeader',
     'LoadBalancerPopPool',
@@ -1467,7 +1468,9 @@ class AccessIdentityProviderConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "appsDomain":
+        if key == "apiToken":
+            suggest = "api_token"
+        elif key == "appsDomain":
             suggest = "apps_domain"
         elif key == "authUrl":
             suggest = "auth_url"
@@ -1516,6 +1519,7 @@ class AccessIdentityProviderConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 api_token: Optional[str] = None,
                  apps_domain: Optional[str] = None,
                  attributes: Optional[Sequence[str]] = None,
                  auth_url: Optional[str] = None,
@@ -1535,6 +1539,8 @@ class AccessIdentityProviderConfig(dict):
                  sso_target_url: Optional[str] = None,
                  support_groups: Optional[bool] = None,
                  token_url: Optional[str] = None):
+        if api_token is not None:
+            pulumi.set(__self__, "api_token", api_token)
         if apps_domain is not None:
             pulumi.set(__self__, "apps_domain", apps_domain)
         if attributes is not None:
@@ -1573,6 +1579,11 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "support_groups", support_groups)
         if token_url is not None:
             pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="apiToken")
+    def api_token(self) -> Optional[str]:
+        return pulumi.get(self, "api_token")
 
     @property
     @pulumi.getter(name="appsDomain")
@@ -3447,33 +3458,86 @@ class CustomSslCustomSslPriority(dict):
 
 @pulumi.output_type
 class DevicePostureRuleInput(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requireAll":
+            suggest = "require_all"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DevicePostureRuleInput. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DevicePostureRuleInput.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DevicePostureRuleInput.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 domain: Optional[str] = None,
+                 enabled: Optional[bool] = None,
                  exists: Optional[bool] = None,
                  id: Optional[str] = None,
+                 operator: Optional[str] = None,
                  path: Optional[str] = None,
+                 require_all: Optional[bool] = None,
                  running: Optional[bool] = None,
                  sha256: Optional[str] = None,
-                 thumbprint: Optional[str] = None):
+                 thumbprint: Optional[str] = None,
+                 version: Optional[str] = None):
         """
+        :param str domain: = (Required) The domain that the client must join.
+        :param bool enabled: = (Required) True if the firewall must be enabled.
         :param bool exists: Checks if the file should exist.
         :param str id: The Teams List id.
+        :param str operator: = (Required) The version comparison operator in (>,>=,<,<=,==)
         :param str path: The path to the application.
+        :param bool require_all: = (Required) True if all drives must be encrypted.
         :param bool running: Checks if the application should be running.
         :param str sha256: The sha256 hash of the file.
         :param str thumbprint: The thumbprint of the application certificate.
+        :param str version: = (Required) The operating system semantic version.
         """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if exists is not None:
             pulumi.set(__self__, "exists", exists)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if require_all is not None:
+            pulumi.set(__self__, "require_all", require_all)
         if running is not None:
             pulumi.set(__self__, "running", running)
         if sha256 is not None:
             pulumi.set(__self__, "sha256", sha256)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[str]:
+        """
+        = (Required) The domain that the client must join.
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        = (Required) True if the firewall must be enabled.
+        """
+        return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
@@ -3493,11 +3557,27 @@ class DevicePostureRuleInput(dict):
 
     @property
     @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        = (Required) The version comparison operator in (>,>=,<,<=,==)
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
     def path(self) -> Optional[str]:
         """
         The path to the application.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="requireAll")
+    def require_all(self) -> Optional[bool]:
+        """
+        = (Required) True if all drives must be encrypted.
+        """
+        return pulumi.get(self, "require_all")
 
     @property
     @pulumi.getter
@@ -3522,6 +3602,14 @@ class DevicePostureRuleInput(dict):
         The thumbprint of the application certificate.
         """
         return pulumi.get(self, "thumbprint")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        = (Required) The operating system semantic version.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -3629,6 +3717,84 @@ class LoadBalancerMonitorHeader(dict):
         A list of string values for the header.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class LoadBalancerPoolLoadShedding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultPercent":
+            suggest = "default_percent"
+        elif key == "defaultPolicy":
+            suggest = "default_policy"
+        elif key == "sessionPercent":
+            suggest = "session_percent"
+        elif key == "sessionPolicy":
+            suggest = "session_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerPoolLoadShedding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerPoolLoadShedding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerPoolLoadShedding.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_percent: Optional[float] = None,
+                 default_policy: Optional[str] = None,
+                 session_percent: Optional[float] = None,
+                 session_policy: Optional[str] = None):
+        """
+        :param float default_percent: Percent of traffic to shed 0 - 100.
+        :param str default_policy: Method of shedding traffic "", "hash" or "random".
+        :param float session_percent: Percent of session traffic to shed 0 - 100.
+        :param str session_policy: Method of shedding session traffic "" or "hash".
+        """
+        if default_percent is not None:
+            pulumi.set(__self__, "default_percent", default_percent)
+        if default_policy is not None:
+            pulumi.set(__self__, "default_policy", default_policy)
+        if session_percent is not None:
+            pulumi.set(__self__, "session_percent", session_percent)
+        if session_policy is not None:
+            pulumi.set(__self__, "session_policy", session_policy)
+
+    @property
+    @pulumi.getter(name="defaultPercent")
+    def default_percent(self) -> Optional[float]:
+        """
+        Percent of traffic to shed 0 - 100.
+        """
+        return pulumi.get(self, "default_percent")
+
+    @property
+    @pulumi.getter(name="defaultPolicy")
+    def default_policy(self) -> Optional[str]:
+        """
+        Method of shedding traffic "", "hash" or "random".
+        """
+        return pulumi.get(self, "default_policy")
+
+    @property
+    @pulumi.getter(name="sessionPercent")
+    def session_percent(self) -> Optional[float]:
+        """
+        Percent of session traffic to shed 0 - 100.
+        """
+        return pulumi.get(self, "session_percent")
+
+    @property
+    @pulumi.getter(name="sessionPolicy")
+    def session_policy(self) -> Optional[str]:
+        """
+        Method of shedding session traffic "" or "hash".
+        """
+        return pulumi.get(self, "session_policy")
 
 
 @pulumi.output_type

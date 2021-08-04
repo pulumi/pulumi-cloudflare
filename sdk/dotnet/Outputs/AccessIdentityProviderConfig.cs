@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessIdentityProviderConfig
     {
+        public readonly string? ApiToken;
         public readonly string? AppsDomain;
         public readonly ImmutableArray<string> Attributes;
         public readonly string? AuthUrl;
@@ -35,6 +36,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private AccessIdentityProviderConfig(
+            string? apiToken,
+
             string? appsDomain,
 
             ImmutableArray<string> attributes,
@@ -73,6 +76,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? tokenUrl)
         {
+            ApiToken = apiToken;
             AppsDomain = appsDomain;
             Attributes = attributes;
             AuthUrl = authUrl;

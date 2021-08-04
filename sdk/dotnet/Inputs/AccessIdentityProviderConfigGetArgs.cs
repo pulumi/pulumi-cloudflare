@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessIdentityProviderConfigGetArgs : Pulumi.ResourceArgs
     {
+        [Input("apiToken")]
+        public Input<string>? ApiToken { get; set; }
+
         [Input("appsDomain")]
         public Input<string>? AppsDomain { get; set; }
 

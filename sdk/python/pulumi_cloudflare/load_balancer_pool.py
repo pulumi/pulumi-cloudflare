@@ -20,6 +20,9 @@ class LoadBalancerPoolArgs:
                  check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 latitude: Optional[pulumi.Input[float]] = None,
+                 load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]]] = None,
+                 longitude: Optional[pulumi.Input[float]] = None,
                  minimum_origins: Optional[pulumi.Input[int]] = None,
                  monitor: Optional[pulumi.Input[str]] = None,
                  notification_email: Optional[pulumi.Input[str]] = None):
@@ -30,6 +33,9 @@ class LoadBalancerPoolArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_regions: A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]] load_sheddings: Setting for controlling load shedding for this pool.
+        :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
@@ -42,6 +48,12 @@ class LoadBalancerPoolArgs:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if latitude is not None:
+            pulumi.set(__self__, "latitude", latitude)
+        if load_sheddings is not None:
+            pulumi.set(__self__, "load_sheddings", load_sheddings)
+        if longitude is not None:
+            pulumi.set(__self__, "longitude", longitude)
         if minimum_origins is not None:
             pulumi.set(__self__, "minimum_origins", minimum_origins)
         if monitor is not None:
@@ -110,6 +122,42 @@ class LoadBalancerPoolArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter
+    def latitude(self) -> Optional[pulumi.Input[float]]:
+        """
+        The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        """
+        return pulumi.get(self, "latitude")
+
+    @latitude.setter
+    def latitude(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "latitude", value)
+
+    @property
+    @pulumi.getter(name="loadSheddings")
+    def load_sheddings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]]]:
+        """
+        Setting for controlling load shedding for this pool.
+        """
+        return pulumi.get(self, "load_sheddings")
+
+    @load_sheddings.setter
+    def load_sheddings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]]]):
+        pulumi.set(self, "load_sheddings", value)
+
+    @property
+    @pulumi.getter
+    def longitude(self) -> Optional[pulumi.Input[float]]:
+        """
+        The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        """
+        return pulumi.get(self, "longitude")
+
+    @longitude.setter
+    def longitude(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "longitude", value)
+
+    @property
     @pulumi.getter(name="minimumOrigins")
     def minimum_origins(self) -> Optional[pulumi.Input[int]]:
         """
@@ -153,6 +201,9 @@ class _LoadBalancerPoolState:
                  created_on: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 latitude: Optional[pulumi.Input[float]] = None,
+                 load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]]] = None,
+                 longitude: Optional[pulumi.Input[float]] = None,
                  minimum_origins: Optional[pulumi.Input[int]] = None,
                  modified_on: Optional[pulumi.Input[str]] = None,
                  monitor: Optional[pulumi.Input[str]] = None,
@@ -165,6 +216,9 @@ class _LoadBalancerPoolState:
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer was created.
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]] load_sheddings: Setting for controlling load shedding for this pool.
+        :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer was last modified.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
@@ -180,6 +234,12 @@ class _LoadBalancerPoolState:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if latitude is not None:
+            pulumi.set(__self__, "latitude", latitude)
+        if load_sheddings is not None:
+            pulumi.set(__self__, "load_sheddings", load_sheddings)
+        if longitude is not None:
+            pulumi.set(__self__, "longitude", longitude)
         if minimum_origins is not None:
             pulumi.set(__self__, "minimum_origins", minimum_origins)
         if modified_on is not None:
@@ -240,6 +300,42 @@ class _LoadBalancerPoolState:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def latitude(self) -> Optional[pulumi.Input[float]]:
+        """
+        The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        """
+        return pulumi.get(self, "latitude")
+
+    @latitude.setter
+    def latitude(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "latitude", value)
+
+    @property
+    @pulumi.getter(name="loadSheddings")
+    def load_sheddings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]]]:
+        """
+        Setting for controlling load shedding for this pool.
+        """
+        return pulumi.get(self, "load_sheddings")
+
+    @load_sheddings.setter
+    def load_sheddings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]]]):
+        pulumi.set(self, "load_sheddings", value)
+
+    @property
+    @pulumi.getter
+    def longitude(self) -> Optional[pulumi.Input[float]]:
+        """
+        The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        """
+        return pulumi.get(self, "longitude")
+
+    @longitude.setter
+    def longitude(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "longitude", value)
 
     @property
     @pulumi.getter(name="minimumOrigins")
@@ -322,6 +418,9 @@ class LoadBalancerPool(pulumi.CustomResource):
                  check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 latitude: Optional[pulumi.Input[float]] = None,
+                 load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]]] = None,
+                 longitude: Optional[pulumi.Input[float]] = None,
                  minimum_origins: Optional[pulumi.Input[int]] = None,
                  monitor: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -340,6 +439,14 @@ class LoadBalancerPool(pulumi.CustomResource):
         foo = cloudflare.LoadBalancerPool("foo",
             description="example load balancer pool",
             enabled=False,
+            latitude=55,
+            load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(
+                default_percent=55,
+                default_policy="random",
+                session_percent=12,
+                session_policy="hash",
+            )],
+            longitude=-12,
             minimum_origins=1,
             name="example-pool",
             notification_email="someone@example.com",
@@ -369,6 +476,9 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_regions: A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]] load_sheddings: Setting for controlling load shedding for this pool.
+        :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
@@ -393,6 +503,14 @@ class LoadBalancerPool(pulumi.CustomResource):
         foo = cloudflare.LoadBalancerPool("foo",
             description="example load balancer pool",
             enabled=False,
+            latitude=55,
+            load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(
+                default_percent=55,
+                default_policy="random",
+                session_percent=12,
+                session_policy="hash",
+            )],
+            longitude=-12,
             minimum_origins=1,
             name="example-pool",
             notification_email="someone@example.com",
@@ -435,6 +553,9 @@ class LoadBalancerPool(pulumi.CustomResource):
                  check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 latitude: Optional[pulumi.Input[float]] = None,
+                 load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]]] = None,
+                 longitude: Optional[pulumi.Input[float]] = None,
                  minimum_origins: Optional[pulumi.Input[int]] = None,
                  monitor: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -455,6 +576,9 @@ class LoadBalancerPool(pulumi.CustomResource):
             __props__.__dict__["check_regions"] = check_regions
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["latitude"] = latitude
+            __props__.__dict__["load_sheddings"] = load_sheddings
+            __props__.__dict__["longitude"] = longitude
             __props__.__dict__["minimum_origins"] = minimum_origins
             __props__.__dict__["monitor"] = monitor
             if name is None and not opts.urn:
@@ -480,6 +604,9 @@ class LoadBalancerPool(pulumi.CustomResource):
             created_on: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            latitude: Optional[pulumi.Input[float]] = None,
+            load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]]] = None,
+            longitude: Optional[pulumi.Input[float]] = None,
             minimum_origins: Optional[pulumi.Input[int]] = None,
             modified_on: Optional[pulumi.Input[str]] = None,
             monitor: Optional[pulumi.Input[str]] = None,
@@ -497,6 +624,9 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer was created.
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[bool] enabled: Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+        :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]] load_sheddings: Setting for controlling load shedding for this pool.
+        :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer was last modified.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
@@ -512,6 +642,9 @@ class LoadBalancerPool(pulumi.CustomResource):
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["description"] = description
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["latitude"] = latitude
+        __props__.__dict__["load_sheddings"] = load_sheddings
+        __props__.__dict__["longitude"] = longitude
         __props__.__dict__["minimum_origins"] = minimum_origins
         __props__.__dict__["modified_on"] = modified_on
         __props__.__dict__["monitor"] = monitor
@@ -551,6 +684,30 @@ class LoadBalancerPool(pulumi.CustomResource):
         Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def latitude(self) -> pulumi.Output[Optional[float]]:
+        """
+        The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        """
+        return pulumi.get(self, "latitude")
+
+    @property
+    @pulumi.getter(name="loadSheddings")
+    def load_sheddings(self) -> pulumi.Output[Optional[Sequence['outputs.LoadBalancerPoolLoadShedding']]]:
+        """
+        Setting for controlling load shedding for this pool.
+        """
+        return pulumi.get(self, "load_sheddings")
+
+    @property
+    @pulumi.getter
+    def longitude(self) -> pulumi.Output[Optional[float]]:
+        """
+        The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        """
+        return pulumi.get(self, "longitude")
 
     @property
     @pulumi.getter(name="minimumOrigins")

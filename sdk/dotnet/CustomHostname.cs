@@ -141,7 +141,7 @@ namespace Pulumi.Cloudflare
         [Input("hostname", required: true)]
         public Input<string> Hostname { get; set; } = null!;
 
-        [Input("ssls", required: true)]
+        [Input("ssls")]
         private InputList<Inputs.CustomHostnameSslArgs>? _ssls;
 
         /// <summary>

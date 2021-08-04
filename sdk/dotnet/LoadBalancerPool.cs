@@ -26,6 +26,18 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             Description = "example load balancer pool",
     ///             Enabled = false,
+    ///             Latitude = 55,
+    ///             LoadSheddings = 
+    ///             {
+    ///                 new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
+    ///                 {
+    ///                     DefaultPercent = 55,
+    ///                     DefaultPolicy = "random",
+    ///                     SessionPercent = 12,
+    ///                     SessionPolicy = "hash",
+    ///                 },
+    ///             },
+    ///             Longitude = -12,
     ///             MinimumOrigins = 1,
     ///             Name = "example-pool",
     ///             NotificationEmail = "someone@example.com",
@@ -97,6 +109,24 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        /// </summary>
+        [Output("latitude")]
+        public Output<double?> Latitude { get; private set; } = null!;
+
+        /// <summary>
+        /// Setting for controlling load shedding for this pool.
+        /// </summary>
+        [Output("loadSheddings")]
+        public Output<ImmutableArray<Outputs.LoadBalancerPoolLoadShedding>> LoadSheddings { get; private set; } = null!;
+
+        /// <summary>
+        /// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        /// </summary>
+        [Output("longitude")]
+        public Output<double?> Longitude { get; private set; } = null!;
 
         /// <summary>
         /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
@@ -205,6 +235,30 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        /// </summary>
+        [Input("latitude")]
+        public Input<double>? Latitude { get; set; }
+
+        [Input("loadSheddings")]
+        private InputList<Inputs.LoadBalancerPoolLoadSheddingArgs>? _loadSheddings;
+
+        /// <summary>
+        /// Setting for controlling load shedding for this pool.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerPoolLoadSheddingArgs> LoadSheddings
+        {
+            get => _loadSheddings ?? (_loadSheddings = new InputList<Inputs.LoadBalancerPoolLoadSheddingArgs>());
+            set => _loadSheddings = value;
+        }
+
+        /// <summary>
+        /// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        /// </summary>
+        [Input("longitude")]
+        public Input<double>? Longitude { get; set; }
+
+        /// <summary>
         /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         /// </summary>
         [Input("minimumOrigins")]
@@ -276,6 +330,30 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+        /// </summary>
+        [Input("latitude")]
+        public Input<double>? Latitude { get; set; }
+
+        [Input("loadSheddings")]
+        private InputList<Inputs.LoadBalancerPoolLoadSheddingGetArgs>? _loadSheddings;
+
+        /// <summary>
+        /// Setting for controlling load shedding for this pool.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerPoolLoadSheddingGetArgs> LoadSheddings
+        {
+            get => _loadSheddings ?? (_loadSheddings = new InputList<Inputs.LoadBalancerPoolLoadSheddingGetArgs>());
+            set => _loadSheddings = value;
+        }
+
+        /// <summary>
+        /// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+        /// </summary>
+        [Input("longitude")]
+        public Input<double>? Longitude { get; set; }
 
         /// <summary>
         /// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.

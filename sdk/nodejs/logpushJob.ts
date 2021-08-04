@@ -33,7 +33,7 @@ export class LogpushJob extends pulumi.CustomResource {
     }
 
     /**
-     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"` and `"nelReports"`.
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -113,7 +113,7 @@ export class LogpushJob extends pulumi.CustomResource {
  */
 export interface LogpushJobState {
     /**
-     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"` and `"nelReports"`.
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -148,7 +148,7 @@ export interface LogpushJobState {
  */
 export interface LogpushJobArgs {
     /**
-     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, and `"spectrumEvents"`.
+     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"` and `"nelReports"`.
      */
     dataset: pulumi.Input<string>;
     /**

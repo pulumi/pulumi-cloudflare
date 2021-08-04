@@ -72,7 +72,7 @@ export class CustomHostname extends pulumi.CustomResource {
     /**
      * SSL configuration of the certificate. See further notes below.
      */
-    public readonly ssls!: pulumi.Output<outputs.CustomHostnameSsl[]>;
+    public readonly ssls!: pulumi.Output<outputs.CustomHostnameSsl[] | undefined>;
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
      * The DNS zone ID where the custom hostname should be assigned.
@@ -103,9 +103,6 @@ export class CustomHostname extends pulumi.CustomResource {
             const args = argsOrState as CustomHostnameArgs | undefined;
             if ((!args || args.hostname === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hostname'");
-            }
-            if ((!args || args.ssls === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ssls'");
             }
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
@@ -165,7 +162,7 @@ export interface CustomHostnameArgs {
     /**
      * SSL configuration of the certificate. See further notes below.
      */
-    ssls: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
+    ssls?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSsl>[]>;
     /**
      * The DNS zone ID where the custom hostname should be assigned.
      */

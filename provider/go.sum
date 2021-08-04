@@ -211,6 +211,8 @@ github.com/cloudflare/cloudflare-go v0.17.0 h1:lbNR+leC9ZHZteksrTwYVlxg+4eMx5f8w
 github.com/cloudflare/cloudflare-go v0.17.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
 github.com/cloudflare/cloudflare-go v0.18.0 h1:9q1yV4XuYqAZKsMUygRFH1rmmDq5rpaVXL+WWfeliao=
 github.com/cloudflare/cloudflare-go v0.18.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
+github.com/cloudflare/cloudflare-go v0.20.0 h1:y2a6KwYHTFxhw+8PLhz0q5hpTGj6Un3W1pbpQLhzFaE=
+github.com/cloudflare/cloudflare-go v0.20.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210314203411-171cd8e62b8c h1:Be2/ZmO/LLwznZcynWP2DRVQyq1pQOUtSTjevwOm+rU=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210314203411-171cd8e62b8c/go.mod h1:N9KKdr7iGYpGx2hLJ2W00e3FF7ACCl3f0npxttvkYhc=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210415001236-a117eb773c30 h1:fdKLtLYJh1RulqLAyovZGVYlznxuPiUqicTgM/kB4iU=
@@ -219,6 +221,8 @@ github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210526012626-497
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210526012626-497dc00cb3c3/go.mod h1:7cIEdvBabnc8xNxaSCm+ClNowC+AauISc0rN/+lCefo=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210629212356-ea44f8e06e30 h1:jGAxiRYE5zNKUyi2sl9lPvZWSJbtuzOGNvb5L7J0KX0=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210629212356-ea44f8e06e30/go.mod h1:Dk7yRL8N0P5/N9CHc96iOV3FT8jzZNr/mSlC46nI2Bs=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210803234252-203c0ef802a1 h1:TUZ8nY1398RC57HJtLQa5+hnZQmgiWrsKU/suBY36BM=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210803234252-203c0ef802a1/go.mod h1:OH/aPOYZdUmQ+h6UyEuxeTfxKyj8m6sHbk8Sc66Gcxk=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/cncf/udpa/go v0.0.0-20200629203442-efcf912fb354 h1:9kRtNpqLHbZVO/NNxhHp2ymxFxsHOe3x2efJGn//Tas=
 github.com/cncf/udpa/go v0.0.0-20200629203442-efcf912fb354/go.mod h1:WmhPx2Nbnhtbo57+VJT5O0JRkEi1Wbu0z5j0R8u5Hbk=
@@ -1059,6 +1063,8 @@ golang.org/x/net v0.0.0-20210226172049-e18ecbb05110/go.mod h1:m0MpNAwzfU5UDzcl9v
 golang.org/x/net v0.0.0-20210326060303-6b1517762897/go.mod h1:uSPa2vr4CLtc/ILN5odXGNXS6mhrKVzTaCXzk9m6W3k=
 golang.org/x/net v0.0.0-20210510120150-4163338589ed h1:p9UgmWI9wKpfYmgaV/IZKGdXc5qEK45tDwwwDyjS26I=
 golang.org/x/net v0.0.0-20210510120150-4163338589ed/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
+golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985 h1:4CSI6oo7cOjJKajidEljs9h+uP0rRZBPPPhcCbj5mw8=
+golang.org/x/net v0.0.0-20210726213435-c6fcb2dbf985/go.mod h1:9nx3DQGgdP8bBQD5qxJ1jj9UTztislL4KSBs9R2vV5Y=
 golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
 golang.org/x/oauth2 v0.0.0-20190226205417-e64efc72b421/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
 golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45/go.mod h1:gOpvHmFTYa4IltrdGE7lF6nIHvwfUNPOp7c8zoXwtLw=
@@ -1155,6 +1161,8 @@ golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e/go.mod h1:tRJNPiyCQ0inRvYxb
 golang.org/x/time v0.0.0-20201208040808-7e3f01d25324/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba h1:O8mE0/t419eoIwhTFpKVkHiTs/Igowgfkj25AcZrtiE=
 golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
+golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac h1:7zkz7BUtwNFFqcowJ+RIgu2MaV/MapERkDIy+mwPyjs=
+golang.org/x/time v0.0.0-20210723032227-1f47c861a9ac/go.mod h1:tRJNPiyCQ0inRvYxbN9jk5I+vvW/OXSQhTDSoE431IQ=
 golang.org/x/tools v0.0.0-20180221164845-07fd8470d635/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
 golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
 golang.org/x/tools v0.0.0-20181030221726-6c7e314b6563/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=

@@ -2331,6 +2331,7 @@ func (o AccessGroupRequireSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupR
 }
 
 type AccessIdentityProviderConfig struct {
+	ApiToken           *string  `pulumi:"apiToken"`
 	AppsDomain         *string  `pulumi:"appsDomain"`
 	Attributes         []string `pulumi:"attributes"`
 	AuthUrl            *string  `pulumi:"authUrl"`
@@ -2364,6 +2365,7 @@ type AccessIdentityProviderConfigInput interface {
 }
 
 type AccessIdentityProviderConfigArgs struct {
+	ApiToken           pulumi.StringPtrInput   `pulumi:"apiToken"`
 	AppsDomain         pulumi.StringPtrInput   `pulumi:"appsDomain"`
 	Attributes         pulumi.StringArrayInput `pulumi:"attributes"`
 	AuthUrl            pulumi.StringPtrInput   `pulumi:"authUrl"`
@@ -2434,6 +2436,10 @@ func (o AccessIdentityProviderConfigOutput) ToAccessIdentityProviderConfigOutput
 
 func (o AccessIdentityProviderConfigOutput) ToAccessIdentityProviderConfigOutputWithContext(ctx context.Context) AccessIdentityProviderConfigOutput {
 	return o
+}
+
+func (o AccessIdentityProviderConfigOutput) ApiToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessIdentityProviderConfigOutput) AppsDomain() pulumi.StringPtrOutput {
@@ -6142,18 +6148,28 @@ func (o CustomSslCustomSslPriorityArrayOutput) Index(i pulumi.IntInput) CustomSs
 }
 
 type DevicePostureRuleInputType struct {
+	// = (Required) The domain that the client must join.
+	Domain *string `pulumi:"domain"`
+	// = (Required) True if the firewall must be enabled.
+	Enabled *bool `pulumi:"enabled"`
 	// Checks if the file should exist.
 	Exists *bool `pulumi:"exists"`
 	// The Teams List id.
 	Id *string `pulumi:"id"`
+	// = (Required) The version comparison operator in (>,>=,<,<=,==)
+	Operator *string `pulumi:"operator"`
 	// The path to the application.
 	Path *string `pulumi:"path"`
+	// = (Required) True if all drives must be encrypted.
+	RequireAll *bool `pulumi:"requireAll"`
 	// Checks if the application should be running.
 	Running *bool `pulumi:"running"`
 	// The sha256 hash of the file.
 	Sha256 *string `pulumi:"sha256"`
 	// The thumbprint of the application certificate.
 	Thumbprint *string `pulumi:"thumbprint"`
+	// = (Required) The operating system semantic version.
+	Version *string `pulumi:"version"`
 }
 
 // DevicePostureRuleInputTypeInput is an input type that accepts DevicePostureRuleInputTypeArgs and DevicePostureRuleInputTypeOutput values.
@@ -6168,18 +6184,28 @@ type DevicePostureRuleInputTypeInput interface {
 }
 
 type DevicePostureRuleInputTypeArgs struct {
+	// = (Required) The domain that the client must join.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// = (Required) True if the firewall must be enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Checks if the file should exist.
 	Exists pulumi.BoolPtrInput `pulumi:"exists"`
 	// The Teams List id.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// = (Required) The version comparison operator in (>,>=,<,<=,==)
+	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The path to the application.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// = (Required) True if all drives must be encrypted.
+	RequireAll pulumi.BoolPtrInput `pulumi:"requireAll"`
 	// Checks if the application should be running.
 	Running pulumi.BoolPtrInput `pulumi:"running"`
 	// The sha256 hash of the file.
 	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
 	// The thumbprint of the application certificate.
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
+	// = (Required) The operating system semantic version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (DevicePostureRuleInputTypeArgs) ElementType() reflect.Type {
@@ -6233,6 +6259,16 @@ func (o DevicePostureRuleInputTypeOutput) ToDevicePostureRuleInputTypeOutputWith
 	return o
 }
 
+// = (Required) The domain that the client must join.
+func (o DevicePostureRuleInputTypeOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// = (Required) True if the firewall must be enabled.
+func (o DevicePostureRuleInputTypeOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
 // Checks if the file should exist.
 func (o DevicePostureRuleInputTypeOutput) Exists() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Exists }).(pulumi.BoolPtrOutput)
@@ -6243,9 +6279,19 @@ func (o DevicePostureRuleInputTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// = (Required) The version comparison operator in (>,>=,<,<=,==)
+func (o DevicePostureRuleInputTypeOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
 // The path to the application.
 func (o DevicePostureRuleInputTypeOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// = (Required) True if all drives must be encrypted.
+func (o DevicePostureRuleInputTypeOutput) RequireAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.RequireAll }).(pulumi.BoolPtrOutput)
 }
 
 // Checks if the application should be running.
@@ -6261,6 +6307,11 @@ func (o DevicePostureRuleInputTypeOutput) Sha256() pulumi.StringPtrOutput {
 // The thumbprint of the application certificate.
 func (o DevicePostureRuleInputTypeOutput) Thumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
+}
+
+// = (Required) The operating system semantic version.
+func (o DevicePostureRuleInputTypeOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
 type DevicePostureRuleInputTypeArrayOutput struct{ *pulumi.OutputState }
@@ -6696,6 +6747,130 @@ func (o LoadBalancerMonitorHeaderArrayOutput) Index(i pulumi.IntInput) LoadBalan
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerMonitorHeader {
 		return vs[0].([]LoadBalancerMonitorHeader)[vs[1].(int)]
 	}).(LoadBalancerMonitorHeaderOutput)
+}
+
+type LoadBalancerPoolLoadShedding struct {
+	// Percent of traffic to shed 0 - 100.
+	DefaultPercent *float64 `pulumi:"defaultPercent"`
+	// Method of shedding traffic "", "hash" or "random".
+	DefaultPolicy *string `pulumi:"defaultPolicy"`
+	// Percent of session traffic to shed 0 - 100.
+	SessionPercent *float64 `pulumi:"sessionPercent"`
+	// Method of shedding session traffic "" or "hash".
+	SessionPolicy *string `pulumi:"sessionPolicy"`
+}
+
+// LoadBalancerPoolLoadSheddingInput is an input type that accepts LoadBalancerPoolLoadSheddingArgs and LoadBalancerPoolLoadSheddingOutput values.
+// You can construct a concrete instance of `LoadBalancerPoolLoadSheddingInput` via:
+//
+//          LoadBalancerPoolLoadSheddingArgs{...}
+type LoadBalancerPoolLoadSheddingInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolLoadSheddingOutput() LoadBalancerPoolLoadSheddingOutput
+	ToLoadBalancerPoolLoadSheddingOutputWithContext(context.Context) LoadBalancerPoolLoadSheddingOutput
+}
+
+type LoadBalancerPoolLoadSheddingArgs struct {
+	// Percent of traffic to shed 0 - 100.
+	DefaultPercent pulumi.Float64PtrInput `pulumi:"defaultPercent"`
+	// Method of shedding traffic "", "hash" or "random".
+	DefaultPolicy pulumi.StringPtrInput `pulumi:"defaultPolicy"`
+	// Percent of session traffic to shed 0 - 100.
+	SessionPercent pulumi.Float64PtrInput `pulumi:"sessionPercent"`
+	// Method of shedding session traffic "" or "hash".
+	SessionPolicy pulumi.StringPtrInput `pulumi:"sessionPolicy"`
+}
+
+func (LoadBalancerPoolLoadSheddingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPoolLoadShedding)(nil)).Elem()
+}
+
+func (i LoadBalancerPoolLoadSheddingArgs) ToLoadBalancerPoolLoadSheddingOutput() LoadBalancerPoolLoadSheddingOutput {
+	return i.ToLoadBalancerPoolLoadSheddingOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPoolLoadSheddingArgs) ToLoadBalancerPoolLoadSheddingOutputWithContext(ctx context.Context) LoadBalancerPoolLoadSheddingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolLoadSheddingOutput)
+}
+
+// LoadBalancerPoolLoadSheddingArrayInput is an input type that accepts LoadBalancerPoolLoadSheddingArray and LoadBalancerPoolLoadSheddingArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerPoolLoadSheddingArrayInput` via:
+//
+//          LoadBalancerPoolLoadSheddingArray{ LoadBalancerPoolLoadSheddingArgs{...} }
+type LoadBalancerPoolLoadSheddingArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolLoadSheddingArrayOutput() LoadBalancerPoolLoadSheddingArrayOutput
+	ToLoadBalancerPoolLoadSheddingArrayOutputWithContext(context.Context) LoadBalancerPoolLoadSheddingArrayOutput
+}
+
+type LoadBalancerPoolLoadSheddingArray []LoadBalancerPoolLoadSheddingInput
+
+func (LoadBalancerPoolLoadSheddingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerPoolLoadShedding)(nil)).Elem()
+}
+
+func (i LoadBalancerPoolLoadSheddingArray) ToLoadBalancerPoolLoadSheddingArrayOutput() LoadBalancerPoolLoadSheddingArrayOutput {
+	return i.ToLoadBalancerPoolLoadSheddingArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPoolLoadSheddingArray) ToLoadBalancerPoolLoadSheddingArrayOutputWithContext(ctx context.Context) LoadBalancerPoolLoadSheddingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolLoadSheddingArrayOutput)
+}
+
+type LoadBalancerPoolLoadSheddingOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPoolLoadSheddingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPoolLoadShedding)(nil)).Elem()
+}
+
+func (o LoadBalancerPoolLoadSheddingOutput) ToLoadBalancerPoolLoadSheddingOutput() LoadBalancerPoolLoadSheddingOutput {
+	return o
+}
+
+func (o LoadBalancerPoolLoadSheddingOutput) ToLoadBalancerPoolLoadSheddingOutputWithContext(ctx context.Context) LoadBalancerPoolLoadSheddingOutput {
+	return o
+}
+
+// Percent of traffic to shed 0 - 100.
+func (o LoadBalancerPoolLoadSheddingOutput) DefaultPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerPoolLoadShedding) *float64 { return v.DefaultPercent }).(pulumi.Float64PtrOutput)
+}
+
+// Method of shedding traffic "", "hash" or "random".
+func (o LoadBalancerPoolLoadSheddingOutput) DefaultPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPoolLoadShedding) *string { return v.DefaultPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Percent of session traffic to shed 0 - 100.
+func (o LoadBalancerPoolLoadSheddingOutput) SessionPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LoadBalancerPoolLoadShedding) *float64 { return v.SessionPercent }).(pulumi.Float64PtrOutput)
+}
+
+// Method of shedding session traffic "" or "hash".
+func (o LoadBalancerPoolLoadSheddingOutput) SessionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPoolLoadShedding) *string { return v.SessionPolicy }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerPoolLoadSheddingArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPoolLoadSheddingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerPoolLoadShedding)(nil)).Elem()
+}
+
+func (o LoadBalancerPoolLoadSheddingArrayOutput) ToLoadBalancerPoolLoadSheddingArrayOutput() LoadBalancerPoolLoadSheddingArrayOutput {
+	return o
+}
+
+func (o LoadBalancerPoolLoadSheddingArrayOutput) ToLoadBalancerPoolLoadSheddingArrayOutputWithContext(ctx context.Context) LoadBalancerPoolLoadSheddingArrayOutput {
+	return o
+}
+
+func (o LoadBalancerPoolLoadSheddingArrayOutput) Index(i pulumi.IntInput) LoadBalancerPoolLoadSheddingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerPoolLoadShedding {
+		return vs[0].([]LoadBalancerPoolLoadShedding)[vs[1].(int)]
+	}).(LoadBalancerPoolLoadSheddingOutput)
 }
 
 type LoadBalancerPoolOrigin struct {
@@ -16524,6 +16699,8 @@ func init() {
 	pulumi.RegisterOutputType(IpListItemArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorHeaderArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolLoadSheddingOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolLoadSheddingArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginHeaderOutput{})

@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class DevicePostureRuleInput
     {
         /// <summary>
+        /// = (Required) The domain that the client must join.
+        /// </summary>
+        public readonly string? Domain;
+        /// <summary>
+        /// = (Required) True if the firewall must be enabled.
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
         /// Checks if the file should exist.
         /// </summary>
         public readonly bool? Exists;
@@ -22,9 +30,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+        /// </summary>
+        public readonly string? Operator;
+        /// <summary>
         /// The path to the application.
         /// </summary>
         public readonly string? Path;
+        /// <summary>
+        /// = (Required) True if all drives must be encrypted.
+        /// </summary>
+        public readonly bool? RequireAll;
         /// <summary>
         /// Checks if the application should be running.
         /// </summary>
@@ -37,27 +53,46 @@ namespace Pulumi.Cloudflare.Outputs
         /// The thumbprint of the application certificate.
         /// </summary>
         public readonly string? Thumbprint;
+        /// <summary>
+        /// = (Required) The operating system semantic version.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private DevicePostureRuleInput(
+            string? domain,
+
+            bool? enabled,
+
             bool? exists,
 
             string? id,
 
+            string? @operator,
+
             string? path,
+
+            bool? requireAll,
 
             bool? running,
 
             string? sha256,
 
-            string? thumbprint)
+            string? thumbprint,
+
+            string? version)
         {
+            Domain = domain;
+            Enabled = enabled;
             Exists = exists;
             Id = id;
+            Operator = @operator;
             Path = path;
+            RequireAll = requireAll;
             Running = running;
             Sha256 = sha256;
             Thumbprint = thumbprint;
+            Version = version;
         }
     }
 }

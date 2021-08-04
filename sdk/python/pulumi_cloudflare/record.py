@@ -18,6 +18,7 @@ class RecordArgs:
                  name: pulumi.Input[str],
                  type: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
+                 allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  data: Optional[pulumi.Input['RecordDataArgs']] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  proxied: Optional[pulumi.Input[bool]] = None,
@@ -37,6 +38,8 @@ class RecordArgs:
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "zone_id", zone_id)
+        if allow_overwrite is not None:
+            pulumi.set(__self__, "allow_overwrite", allow_overwrite)
         if data is not None:
             pulumi.set(__self__, "data", data)
         if priority is not None:
@@ -83,6 +86,15 @@ class RecordArgs:
     @zone_id.setter
     def zone_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="allowOverwrite")
+    def allow_overwrite(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allow_overwrite")
+
+    @allow_overwrite.setter
+    def allow_overwrite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_overwrite", value)
 
     @property
     @pulumi.getter
@@ -148,6 +160,7 @@ class RecordArgs:
 @pulumi.input_type
 class _RecordState:
     def __init__(__self__, *,
+                 allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  created_on: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input['RecordDataArgs']] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
@@ -177,6 +190,8 @@ class _RecordState:
         :param pulumi.Input[str] value: The (string) value of the record. Either this or `data` must be specified
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the record to
         """
+        if allow_overwrite is not None:
+            pulumi.set(__self__, "allow_overwrite", allow_overwrite)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if data is not None:
@@ -203,6 +218,15 @@ class _RecordState:
             pulumi.set(__self__, "value", value)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
+
+    @property
+    @pulumi.getter(name="allowOverwrite")
+    def allow_overwrite(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "allow_overwrite")
+
+    @allow_overwrite.setter
+    def allow_overwrite(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_overwrite", value)
 
     @property
     @pulumi.getter(name="createdOn")
@@ -366,6 +390,7 @@ class Record(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -491,6 +516,7 @@ class Record(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 allow_overwrite: Optional[pulumi.Input[bool]] = None,
                  data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
@@ -511,6 +537,7 @@ class Record(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RecordArgs.__new__(RecordArgs)
 
+            __props__.__dict__["allow_overwrite"] = allow_overwrite
             __props__.__dict__["data"] = data
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -540,6 +567,7 @@ class Record(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            allow_overwrite: Optional[pulumi.Input[bool]] = None,
             created_on: Optional[pulumi.Input[str]] = None,
             data: Optional[pulumi.Input[pulumi.InputType['RecordDataArgs']]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
@@ -578,6 +606,7 @@ class Record(pulumi.CustomResource):
 
         __props__ = _RecordState.__new__(_RecordState)
 
+        __props__.__dict__["allow_overwrite"] = allow_overwrite
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["data"] = data
         __props__.__dict__["hostname"] = hostname
@@ -592,6 +621,11 @@ class Record(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         __props__.__dict__["zone_id"] = zone_id
         return Record(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="allowOverwrite")
+    def allow_overwrite(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "allow_overwrite")
 
     @property
     @pulumi.getter(name="createdOn")

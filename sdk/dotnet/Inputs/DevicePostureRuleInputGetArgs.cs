@@ -13,6 +13,18 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class DevicePostureRuleInputGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// = (Required) The domain that the client must join.
+        /// </summary>
+        [Input("domain")]
+        public Input<string>? Domain { get; set; }
+
+        /// <summary>
+        /// = (Required) True if the firewall must be enabled.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// Checks if the file should exist.
         /// </summary>
         [Input("exists")]
@@ -25,10 +37,22 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
+        /// = (Required) The version comparison operator in (&gt;,&gt;=,&lt;,&lt;=,==)
+        /// </summary>
+        [Input("operator")]
+        public Input<string>? Operator { get; set; }
+
+        /// <summary>
         /// The path to the application.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
+
+        /// <summary>
+        /// = (Required) True if all drives must be encrypted.
+        /// </summary>
+        [Input("requireAll")]
+        public Input<bool>? RequireAll { get; set; }
 
         /// <summary>
         /// Checks if the application should be running.
@@ -47,6 +71,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }
+
+        /// <summary>
+        /// = (Required) The operating system semantic version.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public DevicePostureRuleInputGetArgs()
         {

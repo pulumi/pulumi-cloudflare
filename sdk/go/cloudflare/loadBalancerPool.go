@@ -26,8 +26,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
-// 			Description:       pulumi.String("example load balancer pool"),
-// 			Enabled:           pulumi.Bool(false),
+// 			Description: pulumi.String("example load balancer pool"),
+// 			Enabled:     pulumi.Bool(false),
+// 			Latitude:    pulumi.Float64(55),
+// 			LoadSheddings: cloudflare.LoadBalancerPoolLoadSheddingArray{
+// 				&cloudflare.LoadBalancerPoolLoadSheddingArgs{
+// 					DefaultPercent: pulumi.Float64(55),
+// 					DefaultPolicy:  pulumi.String("random"),
+// 					SessionPercent: pulumi.Float64(12),
+// 					SessionPolicy:  pulumi.String("hash"),
+// 				},
+// 			},
+// 			Longitude:         -12,
 // 			MinimumOrigins:    pulumi.Int(1),
 // 			Name:              pulumi.String("example-pool"),
 // 			NotificationEmail: pulumi.String("someone@example.com"),
@@ -77,6 +87,12 @@ type LoadBalancerPool struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	Latitude pulumi.Float64PtrOutput `pulumi:"latitude"`
+	// Setting for controlling load shedding for this pool.
+	LoadSheddings LoadBalancerPoolLoadSheddingArrayOutput `pulumi:"loadSheddings"`
+	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	Longitude pulumi.Float64PtrOutput `pulumi:"longitude"`
 	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
 	MinimumOrigins pulumi.IntPtrOutput `pulumi:"minimumOrigins"`
 	// The RFC3339 timestamp of when the load balancer was last modified.
@@ -134,6 +150,12 @@ type loadBalancerPoolState struct {
 	Description *string `pulumi:"description"`
 	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
 	Enabled *bool `pulumi:"enabled"`
+	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	Latitude *float64 `pulumi:"latitude"`
+	// Setting for controlling load shedding for this pool.
+	LoadSheddings []LoadBalancerPoolLoadShedding `pulumi:"loadSheddings"`
+	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	Longitude *float64 `pulumi:"longitude"`
 	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
 	MinimumOrigins *int `pulumi:"minimumOrigins"`
 	// The RFC3339 timestamp of when the load balancer was last modified.
@@ -157,6 +179,12 @@ type LoadBalancerPoolState struct {
 	Description pulumi.StringPtrInput
 	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
 	Enabled pulumi.BoolPtrInput
+	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	Latitude pulumi.Float64PtrInput
+	// Setting for controlling load shedding for this pool.
+	LoadSheddings LoadBalancerPoolLoadSheddingArrayInput
+	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	Longitude pulumi.Float64PtrInput
 	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
 	MinimumOrigins pulumi.IntPtrInput
 	// The RFC3339 timestamp of when the load balancer was last modified.
@@ -182,6 +210,12 @@ type loadBalancerPoolArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
 	Enabled *bool `pulumi:"enabled"`
+	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	Latitude *float64 `pulumi:"latitude"`
+	// Setting for controlling load shedding for this pool.
+	LoadSheddings []LoadBalancerPoolLoadShedding `pulumi:"loadSheddings"`
+	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	Longitude *float64 `pulumi:"longitude"`
 	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
 	MinimumOrigins *int `pulumi:"minimumOrigins"`
 	// The ID of the Monitor to use for health checking origins within this pool.
@@ -202,6 +236,12 @@ type LoadBalancerPoolArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
 	Enabled pulumi.BoolPtrInput
+	// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+	Latitude pulumi.Float64PtrInput
+	// Setting for controlling load shedding for this pool.
+	LoadSheddings LoadBalancerPoolLoadSheddingArrayInput
+	// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+	Longitude pulumi.Float64PtrInput
 	// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
 	MinimumOrigins pulumi.IntPtrInput
 	// The ID of the Monitor to use for health checking origins within this pool.
