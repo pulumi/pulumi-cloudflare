@@ -70,6 +70,21 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_, err = cloudflare.NewAccessIdentityProvider(ctx, "okta", &cloudflare.AccessIdentityProviderArgs{
+// 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Configs: cloudflare.AccessIdentityProviderConfigArray{
+// 				&cloudflare.AccessIdentityProviderConfigArgs{
+// 					ApiToken:     pulumi.String("okta_api_token"),
+// 					ClientId:     pulumi.String("example"),
+// 					ClientSecret: pulumi.String("secret_key"),
+// 				},
+// 			},
+// 			Name: pulumi.String("Okta"),
+// 			Type: pulumi.String("okta"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }

@@ -22,7 +22,7 @@ class LogpushJobArgs:
                  ownership_challenge: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LogpushJob resource.
-        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[str] zone_id: The zone ID where the logpush job should be created.
         :param pulumi.Input[bool] enabled: Whether to enable the job.
@@ -47,7 +47,7 @@ class LogpushJobArgs:
     @pulumi.getter
     def dataset(self) -> pulumi.Input[str]:
         """
-        Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         """
         return pulumi.get(self, "dataset")
 
@@ -141,7 +141,7 @@ class _LogpushJobState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering LogpushJob resources.
-        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -169,7 +169,7 @@ class _LogpushJobState:
     @pulumi.getter
     def dataset(self) -> Optional[pulumi.Input[str]]:
         """
-        Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         """
         return pulumi.get(self, "dataset")
 
@@ -268,7 +268,7 @@ class LogpushJob(pulumi.CustomResource):
         Create a LogpushJob resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -356,7 +356,7 @@ class LogpushJob(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        :param pulumi.Input[str] dataset: Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -382,7 +382,7 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter
     def dataset(self) -> pulumi.Output[str]:
         """
-        Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         """
         return pulumi.get(self, "dataset")
 

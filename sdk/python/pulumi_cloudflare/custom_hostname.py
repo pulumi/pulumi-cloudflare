@@ -16,21 +16,22 @@ __all__ = ['CustomHostnameArgs', 'CustomHostname']
 class CustomHostnameArgs:
     def __init__(__self__, *,
                  hostname: pulumi.Input[str],
-                 ssls: pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]],
                  zone_id: pulumi.Input[str],
-                 custom_origin_server: Optional[pulumi.Input[str]] = None):
+                 custom_origin_server: Optional[pulumi.Input[str]] = None,
+                 ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None):
         """
         The set of arguments for constructing a CustomHostname resource.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
-        :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate. See further notes below.
         :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate. See further notes below.
         """
         pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "ssls", ssls)
         pulumi.set(__self__, "zone_id", zone_id)
         if custom_origin_server is not None:
             pulumi.set(__self__, "custom_origin_server", custom_origin_server)
+        if ssls is not None:
+            pulumi.set(__self__, "ssls", ssls)
 
     @property
     @pulumi.getter
@@ -43,18 +44,6 @@ class CustomHostnameArgs:
     @hostname.setter
     def hostname(self, value: pulumi.Input[str]):
         pulumi.set(self, "hostname", value)
-
-    @property
-    @pulumi.getter
-    def ssls(self) -> pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]:
-        """
-        SSL configuration of the certificate. See further notes below.
-        """
-        return pulumi.get(self, "ssls")
-
-    @ssls.setter
-    def ssls(self, value: pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]):
-        pulumi.set(self, "ssls", value)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -79,6 +68,18 @@ class CustomHostnameArgs:
     @custom_origin_server.setter
     def custom_origin_server(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_origin_server", value)
+
+    @property
+    @pulumi.getter
+    def ssls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]]:
+        """
+        SSL configuration of the certificate. See further notes below.
+        """
+        return pulumi.get(self, "ssls")
+
+    @ssls.setter
+    def ssls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]]):
+        pulumi.set(self, "ssls", value)
 
 
 @pulumi.input_type
@@ -297,8 +298,6 @@ class CustomHostname(pulumi.CustomResource):
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
             __props__.__dict__["hostname"] = hostname
-            if ssls is None and not opts.urn:
-                raise TypeError("Missing required property 'ssls'")
             __props__.__dict__["ssls"] = ssls
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -376,7 +375,7 @@ class CustomHostname(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ssls(self) -> pulumi.Output[Sequence['outputs.CustomHostnameSsl']]:
+    def ssls(self) -> pulumi.Output[Optional[Sequence['outputs.CustomHostnameSsl']]]:
         """
         SSL configuration of the certificate. See further notes below.
         """

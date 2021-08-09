@@ -69,6 +69,7 @@ import (
 type Record struct {
 	pulumi.CustomResourceState
 
+	AllowOverwrite pulumi.BoolPtrOutput `pulumi:"allowOverwrite"`
 	// The RFC3339 timestamp of when the record was created
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
@@ -135,6 +136,7 @@ func GetRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Record resources.
 type recordState struct {
+	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// The RFC3339 timestamp of when the record was created
 	CreatedOn *string `pulumi:"createdOn"`
 	// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
@@ -164,6 +166,7 @@ type recordState struct {
 }
 
 type RecordState struct {
+	AllowOverwrite pulumi.BoolPtrInput
 	// The RFC3339 timestamp of when the record was created
 	CreatedOn pulumi.StringPtrInput
 	// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
@@ -197,6 +200,7 @@ func (RecordState) ElementType() reflect.Type {
 }
 
 type recordArgs struct {
+	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
 	Data *RecordData `pulumi:"data"`
 	// The name of the record
@@ -217,6 +221,7 @@ type recordArgs struct {
 
 // The set of arguments for constructing a Record resource.
 type RecordArgs struct {
+	AllowOverwrite pulumi.BoolPtrInput
 	// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
 	Data RecordDataPtrInput
 	// The name of the record

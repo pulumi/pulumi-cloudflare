@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare
     public partial class LogpushJob : Pulumi.CustomResource
     {
         /// <summary>
-        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         /// </summary>
         [Output("dataset")]
         public Output<string> Dataset { get; private set; } = null!;
@@ -102,7 +102,7 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushJobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, and `"spectrum_events"`.
+        /// Which type of dataset resource to use. Available values are `"firewall_events"`, `"http_requests"`, `"spectrum_events"` and `"nel_reports"`.
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }

@@ -246,6 +246,16 @@ class AccessIdentityProvider(pulumi.CustomResource):
             )],
             name="JumpCloud SAML",
             type="saml")
+        # okta
+        okta = cloudflare.AccessIdentityProvider("okta",
+            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                api_token="okta_api_token",
+                client_id="example",
+                client_secret="secret_key",
+            )],
+            name="Okta",
+            type="okta")
         ```
 
         Please refer to the [developers.cloudflare.com Access documentation][access_identity_provider_guide]
@@ -318,6 +328,16 @@ class AccessIdentityProvider(pulumi.CustomResource):
             )],
             name="JumpCloud SAML",
             type="saml")
+        # okta
+        okta = cloudflare.AccessIdentityProvider("okta",
+            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                api_token="okta_api_token",
+                client_id="example",
+                client_secret="secret_key",
+            )],
+            name="Okta",
+            type="okta")
         ```
 
         Please refer to the [developers.cloudflare.com Access documentation][access_identity_provider_guide]

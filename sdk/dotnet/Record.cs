@@ -66,6 +66,9 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/record:Record")]
     public partial class Record : Pulumi.CustomResource
     {
+        [Output("allowOverwrite")]
+        public Output<bool?> AllowOverwrite { get; private set; } = null!;
+
         /// <summary>
         /// The RFC3339 timestamp of when the record was created
         /// </summary>
@@ -190,6 +193,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class RecordArgs : Pulumi.ResourceArgs
     {
+        [Input("allowOverwrite")]
+        public Input<bool>? AllowOverwrite { get; set; }
+
         /// <summary>
         /// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
         /// </summary>
@@ -245,6 +251,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class RecordState : Pulumi.ResourceArgs
     {
+        [Input("allowOverwrite")]
+        public Input<bool>? AllowOverwrite { get; set; }
+
         /// <summary>
         /// The RFC3339 timestamp of when the record was created
         /// </summary>

@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("inputs", required: true)]
+        [Input("inputs")]
         private InputList<Inputs.DevicePostureRuleInputArgs>? _inputs;
 
         /// <summary>

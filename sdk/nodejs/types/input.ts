@@ -208,6 +208,7 @@ export interface AccessGroupRequireSaml {
 }
 
 export interface AccessIdentityProviderConfig {
+    apiToken?: pulumi.Input<string>;
     appsDomain?: pulumi.Input<string>;
     attributes?: pulumi.Input<pulumi.Input<string>[]>;
     authUrl?: pulumi.Input<string>;
@@ -536,6 +537,14 @@ export interface CustomSslCustomSslPriority {
 
 export interface DevicePostureRuleInput {
     /**
+     * = (Required) The domain that the client must join.
+     */
+    domain?: pulumi.Input<string>;
+    /**
+     * = (Required) True if the firewall must be enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
      * Checks if the file should exist.
      */
     exists?: pulumi.Input<boolean>;
@@ -544,9 +553,17 @@ export interface DevicePostureRuleInput {
      */
     id?: pulumi.Input<string>;
     /**
+     * = (Required) The version comparison operator in (>,>=,<,<=,==)
+     */
+    operator?: pulumi.Input<string>;
+    /**
      * The path to the application.
      */
     path?: pulumi.Input<string>;
+    /**
+     * = (Required) True if all drives must be encrypted.
+     */
+    requireAll?: pulumi.Input<boolean>;
     /**
      * Checks if the application should be running.
      */
@@ -559,6 +576,10 @@ export interface DevicePostureRuleInput {
      * The thumbprint of the application certificate.
      */
     thumbprint?: pulumi.Input<string>;
+    /**
+     * = (Required) The operating system semantic version.
+     */
+    version?: pulumi.Input<string>;
 }
 
 export interface DevicePostureRuleMatch {
@@ -674,6 +695,25 @@ export interface LoadBalancerMonitorHeader {
      * A list of string values for the header.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface LoadBalancerPoolLoadShedding {
+    /**
+     * Percent of traffic to shed 0 - 100.
+     */
+    defaultPercent?: pulumi.Input<number>;
+    /**
+     * Method of shedding traffic "", "hash" or "random".
+     */
+    defaultPolicy?: pulumi.Input<string>;
+    /**
+     * Percent of session traffic to shed 0 - 100.
+     */
+    sessionPercent?: pulumi.Input<number>;
+    /**
+     * Method of shedding session traffic "" or "hash".
+     */
+    sessionPolicy?: pulumi.Input<string>;
 }
 
 export interface LoadBalancerPoolOrigin {

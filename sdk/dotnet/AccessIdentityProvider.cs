@@ -69,6 +69,22 @@ namespace Pulumi.Cloudflare
     ///             Name = "JumpCloud SAML",
     ///             Type = "saml",
     ///         });
+    ///         // okta
+    ///         var okta = new Cloudflare.AccessIdentityProvider("okta", new Cloudflare.AccessIdentityProviderArgs
+    ///         {
+    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             Configs = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
+    ///                 {
+    ///                     ApiToken = "okta_api_token",
+    ///                     ClientId = "example",
+    ///                     ClientSecret = "secret_key",
+    ///                 },
+    ///             },
+    ///             Name = "Okta",
+    ///             Type = "okta",
+    ///         });
     ///     }
     /// 
     /// }

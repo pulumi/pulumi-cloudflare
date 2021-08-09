@@ -48,6 +48,17 @@ import * as utilities from "./utilities";
  *     name: "JumpCloud SAML",
  *     type: "saml",
  * });
+ * // okta
+ * const okta = new cloudflare.AccessIdentityProvider("okta", {
+ *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     configs: [{
+ *         apiToken: "okta_api_token",
+ *         clientId: "example",
+ *         clientSecret: "secret_key",
+ *     }],
+ *     name: "Okta",
+ *     type: "okta",
+ * });
  * ```
  *
  * Please refer to the [developers.cloudflare.com Access documentation][accessIdentityProviderGuide]

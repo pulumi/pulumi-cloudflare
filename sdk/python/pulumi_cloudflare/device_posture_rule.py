@@ -16,29 +16,30 @@ __all__ = ['DevicePostureRuleArgs', 'DevicePostureRule']
 class DevicePostureRuleArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-                 inputs: pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]],
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DevicePostureRule resource.
         :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
-        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: The value to be checked against. See below for reference
-               structure.
         :param pulumi.Input[str] type: The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
         :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: The value to be checked against. See below for reference
+               structure.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule. See below for reference structure.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check.
                Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
         """
         pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "inputs", inputs)
         pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if inputs is not None:
+            pulumi.set(__self__, "inputs", inputs)
         if matches is not None:
             pulumi.set(__self__, "matches", matches)
         if name is not None:
@@ -57,19 +58,6 @@ class DevicePostureRuleArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "account_id", value)
-
-    @property
-    @pulumi.getter
-    def inputs(self) -> pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]:
-        """
-        The value to be checked against. See below for reference
-        structure.
-        """
-        return pulumi.get(self, "inputs")
-
-    @inputs.setter
-    def inputs(self, value: pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]):
-        pulumi.set(self, "inputs", value)
 
     @property
     @pulumi.getter
@@ -94,6 +82,19 @@ class DevicePostureRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]]:
+        """
+        The value to be checked against. See below for reference
+        structure.
+        """
+        return pulumi.get(self, "inputs")
+
+    @inputs.setter
+    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]]):
+        pulumi.set(self, "inputs", value)
 
     @property
     @pulumi.getter
@@ -388,8 +389,6 @@ class DevicePostureRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
-            if inputs is None and not opts.urn:
-                raise TypeError("Missing required property 'inputs'")
             __props__.__dict__["inputs"] = inputs
             __props__.__dict__["matches"] = matches
             __props__.__dict__["name"] = name

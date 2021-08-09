@@ -75,9 +75,6 @@ func NewCustomHostname(ctx *pulumi.Context,
 	if args.Hostname == nil {
 		return nil, errors.New("invalid value for required argument 'Hostname'")
 	}
-	if args.Ssls == nil {
-		return nil, errors.New("invalid value for required argument 'Ssls'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}

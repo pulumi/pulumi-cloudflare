@@ -17,6 +17,14 @@ import * as utilities from "./utilities";
  * const foo = new cloudflare.LoadBalancerPool("foo", {
  *     description: "example load balancer pool",
  *     enabled: false,
+ *     latitude: 55,
+ *     loadSheddings: [{
+ *         defaultPercent: 55,
+ *         defaultPolicy: "random",
+ *         sessionPercent: 12,
+ *         sessionPolicy: "hash",
+ *     }],
+ *     longitude: -12,
  *     minimumOrigins: 1,
  *     name: "example-pool",
  *     notificationEmail: "someone@example.com",
@@ -87,6 +95,18 @@ export class LoadBalancerPool extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+     */
+    public readonly latitude!: pulumi.Output<number | undefined>;
+    /**
+     * Setting for controlling load shedding for this pool.
+     */
+    public readonly loadSheddings!: pulumi.Output<outputs.LoadBalancerPoolLoadShedding[] | undefined>;
+    /**
+     * The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+     */
+    public readonly longitude!: pulumi.Output<number | undefined>;
+    /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
      */
     public readonly minimumOrigins!: pulumi.Output<number | undefined>;
@@ -128,6 +148,9 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
+            inputs["latitude"] = state ? state.latitude : undefined;
+            inputs["loadSheddings"] = state ? state.loadSheddings : undefined;
+            inputs["longitude"] = state ? state.longitude : undefined;
             inputs["minimumOrigins"] = state ? state.minimumOrigins : undefined;
             inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
             inputs["monitor"] = state ? state.monitor : undefined;
@@ -145,6 +168,9 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["checkRegions"] = args ? args.checkRegions : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
+            inputs["latitude"] = args ? args.latitude : undefined;
+            inputs["loadSheddings"] = args ? args.loadSheddings : undefined;
+            inputs["longitude"] = args ? args.longitude : undefined;
             inputs["minimumOrigins"] = args ? args.minimumOrigins : undefined;
             inputs["monitor"] = args ? args.monitor : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -180,6 +206,18 @@ export interface LoadBalancerPoolState {
      * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+     */
+    latitude?: pulumi.Input<number>;
+    /**
+     * Setting for controlling load shedding for this pool.
+     */
+    loadSheddings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolLoadShedding>[]>;
+    /**
+     * The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+     */
+    longitude?: pulumi.Input<number>;
     /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
      */
@@ -222,6 +260,18 @@ export interface LoadBalancerPoolArgs {
      * Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+     */
+    latitude?: pulumi.Input<number>;
+    /**
+     * Setting for controlling load shedding for this pool.
+     */
+    loadSheddings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolLoadShedding>[]>;
+    /**
+     * The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+     */
+    longitude?: pulumi.Input<number>;
     /**
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
      */

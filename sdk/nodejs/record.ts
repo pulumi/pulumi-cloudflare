@@ -77,6 +77,7 @@ export class Record extends pulumi.CustomResource {
         return obj['__pulumiType'] === Record.__pulumiType;
     }
 
+    public readonly allowOverwrite!: pulumi.Output<boolean | undefined>;
     /**
      * The RFC3339 timestamp of when the record was created
      */
@@ -143,6 +144,7 @@ export class Record extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordState | undefined;
+            inputs["allowOverwrite"] = state ? state.allowOverwrite : undefined;
             inputs["createdOn"] = state ? state.createdOn : undefined;
             inputs["data"] = state ? state.data : undefined;
             inputs["hostname"] = state ? state.hostname : undefined;
@@ -167,6 +169,7 @@ export class Record extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            inputs["allowOverwrite"] = args ? args.allowOverwrite : undefined;
             inputs["data"] = args ? args.data : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["priority"] = args ? args.priority : undefined;
@@ -192,6 +195,7 @@ export class Record extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Record resources.
  */
 export interface RecordState {
+    allowOverwrite?: pulumi.Input<boolean>;
     /**
      * The RFC3339 timestamp of when the record was created
      */
@@ -250,6 +254,7 @@ export interface RecordState {
  * The set of arguments for constructing a Record resource.
  */
 export interface RecordArgs {
+    allowOverwrite?: pulumi.Input<boolean>;
     /**
      * Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
      */

@@ -88,9 +88,6 @@ func NewDevicePostureRule(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.Inputs == nil {
-		return nil, errors.New("invalid value for required argument 'Inputs'")
-	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
