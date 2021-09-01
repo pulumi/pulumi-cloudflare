@@ -61,6 +61,8 @@ type WaitingRoom struct {
 	DisableSessionRenewal pulumi.BoolPtrOutput `pulumi:"disableSessionRenewal"`
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringOutput `pulumi:"host"`
+	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	JsonResponseEnabled pulumi.BoolPtrOutput `pulumi:"jsonResponseEnabled"`
 	// A unique name to identify the waiting room.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
@@ -131,6 +133,8 @@ type waitingRoomState struct {
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host *string `pulumi:"host"`
+	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
 	// A unique name to identify the waiting room.
 	Name *string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
@@ -158,6 +162,8 @@ type WaitingRoomState struct {
 	DisableSessionRenewal pulumi.BoolPtrInput
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringPtrInput
+	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	JsonResponseEnabled pulumi.BoolPtrInput
 	// A unique name to identify the waiting room.
 	Name pulumi.StringPtrInput
 	// The number of new users that will be let into the route every minute.
@@ -189,6 +195,8 @@ type waitingRoomArgs struct {
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host string `pulumi:"host"`
+	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
 	// A unique name to identify the waiting room.
 	Name string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
@@ -217,6 +225,8 @@ type WaitingRoomArgs struct {
 	DisableSessionRenewal pulumi.BoolPtrInput
 	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringInput
+	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	JsonResponseEnabled pulumi.BoolPtrInput
 	// A unique name to identify the waiting room.
 	Name pulumi.StringInput
 	// The number of new users that will be let into the route every minute.
