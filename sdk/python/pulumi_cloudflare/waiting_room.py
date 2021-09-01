@@ -21,6 +21,7 @@ class WaitingRoomArgs:
                  custom_page_html: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+                 json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  queue_all: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[int]] = None,
@@ -35,6 +36,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
         :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
+        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Default: "/".
         :param pulumi.Input[bool] queue_all: If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
@@ -51,6 +53,8 @@ class WaitingRoomArgs:
             pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
             pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
+        if json_response_enabled is not None:
+            pulumi.set(__self__, "json_response_enabled", json_response_enabled)
         if path is not None:
             pulumi.set(__self__, "path", path)
         if queue_all is not None:
@@ -157,6 +161,18 @@ class WaitingRoomArgs:
         pulumi.set(self, "disable_session_renewal", value)
 
     @property
+    @pulumi.getter(name="jsonResponseEnabled")
+    def json_response_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        """
+        return pulumi.get(self, "json_response_enabled")
+
+    @json_response_enabled.setter
+    def json_response_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "json_response_enabled", value)
+
+    @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
@@ -212,6 +228,7 @@ class _WaitingRoomState:
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_users_per_minute: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -226,6 +243,7 @@ class _WaitingRoomState:
         :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
+        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room.
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Default: "/".
@@ -243,6 +261,8 @@ class _WaitingRoomState:
             pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if json_response_enabled is not None:
+            pulumi.set(__self__, "json_response_enabled", json_response_enabled)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if new_users_per_minute is not None:
@@ -307,6 +327,18 @@ class _WaitingRoomState:
     @host.setter
     def host(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter(name="jsonResponseEnabled")
+    def json_response_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        """
+        return pulumi.get(self, "json_response_enabled")
+
+    @json_response_enabled.setter
+    def json_response_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "json_response_enabled", value)
 
     @property
     @pulumi.getter
@@ -414,6 +446,7 @@ class WaitingRoom(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_users_per_minute: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -457,6 +490,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
+        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room.
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Default: "/".
@@ -519,6 +553,7 @@ class WaitingRoom(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
+                 json_response_enabled: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  new_users_per_minute: Optional[pulumi.Input[int]] = None,
                  path: Optional[pulumi.Input[str]] = None,
@@ -545,6 +580,7 @@ class WaitingRoom(pulumi.CustomResource):
             if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__.__dict__["host"] = host
+            __props__.__dict__["json_response_enabled"] = json_response_enabled
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -575,6 +611,7 @@ class WaitingRoom(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
+            json_response_enabled: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             new_users_per_minute: Optional[pulumi.Input[int]] = None,
             path: Optional[pulumi.Input[str]] = None,
@@ -594,6 +631,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
+        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room.
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Default: "/".
@@ -611,6 +649,7 @@ class WaitingRoom(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_session_renewal"] = disable_session_renewal
         __props__.__dict__["host"] = host
+        __props__.__dict__["json_response_enabled"] = json_response_enabled
         __props__.__dict__["name"] = name
         __props__.__dict__["new_users_per_minute"] = new_users_per_minute
         __props__.__dict__["path"] = path
@@ -652,6 +691,14 @@ class WaitingRoom(pulumi.CustomResource):
         Host name for which the waiting room will be applied (no wildcards).
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="jsonResponseEnabled")
+    def json_response_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        """
+        return pulumi.get(self, "json_response_enabled")
 
     @property
     @pulumi.getter

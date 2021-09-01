@@ -74,6 +74,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
+        /// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        /// </summary>
+        [Output("jsonResponseEnabled")]
+        public Output<bool?> JsonResponseEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// A unique name to identify the waiting room.
         /// </summary>
         [Output("name")]
@@ -192,6 +198,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
+        /// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        /// </summary>
+        [Input("jsonResponseEnabled")]
+        public Input<bool>? JsonResponseEnabled { get; set; }
+
+        /// <summary>
         /// A unique name to identify the waiting room.
         /// </summary>
         [Input("name", required: true)]
@@ -269,6 +281,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
+
+        /// <summary>
+        /// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        /// </summary>
+        [Input("jsonResponseEnabled")]
+        public Input<bool>? JsonResponseEnabled { get; set; }
 
         /// <summary>
         /// A unique name to identify the waiting room.

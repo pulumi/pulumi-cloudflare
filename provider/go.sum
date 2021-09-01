@@ -213,6 +213,8 @@ github.com/cloudflare/cloudflare-go v0.18.0 h1:9q1yV4XuYqAZKsMUygRFH1rmmDq5rpaVX
 github.com/cloudflare/cloudflare-go v0.18.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
 github.com/cloudflare/cloudflare-go v0.20.0 h1:y2a6KwYHTFxhw+8PLhz0q5hpTGj6Un3W1pbpQLhzFaE=
 github.com/cloudflare/cloudflare-go v0.20.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
+github.com/cloudflare/cloudflare-go v0.21.0 h1:DWCTuT3E6piKVeeG/o8475cYINsRPMttP3zEs9NTbzY=
+github.com/cloudflare/cloudflare-go v0.21.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210314203411-171cd8e62b8c h1:Be2/ZmO/LLwznZcynWP2DRVQyq1pQOUtSTjevwOm+rU=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210314203411-171cd8e62b8c/go.mod h1:N9KKdr7iGYpGx2hLJ2W00e3FF7ACCl3f0npxttvkYhc=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210415001236-a117eb773c30 h1:fdKLtLYJh1RulqLAyovZGVYlznxuPiUqicTgM/kB4iU=
@@ -223,6 +225,8 @@ github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210629212356-ea4
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210629212356-ea44f8e06e30/go.mod h1:Dk7yRL8N0P5/N9CHc96iOV3FT8jzZNr/mSlC46nI2Bs=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210803234252-203c0ef802a1 h1:TUZ8nY1398RC57HJtLQa5+hnZQmgiWrsKU/suBY36BM=
 github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210803234252-203c0ef802a1/go.mod h1:OH/aPOYZdUmQ+h6UyEuxeTfxKyj8m6sHbk8Sc66Gcxk=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210829220551-6cbde5220cd9 h1:/tCVo74mN7TVKFtD9i4Y/LC0PAdfVVdT50JIR09L6lI=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210829220551-6cbde5220cd9/go.mod h1:CGPv8LqWYVZxCrlLnCeqUtqNO8xUXNzOB32sSDcQDX0=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/cncf/udpa/go v0.0.0-20200629203442-efcf912fb354 h1:9kRtNpqLHbZVO/NNxhHp2ymxFxsHOe3x2efJGn//Tas=
 github.com/cncf/udpa/go v0.0.0-20200629203442-efcf912fb354/go.mod h1:WmhPx2Nbnhtbo57+VJT5O0JRkEi1Wbu0z5j0R8u5Hbk=
@@ -438,6 +442,8 @@ github.com/google/subcommands v1.0.1/go.mod h1:ZjhPrFU+Olkh9WazFPsl27BQ4UPiG37m3
 github.com/google/uuid v1.1.1/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/google/uuid v1.1.2 h1:EVhdT+1Kseyi1/pUmXKaFxYsDNy9RQYkMWRH68J/W7Y=
 github.com/google/uuid v1.1.2/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/google/wire v0.4.0 h1:kXcsA/rIGzJImVqPdhfnr6q0xsS9gU0515q1EPpJ9fE=
 github.com/google/wire v0.4.0/go.mod h1:ngWDr9Qvq3yZA10YrxfyGELY/AFWGVpy9c1LTRi1EoU=
 github.com/googleapis/gax-go/v2 v2.0.4/go.mod h1:0Wqv26UfaUD9n4G6kQubkQ+KchISgw+vpHVxEJEs9eg=

@@ -30,6 +30,7 @@ export * from "./filter";
 export * from "./firewallRule";
 export * from "./getApiTokenPermissionGroups";
 export * from "./getIpRanges";
+export * from "./getOriginCaRootCertificate";
 export * from "./getWafGroups";
 export * from "./getWafPackages";
 export * from "./getWafRules";
@@ -44,14 +45,18 @@ export * from "./logPushOwnershipChallenge";
 export * from "./logpullRetention";
 export * from "./logpushJob";
 export * from "./magicFirewallRuleset";
+export * from "./notificationPolicy";
+export * from "./notificationPolicyWebhooks";
 export * from "./originCaCertificate";
 export * from "./pageRule";
 export * from "./provider";
 export * from "./rateLimit";
 export * from "./record";
+export * from "./ruleset";
 export * from "./spectrumApplication";
 export * from "./staticRoute";
 export * from "./teamsList";
+export * from "./teamsLocation";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
@@ -109,13 +114,17 @@ import { LogPushOwnershipChallenge } from "./logPushOwnershipChallenge";
 import { LogpullRetention } from "./logpullRetention";
 import { LogpushJob } from "./logpushJob";
 import { MagicFirewallRuleset } from "./magicFirewallRuleset";
+import { NotificationPolicy } from "./notificationPolicy";
+import { NotificationPolicyWebhooks } from "./notificationPolicyWebhooks";
 import { OriginCaCertificate } from "./originCaCertificate";
 import { PageRule } from "./pageRule";
 import { RateLimit } from "./rateLimit";
 import { Record } from "./record";
+import { Ruleset } from "./ruleset";
 import { SpectrumApplication } from "./spectrumApplication";
 import { StaticRoute } from "./staticRoute";
 import { TeamsList } from "./teamsList";
+import { TeamsLocation } from "./teamsLocation";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
@@ -199,6 +208,10 @@ const _module = {
                 return new LogpushJob(name, <any>undefined, { urn })
             case "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
                 return new MagicFirewallRuleset(name, <any>undefined, { urn })
+            case "cloudflare:index/notificationPolicy:NotificationPolicy":
+                return new NotificationPolicy(name, <any>undefined, { urn })
+            case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
+                return new NotificationPolicyWebhooks(name, <any>undefined, { urn })
             case "cloudflare:index/originCaCertificate:OriginCaCertificate":
                 return new OriginCaCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/pageRule:PageRule":
@@ -207,12 +220,16 @@ const _module = {
                 return new RateLimit(name, <any>undefined, { urn })
             case "cloudflare:index/record:Record":
                 return new Record(name, <any>undefined, { urn })
+            case "cloudflare:index/ruleset:Ruleset":
+                return new Ruleset(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
                 return new SpectrumApplication(name, <any>undefined, { urn })
             case "cloudflare:index/staticRoute:StaticRoute":
                 return new StaticRoute(name, <any>undefined, { urn })
             case "cloudflare:index/teamsList:TeamsList":
                 return new TeamsList(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsLocation:TeamsLocation":
+                return new TeamsLocation(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
                 return new WafGroup(name, <any>undefined, { urn })
             case "cloudflare:index/wafOverride:WafOverride":
@@ -278,13 +295,17 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/logPushOwnershipChall
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpullRetention", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpushJob", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicFirewallRuleset", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicyWebhooks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/originCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/staticRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)

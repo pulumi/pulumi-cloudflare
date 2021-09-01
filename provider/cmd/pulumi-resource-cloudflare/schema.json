@@ -3303,6 +3303,81 @@
                 "region"
             ]
         },
+        "cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the notification policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ]
+        },
+        "cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the notification policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ]
+        },
+        "cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the notification policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ]
+        },
         "cloudflare:index/PageRuleActions:PageRuleActions": {
             "properties": {
                 "alwaysOnline": {
@@ -4313,6 +4388,366 @@
             },
             "type": "object"
         },
+        "cloudflare:index/RulesetRule:RulesetRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "actionParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameter:RulesetRuleActionParameter"
+                    },
+                    "description": "List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief summary of the ruleset rule and its intended use.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines if the current rule-level override enables or disables the rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Rule ID to apply the override to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ref": {
+                    "type": "string",
+                    "description": "Rule reference.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "expression"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "description",
+                        "expression",
+                        "id",
+                        "ref",
+                        "version"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/RulesetRuleActionParameter:RulesetRuleActionParameter": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "Rule ID to apply the override to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "increment": {
+                    "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "overrides": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverrides:RulesetRuleActionParameterOverrides",
+                    "description": "List of override configurations to apply to the ruleset (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "products": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Products to target with the actions. Valid values are `\"bic\"`, `\"hot\"`, `\"ratelimit\"`, `\"securityLevel\"`, `\"uablock\"`, `\"waf\"` or `\"zonelockdown\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ruleset": {
+                    "type": "string",
+                    "description": "Which ruleset to target. Valid value is `\"current\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUri:RulesetRuleActionParameterUri"
+                    },
+                    "description": "List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleActionParameterOverrides:RulesetRuleActionParameterOverrides": {
+            "properties": {
+                "categories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverridesCategory:RulesetRuleActionParameterOverridesCategory"
+                    },
+                    "description": "List of tag-based overrides (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines if the current rule-level override enables or disables the rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverridesRule:RulesetRuleActionParameterOverridesRule"
+                    },
+                    "description": "List of rule-based overrides (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleActionParameterOverridesCategory:RulesetRuleActionParameterOverridesCategory": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "category": {
+                    "type": "string",
+                    "description": "Tag name to apply the ruleset rule override to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines if the current rule-level override enables or disables the rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleActionParameterOverridesRule:RulesetRuleActionParameterOverridesRule": {
+            "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Defines if the current rule-level override enables or disables the rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Rule ID to apply the override to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scoreThreshold": {
+                    "type": "integer",
+                    "description": "Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleActionParameterUri:RulesetRuleActionParameterUri": {
+            "properties": {
+                "origin": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "paths": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUriPath:RulesetRuleActionParameterUriPath"
+                    },
+                    "description": "URI path configuration when performing a URL rewrite (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "queries": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUriQuery:RulesetRuleActionParameterUriQuery"
+                    },
+                    "description": "Query string configuration when performing a URL rewrite (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleActionParameterUriPath:RulesetRuleActionParameterUriPath": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "description": "Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Static string value of the updated URI path or query string component. Conflicts with `expression`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleActionParameterUriQuery:RulesetRuleActionParameterUriQuery": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "description": "Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Static string value of the updated URI path or query string component. Conflicts with `expression`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns": {
             "properties": {
                 "name": {
@@ -4383,6 +4818,38 @@
                 "end",
                 "start"
             ]
+        },
+        "cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "network": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "network"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "network"
+                    ]
+                }
+            }
         },
         "cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding": {
             "properties": {
@@ -6431,7 +6898,7 @@
             }
         },
         "cloudflare:index/accessGroup:AccessGroup": {
-            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported. Example: `auth_method = [\"swk\"]`\n* `geo` - (Optional) A list of country codes. Example: `geo = [\"US\"]`\n* `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`\n* `device_posture` - (Optional) A list of device_posture integration_uids. Example: `device_posture = [cloudflare_device_posture_rule.my_posture_rule.id]`\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      team = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n\n\n## Import\n\nAccess Groups can be imported using a composite ID formed of account ID and group ID.\n\n```sh\n $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID ",
+            "description": "Provides a Cloudflare Access Group resource. Access Groups are used\nin conjunction with Access Policies to restrict access to a\nparticular resource based on group membership.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Allowing access to `test@example.com` email address only\nconst testGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n});\n// Allowing `test@example.com` to access but only when coming from a\n// specific IP.\nconst testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", {\n    accountId: \"975ecf5a45e3bcb680dba0722a420ad9\",\n    name: \"staging group\",\n    includes: [{\n        emails: [\"test@example.com\"],\n    }],\n    requires: {\n        ips: [_var.office_ip],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Allowing access to `test@example.com` email address only\ntest_group_access_group = cloudflare.AccessGroup(\"testGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )])\n# Allowing `test@example.com` to access but only when coming from a\n# specific IP.\ntest_group_index_access_group_access_group = cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\",\n    account_id=\"975ecf5a45e3bcb680dba0722a420ad9\",\n    name=\"staging group\",\n    includes=[cloudflare.AccessGroupIncludeArgs(\n        emails=[\"test@example.com\"],\n    )],\n    requires={\n        \"ips\": [var[\"office_ip\"]],\n    })\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Allowing access to `test@example.com` email address only\n        var testGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n        });\n        // Allowing `test@example.com` to access but only when coming from a\n        // specific IP.\n        var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup(\"testGroupIndex/accessGroupAccessGroup\", new Cloudflare.AccessGroupArgs\n        {\n            AccountId = \"975ecf5a45e3bcb680dba0722a420ad9\",\n            Name = \"staging group\",\n            Includes = \n            {\n                new Cloudflare.Inputs.AccessGroupIncludeArgs\n                {\n                    Emails = \n                    {\n                        \"test@example.com\",\n                    },\n                },\n            },\n            Requires = \n            {\n                { \"ips\", \n                {\n                    @var.Office_ip,\n                } },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessGroup(ctx, \"testGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessGroup(ctx, \"testGroupIndex_accessGroupAccessGroup\", \u0026cloudflare.AccessGroupArgs{\n\t\t\tAccountId: pulumi.String(\"975ecf5a45e3bcb680dba0722a420ad9\"),\n\t\t\tName:      pulumi.String(\"staging group\"),\n\t\t\tIncludes: cloudflare.AccessGroupIncludeArray{\n\t\t\t\t\u0026cloudflare.AccessGroupIncludeArgs{\n\t\t\t\t\tEmails: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"test@example.com\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tRequires: cloudflare.AccessGroupRequireArray{\n\t\t\t\tIps: cloudflare.AccessGroupRequireArgs{\n\t\t\t\t\tpulumi.Any(_var.Office_ip),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n## Conditions\n\n`require`, `exclude` and `include` arguments share the available\nconditions which can be applied. The conditions are:\n\n* `ip` - (Optional) A list of IP addresses or ranges. Example:\n  `ip = [\"1.2.3.4\", \"10.0.0.0/2\"]`\n* `email` - (Optional) A list of email addresses. Example:\n  `email = [\"test@example.com\"]`\n* `email_domain` - (Optional) A list of email domains. Example:\n  `email_domain = [\"example.com\"]`\n* `service_token` - (Optional) A list of service token ids. Example:\n  `service_token = [cloudflare_access_service_token.demo.id]`\n* `any_valid_service_token` - (Optional) Boolean indicating if allow\n  all tokens to be granted. Example: `any_valid_service_token = true`\n* `group` - (Optional) A list of access group ids. Example:\n  `group = [cloudflare_access_group.demo.id]`\n* `everyone` - (Optional) Boolean indicating permitting access for all\n  requests. Example: `everyone = true`\n* `certificate` - (Optional) Whether to use mTLS certificate authentication.\n* `common_name` - (Optional) Use a certificate common name to authenticate with.\n* `auth_method` - (Optional) A string identifying the authentication\n  method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.\n  Custom values are also supported. Example: `auth_method = [\"swk\"]`\n* `geo` - (Optional) A list of country codes. Example: `geo = [\"US\"]`\n* `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`\n* `device_posture` - (Optional) A list of device_posture integration_uids. Example: `device_posture = [cloudflare_device_posture_rule.my_posture_rule.id]`\n* `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    gsuite {\n      email = [\"admins@example.com\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `github` - (Optional) Use a GitHub organization as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    github {\n      name = \"my-github-org-name\" # (Required) GitHub organization name\n      teams = [\"my-github-team-name\"] # (Optional) GitHub teams\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `azure` - (Optional) Use Azure AD as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    azure {\n      id = [\"86773093-5feb-48dd-814b-7ccd3676ff50e\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `okta` - (Optional) Use Okta as the `include` condition. Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    okta {\n      name = [\"admins\"]\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n* `saml` - (Optional) Use an external SAML setup as the `include` condition.\n  Example:\n\n  ```hcl\n  # ... other configuration\n  include {\n    saml {\n      attribute_name = \"group\"\n      attribute_value = \"admins\"\n      identity_provider_id = \"ca298b82-93b5-41bf-bc2d-10493f09b761\"\n    }\n  }\n  ```\n\n\n## Import\n\nAccess Groups can be imported using a composite ID formed of account ID and group ID.\n\n```sh\n $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d\n```\n\n where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -9762,6 +10229,313 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/notificationPolicy:NotificationPolicy": {
+            "description": "Provides a resource, that manages a notification policy for Cloudflare's products. The delivery\nmechanisms supported are email, webhooks, and PagerDuty.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.NotificationPolicy(\"example\", {\n    accountId: \"c4a7362d577a6c3019a474fd6f485821\",\n    alertType: \"universal_ssl_event_type\",\n    description: \"Notification policy to alert when my SSL certificates are modified\",\n    emailIntegrations: [{\n        id: \"myemail@example.com\",\n    }],\n    enabled: true,\n    name: \"Policy for SSL notification events\",\n    pagerdutyIntegrations: [{\n        id: \"850129d136459401860572c5d964d27k\",\n    }],\n    webhooksIntegrations: [{\n        id: \"1860572c5d964d27aa0f379d13645940\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.NotificationPolicy(\"example\",\n    account_id=\"c4a7362d577a6c3019a474fd6f485821\",\n    alert_type=\"universal_ssl_event_type\",\n    description=\"Notification policy to alert when my SSL certificates are modified\",\n    email_integrations=[cloudflare.NotificationPolicyEmailIntegrationArgs(\n        id=\"myemail@example.com\",\n    )],\n    enabled=True,\n    name=\"Policy for SSL notification events\",\n    pagerduty_integrations=[cloudflare.NotificationPolicyPagerdutyIntegrationArgs(\n        id=\"850129d136459401860572c5d964d27k\",\n    )],\n    webhooks_integrations=[cloudflare.NotificationPolicyWebhooksIntegrationArgs(\n        id=\"1860572c5d964d27aa0f379d13645940\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.NotificationPolicy(\"example\", new Cloudflare.NotificationPolicyArgs\n        {\n            AccountId = \"c4a7362d577a6c3019a474fd6f485821\",\n            AlertType = \"universal_ssl_event_type\",\n            Description = \"Notification policy to alert when my SSL certificates are modified\",\n            EmailIntegrations = \n            {\n                new Cloudflare.Inputs.NotificationPolicyEmailIntegrationArgs\n                {\n                    Id = \"myemail@example.com\",\n                },\n            },\n            Enabled = true,\n            Name = \"Policy for SSL notification events\",\n            PagerdutyIntegrations = \n            {\n                new Cloudflare.Inputs.NotificationPolicyPagerdutyIntegrationArgs\n                {\n                    Id = \"850129d136459401860572c5d964d27k\",\n                },\n            },\n            WebhooksIntegrations = \n            {\n                new Cloudflare.Inputs.NotificationPolicyWebhooksIntegrationArgs\n                {\n                    Id = \"1860572c5d964d27aa0f379d13645940\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewNotificationPolicy(ctx, \"example\", \u0026cloudflare.NotificationPolicyArgs{\n\t\t\tAccountId:   pulumi.String(\"c4a7362d577a6c3019a474fd6f485821\"),\n\t\t\tAlertType:   pulumi.String(\"universal_ssl_event_type\"),\n\t\t\tDescription: pulumi.String(\"Notification policy to alert when my SSL certificates are modified\"),\n\t\t\tEmailIntegrations: cloudflare.NotificationPolicyEmailIntegrationArray{\n\t\t\t\t\u0026cloudflare.NotificationPolicyEmailIntegrationArgs{\n\t\t\t\t\tId: pulumi.String(\"myemail@example.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t\tName:    pulumi.String(\"Policy for SSL notification events\"),\n\t\t\tPagerdutyIntegrations: cloudflare.NotificationPolicyPagerdutyIntegrationArray{\n\t\t\t\t\u0026cloudflare.NotificationPolicyPagerdutyIntegrationArgs{\n\t\t\t\t\tId: pulumi.String(\"850129d136459401860572c5d964d27k\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tWebhooksIntegrations: cloudflare.NotificationPolicyWebhooksIntegrationArray{\n\t\t\t\t\u0026cloudflare.NotificationPolicyWebhooksIntegrationArgs{\n\t\t\t\t\tId: pulumi.String(\"1860572c5d964d27aa0f379d13645940\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing notification policy can be imported using the account ID and the policy ID\n\n```sh\n $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account for which the notification policy has to be created.\n"
+                },
+                "alertType": {
+                    "type": "string",
+                    "description": "The event type that will trigger the dispatch of a notification.\n"
+                },
+                "conditions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "created": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the notification policy.\n"
+                },
+                "emailIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
+                    },
+                    "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "The status of the notification policy, a boolean value.\n"
+                },
+                "filters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "description": "Optional filterable items for a policy.\n"
+                },
+                "modified": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the notification policy.\n"
+                },
+                "pagerdutyIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
+                    },
+                    "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                },
+                "webhooksIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
+                    },
+                    "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "alertType",
+                "created",
+                "enabled",
+                "modified",
+                "name"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account for which the notification policy has to be created.\n"
+                },
+                "alertType": {
+                    "type": "string",
+                    "description": "The event type that will trigger the dispatch of a notification.\n"
+                },
+                "conditions": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "pulumi.json#/Any"
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the notification policy.\n"
+                },
+                "emailIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
+                    },
+                    "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "The status of the notification policy, a boolean value.\n"
+                },
+                "filters": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "description": "Optional filterable items for a policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the notification policy.\n"
+                },
+                "pagerdutyIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
+                    },
+                    "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                },
+                "webhooksIntegrations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
+                    },
+                    "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "alertType",
+                "enabled",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NotificationPolicy resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account for which the notification policy has to be created.\n"
+                    },
+                    "alertType": {
+                        "type": "string",
+                        "description": "The event type that will trigger the dispatch of a notification.\n"
+                    },
+                    "conditions": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        }
+                    },
+                    "created": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the notification policy.\n"
+                    },
+                    "emailIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
+                        },
+                        "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "The status of the notification policy, a boolean value.\n"
+                    },
+                    "filters": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "pulumi.json#/Any"
+                            }
+                        },
+                        "description": "Optional filterable items for a policy.\n"
+                    },
+                    "modified": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the notification policy.\n"
+                    },
+                    "pagerdutyIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
+                        },
+                        "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    },
+                    "webhooksIntegrations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
+                        },
+                        "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks": {
+            "description": "Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.NotificationPolicyWebhooks(\"example\", {\n    accountId: \"c4a7362d577a6c3019a474fd6f485821\",\n    name: \"Webhooks destination\",\n    secret: \"my-secret\",\n    url: \"https://example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.NotificationPolicyWebhooks(\"example\",\n    account_id=\"c4a7362d577a6c3019a474fd6f485821\",\n    name=\"Webhooks destination\",\n    secret=\"my-secret\",\n    url=\"https://example.com\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.NotificationPolicyWebhooks(\"example\", new Cloudflare.NotificationPolicyWebhooksArgs\n        {\n            AccountId = \"c4a7362d577a6c3019a474fd6f485821\",\n            Name = \"Webhooks destination\",\n            Secret = \"my-secret\",\n            Url = \"https://example.com\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewNotificationPolicyWebhooks(ctx, \"example\", \u0026cloudflare.NotificationPolicyWebhooksArgs{\n\t\t\tAccountId: pulumi.String(\"c4a7362d577a6c3019a474fd6f485821\"),\n\t\t\tName:      pulumi.String(\"Webhooks destination\"),\n\t\t\tSecret:    pulumi.String(\"my-secret\"),\n\t\t\tUrl:       pulumi.String(\"https://example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing notification policy can be imported using the account ID and the webhook ID\n\n```sh\n $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account for which the webhook destination has to be connected.\n"
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "lastFailure": {
+                    "type": "string"
+                },
+                "lastSuccess": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the webhook destination.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. \nSecrets are not returned in any API response body.\nRefer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.\n"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the webhook destinations.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "createdAt",
+                "lastFailure",
+                "lastSuccess",
+                "name",
+                "type"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account for which the webhook destination has to be connected.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the webhook destination.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. \nSecrets are not returned in any API response body.\nRefer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the webhook destinations.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NotificationPolicyWebhooks resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account for which the webhook destination has to be connected.\n"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "lastFailure": {
+                        "type": "string"
+                    },
+                    "lastSuccess": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the webhook destination.\n"
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. \nSecrets are not returned in any API response body.\nRefer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.\n"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The URL of the webhook destinations.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/originCaCertificate:OriginCaCertificate": {
             "description": "Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.\n\n**This resource requires you use your Origin CA Key as the `api_user_service_key`, in conjunction with an `api_token` or `email` and `api_key`.**\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as tls from \"@pulumi/tls\";\n\n// Create a CSR and generate a CA certificate\nconst examplePrivateKey = new tls.PrivateKey(\"examplePrivateKey\", {algorithm: \"RSA\"});\nconst exampleCertRequest = new tls.CertRequest(\"exampleCertRequest\", {\n    keyAlgorithm: examplePrivateKey.algorithm,\n    privateKeyPem: examplePrivateKey.privateKeyPem,\n    subjects: [{\n        commonName: \"\",\n        organization: \"Terraform Test\",\n    }],\n});\nconst exampleOriginCaCertificate = new cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", {\n    csr: exampleCertRequest.certRequestPem,\n    hostnames: [\"example.com\"],\n    requestType: \"origin-rsa\",\n    requestedValidity: 7,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_tls as tls\n\n# Create a CSR and generate a CA certificate\nexample_private_key = tls.PrivateKey(\"examplePrivateKey\", algorithm=\"RSA\")\nexample_cert_request = tls.CertRequest(\"exampleCertRequest\",\n    key_algorithm=example_private_key.algorithm,\n    private_key_pem=example_private_key.private_key_pem,\n    subjects=[tls.CertRequestSubjectArgs(\n        common_name=\"\",\n        organization=\"Terraform Test\",\n    )])\nexample_origin_ca_certificate = cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\",\n    csr=example_cert_request.cert_request_pem,\n    hostnames=[\"example.com\"],\n    request_type=\"origin-rsa\",\n    requested_validity=7)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Tls = Pulumi.Tls;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a CSR and generate a CA certificate\n        var examplePrivateKey = new Tls.PrivateKey(\"examplePrivateKey\", new Tls.PrivateKeyArgs\n        {\n            Algorithm = \"RSA\",\n        });\n        var exampleCertRequest = new Tls.CertRequest(\"exampleCertRequest\", new Tls.CertRequestArgs\n        {\n            KeyAlgorithm = examplePrivateKey.Algorithm,\n            PrivateKeyPem = examplePrivateKey.PrivateKeyPem,\n            Subjects = \n            {\n                new Tls.Inputs.CertRequestSubjectArgs\n                {\n                    CommonName = \"\",\n                    Organization = \"Terraform Test\",\n                },\n            },\n        });\n        var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", new Cloudflare.OriginCaCertificateArgs\n        {\n            Csr = exampleCertRequest.CertRequestPem,\n            Hostnames = \n            {\n                \"example.com\",\n            },\n            RequestType = \"origin-rsa\",\n            RequestedValidity = 7,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-tls/sdk/v4/go/tls\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePrivateKey, err := tls.NewPrivateKey(ctx, \"examplePrivateKey\", \u0026tls.PrivateKeyArgs{\n\t\t\tAlgorithm: pulumi.String(\"RSA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleCertRequest, err := tls.NewCertRequest(ctx, \"exampleCertRequest\", \u0026tls.CertRequestArgs{\n\t\t\tKeyAlgorithm:  examplePrivateKey.Algorithm,\n\t\t\tPrivateKeyPem: examplePrivateKey.PrivateKeyPem,\n\t\t\tSubjects: tls.CertRequestSubjectArray{\n\t\t\t\t\u0026tls.CertRequestSubjectArgs{\n\t\t\t\t\tCommonName:   pulumi.String(\"\"),\n\t\t\t\t\tOrganization: pulumi.String(\"Terraform Test\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewOriginCaCertificate(ctx, \"exampleOriginCaCertificate\", \u0026cloudflare.OriginCaCertificateArgs{\n\t\t\tCsr: exampleCertRequest.CertRequestPem,\n\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t\tRequestType:       pulumi.String(\"origin-rsa\"),\n\t\t\tRequestedValidity: pulumi.Int(7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nOrigin CA certificate resource can be imported using an ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example 276266538771611802607153687288146423901027769273\n```\n\n ",
             "properties": {
@@ -10265,6 +11039,136 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/ruleset:Ruleset": {
+            "description": "The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets.\nThe engine syntax, inspired by the Wireshark Display Filter language, is the\nsame syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine\nin different products, allowing you to configure several products using the same\nbasic syntax.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Magic Transit\nconst magicTransitExample = new cloudflare.Ruleset(\"magic_transit_example\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"example magic transit ruleset description\",\n    kind: \"root\",\n    name: \"account magic transit\",\n    phase: \"magic_transit\",\n    rules: [{\n        action: \"allow\",\n        description: \"Allow TCP Ephemeral Ports\",\n        expression: \"tcp.dstport in { 32768..65535 }\",\n    }],\n});\n// Zone-level WAF Managed Ruleset\nconst zoneLevelManagedWaf = new cloudflare.Ruleset(\"zone_level_managed_waf\", {\n    description: \"managed WAF ruleset description\",\n    kind: \"zone\",\n    name: \"managed WAF\",\n    phase: \"http_request_firewall_managed\",\n    rules: [{\n        action: \"execute\",\n        actionParameters: [{\n            id: \"efb7b8c949ac4650a09736fc376e9aee\",\n        }],\n        description: \"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n        enabled: true,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Zone-level WAF with tag-based overrides\nconst zoneLevelManagedWafWithCategoryBasedOverrides = new cloudflare.Ruleset(\"zone_level_managed_waf_with_category_based_overrides\", {\n    description: \"managed WAF with tag-based overrides ruleset description\",\n    kind: \"zone\",\n    name: \"managed WAF with tag-based overrides\",\n    phase: \"http_request_firewall_managed\",\n    rules: [{\n        action: \"execute\",\n        actionParameters: [{\n            id: \"efb7b8c949ac4650a09736fc376e9aee\",\n            overrides: {\n                categories: [\n                    {\n                        action: \"block\",\n                        category: \"wordpress\",\n                        enabled: true,\n                    },\n                    {\n                        action: \"block\",\n                        category: \"joomla\",\n                        enabled: true,\n                    },\n                ],\n            },\n        }],\n        description: \"overrides to only enable wordpress rules to block\",\n        enabled: false,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Magic Transit\nmagic_transit_example = cloudflare.Ruleset(\"magicTransitExample\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"example magic transit ruleset description\",\n    kind=\"root\",\n    name=\"account magic transit\",\n    phase=\"magic_transit\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"allow\",\n        description=\"Allow TCP Ephemeral Ports\",\n        expression=\"tcp.dstport in { 32768..65535 }\",\n    )])\n# Zone-level WAF Managed Ruleset\nzone_level_managed_waf = cloudflare.Ruleset(\"zoneLevelManagedWaf\",\n    description=\"managed WAF ruleset description\",\n    kind=\"zone\",\n    name=\"managed WAF\",\n    phase=\"http_request_firewall_managed\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"execute\",\n        action_parameters=[cloudflare.RulesetRuleActionParameterArgs(\n            id=\"efb7b8c949ac4650a09736fc376e9aee\",\n        )],\n        description=\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n        enabled=True,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Zone-level WAF with tag-based overrides\nzone_level_managed_waf_with_category_based_overrides = cloudflare.Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\",\n    description=\"managed WAF with tag-based overrides ruleset description\",\n    kind=\"zone\",\n    name=\"managed WAF with tag-based overrides\",\n    phase=\"http_request_firewall_managed\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"execute\",\n        action_parameters=[cloudflare.RulesetRuleActionParameterArgs(\n            id=\"efb7b8c949ac4650a09736fc376e9aee\",\n            overrides=cloudflare.RulesetRuleActionParameterOverridesArgs(\n                categories=[\n                    cloudflare.RulesetRuleActionParameterOverridesCategoryArgs(\n                        action=\"block\",\n                        category=\"wordpress\",\n                        enabled=True,\n                    ),\n                    cloudflare.RulesetRuleActionParameterOverridesCategoryArgs(\n                        action=\"block\",\n                        category=\"joomla\",\n                        enabled=True,\n                    ),\n                ],\n            ),\n        )],\n        description=\"overrides to only enable wordpress rules to block\",\n        enabled=False,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Magic Transit\n        var magicTransitExample = new Cloudflare.Ruleset(\"magicTransitExample\", new Cloudflare.RulesetArgs\n        {\n            AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"example magic transit ruleset description\",\n            Kind = \"root\",\n            Name = \"account magic transit\",\n            Phase = \"magic_transit\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"allow\",\n                    Description = \"Allow TCP Ephemeral Ports\",\n                    Expression = \"tcp.dstport in { 32768..65535 }\",\n                },\n            },\n        });\n        // Zone-level WAF Managed Ruleset\n        var zoneLevelManagedWaf = new Cloudflare.Ruleset(\"zoneLevelManagedWaf\", new Cloudflare.RulesetArgs\n        {\n            Description = \"managed WAF ruleset description\",\n            Kind = \"zone\",\n            Name = \"managed WAF\",\n            Phase = \"http_request_firewall_managed\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"execute\",\n                    ActionParameters = \n                    {\n                        new Cloudflare.Inputs.RulesetRuleActionParameterArgs\n                        {\n                            Id = \"efb7b8c949ac4650a09736fc376e9aee\",\n                        },\n                    },\n                    Description = \"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n                    Enabled = true,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Zone-level WAF with tag-based overrides\n        var zoneLevelManagedWafWithCategoryBasedOverrides = new Cloudflare.Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\", new Cloudflare.RulesetArgs\n        {\n            Description = \"managed WAF with tag-based overrides ruleset description\",\n            Kind = \"zone\",\n            Name = \"managed WAF with tag-based overrides\",\n            Phase = \"http_request_firewall_managed\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"execute\",\n                    ActionParameters = \n                    {\n                        new Cloudflare.Inputs.RulesetRuleActionParameterArgs\n                        {\n                            Id = \"efb7b8c949ac4650a09736fc376e9aee\",\n                            Overrides = new Cloudflare.Inputs.RulesetRuleActionParameterOverridesArgs\n                            {\n                                Categories = \n                                {\n                                    new Cloudflare.Inputs.RulesetRuleActionParameterOverridesCategoryArgs\n                                    {\n                                        Action = \"block\",\n                                        Category = \"wordpress\",\n                                        Enabled = true,\n                                    },\n                                    new Cloudflare.Inputs.RulesetRuleActionParameterOverridesCategoryArgs\n                                    {\n                                        Action = \"block\",\n                                        Category = \"joomla\",\n                                        Enabled = true,\n                                    },\n                                },\n                            },\n                        },\n                    },\n                    Description = \"overrides to only enable wordpress rules to block\",\n                    Enabled = false,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewRuleset(ctx, \"magicTransitExample\", \u0026cloudflare.RulesetArgs{\n\t\t\tAccountId:   pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"example magic transit ruleset description\"),\n\t\t\tKind:        pulumi.String(\"root\"),\n\t\t\tName:        pulumi.String(\"account magic transit\"),\n\t\t\tPhase:       pulumi.String(\"magic_transit\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction:      pulumi.String(\"allow\"),\n\t\t\t\t\tDescription: pulumi.String(\"Allow TCP Ephemeral Ports\"),\n\t\t\t\t\tExpression:  pulumi.String(\"tcp.dstport in { 32768..65535 }\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"zoneLevelManagedWaf\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"managed WAF ruleset description\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"managed WAF\"),\n\t\t\tPhase:       pulumi.String(\"http_request_firewall_managed\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"execute\"),\n\t\t\t\t\tActionParameters: cloudflare.RulesetRuleActionParameterArray{\n\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParameterArgs{\n\t\t\t\t\t\t\tId: pulumi.String(\"efb7b8c949ac4650a09736fc376e9aee\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"zoneLevelManagedWafWithCategoryBasedOverrides\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"managed WAF with tag-based overrides ruleset description\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"managed WAF with tag-based overrides\"),\n\t\t\tPhase:       pulumi.String(\"http_request_firewall_managed\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"execute\"),\n\t\t\t\t\tActionParameters: cloudflare.RulesetRuleActionParameterArray{\n\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParameterArgs{\n\t\t\t\t\t\t\tId: pulumi.String(\"efb7b8c949ac4650a09736fc376e9aee\"),\n\t\t\t\t\t\t\tOverrides: \u0026cloudflare.RulesetRuleActionParameterOverridesArgs{\n\t\t\t\t\t\t\t\tCategories: cloudflare.RulesetRuleActionParameterOverridesCategoryArray{\n\t\t\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParameterOverridesCategoryArgs{\n\t\t\t\t\t\t\t\t\t\tAction:   pulumi.String(\"block\"),\n\t\t\t\t\t\t\t\t\t\tCategory: pulumi.String(\"wordpress\"),\n\t\t\t\t\t\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParameterOverridesCategoryArgs{\n\t\t\t\t\t\t\t\t\t\tAction:   pulumi.String(\"block\"),\n\t\t\t\t\t\t\t\t\t\tCategory: pulumi.String(\"joomla\"),\n\t\t\t\t\t\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"overrides to only enable wordpress rules to block\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCurrently, you cannot import rulesets. ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the ruleset is being created. Conflicts with `\"zone_id\"`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief summary of the ruleset rule and its intended use.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Type of Ruleset to create. Valid values are `\"custom\"`, `\"managed\"`, `\"root\"`, `\"schema\"` or `\"zone\"`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the ruleset.\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
+                    },
+                    "description": "List of rule-based overrides (refer to the nested schema).\n"
+                },
+                "shareableEntitlementName": {
+                    "type": "string",
+                    "description": "Name of entitlement that is shareable between entities.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the zone where the ruleset is being created. Conflicts with `\"account_id\"`.\n"
+                }
+            },
+            "required": [
+                "description",
+                "kind",
+                "name",
+                "phase"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the ruleset is being created. Conflicts with `\"zone_id\"`.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Brief summary of the ruleset rule and its intended use.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "Type of Ruleset to create. Valid values are `\"custom\"`, `\"managed\"`, `\"root\"`, `\"schema\"` or `\"zone\"`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the ruleset.\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
+                    },
+                    "description": "List of rule-based overrides (refer to the nested schema).\n"
+                },
+                "shareableEntitlementName": {
+                    "type": "string",
+                    "description": "Name of entitlement that is shareable between entities.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The ID of the zone where the ruleset is being created. Conflicts with `\"account_id\"`.\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "kind",
+                "name",
+                "phase"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Ruleset resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account where the ruleset is being created. Conflicts with `\"zone_id\"`.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Brief summary of the ruleset rule and its intended use.\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "Type of Ruleset to create. Valid values are `\"custom\"`, `\"managed\"`, `\"root\"`, `\"schema\"` or `\"zone\"`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the ruleset.\n"
+                    },
+                    "phase": {
+                        "type": "string",
+                        "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
+                        },
+                        "description": "List of rule-based overrides (refer to the nested schema).\n"
+                    },
+                    "shareableEntitlementName": {
+                        "type": "string",
+                        "description": "Name of entitlement that is shareable between entities.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The ID of the zone where the ruleset is being created. Conflicts with `\"account_id\"`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/spectrumApplication:SpectrumApplication": {
             "description": "Provides a Cloudflare Spectrum Application. You can extend the power of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based services.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Define a spectrum application proxies ssh traffic\nconst sshProxy = new cloudflare.SpectrumApplication(\"sshProxy\", {\n    zoneId: _var.cloudflare_zone_id,\n    protocol: \"tcp/22\",\n    trafficType: \"direct\",\n    dns: {\n        type: \"CNAME\",\n        name: \"ssh.example.com\",\n    },\n    originDirects: [\"tcp://109.151.40.129:22\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Define a spectrum application proxies ssh traffic\nssh_proxy = cloudflare.SpectrumApplication(\"sshProxy\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    protocol=\"tcp/22\",\n    traffic_type=\"direct\",\n    dns=cloudflare.SpectrumApplicationDnsArgs(\n        type=\"CNAME\",\n        name=\"ssh.example.com\",\n    ),\n    origin_directs=[\"tcp://109.151.40.129:22\"])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Define a spectrum application proxies ssh traffic\n        var sshProxy = new Cloudflare.SpectrumApplication(\"sshProxy\", new Cloudflare.SpectrumApplicationArgs\n        {\n            ZoneId = @var.Cloudflare_zone_id,\n            Protocol = \"tcp/22\",\n            TrafficType = \"direct\",\n            Dns = new Cloudflare.Inputs.SpectrumApplicationDnsArgs\n            {\n                Type = \"CNAME\",\n                Name = \"ssh.example.com\",\n            },\n            OriginDirects = \n            {\n                \"tcp://109.151.40.129:22\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewSpectrumApplication(ctx, \"sshProxy\", \u0026cloudflare.SpectrumApplicationArgs{\n\t\t\tZoneId:      pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tProtocol:    pulumi.String(\"tcp/22\"),\n\t\t\tTrafficType: pulumi.String(\"direct\"),\n\t\t\tDns: \u0026cloudflare.SpectrumApplicationDnsArgs{\n\t\t\t\tType: pulumi.String(\"CNAME\"),\n\t\t\t\tName: pulumi.String(\"ssh.example.com\"),\n\t\t\t},\n\t\t\tOriginDirects: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"tcp://109.151.40.129:22\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSpectrum resource can be imported using a zone ID and Application ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) * `9a7806061c88ada191ed06f989cc3dac` - Application ID ",
             "properties": {
@@ -10703,6 +11607,112 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/teamsLocation:TeamsLocation": {
+            "properties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "anonymizedLogsEnabled": {
+                    "type": "boolean"
+                },
+                "clientDefault": {
+                    "type": "boolean"
+                },
+                "dohSubdomain": {
+                    "type": "string"
+                },
+                "ip": {
+                    "type": "string"
+                },
+                "ipv4Destination": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork"
+                    }
+                },
+                "policyIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "accountId",
+                "anonymizedLogsEnabled",
+                "dohSubdomain",
+                "ip",
+                "ipv4Destination",
+                "name",
+                "policyIds"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "clientDefault": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork"
+                    }
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamsLocation resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "anonymizedLogsEnabled": {
+                        "type": "boolean"
+                    },
+                    "clientDefault": {
+                        "type": "boolean"
+                    },
+                    "dohSubdomain": {
+                        "type": "string"
+                    },
+                    "ip": {
+                        "type": "string"
+                    },
+                    "ipv4Destination": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "networks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork"
+                        }
+                    },
+                    "policyIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/wafGroup:WafGroup": {
             "description": "Provides a Cloudflare WAF rule group resource for a particular zone. This can be used to configure firewall behaviour for pre-defined firewall groups.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst honeyPot = new cloudflare.WafGroup(\"honey_pot\", {\n    groupId: \"de677e5818985db1285d0e80225f06e5\",\n    mode: \"on\",\n    zoneId: \"ae36f999674d196762efcc5abb06b345\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nhoney_pot = cloudflare.WafGroup(\"honeyPot\",\n    group_id=\"de677e5818985db1285d0e80225f06e5\",\n    mode=\"on\",\n    zone_id=\"ae36f999674d196762efcc5abb06b345\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var honeyPot = new Cloudflare.WafGroup(\"honeyPot\", new Cloudflare.WafGroupArgs\n        {\n            GroupId = \"de677e5818985db1285d0e80225f06e5\",\n            Mode = \"on\",\n            ZoneId = \"ae36f999674d196762efcc5abb06b345\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWafGroup(ctx, \"honeyPot\", \u0026cloudflare.WafGroupArgs{\n\t\t\tGroupId: pulumi.String(\"de677e5818985db1285d0e80225f06e5\"),\n\t\t\tMode:    pulumi.String(\"on\"),\n\t\t\tZoneId:  pulumi.String(\"ae36f999674d196762efcc5abb06b345\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nWAF Rule Groups can be imported using a composite ID formed of zone ID and the WAF Rule Group ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/wafGroup:WafGroup honey_pot ae36f999674d196762efcc5abb06b345/de677e5818985db1285d0e80225f06e5\n```\n\n ",
             "properties": {
@@ -11102,6 +12112,10 @@
                     "type": "string",
                     "description": "Host name for which the waiting room will be applied (no wildcards).\n"
                 },
+                "jsonResponseEnabled": {
+                    "type": "boolean",
+                    "description": "If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "A unique name to identify the waiting room.\n"
@@ -11158,6 +12172,10 @@
                 "host": {
                     "type": "string",
                     "description": "Host name for which the waiting room will be applied (no wildcards).\n"
+                },
+                "jsonResponseEnabled": {
+                    "type": "boolean",
+                    "description": "If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.\n"
                 },
                 "name": {
                     "type": "string",
@@ -11217,6 +12235,10 @@
                     "host": {
                         "type": "string",
                         "description": "Host name for which the waiting room will be applied (no wildcards).\n"
+                    },
+                    "jsonResponseEnabled": {
+                        "type": "boolean",
+                        "description": "If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.\n"
                     },
                     "name": {
                         "type": "string",
@@ -11573,7 +12595,7 @@
             }
         },
         "cloudflare:index/zone:Zone": {
-            "description": "Provides a Cloudflare Zone resource. Zone is the basic resource for working with Cloudflare and is roughly equivalent to a domain name that the user purchases.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.Zone(\"example\", {\n    zone: \"example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.Zone(\"example\", zone=\"example.com\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.Zone(\"example\", new Cloudflare.ZoneArgs\n        {\n            Zone = \"example.com\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZone(ctx, \"example\", \u0026cloudflare.ZoneArgs{\n\t\t\tZone: pulumi.String(\"example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nZone resource can be imported using a zone ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) ",
+            "description": "\n\n\n## Import\n\nZone resource can be imported using a zone ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) ",
             "properties": {
                 "jumpStart": {
                     "type": "boolean",
@@ -12133,6 +13155,44 @@
                     "cidrBlocks",
                     "ipv4CidrBlocks",
                     "ipv6CidrBlocks",
+                    "id"
+                ]
+            }
+        },
+        "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate": {
+            "description": "Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst originCa = pulumi.output(cloudflare.getOriginCaRootCertificate({\n    algorithm: \"\u003calgorithm\u003e\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\norigin_ca = cloudflare.get_origin_ca_root_certificate(algorithm=\"\u003calgorithm\u003e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var originCa = Output.Create(Cloudflare.GetOriginCaRootCertificate.InvokeAsync(new Cloudflare.GetOriginCaRootCertificateArgs\n        {\n            Algorithm = \"\u003calgorithm\u003e\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetOriginCaRootCertificate(ctx, \u0026cloudflare.GetOriginCaRootCertificateArgs{\n\t\t\tAlgorithm: \"\u003calgorithm\u003e\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOriginCaRootCertificate.\n",
+                "properties": {
+                    "algorithm": {
+                        "type": "string",
+                        "description": "The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are \"rsa\" and \"ecc\" (case-insensitive).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "algorithm"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOriginCaRootCertificate.\n",
+                "properties": {
+                    "algorithm": {
+                        "type": "string"
+                    },
+                    "certPem": {
+                        "type": "string",
+                        "description": "The Origin CA root certificate in PEM format.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "algorithm",
+                    "certPem",
                     "id"
                 ]
             }

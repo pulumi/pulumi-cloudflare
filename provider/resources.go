@@ -195,6 +195,10 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_teams_list":                    {Tok: makeResource(mainMod, "TeamsList")},
 			"cloudflare_waiting_room":                  {Tok: makeResource(mainMod, "WaitingRoom")},
 			"cloudflare_static_route":                  {Tok: makeResource(mainMod, "StaticRoute")},
+			"cloudflare_notification_policy":           {Tok: makeResource(mainMod, "NotificationPolicy")},
+			"cloudflare_notification_policy_webhooks":  {Tok: makeResource(mainMod, "NotificationPolicyWebhooks")},
+			"cloudflare_ruleset":                       {Tok: makeResource(mainMod, "Ruleset")},
+			"cloudflare_teams_location":                {Tok: makeResource(mainMod, "TeamsLocation")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":                   {Tok: makeDataSource(mainMod, "getIpRanges")},
@@ -204,6 +208,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_waf_rules":                   {Tok: makeDataSource(mainMod, "getWafRules")},
 			"cloudflare_api_token_permission_groups": {Tok: makeDataSource(mainMod, "getApiTokenPermissionGroups")},
 			"cloudflare_zone_dnssec":                 {Tok: makeDataSource(mainMod, "getZoneDnssec")},
+			"cloudflare_origin_ca_root_certificate":  {Tok: makeDataSource(mainMod, "getOriginCaRootCertificate")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
