@@ -991,6 +991,30 @@ export interface LoadBalancerRuleOverrideRegionPool {
     region: string;
 }
 
+export interface NotificationPolicyEmailIntegration {
+    id: string;
+    /**
+     * The name of the notification policy.
+     */
+    name?: string;
+}
+
+export interface NotificationPolicyPagerdutyIntegration {
+    id: string;
+    /**
+     * The name of the notification policy.
+     */
+    name?: string;
+}
+
+export interface NotificationPolicyWebhooksIntegration {
+    id: string;
+    /**
+     * The name of the notification policy.
+     */
+    name?: string;
+}
+
 export interface PageRuleActions {
     /**
      * Whether this action is `"on"` or `"off"`.
@@ -1394,6 +1418,146 @@ export interface RecordData {
     weight?: number;
 }
 
+export interface RulesetRule {
+    /**
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     */
+    action?: string;
+    /**
+     * List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
+     */
+    actionParameters?: outputs.RulesetRuleActionParameter[];
+    /**
+     * Brief summary of the ruleset rule and its intended use.
+     */
+    description: string;
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: boolean;
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+     */
+    expression: string;
+    /**
+     * Rule ID to apply the override to.
+     */
+    id: string;
+    /**
+     * Rule reference.
+     */
+    ref: string;
+    version: string;
+}
+
+export interface RulesetRuleActionParameter {
+    /**
+     * Rule ID to apply the override to.
+     */
+    id?: string;
+    increment?: number;
+    /**
+     * List of override configurations to apply to the ruleset (refer to the nested schema).
+     */
+    overrides?: outputs.RulesetRuleActionParameterOverrides;
+    /**
+     * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+     */
+    products?: string[];
+    /**
+     * Which ruleset to target. Valid value is `"current"`.
+     */
+    ruleset?: string;
+    /**
+     * List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
+     */
+    uris?: outputs.RulesetRuleActionParameterUri[];
+    version?: string;
+}
+
+export interface RulesetRuleActionParameterOverrides {
+    /**
+     * List of tag-based overrides (refer to the nested schema).
+     */
+    categories?: outputs.RulesetRuleActionParameterOverridesCategory[];
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: boolean;
+    /**
+     * List of rule-based overrides (refer to the nested schema).
+     */
+    rules?: outputs.RulesetRuleActionParameterOverridesRule[];
+}
+
+export interface RulesetRuleActionParameterOverridesCategory {
+    /**
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     */
+    action?: string;
+    /**
+     * Tag name to apply the ruleset rule override to.
+     */
+    category?: string;
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: boolean;
+}
+
+export interface RulesetRuleActionParameterOverridesRule {
+    /**
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     */
+    action?: string;
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: boolean;
+    /**
+     * Rule ID to apply the override to.
+     */
+    id?: string;
+    /**
+     * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     */
+    scoreThreshold?: number;
+}
+
+export interface RulesetRuleActionParameterUri {
+    origin?: boolean;
+    /**
+     * URI path configuration when performing a URL rewrite (refer to the nested schema).
+     */
+    paths?: outputs.RulesetRuleActionParameterUriPath[];
+    /**
+     * Query string configuration when performing a URL rewrite (refer to the nested schema).
+     */
+    queries?: outputs.RulesetRuleActionParameterUriQuery[];
+}
+
+export interface RulesetRuleActionParameterUriPath {
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+     */
+    expression?: string;
+    /**
+     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
+     */
+    value?: string;
+}
+
+export interface RulesetRuleActionParameterUriQuery {
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+     */
+    expression?: string;
+    /**
+     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
+     */
+    value?: string;
+}
+
 export interface SpectrumApplicationDns {
     /**
      * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
@@ -1421,6 +1585,11 @@ export interface SpectrumApplicationOriginPortRange {
      * Lower bound of the origin port range, e.g. `1000`
      */
     start: number;
+}
+
+export interface TeamsLocationNetwork {
+    id: string;
+    network: string;
 }
 
 export interface WorkerScriptKvNamespaceBinding {

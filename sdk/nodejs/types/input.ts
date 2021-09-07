@@ -883,6 +883,30 @@ export interface LoadBalancerRuleOverrideRegionPool {
     region: pulumi.Input<string>;
 }
 
+export interface NotificationPolicyEmailIntegration {
+    id: pulumi.Input<string>;
+    /**
+     * The name of the notification policy.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface NotificationPolicyPagerdutyIntegration {
+    id: pulumi.Input<string>;
+    /**
+     * The name of the notification policy.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface NotificationPolicyWebhooksIntegration {
+    id: pulumi.Input<string>;
+    /**
+     * The name of the notification policy.
+     */
+    name?: pulumi.Input<string>;
+}
+
 export interface PageRuleActions {
     /**
      * Whether this action is `"on"` or `"off"`.
@@ -1286,6 +1310,146 @@ export interface RecordData {
     weight?: pulumi.Input<number>;
 }
 
+export interface RulesetRule {
+    /**
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
+     */
+    actionParameters?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameter>[]>;
+    /**
+     * Brief summary of the ruleset rule and its intended use.
+     */
+    description: pulumi.Input<string>;
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+     */
+    expression: pulumi.Input<string>;
+    /**
+     * Rule ID to apply the override to.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Rule reference.
+     */
+    ref?: pulumi.Input<string>;
+    version?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParameter {
+    /**
+     * Rule ID to apply the override to.
+     */
+    id?: pulumi.Input<string>;
+    increment?: pulumi.Input<number>;
+    /**
+     * List of override configurations to apply to the ruleset (refer to the nested schema).
+     */
+    overrides?: pulumi.Input<inputs.RulesetRuleActionParameterOverrides>;
+    /**
+     * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+     */
+    products?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Which ruleset to target. Valid value is `"current"`.
+     */
+    ruleset?: pulumi.Input<string>;
+    /**
+     * List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
+     */
+    uris?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUri>[]>;
+    version?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParameterOverrides {
+    /**
+     * List of tag-based overrides (refer to the nested schema).
+     */
+    categories?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterOverridesCategory>[]>;
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * List of rule-based overrides (refer to the nested schema).
+     */
+    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterOverridesRule>[]>;
+}
+
+export interface RulesetRuleActionParameterOverridesCategory {
+    /**
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Tag name to apply the ruleset rule override to.
+     */
+    category?: pulumi.Input<string>;
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParameterOverridesRule {
+    /**
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     */
+    action?: pulumi.Input<string>;
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Rule ID to apply the override to.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     */
+    scoreThreshold?: pulumi.Input<number>;
+}
+
+export interface RulesetRuleActionParameterUri {
+    origin?: pulumi.Input<boolean>;
+    /**
+     * URI path configuration when performing a URL rewrite (refer to the nested schema).
+     */
+    paths?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUriPath>[]>;
+    /**
+     * Query string configuration when performing a URL rewrite (refer to the nested schema).
+     */
+    queries?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUriQuery>[]>;
+}
+
+export interface RulesetRuleActionParameterUriPath {
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParameterUriQuery {
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
+     */
+    value?: pulumi.Input<string>;
+}
+
 export interface SpectrumApplicationDns {
     /**
      * Fully qualified domain name of the origin e.g. origin-ssh.example.com.
@@ -1313,6 +1477,11 @@ export interface SpectrumApplicationOriginPortRange {
      * Lower bound of the origin port range, e.g. `1000`
      */
     start: pulumi.Input<number>;
+}
+
+export interface TeamsLocationNetwork {
+    id?: pulumi.Input<string>;
+    network: pulumi.Input<string>;
 }
 
 export interface WorkerScriptKvNamespaceBinding {

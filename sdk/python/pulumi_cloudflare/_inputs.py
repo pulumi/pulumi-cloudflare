@@ -72,6 +72,9 @@ __all__ = [
     'LoadBalancerRuleOverrideArgs',
     'LoadBalancerRuleOverridePopPoolArgs',
     'LoadBalancerRuleOverrideRegionPoolArgs',
+    'NotificationPolicyEmailIntegrationArgs',
+    'NotificationPolicyPagerdutyIntegrationArgs',
+    'NotificationPolicyWebhooksIntegrationArgs',
     'PageRuleActionsArgs',
     'PageRuleActionsCacheKeyFieldsArgs',
     'PageRuleActionsCacheKeyFieldsCookieArgs',
@@ -89,9 +92,18 @@ __all__ = [
     'RateLimitMatchRequestArgs',
     'RateLimitMatchResponseArgs',
     'RecordDataArgs',
+    'RulesetRuleArgs',
+    'RulesetRuleActionParameterArgs',
+    'RulesetRuleActionParameterOverridesArgs',
+    'RulesetRuleActionParameterOverridesCategoryArgs',
+    'RulesetRuleActionParameterOverridesRuleArgs',
+    'RulesetRuleActionParameterUriArgs',
+    'RulesetRuleActionParameterUriPathArgs',
+    'RulesetRuleActionParameterUriQueryArgs',
     'SpectrumApplicationDnsArgs',
     'SpectrumApplicationOriginDnsArgs',
     'SpectrumApplicationOriginPortRangeArgs',
+    'TeamsLocationNetworkArgs',
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlainTextBindingArgs',
     'WorkerScriptSecretTextBindingArgs',
@@ -4494,6 +4506,108 @@ class LoadBalancerRuleOverrideRegionPoolArgs:
 
 
 @pulumi.input_type
+class NotificationPolicyEmailIntegrationArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the notification policy.
+        """
+        pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the notification policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class NotificationPolicyPagerdutyIntegrationArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the notification policy.
+        """
+        pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the notification policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class NotificationPolicyWebhooksIntegrationArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The name of the notification policy.
+        """
+        pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the notification policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
 class PageRuleActionsArgs:
     def __init__(__self__, *,
                  always_online: Optional[pulumi.Input[str]] = None,
@@ -6284,6 +6398,556 @@ class RecordDataArgs:
 
 
 @pulumi.input_type
+class RulesetRuleArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[str],
+                 expression: pulumi.Input[str],
+                 action: Optional[pulumi.Input[str]] = None,
+                 action_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 ref: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
+        :param pulumi.Input[str] expression: Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+        :param pulumi.Input[str] action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterArgs']]] action_parameters: List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
+        :param pulumi.Input[bool] enabled: Defines if the current rule-level override enables or disables the rule.
+        :param pulumi.Input[str] id: Rule ID to apply the override to.
+        :param pulumi.Input[str] ref: Rule reference.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expression", expression)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if action_parameters is not None:
+            pulumi.set(__self__, "action_parameters", action_parameters)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if ref is not None:
+            pulumi.set(__self__, "ref", ref)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        Brief summary of the ruleset rule and its intended use.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="actionParameters")
+    def action_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterArgs']]]]:
+        """
+        List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
+        """
+        return pulumi.get(self, "action_parameters")
+
+    @action_parameters.setter
+    def action_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterArgs']]]]):
+        pulumi.set(self, "action_parameters", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines if the current rule-level override enables or disables the rule.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule ID to apply the override to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def ref(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule reference.
+        """
+        return pulumi.get(self, "ref")
+
+    @ref.setter
+    def ref(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ref", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParameterArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 increment: Optional[pulumi.Input[int]] = None,
+                 overrides: Optional[pulumi.Input['RulesetRuleActionParameterOverridesArgs']] = None,
+                 products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ruleset: Optional[pulumi.Input[str]] = None,
+                 uris: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriArgs']]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: Rule ID to apply the override to.
+        :param pulumi.Input['RulesetRuleActionParameterOverridesArgs'] overrides: List of override configurations to apply to the ruleset (refer to the nested schema).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] products: Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+        :param pulumi.Input[str] ruleset: Which ruleset to target. Valid value is `"current"`.
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriArgs']]] uris: List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if increment is not None:
+            pulumi.set(__self__, "increment", increment)
+        if overrides is not None:
+            pulumi.set(__self__, "overrides", overrides)
+        if products is not None:
+            pulumi.set(__self__, "products", products)
+        if ruleset is not None:
+            pulumi.set(__self__, "ruleset", ruleset)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule ID to apply the override to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def increment(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "increment")
+
+    @increment.setter
+    def increment(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "increment", value)
+
+    @property
+    @pulumi.getter
+    def overrides(self) -> Optional[pulumi.Input['RulesetRuleActionParameterOverridesArgs']]:
+        """
+        List of override configurations to apply to the ruleset (refer to the nested schema).
+        """
+        return pulumi.get(self, "overrides")
+
+    @overrides.setter
+    def overrides(self, value: Optional[pulumi.Input['RulesetRuleActionParameterOverridesArgs']]):
+        pulumi.set(self, "overrides", value)
+
+    @property
+    @pulumi.getter
+    def products(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+        """
+        return pulumi.get(self, "products")
+
+    @products.setter
+    def products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "products", value)
+
+    @property
+    @pulumi.getter
+    def ruleset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which ruleset to target. Valid value is `"current"`.
+        """
+        return pulumi.get(self, "ruleset")
+
+    @ruleset.setter
+    def ruleset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ruleset", value)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriArgs']]]]:
+        """
+        List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
+        """
+        return pulumi.get(self, "uris")
+
+    @uris.setter
+    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriArgs']]]]):
+        pulumi.set(self, "uris", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParameterOverridesArgs:
+    def __init__(__self__, *,
+                 categories: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterOverridesCategoryArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterOverridesRuleArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterOverridesCategoryArgs']]] categories: List of tag-based overrides (refer to the nested schema).
+        :param pulumi.Input[bool] enabled: Defines if the current rule-level override enables or disables the rule.
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterOverridesRuleArgs']]] rules: List of rule-based overrides (refer to the nested schema).
+        """
+        if categories is not None:
+            pulumi.set(__self__, "categories", categories)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterOverridesCategoryArgs']]]]:
+        """
+        List of tag-based overrides (refer to the nested schema).
+        """
+        return pulumi.get(self, "categories")
+
+    @categories.setter
+    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterOverridesCategoryArgs']]]]):
+        pulumi.set(self, "categories", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines if the current rule-level override enables or disables the rule.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterOverridesRuleArgs']]]]:
+        """
+        List of rule-based overrides (refer to the nested schema).
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterOverridesRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParameterOverridesCategoryArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 category: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        :param pulumi.Input[str] category: Tag name to apply the ruleset rule override to.
+        :param pulumi.Input[bool] enabled: Defines if the current rule-level override enables or disables the rule.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[pulumi.Input[str]]:
+        """
+        Tag name to apply the ruleset rule override to.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "category", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines if the current rule-level override enables or disables the rule.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParameterOverridesRuleArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 score_threshold: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        :param pulumi.Input[bool] enabled: Defines if the current rule-level override enables or disables the rule.
+        :param pulumi.Input[str] id: Rule ID to apply the override to.
+        :param pulumi.Input[int] score_threshold: Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+        """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if score_threshold is not None:
+            pulumi.set(__self__, "score_threshold", score_threshold)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines if the current rule-level override enables or disables the rule.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rule ID to apply the override to.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="scoreThreshold")
+    def score_threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+        """
+        return pulumi.get(self, "score_threshold")
+
+    @score_threshold.setter
+    def score_threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "score_threshold", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParameterUriArgs:
+    def __init__(__self__, *,
+                 origin: Optional[pulumi.Input[bool]] = None,
+                 paths: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriPathArgs']]]] = None,
+                 queries: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriQueryArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriPathArgs']]] paths: URI path configuration when performing a URL rewrite (refer to the nested schema).
+        :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriQueryArgs']]] queries: Query string configuration when performing a URL rewrite (refer to the nested schema).
+        """
+        if origin is not None:
+            pulumi.set(__self__, "origin", origin)
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if queries is not None:
+            pulumi.set(__self__, "queries", queries)
+
+    @property
+    @pulumi.getter
+    def origin(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "origin")
+
+    @origin.setter
+    def origin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "origin", value)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriPathArgs']]]]:
+        """
+        URI path configuration when performing a URL rewrite (refer to the nested schema).
+        """
+        return pulumi.get(self, "paths")
+
+    @paths.setter
+    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriPathArgs']]]]):
+        pulumi.set(self, "paths", value)
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriQueryArgs']]]]:
+        """
+        Query string configuration when performing a URL rewrite (refer to the nested schema).
+        """
+        return pulumi.get(self, "queries")
+
+    @queries.setter
+    def queries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParameterUriQueryArgs']]]]):
+        pulumi.set(self, "queries", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParameterUriPathArgs:
+    def __init__(__self__, *,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+        :param pulumi.Input[str] value: Static string value of the updated URI path or query string component. Conflicts with `expression`.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Static string value of the updated URI path or query string component. Conflicts with `expression`.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class RulesetRuleActionParameterUriQueryArgs:
+    def __init__(__self__, *,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+        :param pulumi.Input[str] value: Static string value of the updated URI path or query string component. Conflicts with `expression`.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Static string value of the updated URI path or query string component. Conflicts with `expression`.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class SpectrumApplicationDnsArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -6377,6 +7041,34 @@ class SpectrumApplicationOriginPortRangeArgs:
     @start.setter
     def start(self, value: pulumi.Input[int]):
         pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class TeamsLocationNetworkArgs:
+    def __init__(__self__, *,
+                 network: pulumi.Input[str],
+                 id: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "network", network)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type

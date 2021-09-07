@@ -78,6 +78,10 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<string>;
     /**
+     * If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+     */
+    public readonly jsonResponseEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * A unique name to identify the waiting room.
      */
     public readonly name!: pulumi.Output<string>;
@@ -127,6 +131,7 @@ export class WaitingRoom extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["disableSessionRenewal"] = state ? state.disableSessionRenewal : undefined;
             inputs["host"] = state ? state.host : undefined;
+            inputs["jsonResponseEnabled"] = state ? state.jsonResponseEnabled : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["newUsersPerMinute"] = state ? state.newUsersPerMinute : undefined;
             inputs["path"] = state ? state.path : undefined;
@@ -156,6 +161,7 @@ export class WaitingRoom extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["disableSessionRenewal"] = args ? args.disableSessionRenewal : undefined;
             inputs["host"] = args ? args.host : undefined;
+            inputs["jsonResponseEnabled"] = args ? args.jsonResponseEnabled : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["newUsersPerMinute"] = args ? args.newUsersPerMinute : undefined;
             inputs["path"] = args ? args.path : undefined;
@@ -192,6 +198,10 @@ export interface WaitingRoomState {
      * Host name for which the waiting room will be applied (no wildcards).
      */
     host?: pulumi.Input<string>;
+    /**
+     * If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+     */
+    jsonResponseEnabled?: pulumi.Input<boolean>;
     /**
      * A unique name to identify the waiting room.
      */
@@ -246,6 +256,10 @@ export interface WaitingRoomArgs {
      * Host name for which the waiting room will be applied (no wildcards).
      */
     host: pulumi.Input<string>;
+    /**
+     * If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+     */
+    jsonResponseEnabled?: pulumi.Input<boolean>;
     /**
      * A unique name to identify the waiting room.
      */

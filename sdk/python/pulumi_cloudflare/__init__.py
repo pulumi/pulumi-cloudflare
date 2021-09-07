@@ -30,6 +30,7 @@ from .filter import *
 from .firewall_rule import *
 from .get_api_token_permission_groups import *
 from .get_ip_ranges import *
+from .get_origin_ca_root_certificate import *
 from .get_waf_groups import *
 from .get_waf_packages import *
 from .get_waf_rules import *
@@ -44,14 +45,18 @@ from .log_push_ownership_challenge import *
 from .logpull_retention import *
 from .logpush_job import *
 from .magic_firewall_ruleset import *
+from .notification_policy import *
+from .notification_policy_webhooks import *
 from .origin_ca_certificate import *
 from .page_rule import *
 from .provider import *
 from .rate_limit import *
 from .record import *
+from .ruleset import *
 from .spectrum_application import *
 from .static_route import *
 from .teams_list import *
+from .teams_location import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
@@ -336,6 +341,22 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/notificationPolicy",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/notificationPolicy:NotificationPolicy": "NotificationPolicy"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/notificationPolicyWebhooks",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks": "NotificationPolicyWebhooks"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/originCaCertificate",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -368,6 +389,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/ruleset",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/ruleset:Ruleset": "Ruleset"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/spectrumApplication",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -388,6 +417,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/teamsList:TeamsList": "TeamsList"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/teamsLocation",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsLocation:TeamsLocation": "TeamsLocation"
   }
  },
  {

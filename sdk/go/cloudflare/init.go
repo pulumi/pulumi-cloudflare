@@ -84,6 +84,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogpushJob{}
 	case "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
 		r = &MagicFirewallRuleset{}
+	case "cloudflare:index/notificationPolicy:NotificationPolicy":
+		r = &NotificationPolicy{}
+	case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
+		r = &NotificationPolicyWebhooks{}
 	case "cloudflare:index/originCaCertificate:OriginCaCertificate":
 		r = &OriginCaCertificate{}
 	case "cloudflare:index/pageRule:PageRule":
@@ -92,12 +96,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RateLimit{}
 	case "cloudflare:index/record:Record":
 		r = &Record{}
+	case "cloudflare:index/ruleset:Ruleset":
+		r = &Ruleset{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
 		r = &SpectrumApplication{}
 	case "cloudflare:index/staticRoute:StaticRoute":
 		r = &StaticRoute{}
 	case "cloudflare:index/teamsList:TeamsList":
 		r = &TeamsList{}
+	case "cloudflare:index/teamsLocation:TeamsLocation":
+		r = &TeamsLocation{}
 	case "cloudflare:index/wafGroup:WafGroup":
 		r = &WafGroup{}
 	case "cloudflare:index/wafOverride:WafOverride":
@@ -319,6 +327,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/notificationPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/notificationPolicyWebhooks",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/originCaCertificate",
 		&module{version},
 	)
@@ -339,6 +357,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/ruleset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/spectrumApplication",
 		&module{version},
 	)
@@ -350,6 +373,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/teamsList",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/teamsLocation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
