@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-cloudflare/examples/v3
+module github.com/pulumi/pulumi-cloudflare/examples/v4
 
 go 1.16
 

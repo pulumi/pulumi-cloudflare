@@ -11,7 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets.
+// The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)
+// allows you to create and deploy rules and rulesets.
 // The engine syntax, inspired by the Wireshark Display Filter language, is the
 // same syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine
 // in different products, allowing you to configure several products using the same
@@ -23,7 +24,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -54,10 +55,8 @@ import (
 // 			Rules: cloudflare.RulesetRuleArray{
 // 				&cloudflare.RulesetRuleArgs{
 // 					Action: pulumi.String("execute"),
-// 					ActionParameters: cloudflare.RulesetRuleActionParameterArray{
-// 						&cloudflare.RulesetRuleActionParameterArgs{
-// 							Id: pulumi.String("efb7b8c949ac4650a09736fc376e9aee"),
-// 						},
+// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
+// 						Id: pulumi.String("efb7b8c949ac4650a09736fc376e9aee"),
 // 					},
 // 					Description: pulumi.String("Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"),
 // 					Enabled:     pulumi.Bool(true),
@@ -77,21 +76,19 @@ import (
 // 			Rules: cloudflare.RulesetRuleArray{
 // 				&cloudflare.RulesetRuleArgs{
 // 					Action: pulumi.String("execute"),
-// 					ActionParameters: cloudflare.RulesetRuleActionParameterArray{
-// 						&cloudflare.RulesetRuleActionParameterArgs{
-// 							Id: pulumi.String("efb7b8c949ac4650a09736fc376e9aee"),
-// 							Overrides: &cloudflare.RulesetRuleActionParameterOverridesArgs{
-// 								Categories: cloudflare.RulesetRuleActionParameterOverridesCategoryArray{
-// 									&cloudflare.RulesetRuleActionParameterOverridesCategoryArgs{
-// 										Action:   pulumi.String("block"),
-// 										Category: pulumi.String("wordpress"),
-// 										Enabled:  pulumi.Bool(true),
-// 									},
-// 									&cloudflare.RulesetRuleActionParameterOverridesCategoryArgs{
-// 										Action:   pulumi.String("block"),
-// 										Category: pulumi.String("joomla"),
-// 										Enabled:  pulumi.Bool(true),
-// 									},
+// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
+// 						Id: pulumi.String("efb7b8c949ac4650a09736fc376e9aee"),
+// 						Overrides: &cloudflare.RulesetRuleActionParametersOverridesArgs{
+// 							Categories: cloudflare.RulesetRuleActionParametersOverridesCategoryArray{
+// 								&cloudflare.RulesetRuleActionParametersOverridesCategoryArgs{
+// 									Action:   pulumi.String("block"),
+// 									Category: pulumi.String("wordpress"),
+// 									Enabled:  pulumi.Bool(true),
+// 								},
+// 								&cloudflare.RulesetRuleActionParametersOverridesCategoryArgs{
+// 									Action:   pulumi.String("block"),
+// 									Category: pulumi.String("joomla"),
+// 									Enabled:  pulumi.Bool(true),
 // 								},
 // 							},
 // 						},
@@ -99,6 +96,119 @@ import (
 // 					Description: pulumi.String("overrides to only enable wordpress rules to block"),
 // 					Enabled:     pulumi.Bool(false),
 // 					Expression:  pulumi.String("true"),
+// 				},
+// 			},
+// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewRuleset(ctx, "transformUriRulePath", &cloudflare.RulesetArgs{
+// 			Description: pulumi.String("change the URI path to a new static path"),
+// 			Kind:        pulumi.String("zone"),
+// 			Name:        pulumi.String("transform rule for URI path"),
+// 			Phase:       pulumi.String("http_request_transform"),
+// 			Rules: cloudflare.RulesetRuleArray{
+// 				&cloudflare.RulesetRuleArgs{
+// 					Action: pulumi.String("rewrite"),
+// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
+// 						Uri: &cloudflare.RulesetRuleActionParametersUriArgs{
+// 							Path: &cloudflare.RulesetRuleActionParametersUriPathArgs{
+// 								Value: pulumi.String("/my-new-route"),
+// 							},
+// 						},
+// 					},
+// 					Description: pulumi.String("example URI path transform rule"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Expression:  pulumi.String("(http.host eq \"example.com\" and http.uri.path eq \"/old-path\")"),
+// 				},
+// 			},
+// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewRuleset(ctx, "transformUriRuleQuery", &cloudflare.RulesetArgs{
+// 			Description: pulumi.String("change the URI query to a new static query"),
+// 			Kind:        pulumi.String("zone"),
+// 			Name:        pulumi.String("transform rule for URI query parameter"),
+// 			Phase:       pulumi.String("http_request_transform"),
+// 			Rules: cloudflare.RulesetRuleArray{
+// 				&cloudflare.RulesetRuleArgs{
+// 					Action: pulumi.String("rewrite"),
+// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
+// 						Uri: &cloudflare.RulesetRuleActionParametersUriArgs{
+// 							Query: &cloudflare.RulesetRuleActionParametersUriQueryArgs{
+// 								Value: pulumi.String("old=new_again"),
+// 							},
+// 						},
+// 					},
+// 					Description: pulumi.String("URI transformation query example"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Expression:  pulumi.String("true"),
+// 				},
+// 			},
+// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewRuleset(ctx, "transformUriHttpHeaders", &cloudflare.RulesetArgs{
+// 			Description: pulumi.String("modify HTTP headers before reaching origin"),
+// 			Kind:        pulumi.String("zone"),
+// 			Name:        pulumi.String("transform rule for HTTP headers"),
+// 			Phase:       pulumi.String("http_request_late_transform"),
+// 			Rules: cloudflare.RulesetRuleArray{
+// 				&cloudflare.RulesetRuleArgs{
+// 					Action: pulumi.String("rewrite"),
+// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
+// 						Headers: cloudflare.RulesetRuleActionParametersHeaderArray{
+// 							&cloudflare.RulesetRuleActionParametersHeaderArgs{
+// 								Name:      pulumi.String("example-http-header-1"),
+// 								Operation: pulumi.String("set"),
+// 								Value:     pulumi.String("my-http-header-value-1"),
+// 							},
+// 							&cloudflare.RulesetRuleActionParametersHeaderArgs{
+// 								Expression: pulumi.String("cf.zone.name"),
+// 								Name:       pulumi.String("example-http-header-2"),
+// 								Operation:  pulumi.String("set"),
+// 							},
+// 							&cloudflare.RulesetRuleActionParametersHeaderArgs{
+// 								Name:      pulumi.String("example-http-header-3-to-remove"),
+// 								Operation: pulumi.String("remove"),
+// 							},
+// 						},
+// 					},
+// 					Description: pulumi.String("example request header transform rule"),
+// 					Enabled:     pulumi.Bool(false),
+// 					Expression:  pulumi.String("true"),
+// 				},
+// 			},
+// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewRuleset(ctx, "rateLimitingExample", &cloudflare.RulesetArgs{
+// 			Description: pulumi.String("apply HTTP rate limiting for a route"),
+// 			Kind:        pulumi.String("zone"),
+// 			Name:        pulumi.String("restrict API requests count"),
+// 			Phase:       pulumi.String("http_ratelimit"),
+// 			Rules: cloudflare.RulesetRuleArray{
+// 				&cloudflare.RulesetRuleArgs{
+// 					Action:      pulumi.String("block"),
+// 					Description: pulumi.String("rate limit for API"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Expression:  pulumi.String("(http.request.uri.path matches \"^/api/\")"),
+// 					Ratelimit: &cloudflare.RulesetRuleRatelimitArgs{
+// 						Characteristics: pulumi.StringArray{
+// 							pulumi.String("cf.colo.id"),
+// 							pulumi.String("ip.src"),
+// 						},
+// 						MitigationTimeout: pulumi.Int(600),
+// 						Period:            pulumi.Int(60),
+// 						RequestsPerPeriod: pulumi.Int(100),
+// 					},
 // 				},
 // 			},
 // 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
@@ -123,7 +233,7 @@ type Ruleset struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the HTTP request header to target.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
 	Phase pulumi.StringOutput `pulumi:"phase"`
@@ -182,7 +292,7 @@ type rulesetState struct {
 	Description *string `pulumi:"description"`
 	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
 	Kind *string `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the HTTP request header to target.
 	Name *string `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
 	Phase *string `pulumi:"phase"`
@@ -201,7 +311,7 @@ type RulesetState struct {
 	Description pulumi.StringPtrInput
 	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
 	Kind pulumi.StringPtrInput
-	// Name of the ruleset.
+	// Name of the HTTP request header to target.
 	Name pulumi.StringPtrInput
 	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
 	Phase pulumi.StringPtrInput
@@ -224,7 +334,7 @@ type rulesetArgs struct {
 	Description string `pulumi:"description"`
 	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
 	Kind string `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the HTTP request header to target.
 	Name string `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
 	Phase string `pulumi:"phase"`
@@ -244,7 +354,7 @@ type RulesetArgs struct {
 	Description pulumi.StringInput
 	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
 	Kind pulumi.StringInput
-	// Name of the ruleset.
+	// Name of the HTTP request header to target.
 	Name pulumi.StringInput
 	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
 	Phase pulumi.StringInput

@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare
         /// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
         /// </summary>
         [Output("initialSettings")]
-        public Output<Outputs.ZoneSettingsOverrideInitialSettings> InitialSettings { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ZoneSettingsOverrideInitialSetting>> InitialSettings { get; private set; } = null!;
 
         [Output("initialSettingsReadAt")]
         public Output<string> InitialSettingsReadAt { get; private set; } = null!;
@@ -154,11 +154,17 @@ namespace Pulumi.Cloudflare
 
     public sealed class ZoneSettingsOverrideState : Pulumi.ResourceArgs
     {
+        [Input("initialSettings")]
+        private InputList<Inputs.ZoneSettingsOverrideInitialSettingGetArgs>? _initialSettings;
+
         /// <summary>
         /// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
         /// </summary>
-        [Input("initialSettings")]
-        public Input<Inputs.ZoneSettingsOverrideInitialSettingsGetArgs>? InitialSettings { get; set; }
+        public InputList<Inputs.ZoneSettingsOverrideInitialSettingGetArgs> InitialSettings
+        {
+            get => _initialSettings ?? (_initialSettings = new InputList<Inputs.ZoneSettingsOverrideInitialSettingGetArgs>());
+            set => _initialSettings = value;
+        }
 
         [Input("initialSettingsReadAt")]
         public Input<string>? InitialSettingsReadAt { get; set; }

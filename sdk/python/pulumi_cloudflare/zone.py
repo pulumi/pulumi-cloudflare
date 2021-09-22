@@ -7,8 +7,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['ZoneArgs', 'Zone']
 
@@ -103,7 +101,7 @@ class ZoneArgs:
 class _ZoneState:
     def __init__(__self__, *,
                  jump_start: Optional[pulumi.Input[bool]] = None,
-                 meta: Optional[pulumi.Input['ZoneMetaArgs']] = None,
+                 meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -161,11 +159,11 @@ class _ZoneState:
 
     @property
     @pulumi.getter
-    def meta(self) -> Optional[pulumi.Input['ZoneMetaArgs']]:
+    def meta(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]:
         return pulumi.get(self, "meta")
 
     @meta.setter
-    def meta(self, value: Optional[pulumi.Input['ZoneMetaArgs']]):
+    def meta(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]]):
         pulumi.set(self, "meta", value)
 
     @property
@@ -369,7 +367,7 @@ class Zone(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             jump_start: Optional[pulumi.Input[bool]] = None,
-            meta: Optional[pulumi.Input[pulumi.InputType['ZoneMetaArgs']]] = None,
+            meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             paused: Optional[pulumi.Input[bool]] = None,
             plan: Optional[pulumi.Input[str]] = None,
@@ -423,7 +421,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def meta(self) -> pulumi.Output['outputs.ZoneMeta']:
+    def meta(self) -> pulumi.Output[Mapping[str, bool]]:
         return pulumi.get(self, "meta")
 
     @property

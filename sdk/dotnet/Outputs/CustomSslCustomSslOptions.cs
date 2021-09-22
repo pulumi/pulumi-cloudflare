@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Certificate certificate and the intermediate(s)
         /// </summary>
-        public readonly string Certificate;
+        public readonly string? Certificate;
         /// <summary>
         /// Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Certificate's private key
         /// </summary>
-        public readonly string PrivateKey;
+        public readonly string? PrivateKey;
         /// <summary>
         /// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.
         /// </summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Cloudflare.Outputs
         private CustomSslCustomSslOptions(
             string? bundleMethod,
 
-            string certificate,
+            string? certificate,
 
             string? geoRestrictions,
 
-            string privateKey,
+            string? privateKey,
 
             string? type)
         {

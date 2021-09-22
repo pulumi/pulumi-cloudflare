@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -56,8 +56,8 @@ type ZoneSettingsOverride struct {
 	pulumi.CustomResourceState
 
 	// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-	InitialSettings       ZoneSettingsOverrideInitialSettingsOutput `pulumi:"initialSettings"`
-	InitialSettingsReadAt pulumi.StringOutput                       `pulumi:"initialSettingsReadAt"`
+	InitialSettings       ZoneSettingsOverrideInitialSettingArrayOutput `pulumi:"initialSettings"`
+	InitialSettingsReadAt pulumi.StringOutput                           `pulumi:"initialSettingsReadAt"`
 	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
 	// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
 	// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
@@ -103,7 +103,7 @@ func GetZoneSettingsOverride(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ZoneSettingsOverride resources.
 type zoneSettingsOverrideState struct {
 	// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-	InitialSettings       *ZoneSettingsOverrideInitialSettings `pulumi:"initialSettings"`
+	InitialSettings       []ZoneSettingsOverrideInitialSetting `pulumi:"initialSettings"`
 	InitialSettingsReadAt *string                              `pulumi:"initialSettingsReadAt"`
 	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
 	// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
@@ -119,7 +119,7 @@ type zoneSettingsOverrideState struct {
 
 type ZoneSettingsOverrideState struct {
 	// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
-	InitialSettings       ZoneSettingsOverrideInitialSettingsPtrInput
+	InitialSettings       ZoneSettingsOverrideInitialSettingArrayInput
 	InitialSettingsReadAt pulumi.StringPtrInput
 	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
 	// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.

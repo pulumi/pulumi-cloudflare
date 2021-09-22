@@ -87,8 +87,8 @@ class _CustomHostnameState:
     def __init__(__self__, *,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
-                 ownership_verification: Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']] = None,
-                 ownership_verification_http: Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']] = None,
+                 ownership_verification: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 ownership_verification_http: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -140,20 +140,20 @@ class _CustomHostnameState:
 
     @property
     @pulumi.getter(name="ownershipVerification")
-    def ownership_verification(self) -> Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']]:
+    def ownership_verification(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "ownership_verification")
 
     @ownership_verification.setter
-    def ownership_verification(self, value: Optional[pulumi.Input['CustomHostnameOwnershipVerificationArgs']]):
+    def ownership_verification(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "ownership_verification", value)
 
     @property
     @pulumi.getter(name="ownershipVerificationHttp")
-    def ownership_verification_http(self) -> Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']]:
+    def ownership_verification_http(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         return pulumi.get(self, "ownership_verification_http")
 
     @ownership_verification_http.setter
-    def ownership_verification_http(self, value: Optional[pulumi.Input['CustomHostnameOwnershipVerificationHttpArgs']]):
+    def ownership_verification_http(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "ownership_verification_http", value)
 
     @property
@@ -317,8 +317,8 @@ class CustomHostname(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_origin_server: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
-            ownership_verification: Optional[pulumi.Input[pulumi.InputType['CustomHostnameOwnershipVerificationArgs']]] = None,
-            ownership_verification_http: Optional[pulumi.Input[pulumi.InputType['CustomHostnameOwnershipVerificationHttpArgs']]] = None,
+            ownership_verification: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            ownership_verification_http: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ssls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
             status: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'CustomHostname':
@@ -365,12 +365,12 @@ class CustomHostname(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownershipVerification")
-    def ownership_verification(self) -> pulumi.Output['outputs.CustomHostnameOwnershipVerification']:
+    def ownership_verification(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "ownership_verification")
 
     @property
     @pulumi.getter(name="ownershipVerificationHttp")
-    def ownership_verification_http(self) -> pulumi.Output['outputs.CustomHostnameOwnershipVerificationHttp']:
+    def ownership_verification_http(self) -> pulumi.Output[Mapping[str, str]]:
         return pulumi.get(self, "ownership_verification_http")
 
     @property

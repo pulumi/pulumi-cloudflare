@@ -9,30 +9,98 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    /// <summary>
+    /// Provides a Cloudflare Teams Location resource. Teams Locations are referenced
+    /// when creating secure web gateway policies.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var corporateOffice = new Cloudflare.TeamsLocation("corporateOffice", new Cloudflare.TeamsLocationArgs
+    ///         {
+    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             ClientDefault = true,
+    ///             Name = "office",
+    ///             Networks = 
+    ///             {
+    ///                 new Cloudflare.Inputs.TeamsLocationNetworkArgs
+    ///                 {
+    ///                     Network = "203.0.113.1/32",
+    ///                 },
+    ///                 new Cloudflare.Inputs.TeamsLocationNetworkArgs
+    ///                 {
+    ///                     Network = "203.0.113.2/32",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Teams locations can be imported using a composite ID formed of account ID and teams location ID.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+    /// ```
+    /// </summary>
     [CloudflareResourceType("cloudflare:index/teamsLocation:TeamsLocation")]
     public partial class TeamsLocation : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account to which the teams location should be added.
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicator that anonymized logs are enabled.
+        /// </summary>
         [Output("anonymizedLogsEnabled")]
         public Output<bool> AnonymizedLogsEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicator that this is the default location.
+        /// </summary>
         [Output("clientDefault")]
         public Output<bool?> ClientDefault { get; private set; } = null!;
 
+        /// <summary>
+        /// The FQDN that DoH clients should be pointed at.
+        /// </summary>
         [Output("dohSubdomain")]
         public Output<string> DohSubdomain { get; private set; } = null!;
 
+        /// <summary>
+        /// Client IP address
+        /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
+        /// <summary>
+        /// IP to direct all IPv4 DNS queries too.
+        /// </summary>
         [Output("ipv4Destination")]
         public Output<string> Ipv4Destination { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the teams location.
+        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The networks CIDRs that comprise the location.
+        /// </summary>
         [Output("networks")]
         public Output<ImmutableArray<Outputs.TeamsLocationNetwork>> Networks { get; private set; } = null!;
 
@@ -85,17 +153,30 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsLocationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account to which the teams location should be added.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Indicator that this is the default location.
+        /// </summary>
         [Input("clientDefault")]
         public Input<bool>? ClientDefault { get; set; }
 
+        /// <summary>
+        /// Name of the teams location.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         [Input("networks")]
         private InputList<Inputs.TeamsLocationNetworkArgs>? _networks;
+
+        /// <summary>
+        /// The networks CIDRs that comprise the location.
+        /// </summary>
         public InputList<Inputs.TeamsLocationNetworkArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.TeamsLocationNetworkArgs>());
@@ -109,29 +190,54 @@ namespace Pulumi.Cloudflare
 
     public sealed class TeamsLocationState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account to which the teams location should be added.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Indicator that anonymized logs are enabled.
+        /// </summary>
         [Input("anonymizedLogsEnabled")]
         public Input<bool>? AnonymizedLogsEnabled { get; set; }
 
+        /// <summary>
+        /// Indicator that this is the default location.
+        /// </summary>
         [Input("clientDefault")]
         public Input<bool>? ClientDefault { get; set; }
 
+        /// <summary>
+        /// The FQDN that DoH clients should be pointed at.
+        /// </summary>
         [Input("dohSubdomain")]
         public Input<string>? DohSubdomain { get; set; }
 
+        /// <summary>
+        /// Client IP address
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// IP to direct all IPv4 DNS queries too.
+        /// </summary>
         [Input("ipv4Destination")]
         public Input<string>? Ipv4Destination { get; set; }
 
+        /// <summary>
+        /// Name of the teams location.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("networks")]
         private InputList<Inputs.TeamsLocationNetworkGetArgs>? _networks;
+
+        /// <summary>
+        /// The networks CIDRs that comprise the location.
+        /// </summary>
         public InputList<Inputs.TeamsLocationNetworkGetArgs> Networks
         {
             get => _networks ?? (_networks = new InputList<Inputs.TeamsLocationNetworkGetArgs>());

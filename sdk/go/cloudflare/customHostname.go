@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -55,9 +55,9 @@ type CustomHostname struct {
 	// The custom origin server used for certificates.
 	CustomOriginServer pulumi.StringPtrOutput `pulumi:"customOriginServer"`
 	// Hostname you intend to request a certificate for.
-	Hostname                  pulumi.StringOutput                           `pulumi:"hostname"`
-	OwnershipVerification     CustomHostnameOwnershipVerificationOutput     `pulumi:"ownershipVerification"`
-	OwnershipVerificationHttp CustomHostnameOwnershipVerificationHttpOutput `pulumi:"ownershipVerificationHttp"`
+	Hostname                  pulumi.StringOutput    `pulumi:"hostname"`
+	OwnershipVerification     pulumi.StringMapOutput `pulumi:"ownershipVerification"`
+	OwnershipVerificationHttp pulumi.StringMapOutput `pulumi:"ownershipVerificationHttp"`
 	// SSL configuration of the certificate. See further notes below.
 	Ssls   CustomHostnameSslArrayOutput `pulumi:"ssls"`
 	Status pulumi.StringOutput          `pulumi:"status"`
@@ -103,9 +103,9 @@ type customHostnameState struct {
 	// The custom origin server used for certificates.
 	CustomOriginServer *string `pulumi:"customOriginServer"`
 	// Hostname you intend to request a certificate for.
-	Hostname                  *string                                  `pulumi:"hostname"`
-	OwnershipVerification     *CustomHostnameOwnershipVerification     `pulumi:"ownershipVerification"`
-	OwnershipVerificationHttp *CustomHostnameOwnershipVerificationHttp `pulumi:"ownershipVerificationHttp"`
+	Hostname                  *string           `pulumi:"hostname"`
+	OwnershipVerification     map[string]string `pulumi:"ownershipVerification"`
+	OwnershipVerificationHttp map[string]string `pulumi:"ownershipVerificationHttp"`
 	// SSL configuration of the certificate. See further notes below.
 	Ssls   []CustomHostnameSsl `pulumi:"ssls"`
 	Status *string             `pulumi:"status"`
@@ -118,8 +118,8 @@ type CustomHostnameState struct {
 	CustomOriginServer pulumi.StringPtrInput
 	// Hostname you intend to request a certificate for.
 	Hostname                  pulumi.StringPtrInput
-	OwnershipVerification     CustomHostnameOwnershipVerificationPtrInput
-	OwnershipVerificationHttp CustomHostnameOwnershipVerificationHttpPtrInput
+	OwnershipVerification     pulumi.StringMapInput
+	OwnershipVerificationHttp pulumi.StringMapInput
 	// SSL configuration of the certificate. See further notes below.
 	Ssls   CustomHostnameSslArrayInput
 	Status pulumi.StringPtrInput

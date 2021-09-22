@@ -20,10 +20,9 @@ import (
 	"unicode"
 
 	"github.com/cloudflare/terraform-provider-cloudflare/cloudflare"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/pulumi/pulumi-cloudflare/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
@@ -64,7 +63,7 @@ func makeResource(mod string, res string) tokens.Type {
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv1.NewProvider(cloudflare.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(cloudflare.Provider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -199,6 +198,9 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_notification_policy_webhooks":  {Tok: makeResource(mainMod, "NotificationPolicyWebhooks")},
 			"cloudflare_ruleset":                       {Tok: makeResource(mainMod, "Ruleset")},
 			"cloudflare_teams_location":                {Tok: makeResource(mainMod, "TeamsLocation")},
+			"cloudflare_teams_account":                 {Tok: makeResource(mainMod, "TeamsAccount")},
+			"cloudflare_teams_rule":                    {Tok: makeResource(mainMod, "TeamsRule")},
+			"cloudflare_access_keys_configuration":     {Tok: makeResource(mainMod, "AccessKeysConfiguration")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":                   {Tok: makeDataSource(mainMod, "getIpRanges")},

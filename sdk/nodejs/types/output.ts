@@ -230,6 +230,18 @@ export interface AccessIdentityProviderConfig {
     tokenUrl?: string;
 }
 
+export interface AccessPolicyApprovalGroup {
+    /**
+     * Number of approvals needed.
+     */
+    approvalsNeeded: number;
+    /**
+     * List of emails to request approval from.
+     */
+    emailAddresses?: string[];
+    emailListUuid?: string;
+}
+
 export interface AccessPolicyExclude {
     anyValidServiceToken?: boolean;
     authMethod?: string;
@@ -441,20 +453,6 @@ export interface ApiTokenPolicy {
     resources: {[key: string]: string};
 }
 
-export interface CustomHostnameOwnershipVerification {
-    name: string;
-    /**
-     * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-     */
-    type: string;
-    value: string;
-}
-
-export interface CustomHostnameOwnershipVerificationHttp {
-    httpBody: string;
-    httpUrl: string;
-}
-
 export interface CustomHostnameSsl {
     certificateAuthority?: string;
     cnameName?: string;
@@ -475,8 +473,8 @@ export interface CustomHostnameSsl {
     /**
      * SSL/TLS settings for the certificate. See further notes below.
      */
-    settings?: outputs.CustomHostnameSslSetting[];
-    status?: string;
+    settings: outputs.CustomHostnameSslSetting[];
+    status: string;
     /**
      * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
      */
@@ -515,7 +513,7 @@ export interface CustomSslCustomSslOptions {
     /**
      * Certificate certificate and the intermediate(s)
      */
-    certificate: string;
+    certificate?: string;
     /**
      * Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
      */
@@ -523,7 +521,7 @@ export interface CustomSslCustomSslOptions {
     /**
      * Certificate's private key
      */
-    privateKey: string;
+    privateKey?: string;
     /**
      * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
      */
@@ -1426,7 +1424,7 @@ export interface RulesetRule {
     /**
      * List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
      */
-    actionParameters?: outputs.RulesetRuleActionParameter[];
+    actionParameters?: outputs.RulesetRuleActionParameters;
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
@@ -1444,42 +1442,88 @@ export interface RulesetRule {
      */
     id: string;
     /**
+     * List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
+     */
+    ratelimit?: outputs.RulesetRuleRatelimit;
+    /**
      * Rule reference.
      */
     ref: string;
     version: string;
 }
 
-export interface RulesetRuleActionParameter {
+export interface RulesetRuleActionParameters {
+    /**
+     * List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
+     */
+    headers?: outputs.RulesetRuleActionParametersHeader[];
     /**
      * Rule ID to apply the override to.
      */
     id?: string;
     increment?: number;
     /**
+     * List of properties to configure WAF payload logging (refer to the nested schema).
+     */
+    matchedData?: outputs.RulesetRuleActionParametersMatchedData;
+    /**
      * List of override configurations to apply to the ruleset (refer to the nested schema).
      */
-    overrides?: outputs.RulesetRuleActionParameterOverrides;
+    overrides?: outputs.RulesetRuleActionParametersOverrides;
     /**
      * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
      */
     products?: string[];
     /**
-     * Which ruleset to target. Valid value is `"current"`.
+     * List of rule-based overrides (refer to the nested schema).
+     */
+    rules?: {[key: string]: string};
+    /**
+     * Which ruleset ID to target.
      */
     ruleset?: string;
     /**
+     * List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
+     */
+    rulesets?: string[];
+    /**
      * List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
      */
-    uris?: outputs.RulesetRuleActionParameterUri[];
-    version?: string;
+    uri?: outputs.RulesetRuleActionParametersUri;
+    version: string;
 }
 
-export interface RulesetRuleActionParameterOverrides {
+export interface RulesetRuleActionParametersHeader {
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+     */
+    expression?: string;
+    /**
+     * Name of the HTTP request header to target.
+     */
+    name?: string;
+    /**
+     * Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
+     */
+    operation?: string;
+    /**
+     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
+     */
+    value?: string;
+}
+
+export interface RulesetRuleActionParametersMatchedData {
+    /**
+     * Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+     */
+    publicKey?: string;
+}
+
+export interface RulesetRuleActionParametersOverrides {
     /**
      * List of tag-based overrides (refer to the nested schema).
      */
-    categories?: outputs.RulesetRuleActionParameterOverridesCategory[];
+    categories?: outputs.RulesetRuleActionParametersOverridesCategory[];
     /**
      * Defines if the current rule-level override enables or disables the rule.
      */
@@ -1487,10 +1531,10 @@ export interface RulesetRuleActionParameterOverrides {
     /**
      * List of rule-based overrides (refer to the nested schema).
      */
-    rules?: outputs.RulesetRuleActionParameterOverridesRule[];
+    rules?: outputs.RulesetRuleActionParametersOverridesRule[];
 }
 
-export interface RulesetRuleActionParameterOverridesCategory {
+export interface RulesetRuleActionParametersOverridesCategory {
     /**
      * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
@@ -1505,7 +1549,7 @@ export interface RulesetRuleActionParameterOverridesCategory {
     enabled?: boolean;
 }
 
-export interface RulesetRuleActionParameterOverridesRule {
+export interface RulesetRuleActionParametersOverridesRule {
     /**
      * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
@@ -1522,21 +1566,25 @@ export interface RulesetRuleActionParameterOverridesRule {
      * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
      */
     scoreThreshold?: number;
+    /**
+     * Sensitivity level for a ruleset rule override.
+     */
+    sensitivityLevel?: string;
 }
 
-export interface RulesetRuleActionParameterUri {
+export interface RulesetRuleActionParametersUri {
     origin?: boolean;
     /**
      * URI path configuration when performing a URL rewrite (refer to the nested schema).
      */
-    paths?: outputs.RulesetRuleActionParameterUriPath[];
+    path?: outputs.RulesetRuleActionParametersUriPath;
     /**
      * Query string configuration when performing a URL rewrite (refer to the nested schema).
      */
-    queries?: outputs.RulesetRuleActionParameterUriQuery[];
+    query?: outputs.RulesetRuleActionParametersUriQuery;
 }
 
-export interface RulesetRuleActionParameterUriPath {
+export interface RulesetRuleActionParametersUriPath {
     /**
      * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
      */
@@ -1547,7 +1595,7 @@ export interface RulesetRuleActionParameterUriPath {
     value?: string;
 }
 
-export interface RulesetRuleActionParameterUriQuery {
+export interface RulesetRuleActionParametersUriQuery {
     /**
      * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
      */
@@ -1556,6 +1604,29 @@ export interface RulesetRuleActionParameterUriQuery {
      * Static string value of the updated URI path or query string component. Conflicts with `expression`.
      */
     value?: string;
+}
+
+export interface RulesetRuleRatelimit {
+    /**
+     * List of parameters that define how Cloudflare tracks the request rate for this rule.
+     */
+    characteristics?: string[];
+    /**
+     * Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
+     */
+    mitigationExpression?: string;
+    /**
+     * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     */
+    mitigationTimeout?: number;
+    /**
+     * The period of time to consider (in seconds) when evaluating the request rate.
+     */
+    period?: number;
+    /**
+     * The number of requests over the period of time that will trigger the Rate Limiting rule.
+     */
+    requestsPerPeriod?: number;
 }
 
 export interface SpectrumApplicationDns {
@@ -1587,9 +1658,85 @@ export interface SpectrumApplicationOriginPortRange {
     start: number;
 }
 
+export interface TeamsAccountAntivirus {
+    enabledDownloadPhase: boolean;
+    enabledUploadPhase: boolean;
+    failClosed: boolean;
+}
+
+export interface TeamsAccountBlockPage {
+    /**
+     * Hex code of block page background color.
+     */
+    backgroundColor?: string;
+    /**
+     * Indicator of enablement.
+     */
+    enabled?: boolean;
+    /**
+     * Block page header text.
+     */
+    footerText?: string;
+    /**
+     * Block page footer text.
+     */
+    headerText?: string;
+    /**
+     * URL of block page logo.
+     */
+    logoPath?: string;
+    /**
+     * Name of block page configuration.
+     */
+    name?: string;
+}
+
 export interface TeamsLocationNetwork {
+    /**
+     * ID of the teams location.
+     */
     id: string;
     network: string;
+}
+
+export interface TeamsRuleRuleSettings {
+    bisoAdminControls?: outputs.TeamsRuleRuleSettingsBisoAdminControls;
+    /**
+     * Indicator of block page enablement.
+     */
+    blockPageEnabled?: boolean;
+    /**
+     * The displayed reason for a user being blocked.
+     */
+    blockPageReason?: string;
+    /**
+     * Settings to forward layer 4 traffic.
+     */
+    l4override?: outputs.TeamsRuleRuleSettingsL4override;
+    /**
+     * The host to override matching DNS queries with.
+     */
+    overrideHost?: string;
+    /**
+     * The IPs to override matching DNS queries with.
+     */
+    overrideIps?: string[];
+}
+
+export interface TeamsRuleRuleSettingsBisoAdminControls {
+    disableCopyPaste?: boolean;
+    disablePrinting?: boolean;
+}
+
+export interface TeamsRuleRuleSettingsL4override {
+    /**
+     * Override IP to forward traffic to.
+     */
+    ip: string;
+    /**
+     * Override Port to forward traffic to.
+     */
+    port: number;
 }
 
 export interface WorkerScriptKvNamespaceBinding {
@@ -1644,12 +1791,7 @@ export interface ZoneLockdownConfiguration {
     value: string;
 }
 
-export interface ZoneMeta {
-    phishingDetected: boolean;
-    wildcardProxiable: boolean;
-}
-
-export interface ZoneSettingsOverrideInitialSettings {
+export interface ZoneSettingsOverrideInitialSetting {
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
@@ -1670,9 +1812,9 @@ export interface ZoneSettingsOverrideInitialSettings {
     ipv6: string;
     maxUpload: number;
     minTlsVersion: string;
-    minify: outputs.ZoneSettingsOverrideInitialSettingsMinify;
+    minify: outputs.ZoneSettingsOverrideInitialSettingMinify;
     mirage: string;
-    mobileRedirect: outputs.ZoneSettingsOverrideInitialSettingsMobileRedirect;
+    mobileRedirect: outputs.ZoneSettingsOverrideInitialSettingMobileRedirect;
     opportunisticEncryption: string;
     opportunisticOnion: string;
     originErrorPagePassThru: string;
@@ -1682,7 +1824,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     pseudoIpv4: string;
     responseBuffering: string;
     rocketLoader: string;
-    securityHeader: outputs.ZoneSettingsOverrideInitialSettingsSecurityHeader;
+    securityHeader: outputs.ZoneSettingsOverrideInitialSettingSecurityHeader;
     securityLevel: string;
     serverSideExclude: string;
     sortQueryStringForCache: string;
@@ -1704,7 +1846,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     zeroRtt: string;
 }
 
-export interface ZoneSettingsOverrideInitialSettingsMinify {
+export interface ZoneSettingsOverrideInitialSettingMinify {
     /**
      * "on"/"off"
      */
@@ -1719,7 +1861,7 @@ export interface ZoneSettingsOverrideInitialSettingsMinify {
     js: string;
 }
 
-export interface ZoneSettingsOverrideInitialSettingsMobileRedirect {
+export interface ZoneSettingsOverrideInitialSettingMobileRedirect {
     /**
      * String value
      */
@@ -1734,7 +1876,7 @@ export interface ZoneSettingsOverrideInitialSettingsMobileRedirect {
     stripUri: boolean;
 }
 
-export interface ZoneSettingsOverrideInitialSettingsSecurityHeader {
+export interface ZoneSettingsOverrideInitialSettingSecurityHeader {
     /**
      * true/false
      */

@@ -63,10 +63,10 @@ namespace Pulumi.Cloudflare
         public Output<string> Hostname { get; private set; } = null!;
 
         [Output("ownershipVerification")]
-        public Output<Outputs.CustomHostnameOwnershipVerification> OwnershipVerification { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> OwnershipVerification { get; private set; } = null!;
 
         [Output("ownershipVerificationHttp")]
-        public Output<Outputs.CustomHostnameOwnershipVerificationHttp> OwnershipVerificationHttp { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> OwnershipVerificationHttp { get; private set; } = null!;
 
         /// <summary>
         /// SSL configuration of the certificate. See further notes below.
@@ -179,10 +179,20 @@ namespace Pulumi.Cloudflare
         public Input<string>? Hostname { get; set; }
 
         [Input("ownershipVerification")]
-        public Input<Inputs.CustomHostnameOwnershipVerificationGetArgs>? OwnershipVerification { get; set; }
+        private InputMap<string>? _ownershipVerification;
+        public InputMap<string> OwnershipVerification
+        {
+            get => _ownershipVerification ?? (_ownershipVerification = new InputMap<string>());
+            set => _ownershipVerification = value;
+        }
 
         [Input("ownershipVerificationHttp")]
-        public Input<Inputs.CustomHostnameOwnershipVerificationHttpGetArgs>? OwnershipVerificationHttp { get; set; }
+        private InputMap<string>? _ownershipVerificationHttp;
+        public InputMap<string> OwnershipVerificationHttp
+        {
+            get => _ownershipVerificationHttp ?? (_ownershipVerificationHttp = new InputMap<string>());
+            set => _ownershipVerificationHttp = value;
+        }
 
         [Input("ssls")]
         private InputList<Inputs.CustomHostnameSslGetArgs>? _ssls;

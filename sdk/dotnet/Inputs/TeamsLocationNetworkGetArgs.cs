@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsLocationNetworkGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ID of the teams location.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 

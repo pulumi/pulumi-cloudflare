@@ -98,6 +98,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
+     * List of approval group blocks for configuring additional approvals (refer to the nested schema).
+     */
+    public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
+    /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
      */
@@ -118,6 +122,14 @@ export class AccessPolicy extends pulumi.CustomResource {
      * The unique precedence for policies on a single application. Integer.
      */
     public readonly precedence!: pulumi.Output<number>;
+    /**
+     * String to present to the user when purpose justification is enabled.
+     */
+    public readonly purposeJustificationPrompt!: pulumi.Output<string | undefined>;
+    /**
+     * Boolean of whether to prompt the user for a justification for accessing the resource.
+     */
+    public readonly purposeJustificationRequired!: pulumi.Output<boolean | undefined>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
@@ -142,11 +154,14 @@ export class AccessPolicy extends pulumi.CustomResource {
             const state = argsOrState as AccessPolicyState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
+            inputs["approvalGroups"] = state ? state.approvalGroups : undefined;
             inputs["decision"] = state ? state.decision : undefined;
             inputs["excludes"] = state ? state.excludes : undefined;
             inputs["includes"] = state ? state.includes : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["precedence"] = state ? state.precedence : undefined;
+            inputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
+            inputs["purposeJustificationRequired"] = state ? state.purposeJustificationRequired : undefined;
             inputs["requires"] = state ? state.requires : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -168,11 +183,14 @@ export class AccessPolicy extends pulumi.CustomResource {
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["applicationId"] = args ? args.applicationId : undefined;
+            inputs["approvalGroups"] = args ? args.approvalGroups : undefined;
             inputs["decision"] = args ? args.decision : undefined;
             inputs["excludes"] = args ? args.excludes : undefined;
             inputs["includes"] = args ? args.includes : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["precedence"] = args ? args.precedence : undefined;
+            inputs["purposeJustificationPrompt"] = args ? args.purposeJustificationPrompt : undefined;
+            inputs["purposeJustificationRequired"] = args ? args.purposeJustificationRequired : undefined;
             inputs["requires"] = args ? args.requires : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
         }
@@ -196,6 +214,10 @@ export interface AccessPolicyState {
      */
     applicationId?: pulumi.Input<string>;
     /**
+     * List of approval group blocks for configuring additional approvals (refer to the nested schema).
+     */
+    approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
+    /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
      */
@@ -216,6 +238,14 @@ export interface AccessPolicyState {
      * The unique precedence for policies on a single application. Integer.
      */
     precedence?: pulumi.Input<number>;
+    /**
+     * String to present to the user when purpose justification is enabled.
+     */
+    purposeJustificationPrompt?: pulumi.Input<string>;
+    /**
+     * Boolean of whether to prompt the user for a justification for accessing the resource.
+     */
+    purposeJustificationRequired?: pulumi.Input<boolean>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */
@@ -239,6 +269,10 @@ export interface AccessPolicyArgs {
      */
     applicationId: pulumi.Input<string>;
     /**
+     * List of approval group blocks for configuring additional approvals (refer to the nested schema).
+     */
+    approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
+    /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
      */
@@ -259,6 +293,14 @@ export interface AccessPolicyArgs {
      * The unique precedence for policies on a single application. Integer.
      */
     precedence: pulumi.Input<number>;
+    /**
+     * String to present to the user when purpose justification is enabled.
+     */
+    purposeJustificationPrompt?: pulumi.Input<string>;
+    /**
+     * Boolean of whether to prompt the user for a justification for accessing the resource.
+     */
+    purposeJustificationRequired?: pulumi.Input<boolean>;
     /**
      * A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
      */

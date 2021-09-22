@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v3.1.0 of the CloudFlare Terraform Provider
+    **Please Note:** This includes some breaking changes as noted in the [upstream Terraform provider](https://github.com/cloudflare/terraform-provider-cloudflare/blob/master/CHANGELOG.md#300-september-20th-2021)
 
 ---
 

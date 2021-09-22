@@ -80,9 +80,9 @@ namespace Pulumi.Cloudflare
     ///                     Condition = "http.request.uri.path contains \"testing\"",
     ///                     FixedResponse = new Cloudflare.Inputs.LoadBalancerRuleFixedResponseArgs
     ///                     {
-    ///                         Message_body = "hello",
-    ///                         Status_code = 200,
-    ///                         Content_type = "html",
+    ///                         MessageBody = "hello",
+    ///                         StatusCode = 200,
+    ///                         ContentType = "html",
     ///                         Location = "www.example.com",
     ///                     },
     ///                 },

@@ -230,6 +230,18 @@ export interface AccessIdentityProviderConfig {
     tokenUrl?: pulumi.Input<string>;
 }
 
+export interface AccessPolicyApprovalGroup {
+    /**
+     * Number of approvals needed.
+     */
+    approvalsNeeded: pulumi.Input<number>;
+    /**
+     * List of emails to request approval from.
+     */
+    emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    emailListUuid?: pulumi.Input<string>;
+}
+
 export interface AccessPolicyExclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
     authMethod?: pulumi.Input<string>;
@@ -441,20 +453,6 @@ export interface ApiTokenPolicy {
     resources: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
-export interface CustomHostnameOwnershipVerification {
-    name?: pulumi.Input<string>;
-    /**
-     * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-     */
-    type?: pulumi.Input<string>;
-    value?: pulumi.Input<string>;
-}
-
-export interface CustomHostnameOwnershipVerificationHttp {
-    httpBody?: pulumi.Input<string>;
-    httpUrl?: pulumi.Input<string>;
-}
-
 export interface CustomHostnameSsl {
     certificateAuthority?: pulumi.Input<string>;
     cnameName?: pulumi.Input<string>;
@@ -515,7 +513,7 @@ export interface CustomSslCustomSslOptions {
     /**
      * Certificate certificate and the intermediate(s)
      */
-    certificate: pulumi.Input<string>;
+    certificate?: pulumi.Input<string>;
     /**
      * Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
      */
@@ -523,7 +521,7 @@ export interface CustomSslCustomSslOptions {
     /**
      * Certificate's private key
      */
-    privateKey: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string>;
     /**
      * Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
      */
@@ -1318,7 +1316,7 @@ export interface RulesetRule {
     /**
      * List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
      */
-    actionParameters?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameter>[]>;
+    actionParameters?: pulumi.Input<inputs.RulesetRuleActionParameters>;
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
@@ -1336,42 +1334,88 @@ export interface RulesetRule {
      */
     id?: pulumi.Input<string>;
     /**
+     * List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
+     */
+    ratelimit?: pulumi.Input<inputs.RulesetRuleRatelimit>;
+    /**
      * Rule reference.
      */
     ref?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameter {
+export interface RulesetRuleActionParameters {
+    /**
+     * List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
+     */
+    headers?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
     /**
      * Rule ID to apply the override to.
      */
     id?: pulumi.Input<string>;
     increment?: pulumi.Input<number>;
     /**
+     * List of properties to configure WAF payload logging (refer to the nested schema).
+     */
+    matchedData?: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
+    /**
      * List of override configurations to apply to the ruleset (refer to the nested schema).
      */
-    overrides?: pulumi.Input<inputs.RulesetRuleActionParameterOverrides>;
+    overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     /**
      * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Which ruleset to target. Valid value is `"current"`.
+     * List of rule-based overrides (refer to the nested schema).
+     */
+    rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Which ruleset ID to target.
      */
     ruleset?: pulumi.Input<string>;
     /**
+     * List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
+     */
+    rulesets?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
      */
-    uris?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUri>[]>;
+    uri?: pulumi.Input<inputs.RulesetRuleActionParametersUri>;
     version?: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterOverrides {
+export interface RulesetRuleActionParametersHeader {
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+     */
+    expression?: pulumi.Input<string>;
+    /**
+     * Name of the HTTP request header to target.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
+     */
+    operation?: pulumi.Input<string>;
+    /**
+     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
+     */
+    value?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersMatchedData {
+    /**
+     * Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+     */
+    publicKey?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersOverrides {
     /**
      * List of tag-based overrides (refer to the nested schema).
      */
-    categories?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterOverridesCategory>[]>;
+    categories?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesCategory>[]>;
     /**
      * Defines if the current rule-level override enables or disables the rule.
      */
@@ -1379,10 +1423,10 @@ export interface RulesetRuleActionParameterOverrides {
     /**
      * List of rule-based overrides (refer to the nested schema).
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterOverridesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesRule>[]>;
 }
 
-export interface RulesetRuleActionParameterOverridesCategory {
+export interface RulesetRuleActionParametersOverridesCategory {
     /**
      * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
@@ -1397,7 +1441,7 @@ export interface RulesetRuleActionParameterOverridesCategory {
     enabled?: pulumi.Input<boolean>;
 }
 
-export interface RulesetRuleActionParameterOverridesRule {
+export interface RulesetRuleActionParametersOverridesRule {
     /**
      * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
@@ -1414,21 +1458,25 @@ export interface RulesetRuleActionParameterOverridesRule {
      * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
      */
     scoreThreshold?: pulumi.Input<number>;
+    /**
+     * Sensitivity level for a ruleset rule override.
+     */
+    sensitivityLevel?: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterUri {
+export interface RulesetRuleActionParametersUri {
     origin?: pulumi.Input<boolean>;
     /**
      * URI path configuration when performing a URL rewrite (refer to the nested schema).
      */
-    paths?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUriPath>[]>;
+    path?: pulumi.Input<inputs.RulesetRuleActionParametersUriPath>;
     /**
      * Query string configuration when performing a URL rewrite (refer to the nested schema).
      */
-    queries?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParameterUriQuery>[]>;
+    query?: pulumi.Input<inputs.RulesetRuleActionParametersUriQuery>;
 }
 
-export interface RulesetRuleActionParameterUriPath {
+export interface RulesetRuleActionParametersUriPath {
     /**
      * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
      */
@@ -1439,7 +1487,7 @@ export interface RulesetRuleActionParameterUriPath {
     value?: pulumi.Input<string>;
 }
 
-export interface RulesetRuleActionParameterUriQuery {
+export interface RulesetRuleActionParametersUriQuery {
     /**
      * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
      */
@@ -1448,6 +1496,29 @@ export interface RulesetRuleActionParameterUriQuery {
      * Static string value of the updated URI path or query string component. Conflicts with `expression`.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleRatelimit {
+    /**
+     * List of parameters that define how Cloudflare tracks the request rate for this rule.
+     */
+    characteristics?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
+     */
+    mitigationExpression?: pulumi.Input<string>;
+    /**
+     * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     */
+    mitigationTimeout?: pulumi.Input<number>;
+    /**
+     * The period of time to consider (in seconds) when evaluating the request rate.
+     */
+    period?: pulumi.Input<number>;
+    /**
+     * The number of requests over the period of time that will trigger the Rate Limiting rule.
+     */
+    requestsPerPeriod?: pulumi.Input<number>;
 }
 
 export interface SpectrumApplicationDns {
@@ -1479,9 +1550,85 @@ export interface SpectrumApplicationOriginPortRange {
     start: pulumi.Input<number>;
 }
 
+export interface TeamsAccountAntivirus {
+    enabledDownloadPhase: pulumi.Input<boolean>;
+    enabledUploadPhase: pulumi.Input<boolean>;
+    failClosed: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountBlockPage {
+    /**
+     * Hex code of block page background color.
+     */
+    backgroundColor?: pulumi.Input<string>;
+    /**
+     * Indicator of enablement.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Block page header text.
+     */
+    footerText?: pulumi.Input<string>;
+    /**
+     * Block page footer text.
+     */
+    headerText?: pulumi.Input<string>;
+    /**
+     * URL of block page logo.
+     */
+    logoPath?: pulumi.Input<string>;
+    /**
+     * Name of block page configuration.
+     */
+    name?: pulumi.Input<string>;
+}
+
 export interface TeamsLocationNetwork {
+    /**
+     * ID of the teams location.
+     */
     id?: pulumi.Input<string>;
     network: pulumi.Input<string>;
+}
+
+export interface TeamsRuleRuleSettings {
+    bisoAdminControls?: pulumi.Input<inputs.TeamsRuleRuleSettingsBisoAdminControls>;
+    /**
+     * Indicator of block page enablement.
+     */
+    blockPageEnabled?: pulumi.Input<boolean>;
+    /**
+     * The displayed reason for a user being blocked.
+     */
+    blockPageReason?: pulumi.Input<string>;
+    /**
+     * Settings to forward layer 4 traffic.
+     */
+    l4override?: pulumi.Input<inputs.TeamsRuleRuleSettingsL4override>;
+    /**
+     * The host to override matching DNS queries with.
+     */
+    overrideHost?: pulumi.Input<string>;
+    /**
+     * The IPs to override matching DNS queries with.
+     */
+    overrideIps?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface TeamsRuleRuleSettingsBisoAdminControls {
+    disableCopyPaste?: pulumi.Input<boolean>;
+    disablePrinting?: pulumi.Input<boolean>;
+}
+
+export interface TeamsRuleRuleSettingsL4override {
+    /**
+     * Override IP to forward traffic to.
+     */
+    ip: pulumi.Input<string>;
+    /**
+     * Override Port to forward traffic to.
+     */
+    port: pulumi.Input<number>;
 }
 
 export interface WorkerScriptKvNamespaceBinding {
@@ -1536,12 +1683,7 @@ export interface ZoneLockdownConfiguration {
     value: pulumi.Input<string>;
 }
 
-export interface ZoneMeta {
-    phishingDetected: pulumi.Input<boolean>;
-    wildcardProxiable: pulumi.Input<boolean>;
-}
-
-export interface ZoneSettingsOverrideInitialSettings {
+export interface ZoneSettingsOverrideInitialSetting {
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
@@ -1562,9 +1704,9 @@ export interface ZoneSettingsOverrideInitialSettings {
     ipv6?: pulumi.Input<string>;
     maxUpload?: pulumi.Input<number>;
     minTlsVersion?: pulumi.Input<string>;
-    minify?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingsMinify>;
+    minify?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingMinify>;
     mirage?: pulumi.Input<string>;
-    mobileRedirect?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingsMobileRedirect>;
+    mobileRedirect?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingMobileRedirect>;
     opportunisticEncryption?: pulumi.Input<string>;
     opportunisticOnion?: pulumi.Input<string>;
     originErrorPagePassThru?: pulumi.Input<string>;
@@ -1574,7 +1716,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     pseudoIpv4?: pulumi.Input<string>;
     responseBuffering?: pulumi.Input<string>;
     rocketLoader?: pulumi.Input<string>;
-    securityHeader?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingsSecurityHeader>;
+    securityHeader?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingSecurityHeader>;
     securityLevel?: pulumi.Input<string>;
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
@@ -1596,7 +1738,7 @@ export interface ZoneSettingsOverrideInitialSettings {
     zeroRtt?: pulumi.Input<string>;
 }
 
-export interface ZoneSettingsOverrideInitialSettingsMinify {
+export interface ZoneSettingsOverrideInitialSettingMinify {
     /**
      * "on"/"off"
      */
@@ -1611,7 +1753,7 @@ export interface ZoneSettingsOverrideInitialSettingsMinify {
     js: pulumi.Input<string>;
 }
 
-export interface ZoneSettingsOverrideInitialSettingsMobileRedirect {
+export interface ZoneSettingsOverrideInitialSettingMobileRedirect {
     /**
      * String value
      */
@@ -1626,7 +1768,7 @@ export interface ZoneSettingsOverrideInitialSettingsMobileRedirect {
     stripUri: pulumi.Input<boolean>;
 }
 
-export interface ZoneSettingsOverrideInitialSettingsSecurityHeader {
+export interface ZoneSettingsOverrideInitialSettingSecurityHeader {
     /**
      * true/false
      */

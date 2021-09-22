@@ -15,8 +15,8 @@
 package main
 
 import (
-	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v3"
-	"github.com/pulumi/pulumi-cloudflare/provider/v3/pkg/version"
+	cloudflare "github.com/pulumi/pulumi-cloudflare/provider/v4"
+	"github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
