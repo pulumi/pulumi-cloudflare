@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 // )
@@ -33,11 +33,11 @@ import (
 // 		}
 // 		_, err := cloudflare.NewCustomSsl(ctx, "foossl", &cloudflare.CustomSslArgs{
 // 			CustomSslOptions: &cloudflare.CustomSslCustomSslOptionsArgs{
-// 				Bundle_method:    pulumi.String("ubiquitous"),
-// 				Certificate:      pulumi.String("-----INSERT CERTIFICATE-----"),
-// 				Geo_restrictions: pulumi.String("us"),
-// 				Private_key:      pulumi.String("-----INSERT PRIVATE KEY-----"),
-// 				Type:             pulumi.String("legacy_custom"),
+// 				BundleMethod:    pulumi.String("ubiquitous"),
+// 				Certificate:     pulumi.String("-----INSERT CERTIFICATE-----"),
+// 				GeoRestrictions: pulumi.String("us"),
+// 				PrivateKey:      pulumi.String("-----INSERT PRIVATE KEY-----"),
+// 				Type:            pulumi.String("legacy_custom"),
 // 			},
 // 			ZoneId: pulumi.String(cloudflareZoneId),
 // 		})

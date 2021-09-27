@@ -21,7 +21,10 @@ class AccessPolicyArgs:
                  name: pulumi.Input[str],
                  precedence: pulumi.Input[int],
                  account_id: Optional[pulumi.Input[str]] = None,
+                 approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
+                 purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
+                 purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -33,7 +36,10 @@ class AccessPolicyArgs:
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Integer.
         :param pulumi.Input[str] account_id: The account to which the access rule should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: List of approval group blocks for configuring additional approvals (refer to the nested schema).
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        :param pulumi.Input[str] purpose_justification_prompt: String to present to the user when purpose justification is enabled.
+        :param pulumi.Input[bool] purpose_justification_required: Boolean of whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         """
@@ -44,8 +50,14 @@ class AccessPolicyArgs:
         pulumi.set(__self__, "precedence", precedence)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if approval_groups is not None:
+            pulumi.set(__self__, "approval_groups", approval_groups)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
+        if purpose_justification_prompt is not None:
+            pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
+        if purpose_justification_required is not None:
+            pulumi.set(__self__, "purpose_justification_required", purpose_justification_required)
         if requires is not None:
             pulumi.set(__self__, "requires", requires)
         if zone_id is not None:
@@ -125,6 +137,18 @@ class AccessPolicyArgs:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="approvalGroups")
+    def approval_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]]:
+        """
+        List of approval group blocks for configuring additional approvals (refer to the nested schema).
+        """
+        return pulumi.get(self, "approval_groups")
+
+    @approval_groups.setter
+    def approval_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]]):
+        pulumi.set(self, "approval_groups", value)
+
+    @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]:
         """
@@ -135,6 +159,30 @@ class AccessPolicyArgs:
     @excludes.setter
     def excludes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]):
         pulumi.set(self, "excludes", value)
+
+    @property
+    @pulumi.getter(name="purposeJustificationPrompt")
+    def purpose_justification_prompt(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to present to the user when purpose justification is enabled.
+        """
+        return pulumi.get(self, "purpose_justification_prompt")
+
+    @purpose_justification_prompt.setter
+    def purpose_justification_prompt(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose_justification_prompt", value)
+
+    @property
+    @pulumi.getter(name="purposeJustificationRequired")
+    def purpose_justification_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean of whether to prompt the user for a justification for accessing the resource.
+        """
+        return pulumi.get(self, "purpose_justification_required")
+
+    @purpose_justification_required.setter
+    def purpose_justification_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "purpose_justification_required", value)
 
     @property
     @pulumi.getter
@@ -166,23 +214,29 @@ class _AccessPolicyState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
+                 approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
+                 purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
+                 purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessPolicy resources.
         :param pulumi.Input[str] account_id: The account to which the access rule should be added. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]] approval_groups: List of approval group blocks for configuring additional approvals (refer to the nested schema).
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
                Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Integer.
+        :param pulumi.Input[str] purpose_justification_prompt: String to present to the user when purpose justification is enabled.
+        :param pulumi.Input[bool] purpose_justification_required: Boolean of whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         """
@@ -190,6 +244,8 @@ class _AccessPolicyState:
             pulumi.set(__self__, "account_id", account_id)
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
+        if approval_groups is not None:
+            pulumi.set(__self__, "approval_groups", approval_groups)
         if decision is not None:
             pulumi.set(__self__, "decision", decision)
         if excludes is not None:
@@ -200,6 +256,10 @@ class _AccessPolicyState:
             pulumi.set(__self__, "name", name)
         if precedence is not None:
             pulumi.set(__self__, "precedence", precedence)
+        if purpose_justification_prompt is not None:
+            pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
+        if purpose_justification_required is not None:
+            pulumi.set(__self__, "purpose_justification_required", purpose_justification_required)
         if requires is not None:
             pulumi.set(__self__, "requires", requires)
         if zone_id is not None:
@@ -228,6 +288,18 @@ class _AccessPolicyState:
     @application_id.setter
     def application_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter(name="approvalGroups")
+    def approval_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]]:
+        """
+        List of approval group blocks for configuring additional approvals (refer to the nested schema).
+        """
+        return pulumi.get(self, "approval_groups")
+
+    @approval_groups.setter
+    def approval_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]]):
+        pulumi.set(self, "approval_groups", value)
 
     @property
     @pulumi.getter
@@ -291,6 +363,30 @@ class _AccessPolicyState:
         pulumi.set(self, "precedence", value)
 
     @property
+    @pulumi.getter(name="purposeJustificationPrompt")
+    def purpose_justification_prompt(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to present to the user when purpose justification is enabled.
+        """
+        return pulumi.get(self, "purpose_justification_prompt")
+
+    @purpose_justification_prompt.setter
+    def purpose_justification_prompt(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose_justification_prompt", value)
+
+    @property
+    @pulumi.getter(name="purposeJustificationRequired")
+    def purpose_justification_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean of whether to prompt the user for a justification for accessing the resource.
+        """
+        return pulumi.get(self, "purpose_justification_required")
+
+    @purpose_justification_required.setter
+    def purpose_justification_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "purpose_justification_required", value)
+
+    @property
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]]:
         """
@@ -322,11 +418,14 @@ class AccessPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
+                 approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
+                 purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
+                 purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -388,12 +487,15 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the access rule should be added. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]] approval_groups: List of approval group blocks for configuring additional approvals (refer to the nested schema).
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
                Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Integer.
+        :param pulumi.Input[str] purpose_justification_prompt: String to present to the user when purpose justification is enabled.
+        :param pulumi.Input[bool] purpose_justification_required: Boolean of whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         """
@@ -474,11 +576,14 @@ class AccessPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
+                 approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  precedence: Optional[pulumi.Input[int]] = None,
+                 purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
+                 purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -497,6 +602,7 @@ class AccessPolicy(pulumi.CustomResource):
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
+            __props__.__dict__["approval_groups"] = approval_groups
             if decision is None and not opts.urn:
                 raise TypeError("Missing required property 'decision'")
             __props__.__dict__["decision"] = decision
@@ -510,6 +616,8 @@ class AccessPolicy(pulumi.CustomResource):
             if precedence is None and not opts.urn:
                 raise TypeError("Missing required property 'precedence'")
             __props__.__dict__["precedence"] = precedence
+            __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
+            __props__.__dict__["purpose_justification_required"] = purpose_justification_required
             __props__.__dict__["requires"] = requires
             __props__.__dict__["zone_id"] = zone_id
         super(AccessPolicy, __self__).__init__(
@@ -524,11 +632,14 @@ class AccessPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
+            approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
             decision: Optional[pulumi.Input[str]] = None,
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             precedence: Optional[pulumi.Input[int]] = None,
+            purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
+            purpose_justification_required: Optional[pulumi.Input[bool]] = None,
             requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessPolicy':
         """
@@ -540,12 +651,15 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the access rule should be added. Conflicts with `zone_id`.
         :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]] approval_groups: List of approval group blocks for configuring additional approvals (refer to the nested schema).
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user.
                Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Integer.
+        :param pulumi.Input[str] purpose_justification_prompt: String to present to the user when purpose justification is enabled.
+        :param pulumi.Input[bool] purpose_justification_required: Boolean of whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added. Conflicts with `account_id`.
         """
@@ -555,11 +669,14 @@ class AccessPolicy(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["application_id"] = application_id
+        __props__.__dict__["approval_groups"] = approval_groups
         __props__.__dict__["decision"] = decision
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["includes"] = includes
         __props__.__dict__["name"] = name
         __props__.__dict__["precedence"] = precedence
+        __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
+        __props__.__dict__["purpose_justification_required"] = purpose_justification_required
         __props__.__dict__["requires"] = requires
         __props__.__dict__["zone_id"] = zone_id
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
@@ -579,6 +696,14 @@ class AccessPolicy(pulumi.CustomResource):
         The ID of the application the policy is associated with.
         """
         return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="approvalGroups")
+    def approval_groups(self) -> pulumi.Output[Optional[Sequence['outputs.AccessPolicyApprovalGroup']]]:
+        """
+        List of approval group blocks for configuring additional approvals (refer to the nested schema).
+        """
+        return pulumi.get(self, "approval_groups")
 
     @property
     @pulumi.getter
@@ -620,6 +745,22 @@ class AccessPolicy(pulumi.CustomResource):
         The unique precedence for policies on a single application. Integer.
         """
         return pulumi.get(self, "precedence")
+
+    @property
+    @pulumi.getter(name="purposeJustificationPrompt")
+    def purpose_justification_prompt(self) -> pulumi.Output[Optional[str]]:
+        """
+        String to present to the user when purpose justification is enabled.
+        """
+        return pulumi.get(self, "purpose_justification_prompt")
+
+    @property
+    @pulumi.getter(name="purposeJustificationRequired")
+    def purpose_justification_required(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Boolean of whether to prompt the user for a justification for accessing the resource.
+        """
+        return pulumi.get(self, "purpose_justification_required")
 
     @property
     @pulumi.getter

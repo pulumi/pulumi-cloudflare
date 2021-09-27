@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
         /// </summary>
-        public readonly ImmutableArray<Outputs.RulesetRuleActionParameter> ActionParameters;
+        public readonly Outputs.RulesetRuleActionParameters? ActionParameters;
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
         /// </summary>
@@ -38,6 +38,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
+        /// </summary>
+        public readonly Outputs.RulesetRuleRatelimit? Ratelimit;
+        /// <summary>
         /// Rule reference.
         /// </summary>
         public readonly string? Ref;
@@ -47,7 +51,7 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRule(
             string? action,
 
-            ImmutableArray<Outputs.RulesetRuleActionParameter> actionParameters,
+            Outputs.RulesetRuleActionParameters? actionParameters,
 
             string description,
 
@@ -56,6 +60,8 @@ namespace Pulumi.Cloudflare.Outputs
             string expression,
 
             string? id,
+
+            Outputs.RulesetRuleRatelimit? ratelimit,
 
             string? @ref,
 
@@ -67,6 +73,7 @@ namespace Pulumi.Cloudflare.Outputs
             Enabled = enabled;
             Expression = expression;
             Id = id;
+            Ratelimit = ratelimit;
             Ref = @ref;
             Version = version;
         }

@@ -45,9 +45,9 @@ import * as utilities from "./utilities";
  *         name: "example rule",
  *         condition: "http.request.uri.path contains \"testing\"",
  *         fixedResponse: {
- *             message_body: "hello",
- *             status_code: 200,
- *             content_type: "html",
+ *             messageBody: "hello",
+ *             statusCode: 200,
+ *             contentType: "html",
  *             location: "www.example.com",
  *         },
  *     }],

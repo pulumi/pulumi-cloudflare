@@ -118,6 +118,12 @@ namespace Pulumi.Cloudflare
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
+        /// List of approval group blocks for configuring additional approvals (refer to the nested schema).
+        /// </summary>
+        [Output("approvalGroups")]
+        public Output<ImmutableArray<Outputs.AccessPolicyApprovalGroup>> ApprovalGroups { get; private set; } = null!;
+
+        /// <summary>
         /// Defines the action Access will take if the policy matches the user.
         /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
         /// </summary>
@@ -147,6 +153,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("precedence")]
         public Output<int> Precedence { get; private set; } = null!;
+
+        /// <summary>
+        /// String to present to the user when purpose justification is enabled.
+        /// </summary>
+        [Output("purposeJustificationPrompt")]
+        public Output<string?> PurposeJustificationPrompt { get; private set; } = null!;
+
+        /// <summary>
+        /// Boolean of whether to prompt the user for a justification for accessing the resource.
+        /// </summary>
+        [Output("purposeJustificationRequired")]
+        public Output<bool?> PurposeJustificationRequired { get; private set; } = null!;
 
         /// <summary>
         /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
@@ -218,6 +236,18 @@ namespace Pulumi.Cloudflare
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
+        [Input("approvalGroups")]
+        private InputList<Inputs.AccessPolicyApprovalGroupArgs>? _approvalGroups;
+
+        /// <summary>
+        /// List of approval group blocks for configuring additional approvals (refer to the nested schema).
+        /// </summary>
+        public InputList<Inputs.AccessPolicyApprovalGroupArgs> ApprovalGroups
+        {
+            get => _approvalGroups ?? (_approvalGroups = new InputList<Inputs.AccessPolicyApprovalGroupArgs>());
+            set => _approvalGroups = value;
+        }
+
         /// <summary>
         /// Defines the action Access will take if the policy matches the user.
         /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
@@ -261,6 +291,18 @@ namespace Pulumi.Cloudflare
         [Input("precedence", required: true)]
         public Input<int> Precedence { get; set; } = null!;
 
+        /// <summary>
+        /// String to present to the user when purpose justification is enabled.
+        /// </summary>
+        [Input("purposeJustificationPrompt")]
+        public Input<string>? PurposeJustificationPrompt { get; set; }
+
+        /// <summary>
+        /// Boolean of whether to prompt the user for a justification for accessing the resource.
+        /// </summary>
+        [Input("purposeJustificationRequired")]
+        public Input<bool>? PurposeJustificationRequired { get; set; }
+
         [Input("requires")]
         private InputList<Inputs.AccessPolicyRequireArgs>? _requires;
 
@@ -297,6 +339,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
+
+        [Input("approvalGroups")]
+        private InputList<Inputs.AccessPolicyApprovalGroupGetArgs>? _approvalGroups;
+
+        /// <summary>
+        /// List of approval group blocks for configuring additional approvals (refer to the nested schema).
+        /// </summary>
+        public InputList<Inputs.AccessPolicyApprovalGroupGetArgs> ApprovalGroups
+        {
+            get => _approvalGroups ?? (_approvalGroups = new InputList<Inputs.AccessPolicyApprovalGroupGetArgs>());
+            set => _approvalGroups = value;
+        }
 
         /// <summary>
         /// Defines the action Access will take if the policy matches the user.
@@ -340,6 +394,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
+
+        /// <summary>
+        /// String to present to the user when purpose justification is enabled.
+        /// </summary>
+        [Input("purposeJustificationPrompt")]
+        public Input<string>? PurposeJustificationPrompt { get; set; }
+
+        /// <summary>
+        /// Boolean of whether to prompt the user for a justification for accessing the resource.
+        /// </summary>
+        [Input("purposeJustificationRequired")]
+        public Input<bool>? PurposeJustificationRequired { get; set; }
 
         [Input("requires")]
         private InputList<Inputs.AccessPolicyRequireGetArgs>? _requires;

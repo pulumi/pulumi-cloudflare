@@ -2538,6 +2538,118 @@ func (o AccessIdentityProviderConfigArrayOutput) Index(i pulumi.IntInput) Access
 	}).(AccessIdentityProviderConfigOutput)
 }
 
+type AccessPolicyApprovalGroup struct {
+	// Number of approvals needed.
+	ApprovalsNeeded int `pulumi:"approvalsNeeded"`
+	// List of emails to request approval from.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	EmailListUuid  *string  `pulumi:"emailListUuid"`
+}
+
+// AccessPolicyApprovalGroupInput is an input type that accepts AccessPolicyApprovalGroupArgs and AccessPolicyApprovalGroupOutput values.
+// You can construct a concrete instance of `AccessPolicyApprovalGroupInput` via:
+//
+//          AccessPolicyApprovalGroupArgs{...}
+type AccessPolicyApprovalGroupInput interface {
+	pulumi.Input
+
+	ToAccessPolicyApprovalGroupOutput() AccessPolicyApprovalGroupOutput
+	ToAccessPolicyApprovalGroupOutputWithContext(context.Context) AccessPolicyApprovalGroupOutput
+}
+
+type AccessPolicyApprovalGroupArgs struct {
+	// Number of approvals needed.
+	ApprovalsNeeded pulumi.IntInput `pulumi:"approvalsNeeded"`
+	// List of emails to request approval from.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	EmailListUuid  pulumi.StringPtrInput   `pulumi:"emailListUuid"`
+}
+
+func (AccessPolicyApprovalGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyApprovalGroup)(nil)).Elem()
+}
+
+func (i AccessPolicyApprovalGroupArgs) ToAccessPolicyApprovalGroupOutput() AccessPolicyApprovalGroupOutput {
+	return i.ToAccessPolicyApprovalGroupOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyApprovalGroupArgs) ToAccessPolicyApprovalGroupOutputWithContext(ctx context.Context) AccessPolicyApprovalGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyApprovalGroupOutput)
+}
+
+// AccessPolicyApprovalGroupArrayInput is an input type that accepts AccessPolicyApprovalGroupArray and AccessPolicyApprovalGroupArrayOutput values.
+// You can construct a concrete instance of `AccessPolicyApprovalGroupArrayInput` via:
+//
+//          AccessPolicyApprovalGroupArray{ AccessPolicyApprovalGroupArgs{...} }
+type AccessPolicyApprovalGroupArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyApprovalGroupArrayOutput() AccessPolicyApprovalGroupArrayOutput
+	ToAccessPolicyApprovalGroupArrayOutputWithContext(context.Context) AccessPolicyApprovalGroupArrayOutput
+}
+
+type AccessPolicyApprovalGroupArray []AccessPolicyApprovalGroupInput
+
+func (AccessPolicyApprovalGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyApprovalGroup)(nil)).Elem()
+}
+
+func (i AccessPolicyApprovalGroupArray) ToAccessPolicyApprovalGroupArrayOutput() AccessPolicyApprovalGroupArrayOutput {
+	return i.ToAccessPolicyApprovalGroupArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyApprovalGroupArray) ToAccessPolicyApprovalGroupArrayOutputWithContext(ctx context.Context) AccessPolicyApprovalGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyApprovalGroupArrayOutput)
+}
+
+type AccessPolicyApprovalGroupOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyApprovalGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyApprovalGroup)(nil)).Elem()
+}
+
+func (o AccessPolicyApprovalGroupOutput) ToAccessPolicyApprovalGroupOutput() AccessPolicyApprovalGroupOutput {
+	return o
+}
+
+func (o AccessPolicyApprovalGroupOutput) ToAccessPolicyApprovalGroupOutputWithContext(ctx context.Context) AccessPolicyApprovalGroupOutput {
+	return o
+}
+
+// Number of approvals needed.
+func (o AccessPolicyApprovalGroupOutput) ApprovalsNeeded() pulumi.IntOutput {
+	return o.ApplyT(func(v AccessPolicyApprovalGroup) int { return v.ApprovalsNeeded }).(pulumi.IntOutput)
+}
+
+// List of emails to request approval from.
+func (o AccessPolicyApprovalGroupOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyApprovalGroup) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyApprovalGroupOutput) EmailListUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyApprovalGroup) *string { return v.EmailListUuid }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyApprovalGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyApprovalGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyApprovalGroup)(nil)).Elem()
+}
+
+func (o AccessPolicyApprovalGroupArrayOutput) ToAccessPolicyApprovalGroupArrayOutput() AccessPolicyApprovalGroupArrayOutput {
+	return o
+}
+
+func (o AccessPolicyApprovalGroupArrayOutput) ToAccessPolicyApprovalGroupArrayOutputWithContext(ctx context.Context) AccessPolicyApprovalGroupArrayOutput {
+	return o
+}
+
+func (o AccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) AccessPolicyApprovalGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyApprovalGroup {
+		return vs[0].([]AccessPolicyApprovalGroup)[vs[1].(int)]
+	}).(AccessPolicyApprovalGroupOutput)
+}
+
 type AccessPolicyExclude struct {
 	AnyValidServiceToken *bool                       `pulumi:"anyValidServiceToken"`
 	AuthMethod           *string                     `pulumi:"authMethod"`
@@ -5243,307 +5355,6 @@ func (o ApiTokenPolicyArrayOutput) Index(i pulumi.IntInput) ApiTokenPolicyOutput
 	}).(ApiTokenPolicyOutput)
 }
 
-type CustomHostnameOwnershipVerification struct {
-	Name *string `pulumi:"name"`
-	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-	Type  *string `pulumi:"type"`
-	Value *string `pulumi:"value"`
-}
-
-// CustomHostnameOwnershipVerificationInput is an input type that accepts CustomHostnameOwnershipVerificationArgs and CustomHostnameOwnershipVerificationOutput values.
-// You can construct a concrete instance of `CustomHostnameOwnershipVerificationInput` via:
-//
-//          CustomHostnameOwnershipVerificationArgs{...}
-type CustomHostnameOwnershipVerificationInput interface {
-	pulumi.Input
-
-	ToCustomHostnameOwnershipVerificationOutput() CustomHostnameOwnershipVerificationOutput
-	ToCustomHostnameOwnershipVerificationOutputWithContext(context.Context) CustomHostnameOwnershipVerificationOutput
-}
-
-type CustomHostnameOwnershipVerificationArgs struct {
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-	Type  pulumi.StringPtrInput `pulumi:"type"`
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (CustomHostnameOwnershipVerificationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameOwnershipVerification)(nil)).Elem()
-}
-
-func (i CustomHostnameOwnershipVerificationArgs) ToCustomHostnameOwnershipVerificationOutput() CustomHostnameOwnershipVerificationOutput {
-	return i.ToCustomHostnameOwnershipVerificationOutputWithContext(context.Background())
-}
-
-func (i CustomHostnameOwnershipVerificationArgs) ToCustomHostnameOwnershipVerificationOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationOutput)
-}
-
-func (i CustomHostnameOwnershipVerificationArgs) ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput {
-	return i.ToCustomHostnameOwnershipVerificationPtrOutputWithContext(context.Background())
-}
-
-func (i CustomHostnameOwnershipVerificationArgs) ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationOutput).ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx)
-}
-
-// CustomHostnameOwnershipVerificationPtrInput is an input type that accepts CustomHostnameOwnershipVerificationArgs, CustomHostnameOwnershipVerificationPtr and CustomHostnameOwnershipVerificationPtrOutput values.
-// You can construct a concrete instance of `CustomHostnameOwnershipVerificationPtrInput` via:
-//
-//          CustomHostnameOwnershipVerificationArgs{...}
-//
-//  or:
-//
-//          nil
-type CustomHostnameOwnershipVerificationPtrInput interface {
-	pulumi.Input
-
-	ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput
-	ToCustomHostnameOwnershipVerificationPtrOutputWithContext(context.Context) CustomHostnameOwnershipVerificationPtrOutput
-}
-
-type customHostnameOwnershipVerificationPtrType CustomHostnameOwnershipVerificationArgs
-
-func CustomHostnameOwnershipVerificationPtr(v *CustomHostnameOwnershipVerificationArgs) CustomHostnameOwnershipVerificationPtrInput {
-	return (*customHostnameOwnershipVerificationPtrType)(v)
-}
-
-func (*customHostnameOwnershipVerificationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomHostnameOwnershipVerification)(nil)).Elem()
-}
-
-func (i *customHostnameOwnershipVerificationPtrType) ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput {
-	return i.ToCustomHostnameOwnershipVerificationPtrOutputWithContext(context.Background())
-}
-
-func (i *customHostnameOwnershipVerificationPtrType) ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationPtrOutput)
-}
-
-type CustomHostnameOwnershipVerificationOutput struct{ *pulumi.OutputState }
-
-func (CustomHostnameOwnershipVerificationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameOwnershipVerification)(nil)).Elem()
-}
-
-func (o CustomHostnameOwnershipVerificationOutput) ToCustomHostnameOwnershipVerificationOutput() CustomHostnameOwnershipVerificationOutput {
-	return o
-}
-
-func (o CustomHostnameOwnershipVerificationOutput) ToCustomHostnameOwnershipVerificationOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationOutput {
-	return o
-}
-
-func (o CustomHostnameOwnershipVerificationOutput) ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput {
-	return o.ToCustomHostnameOwnershipVerificationPtrOutputWithContext(context.Background())
-}
-
-func (o CustomHostnameOwnershipVerificationOutput) ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationPtrOutput {
-	return o.ApplyT(func(v CustomHostnameOwnershipVerification) *CustomHostnameOwnershipVerification {
-		return &v
-	}).(CustomHostnameOwnershipVerificationPtrOutput)
-}
-func (o CustomHostnameOwnershipVerificationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomHostnameOwnershipVerification) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-func (o CustomHostnameOwnershipVerificationOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomHostnameOwnershipVerification) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-func (o CustomHostnameOwnershipVerificationOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomHostnameOwnershipVerification) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type CustomHostnameOwnershipVerificationPtrOutput struct{ *pulumi.OutputState }
-
-func (CustomHostnameOwnershipVerificationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomHostnameOwnershipVerification)(nil)).Elem()
-}
-
-func (o CustomHostnameOwnershipVerificationPtrOutput) ToCustomHostnameOwnershipVerificationPtrOutput() CustomHostnameOwnershipVerificationPtrOutput {
-	return o
-}
-
-func (o CustomHostnameOwnershipVerificationPtrOutput) ToCustomHostnameOwnershipVerificationPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationPtrOutput {
-	return o
-}
-
-func (o CustomHostnameOwnershipVerificationPtrOutput) Elem() CustomHostnameOwnershipVerificationOutput {
-	return o.ApplyT(func(v *CustomHostnameOwnershipVerification) CustomHostnameOwnershipVerification { return *v }).(CustomHostnameOwnershipVerificationOutput)
-}
-
-func (o CustomHostnameOwnershipVerificationPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomHostnameOwnershipVerification) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-func (o CustomHostnameOwnershipVerificationPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomHostnameOwnershipVerification) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CustomHostnameOwnershipVerificationPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomHostnameOwnershipVerification) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-type CustomHostnameOwnershipVerificationHttp struct {
-	HttpBody *string `pulumi:"httpBody"`
-	HttpUrl  *string `pulumi:"httpUrl"`
-}
-
-// CustomHostnameOwnershipVerificationHttpInput is an input type that accepts CustomHostnameOwnershipVerificationHttpArgs and CustomHostnameOwnershipVerificationHttpOutput values.
-// You can construct a concrete instance of `CustomHostnameOwnershipVerificationHttpInput` via:
-//
-//          CustomHostnameOwnershipVerificationHttpArgs{...}
-type CustomHostnameOwnershipVerificationHttpInput interface {
-	pulumi.Input
-
-	ToCustomHostnameOwnershipVerificationHttpOutput() CustomHostnameOwnershipVerificationHttpOutput
-	ToCustomHostnameOwnershipVerificationHttpOutputWithContext(context.Context) CustomHostnameOwnershipVerificationHttpOutput
-}
-
-type CustomHostnameOwnershipVerificationHttpArgs struct {
-	HttpBody pulumi.StringPtrInput `pulumi:"httpBody"`
-	HttpUrl  pulumi.StringPtrInput `pulumi:"httpUrl"`
-}
-
-func (CustomHostnameOwnershipVerificationHttpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameOwnershipVerificationHttp)(nil)).Elem()
-}
-
-func (i CustomHostnameOwnershipVerificationHttpArgs) ToCustomHostnameOwnershipVerificationHttpOutput() CustomHostnameOwnershipVerificationHttpOutput {
-	return i.ToCustomHostnameOwnershipVerificationHttpOutputWithContext(context.Background())
-}
-
-func (i CustomHostnameOwnershipVerificationHttpArgs) ToCustomHostnameOwnershipVerificationHttpOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationHttpOutput)
-}
-
-func (i CustomHostnameOwnershipVerificationHttpArgs) ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput {
-	return i.ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(context.Background())
-}
-
-func (i CustomHostnameOwnershipVerificationHttpArgs) ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationHttpOutput).ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx)
-}
-
-// CustomHostnameOwnershipVerificationHttpPtrInput is an input type that accepts CustomHostnameOwnershipVerificationHttpArgs, CustomHostnameOwnershipVerificationHttpPtr and CustomHostnameOwnershipVerificationHttpPtrOutput values.
-// You can construct a concrete instance of `CustomHostnameOwnershipVerificationHttpPtrInput` via:
-//
-//          CustomHostnameOwnershipVerificationHttpArgs{...}
-//
-//  or:
-//
-//          nil
-type CustomHostnameOwnershipVerificationHttpPtrInput interface {
-	pulumi.Input
-
-	ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput
-	ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput
-}
-
-type customHostnameOwnershipVerificationHttpPtrType CustomHostnameOwnershipVerificationHttpArgs
-
-func CustomHostnameOwnershipVerificationHttpPtr(v *CustomHostnameOwnershipVerificationHttpArgs) CustomHostnameOwnershipVerificationHttpPtrInput {
-	return (*customHostnameOwnershipVerificationHttpPtrType)(v)
-}
-
-func (*customHostnameOwnershipVerificationHttpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomHostnameOwnershipVerificationHttp)(nil)).Elem()
-}
-
-func (i *customHostnameOwnershipVerificationHttpPtrType) ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput {
-	return i.ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(context.Background())
-}
-
-func (i *customHostnameOwnershipVerificationHttpPtrType) ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOwnershipVerificationHttpPtrOutput)
-}
-
-type CustomHostnameOwnershipVerificationHttpOutput struct{ *pulumi.OutputState }
-
-func (CustomHostnameOwnershipVerificationHttpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameOwnershipVerificationHttp)(nil)).Elem()
-}
-
-func (o CustomHostnameOwnershipVerificationHttpOutput) ToCustomHostnameOwnershipVerificationHttpOutput() CustomHostnameOwnershipVerificationHttpOutput {
-	return o
-}
-
-func (o CustomHostnameOwnershipVerificationHttpOutput) ToCustomHostnameOwnershipVerificationHttpOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpOutput {
-	return o
-}
-
-func (o CustomHostnameOwnershipVerificationHttpOutput) ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput {
-	return o.ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(context.Background())
-}
-
-func (o CustomHostnameOwnershipVerificationHttpOutput) ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput {
-	return o.ApplyT(func(v CustomHostnameOwnershipVerificationHttp) *CustomHostnameOwnershipVerificationHttp {
-		return &v
-	}).(CustomHostnameOwnershipVerificationHttpPtrOutput)
-}
-func (o CustomHostnameOwnershipVerificationHttpOutput) HttpBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomHostnameOwnershipVerificationHttp) *string { return v.HttpBody }).(pulumi.StringPtrOutput)
-}
-
-func (o CustomHostnameOwnershipVerificationHttpOutput) HttpUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomHostnameOwnershipVerificationHttp) *string { return v.HttpUrl }).(pulumi.StringPtrOutput)
-}
-
-type CustomHostnameOwnershipVerificationHttpPtrOutput struct{ *pulumi.OutputState }
-
-func (CustomHostnameOwnershipVerificationHttpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomHostnameOwnershipVerificationHttp)(nil)).Elem()
-}
-
-func (o CustomHostnameOwnershipVerificationHttpPtrOutput) ToCustomHostnameOwnershipVerificationHttpPtrOutput() CustomHostnameOwnershipVerificationHttpPtrOutput {
-	return o
-}
-
-func (o CustomHostnameOwnershipVerificationHttpPtrOutput) ToCustomHostnameOwnershipVerificationHttpPtrOutputWithContext(ctx context.Context) CustomHostnameOwnershipVerificationHttpPtrOutput {
-	return o
-}
-
-func (o CustomHostnameOwnershipVerificationHttpPtrOutput) Elem() CustomHostnameOwnershipVerificationHttpOutput {
-	return o.ApplyT(func(v *CustomHostnameOwnershipVerificationHttp) CustomHostnameOwnershipVerificationHttp { return *v }).(CustomHostnameOwnershipVerificationHttpOutput)
-}
-
-func (o CustomHostnameOwnershipVerificationHttpPtrOutput) HttpBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomHostnameOwnershipVerificationHttp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HttpBody
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o CustomHostnameOwnershipVerificationHttpPtrOutput) HttpUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CustomHostnameOwnershipVerificationHttp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HttpUrl
-	}).(pulumi.StringPtrOutput)
-}
-
 type CustomHostnameSsl struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
 	CnameName            *string `pulumi:"cnameName"`
@@ -5844,11 +5655,11 @@ type CustomSslCustomSslOptions struct {
 	// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
 	BundleMethod *string `pulumi:"bundleMethod"`
 	// Certificate certificate and the intermediate(s)
-	Certificate string `pulumi:"certificate"`
+	Certificate *string `pulumi:"certificate"`
 	// Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
 	GeoRestrictions *string `pulumi:"geoRestrictions"`
 	// Certificate's private key
-	PrivateKey string `pulumi:"privateKey"`
+	PrivateKey *string `pulumi:"privateKey"`
 	// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
 	Type *string `pulumi:"type"`
 }
@@ -5868,11 +5679,11 @@ type CustomSslCustomSslOptionsArgs struct {
 	// Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
 	BundleMethod pulumi.StringPtrInput `pulumi:"bundleMethod"`
 	// Certificate certificate and the intermediate(s)
-	Certificate pulumi.StringInput `pulumi:"certificate"`
+	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	// Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
 	GeoRestrictions pulumi.StringPtrInput `pulumi:"geoRestrictions"`
 	// Certificate's private key
-	PrivateKey pulumi.StringInput `pulumi:"privateKey"`
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
 	// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -5960,8 +5771,8 @@ func (o CustomSslCustomSslOptionsOutput) BundleMethod() pulumi.StringPtrOutput {
 }
 
 // Certificate certificate and the intermediate(s)
-func (o CustomSslCustomSslOptionsOutput) Certificate() pulumi.StringOutput {
-	return o.ApplyT(func(v CustomSslCustomSslOptions) string { return v.Certificate }).(pulumi.StringOutput)
+func (o CustomSslCustomSslOptionsOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomSslCustomSslOptions) *string { return v.Certificate }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highestSecurity`.
@@ -5970,8 +5781,8 @@ func (o CustomSslCustomSslOptionsOutput) GeoRestrictions() pulumi.StringPtrOutpu
 }
 
 // Certificate's private key
-func (o CustomSslCustomSslOptionsOutput) PrivateKey() pulumi.StringOutput {
-	return o.ApplyT(func(v CustomSslCustomSslOptions) string { return v.PrivateKey }).(pulumi.StringOutput)
+func (o CustomSslCustomSslOptionsOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomSslCustomSslOptions) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
 // Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacyCustom` (default), `sniCustom`.
@@ -6013,7 +5824,7 @@ func (o CustomSslCustomSslOptionsPtrOutput) Certificate() pulumi.StringPtrOutput
 		if v == nil {
 			return nil
 		}
-		return &v.Certificate
+		return v.Certificate
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6033,7 +5844,7 @@ func (o CustomSslCustomSslOptionsPtrOutput) PrivateKey() pulumi.StringPtrOutput 
 		if v == nil {
 			return nil
 		}
-		return &v.PrivateKey
+		return v.PrivateKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12191,7 +12002,7 @@ type RulesetRule struct {
 	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action *string `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
-	ActionParameters []RulesetRuleActionParameter `pulumi:"actionParameters"`
+	ActionParameters *RulesetRuleActionParameters `pulumi:"actionParameters"`
 	// Brief summary of the ruleset rule and its intended use.
 	Description string `pulumi:"description"`
 	// Defines if the current rule-level override enables or disables the rule.
@@ -12200,6 +12011,8 @@ type RulesetRule struct {
 	Expression string `pulumi:"expression"`
 	// Rule ID to apply the override to.
 	Id *string `pulumi:"id"`
+	// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
+	Ratelimit *RulesetRuleRatelimit `pulumi:"ratelimit"`
 	// Rule reference.
 	Ref     *string `pulumi:"ref"`
 	Version *string `pulumi:"version"`
@@ -12220,7 +12033,7 @@ type RulesetRuleArgs struct {
 	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
-	ActionParameters RulesetRuleActionParameterArrayInput `pulumi:"actionParameters"`
+	ActionParameters RulesetRuleActionParametersPtrInput `pulumi:"actionParameters"`
 	// Brief summary of the ruleset rule and its intended use.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Defines if the current rule-level override enables or disables the rule.
@@ -12229,6 +12042,8 @@ type RulesetRuleArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// Rule ID to apply the override to.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
+	Ratelimit RulesetRuleRatelimitPtrInput `pulumi:"ratelimit"`
 	// Rule reference.
 	Ref     pulumi.StringPtrInput `pulumi:"ref"`
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -12291,8 +12106,8 @@ func (o RulesetRuleOutput) Action() pulumi.StringPtrOutput {
 }
 
 // List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
-func (o RulesetRuleOutput) ActionParameters() RulesetRuleActionParameterArrayOutput {
-	return o.ApplyT(func(v RulesetRule) []RulesetRuleActionParameter { return v.ActionParameters }).(RulesetRuleActionParameterArrayOutput)
+func (o RulesetRuleOutput) ActionParameters() RulesetRuleActionParametersPtrOutput {
+	return o.ApplyT(func(v RulesetRule) *RulesetRuleActionParameters { return v.ActionParameters }).(RulesetRuleActionParametersPtrOutput)
 }
 
 // Brief summary of the ruleset rule and its intended use.
@@ -12313,6 +12128,11 @@ func (o RulesetRuleOutput) Expression() pulumi.StringOutput {
 // Rule ID to apply the override to.
 func (o RulesetRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
+func (o RulesetRuleOutput) Ratelimit() RulesetRuleRatelimitPtrOutput {
+	return o.ApplyT(func(v RulesetRule) *RulesetRuleRatelimit { return v.Ratelimit }).(RulesetRuleRatelimitPtrOutput)
 }
 
 // Rule reference.
@@ -12344,305 +12164,730 @@ func (o RulesetRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleOutput {
 	}).(RulesetRuleOutput)
 }
 
-type RulesetRuleActionParameter struct {
+type RulesetRuleActionParameters struct {
+	// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
+	Headers []RulesetRuleActionParametersHeader `pulumi:"headers"`
 	// Rule ID to apply the override to.
 	Id        *string `pulumi:"id"`
 	Increment *int    `pulumi:"increment"`
+	// List of properties to configure WAF payload logging (refer to the nested schema).
+	MatchedData *RulesetRuleActionParametersMatchedData `pulumi:"matchedData"`
 	// List of override configurations to apply to the ruleset (refer to the nested schema).
-	Overrides *RulesetRuleActionParameterOverrides `pulumi:"overrides"`
+	Overrides *RulesetRuleActionParametersOverrides `pulumi:"overrides"`
 	// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 	Products []string `pulumi:"products"`
-	// Which ruleset to target. Valid value is `"current"`.
+	// List of rule-based overrides (refer to the nested schema).
+	Rules map[string]string `pulumi:"rules"`
+	// Which ruleset ID to target.
 	Ruleset *string `pulumi:"ruleset"`
+	// List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
+	Rulesets []string `pulumi:"rulesets"`
 	// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
-	Uris    []RulesetRuleActionParameterUri `pulumi:"uris"`
+	Uri     *RulesetRuleActionParametersUri `pulumi:"uri"`
 	Version *string                         `pulumi:"version"`
 }
 
-// RulesetRuleActionParameterInput is an input type that accepts RulesetRuleActionParameterArgs and RulesetRuleActionParameterOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterInput` via:
+// RulesetRuleActionParametersInput is an input type that accepts RulesetRuleActionParametersArgs and RulesetRuleActionParametersOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersInput` via:
 //
-//          RulesetRuleActionParameterArgs{...}
-type RulesetRuleActionParameterInput interface {
+//          RulesetRuleActionParametersArgs{...}
+type RulesetRuleActionParametersInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterOutput() RulesetRuleActionParameterOutput
-	ToRulesetRuleActionParameterOutputWithContext(context.Context) RulesetRuleActionParameterOutput
+	ToRulesetRuleActionParametersOutput() RulesetRuleActionParametersOutput
+	ToRulesetRuleActionParametersOutputWithContext(context.Context) RulesetRuleActionParametersOutput
 }
 
-type RulesetRuleActionParameterArgs struct {
+type RulesetRuleActionParametersArgs struct {
+	// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
+	Headers RulesetRuleActionParametersHeaderArrayInput `pulumi:"headers"`
 	// Rule ID to apply the override to.
 	Id        pulumi.StringPtrInput `pulumi:"id"`
 	Increment pulumi.IntPtrInput    `pulumi:"increment"`
+	// List of properties to configure WAF payload logging (refer to the nested schema).
+	MatchedData RulesetRuleActionParametersMatchedDataPtrInput `pulumi:"matchedData"`
 	// List of override configurations to apply to the ruleset (refer to the nested schema).
-	Overrides RulesetRuleActionParameterOverridesPtrInput `pulumi:"overrides"`
+	Overrides RulesetRuleActionParametersOverridesPtrInput `pulumi:"overrides"`
 	// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 	Products pulumi.StringArrayInput `pulumi:"products"`
-	// Which ruleset to target. Valid value is `"current"`.
+	// List of rule-based overrides (refer to the nested schema).
+	Rules pulumi.StringMapInput `pulumi:"rules"`
+	// Which ruleset ID to target.
 	Ruleset pulumi.StringPtrInput `pulumi:"ruleset"`
+	// List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
+	Rulesets pulumi.StringArrayInput `pulumi:"rulesets"`
 	// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
-	Uris    RulesetRuleActionParameterUriArrayInput `pulumi:"uris"`
-	Version pulumi.StringPtrInput                   `pulumi:"version"`
+	Uri     RulesetRuleActionParametersUriPtrInput `pulumi:"uri"`
+	Version pulumi.StringPtrInput                  `pulumi:"version"`
 }
 
-func (RulesetRuleActionParameterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameter)(nil)).Elem()
+func (RulesetRuleActionParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameters)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterArgs) ToRulesetRuleActionParameterOutput() RulesetRuleActionParameterOutput {
-	return i.ToRulesetRuleActionParameterOutputWithContext(context.Background())
+func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersOutput() RulesetRuleActionParametersOutput {
+	return i.ToRulesetRuleActionParametersOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParameterArgs) ToRulesetRuleActionParameterOutputWithContext(ctx context.Context) RulesetRuleActionParameterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOutput)
+func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersOutputWithContext(ctx context.Context) RulesetRuleActionParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOutput)
 }
 
-// RulesetRuleActionParameterArrayInput is an input type that accepts RulesetRuleActionParameterArray and RulesetRuleActionParameterArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterArrayInput` via:
+func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput {
+	return i.ToRulesetRuleActionParametersPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersArgs) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOutput).ToRulesetRuleActionParametersPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersPtrInput is an input type that accepts RulesetRuleActionParametersArgs, RulesetRuleActionParametersPtr and RulesetRuleActionParametersPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersPtrInput` via:
 //
-//          RulesetRuleActionParameterArray{ RulesetRuleActionParameterArgs{...} }
-type RulesetRuleActionParameterArrayInput interface {
-	pulumi.Input
-
-	ToRulesetRuleActionParameterArrayOutput() RulesetRuleActionParameterArrayOutput
-	ToRulesetRuleActionParameterArrayOutputWithContext(context.Context) RulesetRuleActionParameterArrayOutput
-}
-
-type RulesetRuleActionParameterArray []RulesetRuleActionParameterInput
-
-func (RulesetRuleActionParameterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameter)(nil)).Elem()
-}
-
-func (i RulesetRuleActionParameterArray) ToRulesetRuleActionParameterArrayOutput() RulesetRuleActionParameterArrayOutput {
-	return i.ToRulesetRuleActionParameterArrayOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParameterArray) ToRulesetRuleActionParameterArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterArrayOutput)
-}
-
-type RulesetRuleActionParameterOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParameterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameter)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParameterOutput) ToRulesetRuleActionParameterOutput() RulesetRuleActionParameterOutput {
-	return o
-}
-
-func (o RulesetRuleActionParameterOutput) ToRulesetRuleActionParameterOutputWithContext(ctx context.Context) RulesetRuleActionParameterOutput {
-	return o
-}
-
-// Rule ID to apply the override to.
-func (o RulesetRuleActionParameterOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameter) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-func (o RulesetRuleActionParameterOutput) Increment() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameter) *int { return v.Increment }).(pulumi.IntPtrOutput)
-}
-
-// List of override configurations to apply to the ruleset (refer to the nested schema).
-func (o RulesetRuleActionParameterOutput) Overrides() RulesetRuleActionParameterOverridesPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameter) *RulesetRuleActionParameterOverrides { return v.Overrides }).(RulesetRuleActionParameterOverridesPtrOutput)
-}
-
-// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
-func (o RulesetRuleActionParameterOutput) Products() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameter) []string { return v.Products }).(pulumi.StringArrayOutput)
-}
-
-// Which ruleset to target. Valid value is `"current"`.
-func (o RulesetRuleActionParameterOutput) Ruleset() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameter) *string { return v.Ruleset }).(pulumi.StringPtrOutput)
-}
-
-// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
-func (o RulesetRuleActionParameterOutput) Uris() RulesetRuleActionParameterUriArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameter) []RulesetRuleActionParameterUri { return v.Uris }).(RulesetRuleActionParameterUriArrayOutput)
-}
-
-func (o RulesetRuleActionParameterOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameter) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type RulesetRuleActionParameterArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParameterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameter)(nil)).Elem()
-}
-
-func (o RulesetRuleActionParameterArrayOutput) ToRulesetRuleActionParameterArrayOutput() RulesetRuleActionParameterArrayOutput {
-	return o
-}
-
-func (o RulesetRuleActionParameterArrayOutput) ToRulesetRuleActionParameterArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterArrayOutput {
-	return o
-}
-
-func (o RulesetRuleActionParameterArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameter {
-		return vs[0].([]RulesetRuleActionParameter)[vs[1].(int)]
-	}).(RulesetRuleActionParameterOutput)
-}
-
-type RulesetRuleActionParameterOverrides struct {
-	// List of tag-based overrides (refer to the nested schema).
-	Categories []RulesetRuleActionParameterOverridesCategory `pulumi:"categories"`
-	// Defines if the current rule-level override enables or disables the rule.
-	Enabled *bool `pulumi:"enabled"`
-	// List of rule-based overrides (refer to the nested schema).
-	Rules []RulesetRuleActionParameterOverridesRule `pulumi:"rules"`
-}
-
-// RulesetRuleActionParameterOverridesInput is an input type that accepts RulesetRuleActionParameterOverridesArgs and RulesetRuleActionParameterOverridesOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterOverridesInput` via:
-//
-//          RulesetRuleActionParameterOverridesArgs{...}
-type RulesetRuleActionParameterOverridesInput interface {
-	pulumi.Input
-
-	ToRulesetRuleActionParameterOverridesOutput() RulesetRuleActionParameterOverridesOutput
-	ToRulesetRuleActionParameterOverridesOutputWithContext(context.Context) RulesetRuleActionParameterOverridesOutput
-}
-
-type RulesetRuleActionParameterOverridesArgs struct {
-	// List of tag-based overrides (refer to the nested schema).
-	Categories RulesetRuleActionParameterOverridesCategoryArrayInput `pulumi:"categories"`
-	// Defines if the current rule-level override enables or disables the rule.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// List of rule-based overrides (refer to the nested schema).
-	Rules RulesetRuleActionParameterOverridesRuleArrayInput `pulumi:"rules"`
-}
-
-func (RulesetRuleActionParameterOverridesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterOverrides)(nil)).Elem()
-}
-
-func (i RulesetRuleActionParameterOverridesArgs) ToRulesetRuleActionParameterOverridesOutput() RulesetRuleActionParameterOverridesOutput {
-	return i.ToRulesetRuleActionParameterOverridesOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParameterOverridesArgs) ToRulesetRuleActionParameterOverridesOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverridesOutput)
-}
-
-func (i RulesetRuleActionParameterOverridesArgs) ToRulesetRuleActionParameterOverridesPtrOutput() RulesetRuleActionParameterOverridesPtrOutput {
-	return i.ToRulesetRuleActionParameterOverridesPtrOutputWithContext(context.Background())
-}
-
-func (i RulesetRuleActionParameterOverridesArgs) ToRulesetRuleActionParameterOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverridesOutput).ToRulesetRuleActionParameterOverridesPtrOutputWithContext(ctx)
-}
-
-// RulesetRuleActionParameterOverridesPtrInput is an input type that accepts RulesetRuleActionParameterOverridesArgs, RulesetRuleActionParameterOverridesPtr and RulesetRuleActionParameterOverridesPtrOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterOverridesPtrInput` via:
-//
-//          RulesetRuleActionParameterOverridesArgs{...}
+//          RulesetRuleActionParametersArgs{...}
 //
 //  or:
 //
 //          nil
-type RulesetRuleActionParameterOverridesPtrInput interface {
+type RulesetRuleActionParametersPtrInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterOverridesPtrOutput() RulesetRuleActionParameterOverridesPtrOutput
-	ToRulesetRuleActionParameterOverridesPtrOutputWithContext(context.Context) RulesetRuleActionParameterOverridesPtrOutput
+	ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput
+	ToRulesetRuleActionParametersPtrOutputWithContext(context.Context) RulesetRuleActionParametersPtrOutput
 }
 
-type rulesetRuleActionParameterOverridesPtrType RulesetRuleActionParameterOverridesArgs
+type rulesetRuleActionParametersPtrType RulesetRuleActionParametersArgs
 
-func RulesetRuleActionParameterOverridesPtr(v *RulesetRuleActionParameterOverridesArgs) RulesetRuleActionParameterOverridesPtrInput {
-	return (*rulesetRuleActionParameterOverridesPtrType)(v)
+func RulesetRuleActionParametersPtr(v *RulesetRuleActionParametersArgs) RulesetRuleActionParametersPtrInput {
+	return (*rulesetRuleActionParametersPtrType)(v)
 }
 
-func (*rulesetRuleActionParameterOverridesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParameterOverrides)(nil)).Elem()
+func (*rulesetRuleActionParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParameters)(nil)).Elem()
 }
 
-func (i *rulesetRuleActionParameterOverridesPtrType) ToRulesetRuleActionParameterOverridesPtrOutput() RulesetRuleActionParameterOverridesPtrOutput {
-	return i.ToRulesetRuleActionParameterOverridesPtrOutputWithContext(context.Background())
+func (i *rulesetRuleActionParametersPtrType) ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput {
+	return i.ToRulesetRuleActionParametersPtrOutputWithContext(context.Background())
 }
 
-func (i *rulesetRuleActionParameterOverridesPtrType) ToRulesetRuleActionParameterOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverridesPtrOutput)
+func (i *rulesetRuleActionParametersPtrType) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersPtrOutput)
 }
 
-type RulesetRuleActionParameterOverridesOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParametersOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParameterOverridesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterOverrides)(nil)).Elem()
+func (RulesetRuleActionParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParameters)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParameterOverridesOutput) ToRulesetRuleActionParameterOverridesOutput() RulesetRuleActionParameterOverridesOutput {
+func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersOutput() RulesetRuleActionParametersOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesOutput) ToRulesetRuleActionParameterOverridesOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesOutput {
+func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersOutputWithContext(ctx context.Context) RulesetRuleActionParametersOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesOutput) ToRulesetRuleActionParameterOverridesPtrOutput() RulesetRuleActionParameterOverridesPtrOutput {
-	return o.ToRulesetRuleActionParameterOverridesPtrOutputWithContext(context.Background())
+func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput {
+	return o.ToRulesetRuleActionParametersPtrOutputWithContext(context.Background())
 }
 
-func (o RulesetRuleActionParameterOverridesOutput) ToRulesetRuleActionParameterOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverrides) *RulesetRuleActionParameterOverrides {
+func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParameters {
 		return &v
-	}).(RulesetRuleActionParameterOverridesPtrOutput)
+	}).(RulesetRuleActionParametersPtrOutput)
 }
 
-// List of tag-based overrides (refer to the nested schema).
-func (o RulesetRuleActionParameterOverridesOutput) Categories() RulesetRuleActionParameterOverridesCategoryArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverrides) []RulesetRuleActionParameterOverridesCategory {
-		return v.Categories
-	}).(RulesetRuleActionParameterOverridesCategoryArrayOutput)
+// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
+func (o RulesetRuleActionParametersOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersHeader { return v.Headers }).(RulesetRuleActionParametersHeaderArrayOutput)
 }
 
-// Defines if the current rule-level override enables or disables the rule.
-func (o RulesetRuleActionParameterOverridesOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverrides) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+// Rule ID to apply the override to.
+func (o RulesetRuleActionParametersOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Increment() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *int { return v.Increment }).(pulumi.IntPtrOutput)
+}
+
+// List of properties to configure WAF payload logging (refer to the nested schema).
+func (o RulesetRuleActionParametersOutput) MatchedData() RulesetRuleActionParametersMatchedDataPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersMatchedData { return v.MatchedData }).(RulesetRuleActionParametersMatchedDataPtrOutput)
+}
+
+// List of override configurations to apply to the ruleset (refer to the nested schema).
+func (o RulesetRuleActionParametersOutput) Overrides() RulesetRuleActionParametersOverridesPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOverrides { return v.Overrides }).(RulesetRuleActionParametersOverridesPtrOutput)
+}
+
+// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+func (o RulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
 }
 
 // List of rule-based overrides (refer to the nested schema).
-func (o RulesetRuleActionParameterOverridesOutput) Rules() RulesetRuleActionParameterOverridesRuleArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverrides) []RulesetRuleActionParameterOverridesRule { return v.Rules }).(RulesetRuleActionParameterOverridesRuleArrayOutput)
+func (o RulesetRuleActionParametersOutput) Rules() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) map[string]string { return v.Rules }).(pulumi.StringMapOutput)
 }
 
-type RulesetRuleActionParameterOverridesPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParameterOverridesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RulesetRuleActionParameterOverrides)(nil)).Elem()
+// Which ruleset ID to target.
+func (o RulesetRuleActionParametersOutput) Ruleset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Ruleset }).(pulumi.StringPtrOutput)
 }
 
-func (o RulesetRuleActionParameterOverridesPtrOutput) ToRulesetRuleActionParameterOverridesPtrOutput() RulesetRuleActionParameterOverridesPtrOutput {
+// List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
+func (o RulesetRuleActionParametersOutput) Rulesets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Rulesets }).(pulumi.StringArrayOutput)
+}
+
+// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
+func (o RulesetRuleActionParametersOutput) Uri() RulesetRuleActionParametersUriPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersUri { return v.Uri }).(RulesetRuleActionParametersUriPtrOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParameters)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersPtrOutput) ToRulesetRuleActionParametersPtrOutput() RulesetRuleActionParametersPtrOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesPtrOutput) ToRulesetRuleActionParameterOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesPtrOutput {
+func (o RulesetRuleActionParametersPtrOutput) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesPtrOutput) Elem() RulesetRuleActionParameterOverridesOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameterOverrides) RulesetRuleActionParameterOverrides { return *v }).(RulesetRuleActionParameterOverridesOutput)
+func (o RulesetRuleActionParametersPtrOutput) Elem() RulesetRuleActionParametersOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) RulesetRuleActionParameters { return *v }).(RulesetRuleActionParametersOutput)
+}
+
+// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
+func (o RulesetRuleActionParametersPtrOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []RulesetRuleActionParametersHeader {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(RulesetRuleActionParametersHeaderArrayOutput)
+}
+
+// Rule ID to apply the override to.
+func (o RulesetRuleActionParametersPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Increment() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Increment
+	}).(pulumi.IntPtrOutput)
+}
+
+// List of properties to configure WAF payload logging (refer to the nested schema).
+func (o RulesetRuleActionParametersPtrOutput) MatchedData() RulesetRuleActionParametersMatchedDataPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersMatchedData {
+		if v == nil {
+			return nil
+		}
+		return v.MatchedData
+	}).(RulesetRuleActionParametersMatchedDataPtrOutput)
+}
+
+// List of override configurations to apply to the ruleset (refer to the nested schema).
+func (o RulesetRuleActionParametersPtrOutput) Overrides() RulesetRuleActionParametersOverridesPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersOverrides {
+		if v == nil {
+			return nil
+		}
+		return v.Overrides
+	}).(RulesetRuleActionParametersOverridesPtrOutput)
+}
+
+// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+func (o RulesetRuleActionParametersPtrOutput) Products() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Products
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of rule-based overrides (refer to the nested schema).
+func (o RulesetRuleActionParametersPtrOutput) Rules() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(pulumi.StringMapOutput)
+}
+
+// Which ruleset ID to target.
+func (o RulesetRuleActionParametersPtrOutput) Ruleset() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ruleset
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
+func (o RulesetRuleActionParametersPtrOutput) Rulesets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Rulesets
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
+func (o RulesetRuleActionParametersPtrOutput) Uri() RulesetRuleActionParametersUriPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersUri {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(RulesetRuleActionParametersUriPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersHeader struct {
+	// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+	Expression *string `pulumi:"expression"`
+	// Name of the HTTP request header to target.
+	Name *string `pulumi:"name"`
+	// Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
+	Operation *string `pulumi:"operation"`
+	// Static string value of the updated URI path or query string component. Conflicts with `expression`.
+	Value *string `pulumi:"value"`
+}
+
+// RulesetRuleActionParametersHeaderInput is an input type that accepts RulesetRuleActionParametersHeaderArgs and RulesetRuleActionParametersHeaderOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersHeaderInput` via:
+//
+//          RulesetRuleActionParametersHeaderArgs{...}
+type RulesetRuleActionParametersHeaderInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersHeaderOutput() RulesetRuleActionParametersHeaderOutput
+	ToRulesetRuleActionParametersHeaderOutputWithContext(context.Context) RulesetRuleActionParametersHeaderOutput
+}
+
+type RulesetRuleActionParametersHeaderArgs struct {
+	// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Name of the HTTP request header to target.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
+	Operation pulumi.StringPtrInput `pulumi:"operation"`
+	// Static string value of the updated URI path or query string component. Conflicts with `expression`.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (RulesetRuleActionParametersHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersHeader)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersHeaderArgs) ToRulesetRuleActionParametersHeaderOutput() RulesetRuleActionParametersHeaderOutput {
+	return i.ToRulesetRuleActionParametersHeaderOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersHeaderArgs) ToRulesetRuleActionParametersHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParametersHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersHeaderOutput)
+}
+
+// RulesetRuleActionParametersHeaderArrayInput is an input type that accepts RulesetRuleActionParametersHeaderArray and RulesetRuleActionParametersHeaderArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersHeaderArrayInput` via:
+//
+//          RulesetRuleActionParametersHeaderArray{ RulesetRuleActionParametersHeaderArgs{...} }
+type RulesetRuleActionParametersHeaderArrayInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersHeaderArrayOutput() RulesetRuleActionParametersHeaderArrayOutput
+	ToRulesetRuleActionParametersHeaderArrayOutputWithContext(context.Context) RulesetRuleActionParametersHeaderArrayOutput
+}
+
+type RulesetRuleActionParametersHeaderArray []RulesetRuleActionParametersHeaderInput
+
+func (RulesetRuleActionParametersHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersHeader)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersHeaderArray) ToRulesetRuleActionParametersHeaderArrayOutput() RulesetRuleActionParametersHeaderArrayOutput {
+	return i.ToRulesetRuleActionParametersHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersHeaderArray) ToRulesetRuleActionParametersHeaderArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersHeaderArrayOutput)
+}
+
+type RulesetRuleActionParametersHeaderOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersHeader)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersHeaderOutput) ToRulesetRuleActionParametersHeaderOutput() RulesetRuleActionParametersHeaderOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersHeaderOutput) ToRulesetRuleActionParametersHeaderOutputWithContext(ctx context.Context) RulesetRuleActionParametersHeaderOutput {
+	return o
+}
+
+// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+func (o RulesetRuleActionParametersHeaderOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Name of the HTTP request header to target.
+func (o RulesetRuleActionParametersHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
+func (o RulesetRuleActionParametersHeaderOutput) Operation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Operation }).(pulumi.StringPtrOutput)
+}
+
+// Static string value of the updated URI path or query string component. Conflicts with `expression`.
+func (o RulesetRuleActionParametersHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersHeader)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersHeaderArrayOutput) ToRulesetRuleActionParametersHeaderArrayOutput() RulesetRuleActionParametersHeaderArrayOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersHeaderArrayOutput) ToRulesetRuleActionParametersHeaderArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersHeaderArrayOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersHeaderArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersHeader {
+		return vs[0].([]RulesetRuleActionParametersHeader)[vs[1].(int)]
+	}).(RulesetRuleActionParametersHeaderOutput)
+}
+
+type RulesetRuleActionParametersMatchedData struct {
+	// Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+	PublicKey *string `pulumi:"publicKey"`
+}
+
+// RulesetRuleActionParametersMatchedDataInput is an input type that accepts RulesetRuleActionParametersMatchedDataArgs and RulesetRuleActionParametersMatchedDataOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersMatchedDataInput` via:
+//
+//          RulesetRuleActionParametersMatchedDataArgs{...}
+type RulesetRuleActionParametersMatchedDataInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersMatchedDataOutput() RulesetRuleActionParametersMatchedDataOutput
+	ToRulesetRuleActionParametersMatchedDataOutputWithContext(context.Context) RulesetRuleActionParametersMatchedDataOutput
+}
+
+type RulesetRuleActionParametersMatchedDataArgs struct {
+	// Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+}
+
+func (RulesetRuleActionParametersMatchedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersMatchedData)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParametersMatchedDataOutput() RulesetRuleActionParametersMatchedDataOutput {
+	return i.ToRulesetRuleActionParametersMatchedDataOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParametersMatchedDataOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersMatchedDataOutput)
+}
+
+func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput {
+	return i.ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersMatchedDataArgs) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersMatchedDataOutput).ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersMatchedDataPtrInput is an input type that accepts RulesetRuleActionParametersMatchedDataArgs, RulesetRuleActionParametersMatchedDataPtr and RulesetRuleActionParametersMatchedDataPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersMatchedDataPtrInput` via:
+//
+//          RulesetRuleActionParametersMatchedDataArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleActionParametersMatchedDataPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput
+	ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(context.Context) RulesetRuleActionParametersMatchedDataPtrOutput
+}
+
+type rulesetRuleActionParametersMatchedDataPtrType RulesetRuleActionParametersMatchedDataArgs
+
+func RulesetRuleActionParametersMatchedDataPtr(v *RulesetRuleActionParametersMatchedDataArgs) RulesetRuleActionParametersMatchedDataPtrInput {
+	return (*rulesetRuleActionParametersMatchedDataPtrType)(v)
+}
+
+func (*rulesetRuleActionParametersMatchedDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersMatchedData)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersMatchedDataPtrType) ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput {
+	return i.ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersMatchedDataPtrType) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersMatchedDataPtrOutput)
+}
+
+type RulesetRuleActionParametersMatchedDataOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersMatchedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersMatchedData)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataOutput() RulesetRuleActionParametersMatchedDataOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput {
+	return o.ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersMatchedData) *RulesetRuleActionParametersMatchedData {
+		return &v
+	}).(RulesetRuleActionParametersMatchedDataPtrOutput)
+}
+
+// Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+func (o RulesetRuleActionParametersMatchedDataOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersMatchedData) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersMatchedDataPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersMatchedDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersMatchedData)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersMatchedDataPtrOutput) ToRulesetRuleActionParametersMatchedDataPtrOutput() RulesetRuleActionParametersMatchedDataPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersMatchedDataPtrOutput) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersMatchedDataPtrOutput) Elem() RulesetRuleActionParametersMatchedDataOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersMatchedData) RulesetRuleActionParametersMatchedData { return *v }).(RulesetRuleActionParametersMatchedDataOutput)
+}
+
+// Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+func (o RulesetRuleActionParametersMatchedDataPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersMatchedData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersOverrides struct {
+	// List of tag-based overrides (refer to the nested schema).
+	Categories []RulesetRuleActionParametersOverridesCategory `pulumi:"categories"`
+	// Defines if the current rule-level override enables or disables the rule.
+	Enabled *bool `pulumi:"enabled"`
+	// List of rule-based overrides (refer to the nested schema).
+	Rules []RulesetRuleActionParametersOverridesRule `pulumi:"rules"`
+}
+
+// RulesetRuleActionParametersOverridesInput is an input type that accepts RulesetRuleActionParametersOverridesArgs and RulesetRuleActionParametersOverridesOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOverridesInput` via:
+//
+//          RulesetRuleActionParametersOverridesArgs{...}
+type RulesetRuleActionParametersOverridesInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersOverridesOutput() RulesetRuleActionParametersOverridesOutput
+	ToRulesetRuleActionParametersOverridesOutputWithContext(context.Context) RulesetRuleActionParametersOverridesOutput
+}
+
+type RulesetRuleActionParametersOverridesArgs struct {
+	// List of tag-based overrides (refer to the nested schema).
+	Categories RulesetRuleActionParametersOverridesCategoryArrayInput `pulumi:"categories"`
+	// Defines if the current rule-level override enables or disables the rule.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// List of rule-based overrides (refer to the nested schema).
+	Rules RulesetRuleActionParametersOverridesRuleArrayInput `pulumi:"rules"`
+}
+
+func (RulesetRuleActionParametersOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOverrides)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersOverridesOutput() RulesetRuleActionParametersOverridesOutput {
+	return i.ToRulesetRuleActionParametersOverridesOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersOverridesOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesOutput)
+}
+
+func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput {
+	return i.ToRulesetRuleActionParametersOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersOverridesArgs) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesOutput).ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersOverridesPtrInput is an input type that accepts RulesetRuleActionParametersOverridesArgs, RulesetRuleActionParametersOverridesPtr and RulesetRuleActionParametersOverridesPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOverridesPtrInput` via:
+//
+//          RulesetRuleActionParametersOverridesArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleActionParametersOverridesPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput
+	ToRulesetRuleActionParametersOverridesPtrOutputWithContext(context.Context) RulesetRuleActionParametersOverridesPtrOutput
+}
+
+type rulesetRuleActionParametersOverridesPtrType RulesetRuleActionParametersOverridesArgs
+
+func RulesetRuleActionParametersOverridesPtr(v *RulesetRuleActionParametersOverridesArgs) RulesetRuleActionParametersOverridesPtrInput {
+	return (*rulesetRuleActionParametersOverridesPtrType)(v)
+}
+
+func (*rulesetRuleActionParametersOverridesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersOverrides)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersOverridesPtrType) ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput {
+	return i.ToRulesetRuleActionParametersOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersOverridesPtrType) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesPtrOutput)
+}
+
+type RulesetRuleActionParametersOverridesOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOverrides)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesOutput() RulesetRuleActionParametersOverridesOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput {
+	return o.ToRulesetRuleActionParametersOverridesPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *RulesetRuleActionParametersOverrides {
+		return &v
+	}).(RulesetRuleActionParametersOverridesPtrOutput)
 }
 
 // List of tag-based overrides (refer to the nested schema).
-func (o RulesetRuleActionParameterOverridesPtrOutput) Categories() RulesetRuleActionParameterOverridesCategoryArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameterOverrides) []RulesetRuleActionParameterOverridesCategory {
+func (o RulesetRuleActionParametersOverridesOutput) Categories() RulesetRuleActionParametersOverridesCategoryArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesCategory {
+		return v.Categories
+	}).(RulesetRuleActionParametersOverridesCategoryArrayOutput)
+}
+
+// Defines if the current rule-level override enables or disables the rule.
+func (o RulesetRuleActionParametersOverridesOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of rule-based overrides (refer to the nested schema).
+func (o RulesetRuleActionParametersOverridesOutput) Rules() RulesetRuleActionParametersOverridesRuleArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesRule {
+		return v.Rules
+	}).(RulesetRuleActionParametersOverridesRuleArrayOutput)
+}
+
+type RulesetRuleActionParametersOverridesPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersOverridesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersOverrides)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersOverridesPtrOutput) ToRulesetRuleActionParametersOverridesPtrOutput() RulesetRuleActionParametersOverridesPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOverridesPtrOutput) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOverridesPtrOutput) Elem() RulesetRuleActionParametersOverridesOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) RulesetRuleActionParametersOverrides { return *v }).(RulesetRuleActionParametersOverridesOutput)
+}
+
+// List of tag-based overrides (refer to the nested schema).
+func (o RulesetRuleActionParametersOverridesPtrOutput) Categories() RulesetRuleActionParametersOverridesCategoryArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesCategory {
 		if v == nil {
 			return nil
 		}
 		return v.Categories
-	}).(RulesetRuleActionParameterOverridesCategoryArrayOutput)
+	}).(RulesetRuleActionParametersOverridesCategoryArrayOutput)
 }
 
 // Defines if the current rule-level override enables or disables the rule.
-func (o RulesetRuleActionParameterOverridesPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameterOverrides) *bool {
+func (o RulesetRuleActionParametersOverridesPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) *bool {
 		if v == nil {
 			return nil
 		}
@@ -12651,16 +12896,16 @@ func (o RulesetRuleActionParameterOverridesPtrOutput) Enabled() pulumi.BoolPtrOu
 }
 
 // List of rule-based overrides (refer to the nested schema).
-func (o RulesetRuleActionParameterOverridesPtrOutput) Rules() RulesetRuleActionParameterOverridesRuleArrayOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameterOverrides) []RulesetRuleActionParameterOverridesRule {
+func (o RulesetRuleActionParametersOverridesPtrOutput) Rules() RulesetRuleActionParametersOverridesRuleArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesRule {
 		if v == nil {
 			return nil
 		}
 		return v.Rules
-	}).(RulesetRuleActionParameterOverridesRuleArrayOutput)
+	}).(RulesetRuleActionParametersOverridesRuleArrayOutput)
 }
 
-type RulesetRuleActionParameterOverridesCategory struct {
+type RulesetRuleActionParametersOverridesCategory struct {
 	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action *string `pulumi:"action"`
 	// Tag name to apply the ruleset rule override to.
@@ -12669,18 +12914,18 @@ type RulesetRuleActionParameterOverridesCategory struct {
 	Enabled *bool `pulumi:"enabled"`
 }
 
-// RulesetRuleActionParameterOverridesCategoryInput is an input type that accepts RulesetRuleActionParameterOverridesCategoryArgs and RulesetRuleActionParameterOverridesCategoryOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterOverridesCategoryInput` via:
+// RulesetRuleActionParametersOverridesCategoryInput is an input type that accepts RulesetRuleActionParametersOverridesCategoryArgs and RulesetRuleActionParametersOverridesCategoryOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOverridesCategoryInput` via:
 //
-//          RulesetRuleActionParameterOverridesCategoryArgs{...}
-type RulesetRuleActionParameterOverridesCategoryInput interface {
+//          RulesetRuleActionParametersOverridesCategoryArgs{...}
+type RulesetRuleActionParametersOverridesCategoryInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterOverridesCategoryOutput() RulesetRuleActionParameterOverridesCategoryOutput
-	ToRulesetRuleActionParameterOverridesCategoryOutputWithContext(context.Context) RulesetRuleActionParameterOverridesCategoryOutput
+	ToRulesetRuleActionParametersOverridesCategoryOutput() RulesetRuleActionParametersOverridesCategoryOutput
+	ToRulesetRuleActionParametersOverridesCategoryOutputWithContext(context.Context) RulesetRuleActionParametersOverridesCategoryOutput
 }
 
-type RulesetRuleActionParameterOverridesCategoryArgs struct {
+type RulesetRuleActionParametersOverridesCategoryArgs struct {
 	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Tag name to apply the ruleset rule override to.
@@ -12689,93 +12934,93 @@ type RulesetRuleActionParameterOverridesCategoryArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
-func (RulesetRuleActionParameterOverridesCategoryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterOverridesCategory)(nil)).Elem()
+func (RulesetRuleActionParametersOverridesCategoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOverridesCategory)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterOverridesCategoryArgs) ToRulesetRuleActionParameterOverridesCategoryOutput() RulesetRuleActionParameterOverridesCategoryOutput {
-	return i.ToRulesetRuleActionParameterOverridesCategoryOutputWithContext(context.Background())
+func (i RulesetRuleActionParametersOverridesCategoryArgs) ToRulesetRuleActionParametersOverridesCategoryOutput() RulesetRuleActionParametersOverridesCategoryOutput {
+	return i.ToRulesetRuleActionParametersOverridesCategoryOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParameterOverridesCategoryArgs) ToRulesetRuleActionParameterOverridesCategoryOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesCategoryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverridesCategoryOutput)
+func (i RulesetRuleActionParametersOverridesCategoryArgs) ToRulesetRuleActionParametersOverridesCategoryOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesCategoryOutput)
 }
 
-// RulesetRuleActionParameterOverridesCategoryArrayInput is an input type that accepts RulesetRuleActionParameterOverridesCategoryArray and RulesetRuleActionParameterOverridesCategoryArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterOverridesCategoryArrayInput` via:
+// RulesetRuleActionParametersOverridesCategoryArrayInput is an input type that accepts RulesetRuleActionParametersOverridesCategoryArray and RulesetRuleActionParametersOverridesCategoryArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOverridesCategoryArrayInput` via:
 //
-//          RulesetRuleActionParameterOverridesCategoryArray{ RulesetRuleActionParameterOverridesCategoryArgs{...} }
-type RulesetRuleActionParameterOverridesCategoryArrayInput interface {
+//          RulesetRuleActionParametersOverridesCategoryArray{ RulesetRuleActionParametersOverridesCategoryArgs{...} }
+type RulesetRuleActionParametersOverridesCategoryArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterOverridesCategoryArrayOutput() RulesetRuleActionParameterOverridesCategoryArrayOutput
-	ToRulesetRuleActionParameterOverridesCategoryArrayOutputWithContext(context.Context) RulesetRuleActionParameterOverridesCategoryArrayOutput
+	ToRulesetRuleActionParametersOverridesCategoryArrayOutput() RulesetRuleActionParametersOverridesCategoryArrayOutput
+	ToRulesetRuleActionParametersOverridesCategoryArrayOutputWithContext(context.Context) RulesetRuleActionParametersOverridesCategoryArrayOutput
 }
 
-type RulesetRuleActionParameterOverridesCategoryArray []RulesetRuleActionParameterOverridesCategoryInput
+type RulesetRuleActionParametersOverridesCategoryArray []RulesetRuleActionParametersOverridesCategoryInput
 
-func (RulesetRuleActionParameterOverridesCategoryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterOverridesCategory)(nil)).Elem()
+func (RulesetRuleActionParametersOverridesCategoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersOverridesCategory)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterOverridesCategoryArray) ToRulesetRuleActionParameterOverridesCategoryArrayOutput() RulesetRuleActionParameterOverridesCategoryArrayOutput {
-	return i.ToRulesetRuleActionParameterOverridesCategoryArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParametersOverridesCategoryArray) ToRulesetRuleActionParametersOverridesCategoryArrayOutput() RulesetRuleActionParametersOverridesCategoryArrayOutput {
+	return i.ToRulesetRuleActionParametersOverridesCategoryArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParameterOverridesCategoryArray) ToRulesetRuleActionParameterOverridesCategoryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesCategoryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverridesCategoryArrayOutput)
+func (i RulesetRuleActionParametersOverridesCategoryArray) ToRulesetRuleActionParametersOverridesCategoryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesCategoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesCategoryArrayOutput)
 }
 
-type RulesetRuleActionParameterOverridesCategoryOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParametersOverridesCategoryOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParameterOverridesCategoryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterOverridesCategory)(nil)).Elem()
+func (RulesetRuleActionParametersOverridesCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOverridesCategory)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParameterOverridesCategoryOutput) ToRulesetRuleActionParameterOverridesCategoryOutput() RulesetRuleActionParameterOverridesCategoryOutput {
+func (o RulesetRuleActionParametersOverridesCategoryOutput) ToRulesetRuleActionParametersOverridesCategoryOutput() RulesetRuleActionParametersOverridesCategoryOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesCategoryOutput) ToRulesetRuleActionParameterOverridesCategoryOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesCategoryOutput {
+func (o RulesetRuleActionParametersOverridesCategoryOutput) ToRulesetRuleActionParametersOverridesCategoryOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesCategoryOutput {
 	return o
 }
 
 // Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
-func (o RulesetRuleActionParameterOverridesCategoryOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverridesCategory) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersOverridesCategoryOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // Tag name to apply the ruleset rule override to.
-func (o RulesetRuleActionParameterOverridesCategoryOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverridesCategory) *string { return v.Category }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersOverridesCategoryOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // Defines if the current rule-level override enables or disables the rule.
-func (o RulesetRuleActionParameterOverridesCategoryOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverridesCategory) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParametersOverridesCategoryOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-type RulesetRuleActionParameterOverridesCategoryArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParametersOverridesCategoryArrayOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParameterOverridesCategoryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterOverridesCategory)(nil)).Elem()
+func (RulesetRuleActionParametersOverridesCategoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersOverridesCategory)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParameterOverridesCategoryArrayOutput) ToRulesetRuleActionParameterOverridesCategoryArrayOutput() RulesetRuleActionParameterOverridesCategoryArrayOutput {
+func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) ToRulesetRuleActionParametersOverridesCategoryArrayOutput() RulesetRuleActionParametersOverridesCategoryArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesCategoryArrayOutput) ToRulesetRuleActionParameterOverridesCategoryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesCategoryArrayOutput {
+func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) ToRulesetRuleActionParametersOverridesCategoryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesCategoryArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesCategoryArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterOverridesCategoryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterOverridesCategory {
-		return vs[0].([]RulesetRuleActionParameterOverridesCategory)[vs[1].(int)]
-	}).(RulesetRuleActionParameterOverridesCategoryOutput)
+func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersOverridesCategoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersOverridesCategory {
+		return vs[0].([]RulesetRuleActionParametersOverridesCategory)[vs[1].(int)]
+	}).(RulesetRuleActionParametersOverridesCategoryOutput)
 }
 
-type RulesetRuleActionParameterOverridesRule struct {
+type RulesetRuleActionParametersOverridesRule struct {
 	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action *string `pulumi:"action"`
 	// Defines if the current rule-level override enables or disables the rule.
@@ -12784,20 +13029,22 @@ type RulesetRuleActionParameterOverridesRule struct {
 	Id *string `pulumi:"id"`
 	// Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
 	ScoreThreshold *int `pulumi:"scoreThreshold"`
+	// Sensitivity level for a ruleset rule override.
+	SensitivityLevel *string `pulumi:"sensitivityLevel"`
 }
 
-// RulesetRuleActionParameterOverridesRuleInput is an input type that accepts RulesetRuleActionParameterOverridesRuleArgs and RulesetRuleActionParameterOverridesRuleOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterOverridesRuleInput` via:
+// RulesetRuleActionParametersOverridesRuleInput is an input type that accepts RulesetRuleActionParametersOverridesRuleArgs and RulesetRuleActionParametersOverridesRuleOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOverridesRuleInput` via:
 //
-//          RulesetRuleActionParameterOverridesRuleArgs{...}
-type RulesetRuleActionParameterOverridesRuleInput interface {
+//          RulesetRuleActionParametersOverridesRuleArgs{...}
+type RulesetRuleActionParametersOverridesRuleInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterOverridesRuleOutput() RulesetRuleActionParameterOverridesRuleOutput
-	ToRulesetRuleActionParameterOverridesRuleOutputWithContext(context.Context) RulesetRuleActionParameterOverridesRuleOutput
+	ToRulesetRuleActionParametersOverridesRuleOutput() RulesetRuleActionParametersOverridesRuleOutput
+	ToRulesetRuleActionParametersOverridesRuleOutputWithContext(context.Context) RulesetRuleActionParametersOverridesRuleOutput
 }
 
-type RulesetRuleActionParameterOverridesRuleArgs struct {
+type RulesetRuleActionParametersOverridesRuleArgs struct {
 	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Defines if the current rule-level override enables or disables the rule.
@@ -12806,421 +13053,775 @@ type RulesetRuleActionParameterOverridesRuleArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
 	ScoreThreshold pulumi.IntPtrInput `pulumi:"scoreThreshold"`
+	// Sensitivity level for a ruleset rule override.
+	SensitivityLevel pulumi.StringPtrInput `pulumi:"sensitivityLevel"`
 }
 
-func (RulesetRuleActionParameterOverridesRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterOverridesRule)(nil)).Elem()
+func (RulesetRuleActionParametersOverridesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOverridesRule)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterOverridesRuleArgs) ToRulesetRuleActionParameterOverridesRuleOutput() RulesetRuleActionParameterOverridesRuleOutput {
-	return i.ToRulesetRuleActionParameterOverridesRuleOutputWithContext(context.Background())
+func (i RulesetRuleActionParametersOverridesRuleArgs) ToRulesetRuleActionParametersOverridesRuleOutput() RulesetRuleActionParametersOverridesRuleOutput {
+	return i.ToRulesetRuleActionParametersOverridesRuleOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParameterOverridesRuleArgs) ToRulesetRuleActionParameterOverridesRuleOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverridesRuleOutput)
+func (i RulesetRuleActionParametersOverridesRuleArgs) ToRulesetRuleActionParametersOverridesRuleOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesRuleOutput)
 }
 
-// RulesetRuleActionParameterOverridesRuleArrayInput is an input type that accepts RulesetRuleActionParameterOverridesRuleArray and RulesetRuleActionParameterOverridesRuleArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterOverridesRuleArrayInput` via:
+// RulesetRuleActionParametersOverridesRuleArrayInput is an input type that accepts RulesetRuleActionParametersOverridesRuleArray and RulesetRuleActionParametersOverridesRuleArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOverridesRuleArrayInput` via:
 //
-//          RulesetRuleActionParameterOverridesRuleArray{ RulesetRuleActionParameterOverridesRuleArgs{...} }
-type RulesetRuleActionParameterOverridesRuleArrayInput interface {
+//          RulesetRuleActionParametersOverridesRuleArray{ RulesetRuleActionParametersOverridesRuleArgs{...} }
+type RulesetRuleActionParametersOverridesRuleArrayInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterOverridesRuleArrayOutput() RulesetRuleActionParameterOverridesRuleArrayOutput
-	ToRulesetRuleActionParameterOverridesRuleArrayOutputWithContext(context.Context) RulesetRuleActionParameterOverridesRuleArrayOutput
+	ToRulesetRuleActionParametersOverridesRuleArrayOutput() RulesetRuleActionParametersOverridesRuleArrayOutput
+	ToRulesetRuleActionParametersOverridesRuleArrayOutputWithContext(context.Context) RulesetRuleActionParametersOverridesRuleArrayOutput
 }
 
-type RulesetRuleActionParameterOverridesRuleArray []RulesetRuleActionParameterOverridesRuleInput
+type RulesetRuleActionParametersOverridesRuleArray []RulesetRuleActionParametersOverridesRuleInput
 
-func (RulesetRuleActionParameterOverridesRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterOverridesRule)(nil)).Elem()
+func (RulesetRuleActionParametersOverridesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersOverridesRule)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterOverridesRuleArray) ToRulesetRuleActionParameterOverridesRuleArrayOutput() RulesetRuleActionParameterOverridesRuleArrayOutput {
-	return i.ToRulesetRuleActionParameterOverridesRuleArrayOutputWithContext(context.Background())
+func (i RulesetRuleActionParametersOverridesRuleArray) ToRulesetRuleActionParametersOverridesRuleArrayOutput() RulesetRuleActionParametersOverridesRuleArrayOutput {
+	return i.ToRulesetRuleActionParametersOverridesRuleArrayOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParameterOverridesRuleArray) ToRulesetRuleActionParameterOverridesRuleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterOverridesRuleArrayOutput)
+func (i RulesetRuleActionParametersOverridesRuleArray) ToRulesetRuleActionParametersOverridesRuleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOverridesRuleArrayOutput)
 }
 
-type RulesetRuleActionParameterOverridesRuleOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParametersOverridesRuleOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParameterOverridesRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterOverridesRule)(nil)).Elem()
+func (RulesetRuleActionParametersOverridesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOverridesRule)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParameterOverridesRuleOutput) ToRulesetRuleActionParameterOverridesRuleOutput() RulesetRuleActionParameterOverridesRuleOutput {
+func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParametersOverridesRuleOutput() RulesetRuleActionParametersOverridesRuleOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesRuleOutput) ToRulesetRuleActionParameterOverridesRuleOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesRuleOutput {
+func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParametersOverridesRuleOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesRuleOutput {
 	return o
 }
 
 // Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
-func (o RulesetRuleActionParameterOverridesRuleOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverridesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersOverridesRuleOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
 // Defines if the current rule-level override enables or disables the rule.
-func (o RulesetRuleActionParameterOverridesRuleOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverridesRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParametersOverridesRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // Rule ID to apply the override to.
-func (o RulesetRuleActionParameterOverridesRuleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverridesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersOverridesRuleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
-func (o RulesetRuleActionParameterOverridesRuleOutput) ScoreThreshold() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterOverridesRule) *int { return v.ScoreThreshold }).(pulumi.IntPtrOutput)
+func (o RulesetRuleActionParametersOverridesRuleOutput) ScoreThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *int { return v.ScoreThreshold }).(pulumi.IntPtrOutput)
 }
 
-type RulesetRuleActionParameterOverridesRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParameterOverridesRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterOverridesRule)(nil)).Elem()
+// Sensitivity level for a ruleset rule override.
+func (o RulesetRuleActionParametersOverridesRuleOutput) SensitivityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.SensitivityLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o RulesetRuleActionParameterOverridesRuleArrayOutput) ToRulesetRuleActionParameterOverridesRuleArrayOutput() RulesetRuleActionParameterOverridesRuleArrayOutput {
+type RulesetRuleActionParametersOverridesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersOverridesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersOverridesRule)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersOverridesRuleArrayOutput) ToRulesetRuleActionParametersOverridesRuleArrayOutput() RulesetRuleActionParametersOverridesRuleArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesRuleArrayOutput) ToRulesetRuleActionParameterOverridesRuleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterOverridesRuleArrayOutput {
+func (o RulesetRuleActionParametersOverridesRuleArrayOutput) ToRulesetRuleActionParametersOverridesRuleArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesRuleArrayOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterOverridesRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterOverridesRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterOverridesRule {
-		return vs[0].([]RulesetRuleActionParameterOverridesRule)[vs[1].(int)]
-	}).(RulesetRuleActionParameterOverridesRuleOutput)
+func (o RulesetRuleActionParametersOverridesRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersOverridesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersOverridesRule {
+		return vs[0].([]RulesetRuleActionParametersOverridesRule)[vs[1].(int)]
+	}).(RulesetRuleActionParametersOverridesRuleOutput)
 }
 
-type RulesetRuleActionParameterUri struct {
+type RulesetRuleActionParametersUri struct {
 	Origin *bool `pulumi:"origin"`
 	// URI path configuration when performing a URL rewrite (refer to the nested schema).
-	Paths []RulesetRuleActionParameterUriPath `pulumi:"paths"`
+	Path *RulesetRuleActionParametersUriPath `pulumi:"path"`
 	// Query string configuration when performing a URL rewrite (refer to the nested schema).
-	Queries []RulesetRuleActionParameterUriQuery `pulumi:"queries"`
+	Query *RulesetRuleActionParametersUriQuery `pulumi:"query"`
 }
 
-// RulesetRuleActionParameterUriInput is an input type that accepts RulesetRuleActionParameterUriArgs and RulesetRuleActionParameterUriOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterUriInput` via:
+// RulesetRuleActionParametersUriInput is an input type that accepts RulesetRuleActionParametersUriArgs and RulesetRuleActionParametersUriOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersUriInput` via:
 //
-//          RulesetRuleActionParameterUriArgs{...}
-type RulesetRuleActionParameterUriInput interface {
+//          RulesetRuleActionParametersUriArgs{...}
+type RulesetRuleActionParametersUriInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterUriOutput() RulesetRuleActionParameterUriOutput
-	ToRulesetRuleActionParameterUriOutputWithContext(context.Context) RulesetRuleActionParameterUriOutput
+	ToRulesetRuleActionParametersUriOutput() RulesetRuleActionParametersUriOutput
+	ToRulesetRuleActionParametersUriOutputWithContext(context.Context) RulesetRuleActionParametersUriOutput
 }
 
-type RulesetRuleActionParameterUriArgs struct {
+type RulesetRuleActionParametersUriArgs struct {
 	Origin pulumi.BoolPtrInput `pulumi:"origin"`
 	// URI path configuration when performing a URL rewrite (refer to the nested schema).
-	Paths RulesetRuleActionParameterUriPathArrayInput `pulumi:"paths"`
+	Path RulesetRuleActionParametersUriPathPtrInput `pulumi:"path"`
 	// Query string configuration when performing a URL rewrite (refer to the nested schema).
-	Queries RulesetRuleActionParameterUriQueryArrayInput `pulumi:"queries"`
+	Query RulesetRuleActionParametersUriQueryPtrInput `pulumi:"query"`
 }
 
-func (RulesetRuleActionParameterUriArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterUri)(nil)).Elem()
+func (RulesetRuleActionParametersUriArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersUri)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterUriArgs) ToRulesetRuleActionParameterUriOutput() RulesetRuleActionParameterUriOutput {
-	return i.ToRulesetRuleActionParameterUriOutputWithContext(context.Background())
+func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriOutput() RulesetRuleActionParametersUriOutput {
+	return i.ToRulesetRuleActionParametersUriOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParameterUriArgs) ToRulesetRuleActionParameterUriOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriOutput)
+func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriOutput)
 }
 
-// RulesetRuleActionParameterUriArrayInput is an input type that accepts RulesetRuleActionParameterUriArray and RulesetRuleActionParameterUriArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterUriArrayInput` via:
+func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput {
+	return i.ToRulesetRuleActionParametersUriPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersUriArgs) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriOutput).ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersUriPtrInput is an input type that accepts RulesetRuleActionParametersUriArgs, RulesetRuleActionParametersUriPtr and RulesetRuleActionParametersUriPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersUriPtrInput` via:
 //
-//          RulesetRuleActionParameterUriArray{ RulesetRuleActionParameterUriArgs{...} }
-type RulesetRuleActionParameterUriArrayInput interface {
+//          RulesetRuleActionParametersUriArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleActionParametersUriPtrInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterUriArrayOutput() RulesetRuleActionParameterUriArrayOutput
-	ToRulesetRuleActionParameterUriArrayOutputWithContext(context.Context) RulesetRuleActionParameterUriArrayOutput
+	ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput
+	ToRulesetRuleActionParametersUriPtrOutputWithContext(context.Context) RulesetRuleActionParametersUriPtrOutput
 }
 
-type RulesetRuleActionParameterUriArray []RulesetRuleActionParameterUriInput
+type rulesetRuleActionParametersUriPtrType RulesetRuleActionParametersUriArgs
 
-func (RulesetRuleActionParameterUriArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterUri)(nil)).Elem()
+func RulesetRuleActionParametersUriPtr(v *RulesetRuleActionParametersUriArgs) RulesetRuleActionParametersUriPtrInput {
+	return (*rulesetRuleActionParametersUriPtrType)(v)
 }
 
-func (i RulesetRuleActionParameterUriArray) ToRulesetRuleActionParameterUriArrayOutput() RulesetRuleActionParameterUriArrayOutput {
-	return i.ToRulesetRuleActionParameterUriArrayOutputWithContext(context.Background())
+func (*rulesetRuleActionParametersUriPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersUri)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterUriArray) ToRulesetRuleActionParameterUriArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriArrayOutput)
+func (i *rulesetRuleActionParametersUriPtrType) ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput {
+	return i.ToRulesetRuleActionParametersUriPtrOutputWithContext(context.Background())
 }
 
-type RulesetRuleActionParameterUriOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParameterUriOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterUri)(nil)).Elem()
+func (i *rulesetRuleActionParametersUriPtrType) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriPtrOutput)
 }
 
-func (o RulesetRuleActionParameterUriOutput) ToRulesetRuleActionParameterUriOutput() RulesetRuleActionParameterUriOutput {
+type RulesetRuleActionParametersUriOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersUriOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersUri)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriOutput() RulesetRuleActionParametersUriOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriOutput) ToRulesetRuleActionParameterUriOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriOutput {
+func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriOutput) Origin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterUri) *bool { return v.Origin }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput {
+	return o.ToRulesetRuleActionParametersUriPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUri) *RulesetRuleActionParametersUri {
+		return &v
+	}).(RulesetRuleActionParametersUriPtrOutput)
+}
+func (o RulesetRuleActionParametersUriOutput) Origin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUri) *bool { return v.Origin }).(pulumi.BoolPtrOutput)
 }
 
 // URI path configuration when performing a URL rewrite (refer to the nested schema).
-func (o RulesetRuleActionParameterUriOutput) Paths() RulesetRuleActionParameterUriPathArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterUri) []RulesetRuleActionParameterUriPath { return v.Paths }).(RulesetRuleActionParameterUriPathArrayOutput)
+func (o RulesetRuleActionParametersUriOutput) Path() RulesetRuleActionParametersUriPathPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUri) *RulesetRuleActionParametersUriPath { return v.Path }).(RulesetRuleActionParametersUriPathPtrOutput)
 }
 
 // Query string configuration when performing a URL rewrite (refer to the nested schema).
-func (o RulesetRuleActionParameterUriOutput) Queries() RulesetRuleActionParameterUriQueryArrayOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterUri) []RulesetRuleActionParameterUriQuery { return v.Queries }).(RulesetRuleActionParameterUriQueryArrayOutput)
+func (o RulesetRuleActionParametersUriOutput) Query() RulesetRuleActionParametersUriQueryPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUri) *RulesetRuleActionParametersUriQuery { return v.Query }).(RulesetRuleActionParametersUriQueryPtrOutput)
 }
 
-type RulesetRuleActionParameterUriArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParametersUriPtrOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParameterUriArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterUri)(nil)).Elem()
+func (RulesetRuleActionParametersUriPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersUri)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParameterUriArrayOutput) ToRulesetRuleActionParameterUriArrayOutput() RulesetRuleActionParameterUriArrayOutput {
+func (o RulesetRuleActionParametersUriPtrOutput) ToRulesetRuleActionParametersUriPtrOutput() RulesetRuleActionParametersUriPtrOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriArrayOutput) ToRulesetRuleActionParameterUriArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriArrayOutput {
+func (o RulesetRuleActionParametersUriPtrOutput) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterUriOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterUri {
-		return vs[0].([]RulesetRuleActionParameterUri)[vs[1].(int)]
-	}).(RulesetRuleActionParameterUriOutput)
+func (o RulesetRuleActionParametersUriPtrOutput) Elem() RulesetRuleActionParametersUriOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUri) RulesetRuleActionParametersUri { return *v }).(RulesetRuleActionParametersUriOutput)
 }
 
-type RulesetRuleActionParameterUriPath struct {
+func (o RulesetRuleActionParametersUriPtrOutput) Origin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUri) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Origin
+	}).(pulumi.BoolPtrOutput)
+}
+
+// URI path configuration when performing a URL rewrite (refer to the nested schema).
+func (o RulesetRuleActionParametersUriPtrOutput) Path() RulesetRuleActionParametersUriPathPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUri) *RulesetRuleActionParametersUriPath {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(RulesetRuleActionParametersUriPathPtrOutput)
+}
+
+// Query string configuration when performing a URL rewrite (refer to the nested schema).
+func (o RulesetRuleActionParametersUriPtrOutput) Query() RulesetRuleActionParametersUriQueryPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUri) *RulesetRuleActionParametersUriQuery {
+		if v == nil {
+			return nil
+		}
+		return v.Query
+	}).(RulesetRuleActionParametersUriQueryPtrOutput)
+}
+
+type RulesetRuleActionParametersUriPath struct {
 	// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
 	Expression *string `pulumi:"expression"`
 	// Static string value of the updated URI path or query string component. Conflicts with `expression`.
 	Value *string `pulumi:"value"`
 }
 
-// RulesetRuleActionParameterUriPathInput is an input type that accepts RulesetRuleActionParameterUriPathArgs and RulesetRuleActionParameterUriPathOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterUriPathInput` via:
+// RulesetRuleActionParametersUriPathInput is an input type that accepts RulesetRuleActionParametersUriPathArgs and RulesetRuleActionParametersUriPathOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersUriPathInput` via:
 //
-//          RulesetRuleActionParameterUriPathArgs{...}
-type RulesetRuleActionParameterUriPathInput interface {
+//          RulesetRuleActionParametersUriPathArgs{...}
+type RulesetRuleActionParametersUriPathInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterUriPathOutput() RulesetRuleActionParameterUriPathOutput
-	ToRulesetRuleActionParameterUriPathOutputWithContext(context.Context) RulesetRuleActionParameterUriPathOutput
+	ToRulesetRuleActionParametersUriPathOutput() RulesetRuleActionParametersUriPathOutput
+	ToRulesetRuleActionParametersUriPathOutputWithContext(context.Context) RulesetRuleActionParametersUriPathOutput
 }
 
-type RulesetRuleActionParameterUriPathArgs struct {
+type RulesetRuleActionParametersUriPathArgs struct {
 	// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
 	// Static string value of the updated URI path or query string component. Conflicts with `expression`.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (RulesetRuleActionParameterUriPathArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterUriPath)(nil)).Elem()
+func (RulesetRuleActionParametersUriPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersUriPath)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterUriPathArgs) ToRulesetRuleActionParameterUriPathOutput() RulesetRuleActionParameterUriPathOutput {
-	return i.ToRulesetRuleActionParameterUriPathOutputWithContext(context.Background())
+func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUriPathOutput() RulesetRuleActionParametersUriPathOutput {
+	return i.ToRulesetRuleActionParametersUriPathOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParameterUriPathArgs) ToRulesetRuleActionParameterUriPathOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriPathOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriPathOutput)
+func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUriPathOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriPathOutput)
 }
 
-// RulesetRuleActionParameterUriPathArrayInput is an input type that accepts RulesetRuleActionParameterUriPathArray and RulesetRuleActionParameterUriPathArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterUriPathArrayInput` via:
+func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput {
+	return i.ToRulesetRuleActionParametersUriPathPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersUriPathArgs) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriPathOutput).ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersUriPathPtrInput is an input type that accepts RulesetRuleActionParametersUriPathArgs, RulesetRuleActionParametersUriPathPtr and RulesetRuleActionParametersUriPathPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersUriPathPtrInput` via:
 //
-//          RulesetRuleActionParameterUriPathArray{ RulesetRuleActionParameterUriPathArgs{...} }
-type RulesetRuleActionParameterUriPathArrayInput interface {
+//          RulesetRuleActionParametersUriPathArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleActionParametersUriPathPtrInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterUriPathArrayOutput() RulesetRuleActionParameterUriPathArrayOutput
-	ToRulesetRuleActionParameterUriPathArrayOutputWithContext(context.Context) RulesetRuleActionParameterUriPathArrayOutput
+	ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput
+	ToRulesetRuleActionParametersUriPathPtrOutputWithContext(context.Context) RulesetRuleActionParametersUriPathPtrOutput
 }
 
-type RulesetRuleActionParameterUriPathArray []RulesetRuleActionParameterUriPathInput
+type rulesetRuleActionParametersUriPathPtrType RulesetRuleActionParametersUriPathArgs
 
-func (RulesetRuleActionParameterUriPathArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterUriPath)(nil)).Elem()
+func RulesetRuleActionParametersUriPathPtr(v *RulesetRuleActionParametersUriPathArgs) RulesetRuleActionParametersUriPathPtrInput {
+	return (*rulesetRuleActionParametersUriPathPtrType)(v)
 }
 
-func (i RulesetRuleActionParameterUriPathArray) ToRulesetRuleActionParameterUriPathArrayOutput() RulesetRuleActionParameterUriPathArrayOutput {
-	return i.ToRulesetRuleActionParameterUriPathArrayOutputWithContext(context.Background())
+func (*rulesetRuleActionParametersUriPathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersUriPath)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterUriPathArray) ToRulesetRuleActionParameterUriPathArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriPathArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriPathArrayOutput)
+func (i *rulesetRuleActionParametersUriPathPtrType) ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput {
+	return i.ToRulesetRuleActionParametersUriPathPtrOutputWithContext(context.Background())
 }
 
-type RulesetRuleActionParameterUriPathOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParameterUriPathOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterUriPath)(nil)).Elem()
+func (i *rulesetRuleActionParametersUriPathPtrType) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriPathPtrOutput)
 }
 
-func (o RulesetRuleActionParameterUriPathOutput) ToRulesetRuleActionParameterUriPathOutput() RulesetRuleActionParameterUriPathOutput {
+type RulesetRuleActionParametersUriPathOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersUriPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersUriPath)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathOutput() RulesetRuleActionParametersUriPathOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriPathOutput) ToRulesetRuleActionParameterUriPathOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriPathOutput {
+func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathOutput {
 	return o
+}
+
+func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput {
+	return o.ToRulesetRuleActionParametersUriPathPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUriPath) *RulesetRuleActionParametersUriPath {
+		return &v
+	}).(RulesetRuleActionParametersUriPathPtrOutput)
 }
 
 // Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-func (o RulesetRuleActionParameterUriPathOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterUriPath) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersUriPathOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUriPath) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // Static string value of the updated URI path or query string component. Conflicts with `expression`.
-func (o RulesetRuleActionParameterUriPathOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterUriPath) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersUriPathOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUriPath) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type RulesetRuleActionParameterUriPathArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParametersUriPathPtrOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParameterUriPathArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterUriPath)(nil)).Elem()
+func (RulesetRuleActionParametersUriPathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersUriPath)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParameterUriPathArrayOutput) ToRulesetRuleActionParameterUriPathArrayOutput() RulesetRuleActionParameterUriPathArrayOutput {
+func (o RulesetRuleActionParametersUriPathPtrOutput) ToRulesetRuleActionParametersUriPathPtrOutput() RulesetRuleActionParametersUriPathPtrOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriPathArrayOutput) ToRulesetRuleActionParameterUriPathArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriPathArrayOutput {
+func (o RulesetRuleActionParametersUriPathPtrOutput) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriPathArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterUriPathOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterUriPath {
-		return vs[0].([]RulesetRuleActionParameterUriPath)[vs[1].(int)]
-	}).(RulesetRuleActionParameterUriPathOutput)
+func (o RulesetRuleActionParametersUriPathPtrOutput) Elem() RulesetRuleActionParametersUriPathOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUriPath) RulesetRuleActionParametersUriPath { return *v }).(RulesetRuleActionParametersUriPathOutput)
 }
 
-type RulesetRuleActionParameterUriQuery struct {
+// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+func (o RulesetRuleActionParametersUriPathPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUriPath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Static string value of the updated URI path or query string component. Conflicts with `expression`.
+func (o RulesetRuleActionParametersUriPathPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUriPath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersUriQuery struct {
 	// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
 	Expression *string `pulumi:"expression"`
 	// Static string value of the updated URI path or query string component. Conflicts with `expression`.
 	Value *string `pulumi:"value"`
 }
 
-// RulesetRuleActionParameterUriQueryInput is an input type that accepts RulesetRuleActionParameterUriQueryArgs and RulesetRuleActionParameterUriQueryOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterUriQueryInput` via:
+// RulesetRuleActionParametersUriQueryInput is an input type that accepts RulesetRuleActionParametersUriQueryArgs and RulesetRuleActionParametersUriQueryOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersUriQueryInput` via:
 //
-//          RulesetRuleActionParameterUriQueryArgs{...}
-type RulesetRuleActionParameterUriQueryInput interface {
+//          RulesetRuleActionParametersUriQueryArgs{...}
+type RulesetRuleActionParametersUriQueryInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterUriQueryOutput() RulesetRuleActionParameterUriQueryOutput
-	ToRulesetRuleActionParameterUriQueryOutputWithContext(context.Context) RulesetRuleActionParameterUriQueryOutput
+	ToRulesetRuleActionParametersUriQueryOutput() RulesetRuleActionParametersUriQueryOutput
+	ToRulesetRuleActionParametersUriQueryOutputWithContext(context.Context) RulesetRuleActionParametersUriQueryOutput
 }
 
-type RulesetRuleActionParameterUriQueryArgs struct {
+type RulesetRuleActionParametersUriQueryArgs struct {
 	// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
 	Expression pulumi.StringPtrInput `pulumi:"expression"`
 	// Static string value of the updated URI path or query string component. Conflicts with `expression`.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (RulesetRuleActionParameterUriQueryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterUriQuery)(nil)).Elem()
+func (RulesetRuleActionParametersUriQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersUriQuery)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterUriQueryArgs) ToRulesetRuleActionParameterUriQueryOutput() RulesetRuleActionParameterUriQueryOutput {
-	return i.ToRulesetRuleActionParameterUriQueryOutputWithContext(context.Background())
+func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUriQueryOutput() RulesetRuleActionParametersUriQueryOutput {
+	return i.ToRulesetRuleActionParametersUriQueryOutputWithContext(context.Background())
 }
 
-func (i RulesetRuleActionParameterUriQueryArgs) ToRulesetRuleActionParameterUriQueryOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriQueryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriQueryOutput)
+func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUriQueryOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriQueryOutput)
 }
 
-// RulesetRuleActionParameterUriQueryArrayInput is an input type that accepts RulesetRuleActionParameterUriQueryArray and RulesetRuleActionParameterUriQueryArrayOutput values.
-// You can construct a concrete instance of `RulesetRuleActionParameterUriQueryArrayInput` via:
+func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput {
+	return i.ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersUriQueryArgs) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriQueryOutput).ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersUriQueryPtrInput is an input type that accepts RulesetRuleActionParametersUriQueryArgs, RulesetRuleActionParametersUriQueryPtr and RulesetRuleActionParametersUriQueryPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersUriQueryPtrInput` via:
 //
-//          RulesetRuleActionParameterUriQueryArray{ RulesetRuleActionParameterUriQueryArgs{...} }
-type RulesetRuleActionParameterUriQueryArrayInput interface {
+//          RulesetRuleActionParametersUriQueryArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleActionParametersUriQueryPtrInput interface {
 	pulumi.Input
 
-	ToRulesetRuleActionParameterUriQueryArrayOutput() RulesetRuleActionParameterUriQueryArrayOutput
-	ToRulesetRuleActionParameterUriQueryArrayOutputWithContext(context.Context) RulesetRuleActionParameterUriQueryArrayOutput
+	ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput
+	ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(context.Context) RulesetRuleActionParametersUriQueryPtrOutput
 }
 
-type RulesetRuleActionParameterUriQueryArray []RulesetRuleActionParameterUriQueryInput
+type rulesetRuleActionParametersUriQueryPtrType RulesetRuleActionParametersUriQueryArgs
 
-func (RulesetRuleActionParameterUriQueryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterUriQuery)(nil)).Elem()
+func RulesetRuleActionParametersUriQueryPtr(v *RulesetRuleActionParametersUriQueryArgs) RulesetRuleActionParametersUriQueryPtrInput {
+	return (*rulesetRuleActionParametersUriQueryPtrType)(v)
 }
 
-func (i RulesetRuleActionParameterUriQueryArray) ToRulesetRuleActionParameterUriQueryArrayOutput() RulesetRuleActionParameterUriQueryArrayOutput {
-	return i.ToRulesetRuleActionParameterUriQueryArrayOutputWithContext(context.Background())
+func (*rulesetRuleActionParametersUriQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersUriQuery)(nil)).Elem()
 }
 
-func (i RulesetRuleActionParameterUriQueryArray) ToRulesetRuleActionParameterUriQueryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriQueryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParameterUriQueryArrayOutput)
+func (i *rulesetRuleActionParametersUriQueryPtrType) ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput {
+	return i.ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(context.Background())
 }
 
-type RulesetRuleActionParameterUriQueryOutput struct{ *pulumi.OutputState }
-
-func (RulesetRuleActionParameterUriQueryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesetRuleActionParameterUriQuery)(nil)).Elem()
+func (i *rulesetRuleActionParametersUriQueryPtrType) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersUriQueryPtrOutput)
 }
 
-func (o RulesetRuleActionParameterUriQueryOutput) ToRulesetRuleActionParameterUriQueryOutput() RulesetRuleActionParameterUriQueryOutput {
+type RulesetRuleActionParametersUriQueryOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersUriQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersUriQuery)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryOutput() RulesetRuleActionParametersUriQueryOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriQueryOutput) ToRulesetRuleActionParameterUriQueryOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriQueryOutput {
+func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryOutput {
 	return o
+}
+
+func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput {
+	return o.ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUriQuery) *RulesetRuleActionParametersUriQuery {
+		return &v
+	}).(RulesetRuleActionParametersUriQueryPtrOutput)
 }
 
 // Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-func (o RulesetRuleActionParameterUriQueryOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterUriQuery) *string { return v.Expression }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersUriQueryOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUriQuery) *string { return v.Expression }).(pulumi.StringPtrOutput)
 }
 
 // Static string value of the updated URI path or query string component. Conflicts with `expression`.
-func (o RulesetRuleActionParameterUriQueryOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameterUriQuery) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o RulesetRuleActionParametersUriQueryOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersUriQuery) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type RulesetRuleActionParameterUriQueryArrayOutput struct{ *pulumi.OutputState }
+type RulesetRuleActionParametersUriQueryPtrOutput struct{ *pulumi.OutputState }
 
-func (RulesetRuleActionParameterUriQueryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesetRuleActionParameterUriQuery)(nil)).Elem()
+func (RulesetRuleActionParametersUriQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersUriQuery)(nil)).Elem()
 }
 
-func (o RulesetRuleActionParameterUriQueryArrayOutput) ToRulesetRuleActionParameterUriQueryArrayOutput() RulesetRuleActionParameterUriQueryArrayOutput {
+func (o RulesetRuleActionParametersUriQueryPtrOutput) ToRulesetRuleActionParametersUriQueryPtrOutput() RulesetRuleActionParametersUriQueryPtrOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriQueryArrayOutput) ToRulesetRuleActionParameterUriQueryArrayOutputWithContext(ctx context.Context) RulesetRuleActionParameterUriQueryArrayOutput {
+func (o RulesetRuleActionParametersUriQueryPtrOutput) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
 	return o
 }
 
-func (o RulesetRuleActionParameterUriQueryArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParameterUriQueryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParameterUriQuery {
-		return vs[0].([]RulesetRuleActionParameterUriQuery)[vs[1].(int)]
-	}).(RulesetRuleActionParameterUriQueryOutput)
+func (o RulesetRuleActionParametersUriQueryPtrOutput) Elem() RulesetRuleActionParametersUriQueryOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUriQuery) RulesetRuleActionParametersUriQuery { return *v }).(RulesetRuleActionParametersUriQueryOutput)
+}
+
+// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+func (o RulesetRuleActionParametersUriQueryPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUriQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Static string value of the updated URI path or query string component. Conflicts with `expression`.
+func (o RulesetRuleActionParametersUriQueryPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersUriQuery) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleRatelimit struct {
+	// List of parameters that define how Cloudflare tracks the request rate for this rule.
+	Characteristics []string `pulumi:"characteristics"`
+	// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
+	MitigationExpression *string `pulumi:"mitigationExpression"`
+	// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+	MitigationTimeout *int `pulumi:"mitigationTimeout"`
+	// The period of time to consider (in seconds) when evaluating the request rate.
+	Period *int `pulumi:"period"`
+	// The number of requests over the period of time that will trigger the Rate Limiting rule.
+	RequestsPerPeriod *int `pulumi:"requestsPerPeriod"`
+}
+
+// RulesetRuleRatelimitInput is an input type that accepts RulesetRuleRatelimitArgs and RulesetRuleRatelimitOutput values.
+// You can construct a concrete instance of `RulesetRuleRatelimitInput` via:
+//
+//          RulesetRuleRatelimitArgs{...}
+type RulesetRuleRatelimitInput interface {
+	pulumi.Input
+
+	ToRulesetRuleRatelimitOutput() RulesetRuleRatelimitOutput
+	ToRulesetRuleRatelimitOutputWithContext(context.Context) RulesetRuleRatelimitOutput
+}
+
+type RulesetRuleRatelimitArgs struct {
+	// List of parameters that define how Cloudflare tracks the request rate for this rule.
+	Characteristics pulumi.StringArrayInput `pulumi:"characteristics"`
+	// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
+	MitigationExpression pulumi.StringPtrInput `pulumi:"mitigationExpression"`
+	// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+	MitigationTimeout pulumi.IntPtrInput `pulumi:"mitigationTimeout"`
+	// The period of time to consider (in seconds) when evaluating the request rate.
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The number of requests over the period of time that will trigger the Rate Limiting rule.
+	RequestsPerPeriod pulumi.IntPtrInput `pulumi:"requestsPerPeriod"`
+}
+
+func (RulesetRuleRatelimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleRatelimit)(nil)).Elem()
+}
+
+func (i RulesetRuleRatelimitArgs) ToRulesetRuleRatelimitOutput() RulesetRuleRatelimitOutput {
+	return i.ToRulesetRuleRatelimitOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleRatelimitArgs) ToRulesetRuleRatelimitOutputWithContext(ctx context.Context) RulesetRuleRatelimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleRatelimitOutput)
+}
+
+func (i RulesetRuleRatelimitArgs) ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput {
+	return i.ToRulesetRuleRatelimitPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleRatelimitArgs) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleRatelimitOutput).ToRulesetRuleRatelimitPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleRatelimitPtrInput is an input type that accepts RulesetRuleRatelimitArgs, RulesetRuleRatelimitPtr and RulesetRuleRatelimitPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleRatelimitPtrInput` via:
+//
+//          RulesetRuleRatelimitArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleRatelimitPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput
+	ToRulesetRuleRatelimitPtrOutputWithContext(context.Context) RulesetRuleRatelimitPtrOutput
+}
+
+type rulesetRuleRatelimitPtrType RulesetRuleRatelimitArgs
+
+func RulesetRuleRatelimitPtr(v *RulesetRuleRatelimitArgs) RulesetRuleRatelimitPtrInput {
+	return (*rulesetRuleRatelimitPtrType)(v)
+}
+
+func (*rulesetRuleRatelimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleRatelimit)(nil)).Elem()
+}
+
+func (i *rulesetRuleRatelimitPtrType) ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput {
+	return i.ToRulesetRuleRatelimitPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleRatelimitPtrType) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleRatelimitPtrOutput)
+}
+
+type RulesetRuleRatelimitOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleRatelimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleRatelimit)(nil)).Elem()
+}
+
+func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitOutput() RulesetRuleRatelimitOutput {
+	return o
+}
+
+func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitOutputWithContext(ctx context.Context) RulesetRuleRatelimitOutput {
+	return o
+}
+
+func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput {
+	return o.ToRulesetRuleRatelimitPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) *RulesetRuleRatelimit {
+		return &v
+	}).(RulesetRuleRatelimitPtrOutput)
+}
+
+// List of parameters that define how Cloudflare tracks the request rate for this rule.
+func (o RulesetRuleRatelimitOutput) Characteristics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) []string { return v.Characteristics }).(pulumi.StringArrayOutput)
+}
+
+// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
+func (o RulesetRuleRatelimitOutput) MitigationExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) *string { return v.MitigationExpression }).(pulumi.StringPtrOutput)
+}
+
+// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+func (o RulesetRuleRatelimitOutput) MitigationTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) *int { return v.MitigationTimeout }).(pulumi.IntPtrOutput)
+}
+
+// The period of time to consider (in seconds) when evaluating the request rate.
+func (o RulesetRuleRatelimitOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The number of requests over the period of time that will trigger the Rate Limiting rule.
+func (o RulesetRuleRatelimitOutput) RequestsPerPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) *int { return v.RequestsPerPeriod }).(pulumi.IntPtrOutput)
+}
+
+type RulesetRuleRatelimitPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleRatelimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleRatelimit)(nil)).Elem()
+}
+
+func (o RulesetRuleRatelimitPtrOutput) ToRulesetRuleRatelimitPtrOutput() RulesetRuleRatelimitPtrOutput {
+	return o
+}
+
+func (o RulesetRuleRatelimitPtrOutput) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
+	return o
+}
+
+func (o RulesetRuleRatelimitPtrOutput) Elem() RulesetRuleRatelimitOutput {
+	return o.ApplyT(func(v *RulesetRuleRatelimit) RulesetRuleRatelimit { return *v }).(RulesetRuleRatelimitOutput)
+}
+
+// List of parameters that define how Cloudflare tracks the request rate for this rule.
+func (o RulesetRuleRatelimitPtrOutput) Characteristics() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleRatelimit) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Characteristics
+	}).(pulumi.StringArrayOutput)
+}
+
+// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
+func (o RulesetRuleRatelimitPtrOutput) MitigationExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleRatelimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MitigationExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+func (o RulesetRuleRatelimitPtrOutput) MitigationTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleRatelimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MitigationTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// The period of time to consider (in seconds) when evaluating the request rate.
+func (o RulesetRuleRatelimitPtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleRatelimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of requests over the period of time that will trigger the Rate Limiting rule.
+func (o RulesetRuleRatelimitPtrOutput) RequestsPerPeriod() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleRatelimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RequestsPerPeriod
+	}).(pulumi.IntPtrOutput)
 }
 
 type SpectrumApplicationDns struct {
@@ -13654,7 +14255,390 @@ func (o SpectrumApplicationOriginPortRangePtrOutput) Start() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+type TeamsAccountAntivirus struct {
+	EnabledDownloadPhase bool `pulumi:"enabledDownloadPhase"`
+	EnabledUploadPhase   bool `pulumi:"enabledUploadPhase"`
+	FailClosed           bool `pulumi:"failClosed"`
+}
+
+// TeamsAccountAntivirusInput is an input type that accepts TeamsAccountAntivirusArgs and TeamsAccountAntivirusOutput values.
+// You can construct a concrete instance of `TeamsAccountAntivirusInput` via:
+//
+//          TeamsAccountAntivirusArgs{...}
+type TeamsAccountAntivirusInput interface {
+	pulumi.Input
+
+	ToTeamsAccountAntivirusOutput() TeamsAccountAntivirusOutput
+	ToTeamsAccountAntivirusOutputWithContext(context.Context) TeamsAccountAntivirusOutput
+}
+
+type TeamsAccountAntivirusArgs struct {
+	EnabledDownloadPhase pulumi.BoolInput `pulumi:"enabledDownloadPhase"`
+	EnabledUploadPhase   pulumi.BoolInput `pulumi:"enabledUploadPhase"`
+	FailClosed           pulumi.BoolInput `pulumi:"failClosed"`
+}
+
+func (TeamsAccountAntivirusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountAntivirus)(nil)).Elem()
+}
+
+func (i TeamsAccountAntivirusArgs) ToTeamsAccountAntivirusOutput() TeamsAccountAntivirusOutput {
+	return i.ToTeamsAccountAntivirusOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountAntivirusArgs) ToTeamsAccountAntivirusOutputWithContext(ctx context.Context) TeamsAccountAntivirusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountAntivirusOutput)
+}
+
+func (i TeamsAccountAntivirusArgs) ToTeamsAccountAntivirusPtrOutput() TeamsAccountAntivirusPtrOutput {
+	return i.ToTeamsAccountAntivirusPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountAntivirusArgs) ToTeamsAccountAntivirusPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountAntivirusOutput).ToTeamsAccountAntivirusPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountAntivirusPtrInput is an input type that accepts TeamsAccountAntivirusArgs, TeamsAccountAntivirusPtr and TeamsAccountAntivirusPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountAntivirusPtrInput` via:
+//
+//          TeamsAccountAntivirusArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountAntivirusPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountAntivirusPtrOutput() TeamsAccountAntivirusPtrOutput
+	ToTeamsAccountAntivirusPtrOutputWithContext(context.Context) TeamsAccountAntivirusPtrOutput
+}
+
+type teamsAccountAntivirusPtrType TeamsAccountAntivirusArgs
+
+func TeamsAccountAntivirusPtr(v *TeamsAccountAntivirusArgs) TeamsAccountAntivirusPtrInput {
+	return (*teamsAccountAntivirusPtrType)(v)
+}
+
+func (*teamsAccountAntivirusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountAntivirus)(nil)).Elem()
+}
+
+func (i *teamsAccountAntivirusPtrType) ToTeamsAccountAntivirusPtrOutput() TeamsAccountAntivirusPtrOutput {
+	return i.ToTeamsAccountAntivirusPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountAntivirusPtrType) ToTeamsAccountAntivirusPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountAntivirusPtrOutput)
+}
+
+type TeamsAccountAntivirusOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountAntivirusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountAntivirus)(nil)).Elem()
+}
+
+func (o TeamsAccountAntivirusOutput) ToTeamsAccountAntivirusOutput() TeamsAccountAntivirusOutput {
+	return o
+}
+
+func (o TeamsAccountAntivirusOutput) ToTeamsAccountAntivirusOutputWithContext(ctx context.Context) TeamsAccountAntivirusOutput {
+	return o
+}
+
+func (o TeamsAccountAntivirusOutput) ToTeamsAccountAntivirusPtrOutput() TeamsAccountAntivirusPtrOutput {
+	return o.ToTeamsAccountAntivirusPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountAntivirusOutput) ToTeamsAccountAntivirusPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusPtrOutput {
+	return o.ApplyT(func(v TeamsAccountAntivirus) *TeamsAccountAntivirus {
+		return &v
+	}).(TeamsAccountAntivirusPtrOutput)
+}
+func (o TeamsAccountAntivirusOutput) EnabledDownloadPhase() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountAntivirus) bool { return v.EnabledDownloadPhase }).(pulumi.BoolOutput)
+}
+
+func (o TeamsAccountAntivirusOutput) EnabledUploadPhase() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountAntivirus) bool { return v.EnabledUploadPhase }).(pulumi.BoolOutput)
+}
+
+func (o TeamsAccountAntivirusOutput) FailClosed() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountAntivirus) bool { return v.FailClosed }).(pulumi.BoolOutput)
+}
+
+type TeamsAccountAntivirusPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountAntivirusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountAntivirus)(nil)).Elem()
+}
+
+func (o TeamsAccountAntivirusPtrOutput) ToTeamsAccountAntivirusPtrOutput() TeamsAccountAntivirusPtrOutput {
+	return o
+}
+
+func (o TeamsAccountAntivirusPtrOutput) ToTeamsAccountAntivirusPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusPtrOutput {
+	return o
+}
+
+func (o TeamsAccountAntivirusPtrOutput) Elem() TeamsAccountAntivirusOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirus) TeamsAccountAntivirus { return *v }).(TeamsAccountAntivirusOutput)
+}
+
+func (o TeamsAccountAntivirusPtrOutput) EnabledDownloadPhase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirus) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnabledDownloadPhase
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsAccountAntivirusPtrOutput) EnabledUploadPhase() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirus) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnabledUploadPhase
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsAccountAntivirusPtrOutput) FailClosed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirus) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.FailClosed
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsAccountBlockPage struct {
+	// Hex code of block page background color.
+	BackgroundColor *string `pulumi:"backgroundColor"`
+	// Indicator of enablement.
+	Enabled *bool `pulumi:"enabled"`
+	// Block page header text.
+	FooterText *string `pulumi:"footerText"`
+	// Block page footer text.
+	HeaderText *string `pulumi:"headerText"`
+	// URL of block page logo.
+	LogoPath *string `pulumi:"logoPath"`
+	// Name of block page configuration.
+	Name *string `pulumi:"name"`
+}
+
+// TeamsAccountBlockPageInput is an input type that accepts TeamsAccountBlockPageArgs and TeamsAccountBlockPageOutput values.
+// You can construct a concrete instance of `TeamsAccountBlockPageInput` via:
+//
+//          TeamsAccountBlockPageArgs{...}
+type TeamsAccountBlockPageInput interface {
+	pulumi.Input
+
+	ToTeamsAccountBlockPageOutput() TeamsAccountBlockPageOutput
+	ToTeamsAccountBlockPageOutputWithContext(context.Context) TeamsAccountBlockPageOutput
+}
+
+type TeamsAccountBlockPageArgs struct {
+	// Hex code of block page background color.
+	BackgroundColor pulumi.StringPtrInput `pulumi:"backgroundColor"`
+	// Indicator of enablement.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Block page header text.
+	FooterText pulumi.StringPtrInput `pulumi:"footerText"`
+	// Block page footer text.
+	HeaderText pulumi.StringPtrInput `pulumi:"headerText"`
+	// URL of block page logo.
+	LogoPath pulumi.StringPtrInput `pulumi:"logoPath"`
+	// Name of block page configuration.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (TeamsAccountBlockPageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountBlockPage)(nil)).Elem()
+}
+
+func (i TeamsAccountBlockPageArgs) ToTeamsAccountBlockPageOutput() TeamsAccountBlockPageOutput {
+	return i.ToTeamsAccountBlockPageOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountBlockPageArgs) ToTeamsAccountBlockPageOutputWithContext(ctx context.Context) TeamsAccountBlockPageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountBlockPageOutput)
+}
+
+func (i TeamsAccountBlockPageArgs) ToTeamsAccountBlockPagePtrOutput() TeamsAccountBlockPagePtrOutput {
+	return i.ToTeamsAccountBlockPagePtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountBlockPageArgs) ToTeamsAccountBlockPagePtrOutputWithContext(ctx context.Context) TeamsAccountBlockPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountBlockPageOutput).ToTeamsAccountBlockPagePtrOutputWithContext(ctx)
+}
+
+// TeamsAccountBlockPagePtrInput is an input type that accepts TeamsAccountBlockPageArgs, TeamsAccountBlockPagePtr and TeamsAccountBlockPagePtrOutput values.
+// You can construct a concrete instance of `TeamsAccountBlockPagePtrInput` via:
+//
+//          TeamsAccountBlockPageArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountBlockPagePtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountBlockPagePtrOutput() TeamsAccountBlockPagePtrOutput
+	ToTeamsAccountBlockPagePtrOutputWithContext(context.Context) TeamsAccountBlockPagePtrOutput
+}
+
+type teamsAccountBlockPagePtrType TeamsAccountBlockPageArgs
+
+func TeamsAccountBlockPagePtr(v *TeamsAccountBlockPageArgs) TeamsAccountBlockPagePtrInput {
+	return (*teamsAccountBlockPagePtrType)(v)
+}
+
+func (*teamsAccountBlockPagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountBlockPage)(nil)).Elem()
+}
+
+func (i *teamsAccountBlockPagePtrType) ToTeamsAccountBlockPagePtrOutput() TeamsAccountBlockPagePtrOutput {
+	return i.ToTeamsAccountBlockPagePtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountBlockPagePtrType) ToTeamsAccountBlockPagePtrOutputWithContext(ctx context.Context) TeamsAccountBlockPagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountBlockPagePtrOutput)
+}
+
+type TeamsAccountBlockPageOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountBlockPageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountBlockPage)(nil)).Elem()
+}
+
+func (o TeamsAccountBlockPageOutput) ToTeamsAccountBlockPageOutput() TeamsAccountBlockPageOutput {
+	return o
+}
+
+func (o TeamsAccountBlockPageOutput) ToTeamsAccountBlockPageOutputWithContext(ctx context.Context) TeamsAccountBlockPageOutput {
+	return o
+}
+
+func (o TeamsAccountBlockPageOutput) ToTeamsAccountBlockPagePtrOutput() TeamsAccountBlockPagePtrOutput {
+	return o.ToTeamsAccountBlockPagePtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountBlockPageOutput) ToTeamsAccountBlockPagePtrOutputWithContext(ctx context.Context) TeamsAccountBlockPagePtrOutput {
+	return o.ApplyT(func(v TeamsAccountBlockPage) *TeamsAccountBlockPage {
+		return &v
+	}).(TeamsAccountBlockPagePtrOutput)
+}
+
+// Hex code of block page background color.
+func (o TeamsAccountBlockPageOutput) BackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountBlockPage) *string { return v.BackgroundColor }).(pulumi.StringPtrOutput)
+}
+
+// Indicator of enablement.
+func (o TeamsAccountBlockPageOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsAccountBlockPage) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Block page header text.
+func (o TeamsAccountBlockPageOutput) FooterText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountBlockPage) *string { return v.FooterText }).(pulumi.StringPtrOutput)
+}
+
+// Block page footer text.
+func (o TeamsAccountBlockPageOutput) HeaderText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountBlockPage) *string { return v.HeaderText }).(pulumi.StringPtrOutput)
+}
+
+// URL of block page logo.
+func (o TeamsAccountBlockPageOutput) LogoPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountBlockPage) *string { return v.LogoPath }).(pulumi.StringPtrOutput)
+}
+
+// Name of block page configuration.
+func (o TeamsAccountBlockPageOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountBlockPage) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type TeamsAccountBlockPagePtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountBlockPagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountBlockPage)(nil)).Elem()
+}
+
+func (o TeamsAccountBlockPagePtrOutput) ToTeamsAccountBlockPagePtrOutput() TeamsAccountBlockPagePtrOutput {
+	return o
+}
+
+func (o TeamsAccountBlockPagePtrOutput) ToTeamsAccountBlockPagePtrOutputWithContext(ctx context.Context) TeamsAccountBlockPagePtrOutput {
+	return o
+}
+
+func (o TeamsAccountBlockPagePtrOutput) Elem() TeamsAccountBlockPageOutput {
+	return o.ApplyT(func(v *TeamsAccountBlockPage) TeamsAccountBlockPage { return *v }).(TeamsAccountBlockPageOutput)
+}
+
+// Hex code of block page background color.
+func (o TeamsAccountBlockPagePtrOutput) BackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BackgroundColor
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicator of enablement.
+func (o TeamsAccountBlockPagePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountBlockPage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Block page header text.
+func (o TeamsAccountBlockPagePtrOutput) FooterText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FooterText
+	}).(pulumi.StringPtrOutput)
+}
+
+// Block page footer text.
+func (o TeamsAccountBlockPagePtrOutput) HeaderText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderText
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL of block page logo.
+func (o TeamsAccountBlockPagePtrOutput) LogoPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogoPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of block page configuration.
+func (o TeamsAccountBlockPagePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountBlockPage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type TeamsLocationNetwork struct {
+	// ID of the teams location.
 	Id      *string `pulumi:"id"`
 	Network string  `pulumi:"network"`
 }
@@ -13671,6 +14655,7 @@ type TeamsLocationNetworkInput interface {
 }
 
 type TeamsLocationNetworkArgs struct {
+	// ID of the teams location.
 	Id      pulumi.StringPtrInput `pulumi:"id"`
 	Network pulumi.StringInput    `pulumi:"network"`
 }
@@ -13726,6 +14711,7 @@ func (o TeamsLocationNetworkOutput) ToTeamsLocationNetworkOutputWithContext(ctx 
 	return o
 }
 
+// ID of the teams location.
 func (o TeamsLocationNetworkOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsLocationNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -13752,6 +14738,518 @@ func (o TeamsLocationNetworkArrayOutput) Index(i pulumi.IntInput) TeamsLocationN
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamsLocationNetwork {
 		return vs[0].([]TeamsLocationNetwork)[vs[1].(int)]
 	}).(TeamsLocationNetworkOutput)
+}
+
+type TeamsRuleRuleSettings struct {
+	BisoAdminControls *TeamsRuleRuleSettingsBisoAdminControls `pulumi:"bisoAdminControls"`
+	// Indicator of block page enablement.
+	BlockPageEnabled *bool `pulumi:"blockPageEnabled"`
+	// The displayed reason for a user being blocked.
+	BlockPageReason *string `pulumi:"blockPageReason"`
+	// Settings to forward layer 4 traffic.
+	L4override *TeamsRuleRuleSettingsL4override `pulumi:"l4override"`
+	// The host to override matching DNS queries with.
+	OverrideHost *string `pulumi:"overrideHost"`
+	// The IPs to override matching DNS queries with.
+	OverrideIps []string `pulumi:"overrideIps"`
+}
+
+// TeamsRuleRuleSettingsInput is an input type that accepts TeamsRuleRuleSettingsArgs and TeamsRuleRuleSettingsOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsInput` via:
+//
+//          TeamsRuleRuleSettingsArgs{...}
+type TeamsRuleRuleSettingsInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsOutput() TeamsRuleRuleSettingsOutput
+	ToTeamsRuleRuleSettingsOutputWithContext(context.Context) TeamsRuleRuleSettingsOutput
+}
+
+type TeamsRuleRuleSettingsArgs struct {
+	BisoAdminControls TeamsRuleRuleSettingsBisoAdminControlsPtrInput `pulumi:"bisoAdminControls"`
+	// Indicator of block page enablement.
+	BlockPageEnabled pulumi.BoolPtrInput `pulumi:"blockPageEnabled"`
+	// The displayed reason for a user being blocked.
+	BlockPageReason pulumi.StringPtrInput `pulumi:"blockPageReason"`
+	// Settings to forward layer 4 traffic.
+	L4override TeamsRuleRuleSettingsL4overridePtrInput `pulumi:"l4override"`
+	// The host to override matching DNS queries with.
+	OverrideHost pulumi.StringPtrInput `pulumi:"overrideHost"`
+	// The IPs to override matching DNS queries with.
+	OverrideIps pulumi.StringArrayInput `pulumi:"overrideIps"`
+}
+
+func (TeamsRuleRuleSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettings)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsArgs) ToTeamsRuleRuleSettingsOutput() TeamsRuleRuleSettingsOutput {
+	return i.ToTeamsRuleRuleSettingsOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsArgs) ToTeamsRuleRuleSettingsOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsOutput)
+}
+
+func (i TeamsRuleRuleSettingsArgs) ToTeamsRuleRuleSettingsPtrOutput() TeamsRuleRuleSettingsPtrOutput {
+	return i.ToTeamsRuleRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsArgs) ToTeamsRuleRuleSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsOutput).ToTeamsRuleRuleSettingsPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsPtrInput is an input type that accepts TeamsRuleRuleSettingsArgs, TeamsRuleRuleSettingsPtr and TeamsRuleRuleSettingsPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsPtrInput` via:
+//
+//          TeamsRuleRuleSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsRuleRuleSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsPtrOutput() TeamsRuleRuleSettingsPtrOutput
+	ToTeamsRuleRuleSettingsPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsPtrOutput
+}
+
+type teamsRuleRuleSettingsPtrType TeamsRuleRuleSettingsArgs
+
+func TeamsRuleRuleSettingsPtr(v *TeamsRuleRuleSettingsArgs) TeamsRuleRuleSettingsPtrInput {
+	return (*teamsRuleRuleSettingsPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettings)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsPtrType) ToTeamsRuleRuleSettingsPtrOutput() TeamsRuleRuleSettingsPtrOutput {
+	return i.ToTeamsRuleRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsPtrType) ToTeamsRuleRuleSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsPtrOutput)
+}
+
+type TeamsRuleRuleSettingsOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettings)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsOutput) ToTeamsRuleRuleSettingsOutput() TeamsRuleRuleSettingsOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsOutput) ToTeamsRuleRuleSettingsOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsOutput) ToTeamsRuleRuleSettingsPtrOutput() TeamsRuleRuleSettingsPtrOutput {
+	return o.ToTeamsRuleRuleSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsOutput) ToTeamsRuleRuleSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettings {
+		return &v
+	}).(TeamsRuleRuleSettingsPtrOutput)
+}
+func (o TeamsRuleRuleSettingsOutput) BisoAdminControls() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsBisoAdminControls { return v.BisoAdminControls }).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
+}
+
+// Indicator of block page enablement.
+func (o TeamsRuleRuleSettingsOutput) BlockPageEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *bool { return v.BlockPageEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The displayed reason for a user being blocked.
+func (o TeamsRuleRuleSettingsOutput) BlockPageReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *string { return v.BlockPageReason }).(pulumi.StringPtrOutput)
+}
+
+// Settings to forward layer 4 traffic.
+func (o TeamsRuleRuleSettingsOutput) L4override() TeamsRuleRuleSettingsL4overridePtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsL4override { return v.L4override }).(TeamsRuleRuleSettingsL4overridePtrOutput)
+}
+
+// The host to override matching DNS queries with.
+func (o TeamsRuleRuleSettingsOutput) OverrideHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *string { return v.OverrideHost }).(pulumi.StringPtrOutput)
+}
+
+// The IPs to override matching DNS queries with.
+func (o TeamsRuleRuleSettingsOutput) OverrideIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) []string { return v.OverrideIps }).(pulumi.StringArrayOutput)
+}
+
+type TeamsRuleRuleSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettings)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsPtrOutput) ToTeamsRuleRuleSettingsPtrOutput() TeamsRuleRuleSettingsPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsPtrOutput) ToTeamsRuleRuleSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsPtrOutput) Elem() TeamsRuleRuleSettingsOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) TeamsRuleRuleSettings { return *v }).(TeamsRuleRuleSettingsOutput)
+}
+
+func (o TeamsRuleRuleSettingsPtrOutput) BisoAdminControls() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsBisoAdminControls {
+		if v == nil {
+			return nil
+		}
+		return v.BisoAdminControls
+	}).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
+}
+
+// Indicator of block page enablement.
+func (o TeamsRuleRuleSettingsPtrOutput) BlockPageEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BlockPageEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The displayed reason for a user being blocked.
+func (o TeamsRuleRuleSettingsPtrOutput) BlockPageReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockPageReason
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings to forward layer 4 traffic.
+func (o TeamsRuleRuleSettingsPtrOutput) L4override() TeamsRuleRuleSettingsL4overridePtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsL4override {
+		if v == nil {
+			return nil
+		}
+		return v.L4override
+	}).(TeamsRuleRuleSettingsL4overridePtrOutput)
+}
+
+// The host to override matching DNS queries with.
+func (o TeamsRuleRuleSettingsPtrOutput) OverrideHost() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideHost
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPs to override matching DNS queries with.
+func (o TeamsRuleRuleSettingsPtrOutput) OverrideIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideIps
+	}).(pulumi.StringArrayOutput)
+}
+
+type TeamsRuleRuleSettingsBisoAdminControls struct {
+	DisableCopyPaste *bool `pulumi:"disableCopyPaste"`
+	DisablePrinting  *bool `pulumi:"disablePrinting"`
+}
+
+// TeamsRuleRuleSettingsBisoAdminControlsInput is an input type that accepts TeamsRuleRuleSettingsBisoAdminControlsArgs and TeamsRuleRuleSettingsBisoAdminControlsOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsBisoAdminControlsInput` via:
+//
+//          TeamsRuleRuleSettingsBisoAdminControlsArgs{...}
+type TeamsRuleRuleSettingsBisoAdminControlsInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsBisoAdminControlsOutput() TeamsRuleRuleSettingsBisoAdminControlsOutput
+	ToTeamsRuleRuleSettingsBisoAdminControlsOutputWithContext(context.Context) TeamsRuleRuleSettingsBisoAdminControlsOutput
+}
+
+type TeamsRuleRuleSettingsBisoAdminControlsArgs struct {
+	DisableCopyPaste pulumi.BoolPtrInput `pulumi:"disableCopyPaste"`
+	DisablePrinting  pulumi.BoolPtrInput `pulumi:"disablePrinting"`
+}
+
+func (TeamsRuleRuleSettingsBisoAdminControlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControls)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsBisoAdminControlsArgs) ToTeamsRuleRuleSettingsBisoAdminControlsOutput() TeamsRuleRuleSettingsBisoAdminControlsOutput {
+	return i.ToTeamsRuleRuleSettingsBisoAdminControlsOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsBisoAdminControlsArgs) ToTeamsRuleRuleSettingsBisoAdminControlsOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsBisoAdminControlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsBisoAdminControlsOutput)
+}
+
+func (i TeamsRuleRuleSettingsBisoAdminControlsArgs) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutput() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return i.ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsBisoAdminControlsArgs) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsBisoAdminControlsOutput).ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsBisoAdminControlsPtrInput is an input type that accepts TeamsRuleRuleSettingsBisoAdminControlsArgs, TeamsRuleRuleSettingsBisoAdminControlsPtr and TeamsRuleRuleSettingsBisoAdminControlsPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsBisoAdminControlsPtrInput` via:
+//
+//          TeamsRuleRuleSettingsBisoAdminControlsArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsRuleRuleSettingsBisoAdminControlsPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutput() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput
+	ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsBisoAdminControlsPtrOutput
+}
+
+type teamsRuleRuleSettingsBisoAdminControlsPtrType TeamsRuleRuleSettingsBisoAdminControlsArgs
+
+func TeamsRuleRuleSettingsBisoAdminControlsPtr(v *TeamsRuleRuleSettingsBisoAdminControlsArgs) TeamsRuleRuleSettingsBisoAdminControlsPtrInput {
+	return (*teamsRuleRuleSettingsBisoAdminControlsPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsBisoAdminControlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsBisoAdminControls)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsBisoAdminControlsPtrType) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutput() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return i.ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsBisoAdminControlsPtrType) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
+}
+
+type TeamsRuleRuleSettingsBisoAdminControlsOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsBisoAdminControlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControls)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) ToTeamsRuleRuleSettingsBisoAdminControlsOutput() TeamsRuleRuleSettingsBisoAdminControlsOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) ToTeamsRuleRuleSettingsBisoAdminControlsOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsBisoAdminControlsOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutput() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return o.ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *TeamsRuleRuleSettingsBisoAdminControls {
+		return &v
+	}).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
+}
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisableCopyPaste() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisableCopyPaste }).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisablePrinting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisablePrinting }).(pulumi.BoolPtrOutput)
+}
+
+type TeamsRuleRuleSettingsBisoAdminControlsPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsBisoAdminControls)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutput() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) Elem() TeamsRuleRuleSettingsBisoAdminControlsOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) TeamsRuleRuleSettingsBisoAdminControls { return *v }).(TeamsRuleRuleSettingsBisoAdminControlsOutput)
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisableCopyPaste() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableCopyPaste
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisablePrinting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePrinting
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsRuleRuleSettingsL4override struct {
+	// Override IP to forward traffic to.
+	Ip string `pulumi:"ip"`
+	// Override Port to forward traffic to.
+	Port int `pulumi:"port"`
+}
+
+// TeamsRuleRuleSettingsL4overrideInput is an input type that accepts TeamsRuleRuleSettingsL4overrideArgs and TeamsRuleRuleSettingsL4overrideOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsL4overrideInput` via:
+//
+//          TeamsRuleRuleSettingsL4overrideArgs{...}
+type TeamsRuleRuleSettingsL4overrideInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsL4overrideOutput() TeamsRuleRuleSettingsL4overrideOutput
+	ToTeamsRuleRuleSettingsL4overrideOutputWithContext(context.Context) TeamsRuleRuleSettingsL4overrideOutput
+}
+
+type TeamsRuleRuleSettingsL4overrideArgs struct {
+	// Override IP to forward traffic to.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// Override Port to forward traffic to.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (TeamsRuleRuleSettingsL4overrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsL4override)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsL4overrideArgs) ToTeamsRuleRuleSettingsL4overrideOutput() TeamsRuleRuleSettingsL4overrideOutput {
+	return i.ToTeamsRuleRuleSettingsL4overrideOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsL4overrideArgs) ToTeamsRuleRuleSettingsL4overrideOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsL4overrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsL4overrideOutput)
+}
+
+func (i TeamsRuleRuleSettingsL4overrideArgs) ToTeamsRuleRuleSettingsL4overridePtrOutput() TeamsRuleRuleSettingsL4overridePtrOutput {
+	return i.ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsL4overrideArgs) ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsL4overridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsL4overrideOutput).ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsL4overridePtrInput is an input type that accepts TeamsRuleRuleSettingsL4overrideArgs, TeamsRuleRuleSettingsL4overridePtr and TeamsRuleRuleSettingsL4overridePtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsL4overridePtrInput` via:
+//
+//          TeamsRuleRuleSettingsL4overrideArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsRuleRuleSettingsL4overridePtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsL4overridePtrOutput() TeamsRuleRuleSettingsL4overridePtrOutput
+	ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(context.Context) TeamsRuleRuleSettingsL4overridePtrOutput
+}
+
+type teamsRuleRuleSettingsL4overridePtrType TeamsRuleRuleSettingsL4overrideArgs
+
+func TeamsRuleRuleSettingsL4overridePtr(v *TeamsRuleRuleSettingsL4overrideArgs) TeamsRuleRuleSettingsL4overridePtrInput {
+	return (*teamsRuleRuleSettingsL4overridePtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsL4overridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsL4override)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsL4overridePtrType) ToTeamsRuleRuleSettingsL4overridePtrOutput() TeamsRuleRuleSettingsL4overridePtrOutput {
+	return i.ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsL4overridePtrType) ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsL4overridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsL4overridePtrOutput)
+}
+
+type TeamsRuleRuleSettingsL4overrideOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsL4overrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsL4override)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsL4overrideOutput) ToTeamsRuleRuleSettingsL4overrideOutput() TeamsRuleRuleSettingsL4overrideOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsL4overrideOutput) ToTeamsRuleRuleSettingsL4overrideOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsL4overrideOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsL4overrideOutput) ToTeamsRuleRuleSettingsL4overridePtrOutput() TeamsRuleRuleSettingsL4overridePtrOutput {
+	return o.ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsL4overrideOutput) ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsL4overridePtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsL4override) *TeamsRuleRuleSettingsL4override {
+		return &v
+	}).(TeamsRuleRuleSettingsL4overridePtrOutput)
+}
+
+// Override IP to forward traffic to.
+func (o TeamsRuleRuleSettingsL4overrideOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsL4override) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// Override Port to forward traffic to.
+func (o TeamsRuleRuleSettingsL4overrideOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsL4override) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type TeamsRuleRuleSettingsL4overridePtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsL4overridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsL4override)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsL4overridePtrOutput) ToTeamsRuleRuleSettingsL4overridePtrOutput() TeamsRuleRuleSettingsL4overridePtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsL4overridePtrOutput) ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsL4overridePtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsL4overridePtrOutput) Elem() TeamsRuleRuleSettingsL4overrideOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsL4override) TeamsRuleRuleSettingsL4override { return *v }).(TeamsRuleRuleSettingsL4overrideOutput)
+}
+
+// Override IP to forward traffic to.
+func (o TeamsRuleRuleSettingsL4overridePtrOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsL4override) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ip
+	}).(pulumi.StringPtrOutput)
+}
+
+// Override Port to forward traffic to.
+func (o TeamsRuleRuleSettingsL4overridePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsL4override) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type WorkerScriptKvNamespaceBinding struct {
@@ -14281,185 +15779,44 @@ func (o ZoneLockdownConfigurationArrayOutput) Index(i pulumi.IntInput) ZoneLockd
 	}).(ZoneLockdownConfigurationOutput)
 }
 
-type ZoneMeta struct {
-	PhishingDetected  bool `pulumi:"phishingDetected"`
-	WildcardProxiable bool `pulumi:"wildcardProxiable"`
-}
-
-// ZoneMetaInput is an input type that accepts ZoneMetaArgs and ZoneMetaOutput values.
-// You can construct a concrete instance of `ZoneMetaInput` via:
-//
-//          ZoneMetaArgs{...}
-type ZoneMetaInput interface {
-	pulumi.Input
-
-	ToZoneMetaOutput() ZoneMetaOutput
-	ToZoneMetaOutputWithContext(context.Context) ZoneMetaOutput
-}
-
-type ZoneMetaArgs struct {
-	PhishingDetected  pulumi.BoolInput `pulumi:"phishingDetected"`
-	WildcardProxiable pulumi.BoolInput `pulumi:"wildcardProxiable"`
-}
-
-func (ZoneMetaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneMeta)(nil)).Elem()
-}
-
-func (i ZoneMetaArgs) ToZoneMetaOutput() ZoneMetaOutput {
-	return i.ToZoneMetaOutputWithContext(context.Background())
-}
-
-func (i ZoneMetaArgs) ToZoneMetaOutputWithContext(ctx context.Context) ZoneMetaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneMetaOutput)
-}
-
-func (i ZoneMetaArgs) ToZoneMetaPtrOutput() ZoneMetaPtrOutput {
-	return i.ToZoneMetaPtrOutputWithContext(context.Background())
-}
-
-func (i ZoneMetaArgs) ToZoneMetaPtrOutputWithContext(ctx context.Context) ZoneMetaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneMetaOutput).ToZoneMetaPtrOutputWithContext(ctx)
-}
-
-// ZoneMetaPtrInput is an input type that accepts ZoneMetaArgs, ZoneMetaPtr and ZoneMetaPtrOutput values.
-// You can construct a concrete instance of `ZoneMetaPtrInput` via:
-//
-//          ZoneMetaArgs{...}
-//
-//  or:
-//
-//          nil
-type ZoneMetaPtrInput interface {
-	pulumi.Input
-
-	ToZoneMetaPtrOutput() ZoneMetaPtrOutput
-	ToZoneMetaPtrOutputWithContext(context.Context) ZoneMetaPtrOutput
-}
-
-type zoneMetaPtrType ZoneMetaArgs
-
-func ZoneMetaPtr(v *ZoneMetaArgs) ZoneMetaPtrInput {
-	return (*zoneMetaPtrType)(v)
-}
-
-func (*zoneMetaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneMeta)(nil)).Elem()
-}
-
-func (i *zoneMetaPtrType) ToZoneMetaPtrOutput() ZoneMetaPtrOutput {
-	return i.ToZoneMetaPtrOutputWithContext(context.Background())
-}
-
-func (i *zoneMetaPtrType) ToZoneMetaPtrOutputWithContext(ctx context.Context) ZoneMetaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneMetaPtrOutput)
-}
-
-type ZoneMetaOutput struct{ *pulumi.OutputState }
-
-func (ZoneMetaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneMeta)(nil)).Elem()
-}
-
-func (o ZoneMetaOutput) ToZoneMetaOutput() ZoneMetaOutput {
-	return o
-}
-
-func (o ZoneMetaOutput) ToZoneMetaOutputWithContext(ctx context.Context) ZoneMetaOutput {
-	return o
-}
-
-func (o ZoneMetaOutput) ToZoneMetaPtrOutput() ZoneMetaPtrOutput {
-	return o.ToZoneMetaPtrOutputWithContext(context.Background())
-}
-
-func (o ZoneMetaOutput) ToZoneMetaPtrOutputWithContext(ctx context.Context) ZoneMetaPtrOutput {
-	return o.ApplyT(func(v ZoneMeta) *ZoneMeta {
-		return &v
-	}).(ZoneMetaPtrOutput)
-}
-func (o ZoneMetaOutput) PhishingDetected() pulumi.BoolOutput {
-	return o.ApplyT(func(v ZoneMeta) bool { return v.PhishingDetected }).(pulumi.BoolOutput)
-}
-
-func (o ZoneMetaOutput) WildcardProxiable() pulumi.BoolOutput {
-	return o.ApplyT(func(v ZoneMeta) bool { return v.WildcardProxiable }).(pulumi.BoolOutput)
-}
-
-type ZoneMetaPtrOutput struct{ *pulumi.OutputState }
-
-func (ZoneMetaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneMeta)(nil)).Elem()
-}
-
-func (o ZoneMetaPtrOutput) ToZoneMetaPtrOutput() ZoneMetaPtrOutput {
-	return o
-}
-
-func (o ZoneMetaPtrOutput) ToZoneMetaPtrOutputWithContext(ctx context.Context) ZoneMetaPtrOutput {
-	return o
-}
-
-func (o ZoneMetaPtrOutput) Elem() ZoneMetaOutput {
-	return o.ApplyT(func(v *ZoneMeta) ZoneMeta { return *v }).(ZoneMetaOutput)
-}
-
-func (o ZoneMetaPtrOutput) PhishingDetected() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneMeta) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.PhishingDetected
-	}).(pulumi.BoolPtrOutput)
-}
-
-func (o ZoneMetaPtrOutput) WildcardProxiable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneMeta) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.WildcardProxiable
-	}).(pulumi.BoolPtrOutput)
-}
-
-type ZoneSettingsOverrideInitialSettings struct {
-	AlwaysOnline            *string                                            `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          *string                                            `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  *string                                            `pulumi:"automaticHttpsRewrites"`
-	Brotli                  *string                                            `pulumi:"brotli"`
-	BrowserCacheTtl         *int                                               `pulumi:"browserCacheTtl"`
-	BrowserCheck            *string                                            `pulumi:"browserCheck"`
-	CacheLevel              *string                                            `pulumi:"cacheLevel"`
-	ChallengeTtl            *int                                               `pulumi:"challengeTtl"`
-	CnameFlattening         *string                                            `pulumi:"cnameFlattening"`
-	DevelopmentMode         *string                                            `pulumi:"developmentMode"`
-	EmailObfuscation        *string                                            `pulumi:"emailObfuscation"`
-	H2Prioritization        *string                                            `pulumi:"h2Prioritization"`
-	HotlinkProtection       *string                                            `pulumi:"hotlinkProtection"`
-	Http2                   *string                                            `pulumi:"http2"`
-	Http3                   *string                                            `pulumi:"http3"`
-	ImageResizing           *string                                            `pulumi:"imageResizing"`
-	IpGeolocation           *string                                            `pulumi:"ipGeolocation"`
-	Ipv6                    *string                                            `pulumi:"ipv6"`
-	MaxUpload               *int                                               `pulumi:"maxUpload"`
-	MinTlsVersion           *string                                            `pulumi:"minTlsVersion"`
-	Minify                  *ZoneSettingsOverrideInitialSettingsMinify         `pulumi:"minify"`
-	Mirage                  *string                                            `pulumi:"mirage"`
-	MobileRedirect          *ZoneSettingsOverrideInitialSettingsMobileRedirect `pulumi:"mobileRedirect"`
-	OpportunisticEncryption *string                                            `pulumi:"opportunisticEncryption"`
-	OpportunisticOnion      *string                                            `pulumi:"opportunisticOnion"`
-	OriginErrorPagePassThru *string                                            `pulumi:"originErrorPagePassThru"`
-	Polish                  *string                                            `pulumi:"polish"`
-	PrefetchPreload         *string                                            `pulumi:"prefetchPreload"`
-	PrivacyPass             *string                                            `pulumi:"privacyPass"`
-	PseudoIpv4              *string                                            `pulumi:"pseudoIpv4"`
-	ResponseBuffering       *string                                            `pulumi:"responseBuffering"`
-	RocketLoader            *string                                            `pulumi:"rocketLoader"`
-	SecurityHeader          *ZoneSettingsOverrideInitialSettingsSecurityHeader `pulumi:"securityHeader"`
-	SecurityLevel           *string                                            `pulumi:"securityLevel"`
-	ServerSideExclude       *string                                            `pulumi:"serverSideExclude"`
-	SortQueryStringForCache *string                                            `pulumi:"sortQueryStringForCache"`
-	Ssl                     *string                                            `pulumi:"ssl"`
+type ZoneSettingsOverrideInitialSetting struct {
+	AlwaysOnline            *string                                           `pulumi:"alwaysOnline"`
+	AlwaysUseHttps          *string                                           `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites  *string                                           `pulumi:"automaticHttpsRewrites"`
+	Brotli                  *string                                           `pulumi:"brotli"`
+	BrowserCacheTtl         *int                                              `pulumi:"browserCacheTtl"`
+	BrowserCheck            *string                                           `pulumi:"browserCheck"`
+	CacheLevel              *string                                           `pulumi:"cacheLevel"`
+	ChallengeTtl            *int                                              `pulumi:"challengeTtl"`
+	CnameFlattening         *string                                           `pulumi:"cnameFlattening"`
+	DevelopmentMode         *string                                           `pulumi:"developmentMode"`
+	EmailObfuscation        *string                                           `pulumi:"emailObfuscation"`
+	H2Prioritization        *string                                           `pulumi:"h2Prioritization"`
+	HotlinkProtection       *string                                           `pulumi:"hotlinkProtection"`
+	Http2                   *string                                           `pulumi:"http2"`
+	Http3                   *string                                           `pulumi:"http3"`
+	ImageResizing           *string                                           `pulumi:"imageResizing"`
+	IpGeolocation           *string                                           `pulumi:"ipGeolocation"`
+	Ipv6                    *string                                           `pulumi:"ipv6"`
+	MaxUpload               *int                                              `pulumi:"maxUpload"`
+	MinTlsVersion           *string                                           `pulumi:"minTlsVersion"`
+	Minify                  *ZoneSettingsOverrideInitialSettingMinify         `pulumi:"minify"`
+	Mirage                  *string                                           `pulumi:"mirage"`
+	MobileRedirect          *ZoneSettingsOverrideInitialSettingMobileRedirect `pulumi:"mobileRedirect"`
+	OpportunisticEncryption *string                                           `pulumi:"opportunisticEncryption"`
+	OpportunisticOnion      *string                                           `pulumi:"opportunisticOnion"`
+	OriginErrorPagePassThru *string                                           `pulumi:"originErrorPagePassThru"`
+	Polish                  *string                                           `pulumi:"polish"`
+	PrefetchPreload         *string                                           `pulumi:"prefetchPreload"`
+	PrivacyPass             *string                                           `pulumi:"privacyPass"`
+	PseudoIpv4              *string                                           `pulumi:"pseudoIpv4"`
+	ResponseBuffering       *string                                           `pulumi:"responseBuffering"`
+	RocketLoader            *string                                           `pulumi:"rocketLoader"`
+	SecurityHeader          *ZoneSettingsOverrideInitialSettingSecurityHeader `pulumi:"securityHeader"`
+	SecurityLevel           *string                                           `pulumi:"securityLevel"`
+	ServerSideExclude       *string                                           `pulumi:"serverSideExclude"`
+	SortQueryStringForCache *string                                           `pulumi:"sortQueryStringForCache"`
+	Ssl                     *string                                           `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
 	Tls12Only          *string `pulumi:"tls12Only"`
 	Tls13              *string `pulumi:"tls13"`
@@ -14473,55 +15830,55 @@ type ZoneSettingsOverrideInitialSettings struct {
 	ZeroRtt    *string `pulumi:"zeroRtt"`
 }
 
-// ZoneSettingsOverrideInitialSettingsInput is an input type that accepts ZoneSettingsOverrideInitialSettingsArgs and ZoneSettingsOverrideInitialSettingsOutput values.
-// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingsInput` via:
+// ZoneSettingsOverrideInitialSettingInput is an input type that accepts ZoneSettingsOverrideInitialSettingArgs and ZoneSettingsOverrideInitialSettingOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingsArgs{...}
-type ZoneSettingsOverrideInitialSettingsInput interface {
+//          ZoneSettingsOverrideInitialSettingArgs{...}
+type ZoneSettingsOverrideInitialSettingInput interface {
 	pulumi.Input
 
-	ToZoneSettingsOverrideInitialSettingsOutput() ZoneSettingsOverrideInitialSettingsOutput
-	ToZoneSettingsOverrideInitialSettingsOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingsOutput
+	ToZoneSettingsOverrideInitialSettingOutput() ZoneSettingsOverrideInitialSettingOutput
+	ToZoneSettingsOverrideInitialSettingOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingOutput
 }
 
-type ZoneSettingsOverrideInitialSettingsArgs struct {
-	AlwaysOnline            pulumi.StringPtrInput                                     `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          pulumi.StringPtrInput                                     `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  pulumi.StringPtrInput                                     `pulumi:"automaticHttpsRewrites"`
-	Brotli                  pulumi.StringPtrInput                                     `pulumi:"brotli"`
-	BrowserCacheTtl         pulumi.IntPtrInput                                        `pulumi:"browserCacheTtl"`
-	BrowserCheck            pulumi.StringPtrInput                                     `pulumi:"browserCheck"`
-	CacheLevel              pulumi.StringPtrInput                                     `pulumi:"cacheLevel"`
-	ChallengeTtl            pulumi.IntPtrInput                                        `pulumi:"challengeTtl"`
-	CnameFlattening         pulumi.StringPtrInput                                     `pulumi:"cnameFlattening"`
-	DevelopmentMode         pulumi.StringPtrInput                                     `pulumi:"developmentMode"`
-	EmailObfuscation        pulumi.StringPtrInput                                     `pulumi:"emailObfuscation"`
-	H2Prioritization        pulumi.StringPtrInput                                     `pulumi:"h2Prioritization"`
-	HotlinkProtection       pulumi.StringPtrInput                                     `pulumi:"hotlinkProtection"`
-	Http2                   pulumi.StringPtrInput                                     `pulumi:"http2"`
-	Http3                   pulumi.StringPtrInput                                     `pulumi:"http3"`
-	ImageResizing           pulumi.StringPtrInput                                     `pulumi:"imageResizing"`
-	IpGeolocation           pulumi.StringPtrInput                                     `pulumi:"ipGeolocation"`
-	Ipv6                    pulumi.StringPtrInput                                     `pulumi:"ipv6"`
-	MaxUpload               pulumi.IntPtrInput                                        `pulumi:"maxUpload"`
-	MinTlsVersion           pulumi.StringPtrInput                                     `pulumi:"minTlsVersion"`
-	Minify                  ZoneSettingsOverrideInitialSettingsMinifyPtrInput         `pulumi:"minify"`
-	Mirage                  pulumi.StringPtrInput                                     `pulumi:"mirage"`
-	MobileRedirect          ZoneSettingsOverrideInitialSettingsMobileRedirectPtrInput `pulumi:"mobileRedirect"`
-	OpportunisticEncryption pulumi.StringPtrInput                                     `pulumi:"opportunisticEncryption"`
-	OpportunisticOnion      pulumi.StringPtrInput                                     `pulumi:"opportunisticOnion"`
-	OriginErrorPagePassThru pulumi.StringPtrInput                                     `pulumi:"originErrorPagePassThru"`
-	Polish                  pulumi.StringPtrInput                                     `pulumi:"polish"`
-	PrefetchPreload         pulumi.StringPtrInput                                     `pulumi:"prefetchPreload"`
-	PrivacyPass             pulumi.StringPtrInput                                     `pulumi:"privacyPass"`
-	PseudoIpv4              pulumi.StringPtrInput                                     `pulumi:"pseudoIpv4"`
-	ResponseBuffering       pulumi.StringPtrInput                                     `pulumi:"responseBuffering"`
-	RocketLoader            pulumi.StringPtrInput                                     `pulumi:"rocketLoader"`
-	SecurityHeader          ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrInput `pulumi:"securityHeader"`
-	SecurityLevel           pulumi.StringPtrInput                                     `pulumi:"securityLevel"`
-	ServerSideExclude       pulumi.StringPtrInput                                     `pulumi:"serverSideExclude"`
-	SortQueryStringForCache pulumi.StringPtrInput                                     `pulumi:"sortQueryStringForCache"`
-	Ssl                     pulumi.StringPtrInput                                     `pulumi:"ssl"`
+type ZoneSettingsOverrideInitialSettingArgs struct {
+	AlwaysOnline            pulumi.StringPtrInput                                    `pulumi:"alwaysOnline"`
+	AlwaysUseHttps          pulumi.StringPtrInput                                    `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites  pulumi.StringPtrInput                                    `pulumi:"automaticHttpsRewrites"`
+	Brotli                  pulumi.StringPtrInput                                    `pulumi:"brotli"`
+	BrowserCacheTtl         pulumi.IntPtrInput                                       `pulumi:"browserCacheTtl"`
+	BrowserCheck            pulumi.StringPtrInput                                    `pulumi:"browserCheck"`
+	CacheLevel              pulumi.StringPtrInput                                    `pulumi:"cacheLevel"`
+	ChallengeTtl            pulumi.IntPtrInput                                       `pulumi:"challengeTtl"`
+	CnameFlattening         pulumi.StringPtrInput                                    `pulumi:"cnameFlattening"`
+	DevelopmentMode         pulumi.StringPtrInput                                    `pulumi:"developmentMode"`
+	EmailObfuscation        pulumi.StringPtrInput                                    `pulumi:"emailObfuscation"`
+	H2Prioritization        pulumi.StringPtrInput                                    `pulumi:"h2Prioritization"`
+	HotlinkProtection       pulumi.StringPtrInput                                    `pulumi:"hotlinkProtection"`
+	Http2                   pulumi.StringPtrInput                                    `pulumi:"http2"`
+	Http3                   pulumi.StringPtrInput                                    `pulumi:"http3"`
+	ImageResizing           pulumi.StringPtrInput                                    `pulumi:"imageResizing"`
+	IpGeolocation           pulumi.StringPtrInput                                    `pulumi:"ipGeolocation"`
+	Ipv6                    pulumi.StringPtrInput                                    `pulumi:"ipv6"`
+	MaxUpload               pulumi.IntPtrInput                                       `pulumi:"maxUpload"`
+	MinTlsVersion           pulumi.StringPtrInput                                    `pulumi:"minTlsVersion"`
+	Minify                  ZoneSettingsOverrideInitialSettingMinifyPtrInput         `pulumi:"minify"`
+	Mirage                  pulumi.StringPtrInput                                    `pulumi:"mirage"`
+	MobileRedirect          ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput `pulumi:"mobileRedirect"`
+	OpportunisticEncryption pulumi.StringPtrInput                                    `pulumi:"opportunisticEncryption"`
+	OpportunisticOnion      pulumi.StringPtrInput                                    `pulumi:"opportunisticOnion"`
+	OriginErrorPagePassThru pulumi.StringPtrInput                                    `pulumi:"originErrorPagePassThru"`
+	Polish                  pulumi.StringPtrInput                                    `pulumi:"polish"`
+	PrefetchPreload         pulumi.StringPtrInput                                    `pulumi:"prefetchPreload"`
+	PrivacyPass             pulumi.StringPtrInput                                    `pulumi:"privacyPass"`
+	PseudoIpv4              pulumi.StringPtrInput                                    `pulumi:"pseudoIpv4"`
+	ResponseBuffering       pulumi.StringPtrInput                                    `pulumi:"responseBuffering"`
+	RocketLoader            pulumi.StringPtrInput                                    `pulumi:"rocketLoader"`
+	SecurityHeader          ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput `pulumi:"securityHeader"`
+	SecurityLevel           pulumi.StringPtrInput                                    `pulumi:"securityLevel"`
+	ServerSideExclude       pulumi.StringPtrInput                                    `pulumi:"serverSideExclude"`
+	SortQueryStringForCache pulumi.StringPtrInput                                    `pulumi:"sortQueryStringForCache"`
+	Ssl                     pulumi.StringPtrInput                                    `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
 	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
 	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
@@ -14535,709 +15892,268 @@ type ZoneSettingsOverrideInitialSettingsArgs struct {
 	ZeroRtt    pulumi.StringPtrInput `pulumi:"zeroRtt"`
 }
 
-func (ZoneSettingsOverrideInitialSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettings)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSetting)(nil)).Elem()
 }
 
-func (i ZoneSettingsOverrideInitialSettingsArgs) ToZoneSettingsOverrideInitialSettingsOutput() ZoneSettingsOverrideInitialSettingsOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsOutputWithContext(context.Background())
+func (i ZoneSettingsOverrideInitialSettingArgs) ToZoneSettingsOverrideInitialSettingOutput() ZoneSettingsOverrideInitialSettingOutput {
+	return i.ToZoneSettingsOverrideInitialSettingOutputWithContext(context.Background())
 }
 
-func (i ZoneSettingsOverrideInitialSettingsArgs) ToZoneSettingsOverrideInitialSettingsOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsOutput)
+func (i ZoneSettingsOverrideInitialSettingArgs) ToZoneSettingsOverrideInitialSettingOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingOutput)
 }
 
-func (i ZoneSettingsOverrideInitialSettingsArgs) ToZoneSettingsOverrideInitialSettingsPtrOutput() ZoneSettingsOverrideInitialSettingsPtrOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i ZoneSettingsOverrideInitialSettingsArgs) ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsOutput).ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(ctx)
-}
-
-// ZoneSettingsOverrideInitialSettingsPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingsArgs, ZoneSettingsOverrideInitialSettingsPtr and ZoneSettingsOverrideInitialSettingsPtrOutput values.
-// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingsPtrInput` via:
+// ZoneSettingsOverrideInitialSettingArrayInput is an input type that accepts ZoneSettingsOverrideInitialSettingArray and ZoneSettingsOverrideInitialSettingArrayOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingArrayInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingsArgs{...}
-//
-//  or:
-//
-//          nil
-type ZoneSettingsOverrideInitialSettingsPtrInput interface {
+//          ZoneSettingsOverrideInitialSettingArray{ ZoneSettingsOverrideInitialSettingArgs{...} }
+type ZoneSettingsOverrideInitialSettingArrayInput interface {
 	pulumi.Input
 
-	ToZoneSettingsOverrideInitialSettingsPtrOutput() ZoneSettingsOverrideInitialSettingsPtrOutput
-	ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingsPtrOutput
+	ToZoneSettingsOverrideInitialSettingArrayOutput() ZoneSettingsOverrideInitialSettingArrayOutput
+	ToZoneSettingsOverrideInitialSettingArrayOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingArrayOutput
 }
 
-type zoneSettingsOverrideInitialSettingsPtrType ZoneSettingsOverrideInitialSettingsArgs
+type ZoneSettingsOverrideInitialSettingArray []ZoneSettingsOverrideInitialSettingInput
 
-func ZoneSettingsOverrideInitialSettingsPtr(v *ZoneSettingsOverrideInitialSettingsArgs) ZoneSettingsOverrideInitialSettingsPtrInput {
-	return (*zoneSettingsOverrideInitialSettingsPtrType)(v)
+func (ZoneSettingsOverrideInitialSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneSettingsOverrideInitialSetting)(nil)).Elem()
 }
 
-func (*zoneSettingsOverrideInitialSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettings)(nil)).Elem()
+func (i ZoneSettingsOverrideInitialSettingArray) ToZoneSettingsOverrideInitialSettingArrayOutput() ZoneSettingsOverrideInitialSettingArrayOutput {
+	return i.ToZoneSettingsOverrideInitialSettingArrayOutputWithContext(context.Background())
 }
 
-func (i *zoneSettingsOverrideInitialSettingsPtrType) ToZoneSettingsOverrideInitialSettingsPtrOutput() ZoneSettingsOverrideInitialSettingsPtrOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(context.Background())
+func (i ZoneSettingsOverrideInitialSettingArray) ToZoneSettingsOverrideInitialSettingArrayOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingArrayOutput)
 }
 
-func (i *zoneSettingsOverrideInitialSettingsPtrType) ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsPtrOutput)
+type ZoneSettingsOverrideInitialSettingOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideInitialSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSetting)(nil)).Elem()
 }
 
-type ZoneSettingsOverrideInitialSettingsOutput struct{ *pulumi.OutputState }
-
-func (ZoneSettingsOverrideInitialSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettings)(nil)).Elem()
-}
-
-func (o ZoneSettingsOverrideInitialSettingsOutput) ToZoneSettingsOverrideInitialSettingsOutput() ZoneSettingsOverrideInitialSettingsOutput {
+func (o ZoneSettingsOverrideInitialSettingOutput) ToZoneSettingsOverrideInitialSettingOutput() ZoneSettingsOverrideInitialSettingOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) ToZoneSettingsOverrideInitialSettingsOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsOutput {
+func (o ZoneSettingsOverrideInitialSettingOutput) ToZoneSettingsOverrideInitialSettingOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) ToZoneSettingsOverrideInitialSettingsPtrOutput() ZoneSettingsOverrideInitialSettingsPtrOutput {
-	return o.ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(context.Background())
+func (o ZoneSettingsOverrideInitialSettingOutput) AlwaysOnline() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.AlwaysOnline }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettings {
-		return &v
-	}).(ZoneSettingsOverrideInitialSettingsPtrOutput)
-}
-func (o ZoneSettingsOverrideInitialSettingsOutput) AlwaysOnline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.AlwaysOnline }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) AlwaysUseHttps() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.AlwaysUseHttps }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) AlwaysUseHttps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.AlwaysUseHttps }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) AutomaticHttpsRewrites() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.AutomaticHttpsRewrites }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) AutomaticHttpsRewrites() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.AutomaticHttpsRewrites }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Brotli() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Brotli }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Brotli() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Brotli }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) BrowserCacheTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *int { return v.BrowserCacheTtl }).(pulumi.IntPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) BrowserCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *int { return v.BrowserCacheTtl }).(pulumi.IntPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) BrowserCheck() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.BrowserCheck }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) BrowserCheck() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.BrowserCheck }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) CacheLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.CacheLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) CacheLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.CacheLevel }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) ChallengeTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *int { return v.ChallengeTtl }).(pulumi.IntPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) ChallengeTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *int { return v.ChallengeTtl }).(pulumi.IntPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) CnameFlattening() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.CnameFlattening }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) CnameFlattening() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.CnameFlattening }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) DevelopmentMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) DevelopmentMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) EmailObfuscation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.EmailObfuscation }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) EmailObfuscation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.EmailObfuscation }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) H2Prioritization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.H2Prioritization }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) H2Prioritization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.H2Prioritization }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) HotlinkProtection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.HotlinkProtection }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) HotlinkProtection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.HotlinkProtection }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Http2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Http2 }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Http2() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Http2 }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Http3() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Http3 }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Http3() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Http3 }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) ImageResizing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.ImageResizing }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) ImageResizing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.ImageResizing }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) IpGeolocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.IpGeolocation }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) IpGeolocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.IpGeolocation }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Ipv6() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Ipv6() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) MaxUpload() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *int { return v.MaxUpload }).(pulumi.IntPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) MaxUpload() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *int { return v.MaxUpload }).(pulumi.IntPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) MinTlsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) MinTlsVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Minify() ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *ZoneSettingsOverrideInitialSettingMinify { return v.Minify }).(ZoneSettingsOverrideInitialSettingMinifyPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Minify() ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsMinify {
-		return v.Minify
-	}).(ZoneSettingsOverrideInitialSettingsMinifyPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Mirage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Mirage }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Mirage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Mirage }).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsOutput) MobileRedirect() ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsMobileRedirect {
+func (o ZoneSettingsOverrideInitialSettingOutput) MobileRedirect() ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *ZoneSettingsOverrideInitialSettingMobileRedirect {
 		return v.MobileRedirect
-	}).(ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput)
+	}).(ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.OpportunisticEncryption }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.OpportunisticEncryption }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) OpportunisticOnion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.OpportunisticOnion }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) OpportunisticOnion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.OpportunisticOnion }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Polish() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Polish }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Polish() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Polish }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) PrefetchPreload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.PrefetchPreload }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) PrefetchPreload() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.PrefetchPreload }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) PrivacyPass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.PrivacyPass }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) PrivacyPass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.PrivacyPass }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) PseudoIpv4() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.PseudoIpv4 }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) PseudoIpv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.PseudoIpv4 }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) ResponseBuffering() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.ResponseBuffering }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) ResponseBuffering() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.ResponseBuffering }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) RocketLoader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.RocketLoader }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) RocketLoader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.RocketLoader }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) SecurityHeader() ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsSecurityHeader {
+func (o ZoneSettingsOverrideInitialSettingOutput) SecurityHeader() ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *ZoneSettingsOverrideInitialSettingSecurityHeader {
 		return v.SecurityHeader
-	}).(ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput)
+	}).(ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) SecurityLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) ServerSideExclude() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.ServerSideExclude }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) ServerSideExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.ServerSideExclude }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Ssl }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Ssl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
 // Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
-func (o ZoneSettingsOverrideInitialSettingsOutput) Tls12Only() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Tls12Only() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Tls13() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Tls13 }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Tls13() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Tls13 }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) TlsClientAuth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.TlsClientAuth }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) TlsClientAuth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.TlsClientAuth }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) TrueClientIpHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) TrueClientIpHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.TrueClientIpHeader }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) UniversalSsl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) UniversalSsl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsOutput) Waf() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Waf }).(pulumi.StringPtrOutput)
-}
-
-// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-func (o ZoneSettingsOverrideInitialSettingsOutput) Webp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Webp }).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsOutput) Websockets() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.Websockets }).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsOutput) ZeroRtt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettings) *string { return v.ZeroRtt }).(pulumi.StringPtrOutput)
-}
-
-type ZoneSettingsOverrideInitialSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (ZoneSettingsOverrideInitialSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettings)(nil)).Elem()
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ToZoneSettingsOverrideInitialSettingsPtrOutput() ZoneSettingsOverrideInitialSettingsPtrOutput {
-	return o
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ToZoneSettingsOverrideInitialSettingsPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsPtrOutput {
-	return o
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Elem() ZoneSettingsOverrideInitialSettingsOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) ZoneSettingsOverrideInitialSettings { return *v }).(ZoneSettingsOverrideInitialSettingsOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) AlwaysOnline() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AlwaysOnline
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) AlwaysUseHttps() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AlwaysUseHttps
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) AutomaticHttpsRewrites() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AutomaticHttpsRewrites
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Brotli() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Brotli
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) BrowserCacheTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.BrowserCacheTtl
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) BrowserCheck() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.BrowserCheck
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) CacheLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CacheLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ChallengeTtl() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.ChallengeTtl
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) CnameFlattening() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CnameFlattening
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) DevelopmentMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.DevelopmentMode
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) EmailObfuscation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EmailObfuscation
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) H2Prioritization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.H2Prioritization
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) HotlinkProtection() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HotlinkProtection
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Http2() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Http2
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Http3() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Http3
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ImageResizing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ImageResizing
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) IpGeolocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.IpGeolocation
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Ipv6() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ipv6
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) MaxUpload() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxUpload
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) MinTlsVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MinTlsVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Minify() ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsMinify {
-		if v == nil {
-			return nil
-		}
-		return v.Minify
-	}).(ZoneSettingsOverrideInitialSettingsMinifyPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Mirage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mirage
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) MobileRedirect() ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsMobileRedirect {
-		if v == nil {
-			return nil
-		}
-		return v.MobileRedirect
-	}).(ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpportunisticEncryption
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) OpportunisticOnion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OpportunisticOnion
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OriginErrorPagePassThru
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Polish() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Polish
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) PrefetchPreload() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrefetchPreload
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) PrivacyPass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PrivacyPass
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) PseudoIpv4() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PseudoIpv4
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ResponseBuffering() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResponseBuffering
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) RocketLoader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RocketLoader
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) SecurityHeader() ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *ZoneSettingsOverrideInitialSettingsSecurityHeader {
-		if v == nil {
-			return nil
-		}
-		return v.SecurityHeader
-	}).(ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SecurityLevel
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ServerSideExclude() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ServerSideExclude
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) SortQueryStringForCache() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SortQueryStringForCache
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Ssl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Ssl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Tls12Only() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tls12Only
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Tls13() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tls13
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) TlsClientAuth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TlsClientAuth
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) TrueClientIpHeader() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TrueClientIpHeader
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) UniversalSsl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UniversalSsl
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Waf() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Waf
-	}).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Waf() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Waf }).(pulumi.StringPtrOutput)
 }
 
 // . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Webp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Webp
-	}).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Webp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Webp }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) Websockets() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Websockets
-	}).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) Websockets() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Websockets }).(pulumi.StringPtrOutput)
 }
 
-func (o ZoneSettingsOverrideInitialSettingsPtrOutput) ZeroRtt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ZeroRtt
-	}).(pulumi.StringPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingOutput) ZeroRtt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.ZeroRtt }).(pulumi.StringPtrOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsMinify struct {
+type ZoneSettingsOverrideInitialSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideInitialSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ZoneSettingsOverrideInitialSetting)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideInitialSettingArrayOutput) ToZoneSettingsOverrideInitialSettingArrayOutput() ZoneSettingsOverrideInitialSettingArrayOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingArrayOutput) ToZoneSettingsOverrideInitialSettingArrayOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingArrayOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingArrayOutput) Index(i pulumi.IntInput) ZoneSettingsOverrideInitialSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneSettingsOverrideInitialSetting {
+		return vs[0].([]ZoneSettingsOverrideInitialSetting)[vs[1].(int)]
+	}).(ZoneSettingsOverrideInitialSettingOutput)
+}
+
+type ZoneSettingsOverrideInitialSettingMinify struct {
 	// "on"/"off"
 	Css string `pulumi:"css"`
 	// "on"/"off"
@@ -15246,18 +16162,18 @@ type ZoneSettingsOverrideInitialSettingsMinify struct {
 	Js string `pulumi:"js"`
 }
 
-// ZoneSettingsOverrideInitialSettingsMinifyInput is an input type that accepts ZoneSettingsOverrideInitialSettingsMinifyArgs and ZoneSettingsOverrideInitialSettingsMinifyOutput values.
-// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingsMinifyInput` via:
+// ZoneSettingsOverrideInitialSettingMinifyInput is an input type that accepts ZoneSettingsOverrideInitialSettingMinifyArgs and ZoneSettingsOverrideInitialSettingMinifyOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingMinifyInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingsMinifyArgs{...}
-type ZoneSettingsOverrideInitialSettingsMinifyInput interface {
+//          ZoneSettingsOverrideInitialSettingMinifyArgs{...}
+type ZoneSettingsOverrideInitialSettingMinifyInput interface {
 	pulumi.Input
 
-	ToZoneSettingsOverrideInitialSettingsMinifyOutput() ZoneSettingsOverrideInitialSettingsMinifyOutput
-	ToZoneSettingsOverrideInitialSettingsMinifyOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingsMinifyOutput
+	ToZoneSettingsOverrideInitialSettingMinifyOutput() ZoneSettingsOverrideInitialSettingMinifyOutput
+	ToZoneSettingsOverrideInitialSettingMinifyOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingMinifyOutput
 }
 
-type ZoneSettingsOverrideInitialSettingsMinifyArgs struct {
+type ZoneSettingsOverrideInitialSettingMinifyArgs struct {
 	// "on"/"off"
 	Css pulumi.StringInput `pulumi:"css"`
 	// "on"/"off"
@@ -15266,121 +16182,119 @@ type ZoneSettingsOverrideInitialSettingsMinifyArgs struct {
 	Js pulumi.StringInput `pulumi:"js"`
 }
 
-func (ZoneSettingsOverrideInitialSettingsMinifyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingsMinify)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingMinifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMinify)(nil)).Elem()
 }
 
-func (i ZoneSettingsOverrideInitialSettingsMinifyArgs) ToZoneSettingsOverrideInitialSettingsMinifyOutput() ZoneSettingsOverrideInitialSettingsMinifyOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsMinifyOutputWithContext(context.Background())
+func (i ZoneSettingsOverrideInitialSettingMinifyArgs) ToZoneSettingsOverrideInitialSettingMinifyOutput() ZoneSettingsOverrideInitialSettingMinifyOutput {
+	return i.ToZoneSettingsOverrideInitialSettingMinifyOutputWithContext(context.Background())
 }
 
-func (i ZoneSettingsOverrideInitialSettingsMinifyArgs) ToZoneSettingsOverrideInitialSettingsMinifyOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMinifyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsMinifyOutput)
+func (i ZoneSettingsOverrideInitialSettingMinifyArgs) ToZoneSettingsOverrideInitialSettingMinifyOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMinifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingMinifyOutput)
 }
 
-func (i ZoneSettingsOverrideInitialSettingsMinifyArgs) ToZoneSettingsOverrideInitialSettingsMinifyPtrOutput() ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(context.Background())
+func (i ZoneSettingsOverrideInitialSettingMinifyArgs) ToZoneSettingsOverrideInitialSettingMinifyPtrOutput() ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(context.Background())
 }
 
-func (i ZoneSettingsOverrideInitialSettingsMinifyArgs) ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsMinifyOutput).ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(ctx)
+func (i ZoneSettingsOverrideInitialSettingMinifyArgs) ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingMinifyOutput).ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(ctx)
 }
 
-// ZoneSettingsOverrideInitialSettingsMinifyPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingsMinifyArgs, ZoneSettingsOverrideInitialSettingsMinifyPtr and ZoneSettingsOverrideInitialSettingsMinifyPtrOutput values.
-// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingsMinifyPtrInput` via:
+// ZoneSettingsOverrideInitialSettingMinifyPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingMinifyArgs, ZoneSettingsOverrideInitialSettingMinifyPtr and ZoneSettingsOverrideInitialSettingMinifyPtrOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingMinifyPtrInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingsMinifyArgs{...}
+//          ZoneSettingsOverrideInitialSettingMinifyArgs{...}
 //
 //  or:
 //
 //          nil
-type ZoneSettingsOverrideInitialSettingsMinifyPtrInput interface {
+type ZoneSettingsOverrideInitialSettingMinifyPtrInput interface {
 	pulumi.Input
 
-	ToZoneSettingsOverrideInitialSettingsMinifyPtrOutput() ZoneSettingsOverrideInitialSettingsMinifyPtrOutput
-	ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingsMinifyPtrOutput
+	ToZoneSettingsOverrideInitialSettingMinifyPtrOutput() ZoneSettingsOverrideInitialSettingMinifyPtrOutput
+	ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingMinifyPtrOutput
 }
 
-type zoneSettingsOverrideInitialSettingsMinifyPtrType ZoneSettingsOverrideInitialSettingsMinifyArgs
+type zoneSettingsOverrideInitialSettingMinifyPtrType ZoneSettingsOverrideInitialSettingMinifyArgs
 
-func ZoneSettingsOverrideInitialSettingsMinifyPtr(v *ZoneSettingsOverrideInitialSettingsMinifyArgs) ZoneSettingsOverrideInitialSettingsMinifyPtrInput {
-	return (*zoneSettingsOverrideInitialSettingsMinifyPtrType)(v)
+func ZoneSettingsOverrideInitialSettingMinifyPtr(v *ZoneSettingsOverrideInitialSettingMinifyArgs) ZoneSettingsOverrideInitialSettingMinifyPtrInput {
+	return (*zoneSettingsOverrideInitialSettingMinifyPtrType)(v)
 }
 
-func (*zoneSettingsOverrideInitialSettingsMinifyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingsMinify)(nil)).Elem()
+func (*zoneSettingsOverrideInitialSettingMinifyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingMinify)(nil)).Elem()
 }
 
-func (i *zoneSettingsOverrideInitialSettingsMinifyPtrType) ToZoneSettingsOverrideInitialSettingsMinifyPtrOutput() ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(context.Background())
+func (i *zoneSettingsOverrideInitialSettingMinifyPtrType) ToZoneSettingsOverrideInitialSettingMinifyPtrOutput() ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(context.Background())
 }
 
-func (i *zoneSettingsOverrideInitialSettingsMinifyPtrType) ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsMinifyPtrOutput)
+func (i *zoneSettingsOverrideInitialSettingMinifyPtrType) ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingMinifyPtrOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsMinifyOutput struct{ *pulumi.OutputState }
+type ZoneSettingsOverrideInitialSettingMinifyOutput struct{ *pulumi.OutputState }
 
-func (ZoneSettingsOverrideInitialSettingsMinifyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingsMinify)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingMinifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMinify)(nil)).Elem()
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) ToZoneSettingsOverrideInitialSettingsMinifyOutput() ZoneSettingsOverrideInitialSettingsMinifyOutput {
+func (o ZoneSettingsOverrideInitialSettingMinifyOutput) ToZoneSettingsOverrideInitialSettingMinifyOutput() ZoneSettingsOverrideInitialSettingMinifyOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) ToZoneSettingsOverrideInitialSettingsMinifyOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMinifyOutput {
+func (o ZoneSettingsOverrideInitialSettingMinifyOutput) ToZoneSettingsOverrideInitialSettingMinifyOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMinifyOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) ToZoneSettingsOverrideInitialSettingsMinifyPtrOutput() ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return o.ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(context.Background())
+func (o ZoneSettingsOverrideInitialSettingMinifyOutput) ToZoneSettingsOverrideInitialSettingMinifyPtrOutput() ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
+	return o.ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(context.Background())
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) *ZoneSettingsOverrideInitialSettingsMinify {
+func (o ZoneSettingsOverrideInitialSettingMinifyOutput) ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMinify) *ZoneSettingsOverrideInitialSettingMinify {
 		return &v
-	}).(ZoneSettingsOverrideInitialSettingsMinifyPtrOutput)
+	}).(ZoneSettingsOverrideInitialSettingMinifyPtrOutput)
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) Css() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) string { return v.Css }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingMinifyOutput) Css() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMinify) string { return v.Css }).(pulumi.StringOutput)
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) Html() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) string { return v.Html }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingMinifyOutput) Html() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMinify) string { return v.Html }).(pulumi.StringOutput)
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMinifyOutput) Js() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMinify) string { return v.Js }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingMinifyOutput) Js() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMinify) string { return v.Js }).(pulumi.StringOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsMinifyPtrOutput struct{ *pulumi.OutputState }
+type ZoneSettingsOverrideInitialSettingMinifyPtrOutput struct{ *pulumi.OutputState }
 
-func (ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingsMinify)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingMinifyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingMinify)(nil)).Elem()
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) ToZoneSettingsOverrideInitialSettingsMinifyPtrOutput() ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
+func (o ZoneSettingsOverrideInitialSettingMinifyPtrOutput) ToZoneSettingsOverrideInitialSettingMinifyPtrOutput() ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) ToZoneSettingsOverrideInitialSettingsMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMinifyPtrOutput {
+func (o ZoneSettingsOverrideInitialSettingMinifyPtrOutput) ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Elem() ZoneSettingsOverrideInitialSettingsMinifyOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMinify) ZoneSettingsOverrideInitialSettingsMinify {
-		return *v
-	}).(ZoneSettingsOverrideInitialSettingsMinifyOutput)
+func (o ZoneSettingsOverrideInitialSettingMinifyPtrOutput) Elem() ZoneSettingsOverrideInitialSettingMinifyOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMinify) ZoneSettingsOverrideInitialSettingMinify { return *v }).(ZoneSettingsOverrideInitialSettingMinifyOutput)
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Css() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMinify) *string {
+func (o ZoneSettingsOverrideInitialSettingMinifyPtrOutput) Css() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMinify) *string {
 		if v == nil {
 			return nil
 		}
@@ -15389,8 +16303,8 @@ func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Css() pulumi.StringP
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Html() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMinify) *string {
+func (o ZoneSettingsOverrideInitialSettingMinifyPtrOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMinify) *string {
 		if v == nil {
 			return nil
 		}
@@ -15399,8 +16313,8 @@ func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Html() pulumi.String
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Js() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMinify) *string {
+func (o ZoneSettingsOverrideInitialSettingMinifyPtrOutput) Js() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMinify) *string {
 		if v == nil {
 			return nil
 		}
@@ -15408,7 +16322,7 @@ func (o ZoneSettingsOverrideInitialSettingsMinifyPtrOutput) Js() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsMobileRedirect struct {
+type ZoneSettingsOverrideInitialSettingMobileRedirect struct {
 	// String value
 	MobileSubdomain string `pulumi:"mobileSubdomain"`
 	// "on"/"off"
@@ -15417,18 +16331,18 @@ type ZoneSettingsOverrideInitialSettingsMobileRedirect struct {
 	StripUri bool `pulumi:"stripUri"`
 }
 
-// ZoneSettingsOverrideInitialSettingsMobileRedirectInput is an input type that accepts ZoneSettingsOverrideInitialSettingsMobileRedirectArgs and ZoneSettingsOverrideInitialSettingsMobileRedirectOutput values.
-// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingsMobileRedirectInput` via:
+// ZoneSettingsOverrideInitialSettingMobileRedirectInput is an input type that accepts ZoneSettingsOverrideInitialSettingMobileRedirectArgs and ZoneSettingsOverrideInitialSettingMobileRedirectOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingMobileRedirectInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingsMobileRedirectArgs{...}
-type ZoneSettingsOverrideInitialSettingsMobileRedirectInput interface {
+//          ZoneSettingsOverrideInitialSettingMobileRedirectArgs{...}
+type ZoneSettingsOverrideInitialSettingMobileRedirectInput interface {
 	pulumi.Input
 
-	ToZoneSettingsOverrideInitialSettingsMobileRedirectOutput() ZoneSettingsOverrideInitialSettingsMobileRedirectOutput
-	ToZoneSettingsOverrideInitialSettingsMobileRedirectOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingsMobileRedirectOutput
+	ToZoneSettingsOverrideInitialSettingMobileRedirectOutput() ZoneSettingsOverrideInitialSettingMobileRedirectOutput
+	ToZoneSettingsOverrideInitialSettingMobileRedirectOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectOutput
 }
 
-type ZoneSettingsOverrideInitialSettingsMobileRedirectArgs struct {
+type ZoneSettingsOverrideInitialSettingMobileRedirectArgs struct {
 	// String value
 	MobileSubdomain pulumi.StringInput `pulumi:"mobileSubdomain"`
 	// "on"/"off"
@@ -15437,121 +16351,121 @@ type ZoneSettingsOverrideInitialSettingsMobileRedirectArgs struct {
 	StripUri pulumi.BoolInput `pulumi:"stripUri"`
 }
 
-func (ZoneSettingsOverrideInitialSettingsMobileRedirectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingsMobileRedirect)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingMobileRedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMobileRedirect)(nil)).Elem()
 }
 
-func (i ZoneSettingsOverrideInitialSettingsMobileRedirectArgs) ToZoneSettingsOverrideInitialSettingsMobileRedirectOutput() ZoneSettingsOverrideInitialSettingsMobileRedirectOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsMobileRedirectOutputWithContext(context.Background())
+func (i ZoneSettingsOverrideInitialSettingMobileRedirectArgs) ToZoneSettingsOverrideInitialSettingMobileRedirectOutput() ZoneSettingsOverrideInitialSettingMobileRedirectOutput {
+	return i.ToZoneSettingsOverrideInitialSettingMobileRedirectOutputWithContext(context.Background())
 }
 
-func (i ZoneSettingsOverrideInitialSettingsMobileRedirectArgs) ToZoneSettingsOverrideInitialSettingsMobileRedirectOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMobileRedirectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsMobileRedirectOutput)
+func (i ZoneSettingsOverrideInitialSettingMobileRedirectArgs) ToZoneSettingsOverrideInitialSettingMobileRedirectOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingMobileRedirectOutput)
 }
 
-func (i ZoneSettingsOverrideInitialSettingsMobileRedirectArgs) ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(context.Background())
+func (i ZoneSettingsOverrideInitialSettingMobileRedirectArgs) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(context.Background())
 }
 
-func (i ZoneSettingsOverrideInitialSettingsMobileRedirectArgs) ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsMobileRedirectOutput).ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(ctx)
+func (i ZoneSettingsOverrideInitialSettingMobileRedirectArgs) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingMobileRedirectOutput).ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(ctx)
 }
 
-// ZoneSettingsOverrideInitialSettingsMobileRedirectPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingsMobileRedirectArgs, ZoneSettingsOverrideInitialSettingsMobileRedirectPtr and ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput values.
-// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingsMobileRedirectPtrInput` via:
+// ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingMobileRedirectArgs, ZoneSettingsOverrideInitialSettingMobileRedirectPtr and ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingsMobileRedirectArgs{...}
+//          ZoneSettingsOverrideInitialSettingMobileRedirectArgs{...}
 //
 //  or:
 //
 //          nil
-type ZoneSettingsOverrideInitialSettingsMobileRedirectPtrInput interface {
+type ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput interface {
 	pulumi.Input
 
-	ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput
-	ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput
+	ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput
+	ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput
 }
 
-type zoneSettingsOverrideInitialSettingsMobileRedirectPtrType ZoneSettingsOverrideInitialSettingsMobileRedirectArgs
+type zoneSettingsOverrideInitialSettingMobileRedirectPtrType ZoneSettingsOverrideInitialSettingMobileRedirectArgs
 
-func ZoneSettingsOverrideInitialSettingsMobileRedirectPtr(v *ZoneSettingsOverrideInitialSettingsMobileRedirectArgs) ZoneSettingsOverrideInitialSettingsMobileRedirectPtrInput {
-	return (*zoneSettingsOverrideInitialSettingsMobileRedirectPtrType)(v)
+func ZoneSettingsOverrideInitialSettingMobileRedirectPtr(v *ZoneSettingsOverrideInitialSettingMobileRedirectArgs) ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput {
+	return (*zoneSettingsOverrideInitialSettingMobileRedirectPtrType)(v)
 }
 
-func (*zoneSettingsOverrideInitialSettingsMobileRedirectPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingsMobileRedirect)(nil)).Elem()
+func (*zoneSettingsOverrideInitialSettingMobileRedirectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingMobileRedirect)(nil)).Elem()
 }
 
-func (i *zoneSettingsOverrideInitialSettingsMobileRedirectPtrType) ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(context.Background())
+func (i *zoneSettingsOverrideInitialSettingMobileRedirectPtrType) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(context.Background())
 }
 
-func (i *zoneSettingsOverrideInitialSettingsMobileRedirectPtrType) ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput)
+func (i *zoneSettingsOverrideInitialSettingMobileRedirectPtrType) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsMobileRedirectOutput struct{ *pulumi.OutputState }
+type ZoneSettingsOverrideInitialSettingMobileRedirectOutput struct{ *pulumi.OutputState }
 
-func (ZoneSettingsOverrideInitialSettingsMobileRedirectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingsMobileRedirect)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingMobileRedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMobileRedirect)(nil)).Elem()
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingsMobileRedirectOutput() ZoneSettingsOverrideInitialSettingsMobileRedirectOutput {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingMobileRedirectOutput() ZoneSettingsOverrideInitialSettingMobileRedirectOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingsMobileRedirectOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMobileRedirectOutput {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingMobileRedirectOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return o.ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(context.Background())
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
+	return o.ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(context.Background())
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMobileRedirect) *ZoneSettingsOverrideInitialSettingsMobileRedirect {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMobileRedirect) *ZoneSettingsOverrideInitialSettingMobileRedirect {
 		return &v
-	}).(ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput)
+	}).(ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput)
 }
 
 // String value
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectOutput) MobileSubdomain() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMobileRedirect) string { return v.MobileSubdomain }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) MobileSubdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMobileRedirect) string { return v.MobileSubdomain }).(pulumi.StringOutput)
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMobileRedirect) string { return v.Status }).(pulumi.StringOutput)
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMobileRedirect) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectOutput) StripUri() pulumi.BoolOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsMobileRedirect) bool { return v.StripUri }).(pulumi.BoolOutput)
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) StripUri() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMobileRedirect) bool { return v.StripUri }).(pulumi.BoolOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput struct{ *pulumi.OutputState }
+type ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput struct{ *pulumi.OutputState }
 
-func (ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingsMobileRedirect)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingMobileRedirect)(nil)).Elem()
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput() ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) ToZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) Elem() ZoneSettingsOverrideInitialSettingsMobileRedirectOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMobileRedirect) ZoneSettingsOverrideInitialSettingsMobileRedirect {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) Elem() ZoneSettingsOverrideInitialSettingMobileRedirectOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMobileRedirect) ZoneSettingsOverrideInitialSettingMobileRedirect {
 		return *v
-	}).(ZoneSettingsOverrideInitialSettingsMobileRedirectOutput)
+	}).(ZoneSettingsOverrideInitialSettingMobileRedirectOutput)
 }
 
 // String value
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) MobileSubdomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMobileRedirect) *string {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) MobileSubdomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMobileRedirect) *string {
 		if v == nil {
 			return nil
 		}
@@ -15560,8 +16474,8 @@ func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) MobileSubdom
 }
 
 // "on"/"off"
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMobileRedirect) *string {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMobileRedirect) *string {
 		if v == nil {
 			return nil
 		}
@@ -15570,8 +16484,8 @@ func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) Status() pul
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) StripUri() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsMobileRedirect) *bool {
+func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) StripUri() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMobileRedirect) *bool {
 		if v == nil {
 			return nil
 		}
@@ -15579,7 +16493,7 @@ func (o ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput) StripUri() p
 	}).(pulumi.BoolPtrOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsSecurityHeader struct {
+type ZoneSettingsOverrideInitialSettingSecurityHeader struct {
 	// true/false
 	Enabled *bool `pulumi:"enabled"`
 	// true/false
@@ -15592,18 +16506,18 @@ type ZoneSettingsOverrideInitialSettingsSecurityHeader struct {
 	Preload *bool `pulumi:"preload"`
 }
 
-// ZoneSettingsOverrideInitialSettingsSecurityHeaderInput is an input type that accepts ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs and ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput values.
-// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingsSecurityHeaderInput` via:
+// ZoneSettingsOverrideInitialSettingSecurityHeaderInput is an input type that accepts ZoneSettingsOverrideInitialSettingSecurityHeaderArgs and ZoneSettingsOverrideInitialSettingSecurityHeaderOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingSecurityHeaderInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs{...}
-type ZoneSettingsOverrideInitialSettingsSecurityHeaderInput interface {
+//          ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{...}
+type ZoneSettingsOverrideInitialSettingSecurityHeaderInput interface {
 	pulumi.Input
 
-	ToZoneSettingsOverrideInitialSettingsSecurityHeaderOutput() ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput
-	ToZoneSettingsOverrideInitialSettingsSecurityHeaderOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput
+	ToZoneSettingsOverrideInitialSettingSecurityHeaderOutput() ZoneSettingsOverrideInitialSettingSecurityHeaderOutput
+	ToZoneSettingsOverrideInitialSettingSecurityHeaderOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderOutput
 }
 
-type ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs struct {
+type ZoneSettingsOverrideInitialSettingSecurityHeaderArgs struct {
 	// true/false
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// true/false
@@ -15616,131 +16530,131 @@ type ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs struct {
 	Preload pulumi.BoolPtrInput `pulumi:"preload"`
 }
 
-func (ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingsSecurityHeader)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingSecurityHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingSecurityHeader)(nil)).Elem()
 }
 
-func (i ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs) ToZoneSettingsOverrideInitialSettingsSecurityHeaderOutput() ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsSecurityHeaderOutputWithContext(context.Background())
+func (i ZoneSettingsOverrideInitialSettingSecurityHeaderArgs) ToZoneSettingsOverrideInitialSettingSecurityHeaderOutput() ZoneSettingsOverrideInitialSettingSecurityHeaderOutput {
+	return i.ToZoneSettingsOverrideInitialSettingSecurityHeaderOutputWithContext(context.Background())
 }
 
-func (i ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs) ToZoneSettingsOverrideInitialSettingsSecurityHeaderOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput)
+func (i ZoneSettingsOverrideInitialSettingSecurityHeaderArgs) ToZoneSettingsOverrideInitialSettingSecurityHeaderOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingSecurityHeaderOutput)
 }
 
-func (i ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs) ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(context.Background())
+func (i ZoneSettingsOverrideInitialSettingSecurityHeaderArgs) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(context.Background())
 }
 
-func (i ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs) ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput).ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(ctx)
+func (i ZoneSettingsOverrideInitialSettingSecurityHeaderArgs) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingSecurityHeaderOutput).ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(ctx)
 }
 
-// ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs, ZoneSettingsOverrideInitialSettingsSecurityHeaderPtr and ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput values.
-// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrInput` via:
+// ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingSecurityHeaderArgs, ZoneSettingsOverrideInitialSettingSecurityHeaderPtr and ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput` via:
 //
-//          ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs{...}
+//          ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{...}
 //
 //  or:
 //
 //          nil
-type ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrInput interface {
+type ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput interface {
 	pulumi.Input
 
-	ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput
-	ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput
+	ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput
+	ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput
 }
 
-type zoneSettingsOverrideInitialSettingsSecurityHeaderPtrType ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs
+type zoneSettingsOverrideInitialSettingSecurityHeaderPtrType ZoneSettingsOverrideInitialSettingSecurityHeaderArgs
 
-func ZoneSettingsOverrideInitialSettingsSecurityHeaderPtr(v *ZoneSettingsOverrideInitialSettingsSecurityHeaderArgs) ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrInput {
-	return (*zoneSettingsOverrideInitialSettingsSecurityHeaderPtrType)(v)
+func ZoneSettingsOverrideInitialSettingSecurityHeaderPtr(v *ZoneSettingsOverrideInitialSettingSecurityHeaderArgs) ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput {
+	return (*zoneSettingsOverrideInitialSettingSecurityHeaderPtrType)(v)
 }
 
-func (*zoneSettingsOverrideInitialSettingsSecurityHeaderPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingsSecurityHeader)(nil)).Elem()
+func (*zoneSettingsOverrideInitialSettingSecurityHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingSecurityHeader)(nil)).Elem()
 }
 
-func (i *zoneSettingsOverrideInitialSettingsSecurityHeaderPtrType) ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return i.ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(context.Background())
+func (i *zoneSettingsOverrideInitialSettingSecurityHeaderPtrType) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(context.Background())
 }
 
-func (i *zoneSettingsOverrideInitialSettingsSecurityHeaderPtrType) ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput)
+func (i *zoneSettingsOverrideInitialSettingSecurityHeaderPtrType) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput struct{ *pulumi.OutputState }
+type ZoneSettingsOverrideInitialSettingSecurityHeaderOutput struct{ *pulumi.OutputState }
 
-func (ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingsSecurityHeader)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingSecurityHeader)(nil)).Elem()
 }
 
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingsSecurityHeaderOutput() ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingSecurityHeaderOutput() ZoneSettingsOverrideInitialSettingSecurityHeaderOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingsSecurityHeaderOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingSecurityHeaderOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return o.ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(context.Background())
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
+	return o.ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(context.Background())
 }
 
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *ZoneSettingsOverrideInitialSettingsSecurityHeader {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingSecurityHeader) *ZoneSettingsOverrideInitialSettingSecurityHeader {
 		return &v
-	}).(ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput)
+	}).(ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput)
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingSecurityHeader) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool { return v.IncludeSubdomains }).(pulumi.BoolPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingSecurityHeader) *bool { return v.IncludeSubdomains }).(pulumi.BoolPtrOutput)
 }
 
 // Integer
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingSecurityHeader) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) Nosniff() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool { return v.Nosniff }).(pulumi.BoolPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) Nosniff() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingSecurityHeader) *bool { return v.Nosniff }).(pulumi.BoolPtrOutput)
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput) Preload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool { return v.Preload }).(pulumi.BoolPtrOutput)
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) Preload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingSecurityHeader) *bool { return v.Preload }).(pulumi.BoolPtrOutput)
 }
 
-type ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput struct{ *pulumi.OutputState }
+type ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput struct{ *pulumi.OutputState }
 
-func (ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingsSecurityHeader)(nil)).Elem()
+func (ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingSecurityHeader)(nil)).Elem()
 }
 
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput() ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) ToZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
 	return o
 }
 
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Elem() ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) ZoneSettingsOverrideInitialSettingsSecurityHeader {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) Elem() ZoneSettingsOverrideInitialSettingSecurityHeaderOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingSecurityHeader) ZoneSettingsOverrideInitialSettingSecurityHeader {
 		return *v
-	}).(ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput)
+	}).(ZoneSettingsOverrideInitialSettingSecurityHeaderOutput)
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingSecurityHeader) *bool {
 		if v == nil {
 			return nil
 		}
@@ -15749,8 +16663,8 @@ func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Enabled() pu
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingSecurityHeader) *bool {
 		if v == nil {
 			return nil
 		}
@@ -15759,8 +16673,8 @@ func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) IncludeSubdo
 }
 
 // Integer
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) MaxAge() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *int {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) MaxAge() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingSecurityHeader) *int {
 		if v == nil {
 			return nil
 		}
@@ -15769,8 +16683,8 @@ func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) MaxAge() pul
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Nosniff() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) Nosniff() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingSecurityHeader) *bool {
 		if v == nil {
 			return nil
 		}
@@ -15779,8 +16693,8 @@ func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Nosniff() pu
 }
 
 // true/false
-func (o ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput) Preload() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingsSecurityHeader) *bool {
+func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) Preload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingSecurityHeader) *bool {
 		if v == nil {
 			return nil
 		}
@@ -18078,6 +18992,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupRequireSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyApprovalGroupOutput{})
+	pulumi.RegisterOutputType(AccessPolicyApprovalGroupArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeAzureOutput{})
@@ -18122,10 +19038,6 @@ func init() {
 	pulumi.RegisterOutputType(ApiTokenConditionRequestIpPtrOutput{})
 	pulumi.RegisterOutputType(ApiTokenPolicyOutput{})
 	pulumi.RegisterOutputType(ApiTokenPolicyArrayOutput{})
-	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationOutput{})
-	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationPtrOutput{})
-	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationHttpOutput{})
-	pulumi.RegisterOutputType(CustomHostnameOwnershipVerificationHttpPtrOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslArrayOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslSettingOutput{})
@@ -18206,28 +19118,44 @@ func init() {
 	pulumi.RegisterOutputType(RecordDataPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleOutput{})
 	pulumi.RegisterOutputType(RulesetRuleArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterOverridesOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterOverridesPtrOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterOverridesCategoryOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterOverridesCategoryArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterOverridesRuleOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterOverridesRuleArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterUriOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterUriArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterUriPathOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterUriPathArrayOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterUriQueryOutput{})
-	pulumi.RegisterOutputType(RulesetRuleActionParameterUriQueryArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersMatchedDataOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersMatchedDataPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesCategoryOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesCategoryArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesRuleOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesRuleArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersUriOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPathOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPathPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersUriQueryOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersUriQueryPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleRatelimitOutput{})
+	pulumi.RegisterOutputType(RulesetRuleRatelimitPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginDnsOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginDnsPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginPortRangeOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginPortRangePtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountAntivirusOutput{})
+	pulumi.RegisterOutputType(TeamsAccountAntivirusPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountBlockPageOutput{})
+	pulumi.RegisterOutputType(TeamsAccountBlockPagePtrOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkArrayOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsBisoAdminControlsOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overrideOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overridePtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingOutput{})
@@ -18238,16 +19166,14 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptWebassemblyBindingArrayOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownConfigurationArrayOutput{})
-	pulumi.RegisterOutputType(ZoneMetaOutput{})
-	pulumi.RegisterOutputType(ZoneMetaPtrOutput{})
-	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingsOutput{})
-	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingsPtrOutput{})
-	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingsMinifyOutput{})
-	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingsMinifyPtrOutput{})
-	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingsMobileRedirectOutput{})
-	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingsMobileRedirectPtrOutput{})
-	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingsSecurityHeaderOutput{})
-	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingsSecurityHeaderPtrOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingArrayOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMinifyOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMinifyPtrOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMobileRedirectOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingSecurityHeaderOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsMinifyOutput{})

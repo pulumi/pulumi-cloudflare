@@ -30,7 +30,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> JumpStart { get; private set; } = null!;
 
         [Output("meta")]
-        public Output<Outputs.ZoneMeta> Meta { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, bool>> Meta { get; private set; } = null!;
 
         /// <summary>
         /// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
@@ -172,7 +172,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? JumpStart { get; set; }
 
         [Input("meta")]
-        public Input<Inputs.ZoneMetaGetArgs>? Meta { get; set; }
+        private InputMap<bool>? _meta;
+        public InputMap<bool> Meta
+        {
+            get => _meta ?? (_meta = new InputMap<bool>());
+            set => _meta = value;
+        }
 
         [Input("nameServers")]
         private InputList<string>? _nameServers;

@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsLocationNetwork
     {
+        /// <summary>
+        /// ID of the teams location.
+        /// </summary>
         public readonly string? Id;
         public readonly string Network;
 

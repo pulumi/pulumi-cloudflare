@@ -29,10 +29,10 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs
     ///             {
-    ///                 Bundle_method = "ubiquitous",
+    ///                 BundleMethod = "ubiquitous",
     ///                 Certificate = "-----INSERT CERTIFICATE-----",
-    ///                 Geo_restrictions = "us",
-    ///                 Private_key = "-----INSERT PRIVATE KEY-----",
+    ///                 GeoRestrictions = "us",
+    ///                 PrivateKey = "-----INSERT PRIVATE KEY-----",
     ///                 Type = "legacy_custom",
     ///             },
     ///             ZoneId = cloudflareZoneId,

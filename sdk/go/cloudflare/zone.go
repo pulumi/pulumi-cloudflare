@@ -25,7 +25,7 @@ type Zone struct {
 
 	// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
 	JumpStart pulumi.BoolPtrOutput `pulumi:"jumpStart"`
-	Meta      ZoneMetaOutput       `pulumi:"meta"`
+	Meta      pulumi.BoolMapOutput `pulumi:"meta"`
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
@@ -79,8 +79,8 @@ func GetZone(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Zone resources.
 type zoneState struct {
 	// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
-	JumpStart *bool     `pulumi:"jumpStart"`
-	Meta      *ZoneMeta `pulumi:"meta"`
+	JumpStart *bool           `pulumi:"jumpStart"`
+	Meta      map[string]bool `pulumi:"meta"`
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
 	NameServers []string `pulumi:"nameServers"`
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
@@ -104,7 +104,7 @@ type zoneState struct {
 type ZoneState struct {
 	// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
 	JumpStart pulumi.BoolPtrInput
-	Meta      ZoneMetaPtrInput
+	Meta      pulumi.BoolMapInput
 	// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
 	NameServers pulumi.StringArrayInput
 	// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.

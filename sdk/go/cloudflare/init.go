@@ -28,6 +28,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessGroup{}
 	case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
 		r = &AccessIdentityProvider{}
+	case "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration":
+		r = &AccessKeysConfiguration{}
 	case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
 		r = &AccessMutualTlsCertificate{}
 	case "cloudflare:index/accessPolicy:AccessPolicy":
@@ -102,10 +104,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SpectrumApplication{}
 	case "cloudflare:index/staticRoute:StaticRoute":
 		r = &StaticRoute{}
+	case "cloudflare:index/teamsAccount:TeamsAccount":
+		r = &TeamsAccount{}
 	case "cloudflare:index/teamsList:TeamsList":
 		r = &TeamsList{}
 	case "cloudflare:index/teamsLocation:TeamsLocation":
 		r = &TeamsLocation{}
+	case "cloudflare:index/teamsRule:TeamsRule":
+		r = &TeamsRule{}
 	case "cloudflare:index/wafGroup:WafGroup":
 		r = &WafGroup{}
 	case "cloudflare:index/wafOverride:WafOverride":
@@ -183,6 +189,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessIdentityProvider",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessKeysConfiguration",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -372,12 +383,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/teamsAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/teamsList",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/teamsLocation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/teamsRule",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

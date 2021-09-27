@@ -10,7 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets.
+    /// The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)
+    /// allows you to create and deploy rules and rulesets.
     /// The engine syntax, inspired by the Wireshark Display Filter language, is the
     /// same syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine
     /// in different products, allowing you to configure several products using the same
@@ -56,12 +57,9 @@ namespace Pulumi.Cloudflare
     ///                 new Cloudflare.Inputs.RulesetRuleArgs
     ///                 {
     ///                     Action = "execute",
-    ///                     ActionParameters = 
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
     ///                     {
-    ///                         new Cloudflare.Inputs.RulesetRuleActionParameterArgs
-    ///                         {
-    ///                             Id = "efb7b8c949ac4650a09736fc376e9aee",
-    ///                         },
+    ///                         Id = "efb7b8c949ac4650a09736fc376e9aee",
     ///                     },
     ///                     Description = "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset",
     ///                     Enabled = true,
@@ -82,27 +80,24 @@ namespace Pulumi.Cloudflare
     ///                 new Cloudflare.Inputs.RulesetRuleArgs
     ///                 {
     ///                     Action = "execute",
-    ///                     ActionParameters = 
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
     ///                     {
-    ///                         new Cloudflare.Inputs.RulesetRuleActionParameterArgs
+    ///                         Id = "efb7b8c949ac4650a09736fc376e9aee",
+    ///                         Overrides = new Cloudflare.Inputs.RulesetRuleActionParametersOverridesArgs
     ///                         {
-    ///                             Id = "efb7b8c949ac4650a09736fc376e9aee",
-    ///                             Overrides = new Cloudflare.Inputs.RulesetRuleActionParameterOverridesArgs
+    ///                             Categories = 
     ///                             {
-    ///                                 Categories = 
+    ///                                 new Cloudflare.Inputs.RulesetRuleActionParametersOverridesCategoryArgs
     ///                                 {
-    ///                                     new Cloudflare.Inputs.RulesetRuleActionParameterOverridesCategoryArgs
-    ///                                     {
-    ///                                         Action = "block",
-    ///                                         Category = "wordpress",
-    ///                                         Enabled = true,
-    ///                                     },
-    ///                                     new Cloudflare.Inputs.RulesetRuleActionParameterOverridesCategoryArgs
-    ///                                     {
-    ///                                         Action = "block",
-    ///                                         Category = "joomla",
-    ///                                         Enabled = true,
-    ///                                     },
+    ///                                     Action = "block",
+    ///                                     Category = "wordpress",
+    ///                                     Enabled = true,
+    ///                                 },
+    ///                                 new Cloudflare.Inputs.RulesetRuleActionParametersOverridesCategoryArgs
+    ///                                 {
+    ///                                     Action = "block",
+    ///                                     Category = "joomla",
+    ///                                     Enabled = true,
     ///                                 },
     ///                             },
     ///                         },
@@ -110,6 +105,136 @@ namespace Pulumi.Cloudflare
     ///                     Description = "overrides to only enable wordpress rules to block",
     ///                     Enabled = false,
     ///                     Expression = "true",
+    ///                 },
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
+    ///         // Rewrite the URI path component to a static path
+    ///         var transformUriRulePath = new Cloudflare.Ruleset("transformUriRulePath", new Cloudflare.RulesetArgs
+    ///         {
+    ///             Description = "change the URI path to a new static path",
+    ///             Kind = "zone",
+    ///             Name = "transform rule for URI path",
+    ///             Phase = "http_request_transform",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "rewrite",
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
+    ///                     {
+    ///                         Uri = new Cloudflare.Inputs.RulesetRuleActionParametersUriArgs
+    ///                         {
+    ///                             Path = new Cloudflare.Inputs.RulesetRuleActionParametersUriPathArgs
+    ///                             {
+    ///                                 Value = "/my-new-route",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Description = "example URI path transform rule",
+    ///                     Enabled = true,
+    ///                     Expression = "(http.host eq \"example.com\" and http.uri.path eq \"/old-path\")",
+    ///                 },
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
+    ///         // Rewrite the URI query component to a static query
+    ///         var transformUriRuleQuery = new Cloudflare.Ruleset("transformUriRuleQuery", new Cloudflare.RulesetArgs
+    ///         {
+    ///             Description = "change the URI query to a new static query",
+    ///             Kind = "zone",
+    ///             Name = "transform rule for URI query parameter",
+    ///             Phase = "http_request_transform",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "rewrite",
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
+    ///                     {
+    ///                         Uri = new Cloudflare.Inputs.RulesetRuleActionParametersUriArgs
+    ///                         {
+    ///                             Query = new Cloudflare.Inputs.RulesetRuleActionParametersUriQueryArgs
+    ///                             {
+    ///                                 Value = "old=new_again",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Description = "URI transformation query example",
+    ///                     Enabled = true,
+    ///                     Expression = "true",
+    ///                 },
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
+    ///         // Rewrite HTTP headers to a modified values
+    ///         var transformUriHttpHeaders = new Cloudflare.Ruleset("transformUriHttpHeaders", new Cloudflare.RulesetArgs
+    ///         {
+    ///             Description = "modify HTTP headers before reaching origin",
+    ///             Kind = "zone",
+    ///             Name = "transform rule for HTTP headers",
+    ///             Phase = "http_request_late_transform",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "rewrite",
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
+    ///                     {
+    ///                         Headers = 
+    ///                         {
+    ///                             new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs
+    ///                             {
+    ///                                 Name = "example-http-header-1",
+    ///                                 Operation = "set",
+    ///                                 Value = "my-http-header-value-1",
+    ///                             },
+    ///                             new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs
+    ///                             {
+    ///                                 Expression = "cf.zone.name",
+    ///                                 Name = "example-http-header-2",
+    ///                                 Operation = "set",
+    ///                             },
+    ///                             new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs
+    ///                             {
+    ///                                 Name = "example-http-header-3-to-remove",
+    ///                                 Operation = "remove",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     Description = "example request header transform rule",
+    ///                     Enabled = false,
+    ///                     Expression = "true",
+    ///                 },
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
+    ///         // HTTP rate limit for an API route
+    ///         var rateLimitingExample = new Cloudflare.Ruleset("rateLimitingExample", new Cloudflare.RulesetArgs
+    ///         {
+    ///             Description = "apply HTTP rate limiting for a route",
+    ///             Kind = "zone",
+    ///             Name = "restrict API requests count",
+    ///             Phase = "http_ratelimit",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "block",
+    ///                     Description = "rate limit for API",
+    ///                     Enabled = true,
+    ///                     Expression = "(http.request.uri.path matches \"^/api/\")",
+    ///                     Ratelimit = new Cloudflare.Inputs.RulesetRuleRatelimitArgs
+    ///                     {
+    ///                         Characteristics = 
+    ///                         {
+    ///                             "cf.colo.id",
+    ///                             "ip.src",
+    ///                         },
+    ///                         MitigationTimeout = 600,
+    ///                         Period = 60,
+    ///                         RequestsPerPeriod = 100,
+    ///                     },
     ///                 },
     ///             },
     ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
@@ -145,7 +270,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the HTTP request header to target.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -239,7 +364,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the HTTP request header to target.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -300,7 +425,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the HTTP request header to target.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

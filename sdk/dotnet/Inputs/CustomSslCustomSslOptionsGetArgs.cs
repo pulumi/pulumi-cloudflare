@@ -21,8 +21,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Certificate certificate and the intermediate(s)
         /// </summary>
-        [Input("certificate", required: true)]
-        public Input<string> Certificate { get; set; } = null!;
+        [Input("certificate")]
+        public Input<string>? Certificate { get; set; }
 
         /// <summary>
         /// Specifies the region where your private key can be held locally. Valid values are `us`, `eu`, `highest_security`.
@@ -33,8 +33,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Certificate's private key
         /// </summary>
-        [Input("privateKey", required: true)]
-        public Input<string> PrivateKey { get; set; } = null!;
+        [Input("privateKey")]
+        public Input<string>? PrivateKey { get; set; }
 
         /// <summary>
         /// Whether to enable support for legacy clients which do not include SNI in the TLS handshake. Valid values are `legacy_custom` (default), `sni_custom`.

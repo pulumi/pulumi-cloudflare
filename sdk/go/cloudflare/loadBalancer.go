@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
@@ -69,10 +69,10 @@ import (
 // 					Name:      pulumi.String("example rule"),
 // 					Condition: pulumi.String("http.request.uri.path contains \"testing\""),
 // 					FixedResponse: &cloudflare.LoadBalancerRuleFixedResponseArgs{
-// 						Message_body: pulumi.String("hello"),
-// 						Status_code:  pulumi.Float64(200),
-// 						Content_type: pulumi.String("html"),
-// 						Location:     pulumi.String("www.example.com"),
+// 						MessageBody: pulumi.String("hello"),
+// 						StatusCode:  pulumi.Int(200),
+// 						ContentType: pulumi.String("html"),
+// 						Location:    pulumi.String("www.example.com"),
 // 					},
 // 				},
 // 			},

@@ -18,17 +18,11 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        [Input("actionParameters")]
-        private InputList<Inputs.RulesetRuleActionParameterArgs>? _actionParameters;
-
         /// <summary>
         /// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
         /// </summary>
-        public InputList<Inputs.RulesetRuleActionParameterArgs> ActionParameters
-        {
-            get => _actionParameters ?? (_actionParameters = new InputList<Inputs.RulesetRuleActionParameterArgs>());
-            set => _actionParameters = value;
-        }
+        [Input("actionParameters")]
+        public Input<Inputs.RulesetRuleActionParametersArgs>? ActionParameters { get; set; }
 
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
@@ -53,6 +47,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
+        /// </summary>
+        [Input("ratelimit")]
+        public Input<Inputs.RulesetRuleRatelimitArgs>? Ratelimit { get; set; }
 
         /// <summary>
         /// Rule reference.

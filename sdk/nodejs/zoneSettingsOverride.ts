@@ -67,7 +67,7 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
     /**
      * Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
      */
-    public /*out*/ readonly initialSettings!: pulumi.Output<outputs.ZoneSettingsOverrideInitialSettings>;
+    public /*out*/ readonly initialSettings!: pulumi.Output<outputs.ZoneSettingsOverrideInitialSetting[]>;
     public /*out*/ readonly initialSettingsReadAt!: pulumi.Output<string>;
     /**
      * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
@@ -133,7 +133,7 @@ export interface ZoneSettingsOverrideState {
     /**
      * Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
      */
-    initialSettings?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettings>;
+    initialSettings?: pulumi.Input<pulumi.Input<inputs.ZoneSettingsOverrideInitialSetting>[]>;
     initialSettingsReadAt?: pulumi.Input<string>;
     /**
      * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.

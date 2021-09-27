@@ -20,10 +20,10 @@ import * as utilities from "./utilities";
  * // Add a custom ssl certificate to the domain
  * const foossl = new cloudflare.CustomSsl("foossl", {
  *     customSslOptions: {
- *         bundle_method: "ubiquitous",
+ *         bundleMethod: "ubiquitous",
  *         certificate: "-----INSERT CERTIFICATE-----",
- *         geo_restrictions: "us",
- *         private_key: "-----INSERT PRIVATE KEY-----",
+ *         geoRestrictions: "us",
+ *         privateKey: "-----INSERT PRIVATE KEY-----",
  *         type: "legacy_custom",
  *     },
  *     zoneId: cloudflareZoneId,
