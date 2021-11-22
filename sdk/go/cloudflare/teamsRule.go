@@ -34,10 +34,10 @@ import (
 // 			},
 // 			Name:       pulumi.String("office"),
 // 			Precedence: pulumi.Int(1),
-// 			RuleSettings: &cloudflare.TeamsRuleRuleSettingsArgs{
+// 			RuleSettings: &TeamsRuleRuleSettingsArgs{
 // 				BlockPageEnabled: pulumi.Bool(false),
 // 				BlockPageReason:  pulumi.String("access not permitted"),
-// 				L4override: &cloudflare.TeamsRuleRuleSettingsL4overrideArgs{
+// 				L4override: &TeamsRuleRuleSettingsL4overrideArgs{
 // 					Ip:   pulumi.String("192.0.2.1"),
 // 					Port: pulumi.Int(1234),
 // 				},
@@ -293,7 +293,7 @@ type TeamsRuleArrayInput interface {
 type TeamsRuleArray []TeamsRuleInput
 
 func (TeamsRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TeamsRule)(nil))
+	return reflect.TypeOf((*[]*TeamsRule)(nil)).Elem()
 }
 
 func (i TeamsRuleArray) ToTeamsRuleArrayOutput() TeamsRuleArrayOutput {
@@ -318,7 +318,7 @@ type TeamsRuleMapInput interface {
 type TeamsRuleMap map[string]TeamsRuleInput
 
 func (TeamsRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TeamsRule)(nil))
+	return reflect.TypeOf((*map[string]*TeamsRule)(nil)).Elem()
 }
 
 func (i TeamsRuleMap) ToTeamsRuleMapOutput() TeamsRuleMapOutput {
@@ -329,9 +329,7 @@ func (i TeamsRuleMap) ToTeamsRuleMapOutputWithContext(ctx context.Context) Teams
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleMapOutput)
 }
 
-type TeamsRuleOutput struct {
-	*pulumi.OutputState
-}
+type TeamsRuleOutput struct{ *pulumi.OutputState }
 
 func (TeamsRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TeamsRule)(nil))
@@ -350,14 +348,12 @@ func (o TeamsRuleOutput) ToTeamsRulePtrOutput() TeamsRulePtrOutput {
 }
 
 func (o TeamsRuleOutput) ToTeamsRulePtrOutputWithContext(ctx context.Context) TeamsRulePtrOutput {
-	return o.ApplyT(func(v TeamsRule) *TeamsRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRule) *TeamsRule {
 		return &v
 	}).(TeamsRulePtrOutput)
 }
 
-type TeamsRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type TeamsRulePtrOutput struct{ *pulumi.OutputState }
 
 func (TeamsRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TeamsRule)(nil))
@@ -369,6 +365,16 @@ func (o TeamsRulePtrOutput) ToTeamsRulePtrOutput() TeamsRulePtrOutput {
 
 func (o TeamsRulePtrOutput) ToTeamsRulePtrOutputWithContext(ctx context.Context) TeamsRulePtrOutput {
 	return o
+}
+
+func (o TeamsRulePtrOutput) Elem() TeamsRuleOutput {
+	return o.ApplyT(func(v *TeamsRule) TeamsRule {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRule
+		return ret
+	}).(TeamsRuleOutput)
 }
 
 type TeamsRuleArrayOutput struct{ *pulumi.OutputState }
@@ -412,6 +418,10 @@ func (o TeamsRuleMapOutput) MapIndex(k pulumi.StringInput) TeamsRuleOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleInput)(nil)).Elem(), &TeamsRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRulePtrInput)(nil)).Elem(), &TeamsRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleArrayInput)(nil)).Elem(), TeamsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleMapInput)(nil)).Elem(), TeamsRuleMap{})
 	pulumi.RegisterOutputType(TeamsRuleOutput{})
 	pulumi.RegisterOutputType(TeamsRulePtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleArrayOutput{})

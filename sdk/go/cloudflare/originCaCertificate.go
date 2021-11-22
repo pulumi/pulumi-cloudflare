@@ -37,8 +37,8 @@ import (
 // 		exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
 // 			KeyAlgorithm:  examplePrivateKey.Algorithm,
 // 			PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
-// 			Subjects: tls.CertRequestSubjectArray{
-// 				&tls.CertRequestSubjectArgs{
+// 			Subjects: CertRequestSubjectArray{
+// 				&CertRequestSubjectArgs{
 // 					CommonName:   pulumi.String(""),
 // 					Organization: pulumi.String("Terraform Test"),
 // 				},
@@ -244,7 +244,7 @@ type OriginCaCertificateArrayInput interface {
 type OriginCaCertificateArray []OriginCaCertificateInput
 
 func (OriginCaCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*OriginCaCertificate)(nil))
+	return reflect.TypeOf((*[]*OriginCaCertificate)(nil)).Elem()
 }
 
 func (i OriginCaCertificateArray) ToOriginCaCertificateArrayOutput() OriginCaCertificateArrayOutput {
@@ -269,7 +269,7 @@ type OriginCaCertificateMapInput interface {
 type OriginCaCertificateMap map[string]OriginCaCertificateInput
 
 func (OriginCaCertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*OriginCaCertificate)(nil))
+	return reflect.TypeOf((*map[string]*OriginCaCertificate)(nil)).Elem()
 }
 
 func (i OriginCaCertificateMap) ToOriginCaCertificateMapOutput() OriginCaCertificateMapOutput {
@@ -280,9 +280,7 @@ func (i OriginCaCertificateMap) ToOriginCaCertificateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificateMapOutput)
 }
 
-type OriginCaCertificateOutput struct {
-	*pulumi.OutputState
-}
+type OriginCaCertificateOutput struct{ *pulumi.OutputState }
 
 func (OriginCaCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*OriginCaCertificate)(nil))
@@ -301,14 +299,12 @@ func (o OriginCaCertificateOutput) ToOriginCaCertificatePtrOutput() OriginCaCert
 }
 
 func (o OriginCaCertificateOutput) ToOriginCaCertificatePtrOutputWithContext(ctx context.Context) OriginCaCertificatePtrOutput {
-	return o.ApplyT(func(v OriginCaCertificate) *OriginCaCertificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OriginCaCertificate) *OriginCaCertificate {
 		return &v
 	}).(OriginCaCertificatePtrOutput)
 }
 
-type OriginCaCertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type OriginCaCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (OriginCaCertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**OriginCaCertificate)(nil))
@@ -320,6 +316,16 @@ func (o OriginCaCertificatePtrOutput) ToOriginCaCertificatePtrOutput() OriginCaC
 
 func (o OriginCaCertificatePtrOutput) ToOriginCaCertificatePtrOutputWithContext(ctx context.Context) OriginCaCertificatePtrOutput {
 	return o
+}
+
+func (o OriginCaCertificatePtrOutput) Elem() OriginCaCertificateOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) OriginCaCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret OriginCaCertificate
+		return ret
+	}).(OriginCaCertificateOutput)
 }
 
 type OriginCaCertificateArrayOutput struct{ *pulumi.OutputState }
@@ -363,6 +369,10 @@ func (o OriginCaCertificateMapOutput) MapIndex(k pulumi.StringInput) OriginCaCer
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginCaCertificateInput)(nil)).Elem(), &OriginCaCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginCaCertificatePtrInput)(nil)).Elem(), &OriginCaCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginCaCertificateArrayInput)(nil)).Elem(), OriginCaCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OriginCaCertificateMapInput)(nil)).Elem(), OriginCaCertificateMap{})
 	pulumi.RegisterOutputType(OriginCaCertificateOutput{})
 	pulumi.RegisterOutputType(OriginCaCertificatePtrOutput{})
 	pulumi.RegisterOutputType(OriginCaCertificateArrayOutput{})

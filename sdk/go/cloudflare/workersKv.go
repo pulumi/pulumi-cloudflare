@@ -206,7 +206,7 @@ type WorkersKvArrayInput interface {
 type WorkersKvArray []WorkersKvInput
 
 func (WorkersKvArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WorkersKv)(nil))
+	return reflect.TypeOf((*[]*WorkersKv)(nil)).Elem()
 }
 
 func (i WorkersKvArray) ToWorkersKvArrayOutput() WorkersKvArrayOutput {
@@ -231,7 +231,7 @@ type WorkersKvMapInput interface {
 type WorkersKvMap map[string]WorkersKvInput
 
 func (WorkersKvMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WorkersKv)(nil))
+	return reflect.TypeOf((*map[string]*WorkersKv)(nil)).Elem()
 }
 
 func (i WorkersKvMap) ToWorkersKvMapOutput() WorkersKvMapOutput {
@@ -242,9 +242,7 @@ func (i WorkersKvMap) ToWorkersKvMapOutputWithContext(ctx context.Context) Worke
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvMapOutput)
 }
 
-type WorkersKvOutput struct {
-	*pulumi.OutputState
-}
+type WorkersKvOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkersKv)(nil))
@@ -263,14 +261,12 @@ func (o WorkersKvOutput) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
 }
 
 func (o WorkersKvOutput) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
-	return o.ApplyT(func(v WorkersKv) *WorkersKv {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkersKv) *WorkersKv {
 		return &v
 	}).(WorkersKvPtrOutput)
 }
 
-type WorkersKvPtrOutput struct {
-	*pulumi.OutputState
-}
+type WorkersKvPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WorkersKv)(nil))
@@ -282,6 +278,16 @@ func (o WorkersKvPtrOutput) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
 
 func (o WorkersKvPtrOutput) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
 	return o
+}
+
+func (o WorkersKvPtrOutput) Elem() WorkersKvOutput {
+	return o.ApplyT(func(v *WorkersKv) WorkersKv {
+		if v != nil {
+			return *v
+		}
+		var ret WorkersKv
+		return ret
+	}).(WorkersKvOutput)
 }
 
 type WorkersKvArrayOutput struct{ *pulumi.OutputState }
@@ -325,6 +331,10 @@ func (o WorkersKvMapOutput) MapIndex(k pulumi.StringInput) WorkersKvOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvInput)(nil)).Elem(), &WorkersKv{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvPtrInput)(nil)).Elem(), &WorkersKv{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvArrayInput)(nil)).Elem(), WorkersKvArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvMapInput)(nil)).Elem(), WorkersKvMap{})
 	pulumi.RegisterOutputType(WorkersKvOutput{})
 	pulumi.RegisterOutputType(WorkersKvPtrOutput{})
 	pulumi.RegisterOutputType(WorkersKvArrayOutput{})

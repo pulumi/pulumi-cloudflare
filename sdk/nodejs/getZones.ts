@@ -61,42 +61,6 @@ import * as utilities from "./utilities";
  *     },
  * }));
  * ```
- * ### Example usage with other resources
- *
- * The example below matches all zones which have "example" in their value, end
- * with ".com" and are active. The matched zone is then referenced in the zone
- * lockdown resource.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const test = cloudflare.getZones({
- *     filter: {
- *         name: "example",
- *         lookupType: "contains",
- *         match: `.com$`,
- *         status: "active",
- *     },
- * });
- * const endpointLockdown = new cloudflare.ZoneLockdown("endpointLockdown", {
- *     zone: test.then(test => test.zones[0])["name"],
- *     paused: "false",
- *     description: "Restrict access to these endpoints to requests from a known IP address",
- *     urls: ["api.mysite.com/some/endpoint*"],
- *     configurations: [{
- *         target: "ip",
- *         value: "198.51.100.4",
- *     }],
- * });
- * const example = new cloudflare.Record("example", {
- *     zoneId: test.then(test => test.zones[0])["id"],
- *     name: "www",
- *     value: "203.0.113.1",
- *     type: "A",
- *     proxied: false,
- * });
- * ```
  */
 export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     if (!opts) {
@@ -135,4 +99,19 @@ export interface GetZonesResult {
      * A list of zone objects. Object format:
      */
     readonly zones: outputs.GetZonesZone[];
+}
+
+export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
+    return pulumi.output(args).apply(a => getZones(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZones.
+ */
+export interface GetZonesOutputArgs {
+    /**
+     * One or more values used to look up zone records. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     */
+    filter: pulumi.Input<inputs.GetZonesFilterArgs>;
 }

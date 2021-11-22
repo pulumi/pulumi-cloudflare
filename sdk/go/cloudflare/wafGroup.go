@@ -207,7 +207,7 @@ type WafGroupArrayInput interface {
 type WafGroupArray []WafGroupInput
 
 func (WafGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WafGroup)(nil))
+	return reflect.TypeOf((*[]*WafGroup)(nil)).Elem()
 }
 
 func (i WafGroupArray) ToWafGroupArrayOutput() WafGroupArrayOutput {
@@ -232,7 +232,7 @@ type WafGroupMapInput interface {
 type WafGroupMap map[string]WafGroupInput
 
 func (WafGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WafGroup)(nil))
+	return reflect.TypeOf((*map[string]*WafGroup)(nil)).Elem()
 }
 
 func (i WafGroupMap) ToWafGroupMapOutput() WafGroupMapOutput {
@@ -243,9 +243,7 @@ func (i WafGroupMap) ToWafGroupMapOutputWithContext(ctx context.Context) WafGrou
 	return pulumi.ToOutputWithContext(ctx, i).(WafGroupMapOutput)
 }
 
-type WafGroupOutput struct {
-	*pulumi.OutputState
-}
+type WafGroupOutput struct{ *pulumi.OutputState }
 
 func (WafGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WafGroup)(nil))
@@ -264,14 +262,12 @@ func (o WafGroupOutput) ToWafGroupPtrOutput() WafGroupPtrOutput {
 }
 
 func (o WafGroupOutput) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
-	return o.ApplyT(func(v WafGroup) *WafGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafGroup) *WafGroup {
 		return &v
 	}).(WafGroupPtrOutput)
 }
 
-type WafGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type WafGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (WafGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WafGroup)(nil))
@@ -283,6 +279,16 @@ func (o WafGroupPtrOutput) ToWafGroupPtrOutput() WafGroupPtrOutput {
 
 func (o WafGroupPtrOutput) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
 	return o
+}
+
+func (o WafGroupPtrOutput) Elem() WafGroupOutput {
+	return o.ApplyT(func(v *WafGroup) WafGroup {
+		if v != nil {
+			return *v
+		}
+		var ret WafGroup
+		return ret
+	}).(WafGroupOutput)
 }
 
 type WafGroupArrayOutput struct{ *pulumi.OutputState }
@@ -326,6 +332,10 @@ func (o WafGroupMapOutput) MapIndex(k pulumi.StringInput) WafGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WafGroupInput)(nil)).Elem(), &WafGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafGroupPtrInput)(nil)).Elem(), &WafGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafGroupArrayInput)(nil)).Elem(), WafGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafGroupMapInput)(nil)).Elem(), WafGroupMap{})
 	pulumi.RegisterOutputType(WafGroupOutput{})
 	pulumi.RegisterOutputType(WafGroupPtrOutput{})
 	pulumi.RegisterOutputType(WafGroupArrayOutput{})

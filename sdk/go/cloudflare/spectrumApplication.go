@@ -29,7 +29,7 @@ import (
 // 			ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
 // 			Protocol:    pulumi.String("tcp/22"),
 // 			TrafficType: pulumi.String("direct"),
-// 			Dns: &cloudflare.SpectrumApplicationDnsArgs{
+// 			Dns: &SpectrumApplicationDnsArgs{
 // 				Type: pulumi.String("CNAME"),
 // 				Name: pulumi.String("ssh.example.com"),
 // 			},
@@ -319,7 +319,7 @@ type SpectrumApplicationArrayInput interface {
 type SpectrumApplicationArray []SpectrumApplicationInput
 
 func (SpectrumApplicationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*SpectrumApplication)(nil))
+	return reflect.TypeOf((*[]*SpectrumApplication)(nil)).Elem()
 }
 
 func (i SpectrumApplicationArray) ToSpectrumApplicationArrayOutput() SpectrumApplicationArrayOutput {
@@ -344,7 +344,7 @@ type SpectrumApplicationMapInput interface {
 type SpectrumApplicationMap map[string]SpectrumApplicationInput
 
 func (SpectrumApplicationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*SpectrumApplication)(nil))
+	return reflect.TypeOf((*map[string]*SpectrumApplication)(nil)).Elem()
 }
 
 func (i SpectrumApplicationMap) ToSpectrumApplicationMapOutput() SpectrumApplicationMapOutput {
@@ -355,9 +355,7 @@ func (i SpectrumApplicationMap) ToSpectrumApplicationMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationMapOutput)
 }
 
-type SpectrumApplicationOutput struct {
-	*pulumi.OutputState
-}
+type SpectrumApplicationOutput struct{ *pulumi.OutputState }
 
 func (SpectrumApplicationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*SpectrumApplication)(nil))
@@ -376,14 +374,12 @@ func (o SpectrumApplicationOutput) ToSpectrumApplicationPtrOutput() SpectrumAppl
 }
 
 func (o SpectrumApplicationOutput) ToSpectrumApplicationPtrOutputWithContext(ctx context.Context) SpectrumApplicationPtrOutput {
-	return o.ApplyT(func(v SpectrumApplication) *SpectrumApplication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpectrumApplication) *SpectrumApplication {
 		return &v
 	}).(SpectrumApplicationPtrOutput)
 }
 
-type SpectrumApplicationPtrOutput struct {
-	*pulumi.OutputState
-}
+type SpectrumApplicationPtrOutput struct{ *pulumi.OutputState }
 
 func (SpectrumApplicationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**SpectrumApplication)(nil))
@@ -395,6 +391,16 @@ func (o SpectrumApplicationPtrOutput) ToSpectrumApplicationPtrOutput() SpectrumA
 
 func (o SpectrumApplicationPtrOutput) ToSpectrumApplicationPtrOutputWithContext(ctx context.Context) SpectrumApplicationPtrOutput {
 	return o
+}
+
+func (o SpectrumApplicationPtrOutput) Elem() SpectrumApplicationOutput {
+	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplication {
+		if v != nil {
+			return *v
+		}
+		var ret SpectrumApplication
+		return ret
+	}).(SpectrumApplicationOutput)
 }
 
 type SpectrumApplicationArrayOutput struct{ *pulumi.OutputState }
@@ -438,6 +444,10 @@ func (o SpectrumApplicationMapOutput) MapIndex(k pulumi.StringInput) SpectrumApp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationInput)(nil)).Elem(), &SpectrumApplication{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationPtrInput)(nil)).Elem(), &SpectrumApplication{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationArrayInput)(nil)).Elem(), SpectrumApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationMapInput)(nil)).Elem(), SpectrumApplicationMap{})
 	pulumi.RegisterOutputType(SpectrumApplicationOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationArrayOutput{})

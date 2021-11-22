@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -55,4 +54,18 @@ export interface GetOriginCaRootCertificateResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+}
+
+export function getOriginCaRootCertificateOutput(args: GetOriginCaRootCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginCaRootCertificateResult> {
+    return pulumi.output(args).apply(a => getOriginCaRootCertificate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getOriginCaRootCertificate.
+ */
+export interface GetOriginCaRootCertificateOutputArgs {
+    /**
+     * The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
+     */
+    algorithm: pulumi.Input<string>;
 }

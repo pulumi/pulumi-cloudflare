@@ -211,7 +211,7 @@ type LogpushJobArrayInput interface {
 type LogpushJobArray []LogpushJobInput
 
 func (LogpushJobArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LogpushJob)(nil))
+	return reflect.TypeOf((*[]*LogpushJob)(nil)).Elem()
 }
 
 func (i LogpushJobArray) ToLogpushJobArrayOutput() LogpushJobArrayOutput {
@@ -236,7 +236,7 @@ type LogpushJobMapInput interface {
 type LogpushJobMap map[string]LogpushJobInput
 
 func (LogpushJobMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LogpushJob)(nil))
+	return reflect.TypeOf((*map[string]*LogpushJob)(nil)).Elem()
 }
 
 func (i LogpushJobMap) ToLogpushJobMapOutput() LogpushJobMapOutput {
@@ -247,9 +247,7 @@ func (i LogpushJobMap) ToLogpushJobMapOutputWithContext(ctx context.Context) Log
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobMapOutput)
 }
 
-type LogpushJobOutput struct {
-	*pulumi.OutputState
-}
+type LogpushJobOutput struct{ *pulumi.OutputState }
 
 func (LogpushJobOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogpushJob)(nil))
@@ -268,14 +266,12 @@ func (o LogpushJobOutput) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
 }
 
 func (o LogpushJobOutput) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
-	return o.ApplyT(func(v LogpushJob) *LogpushJob {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogpushJob) *LogpushJob {
 		return &v
 	}).(LogpushJobPtrOutput)
 }
 
-type LogpushJobPtrOutput struct {
-	*pulumi.OutputState
-}
+type LogpushJobPtrOutput struct{ *pulumi.OutputState }
 
 func (LogpushJobPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LogpushJob)(nil))
@@ -287,6 +283,16 @@ func (o LogpushJobPtrOutput) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
 
 func (o LogpushJobPtrOutput) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
 	return o
+}
+
+func (o LogpushJobPtrOutput) Elem() LogpushJobOutput {
+	return o.ApplyT(func(v *LogpushJob) LogpushJob {
+		if v != nil {
+			return *v
+		}
+		var ret LogpushJob
+		return ret
+	}).(LogpushJobOutput)
 }
 
 type LogpushJobArrayOutput struct{ *pulumi.OutputState }
@@ -330,6 +336,10 @@ func (o LogpushJobMapOutput) MapIndex(k pulumi.StringInput) LogpushJobOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobInput)(nil)).Elem(), &LogpushJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobPtrInput)(nil)).Elem(), &LogpushJob{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobArrayInput)(nil)).Elem(), LogpushJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobMapInput)(nil)).Elem(), LogpushJobMap{})
 	pulumi.RegisterOutputType(LogpushJobOutput{})
 	pulumi.RegisterOutputType(LogpushJobPtrOutput{})
 	pulumi.RegisterOutputType(LogpushJobArrayOutput{})

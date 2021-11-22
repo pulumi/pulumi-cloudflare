@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     PermissionGroups = 
     ///                     {
-    ///                         all.Apply(all =&gt; all.Permissions.API_Tokens_Write),
+    ///                         all.Apply(all =&gt; all.Permissions?.API_Tokens_Write),
     ///                     },
     ///                     Resources = 
     ///                     {
@@ -86,7 +86,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     PermissionGroups = 
     ///                     {
-    ///                         all.Apply(all =&gt; all.Permissions.Access__Audit_Logs_Read),
+    ///                         all.Apply(all =&gt; all.Permissions?.Access__Audit_Logs_Read),
     ///                     },
     ///                     Resources = 
     ///                     {
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     PermissionGroups = 
     ///                     {
-    ///                         all.Apply(all =&gt; all.Permissions.Access__Audit_Logs_Read),
+    ///                         all.Apply(all =&gt; all.Permissions?.Access__Audit_Logs_Read),
     ///                     },
     ///                     Resources = 
     ///                     {
@@ -141,8 +141,8 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     PermissionGroups = 
     ///                     {
-    ///                         all.Apply(all =&gt; all.Permissions.DNS_Write),
-    ///                         all.Apply(all =&gt; all.Permissions.SSL_and_Certificates_Write),
+    ///                         all.Apply(all =&gt; all.Permissions?.DNS_Write),
+    ///                         all.Apply(all =&gt; all.Permissions?.SSL_and_Certificates_Write),
     ///                     },
     ///                     Resources = 
     ///                     {
@@ -161,7 +161,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     PermissionGroups = 
     ///                     {
-    ///                         all.Apply(all =&gt; all.Permissions.DNS_Write),
+    ///                         all.Apply(all =&gt; all.Permissions?.DNS_Write),
     ///                     },
     ///                     Resources = 
     ///                     {
@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     PermissionGroups = 
     ///                     {
-    ///                         all.Apply(all =&gt; all.Permissions.DNS_Write),
+    ///                         all.Apply(all =&gt; all.Permissions?.DNS_Write),
     ///                     },
     ///                     Resources = 
     ///                     {
@@ -192,7 +192,7 @@ namespace Pulumi.Cloudflare
     ///                 {
     ///                     PermissionGroups = 
     ///                     {
-    ///                         all.Apply(all =&gt; all.Permissions.DNS_Write),
+    ///                         all.Apply(all =&gt; all.Permissions?.DNS_Write),
     ///                     },
     ///                     Resources = 
     ///                     {

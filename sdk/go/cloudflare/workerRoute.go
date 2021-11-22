@@ -203,7 +203,7 @@ type WorkerRouteArrayInput interface {
 type WorkerRouteArray []WorkerRouteInput
 
 func (WorkerRouteArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WorkerRoute)(nil))
+	return reflect.TypeOf((*[]*WorkerRoute)(nil)).Elem()
 }
 
 func (i WorkerRouteArray) ToWorkerRouteArrayOutput() WorkerRouteArrayOutput {
@@ -228,7 +228,7 @@ type WorkerRouteMapInput interface {
 type WorkerRouteMap map[string]WorkerRouteInput
 
 func (WorkerRouteMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WorkerRoute)(nil))
+	return reflect.TypeOf((*map[string]*WorkerRoute)(nil)).Elem()
 }
 
 func (i WorkerRouteMap) ToWorkerRouteMapOutput() WorkerRouteMapOutput {
@@ -239,9 +239,7 @@ func (i WorkerRouteMap) ToWorkerRouteMapOutputWithContext(ctx context.Context) W
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerRouteMapOutput)
 }
 
-type WorkerRouteOutput struct {
-	*pulumi.OutputState
-}
+type WorkerRouteOutput struct{ *pulumi.OutputState }
 
 func (WorkerRouteOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkerRoute)(nil))
@@ -260,14 +258,12 @@ func (o WorkerRouteOutput) ToWorkerRoutePtrOutput() WorkerRoutePtrOutput {
 }
 
 func (o WorkerRouteOutput) ToWorkerRoutePtrOutputWithContext(ctx context.Context) WorkerRoutePtrOutput {
-	return o.ApplyT(func(v WorkerRoute) *WorkerRoute {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerRoute) *WorkerRoute {
 		return &v
 	}).(WorkerRoutePtrOutput)
 }
 
-type WorkerRoutePtrOutput struct {
-	*pulumi.OutputState
-}
+type WorkerRoutePtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerRoutePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WorkerRoute)(nil))
@@ -279,6 +275,16 @@ func (o WorkerRoutePtrOutput) ToWorkerRoutePtrOutput() WorkerRoutePtrOutput {
 
 func (o WorkerRoutePtrOutput) ToWorkerRoutePtrOutputWithContext(ctx context.Context) WorkerRoutePtrOutput {
 	return o
+}
+
+func (o WorkerRoutePtrOutput) Elem() WorkerRouteOutput {
+	return o.ApplyT(func(v *WorkerRoute) WorkerRoute {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerRoute
+		return ret
+	}).(WorkerRouteOutput)
 }
 
 type WorkerRouteArrayOutput struct{ *pulumi.OutputState }
@@ -322,6 +328,10 @@ func (o WorkerRouteMapOutput) MapIndex(k pulumi.StringInput) WorkerRouteOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerRouteInput)(nil)).Elem(), &WorkerRoute{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerRoutePtrInput)(nil)).Elem(), &WorkerRoute{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerRouteArrayInput)(nil)).Elem(), WorkerRouteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerRouteMapInput)(nil)).Elem(), WorkerRouteMap{})
 	pulumi.RegisterOutputType(WorkerRouteOutput{})
 	pulumi.RegisterOutputType(WorkerRoutePtrOutput{})
 	pulumi.RegisterOutputType(WorkerRouteArrayOutput{})

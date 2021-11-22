@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const apiTokenCreate = new cloudflare.ApiToken("apiTokenCreate", {
  *     name: "api_token_create",
  *     policies: [{
- *         permissionGroups: [all.then(all => all.permissions["API Tokens Write"])],
+ *         permissionGroups: [all.then(all => all.permissions?["API Tokens Write"])],
  *         resources: {
  *             `com.cloudflare.api.user.${_var.user_id}`: "*",
  *         },
@@ -48,7 +48,7 @@ import * as utilities from "./utilities";
  * const logsAccountAll = new cloudflare.ApiToken("logsAccountAll", {
  *     name: "logs_account_all",
  *     policies: [{
- *         permissionGroups: [all.then(all => all.permissions["Access: Audit Logs Read"])],
+ *         permissionGroups: [all.then(all => all.permissions?["Access: Audit Logs Read"])],
  *         resources: {
  *             "com.cloudflare.api.account.*": "*",
  *         },
@@ -58,7 +58,7 @@ import * as utilities from "./utilities";
  * const logsAccount = new cloudflare.ApiToken("logsAccount", {
  *     name: "logs_account",
  *     policies: [{
- *         permissionGroups: [all.then(all => all.permissions["Access: Audit Logs Read"])],
+ *         permissionGroups: [all.then(all => all.permissions?["Access: Audit Logs Read"])],
  *         resources: {
  *             `com.cloudflare.api.account.${_var.account_id}`: "*",
  *         },
@@ -77,8 +77,8 @@ import * as utilities from "./utilities";
  *     name: "dns_tls_edit",
  *     policies: [{
  *         permissionGroups: [
- *             all.then(all => all.permissions["DNS Write"]),
- *             all.then(all => all.permissions["SSL and Certificates Write"]),
+ *             all.then(all => all.permissions?["DNS Write"]),
+ *             all.then(all => all.permissions?["SSL and Certificates Write"]),
  *         ],
  *         resources: {
  *             `com.cloudflare.api.account.zone.${_var.zone_id}`: "*",
@@ -90,13 +90,13 @@ import * as utilities from "./utilities";
  *     name: "dns_tls_edit_all_except_one",
  *     policies: [
  *         {
- *             permissionGroups: [all.then(all => all.permissions["DNS Write"])],
+ *             permissionGroups: [all.then(all => all.permissions?["DNS Write"])],
  *             resources: {
  *                 "com.cloudflare.api.account.zone.*": "*",
  *             },
  *         },
  *         {
- *             permissionGroups: [all.then(all => all.permissions["DNS Write"])],
+ *             permissionGroups: [all.then(all => all.permissions?["DNS Write"])],
  *             resources: {
  *                 `com.cloudflare.api.account.zone.${_var.zone_id}`: "*",
  *             },
@@ -108,7 +108,7 @@ import * as utilities from "./utilities";
  * const dnsEditAllAccount = new cloudflare.ApiToken("dnsEditAllAccount", {
  *     name: "dns_edit_all_account",
  *     policies: [{
- *         permissionGroups: [all.then(all => all.permissions["DNS Write"])],
+ *         permissionGroups: [all.then(all => all.permissions?["DNS Write"])],
  *         resources: {
  *             `com.cloudflare.api.account.${_var.account_id}`: JSON.stringify({
  *                 "com.cloudflare.api.account.zone.*": "*",

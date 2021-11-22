@@ -8,6 +8,37 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * import * from "fs";
+ *
+ * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {title: "example"});
+ * // Sets the script with the name "script_1"
+ * const myScript = new cloudflare.WorkerScript("myScript", {
+ *     name: "script_1",
+ *     content: fs.readFileSync("script.js"),
+ *     kvNamespaceBindings: [{
+ *         name: "MY_EXAMPLE_KV_NAMESPACE",
+ *         namespaceId: myNamespace.id,
+ *     }],
+ *     plainTextBindings: [{
+ *         name: "MY_EXAMPLE_PLAIN_TEXT",
+ *         text: "foobar",
+ *     }],
+ *     secretTextBindings: [{
+ *         name: "MY_EXAMPLE_SECRET_TEXT",
+ *         text: _var.secret_foo_value,
+ *     }],
+ *     webassemblyBindings: [{
+ *         name: "MY_EXAMPLE_WASM",
+ *         module: Buffer.from(fs.readFileSync("example.wasm"), 'binary').toString('base64'),
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * To import a script, use a script name, e.g. `script_name`

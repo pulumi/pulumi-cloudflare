@@ -311,7 +311,7 @@ type WaitingRoomArrayInput interface {
 type WaitingRoomArray []WaitingRoomInput
 
 func (WaitingRoomArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WaitingRoom)(nil))
+	return reflect.TypeOf((*[]*WaitingRoom)(nil)).Elem()
 }
 
 func (i WaitingRoomArray) ToWaitingRoomArrayOutput() WaitingRoomArrayOutput {
@@ -336,7 +336,7 @@ type WaitingRoomMapInput interface {
 type WaitingRoomMap map[string]WaitingRoomInput
 
 func (WaitingRoomMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WaitingRoom)(nil))
+	return reflect.TypeOf((*map[string]*WaitingRoom)(nil)).Elem()
 }
 
 func (i WaitingRoomMap) ToWaitingRoomMapOutput() WaitingRoomMapOutput {
@@ -347,9 +347,7 @@ func (i WaitingRoomMap) ToWaitingRoomMapOutputWithContext(ctx context.Context) W
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomMapOutput)
 }
 
-type WaitingRoomOutput struct {
-	*pulumi.OutputState
-}
+type WaitingRoomOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WaitingRoom)(nil))
@@ -368,14 +366,12 @@ func (o WaitingRoomOutput) ToWaitingRoomPtrOutput() WaitingRoomPtrOutput {
 }
 
 func (o WaitingRoomOutput) ToWaitingRoomPtrOutputWithContext(ctx context.Context) WaitingRoomPtrOutput {
-	return o.ApplyT(func(v WaitingRoom) *WaitingRoom {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WaitingRoom) *WaitingRoom {
 		return &v
 	}).(WaitingRoomPtrOutput)
 }
 
-type WaitingRoomPtrOutput struct {
-	*pulumi.OutputState
-}
+type WaitingRoomPtrOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WaitingRoom)(nil))
@@ -387,6 +383,16 @@ func (o WaitingRoomPtrOutput) ToWaitingRoomPtrOutput() WaitingRoomPtrOutput {
 
 func (o WaitingRoomPtrOutput) ToWaitingRoomPtrOutputWithContext(ctx context.Context) WaitingRoomPtrOutput {
 	return o
+}
+
+func (o WaitingRoomPtrOutput) Elem() WaitingRoomOutput {
+	return o.ApplyT(func(v *WaitingRoom) WaitingRoom {
+		if v != nil {
+			return *v
+		}
+		var ret WaitingRoom
+		return ret
+	}).(WaitingRoomOutput)
 }
 
 type WaitingRoomArrayOutput struct{ *pulumi.OutputState }
@@ -430,6 +436,10 @@ func (o WaitingRoomMapOutput) MapIndex(k pulumi.StringInput) WaitingRoomOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomInput)(nil)).Elem(), &WaitingRoom{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomPtrInput)(nil)).Elem(), &WaitingRoom{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomArrayInput)(nil)).Elem(), WaitingRoomArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomMapInput)(nil)).Elem(), WaitingRoomMap{})
 	pulumi.RegisterOutputType(WaitingRoomOutput{})
 	pulumi.RegisterOutputType(WaitingRoomPtrOutput{})
 	pulumi.RegisterOutputType(WaitingRoomArrayOutput{})

@@ -263,7 +263,7 @@ type CertificatePackArrayInput interface {
 type CertificatePackArray []CertificatePackInput
 
 func (CertificatePackArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CertificatePack)(nil))
+	return reflect.TypeOf((*[]*CertificatePack)(nil)).Elem()
 }
 
 func (i CertificatePackArray) ToCertificatePackArrayOutput() CertificatePackArrayOutput {
@@ -288,7 +288,7 @@ type CertificatePackMapInput interface {
 type CertificatePackMap map[string]CertificatePackInput
 
 func (CertificatePackMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CertificatePack)(nil))
+	return reflect.TypeOf((*map[string]*CertificatePack)(nil)).Elem()
 }
 
 func (i CertificatePackMap) ToCertificatePackMapOutput() CertificatePackMapOutput {
@@ -299,9 +299,7 @@ func (i CertificatePackMap) ToCertificatePackMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackMapOutput)
 }
 
-type CertificatePackOutput struct {
-	*pulumi.OutputState
-}
+type CertificatePackOutput struct{ *pulumi.OutputState }
 
 func (CertificatePackOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CertificatePack)(nil))
@@ -320,14 +318,12 @@ func (o CertificatePackOutput) ToCertificatePackPtrOutput() CertificatePackPtrOu
 }
 
 func (o CertificatePackOutput) ToCertificatePackPtrOutputWithContext(ctx context.Context) CertificatePackPtrOutput {
-	return o.ApplyT(func(v CertificatePack) *CertificatePack {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificatePack) *CertificatePack {
 		return &v
 	}).(CertificatePackPtrOutput)
 }
 
-type CertificatePackPtrOutput struct {
-	*pulumi.OutputState
-}
+type CertificatePackPtrOutput struct{ *pulumi.OutputState }
 
 func (CertificatePackPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CertificatePack)(nil))
@@ -339,6 +335,16 @@ func (o CertificatePackPtrOutput) ToCertificatePackPtrOutput() CertificatePackPt
 
 func (o CertificatePackPtrOutput) ToCertificatePackPtrOutputWithContext(ctx context.Context) CertificatePackPtrOutput {
 	return o
+}
+
+func (o CertificatePackPtrOutput) Elem() CertificatePackOutput {
+	return o.ApplyT(func(v *CertificatePack) CertificatePack {
+		if v != nil {
+			return *v
+		}
+		var ret CertificatePack
+		return ret
+	}).(CertificatePackOutput)
 }
 
 type CertificatePackArrayOutput struct{ *pulumi.OutputState }
@@ -382,6 +388,10 @@ func (o CertificatePackMapOutput) MapIndex(k pulumi.StringInput) CertificatePack
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackInput)(nil)).Elem(), &CertificatePack{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackPtrInput)(nil)).Elem(), &CertificatePack{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackArrayInput)(nil)).Elem(), CertificatePackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackMapInput)(nil)).Elem(), CertificatePackMap{})
 	pulumi.RegisterOutputType(CertificatePackOutput{})
 	pulumi.RegisterOutputType(CertificatePackPtrOutput{})
 	pulumi.RegisterOutputType(CertificatePackArrayOutput{})

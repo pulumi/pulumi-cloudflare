@@ -186,7 +186,7 @@ type LogpullRetentionArrayInput interface {
 type LogpullRetentionArray []LogpullRetentionInput
 
 func (LogpullRetentionArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LogpullRetention)(nil))
+	return reflect.TypeOf((*[]*LogpullRetention)(nil)).Elem()
 }
 
 func (i LogpullRetentionArray) ToLogpullRetentionArrayOutput() LogpullRetentionArrayOutput {
@@ -211,7 +211,7 @@ type LogpullRetentionMapInput interface {
 type LogpullRetentionMap map[string]LogpullRetentionInput
 
 func (LogpullRetentionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LogpullRetention)(nil))
+	return reflect.TypeOf((*map[string]*LogpullRetention)(nil)).Elem()
 }
 
 func (i LogpullRetentionMap) ToLogpullRetentionMapOutput() LogpullRetentionMapOutput {
@@ -222,9 +222,7 @@ func (i LogpullRetentionMap) ToLogpullRetentionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LogpullRetentionMapOutput)
 }
 
-type LogpullRetentionOutput struct {
-	*pulumi.OutputState
-}
+type LogpullRetentionOutput struct{ *pulumi.OutputState }
 
 func (LogpullRetentionOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogpullRetention)(nil))
@@ -243,14 +241,12 @@ func (o LogpullRetentionOutput) ToLogpullRetentionPtrOutput() LogpullRetentionPt
 }
 
 func (o LogpullRetentionOutput) ToLogpullRetentionPtrOutputWithContext(ctx context.Context) LogpullRetentionPtrOutput {
-	return o.ApplyT(func(v LogpullRetention) *LogpullRetention {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogpullRetention) *LogpullRetention {
 		return &v
 	}).(LogpullRetentionPtrOutput)
 }
 
-type LogpullRetentionPtrOutput struct {
-	*pulumi.OutputState
-}
+type LogpullRetentionPtrOutput struct{ *pulumi.OutputState }
 
 func (LogpullRetentionPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LogpullRetention)(nil))
@@ -262,6 +258,16 @@ func (o LogpullRetentionPtrOutput) ToLogpullRetentionPtrOutput() LogpullRetentio
 
 func (o LogpullRetentionPtrOutput) ToLogpullRetentionPtrOutputWithContext(ctx context.Context) LogpullRetentionPtrOutput {
 	return o
+}
+
+func (o LogpullRetentionPtrOutput) Elem() LogpullRetentionOutput {
+	return o.ApplyT(func(v *LogpullRetention) LogpullRetention {
+		if v != nil {
+			return *v
+		}
+		var ret LogpullRetention
+		return ret
+	}).(LogpullRetentionOutput)
 }
 
 type LogpullRetentionArrayOutput struct{ *pulumi.OutputState }
@@ -305,6 +311,10 @@ func (o LogpullRetentionMapOutput) MapIndex(k pulumi.StringInput) LogpullRetenti
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpullRetentionInput)(nil)).Elem(), &LogpullRetention{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpullRetentionPtrInput)(nil)).Elem(), &LogpullRetention{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpullRetentionArrayInput)(nil)).Elem(), LogpullRetentionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpullRetentionMapInput)(nil)).Elem(), LogpullRetentionMap{})
 	pulumi.RegisterOutputType(LogpullRetentionOutput{})
 	pulumi.RegisterOutputType(LogpullRetentionPtrOutput{})
 	pulumi.RegisterOutputType(LogpullRetentionArrayOutput{})

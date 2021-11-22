@@ -598,6 +598,36 @@ export interface GetWafGroupsFilter {
     name?: string;
 }
 
+export interface GetWafGroupsFilterArgs {
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface GetWafPackagesFilterArgs {
+    /**
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     */
+    actionMode?: pulumi.Input<string>;
+    /**
+     * Detection mode of the WAF Rule Packages to lookup.
+     */
+    detectionMode?: pulumi.Input<string>;
+    /**
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     */
+    sensitivity?: pulumi.Input<string>;
+}
+
 export interface GetWafPackagesFilter {
     /**
      * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
@@ -630,6 +660,51 @@ export interface GetWafRulesFilter {
      * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
     mode?: string;
+}
+
+export interface GetWafRulesFilterArgs {
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     */
+    groupId?: pulumi.Input<string>;
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+     */
+    mode?: pulumi.Input<string>;
+}
+
+export interface GetZonesFilterArgs {
+    /**
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+     * to `"exact"`.
+     */
+    lookupType?: pulumi.Input<string>;
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookupType`
+     * are performed on the Cloudflare server side.
+     */
+    match?: pulumi.Input<string>;
+    /**
+     * A string value to search for.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
+     * Status of the zone to lookup. Valid values: `"active"`,
+     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+     * `"read only"`.
+     */
+    status?: pulumi.Input<string>;
 }
 
 export interface GetZonesFilter {
@@ -1898,3 +1973,4 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload?: pulumi.Input<boolean>;
 }
+

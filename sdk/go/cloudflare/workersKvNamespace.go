@@ -174,7 +174,7 @@ type WorkersKvNamespaceArrayInput interface {
 type WorkersKvNamespaceArray []WorkersKvNamespaceInput
 
 func (WorkersKvNamespaceArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WorkersKvNamespace)(nil))
+	return reflect.TypeOf((*[]*WorkersKvNamespace)(nil)).Elem()
 }
 
 func (i WorkersKvNamespaceArray) ToWorkersKvNamespaceArrayOutput() WorkersKvNamespaceArrayOutput {
@@ -199,7 +199,7 @@ type WorkersKvNamespaceMapInput interface {
 type WorkersKvNamespaceMap map[string]WorkersKvNamespaceInput
 
 func (WorkersKvNamespaceMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WorkersKvNamespace)(nil))
+	return reflect.TypeOf((*map[string]*WorkersKvNamespace)(nil)).Elem()
 }
 
 func (i WorkersKvNamespaceMap) ToWorkersKvNamespaceMapOutput() WorkersKvNamespaceMapOutput {
@@ -210,9 +210,7 @@ func (i WorkersKvNamespaceMap) ToWorkersKvNamespaceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceMapOutput)
 }
 
-type WorkersKvNamespaceOutput struct {
-	*pulumi.OutputState
-}
+type WorkersKvNamespaceOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvNamespaceOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkersKvNamespace)(nil))
@@ -231,14 +229,12 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespacePtrOutput() WorkersKvNames
 }
 
 func (o WorkersKvNamespaceOutput) ToWorkersKvNamespacePtrOutputWithContext(ctx context.Context) WorkersKvNamespacePtrOutput {
-	return o.ApplyT(func(v WorkersKvNamespace) *WorkersKvNamespace {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkersKvNamespace) *WorkersKvNamespace {
 		return &v
 	}).(WorkersKvNamespacePtrOutput)
 }
 
-type WorkersKvNamespacePtrOutput struct {
-	*pulumi.OutputState
-}
+type WorkersKvNamespacePtrOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvNamespacePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WorkersKvNamespace)(nil))
@@ -250,6 +246,16 @@ func (o WorkersKvNamespacePtrOutput) ToWorkersKvNamespacePtrOutput() WorkersKvNa
 
 func (o WorkersKvNamespacePtrOutput) ToWorkersKvNamespacePtrOutputWithContext(ctx context.Context) WorkersKvNamespacePtrOutput {
 	return o
+}
+
+func (o WorkersKvNamespacePtrOutput) Elem() WorkersKvNamespaceOutput {
+	return o.ApplyT(func(v *WorkersKvNamespace) WorkersKvNamespace {
+		if v != nil {
+			return *v
+		}
+		var ret WorkersKvNamespace
+		return ret
+	}).(WorkersKvNamespaceOutput)
 }
 
 type WorkersKvNamespaceArrayOutput struct{ *pulumi.OutputState }
@@ -293,6 +299,10 @@ func (o WorkersKvNamespaceMapOutput) MapIndex(k pulumi.StringInput) WorkersKvNam
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvNamespaceInput)(nil)).Elem(), &WorkersKvNamespace{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvNamespacePtrInput)(nil)).Elem(), &WorkersKvNamespace{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvNamespaceArrayInput)(nil)).Elem(), WorkersKvNamespaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvNamespaceMapInput)(nil)).Elem(), WorkersKvNamespaceMap{})
 	pulumi.RegisterOutputType(WorkersKvNamespaceOutput{})
 	pulumi.RegisterOutputType(WorkersKvNamespacePtrOutput{})
 	pulumi.RegisterOutputType(WorkersKvNamespaceArrayOutput{})

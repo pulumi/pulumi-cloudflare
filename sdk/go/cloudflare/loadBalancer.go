@@ -27,8 +27,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		foo, err := cloudflare.NewLoadBalancerPool(ctx, "foo", &cloudflare.LoadBalancerPoolArgs{
 // 			Name: pulumi.String("example-lb-pool"),
-// 			Origins: cloudflare.LoadBalancerPoolOriginArray{
-// 				&cloudflare.LoadBalancerPoolOriginArgs{
+// 			Origins: LoadBalancerPoolOriginArray{
+// 				&LoadBalancerPoolOriginArgs{
 // 					Name:    pulumi.String("example-1"),
 // 					Address: pulumi.String("192.0.2.1"),
 // 					Enabled: pulumi.Bool(false),
@@ -48,27 +48,27 @@ import (
 // 			Description:    pulumi.String("example load balancer using geo-balancing"),
 // 			Proxied:        pulumi.Bool(true),
 // 			SteeringPolicy: pulumi.String("geo"),
-// 			PopPools: cloudflare.LoadBalancerPopPoolArray{
-// 				&cloudflare.LoadBalancerPopPoolArgs{
+// 			PopPools: LoadBalancerPopPoolArray{
+// 				&LoadBalancerPopPoolArgs{
 // 					Pop: pulumi.String("LAX"),
 // 					PoolIds: pulumi.StringArray{
 // 						foo.ID(),
 // 					},
 // 				},
 // 			},
-// 			RegionPools: cloudflare.LoadBalancerRegionPoolArray{
-// 				&cloudflare.LoadBalancerRegionPoolArgs{
+// 			RegionPools: LoadBalancerRegionPoolArray{
+// 				&LoadBalancerRegionPoolArgs{
 // 					Region: pulumi.String("WNAM"),
 // 					PoolIds: pulumi.StringArray{
 // 						foo.ID(),
 // 					},
 // 				},
 // 			},
-// 			Rules: cloudflare.LoadBalancerRuleArray{
-// 				&cloudflare.LoadBalancerRuleArgs{
+// 			Rules: LoadBalancerRuleArray{
+// 				&LoadBalancerRuleArgs{
 // 					Name:      pulumi.String("example rule"),
 // 					Condition: pulumi.String("http.request.uri.path contains \"testing\""),
-// 					FixedResponse: &cloudflare.LoadBalancerRuleFixedResponseArgs{
+// 					FixedResponse: &LoadBalancerRuleFixedResponseArgs{
 // 						MessageBody: pulumi.String("hello"),
 // 						StatusCode:  pulumi.Int(200),
 // 						ContentType: pulumi.String("html"),
@@ -374,7 +374,7 @@ type LoadBalancerArrayInput interface {
 type LoadBalancerArray []LoadBalancerInput
 
 func (LoadBalancerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LoadBalancer)(nil))
+	return reflect.TypeOf((*[]*LoadBalancer)(nil)).Elem()
 }
 
 func (i LoadBalancerArray) ToLoadBalancerArrayOutput() LoadBalancerArrayOutput {
@@ -399,7 +399,7 @@ type LoadBalancerMapInput interface {
 type LoadBalancerMap map[string]LoadBalancerInput
 
 func (LoadBalancerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LoadBalancer)(nil))
+	return reflect.TypeOf((*map[string]*LoadBalancer)(nil)).Elem()
 }
 
 func (i LoadBalancerMap) ToLoadBalancerMapOutput() LoadBalancerMapOutput {
@@ -410,9 +410,7 @@ func (i LoadBalancerMap) ToLoadBalancerMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMapOutput)
 }
 
-type LoadBalancerOutput struct {
-	*pulumi.OutputState
-}
+type LoadBalancerOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancer)(nil))
@@ -431,14 +429,12 @@ func (o LoadBalancerOutput) ToLoadBalancerPtrOutput() LoadBalancerPtrOutput {
 }
 
 func (o LoadBalancerOutput) ToLoadBalancerPtrOutputWithContext(ctx context.Context) LoadBalancerPtrOutput {
-	return o.ApplyT(func(v LoadBalancer) *LoadBalancer {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancer) *LoadBalancer {
 		return &v
 	}).(LoadBalancerPtrOutput)
 }
 
-type LoadBalancerPtrOutput struct {
-	*pulumi.OutputState
-}
+type LoadBalancerPtrOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LoadBalancer)(nil))
@@ -450,6 +446,16 @@ func (o LoadBalancerPtrOutput) ToLoadBalancerPtrOutput() LoadBalancerPtrOutput {
 
 func (o LoadBalancerPtrOutput) ToLoadBalancerPtrOutputWithContext(ctx context.Context) LoadBalancerPtrOutput {
 	return o
+}
+
+func (o LoadBalancerPtrOutput) Elem() LoadBalancerOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancer
+		return ret
+	}).(LoadBalancerOutput)
 }
 
 type LoadBalancerArrayOutput struct{ *pulumi.OutputState }
@@ -493,6 +499,10 @@ func (o LoadBalancerMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerInput)(nil)).Elem(), &LoadBalancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPtrInput)(nil)).Elem(), &LoadBalancer{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerArrayInput)(nil)).Elem(), LoadBalancerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMapInput)(nil)).Elem(), LoadBalancerMap{})
 	pulumi.RegisterOutputType(LoadBalancerOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerArrayOutput{})

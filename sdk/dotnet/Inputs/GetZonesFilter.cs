@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class GetZonesFilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetZonesFilterArgs : Pulumi.InvokeArgs
     {
         /// <summary>
         /// The type of search to perform for the `name` value
@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Inputs
         /// to `"exact"`.
         /// </summary>
         [Input("lookupType")]
-        public Input<string>? LookupType { get; set; }
+        public string? LookupType { get; set; }
 
         /// <summary>
         /// A RE2 compatible regular expression to filter the
@@ -26,20 +26,20 @@ namespace Pulumi.Cloudflare.Inputs
         /// are performed on the Cloudflare server side.
         /// </summary>
         [Input("match")]
-        public Input<string>? Match { get; set; }
+        public string? Match { get; set; }
 
         /// <summary>
         /// A string value to search for.
         /// </summary>
         [Input("name")]
-        public Input<string>? Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// Paused status of the zone to lookup. Valid values are
         /// `true` or `false`.
         /// </summary>
         [Input("paused")]
-        public Input<bool>? Paused { get; set; }
+        public bool? Paused { get; set; }
 
         /// <summary>
         /// Status of the zone to lookup. Valid values: `"active"`,
@@ -47,9 +47,9 @@ namespace Pulumi.Cloudflare.Inputs
         /// `"read only"`.
         /// </summary>
         [Input("status")]
-        public Input<string>? Status { get; set; }
+        public string? Status { get; set; }
 
-        public GetZonesFilterInputArgs()
+        public GetZonesFilterArgs()
         {
         }
     }

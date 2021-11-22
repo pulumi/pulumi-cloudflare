@@ -249,7 +249,7 @@ type CustomPagesArrayInput interface {
 type CustomPagesArray []CustomPagesInput
 
 func (CustomPagesArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CustomPages)(nil))
+	return reflect.TypeOf((*[]*CustomPages)(nil)).Elem()
 }
 
 func (i CustomPagesArray) ToCustomPagesArrayOutput() CustomPagesArrayOutput {
@@ -274,7 +274,7 @@ type CustomPagesMapInput interface {
 type CustomPagesMap map[string]CustomPagesInput
 
 func (CustomPagesMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CustomPages)(nil))
+	return reflect.TypeOf((*map[string]*CustomPages)(nil)).Elem()
 }
 
 func (i CustomPagesMap) ToCustomPagesMapOutput() CustomPagesMapOutput {
@@ -285,9 +285,7 @@ func (i CustomPagesMap) ToCustomPagesMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesMapOutput)
 }
 
-type CustomPagesOutput struct {
-	*pulumi.OutputState
-}
+type CustomPagesOutput struct{ *pulumi.OutputState }
 
 func (CustomPagesOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CustomPages)(nil))
@@ -306,14 +304,12 @@ func (o CustomPagesOutput) ToCustomPagesPtrOutput() CustomPagesPtrOutput {
 }
 
 func (o CustomPagesOutput) ToCustomPagesPtrOutputWithContext(ctx context.Context) CustomPagesPtrOutput {
-	return o.ApplyT(func(v CustomPages) *CustomPages {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomPages) *CustomPages {
 		return &v
 	}).(CustomPagesPtrOutput)
 }
 
-type CustomPagesPtrOutput struct {
-	*pulumi.OutputState
-}
+type CustomPagesPtrOutput struct{ *pulumi.OutputState }
 
 func (CustomPagesPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CustomPages)(nil))
@@ -325,6 +321,16 @@ func (o CustomPagesPtrOutput) ToCustomPagesPtrOutput() CustomPagesPtrOutput {
 
 func (o CustomPagesPtrOutput) ToCustomPagesPtrOutputWithContext(ctx context.Context) CustomPagesPtrOutput {
 	return o
+}
+
+func (o CustomPagesPtrOutput) Elem() CustomPagesOutput {
+	return o.ApplyT(func(v *CustomPages) CustomPages {
+		if v != nil {
+			return *v
+		}
+		var ret CustomPages
+		return ret
+	}).(CustomPagesOutput)
 }
 
 type CustomPagesArrayOutput struct{ *pulumi.OutputState }
@@ -368,6 +374,10 @@ func (o CustomPagesMapOutput) MapIndex(k pulumi.StringInput) CustomPagesOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomPagesInput)(nil)).Elem(), &CustomPages{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomPagesPtrInput)(nil)).Elem(), &CustomPages{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomPagesArrayInput)(nil)).Elem(), CustomPagesArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomPagesMapInput)(nil)).Elem(), CustomPagesMap{})
 	pulumi.RegisterOutputType(CustomPagesOutput{})
 	pulumi.RegisterOutputType(CustomPagesPtrOutput{})
 	pulumi.RegisterOutputType(CustomPagesArrayOutput{})

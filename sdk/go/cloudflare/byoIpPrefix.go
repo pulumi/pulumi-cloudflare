@@ -194,7 +194,7 @@ type ByoIpPrefixArrayInput interface {
 type ByoIpPrefixArray []ByoIpPrefixInput
 
 func (ByoIpPrefixArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ByoIpPrefix)(nil))
+	return reflect.TypeOf((*[]*ByoIpPrefix)(nil)).Elem()
 }
 
 func (i ByoIpPrefixArray) ToByoIpPrefixArrayOutput() ByoIpPrefixArrayOutput {
@@ -219,7 +219,7 @@ type ByoIpPrefixMapInput interface {
 type ByoIpPrefixMap map[string]ByoIpPrefixInput
 
 func (ByoIpPrefixMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ByoIpPrefix)(nil))
+	return reflect.TypeOf((*map[string]*ByoIpPrefix)(nil)).Elem()
 }
 
 func (i ByoIpPrefixMap) ToByoIpPrefixMapOutput() ByoIpPrefixMapOutput {
@@ -230,9 +230,7 @@ func (i ByoIpPrefixMap) ToByoIpPrefixMapOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixMapOutput)
 }
 
-type ByoIpPrefixOutput struct {
-	*pulumi.OutputState
-}
+type ByoIpPrefixOutput struct{ *pulumi.OutputState }
 
 func (ByoIpPrefixOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ByoIpPrefix)(nil))
@@ -251,14 +249,12 @@ func (o ByoIpPrefixOutput) ToByoIpPrefixPtrOutput() ByoIpPrefixPtrOutput {
 }
 
 func (o ByoIpPrefixOutput) ToByoIpPrefixPtrOutputWithContext(ctx context.Context) ByoIpPrefixPtrOutput {
-	return o.ApplyT(func(v ByoIpPrefix) *ByoIpPrefix {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ByoIpPrefix) *ByoIpPrefix {
 		return &v
 	}).(ByoIpPrefixPtrOutput)
 }
 
-type ByoIpPrefixPtrOutput struct {
-	*pulumi.OutputState
-}
+type ByoIpPrefixPtrOutput struct{ *pulumi.OutputState }
 
 func (ByoIpPrefixPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ByoIpPrefix)(nil))
@@ -270,6 +266,16 @@ func (o ByoIpPrefixPtrOutput) ToByoIpPrefixPtrOutput() ByoIpPrefixPtrOutput {
 
 func (o ByoIpPrefixPtrOutput) ToByoIpPrefixPtrOutputWithContext(ctx context.Context) ByoIpPrefixPtrOutput {
 	return o
+}
+
+func (o ByoIpPrefixPtrOutput) Elem() ByoIpPrefixOutput {
+	return o.ApplyT(func(v *ByoIpPrefix) ByoIpPrefix {
+		if v != nil {
+			return *v
+		}
+		var ret ByoIpPrefix
+		return ret
+	}).(ByoIpPrefixOutput)
 }
 
 type ByoIpPrefixArrayOutput struct{ *pulumi.OutputState }
@@ -313,6 +319,10 @@ func (o ByoIpPrefixMapOutput) MapIndex(k pulumi.StringInput) ByoIpPrefixOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ByoIpPrefixInput)(nil)).Elem(), &ByoIpPrefix{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ByoIpPrefixPtrInput)(nil)).Elem(), &ByoIpPrefix{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ByoIpPrefixArrayInput)(nil)).Elem(), ByoIpPrefixArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ByoIpPrefixMapInput)(nil)).Elem(), ByoIpPrefixMap{})
 	pulumi.RegisterOutputType(ByoIpPrefixOutput{})
 	pulumi.RegisterOutputType(ByoIpPrefixPtrOutput{})
 	pulumi.RegisterOutputType(ByoIpPrefixArrayOutput{})

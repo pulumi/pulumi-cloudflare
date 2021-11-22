@@ -4,6 +4,9 @@
 package cloudflare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +24,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.GetOriginCaRootCertificate(ctx, &cloudflare.GetOriginCaRootCertificateArgs{
+// 		_, err := cloudflare.GetOriginCaRootCertificate(ctx, &GetOriginCaRootCertificateArgs{
 // 			Algorithm: "<algorithm>",
 // 		}, nil)
 // 		if err != nil {
@@ -53,4 +56,56 @@ type GetOriginCaRootCertificateResult struct {
 	CertPem string `pulumi:"certPem"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+}
+
+func GetOriginCaRootCertificateOutput(ctx *pulumi.Context, args GetOriginCaRootCertificateOutputArgs, opts ...pulumi.InvokeOption) GetOriginCaRootCertificateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetOriginCaRootCertificateResult, error) {
+			args := v.(GetOriginCaRootCertificateArgs)
+			r, err := GetOriginCaRootCertificate(ctx, &args, opts...)
+			return *r, err
+		}).(GetOriginCaRootCertificateResultOutput)
+}
+
+// A collection of arguments for invoking getOriginCaRootCertificate.
+type GetOriginCaRootCertificateOutputArgs struct {
+	// The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+}
+
+func (GetOriginCaRootCertificateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOriginCaRootCertificateArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getOriginCaRootCertificate.
+type GetOriginCaRootCertificateResultOutput struct{ *pulumi.OutputState }
+
+func (GetOriginCaRootCertificateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetOriginCaRootCertificateResult)(nil)).Elem()
+}
+
+func (o GetOriginCaRootCertificateResultOutput) ToGetOriginCaRootCertificateResultOutput() GetOriginCaRootCertificateResultOutput {
+	return o
+}
+
+func (o GetOriginCaRootCertificateResultOutput) ToGetOriginCaRootCertificateResultOutputWithContext(ctx context.Context) GetOriginCaRootCertificateResultOutput {
+	return o
+}
+
+func (o GetOriginCaRootCertificateResultOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginCaRootCertificateResult) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The Origin CA root certificate in PEM format.
+func (o GetOriginCaRootCertificateResultOutput) CertPem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginCaRootCertificateResult) string { return v.CertPem }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetOriginCaRootCertificateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetOriginCaRootCertificateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetOriginCaRootCertificateResultOutput{})
 }

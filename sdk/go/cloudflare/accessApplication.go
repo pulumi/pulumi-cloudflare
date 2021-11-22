@@ -28,8 +28,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
-// 			CorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{
-// 				&cloudflare.AccessApplicationCorsHeaderArgs{
+// 			CorsHeaders: AccessApplicationCorsHeaderArray{
+// 				&AccessApplicationCorsHeaderArgs{
 // 					AllowCredentials: pulumi.Bool(true),
 // 					AllowedMethods: pulumi.StringArray{
 // 						pulumi.String("GET"),
@@ -346,7 +346,7 @@ type AccessApplicationArrayInput interface {
 type AccessApplicationArray []AccessApplicationInput
 
 func (AccessApplicationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessApplication)(nil))
+	return reflect.TypeOf((*[]*AccessApplication)(nil)).Elem()
 }
 
 func (i AccessApplicationArray) ToAccessApplicationArrayOutput() AccessApplicationArrayOutput {
@@ -371,7 +371,7 @@ type AccessApplicationMapInput interface {
 type AccessApplicationMap map[string]AccessApplicationInput
 
 func (AccessApplicationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessApplication)(nil))
+	return reflect.TypeOf((*map[string]*AccessApplication)(nil)).Elem()
 }
 
 func (i AccessApplicationMap) ToAccessApplicationMapOutput() AccessApplicationMapOutput {
@@ -382,9 +382,7 @@ func (i AccessApplicationMap) ToAccessApplicationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationMapOutput)
 }
 
-type AccessApplicationOutput struct {
-	*pulumi.OutputState
-}
+type AccessApplicationOutput struct{ *pulumi.OutputState }
 
 func (AccessApplicationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessApplication)(nil))
@@ -403,14 +401,12 @@ func (o AccessApplicationOutput) ToAccessApplicationPtrOutput() AccessApplicatio
 }
 
 func (o AccessApplicationOutput) ToAccessApplicationPtrOutputWithContext(ctx context.Context) AccessApplicationPtrOutput {
-	return o.ApplyT(func(v AccessApplication) *AccessApplication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplication) *AccessApplication {
 		return &v
 	}).(AccessApplicationPtrOutput)
 }
 
-type AccessApplicationPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessApplicationPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessApplicationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessApplication)(nil))
@@ -422,6 +418,16 @@ func (o AccessApplicationPtrOutput) ToAccessApplicationPtrOutput() AccessApplica
 
 func (o AccessApplicationPtrOutput) ToAccessApplicationPtrOutputWithContext(ctx context.Context) AccessApplicationPtrOutput {
 	return o
+}
+
+func (o AccessApplicationPtrOutput) Elem() AccessApplicationOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplication {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplication
+		return ret
+	}).(AccessApplicationOutput)
 }
 
 type AccessApplicationArrayOutput struct{ *pulumi.OutputState }
@@ -465,6 +471,10 @@ func (o AccessApplicationMapOutput) MapIndex(k pulumi.StringInput) AccessApplica
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationInput)(nil)).Elem(), &AccessApplication{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationPtrInput)(nil)).Elem(), &AccessApplication{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationArrayInput)(nil)).Elem(), AccessApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationMapInput)(nil)).Elem(), AccessApplicationMap{})
 	pulumi.RegisterOutputType(AccessApplicationOutput{})
 	pulumi.RegisterOutputType(AccessApplicationPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationArrayOutput{})

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Cloudflare
 {
@@ -13,9 +14,79 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Cloudflare.GetWafGroups.InvokeAsync(new Cloudflare.GetWafGroupsArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetWafGroupsFilterArgs
+        ///             {
+        ///                 Name = ".*example.*",
+        ///                 Mode = "on",
+        ///             },
+        ///         }));
+        ///         this.WafGroups = test.Apply(test =&gt; test.Groups);
+        ///     }
+        /// 
+        ///     [Output("wafGroups")]
+        ///     public Output&lt;string&gt; WafGroups { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafGroupsResult> InvokeAsync(GetWafGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? new GetWafGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var test = Output.Create(Cloudflare.GetWafGroups.InvokeAsync(new Cloudflare.GetWafGroupsArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetWafGroupsFilterArgs
+        ///             {
+        ///                 Name = ".*example.*",
+        ///                 Mode = "on",
+        ///             },
+        ///         }));
+        ///         this.WafGroups = test.Apply(test =&gt; test.Groups);
+        ///     }
+        /// 
+        ///     [Output("wafGroups")]
+        ///     public Output&lt;string&gt; WafGroups { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetWafGroupsResult> Invoke(GetWafGroupsInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetWafGroupsResult>("cloudflare:index/getWafGroups:getWafGroups", args ?? new GetWafGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -41,6 +112,32 @@ namespace Pulumi.Cloudflare
         public string ZoneId { get; set; } = null!;
 
         public GetWafGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetWafGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// One or more values used to look up WAF Rule Groups. If more than one value is given all
+        /// values must match in order to be included, see below for full list.
+        /// </summary>
+        [Input("filter")]
+        public Input<Inputs.GetWafGroupsFilterInputArgs>? Filter { get; set; }
+
+        /// <summary>
+        /// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
+        /// </summary>
+        [Input("packageId")]
+        public Input<string>? PackageId { get; set; }
+
+        /// <summary>
+        /// The ID of the DNS zone in which to search for the WAF Rule Groups.
+        /// </summary>
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
+
+        public GetWafGroupsInvokeArgs()
         {
         }
     }

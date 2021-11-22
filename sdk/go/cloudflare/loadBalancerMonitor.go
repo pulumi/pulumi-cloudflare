@@ -32,8 +32,8 @@ import (
 // 			ExpectedBody:    pulumi.String("alive"),
 // 			ExpectedCodes:   pulumi.String("2xx"),
 // 			FollowRedirects: pulumi.Bool(true),
-// 			Headers: cloudflare.LoadBalancerMonitorHeaderArray{
-// 				&cloudflare.LoadBalancerMonitorHeaderArgs{
+// 			Headers: LoadBalancerMonitorHeaderArray{
+// 				&LoadBalancerMonitorHeaderArgs{
 // 					Header: pulumi.String("Host"),
 // 					Values: pulumi.StringArray{
 // 						pulumi.String("example.com"),
@@ -350,7 +350,7 @@ type LoadBalancerMonitorArrayInput interface {
 type LoadBalancerMonitorArray []LoadBalancerMonitorInput
 
 func (LoadBalancerMonitorArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LoadBalancerMonitor)(nil))
+	return reflect.TypeOf((*[]*LoadBalancerMonitor)(nil)).Elem()
 }
 
 func (i LoadBalancerMonitorArray) ToLoadBalancerMonitorArrayOutput() LoadBalancerMonitorArrayOutput {
@@ -375,7 +375,7 @@ type LoadBalancerMonitorMapInput interface {
 type LoadBalancerMonitorMap map[string]LoadBalancerMonitorInput
 
 func (LoadBalancerMonitorMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LoadBalancerMonitor)(nil))
+	return reflect.TypeOf((*map[string]*LoadBalancerMonitor)(nil)).Elem()
 }
 
 func (i LoadBalancerMonitorMap) ToLoadBalancerMonitorMapOutput() LoadBalancerMonitorMapOutput {
@@ -386,9 +386,7 @@ func (i LoadBalancerMonitorMap) ToLoadBalancerMonitorMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorMapOutput)
 }
 
-type LoadBalancerMonitorOutput struct {
-	*pulumi.OutputState
-}
+type LoadBalancerMonitorOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerMonitorOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancerMonitor)(nil))
@@ -407,14 +405,12 @@ func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorPtrOutput() LoadBalancer
 }
 
 func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerMonitorPtrOutput {
-	return o.ApplyT(func(v LoadBalancerMonitor) *LoadBalancerMonitor {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerMonitor) *LoadBalancerMonitor {
 		return &v
 	}).(LoadBalancerMonitorPtrOutput)
 }
 
-type LoadBalancerMonitorPtrOutput struct {
-	*pulumi.OutputState
-}
+type LoadBalancerMonitorPtrOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerMonitorPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LoadBalancerMonitor)(nil))
@@ -426,6 +422,16 @@ func (o LoadBalancerMonitorPtrOutput) ToLoadBalancerMonitorPtrOutput() LoadBalan
 
 func (o LoadBalancerMonitorPtrOutput) ToLoadBalancerMonitorPtrOutputWithContext(ctx context.Context) LoadBalancerMonitorPtrOutput {
 	return o
+}
+
+func (o LoadBalancerMonitorPtrOutput) Elem() LoadBalancerMonitorOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) LoadBalancerMonitor {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerMonitor
+		return ret
+	}).(LoadBalancerMonitorOutput)
 }
 
 type LoadBalancerMonitorArrayOutput struct{ *pulumi.OutputState }
@@ -469,6 +475,10 @@ func (o LoadBalancerMonitorMapOutput) MapIndex(k pulumi.StringInput) LoadBalance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorInput)(nil)).Elem(), &LoadBalancerMonitor{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorPtrInput)(nil)).Elem(), &LoadBalancerMonitor{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorArrayInput)(nil)).Elem(), LoadBalancerMonitorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorMapInput)(nil)).Elem(), LoadBalancerMonitorMap{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerMonitorArrayOutput{})

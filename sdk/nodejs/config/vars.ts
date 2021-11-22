@@ -4,45 +4,116 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("cloudflare");
+declare var exports: any;
+const __config = new pulumi.Config("cloudflare");
 
 /**
  * Configure API client to always use that account
  */
-export let accountId: string | undefined = __config.get("accountId");
+export declare const accountId: string | undefined;
+Object.defineProperty(exports, "accountId", {
+    get() {
+        return __config.get("accountId");
+    },
+    enumerable: true,
+});
+
 /**
  * Whether to print logs from the API client (using the default log library logger)
  */
-export let apiClientLogging: boolean | undefined = __config.getObject<boolean>("apiClientLogging") || (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
+export declare const apiClientLogging: boolean;
+Object.defineProperty(exports, "apiClientLogging", {
+    get() {
+        return __config.getObject<boolean>("apiClientLogging") ?? (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
+    },
+    enumerable: true,
+});
+
 /**
  * The API key for operations.
  */
-export let apiKey: string | undefined = __config.get("apiKey");
+export declare const apiKey: string | undefined;
+Object.defineProperty(exports, "apiKey", {
+    get() {
+        return __config.get("apiKey");
+    },
+    enumerable: true,
+});
+
 /**
  * The API Token for operations.
  */
-export let apiToken: string | undefined = __config.get("apiToken");
+export declare const apiToken: string | undefined;
+Object.defineProperty(exports, "apiToken", {
+    get() {
+        return __config.get("apiToken");
+    },
+    enumerable: true,
+});
+
 /**
  * A special Cloudflare API key good for a restricted set of endpoints
  */
-export let apiUserServiceKey: string | undefined = __config.get("apiUserServiceKey");
+export declare const apiUserServiceKey: string | undefined;
+Object.defineProperty(exports, "apiUserServiceKey", {
+    get() {
+        return __config.get("apiUserServiceKey");
+    },
+    enumerable: true,
+});
+
 /**
  * A registered Cloudflare email address
  */
-export let email: string | undefined = __config.get("email");
+export declare const email: string | undefined;
+Object.defineProperty(exports, "email", {
+    get() {
+        return __config.get("email");
+    },
+    enumerable: true,
+});
+
 /**
  * Maximum backoff period in seconds after failed API calls
  */
-export let maxBackoff: number | undefined = __config.getObject<number>("maxBackoff") || (<any>utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30);
+export declare const maxBackoff: number;
+Object.defineProperty(exports, "maxBackoff", {
+    get() {
+        return __config.getObject<number>("maxBackoff") ?? (<any>utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30);
+    },
+    enumerable: true,
+});
+
 /**
  * Minimum backoff period in seconds after failed API calls
  */
-export let minBackoff: number | undefined = __config.getObject<number>("minBackoff") || (<any>utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1);
+export declare const minBackoff: number;
+Object.defineProperty(exports, "minBackoff", {
+    get() {
+        return __config.getObject<number>("minBackoff") ?? (<any>utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1);
+    },
+    enumerable: true,
+});
+
 /**
  * Maximum number of retries to perform when an API request fails
  */
-export let retries: number | undefined = __config.getObject<number>("retries") || (<any>utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3);
+export declare const retries: number;
+Object.defineProperty(exports, "retries", {
+    get() {
+        return __config.getObject<number>("retries") ?? (<any>utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3);
+    },
+    enumerable: true,
+});
+
 /**
  * RPS limit to apply when making calls to the API
  */
-export let rps: number | undefined = __config.getObject<number>("rps") || (<any>utilities.getEnvNumber("CLOUDFLARE_RPS") || 4);
+export declare const rps: number;
+Object.defineProperty(exports, "rps", {
+    get() {
+        return __config.getObject<number>("rps") ?? (<any>utilities.getEnvNumber("CLOUDFLARE_RPS") || 4);
+    },
+    enumerable: true,
+});
+

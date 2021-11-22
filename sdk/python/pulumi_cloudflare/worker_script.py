@@ -201,6 +201,36 @@ class WorkerScript(pulumi.CustomResource):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_cloudflare as cloudflare
+
+        my_namespace = cloudflare.WorkersKvNamespace("myNamespace", title="example")
+        # Sets the script with the name "script_1"
+        my_script = cloudflare.WorkerScript("myScript",
+            name="script_1",
+            content=(lambda path: open(path).read())("script.js"),
+            kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
+                name="MY_EXAMPLE_KV_NAMESPACE",
+                namespace_id=my_namespace.id,
+            )],
+            plain_text_bindings=[cloudflare.WorkerScriptPlainTextBindingArgs(
+                name="MY_EXAMPLE_PLAIN_TEXT",
+                text="foobar",
+            )],
+            secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
+                name="MY_EXAMPLE_SECRET_TEXT",
+                text=var["secret_foo_value"],
+            )],
+            webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
+                name="MY_EXAMPLE_WASM",
+                module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
+            )])
+        ```
+
         ## Import
 
         To import a script, use a script name, e.g. `script_name`
@@ -224,6 +254,36 @@ class WorkerScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_cloudflare as cloudflare
+
+        my_namespace = cloudflare.WorkersKvNamespace("myNamespace", title="example")
+        # Sets the script with the name "script_1"
+        my_script = cloudflare.WorkerScript("myScript",
+            name="script_1",
+            content=(lambda path: open(path).read())("script.js"),
+            kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
+                name="MY_EXAMPLE_KV_NAMESPACE",
+                namespace_id=my_namespace.id,
+            )],
+            plain_text_bindings=[cloudflare.WorkerScriptPlainTextBindingArgs(
+                name="MY_EXAMPLE_PLAIN_TEXT",
+                text="foobar",
+            )],
+            secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
+                name="MY_EXAMPLE_SECRET_TEXT",
+                text=var["secret_foo_value"],
+            )],
+            webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
+                name="MY_EXAMPLE_WASM",
+                module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
+            )])
+        ```
 
         ## Import
 

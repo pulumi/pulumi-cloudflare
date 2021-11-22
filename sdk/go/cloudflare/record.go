@@ -39,7 +39,7 @@ import (
 // 			ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
 // 			Name:   pulumi.String("_sip._tls"),
 // 			Type:   pulumi.String("SRV"),
-// 			Data: &cloudflare.RecordDataArgs{
+// 			Data: &RecordDataArgs{
 // 				Service:  pulumi.String("_sip"),
 // 				Proto:    pulumi.String("_tls"),
 // 				Name:     pulumi.String("terraform-srv"),
@@ -306,7 +306,7 @@ type RecordArrayInput interface {
 type RecordArray []RecordInput
 
 func (RecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Record)(nil))
+	return reflect.TypeOf((*[]*Record)(nil)).Elem()
 }
 
 func (i RecordArray) ToRecordArrayOutput() RecordArrayOutput {
@@ -331,7 +331,7 @@ type RecordMapInput interface {
 type RecordMap map[string]RecordInput
 
 func (RecordMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Record)(nil))
+	return reflect.TypeOf((*map[string]*Record)(nil)).Elem()
 }
 
 func (i RecordMap) ToRecordMapOutput() RecordMapOutput {
@@ -342,9 +342,7 @@ func (i RecordMap) ToRecordMapOutputWithContext(ctx context.Context) RecordMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(RecordMapOutput)
 }
 
-type RecordOutput struct {
-	*pulumi.OutputState
-}
+type RecordOutput struct{ *pulumi.OutputState }
 
 func (RecordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Record)(nil))
@@ -363,14 +361,12 @@ func (o RecordOutput) ToRecordPtrOutput() RecordPtrOutput {
 }
 
 func (o RecordOutput) ToRecordPtrOutputWithContext(ctx context.Context) RecordPtrOutput {
-	return o.ApplyT(func(v Record) *Record {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Record) *Record {
 		return &v
 	}).(RecordPtrOutput)
 }
 
-type RecordPtrOutput struct {
-	*pulumi.OutputState
-}
+type RecordPtrOutput struct{ *pulumi.OutputState }
 
 func (RecordPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Record)(nil))
@@ -382,6 +378,16 @@ func (o RecordPtrOutput) ToRecordPtrOutput() RecordPtrOutput {
 
 func (o RecordPtrOutput) ToRecordPtrOutputWithContext(ctx context.Context) RecordPtrOutput {
 	return o
+}
+
+func (o RecordPtrOutput) Elem() RecordOutput {
+	return o.ApplyT(func(v *Record) Record {
+		if v != nil {
+			return *v
+		}
+		var ret Record
+		return ret
+	}).(RecordOutput)
 }
 
 type RecordArrayOutput struct{ *pulumi.OutputState }
@@ -425,6 +431,10 @@ func (o RecordMapOutput) MapIndex(k pulumi.StringInput) RecordOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordInput)(nil)).Elem(), &Record{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordPtrInput)(nil)).Elem(), &Record{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordArrayInput)(nil)).Elem(), RecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordMapInput)(nil)).Elem(), RecordMap{})
 	pulumi.RegisterOutputType(RecordOutput{})
 	pulumi.RegisterOutputType(RecordPtrOutput{})
 	pulumi.RegisterOutputType(RecordArrayOutput{})

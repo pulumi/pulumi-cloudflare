@@ -214,7 +214,7 @@ type AccessCaCertificateArrayInput interface {
 type AccessCaCertificateArray []AccessCaCertificateInput
 
 func (AccessCaCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessCaCertificate)(nil))
+	return reflect.TypeOf((*[]*AccessCaCertificate)(nil)).Elem()
 }
 
 func (i AccessCaCertificateArray) ToAccessCaCertificateArrayOutput() AccessCaCertificateArrayOutput {
@@ -239,7 +239,7 @@ type AccessCaCertificateMapInput interface {
 type AccessCaCertificateMap map[string]AccessCaCertificateInput
 
 func (AccessCaCertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessCaCertificate)(nil))
+	return reflect.TypeOf((*map[string]*AccessCaCertificate)(nil)).Elem()
 }
 
 func (i AccessCaCertificateMap) ToAccessCaCertificateMapOutput() AccessCaCertificateMapOutput {
@@ -250,9 +250,7 @@ func (i AccessCaCertificateMap) ToAccessCaCertificateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessCaCertificateMapOutput)
 }
 
-type AccessCaCertificateOutput struct {
-	*pulumi.OutputState
-}
+type AccessCaCertificateOutput struct{ *pulumi.OutputState }
 
 func (AccessCaCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessCaCertificate)(nil))
@@ -271,14 +269,12 @@ func (o AccessCaCertificateOutput) ToAccessCaCertificatePtrOutput() AccessCaCert
 }
 
 func (o AccessCaCertificateOutput) ToAccessCaCertificatePtrOutputWithContext(ctx context.Context) AccessCaCertificatePtrOutput {
-	return o.ApplyT(func(v AccessCaCertificate) *AccessCaCertificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessCaCertificate) *AccessCaCertificate {
 		return &v
 	}).(AccessCaCertificatePtrOutput)
 }
 
-type AccessCaCertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessCaCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (AccessCaCertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessCaCertificate)(nil))
@@ -290,6 +286,16 @@ func (o AccessCaCertificatePtrOutput) ToAccessCaCertificatePtrOutput() AccessCaC
 
 func (o AccessCaCertificatePtrOutput) ToAccessCaCertificatePtrOutputWithContext(ctx context.Context) AccessCaCertificatePtrOutput {
 	return o
+}
+
+func (o AccessCaCertificatePtrOutput) Elem() AccessCaCertificateOutput {
+	return o.ApplyT(func(v *AccessCaCertificate) AccessCaCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret AccessCaCertificate
+		return ret
+	}).(AccessCaCertificateOutput)
 }
 
 type AccessCaCertificateArrayOutput struct{ *pulumi.OutputState }
@@ -333,6 +339,10 @@ func (o AccessCaCertificateMapOutput) MapIndex(k pulumi.StringInput) AccessCaCer
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessCaCertificateInput)(nil)).Elem(), &AccessCaCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessCaCertificatePtrInput)(nil)).Elem(), &AccessCaCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessCaCertificateArrayInput)(nil)).Elem(), AccessCaCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessCaCertificateMapInput)(nil)).Elem(), AccessCaCertificateMap{})
 	pulumi.RegisterOutputType(AccessCaCertificateOutput{})
 	pulumi.RegisterOutputType(AccessCaCertificatePtrOutput{})
 	pulumi.RegisterOutputType(AccessCaCertificateArrayOutput{})

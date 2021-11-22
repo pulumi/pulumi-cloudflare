@@ -14,6 +14,7 @@ __all__ = [
     'GetWafPackagesResult',
     'AwaitableGetWafPackagesResult',
     'get_waf_packages',
+    'get_waf_packages_output',
 ]
 
 @pulumi.output_type
@@ -80,6 +81,23 @@ def get_waf_packages(filter: Optional[pulumi.InputType['GetWafPackagesFilterArgs
     """
     Use this data source to look up [WAF Rule Packages](https://api.cloudflare.com/#waf-rule-packages-properties).
 
+    ## Example Usage
+
+    The example below matches all `high` sensitivity WAF Rule Packages, with a `challenge` action mode and an `anomaly` detection mode, that contain the word `example`. The matched WAF Rule Packages are then returned as output.
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    test = cloudflare.get_waf_packages(filter=cloudflare.GetWafPackagesFilterArgs(
+        name=".*example.*",
+        detection_mode="anomaly",
+        sensitivity="high",
+        action_mode="challenge",
+    ))
+    pulumi.export("wafPackages", test.packages)
+    ```
+
 
     :param pulumi.InputType['GetWafPackagesFilterArgs'] filter: One or more values used to look up WAF Rule Packages. If more than one value is given all
            values must match in order to be included, see below for full list.
@@ -99,3 +117,35 @@ def get_waf_packages(filter: Optional[pulumi.InputType['GetWafPackagesFilterArgs
         id=__ret__.id,
         packages=__ret__.packages,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_waf_packages)
+def get_waf_packages_output(filter: Optional[pulumi.Input[Optional[pulumi.InputType['GetWafPackagesFilterArgs']]]] = None,
+                            zone_id: Optional[pulumi.Input[str]] = None,
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWafPackagesResult]:
+    """
+    Use this data source to look up [WAF Rule Packages](https://api.cloudflare.com/#waf-rule-packages-properties).
+
+    ## Example Usage
+
+    The example below matches all `high` sensitivity WAF Rule Packages, with a `challenge` action mode and an `anomaly` detection mode, that contain the word `example`. The matched WAF Rule Packages are then returned as output.
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    test = cloudflare.get_waf_packages(filter=cloudflare.GetWafPackagesFilterArgs(
+        name=".*example.*",
+        detection_mode="anomaly",
+        sensitivity="high",
+        action_mode="challenge",
+    ))
+    pulumi.export("wafPackages", test.packages)
+    ```
+
+
+    :param pulumi.InputType['GetWafPackagesFilterArgs'] filter: One or more values used to look up WAF Rule Packages. If more than one value is given all
+           values must match in order to be included, see below for full list.
+    :param str zone_id: The ID of the DNS zone in which to search for the WAF Rule Packages.
+    """
+    ...

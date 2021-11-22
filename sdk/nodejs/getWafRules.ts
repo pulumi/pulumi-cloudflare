@@ -81,3 +81,26 @@ export interface GetWafRulesResult {
     readonly rules: outputs.GetWafRulesRule[];
     readonly zoneId: string;
 }
+
+export function getWafRulesOutput(args: GetWafRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWafRulesResult> {
+    return pulumi.output(args).apply(a => getWafRules(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getWafRules.
+ */
+export interface GetWafRulesOutputArgs {
+    /**
+     * One or more values used to look up WAF Rules. If more than one value is given all
+     * values must match in order to be included, see below for full list.
+     */
+    filter?: pulumi.Input<inputs.GetWafRulesFilterArgs>;
+    /**
+     * The ID of the WAF Rule Package in which to search for the WAF Rules.
+     */
+    packageId?: pulumi.Input<string>;
+    /**
+     * The ID of the DNS zone in which to search for the WAF Rules.
+     */
+    zoneId: pulumi.Input<string>;
+}

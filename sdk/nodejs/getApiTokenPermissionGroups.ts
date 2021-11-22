@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const test = cloudflare.getApiTokenPermissionGroups({});
- * export const dnsReadPermissionId = test.then(test => test.permissions["DNS Read"]);
+ * export const dnsReadPermissionId = test.then(test => test.permissions?["DNS Read"]);
  * ```
  */
 export function getApiTokenPermissionGroups(opts?: pulumi.InvokeOptions): Promise<GetApiTokenPermissionGroupsResult> {

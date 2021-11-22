@@ -29,12 +29,12 @@ import (
 // 		_, err := cloudflare.NewIpList(ctx, "example", &cloudflare.IpListArgs{
 // 			AccountId:   pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
 // 			Description: pulumi.String("list description"),
-// 			Items: cloudflare.IpListItemArray{
-// 				&cloudflare.IpListItemArgs{
+// 			Items: IpListItemArray{
+// 				&IpListItemArgs{
 // 					Comment: pulumi.String("Office IP"),
 // 					Value:   pulumi.String("192.0.2.1"),
 // 				},
-// 				&cloudflare.IpListItemArgs{
+// 				&IpListItemArgs{
 // 					Comment: pulumi.String("Datacenter range"),
 // 					Value:   pulumi.String("203.0.113.0/24"),
 // 				},
@@ -227,7 +227,7 @@ type IpListArrayInput interface {
 type IpListArray []IpListInput
 
 func (IpListArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*IpList)(nil))
+	return reflect.TypeOf((*[]*IpList)(nil)).Elem()
 }
 
 func (i IpListArray) ToIpListArrayOutput() IpListArrayOutput {
@@ -252,7 +252,7 @@ type IpListMapInput interface {
 type IpListMap map[string]IpListInput
 
 func (IpListMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*IpList)(nil))
+	return reflect.TypeOf((*map[string]*IpList)(nil)).Elem()
 }
 
 func (i IpListMap) ToIpListMapOutput() IpListMapOutput {
@@ -263,9 +263,7 @@ func (i IpListMap) ToIpListMapOutputWithContext(ctx context.Context) IpListMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(IpListMapOutput)
 }
 
-type IpListOutput struct {
-	*pulumi.OutputState
-}
+type IpListOutput struct{ *pulumi.OutputState }
 
 func (IpListOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*IpList)(nil))
@@ -284,14 +282,12 @@ func (o IpListOutput) ToIpListPtrOutput() IpListPtrOutput {
 }
 
 func (o IpListOutput) ToIpListPtrOutputWithContext(ctx context.Context) IpListPtrOutput {
-	return o.ApplyT(func(v IpList) *IpList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpList) *IpList {
 		return &v
 	}).(IpListPtrOutput)
 }
 
-type IpListPtrOutput struct {
-	*pulumi.OutputState
-}
+type IpListPtrOutput struct{ *pulumi.OutputState }
 
 func (IpListPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**IpList)(nil))
@@ -303,6 +299,16 @@ func (o IpListPtrOutput) ToIpListPtrOutput() IpListPtrOutput {
 
 func (o IpListPtrOutput) ToIpListPtrOutputWithContext(ctx context.Context) IpListPtrOutput {
 	return o
+}
+
+func (o IpListPtrOutput) Elem() IpListOutput {
+	return o.ApplyT(func(v *IpList) IpList {
+		if v != nil {
+			return *v
+		}
+		var ret IpList
+		return ret
+	}).(IpListOutput)
 }
 
 type IpListArrayOutput struct{ *pulumi.OutputState }
@@ -346,6 +352,10 @@ func (o IpListMapOutput) MapIndex(k pulumi.StringInput) IpListOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*IpListInput)(nil)).Elem(), &IpList{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpListPtrInput)(nil)).Elem(), &IpList{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpListArrayInput)(nil)).Elem(), IpListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpListMapInput)(nil)).Elem(), IpListMap{})
 	pulumi.RegisterOutputType(IpListOutput{})
 	pulumi.RegisterOutputType(IpListPtrOutput{})
 	pulumi.RegisterOutputType(IpListArrayOutput{})

@@ -13,6 +13,79 @@ import (
 
 // Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"encoding/base64"
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func filebase64OrPanic(path string) pulumi.StringPtrInput {
+// 	if fileData, err := ioutil.ReadFile(path); err == nil {
+// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+// 	} else {
+// 		panic(err.Error())
+// 	}
+// }
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, "myNamespace", &cloudflare.WorkersKvNamespaceArgs{
+// 			Title: pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewWorkerScript(ctx, "myScript", &cloudflare.WorkerScriptArgs{
+// 			Name:    pulumi.String("script_1"),
+// 			Content: readFileOrPanic("script.js"),
+// 			KvNamespaceBindings: WorkerScriptKvNamespaceBindingArray{
+// 				&WorkerScriptKvNamespaceBindingArgs{
+// 					Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
+// 					NamespaceId: myNamespace.ID(),
+// 				},
+// 			},
+// 			PlainTextBindings: WorkerScriptPlainTextBindingArray{
+// 				&WorkerScriptPlainTextBindingArgs{
+// 					Name: pulumi.String("MY_EXAMPLE_PLAIN_TEXT"),
+// 					Text: pulumi.String("foobar"),
+// 				},
+// 			},
+// 			SecretTextBindings: WorkerScriptSecretTextBindingArray{
+// 				&WorkerScriptSecretTextBindingArgs{
+// 					Name: pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
+// 					Text: pulumi.Any(_var.Secret_foo_value),
+// 				},
+// 			},
+// 			WebassemblyBindings: WorkerScriptWebassemblyBindingArray{
+// 				&WorkerScriptWebassemblyBindingArgs{
+// 					Name:   pulumi.String("MY_EXAMPLE_WASM"),
+// 					Module: filebase64OrPanic("example.wasm"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // To import a script, use a script name, e.g. `script_name`
@@ -184,7 +257,7 @@ type WorkerScriptArrayInput interface {
 type WorkerScriptArray []WorkerScriptInput
 
 func (WorkerScriptArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WorkerScript)(nil))
+	return reflect.TypeOf((*[]*WorkerScript)(nil)).Elem()
 }
 
 func (i WorkerScriptArray) ToWorkerScriptArrayOutput() WorkerScriptArrayOutput {
@@ -209,7 +282,7 @@ type WorkerScriptMapInput interface {
 type WorkerScriptMap map[string]WorkerScriptInput
 
 func (WorkerScriptMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WorkerScript)(nil))
+	return reflect.TypeOf((*map[string]*WorkerScript)(nil)).Elem()
 }
 
 func (i WorkerScriptMap) ToWorkerScriptMapOutput() WorkerScriptMapOutput {
@@ -220,9 +293,7 @@ func (i WorkerScriptMap) ToWorkerScriptMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptMapOutput)
 }
 
-type WorkerScriptOutput struct {
-	*pulumi.OutputState
-}
+type WorkerScriptOutput struct{ *pulumi.OutputState }
 
 func (WorkerScriptOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkerScript)(nil))
@@ -241,14 +312,12 @@ func (o WorkerScriptOutput) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
 }
 
 func (o WorkerScriptOutput) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
-	return o.ApplyT(func(v WorkerScript) *WorkerScript {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerScript) *WorkerScript {
 		return &v
 	}).(WorkerScriptPtrOutput)
 }
 
-type WorkerScriptPtrOutput struct {
-	*pulumi.OutputState
-}
+type WorkerScriptPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerScriptPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WorkerScript)(nil))
@@ -260,6 +329,16 @@ func (o WorkerScriptPtrOutput) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
 
 func (o WorkerScriptPtrOutput) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
 	return o
+}
+
+func (o WorkerScriptPtrOutput) Elem() WorkerScriptOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScript {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerScript
+		return ret
+	}).(WorkerScriptOutput)
 }
 
 type WorkerScriptArrayOutput struct{ *pulumi.OutputState }
@@ -303,6 +382,10 @@ func (o WorkerScriptMapOutput) MapIndex(k pulumi.StringInput) WorkerScriptOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptInput)(nil)).Elem(), &WorkerScript{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPtrInput)(nil)).Elem(), &WorkerScript{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptArrayInput)(nil)).Elem(), WorkerScriptArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptMapInput)(nil)).Elem(), WorkerScriptMap{})
 	pulumi.RegisterOutputType(WorkerScriptOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptArrayOutput{})

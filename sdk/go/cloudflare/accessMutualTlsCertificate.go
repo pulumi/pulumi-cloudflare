@@ -220,7 +220,7 @@ type AccessMutualTlsCertificateArrayInput interface {
 type AccessMutualTlsCertificateArray []AccessMutualTlsCertificateInput
 
 func (AccessMutualTlsCertificateArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessMutualTlsCertificate)(nil))
+	return reflect.TypeOf((*[]*AccessMutualTlsCertificate)(nil)).Elem()
 }
 
 func (i AccessMutualTlsCertificateArray) ToAccessMutualTlsCertificateArrayOutput() AccessMutualTlsCertificateArrayOutput {
@@ -245,7 +245,7 @@ type AccessMutualTlsCertificateMapInput interface {
 type AccessMutualTlsCertificateMap map[string]AccessMutualTlsCertificateInput
 
 func (AccessMutualTlsCertificateMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessMutualTlsCertificate)(nil))
+	return reflect.TypeOf((*map[string]*AccessMutualTlsCertificate)(nil)).Elem()
 }
 
 func (i AccessMutualTlsCertificateMap) ToAccessMutualTlsCertificateMapOutput() AccessMutualTlsCertificateMapOutput {
@@ -256,9 +256,7 @@ func (i AccessMutualTlsCertificateMap) ToAccessMutualTlsCertificateMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AccessMutualTlsCertificateMapOutput)
 }
 
-type AccessMutualTlsCertificateOutput struct {
-	*pulumi.OutputState
-}
+type AccessMutualTlsCertificateOutput struct{ *pulumi.OutputState }
 
 func (AccessMutualTlsCertificateOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessMutualTlsCertificate)(nil))
@@ -277,14 +275,12 @@ func (o AccessMutualTlsCertificateOutput) ToAccessMutualTlsCertificatePtrOutput(
 }
 
 func (o AccessMutualTlsCertificateOutput) ToAccessMutualTlsCertificatePtrOutputWithContext(ctx context.Context) AccessMutualTlsCertificatePtrOutput {
-	return o.ApplyT(func(v AccessMutualTlsCertificate) *AccessMutualTlsCertificate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessMutualTlsCertificate) *AccessMutualTlsCertificate {
 		return &v
 	}).(AccessMutualTlsCertificatePtrOutput)
 }
 
-type AccessMutualTlsCertificatePtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessMutualTlsCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (AccessMutualTlsCertificatePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessMutualTlsCertificate)(nil))
@@ -296,6 +292,16 @@ func (o AccessMutualTlsCertificatePtrOutput) ToAccessMutualTlsCertificatePtrOutp
 
 func (o AccessMutualTlsCertificatePtrOutput) ToAccessMutualTlsCertificatePtrOutputWithContext(ctx context.Context) AccessMutualTlsCertificatePtrOutput {
 	return o
+}
+
+func (o AccessMutualTlsCertificatePtrOutput) Elem() AccessMutualTlsCertificateOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) AccessMutualTlsCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret AccessMutualTlsCertificate
+		return ret
+	}).(AccessMutualTlsCertificateOutput)
 }
 
 type AccessMutualTlsCertificateArrayOutput struct{ *pulumi.OutputState }
@@ -339,6 +345,10 @@ func (o AccessMutualTlsCertificateMapOutput) MapIndex(k pulumi.StringInput) Acce
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessMutualTlsCertificateInput)(nil)).Elem(), &AccessMutualTlsCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessMutualTlsCertificatePtrInput)(nil)).Elem(), &AccessMutualTlsCertificate{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessMutualTlsCertificateArrayInput)(nil)).Elem(), AccessMutualTlsCertificateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessMutualTlsCertificateMapInput)(nil)).Elem(), AccessMutualTlsCertificateMap{})
 	pulumi.RegisterOutputType(AccessMutualTlsCertificateOutput{})
 	pulumi.RegisterOutputType(AccessMutualTlsCertificatePtrOutput{})
 	pulumi.RegisterOutputType(AccessMutualTlsCertificateArrayOutput{})

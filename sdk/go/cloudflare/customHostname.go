@@ -27,8 +27,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewCustomHostname(ctx, "exampleHostname", &cloudflare.CustomHostnameArgs{
 // 			Hostname: pulumi.String("hostname.example.com"),
-// 			Ssls: cloudflare.CustomHostnameSslArray{
-// 				&cloudflare.CustomHostnameSslArgs{
+// 			Ssls: CustomHostnameSslArray{
+// 				&CustomHostnameSslArgs{
 // 					Method: pulumi.String("txt"),
 // 				},
 // 			},
@@ -220,7 +220,7 @@ type CustomHostnameArrayInput interface {
 type CustomHostnameArray []CustomHostnameInput
 
 func (CustomHostnameArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*CustomHostname)(nil))
+	return reflect.TypeOf((*[]*CustomHostname)(nil)).Elem()
 }
 
 func (i CustomHostnameArray) ToCustomHostnameArrayOutput() CustomHostnameArrayOutput {
@@ -245,7 +245,7 @@ type CustomHostnameMapInput interface {
 type CustomHostnameMap map[string]CustomHostnameInput
 
 func (CustomHostnameMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*CustomHostname)(nil))
+	return reflect.TypeOf((*map[string]*CustomHostname)(nil)).Elem()
 }
 
 func (i CustomHostnameMap) ToCustomHostnameMapOutput() CustomHostnameMapOutput {
@@ -256,9 +256,7 @@ func (i CustomHostnameMap) ToCustomHostnameMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameMapOutput)
 }
 
-type CustomHostnameOutput struct {
-	*pulumi.OutputState
-}
+type CustomHostnameOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnameOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*CustomHostname)(nil))
@@ -277,14 +275,12 @@ func (o CustomHostnameOutput) ToCustomHostnamePtrOutput() CustomHostnamePtrOutpu
 }
 
 func (o CustomHostnameOutput) ToCustomHostnamePtrOutputWithContext(ctx context.Context) CustomHostnamePtrOutput {
-	return o.ApplyT(func(v CustomHostname) *CustomHostname {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomHostname) *CustomHostname {
 		return &v
 	}).(CustomHostnamePtrOutput)
 }
 
-type CustomHostnamePtrOutput struct {
-	*pulumi.OutputState
-}
+type CustomHostnamePtrOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnamePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**CustomHostname)(nil))
@@ -296,6 +292,16 @@ func (o CustomHostnamePtrOutput) ToCustomHostnamePtrOutput() CustomHostnamePtrOu
 
 func (o CustomHostnamePtrOutput) ToCustomHostnamePtrOutputWithContext(ctx context.Context) CustomHostnamePtrOutput {
 	return o
+}
+
+func (o CustomHostnamePtrOutput) Elem() CustomHostnameOutput {
+	return o.ApplyT(func(v *CustomHostname) CustomHostname {
+		if v != nil {
+			return *v
+		}
+		var ret CustomHostname
+		return ret
+	}).(CustomHostnameOutput)
 }
 
 type CustomHostnameArrayOutput struct{ *pulumi.OutputState }
@@ -339,6 +345,10 @@ func (o CustomHostnameMapOutput) MapIndex(k pulumi.StringInput) CustomHostnameOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameInput)(nil)).Elem(), &CustomHostname{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnamePtrInput)(nil)).Elem(), &CustomHostname{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameArrayInput)(nil)).Elem(), CustomHostnameArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameMapInput)(nil)).Elem(), CustomHostnameMap{})
 	pulumi.RegisterOutputType(CustomHostnameOutput{})
 	pulumi.RegisterOutputType(CustomHostnamePtrOutput{})
 	pulumi.RegisterOutputType(CustomHostnameArrayOutput{})

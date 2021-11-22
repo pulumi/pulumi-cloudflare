@@ -140,7 +140,7 @@ type AccessKeysConfigurationArrayInput interface {
 type AccessKeysConfigurationArray []AccessKeysConfigurationInput
 
 func (AccessKeysConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessKeysConfiguration)(nil))
+	return reflect.TypeOf((*[]*AccessKeysConfiguration)(nil)).Elem()
 }
 
 func (i AccessKeysConfigurationArray) ToAccessKeysConfigurationArrayOutput() AccessKeysConfigurationArrayOutput {
@@ -165,7 +165,7 @@ type AccessKeysConfigurationMapInput interface {
 type AccessKeysConfigurationMap map[string]AccessKeysConfigurationInput
 
 func (AccessKeysConfigurationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessKeysConfiguration)(nil))
+	return reflect.TypeOf((*map[string]*AccessKeysConfiguration)(nil)).Elem()
 }
 
 func (i AccessKeysConfigurationMap) ToAccessKeysConfigurationMapOutput() AccessKeysConfigurationMapOutput {
@@ -176,9 +176,7 @@ func (i AccessKeysConfigurationMap) ToAccessKeysConfigurationMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AccessKeysConfigurationMapOutput)
 }
 
-type AccessKeysConfigurationOutput struct {
-	*pulumi.OutputState
-}
+type AccessKeysConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AccessKeysConfigurationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessKeysConfiguration)(nil))
@@ -197,14 +195,12 @@ func (o AccessKeysConfigurationOutput) ToAccessKeysConfigurationPtrOutput() Acce
 }
 
 func (o AccessKeysConfigurationOutput) ToAccessKeysConfigurationPtrOutputWithContext(ctx context.Context) AccessKeysConfigurationPtrOutput {
-	return o.ApplyT(func(v AccessKeysConfiguration) *AccessKeysConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessKeysConfiguration) *AccessKeysConfiguration {
 		return &v
 	}).(AccessKeysConfigurationPtrOutput)
 }
 
-type AccessKeysConfigurationPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessKeysConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessKeysConfigurationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessKeysConfiguration)(nil))
@@ -216,6 +212,16 @@ func (o AccessKeysConfigurationPtrOutput) ToAccessKeysConfigurationPtrOutput() A
 
 func (o AccessKeysConfigurationPtrOutput) ToAccessKeysConfigurationPtrOutputWithContext(ctx context.Context) AccessKeysConfigurationPtrOutput {
 	return o
+}
+
+func (o AccessKeysConfigurationPtrOutput) Elem() AccessKeysConfigurationOutput {
+	return o.ApplyT(func(v *AccessKeysConfiguration) AccessKeysConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AccessKeysConfiguration
+		return ret
+	}).(AccessKeysConfigurationOutput)
 }
 
 type AccessKeysConfigurationArrayOutput struct{ *pulumi.OutputState }
@@ -259,6 +265,10 @@ func (o AccessKeysConfigurationMapOutput) MapIndex(k pulumi.StringInput) AccessK
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessKeysConfigurationInput)(nil)).Elem(), &AccessKeysConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessKeysConfigurationPtrInput)(nil)).Elem(), &AccessKeysConfiguration{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessKeysConfigurationArrayInput)(nil)).Elem(), AccessKeysConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessKeysConfigurationMapInput)(nil)).Elem(), AccessKeysConfigurationMap{})
 	pulumi.RegisterOutputType(AccessKeysConfigurationOutput{})
 	pulumi.RegisterOutputType(AccessKeysConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AccessKeysConfigurationArrayOutput{})

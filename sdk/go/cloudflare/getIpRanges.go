@@ -28,10 +28,10 @@ import (
 // 		}
 // 		_, err = compute.NewFirewall(ctx, "allowCloudflareIngress", &compute.FirewallArgs{
 // 			Network:      pulumi.String("default"),
-// 			SourceRanges: toPulumiStringArray(cloudflare.Ipv4CidrBlocks),
+// 			SourceRanges: interface{}(cloudflare.Ipv4CidrBlocks),
 // 			Allows: compute.FirewallAllowArray{
 // 				&compute.FirewallAllowArgs{
-// 					Ports:    "443",
+// 					Ports:    pulumi.StringArray("443"),
 // 					Protocol: pulumi.String("tcp"),
 // 				},
 // 			},
@@ -41,13 +41,6 @@ import (
 // 		}
 // 		return nil
 // 	})
-// }
-// func toPulumiStringArray(arr []string) pulumi.StringArray {
-// 	var pulumiArr pulumi.StringArray
-// 	for _, v := range arr {
-// 		pulumiArr = append(pulumiArr, pulumi.String(v))
-// 	}
-// 	return pulumiArr
 // }
 // ```
 func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRangesResult, error) {

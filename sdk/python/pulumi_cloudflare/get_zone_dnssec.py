@@ -12,6 +12,7 @@ __all__ = [
     'GetZoneDnssecResult',
     'AwaitableGetZoneDnssecResult',
     'get_zone_dnssec',
+    'get_zone_dnssec_output',
 ]
 
 @pulumi.output_type
@@ -209,3 +210,24 @@ def get_zone_dnssec(zone_id: Optional[str] = None,
         public_key=__ret__.public_key,
         status=__ret__.status,
         zone_id=__ret__.zone_id)
+
+
+@_utilities.lift_output_func(get_zone_dnssec)
+def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneDnssecResult]:
+    """
+    Use this data source to look up [Zone][1] DNSSEC settings.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_zone_dnssec(zone_id="<zone_id>")
+    ```
+
+
+    :param str zone_id: The zone id for the zone.
+    """
+    ...

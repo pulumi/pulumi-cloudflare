@@ -13,6 +13,89 @@ import (
 
 // Provides a Cloudflare rate limit resource for a given zone. This can be used to limit the traffic you receive zone-wide, or matching more specific types of requests/responses.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewRateLimit(ctx, "example", &cloudflare.RateLimitArgs{
+// 			ZoneId:    pulumi.Any(_var.Cloudflare_zone_id),
+// 			Threshold: pulumi.Int(2000),
+// 			Period:    pulumi.Int(2),
+// 			Match: &RateLimitMatchArgs{
+// 				Request: &RateLimitMatchRequestArgs{
+// 					UrlPattern: pulumi.String(fmt.Sprintf("%v%v", _var.Cloudflare_zone, "/*")),
+// 					Schemes: pulumi.StringArray{
+// 						pulumi.String("HTTP"),
+// 						pulumi.String("HTTPS"),
+// 					},
+// 					Methods: pulumi.StringArray{
+// 						pulumi.String("GET"),
+// 						pulumi.String("POST"),
+// 						pulumi.String("PUT"),
+// 						pulumi.String("DELETE"),
+// 						pulumi.String("PATCH"),
+// 						pulumi.String("HEAD"),
+// 					},
+// 				},
+// 				Response: &RateLimitMatchResponseArgs{
+// 					Statuses: pulumi.IntArray{
+// 						pulumi.Int(200),
+// 						pulumi.Int(201),
+// 						pulumi.Int(202),
+// 						pulumi.Int(301),
+// 						pulumi.Int(429),
+// 					},
+// 					OriginTraffic: pulumi.Bool(false),
+// 					Headers: pulumi.StringMapArray{
+// 						pulumi.StringMap{
+// 							"name":  pulumi.String("Host"),
+// 							"op":    pulumi.String("eq"),
+// 							"value": pulumi.String("localhost"),
+// 						},
+// 						pulumi.StringMap{
+// 							"name":  pulumi.String("X-Example"),
+// 							"op":    pulumi.String("ne"),
+// 							"value": pulumi.String("my-example"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Action: &RateLimitActionArgs{
+// 				Mode:    pulumi.String("simulate"),
+// 				Timeout: pulumi.Int(43200),
+// 				Response: &RateLimitActionResponseArgs{
+// 					ContentType: pulumi.String("text/plain"),
+// 					Body:        pulumi.String("custom response body"),
+// 				},
+// 			},
+// 			Correlate: &RateLimitCorrelateArgs{
+// 				By: pulumi.String("nat"),
+// 			},
+// 			Disabled:    pulumi.Bool(false),
+// 			Description: pulumi.String("example rate limit for a zone"),
+// 			BypassUrlPatterns: pulumi.StringArray{
+// 				pulumi.String(fmt.Sprintf("%v%v", _var.Cloudflare_zone, "/bypass1")),
+// 				pulumi.String(fmt.Sprintf("%v%v", _var.Cloudflare_zone, "/bypass2")),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Rate limits can be imported using a composite ID formed of zone name and rate limit ID, e.g.
@@ -238,7 +321,7 @@ type RateLimitArrayInput interface {
 type RateLimitArray []RateLimitInput
 
 func (RateLimitArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*RateLimit)(nil))
+	return reflect.TypeOf((*[]*RateLimit)(nil)).Elem()
 }
 
 func (i RateLimitArray) ToRateLimitArrayOutput() RateLimitArrayOutput {
@@ -263,7 +346,7 @@ type RateLimitMapInput interface {
 type RateLimitMap map[string]RateLimitInput
 
 func (RateLimitMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*RateLimit)(nil))
+	return reflect.TypeOf((*map[string]*RateLimit)(nil)).Elem()
 }
 
 func (i RateLimitMap) ToRateLimitMapOutput() RateLimitMapOutput {
@@ -274,9 +357,7 @@ func (i RateLimitMap) ToRateLimitMapOutputWithContext(ctx context.Context) RateL
 	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMapOutput)
 }
 
-type RateLimitOutput struct {
-	*pulumi.OutputState
-}
+type RateLimitOutput struct{ *pulumi.OutputState }
 
 func (RateLimitOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*RateLimit)(nil))
@@ -295,14 +376,12 @@ func (o RateLimitOutput) ToRateLimitPtrOutput() RateLimitPtrOutput {
 }
 
 func (o RateLimitOutput) ToRateLimitPtrOutputWithContext(ctx context.Context) RateLimitPtrOutput {
-	return o.ApplyT(func(v RateLimit) *RateLimit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimit) *RateLimit {
 		return &v
 	}).(RateLimitPtrOutput)
 }
 
-type RateLimitPtrOutput struct {
-	*pulumi.OutputState
-}
+type RateLimitPtrOutput struct{ *pulumi.OutputState }
 
 func (RateLimitPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**RateLimit)(nil))
@@ -314,6 +393,16 @@ func (o RateLimitPtrOutput) ToRateLimitPtrOutput() RateLimitPtrOutput {
 
 func (o RateLimitPtrOutput) ToRateLimitPtrOutputWithContext(ctx context.Context) RateLimitPtrOutput {
 	return o
+}
+
+func (o RateLimitPtrOutput) Elem() RateLimitOutput {
+	return o.ApplyT(func(v *RateLimit) RateLimit {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimit
+		return ret
+	}).(RateLimitOutput)
 }
 
 type RateLimitArrayOutput struct{ *pulumi.OutputState }
@@ -357,6 +446,10 @@ func (o RateLimitMapOutput) MapIndex(k pulumi.StringInput) RateLimitOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitInput)(nil)).Elem(), &RateLimit{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitPtrInput)(nil)).Elem(), &RateLimit{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitArrayInput)(nil)).Elem(), RateLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMapInput)(nil)).Elem(), RateLimitMap{})
 	pulumi.RegisterOutputType(RateLimitOutput{})
 	pulumi.RegisterOutputType(RateLimitPtrOutput{})
 	pulumi.RegisterOutputType(RateLimitArrayOutput{})
