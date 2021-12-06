@@ -31,11 +31,11 @@ import (
 // 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
 // 			Target:   pulumi.String(fmt.Sprintf("%v%v%v", "sub.", _var.Cloudflare_zone, "/page")),
 // 			Priority: pulumi.Int(1),
-// 			Actions: &cloudflare.PageRuleActionsArgs{
+// 			Actions: &PageRuleActionsArgs{
 // 				Ssl:              pulumi.String("flexible"),
 // 				EmailObfuscation: pulumi.String("on"),
-// 				Minifies: cloudflare.PageRuleActionsMinifyArray{
-// 					&cloudflare.PageRuleActionsMinifyArgs{
+// 				Minifies: PageRuleActionsMinifyArray{
+// 					&PageRuleActionsMinifyArgs{
 // 						Html: pulumi.String("off"),
 // 						Css:  pulumi.String("on"),
 // 						Js:   pulumi.String("on"),
@@ -233,7 +233,7 @@ type PageRuleArrayInput interface {
 type PageRuleArray []PageRuleInput
 
 func (PageRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*PageRule)(nil))
+	return reflect.TypeOf((*[]*PageRule)(nil)).Elem()
 }
 
 func (i PageRuleArray) ToPageRuleArrayOutput() PageRuleArrayOutput {
@@ -258,7 +258,7 @@ type PageRuleMapInput interface {
 type PageRuleMap map[string]PageRuleInput
 
 func (PageRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*PageRule)(nil))
+	return reflect.TypeOf((*map[string]*PageRule)(nil)).Elem()
 }
 
 func (i PageRuleMap) ToPageRuleMapOutput() PageRuleMapOutput {
@@ -269,9 +269,7 @@ func (i PageRuleMap) ToPageRuleMapOutputWithContext(ctx context.Context) PageRul
 	return pulumi.ToOutputWithContext(ctx, i).(PageRuleMapOutput)
 }
 
-type PageRuleOutput struct {
-	*pulumi.OutputState
-}
+type PageRuleOutput struct{ *pulumi.OutputState }
 
 func (PageRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*PageRule)(nil))
@@ -290,14 +288,12 @@ func (o PageRuleOutput) ToPageRulePtrOutput() PageRulePtrOutput {
 }
 
 func (o PageRuleOutput) ToPageRulePtrOutputWithContext(ctx context.Context) PageRulePtrOutput {
-	return o.ApplyT(func(v PageRule) *PageRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRule) *PageRule {
 		return &v
 	}).(PageRulePtrOutput)
 }
 
-type PageRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type PageRulePtrOutput struct{ *pulumi.OutputState }
 
 func (PageRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**PageRule)(nil))
@@ -309,6 +305,16 @@ func (o PageRulePtrOutput) ToPageRulePtrOutput() PageRulePtrOutput {
 
 func (o PageRulePtrOutput) ToPageRulePtrOutputWithContext(ctx context.Context) PageRulePtrOutput {
 	return o
+}
+
+func (o PageRulePtrOutput) Elem() PageRuleOutput {
+	return o.ApplyT(func(v *PageRule) PageRule {
+		if v != nil {
+			return *v
+		}
+		var ret PageRule
+		return ret
+	}).(PageRuleOutput)
 }
 
 type PageRuleArrayOutput struct{ *pulumi.OutputState }
@@ -352,6 +358,10 @@ func (o PageRuleMapOutput) MapIndex(k pulumi.StringInput) PageRuleOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleInput)(nil)).Elem(), &PageRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRulePtrInput)(nil)).Elem(), &PageRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleArrayInput)(nil)).Elem(), PageRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleMapInput)(nil)).Elem(), PageRuleMap{})
 	pulumi.RegisterOutputType(PageRuleOutput{})
 	pulumi.RegisterOutputType(PageRulePtrOutput{})
 	pulumi.RegisterOutputType(PageRuleArrayOutput{})

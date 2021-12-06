@@ -30,8 +30,8 @@ import (
 // 		_, err := cloudflare.NewAccessGroup(ctx, "testGroupAccessGroup", &cloudflare.AccessGroupArgs{
 // 			AccountId: pulumi.String("975ecf5a45e3bcb680dba0722a420ad9"),
 // 			Name:      pulumi.String("staging group"),
-// 			Includes: cloudflare.AccessGroupIncludeArray{
-// 				&cloudflare.AccessGroupIncludeArgs{
+// 			Includes: AccessGroupIncludeArray{
+// 				&AccessGroupIncludeArgs{
 // 					Emails: pulumi.StringArray{
 // 						pulumi.String("test@example.com"),
 // 					},
@@ -44,16 +44,16 @@ import (
 // 		_, err = cloudflare.NewAccessGroup(ctx, "testGroupIndex_accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
 // 			AccountId: pulumi.String("975ecf5a45e3bcb680dba0722a420ad9"),
 // 			Name:      pulumi.String("staging group"),
-// 			Includes: cloudflare.AccessGroupIncludeArray{
-// 				&cloudflare.AccessGroupIncludeArgs{
+// 			Includes: AccessGroupIncludeArray{
+// 				&AccessGroupIncludeArgs{
 // 					Emails: pulumi.StringArray{
 // 						pulumi.String("test@example.com"),
 // 					},
 // 				},
 // 			},
-// 			Requires: cloudflare.AccessGroupRequireArray{
-// 				Ips: cloudflare.AccessGroupRequireArgs{
-// 					pulumi.Any(_var.Office_ip),
+// 			Requires: AccessGroupRequireArray{
+// 				Ips: AccessGroupRequireArgs{
+// 					_var.Office_ip,
 // 				},
 // 			},
 // 		})
@@ -304,7 +304,7 @@ type AccessGroupArrayInput interface {
 type AccessGroupArray []AccessGroupInput
 
 func (AccessGroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessGroup)(nil))
+	return reflect.TypeOf((*[]*AccessGroup)(nil)).Elem()
 }
 
 func (i AccessGroupArray) ToAccessGroupArrayOutput() AccessGroupArrayOutput {
@@ -329,7 +329,7 @@ type AccessGroupMapInput interface {
 type AccessGroupMap map[string]AccessGroupInput
 
 func (AccessGroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessGroup)(nil))
+	return reflect.TypeOf((*map[string]*AccessGroup)(nil)).Elem()
 }
 
 func (i AccessGroupMap) ToAccessGroupMapOutput() AccessGroupMapOutput {
@@ -340,9 +340,7 @@ func (i AccessGroupMap) ToAccessGroupMapOutputWithContext(ctx context.Context) A
 	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupMapOutput)
 }
 
-type AccessGroupOutput struct {
-	*pulumi.OutputState
-}
+type AccessGroupOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessGroup)(nil))
@@ -361,14 +359,12 @@ func (o AccessGroupOutput) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
 }
 
 func (o AccessGroupOutput) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
-	return o.ApplyT(func(v AccessGroup) *AccessGroup {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroup) *AccessGroup {
 		return &v
 	}).(AccessGroupPtrOutput)
 }
 
-type AccessGroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessGroupPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessGroup)(nil))
@@ -380,6 +376,16 @@ func (o AccessGroupPtrOutput) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
 
 func (o AccessGroupPtrOutput) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
 	return o
+}
+
+func (o AccessGroupPtrOutput) Elem() AccessGroupOutput {
+	return o.ApplyT(func(v *AccessGroup) AccessGroup {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroup
+		return ret
+	}).(AccessGroupOutput)
 }
 
 type AccessGroupArrayOutput struct{ *pulumi.OutputState }
@@ -423,6 +429,10 @@ func (o AccessGroupMapOutput) MapIndex(k pulumi.StringInput) AccessGroupOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupInput)(nil)).Elem(), &AccessGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupPtrInput)(nil)).Elem(), &AccessGroup{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupArrayInput)(nil)).Elem(), AccessGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupMapInput)(nil)).Elem(), AccessGroupMap{})
 	pulumi.RegisterOutputType(AccessGroupOutput{})
 	pulumi.RegisterOutputType(AccessGroupPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupArrayOutput{})

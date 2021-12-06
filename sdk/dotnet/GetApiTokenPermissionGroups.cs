@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         ///     public MyStack()
         ///     {
         ///         var test = Output.Create(Cloudflare.GetApiTokenPermissionGroups.InvokeAsync());
-        ///         this.DnsReadPermissionId = test.Apply(test =&gt; test.Permissions.DNS_Read);
+        ///         this.DnsReadPermissionId = test.Apply(test =&gt; test.Permissions?.DNS_Read);
         ///     }
         /// 
         ///     [Output("dnsReadPermissionId")]

@@ -31,13 +31,13 @@ import (
 // 			Type:        pulumi.String("serial_number"),
 // 			Description: pulumi.String("Device posture rule for corporate devices."),
 // 			Schedule:    pulumi.String("24h"),
-// 			Matches: cloudflare.DevicePostureRuleMatchArray{
-// 				&cloudflare.DevicePostureRuleMatchArgs{
+// 			Matches: DevicePostureRuleMatchArray{
+// 				&DevicePostureRuleMatchArgs{
 // 					Platform: pulumi.String("mac"),
 // 				},
 // 			},
-// 			Inputs: cloudflare.DevicePostureRuleInputArray{
-// 				&cloudflare.DevicePostureRuleInputArgs{
+// 			Inputs: DevicePostureRuleInputArray{
+// 				&DevicePostureRuleInputArgs{
 // 					Id: pulumi.Any(cloudflare_teams_list.Corporate_devices.Id),
 // 				},
 // 			},
@@ -259,7 +259,7 @@ type DevicePostureRuleArrayInput interface {
 type DevicePostureRuleArray []DevicePostureRuleInput
 
 func (DevicePostureRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*DevicePostureRule)(nil))
+	return reflect.TypeOf((*[]*DevicePostureRule)(nil)).Elem()
 }
 
 func (i DevicePostureRuleArray) ToDevicePostureRuleArrayOutput() DevicePostureRuleArrayOutput {
@@ -284,7 +284,7 @@ type DevicePostureRuleMapInput interface {
 type DevicePostureRuleMap map[string]DevicePostureRuleInput
 
 func (DevicePostureRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*DevicePostureRule)(nil))
+	return reflect.TypeOf((*map[string]*DevicePostureRule)(nil)).Elem()
 }
 
 func (i DevicePostureRuleMap) ToDevicePostureRuleMapOutput() DevicePostureRuleMapOutput {
@@ -295,9 +295,7 @@ func (i DevicePostureRuleMap) ToDevicePostureRuleMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureRuleMapOutput)
 }
 
-type DevicePostureRuleOutput struct {
-	*pulumi.OutputState
-}
+type DevicePostureRuleOutput struct{ *pulumi.OutputState }
 
 func (DevicePostureRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*DevicePostureRule)(nil))
@@ -316,14 +314,12 @@ func (o DevicePostureRuleOutput) ToDevicePostureRulePtrOutput() DevicePostureRul
 }
 
 func (o DevicePostureRuleOutput) ToDevicePostureRulePtrOutputWithContext(ctx context.Context) DevicePostureRulePtrOutput {
-	return o.ApplyT(func(v DevicePostureRule) *DevicePostureRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevicePostureRule) *DevicePostureRule {
 		return &v
 	}).(DevicePostureRulePtrOutput)
 }
 
-type DevicePostureRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type DevicePostureRulePtrOutput struct{ *pulumi.OutputState }
 
 func (DevicePostureRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**DevicePostureRule)(nil))
@@ -335,6 +331,16 @@ func (o DevicePostureRulePtrOutput) ToDevicePostureRulePtrOutput() DevicePosture
 
 func (o DevicePostureRulePtrOutput) ToDevicePostureRulePtrOutputWithContext(ctx context.Context) DevicePostureRulePtrOutput {
 	return o
+}
+
+func (o DevicePostureRulePtrOutput) Elem() DevicePostureRuleOutput {
+	return o.ApplyT(func(v *DevicePostureRule) DevicePostureRule {
+		if v != nil {
+			return *v
+		}
+		var ret DevicePostureRule
+		return ret
+	}).(DevicePostureRuleOutput)
 }
 
 type DevicePostureRuleArrayOutput struct{ *pulumi.OutputState }
@@ -378,6 +384,10 @@ func (o DevicePostureRuleMapOutput) MapIndex(k pulumi.StringInput) DevicePosture
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleInput)(nil)).Elem(), &DevicePostureRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRulePtrInput)(nil)).Elem(), &DevicePostureRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleArrayInput)(nil)).Elem(), DevicePostureRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleMapInput)(nil)).Elem(), DevicePostureRuleMap{})
 	pulumi.RegisterOutputType(DevicePostureRuleOutput{})
 	pulumi.RegisterOutputType(DevicePostureRulePtrOutput{})
 	pulumi.RegisterOutputType(DevicePostureRuleArrayOutput{})

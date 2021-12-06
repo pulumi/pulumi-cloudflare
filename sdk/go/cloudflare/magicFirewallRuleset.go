@@ -218,7 +218,7 @@ type MagicFirewallRulesetArrayInput interface {
 type MagicFirewallRulesetArray []MagicFirewallRulesetInput
 
 func (MagicFirewallRulesetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*MagicFirewallRuleset)(nil))
+	return reflect.TypeOf((*[]*MagicFirewallRuleset)(nil)).Elem()
 }
 
 func (i MagicFirewallRulesetArray) ToMagicFirewallRulesetArrayOutput() MagicFirewallRulesetArrayOutput {
@@ -243,7 +243,7 @@ type MagicFirewallRulesetMapInput interface {
 type MagicFirewallRulesetMap map[string]MagicFirewallRulesetInput
 
 func (MagicFirewallRulesetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*MagicFirewallRuleset)(nil))
+	return reflect.TypeOf((*map[string]*MagicFirewallRuleset)(nil)).Elem()
 }
 
 func (i MagicFirewallRulesetMap) ToMagicFirewallRulesetMapOutput() MagicFirewallRulesetMapOutput {
@@ -254,9 +254,7 @@ func (i MagicFirewallRulesetMap) ToMagicFirewallRulesetMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetMapOutput)
 }
 
-type MagicFirewallRulesetOutput struct {
-	*pulumi.OutputState
-}
+type MagicFirewallRulesetOutput struct{ *pulumi.OutputState }
 
 func (MagicFirewallRulesetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*MagicFirewallRuleset)(nil))
@@ -275,14 +273,12 @@ func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetPtrOutput() MagicFirew
 }
 
 func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetPtrOutputWithContext(ctx context.Context) MagicFirewallRulesetPtrOutput {
-	return o.ApplyT(func(v MagicFirewallRuleset) *MagicFirewallRuleset {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MagicFirewallRuleset) *MagicFirewallRuleset {
 		return &v
 	}).(MagicFirewallRulesetPtrOutput)
 }
 
-type MagicFirewallRulesetPtrOutput struct {
-	*pulumi.OutputState
-}
+type MagicFirewallRulesetPtrOutput struct{ *pulumi.OutputState }
 
 func (MagicFirewallRulesetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**MagicFirewallRuleset)(nil))
@@ -294,6 +290,16 @@ func (o MagicFirewallRulesetPtrOutput) ToMagicFirewallRulesetPtrOutput() MagicFi
 
 func (o MagicFirewallRulesetPtrOutput) ToMagicFirewallRulesetPtrOutputWithContext(ctx context.Context) MagicFirewallRulesetPtrOutput {
 	return o
+}
+
+func (o MagicFirewallRulesetPtrOutput) Elem() MagicFirewallRulesetOutput {
+	return o.ApplyT(func(v *MagicFirewallRuleset) MagicFirewallRuleset {
+		if v != nil {
+			return *v
+		}
+		var ret MagicFirewallRuleset
+		return ret
+	}).(MagicFirewallRulesetOutput)
 }
 
 type MagicFirewallRulesetArrayOutput struct{ *pulumi.OutputState }
@@ -337,6 +343,10 @@ func (o MagicFirewallRulesetMapOutput) MapIndex(k pulumi.StringInput) MagicFirew
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicFirewallRulesetInput)(nil)).Elem(), &MagicFirewallRuleset{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicFirewallRulesetPtrInput)(nil)).Elem(), &MagicFirewallRuleset{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicFirewallRulesetArrayInput)(nil)).Elem(), MagicFirewallRulesetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MagicFirewallRulesetMapInput)(nil)).Elem(), MagicFirewallRulesetMap{})
 	pulumi.RegisterOutputType(MagicFirewallRulesetOutput{})
 	pulumi.RegisterOutputType(MagicFirewallRulesetPtrOutput{})
 	pulumi.RegisterOutputType(MagicFirewallRulesetArrayOutput{})

@@ -29,8 +29,8 @@ import (
 // 			Description: pulumi.String("example load balancer pool"),
 // 			Enabled:     pulumi.Bool(false),
 // 			Latitude:    pulumi.Float64(55),
-// 			LoadSheddings: cloudflare.LoadBalancerPoolLoadSheddingArray{
-// 				&cloudflare.LoadBalancerPoolLoadSheddingArgs{
+// 			LoadSheddings: LoadBalancerPoolLoadSheddingArray{
+// 				&LoadBalancerPoolLoadSheddingArgs{
 // 					DefaultPercent: pulumi.Float64(55),
 // 					DefaultPolicy:  pulumi.String("random"),
 // 					SessionPercent: pulumi.Float64(12),
@@ -41,12 +41,12 @@ import (
 // 			MinimumOrigins:    pulumi.Int(1),
 // 			Name:              pulumi.String("example-pool"),
 // 			NotificationEmail: pulumi.String("someone@example.com"),
-// 			Origins: cloudflare.LoadBalancerPoolOriginArray{
-// 				&cloudflare.LoadBalancerPoolOriginArgs{
+// 			Origins: LoadBalancerPoolOriginArray{
+// 				&LoadBalancerPoolOriginArgs{
 // 					Address: pulumi.String("192.0.2.1"),
 // 					Enabled: pulumi.Bool(false),
-// 					Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
-// 						&cloudflare.LoadBalancerPoolOriginHeaderArgs{
+// 					Headers: LoadBalancerPoolOriginHeaderArray{
+// 						&LoadBalancerPoolOriginHeaderArgs{
 // 							Header: pulumi.String("Host"),
 // 							Values: pulumi.StringArray{
 // 								pulumi.String("example-1"),
@@ -55,10 +55,10 @@ import (
 // 					},
 // 					Name: pulumi.String("example-1"),
 // 				},
-// 				&cloudflare.LoadBalancerPoolOriginArgs{
+// 				&LoadBalancerPoolOriginArgs{
 // 					Address: pulumi.String("192.0.2.2"),
-// 					Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
-// 						&cloudflare.LoadBalancerPoolOriginHeaderArgs{
+// 					Headers: LoadBalancerPoolOriginHeaderArray{
+// 						&LoadBalancerPoolOriginHeaderArgs{
 // 							Header: pulumi.String("Host"),
 // 							Values: pulumi.StringArray{
 // 								pulumi.String("example-2"),
@@ -320,7 +320,7 @@ type LoadBalancerPoolArrayInput interface {
 type LoadBalancerPoolArray []LoadBalancerPoolInput
 
 func (LoadBalancerPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LoadBalancerPool)(nil))
+	return reflect.TypeOf((*[]*LoadBalancerPool)(nil)).Elem()
 }
 
 func (i LoadBalancerPoolArray) ToLoadBalancerPoolArrayOutput() LoadBalancerPoolArrayOutput {
@@ -345,7 +345,7 @@ type LoadBalancerPoolMapInput interface {
 type LoadBalancerPoolMap map[string]LoadBalancerPoolInput
 
 func (LoadBalancerPoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LoadBalancerPool)(nil))
+	return reflect.TypeOf((*map[string]*LoadBalancerPool)(nil)).Elem()
 }
 
 func (i LoadBalancerPoolMap) ToLoadBalancerPoolMapOutput() LoadBalancerPoolMapOutput {
@@ -356,9 +356,7 @@ func (i LoadBalancerPoolMap) ToLoadBalancerPoolMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolMapOutput)
 }
 
-type LoadBalancerPoolOutput struct {
-	*pulumi.OutputState
-}
+type LoadBalancerPoolOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPoolOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LoadBalancerPool)(nil))
@@ -377,14 +375,12 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPt
 }
 
 func (o LoadBalancerPoolOutput) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
-	return o.ApplyT(func(v LoadBalancerPool) *LoadBalancerPool {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerPool) *LoadBalancerPool {
 		return &v
 	}).(LoadBalancerPoolPtrOutput)
 }
 
-type LoadBalancerPoolPtrOutput struct {
-	*pulumi.OutputState
-}
+type LoadBalancerPoolPtrOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPoolPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LoadBalancerPool)(nil))
@@ -396,6 +392,16 @@ func (o LoadBalancerPoolPtrOutput) ToLoadBalancerPoolPtrOutput() LoadBalancerPoo
 
 func (o LoadBalancerPoolPtrOutput) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
 	return o
+}
+
+func (o LoadBalancerPoolPtrOutput) Elem() LoadBalancerPoolOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPool {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerPool
+		return ret
+	}).(LoadBalancerPoolOutput)
 }
 
 type LoadBalancerPoolArrayOutput struct{ *pulumi.OutputState }
@@ -439,6 +445,10 @@ func (o LoadBalancerPoolMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerPo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolInput)(nil)).Elem(), &LoadBalancerPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolPtrInput)(nil)).Elem(), &LoadBalancerPool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolArrayInput)(nil)).Elem(), LoadBalancerPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolMapInput)(nil)).Elem(), LoadBalancerPoolMap{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolArrayOutput{})

@@ -188,7 +188,7 @@ type AccessRuleArrayInput interface {
 type AccessRuleArray []AccessRuleInput
 
 func (AccessRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessRule)(nil))
+	return reflect.TypeOf((*[]*AccessRule)(nil)).Elem()
 }
 
 func (i AccessRuleArray) ToAccessRuleArrayOutput() AccessRuleArrayOutput {
@@ -213,7 +213,7 @@ type AccessRuleMapInput interface {
 type AccessRuleMap map[string]AccessRuleInput
 
 func (AccessRuleMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessRule)(nil))
+	return reflect.TypeOf((*map[string]*AccessRule)(nil)).Elem()
 }
 
 func (i AccessRuleMap) ToAccessRuleMapOutput() AccessRuleMapOutput {
@@ -224,9 +224,7 @@ func (i AccessRuleMap) ToAccessRuleMapOutputWithContext(ctx context.Context) Acc
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleMapOutput)
 }
 
-type AccessRuleOutput struct {
-	*pulumi.OutputState
-}
+type AccessRuleOutput struct{ *pulumi.OutputState }
 
 func (AccessRuleOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessRule)(nil))
@@ -245,14 +243,12 @@ func (o AccessRuleOutput) ToAccessRulePtrOutput() AccessRulePtrOutput {
 }
 
 func (o AccessRuleOutput) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
-	return o.ApplyT(func(v AccessRule) *AccessRule {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessRule) *AccessRule {
 		return &v
 	}).(AccessRulePtrOutput)
 }
 
-type AccessRulePtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessRulePtrOutput struct{ *pulumi.OutputState }
 
 func (AccessRulePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessRule)(nil))
@@ -264,6 +260,16 @@ func (o AccessRulePtrOutput) ToAccessRulePtrOutput() AccessRulePtrOutput {
 
 func (o AccessRulePtrOutput) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
 	return o
+}
+
+func (o AccessRulePtrOutput) Elem() AccessRuleOutput {
+	return o.ApplyT(func(v *AccessRule) AccessRule {
+		if v != nil {
+			return *v
+		}
+		var ret AccessRule
+		return ret
+	}).(AccessRuleOutput)
 }
 
 type AccessRuleArrayOutput struct{ *pulumi.OutputState }
@@ -307,6 +313,10 @@ func (o AccessRuleMapOutput) MapIndex(k pulumi.StringInput) AccessRuleOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleInput)(nil)).Elem(), &AccessRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessRulePtrInput)(nil)).Elem(), &AccessRule{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleArrayInput)(nil)).Elem(), AccessRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleMapInput)(nil)).Elem(), AccessRuleMap{})
 	pulumi.RegisterOutputType(AccessRuleOutput{})
 	pulumi.RegisterOutputType(AccessRulePtrOutput{})
 	pulumi.RegisterOutputType(AccessRuleArrayOutput{})

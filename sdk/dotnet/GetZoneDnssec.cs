@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Cloudflare
 {
@@ -39,6 +40,35 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Task<GetZoneDnssecResult> InvokeAsync(GetZoneDnssecArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to look up [Zone][1] DNSSEC settings.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZoneDnssec.InvokeAsync(new Cloudflare.GetZoneDnssecArgs
+        ///         {
+        ///             ZoneId = "&lt;zone_id&gt;",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZoneDnssecResult> Invoke(GetZoneDnssecInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecInvokeArgs(), options.WithVersion());
     }
 
 
@@ -51,6 +81,19 @@ namespace Pulumi.Cloudflare
         public string ZoneId { get; set; } = null!;
 
         public GetZoneDnssecArgs()
+        {
+        }
+    }
+
+    public sealed class GetZoneDnssecInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The zone id for the zone.
+        /// </summary>
+        [Input("zoneId", required: true)]
+        public Input<string> ZoneId { get; set; } = null!;
+
+        public GetZoneDnssecInvokeArgs()
         {
         }
     }

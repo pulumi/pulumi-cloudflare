@@ -36,8 +36,8 @@ import (
 // 			Kind:        pulumi.String("root"),
 // 			Name:        pulumi.String("account magic transit"),
 // 			Phase:       pulumi.String("magic_transit"),
-// 			Rules: cloudflare.RulesetRuleArray{
-// 				&cloudflare.RulesetRuleArgs{
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
 // 					Action:      pulumi.String("allow"),
 // 					Description: pulumi.String("Allow TCP Ephemeral Ports"),
 // 					Expression:  pulumi.String("tcp.dstport in { 32768..65535 }"),
@@ -52,10 +52,10 @@ import (
 // 			Kind:        pulumi.String("zone"),
 // 			Name:        pulumi.String("managed WAF"),
 // 			Phase:       pulumi.String("http_request_firewall_managed"),
-// 			Rules: cloudflare.RulesetRuleArray{
-// 				&cloudflare.RulesetRuleArgs{
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
 // 					Action: pulumi.String("execute"),
-// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
+// 					ActionParameters: &RulesetRuleActionParametersArgs{
 // 						Id: pulumi.String("efb7b8c949ac4650a09736fc376e9aee"),
 // 					},
 // 					Description: pulumi.String("Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"),
@@ -73,19 +73,19 @@ import (
 // 			Kind:        pulumi.String("zone"),
 // 			Name:        pulumi.String("managed WAF with tag-based overrides"),
 // 			Phase:       pulumi.String("http_request_firewall_managed"),
-// 			Rules: cloudflare.RulesetRuleArray{
-// 				&cloudflare.RulesetRuleArgs{
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
 // 					Action: pulumi.String("execute"),
-// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
+// 					ActionParameters: &RulesetRuleActionParametersArgs{
 // 						Id: pulumi.String("efb7b8c949ac4650a09736fc376e9aee"),
-// 						Overrides: &cloudflare.RulesetRuleActionParametersOverridesArgs{
-// 							Categories: cloudflare.RulesetRuleActionParametersOverridesCategoryArray{
-// 								&cloudflare.RulesetRuleActionParametersOverridesCategoryArgs{
+// 						Overrides: &RulesetRuleActionParametersOverridesArgs{
+// 							Categories: RulesetRuleActionParametersOverridesCategoryArray{
+// 								&RulesetRuleActionParametersOverridesCategoryArgs{
 // 									Action:   pulumi.String("block"),
 // 									Category: pulumi.String("wordpress"),
 // 									Enabled:  pulumi.Bool(true),
 // 								},
-// 								&cloudflare.RulesetRuleActionParametersOverridesCategoryArgs{
+// 								&RulesetRuleActionParametersOverridesCategoryArgs{
 // 									Action:   pulumi.String("block"),
 // 									Category: pulumi.String("joomla"),
 // 									Enabled:  pulumi.Bool(true),
@@ -108,12 +108,12 @@ import (
 // 			Kind:        pulumi.String("zone"),
 // 			Name:        pulumi.String("transform rule for URI path"),
 // 			Phase:       pulumi.String("http_request_transform"),
-// 			Rules: cloudflare.RulesetRuleArray{
-// 				&cloudflare.RulesetRuleArgs{
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
 // 					Action: pulumi.String("rewrite"),
-// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
-// 						Uri: &cloudflare.RulesetRuleActionParametersUriArgs{
-// 							Path: &cloudflare.RulesetRuleActionParametersUriPathArgs{
+// 					ActionParameters: &RulesetRuleActionParametersArgs{
+// 						Uri: &RulesetRuleActionParametersUriArgs{
+// 							Path: &RulesetRuleActionParametersUriPathArgs{
 // 								Value: pulumi.String("/my-new-route"),
 // 							},
 // 						},
@@ -133,12 +133,12 @@ import (
 // 			Kind:        pulumi.String("zone"),
 // 			Name:        pulumi.String("transform rule for URI query parameter"),
 // 			Phase:       pulumi.String("http_request_transform"),
-// 			Rules: cloudflare.RulesetRuleArray{
-// 				&cloudflare.RulesetRuleArgs{
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
 // 					Action: pulumi.String("rewrite"),
-// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
-// 						Uri: &cloudflare.RulesetRuleActionParametersUriArgs{
-// 							Query: &cloudflare.RulesetRuleActionParametersUriQueryArgs{
+// 					ActionParameters: &RulesetRuleActionParametersArgs{
+// 						Uri: &RulesetRuleActionParametersUriArgs{
+// 							Query: &RulesetRuleActionParametersUriQueryArgs{
 // 								Value: pulumi.String("old=new_again"),
 // 							},
 // 						},
@@ -158,22 +158,22 @@ import (
 // 			Kind:        pulumi.String("zone"),
 // 			Name:        pulumi.String("transform rule for HTTP headers"),
 // 			Phase:       pulumi.String("http_request_late_transform"),
-// 			Rules: cloudflare.RulesetRuleArray{
-// 				&cloudflare.RulesetRuleArgs{
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
 // 					Action: pulumi.String("rewrite"),
-// 					ActionParameters: &cloudflare.RulesetRuleActionParametersArgs{
-// 						Headers: cloudflare.RulesetRuleActionParametersHeaderArray{
-// 							&cloudflare.RulesetRuleActionParametersHeaderArgs{
+// 					ActionParameters: &RulesetRuleActionParametersArgs{
+// 						Headers: RulesetRuleActionParametersHeaderArray{
+// 							&RulesetRuleActionParametersHeaderArgs{
 // 								Name:      pulumi.String("example-http-header-1"),
 // 								Operation: pulumi.String("set"),
 // 								Value:     pulumi.String("my-http-header-value-1"),
 // 							},
-// 							&cloudflare.RulesetRuleActionParametersHeaderArgs{
+// 							&RulesetRuleActionParametersHeaderArgs{
 // 								Expression: pulumi.String("cf.zone.name"),
 // 								Name:       pulumi.String("example-http-header-2"),
 // 								Operation:  pulumi.String("set"),
 // 							},
-// 							&cloudflare.RulesetRuleActionParametersHeaderArgs{
+// 							&RulesetRuleActionParametersHeaderArgs{
 // 								Name:      pulumi.String("example-http-header-3-to-remove"),
 // 								Operation: pulumi.String("remove"),
 // 							},
@@ -194,13 +194,13 @@ import (
 // 			Kind:        pulumi.String("zone"),
 // 			Name:        pulumi.String("restrict API requests count"),
 // 			Phase:       pulumi.String("http_ratelimit"),
-// 			Rules: cloudflare.RulesetRuleArray{
-// 				&cloudflare.RulesetRuleArgs{
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
 // 					Action:      pulumi.String("block"),
 // 					Description: pulumi.String("rate limit for API"),
 // 					Enabled:     pulumi.Bool(true),
 // 					Expression:  pulumi.String("(http.request.uri.path matches \"^/api/\")"),
-// 					Ratelimit: &cloudflare.RulesetRuleRatelimitArgs{
+// 					Ratelimit: &RulesetRuleRatelimitArgs{
 // 						Characteristics: pulumi.StringArray{
 // 							pulumi.String("cf.colo.id"),
 // 							pulumi.String("ip.src"),
@@ -432,7 +432,7 @@ type RulesetArrayInput interface {
 type RulesetArray []RulesetInput
 
 func (RulesetArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Ruleset)(nil))
+	return reflect.TypeOf((*[]*Ruleset)(nil)).Elem()
 }
 
 func (i RulesetArray) ToRulesetArrayOutput() RulesetArrayOutput {
@@ -457,7 +457,7 @@ type RulesetMapInput interface {
 type RulesetMap map[string]RulesetInput
 
 func (RulesetMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Ruleset)(nil))
+	return reflect.TypeOf((*map[string]*Ruleset)(nil)).Elem()
 }
 
 func (i RulesetMap) ToRulesetMapOutput() RulesetMapOutput {
@@ -468,9 +468,7 @@ func (i RulesetMap) ToRulesetMapOutputWithContext(ctx context.Context) RulesetMa
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetMapOutput)
 }
 
-type RulesetOutput struct {
-	*pulumi.OutputState
-}
+type RulesetOutput struct{ *pulumi.OutputState }
 
 func (RulesetOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Ruleset)(nil))
@@ -489,14 +487,12 @@ func (o RulesetOutput) ToRulesetPtrOutput() RulesetPtrOutput {
 }
 
 func (o RulesetOutput) ToRulesetPtrOutputWithContext(ctx context.Context) RulesetPtrOutput {
-	return o.ApplyT(func(v Ruleset) *Ruleset {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ruleset) *Ruleset {
 		return &v
 	}).(RulesetPtrOutput)
 }
 
-type RulesetPtrOutput struct {
-	*pulumi.OutputState
-}
+type RulesetPtrOutput struct{ *pulumi.OutputState }
 
 func (RulesetPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Ruleset)(nil))
@@ -508,6 +504,16 @@ func (o RulesetPtrOutput) ToRulesetPtrOutput() RulesetPtrOutput {
 
 func (o RulesetPtrOutput) ToRulesetPtrOutputWithContext(ctx context.Context) RulesetPtrOutput {
 	return o
+}
+
+func (o RulesetPtrOutput) Elem() RulesetOutput {
+	return o.ApplyT(func(v *Ruleset) Ruleset {
+		if v != nil {
+			return *v
+		}
+		var ret Ruleset
+		return ret
+	}).(RulesetOutput)
 }
 
 type RulesetArrayOutput struct{ *pulumi.OutputState }
@@ -551,6 +557,10 @@ func (o RulesetMapOutput) MapIndex(k pulumi.StringInput) RulesetOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetInput)(nil)).Elem(), &Ruleset{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetPtrInput)(nil)).Elem(), &Ruleset{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetArrayInput)(nil)).Elem(), RulesetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetMapInput)(nil)).Elem(), RulesetMap{})
 	pulumi.RegisterOutputType(RulesetOutput{})
 	pulumi.RegisterOutputType(RulesetPtrOutput{})
 	pulumi.RegisterOutputType(RulesetArrayOutput{})

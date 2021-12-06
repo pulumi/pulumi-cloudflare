@@ -2,7 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -91,4 +90,18 @@ export interface GetZoneDnssecResult {
      */
     readonly status: string;
     readonly zoneId: string;
+}
+
+export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneDnssecResult> {
+    return pulumi.output(args).apply(a => getZoneDnssec(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getZoneDnssec.
+ */
+export interface GetZoneDnssecOutputArgs {
+    /**
+     * The zone id for the zone.
+     */
+    zoneId: pulumi.Input<string>;
 }

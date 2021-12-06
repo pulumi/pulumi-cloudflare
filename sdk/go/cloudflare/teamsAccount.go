@@ -27,7 +27,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewTeamsAccount(ctx, "main", &cloudflare.TeamsAccountArgs{
 // 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			BlockPage: &cloudflare.TeamsAccountBlockPageArgs{
+// 			BlockPage: &TeamsAccountBlockPageArgs{
 // 				BackgroundColor: pulumi.String("#000000"),
 // 				FooterText:      pulumi.String("hello"),
 // 				HeaderText:      pulumi.String("hello"),
@@ -214,7 +214,7 @@ type TeamsAccountArrayInput interface {
 type TeamsAccountArray []TeamsAccountInput
 
 func (TeamsAccountArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TeamsAccount)(nil))
+	return reflect.TypeOf((*[]*TeamsAccount)(nil)).Elem()
 }
 
 func (i TeamsAccountArray) ToTeamsAccountArrayOutput() TeamsAccountArrayOutput {
@@ -239,7 +239,7 @@ type TeamsAccountMapInput interface {
 type TeamsAccountMap map[string]TeamsAccountInput
 
 func (TeamsAccountMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TeamsAccount)(nil))
+	return reflect.TypeOf((*map[string]*TeamsAccount)(nil)).Elem()
 }
 
 func (i TeamsAccountMap) ToTeamsAccountMapOutput() TeamsAccountMapOutput {
@@ -250,9 +250,7 @@ func (i TeamsAccountMap) ToTeamsAccountMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountMapOutput)
 }
 
-type TeamsAccountOutput struct {
-	*pulumi.OutputState
-}
+type TeamsAccountOutput struct{ *pulumi.OutputState }
 
 func (TeamsAccountOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TeamsAccount)(nil))
@@ -271,14 +269,12 @@ func (o TeamsAccountOutput) ToTeamsAccountPtrOutput() TeamsAccountPtrOutput {
 }
 
 func (o TeamsAccountOutput) ToTeamsAccountPtrOutputWithContext(ctx context.Context) TeamsAccountPtrOutput {
-	return o.ApplyT(func(v TeamsAccount) *TeamsAccount {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccount) *TeamsAccount {
 		return &v
 	}).(TeamsAccountPtrOutput)
 }
 
-type TeamsAccountPtrOutput struct {
-	*pulumi.OutputState
-}
+type TeamsAccountPtrOutput struct{ *pulumi.OutputState }
 
 func (TeamsAccountPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TeamsAccount)(nil))
@@ -290,6 +286,16 @@ func (o TeamsAccountPtrOutput) ToTeamsAccountPtrOutput() TeamsAccountPtrOutput {
 
 func (o TeamsAccountPtrOutput) ToTeamsAccountPtrOutputWithContext(ctx context.Context) TeamsAccountPtrOutput {
 	return o
+}
+
+func (o TeamsAccountPtrOutput) Elem() TeamsAccountOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccount {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccount
+		return ret
+	}).(TeamsAccountOutput)
 }
 
 type TeamsAccountArrayOutput struct{ *pulumi.OutputState }
@@ -333,6 +339,10 @@ func (o TeamsAccountMapOutput) MapIndex(k pulumi.StringInput) TeamsAccountOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountInput)(nil)).Elem(), &TeamsAccount{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountPtrInput)(nil)).Elem(), &TeamsAccount{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountArrayInput)(nil)).Elem(), TeamsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountMapInput)(nil)).Elem(), TeamsAccountMap{})
 	pulumi.RegisterOutputType(TeamsAccountOutput{})
 	pulumi.RegisterOutputType(TeamsAccountPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountArrayOutput{})

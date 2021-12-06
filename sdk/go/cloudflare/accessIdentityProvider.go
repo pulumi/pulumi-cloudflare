@@ -38,8 +38,8 @@ import (
 // 		}
 // 		_, err = cloudflare.NewAccessIdentityProvider(ctx, "githubOauth", &cloudflare.AccessIdentityProviderArgs{
 // 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Configs: cloudflare.AccessIdentityProviderConfigArray{
-// 				&cloudflare.AccessIdentityProviderConfigArgs{
+// 			Configs: AccessIdentityProviderConfigArray{
+// 				&AccessIdentityProviderConfigArgs{
 // 					ClientId:     pulumi.String("example"),
 // 					ClientSecret: pulumi.String("secret_key"),
 // 				},
@@ -52,8 +52,8 @@ import (
 // 		}
 // 		_, err = cloudflare.NewAccessIdentityProvider(ctx, "jumpcloudSaml", &cloudflare.AccessIdentityProviderArgs{
 // 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Configs: cloudflare.AccessIdentityProviderConfigArray{
-// 				&cloudflare.AccessIdentityProviderConfigArgs{
+// 			Configs: AccessIdentityProviderConfigArray{
+// 				&AccessIdentityProviderConfigArgs{
 // 					Attributes: pulumi.StringArray{
 // 						pulumi.String("email"),
 // 						pulumi.String("username"),
@@ -72,8 +72,8 @@ import (
 // 		}
 // 		_, err = cloudflare.NewAccessIdentityProvider(ctx, "okta", &cloudflare.AccessIdentityProviderArgs{
 // 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Configs: cloudflare.AccessIdentityProviderConfigArray{
-// 				&cloudflare.AccessIdentityProviderConfigArgs{
+// 			Configs: AccessIdentityProviderConfigArray{
+// 				&AccessIdentityProviderConfigArgs{
 // 					ApiToken:     pulumi.String("okta_api_token"),
 // 					ClientId:     pulumi.String("example"),
 // 					ClientSecret: pulumi.String("secret_key"),
@@ -284,7 +284,7 @@ type AccessIdentityProviderArrayInput interface {
 type AccessIdentityProviderArray []AccessIdentityProviderInput
 
 func (AccessIdentityProviderArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*AccessIdentityProvider)(nil))
+	return reflect.TypeOf((*[]*AccessIdentityProvider)(nil)).Elem()
 }
 
 func (i AccessIdentityProviderArray) ToAccessIdentityProviderArrayOutput() AccessIdentityProviderArrayOutput {
@@ -309,7 +309,7 @@ type AccessIdentityProviderMapInput interface {
 type AccessIdentityProviderMap map[string]AccessIdentityProviderInput
 
 func (AccessIdentityProviderMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*AccessIdentityProvider)(nil))
+	return reflect.TypeOf((*map[string]*AccessIdentityProvider)(nil)).Elem()
 }
 
 func (i AccessIdentityProviderMap) ToAccessIdentityProviderMapOutput() AccessIdentityProviderMapOutput {
@@ -320,9 +320,7 @@ func (i AccessIdentityProviderMap) ToAccessIdentityProviderMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderMapOutput)
 }
 
-type AccessIdentityProviderOutput struct {
-	*pulumi.OutputState
-}
+type AccessIdentityProviderOutput struct{ *pulumi.OutputState }
 
 func (AccessIdentityProviderOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*AccessIdentityProvider)(nil))
@@ -341,14 +339,12 @@ func (o AccessIdentityProviderOutput) ToAccessIdentityProviderPtrOutput() Access
 }
 
 func (o AccessIdentityProviderOutput) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
-	return o.ApplyT(func(v AccessIdentityProvider) *AccessIdentityProvider {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessIdentityProvider) *AccessIdentityProvider {
 		return &v
 	}).(AccessIdentityProviderPtrOutput)
 }
 
-type AccessIdentityProviderPtrOutput struct {
-	*pulumi.OutputState
-}
+type AccessIdentityProviderPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessIdentityProviderPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**AccessIdentityProvider)(nil))
@@ -360,6 +356,16 @@ func (o AccessIdentityProviderPtrOutput) ToAccessIdentityProviderPtrOutput() Acc
 
 func (o AccessIdentityProviderPtrOutput) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
 	return o
+}
+
+func (o AccessIdentityProviderPtrOutput) Elem() AccessIdentityProviderOutput {
+	return o.ApplyT(func(v *AccessIdentityProvider) AccessIdentityProvider {
+		if v != nil {
+			return *v
+		}
+		var ret AccessIdentityProvider
+		return ret
+	}).(AccessIdentityProviderOutput)
 }
 
 type AccessIdentityProviderArrayOutput struct{ *pulumi.OutputState }
@@ -403,6 +409,10 @@ func (o AccessIdentityProviderMapOutput) MapIndex(k pulumi.StringInput) AccessId
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderInput)(nil)).Elem(), &AccessIdentityProvider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderPtrInput)(nil)).Elem(), &AccessIdentityProvider{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderArrayInput)(nil)).Elem(), AccessIdentityProviderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderMapInput)(nil)).Elem(), AccessIdentityProviderMap{})
 	pulumi.RegisterOutputType(AccessIdentityProviderOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderPtrOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderArrayOutput{})

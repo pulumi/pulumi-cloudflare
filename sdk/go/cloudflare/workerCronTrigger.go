@@ -16,6 +16,50 @@ import (
 // schedule. Worker Cron Triggers are ideal for running periodic jobs for
 // maintenance or calling third-party APIs to collect up-to-date data.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"io/ioutil"
+//
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func readFileOrPanic(path string) pulumi.StringPtrInput {
+// 	data, err := ioutil.ReadFile(path)
+// 	if err != nil {
+// 		panic(err.Error())
+// 	}
+// 	return pulumi.String(string(data))
+// }
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleScript, err := cloudflare.NewWorkerScript(ctx, "exampleScript", &cloudflare.WorkerScriptArgs{
+// 			Name:    pulumi.String("example-script"),
+// 			Content: readFileOrPanic("path/to/my.js"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewWorkerCronTrigger(ctx, "exampleTrigger", &cloudflare.WorkerCronTriggerArgs{
+// 			ScriptName: exampleScript.Name,
+// 			Schedules: pulumi.StringArray{
+// 				pulumi.String("*/5 * * * *"),
+// 				pulumi.String("10 7 * * mon-fri"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Worker Cron Triggers can be imported using the script name of the Worker they are targeting.
@@ -165,7 +209,7 @@ type WorkerCronTriggerArrayInput interface {
 type WorkerCronTriggerArray []WorkerCronTriggerInput
 
 func (WorkerCronTriggerArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WorkerCronTrigger)(nil))
+	return reflect.TypeOf((*[]*WorkerCronTrigger)(nil)).Elem()
 }
 
 func (i WorkerCronTriggerArray) ToWorkerCronTriggerArrayOutput() WorkerCronTriggerArrayOutput {
@@ -190,7 +234,7 @@ type WorkerCronTriggerMapInput interface {
 type WorkerCronTriggerMap map[string]WorkerCronTriggerInput
 
 func (WorkerCronTriggerMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WorkerCronTrigger)(nil))
+	return reflect.TypeOf((*map[string]*WorkerCronTrigger)(nil)).Elem()
 }
 
 func (i WorkerCronTriggerMap) ToWorkerCronTriggerMapOutput() WorkerCronTriggerMapOutput {
@@ -201,9 +245,7 @@ func (i WorkerCronTriggerMap) ToWorkerCronTriggerMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerMapOutput)
 }
 
-type WorkerCronTriggerOutput struct {
-	*pulumi.OutputState
-}
+type WorkerCronTriggerOutput struct{ *pulumi.OutputState }
 
 func (WorkerCronTriggerOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WorkerCronTrigger)(nil))
@@ -222,14 +264,12 @@ func (o WorkerCronTriggerOutput) ToWorkerCronTriggerPtrOutput() WorkerCronTrigge
 }
 
 func (o WorkerCronTriggerOutput) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
-	return o.ApplyT(func(v WorkerCronTrigger) *WorkerCronTrigger {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerCronTrigger) *WorkerCronTrigger {
 		return &v
 	}).(WorkerCronTriggerPtrOutput)
 }
 
-type WorkerCronTriggerPtrOutput struct {
-	*pulumi.OutputState
-}
+type WorkerCronTriggerPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkerCronTriggerPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WorkerCronTrigger)(nil))
@@ -241,6 +281,16 @@ func (o WorkerCronTriggerPtrOutput) ToWorkerCronTriggerPtrOutput() WorkerCronTri
 
 func (o WorkerCronTriggerPtrOutput) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
 	return o
+}
+
+func (o WorkerCronTriggerPtrOutput) Elem() WorkerCronTriggerOutput {
+	return o.ApplyT(func(v *WorkerCronTrigger) WorkerCronTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerCronTrigger
+		return ret
+	}).(WorkerCronTriggerOutput)
 }
 
 type WorkerCronTriggerArrayOutput struct{ *pulumi.OutputState }
@@ -284,6 +334,10 @@ func (o WorkerCronTriggerMapOutput) MapIndex(k pulumi.StringInput) WorkerCronTri
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerCronTriggerInput)(nil)).Elem(), &WorkerCronTrigger{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerCronTriggerPtrInput)(nil)).Elem(), &WorkerCronTrigger{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerCronTriggerArrayInput)(nil)).Elem(), WorkerCronTriggerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerCronTriggerMapInput)(nil)).Elem(), WorkerCronTriggerMap{})
 	pulumi.RegisterOutputType(WorkerCronTriggerOutput{})
 	pulumi.RegisterOutputType(WorkerCronTriggerPtrOutput{})
 	pulumi.RegisterOutputType(WorkerCronTriggerArrayOutput{})

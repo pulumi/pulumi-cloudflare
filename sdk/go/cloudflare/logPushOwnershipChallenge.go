@@ -189,7 +189,7 @@ type LogPushOwnershipChallengeArrayInput interface {
 type LogPushOwnershipChallengeArray []LogPushOwnershipChallengeInput
 
 func (LogPushOwnershipChallengeArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*LogPushOwnershipChallenge)(nil))
+	return reflect.TypeOf((*[]*LogPushOwnershipChallenge)(nil)).Elem()
 }
 
 func (i LogPushOwnershipChallengeArray) ToLogPushOwnershipChallengeArrayOutput() LogPushOwnershipChallengeArrayOutput {
@@ -214,7 +214,7 @@ type LogPushOwnershipChallengeMapInput interface {
 type LogPushOwnershipChallengeMap map[string]LogPushOwnershipChallengeInput
 
 func (LogPushOwnershipChallengeMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*LogPushOwnershipChallenge)(nil))
+	return reflect.TypeOf((*map[string]*LogPushOwnershipChallenge)(nil)).Elem()
 }
 
 func (i LogPushOwnershipChallengeMap) ToLogPushOwnershipChallengeMapOutput() LogPushOwnershipChallengeMapOutput {
@@ -225,9 +225,7 @@ func (i LogPushOwnershipChallengeMap) ToLogPushOwnershipChallengeMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(LogPushOwnershipChallengeMapOutput)
 }
 
-type LogPushOwnershipChallengeOutput struct {
-	*pulumi.OutputState
-}
+type LogPushOwnershipChallengeOutput struct{ *pulumi.OutputState }
 
 func (LogPushOwnershipChallengeOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*LogPushOwnershipChallenge)(nil))
@@ -246,14 +244,12 @@ func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengePtrOutput() 
 }
 
 func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengePtrOutputWithContext(ctx context.Context) LogPushOwnershipChallengePtrOutput {
-	return o.ApplyT(func(v LogPushOwnershipChallenge) *LogPushOwnershipChallenge {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogPushOwnershipChallenge) *LogPushOwnershipChallenge {
 		return &v
 	}).(LogPushOwnershipChallengePtrOutput)
 }
 
-type LogPushOwnershipChallengePtrOutput struct {
-	*pulumi.OutputState
-}
+type LogPushOwnershipChallengePtrOutput struct{ *pulumi.OutputState }
 
 func (LogPushOwnershipChallengePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**LogPushOwnershipChallenge)(nil))
@@ -265,6 +261,16 @@ func (o LogPushOwnershipChallengePtrOutput) ToLogPushOwnershipChallengePtrOutput
 
 func (o LogPushOwnershipChallengePtrOutput) ToLogPushOwnershipChallengePtrOutputWithContext(ctx context.Context) LogPushOwnershipChallengePtrOutput {
 	return o
+}
+
+func (o LogPushOwnershipChallengePtrOutput) Elem() LogPushOwnershipChallengeOutput {
+	return o.ApplyT(func(v *LogPushOwnershipChallenge) LogPushOwnershipChallenge {
+		if v != nil {
+			return *v
+		}
+		var ret LogPushOwnershipChallenge
+		return ret
+	}).(LogPushOwnershipChallengeOutput)
 }
 
 type LogPushOwnershipChallengeArrayOutput struct{ *pulumi.OutputState }
@@ -308,6 +314,10 @@ func (o LogPushOwnershipChallengeMapOutput) MapIndex(k pulumi.StringInput) LogPu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*LogPushOwnershipChallengeInput)(nil)).Elem(), &LogPushOwnershipChallenge{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogPushOwnershipChallengePtrInput)(nil)).Elem(), &LogPushOwnershipChallenge{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogPushOwnershipChallengeArrayInput)(nil)).Elem(), LogPushOwnershipChallengeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogPushOwnershipChallengeMapInput)(nil)).Elem(), LogPushOwnershipChallengeMap{})
 	pulumi.RegisterOutputType(LogPushOwnershipChallengeOutput{})
 	pulumi.RegisterOutputType(LogPushOwnershipChallengePtrOutput{})
 	pulumi.RegisterOutputType(LogPushOwnershipChallengeArrayOutput{})

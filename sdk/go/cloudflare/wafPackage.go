@@ -208,7 +208,7 @@ type WafPackageArrayInput interface {
 type WafPackageArray []WafPackageInput
 
 func (WafPackageArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*WafPackage)(nil))
+	return reflect.TypeOf((*[]*WafPackage)(nil)).Elem()
 }
 
 func (i WafPackageArray) ToWafPackageArrayOutput() WafPackageArrayOutput {
@@ -233,7 +233,7 @@ type WafPackageMapInput interface {
 type WafPackageMap map[string]WafPackageInput
 
 func (WafPackageMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*WafPackage)(nil))
+	return reflect.TypeOf((*map[string]*WafPackage)(nil)).Elem()
 }
 
 func (i WafPackageMap) ToWafPackageMapOutput() WafPackageMapOutput {
@@ -244,9 +244,7 @@ func (i WafPackageMap) ToWafPackageMapOutputWithContext(ctx context.Context) Waf
 	return pulumi.ToOutputWithContext(ctx, i).(WafPackageMapOutput)
 }
 
-type WafPackageOutput struct {
-	*pulumi.OutputState
-}
+type WafPackageOutput struct{ *pulumi.OutputState }
 
 func (WafPackageOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*WafPackage)(nil))
@@ -265,14 +263,12 @@ func (o WafPackageOutput) ToWafPackagePtrOutput() WafPackagePtrOutput {
 }
 
 func (o WafPackageOutput) ToWafPackagePtrOutputWithContext(ctx context.Context) WafPackagePtrOutput {
-	return o.ApplyT(func(v WafPackage) *WafPackage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafPackage) *WafPackage {
 		return &v
 	}).(WafPackagePtrOutput)
 }
 
-type WafPackagePtrOutput struct {
-	*pulumi.OutputState
-}
+type WafPackagePtrOutput struct{ *pulumi.OutputState }
 
 func (WafPackagePtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**WafPackage)(nil))
@@ -284,6 +280,16 @@ func (o WafPackagePtrOutput) ToWafPackagePtrOutput() WafPackagePtrOutput {
 
 func (o WafPackagePtrOutput) ToWafPackagePtrOutputWithContext(ctx context.Context) WafPackagePtrOutput {
 	return o
+}
+
+func (o WafPackagePtrOutput) Elem() WafPackageOutput {
+	return o.ApplyT(func(v *WafPackage) WafPackage {
+		if v != nil {
+			return *v
+		}
+		var ret WafPackage
+		return ret
+	}).(WafPackageOutput)
 }
 
 type WafPackageArrayOutput struct{ *pulumi.OutputState }
@@ -327,6 +333,10 @@ func (o WafPackageMapOutput) MapIndex(k pulumi.StringInput) WafPackageOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*WafPackageInput)(nil)).Elem(), &WafPackage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafPackagePtrInput)(nil)).Elem(), &WafPackage{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafPackageArrayInput)(nil)).Elem(), WafPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WafPackageMapInput)(nil)).Elem(), WafPackageMap{})
 	pulumi.RegisterOutputType(WafPackageOutput{})
 	pulumi.RegisterOutputType(WafPackagePtrOutput{})
 	pulumi.RegisterOutputType(WafPackageArrayOutput{})

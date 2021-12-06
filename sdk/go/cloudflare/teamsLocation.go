@@ -30,11 +30,11 @@ import (
 // 			AccountId:     pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
 // 			ClientDefault: pulumi.Bool(true),
 // 			Name:          pulumi.String("office"),
-// 			Networks: cloudflare.TeamsLocationNetworkArray{
-// 				&cloudflare.TeamsLocationNetworkArgs{
+// 			Networks: TeamsLocationNetworkArray{
+// 				&TeamsLocationNetworkArgs{
 // 					Network: pulumi.String("203.0.113.1/32"),
 // 				},
-// 				&cloudflare.TeamsLocationNetworkArgs{
+// 				&TeamsLocationNetworkArgs{
 // 					Network: pulumi.String("203.0.113.2/32"),
 // 				},
 // 			},
@@ -243,7 +243,7 @@ type TeamsLocationArrayInput interface {
 type TeamsLocationArray []TeamsLocationInput
 
 func (TeamsLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TeamsLocation)(nil))
+	return reflect.TypeOf((*[]*TeamsLocation)(nil)).Elem()
 }
 
 func (i TeamsLocationArray) ToTeamsLocationArrayOutput() TeamsLocationArrayOutput {
@@ -268,7 +268,7 @@ type TeamsLocationMapInput interface {
 type TeamsLocationMap map[string]TeamsLocationInput
 
 func (TeamsLocationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TeamsLocation)(nil))
+	return reflect.TypeOf((*map[string]*TeamsLocation)(nil)).Elem()
 }
 
 func (i TeamsLocationMap) ToTeamsLocationMapOutput() TeamsLocationMapOutput {
@@ -279,9 +279,7 @@ func (i TeamsLocationMap) ToTeamsLocationMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationMapOutput)
 }
 
-type TeamsLocationOutput struct {
-	*pulumi.OutputState
-}
+type TeamsLocationOutput struct{ *pulumi.OutputState }
 
 func (TeamsLocationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TeamsLocation)(nil))
@@ -300,14 +298,12 @@ func (o TeamsLocationOutput) ToTeamsLocationPtrOutput() TeamsLocationPtrOutput {
 }
 
 func (o TeamsLocationOutput) ToTeamsLocationPtrOutputWithContext(ctx context.Context) TeamsLocationPtrOutput {
-	return o.ApplyT(func(v TeamsLocation) *TeamsLocation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsLocation) *TeamsLocation {
 		return &v
 	}).(TeamsLocationPtrOutput)
 }
 
-type TeamsLocationPtrOutput struct {
-	*pulumi.OutputState
-}
+type TeamsLocationPtrOutput struct{ *pulumi.OutputState }
 
 func (TeamsLocationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TeamsLocation)(nil))
@@ -319,6 +315,16 @@ func (o TeamsLocationPtrOutput) ToTeamsLocationPtrOutput() TeamsLocationPtrOutpu
 
 func (o TeamsLocationPtrOutput) ToTeamsLocationPtrOutputWithContext(ctx context.Context) TeamsLocationPtrOutput {
 	return o
+}
+
+func (o TeamsLocationPtrOutput) Elem() TeamsLocationOutput {
+	return o.ApplyT(func(v *TeamsLocation) TeamsLocation {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsLocation
+		return ret
+	}).(TeamsLocationOutput)
 }
 
 type TeamsLocationArrayOutput struct{ *pulumi.OutputState }
@@ -362,6 +368,10 @@ func (o TeamsLocationMapOutput) MapIndex(k pulumi.StringInput) TeamsLocationOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationInput)(nil)).Elem(), &TeamsLocation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationPtrInput)(nil)).Elem(), &TeamsLocation{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationArrayInput)(nil)).Elem(), TeamsLocationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationMapInput)(nil)).Elem(), TeamsLocationMap{})
 	pulumi.RegisterOutputType(TeamsLocationOutput{})
 	pulumi.RegisterOutputType(TeamsLocationPtrOutput{})
 	pulumi.RegisterOutputType(TeamsLocationArrayOutput{})

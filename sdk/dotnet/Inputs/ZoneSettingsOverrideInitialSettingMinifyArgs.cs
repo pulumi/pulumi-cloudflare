@@ -9,4 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare.Inputs
 {
+
+    public sealed class ZoneSettingsOverrideInitialSettingMinifyArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// "on"/"off"
+        /// </summary>
+        [Input("css", required: true)]
+        public Input<string> Css { get; set; } = null!;
+
+        /// <summary>
+        /// "on"/"off"
+        /// </summary>
+        [Input("html", required: true)]
+        public Input<string> Html { get; set; } = null!;
+
+        /// <summary>
+        /// "on"/"off"
+        /// </summary>
+        [Input("js", required: true)]
+        public Input<string> Js { get; set; } = null!;
+
+        public ZoneSettingsOverrideInitialSettingMinifyArgs()
+        {
+        }
+    }
 }

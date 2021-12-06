@@ -4,6 +4,9 @@
 package cloudflare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,8 +30,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
-// 			Filter: cloudflare.GetZonesFilter{
+// 		_, err := cloudflare.GetZones(ctx, &GetZonesArgs{
+// 			Filter: GetZonesFilter{
 // 				Name: "example.com",
 // 			},
 // 		}, nil)
@@ -50,8 +53,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
-// 			Filter: cloudflare.GetZonesFilter{
+// 		_, err := cloudflare.GetZones(ctx, &GetZonesArgs{
+// 			Filter: GetZonesFilter{
 // 				LookupType: "contains",
 // 				Name:       "example",
 // 			},
@@ -74,8 +77,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
-// 			Filter: cloudflare.GetZonesFilter{
+// 		_, err := cloudflare.GetZones(ctx, &GetZonesArgs{
+// 			Filter: GetZonesFilter{
 // 				LookupType: "contains",
 // 				Match:      "^not-",
 // 				Name:       "example",
@@ -111,4 +114,57 @@ type GetZonesResult struct {
 	Id string `pulumi:"id"`
 	// A list of zone objects. Object format:
 	Zones []GetZonesZone `pulumi:"zones"`
+}
+
+func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetZonesResult, error) {
+			args := v.(GetZonesArgs)
+			r, err := GetZones(ctx, &args, opts...)
+			return *r, err
+		}).(GetZonesResultOutput)
+}
+
+// A collection of arguments for invoking getZones.
+type GetZonesOutputArgs struct {
+	// One or more values used to look up zone records. If more than one value is given all
+	// values must match in order to be included, see below for full list.
+	Filter GetZonesFilterInput `pulumi:"filter"`
+}
+
+func (GetZonesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getZones.
+type GetZonesResultOutput struct{ *pulumi.OutputState }
+
+func (GetZonesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesResult)(nil)).Elem()
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
+	return o
+}
+
+func (o GetZonesResultOutput) Filter() GetZonesFilterOutput {
+	return o.ApplyT(func(v GetZonesResult) GetZonesFilter { return v.Filter }).(GetZonesFilterOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetZonesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of zone objects. Object format:
+func (o GetZonesResultOutput) Zones() GetZonesZoneArrayOutput {
+	return o.ApplyT(func(v GetZonesResult) []GetZonesZone { return v.Zones }).(GetZonesZoneArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetZonesResultOutput{})
 }

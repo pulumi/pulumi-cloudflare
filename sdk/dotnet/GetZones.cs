@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.Cloudflare
 {
@@ -91,6 +92,87 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// Given you have the following zones in Cloudflare.
+        /// 
+        /// - example.com
+        /// - example.net
+        /// - not-example.com
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetZonesFilterArgs
+        ///             {
+        ///                 Name = "example.com",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetZonesFilterArgs
+        ///             {
+        ///                 LookupType = "contains",
+        ///                 Name = "example",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetZonesFilterArgs
+        ///             {
+        ///                 LookupType = "contains",
+        ///                 Match = "^not-",
+        ///                 Name = "example",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithVersion());
     }
 
 
@@ -104,6 +186,20 @@ namespace Pulumi.Cloudflare
         public Inputs.GetZonesFilterArgs Filter { get; set; } = null!;
 
         public GetZonesArgs()
+        {
+        }
+    }
+
+    public sealed class GetZonesInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// One or more values used to look up zone records. If more than one value is given all
+        /// values must match in order to be included, see below for full list.
+        /// </summary>
+        [Input("filter", required: true)]
+        public Input<Inputs.GetZonesFilterInputArgs> Filter { get; set; } = null!;
+
+        public GetZonesInvokeArgs()
         {
         }
     }

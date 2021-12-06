@@ -226,7 +226,7 @@ type TeamsListArrayInput interface {
 type TeamsListArray []TeamsListInput
 
 func (TeamsListArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*TeamsList)(nil))
+	return reflect.TypeOf((*[]*TeamsList)(nil)).Elem()
 }
 
 func (i TeamsListArray) ToTeamsListArrayOutput() TeamsListArrayOutput {
@@ -251,7 +251,7 @@ type TeamsListMapInput interface {
 type TeamsListMap map[string]TeamsListInput
 
 func (TeamsListMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*TeamsList)(nil))
+	return reflect.TypeOf((*map[string]*TeamsList)(nil)).Elem()
 }
 
 func (i TeamsListMap) ToTeamsListMapOutput() TeamsListMapOutput {
@@ -262,9 +262,7 @@ func (i TeamsListMap) ToTeamsListMapOutputWithContext(ctx context.Context) Teams
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsListMapOutput)
 }
 
-type TeamsListOutput struct {
-	*pulumi.OutputState
-}
+type TeamsListOutput struct{ *pulumi.OutputState }
 
 func (TeamsListOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*TeamsList)(nil))
@@ -283,14 +281,12 @@ func (o TeamsListOutput) ToTeamsListPtrOutput() TeamsListPtrOutput {
 }
 
 func (o TeamsListOutput) ToTeamsListPtrOutputWithContext(ctx context.Context) TeamsListPtrOutput {
-	return o.ApplyT(func(v TeamsList) *TeamsList {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsList) *TeamsList {
 		return &v
 	}).(TeamsListPtrOutput)
 }
 
-type TeamsListPtrOutput struct {
-	*pulumi.OutputState
-}
+type TeamsListPtrOutput struct{ *pulumi.OutputState }
 
 func (TeamsListPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**TeamsList)(nil))
@@ -302,6 +298,16 @@ func (o TeamsListPtrOutput) ToTeamsListPtrOutput() TeamsListPtrOutput {
 
 func (o TeamsListPtrOutput) ToTeamsListPtrOutputWithContext(ctx context.Context) TeamsListPtrOutput {
 	return o
+}
+
+func (o TeamsListPtrOutput) Elem() TeamsListOutput {
+	return o.ApplyT(func(v *TeamsList) TeamsList {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsList
+		return ret
+	}).(TeamsListOutput)
 }
 
 type TeamsListArrayOutput struct{ *pulumi.OutputState }
@@ -345,6 +351,10 @@ func (o TeamsListMapOutput) MapIndex(k pulumi.StringInput) TeamsListOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsListInput)(nil)).Elem(), &TeamsList{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsListPtrInput)(nil)).Elem(), &TeamsList{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsListArrayInput)(nil)).Elem(), TeamsListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsListMapInput)(nil)).Elem(), TeamsListMap{})
 	pulumi.RegisterOutputType(TeamsListOutput{})
 	pulumi.RegisterOutputType(TeamsListPtrOutput{})
 	pulumi.RegisterOutputType(TeamsListArrayOutput{})

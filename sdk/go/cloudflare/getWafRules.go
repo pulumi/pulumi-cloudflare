@@ -4,6 +4,9 @@
 package cloudflare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,10 +27,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "a25a9a7e9c00afc1fb2e0245519d725b"
-// 		test, err := cloudflare.GetWafRules(ctx, &cloudflare.GetWafRulesArgs{
+// 		test, err := cloudflare.GetWafRules(ctx, &GetWafRulesArgs{
 // 			ZoneId:    "ae36f999674d196762efcc5abb06b345",
 // 			PackageId: &opt0,
-// 			Filter: cloudflare.GetWafRulesFilter{
+// 			Filter: GetWafRulesFilter{
 // 				Description: ".*example.*",
 // 				Mode:        "on",
 // 				GroupId:     "de677e5818985db1285d0e80225f06e5",
@@ -71,4 +74,70 @@ type GetWafRulesResult struct {
 	// A map of WAF Rules details. Full list below:
 	Rules  []GetWafRulesRule `pulumi:"rules"`
 	ZoneId string            `pulumi:"zoneId"`
+}
+
+func GetWafRulesOutput(ctx *pulumi.Context, args GetWafRulesOutputArgs, opts ...pulumi.InvokeOption) GetWafRulesResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetWafRulesResult, error) {
+			args := v.(GetWafRulesArgs)
+			r, err := GetWafRules(ctx, &args, opts...)
+			return *r, err
+		}).(GetWafRulesResultOutput)
+}
+
+// A collection of arguments for invoking getWafRules.
+type GetWafRulesOutputArgs struct {
+	// One or more values used to look up WAF Rules. If more than one value is given all
+	// values must match in order to be included, see below for full list.
+	Filter GetWafRulesFilterPtrInput `pulumi:"filter"`
+	// The ID of the WAF Rule Package in which to search for the WAF Rules.
+	PackageId pulumi.StringPtrInput `pulumi:"packageId"`
+	// The ID of the DNS zone in which to search for the WAF Rules.
+	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+}
+
+func (GetWafRulesOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getWafRules.
+type GetWafRulesResultOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetWafRulesResult)(nil)).Elem()
+}
+
+func (o GetWafRulesResultOutput) ToGetWafRulesResultOutput() GetWafRulesResultOutput {
+	return o
+}
+
+func (o GetWafRulesResultOutput) ToGetWafRulesResultOutputWithContext(ctx context.Context) GetWafRulesResultOutput {
+	return o
+}
+
+func (o GetWafRulesResultOutput) Filter() GetWafRulesFilterPtrOutput {
+	return o.ApplyT(func(v GetWafRulesResult) *GetWafRulesFilter { return v.Filter }).(GetWafRulesFilterPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetWafRulesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The ID of the WAF Rule Package that contains the WAF Rule
+func (o GetWafRulesResultOutput) PackageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetWafRulesResult) *string { return v.PackageId }).(pulumi.StringPtrOutput)
+}
+
+// A map of WAF Rules details. Full list below:
+func (o GetWafRulesResultOutput) Rules() GetWafRulesRuleArrayOutput {
+	return o.ApplyT(func(v GetWafRulesResult) []GetWafRulesRule { return v.Rules }).(GetWafRulesRuleArrayOutput)
+}
+
+func (o GetWafRulesResultOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWafRulesResult) string { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetWafRulesResultOutput{})
 }

@@ -4889,7 +4889,7 @@ func (o AccessRuleConfigurationOutput) ToAccessRuleConfigurationPtrOutput() Acce
 }
 
 func (o AccessRuleConfigurationOutput) ToAccessRuleConfigurationPtrOutputWithContext(ctx context.Context) AccessRuleConfigurationPtrOutput {
-	return o.ApplyT(func(v AccessRuleConfiguration) *AccessRuleConfiguration {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessRuleConfiguration) *AccessRuleConfiguration {
 		return &v
 	}).(AccessRuleConfigurationPtrOutput)
 }
@@ -4919,7 +4919,13 @@ func (o AccessRuleConfigurationPtrOutput) ToAccessRuleConfigurationPtrOutputWith
 }
 
 func (o AccessRuleConfigurationPtrOutput) Elem() AccessRuleConfigurationOutput {
-	return o.ApplyT(func(v *AccessRuleConfiguration) AccessRuleConfiguration { return *v }).(AccessRuleConfigurationOutput)
+	return o.ApplyT(func(v *AccessRuleConfiguration) AccessRuleConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret AccessRuleConfiguration
+		return ret
+	}).(AccessRuleConfigurationOutput)
 }
 
 // The request property to target. Allowed values: "ip", "ip6", "ipRange", "asn", "country"
@@ -5035,7 +5041,7 @@ func (o ApiTokenConditionOutput) ToApiTokenConditionPtrOutput() ApiTokenConditio
 }
 
 func (o ApiTokenConditionOutput) ToApiTokenConditionPtrOutputWithContext(ctx context.Context) ApiTokenConditionPtrOutput {
-	return o.ApplyT(func(v ApiTokenCondition) *ApiTokenCondition {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiTokenCondition) *ApiTokenCondition {
 		return &v
 	}).(ApiTokenConditionPtrOutput)
 }
@@ -5060,7 +5066,13 @@ func (o ApiTokenConditionPtrOutput) ToApiTokenConditionPtrOutputWithContext(ctx 
 }
 
 func (o ApiTokenConditionPtrOutput) Elem() ApiTokenConditionOutput {
-	return o.ApplyT(func(v *ApiTokenCondition) ApiTokenCondition { return *v }).(ApiTokenConditionOutput)
+	return o.ApplyT(func(v *ApiTokenCondition) ApiTokenCondition {
+		if v != nil {
+			return *v
+		}
+		var ret ApiTokenCondition
+		return ret
+	}).(ApiTokenConditionOutput)
 }
 
 // Request IP related conditions. See the definition below.
@@ -5174,7 +5186,7 @@ func (o ApiTokenConditionRequestIpOutput) ToApiTokenConditionRequestIpPtrOutput(
 }
 
 func (o ApiTokenConditionRequestIpOutput) ToApiTokenConditionRequestIpPtrOutputWithContext(ctx context.Context) ApiTokenConditionRequestIpPtrOutput {
-	return o.ApplyT(func(v ApiTokenConditionRequestIp) *ApiTokenConditionRequestIp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiTokenConditionRequestIp) *ApiTokenConditionRequestIp {
 		return &v
 	}).(ApiTokenConditionRequestIpPtrOutput)
 }
@@ -5206,7 +5218,13 @@ func (o ApiTokenConditionRequestIpPtrOutput) ToApiTokenConditionRequestIpPtrOutp
 }
 
 func (o ApiTokenConditionRequestIpPtrOutput) Elem() ApiTokenConditionRequestIpOutput {
-	return o.ApplyT(func(v *ApiTokenConditionRequestIp) ApiTokenConditionRequestIp { return *v }).(ApiTokenConditionRequestIpOutput)
+	return o.ApplyT(func(v *ApiTokenConditionRequestIp) ApiTokenConditionRequestIp {
+		if v != nil {
+			return *v
+		}
+		var ret ApiTokenConditionRequestIp
+		return ret
+	}).(ApiTokenConditionRequestIpOutput)
 }
 
 // List of IPv4/IPv6 CIDR addresses where
@@ -5760,7 +5778,7 @@ func (o CustomSslCustomSslOptionsOutput) ToCustomSslCustomSslOptionsPtrOutput() 
 }
 
 func (o CustomSslCustomSslOptionsOutput) ToCustomSslCustomSslOptionsPtrOutputWithContext(ctx context.Context) CustomSslCustomSslOptionsPtrOutput {
-	return o.ApplyT(func(v CustomSslCustomSslOptions) *CustomSslCustomSslOptions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomSslCustomSslOptions) *CustomSslCustomSslOptions {
 		return &v
 	}).(CustomSslCustomSslOptionsPtrOutput)
 }
@@ -5805,7 +5823,13 @@ func (o CustomSslCustomSslOptionsPtrOutput) ToCustomSslCustomSslOptionsPtrOutput
 }
 
 func (o CustomSslCustomSslOptionsPtrOutput) Elem() CustomSslCustomSslOptionsOutput {
-	return o.ApplyT(func(v *CustomSslCustomSslOptions) CustomSslCustomSslOptions { return *v }).(CustomSslCustomSslOptionsOutput)
+	return o.ApplyT(func(v *CustomSslCustomSslOptions) CustomSslCustomSslOptions {
+		if v != nil {
+			return *v
+		}
+		var ret CustomSslCustomSslOptions
+		return ret
+	}).(CustomSslCustomSslOptionsOutput)
 }
 
 // Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
@@ -7391,7 +7415,7 @@ func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponsePtrO
 }
 
 func (o LoadBalancerRuleFixedResponseOutput) ToLoadBalancerRuleFixedResponsePtrOutputWithContext(ctx context.Context) LoadBalancerRuleFixedResponsePtrOutput {
-	return o.ApplyT(func(v LoadBalancerRuleFixedResponse) *LoadBalancerRuleFixedResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerRuleFixedResponse) *LoadBalancerRuleFixedResponse {
 		return &v
 	}).(LoadBalancerRuleFixedResponsePtrOutput)
 }
@@ -7431,7 +7455,13 @@ func (o LoadBalancerRuleFixedResponsePtrOutput) ToLoadBalancerRuleFixedResponseP
 }
 
 func (o LoadBalancerRuleFixedResponsePtrOutput) Elem() LoadBalancerRuleFixedResponseOutput {
-	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) LoadBalancerRuleFixedResponse { return *v }).(LoadBalancerRuleFixedResponseOutput)
+	return o.ApplyT(func(v *LoadBalancerRuleFixedResponse) LoadBalancerRuleFixedResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoadBalancerRuleFixedResponse
+		return ret
+	}).(LoadBalancerRuleFixedResponseOutput)
 }
 
 // The value of the HTTP context-type header for this fixed response.
@@ -8401,7 +8431,7 @@ func (o PageRuleActionsOutput) ToPageRuleActionsPtrOutput() PageRuleActionsPtrOu
 }
 
 func (o PageRuleActionsOutput) ToPageRuleActionsPtrOutputWithContext(ctx context.Context) PageRuleActionsPtrOutput {
-	return o.ApplyT(func(v PageRuleActions) *PageRuleActions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActions) *PageRuleActions {
 		return &v
 	}).(PageRuleActionsPtrOutput)
 }
@@ -8606,7 +8636,13 @@ func (o PageRuleActionsPtrOutput) ToPageRuleActionsPtrOutputWithContext(ctx cont
 }
 
 func (o PageRuleActionsPtrOutput) Elem() PageRuleActionsOutput {
-	return o.ApplyT(func(v *PageRuleActions) PageRuleActions { return *v }).(PageRuleActionsOutput)
+	return o.ApplyT(func(v *PageRuleActions) PageRuleActions {
+		if v != nil {
+			return *v
+		}
+		var ret PageRuleActions
+		return ret
+	}).(PageRuleActionsOutput)
 }
 
 // Whether this action is `"on"` or `"off"`.
@@ -9088,7 +9124,7 @@ func (o PageRuleActionsCacheKeyFieldsOutput) ToPageRuleActionsCacheKeyFieldsPtrO
 }
 
 func (o PageRuleActionsCacheKeyFieldsOutput) ToPageRuleActionsCacheKeyFieldsPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsPtrOutput {
-	return o.ApplyT(func(v PageRuleActionsCacheKeyFields) *PageRuleActionsCacheKeyFields {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActionsCacheKeyFields) *PageRuleActionsCacheKeyFields {
 		return &v
 	}).(PageRuleActionsCacheKeyFieldsPtrOutput)
 }
@@ -9133,7 +9169,13 @@ func (o PageRuleActionsCacheKeyFieldsPtrOutput) ToPageRuleActionsCacheKeyFieldsP
 }
 
 func (o PageRuleActionsCacheKeyFieldsPtrOutput) Elem() PageRuleActionsCacheKeyFieldsOutput {
-	return o.ApplyT(func(v *PageRuleActionsCacheKeyFields) PageRuleActionsCacheKeyFields { return *v }).(PageRuleActionsCacheKeyFieldsOutput)
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFields) PageRuleActionsCacheKeyFields {
+		if v != nil {
+			return *v
+		}
+		var ret PageRuleActionsCacheKeyFields
+		return ret
+	}).(PageRuleActionsCacheKeyFieldsOutput)
 }
 
 // Controls what cookies go into Cache Key:
@@ -9283,7 +9325,7 @@ func (o PageRuleActionsCacheKeyFieldsCookieOutput) ToPageRuleActionsCacheKeyFiel
 }
 
 func (o PageRuleActionsCacheKeyFieldsCookieOutput) ToPageRuleActionsCacheKeyFieldsCookiePtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsCookiePtrOutput {
-	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsCookie) *PageRuleActionsCacheKeyFieldsCookie {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActionsCacheKeyFieldsCookie) *PageRuleActionsCacheKeyFieldsCookie {
 		return &v
 	}).(PageRuleActionsCacheKeyFieldsCookiePtrOutput)
 }
@@ -9313,7 +9355,13 @@ func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) ToPageRuleActionsCacheKeyF
 }
 
 func (o PageRuleActionsCacheKeyFieldsCookiePtrOutput) Elem() PageRuleActionsCacheKeyFieldsCookieOutput {
-	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsCookie) PageRuleActionsCacheKeyFieldsCookie { return *v }).(PageRuleActionsCacheKeyFieldsCookieOutput)
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsCookie) PageRuleActionsCacheKeyFieldsCookie {
+		if v != nil {
+			return *v
+		}
+		var ret PageRuleActionsCacheKeyFieldsCookie
+		return ret
+	}).(PageRuleActionsCacheKeyFieldsCookieOutput)
 }
 
 // Check for presence of specified HTTP headers, without including their actual values.
@@ -9437,7 +9485,7 @@ func (o PageRuleActionsCacheKeyFieldsHeaderOutput) ToPageRuleActionsCacheKeyFiel
 }
 
 func (o PageRuleActionsCacheKeyFieldsHeaderOutput) ToPageRuleActionsCacheKeyFieldsHeaderPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHeaderPtrOutput {
-	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHeader) *PageRuleActionsCacheKeyFieldsHeader {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActionsCacheKeyFieldsHeader) *PageRuleActionsCacheKeyFieldsHeader {
 		return &v
 	}).(PageRuleActionsCacheKeyFieldsHeaderPtrOutput)
 }
@@ -9472,7 +9520,13 @@ func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) ToPageRuleActionsCacheKeyF
 }
 
 func (o PageRuleActionsCacheKeyFieldsHeaderPtrOutput) Elem() PageRuleActionsCacheKeyFieldsHeaderOutput {
-	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) PageRuleActionsCacheKeyFieldsHeader { return *v }).(PageRuleActionsCacheKeyFieldsHeaderOutput)
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHeader) PageRuleActionsCacheKeyFieldsHeader {
+		if v != nil {
+			return *v
+		}
+		var ret PageRuleActionsCacheKeyFieldsHeader
+		return ret
+	}).(PageRuleActionsCacheKeyFieldsHeaderOutput)
 }
 
 // Check for presence of specified HTTP headers, without including their actual values.
@@ -9598,7 +9652,7 @@ func (o PageRuleActionsCacheKeyFieldsHostOutput) ToPageRuleActionsCacheKeyFields
 }
 
 func (o PageRuleActionsCacheKeyFieldsHostOutput) ToPageRuleActionsCacheKeyFieldsHostPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsHostPtrOutput {
-	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsHost) *PageRuleActionsCacheKeyFieldsHost {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActionsCacheKeyFieldsHost) *PageRuleActionsCacheKeyFieldsHost {
 		return &v
 	}).(PageRuleActionsCacheKeyFieldsHostPtrOutput)
 }
@@ -9623,7 +9677,13 @@ func (o PageRuleActionsCacheKeyFieldsHostPtrOutput) ToPageRuleActionsCacheKeyFie
 }
 
 func (o PageRuleActionsCacheKeyFieldsHostPtrOutput) Elem() PageRuleActionsCacheKeyFieldsHostOutput {
-	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHost) PageRuleActionsCacheKeyFieldsHost { return *v }).(PageRuleActionsCacheKeyFieldsHostOutput)
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsHost) PageRuleActionsCacheKeyFieldsHost {
+		if v != nil {
+			return *v
+		}
+		var ret PageRuleActionsCacheKeyFieldsHost
+		return ret
+	}).(PageRuleActionsCacheKeyFieldsHostOutput)
 }
 
 // `false` (default) - includes the Host header in the HTTP request sent to the origin; `true` - includes the Host header that was resolved to get the origin IP for the request (e.g. changed with Resolve Override Page Rule).
@@ -9737,7 +9797,7 @@ func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) ToPageRuleActionsCacheKe
 }
 
 func (o PageRuleActionsCacheKeyFieldsQueryStringOutput) ToPageRuleActionsCacheKeyFieldsQueryStringPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsQueryStringPtrOutput {
-	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsQueryString) *PageRuleActionsCacheKeyFieldsQueryString {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActionsCacheKeyFieldsQueryString) *PageRuleActionsCacheKeyFieldsQueryString {
 		return &v
 	}).(PageRuleActionsCacheKeyFieldsQueryStringPtrOutput)
 }
@@ -9772,7 +9832,13 @@ func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) ToPageRuleActionsCach
 }
 
 func (o PageRuleActionsCacheKeyFieldsQueryStringPtrOutput) Elem() PageRuleActionsCacheKeyFieldsQueryStringOutput {
-	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsQueryString) PageRuleActionsCacheKeyFieldsQueryString { return *v }).(PageRuleActionsCacheKeyFieldsQueryStringOutput)
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsQueryString) PageRuleActionsCacheKeyFieldsQueryString {
+		if v != nil {
+			return *v
+		}
+		var ret PageRuleActionsCacheKeyFieldsQueryString
+		return ret
+	}).(PageRuleActionsCacheKeyFieldsQueryStringOutput)
 }
 
 // Exclude these query string parameters from Cache Key.
@@ -9906,7 +9972,7 @@ func (o PageRuleActionsCacheKeyFieldsUserOutput) ToPageRuleActionsCacheKeyFields
 }
 
 func (o PageRuleActionsCacheKeyFieldsUserOutput) ToPageRuleActionsCacheKeyFieldsUserPtrOutputWithContext(ctx context.Context) PageRuleActionsCacheKeyFieldsUserPtrOutput {
-	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsUser) *PageRuleActionsCacheKeyFieldsUser {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActionsCacheKeyFieldsUser) *PageRuleActionsCacheKeyFieldsUser {
 		return &v
 	}).(PageRuleActionsCacheKeyFieldsUserPtrOutput)
 }
@@ -9941,7 +10007,13 @@ func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) ToPageRuleActionsCacheKeyFie
 }
 
 func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Elem() PageRuleActionsCacheKeyFieldsUserOutput {
-	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsUser) PageRuleActionsCacheKeyFieldsUser { return *v }).(PageRuleActionsCacheKeyFieldsUserOutput)
+	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsUser) PageRuleActionsCacheKeyFieldsUser {
+		if v != nil {
+			return *v
+		}
+		var ret PageRuleActionsCacheKeyFieldsUser
+		return ret
+	}).(PageRuleActionsCacheKeyFieldsUserOutput)
 }
 
 // `true` - classifies a request as “mobile”, “desktop”, or “tablet” based on the User Agent; defaults to `false`.
@@ -10180,7 +10252,7 @@ func (o PageRuleActionsForwardingUrlOutput) ToPageRuleActionsForwardingUrlPtrOut
 }
 
 func (o PageRuleActionsForwardingUrlOutput) ToPageRuleActionsForwardingUrlPtrOutputWithContext(ctx context.Context) PageRuleActionsForwardingUrlPtrOutput {
-	return o.ApplyT(func(v PageRuleActionsForwardingUrl) *PageRuleActionsForwardingUrl {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PageRuleActionsForwardingUrl) *PageRuleActionsForwardingUrl {
 		return &v
 	}).(PageRuleActionsForwardingUrlPtrOutput)
 }
@@ -10210,7 +10282,13 @@ func (o PageRuleActionsForwardingUrlPtrOutput) ToPageRuleActionsForwardingUrlPtr
 }
 
 func (o PageRuleActionsForwardingUrlPtrOutput) Elem() PageRuleActionsForwardingUrlOutput {
-	return o.ApplyT(func(v *PageRuleActionsForwardingUrl) PageRuleActionsForwardingUrl { return *v }).(PageRuleActionsForwardingUrlOutput)
+	return o.ApplyT(func(v *PageRuleActionsForwardingUrl) PageRuleActionsForwardingUrl {
+		if v != nil {
+			return *v
+		}
+		var ret PageRuleActionsForwardingUrl
+		return ret
+	}).(PageRuleActionsForwardingUrlOutput)
 }
 
 // The status code to use for the redirection.
@@ -10449,7 +10527,7 @@ func (o RateLimitActionOutput) ToRateLimitActionPtrOutput() RateLimitActionPtrOu
 }
 
 func (o RateLimitActionOutput) ToRateLimitActionPtrOutputWithContext(ctx context.Context) RateLimitActionPtrOutput {
-	return o.ApplyT(func(v RateLimitAction) *RateLimitAction {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitAction) *RateLimitAction {
 		return &v
 	}).(RateLimitActionPtrOutput)
 }
@@ -10484,7 +10562,13 @@ func (o RateLimitActionPtrOutput) ToRateLimitActionPtrOutputWithContext(ctx cont
 }
 
 func (o RateLimitActionPtrOutput) Elem() RateLimitActionOutput {
-	return o.ApplyT(func(v *RateLimitAction) RateLimitAction { return *v }).(RateLimitActionOutput)
+	return o.ApplyT(func(v *RateLimitAction) RateLimitAction {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitAction
+		return ret
+	}).(RateLimitActionOutput)
 }
 
 // The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
@@ -10614,7 +10698,7 @@ func (o RateLimitActionResponseOutput) ToRateLimitActionResponsePtrOutput() Rate
 }
 
 func (o RateLimitActionResponseOutput) ToRateLimitActionResponsePtrOutputWithContext(ctx context.Context) RateLimitActionResponsePtrOutput {
-	return o.ApplyT(func(v RateLimitActionResponse) *RateLimitActionResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitActionResponse) *RateLimitActionResponse {
 		return &v
 	}).(RateLimitActionResponsePtrOutput)
 }
@@ -10644,7 +10728,13 @@ func (o RateLimitActionResponsePtrOutput) ToRateLimitActionResponsePtrOutputWith
 }
 
 func (o RateLimitActionResponsePtrOutput) Elem() RateLimitActionResponseOutput {
-	return o.ApplyT(func(v *RateLimitActionResponse) RateLimitActionResponse { return *v }).(RateLimitActionResponseOutput)
+	return o.ApplyT(func(v *RateLimitActionResponse) RateLimitActionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitActionResponse
+		return ret
+	}).(RateLimitActionResponseOutput)
 }
 
 // The body to return, the content here should conform to the content_type.
@@ -10760,7 +10850,7 @@ func (o RateLimitCorrelateOutput) ToRateLimitCorrelatePtrOutput() RateLimitCorre
 }
 
 func (o RateLimitCorrelateOutput) ToRateLimitCorrelatePtrOutputWithContext(ctx context.Context) RateLimitCorrelatePtrOutput {
-	return o.ApplyT(func(v RateLimitCorrelate) *RateLimitCorrelate {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitCorrelate) *RateLimitCorrelate {
 		return &v
 	}).(RateLimitCorrelatePtrOutput)
 }
@@ -10785,7 +10875,13 @@ func (o RateLimitCorrelatePtrOutput) ToRateLimitCorrelatePtrOutputWithContext(ct
 }
 
 func (o RateLimitCorrelatePtrOutput) Elem() RateLimitCorrelateOutput {
-	return o.ApplyT(func(v *RateLimitCorrelate) RateLimitCorrelate { return *v }).(RateLimitCorrelateOutput)
+	return o.ApplyT(func(v *RateLimitCorrelate) RateLimitCorrelate {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitCorrelate
+		return ret
+	}).(RateLimitCorrelateOutput)
 }
 
 // If set to 'nat', NAT support will be enabled for rate limiting.
@@ -10895,7 +10991,7 @@ func (o RateLimitMatchOutput) ToRateLimitMatchPtrOutput() RateLimitMatchPtrOutpu
 }
 
 func (o RateLimitMatchOutput) ToRateLimitMatchPtrOutputWithContext(ctx context.Context) RateLimitMatchPtrOutput {
-	return o.ApplyT(func(v RateLimitMatch) *RateLimitMatch {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatch) *RateLimitMatch {
 		return &v
 	}).(RateLimitMatchPtrOutput)
 }
@@ -10925,7 +11021,13 @@ func (o RateLimitMatchPtrOutput) ToRateLimitMatchPtrOutputWithContext(ctx contex
 }
 
 func (o RateLimitMatchPtrOutput) Elem() RateLimitMatchOutput {
-	return o.ApplyT(func(v *RateLimitMatch) RateLimitMatch { return *v }).(RateLimitMatchOutput)
+	return o.ApplyT(func(v *RateLimitMatch) RateLimitMatch {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitMatch
+		return ret
+	}).(RateLimitMatchOutput)
 }
 
 // Matches HTTP requests (from the client to Cloudflare). See definition below.
@@ -11049,7 +11151,7 @@ func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestPtrOutput() RateLimi
 }
 
 func (o RateLimitMatchRequestOutput) ToRateLimitMatchRequestPtrOutputWithContext(ctx context.Context) RateLimitMatchRequestPtrOutput {
-	return o.ApplyT(func(v RateLimitMatchRequest) *RateLimitMatchRequest {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatchRequest) *RateLimitMatchRequest {
 		return &v
 	}).(RateLimitMatchRequestPtrOutput)
 }
@@ -11084,7 +11186,13 @@ func (o RateLimitMatchRequestPtrOutput) ToRateLimitMatchRequestPtrOutputWithCont
 }
 
 func (o RateLimitMatchRequestPtrOutput) Elem() RateLimitMatchRequestOutput {
-	return o.ApplyT(func(v *RateLimitMatchRequest) RateLimitMatchRequest { return *v }).(RateLimitMatchRequestOutput)
+	return o.ApplyT(func(v *RateLimitMatchRequest) RateLimitMatchRequest {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitMatchRequest
+		return ret
+	}).(RateLimitMatchRequestOutput)
 }
 
 // HTTP Methods, can be a subset ['POST','PUT'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
@@ -11218,7 +11326,7 @@ func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponsePtrOutput() RateLi
 }
 
 func (o RateLimitMatchResponseOutput) ToRateLimitMatchResponsePtrOutputWithContext(ctx context.Context) RateLimitMatchResponsePtrOutput {
-	return o.ApplyT(func(v RateLimitMatchResponse) *RateLimitMatchResponse {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RateLimitMatchResponse) *RateLimitMatchResponse {
 		return &v
 	}).(RateLimitMatchResponsePtrOutput)
 }
@@ -11253,7 +11361,13 @@ func (o RateLimitMatchResponsePtrOutput) ToRateLimitMatchResponsePtrOutputWithCo
 }
 
 func (o RateLimitMatchResponsePtrOutput) Elem() RateLimitMatchResponseOutput {
-	return o.ApplyT(func(v *RateLimitMatchResponse) RateLimitMatchResponse { return *v }).(RateLimitMatchResponseOutput)
+	return o.ApplyT(func(v *RateLimitMatchResponse) RateLimitMatchResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RateLimitMatchResponse
+		return ret
+	}).(RateLimitMatchResponseOutput)
 }
 
 // block is a list of maps with the following attributes:
@@ -11461,10 +11575,11 @@ func (o RecordDataOutput) ToRecordDataPtrOutput() RecordDataPtrOutput {
 }
 
 func (o RecordDataOutput) ToRecordDataPtrOutputWithContext(ctx context.Context) RecordDataPtrOutput {
-	return o.ApplyT(func(v RecordData) *RecordData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecordData) *RecordData {
 		return &v
 	}).(RecordDataPtrOutput)
 }
+
 func (o RecordDataOutput) Algorithm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RecordData) *int { return v.Algorithm }).(pulumi.IntPtrOutput)
 }
@@ -11640,7 +11755,13 @@ func (o RecordDataPtrOutput) ToRecordDataPtrOutputWithContext(ctx context.Contex
 }
 
 func (o RecordDataPtrOutput) Elem() RecordDataOutput {
-	return o.ApplyT(func(v *RecordData) RecordData { return *v }).(RecordDataOutput)
+	return o.ApplyT(func(v *RecordData) RecordData {
+		if v != nil {
+			return *v
+		}
+		var ret RecordData
+		return ret
+	}).(RecordDataOutput)
 }
 
 func (o RecordDataPtrOutput) Algorithm() pulumi.IntPtrOutput {
@@ -12293,7 +12414,7 @@ func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersPtrOutpu
 }
 
 func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParameters {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParameters) *RulesetRuleActionParameters {
 		return &v
 	}).(RulesetRuleActionParametersPtrOutput)
 }
@@ -12366,7 +12487,13 @@ func (o RulesetRuleActionParametersPtrOutput) ToRulesetRuleActionParametersPtrOu
 }
 
 func (o RulesetRuleActionParametersPtrOutput) Elem() RulesetRuleActionParametersOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParameters) RulesetRuleActionParameters { return *v }).(RulesetRuleActionParametersOutput)
+	return o.ApplyT(func(v *RulesetRuleActionParameters) RulesetRuleActionParameters {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParameters
+		return ret
+	}).(RulesetRuleActionParametersOutput)
 }
 
 // List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
@@ -12694,7 +12821,7 @@ func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParamet
 }
 
 func (o RulesetRuleActionParametersMatchedDataOutput) ToRulesetRuleActionParametersMatchedDataPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersMatchedDataPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersMatchedData) *RulesetRuleActionParametersMatchedData {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersMatchedData) *RulesetRuleActionParametersMatchedData {
 		return &v
 	}).(RulesetRuleActionParametersMatchedDataPtrOutput)
 }
@@ -12719,7 +12846,13 @@ func (o RulesetRuleActionParametersMatchedDataPtrOutput) ToRulesetRuleActionPara
 }
 
 func (o RulesetRuleActionParametersMatchedDataPtrOutput) Elem() RulesetRuleActionParametersMatchedDataOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersMatchedData) RulesetRuleActionParametersMatchedData { return *v }).(RulesetRuleActionParametersMatchedDataOutput)
+	return o.ApplyT(func(v *RulesetRuleActionParametersMatchedData) RulesetRuleActionParametersMatchedData {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersMatchedData
+		return ret
+	}).(RulesetRuleActionParametersMatchedDataOutput)
 }
 
 // Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
@@ -12833,7 +12966,7 @@ func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParameter
 }
 
 func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParametersOverridesPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOverridesPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *RulesetRuleActionParametersOverrides {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersOverrides) *RulesetRuleActionParametersOverrides {
 		return &v
 	}).(RulesetRuleActionParametersOverridesPtrOutput)
 }
@@ -12872,7 +13005,13 @@ func (o RulesetRuleActionParametersOverridesPtrOutput) ToRulesetRuleActionParame
 }
 
 func (o RulesetRuleActionParametersOverridesPtrOutput) Elem() RulesetRuleActionParametersOverridesOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) RulesetRuleActionParametersOverrides { return *v }).(RulesetRuleActionParametersOverridesOutput)
+	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) RulesetRuleActionParametersOverrides {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersOverrides
+		return ret
+	}).(RulesetRuleActionParametersOverridesOutput)
 }
 
 // List of tag-based overrides (refer to the nested schema).
@@ -13252,10 +13391,11 @@ func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriPt
 }
 
 func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUri) *RulesetRuleActionParametersUri {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersUri) *RulesetRuleActionParametersUri {
 		return &v
 	}).(RulesetRuleActionParametersUriPtrOutput)
 }
+
 func (o RulesetRuleActionParametersUriOutput) Origin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersUri) *bool { return v.Origin }).(pulumi.BoolPtrOutput)
 }
@@ -13285,7 +13425,13 @@ func (o RulesetRuleActionParametersUriPtrOutput) ToRulesetRuleActionParametersUr
 }
 
 func (o RulesetRuleActionParametersUriPtrOutput) Elem() RulesetRuleActionParametersUriOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUri) RulesetRuleActionParametersUri { return *v }).(RulesetRuleActionParametersUriOutput)
+	return o.ApplyT(func(v *RulesetRuleActionParametersUri) RulesetRuleActionParametersUri {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersUri
+		return ret
+	}).(RulesetRuleActionParametersUriOutput)
 }
 
 func (o RulesetRuleActionParametersUriPtrOutput) Origin() pulumi.BoolPtrOutput {
@@ -13414,7 +13560,7 @@ func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersU
 }
 
 func (o RulesetRuleActionParametersUriPathOutput) ToRulesetRuleActionParametersUriPathPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriPathPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUriPath) *RulesetRuleActionParametersUriPath {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersUriPath) *RulesetRuleActionParametersUriPath {
 		return &v
 	}).(RulesetRuleActionParametersUriPathPtrOutput)
 }
@@ -13444,7 +13590,13 @@ func (o RulesetRuleActionParametersUriPathPtrOutput) ToRulesetRuleActionParamete
 }
 
 func (o RulesetRuleActionParametersUriPathPtrOutput) Elem() RulesetRuleActionParametersUriPathOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUriPath) RulesetRuleActionParametersUriPath { return *v }).(RulesetRuleActionParametersUriPathOutput)
+	return o.ApplyT(func(v *RulesetRuleActionParametersUriPath) RulesetRuleActionParametersUriPath {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersUriPath
+		return ret
+	}).(RulesetRuleActionParametersUriPathOutput)
 }
 
 // Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
@@ -13564,7 +13716,7 @@ func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParameters
 }
 
 func (o RulesetRuleActionParametersUriQueryOutput) ToRulesetRuleActionParametersUriQueryPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersUriQueryPtrOutput {
-	return o.ApplyT(func(v RulesetRuleActionParametersUriQuery) *RulesetRuleActionParametersUriQuery {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersUriQuery) *RulesetRuleActionParametersUriQuery {
 		return &v
 	}).(RulesetRuleActionParametersUriQueryPtrOutput)
 }
@@ -13594,7 +13746,13 @@ func (o RulesetRuleActionParametersUriQueryPtrOutput) ToRulesetRuleActionParamet
 }
 
 func (o RulesetRuleActionParametersUriQueryPtrOutput) Elem() RulesetRuleActionParametersUriQueryOutput {
-	return o.ApplyT(func(v *RulesetRuleActionParametersUriQuery) RulesetRuleActionParametersUriQuery { return *v }).(RulesetRuleActionParametersUriQueryOutput)
+	return o.ApplyT(func(v *RulesetRuleActionParametersUriQuery) RulesetRuleActionParametersUriQuery {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersUriQuery
+		return ret
+	}).(RulesetRuleActionParametersUriQueryOutput)
 }
 
 // Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
@@ -13726,7 +13884,7 @@ func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitPtrOutput() RulesetRul
 }
 
 func (o RulesetRuleRatelimitOutput) ToRulesetRuleRatelimitPtrOutputWithContext(ctx context.Context) RulesetRuleRatelimitPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *RulesetRuleRatelimit {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleRatelimit) *RulesetRuleRatelimit {
 		return &v
 	}).(RulesetRuleRatelimitPtrOutput)
 }
@@ -13771,7 +13929,13 @@ func (o RulesetRuleRatelimitPtrOutput) ToRulesetRuleRatelimitPtrOutputWithContex
 }
 
 func (o RulesetRuleRatelimitPtrOutput) Elem() RulesetRuleRatelimitOutput {
-	return o.ApplyT(func(v *RulesetRuleRatelimit) RulesetRuleRatelimit { return *v }).(RulesetRuleRatelimitOutput)
+	return o.ApplyT(func(v *RulesetRuleRatelimit) RulesetRuleRatelimit {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleRatelimit
+		return ret
+	}).(RulesetRuleRatelimitOutput)
 }
 
 // List of parameters that define how Cloudflare tracks the request rate for this rule.
@@ -13921,7 +14085,7 @@ func (o SpectrumApplicationDnsOutput) ToSpectrumApplicationDnsPtrOutput() Spectr
 }
 
 func (o SpectrumApplicationDnsOutput) ToSpectrumApplicationDnsPtrOutputWithContext(ctx context.Context) SpectrumApplicationDnsPtrOutput {
-	return o.ApplyT(func(v SpectrumApplicationDns) *SpectrumApplicationDns {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpectrumApplicationDns) *SpectrumApplicationDns {
 		return &v
 	}).(SpectrumApplicationDnsPtrOutput)
 }
@@ -13951,7 +14115,13 @@ func (o SpectrumApplicationDnsPtrOutput) ToSpectrumApplicationDnsPtrOutputWithCo
 }
 
 func (o SpectrumApplicationDnsPtrOutput) Elem() SpectrumApplicationDnsOutput {
-	return o.ApplyT(func(v *SpectrumApplicationDns) SpectrumApplicationDns { return *v }).(SpectrumApplicationDnsOutput)
+	return o.ApplyT(func(v *SpectrumApplicationDns) SpectrumApplicationDns {
+		if v != nil {
+			return *v
+		}
+		var ret SpectrumApplicationDns
+		return ret
+	}).(SpectrumApplicationDnsOutput)
 }
 
 // Fully qualified domain name of the origin e.g. origin-ssh.example.com.
@@ -14067,7 +14237,7 @@ func (o SpectrumApplicationOriginDnsOutput) ToSpectrumApplicationOriginDnsPtrOut
 }
 
 func (o SpectrumApplicationOriginDnsOutput) ToSpectrumApplicationOriginDnsPtrOutputWithContext(ctx context.Context) SpectrumApplicationOriginDnsPtrOutput {
-	return o.ApplyT(func(v SpectrumApplicationOriginDns) *SpectrumApplicationOriginDns {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpectrumApplicationOriginDns) *SpectrumApplicationOriginDns {
 		return &v
 	}).(SpectrumApplicationOriginDnsPtrOutput)
 }
@@ -14092,7 +14262,13 @@ func (o SpectrumApplicationOriginDnsPtrOutput) ToSpectrumApplicationOriginDnsPtr
 }
 
 func (o SpectrumApplicationOriginDnsPtrOutput) Elem() SpectrumApplicationOriginDnsOutput {
-	return o.ApplyT(func(v *SpectrumApplicationOriginDns) SpectrumApplicationOriginDns { return *v }).(SpectrumApplicationOriginDnsOutput)
+	return o.ApplyT(func(v *SpectrumApplicationOriginDns) SpectrumApplicationOriginDns {
+		if v != nil {
+			return *v
+		}
+		var ret SpectrumApplicationOriginDns
+		return ret
+	}).(SpectrumApplicationOriginDnsOutput)
 }
 
 // Fully qualified domain name of the origin e.g. origin-ssh.example.com.
@@ -14202,7 +14378,7 @@ func (o SpectrumApplicationOriginPortRangeOutput) ToSpectrumApplicationOriginPor
 }
 
 func (o SpectrumApplicationOriginPortRangeOutput) ToSpectrumApplicationOriginPortRangePtrOutputWithContext(ctx context.Context) SpectrumApplicationOriginPortRangePtrOutput {
-	return o.ApplyT(func(v SpectrumApplicationOriginPortRange) *SpectrumApplicationOriginPortRange {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpectrumApplicationOriginPortRange) *SpectrumApplicationOriginPortRange {
 		return &v
 	}).(SpectrumApplicationOriginPortRangePtrOutput)
 }
@@ -14232,7 +14408,13 @@ func (o SpectrumApplicationOriginPortRangePtrOutput) ToSpectrumApplicationOrigin
 }
 
 func (o SpectrumApplicationOriginPortRangePtrOutput) Elem() SpectrumApplicationOriginPortRangeOutput {
-	return o.ApplyT(func(v *SpectrumApplicationOriginPortRange) SpectrumApplicationOriginPortRange { return *v }).(SpectrumApplicationOriginPortRangeOutput)
+	return o.ApplyT(func(v *SpectrumApplicationOriginPortRange) SpectrumApplicationOriginPortRange {
+		if v != nil {
+			return *v
+		}
+		var ret SpectrumApplicationOriginPortRange
+		return ret
+	}).(SpectrumApplicationOriginPortRangeOutput)
 }
 
 // Upper bound of the origin port range, e.g. `2000`
@@ -14350,10 +14532,11 @@ func (o TeamsAccountAntivirusOutput) ToTeamsAccountAntivirusPtrOutput() TeamsAcc
 }
 
 func (o TeamsAccountAntivirusOutput) ToTeamsAccountAntivirusPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusPtrOutput {
-	return o.ApplyT(func(v TeamsAccountAntivirus) *TeamsAccountAntivirus {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountAntivirus) *TeamsAccountAntivirus {
 		return &v
 	}).(TeamsAccountAntivirusPtrOutput)
 }
+
 func (o TeamsAccountAntivirusOutput) EnabledDownloadPhase() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsAccountAntivirus) bool { return v.EnabledDownloadPhase }).(pulumi.BoolOutput)
 }
@@ -14381,7 +14564,13 @@ func (o TeamsAccountAntivirusPtrOutput) ToTeamsAccountAntivirusPtrOutputWithCont
 }
 
 func (o TeamsAccountAntivirusPtrOutput) Elem() TeamsAccountAntivirusOutput {
-	return o.ApplyT(func(v *TeamsAccountAntivirus) TeamsAccountAntivirus { return *v }).(TeamsAccountAntivirusOutput)
+	return o.ApplyT(func(v *TeamsAccountAntivirus) TeamsAccountAntivirus {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountAntivirus
+		return ret
+	}).(TeamsAccountAntivirusOutput)
 }
 
 func (o TeamsAccountAntivirusPtrOutput) EnabledDownloadPhase() pulumi.BoolPtrOutput {
@@ -14524,7 +14713,7 @@ func (o TeamsAccountBlockPageOutput) ToTeamsAccountBlockPagePtrOutput() TeamsAcc
 }
 
 func (o TeamsAccountBlockPageOutput) ToTeamsAccountBlockPagePtrOutputWithContext(ctx context.Context) TeamsAccountBlockPagePtrOutput {
-	return o.ApplyT(func(v TeamsAccountBlockPage) *TeamsAccountBlockPage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountBlockPage) *TeamsAccountBlockPage {
 		return &v
 	}).(TeamsAccountBlockPagePtrOutput)
 }
@@ -14574,7 +14763,13 @@ func (o TeamsAccountBlockPagePtrOutput) ToTeamsAccountBlockPagePtrOutputWithCont
 }
 
 func (o TeamsAccountBlockPagePtrOutput) Elem() TeamsAccountBlockPageOutput {
-	return o.ApplyT(func(v *TeamsAccountBlockPage) TeamsAccountBlockPage { return *v }).(TeamsAccountBlockPageOutput)
+	return o.ApplyT(func(v *TeamsAccountBlockPage) TeamsAccountBlockPage {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountBlockPage
+		return ret
+	}).(TeamsAccountBlockPageOutput)
 }
 
 // Hex code of block page background color.
@@ -14851,10 +15046,11 @@ func (o TeamsRuleRuleSettingsOutput) ToTeamsRuleRuleSettingsPtrOutput() TeamsRul
 }
 
 func (o TeamsRuleRuleSettingsOutput) ToTeamsRuleRuleSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsPtrOutput {
-	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettings) *TeamsRuleRuleSettings {
 		return &v
 	}).(TeamsRuleRuleSettingsPtrOutput)
 }
+
 func (o TeamsRuleRuleSettingsOutput) BisoAdminControls() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsBisoAdminControls { return v.BisoAdminControls }).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
 }
@@ -14899,7 +15095,13 @@ func (o TeamsRuleRuleSettingsPtrOutput) ToTeamsRuleRuleSettingsPtrOutputWithCont
 }
 
 func (o TeamsRuleRuleSettingsPtrOutput) Elem() TeamsRuleRuleSettingsOutput {
-	return o.ApplyT(func(v *TeamsRuleRuleSettings) TeamsRuleRuleSettings { return *v }).(TeamsRuleRuleSettingsOutput)
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) TeamsRuleRuleSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettings
+		return ret
+	}).(TeamsRuleRuleSettingsOutput)
 }
 
 func (o TeamsRuleRuleSettingsPtrOutput) BisoAdminControls() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
@@ -15054,10 +15256,11 @@ func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) ToTeamsRuleRuleSettingsBis
 }
 
 func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) ToTeamsRuleRuleSettingsBisoAdminControlsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
-	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *TeamsRuleRuleSettingsBisoAdminControls {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsBisoAdminControls) *TeamsRuleRuleSettingsBisoAdminControls {
 		return &v
 	}).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
 }
+
 func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisableCopyPaste() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisableCopyPaste }).(pulumi.BoolPtrOutput)
 }
@@ -15081,7 +15284,13 @@ func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) ToTeamsRuleRuleSettings
 }
 
 func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) Elem() TeamsRuleRuleSettingsBisoAdminControlsOutput {
-	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) TeamsRuleRuleSettingsBisoAdminControls { return *v }).(TeamsRuleRuleSettingsBisoAdminControlsOutput)
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) TeamsRuleRuleSettingsBisoAdminControls {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsBisoAdminControls
+		return ret
+	}).(TeamsRuleRuleSettingsBisoAdminControlsOutput)
 }
 
 func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisableCopyPaste() pulumi.BoolPtrOutput {
@@ -15199,7 +15408,7 @@ func (o TeamsRuleRuleSettingsL4overrideOutput) ToTeamsRuleRuleSettingsL4override
 }
 
 func (o TeamsRuleRuleSettingsL4overrideOutput) ToTeamsRuleRuleSettingsL4overridePtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsL4overridePtrOutput {
-	return o.ApplyT(func(v TeamsRuleRuleSettingsL4override) *TeamsRuleRuleSettingsL4override {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsL4override) *TeamsRuleRuleSettingsL4override {
 		return &v
 	}).(TeamsRuleRuleSettingsL4overridePtrOutput)
 }
@@ -15229,7 +15438,13 @@ func (o TeamsRuleRuleSettingsL4overridePtrOutput) ToTeamsRuleRuleSettingsL4overr
 }
 
 func (o TeamsRuleRuleSettingsL4overridePtrOutput) Elem() TeamsRuleRuleSettingsL4overrideOutput {
-	return o.ApplyT(func(v *TeamsRuleRuleSettingsL4override) TeamsRuleRuleSettingsL4override { return *v }).(TeamsRuleRuleSettingsL4overrideOutput)
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsL4override) TeamsRuleRuleSettingsL4override {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsL4override
+		return ret
+	}).(TeamsRuleRuleSettingsL4overrideOutput)
 }
 
 // Override IP to forward traffic to.
@@ -16254,7 +16469,7 @@ func (o ZoneSettingsOverrideInitialSettingMinifyOutput) ToZoneSettingsOverrideIn
 }
 
 func (o ZoneSettingsOverrideInitialSettingMinifyOutput) ToZoneSettingsOverrideInitialSettingMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMinifyPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMinify) *ZoneSettingsOverrideInitialSettingMinify {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideInitialSettingMinify) *ZoneSettingsOverrideInitialSettingMinify {
 		return &v
 	}).(ZoneSettingsOverrideInitialSettingMinifyPtrOutput)
 }
@@ -16289,7 +16504,13 @@ func (o ZoneSettingsOverrideInitialSettingMinifyPtrOutput) ToZoneSettingsOverrid
 }
 
 func (o ZoneSettingsOverrideInitialSettingMinifyPtrOutput) Elem() ZoneSettingsOverrideInitialSettingMinifyOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMinify) ZoneSettingsOverrideInitialSettingMinify { return *v }).(ZoneSettingsOverrideInitialSettingMinifyOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMinify) ZoneSettingsOverrideInitialSettingMinify {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideInitialSettingMinify
+		return ret
+	}).(ZoneSettingsOverrideInitialSettingMinifyOutput)
 }
 
 // "on"/"off"
@@ -16423,7 +16644,7 @@ func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) ToZoneSettingsOv
 }
 
 func (o ZoneSettingsOverrideInitialSettingMobileRedirectOutput) ToZoneSettingsOverrideInitialSettingMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingMobileRedirect) *ZoneSettingsOverrideInitialSettingMobileRedirect {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideInitialSettingMobileRedirect) *ZoneSettingsOverrideInitialSettingMobileRedirect {
 		return &v
 	}).(ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput)
 }
@@ -16459,7 +16680,11 @@ func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) ToZoneSetting
 
 func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) Elem() ZoneSettingsOverrideInitialSettingMobileRedirectOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingMobileRedirect) ZoneSettingsOverrideInitialSettingMobileRedirect {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideInitialSettingMobileRedirect
+		return ret
 	}).(ZoneSettingsOverrideInitialSettingMobileRedirectOutput)
 }
 
@@ -16602,7 +16827,7 @@ func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) ToZoneSettingsOv
 }
 
 func (o ZoneSettingsOverrideInitialSettingSecurityHeaderOutput) ToZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingSecurityHeader) *ZoneSettingsOverrideInitialSettingSecurityHeader {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideInitialSettingSecurityHeader) *ZoneSettingsOverrideInitialSettingSecurityHeader {
 		return &v
 	}).(ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput)
 }
@@ -16648,7 +16873,11 @@ func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) ToZoneSetting
 
 func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) Elem() ZoneSettingsOverrideInitialSettingSecurityHeaderOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingSecurityHeader) ZoneSettingsOverrideInitialSettingSecurityHeader {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideInitialSettingSecurityHeader
+		return ret
 	}).(ZoneSettingsOverrideInitialSettingSecurityHeaderOutput)
 }
 
@@ -16887,10 +17116,11 @@ func (o ZoneSettingsOverrideSettingsOutput) ToZoneSettingsOverrideSettingsPtrOut
 }
 
 func (o ZoneSettingsOverrideSettingsOutput) ToZoneSettingsOverrideSettingsPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettings {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettings {
 		return &v
 	}).(ZoneSettingsOverrideSettingsPtrOutput)
 }
+
 func (o ZoneSettingsOverrideSettingsOutput) AlwaysOnline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.AlwaysOnline }).(pulumi.StringPtrOutput)
 }
@@ -17096,7 +17326,13 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) ToZoneSettingsOverrideSettingsPtr
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) Elem() ZoneSettingsOverrideSettingsOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) ZoneSettingsOverrideSettings { return *v }).(ZoneSettingsOverrideSettingsOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) ZoneSettingsOverrideSettings {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideSettings
+		return ret
+	}).(ZoneSettingsOverrideSettingsOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) AlwaysOnline() pulumi.StringPtrOutput {
@@ -17616,7 +17852,7 @@ func (o ZoneSettingsOverrideSettingsMinifyOutput) ToZoneSettingsOverrideSettings
 }
 
 func (o ZoneSettingsOverrideSettingsMinifyOutput) ToZoneSettingsOverrideSettingsMinifyPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsMinifyPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMinify) *ZoneSettingsOverrideSettingsMinify {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideSettingsMinify) *ZoneSettingsOverrideSettingsMinify {
 		return &v
 	}).(ZoneSettingsOverrideSettingsMinifyPtrOutput)
 }
@@ -17651,7 +17887,13 @@ func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) ToZoneSettingsOverrideSetti
 }
 
 func (o ZoneSettingsOverrideSettingsMinifyPtrOutput) Elem() ZoneSettingsOverrideSettingsMinifyOutput {
-	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMinify) ZoneSettingsOverrideSettingsMinify { return *v }).(ZoneSettingsOverrideSettingsMinifyOutput)
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMinify) ZoneSettingsOverrideSettingsMinify {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideSettingsMinify
+		return ret
+	}).(ZoneSettingsOverrideSettingsMinifyOutput)
 }
 
 // "on"/"off"
@@ -17785,7 +18027,7 @@ func (o ZoneSettingsOverrideSettingsMobileRedirectOutput) ToZoneSettingsOverride
 }
 
 func (o ZoneSettingsOverrideSettingsMobileRedirectOutput) ToZoneSettingsOverrideSettingsMobileRedirectPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsMobileRedirectPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsMobileRedirect) *ZoneSettingsOverrideSettingsMobileRedirect {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideSettingsMobileRedirect) *ZoneSettingsOverrideSettingsMobileRedirect {
 		return &v
 	}).(ZoneSettingsOverrideSettingsMobileRedirectPtrOutput)
 }
@@ -17821,7 +18063,11 @@ func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) ToZoneSettingsOverr
 
 func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) Elem() ZoneSettingsOverrideSettingsMobileRedirectOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsMobileRedirect) ZoneSettingsOverrideSettingsMobileRedirect {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideSettingsMobileRedirect
+		return ret
 	}).(ZoneSettingsOverrideSettingsMobileRedirectOutput)
 }
 
@@ -17964,7 +18210,7 @@ func (o ZoneSettingsOverrideSettingsSecurityHeaderOutput) ToZoneSettingsOverride
 }
 
 func (o ZoneSettingsOverrideSettingsSecurityHeaderOutput) ToZoneSettingsOverrideSettingsSecurityHeaderPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput {
-	return o.ApplyT(func(v ZoneSettingsOverrideSettingsSecurityHeader) *ZoneSettingsOverrideSettingsSecurityHeader {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideSettingsSecurityHeader) *ZoneSettingsOverrideSettingsSecurityHeader {
 		return &v
 	}).(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput)
 }
@@ -18010,7 +18256,11 @@ func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) ToZoneSettingsOverr
 
 func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) Elem() ZoneSettingsOverrideSettingsSecurityHeaderOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsSecurityHeader) ZoneSettingsOverrideSettingsSecurityHeader {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideSettingsSecurityHeader
+		return ret
 	}).(ZoneSettingsOverrideSettingsSecurityHeaderOutput)
 }
 
@@ -18101,6 +18351,47 @@ func (i GetWafGroupsFilterArgs) ToGetWafGroupsFilterOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafGroupsFilterOutput)
 }
 
+func (i GetWafGroupsFilterArgs) ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput {
+	return i.ToGetWafGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetWafGroupsFilterArgs) ToGetWafGroupsFilterPtrOutputWithContext(ctx context.Context) GetWafGroupsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafGroupsFilterOutput).ToGetWafGroupsFilterPtrOutputWithContext(ctx)
+}
+
+// GetWafGroupsFilterPtrInput is an input type that accepts GetWafGroupsFilterArgs, GetWafGroupsFilterPtr and GetWafGroupsFilterPtrOutput values.
+// You can construct a concrete instance of `GetWafGroupsFilterPtrInput` via:
+//
+//          GetWafGroupsFilterArgs{...}
+//
+//  or:
+//
+//          nil
+type GetWafGroupsFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput
+	ToGetWafGroupsFilterPtrOutputWithContext(context.Context) GetWafGroupsFilterPtrOutput
+}
+
+type getWafGroupsFilterPtrType GetWafGroupsFilterArgs
+
+func GetWafGroupsFilterPtr(v *GetWafGroupsFilterArgs) GetWafGroupsFilterPtrInput {
+	return (*getWafGroupsFilterPtrType)(v)
+}
+
+func (*getWafGroupsFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWafGroupsFilter)(nil)).Elem()
+}
+
+func (i *getWafGroupsFilterPtrType) ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput {
+	return i.ToGetWafGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getWafGroupsFilterPtrType) ToGetWafGroupsFilterPtrOutputWithContext(ctx context.Context) GetWafGroupsFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafGroupsFilterPtrOutput)
+}
+
 type GetWafGroupsFilterOutput struct{ *pulumi.OutputState }
 
 func (GetWafGroupsFilterOutput) ElementType() reflect.Type {
@@ -18115,6 +18406,16 @@ func (o GetWafGroupsFilterOutput) ToGetWafGroupsFilterOutputWithContext(ctx cont
 	return o
 }
 
+func (o GetWafGroupsFilterOutput) ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput {
+	return o.ToGetWafGroupsFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetWafGroupsFilterOutput) ToGetWafGroupsFilterPtrOutputWithContext(ctx context.Context) GetWafGroupsFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWafGroupsFilter) *GetWafGroupsFilter {
+		return &v
+	}).(GetWafGroupsFilterPtrOutput)
+}
+
 // Mode of the WAF Rule Groups to lookup. Valid values: on and off.
 func (o GetWafGroupsFilterOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
@@ -18123,6 +18424,50 @@ func (o GetWafGroupsFilterOutput) Mode() pulumi.StringPtrOutput {
 // A regular expression matching the name of the WAF Rule Groups to lookup.
 func (o GetWafGroupsFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetWafGroupsFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWafGroupsFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWafGroupsFilter)(nil)).Elem()
+}
+
+func (o GetWafGroupsFilterPtrOutput) ToGetWafGroupsFilterPtrOutput() GetWafGroupsFilterPtrOutput {
+	return o
+}
+
+func (o GetWafGroupsFilterPtrOutput) ToGetWafGroupsFilterPtrOutputWithContext(ctx context.Context) GetWafGroupsFilterPtrOutput {
+	return o
+}
+
+func (o GetWafGroupsFilterPtrOutput) Elem() GetWafGroupsFilterOutput {
+	return o.ApplyT(func(v *GetWafGroupsFilter) GetWafGroupsFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetWafGroupsFilter
+		return ret
+	}).(GetWafGroupsFilterOutput)
+}
+
+// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+func (o GetWafGroupsFilterPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// A regular expression matching the name of the WAF Rule Groups to lookup.
+func (o GetWafGroupsFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafGroupsFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetWafGroupsGroup struct {
@@ -18321,6 +18666,47 @@ func (i GetWafPackagesFilterArgs) ToGetWafPackagesFilterOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafPackagesFilterOutput)
 }
 
+func (i GetWafPackagesFilterArgs) ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput {
+	return i.ToGetWafPackagesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetWafPackagesFilterArgs) ToGetWafPackagesFilterPtrOutputWithContext(ctx context.Context) GetWafPackagesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafPackagesFilterOutput).ToGetWafPackagesFilterPtrOutputWithContext(ctx)
+}
+
+// GetWafPackagesFilterPtrInput is an input type that accepts GetWafPackagesFilterArgs, GetWafPackagesFilterPtr and GetWafPackagesFilterPtrOutput values.
+// You can construct a concrete instance of `GetWafPackagesFilterPtrInput` via:
+//
+//          GetWafPackagesFilterArgs{...}
+//
+//  or:
+//
+//          nil
+type GetWafPackagesFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput
+	ToGetWafPackagesFilterPtrOutputWithContext(context.Context) GetWafPackagesFilterPtrOutput
+}
+
+type getWafPackagesFilterPtrType GetWafPackagesFilterArgs
+
+func GetWafPackagesFilterPtr(v *GetWafPackagesFilterArgs) GetWafPackagesFilterPtrInput {
+	return (*getWafPackagesFilterPtrType)(v)
+}
+
+func (*getWafPackagesFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWafPackagesFilter)(nil)).Elem()
+}
+
+func (i *getWafPackagesFilterPtrType) ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput {
+	return i.ToGetWafPackagesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getWafPackagesFilterPtrType) ToGetWafPackagesFilterPtrOutputWithContext(ctx context.Context) GetWafPackagesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafPackagesFilterPtrOutput)
+}
+
 type GetWafPackagesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetWafPackagesFilterOutput) ElementType() reflect.Type {
@@ -18333,6 +18719,16 @@ func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterOutput() GetWafPackage
 
 func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterOutputWithContext(ctx context.Context) GetWafPackagesFilterOutput {
 	return o
+}
+
+func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput {
+	return o.ToGetWafPackagesFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetWafPackagesFilterOutput) ToGetWafPackagesFilterPtrOutputWithContext(ctx context.Context) GetWafPackagesFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWafPackagesFilter) *GetWafPackagesFilter {
+		return &v
+	}).(GetWafPackagesFilterPtrOutput)
 }
 
 // Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
@@ -18353,6 +18749,70 @@ func (o GetWafPackagesFilterOutput) Name() pulumi.StringPtrOutput {
 // Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
 func (o GetWafPackagesFilterOutput) Sensitivity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafPackagesFilter) *string { return v.Sensitivity }).(pulumi.StringPtrOutput)
+}
+
+type GetWafPackagesFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWafPackagesFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWafPackagesFilter)(nil)).Elem()
+}
+
+func (o GetWafPackagesFilterPtrOutput) ToGetWafPackagesFilterPtrOutput() GetWafPackagesFilterPtrOutput {
+	return o
+}
+
+func (o GetWafPackagesFilterPtrOutput) ToGetWafPackagesFilterPtrOutputWithContext(ctx context.Context) GetWafPackagesFilterPtrOutput {
+	return o
+}
+
+func (o GetWafPackagesFilterPtrOutput) Elem() GetWafPackagesFilterOutput {
+	return o.ApplyT(func(v *GetWafPackagesFilter) GetWafPackagesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetWafPackagesFilter
+		return ret
+	}).(GetWafPackagesFilterOutput)
+}
+
+// Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+func (o GetWafPackagesFilterPtrOutput) ActionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafPackagesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Detection mode of the WAF Rule Packages to lookup.
+func (o GetWafPackagesFilterPtrOutput) DetectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafPackagesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DetectionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// A regular expression matching the name of the WAF Rule Packages to lookup.
+func (o GetWafPackagesFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafPackagesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+func (o GetWafPackagesFilterPtrOutput) Sensitivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafPackagesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sensitivity
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetWafPackagesPackage struct {
@@ -18538,6 +18998,47 @@ func (i GetWafRulesFilterArgs) ToGetWafRulesFilterOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesFilterOutput)
 }
 
+func (i GetWafRulesFilterArgs) ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput {
+	return i.ToGetWafRulesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetWafRulesFilterArgs) ToGetWafRulesFilterPtrOutputWithContext(ctx context.Context) GetWafRulesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesFilterOutput).ToGetWafRulesFilterPtrOutputWithContext(ctx)
+}
+
+// GetWafRulesFilterPtrInput is an input type that accepts GetWafRulesFilterArgs, GetWafRulesFilterPtr and GetWafRulesFilterPtrOutput values.
+// You can construct a concrete instance of `GetWafRulesFilterPtrInput` via:
+//
+//          GetWafRulesFilterArgs{...}
+//
+//  or:
+//
+//          nil
+type GetWafRulesFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput
+	ToGetWafRulesFilterPtrOutputWithContext(context.Context) GetWafRulesFilterPtrOutput
+}
+
+type getWafRulesFilterPtrType GetWafRulesFilterArgs
+
+func GetWafRulesFilterPtr(v *GetWafRulesFilterArgs) GetWafRulesFilterPtrInput {
+	return (*getWafRulesFilterPtrType)(v)
+}
+
+func (*getWafRulesFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWafRulesFilter)(nil)).Elem()
+}
+
+func (i *getWafRulesFilterPtrType) ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput {
+	return i.ToGetWafRulesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getWafRulesFilterPtrType) ToGetWafRulesFilterPtrOutputWithContext(ctx context.Context) GetWafRulesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetWafRulesFilterPtrOutput)
+}
+
 type GetWafRulesFilterOutput struct{ *pulumi.OutputState }
 
 func (GetWafRulesFilterOutput) ElementType() reflect.Type {
@@ -18550,6 +19051,16 @@ func (o GetWafRulesFilterOutput) ToGetWafRulesFilterOutput() GetWafRulesFilterOu
 
 func (o GetWafRulesFilterOutput) ToGetWafRulesFilterOutputWithContext(ctx context.Context) GetWafRulesFilterOutput {
 	return o
+}
+
+func (o GetWafRulesFilterOutput) ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput {
+	return o.ToGetWafRulesFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetWafRulesFilterOutput) ToGetWafRulesFilterPtrOutputWithContext(ctx context.Context) GetWafRulesFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetWafRulesFilter) *GetWafRulesFilter {
+		return &v
+	}).(GetWafRulesFilterPtrOutput)
 }
 
 // A regular expression matching the description of the WAF Rules to lookup.
@@ -18565,6 +19076,60 @@ func (o GetWafRulesFilterOutput) GroupId() pulumi.StringPtrOutput {
 // Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
 func (o GetWafRulesFilterOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafRulesFilter) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type GetWafRulesFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetWafRulesFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetWafRulesFilter)(nil)).Elem()
+}
+
+func (o GetWafRulesFilterPtrOutput) ToGetWafRulesFilterPtrOutput() GetWafRulesFilterPtrOutput {
+	return o
+}
+
+func (o GetWafRulesFilterPtrOutput) ToGetWafRulesFilterPtrOutputWithContext(ctx context.Context) GetWafRulesFilterPtrOutput {
+	return o
+}
+
+func (o GetWafRulesFilterPtrOutput) Elem() GetWafRulesFilterOutput {
+	return o.ApplyT(func(v *GetWafRulesFilter) GetWafRulesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetWafRulesFilter
+		return ret
+	}).(GetWafRulesFilterOutput)
+}
+
+// A regular expression matching the description of the WAF Rules to lookup.
+func (o GetWafRulesFilterPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafRulesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+func (o GetWafRulesFilterPtrOutput) GroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafRulesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+func (o GetWafRulesFilterPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetWafRulesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetWafRulesRule struct {
@@ -18952,6 +19517,251 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderInput)(nil)).Elem(), AccessApplicationCorsHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderArrayInput)(nil)).Elem(), AccessApplicationCorsHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeInput)(nil)).Elem(), AccessGroupExcludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeArrayInput)(nil)).Elem(), AccessGroupExcludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAzureInput)(nil)).Elem(), AccessGroupExcludeAzureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAzureArrayInput)(nil)).Elem(), AccessGroupExcludeAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeGithubInput)(nil)).Elem(), AccessGroupExcludeGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeGithubArrayInput)(nil)).Elem(), AccessGroupExcludeGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeGsuiteInput)(nil)).Elem(), AccessGroupExcludeGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeGsuiteArrayInput)(nil)).Elem(), AccessGroupExcludeGsuiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeOktaInput)(nil)).Elem(), AccessGroupExcludeOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeOktaArrayInput)(nil)).Elem(), AccessGroupExcludeOktaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeSamlInput)(nil)).Elem(), AccessGroupExcludeSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeSamlArrayInput)(nil)).Elem(), AccessGroupExcludeSamlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeInput)(nil)).Elem(), AccessGroupIncludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeArrayInput)(nil)).Elem(), AccessGroupIncludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeAzureInput)(nil)).Elem(), AccessGroupIncludeAzureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeAzureArrayInput)(nil)).Elem(), AccessGroupIncludeAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeGithubInput)(nil)).Elem(), AccessGroupIncludeGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeGithubArrayInput)(nil)).Elem(), AccessGroupIncludeGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeGsuiteInput)(nil)).Elem(), AccessGroupIncludeGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeGsuiteArrayInput)(nil)).Elem(), AccessGroupIncludeGsuiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeOktaInput)(nil)).Elem(), AccessGroupIncludeOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeOktaArrayInput)(nil)).Elem(), AccessGroupIncludeOktaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeSamlInput)(nil)).Elem(), AccessGroupIncludeSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeSamlArrayInput)(nil)).Elem(), AccessGroupIncludeSamlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireInput)(nil)).Elem(), AccessGroupRequireArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireArrayInput)(nil)).Elem(), AccessGroupRequireArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireAzureInput)(nil)).Elem(), AccessGroupRequireAzureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireAzureArrayInput)(nil)).Elem(), AccessGroupRequireAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireGithubInput)(nil)).Elem(), AccessGroupRequireGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireGithubArrayInput)(nil)).Elem(), AccessGroupRequireGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireGsuiteInput)(nil)).Elem(), AccessGroupRequireGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireGsuiteArrayInput)(nil)).Elem(), AccessGroupRequireGsuiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireOktaInput)(nil)).Elem(), AccessGroupRequireOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireOktaArrayInput)(nil)).Elem(), AccessGroupRequireOktaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireSamlInput)(nil)).Elem(), AccessGroupRequireSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireSamlArrayInput)(nil)).Elem(), AccessGroupRequireSamlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderConfigInput)(nil)).Elem(), AccessIdentityProviderConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderConfigArrayInput)(nil)).Elem(), AccessIdentityProviderConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupInput)(nil)).Elem(), AccessPolicyApprovalGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupArrayInput)(nil)).Elem(), AccessPolicyApprovalGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeInput)(nil)).Elem(), AccessPolicyExcludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeArrayInput)(nil)).Elem(), AccessPolicyExcludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAzureInput)(nil)).Elem(), AccessPolicyExcludeAzureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAzureArrayInput)(nil)).Elem(), AccessPolicyExcludeAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeGithubInput)(nil)).Elem(), AccessPolicyExcludeGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeGithubArrayInput)(nil)).Elem(), AccessPolicyExcludeGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeGsuiteInput)(nil)).Elem(), AccessPolicyExcludeGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeGsuiteArrayInput)(nil)).Elem(), AccessPolicyExcludeGsuiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeOktaInput)(nil)).Elem(), AccessPolicyExcludeOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeOktaArrayInput)(nil)).Elem(), AccessPolicyExcludeOktaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeSamlInput)(nil)).Elem(), AccessPolicyExcludeSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeSamlArrayInput)(nil)).Elem(), AccessPolicyExcludeSamlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeInput)(nil)).Elem(), AccessPolicyIncludeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeArrayInput)(nil)).Elem(), AccessPolicyIncludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeAzureInput)(nil)).Elem(), AccessPolicyIncludeAzureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeAzureArrayInput)(nil)).Elem(), AccessPolicyIncludeAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeGithubInput)(nil)).Elem(), AccessPolicyIncludeGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeGithubArrayInput)(nil)).Elem(), AccessPolicyIncludeGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeGsuiteInput)(nil)).Elem(), AccessPolicyIncludeGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeGsuiteArrayInput)(nil)).Elem(), AccessPolicyIncludeGsuiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeOktaInput)(nil)).Elem(), AccessPolicyIncludeOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeOktaArrayInput)(nil)).Elem(), AccessPolicyIncludeOktaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeSamlInput)(nil)).Elem(), AccessPolicyIncludeSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeSamlArrayInput)(nil)).Elem(), AccessPolicyIncludeSamlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireInput)(nil)).Elem(), AccessPolicyRequireArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireArrayInput)(nil)).Elem(), AccessPolicyRequireArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireAzureInput)(nil)).Elem(), AccessPolicyRequireAzureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireAzureArrayInput)(nil)).Elem(), AccessPolicyRequireAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireGithubInput)(nil)).Elem(), AccessPolicyRequireGithubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireGithubArrayInput)(nil)).Elem(), AccessPolicyRequireGithubArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireGsuiteInput)(nil)).Elem(), AccessPolicyRequireGsuiteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireGsuiteArrayInput)(nil)).Elem(), AccessPolicyRequireGsuiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireOktaInput)(nil)).Elem(), AccessPolicyRequireOktaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireOktaArrayInput)(nil)).Elem(), AccessPolicyRequireOktaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireSamlInput)(nil)).Elem(), AccessPolicyRequireSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireSamlArrayInput)(nil)).Elem(), AccessPolicyRequireSamlArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleConfigurationInput)(nil)).Elem(), AccessRuleConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleConfigurationPtrInput)(nil)).Elem(), AccessRuleConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenConditionInput)(nil)).Elem(), ApiTokenConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenConditionPtrInput)(nil)).Elem(), ApiTokenConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenConditionRequestIpInput)(nil)).Elem(), ApiTokenConditionRequestIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenConditionRequestIpPtrInput)(nil)).Elem(), ApiTokenConditionRequestIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenPolicyInput)(nil)).Elem(), ApiTokenPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenPolicyArrayInput)(nil)).Elem(), ApiTokenPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslInput)(nil)).Elem(), CustomHostnameSslArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslArrayInput)(nil)).Elem(), CustomHostnameSslArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslSettingInput)(nil)).Elem(), CustomHostnameSslSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslSettingArrayInput)(nil)).Elem(), CustomHostnameSslSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslOptionsInput)(nil)).Elem(), CustomSslCustomSslOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslOptionsPtrInput)(nil)).Elem(), CustomSslCustomSslOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslPriorityInput)(nil)).Elem(), CustomSslCustomSslPriorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslPriorityArrayInput)(nil)).Elem(), CustomSslCustomSslPriorityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleInputTypeInput)(nil)).Elem(), DevicePostureRuleInputTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleInputTypeArrayInput)(nil)).Elem(), DevicePostureRuleInputTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleMatchInput)(nil)).Elem(), DevicePostureRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleMatchArrayInput)(nil)).Elem(), DevicePostureRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderInput)(nil)).Elem(), HealthcheckHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderArrayInput)(nil)).Elem(), HealthcheckHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpListItemInput)(nil)).Elem(), IpListItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IpListItemArrayInput)(nil)).Elem(), IpListItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorHeaderInput)(nil)).Elem(), LoadBalancerMonitorHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerMonitorHeaderArrayInput)(nil)).Elem(), LoadBalancerMonitorHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolLoadSheddingInput)(nil)).Elem(), LoadBalancerPoolLoadSheddingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolLoadSheddingArrayInput)(nil)).Elem(), LoadBalancerPoolLoadSheddingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginInput)(nil)).Elem(), LoadBalancerPoolOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginArrayInput)(nil)).Elem(), LoadBalancerPoolOriginArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginHeaderInput)(nil)).Elem(), LoadBalancerPoolOriginHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginHeaderArrayInput)(nil)).Elem(), LoadBalancerPoolOriginHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPopPoolInput)(nil)).Elem(), LoadBalancerPopPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPopPoolArrayInput)(nil)).Elem(), LoadBalancerPopPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRegionPoolInput)(nil)).Elem(), LoadBalancerRegionPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRegionPoolArrayInput)(nil)).Elem(), LoadBalancerRegionPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleInput)(nil)).Elem(), LoadBalancerRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleArrayInput)(nil)).Elem(), LoadBalancerRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleFixedResponseInput)(nil)).Elem(), LoadBalancerRuleFixedResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleFixedResponsePtrInput)(nil)).Elem(), LoadBalancerRuleFixedResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideInput)(nil)).Elem(), LoadBalancerRuleOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverridePopPoolInput)(nil)).Elem(), LoadBalancerRuleOverridePopPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverridePopPoolArrayInput)(nil)).Elem(), LoadBalancerRuleOverridePopPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideRegionPoolInput)(nil)).Elem(), LoadBalancerRuleOverrideRegionPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideRegionPoolArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideRegionPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyEmailIntegrationInput)(nil)).Elem(), NotificationPolicyEmailIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyEmailIntegrationArrayInput)(nil)).Elem(), NotificationPolicyEmailIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyPagerdutyIntegrationInput)(nil)).Elem(), NotificationPolicyPagerdutyIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyPagerdutyIntegrationArrayInput)(nil)).Elem(), NotificationPolicyPagerdutyIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyWebhooksIntegrationInput)(nil)).Elem(), NotificationPolicyWebhooksIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyWebhooksIntegrationArrayInput)(nil)).Elem(), NotificationPolicyWebhooksIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsInput)(nil)).Elem(), PageRuleActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsPtrInput)(nil)).Elem(), PageRuleActionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsPtrInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsCookieInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsCookieArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsCookiePtrInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsCookieArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsHeaderInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsHeaderPtrInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsHostInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsHostPtrInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsQueryStringInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsQueryStringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsQueryStringPtrInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsQueryStringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsUserInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheKeyFieldsUserPtrInput)(nil)).Elem(), PageRuleActionsCacheKeyFieldsUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheTtlByStatusInput)(nil)).Elem(), PageRuleActionsCacheTtlByStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsCacheTtlByStatusArrayInput)(nil)).Elem(), PageRuleActionsCacheTtlByStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsForwardingUrlInput)(nil)).Elem(), PageRuleActionsForwardingUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsForwardingUrlPtrInput)(nil)).Elem(), PageRuleActionsForwardingUrlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsMinifyInput)(nil)).Elem(), PageRuleActionsMinifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PageRuleActionsMinifyArrayInput)(nil)).Elem(), PageRuleActionsMinifyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionInput)(nil)).Elem(), RateLimitActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionPtrInput)(nil)).Elem(), RateLimitActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponseInput)(nil)).Elem(), RateLimitActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitActionResponsePtrInput)(nil)).Elem(), RateLimitActionResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitCorrelateInput)(nil)).Elem(), RateLimitCorrelateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitCorrelatePtrInput)(nil)).Elem(), RateLimitCorrelateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchInput)(nil)).Elem(), RateLimitMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchPtrInput)(nil)).Elem(), RateLimitMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchRequestInput)(nil)).Elem(), RateLimitMatchRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchRequestPtrInput)(nil)).Elem(), RateLimitMatchRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchResponseInput)(nil)).Elem(), RateLimitMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchResponsePtrInput)(nil)).Elem(), RateLimitMatchResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataPtrInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleInput)(nil)).Elem(), RulesetRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleArrayInput)(nil)).Elem(), RulesetRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersInput)(nil)).Elem(), RulesetRuleActionParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersPtrInput)(nil)).Elem(), RulesetRuleActionParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderArrayInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersMatchedDataInput)(nil)).Elem(), RulesetRuleActionParametersMatchedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersMatchedDataPtrInput)(nil)).Elem(), RulesetRuleActionParametersMatchedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesInput)(nil)).Elem(), RulesetRuleActionParametersOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesPtrInput)(nil)).Elem(), RulesetRuleActionParametersOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesCategoryInput)(nil)).Elem(), RulesetRuleActionParametersOverridesCategoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesCategoryArrayInput)(nil)).Elem(), RulesetRuleActionParametersOverridesCategoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesRuleInput)(nil)).Elem(), RulesetRuleActionParametersOverridesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesRuleArrayInput)(nil)).Elem(), RulesetRuleActionParametersOverridesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriInput)(nil)).Elem(), RulesetRuleActionParametersUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPathInput)(nil)).Elem(), RulesetRuleActionParametersUriPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPathPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriQueryInput)(nil)).Elem(), RulesetRuleActionParametersUriQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriQueryPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitPtrInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsPtrInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginDnsInput)(nil)).Elem(), SpectrumApplicationOriginDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginDnsPtrInput)(nil)).Elem(), SpectrumApplicationOriginDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginPortRangeInput)(nil)).Elem(), SpectrumApplicationOriginPortRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginPortRangePtrInput)(nil)).Elem(), SpectrumApplicationOriginPortRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusInput)(nil)).Elem(), TeamsAccountAntivirusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusPtrInput)(nil)).Elem(), TeamsAccountAntivirusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPageInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPagePtrInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkInput)(nil)).Elem(), TeamsLocationNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkArrayInput)(nil)).Elem(), TeamsLocationNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControlsInput)(nil)).Elem(), TeamsRuleRuleSettingsBisoAdminControlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControlsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsBisoAdminControlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overrideInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overridePtrInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingInput)(nil)).Elem(), WorkerScriptPlainTextBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingArrayInput)(nil)).Elem(), WorkerScriptPlainTextBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptSecretTextBindingInput)(nil)).Elem(), WorkerScriptSecretTextBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptSecretTextBindingArrayInput)(nil)).Elem(), WorkerScriptSecretTextBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptWebassemblyBindingInput)(nil)).Elem(), WorkerScriptWebassemblyBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptWebassemblyBindingArrayInput)(nil)).Elem(), WorkerScriptWebassemblyBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownConfigurationInput)(nil)).Elem(), ZoneLockdownConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownConfigurationArrayInput)(nil)).Elem(), ZoneLockdownConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingArrayInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMinifyInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMinifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMinifyPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMinifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMobileRedirectInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMobileRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMobileRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingSecurityHeaderInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsInput)(nil)).Elem(), ZoneSettingsOverrideSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMinifyInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMinifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMinifyPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMinifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMobileRedirectInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMobileRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMobileRedirectPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMobileRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsSecurityHeaderInput)(nil)).Elem(), ZoneSettingsOverrideSettingsSecurityHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsSecurityHeaderPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsSecurityHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterPtrInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsGroupInput)(nil)).Elem(), GetWafGroupsGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsGroupArrayInput)(nil)).Elem(), GetWafGroupsGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPackagesFilterInput)(nil)).Elem(), GetWafPackagesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPackagesFilterPtrInput)(nil)).Elem(), GetWafPackagesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPackagesPackageInput)(nil)).Elem(), GetWafPackagesPackageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafPackagesPackageArrayInput)(nil)).Elem(), GetWafPackagesPackageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesFilterInput)(nil)).Elem(), GetWafRulesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesFilterPtrInput)(nil)).Elem(), GetWafRulesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesRuleInput)(nil)).Elem(), GetWafRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetWafRulesRuleArrayInput)(nil)).Elem(), GetWafRulesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesFilterInput)(nil)).Elem(), GetZonesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
@@ -19183,12 +19993,15 @@ func init() {
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsSecurityHeaderOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsFilterOutput{})
+	pulumi.RegisterOutputType(GetWafGroupsFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsGroupOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsGroupArrayOutput{})
 	pulumi.RegisterOutputType(GetWafPackagesFilterOutput{})
+	pulumi.RegisterOutputType(GetWafPackagesFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetWafPackagesPackageOutput{})
 	pulumi.RegisterOutputType(GetWafPackagesPackageArrayOutput{})
 	pulumi.RegisterOutputType(GetWafRulesFilterOutput{})
+	pulumi.RegisterOutputType(GetWafRulesFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetWafRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetWafRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesFilterOutput{})

@@ -230,7 +230,7 @@ type NotificationPolicyWebhooksArrayInput interface {
 type NotificationPolicyWebhooksArray []NotificationPolicyWebhooksInput
 
 func (NotificationPolicyWebhooksArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NotificationPolicyWebhooks)(nil))
+	return reflect.TypeOf((*[]*NotificationPolicyWebhooks)(nil)).Elem()
 }
 
 func (i NotificationPolicyWebhooksArray) ToNotificationPolicyWebhooksArrayOutput() NotificationPolicyWebhooksArrayOutput {
@@ -255,7 +255,7 @@ type NotificationPolicyWebhooksMapInput interface {
 type NotificationPolicyWebhooksMap map[string]NotificationPolicyWebhooksInput
 
 func (NotificationPolicyWebhooksMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NotificationPolicyWebhooks)(nil))
+	return reflect.TypeOf((*map[string]*NotificationPolicyWebhooks)(nil)).Elem()
 }
 
 func (i NotificationPolicyWebhooksMap) ToNotificationPolicyWebhooksMapOutput() NotificationPolicyWebhooksMapOutput {
@@ -266,9 +266,7 @@ func (i NotificationPolicyWebhooksMap) ToNotificationPolicyWebhooksMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyWebhooksMapOutput)
 }
 
-type NotificationPolicyWebhooksOutput struct {
-	*pulumi.OutputState
-}
+type NotificationPolicyWebhooksOutput struct{ *pulumi.OutputState }
 
 func (NotificationPolicyWebhooksOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NotificationPolicyWebhooks)(nil))
@@ -287,14 +285,12 @@ func (o NotificationPolicyWebhooksOutput) ToNotificationPolicyWebhooksPtrOutput(
 }
 
 func (o NotificationPolicyWebhooksOutput) ToNotificationPolicyWebhooksPtrOutputWithContext(ctx context.Context) NotificationPolicyWebhooksPtrOutput {
-	return o.ApplyT(func(v NotificationPolicyWebhooks) *NotificationPolicyWebhooks {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationPolicyWebhooks) *NotificationPolicyWebhooks {
 		return &v
 	}).(NotificationPolicyWebhooksPtrOutput)
 }
 
-type NotificationPolicyWebhooksPtrOutput struct {
-	*pulumi.OutputState
-}
+type NotificationPolicyWebhooksPtrOutput struct{ *pulumi.OutputState }
 
 func (NotificationPolicyWebhooksPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NotificationPolicyWebhooks)(nil))
@@ -306,6 +302,16 @@ func (o NotificationPolicyWebhooksPtrOutput) ToNotificationPolicyWebhooksPtrOutp
 
 func (o NotificationPolicyWebhooksPtrOutput) ToNotificationPolicyWebhooksPtrOutputWithContext(ctx context.Context) NotificationPolicyWebhooksPtrOutput {
 	return o
+}
+
+func (o NotificationPolicyWebhooksPtrOutput) Elem() NotificationPolicyWebhooksOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) NotificationPolicyWebhooks {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationPolicyWebhooks
+		return ret
+	}).(NotificationPolicyWebhooksOutput)
 }
 
 type NotificationPolicyWebhooksArrayOutput struct{ *pulumi.OutputState }
@@ -349,6 +355,10 @@ func (o NotificationPolicyWebhooksMapOutput) MapIndex(k pulumi.StringInput) Noti
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyWebhooksInput)(nil)).Elem(), &NotificationPolicyWebhooks{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyWebhooksPtrInput)(nil)).Elem(), &NotificationPolicyWebhooks{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyWebhooksArrayInput)(nil)).Elem(), NotificationPolicyWebhooksArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyWebhooksMapInput)(nil)).Elem(), NotificationPolicyWebhooksMap{})
 	pulumi.RegisterOutputType(NotificationPolicyWebhooksOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyWebhooksPtrOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyWebhooksArrayOutput{})

@@ -10,21 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare.Inputs
 {
 
-    public sealed class GetWafGroupsFilterInputArgs : Pulumi.ResourceArgs
+    public sealed class GetWafGroupsFilterArgs : Pulumi.InvokeArgs
     {
         /// <summary>
         /// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
         /// </summary>
         [Input("mode")]
-        public Input<string>? Mode { get; set; }
+        public string? Mode { get; set; }
 
         /// <summary>
         /// A regular expression matching the name of the WAF Rule Groups to lookup.
         /// </summary>
         [Input("name")]
-        public Input<string>? Name { get; set; }
+        public string? Name { get; set; }
 
-        public GetWafGroupsFilterInputArgs()
+        public GetWafGroupsFilterArgs()
         {
         }
     }
