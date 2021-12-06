@@ -112,16 +112,20 @@ export class AccessApplication extends pulumi.CustomResource {
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
+    public readonly httpOnlyCookieAttribute!: pulumi.Output<boolean | undefined>;
+    public readonly logoUrl!: pulumi.Output<string | undefined>;
     /**
      * Friendly name of the Access Application.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly sameSiteCookieAttribute!: pulumi.Output<string | undefined>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
+    public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
     /**
      * The application type. Defaults to `selfHosted`. Valid
      * values are `selfHosted`, `ssh`, `vnc`, or `file`.
@@ -154,8 +158,12 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
             inputs["domain"] = state ? state.domain : undefined;
             inputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
+            inputs["httpOnlyCookieAttribute"] = state ? state.httpOnlyCookieAttribute : undefined;
+            inputs["logoUrl"] = state ? state.logoUrl : undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
             inputs["sessionDuration"] = state ? state.sessionDuration : undefined;
+            inputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -174,8 +182,12 @@ export class AccessApplication extends pulumi.CustomResource {
             inputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
             inputs["domain"] = args ? args.domain : undefined;
             inputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
+            inputs["httpOnlyCookieAttribute"] = args ? args.httpOnlyCookieAttribute : undefined;
+            inputs["logoUrl"] = args ? args.logoUrl : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
             inputs["sessionDuration"] = args ? args.sessionDuration : undefined;
+            inputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["zoneId"] = args ? args.zoneId : undefined;
             inputs["aud"] = undefined /*out*/;
@@ -231,16 +243,20 @@ export interface AccessApplicationState {
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     enableBindingCookie?: pulumi.Input<boolean>;
+    httpOnlyCookieAttribute?: pulumi.Input<boolean>;
+    logoUrl?: pulumi.Input<string>;
     /**
      * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
+    sameSiteCookieAttribute?: pulumi.Input<string>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
+    skipInterstitial?: pulumi.Input<boolean>;
     /**
      * The application type. Defaults to `selfHosted`. Valid
      * values are `selfHosted`, `ssh`, `vnc`, or `file`.
@@ -292,16 +308,20 @@ export interface AccessApplicationArgs {
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     enableBindingCookie?: pulumi.Input<boolean>;
+    httpOnlyCookieAttribute?: pulumi.Input<boolean>;
+    logoUrl?: pulumi.Input<string>;
     /**
      * Friendly name of the Access Application.
      */
     name: pulumi.Input<string>;
+    sameSiteCookieAttribute?: pulumi.Input<string>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
+    skipInterstitial?: pulumi.Input<boolean>;
     /**
      * The application type. Defaults to `selfHosted`. Valid
      * values are `selfHosted`, `ssh`, `vnc`, or `file`.

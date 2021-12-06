@@ -101,6 +101,7 @@ export class AccessPolicy extends pulumi.CustomResource {
      * List of approval group blocks for configuring additional approvals (refer to the nested schema).
      */
     public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
+    public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
     /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
@@ -155,6 +156,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["approvalGroups"] = state ? state.approvalGroups : undefined;
+            inputs["approvalRequired"] = state ? state.approvalRequired : undefined;
             inputs["decision"] = state ? state.decision : undefined;
             inputs["excludes"] = state ? state.excludes : undefined;
             inputs["includes"] = state ? state.includes : undefined;
@@ -184,6 +186,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["approvalGroups"] = args ? args.approvalGroups : undefined;
+            inputs["approvalRequired"] = args ? args.approvalRequired : undefined;
             inputs["decision"] = args ? args.decision : undefined;
             inputs["excludes"] = args ? args.excludes : undefined;
             inputs["includes"] = args ? args.includes : undefined;
@@ -217,6 +220,7 @@ export interface AccessPolicyState {
      * List of approval group blocks for configuring additional approvals (refer to the nested schema).
      */
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
+    approvalRequired?: pulumi.Input<boolean>;
     /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
@@ -272,6 +276,7 @@ export interface AccessPolicyArgs {
      * List of approval group blocks for configuring additional approvals (refer to the nested schema).
      */
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
+    approvalRequired?: pulumi.Input<boolean>;
     /**
      * Defines the action Access will take if the policy matches the user.
      * Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`

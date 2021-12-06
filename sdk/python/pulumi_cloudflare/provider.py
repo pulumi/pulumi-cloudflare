@@ -14,7 +14,9 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 api_base_path: Optional[pulumi.Input[str]] = None,
                  api_client_logging: Optional[pulumi.Input[bool]] = None,
+                 api_hostname: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
                  api_token: Optional[pulumi.Input[str]] = None,
                  api_user_service_key: Optional[pulumi.Input[str]] = None,
@@ -26,7 +28,9 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] account_id: Configure API client to always use that account
+        :param pulumi.Input[str] api_base_path: Configure the base path used by the API client
         :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger)
+        :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client
         :param pulumi.Input[str] api_key: The API key for operations.
         :param pulumi.Input[str] api_token: The API Token for operations.
         :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints
@@ -38,10 +42,14 @@ class ProviderArgs:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if api_base_path is not None:
+            pulumi.set(__self__, "api_base_path", api_base_path)
         if api_client_logging is None:
             api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
         if api_client_logging is not None:
             pulumi.set(__self__, "api_client_logging", api_client_logging)
+        if api_hostname is not None:
+            pulumi.set(__self__, "api_hostname", api_hostname)
         if api_key is not None:
             pulumi.set(__self__, "api_key", api_key)
         if api_token is not None:
@@ -80,6 +88,18 @@ class ProviderArgs:
         pulumi.set(self, "account_id", value)
 
     @property
+    @pulumi.getter(name="apiBasePath")
+    def api_base_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the base path used by the API client
+        """
+        return pulumi.get(self, "api_base_path")
+
+    @api_base_path.setter
+    def api_base_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_base_path", value)
+
+    @property
     @pulumi.getter(name="apiClientLogging")
     def api_client_logging(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -90,6 +110,18 @@ class ProviderArgs:
     @api_client_logging.setter
     def api_client_logging(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "api_client_logging", value)
+
+    @property
+    @pulumi.getter(name="apiHostname")
+    def api_hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Configure the hostname used by the API client
+        """
+        return pulumi.get(self, "api_hostname")
+
+    @api_hostname.setter
+    def api_hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_hostname", value)
 
     @property
     @pulumi.getter(name="apiKey")
@@ -194,7 +226,9 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 api_base_path: Optional[pulumi.Input[str]] = None,
                  api_client_logging: Optional[pulumi.Input[bool]] = None,
+                 api_hostname: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
                  api_token: Optional[pulumi.Input[str]] = None,
                  api_user_service_key: Optional[pulumi.Input[str]] = None,
@@ -213,7 +247,9 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: Configure API client to always use that account
+        :param pulumi.Input[str] api_base_path: Configure the base path used by the API client
         :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger)
+        :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client
         :param pulumi.Input[str] api_key: The API key for operations.
         :param pulumi.Input[str] api_token: The API Token for operations.
         :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints
@@ -251,7 +287,9 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 api_base_path: Optional[pulumi.Input[str]] = None,
                  api_client_logging: Optional[pulumi.Input[bool]] = None,
+                 api_hostname: Optional[pulumi.Input[str]] = None,
                  api_key: Optional[pulumi.Input[str]] = None,
                  api_token: Optional[pulumi.Input[str]] = None,
                  api_user_service_key: Optional[pulumi.Input[str]] = None,
@@ -273,9 +311,11 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["api_base_path"] = api_base_path
             if api_client_logging is None:
                 api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
             __props__.__dict__["api_client_logging"] = pulumi.Output.from_input(api_client_logging).apply(pulumi.runtime.to_json) if api_client_logging is not None else None
+            __props__.__dict__["api_hostname"] = api_hostname
             __props__.__dict__["api_key"] = api_key
             __props__.__dict__["api_token"] = api_token
             __props__.__dict__["api_user_service_key"] = api_user_service_key
@@ -305,6 +345,22 @@ class Provider(pulumi.ProviderResource):
         Configure API client to always use that account
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="apiBasePath")
+    def api_base_path(self) -> pulumi.Output[Optional[str]]:
+        """
+        Configure the base path used by the API client
+        """
+        return pulumi.get(self, "api_base_path")
+
+    @property
+    @pulumi.getter(name="apiHostname")
+    def api_hostname(self) -> pulumi.Output[Optional[str]]:
+        """
+        Configure the hostname used by the API client
+        """
+        return pulumi.get(self, "api_hostname")
 
     @property
     @pulumi.getter(name="apiKey")

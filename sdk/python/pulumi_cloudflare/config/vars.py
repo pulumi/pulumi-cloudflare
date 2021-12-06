@@ -22,11 +22,25 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('accountId')
 
     @property
+    def api_base_path(self) -> Optional[str]:
+        """
+        Configure the base path used by the API client
+        """
+        return __config__.get('apiBasePath')
+
+    @property
     def api_client_logging(self) -> bool:
         """
         Whether to print logs from the API client (using the default log library logger)
         """
         return __config__.get_bool('apiClientLogging') or (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
+
+    @property
+    def api_hostname(self) -> Optional[str]:
+        """
+        Configure the hostname used by the API client
+        """
+        return __config__.get('apiHostname')
 
     @property
     def api_key(self) -> Optional[str]:

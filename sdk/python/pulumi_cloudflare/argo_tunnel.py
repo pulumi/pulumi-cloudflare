@@ -67,16 +67,20 @@ class ArgoTunnelArgs:
 class _ArgoTunnelState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 cname: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  secret: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ArgoTunnel resources.
         :param pulumi.Input[str] account_id: The Cloudflare account ID that you wish to manage the Argo Tunnel on.
+        :param pulumi.Input[str] cname: Usable CNAME for accessing the Argo Tunnel.
         :param pulumi.Input[str] name: A user-friendly name chosen when the tunnel is created. Cannot be empty.
         :param pulumi.Input[str] secret: 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if cname is not None:
+            pulumi.set(__self__, "cname", cname)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if secret is not None:
@@ -93,6 +97,18 @@ class _ArgoTunnelState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def cname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Usable CNAME for accessing the Argo Tunnel.
+        """
+        return pulumi.get(self, "cname")
+
+    @cname.setter
+    def cname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cname", value)
 
     @property
     @pulumi.getter
@@ -229,6 +245,7 @@ class ArgoTunnel(pulumi.CustomResource):
             if secret is None and not opts.urn:
                 raise TypeError("Missing required property 'secret'")
             __props__.__dict__["secret"] = secret
+            __props__.__dict__["cname"] = None
         super(ArgoTunnel, __self__).__init__(
             'cloudflare:index/argoTunnel:ArgoTunnel',
             resource_name,
@@ -240,6 +257,7 @@ class ArgoTunnel(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            cname: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             secret: Optional[pulumi.Input[str]] = None) -> 'ArgoTunnel':
         """
@@ -250,6 +268,7 @@ class ArgoTunnel(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The Cloudflare account ID that you wish to manage the Argo Tunnel on.
+        :param pulumi.Input[str] cname: Usable CNAME for accessing the Argo Tunnel.
         :param pulumi.Input[str] name: A user-friendly name chosen when the tunnel is created. Cannot be empty.
         :param pulumi.Input[str] secret: 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
         """
@@ -258,6 +277,7 @@ class ArgoTunnel(pulumi.CustomResource):
         __props__ = _ArgoTunnelState.__new__(_ArgoTunnelState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["cname"] = cname
         __props__.__dict__["name"] = name
         __props__.__dict__["secret"] = secret
         return ArgoTunnel(resource_name, opts=opts, __props__=__props__)
@@ -269,6 +289,14 @@ class ArgoTunnel(pulumi.CustomResource):
         The Cloudflare account ID that you wish to manage the Argo Tunnel on.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter
+    def cname(self) -> pulumi.Output[str]:
+        """
+        Usable CNAME for accessing the Argo Tunnel.
+        """
+        return pulumi.get(self, "cname")
 
     @property
     @pulumi.getter

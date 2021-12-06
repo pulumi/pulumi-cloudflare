@@ -101,7 +101,8 @@ type AccessPolicy struct {
 	// The ID of the application the policy is associated with.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
-	ApprovalGroups AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
+	ApprovalGroups   AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
+	ApprovalRequired pulumi.BoolPtrOutput                 `pulumi:"approvalRequired"`
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision pulumi.StringOutput `pulumi:"decision"`
@@ -172,7 +173,8 @@ type accessPolicyState struct {
 	// The ID of the application the policy is associated with.
 	ApplicationId *string `pulumi:"applicationId"`
 	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
-	ApprovalGroups []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
+	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
+	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision *string `pulumi:"decision"`
@@ -200,7 +202,8 @@ type AccessPolicyState struct {
 	// The ID of the application the policy is associated with.
 	ApplicationId pulumi.StringPtrInput
 	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
-	ApprovalGroups AccessPolicyApprovalGroupArrayInput
+	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
+	ApprovalRequired pulumi.BoolPtrInput
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision pulumi.StringPtrInput
@@ -232,7 +235,8 @@ type accessPolicyArgs struct {
 	// The ID of the application the policy is associated with.
 	ApplicationId string `pulumi:"applicationId"`
 	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
-	ApprovalGroups []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
+	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
+	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision string `pulumi:"decision"`
@@ -261,7 +265,8 @@ type AccessPolicyArgs struct {
 	// The ID of the application the policy is associated with.
 	ApplicationId pulumi.StringInput
 	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
-	ApprovalGroups AccessPolicyApprovalGroupArrayInput
+	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
+	ApprovalRequired pulumi.BoolPtrInput
 	// Defines the action Access will take if the policy matches the user.
 	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
 	Decision pulumi.StringInput

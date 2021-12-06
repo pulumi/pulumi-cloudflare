@@ -19,6 +19,10 @@ type Provider struct {
 
 	// Configure API client to always use that account
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
+	// Configure the base path used by the API client
+	ApiBasePath pulumi.StringPtrOutput `pulumi:"apiBasePath"`
+	// Configure the hostname used by the API client
+	ApiHostname pulumi.StringPtrOutput `pulumi:"apiHostname"`
 	// The API key for operations.
 	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
 	// The API Token for operations.
@@ -62,8 +66,12 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// Configure API client to always use that account
 	AccountId *string `pulumi:"accountId"`
+	// Configure the base path used by the API client
+	ApiBasePath *string `pulumi:"apiBasePath"`
 	// Whether to print logs from the API client (using the default log library logger)
 	ApiClientLogging *bool `pulumi:"apiClientLogging"`
+	// Configure the hostname used by the API client
+	ApiHostname *string `pulumi:"apiHostname"`
 	// The API key for operations.
 	ApiKey *string `pulumi:"apiKey"`
 	// The API Token for operations.
@@ -86,8 +94,12 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// Configure API client to always use that account
 	AccountId pulumi.StringPtrInput
+	// Configure the base path used by the API client
+	ApiBasePath pulumi.StringPtrInput
 	// Whether to print logs from the API client (using the default log library logger)
 	ApiClientLogging pulumi.BoolPtrInput
+	// Configure the hostname used by the API client
+	ApiHostname pulumi.StringPtrInput
 	// The API key for operations.
 	ApiKey pulumi.StringPtrInput
 	// The API Token for operations.

@@ -25,6 +25,12 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
+        /// </summary>
+        [Input("earlyHints")]
+        public Input<string>? EarlyHints { get; set; }
+
+        /// <summary>
         /// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
         /// </summary>
         [Input("http2")]

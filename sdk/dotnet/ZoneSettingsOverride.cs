@@ -60,6 +60,9 @@ namespace Pulumi.Cloudflare
         [Output("initialSettings")]
         public Output<ImmutableArray<Outputs.ZoneSettingsOverrideInitialSetting>> InitialSettings { get; private set; } = null!;
 
+        /// <summary>
+        /// Time when this resource was created and the `initial_settings` were set.
+        /// </summary>
         [Output("initialSettingsReadAt")]
         public Output<string> InitialSettingsReadAt { get; private set; } = null!;
 
@@ -166,6 +169,9 @@ namespace Pulumi.Cloudflare
             set => _initialSettings = value;
         }
 
+        /// <summary>
+        /// Time when this resource was created and the `initial_settings` were set.
+        /// </summary>
         [Input("initialSettingsReadAt")]
         public Input<string>? InitialSettingsReadAt { get; set; }
 

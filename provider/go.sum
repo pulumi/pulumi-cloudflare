@@ -180,10 +180,10 @@ github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1/go.mod h1:Q3SI9o4m/ZMn
 github.com/circonus-labs/circonus-gometrics v2.3.1+incompatible/go.mod h1:nmEj6Dob7S7YxXgwXpfOuvO54S+tGdZdw9fuRZt25Ag=
 github.com/circonus-labs/circonusllhist v0.1.3/go.mod h1:kMXHVDlOchFAehlya5ePtbp5jckzBHf4XRpQvBOLI+I=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
-github.com/cloudflare/cloudflare-go v0.24.0 h1:ij4wyHWiBx2YXuqkDPQo17WkpbEGBvra5ipWT7PWwig=
-github.com/cloudflare/cloudflare-go v0.24.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
-github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210921045146-79ab904fceea h1:7IzRIIeztE5CLH/wAHLwQxYF5syVGgIYeEt5lQrbZyY=
-github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20210921045146-79ab904fceea/go.mod h1:+bkXh1NONxk+u1BwV3c8luM9TQcWmSDP0hPmO+k1/ME=
+github.com/cloudflare/cloudflare-go v0.27.0 h1:7Pwn1vdLbZuDUIcukfyD2laMCyFcsvx/txqNA+UrgjM=
+github.com/cloudflare/cloudflare-go v0.27.0/go.mod h1:sPWL/lIC6biLEdyGZwBQ1rGQKF1FhM7N60fuNiFdYTI=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20211031212346-74d2854083b8 h1:VuI6a3VYpGRRnyE67CS+i3//wXyixrTFokibIvzD0uI=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20211031212346-74d2854083b8/go.mod h1:qiVVBjwByrRv29kWuDghZVhY07puDabyub/K8JzVVRE=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/cncf/udpa/go v0.0.0-20200629203442-efcf912fb354/go.mod h1:WmhPx2Nbnhtbo57+VJT5O0JRkEi1Wbu0z5j0R8u5Hbk=
 github.com/cncf/udpa/go v0.0.0-20201120205902-5459f2c99403/go.mod h1:WmhPx2Nbnhtbo57+VJT5O0JRkEi1Wbu0z5j0R8u5Hbk=
@@ -491,7 +491,6 @@ github.com/hashicorp/terraform-json v0.4.0/go.mod h1:eAbqb4w0pSlRmdvl8fOyHAi/+8j
 github.com/hashicorp/terraform-json v0.10.0/go.mod h1:3defM4kkMfttwiE7VakJDwCd4R+umhSQnvJwORXbprE=
 github.com/hashicorp/terraform-json v0.12.0 h1:8czPgEEWWPROStjkWPUnTQDXmpmZPlkQAwYYLETaTvw=
 github.com/hashicorp/terraform-json v0.12.0/go.mod h1:pmbq9o4EuL43db5+0ogX10Yofv1nozM+wskr/bGFJpI=
-github.com/hashicorp/terraform-plugin-go v0.3.1/go.mod h1:dFHsQMaTLpON2gWhVWT96fvtlc/MF1vSy3OdMhWBzdM=
 github.com/hashicorp/terraform-plugin-go v0.4.0 h1:LFbXNeLDo0J/wR0kUzSPq0RpdmFh2gNedzU0n/gzPAo=
 github.com/hashicorp/terraform-plugin-go v0.4.0/go.mod h1:7u/6nt6vaiwcWE2GuJKbJwNlDFnf5n95xKw4hqIVr58=
 github.com/hashicorp/terraform-plugin-sdk v1.0.0/go.mod h1:NuwtLpEpPsFaKJPJNGtMcn9vlhe6Ofe+Y6NqXhJgV2M=

@@ -404,7 +404,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requestedValidity")
-    def requested_validity(self) -> pulumi.Output[Optional[int]]:
+    def requested_validity(self) -> pulumi.Output[int]:
         """
         The number of days for which the certificate should be valid.
         """

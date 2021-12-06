@@ -22,6 +22,7 @@ class AccessPolicyArgs:
                  precedence: pulumi.Input[int],
                  account_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
+                 approval_required: Optional[pulumi.Input[bool]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
@@ -52,6 +53,8 @@ class AccessPolicyArgs:
             pulumi.set(__self__, "account_id", account_id)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
+        if approval_required is not None:
+            pulumi.set(__self__, "approval_required", approval_required)
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
         if purpose_justification_prompt is not None:
@@ -149,6 +152,15 @@ class AccessPolicyArgs:
         pulumi.set(self, "approval_groups", value)
 
     @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "approval_required")
+
+    @approval_required.setter
+    def approval_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "approval_required", value)
+
+    @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]]:
         """
@@ -215,6 +227,7 @@ class _AccessPolicyState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
+                 approval_required: Optional[pulumi.Input[bool]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
@@ -246,6 +259,8 @@ class _AccessPolicyState:
             pulumi.set(__self__, "application_id", application_id)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
+        if approval_required is not None:
+            pulumi.set(__self__, "approval_required", approval_required)
         if decision is not None:
             pulumi.set(__self__, "decision", decision)
         if excludes is not None:
@@ -300,6 +315,15 @@ class _AccessPolicyState:
     @approval_groups.setter
     def approval_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]]):
         pulumi.set(self, "approval_groups", value)
+
+    @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "approval_required")
+
+    @approval_required.setter
+    def approval_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "approval_required", value)
 
     @property
     @pulumi.getter
@@ -419,6 +443,7 @@ class AccessPolicy(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
+                 approval_required: Optional[pulumi.Input[bool]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
@@ -577,6 +602,7 @@ class AccessPolicy(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
+                 approval_required: Optional[pulumi.Input[bool]] = None,
                  decision: Optional[pulumi.Input[str]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
                  includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
@@ -603,6 +629,7 @@ class AccessPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["approval_groups"] = approval_groups
+            __props__.__dict__["approval_required"] = approval_required
             if decision is None and not opts.urn:
                 raise TypeError("Missing required property 'decision'")
             __props__.__dict__["decision"] = decision
@@ -633,6 +660,7 @@ class AccessPolicy(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyApprovalGroupArgs']]]]] = None,
+            approval_required: Optional[pulumi.Input[bool]] = None,
             decision: Optional[pulumi.Input[str]] = None,
             excludes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]]] = None,
             includes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]]] = None,
@@ -670,6 +698,7 @@ class AccessPolicy(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["approval_groups"] = approval_groups
+        __props__.__dict__["approval_required"] = approval_required
         __props__.__dict__["decision"] = decision
         __props__.__dict__["excludes"] = excludes
         __props__.__dict__["includes"] = includes
@@ -704,6 +733,11 @@ class AccessPolicy(pulumi.CustomResource):
         List of approval group blocks for configuring additional approvals (refer to the nested schema).
         """
         return pulumi.get(self, "approval_groups")
+
+    @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "approval_required")
 
     @property
     @pulumi.getter

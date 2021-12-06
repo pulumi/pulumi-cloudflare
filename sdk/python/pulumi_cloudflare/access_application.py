@@ -24,7 +24,11 @@ class AccessApplicationArgs:
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 logo_url: Optional[pulumi.Input[str]] = None,
+                 same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -65,8 +69,16 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "custom_deny_url", custom_deny_url)
         if enable_binding_cookie is not None:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
+        if http_only_cookie_attribute is not None:
+            pulumi.set(__self__, "http_only_cookie_attribute", http_only_cookie_attribute)
+        if logo_url is not None:
+            pulumi.set(__self__, "logo_url", logo_url)
+        if same_site_cookie_attribute is not None:
+            pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
+        if skip_interstitial is not None:
+            pulumi.set(__self__, "skip_interstitial", skip_interstitial)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if zone_id is not None:
@@ -185,6 +197,33 @@ class AccessApplicationArgs:
         pulumi.set(self, "enable_binding_cookie", value)
 
     @property
+    @pulumi.getter(name="httpOnlyCookieAttribute")
+    def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "http_only_cookie_attribute")
+
+    @http_only_cookie_attribute.setter
+    def http_only_cookie_attribute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "http_only_cookie_attribute", value)
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "logo_url")
+
+    @logo_url.setter
+    def logo_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_url", value)
+
+    @property
+    @pulumi.getter(name="sameSiteCookieAttribute")
+    def same_site_cookie_attribute(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "same_site_cookie_attribute")
+
+    @same_site_cookie_attribute.setter
+    def same_site_cookie_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "same_site_cookie_attribute", value)
+
+    @property
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[str]]:
         """
@@ -197,6 +236,15 @@ class AccessApplicationArgs:
     @session_duration.setter
     def session_duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "session_duration", value)
+
+    @property
+    @pulumi.getter(name="skipInterstitial")
+    def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "skip_interstitial")
+
+    @skip_interstitial.setter
+    def skip_interstitial(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_interstitial", value)
 
     @property
     @pulumi.getter
@@ -236,8 +284,12 @@ class _AccessApplicationState:
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -281,10 +333,18 @@ class _AccessApplicationState:
             pulumi.set(__self__, "domain", domain)
         if enable_binding_cookie is not None:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
+        if http_only_cookie_attribute is not None:
+            pulumi.set(__self__, "http_only_cookie_attribute", http_only_cookie_attribute)
+        if logo_url is not None:
+            pulumi.set(__self__, "logo_url", logo_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if same_site_cookie_attribute is not None:
+            pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
+        if skip_interstitial is not None:
+            pulumi.set(__self__, "skip_interstitial", skip_interstitial)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if zone_id is not None:
@@ -403,6 +463,24 @@ class _AccessApplicationState:
         pulumi.set(self, "enable_binding_cookie", value)
 
     @property
+    @pulumi.getter(name="httpOnlyCookieAttribute")
+    def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "http_only_cookie_attribute")
+
+    @http_only_cookie_attribute.setter
+    def http_only_cookie_attribute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "http_only_cookie_attribute", value)
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "logo_url")
+
+    @logo_url.setter
+    def logo_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_url", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -413,6 +491,15 @@ class _AccessApplicationState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="sameSiteCookieAttribute")
+    def same_site_cookie_attribute(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "same_site_cookie_attribute")
+
+    @same_site_cookie_attribute.setter
+    def same_site_cookie_attribute(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "same_site_cookie_attribute", value)
 
     @property
     @pulumi.getter(name="sessionDuration")
@@ -427,6 +514,15 @@ class _AccessApplicationState:
     @session_duration.setter
     def session_duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "session_duration", value)
+
+    @property
+    @pulumi.getter(name="skipInterstitial")
+    def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "skip_interstitial")
+
+    @skip_interstitial.setter
+    def skip_interstitial(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_interstitial", value)
 
     @property
     @pulumi.getter
@@ -467,8 +563,12 @@ class AccessApplication(pulumi.CustomResource):
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -599,8 +699,12 @@ class AccessApplication(pulumi.CustomResource):
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
+                 skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -625,10 +729,14 @@ class AccessApplication(pulumi.CustomResource):
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
             __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
+            __props__.__dict__["http_only_cookie_attribute"] = http_only_cookie_attribute
+            __props__.__dict__["logo_url"] = logo_url
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
             __props__.__dict__["session_duration"] = session_duration
+            __props__.__dict__["skip_interstitial"] = skip_interstitial
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
@@ -651,8 +759,12 @@ class AccessApplication(pulumi.CustomResource):
             custom_deny_url: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+            http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+            logo_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
+            skip_interstitial: Optional[pulumi.Input[bool]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessApplication':
         """
@@ -696,8 +808,12 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["custom_deny_url"] = custom_deny_url
         __props__.__dict__["domain"] = domain
         __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
+        __props__.__dict__["http_only_cookie_attribute"] = http_only_cookie_attribute
+        __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["name"] = name
+        __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
         __props__.__dict__["session_duration"] = session_duration
+        __props__.__dict__["skip_interstitial"] = skip_interstitial
         __props__.__dict__["type"] = type
         __props__.__dict__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
@@ -779,12 +895,27 @@ class AccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "enable_binding_cookie")
 
     @property
+    @pulumi.getter(name="httpOnlyCookieAttribute")
+    def http_only_cookie_attribute(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "http_only_cookie_attribute")
+
+    @property
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "logo_url")
+
+    @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
         Friendly name of the Access Application.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sameSiteCookieAttribute")
+    def same_site_cookie_attribute(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "same_site_cookie_attribute")
 
     @property
     @pulumi.getter(name="sessionDuration")
@@ -795,6 +926,11 @@ class AccessApplication(pulumi.CustomResource):
         Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         """
         return pulumi.get(self, "session_duration")
+
+    @property
+    @pulumi.getter(name="skipInterstitial")
+    def skip_interstitial(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "skip_interstitial")
 
     @property
     @pulumi.getter

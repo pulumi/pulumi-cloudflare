@@ -93,7 +93,7 @@ export class OriginCaCertificate extends pulumi.CustomResource {
     /**
      * The number of days for which the certificate should be valid.
      */
-    public readonly requestedValidity!: pulumi.Output<number | undefined>;
+    public readonly requestedValidity!: pulumi.Output<number>;
 
     /**
      * Create a OriginCaCertificate resource with the given unique name, arguments, and options.

@@ -491,6 +491,10 @@ export interface CustomHostnameSslSetting {
      */
     ciphers?: string[];
     /**
+     * Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
+     */
+    earlyHints?: string;
+    /**
      * Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
      */
     http2?: string;
@@ -854,6 +858,13 @@ export interface LoadBalancerPoolOriginHeader {
      * A list of string values for the header.
      */
     values: string[];
+}
+
+export interface LoadBalancerPoolOriginSteering {
+    /**
+     * Either "random" (default) or "hash".
+     */
+    policy?: string;
 }
 
 export interface LoadBalancerPopPool {
@@ -1434,6 +1445,10 @@ export interface RulesetRule {
      */
     enabled?: boolean;
     /**
+     * List of parameters that configure exposed credential checks (refer to the nested schema).
+     */
+    exposedCredentialCheck?: outputs.RulesetRuleExposedCredentialCheck;
+    /**
      * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
      */
     expression: string;
@@ -1521,6 +1536,10 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOverrides {
     /**
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     */
+    action?: string;
+    /**
      * List of tag-based overrides (refer to the nested schema).
      */
     categories?: outputs.RulesetRuleActionParametersOverridesCategory[];
@@ -1604,6 +1623,17 @@ export interface RulesetRuleActionParametersUriQuery {
      * Static string value of the updated URI path or query string component. Conflicts with `expression`.
      */
     value?: string;
+}
+
+export interface RulesetRuleExposedCredentialCheck {
+    /**
+     * Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     */
+    passwordExpression?: string;
+    /**
+     * Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     */
+    usernameExpression?: string;
 }
 
 export interface RulesetRuleRatelimit {
@@ -1795,48 +1825,89 @@ export interface ZoneSettingsOverrideInitialSetting {
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
+    binaryAst: string;
     brotli: string;
     browserCacheTtl: number;
     browserCheck: string;
+    /**
+     * Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+     */
     cacheLevel: string;
     challengeTtl: number;
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     */
+    ciphers: string[];
+    /**
+     * Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
+     */
     cnameFlattening: string;
     developmentMode: string;
+    earlyHints: string;
     emailObfuscation: string;
+    filterLogsToCloudflare: string;
+    /**
+     * Allowed values: "on", "off" (default), "custom".
+     */
     h2Prioritization: string;
     hotlinkProtection: string;
     http2: string;
     http3: string;
+    /**
+     * Allowed values: "on", "off" (default), "open".
+     */
     imageResizing: string;
     ipGeolocation: string;
     ipv6: string;
+    logToCloudflare: string;
     maxUpload: number;
+    /**
+     * Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+     */
     minTlsVersion: string;
     minify: outputs.ZoneSettingsOverrideInitialSettingMinify;
     mirage: string;
     mobileRedirect: outputs.ZoneSettingsOverrideInitialSettingMobileRedirect;
     opportunisticEncryption: string;
     opportunisticOnion: string;
+    orangeToOrange: string;
     originErrorPagePassThru: string;
+    /**
+     * Allowed values: "off" (default), "lossless", "lossy".
+     */
     polish: string;
     prefetchPreload: string;
     privacyPass: string;
+    proxyReadTimeout: string;
+    /**
+     * Allowed values: "off" (default), "addHeader", "overwriteHeader".
+     */
     pseudoIpv4: string;
     responseBuffering: string;
     rocketLoader: string;
     securityHeader: outputs.ZoneSettingsOverrideInitialSettingSecurityHeader;
+    /**
+     * Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
+     */
     securityLevel: string;
     serverSideExclude: string;
     sortQueryStringForCache: string;
+    /**
+     * Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
+     */
     ssl: string;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
      */
     tls12Only: string;
+    /**
+     * Allowed values: "off" (default), "on", "zrt".
+     */
     tls13: string;
     tlsClientAuth: string;
     trueClientIpHeader: string;
     universalSsl: string;
+    visitorIp: string;
     waf: string;
     /**
      * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
@@ -1903,48 +1974,89 @@ export interface ZoneSettingsOverrideSettings {
     alwaysOnline: string;
     alwaysUseHttps: string;
     automaticHttpsRewrites: string;
+    binaryAst: string;
     brotli: string;
     browserCacheTtl: number;
     browserCheck: string;
+    /**
+     * Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+     */
     cacheLevel: string;
     challengeTtl: number;
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     */
+    ciphers: string[];
+    /**
+     * Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
+     */
     cnameFlattening: string;
     developmentMode: string;
+    earlyHints: string;
     emailObfuscation: string;
+    filterLogsToCloudflare: string;
+    /**
+     * Allowed values: "on", "off" (default), "custom".
+     */
     h2Prioritization: string;
     hotlinkProtection: string;
     http2: string;
     http3: string;
+    /**
+     * Allowed values: "on", "off" (default), "open".
+     */
     imageResizing: string;
     ipGeolocation: string;
     ipv6: string;
+    logToCloudflare: string;
     maxUpload: number;
+    /**
+     * Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+     */
     minTlsVersion: string;
     minify: outputs.ZoneSettingsOverrideSettingsMinify;
     mirage: string;
     mobileRedirect: outputs.ZoneSettingsOverrideSettingsMobileRedirect;
     opportunisticEncryption: string;
     opportunisticOnion: string;
+    orangeToOrange: string;
     originErrorPagePassThru: string;
+    /**
+     * Allowed values: "off" (default), "lossless", "lossy".
+     */
     polish: string;
     prefetchPreload: string;
     privacyPass: string;
+    proxyReadTimeout: string;
+    /**
+     * Allowed values: "off" (default), "addHeader", "overwriteHeader".
+     */
     pseudoIpv4: string;
     responseBuffering: string;
     rocketLoader: string;
     securityHeader: outputs.ZoneSettingsOverrideSettingsSecurityHeader;
+    /**
+     * Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
+     */
     securityLevel: string;
     serverSideExclude: string;
     sortQueryStringForCache: string;
+    /**
+     * Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
+     */
     ssl: string;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
      */
     tls12Only: string;
+    /**
+     * Allowed values: "off" (default), "on", "zrt".
+     */
     tls13: string;
     tlsClientAuth: string;
     trueClientIpHeader: string;
     universalSsl: string;
+    visitorIp: string;
     waf: string;
     /**
      * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")

@@ -25,7 +25,8 @@ class LoadBalancerPoolArgs:
                  longitude: Optional[pulumi.Input[float]] = None,
                  minimum_origins: Optional[pulumi.Input[int]] = None,
                  monitor: Optional[pulumi.Input[str]] = None,
-                 notification_email: Optional[pulumi.Input[str]] = None):
+                 notification_email: Optional[pulumi.Input[str]] = None,
+                 origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]] = None):
         """
         The set of arguments for constructing a LoadBalancerPool resource.
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
@@ -39,6 +40,7 @@ class LoadBalancerPoolArgs:
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "origins", origins)
@@ -60,6 +62,8 @@ class LoadBalancerPoolArgs:
             pulumi.set(__self__, "monitor", monitor)
         if notification_email is not None:
             pulumi.set(__self__, "notification_email", notification_email)
+        if origin_steerings is not None:
+            pulumi.set(__self__, "origin_steerings", origin_steerings)
 
     @property
     @pulumi.getter
@@ -193,6 +197,18 @@ class LoadBalancerPoolArgs:
     def notification_email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "notification_email", value)
 
+    @property
+    @pulumi.getter(name="originSteerings")
+    def origin_steerings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]]:
+        """
+        Set an origin steering policy to control origin selection within a pool.
+        """
+        return pulumi.get(self, "origin_steerings")
+
+    @origin_steerings.setter
+    def origin_steerings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]]):
+        pulumi.set(self, "origin_steerings", value)
+
 
 @pulumi.input_type
 class _LoadBalancerPoolState:
@@ -209,6 +225,7 @@ class _LoadBalancerPoolState:
                  monitor: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_email: Optional[pulumi.Input[str]] = None,
+                 origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]] = None,
                  origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerPool resources.
@@ -224,6 +241,7 @@ class _LoadBalancerPoolState:
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
         """
         if check_regions is not None:
@@ -250,6 +268,8 @@ class _LoadBalancerPoolState:
             pulumi.set(__self__, "name", name)
         if notification_email is not None:
             pulumi.set(__self__, "notification_email", notification_email)
+        if origin_steerings is not None:
+            pulumi.set(__self__, "origin_steerings", origin_steerings)
         if origins is not None:
             pulumi.set(__self__, "origins", origins)
 
@@ -398,6 +418,18 @@ class _LoadBalancerPoolState:
         pulumi.set(self, "notification_email", value)
 
     @property
+    @pulumi.getter(name="originSteerings")
+    def origin_steerings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]]:
+        """
+        Set an origin steering policy to control origin selection within a pool.
+        """
+        return pulumi.get(self, "origin_steerings")
+
+    @origin_steerings.setter
+    def origin_steerings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]]):
+        pulumi.set(self, "origin_steerings", value)
+
+    @property
     @pulumi.getter
     def origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]]:
         """
@@ -425,6 +457,7 @@ class LoadBalancerPool(pulumi.CustomResource):
                  monitor: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_email: Optional[pulumi.Input[str]] = None,
+                 origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]]] = None,
                  origins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]]] = None,
                  __props__=None):
         """
@@ -450,6 +483,9 @@ class LoadBalancerPool(pulumi.CustomResource):
             minimum_origins=1,
             name="example-pool",
             notification_email="someone@example.com",
+            origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(
+                policy="random",
+            )],
             origins=[
                 cloudflare.LoadBalancerPoolOriginArgs(
                     address="192.0.2.1",
@@ -483,6 +519,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
         """
         ...
@@ -514,6 +551,9 @@ class LoadBalancerPool(pulumi.CustomResource):
             minimum_origins=1,
             name="example-pool",
             notification_email="someone@example.com",
+            origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(
+                policy="random",
+            )],
             origins=[
                 cloudflare.LoadBalancerPoolOriginArgs(
                     address="192.0.2.1",
@@ -560,6 +600,7 @@ class LoadBalancerPool(pulumi.CustomResource):
                  monitor: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_email: Optional[pulumi.Input[str]] = None,
+                 origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]]] = None,
                  origins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -585,6 +626,7 @@ class LoadBalancerPool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_email"] = notification_email
+            __props__.__dict__["origin_steerings"] = origin_steerings
             if origins is None and not opts.urn:
                 raise TypeError("Missing required property 'origins'")
             __props__.__dict__["origins"] = origins
@@ -612,6 +654,7 @@ class LoadBalancerPool(pulumi.CustomResource):
             monitor: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             notification_email: Optional[pulumi.Input[str]] = None,
+            origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]]] = None,
             origins: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]]] = None) -> 'LoadBalancerPool':
         """
         Get an existing LoadBalancerPool resource's state with the given name, id, and optional extra
@@ -632,6 +675,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
         :param pulumi.Input[str] name: A human-identifiable name for the origin.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -650,6 +694,7 @@ class LoadBalancerPool(pulumi.CustomResource):
         __props__.__dict__["monitor"] = monitor
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_email"] = notification_email
+        __props__.__dict__["origin_steerings"] = origin_steerings
         __props__.__dict__["origins"] = origins
         return LoadBalancerPool(resource_name, opts=opts, __props__=__props__)
 
@@ -748,6 +793,14 @@ class LoadBalancerPool(pulumi.CustomResource):
         The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         """
         return pulumi.get(self, "notification_email")
+
+    @property
+    @pulumi.getter(name="originSteerings")
+    def origin_steerings(self) -> pulumi.Output[Optional[Sequence['outputs.LoadBalancerPoolOriginSteering']]]:
+        """
+        Set an origin steering policy to control origin selection within a pool.
+        """
+        return pulumi.get(self, "origin_steerings")
 
     @property
     @pulumi.getter

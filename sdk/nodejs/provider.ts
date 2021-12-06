@@ -30,6 +30,14 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
+     * Configure the base path used by the API client
+     */
+    public readonly apiBasePath!: pulumi.Output<string | undefined>;
+    /**
+     * Configure the hostname used by the API client
+     */
+    public readonly apiHostname!: pulumi.Output<string | undefined>;
+    /**
      * The API key for operations.
      */
     public readonly apiKey!: pulumi.Output<string | undefined>;
@@ -58,7 +66,9 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             inputs["accountId"] = args ? args.accountId : undefined;
+            inputs["apiBasePath"] = args ? args.apiBasePath : undefined;
             inputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) ?? (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
+            inputs["apiHostname"] = args ? args.apiHostname : undefined;
             inputs["apiKey"] = args ? args.apiKey : undefined;
             inputs["apiToken"] = args ? args.apiToken : undefined;
             inputs["apiUserServiceKey"] = args ? args.apiUserServiceKey : undefined;
@@ -84,9 +94,17 @@ export interface ProviderArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
+     * Configure the base path used by the API client
+     */
+    apiBasePath?: pulumi.Input<string>;
+    /**
      * Whether to print logs from the API client (using the default log library logger)
      */
     apiClientLogging?: pulumi.Input<boolean>;
+    /**
+     * Configure the hostname used by the API client
+     */
+    apiHostname?: pulumi.Input<string>;
     /**
      * The API key for operations.
      */

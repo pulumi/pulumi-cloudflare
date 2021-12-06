@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Ciphers;
         /// <summary>
+        /// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
+        /// </summary>
+        public readonly string? EarlyHints;
+        /// <summary>
         /// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
         /// </summary>
         public readonly string? Http2;
@@ -35,6 +39,8 @@ namespace Pulumi.Cloudflare.Outputs
         private CustomHostnameSslSetting(
             ImmutableArray<string> ciphers,
 
+            string? earlyHints,
+
             string? http2,
 
             string? minTlsVersion,
@@ -42,6 +48,7 @@ namespace Pulumi.Cloudflare.Outputs
             string? tls13)
         {
             Ciphers = ciphers;
+            EarlyHints = earlyHints;
             Http2 = http2;
             MinTlsVersion = minTlsVersion;
             Tls13 = tls13;

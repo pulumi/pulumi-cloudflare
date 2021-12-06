@@ -13,6 +13,11 @@ func GetAccountId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:accountId")
 }
 
+// Configure the base path used by the API client
+func GetApiBasePath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "cloudflare:apiBasePath")
+}
+
 // Whether to print logs from the API client (using the default log library logger)
 func GetApiClientLogging(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "cloudflare:apiClientLogging")
@@ -20,6 +25,11 @@ func GetApiClientLogging(ctx *pulumi.Context) bool {
 		return v
 	}
 	return getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING").(bool)
+}
+
+// Configure the hostname used by the API client
+func GetApiHostname(ctx *pulumi.Context) string {
+	return config.Get(ctx, "cloudflare:apiHostname")
 }
 
 // The API key for operations.

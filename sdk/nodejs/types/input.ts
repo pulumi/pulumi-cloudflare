@@ -491,6 +491,10 @@ export interface CustomHostnameSslSetting {
      */
     ciphers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
+     */
+    earlyHints?: pulumi.Input<string>;
+    /**
      * Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
      */
     http2?: pulumi.Input<string>;
@@ -587,17 +591,6 @@ export interface DevicePostureRuleMatch {
     platform?: pulumi.Input<string>;
 }
 
-export interface GetWafGroupsFilter {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
-    mode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
-    name?: string;
-}
-
 export interface GetWafGroupsFilterArgs {
     /**
      * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
@@ -609,23 +602,15 @@ export interface GetWafGroupsFilterArgs {
     name?: pulumi.Input<string>;
 }
 
-export interface GetWafPackagesFilterArgs {
+export interface GetWafGroupsFilter {
     /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
      */
-    actionMode?: pulumi.Input<string>;
+    mode?: string;
     /**
-     * Detection mode of the WAF Rule Packages to lookup.
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
      */
-    detectionMode?: pulumi.Input<string>;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
-    sensitivity?: pulumi.Input<string>;
+    name?: string;
 }
 
 export interface GetWafPackagesFilter {
@@ -645,6 +630,25 @@ export interface GetWafPackagesFilter {
      * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
      */
     sensitivity?: string;
+}
+
+export interface GetWafPackagesFilterArgs {
+    /**
+     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
+     */
+    actionMode?: pulumi.Input<string>;
+    /**
+     * Detection mode of the WAF Rule Packages to lookup.
+     */
+    detectionMode?: pulumi.Input<string>;
+    /**
+     * A regular expression matching the name of the WAF Rule Packages to lookup.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
+     */
+    sensitivity?: pulumi.Input<string>;
 }
 
 export interface GetWafRulesFilter {
@@ -677,36 +681,6 @@ export interface GetWafRulesFilterArgs {
     mode?: pulumi.Input<string>;
 }
 
-export interface GetZonesFilterArgs {
-    /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
-     */
-    lookupType?: pulumi.Input<string>;
-    /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
-     */
-    match?: pulumi.Input<string>;
-    /**
-     * A string value to search for.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
-     */
-    paused?: pulumi.Input<boolean>;
-    /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
-     */
-    status?: pulumi.Input<string>;
-}
-
 export interface GetZonesFilter {
     /**
      * The type of search to perform for the `name` value
@@ -735,6 +709,36 @@ export interface GetZonesFilter {
      * `"read only"`.
      */
     status?: string;
+}
+
+export interface GetZonesFilterArgs {
+    /**
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+     * to `"exact"`.
+     */
+    lookupType?: pulumi.Input<string>;
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookupType`
+     * are performed on the Cloudflare server side.
+     */
+    match?: pulumi.Input<string>;
+    /**
+     * A string value to search for.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
+     * Status of the zone to lookup. Valid values: `"active"`,
+     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+     * `"read only"`.
+     */
+    status?: pulumi.Input<string>;
 }
 
 export interface HealthcheckHeader {
@@ -821,6 +825,13 @@ export interface LoadBalancerPoolOriginHeader {
      * A list of string values for the header.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface LoadBalancerPoolOriginSteering {
+    /**
+     * Either "random" (default) or "hash".
+     */
+    policy?: pulumi.Input<string>;
 }
 
 export interface LoadBalancerPopPool {
@@ -1401,6 +1412,10 @@ export interface RulesetRule {
      */
     enabled?: pulumi.Input<boolean>;
     /**
+     * List of parameters that configure exposed credential checks (refer to the nested schema).
+     */
+    exposedCredentialCheck?: pulumi.Input<inputs.RulesetRuleExposedCredentialCheck>;
+    /**
      * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
      */
     expression: pulumi.Input<string>;
@@ -1488,6 +1503,10 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOverrides {
     /**
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     */
+    action?: pulumi.Input<string>;
+    /**
      * List of tag-based overrides (refer to the nested schema).
      */
     categories?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesCategory>[]>;
@@ -1571,6 +1590,17 @@ export interface RulesetRuleActionParametersUriQuery {
      * Static string value of the updated URI path or query string component. Conflicts with `expression`.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleExposedCredentialCheck {
+    /**
+     * Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     */
+    passwordExpression?: pulumi.Input<string>;
+    /**
+     * Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     */
+    usernameExpression?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleRatelimit {
@@ -1762,48 +1792,89 @@ export interface ZoneSettingsOverrideInitialSetting {
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
+    binaryAst?: pulumi.Input<string>;
     brotli?: pulumi.Input<string>;
     browserCacheTtl?: pulumi.Input<number>;
     browserCheck?: pulumi.Input<string>;
+    /**
+     * Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+     */
     cacheLevel?: pulumi.Input<string>;
     challengeTtl?: pulumi.Input<number>;
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     */
+    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
+     */
     cnameFlattening?: pulumi.Input<string>;
     developmentMode?: pulumi.Input<string>;
+    earlyHints?: pulumi.Input<string>;
     emailObfuscation?: pulumi.Input<string>;
+    filterLogsToCloudflare?: pulumi.Input<string>;
+    /**
+     * Allowed values: "on", "off" (default), "custom".
+     */
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
     http2?: pulumi.Input<string>;
     http3?: pulumi.Input<string>;
+    /**
+     * Allowed values: "on", "off" (default), "open".
+     */
     imageResizing?: pulumi.Input<string>;
     ipGeolocation?: pulumi.Input<string>;
     ipv6?: pulumi.Input<string>;
+    logToCloudflare?: pulumi.Input<string>;
     maxUpload?: pulumi.Input<number>;
+    /**
+     * Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+     */
     minTlsVersion?: pulumi.Input<string>;
     minify?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingMinify>;
     mirage?: pulumi.Input<string>;
     mobileRedirect?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingMobileRedirect>;
     opportunisticEncryption?: pulumi.Input<string>;
     opportunisticOnion?: pulumi.Input<string>;
+    orangeToOrange?: pulumi.Input<string>;
     originErrorPagePassThru?: pulumi.Input<string>;
+    /**
+     * Allowed values: "off" (default), "lossless", "lossy".
+     */
     polish?: pulumi.Input<string>;
     prefetchPreload?: pulumi.Input<string>;
     privacyPass?: pulumi.Input<string>;
+    proxyReadTimeout?: pulumi.Input<string>;
+    /**
+     * Allowed values: "off" (default), "addHeader", "overwriteHeader".
+     */
     pseudoIpv4?: pulumi.Input<string>;
     responseBuffering?: pulumi.Input<string>;
     rocketLoader?: pulumi.Input<string>;
     securityHeader?: pulumi.Input<inputs.ZoneSettingsOverrideInitialSettingSecurityHeader>;
+    /**
+     * Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
+     */
     securityLevel?: pulumi.Input<string>;
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
+    /**
+     * Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
+     */
     ssl?: pulumi.Input<string>;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
      */
     tls12Only?: pulumi.Input<string>;
+    /**
+     * Allowed values: "off" (default), "on", "zrt".
+     */
     tls13?: pulumi.Input<string>;
     tlsClientAuth?: pulumi.Input<string>;
     trueClientIpHeader?: pulumi.Input<string>;
     universalSsl?: pulumi.Input<string>;
+    visitorIp?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
     /**
      * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
@@ -1870,48 +1941,89 @@ export interface ZoneSettingsOverrideSettings {
     alwaysOnline?: pulumi.Input<string>;
     alwaysUseHttps?: pulumi.Input<string>;
     automaticHttpsRewrites?: pulumi.Input<string>;
+    binaryAst?: pulumi.Input<string>;
     brotli?: pulumi.Input<string>;
     browserCacheTtl?: pulumi.Input<number>;
     browserCheck?: pulumi.Input<string>;
+    /**
+     * Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+     */
     cacheLevel?: pulumi.Input<string>;
     challengeTtl?: pulumi.Input<number>;
+    /**
+     * An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+     */
+    ciphers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
+     */
     cnameFlattening?: pulumi.Input<string>;
     developmentMode?: pulumi.Input<string>;
+    earlyHints?: pulumi.Input<string>;
     emailObfuscation?: pulumi.Input<string>;
+    filterLogsToCloudflare?: pulumi.Input<string>;
+    /**
+     * Allowed values: "on", "off" (default), "custom".
+     */
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
     http2?: pulumi.Input<string>;
     http3?: pulumi.Input<string>;
+    /**
+     * Allowed values: "on", "off" (default), "open".
+     */
     imageResizing?: pulumi.Input<string>;
     ipGeolocation?: pulumi.Input<string>;
     ipv6?: pulumi.Input<string>;
+    logToCloudflare?: pulumi.Input<string>;
     maxUpload?: pulumi.Input<number>;
+    /**
+     * Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+     */
     minTlsVersion?: pulumi.Input<string>;
     minify?: pulumi.Input<inputs.ZoneSettingsOverrideSettingsMinify>;
     mirage?: pulumi.Input<string>;
     mobileRedirect?: pulumi.Input<inputs.ZoneSettingsOverrideSettingsMobileRedirect>;
     opportunisticEncryption?: pulumi.Input<string>;
     opportunisticOnion?: pulumi.Input<string>;
+    orangeToOrange?: pulumi.Input<string>;
     originErrorPagePassThru?: pulumi.Input<string>;
+    /**
+     * Allowed values: "off" (default), "lossless", "lossy".
+     */
     polish?: pulumi.Input<string>;
     prefetchPreload?: pulumi.Input<string>;
     privacyPass?: pulumi.Input<string>;
+    proxyReadTimeout?: pulumi.Input<string>;
+    /**
+     * Allowed values: "off" (default), "addHeader", "overwriteHeader".
+     */
     pseudoIpv4?: pulumi.Input<string>;
     responseBuffering?: pulumi.Input<string>;
     rocketLoader?: pulumi.Input<string>;
     securityHeader?: pulumi.Input<inputs.ZoneSettingsOverrideSettingsSecurityHeader>;
+    /**
+     * Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
+     */
     securityLevel?: pulumi.Input<string>;
     serverSideExclude?: pulumi.Input<string>;
     sortQueryStringForCache?: pulumi.Input<string>;
+    /**
+     * Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
+     */
     ssl?: pulumi.Input<string>;
     /**
      * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
      */
     tls12Only?: pulumi.Input<string>;
+    /**
+     * Allowed values: "off" (default), "on", "zrt".
+     */
     tls13?: pulumi.Input<string>;
     tlsClientAuth?: pulumi.Input<string>;
     trueClientIpHeader?: pulumi.Input<string>;
     universalSsl?: pulumi.Input<string>;
+    visitorIp?: pulumi.Input<string>;
     waf?: pulumi.Input<string>;
     /**
      * . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
@@ -1973,4 +2085,3 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload?: pulumi.Input<boolean>;
 }
-

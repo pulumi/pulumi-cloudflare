@@ -13,9 +13,19 @@ accountId: Optional[str]
 Configure API client to always use that account
 """
 
+apiBasePath: Optional[str]
+"""
+Configure the base path used by the API client
+"""
+
 apiClientLogging: bool
 """
 Whether to print logs from the API client (using the default log library logger)
+"""
+
+apiHostname: Optional[str]
+"""
+Configure the hostname used by the API client
 """
 
 apiKey: Optional[str]

@@ -21,6 +21,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("automaticHttpsRewrites")]
         public Input<string>? AutomaticHttpsRewrites { get; set; }
 
+        [Input("binaryAst")]
+        public Input<string>? BinaryAst { get; set; }
+
         [Input("brotli")]
         public Input<string>? Brotli { get; set; }
 
@@ -30,21 +33,48 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("browserCheck")]
         public Input<string>? BrowserCheck { get; set; }
 
+        /// <summary>
+        /// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+        /// </summary>
         [Input("cacheLevel")]
         public Input<string>? CacheLevel { get; set; }
 
         [Input("challengeTtl")]
         public Input<int>? ChallengeTtl { get; set; }
 
+        [Input("ciphers")]
+        private InputList<string>? _ciphers;
+
+        /// <summary>
+        /// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        /// </summary>
+        public InputList<string> Ciphers
+        {
+            get => _ciphers ?? (_ciphers = new InputList<string>());
+            set => _ciphers = value;
+        }
+
+        /// <summary>
+        /// Allowed values: "flatten_at_root" (default), "flatten_all", "flatten_none".
+        /// </summary>
         [Input("cnameFlattening")]
         public Input<string>? CnameFlattening { get; set; }
 
         [Input("developmentMode")]
         public Input<string>? DevelopmentMode { get; set; }
 
+        [Input("earlyHints")]
+        public Input<string>? EarlyHints { get; set; }
+
         [Input("emailObfuscation")]
         public Input<string>? EmailObfuscation { get; set; }
 
+        [Input("filterLogsToCloudflare")]
+        public Input<string>? FilterLogsToCloudflare { get; set; }
+
+        /// <summary>
+        /// Allowed values: "on", "off" (default), "custom".
+        /// </summary>
         [Input("h2Prioritization")]
         public Input<string>? H2Prioritization { get; set; }
 
@@ -57,6 +87,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("http3")]
         public Input<string>? Http3 { get; set; }
 
+        /// <summary>
+        /// Allowed values: "on", "off" (default), "open".
+        /// </summary>
         [Input("imageResizing")]
         public Input<string>? ImageResizing { get; set; }
 
@@ -66,9 +99,15 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("ipv6")]
         public Input<string>? Ipv6 { get; set; }
 
+        [Input("logToCloudflare")]
+        public Input<string>? LogToCloudflare { get; set; }
+
         [Input("maxUpload")]
         public Input<int>? MaxUpload { get; set; }
 
+        /// <summary>
+        /// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        /// </summary>
         [Input("minTlsVersion")]
         public Input<string>? MinTlsVersion { get; set; }
 
@@ -87,9 +126,15 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("opportunisticOnion")]
         public Input<string>? OpportunisticOnion { get; set; }
 
+        [Input("orangeToOrange")]
+        public Input<string>? OrangeToOrange { get; set; }
+
         [Input("originErrorPagePassThru")]
         public Input<string>? OriginErrorPagePassThru { get; set; }
 
+        /// <summary>
+        /// Allowed values: "off" (default), "lossless", "lossy".
+        /// </summary>
         [Input("polish")]
         public Input<string>? Polish { get; set; }
 
@@ -99,6 +144,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("privacyPass")]
         public Input<string>? PrivacyPass { get; set; }
 
+        [Input("proxyReadTimeout")]
+        public Input<string>? ProxyReadTimeout { get; set; }
+
+        /// <summary>
+        /// Allowed values: "off" (default), "add_header", "overwrite_header".
+        /// </summary>
         [Input("pseudoIpv4")]
         public Input<string>? PseudoIpv4 { get; set; }
 
@@ -111,6 +162,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("securityHeader")]
         public Input<Inputs.ZoneSettingsOverrideSettingsSecurityHeaderArgs>? SecurityHeader { get; set; }
 
+        /// <summary>
+        /// Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
+        /// </summary>
         [Input("securityLevel")]
         public Input<string>? SecurityLevel { get; set; }
 
@@ -120,12 +174,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("sortQueryStringForCache")]
         public Input<string>? SortQueryStringForCache { get; set; }
 
+        /// <summary>
+        /// Allowed values: "off" (default), "flexible", "full", "strict", "origin_pull".
+        /// </summary>
         [Input("ssl")]
         public Input<string>? Ssl { get; set; }
 
         [Input("tls12Only")]
         public Input<string>? Tls12Only { get; set; }
 
+        /// <summary>
+        /// Allowed values: "off" (default), "on", "zrt".
+        /// </summary>
         [Input("tls13")]
         public Input<string>? Tls13 { get; set; }
 
@@ -137,6 +197,9 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("universalSsl")]
         public Input<string>? UniversalSsl { get; set; }
+
+        [Input("visitorIp")]
+        public Input<string>? VisitorIp { get; set; }
 
         [Input("waf")]
         public Input<string>? Waf { get; set; }

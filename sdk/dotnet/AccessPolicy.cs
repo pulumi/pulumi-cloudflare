@@ -123,6 +123,9 @@ namespace Pulumi.Cloudflare
         [Output("approvalGroups")]
         public Output<ImmutableArray<Outputs.AccessPolicyApprovalGroup>> ApprovalGroups { get; private set; } = null!;
 
+        [Output("approvalRequired")]
+        public Output<bool?> ApprovalRequired { get; private set; } = null!;
+
         /// <summary>
         /// Defines the action Access will take if the policy matches the user.
         /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
@@ -248,6 +251,9 @@ namespace Pulumi.Cloudflare
             set => _approvalGroups = value;
         }
 
+        [Input("approvalRequired")]
+        public Input<bool>? ApprovalRequired { get; set; }
+
         /// <summary>
         /// Defines the action Access will take if the policy matches the user.
         /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
@@ -351,6 +357,9 @@ namespace Pulumi.Cloudflare
             get => _approvalGroups ?? (_approvalGroups = new InputList<Inputs.AccessPolicyApprovalGroupGetArgs>());
             set => _approvalGroups = value;
         }
+
+        [Input("approvalRequired")]
+        public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
         /// Defines the action Access will take if the policy matches the user.
