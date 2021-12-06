@@ -37,6 +37,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// List of parameters that configure exposed credential checks (refer to the nested schema).
+        /// </summary>
+        [Input("exposedCredentialCheck")]
+        public Input<Inputs.RulesetRuleExposedCredentialCheckGetArgs>? ExposedCredentialCheck { get; set; }
+
+        /// <summary>
         /// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
         /// </summary>
         [Input("expression", required: true)]

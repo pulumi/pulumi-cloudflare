@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
         /// The number of days for which the certificate should be valid.
         /// </summary>
         [Output("requestedValidity")]
-        public Output<int?> RequestedValidity { get; private set; } = null!;
+        public Output<int> RequestedValidity { get; private set; } = null!;
 
 
         /// <summary>

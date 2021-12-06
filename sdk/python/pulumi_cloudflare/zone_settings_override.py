@@ -64,6 +64,7 @@ class _ZoneSettingsOverrideState:
         """
         Input properties used for looking up and filtering ZoneSettingsOverride resources.
         :param pulumi.Input[Sequence[pulumi.Input['ZoneSettingsOverrideInitialSettingArgs']]] initial_settings: Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+        :param pulumi.Input[str] initial_settings_read_at: Time when this resource was created and the `initial_settings` were set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_settings: Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
                * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
                * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
@@ -100,6 +101,9 @@ class _ZoneSettingsOverrideState:
     @property
     @pulumi.getter(name="initialSettingsReadAt")
     def initial_settings_read_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time when this resource was created and the `initial_settings` were set.
+        """
         return pulumi.get(self, "initial_settings_read_at")
 
     @initial_settings_read_at.setter
@@ -305,6 +309,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneSettingsOverrideInitialSettingArgs']]]] initial_settings: Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+        :param pulumi.Input[str] initial_settings_read_at: Time when this resource was created and the `initial_settings` were set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] readonly_settings: Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
                * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
                * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
@@ -335,6 +340,9 @@ class ZoneSettingsOverride(pulumi.CustomResource):
     @property
     @pulumi.getter(name="initialSettingsReadAt")
     def initial_settings_read_at(self) -> pulumi.Output[str]:
+        """
+        Time when this resource was created and the `initial_settings` were set.
+        """
         return pulumi.get(self, "initial_settings_read_at")
 
     @property

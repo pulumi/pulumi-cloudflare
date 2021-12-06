@@ -18,6 +18,10 @@
                 "type": "string",
                 "description": "Configure API client to always use that account\n"
             },
+            "apiBasePath": {
+                "type": "string",
+                "description": "Configure the base path used by the API client\n"
+            },
             "apiClientLogging": {
                 "type": "boolean",
                 "description": "Whether to print logs from the API client (using the default log library logger)\n",
@@ -27,6 +31,10 @@
                         "CLOUDFLARE_API_CLIENT_LOGGING"
                     ]
                 }
+            },
+            "apiHostname": {
+                "type": "string",
+                "description": "Configure the hostname used by the API client\n"
             },
             "apiKey": {
                 "type": "string",
@@ -2551,6 +2559,15 @@
                         }
                     }
                 },
+                "earlyHints": {
+                    "type": "string",
+                    "description": "Whether or not early hints should be supported. Valid values are `\"on\"` or `\"off\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "http2": {
                     "type": "string",
                     "description": "Whether or not HTTP2 should be supported. Valid values are `\"on\"` or `\"off\"`.\n",
@@ -2993,6 +3010,20 @@
                 "header",
                 "values"
             ]
+        },
+        "cloudflare:index/LoadBalancerPoolOriginSteering:LoadBalancerPoolOriginSteering": {
+            "properties": {
+                "policy": {
+                    "type": "string",
+                    "description": "Either \"random\" (default) or \"hash\".\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "cloudflare:index/LoadBalancerPopPool:LoadBalancerPopPool": {
             "properties": {
@@ -4654,6 +4685,15 @@
                         }
                     }
                 },
+                "exposedCredentialCheck": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleExposedCredentialCheck:RulesetRuleExposedCredentialCheck",
+                    "description": "List of parameters that configure exposed credential checks (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "expression": {
                     "type": "string",
                     "description": "Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.\n",
@@ -4894,6 +4934,15 @@
         },
         "cloudflare:index/RulesetRuleActionParametersOverrides:RulesetRuleActionParametersOverrides": {
             "properties": {
+                "action": {
+                    "type": "string",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "categories": {
                     "type": "array",
                     "items": {
@@ -5080,6 +5129,29 @@
                 "value": {
                     "type": "string",
                     "description": "Static string value of the updated URI path or query string component. Conflicts with `expression`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleExposedCredentialCheck:RulesetRuleExposedCredentialCheck": {
+            "properties": {
+                "passwordExpression": {
+                    "type": "string",
+                    "description": "Firewall Rules expression language based on Wireshark display filters for where to check for the \"password\" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "usernameExpression": {
+                    "type": "string",
+                    "description": "Firewall Rules expression language based on Wireshark display filters for where to check for the \"username\" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5608,6 +5680,14 @@
                         }
                     }
                 },
+                "binaryAst": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "brotli": {
                     "type": "string",
                     "language": {
@@ -5634,6 +5714,7 @@
                 },
                 "cacheLevel": {
                     "type": "string",
+                    "description": "Allowed values: \"aggressive\" (default) - delivers a different resource each time the query string changes, \"basic\" - delivers resources from cache when there is no query string, \"simplified\" - delivers the same resource to everyone independent of the query string.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5648,8 +5729,21 @@
                         }
                     }
                 },
+                "ciphers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "cnameFlattening": {
                     "type": "string",
+                    "description": "Allowed values: \"flatten_at_root\" (default), \"flatten_all\", \"flatten_none\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5657,6 +5751,14 @@
                     }
                 },
                 "developmentMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "earlyHints": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -5672,8 +5774,17 @@
                         }
                     }
                 },
+                "filterLogsToCloudflare": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "h2Prioritization": {
                     "type": "string",
+                    "description": "Allowed values: \"on\", \"off\" (default), \"custom\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5706,6 +5817,7 @@
                 },
                 "imageResizing": {
                     "type": "string",
+                    "description": "Allowed values: \"on\", \"off\" (default), \"open\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5728,6 +5840,14 @@
                         }
                     }
                 },
+                "logToCloudflare": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxUpload": {
                     "type": "integer",
                     "language": {
@@ -5738,6 +5858,7 @@
                 },
                 "minTlsVersion": {
                     "type": "string",
+                    "description": "Allowed values: \"1.0\" (default), \"1.1\", \"1.2\", \"1.3\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5784,6 +5905,14 @@
                         }
                     }
                 },
+                "orangeToOrange": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "originErrorPagePassThru": {
                     "type": "string",
                     "language": {
@@ -5794,6 +5923,7 @@
                 },
                 "polish": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (default), \"lossless\", \"lossy\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5816,8 +5946,17 @@
                         }
                     }
                 },
+                "proxyReadTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "pseudoIpv4": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (default), \"add_header\", \"overwrite_header\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5850,6 +5989,7 @@
                 },
                 "securityLevel": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (Enterprise only), \"essentially_off\", \"low\", \"medium\" (default), \"high\", \"under_attack\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5874,6 +6014,7 @@
                 },
                 "ssl": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (default), \"flexible\", \"full\", \"strict\", \"origin_pull\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5891,6 +6032,7 @@
                 },
                 "tls13": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (default), \"on\", \"zrt\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5914,6 +6056,14 @@
                     }
                 },
                 "universalSsl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "visitorIp": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -5962,14 +6112,18 @@
                         "alwaysOnline",
                         "alwaysUseHttps",
                         "automaticHttpsRewrites",
+                        "binaryAst",
                         "brotli",
                         "browserCacheTtl",
                         "browserCheck",
                         "cacheLevel",
                         "challengeTtl",
+                        "ciphers",
                         "cnameFlattening",
                         "developmentMode",
+                        "earlyHints",
                         "emailObfuscation",
+                        "filterLogsToCloudflare",
                         "h2Prioritization",
                         "hotlinkProtection",
                         "http2",
@@ -5977,6 +6131,7 @@
                         "imageResizing",
                         "ipGeolocation",
                         "ipv6",
+                        "logToCloudflare",
                         "maxUpload",
                         "minTlsVersion",
                         "minify",
@@ -5984,10 +6139,12 @@
                         "mobileRedirect",
                         "opportunisticEncryption",
                         "opportunisticOnion",
+                        "orangeToOrange",
                         "originErrorPagePassThru",
                         "polish",
                         "prefetchPreload",
                         "privacyPass",
+                        "proxyReadTimeout",
                         "pseudoIpv4",
                         "responseBuffering",
                         "rocketLoader",
@@ -6001,6 +6158,7 @@
                         "tlsClientAuth",
                         "trueClientIpHeader",
                         "universalSsl",
+                        "visitorIp",
                         "waf",
                         "webp",
                         "websockets",
@@ -6170,6 +6328,14 @@
                         }
                     }
                 },
+                "binaryAst": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "brotli": {
                     "type": "string",
                     "language": {
@@ -6196,6 +6362,7 @@
                 },
                 "cacheLevel": {
                     "type": "string",
+                    "description": "Allowed values: \"aggressive\" (default) - delivers a different resource each time the query string changes, \"basic\" - delivers resources from cache when there is no query string, \"simplified\" - delivers the same resource to everyone independent of the query string.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6210,8 +6377,21 @@
                         }
                     }
                 },
+                "ciphers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "cnameFlattening": {
                     "type": "string",
+                    "description": "Allowed values: \"flatten_at_root\" (default), \"flatten_all\", \"flatten_none\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6219,6 +6399,14 @@
                     }
                 },
                 "developmentMode": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "earlyHints": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -6234,8 +6422,17 @@
                         }
                     }
                 },
+                "filterLogsToCloudflare": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "h2Prioritization": {
                     "type": "string",
+                    "description": "Allowed values: \"on\", \"off\" (default), \"custom\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6268,6 +6465,7 @@
                 },
                 "imageResizing": {
                     "type": "string",
+                    "description": "Allowed values: \"on\", \"off\" (default), \"open\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6290,6 +6488,14 @@
                         }
                     }
                 },
+                "logToCloudflare": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "maxUpload": {
                     "type": "integer",
                     "language": {
@@ -6300,6 +6506,7 @@
                 },
                 "minTlsVersion": {
                     "type": "string",
+                    "description": "Allowed values: \"1.0\" (default), \"1.1\", \"1.2\", \"1.3\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6346,6 +6553,14 @@
                         }
                     }
                 },
+                "orangeToOrange": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "originErrorPagePassThru": {
                     "type": "string",
                     "language": {
@@ -6356,6 +6571,7 @@
                 },
                 "polish": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (default), \"lossless\", \"lossy\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6378,8 +6594,17 @@
                         }
                     }
                 },
+                "proxyReadTimeout": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "pseudoIpv4": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (default), \"add_header\", \"overwrite_header\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6412,6 +6637,7 @@
                 },
                 "securityLevel": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (Enterprise only), \"essentially_off\", \"low\", \"medium\" (default), \"high\", \"under_attack\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6436,6 +6662,7 @@
                 },
                 "ssl": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (default), \"flexible\", \"full\", \"strict\", \"origin_pull\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6453,6 +6680,7 @@
                 },
                 "tls13": {
                     "type": "string",
+                    "description": "Allowed values: \"off\" (default), \"on\", \"zrt\".\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -6476,6 +6704,14 @@
                     }
                 },
                 "universalSsl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "visitorIp": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -6524,14 +6760,18 @@
                         "alwaysOnline",
                         "alwaysUseHttps",
                         "automaticHttpsRewrites",
+                        "binaryAst",
                         "brotli",
                         "browserCacheTtl",
                         "browserCheck",
                         "cacheLevel",
                         "challengeTtl",
+                        "ciphers",
                         "cnameFlattening",
                         "developmentMode",
+                        "earlyHints",
                         "emailObfuscation",
+                        "filterLogsToCloudflare",
                         "h2Prioritization",
                         "hotlinkProtection",
                         "http2",
@@ -6539,6 +6779,7 @@
                         "imageResizing",
                         "ipGeolocation",
                         "ipv6",
+                        "logToCloudflare",
                         "maxUpload",
                         "minTlsVersion",
                         "minify",
@@ -6546,10 +6787,12 @@
                         "mobileRedirect",
                         "opportunisticEncryption",
                         "opportunisticOnion",
+                        "orangeToOrange",
                         "originErrorPagePassThru",
                         "polish",
                         "prefetchPreload",
                         "privacyPass",
+                        "proxyReadTimeout",
                         "pseudoIpv4",
                         "responseBuffering",
                         "rocketLoader",
@@ -6563,6 +6806,7 @@
                         "tlsClientAuth",
                         "trueClientIpHeader",
                         "universalSsl",
+                        "visitorIp",
                         "waf",
                         "webp",
                         "websockets",
@@ -7099,9 +7343,17 @@
                 "type": "string",
                 "description": "Configure API client to always use that account\n"
             },
+            "apiBasePath": {
+                "type": "string",
+                "description": "Configure the base path used by the API client\n"
+            },
             "apiClientLogging": {
                 "type": "boolean",
                 "description": "Whether to print logs from the API client (using the default log library logger)\n"
+            },
+            "apiHostname": {
+                "type": "string",
+                "description": "Configure the hostname used by the API client\n"
             },
             "apiKey": {
                 "type": "string",
@@ -7141,6 +7393,10 @@
                 "type": "string",
                 "description": "Configure API client to always use that account\n"
             },
+            "apiBasePath": {
+                "type": "string",
+                "description": "Configure the base path used by the API client\n"
+            },
             "apiClientLogging": {
                 "type": "boolean",
                 "description": "Whether to print logs from the API client (using the default log library logger)\n",
@@ -7150,6 +7406,10 @@
                         "CLOUDFLARE_API_CLIENT_LOGGING"
                     ]
                 }
+            },
+            "apiHostname": {
+                "type": "string",
+                "description": "Configure the hostname used by the API client\n"
             },
             "apiKey": {
                 "type": "string",
@@ -7255,13 +7515,25 @@
                     "type": "boolean",
                     "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
                 },
+                "httpOnlyCookieAttribute": {
+                    "type": "boolean"
+                },
+                "logoUrl": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string",
                     "description": "Friendly name of the Access Application.\n"
                 },
+                "sameSiteCookieAttribute": {
+                    "type": "string"
+                },
                 "sessionDuration": {
                     "type": "string",
                     "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
+                },
+                "skipInterstitial": {
+                    "type": "boolean"
                 },
                 "type": {
                     "type": "string",
@@ -7318,13 +7590,25 @@
                     "type": "boolean",
                     "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
                 },
+                "httpOnlyCookieAttribute": {
+                    "type": "boolean"
+                },
+                "logoUrl": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string",
                     "description": "Friendly name of the Access Application.\n"
                 },
+                "sameSiteCookieAttribute": {
+                    "type": "string"
+                },
                 "sessionDuration": {
                     "type": "string",
                     "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
+                },
+                "skipInterstitial": {
+                    "type": "boolean"
                 },
                 "type": {
                     "type": "string",
@@ -7384,13 +7668,25 @@
                         "type": "boolean",
                         "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
                     },
+                    "httpOnlyCookieAttribute": {
+                        "type": "boolean"
+                    },
+                    "logoUrl": {
+                        "type": "string"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Friendly name of the Access Application.\n"
                     },
+                    "sameSiteCookieAttribute": {
+                        "type": "string"
+                    },
                     "sessionDuration": {
                         "type": "string",
                         "description": "How often a user will be forced to\nre-authorise. Must be in the format `\"48h\"` or `\"2h45m\"`.\nValid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.\n"
+                    },
+                    "skipInterstitial": {
+                        "type": "boolean"
                     },
                     "type": {
                         "type": "string",
@@ -7842,6 +8138,9 @@
                     },
                     "description": "List of approval group blocks for configuring additional approvals (refer to the nested schema).\n"
                 },
+                "approvalRequired": {
+                    "type": "boolean"
+                },
                 "decision": {
                     "type": "string",
                     "description": "Defines the action Access will take if the policy matches the user.\nAllowed values: `allow`, `deny`, `non_identity`, `bypass`\n"
@@ -7913,6 +8212,9 @@
                     },
                     "description": "List of approval group blocks for configuring additional approvals (refer to the nested schema).\n"
                 },
+                "approvalRequired": {
+                    "type": "boolean"
+                },
                 "decision": {
                     "type": "string",
                     "description": "Defines the action Access will take if the policy matches the user.\nAllowed values: `allow`, `deny`, `non_identity`, `bypass`\n"
@@ -7983,6 +8285,9 @@
                             "$ref": "#/types/cloudflare:index/AccessPolicyApprovalGroup:AccessPolicyApprovalGroup"
                         },
                         "description": "List of approval group blocks for configuring additional approvals (refer to the nested schema).\n"
+                    },
+                    "approvalRequired": {
+                        "type": "boolean"
                     },
                     "decision": {
                         "type": "string",
@@ -8410,6 +8715,10 @@
                     "type": "string",
                     "description": "The Cloudflare account ID that you wish to manage the Argo Tunnel on.\n"
                 },
+                "cname": {
+                    "type": "string",
+                    "description": "Usable CNAME for accessing the Argo Tunnel.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "A user-friendly name chosen when the tunnel is created. Cannot be empty.\n"
@@ -8421,6 +8730,7 @@
             },
             "required": [
                 "accountId",
+                "cname",
                 "name",
                 "secret"
             ],
@@ -8449,6 +8759,10 @@
                     "accountId": {
                         "type": "string",
                         "description": "The Cloudflare account ID that you wish to manage the Argo Tunnel on.\n"
+                    },
+                    "cname": {
+                        "type": "string",
+                        "description": "Usable CNAME for accessing the Argo Tunnel.\n"
                     },
                     "name": {
                         "type": "string",
@@ -10418,7 +10732,7 @@
             }
         },
         "cloudflare:index/loadBalancerPool:LoadBalancerPool": {
-            "description": "Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst foo = new cloudflare.LoadBalancerPool(\"foo\", {\n    description: \"example load balancer pool\",\n    enabled: false,\n    latitude: 55,\n    loadSheddings: [{\n        defaultPercent: 55,\n        defaultPolicy: \"random\",\n        sessionPercent: 12,\n        sessionPolicy: \"hash\",\n    }],\n    longitude: -12,\n    minimumOrigins: 1,\n    name: \"example-pool\",\n    notificationEmail: \"someone@example.com\",\n    origins: [\n        {\n            address: \"192.0.2.1\",\n            enabled: false,\n            headers: [{\n                header: \"Host\",\n                values: [\"example-1\"],\n            }],\n            name: \"example-1\",\n        },\n        {\n            address: \"192.0.2.2\",\n            headers: [{\n                header: \"Host\",\n                values: [\"example-2\"],\n            }],\n            name: \"example-2\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nfoo = cloudflare.LoadBalancerPool(\"foo\",\n    description=\"example load balancer pool\",\n    enabled=False,\n    latitude=55,\n    load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(\n        default_percent=55,\n        default_policy=\"random\",\n        session_percent=12,\n        session_policy=\"hash\",\n    )],\n    longitude=-12,\n    minimum_origins=1,\n    name=\"example-pool\",\n    notification_email=\"someone@example.com\",\n    origins=[\n        cloudflare.LoadBalancerPoolOriginArgs(\n            address=\"192.0.2.1\",\n            enabled=False,\n            headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(\n                header=\"Host\",\n                values=[\"example-1\"],\n            )],\n            name=\"example-1\",\n        ),\n        cloudflare.LoadBalancerPoolOriginArgs(\n            address=\"192.0.2.2\",\n            headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(\n                header=\"Host\",\n                values=[\"example-2\"],\n            )],\n            name=\"example-2\",\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Cloudflare.LoadBalancerPool(\"foo\", new Cloudflare.LoadBalancerPoolArgs\n        {\n            Description = \"example load balancer pool\",\n            Enabled = false,\n            Latitude = 55,\n            LoadSheddings = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs\n                {\n                    DefaultPercent = 55,\n                    DefaultPolicy = \"random\",\n                    SessionPercent = 12,\n                    SessionPolicy = \"hash\",\n                },\n            },\n            Longitude = -12,\n            MinimumOrigins = 1,\n            Name = \"example-pool\",\n            NotificationEmail = \"someone@example.com\",\n            Origins = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Address = \"192.0.2.1\",\n                    Enabled = false,\n                    Headers = \n                    {\n                        new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs\n                        {\n                            Header = \"Host\",\n                            Values = \n                            {\n                                \"example-1\",\n                            },\n                        },\n                    },\n                    Name = \"example-1\",\n                },\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Address = \"192.0.2.2\",\n                    Headers = \n                    {\n                        new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs\n                        {\n                            Header = \"Host\",\n                            Values = \n                            {\n                                \"example-2\",\n                            },\n                        },\n                    },\n                    Name = \"example-2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewLoadBalancerPool(ctx, \"foo\", \u0026cloudflare.LoadBalancerPoolArgs{\n\t\t\tDescription: pulumi.String(\"example load balancer pool\"),\n\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\tLatitude:    pulumi.Float64(55),\n\t\t\tLoadSheddings: LoadBalancerPoolLoadSheddingArray{\n\t\t\t\t\u0026LoadBalancerPoolLoadSheddingArgs{\n\t\t\t\t\tDefaultPercent: pulumi.Float64(55),\n\t\t\t\t\tDefaultPolicy:  pulumi.String(\"random\"),\n\t\t\t\t\tSessionPercent: pulumi.Float64(12),\n\t\t\t\t\tSessionPolicy:  pulumi.String(\"hash\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLongitude:         -12,\n\t\t\tMinimumOrigins:    pulumi.Int(1),\n\t\t\tName:              pulumi.String(\"example-pool\"),\n\t\t\tNotificationEmail: pulumi.String(\"someone@example.com\"),\n\t\t\tOrigins: LoadBalancerPoolOriginArray{\n\t\t\t\t\u0026LoadBalancerPoolOriginArgs{\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.1\"),\n\t\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\t\tHeaders: LoadBalancerPoolOriginHeaderArray{\n\t\t\t\t\t\t\u0026LoadBalancerPoolOriginHeaderArgs{\n\t\t\t\t\t\t\tHeader: pulumi.String(\"Host\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"example-1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tName: pulumi.String(\"example-1\"),\n\t\t\t\t},\n\t\t\t\t\u0026LoadBalancerPoolOriginArgs{\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.2\"),\n\t\t\t\t\tHeaders: LoadBalancerPoolOriginHeaderArray{\n\t\t\t\t\t\t\u0026LoadBalancerPoolOriginHeaderArgs{\n\t\t\t\t\t\t\tHeader: pulumi.String(\"Host\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"example-2\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tName: pulumi.String(\"example-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Cloudflare Load Balancer pool resource. This provides a pool of origins that can be used by a Cloudflare Load Balancer. Note that the load balancing feature must be enabled in your Cloudflare account before you can use this resource.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst foo = new cloudflare.LoadBalancerPool(\"foo\", {\n    description: \"example load balancer pool\",\n    enabled: false,\n    latitude: 55,\n    loadSheddings: [{\n        defaultPercent: 55,\n        defaultPolicy: \"random\",\n        sessionPercent: 12,\n        sessionPolicy: \"hash\",\n    }],\n    longitude: -12,\n    minimumOrigins: 1,\n    name: \"example-pool\",\n    notificationEmail: \"someone@example.com\",\n    originSteerings: [{\n        policy: \"random\",\n    }],\n    origins: [\n        {\n            address: \"192.0.2.1\",\n            enabled: false,\n            headers: [{\n                header: \"Host\",\n                values: [\"example-1\"],\n            }],\n            name: \"example-1\",\n        },\n        {\n            address: \"192.0.2.2\",\n            headers: [{\n                header: \"Host\",\n                values: [\"example-2\"],\n            }],\n            name: \"example-2\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nfoo = cloudflare.LoadBalancerPool(\"foo\",\n    description=\"example load balancer pool\",\n    enabled=False,\n    latitude=55,\n    load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(\n        default_percent=55,\n        default_policy=\"random\",\n        session_percent=12,\n        session_policy=\"hash\",\n    )],\n    longitude=-12,\n    minimum_origins=1,\n    name=\"example-pool\",\n    notification_email=\"someone@example.com\",\n    origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(\n        policy=\"random\",\n    )],\n    origins=[\n        cloudflare.LoadBalancerPoolOriginArgs(\n            address=\"192.0.2.1\",\n            enabled=False,\n            headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(\n                header=\"Host\",\n                values=[\"example-1\"],\n            )],\n            name=\"example-1\",\n        ),\n        cloudflare.LoadBalancerPoolOriginArgs(\n            address=\"192.0.2.2\",\n            headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(\n                header=\"Host\",\n                values=[\"example-2\"],\n            )],\n            name=\"example-2\",\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var foo = new Cloudflare.LoadBalancerPool(\"foo\", new Cloudflare.LoadBalancerPoolArgs\n        {\n            Description = \"example load balancer pool\",\n            Enabled = false,\n            Latitude = 55,\n            LoadSheddings = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs\n                {\n                    DefaultPercent = 55,\n                    DefaultPolicy = \"random\",\n                    SessionPercent = 12,\n                    SessionPolicy = \"hash\",\n                },\n            },\n            Longitude = -12,\n            MinimumOrigins = 1,\n            Name = \"example-pool\",\n            NotificationEmail = \"someone@example.com\",\n            OriginSteerings = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs\n                {\n                    Policy = \"random\",\n                },\n            },\n            Origins = \n            {\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Address = \"192.0.2.1\",\n                    Enabled = false,\n                    Headers = \n                    {\n                        new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs\n                        {\n                            Header = \"Host\",\n                            Values = \n                            {\n                                \"example-1\",\n                            },\n                        },\n                    },\n                    Name = \"example-1\",\n                },\n                new Cloudflare.Inputs.LoadBalancerPoolOriginArgs\n                {\n                    Address = \"192.0.2.2\",\n                    Headers = \n                    {\n                        new Cloudflare.Inputs.LoadBalancerPoolOriginHeaderArgs\n                        {\n                            Header = \"Host\",\n                            Values = \n                            {\n                                \"example-2\",\n                            },\n                        },\n                    },\n                    Name = \"example-2\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewLoadBalancerPool(ctx, \"foo\", \u0026cloudflare.LoadBalancerPoolArgs{\n\t\t\tDescription: pulumi.String(\"example load balancer pool\"),\n\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\tLatitude:    pulumi.Float64(55),\n\t\t\tLoadSheddings: LoadBalancerPoolLoadSheddingArray{\n\t\t\t\t\u0026LoadBalancerPoolLoadSheddingArgs{\n\t\t\t\t\tDefaultPercent: pulumi.Float64(55),\n\t\t\t\t\tDefaultPolicy:  pulumi.String(\"random\"),\n\t\t\t\t\tSessionPercent: pulumi.Float64(12),\n\t\t\t\t\tSessionPolicy:  pulumi.String(\"hash\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tLongitude:         -12,\n\t\t\tMinimumOrigins:    pulumi.Int(1),\n\t\t\tName:              pulumi.String(\"example-pool\"),\n\t\t\tNotificationEmail: pulumi.String(\"someone@example.com\"),\n\t\t\tOriginSteerings: LoadBalancerPoolOriginSteeringArray{\n\t\t\t\t\u0026LoadBalancerPoolOriginSteeringArgs{\n\t\t\t\t\tPolicy: pulumi.String(\"random\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOrigins: LoadBalancerPoolOriginArray{\n\t\t\t\t\u0026LoadBalancerPoolOriginArgs{\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.1\"),\n\t\t\t\t\tEnabled: pulumi.Bool(false),\n\t\t\t\t\tHeaders: LoadBalancerPoolOriginHeaderArray{\n\t\t\t\t\t\t\u0026LoadBalancerPoolOriginHeaderArgs{\n\t\t\t\t\t\t\tHeader: pulumi.String(\"Host\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"example-1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tName: pulumi.String(\"example-1\"),\n\t\t\t\t},\n\t\t\t\t\u0026LoadBalancerPoolOriginArgs{\n\t\t\t\t\tAddress: pulumi.String(\"192.0.2.2\"),\n\t\t\t\t\tHeaders: LoadBalancerPoolOriginHeaderArray{\n\t\t\t\t\t\t\u0026LoadBalancerPoolOriginHeaderArgs{\n\t\t\t\t\t\t\tHeader: pulumi.String(\"Host\"),\n\t\t\t\t\t\t\tValues: pulumi.StringArray{\n\t\t\t\t\t\t\t\tpulumi.String(\"example-2\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tName: pulumi.String(\"example-2\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "checkRegions": {
                     "type": "array",
@@ -10473,6 +10787,13 @@
                 "notificationEmail": {
                     "type": "string",
                     "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.\n"
+                },
+                "originSteerings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/LoadBalancerPoolOriginSteering:LoadBalancerPoolOriginSteering"
+                    },
+                    "description": "Set an origin steering policy to control origin selection within a pool.\n"
                 },
                 "origins": {
                     "type": "array",
@@ -10535,6 +10856,13 @@
                 "notificationEmail": {
                     "type": "string",
                     "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.\n"
+                },
+                "originSteerings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/LoadBalancerPoolOriginSteering:LoadBalancerPoolOriginSteering"
+                    },
+                    "description": "Set an origin steering policy to control origin selection within a pool.\n"
                 },
                 "origins": {
                     "type": "array",
@@ -10604,6 +10932,13 @@
                     "notificationEmail": {
                         "type": "string",
                         "description": "The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.\n"
+                    },
+                    "originSteerings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/LoadBalancerPoolOriginSteering:LoadBalancerPoolOriginSteering"
+                        },
+                        "description": "Set an origin steering policy to control origin selection within a pool.\n"
                     },
                     "origins": {
                         "type": "array",
@@ -11247,7 +11582,8 @@
                 "certificate",
                 "expiresOn",
                 "hostnames",
-                "requestType"
+                "requestType",
+                "requestedValidity"
             ],
             "inputProperties": {
                 "csr": {
@@ -11716,7 +12052,7 @@
             }
         },
         "cloudflare:index/ruleset:Ruleset": {
-            "description": "The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)\nallows you to create and deploy rules and rulesets.\nThe engine syntax, inspired by the Wireshark Display Filter language, is the\nsame syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine\nin different products, allowing you to configure several products using the same\nbasic syntax.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Magic Transit\nconst magicTransitExample = new cloudflare.Ruleset(\"magic_transit_example\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"example magic transit ruleset description\",\n    kind: \"root\",\n    name: \"account magic transit\",\n    phase: \"magic_transit\",\n    rules: [{\n        action: \"allow\",\n        description: \"Allow TCP Ephemeral Ports\",\n        expression: \"tcp.dstport in { 32768..65535 }\",\n    }],\n});\n// Zone-level WAF Managed Ruleset\nconst zoneLevelManagedWaf = new cloudflare.Ruleset(\"zone_level_managed_waf\", {\n    description: \"managed WAF ruleset description\",\n    kind: \"zone\",\n    name: \"managed WAF\",\n    phase: \"http_request_firewall_managed\",\n    rules: [{\n        action: \"execute\",\n        actionParameters: {\n            id: \"efb7b8c949ac4650a09736fc376e9aee\",\n        },\n        description: \"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n        enabled: true,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Zone-level WAF with tag-based overrides\nconst zoneLevelManagedWafWithCategoryBasedOverrides = new cloudflare.Ruleset(\"zone_level_managed_waf_with_category_based_overrides\", {\n    description: \"managed WAF with tag-based overrides ruleset description\",\n    kind: \"zone\",\n    name: \"managed WAF with tag-based overrides\",\n    phase: \"http_request_firewall_managed\",\n    rules: [{\n        action: \"execute\",\n        actionParameters: {\n            id: \"efb7b8c949ac4650a09736fc376e9aee\",\n            overrides: {\n                categories: [\n                    {\n                        action: \"block\",\n                        category: \"wordpress\",\n                        enabled: true,\n                    },\n                    {\n                        action: \"block\",\n                        category: \"joomla\",\n                        enabled: true,\n                    },\n                ],\n            },\n        },\n        description: \"overrides to only enable wordpress rules to block\",\n        enabled: false,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Rewrite the URI path component to a static path\nconst transformUriRulePath = new cloudflare.Ruleset(\"transform_uri_rule_path\", {\n    description: \"change the URI path to a new static path\",\n    kind: \"zone\",\n    name: \"transform rule for URI path\",\n    phase: \"http_request_transform\",\n    rules: [{\n        action: \"rewrite\",\n        actionParameters: {\n            uri: {\n                path: {\n                    value: \"/my-new-route\",\n                },\n            },\n        },\n        description: \"example URI path transform rule\",\n        enabled: true,\n        expression: \"(http.host eq \\\"example.com\\\" and http.uri.path eq \\\"/old-path\\\")\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Rewrite the URI query component to a static query\nconst transformUriRuleQuery = new cloudflare.Ruleset(\"transform_uri_rule_query\", {\n    description: \"change the URI query to a new static query\",\n    kind: \"zone\",\n    name: \"transform rule for URI query parameter\",\n    phase: \"http_request_transform\",\n    rules: [{\n        action: \"rewrite\",\n        actionParameters: {\n            uri: {\n                query: {\n                    value: \"old=new_again\",\n                },\n            },\n        },\n        description: \"URI transformation query example\",\n        enabled: true,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Rewrite HTTP headers to a modified values\nconst transformUriHttpHeaders = new cloudflare.Ruleset(\"transform_uri_http_headers\", {\n    description: \"modify HTTP headers before reaching origin\",\n    kind: \"zone\",\n    name: \"transform rule for HTTP headers\",\n    phase: \"http_request_late_transform\",\n    rules: [{\n        action: \"rewrite\",\n        actionParameters: {\n            headers: [\n                {\n                    name: \"example-http-header-1\",\n                    operation: \"set\",\n                    value: \"my-http-header-value-1\",\n                },\n                {\n                    expression: \"cf.zone.name\",\n                    name: \"example-http-header-2\",\n                    operation: \"set\",\n                },\n                {\n                    name: \"example-http-header-3-to-remove\",\n                    operation: \"remove\",\n                },\n            ],\n        },\n        description: \"example request header transform rule\",\n        enabled: false,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// HTTP rate limit for an API route\nconst rateLimitingExample = new cloudflare.Ruleset(\"rate_limiting_example\", {\n    description: \"apply HTTP rate limiting for a route\",\n    kind: \"zone\",\n    name: \"restrict API requests count\",\n    phase: \"http_ratelimit\",\n    rules: [{\n        action: \"block\",\n        description: \"rate limit for API\",\n        enabled: true,\n        expression: \"(http.request.uri.path matches \\\"^/api/\\\")\",\n        ratelimit: {\n            characteristics: [\n                \"cf.colo.id\",\n                \"ip.src\",\n            ],\n            mitigationTimeout: 600,\n            period: 60,\n            requestsPerPeriod: 100,\n        },\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Magic Transit\nmagic_transit_example = cloudflare.Ruleset(\"magicTransitExample\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"example magic transit ruleset description\",\n    kind=\"root\",\n    name=\"account magic transit\",\n    phase=\"magic_transit\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"allow\",\n        description=\"Allow TCP Ephemeral Ports\",\n        expression=\"tcp.dstport in { 32768..65535 }\",\n    )])\n# Zone-level WAF Managed Ruleset\nzone_level_managed_waf = cloudflare.Ruleset(\"zoneLevelManagedWaf\",\n    description=\"managed WAF ruleset description\",\n    kind=\"zone\",\n    name=\"managed WAF\",\n    phase=\"http_request_firewall_managed\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"execute\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            id=\"efb7b8c949ac4650a09736fc376e9aee\",\n        ),\n        description=\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n        enabled=True,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Zone-level WAF with tag-based overrides\nzone_level_managed_waf_with_category_based_overrides = cloudflare.Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\",\n    description=\"managed WAF with tag-based overrides ruleset description\",\n    kind=\"zone\",\n    name=\"managed WAF with tag-based overrides\",\n    phase=\"http_request_firewall_managed\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"execute\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            id=\"efb7b8c949ac4650a09736fc376e9aee\",\n            overrides=cloudflare.RulesetRuleActionParametersOverridesArgs(\n                categories=[\n                    cloudflare.RulesetRuleActionParametersOverridesCategoryArgs(\n                        action=\"block\",\n                        category=\"wordpress\",\n                        enabled=True,\n                    ),\n                    cloudflare.RulesetRuleActionParametersOverridesCategoryArgs(\n                        action=\"block\",\n                        category=\"joomla\",\n                        enabled=True,\n                    ),\n                ],\n            ),\n        ),\n        description=\"overrides to only enable wordpress rules to block\",\n        enabled=False,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Rewrite the URI path component to a static path\ntransform_uri_rule_path = cloudflare.Ruleset(\"transformUriRulePath\",\n    description=\"change the URI path to a new static path\",\n    kind=\"zone\",\n    name=\"transform rule for URI path\",\n    phase=\"http_request_transform\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"rewrite\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            uri=cloudflare.RulesetRuleActionParametersUriArgs(\n                path=cloudflare.RulesetRuleActionParametersUriPathArgs(\n                    value=\"/my-new-route\",\n                ),\n            ),\n        ),\n        description=\"example URI path transform rule\",\n        enabled=True,\n        expression=\"(http.host eq \\\"example.com\\\" and http.uri.path eq \\\"/old-path\\\")\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Rewrite the URI query component to a static query\ntransform_uri_rule_query = cloudflare.Ruleset(\"transformUriRuleQuery\",\n    description=\"change the URI query to a new static query\",\n    kind=\"zone\",\n    name=\"transform rule for URI query parameter\",\n    phase=\"http_request_transform\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"rewrite\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            uri=cloudflare.RulesetRuleActionParametersUriArgs(\n                query=cloudflare.RulesetRuleActionParametersUriQueryArgs(\n                    value=\"old=new_again\",\n                ),\n            ),\n        ),\n        description=\"URI transformation query example\",\n        enabled=True,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Rewrite HTTP headers to a modified values\ntransform_uri_http_headers = cloudflare.Ruleset(\"transformUriHttpHeaders\",\n    description=\"modify HTTP headers before reaching origin\",\n    kind=\"zone\",\n    name=\"transform rule for HTTP headers\",\n    phase=\"http_request_late_transform\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"rewrite\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            headers=[\n                cloudflare.RulesetRuleActionParametersHeaderArgs(\n                    name=\"example-http-header-1\",\n                    operation=\"set\",\n                    value=\"my-http-header-value-1\",\n                ),\n                cloudflare.RulesetRuleActionParametersHeaderArgs(\n                    expression=\"cf.zone.name\",\n                    name=\"example-http-header-2\",\n                    operation=\"set\",\n                ),\n                cloudflare.RulesetRuleActionParametersHeaderArgs(\n                    name=\"example-http-header-3-to-remove\",\n                    operation=\"remove\",\n                ),\n            ],\n        ),\n        description=\"example request header transform rule\",\n        enabled=False,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# HTTP rate limit for an API route\nrate_limiting_example = cloudflare.Ruleset(\"rateLimitingExample\",\n    description=\"apply HTTP rate limiting for a route\",\n    kind=\"zone\",\n    name=\"restrict API requests count\",\n    phase=\"http_ratelimit\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"block\",\n        description=\"rate limit for API\",\n        enabled=True,\n        expression=\"(http.request.uri.path matches \\\"^/api/\\\")\",\n        ratelimit=cloudflare.RulesetRuleRatelimitArgs(\n            characteristics=[\n                \"cf.colo.id\",\n                \"ip.src\",\n            ],\n            mitigation_timeout=600,\n            period=60,\n            requests_per_period=100,\n        ),\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Magic Transit\n        var magicTransitExample = new Cloudflare.Ruleset(\"magicTransitExample\", new Cloudflare.RulesetArgs\n        {\n            AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"example magic transit ruleset description\",\n            Kind = \"root\",\n            Name = \"account magic transit\",\n            Phase = \"magic_transit\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"allow\",\n                    Description = \"Allow TCP Ephemeral Ports\",\n                    Expression = \"tcp.dstport in { 32768..65535 }\",\n                },\n            },\n        });\n        // Zone-level WAF Managed Ruleset\n        var zoneLevelManagedWaf = new Cloudflare.Ruleset(\"zoneLevelManagedWaf\", new Cloudflare.RulesetArgs\n        {\n            Description = \"managed WAF ruleset description\",\n            Kind = \"zone\",\n            Name = \"managed WAF\",\n            Phase = \"http_request_firewall_managed\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"execute\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Id = \"efb7b8c949ac4650a09736fc376e9aee\",\n                    },\n                    Description = \"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n                    Enabled = true,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Zone-level WAF with tag-based overrides\n        var zoneLevelManagedWafWithCategoryBasedOverrides = new Cloudflare.Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\", new Cloudflare.RulesetArgs\n        {\n            Description = \"managed WAF with tag-based overrides ruleset description\",\n            Kind = \"zone\",\n            Name = \"managed WAF with tag-based overrides\",\n            Phase = \"http_request_firewall_managed\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"execute\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Id = \"efb7b8c949ac4650a09736fc376e9aee\",\n                        Overrides = new Cloudflare.Inputs.RulesetRuleActionParametersOverridesArgs\n                        {\n                            Categories = \n                            {\n                                new Cloudflare.Inputs.RulesetRuleActionParametersOverridesCategoryArgs\n                                {\n                                    Action = \"block\",\n                                    Category = \"wordpress\",\n                                    Enabled = true,\n                                },\n                                new Cloudflare.Inputs.RulesetRuleActionParametersOverridesCategoryArgs\n                                {\n                                    Action = \"block\",\n                                    Category = \"joomla\",\n                                    Enabled = true,\n                                },\n                            },\n                        },\n                    },\n                    Description = \"overrides to only enable wordpress rules to block\",\n                    Enabled = false,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Rewrite the URI path component to a static path\n        var transformUriRulePath = new Cloudflare.Ruleset(\"transformUriRulePath\", new Cloudflare.RulesetArgs\n        {\n            Description = \"change the URI path to a new static path\",\n            Kind = \"zone\",\n            Name = \"transform rule for URI path\",\n            Phase = \"http_request_transform\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"rewrite\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Uri = new Cloudflare.Inputs.RulesetRuleActionParametersUriArgs\n                        {\n                            Path = new Cloudflare.Inputs.RulesetRuleActionParametersUriPathArgs\n                            {\n                                Value = \"/my-new-route\",\n                            },\n                        },\n                    },\n                    Description = \"example URI path transform rule\",\n                    Enabled = true,\n                    Expression = \"(http.host eq \\\"example.com\\\" and http.uri.path eq \\\"/old-path\\\")\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Rewrite the URI query component to a static query\n        var transformUriRuleQuery = new Cloudflare.Ruleset(\"transformUriRuleQuery\", new Cloudflare.RulesetArgs\n        {\n            Description = \"change the URI query to a new static query\",\n            Kind = \"zone\",\n            Name = \"transform rule for URI query parameter\",\n            Phase = \"http_request_transform\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"rewrite\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Uri = new Cloudflare.Inputs.RulesetRuleActionParametersUriArgs\n                        {\n                            Query = new Cloudflare.Inputs.RulesetRuleActionParametersUriQueryArgs\n                            {\n                                Value = \"old=new_again\",\n                            },\n                        },\n                    },\n                    Description = \"URI transformation query example\",\n                    Enabled = true,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Rewrite HTTP headers to a modified values\n        var transformUriHttpHeaders = new Cloudflare.Ruleset(\"transformUriHttpHeaders\", new Cloudflare.RulesetArgs\n        {\n            Description = \"modify HTTP headers before reaching origin\",\n            Kind = \"zone\",\n            Name = \"transform rule for HTTP headers\",\n            Phase = \"http_request_late_transform\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"rewrite\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Headers = \n                        {\n                            new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs\n                            {\n                                Name = \"example-http-header-1\",\n                                Operation = \"set\",\n                                Value = \"my-http-header-value-1\",\n                            },\n                            new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs\n                            {\n                                Expression = \"cf.zone.name\",\n                                Name = \"example-http-header-2\",\n                                Operation = \"set\",\n                            },\n                            new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs\n                            {\n                                Name = \"example-http-header-3-to-remove\",\n                                Operation = \"remove\",\n                            },\n                        },\n                    },\n                    Description = \"example request header transform rule\",\n                    Enabled = false,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // HTTP rate limit for an API route\n        var rateLimitingExample = new Cloudflare.Ruleset(\"rateLimitingExample\", new Cloudflare.RulesetArgs\n        {\n            Description = \"apply HTTP rate limiting for a route\",\n            Kind = \"zone\",\n            Name = \"restrict API requests count\",\n            Phase = \"http_ratelimit\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"block\",\n                    Description = \"rate limit for API\",\n                    Enabled = true,\n                    Expression = \"(http.request.uri.path matches \\\"^/api/\\\")\",\n                    Ratelimit = new Cloudflare.Inputs.RulesetRuleRatelimitArgs\n                    {\n                        Characteristics = \n                        {\n                            \"cf.colo.id\",\n                            \"ip.src\",\n                        },\n                        MitigationTimeout = 600,\n                        Period = 60,\n                        RequestsPerPeriod = 100,\n                    },\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewRuleset(ctx, \"magicTransitExample\", \u0026cloudflare.RulesetArgs{\n\t\t\tAccountId:   pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"example magic transit ruleset description\"),\n\t\t\tKind:        pulumi.String(\"root\"),\n\t\t\tName:        pulumi.String(\"account magic transit\"),\n\t\t\tPhase:       pulumi.String(\"magic_transit\"),\n\t\t\tRules: RulesetRuleArray{\n\t\t\t\t\u0026RulesetRuleArgs{\n\t\t\t\t\tAction:      pulumi.String(\"allow\"),\n\t\t\t\t\tDescription: pulumi.String(\"Allow TCP Ephemeral Ports\"),\n\t\t\t\t\tExpression:  pulumi.String(\"tcp.dstport in { 32768..65535 }\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"zoneLevelManagedWaf\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"managed WAF ruleset description\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"managed WAF\"),\n\t\t\tPhase:       pulumi.String(\"http_request_firewall_managed\"),\n\t\t\tRules: RulesetRuleArray{\n\t\t\t\t\u0026RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"execute\"),\n\t\t\t\t\tActionParameters: \u0026RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tId: pulumi.String(\"efb7b8c949ac4650a09736fc376e9aee\"),\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"zoneLevelManagedWafWithCategoryBasedOverrides\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"managed WAF with tag-based overrides ruleset description\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"managed WAF with tag-based overrides\"),\n\t\t\tPhase:       pulumi.String(\"http_request_firewall_managed\"),\n\t\t\tRules: RulesetRuleArray{\n\t\t\t\t\u0026RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"execute\"),\n\t\t\t\t\tActionParameters: \u0026RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tId: pulumi.String(\"efb7b8c949ac4650a09736fc376e9aee\"),\n\t\t\t\t\t\tOverrides: \u0026RulesetRuleActionParametersOverridesArgs{\n\t\t\t\t\t\t\tCategories: RulesetRuleActionParametersOverridesCategoryArray{\n\t\t\t\t\t\t\t\t\u0026RulesetRuleActionParametersOverridesCategoryArgs{\n\t\t\t\t\t\t\t\t\tAction:   pulumi.String(\"block\"),\n\t\t\t\t\t\t\t\t\tCategory: pulumi.String(\"wordpress\"),\n\t\t\t\t\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026RulesetRuleActionParametersOverridesCategoryArgs{\n\t\t\t\t\t\t\t\t\tAction:   pulumi.String(\"block\"),\n\t\t\t\t\t\t\t\t\tCategory: pulumi.String(\"joomla\"),\n\t\t\t\t\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"overrides to only enable wordpress rules to block\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"transformUriRulePath\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"change the URI path to a new static path\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"transform rule for URI path\"),\n\t\t\tPhase:       pulumi.String(\"http_request_transform\"),\n\t\t\tRules: RulesetRuleArray{\n\t\t\t\t\u0026RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"rewrite\"),\n\t\t\t\t\tActionParameters: \u0026RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tUri: \u0026RulesetRuleActionParametersUriArgs{\n\t\t\t\t\t\t\tPath: \u0026RulesetRuleActionParametersUriPathArgs{\n\t\t\t\t\t\t\t\tValue: pulumi.String(\"/my-new-route\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"example URI path transform rule\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"(http.host eq \\\"example.com\\\" and http.uri.path eq \\\"/old-path\\\")\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"transformUriRuleQuery\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"change the URI query to a new static query\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"transform rule for URI query parameter\"),\n\t\t\tPhase:       pulumi.String(\"http_request_transform\"),\n\t\t\tRules: RulesetRuleArray{\n\t\t\t\t\u0026RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"rewrite\"),\n\t\t\t\t\tActionParameters: \u0026RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tUri: \u0026RulesetRuleActionParametersUriArgs{\n\t\t\t\t\t\t\tQuery: \u0026RulesetRuleActionParametersUriQueryArgs{\n\t\t\t\t\t\t\t\tValue: pulumi.String(\"old=new_again\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"URI transformation query example\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"transformUriHttpHeaders\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"modify HTTP headers before reaching origin\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"transform rule for HTTP headers\"),\n\t\t\tPhase:       pulumi.String(\"http_request_late_transform\"),\n\t\t\tRules: RulesetRuleArray{\n\t\t\t\t\u0026RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"rewrite\"),\n\t\t\t\t\tActionParameters: \u0026RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tHeaders: RulesetRuleActionParametersHeaderArray{\n\t\t\t\t\t\t\t\u0026RulesetRuleActionParametersHeaderArgs{\n\t\t\t\t\t\t\t\tName:      pulumi.String(\"example-http-header-1\"),\n\t\t\t\t\t\t\t\tOperation: pulumi.String(\"set\"),\n\t\t\t\t\t\t\t\tValue:     pulumi.String(\"my-http-header-value-1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\u0026RulesetRuleActionParametersHeaderArgs{\n\t\t\t\t\t\t\t\tExpression: pulumi.String(\"cf.zone.name\"),\n\t\t\t\t\t\t\t\tName:       pulumi.String(\"example-http-header-2\"),\n\t\t\t\t\t\t\t\tOperation:  pulumi.String(\"set\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\u0026RulesetRuleActionParametersHeaderArgs{\n\t\t\t\t\t\t\t\tName:      pulumi.String(\"example-http-header-3-to-remove\"),\n\t\t\t\t\t\t\t\tOperation: pulumi.String(\"remove\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"example request header transform rule\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"rateLimitingExample\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"apply HTTP rate limiting for a route\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"restrict API requests count\"),\n\t\t\tPhase:       pulumi.String(\"http_ratelimit\"),\n\t\t\tRules: RulesetRuleArray{\n\t\t\t\t\u0026RulesetRuleArgs{\n\t\t\t\t\tAction:      pulumi.String(\"block\"),\n\t\t\t\t\tDescription: pulumi.String(\"rate limit for API\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"(http.request.uri.path matches \\\"^/api/\\\")\"),\n\t\t\t\t\tRatelimit: \u0026RulesetRuleRatelimitArgs{\n\t\t\t\t\t\tCharacteristics: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"cf.colo.id\"),\n\t\t\t\t\t\t\tpulumi.String(\"ip.src\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tMitigationTimeout: pulumi.Int(600),\n\t\t\t\t\t\tPeriod:            pulumi.Int(60),\n\t\t\t\t\t\tRequestsPerPeriod: pulumi.Int(100),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCurrently, you cannot import rulesets. ",
+            "description": "\n\n\n## Import\n\nCurrently, you cannot import rulesets. ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -13941,7 +14277,8 @@
                     "description": "Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).\n"
                 },
                 "initialSettingsReadAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Time when this resource was created and the `initial_settings` were set.\n"
                 },
                 "readonlySettings": {
                     "type": "array",
@@ -13998,7 +14335,8 @@
                         "description": "Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).\n"
                     },
                     "initialSettingsReadAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Time when this resource was created and the `initial_settings` were set.\n"
                     },
                     "readonlySettings": {
                         "type": "array",

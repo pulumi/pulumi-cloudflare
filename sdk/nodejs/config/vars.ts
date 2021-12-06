@@ -19,12 +19,34 @@ Object.defineProperty(exports, "accountId", {
 });
 
 /**
+ * Configure the base path used by the API client
+ */
+export declare const apiBasePath: string | undefined;
+Object.defineProperty(exports, "apiBasePath", {
+    get() {
+        return __config.get("apiBasePath");
+    },
+    enumerable: true,
+});
+
+/**
  * Whether to print logs from the API client (using the default log library logger)
  */
 export declare const apiClientLogging: boolean;
 Object.defineProperty(exports, "apiClientLogging", {
     get() {
         return __config.getObject<boolean>("apiClientLogging") ?? (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
+    },
+    enumerable: true,
+});
+
+/**
+ * Configure the hostname used by the API client
+ */
+export declare const apiHostname: string | undefined;
+Object.defineProperty(exports, "apiHostname", {
+    get() {
+        return __config.get("apiHostname");
     },
     enumerable: true,
 });

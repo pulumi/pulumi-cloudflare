@@ -25,6 +25,18 @@ namespace Pulumi.Cloudflare
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Configure the base path used by the API client
+        /// </summary>
+        [Output("apiBasePath")]
+        public Output<string?> ApiBasePath { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the hostname used by the API client
+        /// </summary>
+        [Output("apiHostname")]
+        public Output<string?> ApiHostname { get; private set; } = null!;
+
+        /// <summary>
         /// The API key for operations.
         /// </summary>
         [Output("apiKey")]
@@ -83,10 +95,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
+        /// Configure the base path used by the API client
+        /// </summary>
+        [Input("apiBasePath")]
+        public Input<string>? ApiBasePath { get; set; }
+
+        /// <summary>
         /// Whether to print logs from the API client (using the default log library logger)
         /// </summary>
         [Input("apiClientLogging", json: true)]
         public Input<bool>? ApiClientLogging { get; set; }
+
+        /// <summary>
+        /// Configure the hostname used by the API client
+        /// </summary>
+        [Input("apiHostname")]
+        public Input<string>? ApiHostname { get; set; }
 
         /// <summary>
         /// The API key for operations.

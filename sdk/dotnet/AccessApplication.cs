@@ -125,11 +125,20 @@ namespace Pulumi.Cloudflare
         [Output("enableBindingCookie")]
         public Output<bool?> EnableBindingCookie { get; private set; } = null!;
 
+        [Output("httpOnlyCookieAttribute")]
+        public Output<bool?> HttpOnlyCookieAttribute { get; private set; } = null!;
+
+        [Output("logoUrl")]
+        public Output<string?> LogoUrl { get; private set; } = null!;
+
         /// <summary>
         /// Friendly name of the Access Application.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        [Output("sameSiteCookieAttribute")]
+        public Output<string?> SameSiteCookieAttribute { get; private set; } = null!;
 
         /// <summary>
         /// How often a user will be forced to
@@ -138,6 +147,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
+
+        [Output("skipInterstitial")]
+        public Output<bool?> SkipInterstitial { get; private set; } = null!;
 
         /// <summary>
         /// The application type. Defaults to `self_hosted`. Valid
@@ -262,11 +274,20 @@ namespace Pulumi.Cloudflare
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
 
+        [Input("httpOnlyCookieAttribute")]
+        public Input<bool>? HttpOnlyCookieAttribute { get; set; }
+
+        [Input("logoUrl")]
+        public Input<string>? LogoUrl { get; set; }
+
         /// <summary>
         /// Friendly name of the Access Application.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("sameSiteCookieAttribute")]
+        public Input<string>? SameSiteCookieAttribute { get; set; }
 
         /// <summary>
         /// How often a user will be forced to
@@ -275,6 +296,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
+
+        [Input("skipInterstitial")]
+        public Input<bool>? SkipInterstitial { get; set; }
 
         /// <summary>
         /// The application type. Defaults to `self_hosted`. Valid
@@ -366,11 +390,20 @@ namespace Pulumi.Cloudflare
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
 
+        [Input("httpOnlyCookieAttribute")]
+        public Input<bool>? HttpOnlyCookieAttribute { get; set; }
+
+        [Input("logoUrl")]
+        public Input<string>? LogoUrl { get; set; }
+
         /// <summary>
         /// Friendly name of the Access Application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("sameSiteCookieAttribute")]
+        public Input<string>? SameSiteCookieAttribute { get; set; }
 
         /// <summary>
         /// How often a user will be forced to
@@ -379,6 +412,9 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
+
+        [Input("skipInterstitial")]
+        public Input<bool>? SkipInterstitial { get; set; }
 
         /// <summary>
         /// The application type. Defaults to `self_hosted`. Valid

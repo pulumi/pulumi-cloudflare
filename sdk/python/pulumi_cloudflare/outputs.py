@@ -65,6 +65,7 @@ __all__ = [
     'LoadBalancerPoolLoadShedding',
     'LoadBalancerPoolOrigin',
     'LoadBalancerPoolOriginHeader',
+    'LoadBalancerPoolOriginSteering',
     'LoadBalancerPopPool',
     'LoadBalancerRegionPool',
     'LoadBalancerRule',
@@ -102,6 +103,7 @@ __all__ = [
     'RulesetRuleActionParametersUri',
     'RulesetRuleActionParametersUriPath',
     'RulesetRuleActionParametersUriQuery',
+    'RulesetRuleExposedCredentialCheck',
     'RulesetRuleRatelimit',
     'SpectrumApplicationDns',
     'SpectrumApplicationOriginDns',
@@ -3282,7 +3284,9 @@ class CustomHostnameSslSetting(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "minTlsVersion":
+        if key == "earlyHints":
+            suggest = "early_hints"
+        elif key == "minTlsVersion":
             suggest = "min_tls_version"
 
         if suggest:
@@ -3298,11 +3302,13 @@ class CustomHostnameSslSetting(dict):
 
     def __init__(__self__, *,
                  ciphers: Optional[Sequence[str]] = None,
+                 early_hints: Optional[str] = None,
                  http2: Optional[str] = None,
                  min_tls_version: Optional[str] = None,
                  tls13: Optional[str] = None):
         """
         :param Sequence[str] ciphers: List of SSL/TLS ciphers to associate with this certificate.
+        :param str early_hints: Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
         :param str http2: Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
         :param str min_tls_version: Lowest version of TLS this certificate should
                support. Valid values are `"1.0"`, `"1.1"`, `"1.2"` and `"1.3"`.
@@ -3310,6 +3316,8 @@ class CustomHostnameSslSetting(dict):
         """
         if ciphers is not None:
             pulumi.set(__self__, "ciphers", ciphers)
+        if early_hints is not None:
+            pulumi.set(__self__, "early_hints", early_hints)
         if http2 is not None:
             pulumi.set(__self__, "http2", http2)
         if min_tls_version is not None:
@@ -3324,6 +3332,14 @@ class CustomHostnameSslSetting(dict):
         List of SSL/TLS ciphers to associate with this certificate.
         """
         return pulumi.get(self, "ciphers")
+
+    @property
+    @pulumi.getter(name="earlyHints")
+    def early_hints(self) -> Optional[str]:
+        """
+        Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
+        """
+        return pulumi.get(self, "early_hints")
 
     @property
     @pulumi.getter
@@ -3893,6 +3909,25 @@ class LoadBalancerPoolOriginHeader(dict):
         A list of string values for the header.
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class LoadBalancerPoolOriginSteering(dict):
+    def __init__(__self__, *,
+                 policy: Optional[str] = None):
+        """
+        :param str policy: Either "random" (default) or "hash".
+        """
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[str]:
+        """
+        Either "random" (default) or "hash".
+        """
+        return pulumi.get(self, "policy")
 
 
 @pulumi.output_type
@@ -6085,6 +6120,8 @@ class RulesetRule(dict):
         suggest = None
         if key == "actionParameters":
             suggest = "action_parameters"
+        elif key == "exposedCredentialCheck":
+            suggest = "exposed_credential_check"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RulesetRule. Access the value via the '{suggest}' property getter instead.")
@@ -6103,6 +6140,7 @@ class RulesetRule(dict):
                  action: Optional[str] = None,
                  action_parameters: Optional['outputs.RulesetRuleActionParameters'] = None,
                  enabled: Optional[bool] = None,
+                 exposed_credential_check: Optional['outputs.RulesetRuleExposedCredentialCheck'] = None,
                  id: Optional[str] = None,
                  ratelimit: Optional['outputs.RulesetRuleRatelimit'] = None,
                  ref: Optional[str] = None,
@@ -6113,6 +6151,7 @@ class RulesetRule(dict):
         :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
         :param 'RulesetRuleActionParametersArgs' action_parameters: List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
+        :param 'RulesetRuleExposedCredentialCheckArgs' exposed_credential_check: List of parameters that configure exposed credential checks (refer to the nested schema).
         :param str id: Rule ID to apply the override to.
         :param 'RulesetRuleRatelimitArgs' ratelimit: List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
         :param str ref: Rule reference.
@@ -6125,6 +6164,8 @@ class RulesetRule(dict):
             pulumi.set(__self__, "action_parameters", action_parameters)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if exposed_credential_check is not None:
+            pulumi.set(__self__, "exposed_credential_check", exposed_credential_check)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if ratelimit is not None:
@@ -6173,6 +6214,14 @@ class RulesetRule(dict):
         Defines if the current rule-level override enables or disables the rule.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="exposedCredentialCheck")
+    def exposed_credential_check(self) -> Optional['outputs.RulesetRuleExposedCredentialCheck']:
+        """
+        List of parameters that configure exposed credential checks (refer to the nested schema).
+        """
+        return pulumi.get(self, "exposed_credential_check")
 
     @property
     @pulumi.getter
@@ -6446,20 +6495,32 @@ class RulesetRuleActionParametersMatchedData(dict):
 @pulumi.output_type
 class RulesetRuleActionParametersOverrides(dict):
     def __init__(__self__, *,
+                 action: Optional[str] = None,
                  categories: Optional[Sequence['outputs.RulesetRuleActionParametersOverridesCategory']] = None,
                  enabled: Optional[bool] = None,
                  rules: Optional[Sequence['outputs.RulesetRuleActionParametersOverridesRule']] = None):
         """
+        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
         :param Sequence['RulesetRuleActionParametersOverridesCategoryArgs'] categories: List of tag-based overrides (refer to the nested schema).
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
         :param Sequence['RulesetRuleActionParametersOverridesRuleArgs'] rules: List of rule-based overrides (refer to the nested schema).
         """
+        if action is not None:
+            pulumi.set(__self__, "action", action)
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[str]:
+        """
+        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        """
+        return pulumi.get(self, "action")
 
     @property
     @pulumi.getter
@@ -6714,6 +6775,56 @@ class RulesetRuleActionParametersUriQuery(dict):
         Static string value of the updated URI path or query string component. Conflicts with `expression`.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RulesetRuleExposedCredentialCheck(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordExpression":
+            suggest = "password_expression"
+        elif key == "usernameExpression":
+            suggest = "username_expression"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleExposedCredentialCheck. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RulesetRuleExposedCredentialCheck.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RulesetRuleExposedCredentialCheck.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_expression: Optional[str] = None,
+                 username_expression: Optional[str] = None):
+        """
+        :param str password_expression: Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+        :param str username_expression: Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+        """
+        if password_expression is not None:
+            pulumi.set(__self__, "password_expression", password_expression)
+        if username_expression is not None:
+            pulumi.set(__self__, "username_expression", username_expression)
+
+    @property
+    @pulumi.getter(name="passwordExpression")
+    def password_expression(self) -> Optional[str]:
+        """
+        Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+        """
+        return pulumi.get(self, "password_expression")
+
+    @property
+    @pulumi.getter(name="usernameExpression")
+    def username_expression(self) -> Optional[str]:
+        """
+        Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+        """
+        return pulumi.get(self, "username_expression")
 
 
 @pulumi.output_type
@@ -7393,6 +7504,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             suggest = "always_use_https"
         elif key == "automaticHttpsRewrites":
             suggest = "automatic_https_rewrites"
+        elif key == "binaryAst":
+            suggest = "binary_ast"
         elif key == "browserCacheTtl":
             suggest = "browser_cache_ttl"
         elif key == "browserCheck":
@@ -7405,8 +7518,12 @@ class ZoneSettingsOverrideInitialSetting(dict):
             suggest = "cname_flattening"
         elif key == "developmentMode":
             suggest = "development_mode"
+        elif key == "earlyHints":
+            suggest = "early_hints"
         elif key == "emailObfuscation":
             suggest = "email_obfuscation"
+        elif key == "filterLogsToCloudflare":
+            suggest = "filter_logs_to_cloudflare"
         elif key == "h2Prioritization":
             suggest = "h2_prioritization"
         elif key == "hotlinkProtection":
@@ -7415,6 +7532,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             suggest = "image_resizing"
         elif key == "ipGeolocation":
             suggest = "ip_geolocation"
+        elif key == "logToCloudflare":
+            suggest = "log_to_cloudflare"
         elif key == "maxUpload":
             suggest = "max_upload"
         elif key == "minTlsVersion":
@@ -7425,12 +7544,16 @@ class ZoneSettingsOverrideInitialSetting(dict):
             suggest = "opportunistic_encryption"
         elif key == "opportunisticOnion":
             suggest = "opportunistic_onion"
+        elif key == "orangeToOrange":
+            suggest = "orange_to_orange"
         elif key == "originErrorPagePassThru":
             suggest = "origin_error_page_pass_thru"
         elif key == "prefetchPreload":
             suggest = "prefetch_preload"
         elif key == "privacyPass":
             suggest = "privacy_pass"
+        elif key == "proxyReadTimeout":
+            suggest = "proxy_read_timeout"
         elif key == "pseudoIpv4":
             suggest = "pseudo_ipv4"
         elif key == "responseBuffering":
@@ -7453,6 +7576,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             suggest = "true_client_ip_header"
         elif key == "universalSsl":
             suggest = "universal_ssl"
+        elif key == "visitorIp":
+            suggest = "visitor_ip"
         elif key == "zeroRtt":
             suggest = "zero_rtt"
 
@@ -7471,14 +7596,18 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  always_online: Optional[str] = None,
                  always_use_https: Optional[str] = None,
                  automatic_https_rewrites: Optional[str] = None,
+                 binary_ast: Optional[str] = None,
                  brotli: Optional[str] = None,
                  browser_cache_ttl: Optional[int] = None,
                  browser_check: Optional[str] = None,
                  cache_level: Optional[str] = None,
                  challenge_ttl: Optional[int] = None,
+                 ciphers: Optional[Sequence[str]] = None,
                  cname_flattening: Optional[str] = None,
                  development_mode: Optional[str] = None,
+                 early_hints: Optional[str] = None,
                  email_obfuscation: Optional[str] = None,
+                 filter_logs_to_cloudflare: Optional[str] = None,
                  h2_prioritization: Optional[str] = None,
                  hotlink_protection: Optional[str] = None,
                  http2: Optional[str] = None,
@@ -7486,6 +7615,7 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  image_resizing: Optional[str] = None,
                  ip_geolocation: Optional[str] = None,
                  ipv6: Optional[str] = None,
+                 log_to_cloudflare: Optional[str] = None,
                  max_upload: Optional[int] = None,
                  min_tls_version: Optional[str] = None,
                  minify: Optional['outputs.ZoneSettingsOverrideInitialSettingMinify'] = None,
@@ -7493,10 +7623,12 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  mobile_redirect: Optional['outputs.ZoneSettingsOverrideInitialSettingMobileRedirect'] = None,
                  opportunistic_encryption: Optional[str] = None,
                  opportunistic_onion: Optional[str] = None,
+                 orange_to_orange: Optional[str] = None,
                  origin_error_page_pass_thru: Optional[str] = None,
                  polish: Optional[str] = None,
                  prefetch_preload: Optional[str] = None,
                  privacy_pass: Optional[str] = None,
+                 proxy_read_timeout: Optional[str] = None,
                  pseudo_ipv4: Optional[str] = None,
                  response_buffering: Optional[str] = None,
                  rocket_loader: Optional[str] = None,
@@ -7510,11 +7642,23 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  tls_client_auth: Optional[str] = None,
                  true_client_ip_header: Optional[str] = None,
                  universal_ssl: Optional[str] = None,
+                 visitor_ip: Optional[str] = None,
                  waf: Optional[str] = None,
                  webp: Optional[str] = None,
                  websockets: Optional[str] = None,
                  zero_rtt: Optional[str] = None):
         """
+        :param str cache_level: Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+        :param Sequence[str] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        :param str cname_flattening: Allowed values: "flatten_at_root" (default), "flatten_all", "flatten_none".
+        :param str h2_prioritization: Allowed values: "on", "off" (default), "custom".
+        :param str image_resizing: Allowed values: "on", "off" (default), "open".
+        :param str min_tls_version: Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        :param str polish: Allowed values: "off" (default), "lossless", "lossy".
+        :param str pseudo_ipv4: Allowed values: "off" (default), "add_header", "overwrite_header".
+        :param str security_level: Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
+        :param str ssl: Allowed values: "off" (default), "flexible", "full", "strict", "origin_pull".
+        :param str tls13: Allowed values: "off" (default), "on", "zrt".
         :param str webp: . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
         """
         if always_online is not None:
@@ -7523,6 +7667,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "always_use_https", always_use_https)
         if automatic_https_rewrites is not None:
             pulumi.set(__self__, "automatic_https_rewrites", automatic_https_rewrites)
+        if binary_ast is not None:
+            pulumi.set(__self__, "binary_ast", binary_ast)
         if brotli is not None:
             pulumi.set(__self__, "brotli", brotli)
         if browser_cache_ttl is not None:
@@ -7533,12 +7679,18 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "cache_level", cache_level)
         if challenge_ttl is not None:
             pulumi.set(__self__, "challenge_ttl", challenge_ttl)
+        if ciphers is not None:
+            pulumi.set(__self__, "ciphers", ciphers)
         if cname_flattening is not None:
             pulumi.set(__self__, "cname_flattening", cname_flattening)
         if development_mode is not None:
             pulumi.set(__self__, "development_mode", development_mode)
+        if early_hints is not None:
+            pulumi.set(__self__, "early_hints", early_hints)
         if email_obfuscation is not None:
             pulumi.set(__self__, "email_obfuscation", email_obfuscation)
+        if filter_logs_to_cloudflare is not None:
+            pulumi.set(__self__, "filter_logs_to_cloudflare", filter_logs_to_cloudflare)
         if h2_prioritization is not None:
             pulumi.set(__self__, "h2_prioritization", h2_prioritization)
         if hotlink_protection is not None:
@@ -7553,6 +7705,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "ip_geolocation", ip_geolocation)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
+        if log_to_cloudflare is not None:
+            pulumi.set(__self__, "log_to_cloudflare", log_to_cloudflare)
         if max_upload is not None:
             pulumi.set(__self__, "max_upload", max_upload)
         if min_tls_version is not None:
@@ -7567,6 +7721,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         if opportunistic_onion is not None:
             pulumi.set(__self__, "opportunistic_onion", opportunistic_onion)
+        if orange_to_orange is not None:
+            pulumi.set(__self__, "orange_to_orange", orange_to_orange)
         if origin_error_page_pass_thru is not None:
             pulumi.set(__self__, "origin_error_page_pass_thru", origin_error_page_pass_thru)
         if polish is not None:
@@ -7575,6 +7731,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "prefetch_preload", prefetch_preload)
         if privacy_pass is not None:
             pulumi.set(__self__, "privacy_pass", privacy_pass)
+        if proxy_read_timeout is not None:
+            pulumi.set(__self__, "proxy_read_timeout", proxy_read_timeout)
         if pseudo_ipv4 is not None:
             pulumi.set(__self__, "pseudo_ipv4", pseudo_ipv4)
         if response_buffering is not None:
@@ -7601,6 +7759,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "true_client_ip_header", true_client_ip_header)
         if universal_ssl is not None:
             pulumi.set(__self__, "universal_ssl", universal_ssl)
+        if visitor_ip is not None:
+            pulumi.set(__self__, "visitor_ip", visitor_ip)
         if waf is not None:
             pulumi.set(__self__, "waf", waf)
         if webp is not None:
@@ -7626,6 +7786,11 @@ class ZoneSettingsOverrideInitialSetting(dict):
         return pulumi.get(self, "automatic_https_rewrites")
 
     @property
+    @pulumi.getter(name="binaryAst")
+    def binary_ast(self) -> Optional[str]:
+        return pulumi.get(self, "binary_ast")
+
+    @property
     @pulumi.getter
     def brotli(self) -> Optional[str]:
         return pulumi.get(self, "brotli")
@@ -7643,6 +7808,9 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @property
     @pulumi.getter(name="cacheLevel")
     def cache_level(self) -> Optional[str]:
+        """
+        Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+        """
         return pulumi.get(self, "cache_level")
 
     @property
@@ -7651,8 +7819,19 @@ class ZoneSettingsOverrideInitialSetting(dict):
         return pulumi.get(self, "challenge_ttl")
 
     @property
+    @pulumi.getter
+    def ciphers(self) -> Optional[Sequence[str]]:
+        """
+        An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        """
+        return pulumi.get(self, "ciphers")
+
+    @property
     @pulumi.getter(name="cnameFlattening")
     def cname_flattening(self) -> Optional[str]:
+        """
+        Allowed values: "flatten_at_root" (default), "flatten_all", "flatten_none".
+        """
         return pulumi.get(self, "cname_flattening")
 
     @property
@@ -7661,13 +7840,26 @@ class ZoneSettingsOverrideInitialSetting(dict):
         return pulumi.get(self, "development_mode")
 
     @property
+    @pulumi.getter(name="earlyHints")
+    def early_hints(self) -> Optional[str]:
+        return pulumi.get(self, "early_hints")
+
+    @property
     @pulumi.getter(name="emailObfuscation")
     def email_obfuscation(self) -> Optional[str]:
         return pulumi.get(self, "email_obfuscation")
 
     @property
+    @pulumi.getter(name="filterLogsToCloudflare")
+    def filter_logs_to_cloudflare(self) -> Optional[str]:
+        return pulumi.get(self, "filter_logs_to_cloudflare")
+
+    @property
     @pulumi.getter(name="h2Prioritization")
     def h2_prioritization(self) -> Optional[str]:
+        """
+        Allowed values: "on", "off" (default), "custom".
+        """
         return pulumi.get(self, "h2_prioritization")
 
     @property
@@ -7688,6 +7880,9 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @property
     @pulumi.getter(name="imageResizing")
     def image_resizing(self) -> Optional[str]:
+        """
+        Allowed values: "on", "off" (default), "open".
+        """
         return pulumi.get(self, "image_resizing")
 
     @property
@@ -7701,6 +7896,11 @@ class ZoneSettingsOverrideInitialSetting(dict):
         return pulumi.get(self, "ipv6")
 
     @property
+    @pulumi.getter(name="logToCloudflare")
+    def log_to_cloudflare(self) -> Optional[str]:
+        return pulumi.get(self, "log_to_cloudflare")
+
+    @property
     @pulumi.getter(name="maxUpload")
     def max_upload(self) -> Optional[int]:
         return pulumi.get(self, "max_upload")
@@ -7708,6 +7908,9 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @property
     @pulumi.getter(name="minTlsVersion")
     def min_tls_version(self) -> Optional[str]:
+        """
+        Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        """
         return pulumi.get(self, "min_tls_version")
 
     @property
@@ -7736,6 +7939,11 @@ class ZoneSettingsOverrideInitialSetting(dict):
         return pulumi.get(self, "opportunistic_onion")
 
     @property
+    @pulumi.getter(name="orangeToOrange")
+    def orange_to_orange(self) -> Optional[str]:
+        return pulumi.get(self, "orange_to_orange")
+
+    @property
     @pulumi.getter(name="originErrorPagePassThru")
     def origin_error_page_pass_thru(self) -> Optional[str]:
         return pulumi.get(self, "origin_error_page_pass_thru")
@@ -7743,6 +7951,9 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @property
     @pulumi.getter
     def polish(self) -> Optional[str]:
+        """
+        Allowed values: "off" (default), "lossless", "lossy".
+        """
         return pulumi.get(self, "polish")
 
     @property
@@ -7756,8 +7967,16 @@ class ZoneSettingsOverrideInitialSetting(dict):
         return pulumi.get(self, "privacy_pass")
 
     @property
+    @pulumi.getter(name="proxyReadTimeout")
+    def proxy_read_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "proxy_read_timeout")
+
+    @property
     @pulumi.getter(name="pseudoIpv4")
     def pseudo_ipv4(self) -> Optional[str]:
+        """
+        Allowed values: "off" (default), "add_header", "overwrite_header".
+        """
         return pulumi.get(self, "pseudo_ipv4")
 
     @property
@@ -7778,6 +7997,9 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @property
     @pulumi.getter(name="securityLevel")
     def security_level(self) -> Optional[str]:
+        """
+        Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
+        """
         return pulumi.get(self, "security_level")
 
     @property
@@ -7793,6 +8015,9 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @property
     @pulumi.getter
     def ssl(self) -> Optional[str]:
+        """
+        Allowed values: "off" (default), "flexible", "full", "strict", "origin_pull".
+        """
         return pulumi.get(self, "ssl")
 
     @property
@@ -7803,6 +8028,9 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @property
     @pulumi.getter
     def tls13(self) -> Optional[str]:
+        """
+        Allowed values: "off" (default), "on", "zrt".
+        """
         return pulumi.get(self, "tls13")
 
     @property
@@ -7819,6 +8047,11 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @pulumi.getter(name="universalSsl")
     def universal_ssl(self) -> Optional[str]:
         return pulumi.get(self, "universal_ssl")
+
+    @property
+    @pulumi.getter(name="visitorIp")
+    def visitor_ip(self) -> Optional[str]:
+        return pulumi.get(self, "visitor_ip")
 
     @property
     @pulumi.getter
@@ -8040,6 +8273,8 @@ class ZoneSettingsOverrideSettings(dict):
             suggest = "always_use_https"
         elif key == "automaticHttpsRewrites":
             suggest = "automatic_https_rewrites"
+        elif key == "binaryAst":
+            suggest = "binary_ast"
         elif key == "browserCacheTtl":
             suggest = "browser_cache_ttl"
         elif key == "browserCheck":
@@ -8052,8 +8287,12 @@ class ZoneSettingsOverrideSettings(dict):
             suggest = "cname_flattening"
         elif key == "developmentMode":
             suggest = "development_mode"
+        elif key == "earlyHints":
+            suggest = "early_hints"
         elif key == "emailObfuscation":
             suggest = "email_obfuscation"
+        elif key == "filterLogsToCloudflare":
+            suggest = "filter_logs_to_cloudflare"
         elif key == "h2Prioritization":
             suggest = "h2_prioritization"
         elif key == "hotlinkProtection":
@@ -8062,6 +8301,8 @@ class ZoneSettingsOverrideSettings(dict):
             suggest = "image_resizing"
         elif key == "ipGeolocation":
             suggest = "ip_geolocation"
+        elif key == "logToCloudflare":
+            suggest = "log_to_cloudflare"
         elif key == "maxUpload":
             suggest = "max_upload"
         elif key == "minTlsVersion":
@@ -8072,12 +8313,16 @@ class ZoneSettingsOverrideSettings(dict):
             suggest = "opportunistic_encryption"
         elif key == "opportunisticOnion":
             suggest = "opportunistic_onion"
+        elif key == "orangeToOrange":
+            suggest = "orange_to_orange"
         elif key == "originErrorPagePassThru":
             suggest = "origin_error_page_pass_thru"
         elif key == "prefetchPreload":
             suggest = "prefetch_preload"
         elif key == "privacyPass":
             suggest = "privacy_pass"
+        elif key == "proxyReadTimeout":
+            suggest = "proxy_read_timeout"
         elif key == "pseudoIpv4":
             suggest = "pseudo_ipv4"
         elif key == "responseBuffering":
@@ -8100,6 +8345,8 @@ class ZoneSettingsOverrideSettings(dict):
             suggest = "true_client_ip_header"
         elif key == "universalSsl":
             suggest = "universal_ssl"
+        elif key == "visitorIp":
+            suggest = "visitor_ip"
         elif key == "zeroRtt":
             suggest = "zero_rtt"
 
@@ -8118,14 +8365,18 @@ class ZoneSettingsOverrideSettings(dict):
                  always_online: Optional[str] = None,
                  always_use_https: Optional[str] = None,
                  automatic_https_rewrites: Optional[str] = None,
+                 binary_ast: Optional[str] = None,
                  brotli: Optional[str] = None,
                  browser_cache_ttl: Optional[int] = None,
                  browser_check: Optional[str] = None,
                  cache_level: Optional[str] = None,
                  challenge_ttl: Optional[int] = None,
+                 ciphers: Optional[Sequence[str]] = None,
                  cname_flattening: Optional[str] = None,
                  development_mode: Optional[str] = None,
+                 early_hints: Optional[str] = None,
                  email_obfuscation: Optional[str] = None,
+                 filter_logs_to_cloudflare: Optional[str] = None,
                  h2_prioritization: Optional[str] = None,
                  hotlink_protection: Optional[str] = None,
                  http2: Optional[str] = None,
@@ -8133,6 +8384,7 @@ class ZoneSettingsOverrideSettings(dict):
                  image_resizing: Optional[str] = None,
                  ip_geolocation: Optional[str] = None,
                  ipv6: Optional[str] = None,
+                 log_to_cloudflare: Optional[str] = None,
                  max_upload: Optional[int] = None,
                  min_tls_version: Optional[str] = None,
                  minify: Optional['outputs.ZoneSettingsOverrideSettingsMinify'] = None,
@@ -8140,10 +8392,12 @@ class ZoneSettingsOverrideSettings(dict):
                  mobile_redirect: Optional['outputs.ZoneSettingsOverrideSettingsMobileRedirect'] = None,
                  opportunistic_encryption: Optional[str] = None,
                  opportunistic_onion: Optional[str] = None,
+                 orange_to_orange: Optional[str] = None,
                  origin_error_page_pass_thru: Optional[str] = None,
                  polish: Optional[str] = None,
                  prefetch_preload: Optional[str] = None,
                  privacy_pass: Optional[str] = None,
+                 proxy_read_timeout: Optional[str] = None,
                  pseudo_ipv4: Optional[str] = None,
                  response_buffering: Optional[str] = None,
                  rocket_loader: Optional[str] = None,
@@ -8157,11 +8411,23 @@ class ZoneSettingsOverrideSettings(dict):
                  tls_client_auth: Optional[str] = None,
                  true_client_ip_header: Optional[str] = None,
                  universal_ssl: Optional[str] = None,
+                 visitor_ip: Optional[str] = None,
                  waf: Optional[str] = None,
                  webp: Optional[str] = None,
                  websockets: Optional[str] = None,
                  zero_rtt: Optional[str] = None):
         """
+        :param str cache_level: Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+        :param Sequence[str] ciphers: An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        :param str cname_flattening: Allowed values: "flatten_at_root" (default), "flatten_all", "flatten_none".
+        :param str h2_prioritization: Allowed values: "on", "off" (default), "custom".
+        :param str image_resizing: Allowed values: "on", "off" (default), "open".
+        :param str min_tls_version: Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        :param str polish: Allowed values: "off" (default), "lossless", "lossy".
+        :param str pseudo_ipv4: Allowed values: "off" (default), "add_header", "overwrite_header".
+        :param str security_level: Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
+        :param str ssl: Allowed values: "off" (default), "flexible", "full", "strict", "origin_pull".
+        :param str tls13: Allowed values: "off" (default), "on", "zrt".
         :param str webp: . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
         """
         if always_online is not None:
@@ -8170,6 +8436,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "always_use_https", always_use_https)
         if automatic_https_rewrites is not None:
             pulumi.set(__self__, "automatic_https_rewrites", automatic_https_rewrites)
+        if binary_ast is not None:
+            pulumi.set(__self__, "binary_ast", binary_ast)
         if brotli is not None:
             pulumi.set(__self__, "brotli", brotli)
         if browser_cache_ttl is not None:
@@ -8180,12 +8448,18 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "cache_level", cache_level)
         if challenge_ttl is not None:
             pulumi.set(__self__, "challenge_ttl", challenge_ttl)
+        if ciphers is not None:
+            pulumi.set(__self__, "ciphers", ciphers)
         if cname_flattening is not None:
             pulumi.set(__self__, "cname_flattening", cname_flattening)
         if development_mode is not None:
             pulumi.set(__self__, "development_mode", development_mode)
+        if early_hints is not None:
+            pulumi.set(__self__, "early_hints", early_hints)
         if email_obfuscation is not None:
             pulumi.set(__self__, "email_obfuscation", email_obfuscation)
+        if filter_logs_to_cloudflare is not None:
+            pulumi.set(__self__, "filter_logs_to_cloudflare", filter_logs_to_cloudflare)
         if h2_prioritization is not None:
             pulumi.set(__self__, "h2_prioritization", h2_prioritization)
         if hotlink_protection is not None:
@@ -8200,6 +8474,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "ip_geolocation", ip_geolocation)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
+        if log_to_cloudflare is not None:
+            pulumi.set(__self__, "log_to_cloudflare", log_to_cloudflare)
         if max_upload is not None:
             pulumi.set(__self__, "max_upload", max_upload)
         if min_tls_version is not None:
@@ -8214,6 +8490,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         if opportunistic_onion is not None:
             pulumi.set(__self__, "opportunistic_onion", opportunistic_onion)
+        if orange_to_orange is not None:
+            pulumi.set(__self__, "orange_to_orange", orange_to_orange)
         if origin_error_page_pass_thru is not None:
             pulumi.set(__self__, "origin_error_page_pass_thru", origin_error_page_pass_thru)
         if polish is not None:
@@ -8222,6 +8500,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "prefetch_preload", prefetch_preload)
         if privacy_pass is not None:
             pulumi.set(__self__, "privacy_pass", privacy_pass)
+        if proxy_read_timeout is not None:
+            pulumi.set(__self__, "proxy_read_timeout", proxy_read_timeout)
         if pseudo_ipv4 is not None:
             pulumi.set(__self__, "pseudo_ipv4", pseudo_ipv4)
         if response_buffering is not None:
@@ -8248,6 +8528,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "true_client_ip_header", true_client_ip_header)
         if universal_ssl is not None:
             pulumi.set(__self__, "universal_ssl", universal_ssl)
+        if visitor_ip is not None:
+            pulumi.set(__self__, "visitor_ip", visitor_ip)
         if waf is not None:
             pulumi.set(__self__, "waf", waf)
         if webp is not None:
@@ -8273,6 +8555,11 @@ class ZoneSettingsOverrideSettings(dict):
         return pulumi.get(self, "automatic_https_rewrites")
 
     @property
+    @pulumi.getter(name="binaryAst")
+    def binary_ast(self) -> Optional[str]:
+        return pulumi.get(self, "binary_ast")
+
+    @property
     @pulumi.getter
     def brotli(self) -> Optional[str]:
         return pulumi.get(self, "brotli")
@@ -8290,6 +8577,9 @@ class ZoneSettingsOverrideSettings(dict):
     @property
     @pulumi.getter(name="cacheLevel")
     def cache_level(self) -> Optional[str]:
+        """
+        Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+        """
         return pulumi.get(self, "cache_level")
 
     @property
@@ -8298,8 +8588,19 @@ class ZoneSettingsOverrideSettings(dict):
         return pulumi.get(self, "challenge_ttl")
 
     @property
+    @pulumi.getter
+    def ciphers(self) -> Optional[Sequence[str]]:
+        """
+        An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+        """
+        return pulumi.get(self, "ciphers")
+
+    @property
     @pulumi.getter(name="cnameFlattening")
     def cname_flattening(self) -> Optional[str]:
+        """
+        Allowed values: "flatten_at_root" (default), "flatten_all", "flatten_none".
+        """
         return pulumi.get(self, "cname_flattening")
 
     @property
@@ -8308,13 +8609,26 @@ class ZoneSettingsOverrideSettings(dict):
         return pulumi.get(self, "development_mode")
 
     @property
+    @pulumi.getter(name="earlyHints")
+    def early_hints(self) -> Optional[str]:
+        return pulumi.get(self, "early_hints")
+
+    @property
     @pulumi.getter(name="emailObfuscation")
     def email_obfuscation(self) -> Optional[str]:
         return pulumi.get(self, "email_obfuscation")
 
     @property
+    @pulumi.getter(name="filterLogsToCloudflare")
+    def filter_logs_to_cloudflare(self) -> Optional[str]:
+        return pulumi.get(self, "filter_logs_to_cloudflare")
+
+    @property
     @pulumi.getter(name="h2Prioritization")
     def h2_prioritization(self) -> Optional[str]:
+        """
+        Allowed values: "on", "off" (default), "custom".
+        """
         return pulumi.get(self, "h2_prioritization")
 
     @property
@@ -8335,6 +8649,9 @@ class ZoneSettingsOverrideSettings(dict):
     @property
     @pulumi.getter(name="imageResizing")
     def image_resizing(self) -> Optional[str]:
+        """
+        Allowed values: "on", "off" (default), "open".
+        """
         return pulumi.get(self, "image_resizing")
 
     @property
@@ -8348,6 +8665,11 @@ class ZoneSettingsOverrideSettings(dict):
         return pulumi.get(self, "ipv6")
 
     @property
+    @pulumi.getter(name="logToCloudflare")
+    def log_to_cloudflare(self) -> Optional[str]:
+        return pulumi.get(self, "log_to_cloudflare")
+
+    @property
     @pulumi.getter(name="maxUpload")
     def max_upload(self) -> Optional[int]:
         return pulumi.get(self, "max_upload")
@@ -8355,6 +8677,9 @@ class ZoneSettingsOverrideSettings(dict):
     @property
     @pulumi.getter(name="minTlsVersion")
     def min_tls_version(self) -> Optional[str]:
+        """
+        Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
+        """
         return pulumi.get(self, "min_tls_version")
 
     @property
@@ -8383,6 +8708,11 @@ class ZoneSettingsOverrideSettings(dict):
         return pulumi.get(self, "opportunistic_onion")
 
     @property
+    @pulumi.getter(name="orangeToOrange")
+    def orange_to_orange(self) -> Optional[str]:
+        return pulumi.get(self, "orange_to_orange")
+
+    @property
     @pulumi.getter(name="originErrorPagePassThru")
     def origin_error_page_pass_thru(self) -> Optional[str]:
         return pulumi.get(self, "origin_error_page_pass_thru")
@@ -8390,6 +8720,9 @@ class ZoneSettingsOverrideSettings(dict):
     @property
     @pulumi.getter
     def polish(self) -> Optional[str]:
+        """
+        Allowed values: "off" (default), "lossless", "lossy".
+        """
         return pulumi.get(self, "polish")
 
     @property
@@ -8403,8 +8736,16 @@ class ZoneSettingsOverrideSettings(dict):
         return pulumi.get(self, "privacy_pass")
 
     @property
+    @pulumi.getter(name="proxyReadTimeout")
+    def proxy_read_timeout(self) -> Optional[str]:
+        return pulumi.get(self, "proxy_read_timeout")
+
+    @property
     @pulumi.getter(name="pseudoIpv4")
     def pseudo_ipv4(self) -> Optional[str]:
+        """
+        Allowed values: "off" (default), "add_header", "overwrite_header".
+        """
         return pulumi.get(self, "pseudo_ipv4")
 
     @property
@@ -8425,6 +8766,9 @@ class ZoneSettingsOverrideSettings(dict):
     @property
     @pulumi.getter(name="securityLevel")
     def security_level(self) -> Optional[str]:
+        """
+        Allowed values: "off" (Enterprise only), "essentially_off", "low", "medium" (default), "high", "under_attack".
+        """
         return pulumi.get(self, "security_level")
 
     @property
@@ -8440,6 +8784,9 @@ class ZoneSettingsOverrideSettings(dict):
     @property
     @pulumi.getter
     def ssl(self) -> Optional[str]:
+        """
+        Allowed values: "off" (default), "flexible", "full", "strict", "origin_pull".
+        """
         return pulumi.get(self, "ssl")
 
     @property
@@ -8450,6 +8797,9 @@ class ZoneSettingsOverrideSettings(dict):
     @property
     @pulumi.getter
     def tls13(self) -> Optional[str]:
+        """
+        Allowed values: "off" (default), "on", "zrt".
+        """
         return pulumi.get(self, "tls13")
 
     @property
@@ -8466,6 +8816,11 @@ class ZoneSettingsOverrideSettings(dict):
     @pulumi.getter(name="universalSsl")
     def universal_ssl(self) -> Optional[str]:
         return pulumi.get(self, "universal_ssl")
+
+    @property
+    @pulumi.getter(name="visitorIp")
+    def visitor_ip(self) -> Optional[str]:
+        return pulumi.get(self, "visitor_ip")
 
     @property
     @pulumi.getter

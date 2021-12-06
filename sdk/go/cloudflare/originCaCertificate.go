@@ -84,7 +84,7 @@ type OriginCaCertificate struct {
 	// The signature type desired on the certificate.
 	RequestType pulumi.StringOutput `pulumi:"requestType"`
 	// The number of days for which the certificate should be valid.
-	RequestedValidity pulumi.IntPtrOutput `pulumi:"requestedValidity"`
+	RequestedValidity pulumi.IntOutput `pulumi:"requestedValidity"`
 }
 
 // NewOriginCaCertificate registers a new resource with the given unique name, arguments, and options.

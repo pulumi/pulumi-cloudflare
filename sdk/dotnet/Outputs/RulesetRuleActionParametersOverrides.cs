@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersOverrides
     {
         /// <summary>
+        /// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        /// </summary>
+        public readonly string? Action;
+        /// <summary>
         /// List of tag-based overrides (refer to the nested schema).
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersOverridesCategory> Categories;
@@ -28,12 +32,15 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private RulesetRuleActionParametersOverrides(
+            string? action,
+
             ImmutableArray<Outputs.RulesetRuleActionParametersOverridesCategory> categories,
 
             bool? enabled,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersOverridesRule> rules)
         {
+            Action = action;
             Categories = categories;
             Enabled = enabled;
             Rules = rules;

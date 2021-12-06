@@ -63,6 +63,10 @@ export class ArgoTunnel extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * Usable CNAME for accessing the Argo Tunnel.
+     */
+    public /*out*/ readonly cname!: pulumi.Output<string>;
+    /**
      * A user-friendly name chosen when the tunnel is created. Cannot be empty.
      */
     public readonly name!: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class ArgoTunnel extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ArgoTunnelState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
+            inputs["cname"] = state ? state.cname : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["secret"] = state ? state.secret : undefined;
         } else {
@@ -101,6 +106,7 @@ export class ArgoTunnel extends pulumi.CustomResource {
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["secret"] = args ? args.secret : undefined;
+            inputs["cname"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -117,6 +123,10 @@ export interface ArgoTunnelState {
      * The Cloudflare account ID that you wish to manage the Argo Tunnel on.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Usable CNAME for accessing the Argo Tunnel.
+     */
+    cname?: pulumi.Input<string>;
     /**
      * A user-friendly name chosen when the tunnel is created. Cannot be empty.
      */

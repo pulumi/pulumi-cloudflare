@@ -30,6 +30,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
+        /// List of parameters that configure exposed credential checks (refer to the nested schema).
+        /// </summary>
+        public readonly Outputs.RulesetRuleExposedCredentialCheck? ExposedCredentialCheck;
+        /// <summary>
         /// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
         /// </summary>
         public readonly string Expression;
@@ -57,6 +61,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? enabled,
 
+            Outputs.RulesetRuleExposedCredentialCheck? exposedCredentialCheck,
+
             string expression,
 
             string? id,
@@ -71,6 +77,7 @@ namespace Pulumi.Cloudflare.Outputs
             ActionParameters = actionParameters;
             Description = description;
             Enabled = enabled;
+            ExposedCredentialCheck = exposedCredentialCheck;
             Expression = expression;
             Id = id;
             Ratelimit = ratelimit;

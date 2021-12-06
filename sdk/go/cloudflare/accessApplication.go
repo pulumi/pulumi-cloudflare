@@ -87,13 +87,17 @@ type AccessApplication struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
+	EnableBindingCookie     pulumi.BoolPtrOutput   `pulumi:"enableBindingCookie"`
+	HttpOnlyCookieAttribute pulumi.BoolPtrOutput   `pulumi:"httpOnlyCookieAttribute"`
+	LogoUrl                 pulumi.StringPtrOutput `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name                    pulumi.StringOutput    `pulumi:"name"`
+	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
+	SessionDuration  pulumi.StringPtrOutput `pulumi:"sessionDuration"`
+	SkipInterstitial pulumi.BoolPtrOutput   `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -157,13 +161,17 @@ type accessApplicationState struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
+	EnableBindingCookie     *bool   `pulumi:"enableBindingCookie"`
+	HttpOnlyCookieAttribute *bool   `pulumi:"httpOnlyCookieAttribute"`
+	LogoUrl                 *string `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
-	Name *string `pulumi:"name"`
+	Name                    *string `pulumi:"name"`
+	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration *string `pulumi:"sessionDuration"`
+	SessionDuration  *string `pulumi:"sessionDuration"`
+	SkipInterstitial *bool   `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
 	Type *string `pulumi:"type"`
@@ -193,13 +201,17 @@ type AccessApplicationState struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie pulumi.BoolPtrInput
+	EnableBindingCookie     pulumi.BoolPtrInput
+	HttpOnlyCookieAttribute pulumi.BoolPtrInput
+	LogoUrl                 pulumi.StringPtrInput
 	// Friendly name of the Access Application.
-	Name pulumi.StringPtrInput
+	Name                    pulumi.StringPtrInput
+	SameSiteCookieAttribute pulumi.StringPtrInput
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration pulumi.StringPtrInput
+	SessionDuration  pulumi.StringPtrInput
+	SkipInterstitial pulumi.BoolPtrInput
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
 	Type pulumi.StringPtrInput
@@ -231,13 +243,17 @@ type accessApplicationArgs struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
+	EnableBindingCookie     *bool   `pulumi:"enableBindingCookie"`
+	HttpOnlyCookieAttribute *bool   `pulumi:"httpOnlyCookieAttribute"`
+	LogoUrl                 *string `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
-	Name string `pulumi:"name"`
+	Name                    string  `pulumi:"name"`
+	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration *string `pulumi:"sessionDuration"`
+	SessionDuration  *string `pulumi:"sessionDuration"`
+	SkipInterstitial *bool   `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
 	Type *string `pulumi:"type"`
@@ -266,13 +282,17 @@ type AccessApplicationArgs struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie pulumi.BoolPtrInput
+	EnableBindingCookie     pulumi.BoolPtrInput
+	HttpOnlyCookieAttribute pulumi.BoolPtrInput
+	LogoUrl                 pulumi.StringPtrInput
 	// Friendly name of the Access Application.
-	Name pulumi.StringInput
+	Name                    pulumi.StringInput
+	SameSiteCookieAttribute pulumi.StringPtrInput
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration pulumi.StringPtrInput
+	SessionDuration  pulumi.StringPtrInput
+	SkipInterstitial pulumi.BoolPtrInput
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
 	Type pulumi.StringPtrInput

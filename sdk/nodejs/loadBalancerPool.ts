@@ -28,6 +28,9 @@ import * as utilities from "./utilities";
  *     minimumOrigins: 1,
  *     name: "example-pool",
  *     notificationEmail: "someone@example.com",
+ *     originSteerings: [{
+ *         policy: "random",
+ *     }],
  *     origins: [
  *         {
  *             address: "192.0.2.1",
@@ -127,6 +130,10 @@ export class LoadBalancerPool extends pulumi.CustomResource {
      */
     public readonly notificationEmail!: pulumi.Output<string | undefined>;
     /**
+     * Set an origin steering policy to control origin selection within a pool.
+     */
+    public readonly originSteerings!: pulumi.Output<outputs.LoadBalancerPoolOriginSteering[] | undefined>;
+    /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */
     public readonly origins!: pulumi.Output<outputs.LoadBalancerPoolOrigin[]>;
@@ -156,6 +163,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["monitor"] = state ? state.monitor : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["notificationEmail"] = state ? state.notificationEmail : undefined;
+            inputs["originSteerings"] = state ? state.originSteerings : undefined;
             inputs["origins"] = state ? state.origins : undefined;
         } else {
             const args = argsOrState as LoadBalancerPoolArgs | undefined;
@@ -175,6 +183,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             inputs["monitor"] = args ? args.monitor : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationEmail"] = args ? args.notificationEmail : undefined;
+            inputs["originSteerings"] = args ? args.originSteerings : undefined;
             inputs["origins"] = args ? args.origins : undefined;
             inputs["createdOn"] = undefined /*out*/;
             inputs["modifiedOn"] = undefined /*out*/;
@@ -239,6 +248,10 @@ export interface LoadBalancerPoolState {
      */
     notificationEmail?: pulumi.Input<string>;
     /**
+     * Set an origin steering policy to control origin selection within a pool.
+     */
+    originSteerings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOriginSteering>[]>;
+    /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */
     origins?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOrigin>[]>;
@@ -288,6 +301,10 @@ export interface LoadBalancerPoolArgs {
      * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      */
     notificationEmail?: pulumi.Input<string>;
+    /**
+     * Set an origin steering policy to control origin selection within a pool.
+     */
+    originSteerings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerPoolOriginSteering>[]>;
     /**
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
      */

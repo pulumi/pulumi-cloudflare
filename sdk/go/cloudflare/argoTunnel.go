@@ -52,6 +52,8 @@ type ArgoTunnel struct {
 
 	// The Cloudflare account ID that you wish to manage the Argo Tunnel on.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Usable CNAME for accessing the Argo Tunnel.
+	Cname pulumi.StringOutput `pulumi:"cname"`
 	// A user-friendly name chosen when the tunnel is created. Cannot be empty.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
@@ -98,6 +100,8 @@ func GetArgoTunnel(ctx *pulumi.Context,
 type argoTunnelState struct {
 	// The Cloudflare account ID that you wish to manage the Argo Tunnel on.
 	AccountId *string `pulumi:"accountId"`
+	// Usable CNAME for accessing the Argo Tunnel.
+	Cname *string `pulumi:"cname"`
 	// A user-friendly name chosen when the tunnel is created. Cannot be empty.
 	Name *string `pulumi:"name"`
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
@@ -107,6 +111,8 @@ type argoTunnelState struct {
 type ArgoTunnelState struct {
 	// The Cloudflare account ID that you wish to manage the Argo Tunnel on.
 	AccountId pulumi.StringPtrInput
+	// Usable CNAME for accessing the Argo Tunnel.
+	Cname pulumi.StringPtrInput
 	// A user-friendly name chosen when the tunnel is created. Cannot be empty.
 	Name pulumi.StringPtrInput
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.

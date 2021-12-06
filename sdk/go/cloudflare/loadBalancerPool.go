@@ -41,6 +41,11 @@ import (
 // 			MinimumOrigins:    pulumi.Int(1),
 // 			Name:              pulumi.String("example-pool"),
 // 			NotificationEmail: pulumi.String("someone@example.com"),
+// 			OriginSteerings: LoadBalancerPoolOriginSteeringArray{
+// 				&LoadBalancerPoolOriginSteeringArgs{
+// 					Policy: pulumi.String("random"),
+// 				},
+// 			},
 // 			Origins: LoadBalancerPoolOriginArray{
 // 				&LoadBalancerPoolOriginArgs{
 // 					Address: pulumi.String("192.0.2.1"),
@@ -103,6 +108,8 @@ type LoadBalancerPool struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrOutput `pulumi:"notificationEmail"`
+	// Set an origin steering policy to control origin selection within a pool.
+	OriginSteerings LoadBalancerPoolOriginSteeringArrayOutput `pulumi:"originSteerings"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins LoadBalancerPoolOriginArrayOutput `pulumi:"origins"`
 }
@@ -166,6 +173,8 @@ type loadBalancerPoolState struct {
 	Name *string `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
+	// Set an origin steering policy to control origin selection within a pool.
+	OriginSteerings []LoadBalancerPoolOriginSteering `pulumi:"originSteerings"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins []LoadBalancerPoolOrigin `pulumi:"origins"`
 }
@@ -195,6 +204,8 @@ type LoadBalancerPoolState struct {
 	Name pulumi.StringPtrInput
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
+	// Set an origin steering policy to control origin selection within a pool.
+	OriginSteerings LoadBalancerPoolOriginSteeringArrayInput
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins LoadBalancerPoolOriginArrayInput
 }
@@ -224,6 +235,8 @@ type loadBalancerPoolArgs struct {
 	Name string `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
+	// Set an origin steering policy to control origin selection within a pool.
+	OriginSteerings []LoadBalancerPoolOriginSteering `pulumi:"originSteerings"`
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins []LoadBalancerPoolOrigin `pulumi:"origins"`
 }
@@ -250,6 +263,8 @@ type LoadBalancerPoolArgs struct {
 	Name pulumi.StringInput
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
+	// Set an origin steering policy to control origin selection within a pool.
+	OriginSteerings LoadBalancerPoolOriginSteeringArrayInput
 	// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
 	Origins LoadBalancerPoolOriginArrayInput
 }

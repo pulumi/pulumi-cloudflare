@@ -5545,6 +5545,8 @@ func (o CustomHostnameSslArrayOutput) Index(i pulumi.IntInput) CustomHostnameSsl
 type CustomHostnameSslSetting struct {
 	// List of SSL/TLS ciphers to associate with this certificate.
 	Ciphers []string `pulumi:"ciphers"`
+	// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
+	EarlyHints *string `pulumi:"earlyHints"`
 	// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
 	Http2 *string `pulumi:"http2"`
 	// Lowest version of TLS this certificate should
@@ -5568,6 +5570,8 @@ type CustomHostnameSslSettingInput interface {
 type CustomHostnameSslSettingArgs struct {
 	// List of SSL/TLS ciphers to associate with this certificate.
 	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
+	// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
+	EarlyHints pulumi.StringPtrInput `pulumi:"earlyHints"`
 	// Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
 	Http2 pulumi.StringPtrInput `pulumi:"http2"`
 	// Lowest version of TLS this certificate should
@@ -5631,6 +5635,11 @@ func (o CustomHostnameSslSettingOutput) ToCustomHostnameSslSettingOutputWithCont
 // List of SSL/TLS ciphers to associate with this certificate.
 func (o CustomHostnameSslSettingOutput) Ciphers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomHostnameSslSetting) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// Whether or not early hints should be supported. Valid values are `"on"` or `"off"`.
+func (o CustomHostnameSslSettingOutput) EarlyHints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslSetting) *string { return v.EarlyHints }).(pulumi.StringPtrOutput)
 }
 
 // Whether or not HTTP2 should be supported. Valid values are `"on"` or `"off"`.
@@ -6945,6 +6954,103 @@ func (o LoadBalancerPoolOriginHeaderArrayOutput) Index(i pulumi.IntInput) LoadBa
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerPoolOriginHeader {
 		return vs[0].([]LoadBalancerPoolOriginHeader)[vs[1].(int)]
 	}).(LoadBalancerPoolOriginHeaderOutput)
+}
+
+type LoadBalancerPoolOriginSteering struct {
+	// Either "random" (default) or "hash".
+	Policy *string `pulumi:"policy"`
+}
+
+// LoadBalancerPoolOriginSteeringInput is an input type that accepts LoadBalancerPoolOriginSteeringArgs and LoadBalancerPoolOriginSteeringOutput values.
+// You can construct a concrete instance of `LoadBalancerPoolOriginSteeringInput` via:
+//
+//          LoadBalancerPoolOriginSteeringArgs{...}
+type LoadBalancerPoolOriginSteeringInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolOriginSteeringOutput() LoadBalancerPoolOriginSteeringOutput
+	ToLoadBalancerPoolOriginSteeringOutputWithContext(context.Context) LoadBalancerPoolOriginSteeringOutput
+}
+
+type LoadBalancerPoolOriginSteeringArgs struct {
+	// Either "random" (default) or "hash".
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (LoadBalancerPoolOriginSteeringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPoolOriginSteering)(nil)).Elem()
+}
+
+func (i LoadBalancerPoolOriginSteeringArgs) ToLoadBalancerPoolOriginSteeringOutput() LoadBalancerPoolOriginSteeringOutput {
+	return i.ToLoadBalancerPoolOriginSteeringOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPoolOriginSteeringArgs) ToLoadBalancerPoolOriginSteeringOutputWithContext(ctx context.Context) LoadBalancerPoolOriginSteeringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolOriginSteeringOutput)
+}
+
+// LoadBalancerPoolOriginSteeringArrayInput is an input type that accepts LoadBalancerPoolOriginSteeringArray and LoadBalancerPoolOriginSteeringArrayOutput values.
+// You can construct a concrete instance of `LoadBalancerPoolOriginSteeringArrayInput` via:
+//
+//          LoadBalancerPoolOriginSteeringArray{ LoadBalancerPoolOriginSteeringArgs{...} }
+type LoadBalancerPoolOriginSteeringArrayInput interface {
+	pulumi.Input
+
+	ToLoadBalancerPoolOriginSteeringArrayOutput() LoadBalancerPoolOriginSteeringArrayOutput
+	ToLoadBalancerPoolOriginSteeringArrayOutputWithContext(context.Context) LoadBalancerPoolOriginSteeringArrayOutput
+}
+
+type LoadBalancerPoolOriginSteeringArray []LoadBalancerPoolOriginSteeringInput
+
+func (LoadBalancerPoolOriginSteeringArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerPoolOriginSteering)(nil)).Elem()
+}
+
+func (i LoadBalancerPoolOriginSteeringArray) ToLoadBalancerPoolOriginSteeringArrayOutput() LoadBalancerPoolOriginSteeringArrayOutput {
+	return i.ToLoadBalancerPoolOriginSteeringArrayOutputWithContext(context.Background())
+}
+
+func (i LoadBalancerPoolOriginSteeringArray) ToLoadBalancerPoolOriginSteeringArrayOutputWithContext(ctx context.Context) LoadBalancerPoolOriginSteeringArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolOriginSteeringArrayOutput)
+}
+
+type LoadBalancerPoolOriginSteeringOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPoolOriginSteeringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadBalancerPoolOriginSteering)(nil)).Elem()
+}
+
+func (o LoadBalancerPoolOriginSteeringOutput) ToLoadBalancerPoolOriginSteeringOutput() LoadBalancerPoolOriginSteeringOutput {
+	return o
+}
+
+func (o LoadBalancerPoolOriginSteeringOutput) ToLoadBalancerPoolOriginSteeringOutputWithContext(ctx context.Context) LoadBalancerPoolOriginSteeringOutput {
+	return o
+}
+
+// Either "random" (default) or "hash".
+func (o LoadBalancerPoolOriginSteeringOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPoolOriginSteering) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type LoadBalancerPoolOriginSteeringArrayOutput struct{ *pulumi.OutputState }
+
+func (LoadBalancerPoolOriginSteeringArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoadBalancerPoolOriginSteering)(nil)).Elem()
+}
+
+func (o LoadBalancerPoolOriginSteeringArrayOutput) ToLoadBalancerPoolOriginSteeringArrayOutput() LoadBalancerPoolOriginSteeringArrayOutput {
+	return o
+}
+
+func (o LoadBalancerPoolOriginSteeringArrayOutput) ToLoadBalancerPoolOriginSteeringArrayOutputWithContext(ctx context.Context) LoadBalancerPoolOriginSteeringArrayOutput {
+	return o
+}
+
+func (o LoadBalancerPoolOriginSteeringArrayOutput) Index(i pulumi.IntInput) LoadBalancerPoolOriginSteeringOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerPoolOriginSteering {
+		return vs[0].([]LoadBalancerPoolOriginSteering)[vs[1].(int)]
+	}).(LoadBalancerPoolOriginSteeringOutput)
 }
 
 type LoadBalancerPopPool struct {
@@ -12128,6 +12234,8 @@ type RulesetRule struct {
 	Description string `pulumi:"description"`
 	// Defines if the current rule-level override enables or disables the rule.
 	Enabled *bool `pulumi:"enabled"`
+	// List of parameters that configure exposed credential checks (refer to the nested schema).
+	ExposedCredentialCheck *RulesetRuleExposedCredentialCheck `pulumi:"exposedCredentialCheck"`
 	// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
 	Expression string `pulumi:"expression"`
 	// Rule ID to apply the override to.
@@ -12159,6 +12267,8 @@ type RulesetRuleArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Defines if the current rule-level override enables or disables the rule.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// List of parameters that configure exposed credential checks (refer to the nested schema).
+	ExposedCredentialCheck RulesetRuleExposedCredentialCheckPtrInput `pulumi:"exposedCredentialCheck"`
 	// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// Rule ID to apply the override to.
@@ -12239,6 +12349,11 @@ func (o RulesetRuleOutput) Description() pulumi.StringOutput {
 // Defines if the current rule-level override enables or disables the rule.
 func (o RulesetRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// List of parameters that configure exposed credential checks (refer to the nested schema).
+func (o RulesetRuleOutput) ExposedCredentialCheck() RulesetRuleExposedCredentialCheckPtrOutput {
+	return o.ApplyT(func(v RulesetRule) *RulesetRuleExposedCredentialCheck { return v.ExposedCredentialCheck }).(RulesetRuleExposedCredentialCheckPtrOutput)
 }
 
 // Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
@@ -12866,6 +12981,8 @@ func (o RulesetRuleActionParametersMatchedDataPtrOutput) PublicKey() pulumi.Stri
 }
 
 type RulesetRuleActionParametersOverrides struct {
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	Action *string `pulumi:"action"`
 	// List of tag-based overrides (refer to the nested schema).
 	Categories []RulesetRuleActionParametersOverridesCategory `pulumi:"categories"`
 	// Defines if the current rule-level override enables or disables the rule.
@@ -12886,6 +13003,8 @@ type RulesetRuleActionParametersOverridesInput interface {
 }
 
 type RulesetRuleActionParametersOverridesArgs struct {
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of tag-based overrides (refer to the nested schema).
 	Categories RulesetRuleActionParametersOverridesCategoryArrayInput `pulumi:"categories"`
 	// Defines if the current rule-level override enables or disables the rule.
@@ -12971,6 +13090,11 @@ func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParameter
 	}).(RulesetRuleActionParametersOverridesPtrOutput)
 }
 
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+func (o RulesetRuleActionParametersOverridesOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
 // List of tag-based overrides (refer to the nested schema).
 func (o RulesetRuleActionParametersOverridesOutput) Categories() RulesetRuleActionParametersOverridesCategoryArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) []RulesetRuleActionParametersOverridesCategory {
@@ -13012,6 +13136,16 @@ func (o RulesetRuleActionParametersOverridesPtrOutput) Elem() RulesetRuleActionP
 		var ret RulesetRuleActionParametersOverrides
 		return ret
 	}).(RulesetRuleActionParametersOverridesOutput)
+}
+
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+func (o RulesetRuleActionParametersOverridesPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
 }
 
 // List of tag-based overrides (refer to the nested schema).
@@ -13772,6 +13906,162 @@ func (o RulesetRuleActionParametersUriQueryPtrOutput) Value() pulumi.StringPtrOu
 			return nil
 		}
 		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleExposedCredentialCheck struct {
+	// Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+	PasswordExpression *string `pulumi:"passwordExpression"`
+	// Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+	UsernameExpression *string `pulumi:"usernameExpression"`
+}
+
+// RulesetRuleExposedCredentialCheckInput is an input type that accepts RulesetRuleExposedCredentialCheckArgs and RulesetRuleExposedCredentialCheckOutput values.
+// You can construct a concrete instance of `RulesetRuleExposedCredentialCheckInput` via:
+//
+//          RulesetRuleExposedCredentialCheckArgs{...}
+type RulesetRuleExposedCredentialCheckInput interface {
+	pulumi.Input
+
+	ToRulesetRuleExposedCredentialCheckOutput() RulesetRuleExposedCredentialCheckOutput
+	ToRulesetRuleExposedCredentialCheckOutputWithContext(context.Context) RulesetRuleExposedCredentialCheckOutput
+}
+
+type RulesetRuleExposedCredentialCheckArgs struct {
+	// Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+	PasswordExpression pulumi.StringPtrInput `pulumi:"passwordExpression"`
+	// Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+	UsernameExpression pulumi.StringPtrInput `pulumi:"usernameExpression"`
+}
+
+func (RulesetRuleExposedCredentialCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleExposedCredentialCheck)(nil)).Elem()
+}
+
+func (i RulesetRuleExposedCredentialCheckArgs) ToRulesetRuleExposedCredentialCheckOutput() RulesetRuleExposedCredentialCheckOutput {
+	return i.ToRulesetRuleExposedCredentialCheckOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleExposedCredentialCheckArgs) ToRulesetRuleExposedCredentialCheckOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleExposedCredentialCheckOutput)
+}
+
+func (i RulesetRuleExposedCredentialCheckArgs) ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput {
+	return i.ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleExposedCredentialCheckArgs) ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleExposedCredentialCheckOutput).ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleExposedCredentialCheckPtrInput is an input type that accepts RulesetRuleExposedCredentialCheckArgs, RulesetRuleExposedCredentialCheckPtr and RulesetRuleExposedCredentialCheckPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleExposedCredentialCheckPtrInput` via:
+//
+//          RulesetRuleExposedCredentialCheckArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleExposedCredentialCheckPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput
+	ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(context.Context) RulesetRuleExposedCredentialCheckPtrOutput
+}
+
+type rulesetRuleExposedCredentialCheckPtrType RulesetRuleExposedCredentialCheckArgs
+
+func RulesetRuleExposedCredentialCheckPtr(v *RulesetRuleExposedCredentialCheckArgs) RulesetRuleExposedCredentialCheckPtrInput {
+	return (*rulesetRuleExposedCredentialCheckPtrType)(v)
+}
+
+func (*rulesetRuleExposedCredentialCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleExposedCredentialCheck)(nil)).Elem()
+}
+
+func (i *rulesetRuleExposedCredentialCheckPtrType) ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput {
+	return i.ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleExposedCredentialCheckPtrType) ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleExposedCredentialCheckPtrOutput)
+}
+
+type RulesetRuleExposedCredentialCheckOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleExposedCredentialCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleExposedCredentialCheck)(nil)).Elem()
+}
+
+func (o RulesetRuleExposedCredentialCheckOutput) ToRulesetRuleExposedCredentialCheckOutput() RulesetRuleExposedCredentialCheckOutput {
+	return o
+}
+
+func (o RulesetRuleExposedCredentialCheckOutput) ToRulesetRuleExposedCredentialCheckOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckOutput {
+	return o
+}
+
+func (o RulesetRuleExposedCredentialCheckOutput) ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput {
+	return o.ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleExposedCredentialCheckOutput) ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleExposedCredentialCheck) *RulesetRuleExposedCredentialCheck {
+		return &v
+	}).(RulesetRuleExposedCredentialCheckPtrOutput)
+}
+
+// Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+func (o RulesetRuleExposedCredentialCheckOutput) PasswordExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleExposedCredentialCheck) *string { return v.PasswordExpression }).(pulumi.StringPtrOutput)
+}
+
+// Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+func (o RulesetRuleExposedCredentialCheckOutput) UsernameExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleExposedCredentialCheck) *string { return v.UsernameExpression }).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleExposedCredentialCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleExposedCredentialCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleExposedCredentialCheck)(nil)).Elem()
+}
+
+func (o RulesetRuleExposedCredentialCheckPtrOutput) ToRulesetRuleExposedCredentialCheckPtrOutput() RulesetRuleExposedCredentialCheckPtrOutput {
+	return o
+}
+
+func (o RulesetRuleExposedCredentialCheckPtrOutput) ToRulesetRuleExposedCredentialCheckPtrOutputWithContext(ctx context.Context) RulesetRuleExposedCredentialCheckPtrOutput {
+	return o
+}
+
+func (o RulesetRuleExposedCredentialCheckPtrOutput) Elem() RulesetRuleExposedCredentialCheckOutput {
+	return o.ApplyT(func(v *RulesetRuleExposedCredentialCheck) RulesetRuleExposedCredentialCheck {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleExposedCredentialCheck
+		return ret
+	}).(RulesetRuleExposedCredentialCheckOutput)
+}
+
+// Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+func (o RulesetRuleExposedCredentialCheckPtrOutput) PasswordExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleExposedCredentialCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+func (o RulesetRuleExposedCredentialCheckPtrOutput) UsernameExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleExposedCredentialCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UsernameExpression
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15995,49 +16285,68 @@ func (o ZoneLockdownConfigurationArrayOutput) Index(i pulumi.IntInput) ZoneLockd
 }
 
 type ZoneSettingsOverrideInitialSetting struct {
-	AlwaysOnline            *string                                           `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          *string                                           `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  *string                                           `pulumi:"automaticHttpsRewrites"`
-	Brotli                  *string                                           `pulumi:"brotli"`
-	BrowserCacheTtl         *int                                              `pulumi:"browserCacheTtl"`
-	BrowserCheck            *string                                           `pulumi:"browserCheck"`
-	CacheLevel              *string                                           `pulumi:"cacheLevel"`
-	ChallengeTtl            *int                                              `pulumi:"challengeTtl"`
-	CnameFlattening         *string                                           `pulumi:"cnameFlattening"`
-	DevelopmentMode         *string                                           `pulumi:"developmentMode"`
-	EmailObfuscation        *string                                           `pulumi:"emailObfuscation"`
-	H2Prioritization        *string                                           `pulumi:"h2Prioritization"`
-	HotlinkProtection       *string                                           `pulumi:"hotlinkProtection"`
-	Http2                   *string                                           `pulumi:"http2"`
-	Http3                   *string                                           `pulumi:"http3"`
-	ImageResizing           *string                                           `pulumi:"imageResizing"`
-	IpGeolocation           *string                                           `pulumi:"ipGeolocation"`
-	Ipv6                    *string                                           `pulumi:"ipv6"`
-	MaxUpload               *int                                              `pulumi:"maxUpload"`
+	AlwaysOnline           *string `pulumi:"alwaysOnline"`
+	AlwaysUseHttps         *string `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites *string `pulumi:"automaticHttpsRewrites"`
+	BinaryAst              *string `pulumi:"binaryAst"`
+	Brotli                 *string `pulumi:"brotli"`
+	BrowserCacheTtl        *int    `pulumi:"browserCacheTtl"`
+	BrowserCheck           *string `pulumi:"browserCheck"`
+	// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+	CacheLevel   *string `pulumi:"cacheLevel"`
+	ChallengeTtl *int    `pulumi:"challengeTtl"`
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers []string `pulumi:"ciphers"`
+	// Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
+	CnameFlattening        *string `pulumi:"cnameFlattening"`
+	DevelopmentMode        *string `pulumi:"developmentMode"`
+	EarlyHints             *string `pulumi:"earlyHints"`
+	EmailObfuscation       *string `pulumi:"emailObfuscation"`
+	FilterLogsToCloudflare *string `pulumi:"filterLogsToCloudflare"`
+	// Allowed values: "on", "off" (default), "custom".
+	H2Prioritization  *string `pulumi:"h2Prioritization"`
+	HotlinkProtection *string `pulumi:"hotlinkProtection"`
+	Http2             *string `pulumi:"http2"`
+	Http3             *string `pulumi:"http3"`
+	// Allowed values: "on", "off" (default), "open".
+	ImageResizing   *string `pulumi:"imageResizing"`
+	IpGeolocation   *string `pulumi:"ipGeolocation"`
+	Ipv6            *string `pulumi:"ipv6"`
+	LogToCloudflare *string `pulumi:"logToCloudflare"`
+	MaxUpload       *int    `pulumi:"maxUpload"`
+	// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
 	MinTlsVersion           *string                                           `pulumi:"minTlsVersion"`
 	Minify                  *ZoneSettingsOverrideInitialSettingMinify         `pulumi:"minify"`
 	Mirage                  *string                                           `pulumi:"mirage"`
 	MobileRedirect          *ZoneSettingsOverrideInitialSettingMobileRedirect `pulumi:"mobileRedirect"`
 	OpportunisticEncryption *string                                           `pulumi:"opportunisticEncryption"`
 	OpportunisticOnion      *string                                           `pulumi:"opportunisticOnion"`
+	OrangeToOrange          *string                                           `pulumi:"orangeToOrange"`
 	OriginErrorPagePassThru *string                                           `pulumi:"originErrorPagePassThru"`
-	Polish                  *string                                           `pulumi:"polish"`
-	PrefetchPreload         *string                                           `pulumi:"prefetchPreload"`
-	PrivacyPass             *string                                           `pulumi:"privacyPass"`
-	PseudoIpv4              *string                                           `pulumi:"pseudoIpv4"`
-	ResponseBuffering       *string                                           `pulumi:"responseBuffering"`
-	RocketLoader            *string                                           `pulumi:"rocketLoader"`
-	SecurityHeader          *ZoneSettingsOverrideInitialSettingSecurityHeader `pulumi:"securityHeader"`
-	SecurityLevel           *string                                           `pulumi:"securityLevel"`
-	ServerSideExclude       *string                                           `pulumi:"serverSideExclude"`
-	SortQueryStringForCache *string                                           `pulumi:"sortQueryStringForCache"`
-	Ssl                     *string                                           `pulumi:"ssl"`
+	// Allowed values: "off" (default), "lossless", "lossy".
+	Polish           *string `pulumi:"polish"`
+	PrefetchPreload  *string `pulumi:"prefetchPreload"`
+	PrivacyPass      *string `pulumi:"privacyPass"`
+	ProxyReadTimeout *string `pulumi:"proxyReadTimeout"`
+	// Allowed values: "off" (default), "addHeader", "overwriteHeader".
+	PseudoIpv4        *string                                           `pulumi:"pseudoIpv4"`
+	ResponseBuffering *string                                           `pulumi:"responseBuffering"`
+	RocketLoader      *string                                           `pulumi:"rocketLoader"`
+	SecurityHeader    *ZoneSettingsOverrideInitialSettingSecurityHeader `pulumi:"securityHeader"`
+	// Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
+	SecurityLevel           *string `pulumi:"securityLevel"`
+	ServerSideExclude       *string `pulumi:"serverSideExclude"`
+	SortQueryStringForCache *string `pulumi:"sortQueryStringForCache"`
+	// Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
+	Ssl *string `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
-	Tls12Only          *string `pulumi:"tls12Only"`
+	Tls12Only *string `pulumi:"tls12Only"`
+	// Allowed values: "off" (default), "on", "zrt".
 	Tls13              *string `pulumi:"tls13"`
 	TlsClientAuth      *string `pulumi:"tlsClientAuth"`
 	TrueClientIpHeader *string `pulumi:"trueClientIpHeader"`
 	UniversalSsl       *string `pulumi:"universalSsl"`
+	VisitorIp          *string `pulumi:"visitorIp"`
 	Waf                *string `pulumi:"waf"`
 	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 	Webp       *string `pulumi:"webp"`
@@ -16057,49 +16366,68 @@ type ZoneSettingsOverrideInitialSettingInput interface {
 }
 
 type ZoneSettingsOverrideInitialSettingArgs struct {
-	AlwaysOnline            pulumi.StringPtrInput                                    `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          pulumi.StringPtrInput                                    `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  pulumi.StringPtrInput                                    `pulumi:"automaticHttpsRewrites"`
-	Brotli                  pulumi.StringPtrInput                                    `pulumi:"brotli"`
-	BrowserCacheTtl         pulumi.IntPtrInput                                       `pulumi:"browserCacheTtl"`
-	BrowserCheck            pulumi.StringPtrInput                                    `pulumi:"browserCheck"`
-	CacheLevel              pulumi.StringPtrInput                                    `pulumi:"cacheLevel"`
-	ChallengeTtl            pulumi.IntPtrInput                                       `pulumi:"challengeTtl"`
-	CnameFlattening         pulumi.StringPtrInput                                    `pulumi:"cnameFlattening"`
-	DevelopmentMode         pulumi.StringPtrInput                                    `pulumi:"developmentMode"`
-	EmailObfuscation        pulumi.StringPtrInput                                    `pulumi:"emailObfuscation"`
-	H2Prioritization        pulumi.StringPtrInput                                    `pulumi:"h2Prioritization"`
-	HotlinkProtection       pulumi.StringPtrInput                                    `pulumi:"hotlinkProtection"`
-	Http2                   pulumi.StringPtrInput                                    `pulumi:"http2"`
-	Http3                   pulumi.StringPtrInput                                    `pulumi:"http3"`
-	ImageResizing           pulumi.StringPtrInput                                    `pulumi:"imageResizing"`
-	IpGeolocation           pulumi.StringPtrInput                                    `pulumi:"ipGeolocation"`
-	Ipv6                    pulumi.StringPtrInput                                    `pulumi:"ipv6"`
-	MaxUpload               pulumi.IntPtrInput                                       `pulumi:"maxUpload"`
+	AlwaysOnline           pulumi.StringPtrInput `pulumi:"alwaysOnline"`
+	AlwaysUseHttps         pulumi.StringPtrInput `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites pulumi.StringPtrInput `pulumi:"automaticHttpsRewrites"`
+	BinaryAst              pulumi.StringPtrInput `pulumi:"binaryAst"`
+	Brotli                 pulumi.StringPtrInput `pulumi:"brotli"`
+	BrowserCacheTtl        pulumi.IntPtrInput    `pulumi:"browserCacheTtl"`
+	BrowserCheck           pulumi.StringPtrInput `pulumi:"browserCheck"`
+	// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+	CacheLevel   pulumi.StringPtrInput `pulumi:"cacheLevel"`
+	ChallengeTtl pulumi.IntPtrInput    `pulumi:"challengeTtl"`
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
+	// Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
+	CnameFlattening        pulumi.StringPtrInput `pulumi:"cnameFlattening"`
+	DevelopmentMode        pulumi.StringPtrInput `pulumi:"developmentMode"`
+	EarlyHints             pulumi.StringPtrInput `pulumi:"earlyHints"`
+	EmailObfuscation       pulumi.StringPtrInput `pulumi:"emailObfuscation"`
+	FilterLogsToCloudflare pulumi.StringPtrInput `pulumi:"filterLogsToCloudflare"`
+	// Allowed values: "on", "off" (default), "custom".
+	H2Prioritization  pulumi.StringPtrInput `pulumi:"h2Prioritization"`
+	HotlinkProtection pulumi.StringPtrInput `pulumi:"hotlinkProtection"`
+	Http2             pulumi.StringPtrInput `pulumi:"http2"`
+	Http3             pulumi.StringPtrInput `pulumi:"http3"`
+	// Allowed values: "on", "off" (default), "open".
+	ImageResizing   pulumi.StringPtrInput `pulumi:"imageResizing"`
+	IpGeolocation   pulumi.StringPtrInput `pulumi:"ipGeolocation"`
+	Ipv6            pulumi.StringPtrInput `pulumi:"ipv6"`
+	LogToCloudflare pulumi.StringPtrInput `pulumi:"logToCloudflare"`
+	MaxUpload       pulumi.IntPtrInput    `pulumi:"maxUpload"`
+	// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
 	MinTlsVersion           pulumi.StringPtrInput                                    `pulumi:"minTlsVersion"`
 	Minify                  ZoneSettingsOverrideInitialSettingMinifyPtrInput         `pulumi:"minify"`
 	Mirage                  pulumi.StringPtrInput                                    `pulumi:"mirage"`
 	MobileRedirect          ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput `pulumi:"mobileRedirect"`
 	OpportunisticEncryption pulumi.StringPtrInput                                    `pulumi:"opportunisticEncryption"`
 	OpportunisticOnion      pulumi.StringPtrInput                                    `pulumi:"opportunisticOnion"`
+	OrangeToOrange          pulumi.StringPtrInput                                    `pulumi:"orangeToOrange"`
 	OriginErrorPagePassThru pulumi.StringPtrInput                                    `pulumi:"originErrorPagePassThru"`
-	Polish                  pulumi.StringPtrInput                                    `pulumi:"polish"`
-	PrefetchPreload         pulumi.StringPtrInput                                    `pulumi:"prefetchPreload"`
-	PrivacyPass             pulumi.StringPtrInput                                    `pulumi:"privacyPass"`
-	PseudoIpv4              pulumi.StringPtrInput                                    `pulumi:"pseudoIpv4"`
-	ResponseBuffering       pulumi.StringPtrInput                                    `pulumi:"responseBuffering"`
-	RocketLoader            pulumi.StringPtrInput                                    `pulumi:"rocketLoader"`
-	SecurityHeader          ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput `pulumi:"securityHeader"`
-	SecurityLevel           pulumi.StringPtrInput                                    `pulumi:"securityLevel"`
-	ServerSideExclude       pulumi.StringPtrInput                                    `pulumi:"serverSideExclude"`
-	SortQueryStringForCache pulumi.StringPtrInput                                    `pulumi:"sortQueryStringForCache"`
-	Ssl                     pulumi.StringPtrInput                                    `pulumi:"ssl"`
+	// Allowed values: "off" (default), "lossless", "lossy".
+	Polish           pulumi.StringPtrInput `pulumi:"polish"`
+	PrefetchPreload  pulumi.StringPtrInput `pulumi:"prefetchPreload"`
+	PrivacyPass      pulumi.StringPtrInput `pulumi:"privacyPass"`
+	ProxyReadTimeout pulumi.StringPtrInput `pulumi:"proxyReadTimeout"`
+	// Allowed values: "off" (default), "addHeader", "overwriteHeader".
+	PseudoIpv4        pulumi.StringPtrInput                                    `pulumi:"pseudoIpv4"`
+	ResponseBuffering pulumi.StringPtrInput                                    `pulumi:"responseBuffering"`
+	RocketLoader      pulumi.StringPtrInput                                    `pulumi:"rocketLoader"`
+	SecurityHeader    ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput `pulumi:"securityHeader"`
+	// Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
+	SecurityLevel           pulumi.StringPtrInput `pulumi:"securityLevel"`
+	ServerSideExclude       pulumi.StringPtrInput `pulumi:"serverSideExclude"`
+	SortQueryStringForCache pulumi.StringPtrInput `pulumi:"sortQueryStringForCache"`
+	// Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
+	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
-	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
+	Tls12Only pulumi.StringPtrInput `pulumi:"tls12Only"`
+	// Allowed values: "off" (default), "on", "zrt".
 	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
 	TlsClientAuth      pulumi.StringPtrInput `pulumi:"tlsClientAuth"`
 	TrueClientIpHeader pulumi.StringPtrInput `pulumi:"trueClientIpHeader"`
 	UniversalSsl       pulumi.StringPtrInput `pulumi:"universalSsl"`
+	VisitorIp          pulumi.StringPtrInput `pulumi:"visitorIp"`
 	Waf                pulumi.StringPtrInput `pulumi:"waf"`
 	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 	Webp       pulumi.StringPtrInput `pulumi:"webp"`
@@ -16170,6 +16498,10 @@ func (o ZoneSettingsOverrideInitialSettingOutput) AutomaticHttpsRewrites() pulum
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.AutomaticHttpsRewrites }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideInitialSettingOutput) BinaryAst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.BinaryAst }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideInitialSettingOutput) Brotli() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Brotli }).(pulumi.StringPtrOutput)
 }
@@ -16182,6 +16514,7 @@ func (o ZoneSettingsOverrideInitialSettingOutput) BrowserCheck() pulumi.StringPt
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.BrowserCheck }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
 func (o ZoneSettingsOverrideInitialSettingOutput) CacheLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.CacheLevel }).(pulumi.StringPtrOutput)
 }
@@ -16190,6 +16523,12 @@ func (o ZoneSettingsOverrideInitialSettingOutput) ChallengeTtl() pulumi.IntPtrOu
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *int { return v.ChallengeTtl }).(pulumi.IntPtrOutput)
 }
 
+// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+func (o ZoneSettingsOverrideInitialSettingOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
 func (o ZoneSettingsOverrideInitialSettingOutput) CnameFlattening() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.CnameFlattening }).(pulumi.StringPtrOutput)
 }
@@ -16198,10 +16537,19 @@ func (o ZoneSettingsOverrideInitialSettingOutput) DevelopmentMode() pulumi.Strin
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideInitialSettingOutput) EarlyHints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.EarlyHints }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideInitialSettingOutput) EmailObfuscation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.EmailObfuscation }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideInitialSettingOutput) FilterLogsToCloudflare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.FilterLogsToCloudflare }).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "on", "off" (default), "custom".
 func (o ZoneSettingsOverrideInitialSettingOutput) H2Prioritization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.H2Prioritization }).(pulumi.StringPtrOutput)
 }
@@ -16218,6 +16566,7 @@ func (o ZoneSettingsOverrideInitialSettingOutput) Http3() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Http3 }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "on", "off" (default), "open".
 func (o ZoneSettingsOverrideInitialSettingOutput) ImageResizing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.ImageResizing }).(pulumi.StringPtrOutput)
 }
@@ -16230,10 +16579,15 @@ func (o ZoneSettingsOverrideInitialSettingOutput) Ipv6() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideInitialSettingOutput) LogToCloudflare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.LogToCloudflare }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideInitialSettingOutput) MaxUpload() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *int { return v.MaxUpload }).(pulumi.IntPtrOutput)
 }
 
+// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
 func (o ZoneSettingsOverrideInitialSettingOutput) MinTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
 }
@@ -16260,10 +16614,15 @@ func (o ZoneSettingsOverrideInitialSettingOutput) OpportunisticOnion() pulumi.St
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.OpportunisticOnion }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideInitialSettingOutput) OrangeToOrange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.OrangeToOrange }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideInitialSettingOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "lossless", "lossy".
 func (o ZoneSettingsOverrideInitialSettingOutput) Polish() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Polish }).(pulumi.StringPtrOutput)
 }
@@ -16276,6 +16635,11 @@ func (o ZoneSettingsOverrideInitialSettingOutput) PrivacyPass() pulumi.StringPtr
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.PrivacyPass }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideInitialSettingOutput) ProxyReadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.ProxyReadTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "off" (default), "addHeader", "overwriteHeader".
 func (o ZoneSettingsOverrideInitialSettingOutput) PseudoIpv4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.PseudoIpv4 }).(pulumi.StringPtrOutput)
 }
@@ -16294,6 +16658,7 @@ func (o ZoneSettingsOverrideInitialSettingOutput) SecurityHeader() ZoneSettingsO
 	}).(ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput)
 }
 
+// Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
 func (o ZoneSettingsOverrideInitialSettingOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
@@ -16306,6 +16671,7 @@ func (o ZoneSettingsOverrideInitialSettingOutput) SortQueryStringForCache() pulu
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
 func (o ZoneSettingsOverrideInitialSettingOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
@@ -16315,6 +16681,7 @@ func (o ZoneSettingsOverrideInitialSettingOutput) Tls12Only() pulumi.StringPtrOu
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "on", "zrt".
 func (o ZoneSettingsOverrideInitialSettingOutput) Tls13() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Tls13 }).(pulumi.StringPtrOutput)
 }
@@ -16329,6 +16696,10 @@ func (o ZoneSettingsOverrideInitialSettingOutput) TrueClientIpHeader() pulumi.St
 
 func (o ZoneSettingsOverrideInitialSettingOutput) UniversalSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideInitialSettingOutput) VisitorIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.VisitorIp }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingOutput) Waf() pulumi.StringPtrOutput {
@@ -16932,49 +17303,68 @@ func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) Preload() pul
 }
 
 type ZoneSettingsOverrideSettings struct {
-	AlwaysOnline            *string                                     `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          *string                                     `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  *string                                     `pulumi:"automaticHttpsRewrites"`
-	Brotli                  *string                                     `pulumi:"brotli"`
-	BrowserCacheTtl         *int                                        `pulumi:"browserCacheTtl"`
-	BrowserCheck            *string                                     `pulumi:"browserCheck"`
-	CacheLevel              *string                                     `pulumi:"cacheLevel"`
-	ChallengeTtl            *int                                        `pulumi:"challengeTtl"`
-	CnameFlattening         *string                                     `pulumi:"cnameFlattening"`
-	DevelopmentMode         *string                                     `pulumi:"developmentMode"`
-	EmailObfuscation        *string                                     `pulumi:"emailObfuscation"`
-	H2Prioritization        *string                                     `pulumi:"h2Prioritization"`
-	HotlinkProtection       *string                                     `pulumi:"hotlinkProtection"`
-	Http2                   *string                                     `pulumi:"http2"`
-	Http3                   *string                                     `pulumi:"http3"`
-	ImageResizing           *string                                     `pulumi:"imageResizing"`
-	IpGeolocation           *string                                     `pulumi:"ipGeolocation"`
-	Ipv6                    *string                                     `pulumi:"ipv6"`
-	MaxUpload               *int                                        `pulumi:"maxUpload"`
+	AlwaysOnline           *string `pulumi:"alwaysOnline"`
+	AlwaysUseHttps         *string `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites *string `pulumi:"automaticHttpsRewrites"`
+	BinaryAst              *string `pulumi:"binaryAst"`
+	Brotli                 *string `pulumi:"brotli"`
+	BrowserCacheTtl        *int    `pulumi:"browserCacheTtl"`
+	BrowserCheck           *string `pulumi:"browserCheck"`
+	// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+	CacheLevel   *string `pulumi:"cacheLevel"`
+	ChallengeTtl *int    `pulumi:"challengeTtl"`
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers []string `pulumi:"ciphers"`
+	// Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
+	CnameFlattening        *string `pulumi:"cnameFlattening"`
+	DevelopmentMode        *string `pulumi:"developmentMode"`
+	EarlyHints             *string `pulumi:"earlyHints"`
+	EmailObfuscation       *string `pulumi:"emailObfuscation"`
+	FilterLogsToCloudflare *string `pulumi:"filterLogsToCloudflare"`
+	// Allowed values: "on", "off" (default), "custom".
+	H2Prioritization  *string `pulumi:"h2Prioritization"`
+	HotlinkProtection *string `pulumi:"hotlinkProtection"`
+	Http2             *string `pulumi:"http2"`
+	Http3             *string `pulumi:"http3"`
+	// Allowed values: "on", "off" (default), "open".
+	ImageResizing   *string `pulumi:"imageResizing"`
+	IpGeolocation   *string `pulumi:"ipGeolocation"`
+	Ipv6            *string `pulumi:"ipv6"`
+	LogToCloudflare *string `pulumi:"logToCloudflare"`
+	MaxUpload       *int    `pulumi:"maxUpload"`
+	// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
 	MinTlsVersion           *string                                     `pulumi:"minTlsVersion"`
 	Minify                  *ZoneSettingsOverrideSettingsMinify         `pulumi:"minify"`
 	Mirage                  *string                                     `pulumi:"mirage"`
 	MobileRedirect          *ZoneSettingsOverrideSettingsMobileRedirect `pulumi:"mobileRedirect"`
 	OpportunisticEncryption *string                                     `pulumi:"opportunisticEncryption"`
 	OpportunisticOnion      *string                                     `pulumi:"opportunisticOnion"`
+	OrangeToOrange          *string                                     `pulumi:"orangeToOrange"`
 	OriginErrorPagePassThru *string                                     `pulumi:"originErrorPagePassThru"`
-	Polish                  *string                                     `pulumi:"polish"`
-	PrefetchPreload         *string                                     `pulumi:"prefetchPreload"`
-	PrivacyPass             *string                                     `pulumi:"privacyPass"`
-	PseudoIpv4              *string                                     `pulumi:"pseudoIpv4"`
-	ResponseBuffering       *string                                     `pulumi:"responseBuffering"`
-	RocketLoader            *string                                     `pulumi:"rocketLoader"`
-	SecurityHeader          *ZoneSettingsOverrideSettingsSecurityHeader `pulumi:"securityHeader"`
-	SecurityLevel           *string                                     `pulumi:"securityLevel"`
-	ServerSideExclude       *string                                     `pulumi:"serverSideExclude"`
-	SortQueryStringForCache *string                                     `pulumi:"sortQueryStringForCache"`
-	Ssl                     *string                                     `pulumi:"ssl"`
+	// Allowed values: "off" (default), "lossless", "lossy".
+	Polish           *string `pulumi:"polish"`
+	PrefetchPreload  *string `pulumi:"prefetchPreload"`
+	PrivacyPass      *string `pulumi:"privacyPass"`
+	ProxyReadTimeout *string `pulumi:"proxyReadTimeout"`
+	// Allowed values: "off" (default), "addHeader", "overwriteHeader".
+	PseudoIpv4        *string                                     `pulumi:"pseudoIpv4"`
+	ResponseBuffering *string                                     `pulumi:"responseBuffering"`
+	RocketLoader      *string                                     `pulumi:"rocketLoader"`
+	SecurityHeader    *ZoneSettingsOverrideSettingsSecurityHeader `pulumi:"securityHeader"`
+	// Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
+	SecurityLevel           *string `pulumi:"securityLevel"`
+	ServerSideExclude       *string `pulumi:"serverSideExclude"`
+	SortQueryStringForCache *string `pulumi:"sortQueryStringForCache"`
+	// Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
+	Ssl *string `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
-	Tls12Only          *string `pulumi:"tls12Only"`
+	Tls12Only *string `pulumi:"tls12Only"`
+	// Allowed values: "off" (default), "on", "zrt".
 	Tls13              *string `pulumi:"tls13"`
 	TlsClientAuth      *string `pulumi:"tlsClientAuth"`
 	TrueClientIpHeader *string `pulumi:"trueClientIpHeader"`
 	UniversalSsl       *string `pulumi:"universalSsl"`
+	VisitorIp          *string `pulumi:"visitorIp"`
 	Waf                *string `pulumi:"waf"`
 	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 	Webp       *string `pulumi:"webp"`
@@ -16994,49 +17384,68 @@ type ZoneSettingsOverrideSettingsInput interface {
 }
 
 type ZoneSettingsOverrideSettingsArgs struct {
-	AlwaysOnline            pulumi.StringPtrInput                              `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          pulumi.StringPtrInput                              `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  pulumi.StringPtrInput                              `pulumi:"automaticHttpsRewrites"`
-	Brotli                  pulumi.StringPtrInput                              `pulumi:"brotli"`
-	BrowserCacheTtl         pulumi.IntPtrInput                                 `pulumi:"browserCacheTtl"`
-	BrowserCheck            pulumi.StringPtrInput                              `pulumi:"browserCheck"`
-	CacheLevel              pulumi.StringPtrInput                              `pulumi:"cacheLevel"`
-	ChallengeTtl            pulumi.IntPtrInput                                 `pulumi:"challengeTtl"`
-	CnameFlattening         pulumi.StringPtrInput                              `pulumi:"cnameFlattening"`
-	DevelopmentMode         pulumi.StringPtrInput                              `pulumi:"developmentMode"`
-	EmailObfuscation        pulumi.StringPtrInput                              `pulumi:"emailObfuscation"`
-	H2Prioritization        pulumi.StringPtrInput                              `pulumi:"h2Prioritization"`
-	HotlinkProtection       pulumi.StringPtrInput                              `pulumi:"hotlinkProtection"`
-	Http2                   pulumi.StringPtrInput                              `pulumi:"http2"`
-	Http3                   pulumi.StringPtrInput                              `pulumi:"http3"`
-	ImageResizing           pulumi.StringPtrInput                              `pulumi:"imageResizing"`
-	IpGeolocation           pulumi.StringPtrInput                              `pulumi:"ipGeolocation"`
-	Ipv6                    pulumi.StringPtrInput                              `pulumi:"ipv6"`
-	MaxUpload               pulumi.IntPtrInput                                 `pulumi:"maxUpload"`
+	AlwaysOnline           pulumi.StringPtrInput `pulumi:"alwaysOnline"`
+	AlwaysUseHttps         pulumi.StringPtrInput `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites pulumi.StringPtrInput `pulumi:"automaticHttpsRewrites"`
+	BinaryAst              pulumi.StringPtrInput `pulumi:"binaryAst"`
+	Brotli                 pulumi.StringPtrInput `pulumi:"brotli"`
+	BrowserCacheTtl        pulumi.IntPtrInput    `pulumi:"browserCacheTtl"`
+	BrowserCheck           pulumi.StringPtrInput `pulumi:"browserCheck"`
+	// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
+	CacheLevel   pulumi.StringPtrInput `pulumi:"cacheLevel"`
+	ChallengeTtl pulumi.IntPtrInput    `pulumi:"challengeTtl"`
+	// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+	Ciphers pulumi.StringArrayInput `pulumi:"ciphers"`
+	// Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
+	CnameFlattening        pulumi.StringPtrInput `pulumi:"cnameFlattening"`
+	DevelopmentMode        pulumi.StringPtrInput `pulumi:"developmentMode"`
+	EarlyHints             pulumi.StringPtrInput `pulumi:"earlyHints"`
+	EmailObfuscation       pulumi.StringPtrInput `pulumi:"emailObfuscation"`
+	FilterLogsToCloudflare pulumi.StringPtrInput `pulumi:"filterLogsToCloudflare"`
+	// Allowed values: "on", "off" (default), "custom".
+	H2Prioritization  pulumi.StringPtrInput `pulumi:"h2Prioritization"`
+	HotlinkProtection pulumi.StringPtrInput `pulumi:"hotlinkProtection"`
+	Http2             pulumi.StringPtrInput `pulumi:"http2"`
+	Http3             pulumi.StringPtrInput `pulumi:"http3"`
+	// Allowed values: "on", "off" (default), "open".
+	ImageResizing   pulumi.StringPtrInput `pulumi:"imageResizing"`
+	IpGeolocation   pulumi.StringPtrInput `pulumi:"ipGeolocation"`
+	Ipv6            pulumi.StringPtrInput `pulumi:"ipv6"`
+	LogToCloudflare pulumi.StringPtrInput `pulumi:"logToCloudflare"`
+	MaxUpload       pulumi.IntPtrInput    `pulumi:"maxUpload"`
+	// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
 	MinTlsVersion           pulumi.StringPtrInput                              `pulumi:"minTlsVersion"`
 	Minify                  ZoneSettingsOverrideSettingsMinifyPtrInput         `pulumi:"minify"`
 	Mirage                  pulumi.StringPtrInput                              `pulumi:"mirage"`
 	MobileRedirect          ZoneSettingsOverrideSettingsMobileRedirectPtrInput `pulumi:"mobileRedirect"`
 	OpportunisticEncryption pulumi.StringPtrInput                              `pulumi:"opportunisticEncryption"`
 	OpportunisticOnion      pulumi.StringPtrInput                              `pulumi:"opportunisticOnion"`
+	OrangeToOrange          pulumi.StringPtrInput                              `pulumi:"orangeToOrange"`
 	OriginErrorPagePassThru pulumi.StringPtrInput                              `pulumi:"originErrorPagePassThru"`
-	Polish                  pulumi.StringPtrInput                              `pulumi:"polish"`
-	PrefetchPreload         pulumi.StringPtrInput                              `pulumi:"prefetchPreload"`
-	PrivacyPass             pulumi.StringPtrInput                              `pulumi:"privacyPass"`
-	PseudoIpv4              pulumi.StringPtrInput                              `pulumi:"pseudoIpv4"`
-	ResponseBuffering       pulumi.StringPtrInput                              `pulumi:"responseBuffering"`
-	RocketLoader            pulumi.StringPtrInput                              `pulumi:"rocketLoader"`
-	SecurityHeader          ZoneSettingsOverrideSettingsSecurityHeaderPtrInput `pulumi:"securityHeader"`
-	SecurityLevel           pulumi.StringPtrInput                              `pulumi:"securityLevel"`
-	ServerSideExclude       pulumi.StringPtrInput                              `pulumi:"serverSideExclude"`
-	SortQueryStringForCache pulumi.StringPtrInput                              `pulumi:"sortQueryStringForCache"`
-	Ssl                     pulumi.StringPtrInput                              `pulumi:"ssl"`
+	// Allowed values: "off" (default), "lossless", "lossy".
+	Polish           pulumi.StringPtrInput `pulumi:"polish"`
+	PrefetchPreload  pulumi.StringPtrInput `pulumi:"prefetchPreload"`
+	PrivacyPass      pulumi.StringPtrInput `pulumi:"privacyPass"`
+	ProxyReadTimeout pulumi.StringPtrInput `pulumi:"proxyReadTimeout"`
+	// Allowed values: "off" (default), "addHeader", "overwriteHeader".
+	PseudoIpv4        pulumi.StringPtrInput                              `pulumi:"pseudoIpv4"`
+	ResponseBuffering pulumi.StringPtrInput                              `pulumi:"responseBuffering"`
+	RocketLoader      pulumi.StringPtrInput                              `pulumi:"rocketLoader"`
+	SecurityHeader    ZoneSettingsOverrideSettingsSecurityHeaderPtrInput `pulumi:"securityHeader"`
+	// Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
+	SecurityLevel           pulumi.StringPtrInput `pulumi:"securityLevel"`
+	ServerSideExclude       pulumi.StringPtrInput `pulumi:"serverSideExclude"`
+	SortQueryStringForCache pulumi.StringPtrInput `pulumi:"sortQueryStringForCache"`
+	// Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
+	Ssl pulumi.StringPtrInput `pulumi:"ssl"`
 	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
-	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
+	Tls12Only pulumi.StringPtrInput `pulumi:"tls12Only"`
+	// Allowed values: "off" (default), "on", "zrt".
 	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
 	TlsClientAuth      pulumi.StringPtrInput `pulumi:"tlsClientAuth"`
 	TrueClientIpHeader pulumi.StringPtrInput `pulumi:"trueClientIpHeader"`
 	UniversalSsl       pulumi.StringPtrInput `pulumi:"universalSsl"`
+	VisitorIp          pulumi.StringPtrInput `pulumi:"visitorIp"`
 	Waf                pulumi.StringPtrInput `pulumi:"waf"`
 	// . Note that the value specified will be ignored unless `polish` is turned on (i.e. is "lossless" or "lossy")
 	Webp       pulumi.StringPtrInput `pulumi:"webp"`
@@ -17133,6 +17542,10 @@ func (o ZoneSettingsOverrideSettingsOutput) AutomaticHttpsRewrites() pulumi.Stri
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.AutomaticHttpsRewrites }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsOutput) BinaryAst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.BinaryAst }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsOutput) Brotli() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Brotli }).(pulumi.StringPtrOutput)
 }
@@ -17145,6 +17558,7 @@ func (o ZoneSettingsOverrideSettingsOutput) BrowserCheck() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.BrowserCheck }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
 func (o ZoneSettingsOverrideSettingsOutput) CacheLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.CacheLevel }).(pulumi.StringPtrOutput)
 }
@@ -17153,6 +17567,12 @@ func (o ZoneSettingsOverrideSettingsOutput) ChallengeTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *int { return v.ChallengeTtl }).(pulumi.IntPtrOutput)
 }
 
+// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+func (o ZoneSettingsOverrideSettingsOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) []string { return v.Ciphers }).(pulumi.StringArrayOutput)
+}
+
+// Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
 func (o ZoneSettingsOverrideSettingsOutput) CnameFlattening() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.CnameFlattening }).(pulumi.StringPtrOutput)
 }
@@ -17161,10 +17581,19 @@ func (o ZoneSettingsOverrideSettingsOutput) DevelopmentMode() pulumi.StringPtrOu
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.DevelopmentMode }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsOutput) EarlyHints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.EarlyHints }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsOutput) EmailObfuscation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.EmailObfuscation }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsOutput) FilterLogsToCloudflare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.FilterLogsToCloudflare }).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "on", "off" (default), "custom".
 func (o ZoneSettingsOverrideSettingsOutput) H2Prioritization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.H2Prioritization }).(pulumi.StringPtrOutput)
 }
@@ -17181,6 +17610,7 @@ func (o ZoneSettingsOverrideSettingsOutput) Http3() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Http3 }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "on", "off" (default), "open".
 func (o ZoneSettingsOverrideSettingsOutput) ImageResizing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.ImageResizing }).(pulumi.StringPtrOutput)
 }
@@ -17193,10 +17623,15 @@ func (o ZoneSettingsOverrideSettingsOutput) Ipv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Ipv6 }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsOutput) LogToCloudflare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.LogToCloudflare }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsOutput) MaxUpload() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *int { return v.MaxUpload }).(pulumi.IntPtrOutput)
 }
 
+// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
 func (o ZoneSettingsOverrideSettingsOutput) MinTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.MinTlsVersion }).(pulumi.StringPtrOutput)
 }
@@ -17223,10 +17658,15 @@ func (o ZoneSettingsOverrideSettingsOutput) OpportunisticOnion() pulumi.StringPt
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.OpportunisticOnion }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsOutput) OrangeToOrange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.OrangeToOrange }).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.OriginErrorPagePassThru }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "lossless", "lossy".
 func (o ZoneSettingsOverrideSettingsOutput) Polish() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Polish }).(pulumi.StringPtrOutput)
 }
@@ -17239,6 +17679,11 @@ func (o ZoneSettingsOverrideSettingsOutput) PrivacyPass() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.PrivacyPass }).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsOutput) ProxyReadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.ProxyReadTimeout }).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "off" (default), "addHeader", "overwriteHeader".
 func (o ZoneSettingsOverrideSettingsOutput) PseudoIpv4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.PseudoIpv4 }).(pulumi.StringPtrOutput)
 }
@@ -17257,6 +17702,7 @@ func (o ZoneSettingsOverrideSettingsOutput) SecurityHeader() ZoneSettingsOverrid
 	}).(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput)
 }
 
+// Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
 func (o ZoneSettingsOverrideSettingsOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
 }
@@ -17269,6 +17715,7 @@ func (o ZoneSettingsOverrideSettingsOutput) SortQueryStringForCache() pulumi.Str
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.SortQueryStringForCache }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
 func (o ZoneSettingsOverrideSettingsOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
@@ -17278,6 +17725,7 @@ func (o ZoneSettingsOverrideSettingsOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "on", "zrt".
 func (o ZoneSettingsOverrideSettingsOutput) Tls13() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Tls13 }).(pulumi.StringPtrOutput)
 }
@@ -17292,6 +17740,10 @@ func (o ZoneSettingsOverrideSettingsOutput) TrueClientIpHeader() pulumi.StringPt
 
 func (o ZoneSettingsOverrideSettingsOutput) UniversalSsl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.UniversalSsl }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsOutput) VisitorIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.VisitorIp }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsOutput) Waf() pulumi.StringPtrOutput {
@@ -17362,6 +17814,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) AutomaticHttpsRewrites() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsPtrOutput) BinaryAst() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BinaryAst
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsPtrOutput) Brotli() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17389,6 +17850,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) BrowserCheck() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "aggressive" (default) - delivers a different resource each time the query string changes, "basic" - delivers resources from cache when there is no query string, "simplified" - delivers the same resource to everyone independent of the query string.
 func (o ZoneSettingsOverrideSettingsPtrOutput) CacheLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17407,6 +17869,17 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) ChallengeTtl() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// An allowlist of ciphers for TLS termination. These ciphers must be in the BoringSSL format.
+func (o ZoneSettingsOverrideSettingsPtrOutput) Ciphers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Ciphers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allowed values: "flattenAtRoot" (default), "flattenAll", "flattenNone".
 func (o ZoneSettingsOverrideSettingsPtrOutput) CnameFlattening() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17425,6 +17898,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) DevelopmentMode() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsPtrOutput) EarlyHints() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EarlyHints
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsPtrOutput) EmailObfuscation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17434,6 +17916,16 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) EmailObfuscation() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsPtrOutput) FilterLogsToCloudflare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FilterLogsToCloudflare
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "on", "off" (default), "custom".
 func (o ZoneSettingsOverrideSettingsPtrOutput) H2Prioritization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17470,6 +17962,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Http3() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "on", "off" (default), "open".
 func (o ZoneSettingsOverrideSettingsPtrOutput) ImageResizing() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17497,6 +17990,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Ipv6() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsPtrOutput) LogToCloudflare() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogToCloudflare
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsPtrOutput) MaxUpload() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *int {
 		if v == nil {
@@ -17506,6 +18008,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) MaxUpload() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Allowed values: "1.0" (default), "1.1", "1.2", "1.3".
 func (o ZoneSettingsOverrideSettingsPtrOutput) MinTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17560,6 +18063,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) OpportunisticOnion() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsPtrOutput) OrangeToOrange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrangeToOrange
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o ZoneSettingsOverrideSettingsPtrOutput) OriginErrorPagePassThru() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17569,6 +18081,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) OriginErrorPagePassThru() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "lossless", "lossy".
 func (o ZoneSettingsOverrideSettingsPtrOutput) Polish() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17596,6 +18109,16 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) PrivacyPass() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o ZoneSettingsOverrideSettingsPtrOutput) ProxyReadTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProxyReadTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Allowed values: "off" (default), "addHeader", "overwriteHeader".
 func (o ZoneSettingsOverrideSettingsPtrOutput) PseudoIpv4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17632,6 +18155,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) SecurityHeader() ZoneSettingsOver
 	}).(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput)
 }
 
+// Allowed values: "off" (Enterprise only), "essentiallyOff", "low", "medium" (default), "high", "underAttack".
 func (o ZoneSettingsOverrideSettingsPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17659,6 +18183,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) SortQueryStringForCache() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "flexible", "full", "strict", "originPull".
 func (o ZoneSettingsOverrideSettingsPtrOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17678,6 +18203,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Tls12Only() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Allowed values: "off" (default), "on", "zrt".
 func (o ZoneSettingsOverrideSettingsPtrOutput) Tls13() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {
@@ -17711,6 +18237,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) UniversalSsl() pulumi.StringPtrOu
 			return nil
 		}
 		return v.UniversalSsl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsPtrOutput) VisitorIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VisitorIp
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19627,6 +20162,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginArrayInput)(nil)).Elem(), LoadBalancerPoolOriginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginHeaderInput)(nil)).Elem(), LoadBalancerPoolOriginHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginHeaderArrayInput)(nil)).Elem(), LoadBalancerPoolOriginHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginSteeringInput)(nil)).Elem(), LoadBalancerPoolOriginSteeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolOriginSteeringArrayInput)(nil)).Elem(), LoadBalancerPoolOriginSteeringArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPopPoolInput)(nil)).Elem(), LoadBalancerPopPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPopPoolArrayInput)(nil)).Elem(), LoadBalancerPopPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRegionPoolInput)(nil)).Elem(), LoadBalancerRegionPoolArgs{})
@@ -19701,6 +20238,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPathPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriQueryInput)(nil)).Elem(), RulesetRuleActionParametersUriQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriQueryPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleExposedCredentialCheckInput)(nil)).Elem(), RulesetRuleExposedCredentialCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleExposedCredentialCheckPtrInput)(nil)).Elem(), RulesetRuleExposedCredentialCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitPtrInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
@@ -19872,6 +20411,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginHeaderOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOriginHeaderArrayOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolOriginSteeringOutput{})
+	pulumi.RegisterOutputType(LoadBalancerPoolOriginSteeringArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPopPoolOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPopPoolArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerRegionPoolOutput{})
@@ -19946,6 +20487,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPathPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriQueryOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriQueryPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleExposedCredentialCheckOutput{})
+	pulumi.RegisterOutputType(RulesetRuleExposedCredentialCheckPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleRatelimitOutput{})
 	pulumi.RegisterOutputType(RulesetRuleRatelimitPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsOutput{})

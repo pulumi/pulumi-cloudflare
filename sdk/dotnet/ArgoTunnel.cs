@@ -53,6 +53,12 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// Usable CNAME for accessing the Argo Tunnel.
+        /// </summary>
+        [Output("cname")]
+        public Output<string> Cname { get; private set; } = null!;
+
+        /// <summary>
         /// A user-friendly name chosen when the tunnel is created. Cannot be empty.
         /// </summary>
         [Output("name")]
@@ -140,6 +146,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// Usable CNAME for accessing the Argo Tunnel.
+        /// </summary>
+        [Input("cname")]
+        public Input<string>? Cname { get; set; }
 
         /// <summary>
         /// A user-friendly name chosen when the tunnel is created. Cannot be empty.

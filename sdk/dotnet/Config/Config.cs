@@ -42,6 +42,16 @@ namespace Pulumi.Cloudflare
             set => _accountId.Set(value);
         }
 
+        private static readonly __Value<string?> _apiBasePath = new __Value<string?>(() => __config.Get("apiBasePath"));
+        /// <summary>
+        /// Configure the base path used by the API client
+        /// </summary>
+        public static string? ApiBasePath
+        {
+            get => _apiBasePath.Get();
+            set => _apiBasePath.Set(value);
+        }
+
         private static readonly __Value<bool?> _apiClientLogging = new __Value<bool?>(() => __config.GetBoolean("apiClientLogging") ?? Utilities.GetEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") ?? false);
         /// <summary>
         /// Whether to print logs from the API client (using the default log library logger)
@@ -50,6 +60,16 @@ namespace Pulumi.Cloudflare
         {
             get => _apiClientLogging.Get();
             set => _apiClientLogging.Set(value);
+        }
+
+        private static readonly __Value<string?> _apiHostname = new __Value<string?>(() => __config.Get("apiHostname"));
+        /// <summary>
+        /// Configure the hostname used by the API client
+        /// </summary>
+        public static string? ApiHostname
+        {
+            get => _apiHostname.Get();
+            set => _apiHostname.Set(value);
         }
 
         private static readonly __Value<string?> _apiKey = new __Value<string?>(() => __config.Get("apiKey"));

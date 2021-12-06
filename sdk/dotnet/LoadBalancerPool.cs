@@ -41,6 +41,13 @@ namespace Pulumi.Cloudflare
     ///             MinimumOrigins = 1,
     ///             Name = "example-pool",
     ///             NotificationEmail = "someone@example.com",
+    ///             OriginSteerings = 
+    ///             {
+    ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs
+    ///                 {
+    ///                     Policy = "random",
+    ///                 },
+    ///             },
     ///             Origins = 
     ///             {
     ///                 new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
@@ -157,6 +164,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("notificationEmail")]
         public Output<string?> NotificationEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// Set an origin steering policy to control origin selection within a pool.
+        /// </summary>
+        [Output("originSteerings")]
+        public Output<ImmutableArray<Outputs.LoadBalancerPoolOriginSteering>> OriginSteerings { get; private set; } = null!;
 
         /// <summary>
         /// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
@@ -282,6 +295,18 @@ namespace Pulumi.Cloudflare
         [Input("notificationEmail")]
         public Input<string>? NotificationEmail { get; set; }
 
+        [Input("originSteerings")]
+        private InputList<Inputs.LoadBalancerPoolOriginSteeringArgs>? _originSteerings;
+
+        /// <summary>
+        /// Set an origin steering policy to control origin selection within a pool.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerPoolOriginSteeringArgs> OriginSteerings
+        {
+            get => _originSteerings ?? (_originSteerings = new InputList<Inputs.LoadBalancerPoolOriginSteeringArgs>());
+            set => _originSteerings = value;
+        }
+
         [Input("origins", required: true)]
         private InputList<Inputs.LoadBalancerPoolOriginArgs>? _origins;
 
@@ -384,6 +409,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("notificationEmail")]
         public Input<string>? NotificationEmail { get; set; }
+
+        [Input("originSteerings")]
+        private InputList<Inputs.LoadBalancerPoolOriginSteeringGetArgs>? _originSteerings;
+
+        /// <summary>
+        /// Set an origin steering policy to control origin selection within a pool.
+        /// </summary>
+        public InputList<Inputs.LoadBalancerPoolOriginSteeringGetArgs> OriginSteerings
+        {
+            get => _originSteerings ?? (_originSteerings = new InputList<Inputs.LoadBalancerPoolOriginSteeringGetArgs>());
+            set => _originSteerings = value;
+        }
 
         [Input("origins")]
         private InputList<Inputs.LoadBalancerPoolOriginGetArgs>? _origins;
