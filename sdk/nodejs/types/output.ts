@@ -591,6 +591,21 @@ export interface DevicePostureRuleMatch {
     platform?: string;
 }
 
+export interface GetAccountRolesRole {
+    /**
+     * Description of role's permissions
+     */
+    description?: string;
+    /**
+     * Role identifier tag
+     */
+    id?: string;
+    /**
+     * Role Name
+     */
+    name?: string;
+}
+
 export interface GetWafGroupsFilter {
     /**
      * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
@@ -1686,6 +1701,21 @@ export interface SpectrumApplicationOriginPortRange {
      * Lower bound of the origin port range, e.g. `1000`
      */
     start: number;
+}
+
+export interface SplitTunnelTunnel {
+    /**
+     * The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+     */
+    address?: string;
+    /**
+     * The description of the tunnel.
+     */
+    description?: string;
+    /**
+     * The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+     */
+    host?: string;
 }
 
 export interface TeamsAccountAntivirus {

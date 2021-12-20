@@ -29,12 +29,15 @@ from .custom_ssl import *
 from .device_posture_rule import *
 from .filter import *
 from .firewall_rule import *
+from .get_access_identity_provider import *
+from .get_account_roles import *
 from .get_api_token_permission_groups import *
 from .get_ip_ranges import *
 from .get_origin_ca_root_certificate import *
 from .get_waf_groups import *
 from .get_waf_packages import *
 from .get_waf_rules import *
+from .get_zone import *
 from .get_zone_dnssec import *
 from .get_zones import *
 from .healthcheck import *
@@ -55,6 +58,7 @@ from .rate_limit import *
 from .record import *
 from .ruleset import *
 from .spectrum_application import *
+from .split_tunnel import *
 from .static_route import *
 from .teams_account import *
 from .teams_list import *
@@ -413,6 +417,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/spectrumApplication:SpectrumApplication": "SpectrumApplication"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/splitTunnel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/splitTunnel:SplitTunnel": "SplitTunnel"
   }
  },
  {

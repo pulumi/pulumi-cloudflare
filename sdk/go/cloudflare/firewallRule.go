@@ -16,6 +16,9 @@ import (
 //
 // Filter expressions needs to be created first before using Firewall Rule. See Filter.
 //
+// If you want to configure Custom Firewall rules, you need to use cloudflare_ruleset, because Custom Rules are built upon the
+// [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
+//
 // ## Example Usage
 //
 // ```go

@@ -107,6 +107,7 @@ __all__ = [
     'SpectrumApplicationDnsArgs',
     'SpectrumApplicationOriginDnsArgs',
     'SpectrumApplicationOriginPortRangeArgs',
+    'SplitTunnelTunnelArgs',
     'TeamsAccountAntivirusArgs',
     'TeamsAccountBlockPageArgs',
     'TeamsLocationNetworkArgs',
@@ -7412,6 +7413,61 @@ class SpectrumApplicationOriginPortRangeArgs:
     @start.setter
     def start(self, value: pulumi.Input[int]):
         pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class SplitTunnelTunnelArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 host: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+        :param pulumi.Input[str] description: The description of the tunnel.
+        :param pulumi.Input[str] host: The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the tunnel.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "host", value)
 
 
 @pulumi.input_type

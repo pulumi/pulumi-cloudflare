@@ -28,7 +28,7 @@ class RulesetArgs:
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
         :param pulumi.Input[str] name: Name of the HTTP request header to target.
-        :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[str] account_id: The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
@@ -87,7 +87,7 @@ class RulesetArgs:
     @pulumi.getter
     def phase(self) -> pulumi.Input[str]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         """
         return pulumi.get(self, "phase")
 
@@ -161,7 +161,7 @@ class _RulesetState:
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
         :param pulumi.Input[str] name: Name of the HTTP request header to target.
-        :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The ID of the zone where the ruleset is being created. Conflicts with `"account_id"`.
@@ -235,7 +235,7 @@ class _RulesetState:
     @pulumi.getter
     def phase(self) -> Optional[pulumi.Input[str]]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         """
         return pulumi.get(self, "phase")
 
@@ -305,7 +305,7 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
         :param pulumi.Input[str] name: Name of the HTTP request header to target.
-        :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The ID of the zone where the ruleset is being created. Conflicts with `"account_id"`.
@@ -401,7 +401,7 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
         :param pulumi.Input[str] name: Name of the HTTP request header to target.
-        :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The ID of the zone where the ruleset is being created. Conflicts with `"account_id"`.
@@ -456,7 +456,7 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter
     def phase(self) -> pulumi.Output[str]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         """
         return pulumi.get(self, "phase")
 

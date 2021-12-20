@@ -55,7 +55,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
      */
     public readonly phase!: pulumi.Output<string>;
     /**
@@ -143,7 +143,7 @@ export interface RulesetState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
      */
     phase?: pulumi.Input<string>;
     /**
@@ -181,7 +181,7 @@ export interface RulesetArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
      */
     phase: pulumi.Input<string>;
     /**

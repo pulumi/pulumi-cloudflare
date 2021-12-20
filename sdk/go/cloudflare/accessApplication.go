@@ -70,6 +70,8 @@ type AccessApplication struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayOutput `pulumi:"allowedIdps"`
+	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	AppLauncherVisible pulumi.BoolPtrOutput `pulumi:"appLauncherVisible"`
 	// Application Audience (AUD) Tag of the application
 	Aud pulumi.StringOutput `pulumi:"aud"`
 	// Option to skip identity provider
@@ -144,6 +146,8 @@ type accessApplicationState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps []string `pulumi:"allowedIdps"`
+	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	AppLauncherVisible *bool `pulumi:"appLauncherVisible"`
 	// Application Audience (AUD) Tag of the application
 	Aud *string `pulumi:"aud"`
 	// Option to skip identity provider
@@ -184,6 +188,8 @@ type AccessApplicationState struct {
 	AccountId pulumi.StringPtrInput
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayInput
+	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	AppLauncherVisible pulumi.BoolPtrInput
 	// Application Audience (AUD) Tag of the application
 	Aud pulumi.StringPtrInput
 	// Option to skip identity provider
@@ -228,6 +234,8 @@ type accessApplicationArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps []string `pulumi:"allowedIdps"`
+	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	AppLauncherVisible *bool `pulumi:"appLauncherVisible"`
 	// Option to skip identity provider
 	// selection if only one is configured in allowed_idps. Defaults to `false`
 	// (disabled).
@@ -267,6 +275,8 @@ type AccessApplicationArgs struct {
 	AccountId pulumi.StringPtrInput
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayInput
+	// Option to show/hide applications in App Launcher. Defaults to `true`.
+	AppLauncherVisible pulumi.BoolPtrInput
 	// Option to skip identity provider
 	// selection if only one is configured in allowed_idps. Defaults to `false`
 	// (disabled).

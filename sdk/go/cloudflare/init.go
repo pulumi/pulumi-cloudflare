@@ -102,6 +102,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Ruleset{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
 		r = &SpectrumApplication{}
+	case "cloudflare:index/splitTunnel:SplitTunnel":
+		r = &SplitTunnel{}
 	case "cloudflare:index/staticRoute:StaticRoute":
 		r = &StaticRoute{}
 	case "cloudflare:index/teamsAccount:TeamsAccount":
@@ -374,6 +376,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/spectrumApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/splitTunnel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
