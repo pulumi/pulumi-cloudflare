@@ -108,6 +108,7 @@ __all__ = [
     'SpectrumApplicationDns',
     'SpectrumApplicationOriginDns',
     'SpectrumApplicationOriginPortRange',
+    'SplitTunnelTunnel',
     'TeamsAccountAntivirus',
     'TeamsAccountBlockPage',
     'TeamsLocationNetwork',
@@ -127,6 +128,7 @@ __all__ = [
     'ZoneSettingsOverrideSettingsMinify',
     'ZoneSettingsOverrideSettingsMobileRedirect',
     'ZoneSettingsOverrideSettingsSecurityHeader',
+    'GetAccountRolesRoleResult',
     'GetWafGroupsFilterResult',
     'GetWafGroupsGroupResult',
     'GetWafPackagesFilterResult',
@@ -6992,6 +6994,49 @@ class SpectrumApplicationOriginPortRange(dict):
 
 
 @pulumi.output_type
+class SplitTunnelTunnel(dict):
+    def __init__(__self__, *,
+                 address: Optional[str] = None,
+                 description: Optional[str] = None,
+                 host: Optional[str] = None):
+        """
+        :param str address: The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+        :param str description: The description of the tunnel.
+        :param str host: The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[str]:
+        """
+        The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+        """
+        return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the tunnel.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+        """
+        return pulumi.get(self, "host")
+
+
+@pulumi.output_type
 class TeamsAccountAntivirus(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9029,6 +9074,49 @@ class ZoneSettingsOverrideSettingsSecurityHeader(dict):
         true/false
         """
         return pulumi.get(self, "preload")
+
+
+@pulumi.output_type
+class GetAccountRolesRoleResult(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 id: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str description: Description of role's permissions
+        :param str id: Role identifier tag
+        :param str name: Role Name
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of role's permissions
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        Role identifier tag
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Role Name
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

@@ -5285,6 +5285,38 @@
                 "start"
             ]
         },
+        "cloudflare:index/SplitTunnelTunnel:SplitTunnelTunnel": {
+            "properties": {
+                "address": {
+                    "type": "string",
+                    "description": "The address in CIDR format to include in the tunnel configuration. Conflicts with `\"host\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the tunnel.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The domain name to include in the tunnel configuration. Conflicts with `\"address\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus": {
             "properties": {
                 "enabledDownloadPhase": {
@@ -6950,6 +6982,38 @@
                 }
             }
         },
+        "cloudflare:index/getAccountRolesRole:getAccountRolesRole": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of role's permissions\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Role identifier tag\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Role Name\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/getWafGroupsFilter:getWafGroupsFilter": {
             "properties": {
                 "mode": {
@@ -7484,6 +7548,10 @@
                     },
                     "description": "The identity providers selected for the application.\n"
                 },
+                "appLauncherVisible": {
+                    "type": "boolean",
+                    "description": "Option to show/hide applications in App Launcher. Defaults to `true`.\n"
+                },
                 "aud": {
                     "type": "string",
                     "description": "Application Audience (AUD) Tag of the application\n"
@@ -7563,6 +7631,10 @@
                     },
                     "description": "The identity providers selected for the application.\n"
                 },
+                "appLauncherVisible": {
+                    "type": "boolean",
+                    "description": "Option to show/hide applications in App Launcher. Defaults to `true`.\n"
+                },
                 "autoRedirectToIdentity": {
                     "type": "boolean",
                     "description": "Option to skip identity provider\nselection if only one is configured in allowed_idps. Defaults to `false`\n(disabled).\n"
@@ -7636,6 +7708,10 @@
                             "type": "string"
                         },
                         "description": "The identity providers selected for the application.\n"
+                    },
+                    "appLauncherVisible": {
+                        "type": "boolean",
+                        "description": "Option to show/hide applications in App Launcher. Defaults to `true`.\n"
                     },
                     "aud": {
                         "type": "string",
@@ -9705,7 +9781,7 @@
             }
         },
         "cloudflare:index/firewallRule:FirewallRule": {
-            "description": "Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.\nA filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.\n\nFilter expressions needs to be created first before using Firewall Rule. See Filter.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst wordpressFilter = new cloudflare.Filter(\"wordpressFilter\", {\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"Wordpress break-in attempts that are outside of the office\",\n    expression: \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\",\n});\nconst wordpressFirewallRule = new cloudflare.FirewallRule(\"wordpressFirewallRule\", {\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"Block wordpress break-in attempts\",\n    filterId: wordpressFilter.id,\n    action: \"block\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nwordpress_filter = cloudflare.Filter(\"wordpressFilter\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"Wordpress break-in attempts that are outside of the office\",\n    expression=\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\")\nwordpress_firewall_rule = cloudflare.FirewallRule(\"wordpressFirewallRule\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"Block wordpress break-in attempts\",\n    filter_id=wordpress_filter.id,\n    action=\"block\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var wordpressFilter = new Cloudflare.Filter(\"wordpressFilter\", new Cloudflare.FilterArgs\n        {\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"Wordpress break-in attempts that are outside of the office\",\n            Expression = \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\",\n        });\n        var wordpressFirewallRule = new Cloudflare.FirewallRule(\"wordpressFirewallRule\", new Cloudflare.FirewallRuleArgs\n        {\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"Block wordpress break-in attempts\",\n            FilterId = wordpressFilter.Id,\n            Action = \"block\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twordpressFilter, err := cloudflare.NewFilter(ctx, \"wordpressFilter\", \u0026cloudflare.FilterArgs{\n\t\t\tZoneId:      pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"Wordpress break-in attempts that are outside of the office\"),\n\t\t\tExpression:  pulumi.String(\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewFirewallRule(ctx, \"wordpressFirewallRule\", \u0026cloudflare.FirewallRuleArgs{\n\t\t\tZoneId:      pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"Block wordpress break-in attempts\"),\n\t\t\tFilterId:    wordpressFilter.ID(),\n\t\t\tAction:      pulumi.String(\"block\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewall Rule can be imported using a composite ID formed of zone ID and rule ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/firewallRule:FirewallRule default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules) ",
+            "description": "Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.\nA filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.\n\nFilter expressions needs to be created first before using Firewall Rule. See Filter.\n\nIf you want to configure Custom Firewall rules, you need to use cloudflare_ruleset, because Custom Rules are built upon the\n[Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst wordpressFilter = new cloudflare.Filter(\"wordpressFilter\", {\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"Wordpress break-in attempts that are outside of the office\",\n    expression: \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\",\n});\nconst wordpressFirewallRule = new cloudflare.FirewallRule(\"wordpressFirewallRule\", {\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"Block wordpress break-in attempts\",\n    filterId: wordpressFilter.id,\n    action: \"block\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nwordpress_filter = cloudflare.Filter(\"wordpressFilter\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"Wordpress break-in attempts that are outside of the office\",\n    expression=\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\")\nwordpress_firewall_rule = cloudflare.FirewallRule(\"wordpressFirewallRule\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"Block wordpress break-in attempts\",\n    filter_id=wordpress_filter.id,\n    action=\"block\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var wordpressFilter = new Cloudflare.Filter(\"wordpressFilter\", new Cloudflare.FilterArgs\n        {\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"Wordpress break-in attempts that are outside of the office\",\n            Expression = \"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\",\n        });\n        var wordpressFirewallRule = new Cloudflare.FirewallRule(\"wordpressFirewallRule\", new Cloudflare.FirewallRuleArgs\n        {\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"Block wordpress break-in attempts\",\n            FilterId = wordpressFilter.Id,\n            Action = \"block\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twordpressFilter, err := cloudflare.NewFilter(ctx, \"wordpressFilter\", \u0026cloudflare.FilterArgs{\n\t\t\tZoneId:      pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"Wordpress break-in attempts that are outside of the office\"),\n\t\t\tExpression:  pulumi.String(\"(http.request.uri.path ~ \\\".*wp-login.php\\\" or http.request.uri.path ~ \\\".*xmlrpc.php\\\") and ip.src ne 192.0.2.1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewFirewallRule(ctx, \"wordpressFirewallRule\", \u0026cloudflare.FirewallRuleArgs{\n\t\t\tZoneId:      pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"Block wordpress break-in attempts\"),\n\t\t\tFilterId:    wordpressFilter.ID(),\n\t\t\tAction:      pulumi.String(\"block\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nFirewall Rule can be imported using a composite ID formed of zone ID and rule ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/firewallRule:FirewallRule default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules) ",
             "properties": {
                 "action": {
                     "type": "string",
@@ -12072,7 +12148,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_response_headers_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -12115,7 +12191,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_response_headers_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -12160,7 +12236,7 @@
                     },
                     "phase": {
                         "type": "string",
-                        "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
+                        "description": "Point in the request/response lifecycle where the ruleset will be created. Valid values are `\"ddos_l4\"`, `\"ddos_l7\"`, `\"http_request_firewall_custom\"`, `\"http_request_firewall_managed\"`, `\"http_request_late_transform\"`, `\"http_response_headers_transform\"`, `\"http_request_main\"`, `\"http_request_sanitize\"`, `\"http_request_transform\"`, `\"http_response_firewall_managed\"`, `\"magic_transit\"`, or `\"http_ratelimit\"`.\n"
                     },
                     "rules": {
                         "type": "array",
@@ -12385,6 +12461,74 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The DNS zone ID to add the application to\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/splitTunnel:SplitTunnel": {
+            "description": "Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either\ninclude or exclude lists of routes from the WARP client's tunnel.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Excluding *.example.com from WARP routes\nconst exampleSplitTunnelExclude = new cloudflare.SplitTunnel(\"example_split_tunnel_exclude\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    mode: \"exclude\",\n    tunnels: [{\n        description: \"example domain\",\n        host: \"*.example.com\",\n    }],\n});\n// Including *.example.com in WARP routes\nconst exampleSplitTunnelInclude = new cloudflare.SplitTunnel(\"example_split_tunnel_include\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    mode: \"include\",\n    tunnels: [{\n        description: \"example domain\",\n        host: \"*.example.com\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Excluding *.example.com from WARP routes\nexample_split_tunnel_exclude = cloudflare.SplitTunnel(\"exampleSplitTunnelExclude\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    mode=\"exclude\",\n    tunnels=[cloudflare.SplitTunnelTunnelArgs(\n        description=\"example domain\",\n        host=\"*.example.com\",\n    )])\n# Including *.example.com in WARP routes\nexample_split_tunnel_include = cloudflare.SplitTunnel(\"exampleSplitTunnelInclude\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    mode=\"include\",\n    tunnels=[cloudflare.SplitTunnelTunnelArgs(\n        description=\"example domain\",\n        host=\"*.example.com\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Excluding *.example.com from WARP routes\n        var exampleSplitTunnelExclude = new Cloudflare.SplitTunnel(\"exampleSplitTunnelExclude\", new Cloudflare.SplitTunnelArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Mode = \"exclude\",\n            Tunnels = \n            {\n                new Cloudflare.Inputs.SplitTunnelTunnelArgs\n                {\n                    Description = \"example domain\",\n                    Host = \"*.example.com\",\n                },\n            },\n        });\n        // Including *.example.com in WARP routes\n        var exampleSplitTunnelInclude = new Cloudflare.SplitTunnel(\"exampleSplitTunnelInclude\", new Cloudflare.SplitTunnelArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Mode = \"include\",\n            Tunnels = \n            {\n                new Cloudflare.Inputs.SplitTunnelTunnelArgs\n                {\n                    Description = \"example domain\",\n                    Host = \"*.example.com\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewSplitTunnel(ctx, \"exampleSplitTunnelExclude\", \u0026cloudflare.SplitTunnelArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tMode:      pulumi.String(\"exclude\"),\n\t\t\tTunnels: SplitTunnelTunnelArray{\n\t\t\t\t\u0026SplitTunnelTunnelArgs{\n\t\t\t\t\tDescription: pulumi.String(\"example domain\"),\n\t\t\t\t\tHost:        pulumi.String(\"*.example.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewSplitTunnel(ctx, \"exampleSplitTunnelInclude\", \u0026cloudflare.SplitTunnelArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tMode:      pulumi.String(\"include\"),\n\t\t\tTunnels: SplitTunnelTunnelArray{\n\t\t\t\t\u0026SplitTunnelTunnelArgs{\n\t\t\t\t\tDescription: pulumi.String(\"example domain\"),\n\t\t\t\t\tHost:        pulumi.String(\"*.example.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSplit Tunnels can be imported using the account identifer and mode.\n\n```sh\n $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example 1d5fdc9e88c8a8c4518b068cd94331fe/exclude\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the device posture rule should be added.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The split tunnel mode. Valid values are `include` or `exclude`.\n"
+                },
+                "tunnels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/SplitTunnelTunnel:SplitTunnelTunnel"
+                    },
+                    "description": "The value of the tunnel attributes (refer to the nested schema).\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "mode",
+                "tunnels"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the device posture rule should be added.\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The split tunnel mode. Valid values are `include` or `exclude`.\n"
+                },
+                "tunnels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/SplitTunnelTunnel:SplitTunnelTunnel"
+                    },
+                    "description": "The value of the tunnel attributes (refer to the nested schema).\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "mode",
+                "tunnels"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SplitTunnel resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the device posture rule should be added.\n"
+                    },
+                    "mode": {
+                        "type": "string",
+                        "description": "The split tunnel mode. Valid values are `include` or `exclude`.\n"
+                    },
+                    "tunnels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/SplitTunnelTunnel:SplitTunnelTunnel"
+                        },
+                        "description": "The value of the tunnel attributes (refer to the nested schema).\n"
                     }
                 },
                 "type": "object"
@@ -14365,6 +14509,100 @@
         }
     },
     "functions": {
+        "cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider": {
+            "description": "Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst mainAccessIdentityProvider = cloudflare.getAccessIdentityProvider({\n    name: \"Google SSO\",\n    accountId: \"example-account-id\",\n});\nconst mainAccessApplication = new cloudflare.AccessApplication(\"mainAccessApplication\", {\n    zoneId: \"example.com\",\n    name: \"name\",\n    domain: \"name.example.com\",\n    type: \"self_hosted\",\n    sessionDuration: \"24h\",\n    allowedIdps: [mainAccessIdentityProvider.then(mainAccessIdentityProvider =\u003e mainAccessIdentityProvider.id)],\n    autoRedirectToIdentity: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmain_access_identity_provider = cloudflare.get_access_identity_provider(name=\"Google SSO\",\n    account_id=\"example-account-id\")\nmain_access_application = cloudflare.AccessApplication(\"mainAccessApplication\",\n    zone_id=\"example.com\",\n    name=\"name\",\n    domain=\"name.example.com\",\n    type=\"self_hosted\",\n    session_duration=\"24h\",\n    allowed_idps=[main_access_identity_provider.id],\n    auto_redirect_to_identity=True)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var mainAccessIdentityProvider = Output.Create(Cloudflare.GetAccessIdentityProvider.InvokeAsync(new Cloudflare.GetAccessIdentityProviderArgs\n        {\n            Name = \"Google SSO\",\n            AccountId = \"example-account-id\",\n        }));\n        var mainAccessApplication = new Cloudflare.AccessApplication(\"mainAccessApplication\", new Cloudflare.AccessApplicationArgs\n        {\n            ZoneId = \"example.com\",\n            Name = \"name\",\n            Domain = \"name.example.com\",\n            Type = \"self_hosted\",\n            SessionDuration = \"24h\",\n            AllowedIdps = \n            {\n                mainAccessIdentityProvider.Apply(mainAccessIdentityProvider =\u003e mainAccessIdentityProvider.Id),\n            },\n            AutoRedirectToIdentity = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"example-account-id\"\n\t\tmainAccessIdentityProvider, err := cloudflare.LookupAccessIdentityProvider(ctx, \u0026GetAccessIdentityProviderArgs{\n\t\t\tName:      \"Google SSO\",\n\t\t\tAccountId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAccessApplication(ctx, \"mainAccessApplication\", \u0026cloudflare.AccessApplicationArgs{\n\t\t\tZoneId:          pulumi.String(\"example.com\"),\n\t\t\tName:            pulumi.String(\"name\"),\n\t\t\tDomain:          pulumi.String(\"name.example.com\"),\n\t\t\tType:            pulumi.String(\"self_hosted\"),\n\t\t\tSessionDuration: pulumi.String(\"24h\"),\n\t\t\tAllowedIdps: pulumi.StringArray{\n\t\t\t\tpulumi.String(mainAccessIdentityProvider.Id),\n\t\t\t},\n\t\t\tAutoRedirectToIdentity: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccessIdentityProvider.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Access Identity Provider name to search for.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The Zone's ID. Conflicts with `account_id`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccessIdentityProvider.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Access Identity Provider Name\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Access Identity Provider Type\n"
+                    },
+                    "zoneId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "type",
+                    "id"
+                ]
+            }
+        },
+        "cloudflare:index/getAccountRoles:getAccountRoles": {
+            "description": "Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccountRoles.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account for which to list the roles.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccountRoles.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getAccountRolesRole:getAccountRolesRole"
+                        },
+                        "description": "A list of roles object. See below for nested attributes.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "roles",
+                    "id"
+                ]
+            }
+        },
         "cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups": {
             "description": "Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst test = cloudflare.getApiTokenPermissionGroups({});\nexport const dnsReadPermissionId = test.then(test =\u003e test.permissions?[\"DNS Read\"]);\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ntest = cloudflare.get_api_token_permission_groups()\npulumi.export(\"dnsReadPermissionId\", test.permissions[\"DNS Read\"])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var test = Output.Create(Cloudflare.GetApiTokenPermissionGroups.InvokeAsync());\n        this.DnsReadPermissionId = test.Apply(test =\u003e test.Permissions?.DNS_Read);\n    }\n\n    [Output(\"dnsReadPermissionId\")]\n    public Output\u003cstring\u003e DnsReadPermissionId { get; set; }\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "outputs": {
@@ -14638,6 +14876,85 @@
                 "type": "object",
                 "required": [
                     "rules",
+                    "zoneId",
+                    "id"
+                ]
+            }
+        },
+        "cloudflare:index/getZone:getZone": {
+            "description": "Use this data source to look up [zone] info. This is the singular alternative\nto `cloudflare.getZones`.\n\n\u003e **Note** Cloudflare zone names **are not unique**. It is possible for multiple\n  accounts to have the same zone created but in different states. If you are\n  using this setup, it is advised to use the `account_id` attribute on this\n  resource or swap to `cloudflare.getZones` to further filter the results.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// You can also lookup by zone_id if you prefer.\nconst example = pulumi.output(cloudflare.getZone({\n    zoneId: \"0b6d347b01d437a092be84c2edfce72c\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zone(zone_id=\"0b6d347b01d437a092be84c2edfce72c\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZone.InvokeAsync(new Cloudflare.GetZoneArgs\n        {\n            ZoneId = \"0b6d347b01d437a092be84c2edfce72c\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"0b6d347b01d437a092be84c2edfce72c\"\n\t\t_, err := cloudflare.LookupZone(ctx, \u0026GetZoneArgs{\n\t\t\tZoneId: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% example %}}\n### Example usage with other resources\n\nThe example below fetches the zone information for example.com and then is\nreferenced in the `cloudflare.Record` section.\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleZone = cloudflare.getZone({\n    name: \"example.com\",\n});\nconst exampleRecord = new cloudflare.Record(\"exampleRecord\", {\n    zoneId: exampleZone.then(exampleZone =\u003e exampleZone.id),\n    name: \"www\",\n    value: \"203.0.113.1\",\n    type: \"A\",\n    proxied: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_zone = cloudflare.get_zone(name=\"example.com\")\nexample_record = cloudflare.Record(\"exampleRecord\",\n    zone_id=example_zone.id,\n    name=\"www\",\n    value=\"203.0.113.1\",\n    type=\"A\",\n    proxied=True)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleZone = Output.Create(Cloudflare.GetZone.InvokeAsync(new Cloudflare.GetZoneArgs\n        {\n            Name = \"example.com\",\n        }));\n        var exampleRecord = new Cloudflare.Record(\"exampleRecord\", new Cloudflare.RecordArgs\n        {\n            ZoneId = exampleZone.Apply(exampleZone =\u003e exampleZone.Id),\n            Name = \"www\",\n            Value = \"203.0.113.1\",\n            Type = \"A\",\n            Proxied = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"example.com\"\n\t\texampleZone, err := cloudflare.LookupZone(ctx, \u0026GetZoneArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRecord(ctx, \"exampleRecord\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId:  pulumi.String(exampleZone.Id),\n\t\t\tName:    pulumi.String(\"www\"),\n\t\t\tValue:   pulumi.String(\"203.0.113.1\"),\n\t\t\tType:    pulumi.String(\"A\"),\n\t\t\tProxied: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getZone.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account ID associated with the zone.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the zone. Conflicts with `\"zone_id\"`.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID. Conflicts with `\"name\"`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getZone.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account ID associated with the zone.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the zone.\n"
+                    },
+                    "nameServers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Cloudflare assigned name servers. This is only populated for zones that use Cloudflare DNS.\n"
+                    },
+                    "paused": {
+                        "type": "boolean",
+                        "description": "`true` if cloudflare is enabled on the zone, otherwise `false`.\n"
+                    },
+                    "plan": {
+                        "type": "string",
+                        "description": "The name of the plan associated with the zone.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the zone. Values can be: `\"active\"`, `\"pending\"`, `\"initializing\"`, `\"moved\"`, `\"deleted\"`,\nor `\"deactivated\"`.\n"
+                    },
+                    "vanityNameServers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of Vanity Nameservers (if set).\n"
+                    },
+                    "zoneId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "name",
+                    "nameServers",
+                    "paused",
+                    "plan",
+                    "status",
+                    "vanityNameServers",
                     "zoneId",
                     "id"
                 ]

@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to terraform-provider-cloudflare 3.4.0
+* Upgrade to terraform-provider-cloudflare 3.5.0
 * Upgrade to terraform-bridge 3.11.0
 * Upgrade to pulumi 3.17.0
 

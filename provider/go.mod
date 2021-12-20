@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	cloud.google.com/go/kms v1.1.0 // indirect
-	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20211031212346-74d2854083b8
+	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20211214192935-cfc73a5eae60
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.11.0
 	github.com/pulumi/pulumi/sdk/v3 v3.17.0

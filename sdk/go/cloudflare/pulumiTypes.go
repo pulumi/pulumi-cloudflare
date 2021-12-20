@@ -14727,6 +14727,121 @@ func (o SpectrumApplicationOriginPortRangePtrOutput) Start() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+type SplitTunnelTunnel struct {
+	// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+	Address *string `pulumi:"address"`
+	// The description of the tunnel.
+	Description *string `pulumi:"description"`
+	// The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+	Host *string `pulumi:"host"`
+}
+
+// SplitTunnelTunnelInput is an input type that accepts SplitTunnelTunnelArgs and SplitTunnelTunnelOutput values.
+// You can construct a concrete instance of `SplitTunnelTunnelInput` via:
+//
+//          SplitTunnelTunnelArgs{...}
+type SplitTunnelTunnelInput interface {
+	pulumi.Input
+
+	ToSplitTunnelTunnelOutput() SplitTunnelTunnelOutput
+	ToSplitTunnelTunnelOutputWithContext(context.Context) SplitTunnelTunnelOutput
+}
+
+type SplitTunnelTunnelArgs struct {
+	// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The description of the tunnel.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+}
+
+func (SplitTunnelTunnelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplitTunnelTunnel)(nil)).Elem()
+}
+
+func (i SplitTunnelTunnelArgs) ToSplitTunnelTunnelOutput() SplitTunnelTunnelOutput {
+	return i.ToSplitTunnelTunnelOutputWithContext(context.Background())
+}
+
+func (i SplitTunnelTunnelArgs) ToSplitTunnelTunnelOutputWithContext(ctx context.Context) SplitTunnelTunnelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplitTunnelTunnelOutput)
+}
+
+// SplitTunnelTunnelArrayInput is an input type that accepts SplitTunnelTunnelArray and SplitTunnelTunnelArrayOutput values.
+// You can construct a concrete instance of `SplitTunnelTunnelArrayInput` via:
+//
+//          SplitTunnelTunnelArray{ SplitTunnelTunnelArgs{...} }
+type SplitTunnelTunnelArrayInput interface {
+	pulumi.Input
+
+	ToSplitTunnelTunnelArrayOutput() SplitTunnelTunnelArrayOutput
+	ToSplitTunnelTunnelArrayOutputWithContext(context.Context) SplitTunnelTunnelArrayOutput
+}
+
+type SplitTunnelTunnelArray []SplitTunnelTunnelInput
+
+func (SplitTunnelTunnelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SplitTunnelTunnel)(nil)).Elem()
+}
+
+func (i SplitTunnelTunnelArray) ToSplitTunnelTunnelArrayOutput() SplitTunnelTunnelArrayOutput {
+	return i.ToSplitTunnelTunnelArrayOutputWithContext(context.Background())
+}
+
+func (i SplitTunnelTunnelArray) ToSplitTunnelTunnelArrayOutputWithContext(ctx context.Context) SplitTunnelTunnelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SplitTunnelTunnelArrayOutput)
+}
+
+type SplitTunnelTunnelOutput struct{ *pulumi.OutputState }
+
+func (SplitTunnelTunnelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SplitTunnelTunnel)(nil)).Elem()
+}
+
+func (o SplitTunnelTunnelOutput) ToSplitTunnelTunnelOutput() SplitTunnelTunnelOutput {
+	return o
+}
+
+func (o SplitTunnelTunnelOutput) ToSplitTunnelTunnelOutputWithContext(ctx context.Context) SplitTunnelTunnelOutput {
+	return o
+}
+
+// The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+func (o SplitTunnelTunnelOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SplitTunnelTunnel) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The description of the tunnel.
+func (o SplitTunnelTunnelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SplitTunnelTunnel) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+func (o SplitTunnelTunnelOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SplitTunnelTunnel) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+type SplitTunnelTunnelArrayOutput struct{ *pulumi.OutputState }
+
+func (SplitTunnelTunnelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SplitTunnelTunnel)(nil)).Elem()
+}
+
+func (o SplitTunnelTunnelArrayOutput) ToSplitTunnelTunnelArrayOutput() SplitTunnelTunnelArrayOutput {
+	return o
+}
+
+func (o SplitTunnelTunnelArrayOutput) ToSplitTunnelTunnelArrayOutputWithContext(ctx context.Context) SplitTunnelTunnelArrayOutput {
+	return o
+}
+
+func (o SplitTunnelTunnelArrayOutput) Index(i pulumi.IntInput) SplitTunnelTunnelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SplitTunnelTunnel {
+		return vs[0].([]SplitTunnelTunnel)[vs[1].(int)]
+	}).(SplitTunnelTunnelOutput)
+}
+
 type TeamsAccountAntivirus struct {
 	EnabledDownloadPhase bool `pulumi:"enabledDownloadPhase"`
 	EnabledUploadPhase   bool `pulumi:"enabledUploadPhase"`
@@ -18849,6 +18964,121 @@ func (o ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput) Preload() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetAccountRolesRole struct {
+	// Description of role's permissions
+	Description *string `pulumi:"description"`
+	// Role identifier tag
+	Id *string `pulumi:"id"`
+	// Role Name
+	Name *string `pulumi:"name"`
+}
+
+// GetAccountRolesRoleInput is an input type that accepts GetAccountRolesRoleArgs and GetAccountRolesRoleOutput values.
+// You can construct a concrete instance of `GetAccountRolesRoleInput` via:
+//
+//          GetAccountRolesRoleArgs{...}
+type GetAccountRolesRoleInput interface {
+	pulumi.Input
+
+	ToGetAccountRolesRoleOutput() GetAccountRolesRoleOutput
+	ToGetAccountRolesRoleOutputWithContext(context.Context) GetAccountRolesRoleOutput
+}
+
+type GetAccountRolesRoleArgs struct {
+	// Description of role's permissions
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Role identifier tag
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Role Name
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GetAccountRolesRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountRolesRole)(nil)).Elem()
+}
+
+func (i GetAccountRolesRoleArgs) ToGetAccountRolesRoleOutput() GetAccountRolesRoleOutput {
+	return i.ToGetAccountRolesRoleOutputWithContext(context.Background())
+}
+
+func (i GetAccountRolesRoleArgs) ToGetAccountRolesRoleOutputWithContext(ctx context.Context) GetAccountRolesRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountRolesRoleOutput)
+}
+
+// GetAccountRolesRoleArrayInput is an input type that accepts GetAccountRolesRoleArray and GetAccountRolesRoleArrayOutput values.
+// You can construct a concrete instance of `GetAccountRolesRoleArrayInput` via:
+//
+//          GetAccountRolesRoleArray{ GetAccountRolesRoleArgs{...} }
+type GetAccountRolesRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetAccountRolesRoleArrayOutput() GetAccountRolesRoleArrayOutput
+	ToGetAccountRolesRoleArrayOutputWithContext(context.Context) GetAccountRolesRoleArrayOutput
+}
+
+type GetAccountRolesRoleArray []GetAccountRolesRoleInput
+
+func (GetAccountRolesRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountRolesRole)(nil)).Elem()
+}
+
+func (i GetAccountRolesRoleArray) ToGetAccountRolesRoleArrayOutput() GetAccountRolesRoleArrayOutput {
+	return i.ToGetAccountRolesRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAccountRolesRoleArray) ToGetAccountRolesRoleArrayOutputWithContext(ctx context.Context) GetAccountRolesRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountRolesRoleArrayOutput)
+}
+
+type GetAccountRolesRoleOutput struct{ *pulumi.OutputState }
+
+func (GetAccountRolesRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountRolesRole)(nil)).Elem()
+}
+
+func (o GetAccountRolesRoleOutput) ToGetAccountRolesRoleOutput() GetAccountRolesRoleOutput {
+	return o
+}
+
+func (o GetAccountRolesRoleOutput) ToGetAccountRolesRoleOutputWithContext(ctx context.Context) GetAccountRolesRoleOutput {
+	return o
+}
+
+// Description of role's permissions
+func (o GetAccountRolesRoleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountRolesRole) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Role identifier tag
+func (o GetAccountRolesRoleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountRolesRole) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Role Name
+func (o GetAccountRolesRoleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAccountRolesRole) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GetAccountRolesRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAccountRolesRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAccountRolesRole)(nil)).Elem()
+}
+
+func (o GetAccountRolesRoleArrayOutput) ToGetAccountRolesRoleArrayOutput() GetAccountRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetAccountRolesRoleArrayOutput) ToGetAccountRolesRoleArrayOutputWithContext(ctx context.Context) GetAccountRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetAccountRolesRoleArrayOutput) Index(i pulumi.IntInput) GetAccountRolesRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountRolesRole {
+		return vs[0].([]GetAccountRolesRole)[vs[1].(int)]
+	}).(GetAccountRolesRoleOutput)
+}
+
 type GetWafGroupsFilter struct {
 	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
 	Mode *string `pulumi:"mode"`
@@ -20248,6 +20478,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginDnsPtrInput)(nil)).Elem(), SpectrumApplicationOriginDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginPortRangeInput)(nil)).Elem(), SpectrumApplicationOriginPortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationOriginPortRangePtrInput)(nil)).Elem(), SpectrumApplicationOriginPortRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplitTunnelTunnelInput)(nil)).Elem(), SplitTunnelTunnelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SplitTunnelTunnelArrayInput)(nil)).Elem(), SplitTunnelTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusInput)(nil)).Elem(), TeamsAccountAntivirusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusPtrInput)(nil)).Elem(), TeamsAccountAntivirusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPageInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
@@ -20286,6 +20518,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMobileRedirectPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMobileRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsSecurityHeaderInput)(nil)).Elem(), ZoneSettingsOverrideSettingsSecurityHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsSecurityHeaderPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsSecurityHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountRolesRoleInput)(nil)).Elem(), GetAccountRolesRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountRolesRoleArrayInput)(nil)).Elem(), GetAccountRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterPtrInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsGroupInput)(nil)).Elem(), GetWafGroupsGroupArgs{})
@@ -20497,6 +20731,8 @@ func init() {
 	pulumi.RegisterOutputType(SpectrumApplicationOriginDnsPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginPortRangeOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationOriginPortRangePtrOutput{})
+	pulumi.RegisterOutputType(SplitTunnelTunnelOutput{})
+	pulumi.RegisterOutputType(SplitTunnelTunnelArrayOutput{})
 	pulumi.RegisterOutputType(TeamsAccountAntivirusOutput{})
 	pulumi.RegisterOutputType(TeamsAccountAntivirusPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBlockPageOutput{})
@@ -20535,6 +20771,8 @@ func init() {
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsMobileRedirectPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsSecurityHeaderOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput{})
+	pulumi.RegisterOutputType(GetAccountRolesRoleOutput{})
+	pulumi.RegisterOutputType(GetAccountRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsFilterOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsGroupOutput{})

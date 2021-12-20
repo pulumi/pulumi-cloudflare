@@ -19,6 +19,7 @@ class AccessApplicationArgs:
                  name: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,7 @@ class AccessApplicationArgs:
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
                selection if only one is configured in allowed_idps. Defaults to `false`
                (disabled).
@@ -59,6 +61,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "account_id", account_id)
         if allowed_idps is not None:
             pulumi.set(__self__, "allowed_idps", allowed_idps)
+        if app_launcher_visible is not None:
+            pulumi.set(__self__, "app_launcher_visible", app_launcher_visible)
         if auto_redirect_to_identity is not None:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if cors_headers is not None:
@@ -132,6 +136,18 @@ class AccessApplicationArgs:
     @allowed_idps.setter
     def allowed_idps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_idps", value)
+
+    @property
+    @pulumi.getter(name="appLauncherVisible")
+    def app_launcher_visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to show/hide applications in App Launcher. Defaults to `true`.
+        """
+        return pulumi.get(self, "app_launcher_visible")
+
+    @app_launcher_visible.setter
+    def app_launcher_visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "app_launcher_visible", value)
 
     @property
     @pulumi.getter(name="autoRedirectToIdentity")
@@ -277,6 +293,7 @@ class _AccessApplicationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  aud: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
@@ -296,6 +313,7 @@ class _AccessApplicationState:
         Input properties used for looking up and filtering AccessApplication resources.
         :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
                selection if only one is configured in allowed_idps. Defaults to `false`
@@ -319,6 +337,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "account_id", account_id)
         if allowed_idps is not None:
             pulumi.set(__self__, "allowed_idps", allowed_idps)
+        if app_launcher_visible is not None:
+            pulumi.set(__self__, "app_launcher_visible", app_launcher_visible)
         if aud is not None:
             pulumi.set(__self__, "aud", aud)
         if auto_redirect_to_identity is not None:
@@ -373,6 +393,18 @@ class _AccessApplicationState:
     @allowed_idps.setter
     def allowed_idps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_idps", value)
+
+    @property
+    @pulumi.getter(name="appLauncherVisible")
+    def app_launcher_visible(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to show/hide applications in App Launcher. Defaults to `true`.
+        """
+        return pulumi.get(self, "app_launcher_visible")
+
+    @app_launcher_visible.setter
+    def app_launcher_visible(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "app_launcher_visible", value)
 
     @property
     @pulumi.getter
@@ -557,6 +589,7 @@ class AccessApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
@@ -614,6 +647,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
                selection if only one is configured in allowed_idps. Defaults to `false`
                (disabled).
@@ -693,6 +727,7 @@ class AccessApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
@@ -721,6 +756,7 @@ class AccessApplication(pulumi.CustomResource):
 
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allowed_idps"] = allowed_idps
+            __props__.__dict__["app_launcher_visible"] = app_launcher_visible
             __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
             __props__.__dict__["cors_headers"] = cors_headers
             __props__.__dict__["custom_deny_message"] = custom_deny_message
@@ -752,6 +788,7 @@ class AccessApplication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            app_launcher_visible: Optional[pulumi.Input[bool]] = None,
             aud: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
             cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
@@ -776,6 +813,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
                selection if only one is configured in allowed_idps. Defaults to `false`
@@ -801,6 +839,7 @@ class AccessApplication(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["allowed_idps"] = allowed_idps
+        __props__.__dict__["app_launcher_visible"] = app_launcher_visible
         __props__.__dict__["aud"] = aud
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__.__dict__["cors_headers"] = cors_headers
@@ -833,6 +872,14 @@ class AccessApplication(pulumi.CustomResource):
         The identity providers selected for the application.
         """
         return pulumi.get(self, "allowed_idps")
+
+    @property
+    @pulumi.getter(name="appLauncherVisible")
+    def app_launcher_visible(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Option to show/hide applications in App Launcher. Defaults to `true`.
+        """
+        return pulumi.get(self, "app_launcher_visible")
 
     @property
     @pulumi.getter

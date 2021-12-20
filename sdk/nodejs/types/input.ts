@@ -591,17 +591,6 @@ export interface DevicePostureRuleMatch {
     platform?: pulumi.Input<string>;
 }
 
-export interface GetWafGroupsFilterArgs {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
-    mode?: pulumi.Input<string>;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
-    name?: pulumi.Input<string>;
-}
-
 export interface GetWafGroupsFilter {
     /**
      * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
@@ -611,6 +600,17 @@ export interface GetWafGroupsFilter {
      * A regular expression matching the name of the WAF Rule Groups to lookup.
      */
     name?: string;
+}
+
+export interface GetWafGroupsFilterArgs {
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
+    name?: pulumi.Input<string>;
 }
 
 export interface GetWafPackagesFilter {
@@ -1655,6 +1655,21 @@ export interface SpectrumApplicationOriginPortRange {
     start: pulumi.Input<number>;
 }
 
+export interface SplitTunnelTunnel {
+    /**
+     * The address in CIDR format to include in the tunnel configuration. Conflicts with `"host"`.
+     */
+    address?: pulumi.Input<string>;
+    /**
+     * The description of the tunnel.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The domain name to include in the tunnel configuration. Conflicts with `"address"`.
+     */
+    host?: pulumi.Input<string>;
+}
+
 export interface TeamsAccountAntivirus {
     enabledDownloadPhase: pulumi.Input<boolean>;
     enabledUploadPhase: pulumi.Input<boolean>;
@@ -2085,3 +2100,4 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload?: pulumi.Input<boolean>;
 }
+

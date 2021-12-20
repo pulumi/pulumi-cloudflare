@@ -81,6 +81,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly allowedIdps!: pulumi.Output<string[] | undefined>;
     /**
+     * Option to show/hide applications in App Launcher. Defaults to `true`.
+     */
+    public readonly appLauncherVisible!: pulumi.Output<boolean | undefined>;
+    /**
      * Application Audience (AUD) Tag of the application
      */
     public /*out*/ readonly aud!: pulumi.Output<string>;
@@ -151,6 +155,7 @@ export class AccessApplication extends pulumi.CustomResource {
             const state = argsOrState as AccessApplicationState | undefined;
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["allowedIdps"] = state ? state.allowedIdps : undefined;
+            inputs["appLauncherVisible"] = state ? state.appLauncherVisible : undefined;
             inputs["aud"] = state ? state.aud : undefined;
             inputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
             inputs["corsHeaders"] = state ? state.corsHeaders : undefined;
@@ -176,6 +181,7 @@ export class AccessApplication extends pulumi.CustomResource {
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["allowedIdps"] = args ? args.allowedIdps : undefined;
+            inputs["appLauncherVisible"] = args ? args.appLauncherVisible : undefined;
             inputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
             inputs["corsHeaders"] = args ? args.corsHeaders : undefined;
             inputs["customDenyMessage"] = args ? args.customDenyMessage : undefined;
@@ -211,6 +217,10 @@ export interface AccessApplicationState {
      * The identity providers selected for the application.
      */
     allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Option to show/hide applications in App Launcher. Defaults to `true`.
+     */
+    appLauncherVisible?: pulumi.Input<boolean>;
     /**
      * Application Audience (AUD) Tag of the application
      */
@@ -280,6 +290,10 @@ export interface AccessApplicationArgs {
      * The identity providers selected for the application.
      */
     allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Option to show/hide applications in App Launcher. Defaults to `true`.
+     */
+    appLauncherVisible?: pulumi.Input<boolean>;
     /**
      * Option to skip identity provider
      * selection if only one is configured in allowed_idps. Defaults to `false`

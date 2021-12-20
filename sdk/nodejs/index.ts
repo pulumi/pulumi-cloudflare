@@ -29,12 +29,15 @@ export * from "./customSsl";
 export * from "./devicePostureRule";
 export * from "./filter";
 export * from "./firewallRule";
+export * from "./getAccessIdentityProvider";
+export * from "./getAccountRoles";
 export * from "./getApiTokenPermissionGroups";
 export * from "./getIpRanges";
 export * from "./getOriginCaRootCertificate";
 export * from "./getWafGroups";
 export * from "./getWafPackages";
 export * from "./getWafRules";
+export * from "./getZone";
 export * from "./getZoneDnssec";
 export * from "./getZones";
 export * from "./healthcheck";
@@ -55,6 +58,7 @@ export * from "./rateLimit";
 export * from "./record";
 export * from "./ruleset";
 export * from "./spectrumApplication";
+export * from "./splitTunnel";
 export * from "./staticRoute";
 export * from "./teamsAccount";
 export * from "./teamsList";
@@ -126,6 +130,7 @@ import { RateLimit } from "./rateLimit";
 import { Record } from "./record";
 import { Ruleset } from "./ruleset";
 import { SpectrumApplication } from "./spectrumApplication";
+import { SplitTunnel } from "./splitTunnel";
 import { StaticRoute } from "./staticRoute";
 import { TeamsAccount } from "./teamsAccount";
 import { TeamsList } from "./teamsList";
@@ -232,6 +237,8 @@ const _module = {
                 return new Ruleset(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
                 return new SpectrumApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/splitTunnel:SplitTunnel":
+                return new SplitTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/staticRoute:StaticRoute":
                 return new StaticRoute(name, <any>undefined, { urn })
             case "cloudflare:index/teamsAccount:TeamsAccount":
@@ -316,6 +323,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/splitTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/staticRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsAccount", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)

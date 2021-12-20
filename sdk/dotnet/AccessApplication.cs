@@ -80,6 +80,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> AllowedIdps { get; private set; } = null!;
 
         /// <summary>
+        /// Option to show/hide applications in App Launcher. Defaults to `true`.
+        /// </summary>
+        [Output("appLauncherVisible")]
+        public Output<bool?> AppLauncherVisible { get; private set; } = null!;
+
+        /// <summary>
         /// Application Audience (AUD) Tag of the application
         /// </summary>
         [Output("aud")]
@@ -229,6 +235,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// Option to show/hide applications in App Launcher. Defaults to `true`.
+        /// </summary>
+        [Input("appLauncherVisible")]
+        public Input<bool>? AppLauncherVisible { get; set; }
+
+        /// <summary>
         /// Option to skip identity provider
         /// selection if only one is configured in allowed_idps. Defaults to `false`
         /// (disabled).
@@ -337,6 +349,12 @@ namespace Pulumi.Cloudflare
             get => _allowedIdps ?? (_allowedIdps = new InputList<string>());
             set => _allowedIdps = value;
         }
+
+        /// <summary>
+        /// Option to show/hide applications in App Launcher. Defaults to `true`.
+        /// </summary>
+        [Input("appLauncherVisible")]
+        public Input<bool>? AppLauncherVisible { get; set; }
 
         /// <summary>
         /// Application Audience (AUD) Tag of the application

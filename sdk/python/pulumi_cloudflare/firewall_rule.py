@@ -258,6 +258,9 @@ class FirewallRule(pulumi.CustomResource):
 
         Filter expressions needs to be created first before using Firewall Rule. See Filter.
 
+        If you want to configure Custom Firewall rules, you need to use cloudflare_ruleset, because Custom Rules are built upon the
+        [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
+
         ## Example Usage
 
         ```python
@@ -305,6 +308,9 @@ class FirewallRule(pulumi.CustomResource):
         A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
 
         Filter expressions needs to be created first before using Firewall Rule. See Filter.
+
+        If you want to configure Custom Firewall rules, you need to use cloudflare_ruleset, because Custom Rules are built upon the
+        [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
 
         ## Example Usage
 
