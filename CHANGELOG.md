@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 4.1.0 (2021-12-20)
 * Upgrade to terraform-provider-cloudflare 3.5.0
 * Upgrade to terraform-bridge 3.11.0
 * Upgrade to pulumi 3.17.0
-
----
 
 ## 4.0.0 (2021-09-27)
 * Upgrade to v3.1.0 of the CloudFlare Terraform Provider
