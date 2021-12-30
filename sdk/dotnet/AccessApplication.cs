@@ -159,7 +159,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type. Defaults to `self_hosted`. Valid
-        /// values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        /// values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -314,7 +314,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type. Defaults to `self_hosted`. Valid
-        /// values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        /// values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -436,7 +436,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// The application type. Defaults to `self_hosted`. Valid
-        /// values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        /// values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

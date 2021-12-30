@@ -132,7 +132,7 @@ export class AccessApplication extends pulumi.CustomResource {
     public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
     /**
      * The application type. Defaults to `selfHosted`. Valid
-     * values are `selfHosted`, `ssh`, `vnc`, or `file`.
+     * values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -269,7 +269,7 @@ export interface AccessApplicationState {
     skipInterstitial?: pulumi.Input<boolean>;
     /**
      * The application type. Defaults to `selfHosted`. Valid
-     * values are `selfHosted`, `ssh`, `vnc`, or `file`.
+     * values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -338,7 +338,7 @@ export interface AccessApplicationArgs {
     skipInterstitial?: pulumi.Input<boolean>;
     /**
      * The application type. Defaults to `selfHosted`. Valid
-     * values are `selfHosted`, `ssh`, `vnc`, or `file`.
+     * values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
      */
     type?: pulumi.Input<string>;
     /**

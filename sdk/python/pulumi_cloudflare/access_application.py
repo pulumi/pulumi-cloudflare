@@ -52,7 +52,7 @@ class AccessApplicationArgs:
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
-               values are `self_hosted`, `ssh`, `vnc`, or `file`.
+               values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "domain", domain)
@@ -267,7 +267,7 @@ class AccessApplicationArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The application type. Defaults to `self_hosted`. Valid
-        values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         """
         return pulumi.get(self, "type")
 
@@ -330,7 +330,7 @@ class _AccessApplicationState:
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
-               values are `self_hosted`, `ssh`, `vnc`, or `file`.
+               values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         if account_id is not None:
@@ -561,7 +561,7 @@ class _AccessApplicationState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The application type. Defaults to `self_hosted`. Valid
-        values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         """
         return pulumi.get(self, "type")
 
@@ -663,7 +663,7 @@ class AccessApplication(pulumi.CustomResource):
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
-               values are `self_hosted`, `ssh`, `vnc`, or `file`.
+               values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         ...
@@ -830,7 +830,7 @@ class AccessApplication(pulumi.CustomResource):
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
         :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
-               values are `self_hosted`, `ssh`, `vnc`, or `file`.
+               values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -984,7 +984,7 @@ class AccessApplication(pulumi.CustomResource):
     def type(self) -> pulumi.Output[Optional[str]]:
         """
         The application type. Defaults to `self_hosted`. Valid
-        values are `self_hosted`, `ssh`, `vnc`, or `file`.
+        values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         """
         return pulumi.get(self, "type")
 

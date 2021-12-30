@@ -101,7 +101,7 @@ type AccessApplication struct {
 	SessionDuration  pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	SkipInterstitial pulumi.BoolPtrOutput   `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
-	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -177,7 +177,7 @@ type accessApplicationState struct {
 	SessionDuration  *string `pulumi:"sessionDuration"`
 	SkipInterstitial *bool   `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
-	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
 	Type *string `pulumi:"type"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -219,7 +219,7 @@ type AccessApplicationState struct {
 	SessionDuration  pulumi.StringPtrInput
 	SkipInterstitial pulumi.BoolPtrInput
 	// The application type. Defaults to `selfHosted`. Valid
-	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
 	Type pulumi.StringPtrInput
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
@@ -263,7 +263,7 @@ type accessApplicationArgs struct {
 	SessionDuration  *string `pulumi:"sessionDuration"`
 	SkipInterstitial *bool   `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
-	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
 	Type *string `pulumi:"type"`
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -304,7 +304,7 @@ type AccessApplicationArgs struct {
 	SessionDuration  pulumi.StringPtrInput
 	SkipInterstitial pulumi.BoolPtrInput
 	// The application type. Defaults to `selfHosted`. Valid
-	// values are `selfHosted`, `ssh`, `vnc`, or `file`.
+	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
 	Type pulumi.StringPtrInput
 	// The DNS zone to which the access application should be added. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
