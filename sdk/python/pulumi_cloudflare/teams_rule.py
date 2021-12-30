@@ -20,6 +20,7 @@ class TeamsRuleArgs:
                  description: pulumi.Input[str],
                  name: pulumi.Input[str],
                  precedence: pulumi.Input[int],
+                 device_posture: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity: Optional[pulumi.Input[str]] = None,
@@ -32,6 +33,7 @@ class TeamsRuleArgs:
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
+        :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
@@ -43,6 +45,8 @@ class TeamsRuleArgs:
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "precedence", precedence)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if filters is not None:
@@ -115,6 +119,18 @@ class TeamsRuleArgs:
         pulumi.set(self, "precedence", value)
 
     @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The wirefilter expression to be used for device_posture check matching.
+        """
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_posture", value)
+
+    @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -181,6 +197,7 @@ class _TeamsRuleState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device_posture: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity: Optional[pulumi.Input[str]] = None,
@@ -194,6 +211,7 @@ class _TeamsRuleState:
         :param pulumi.Input[str] account_id: The account to which the teams rule should be added.
         :param pulumi.Input[str] action: The action executed by matched teams rule.
         :param pulumi.Input[str] description: The description of the teams rule.
+        :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
@@ -208,6 +226,8 @@ class _TeamsRuleState:
             pulumi.set(__self__, "action", action)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if device_posture is not None:
+            pulumi.set(__self__, "device_posture", device_posture)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if filters is not None:
@@ -260,6 +280,18 @@ class _TeamsRuleState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> Optional[pulumi.Input[str]]:
+        """
+        The wirefilter expression to be used for device_posture check matching.
+        """
+        return pulumi.get(self, "device_posture")
+
+    @device_posture.setter
+    def device_posture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "device_posture", value)
 
     @property
     @pulumi.getter
@@ -363,6 +395,7 @@ class TeamsRule(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device_posture: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity: Optional[pulumi.Input[str]] = None,
@@ -411,6 +444,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account to which the teams rule should be added.
         :param pulumi.Input[str] action: The action executed by matched teams rule.
         :param pulumi.Input[str] description: The description of the teams rule.
+        :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
@@ -478,6 +512,7 @@ class TeamsRule(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  action: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 device_posture: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identity: Optional[pulumi.Input[str]] = None,
@@ -506,6 +541,7 @@ class TeamsRule(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            __props__.__dict__["device_posture"] = device_posture
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["filters"] = filters
             __props__.__dict__["identity"] = identity
@@ -531,6 +567,7 @@ class TeamsRule(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             action: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            device_posture: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
             filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             identity: Optional[pulumi.Input[str]] = None,
@@ -549,6 +586,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account to which the teams rule should be added.
         :param pulumi.Input[str] action: The action executed by matched teams rule.
         :param pulumi.Input[str] description: The description of the teams rule.
+        :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
@@ -564,6 +602,7 @@ class TeamsRule(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["action"] = action
         __props__.__dict__["description"] = description
+        __props__.__dict__["device_posture"] = device_posture
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["filters"] = filters
         __props__.__dict__["identity"] = identity
@@ -597,6 +636,14 @@ class TeamsRule(pulumi.CustomResource):
         The description of the teams rule.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="devicePosture")
+    def device_posture(self) -> pulumi.Output[Optional[str]]:
+        """
+        The wirefilter expression to be used for device_posture check matching.
+        """
+        return pulumi.get(self, "device_posture")
 
     @property
     @pulumi.getter

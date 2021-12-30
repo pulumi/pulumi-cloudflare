@@ -68,6 +68,8 @@ type TeamsRule struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The description of the teams rule.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The wirefilter expression to be used for devicePosture check matching.
+	DevicePosture pulumi.StringPtrOutput `pulumi:"devicePosture"`
 	// Indicator of rule enablement.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
@@ -135,6 +137,8 @@ type teamsRuleState struct {
 	Action *string `pulumi:"action"`
 	// The description of the teams rule.
 	Description *string `pulumi:"description"`
+	// The wirefilter expression to be used for devicePosture check matching.
+	DevicePosture *string `pulumi:"devicePosture"`
 	// Indicator of rule enablement.
 	Enabled *bool `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
@@ -159,6 +163,8 @@ type TeamsRuleState struct {
 	Action pulumi.StringPtrInput
 	// The description of the teams rule.
 	Description pulumi.StringPtrInput
+	// The wirefilter expression to be used for devicePosture check matching.
+	DevicePosture pulumi.StringPtrInput
 	// Indicator of rule enablement.
 	Enabled pulumi.BoolPtrInput
 	// The protocol or layer to evaluate the traffic and identity expressions.
@@ -187,6 +193,8 @@ type teamsRuleArgs struct {
 	Action string `pulumi:"action"`
 	// The description of the teams rule.
 	Description string `pulumi:"description"`
+	// The wirefilter expression to be used for devicePosture check matching.
+	DevicePosture *string `pulumi:"devicePosture"`
 	// Indicator of rule enablement.
 	Enabled *bool `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
@@ -211,6 +219,8 @@ type TeamsRuleArgs struct {
 	Action pulumi.StringInput
 	// The description of the teams rule.
 	Description pulumi.StringInput
+	// The wirefilter expression to be used for devicePosture check matching.
+	DevicePosture pulumi.StringPtrInput
 	// Indicator of rule enablement.
 	Enabled pulumi.BoolPtrInput
 	// The protocol or layer to evaluate the traffic and identity expressions.

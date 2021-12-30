@@ -7605,7 +7605,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, or `file`.\n"
+                    "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -7684,7 +7684,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, or `file`.\n"
+                    "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -7766,7 +7766,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, or `file`.\n"
+                        "description": "The application type. Defaults to `self_hosted`. Valid\nvalues are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -12981,6 +12981,10 @@
                     "type": "string",
                     "description": "The description of the teams rule.\n"
                 },
+                "devicePosture": {
+                    "type": "string",
+                    "description": "The wirefilter expression to be used for device_posture check matching.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Indicator of rule enablement.\n"
@@ -13037,6 +13041,10 @@
                     "type": "string",
                     "description": "The description of the teams rule.\n"
                 },
+                "devicePosture": {
+                    "type": "string",
+                    "description": "The wirefilter expression to be used for device_posture check matching.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "Indicator of rule enablement.\n"
@@ -13090,6 +13098,10 @@
                     "description": {
                         "type": "string",
                         "description": "The description of the teams rule.\n"
+                    },
+                    "devicePosture": {
+                        "type": "string",
+                        "description": "The wirefilter expression to be used for device_posture check matching.\n"
                     },
                     "enabled": {
                         "type": "boolean",

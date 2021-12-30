@@ -82,6 +82,10 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * The wirefilter expression to be used for devicePosture check matching.
+     */
+    public readonly devicePosture!: pulumi.Output<string | undefined>;
+    /**
      * Indicator of rule enablement.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
@@ -127,6 +131,7 @@ export class TeamsRule extends pulumi.CustomResource {
             inputs["accountId"] = state ? state.accountId : undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["devicePosture"] = state ? state.devicePosture : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
             inputs["filters"] = state ? state.filters : undefined;
             inputs["identity"] = state ? state.identity : undefined;
@@ -155,6 +160,7 @@ export class TeamsRule extends pulumi.CustomResource {
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["action"] = args ? args.action : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["devicePosture"] = args ? args.devicePosture : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["filters"] = args ? args.filters : undefined;
             inputs["identity"] = args ? args.identity : undefined;
@@ -187,6 +193,10 @@ export interface TeamsRuleState {
      * The description of the teams rule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The wirefilter expression to be used for devicePosture check matching.
+     */
+    devicePosture?: pulumi.Input<string>;
     /**
      * Indicator of rule enablement.
      */
@@ -234,6 +244,10 @@ export interface TeamsRuleArgs {
      * The description of the teams rule.
      */
     description: pulumi.Input<string>;
+    /**
+     * The wirefilter expression to be used for devicePosture check matching.
+     */
+    devicePosture?: pulumi.Input<string>;
     /**
      * Indicator of rule enablement.
      */

@@ -80,6 +80,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The wirefilter expression to be used for device_posture check matching.
+        /// </summary>
+        [Output("devicePosture")]
+        public Output<string?> DevicePosture { get; private set; } = null!;
+
+        /// <summary>
         /// Indicator of rule enablement.
         /// </summary>
         [Output("enabled")]
@@ -189,6 +195,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
+        /// The wirefilter expression to be used for device_posture check matching.
+        /// </summary>
+        [Input("devicePosture")]
+        public Input<string>? DevicePosture { get; set; }
+
+        /// <summary>
         /// Indicator of rule enablement.
         /// </summary>
         [Input("enabled")]
@@ -260,6 +272,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The wirefilter expression to be used for device_posture check matching.
+        /// </summary>
+        [Input("devicePosture")]
+        public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
         /// Indicator of rule enablement.
