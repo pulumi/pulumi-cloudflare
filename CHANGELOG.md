@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade terraform-provider-cloudflare 3.6.0
+_(none)_
 
 ---
+
+## 4.2.0 (2021-12-31)
+* Upgrade terraform-provider-cloudflare 3.6.0
 
 ## 4.1.0 (2021-12-20)
 * Upgrade to terraform-provider-cloudflare 3.5.0
