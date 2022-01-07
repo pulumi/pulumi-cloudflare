@@ -28,7 +28,8 @@ builds:
   - -X github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-cloudflare/
 changelog:
-  skip: true
+  use: git
+  sort: asc
 release:
   disable: false
 snapshot:
