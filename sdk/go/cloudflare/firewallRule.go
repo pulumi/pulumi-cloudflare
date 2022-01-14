@@ -65,7 +65,7 @@ import (
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -118,7 +118,7 @@ func GetFirewallRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallRule resources.
 type firewallRuleState struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
 	Action *string `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description *string `pulumi:"description"`
@@ -134,7 +134,7 @@ type firewallRuleState struct {
 }
 
 type FirewallRuleState struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
 	Action pulumi.StringPtrInput
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrInput
@@ -154,7 +154,7 @@ func (FirewallRuleState) ElementType() reflect.Type {
 }
 
 type firewallRuleArgs struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
 	Action string `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description *string `pulumi:"description"`
@@ -171,7 +171,7 @@ type firewallRuleArgs struct {
 
 // The set of arguments for constructing a FirewallRule resource.
 type FirewallRuleArgs struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
 	Action pulumi.StringInput
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrInput
