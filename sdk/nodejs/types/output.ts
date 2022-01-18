@@ -538,6 +538,8 @@ export interface CustomSslCustomSslPriority {
 }
 
 export interface DevicePostureRuleInput {
+    complianceStatus?: string;
+    connectionId?: string;
     /**
      * = (Required) The domain that the client must join.
      */
