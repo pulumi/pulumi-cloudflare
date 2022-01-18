@@ -3510,6 +3510,8 @@ class CustomSslCustomSslPriorityArgs:
 @pulumi.input_type
 class DevicePostureRuleInputArgs:
     def __init__(__self__, *,
+                 compliance_status: Optional[pulumi.Input[str]] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  exists: Optional[pulumi.Input[bool]] = None,
@@ -3534,6 +3536,10 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[str] thumbprint: The thumbprint of the application certificate.
         :param pulumi.Input[str] version: = (Required) The operating system semantic version.
         """
+        if compliance_status is not None:
+            pulumi.set(__self__, "compliance_status", compliance_status)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
@@ -3556,6 +3562,24 @@ class DevicePostureRuleInputArgs:
             pulumi.set(__self__, "thumbprint", thumbprint)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="complianceStatus")
+    def compliance_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "compliance_status")
+
+    @compliance_status.setter
+    def compliance_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compliance_status", value)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
 
     @property
     @pulumi.getter
