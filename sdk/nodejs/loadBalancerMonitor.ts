@@ -112,7 +112,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly interval!: pulumi.Output<number | undefined>;
     /**
-     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
+     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
      */
     public readonly method!: pulumi.Output<string>;
     /**
@@ -140,7 +140,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly timeout!: pulumi.Output<number | undefined>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -236,7 +236,7 @@ export interface LoadBalancerMonitorState {
      */
     interval?: pulumi.Input<number>;
     /**
-     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
+     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
      */
     method?: pulumi.Input<string>;
     /**
@@ -264,7 +264,7 @@ export interface LoadBalancerMonitorState {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
      */
     type?: pulumi.Input<string>;
 }
@@ -302,7 +302,7 @@ export interface LoadBalancerMonitorArgs {
      */
     interval?: pulumi.Input<number>;
     /**
-     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
+     * The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
      */
     method?: pulumi.Input<string>;
     /**
@@ -326,7 +326,7 @@ export interface LoadBalancerMonitorArgs {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+     * The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
      */
     type?: pulumi.Input<string>;
 }

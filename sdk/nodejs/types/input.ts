@@ -538,6 +538,8 @@ export interface CustomSslCustomSslPriority {
 }
 
 export interface DevicePostureRuleInput {
+    complianceStatus?: pulumi.Input<string>;
+    connectionId?: pulumi.Input<string>;
     /**
      * = (Required) The domain that the client must join.
      */
