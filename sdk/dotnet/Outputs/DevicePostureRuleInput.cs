@@ -13,6 +13,8 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class DevicePostureRuleInput
     {
+        public readonly string? ComplianceStatus;
+        public readonly string? ConnectionId;
         /// <summary>
         /// = (Required) The domain that the client must join.
         /// </summary>
@@ -60,6 +62,10 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private DevicePostureRuleInput(
+            string? complianceStatus,
+
+            string? connectionId,
+
             string? domain,
 
             bool? enabled,
@@ -82,6 +88,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? version)
         {
+            ComplianceStatus = complianceStatus;
+            ConnectionId = connectionId;
             Domain = domain;
             Enabled = enabled;
             Exists = exists;

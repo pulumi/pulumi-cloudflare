@@ -33,10 +33,34 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Cloudflare.LogPushOwnershipChallenge("example", new Cloudflare.LogPushOwnershipChallengeArgs
+    ///         {
+    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge")]
     public partial class LogPushOwnershipChallenge : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// </summary>
+        [Output("accountId")]
+        public Output<string?> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         /// </summary>
@@ -51,10 +75,10 @@ namespace Pulumi.Cloudflare
         public Output<string> OwnershipChallengeFilename { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID where the logpush ownership challenge should be created.
+        /// The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -103,16 +127,22 @@ namespace Pulumi.Cloudflare
     public sealed class LogPushOwnershipChallengeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
         /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         /// </summary>
         [Input("destinationConf", required: true)]
         public Input<string> DestinationConf { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID where the logpush ownership challenge should be created.
+        /// The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
         /// </summary>
-        [Input("zoneId", required: true)]
-        public Input<string> ZoneId { get; set; } = null!;
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public LogPushOwnershipChallengeArgs()
         {
@@ -121,6 +151,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class LogPushOwnershipChallengeState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         /// </summary>
@@ -135,7 +171,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? OwnershipChallengeFilename { get; set; }
 
         /// <summary>
-        /// The zone ID where the logpush ownership challenge should be created.
+        /// The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

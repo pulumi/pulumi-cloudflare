@@ -12,6 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class DevicePostureRuleInputArgs : Pulumi.ResourceArgs
     {
+        [Input("complianceStatus")]
+        public Input<string>? ComplianceStatus { get; set; }
+
+        [Input("connectionId")]
+        public Input<string>? ConnectionId { get; set; }
+
         /// <summary>
         /// = (Required) The domain that the client must join.
         /// </summary>
