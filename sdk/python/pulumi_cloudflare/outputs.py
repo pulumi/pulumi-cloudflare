@@ -3483,7 +3483,11 @@ class DevicePostureRuleInput(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "requireAll":
+        if key == "complianceStatus":
+            suggest = "compliance_status"
+        elif key == "connectionId":
+            suggest = "connection_id"
+        elif key == "requireAll":
             suggest = "require_all"
 
         if suggest:
@@ -3498,6 +3502,8 @@ class DevicePostureRuleInput(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 compliance_status: Optional[str] = None,
+                 connection_id: Optional[str] = None,
                  domain: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  exists: Optional[bool] = None,
@@ -3522,6 +3528,10 @@ class DevicePostureRuleInput(dict):
         :param str thumbprint: The thumbprint of the application certificate.
         :param str version: = (Required) The operating system semantic version.
         """
+        if compliance_status is not None:
+            pulumi.set(__self__, "compliance_status", compliance_status)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if enabled is not None:
@@ -3544,6 +3554,16 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "thumbprint", thumbprint)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="complianceStatus")
+    def compliance_status(self) -> Optional[str]:
+        return pulumi.get(self, "compliance_status")
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[str]:
+        return pulumi.get(self, "connection_id")
 
     @property
     @pulumi.getter

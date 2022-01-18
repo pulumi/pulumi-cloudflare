@@ -5992,6 +5992,8 @@ func (o CustomSslCustomSslPriorityArrayOutput) Index(i pulumi.IntInput) CustomSs
 }
 
 type DevicePostureRuleInputType struct {
+	ComplianceStatus *string `pulumi:"complianceStatus"`
+	ConnectionId     *string `pulumi:"connectionId"`
 	// = (Required) The domain that the client must join.
 	Domain *string `pulumi:"domain"`
 	// = (Required) True if the firewall must be enabled.
@@ -6028,6 +6030,8 @@ type DevicePostureRuleInputTypeInput interface {
 }
 
 type DevicePostureRuleInputTypeArgs struct {
+	ComplianceStatus pulumi.StringPtrInput `pulumi:"complianceStatus"`
+	ConnectionId     pulumi.StringPtrInput `pulumi:"connectionId"`
 	// = (Required) The domain that the client must join.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// = (Required) True if the firewall must be enabled.
@@ -6101,6 +6105,14 @@ func (o DevicePostureRuleInputTypeOutput) ToDevicePostureRuleInputTypeOutput() D
 
 func (o DevicePostureRuleInputTypeOutput) ToDevicePostureRuleInputTypeOutputWithContext(ctx context.Context) DevicePostureRuleInputTypeOutput {
 	return o
+}
+
+func (o DevicePostureRuleInputTypeOutput) ComplianceStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.ComplianceStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o DevicePostureRuleInputTypeOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
 }
 
 // = (Required) The domain that the client must join.

@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
     public partial class FirewallRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "managed_challenge", "bypass". Enterprise plan also allows "log".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Cloudflare
     public sealed class FirewallRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "managed_challenge", "bypass". Enterprise plan also allows "log".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -197,7 +197,7 @@ namespace Pulumi.Cloudflare
     public sealed class FirewallRuleState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "bypass". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "managed_challenge", "bypass". Enterprise plan also allows "log".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

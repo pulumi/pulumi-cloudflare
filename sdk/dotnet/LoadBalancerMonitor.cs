@@ -130,7 +130,7 @@ namespace Pulumi.Cloudflare
         public Output<int?> Interval { get; private set; } = null!;
 
         /// <summary>
-        /// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
+        /// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
         /// </summary>
         [Output("method")]
         public Output<string> Method { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.Cloudflare
         public Output<int?> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+        /// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
+        /// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+        /// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -375,7 +375,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Interval { get; set; }
 
         /// <summary>
-        /// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connection_established" if `type` is "tcp" .
+        /// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connection_established` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connection_established" if `type` is "tcp", and empty otherwise.
         /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
@@ -417,7 +417,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+        /// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
