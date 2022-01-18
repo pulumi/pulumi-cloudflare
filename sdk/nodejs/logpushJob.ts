@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Import
+ *
+ * Logpush jobs can be imported using a composite ID formed of* `identifierType` - Either `account` or `zone`. * `identifierID` - The ID of the account or zone. * `jobID` - The Logpush Job ID to import. Import an account-scoped job using `account/:accountID/:jobID`
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/1d5fdc9e88c8a8c4518b068cd94331fe/54321
+ * ```
+ *
+ *  Import a zone-scoped job using `zone/:zoneID/:jobID`
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/d41d8cd98f00b204e9800998ecf8427e/54321
+ * ```
+ */
 export class LogpushJob extends pulumi.CustomResource {
     /**
      * Get an existing LogpushJob resource's state with the given name, ID, and optional extra
@@ -33,11 +48,17 @@ export class LogpushJob extends pulumi.CustomResource {
     }
 
     /**
-     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"` and `"nelReports"`.
+     * The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
+     */
+    public readonly accountId!: pulumi.Output<string | undefined>;
+    /**
+     * Which type of dataset resource to use. Available values are
+     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports"`
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
      */
     public readonly destinationConf!: pulumi.Output<string>;
     /**
@@ -58,9 +79,9 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly ownershipChallenge!: pulumi.Output<string | undefined>;
     /**
-     * The zone ID where the logpush job should be created.
+     * The zone ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a LogpushJob resource with the given unique name, arguments, and options.
@@ -75,6 +96,7 @@ export class LogpushJob extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogpushJobState | undefined;
+            inputs["accountId"] = state ? state.accountId : undefined;
             inputs["dataset"] = state ? state.dataset : undefined;
             inputs["destinationConf"] = state ? state.destinationConf : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -90,9 +112,7 @@ export class LogpushJob extends pulumi.CustomResource {
             if ((!args || args.destinationConf === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationConf'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zoneId'");
-            }
+            inputs["accountId"] = args ? args.accountId : undefined;
             inputs["dataset"] = args ? args.dataset : undefined;
             inputs["destinationConf"] = args ? args.destinationConf : undefined;
             inputs["enabled"] = args ? args.enabled : undefined;
@@ -113,11 +133,17 @@ export class LogpushJob extends pulumi.CustomResource {
  */
 export interface LogpushJobState {
     /**
-     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"` and `"nelReports"`.
+     * The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Which type of dataset resource to use. Available values are
+     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports"`
      */
     dataset?: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
      */
     destinationConf?: pulumi.Input<string>;
     /**
@@ -138,7 +164,7 @@ export interface LogpushJobState {
      */
     ownershipChallenge?: pulumi.Input<string>;
     /**
-     * The zone ID where the logpush job should be created.
+     * The zone ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -148,11 +174,17 @@ export interface LogpushJobState {
  */
 export interface LogpushJobArgs {
     /**
-     * Which type of dataset resource to use. Available values are `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"` and `"nelReports"`.
+     * The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * Which type of dataset resource to use. Available values are
+     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports"`
      */
     dataset: pulumi.Input<string>;
     /**
-     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+     * Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
      */
     destinationConf: pulumi.Input<string>;
     /**
@@ -173,7 +205,7 @@ export interface LogpushJobArgs {
      */
     ownershipChallenge?: pulumi.Input<string>;
     /**
-     * The zone ID where the logpush job should be created.
+     * The zone ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
      */
-    zoneId: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
 }
