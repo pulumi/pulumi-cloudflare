@@ -71,7 +71,7 @@ export class FirewallRule extends pulumi.CustomResource {
     }
 
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -147,7 +147,7 @@ export class FirewallRule extends pulumi.CustomResource {
  */
 export interface FirewallRuleState {
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
      */
     action?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface FirewallRuleState {
  */
 export interface FirewallRuleArgs {
     /**
-     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "bypass". Enterprise plan also allows "log".
+     * The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
      */
     action: pulumi.Input<string>;
     /**

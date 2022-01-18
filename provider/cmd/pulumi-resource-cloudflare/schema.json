@@ -2671,6 +2671,22 @@
         },
         "cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput": {
             "properties": {
+                "complianceStatus": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "connectionId": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "domain": {
                     "type": "string",
                     "description": "= (Required) The domain that the client must join.\n",
@@ -9785,7 +9801,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"allow\", \"js_challenge\", \"bypass\". Enterprise plan also allows \"log\".\n"
+                    "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"allow\", \"js_challenge\", \"managed_challenge\", \"bypass\". Enterprise plan also allows \"log\".\n"
                 },
                 "description": {
                     "type": "string",
@@ -9822,7 +9838,7 @@
             "inputProperties": {
                 "action": {
                     "type": "string",
-                    "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"allow\", \"js_challenge\", \"bypass\". Enterprise plan also allows \"log\".\n"
+                    "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"allow\", \"js_challenge\", \"managed_challenge\", \"bypass\". Enterprise plan also allows \"log\".\n"
                 },
                 "description": {
                     "type": "string",
@@ -9861,7 +9877,7 @@
                 "properties": {
                     "action": {
                         "type": "string",
-                        "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"allow\", \"js_challenge\", \"bypass\". Enterprise plan also allows \"log\".\n"
+                        "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"allow\", \"js_challenge\", \"managed_challenge\", \"bypass\". Enterprise plan also allows \"log\".\n"
                     },
                     "description": {
                         "type": "string",
@@ -10635,7 +10651,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The method to use for the health check. Valid values are any valid HTTP verb if `type` is \"http\" or \"https\", or `connection_established` if `type` is \"tcp\". Default: \"GET\" if `type` is \"http\" or \"https\", or \"connection_established\" if `type` is \"tcp\" .\n"
+                    "description": "The method to use for the health check. Valid values are any valid HTTP verb if `type` is \"http\" or \"https\", or `connection_established` if `type` is \"tcp\". Default: \"GET\" if `type` is \"http\" or \"https\", \"connection_established\" if `type` is \"tcp\", and empty otherwise.\n"
                 },
                 "modifiedOn": {
                     "type": "string",
@@ -10663,7 +10679,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: \"http\".\n"
+                    "description": "The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: \"http\".\n"
                 }
             },
             "required": [
@@ -10706,7 +10722,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The method to use for the health check. Valid values are any valid HTTP verb if `type` is \"http\" or \"https\", or `connection_established` if `type` is \"tcp\". Default: \"GET\" if `type` is \"http\" or \"https\", or \"connection_established\" if `type` is \"tcp\" .\n"
+                    "description": "The method to use for the health check. Valid values are any valid HTTP verb if `type` is \"http\" or \"https\", or `connection_established` if `type` is \"tcp\". Default: \"GET\" if `type` is \"http\" or \"https\", \"connection_established\" if `type` is \"tcp\", and empty otherwise.\n"
                 },
                 "path": {
                     "type": "string",
@@ -10730,7 +10746,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: \"http\".\n"
+                    "description": "The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: \"http\".\n"
                 }
             },
             "stateInputs": {
@@ -10773,7 +10789,7 @@
                     },
                     "method": {
                         "type": "string",
-                        "description": "The method to use for the health check. Valid values are any valid HTTP verb if `type` is \"http\" or \"https\", or `connection_established` if `type` is \"tcp\". Default: \"GET\" if `type` is \"http\" or \"https\", or \"connection_established\" if `type` is \"tcp\" .\n"
+                        "description": "The method to use for the health check. Valid values are any valid HTTP verb if `type` is \"http\" or \"https\", or `connection_established` if `type` is \"tcp\". Default: \"GET\" if `type` is \"http\" or \"https\", \"connection_established\" if `type` is \"tcp\", and empty otherwise.\n"
                     },
                     "modifiedOn": {
                         "type": "string",
@@ -10801,7 +10817,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: \"http\".\n"
+                        "description": "The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: \"http\".\n"
                     }
                 },
                 "type": "object"
@@ -11028,8 +11044,12 @@
             }
         },
         "cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge": {
-            "description": "Provides a resource which manages Cloudflare Logpush ownership challenges to use\nin a Logpush Job. On it's own, doesn't do much however this resource should\nbe used in conjunction to create Logpush jobs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.LogPushOwnershipChallenge(\"example\", {\n    destinationConf: \"s3://my-bucket-path?region=us-west-2\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.LogPushOwnershipChallenge(\"example\",\n    destination_conf=\"s3://my-bucket-path?region=us-west-2\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.LogPushOwnershipChallenge(\"example\", new Cloudflare.LogPushOwnershipChallengeArgs\n        {\n            DestinationConf = \"s3://my-bucket-path?region=us-west-2\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewLogPushOwnershipChallenge(ctx, \"example\", \u0026cloudflare.LogPushOwnershipChallengeArgs{\n\t\t\tDestinationConf: pulumi.String(\"s3://my-bucket-path?region=us-west-2\"),\n\t\t\tZoneId:          pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a resource which manages Cloudflare Logpush ownership challenges to use\nin a Logpush Job. On it's own, doesn't do much however this resource should\nbe used in conjunction to create Logpush jobs.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.LogPushOwnershipChallenge(\"example\", {\n    destinationConf: \"s3://my-bucket-path?region=us-west-2\",\n    zoneId: \"d41d8cd98f00b204e9800998ecf8427e\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.LogPushOwnershipChallenge(\"example\",\n    destination_conf=\"s3://my-bucket-path?region=us-west-2\",\n    zone_id=\"d41d8cd98f00b204e9800998ecf8427e\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.LogPushOwnershipChallenge(\"example\", new Cloudflare.LogPushOwnershipChallengeArgs\n        {\n            DestinationConf = \"s3://my-bucket-path?region=us-west-2\",\n            ZoneId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewLogPushOwnershipChallenge(ctx, \"example\", \u0026cloudflare.LogPushOwnershipChallengeArgs{\n\t\t\tDestinationConf: pulumi.String(\"s3://my-bucket-path?region=us-west-2\"),\n\t\t\tZoneId:          pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.LogPushOwnershipChallenge(\"example\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    destinationConf: \"s3://my-bucket-path?region=us-west-2\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.LogPushOwnershipChallenge(\"example\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    destination_conf=\"s3://my-bucket-path?region=us-west-2\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.LogPushOwnershipChallenge(\"example\", new Cloudflare.LogPushOwnershipChallengeArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            DestinationConf = \"s3://my-bucket-path?region=us-west-2\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewLogPushOwnershipChallenge(ctx, \"example\", \u0026cloudflare.LogPushOwnershipChallengeArgs{\n\t\t\tAccountId:       pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tDestinationConf: pulumi.String(\"s3://my-bucket-path?region=us-west-2\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.\n"
+                },
                 "destinationConf": {
                     "type": "string",
                     "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
@@ -11040,31 +11060,37 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone ID where the logpush ownership challenge should be created.\n"
+                    "description": "The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.\n"
                 }
             },
             "required": [
                 "destinationConf",
-                "ownershipChallengeFilename",
-                "zoneId"
+                "ownershipChallengeFilename"
             ],
             "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.\n"
+                },
                 "destinationConf": {
                     "type": "string",
                     "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone ID where the logpush ownership challenge should be created.\n"
+                    "description": "The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.\n"
                 }
             },
             "requiredInputs": [
-                "destinationConf",
-                "zoneId"
+                "destinationConf"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering LogPushOwnershipChallenge resources.\n",
                 "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.\n"
+                    },
                     "destinationConf": {
                         "type": "string",
                         "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
@@ -11075,7 +11101,7 @@
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The zone ID where the logpush ownership challenge should be created.\n"
+                        "description": "The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.\n"
                     }
                 },
                 "type": "object"
@@ -11127,14 +11153,19 @@
             }
         },
         "cloudflare:index/logpushJob:LogpushJob": {
+            "description": "\n\n\n## Import\n\nLogpush jobs can be imported using a composite ID formed of* `identifierType` - Either `account` or `zone`. * `identifierID` - The ID of the account or zone. * `jobID` - The Logpush Job ID to import. Import an account-scoped job using `account/:accountID/:jobID`\n\n```sh\n $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/1d5fdc9e88c8a8c4518b068cd94331fe/54321\n```\n\n Import a zone-scoped job using `zone/:zoneID/:jobID`\n\n```sh\n $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/d41d8cd98f00b204e9800998ecf8427e/54321\n```\n\n ",
             "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account ID where the logpush job should be created. Either `account_id` or `zone_id` are required.\n"
+                },
                 "dataset": {
                     "type": "string",
-                    "description": "Which type of dataset resource to use. Available values are `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"` and `\"nel_reports\"`.\n"
+                    "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\"`\n"
                 },
                 "destinationConf": {
                     "type": "string",
-                    "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
+                    "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -11154,22 +11185,25 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone ID where the logpush job should be created.\n"
+                    "description": "The zone ID where the logpush job should be created. Either `account_id` or `zone_id` are required.\n"
                 }
             },
             "required": [
                 "dataset",
-                "destinationConf",
-                "zoneId"
+                "destinationConf"
             ],
             "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account ID where the logpush job should be created. Either `account_id` or `zone_id` are required.\n"
+                },
                 "dataset": {
                     "type": "string",
-                    "description": "Which type of dataset resource to use. Available values are `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"` and `\"nel_reports\"`.\n"
+                    "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\"`\n"
                 },
                 "destinationConf": {
                     "type": "string",
-                    "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
+                    "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -11189,24 +11223,27 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone ID where the logpush job should be created.\n"
+                    "description": "The zone ID where the logpush job should be created. Either `account_id` or `zone_id` are required.\n"
                 }
             },
             "requiredInputs": [
                 "dataset",
-                "destinationConf",
-                "zoneId"
+                "destinationConf"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering LogpushJob resources.\n",
                 "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account ID where the logpush job should be created. Either `account_id` or `zone_id` are required.\n"
+                    },
                     "dataset": {
                         "type": "string",
-                        "description": "Which type of dataset resource to use. Available values are `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"` and `\"nel_reports\"`.\n"
+                        "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\"`\n"
                     },
                     "destinationConf": {
                         "type": "string",
-                        "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).\n"
+                        "description": "Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).\n"
                     },
                     "enabled": {
                         "type": "boolean",
@@ -11226,7 +11263,7 @@
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The zone ID where the logpush job should be created.\n"
+                        "description": "The zone ID where the logpush job should be created. Either `account_id` or `zone_id` are required.\n"
                     }
                 },
                 "type": "object"

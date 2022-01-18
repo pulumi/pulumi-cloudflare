@@ -101,7 +101,7 @@ type LoadBalancerMonitor struct {
 	Headers LoadBalancerMonitorHeaderArrayOutput `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
 	Interval pulumi.IntPtrOutput `pulumi:"interval"`
-	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
+	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
 	Method pulumi.StringOutput `pulumi:"method"`
 	// The RFC3339 timestamp of when the load balancer monitor was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
@@ -115,7 +115,7 @@ type LoadBalancerMonitor struct {
 	Retries pulumi.IntPtrOutput `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
-	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -164,7 +164,7 @@ type loadBalancerMonitorState struct {
 	Headers []LoadBalancerMonitorHeader `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
 	Interval *int `pulumi:"interval"`
-	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
+	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
 	Method *string `pulumi:"method"`
 	// The RFC3339 timestamp of when the load balancer monitor was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
@@ -178,7 +178,7 @@ type loadBalancerMonitorState struct {
 	Retries *int `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
 	Timeout *int `pulumi:"timeout"`
-	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
 	Type *string `pulumi:"type"`
 }
 
@@ -199,7 +199,7 @@ type LoadBalancerMonitorState struct {
 	Headers LoadBalancerMonitorHeaderArrayInput
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
 	Interval pulumi.IntPtrInput
-	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
+	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
 	Method pulumi.StringPtrInput
 	// The RFC3339 timestamp of when the load balancer monitor was last modified.
 	ModifiedOn pulumi.StringPtrInput
@@ -213,7 +213,7 @@ type LoadBalancerMonitorState struct {
 	Retries pulumi.IntPtrInput
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
 	Timeout pulumi.IntPtrInput
-	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
 	Type pulumi.StringPtrInput
 }
 
@@ -236,7 +236,7 @@ type loadBalancerMonitorArgs struct {
 	Headers []LoadBalancerMonitorHeader `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
 	Interval *int `pulumi:"interval"`
-	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
+	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
 	Method *string `pulumi:"method"`
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path *string `pulumi:"path"`
@@ -248,7 +248,7 @@ type loadBalancerMonitorArgs struct {
 	Retries *int `pulumi:"retries"`
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
 	Timeout *int `pulumi:"timeout"`
-	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
 	Type *string `pulumi:"type"`
 }
 
@@ -268,7 +268,7 @@ type LoadBalancerMonitorArgs struct {
 	Headers LoadBalancerMonitorHeaderArrayInput
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Default: 60.
 	Interval pulumi.IntPtrInput
-	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", or "connectionEstablished" if `type` is "tcp" .
+	// The method to use for the health check. Valid values are any valid HTTP verb if `type` is "http" or "https", or `connectionEstablished` if `type` is "tcp". Default: "GET" if `type` is "http" or "https", "connectionEstablished" if `type` is "tcp", and empty otherwise.
 	Method pulumi.StringPtrInput
 	// The endpoint path to health check against. Default: "/". Only valid if `type` is "http" or "https".
 	Path pulumi.StringPtrInput
@@ -280,7 +280,7 @@ type LoadBalancerMonitorArgs struct {
 	Retries pulumi.IntPtrInput
 	// The timeout (in seconds) before marking the health check as failed. Default: 5.
 	Timeout pulumi.IntPtrInput
-	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. Default: "http".
+	// The protocol to use for the healthcheck. Currently supported protocols are 'HTTP', 'HTTPS', 'TCP', 'UDP-ICMP', 'ICMP-PING', and 'SMTP'. Default: "http".
 	Type pulumi.StringPtrInput
 }
 
