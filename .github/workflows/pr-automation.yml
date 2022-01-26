@@ -15,18 +15,7 @@ jobs:
         UPDATE_LABELS: automation/update
         UPDATE_METHOD: rebase
       name: Automerge
-      uses: pascalgn/automerge-action@v0.13.1
-    strategy:
-      fail-fast: true
-      matrix:
-        dotnetversion:
-          - 3.1.301
-        goversion:
-          - 1.16.x
-        nodeversion:
-          - 14.x
-        pythonversion:
-          - "3.7"
+      uses: pascalgn/automerge-action@v0.14.3
 name: pr-automation
 "on":
   check_suite:
