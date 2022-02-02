@@ -209,7 +209,7 @@ type WafOverrideInput interface {
 }
 
 func (*WafOverride) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafOverride)(nil))
+	return reflect.TypeOf((**WafOverride)(nil)).Elem()
 }
 
 func (i *WafOverride) ToWafOverrideOutput() WafOverrideOutput {
@@ -218,35 +218,6 @@ func (i *WafOverride) ToWafOverrideOutput() WafOverrideOutput {
 
 func (i *WafOverride) ToWafOverrideOutputWithContext(ctx context.Context) WafOverrideOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafOverrideOutput)
-}
-
-func (i *WafOverride) ToWafOverridePtrOutput() WafOverridePtrOutput {
-	return i.ToWafOverridePtrOutputWithContext(context.Background())
-}
-
-func (i *WafOverride) ToWafOverridePtrOutputWithContext(ctx context.Context) WafOverridePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WafOverridePtrOutput)
-}
-
-type WafOverridePtrInput interface {
-	pulumi.Input
-
-	ToWafOverridePtrOutput() WafOverridePtrOutput
-	ToWafOverridePtrOutputWithContext(ctx context.Context) WafOverridePtrOutput
-}
-
-type wafOverridePtrType WafOverrideArgs
-
-func (*wafOverridePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WafOverride)(nil))
-}
-
-func (i *wafOverridePtrType) ToWafOverridePtrOutput() WafOverridePtrOutput {
-	return i.ToWafOverridePtrOutputWithContext(context.Background())
-}
-
-func (i *wafOverridePtrType) ToWafOverridePtrOutputWithContext(ctx context.Context) WafOverridePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WafOverridePtrOutput)
 }
 
 // WafOverrideArrayInput is an input type that accepts WafOverrideArray and WafOverrideArrayOutput values.
@@ -302,7 +273,7 @@ func (i WafOverrideMap) ToWafOverrideMapOutputWithContext(ctx context.Context) W
 type WafOverrideOutput struct{ *pulumi.OutputState }
 
 func (WafOverrideOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafOverride)(nil))
+	return reflect.TypeOf((**WafOverride)(nil)).Elem()
 }
 
 func (o WafOverrideOutput) ToWafOverrideOutput() WafOverrideOutput {
@@ -313,44 +284,10 @@ func (o WafOverrideOutput) ToWafOverrideOutputWithContext(ctx context.Context) W
 	return o
 }
 
-func (o WafOverrideOutput) ToWafOverridePtrOutput() WafOverridePtrOutput {
-	return o.ToWafOverridePtrOutputWithContext(context.Background())
-}
-
-func (o WafOverrideOutput) ToWafOverridePtrOutputWithContext(ctx context.Context) WafOverridePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafOverride) *WafOverride {
-		return &v
-	}).(WafOverridePtrOutput)
-}
-
-type WafOverridePtrOutput struct{ *pulumi.OutputState }
-
-func (WafOverridePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WafOverride)(nil))
-}
-
-func (o WafOverridePtrOutput) ToWafOverridePtrOutput() WafOverridePtrOutput {
-	return o
-}
-
-func (o WafOverridePtrOutput) ToWafOverridePtrOutputWithContext(ctx context.Context) WafOverridePtrOutput {
-	return o
-}
-
-func (o WafOverridePtrOutput) Elem() WafOverrideOutput {
-	return o.ApplyT(func(v *WafOverride) WafOverride {
-		if v != nil {
-			return *v
-		}
-		var ret WafOverride
-		return ret
-	}).(WafOverrideOutput)
-}
-
 type WafOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (WafOverrideArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WafOverride)(nil))
+	return reflect.TypeOf((*[]*WafOverride)(nil)).Elem()
 }
 
 func (o WafOverrideArrayOutput) ToWafOverrideArrayOutput() WafOverrideArrayOutput {
@@ -362,15 +299,15 @@ func (o WafOverrideArrayOutput) ToWafOverrideArrayOutputWithContext(ctx context.
 }
 
 func (o WafOverrideArrayOutput) Index(i pulumi.IntInput) WafOverrideOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafOverride {
-		return vs[0].([]WafOverride)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WafOverride {
+		return vs[0].([]*WafOverride)[vs[1].(int)]
 	}).(WafOverrideOutput)
 }
 
 type WafOverrideMapOutput struct{ *pulumi.OutputState }
 
 func (WafOverrideMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WafOverride)(nil))
+	return reflect.TypeOf((*map[string]*WafOverride)(nil)).Elem()
 }
 
 func (o WafOverrideMapOutput) ToWafOverrideMapOutput() WafOverrideMapOutput {
@@ -382,18 +319,16 @@ func (o WafOverrideMapOutput) ToWafOverrideMapOutputWithContext(ctx context.Cont
 }
 
 func (o WafOverrideMapOutput) MapIndex(k pulumi.StringInput) WafOverrideOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WafOverride {
-		return vs[0].(map[string]WafOverride)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WafOverride {
+		return vs[0].(map[string]*WafOverride)[vs[1].(string)]
 	}).(WafOverrideOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WafOverrideInput)(nil)).Elem(), &WafOverride{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WafOverridePtrInput)(nil)).Elem(), &WafOverride{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WafOverrideArrayInput)(nil)).Elem(), WafOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WafOverrideMapInput)(nil)).Elem(), WafOverrideMap{})
 	pulumi.RegisterOutputType(WafOverrideOutput{})
-	pulumi.RegisterOutputType(WafOverridePtrOutput{})
 	pulumi.RegisterOutputType(WafOverrideArrayOutput{})
 	pulumi.RegisterOutputType(WafOverrideMapOutput{})
 }

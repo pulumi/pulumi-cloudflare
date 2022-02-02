@@ -203,7 +203,7 @@ type WorkerScriptInput interface {
 }
 
 func (*WorkerScript) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerScript)(nil))
+	return reflect.TypeOf((**WorkerScript)(nil)).Elem()
 }
 
 func (i *WorkerScript) ToWorkerScriptOutput() WorkerScriptOutput {
@@ -212,35 +212,6 @@ func (i *WorkerScript) ToWorkerScriptOutput() WorkerScriptOutput {
 
 func (i *WorkerScript) ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptOutput)
-}
-
-func (i *WorkerScript) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
-	return i.ToWorkerScriptPtrOutputWithContext(context.Background())
-}
-
-func (i *WorkerScript) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptPtrOutput)
-}
-
-type WorkerScriptPtrInput interface {
-	pulumi.Input
-
-	ToWorkerScriptPtrOutput() WorkerScriptPtrOutput
-	ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput
-}
-
-type workerScriptPtrType WorkerScriptArgs
-
-func (*workerScriptPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerScript)(nil))
-}
-
-func (i *workerScriptPtrType) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
-	return i.ToWorkerScriptPtrOutputWithContext(context.Background())
-}
-
-func (i *workerScriptPtrType) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptPtrOutput)
 }
 
 // WorkerScriptArrayInput is an input type that accepts WorkerScriptArray and WorkerScriptArrayOutput values.
@@ -296,7 +267,7 @@ func (i WorkerScriptMap) ToWorkerScriptMapOutputWithContext(ctx context.Context)
 type WorkerScriptOutput struct{ *pulumi.OutputState }
 
 func (WorkerScriptOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerScript)(nil))
+	return reflect.TypeOf((**WorkerScript)(nil)).Elem()
 }
 
 func (o WorkerScriptOutput) ToWorkerScriptOutput() WorkerScriptOutput {
@@ -307,44 +278,10 @@ func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o WorkerScriptOutput) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
-	return o.ToWorkerScriptPtrOutputWithContext(context.Background())
-}
-
-func (o WorkerScriptOutput) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerScript) *WorkerScript {
-		return &v
-	}).(WorkerScriptPtrOutput)
-}
-
-type WorkerScriptPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkerScriptPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerScript)(nil))
-}
-
-func (o WorkerScriptPtrOutput) ToWorkerScriptPtrOutput() WorkerScriptPtrOutput {
-	return o
-}
-
-func (o WorkerScriptPtrOutput) ToWorkerScriptPtrOutputWithContext(ctx context.Context) WorkerScriptPtrOutput {
-	return o
-}
-
-func (o WorkerScriptPtrOutput) Elem() WorkerScriptOutput {
-	return o.ApplyT(func(v *WorkerScript) WorkerScript {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerScript
-		return ret
-	}).(WorkerScriptOutput)
-}
-
 type WorkerScriptArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkerScriptArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WorkerScript)(nil))
+	return reflect.TypeOf((*[]*WorkerScript)(nil)).Elem()
 }
 
 func (o WorkerScriptArrayOutput) ToWorkerScriptArrayOutput() WorkerScriptArrayOutput {
@@ -356,15 +293,15 @@ func (o WorkerScriptArrayOutput) ToWorkerScriptArrayOutputWithContext(ctx contex
 }
 
 func (o WorkerScriptArrayOutput) Index(i pulumi.IntInput) WorkerScriptOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScript {
-		return vs[0].([]WorkerScript)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkerScript {
+		return vs[0].([]*WorkerScript)[vs[1].(int)]
 	}).(WorkerScriptOutput)
 }
 
 type WorkerScriptMapOutput struct{ *pulumi.OutputState }
 
 func (WorkerScriptMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WorkerScript)(nil))
+	return reflect.TypeOf((*map[string]*WorkerScript)(nil)).Elem()
 }
 
 func (o WorkerScriptMapOutput) ToWorkerScriptMapOutput() WorkerScriptMapOutput {
@@ -376,18 +313,16 @@ func (o WorkerScriptMapOutput) ToWorkerScriptMapOutputWithContext(ctx context.Co
 }
 
 func (o WorkerScriptMapOutput) MapIndex(k pulumi.StringInput) WorkerScriptOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkerScript {
-		return vs[0].(map[string]WorkerScript)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WorkerScript {
+		return vs[0].(map[string]*WorkerScript)[vs[1].(string)]
 	}).(WorkerScriptOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptInput)(nil)).Elem(), &WorkerScript{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPtrInput)(nil)).Elem(), &WorkerScript{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptArrayInput)(nil)).Elem(), WorkerScriptArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptMapInput)(nil)).Elem(), WorkerScriptMap{})
 	pulumi.RegisterOutputType(WorkerScriptOutput{})
-	pulumi.RegisterOutputType(WorkerScriptPtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptMapOutput{})
 }

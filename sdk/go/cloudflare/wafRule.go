@@ -162,7 +162,7 @@ type WafRuleInput interface {
 }
 
 func (*WafRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafRule)(nil))
+	return reflect.TypeOf((**WafRule)(nil)).Elem()
 }
 
 func (i *WafRule) ToWafRuleOutput() WafRuleOutput {
@@ -171,35 +171,6 @@ func (i *WafRule) ToWafRuleOutput() WafRuleOutput {
 
 func (i *WafRule) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafRuleOutput)
-}
-
-func (i *WafRule) ToWafRulePtrOutput() WafRulePtrOutput {
-	return i.ToWafRulePtrOutputWithContext(context.Background())
-}
-
-func (i *WafRule) ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WafRulePtrOutput)
-}
-
-type WafRulePtrInput interface {
-	pulumi.Input
-
-	ToWafRulePtrOutput() WafRulePtrOutput
-	ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput
-}
-
-type wafRulePtrType WafRuleArgs
-
-func (*wafRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WafRule)(nil))
-}
-
-func (i *wafRulePtrType) ToWafRulePtrOutput() WafRulePtrOutput {
-	return i.ToWafRulePtrOutputWithContext(context.Background())
-}
-
-func (i *wafRulePtrType) ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WafRulePtrOutput)
 }
 
 // WafRuleArrayInput is an input type that accepts WafRuleArray and WafRuleArrayOutput values.
@@ -255,7 +226,7 @@ func (i WafRuleMap) ToWafRuleMapOutputWithContext(ctx context.Context) WafRuleMa
 type WafRuleOutput struct{ *pulumi.OutputState }
 
 func (WafRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafRule)(nil))
+	return reflect.TypeOf((**WafRule)(nil)).Elem()
 }
 
 func (o WafRuleOutput) ToWafRuleOutput() WafRuleOutput {
@@ -266,44 +237,10 @@ func (o WafRuleOutput) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOu
 	return o
 }
 
-func (o WafRuleOutput) ToWafRulePtrOutput() WafRulePtrOutput {
-	return o.ToWafRulePtrOutputWithContext(context.Background())
-}
-
-func (o WafRuleOutput) ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafRule) *WafRule {
-		return &v
-	}).(WafRulePtrOutput)
-}
-
-type WafRulePtrOutput struct{ *pulumi.OutputState }
-
-func (WafRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WafRule)(nil))
-}
-
-func (o WafRulePtrOutput) ToWafRulePtrOutput() WafRulePtrOutput {
-	return o
-}
-
-func (o WafRulePtrOutput) ToWafRulePtrOutputWithContext(ctx context.Context) WafRulePtrOutput {
-	return o
-}
-
-func (o WafRulePtrOutput) Elem() WafRuleOutput {
-	return o.ApplyT(func(v *WafRule) WafRule {
-		if v != nil {
-			return *v
-		}
-		var ret WafRule
-		return ret
-	}).(WafRuleOutput)
-}
-
 type WafRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (WafRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WafRule)(nil))
+	return reflect.TypeOf((*[]*WafRule)(nil)).Elem()
 }
 
 func (o WafRuleArrayOutput) ToWafRuleArrayOutput() WafRuleArrayOutput {
@@ -315,15 +252,15 @@ func (o WafRuleArrayOutput) ToWafRuleArrayOutputWithContext(ctx context.Context)
 }
 
 func (o WafRuleArrayOutput) Index(i pulumi.IntInput) WafRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafRule {
-		return vs[0].([]WafRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WafRule {
+		return vs[0].([]*WafRule)[vs[1].(int)]
 	}).(WafRuleOutput)
 }
 
 type WafRuleMapOutput struct{ *pulumi.OutputState }
 
 func (WafRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WafRule)(nil))
+	return reflect.TypeOf((*map[string]*WafRule)(nil)).Elem()
 }
 
 func (o WafRuleMapOutput) ToWafRuleMapOutput() WafRuleMapOutput {
@@ -335,18 +272,16 @@ func (o WafRuleMapOutput) ToWafRuleMapOutputWithContext(ctx context.Context) Waf
 }
 
 func (o WafRuleMapOutput) MapIndex(k pulumi.StringInput) WafRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WafRule {
-		return vs[0].(map[string]WafRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WafRule {
+		return vs[0].(map[string]*WafRule)[vs[1].(string)]
 	}).(WafRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleInput)(nil)).Elem(), &WafRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WafRulePtrInput)(nil)).Elem(), &WafRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleArrayInput)(nil)).Elem(), WafRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WafRuleMapInput)(nil)).Elem(), WafRuleMap{})
 	pulumi.RegisterOutputType(WafRuleOutput{})
-	pulumi.RegisterOutputType(WafRulePtrOutput{})
 	pulumi.RegisterOutputType(WafRuleArrayOutput{})
 	pulumi.RegisterOutputType(WafRuleMapOutput{})
 }

@@ -165,7 +165,7 @@ type SplitTunnelInput interface {
 }
 
 func (*SplitTunnel) ElementType() reflect.Type {
-	return reflect.TypeOf((*SplitTunnel)(nil))
+	return reflect.TypeOf((**SplitTunnel)(nil)).Elem()
 }
 
 func (i *SplitTunnel) ToSplitTunnelOutput() SplitTunnelOutput {
@@ -174,35 +174,6 @@ func (i *SplitTunnel) ToSplitTunnelOutput() SplitTunnelOutput {
 
 func (i *SplitTunnel) ToSplitTunnelOutputWithContext(ctx context.Context) SplitTunnelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SplitTunnelOutput)
-}
-
-func (i *SplitTunnel) ToSplitTunnelPtrOutput() SplitTunnelPtrOutput {
-	return i.ToSplitTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *SplitTunnel) ToSplitTunnelPtrOutputWithContext(ctx context.Context) SplitTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SplitTunnelPtrOutput)
-}
-
-type SplitTunnelPtrInput interface {
-	pulumi.Input
-
-	ToSplitTunnelPtrOutput() SplitTunnelPtrOutput
-	ToSplitTunnelPtrOutputWithContext(ctx context.Context) SplitTunnelPtrOutput
-}
-
-type splitTunnelPtrType SplitTunnelArgs
-
-func (*splitTunnelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SplitTunnel)(nil))
-}
-
-func (i *splitTunnelPtrType) ToSplitTunnelPtrOutput() SplitTunnelPtrOutput {
-	return i.ToSplitTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *splitTunnelPtrType) ToSplitTunnelPtrOutputWithContext(ctx context.Context) SplitTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SplitTunnelPtrOutput)
 }
 
 // SplitTunnelArrayInput is an input type that accepts SplitTunnelArray and SplitTunnelArrayOutput values.
@@ -258,7 +229,7 @@ func (i SplitTunnelMap) ToSplitTunnelMapOutputWithContext(ctx context.Context) S
 type SplitTunnelOutput struct{ *pulumi.OutputState }
 
 func (SplitTunnelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SplitTunnel)(nil))
+	return reflect.TypeOf((**SplitTunnel)(nil)).Elem()
 }
 
 func (o SplitTunnelOutput) ToSplitTunnelOutput() SplitTunnelOutput {
@@ -269,44 +240,10 @@ func (o SplitTunnelOutput) ToSplitTunnelOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o SplitTunnelOutput) ToSplitTunnelPtrOutput() SplitTunnelPtrOutput {
-	return o.ToSplitTunnelPtrOutputWithContext(context.Background())
-}
-
-func (o SplitTunnelOutput) ToSplitTunnelPtrOutputWithContext(ctx context.Context) SplitTunnelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SplitTunnel) *SplitTunnel {
-		return &v
-	}).(SplitTunnelPtrOutput)
-}
-
-type SplitTunnelPtrOutput struct{ *pulumi.OutputState }
-
-func (SplitTunnelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SplitTunnel)(nil))
-}
-
-func (o SplitTunnelPtrOutput) ToSplitTunnelPtrOutput() SplitTunnelPtrOutput {
-	return o
-}
-
-func (o SplitTunnelPtrOutput) ToSplitTunnelPtrOutputWithContext(ctx context.Context) SplitTunnelPtrOutput {
-	return o
-}
-
-func (o SplitTunnelPtrOutput) Elem() SplitTunnelOutput {
-	return o.ApplyT(func(v *SplitTunnel) SplitTunnel {
-		if v != nil {
-			return *v
-		}
-		var ret SplitTunnel
-		return ret
-	}).(SplitTunnelOutput)
-}
-
 type SplitTunnelArrayOutput struct{ *pulumi.OutputState }
 
 func (SplitTunnelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SplitTunnel)(nil))
+	return reflect.TypeOf((*[]*SplitTunnel)(nil)).Elem()
 }
 
 func (o SplitTunnelArrayOutput) ToSplitTunnelArrayOutput() SplitTunnelArrayOutput {
@@ -318,15 +255,15 @@ func (o SplitTunnelArrayOutput) ToSplitTunnelArrayOutputWithContext(ctx context.
 }
 
 func (o SplitTunnelArrayOutput) Index(i pulumi.IntInput) SplitTunnelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SplitTunnel {
-		return vs[0].([]SplitTunnel)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SplitTunnel {
+		return vs[0].([]*SplitTunnel)[vs[1].(int)]
 	}).(SplitTunnelOutput)
 }
 
 type SplitTunnelMapOutput struct{ *pulumi.OutputState }
 
 func (SplitTunnelMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SplitTunnel)(nil))
+	return reflect.TypeOf((*map[string]*SplitTunnel)(nil)).Elem()
 }
 
 func (o SplitTunnelMapOutput) ToSplitTunnelMapOutput() SplitTunnelMapOutput {
@@ -338,18 +275,16 @@ func (o SplitTunnelMapOutput) ToSplitTunnelMapOutputWithContext(ctx context.Cont
 }
 
 func (o SplitTunnelMapOutput) MapIndex(k pulumi.StringInput) SplitTunnelOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SplitTunnel {
-		return vs[0].(map[string]SplitTunnel)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SplitTunnel {
+		return vs[0].(map[string]*SplitTunnel)[vs[1].(string)]
 	}).(SplitTunnelOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitTunnelInput)(nil)).Elem(), &SplitTunnel{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SplitTunnelPtrInput)(nil)).Elem(), &SplitTunnel{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitTunnelArrayInput)(nil)).Elem(), SplitTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitTunnelMapInput)(nil)).Elem(), SplitTunnelMap{})
 	pulumi.RegisterOutputType(SplitTunnelOutput{})
-	pulumi.RegisterOutputType(SplitTunnelPtrOutput{})
 	pulumi.RegisterOutputType(SplitTunnelArrayOutput{})
 	pulumi.RegisterOutputType(SplitTunnelMapOutput{})
 }

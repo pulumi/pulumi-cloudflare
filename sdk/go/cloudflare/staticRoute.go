@@ -206,7 +206,7 @@ type StaticRouteInput interface {
 }
 
 func (*StaticRoute) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoute)(nil))
+	return reflect.TypeOf((**StaticRoute)(nil)).Elem()
 }
 
 func (i *StaticRoute) ToStaticRouteOutput() StaticRouteOutput {
@@ -215,35 +215,6 @@ func (i *StaticRoute) ToStaticRouteOutput() StaticRouteOutput {
 
 func (i *StaticRoute) ToStaticRouteOutputWithContext(ctx context.Context) StaticRouteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StaticRouteOutput)
-}
-
-func (i *StaticRoute) ToStaticRoutePtrOutput() StaticRoutePtrOutput {
-	return i.ToStaticRoutePtrOutputWithContext(context.Background())
-}
-
-func (i *StaticRoute) ToStaticRoutePtrOutputWithContext(ctx context.Context) StaticRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutePtrOutput)
-}
-
-type StaticRoutePtrInput interface {
-	pulumi.Input
-
-	ToStaticRoutePtrOutput() StaticRoutePtrOutput
-	ToStaticRoutePtrOutputWithContext(ctx context.Context) StaticRoutePtrOutput
-}
-
-type staticRoutePtrType StaticRouteArgs
-
-func (*staticRoutePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticRoute)(nil))
-}
-
-func (i *staticRoutePtrType) ToStaticRoutePtrOutput() StaticRoutePtrOutput {
-	return i.ToStaticRoutePtrOutputWithContext(context.Background())
-}
-
-func (i *staticRoutePtrType) ToStaticRoutePtrOutputWithContext(ctx context.Context) StaticRoutePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StaticRoutePtrOutput)
 }
 
 // StaticRouteArrayInput is an input type that accepts StaticRouteArray and StaticRouteArrayOutput values.
@@ -299,7 +270,7 @@ func (i StaticRouteMap) ToStaticRouteMapOutputWithContext(ctx context.Context) S
 type StaticRouteOutput struct{ *pulumi.OutputState }
 
 func (StaticRouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StaticRoute)(nil))
+	return reflect.TypeOf((**StaticRoute)(nil)).Elem()
 }
 
 func (o StaticRouteOutput) ToStaticRouteOutput() StaticRouteOutput {
@@ -310,44 +281,10 @@ func (o StaticRouteOutput) ToStaticRouteOutputWithContext(ctx context.Context) S
 	return o
 }
 
-func (o StaticRouteOutput) ToStaticRoutePtrOutput() StaticRoutePtrOutput {
-	return o.ToStaticRoutePtrOutputWithContext(context.Background())
-}
-
-func (o StaticRouteOutput) ToStaticRoutePtrOutputWithContext(ctx context.Context) StaticRoutePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticRoute) *StaticRoute {
-		return &v
-	}).(StaticRoutePtrOutput)
-}
-
-type StaticRoutePtrOutput struct{ *pulumi.OutputState }
-
-func (StaticRoutePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StaticRoute)(nil))
-}
-
-func (o StaticRoutePtrOutput) ToStaticRoutePtrOutput() StaticRoutePtrOutput {
-	return o
-}
-
-func (o StaticRoutePtrOutput) ToStaticRoutePtrOutputWithContext(ctx context.Context) StaticRoutePtrOutput {
-	return o
-}
-
-func (o StaticRoutePtrOutput) Elem() StaticRouteOutput {
-	return o.ApplyT(func(v *StaticRoute) StaticRoute {
-		if v != nil {
-			return *v
-		}
-		var ret StaticRoute
-		return ret
-	}).(StaticRouteOutput)
-}
-
 type StaticRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (StaticRouteArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StaticRoute)(nil))
+	return reflect.TypeOf((*[]*StaticRoute)(nil)).Elem()
 }
 
 func (o StaticRouteArrayOutput) ToStaticRouteArrayOutput() StaticRouteArrayOutput {
@@ -359,15 +296,15 @@ func (o StaticRouteArrayOutput) ToStaticRouteArrayOutputWithContext(ctx context.
 }
 
 func (o StaticRouteArrayOutput) Index(i pulumi.IntInput) StaticRouteOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StaticRoute {
-		return vs[0].([]StaticRoute)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StaticRoute {
+		return vs[0].([]*StaticRoute)[vs[1].(int)]
 	}).(StaticRouteOutput)
 }
 
 type StaticRouteMapOutput struct{ *pulumi.OutputState }
 
 func (StaticRouteMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]StaticRoute)(nil))
+	return reflect.TypeOf((*map[string]*StaticRoute)(nil)).Elem()
 }
 
 func (o StaticRouteMapOutput) ToStaticRouteMapOutput() StaticRouteMapOutput {
@@ -379,18 +316,16 @@ func (o StaticRouteMapOutput) ToStaticRouteMapOutputWithContext(ctx context.Cont
 }
 
 func (o StaticRouteMapOutput) MapIndex(k pulumi.StringInput) StaticRouteOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) StaticRoute {
-		return vs[0].(map[string]StaticRoute)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *StaticRoute {
+		return vs[0].(map[string]*StaticRoute)[vs[1].(string)]
 	}).(StaticRouteOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticRouteInput)(nil)).Elem(), &StaticRoute{})
-	pulumi.RegisterInputType(reflect.TypeOf((*StaticRoutePtrInput)(nil)).Elem(), &StaticRoute{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticRouteArrayInput)(nil)).Elem(), StaticRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticRouteMapInput)(nil)).Elem(), StaticRouteMap{})
 	pulumi.RegisterOutputType(StaticRouteOutput{})
-	pulumi.RegisterOutputType(StaticRoutePtrOutput{})
 	pulumi.RegisterOutputType(StaticRouteArrayOutput{})
 	pulumi.RegisterOutputType(StaticRouteMapOutput{})
 }

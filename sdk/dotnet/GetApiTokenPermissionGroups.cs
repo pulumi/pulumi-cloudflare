@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApiTokenPermissionGroupsResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApiTokenPermissionGroupsResult>("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApiTokenPermissionGroupsResult>("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

@@ -118,22 +118,22 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotificationPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotificationPolicyArgs | NotificationPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationPolicyState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["alertType"] = state ? state.alertType : undefined;
-            inputs["conditions"] = state ? state.conditions : undefined;
-            inputs["created"] = state ? state.created : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["emailIntegrations"] = state ? state.emailIntegrations : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["filters"] = state ? state.filters : undefined;
-            inputs["modified"] = state ? state.modified : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["pagerdutyIntegrations"] = state ? state.pagerdutyIntegrations : undefined;
-            inputs["webhooksIntegrations"] = state ? state.webhooksIntegrations : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["alertType"] = state ? state.alertType : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["created"] = state ? state.created : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["emailIntegrations"] = state ? state.emailIntegrations : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
+            resourceInputs["modified"] = state ? state.modified : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pagerdutyIntegrations"] = state ? state.pagerdutyIntegrations : undefined;
+            resourceInputs["webhooksIntegrations"] = state ? state.webhooksIntegrations : undefined;
         } else {
             const args = argsOrState as NotificationPolicyArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -148,23 +148,21 @@ export class NotificationPolicy extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["alertType"] = args ? args.alertType : undefined;
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["emailIntegrations"] = args ? args.emailIntegrations : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["filters"] = args ? args.filters : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["pagerdutyIntegrations"] = args ? args.pagerdutyIntegrations : undefined;
-            inputs["webhooksIntegrations"] = args ? args.webhooksIntegrations : undefined;
-            inputs["created"] = undefined /*out*/;
-            inputs["modified"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["alertType"] = args ? args.alertType : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["emailIntegrations"] = args ? args.emailIntegrations : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pagerdutyIntegrations"] = args ? args.pagerdutyIntegrations : undefined;
+            resourceInputs["webhooksIntegrations"] = args ? args.webhooksIntegrations : undefined;
+            resourceInputs["created"] = undefined /*out*/;
+            resourceInputs["modified"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NotificationPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NotificationPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

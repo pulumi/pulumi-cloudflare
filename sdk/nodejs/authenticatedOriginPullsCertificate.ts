@@ -103,20 +103,20 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuthenticatedOriginPullsCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthenticatedOriginPullsCertificateArgs | AuthenticatedOriginPullsCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthenticatedOriginPullsCertificateState | undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["expiresOn"] = state ? state.expiresOn : undefined;
-            inputs["issuer"] = state ? state.issuer : undefined;
-            inputs["privateKey"] = state ? state.privateKey : undefined;
-            inputs["serialNumber"] = state ? state.serialNumber : undefined;
-            inputs["signature"] = state ? state.signature : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["uploadedOn"] = state ? state.uploadedOn : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
+            resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
+            resourceInputs["signature"] = state ? state.signature : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["uploadedOn"] = state ? state.uploadedOn : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AuthenticatedOriginPullsCertificateArgs | undefined;
             if ((!args || args.certificate === undefined) && !opts.urn) {
@@ -131,21 +131,19 @@ export class AuthenticatedOriginPullsCertificate extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["certificate"] = args ? args.certificate : undefined;
-            inputs["privateKey"] = args ? args.privateKey : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["expiresOn"] = undefined /*out*/;
-            inputs["issuer"] = undefined /*out*/;
-            inputs["serialNumber"] = undefined /*out*/;
-            inputs["signature"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["uploadedOn"] = undefined /*out*/;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["expiresOn"] = undefined /*out*/;
+            resourceInputs["issuer"] = undefined /*out*/;
+            resourceInputs["serialNumber"] = undefined /*out*/;
+            resourceInputs["signature"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["uploadedOn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AuthenticatedOriginPullsCertificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AuthenticatedOriginPullsCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

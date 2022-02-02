@@ -93,30 +93,28 @@ export class AccessCaCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessCaCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessCaCertificateArgs | AccessCaCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessCaCertificateState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["applicationId"] = state ? state.applicationId : undefined;
-            inputs["aud"] = state ? state.aud : undefined;
-            inputs["publicKey"] = state ? state.publicKey : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["aud"] = state ? state.aud : undefined;
+            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessCaCertificateArgs | undefined;
             if ((!args || args.applicationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["applicationId"] = args ? args.applicationId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["aud"] = undefined /*out*/;
-            inputs["publicKey"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["aud"] = undefined /*out*/;
+            resourceInputs["publicKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessCaCertificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessCaCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -83,14 +83,14 @@ export class WafPackage extends pulumi.CustomResource {
      */
     constructor(name: string, args: WafPackageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WafPackageArgs | WafPackageState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WafPackageState | undefined;
-            inputs["actionMode"] = state ? state.actionMode : undefined;
-            inputs["packageId"] = state ? state.packageId : undefined;
-            inputs["sensitivity"] = state ? state.sensitivity : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["actionMode"] = state ? state.actionMode : undefined;
+            resourceInputs["packageId"] = state ? state.packageId : undefined;
+            resourceInputs["sensitivity"] = state ? state.sensitivity : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafPackageArgs | undefined;
             if ((!args || args.packageId === undefined) && !opts.urn) {
@@ -99,15 +99,13 @@ export class WafPackage extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["actionMode"] = args ? args.actionMode : undefined;
-            inputs["packageId"] = args ? args.packageId : undefined;
-            inputs["sensitivity"] = args ? args.sensitivity : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["actionMode"] = args ? args.actionMode : undefined;
+            resourceInputs["packageId"] = args ? args.packageId : undefined;
+            resourceInputs["sensitivity"] = args ? args.sensitivity : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WafPackage.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WafPackage.__pulumiType, name, resourceInputs, opts);
     }
 }
 

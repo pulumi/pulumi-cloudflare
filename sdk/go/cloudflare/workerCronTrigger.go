@@ -155,7 +155,7 @@ type WorkerCronTriggerInput interface {
 }
 
 func (*WorkerCronTrigger) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerCronTrigger)(nil))
+	return reflect.TypeOf((**WorkerCronTrigger)(nil)).Elem()
 }
 
 func (i *WorkerCronTrigger) ToWorkerCronTriggerOutput() WorkerCronTriggerOutput {
@@ -164,35 +164,6 @@ func (i *WorkerCronTrigger) ToWorkerCronTriggerOutput() WorkerCronTriggerOutput 
 
 func (i *WorkerCronTrigger) ToWorkerCronTriggerOutputWithContext(ctx context.Context) WorkerCronTriggerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerOutput)
-}
-
-func (i *WorkerCronTrigger) ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput {
-	return i.ToWorkerCronTriggerPtrOutputWithContext(context.Background())
-}
-
-func (i *WorkerCronTrigger) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerPtrOutput)
-}
-
-type WorkerCronTriggerPtrInput interface {
-	pulumi.Input
-
-	ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput
-	ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput
-}
-
-type workerCronTriggerPtrType WorkerCronTriggerArgs
-
-func (*workerCronTriggerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerCronTrigger)(nil))
-}
-
-func (i *workerCronTriggerPtrType) ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput {
-	return i.ToWorkerCronTriggerPtrOutputWithContext(context.Background())
-}
-
-func (i *workerCronTriggerPtrType) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerPtrOutput)
 }
 
 // WorkerCronTriggerArrayInput is an input type that accepts WorkerCronTriggerArray and WorkerCronTriggerArrayOutput values.
@@ -248,7 +219,7 @@ func (i WorkerCronTriggerMap) ToWorkerCronTriggerMapOutputWithContext(ctx contex
 type WorkerCronTriggerOutput struct{ *pulumi.OutputState }
 
 func (WorkerCronTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkerCronTrigger)(nil))
+	return reflect.TypeOf((**WorkerCronTrigger)(nil)).Elem()
 }
 
 func (o WorkerCronTriggerOutput) ToWorkerCronTriggerOutput() WorkerCronTriggerOutput {
@@ -259,44 +230,10 @@ func (o WorkerCronTriggerOutput) ToWorkerCronTriggerOutputWithContext(ctx contex
 	return o
 }
 
-func (o WorkerCronTriggerOutput) ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput {
-	return o.ToWorkerCronTriggerPtrOutputWithContext(context.Background())
-}
-
-func (o WorkerCronTriggerOutput) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerCronTrigger) *WorkerCronTrigger {
-		return &v
-	}).(WorkerCronTriggerPtrOutput)
-}
-
-type WorkerCronTriggerPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkerCronTriggerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkerCronTrigger)(nil))
-}
-
-func (o WorkerCronTriggerPtrOutput) ToWorkerCronTriggerPtrOutput() WorkerCronTriggerPtrOutput {
-	return o
-}
-
-func (o WorkerCronTriggerPtrOutput) ToWorkerCronTriggerPtrOutputWithContext(ctx context.Context) WorkerCronTriggerPtrOutput {
-	return o
-}
-
-func (o WorkerCronTriggerPtrOutput) Elem() WorkerCronTriggerOutput {
-	return o.ApplyT(func(v *WorkerCronTrigger) WorkerCronTrigger {
-		if v != nil {
-			return *v
-		}
-		var ret WorkerCronTrigger
-		return ret
-	}).(WorkerCronTriggerOutput)
-}
-
 type WorkerCronTriggerArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkerCronTriggerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WorkerCronTrigger)(nil))
+	return reflect.TypeOf((*[]*WorkerCronTrigger)(nil)).Elem()
 }
 
 func (o WorkerCronTriggerArrayOutput) ToWorkerCronTriggerArrayOutput() WorkerCronTriggerArrayOutput {
@@ -308,15 +245,15 @@ func (o WorkerCronTriggerArrayOutput) ToWorkerCronTriggerArrayOutputWithContext(
 }
 
 func (o WorkerCronTriggerArrayOutput) Index(i pulumi.IntInput) WorkerCronTriggerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerCronTrigger {
-		return vs[0].([]WorkerCronTrigger)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkerCronTrigger {
+		return vs[0].([]*WorkerCronTrigger)[vs[1].(int)]
 	}).(WorkerCronTriggerOutput)
 }
 
 type WorkerCronTriggerMapOutput struct{ *pulumi.OutputState }
 
 func (WorkerCronTriggerMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WorkerCronTrigger)(nil))
+	return reflect.TypeOf((*map[string]*WorkerCronTrigger)(nil)).Elem()
 }
 
 func (o WorkerCronTriggerMapOutput) ToWorkerCronTriggerMapOutput() WorkerCronTriggerMapOutput {
@@ -328,18 +265,16 @@ func (o WorkerCronTriggerMapOutput) ToWorkerCronTriggerMapOutputWithContext(ctx 
 }
 
 func (o WorkerCronTriggerMapOutput) MapIndex(k pulumi.StringInput) WorkerCronTriggerOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkerCronTrigger {
-		return vs[0].(map[string]WorkerCronTrigger)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WorkerCronTrigger {
+		return vs[0].(map[string]*WorkerCronTrigger)[vs[1].(string)]
 	}).(WorkerCronTriggerOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerCronTriggerInput)(nil)).Elem(), &WorkerCronTrigger{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkerCronTriggerPtrInput)(nil)).Elem(), &WorkerCronTrigger{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerCronTriggerArrayInput)(nil)).Elem(), WorkerCronTriggerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerCronTriggerMapInput)(nil)).Elem(), WorkerCronTriggerMap{})
 	pulumi.RegisterOutputType(WorkerCronTriggerOutput{})
-	pulumi.RegisterOutputType(WorkerCronTriggerPtrOutput{})
 	pulumi.RegisterOutputType(WorkerCronTriggerArrayOutput{})
 	pulumi.RegisterOutputType(WorkerCronTriggerMapOutput{})
 }

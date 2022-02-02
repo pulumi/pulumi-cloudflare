@@ -168,7 +168,7 @@ type RulesetInput interface {
 }
 
 func (*Ruleset) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ruleset)(nil))
+	return reflect.TypeOf((**Ruleset)(nil)).Elem()
 }
 
 func (i *Ruleset) ToRulesetOutput() RulesetOutput {
@@ -177,35 +177,6 @@ func (i *Ruleset) ToRulesetOutput() RulesetOutput {
 
 func (i *Ruleset) ToRulesetOutputWithContext(ctx context.Context) RulesetOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RulesetOutput)
-}
-
-func (i *Ruleset) ToRulesetPtrOutput() RulesetPtrOutput {
-	return i.ToRulesetPtrOutputWithContext(context.Background())
-}
-
-func (i *Ruleset) ToRulesetPtrOutputWithContext(ctx context.Context) RulesetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetPtrOutput)
-}
-
-type RulesetPtrInput interface {
-	pulumi.Input
-
-	ToRulesetPtrOutput() RulesetPtrOutput
-	ToRulesetPtrOutputWithContext(ctx context.Context) RulesetPtrOutput
-}
-
-type rulesetPtrType RulesetArgs
-
-func (*rulesetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ruleset)(nil))
-}
-
-func (i *rulesetPtrType) ToRulesetPtrOutput() RulesetPtrOutput {
-	return i.ToRulesetPtrOutputWithContext(context.Background())
-}
-
-func (i *rulesetPtrType) ToRulesetPtrOutputWithContext(ctx context.Context) RulesetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesetPtrOutput)
 }
 
 // RulesetArrayInput is an input type that accepts RulesetArray and RulesetArrayOutput values.
@@ -261,7 +232,7 @@ func (i RulesetMap) ToRulesetMapOutputWithContext(ctx context.Context) RulesetMa
 type RulesetOutput struct{ *pulumi.OutputState }
 
 func (RulesetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Ruleset)(nil))
+	return reflect.TypeOf((**Ruleset)(nil)).Elem()
 }
 
 func (o RulesetOutput) ToRulesetOutput() RulesetOutput {
@@ -272,44 +243,10 @@ func (o RulesetOutput) ToRulesetOutputWithContext(ctx context.Context) RulesetOu
 	return o
 }
 
-func (o RulesetOutput) ToRulesetPtrOutput() RulesetPtrOutput {
-	return o.ToRulesetPtrOutputWithContext(context.Background())
-}
-
-func (o RulesetOutput) ToRulesetPtrOutputWithContext(ctx context.Context) RulesetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Ruleset) *Ruleset {
-		return &v
-	}).(RulesetPtrOutput)
-}
-
-type RulesetPtrOutput struct{ *pulumi.OutputState }
-
-func (RulesetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Ruleset)(nil))
-}
-
-func (o RulesetPtrOutput) ToRulesetPtrOutput() RulesetPtrOutput {
-	return o
-}
-
-func (o RulesetPtrOutput) ToRulesetPtrOutputWithContext(ctx context.Context) RulesetPtrOutput {
-	return o
-}
-
-func (o RulesetPtrOutput) Elem() RulesetOutput {
-	return o.ApplyT(func(v *Ruleset) Ruleset {
-		if v != nil {
-			return *v
-		}
-		var ret Ruleset
-		return ret
-	}).(RulesetOutput)
-}
-
 type RulesetArrayOutput struct{ *pulumi.OutputState }
 
 func (RulesetArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Ruleset)(nil))
+	return reflect.TypeOf((*[]*Ruleset)(nil)).Elem()
 }
 
 func (o RulesetArrayOutput) ToRulesetArrayOutput() RulesetArrayOutput {
@@ -321,15 +258,15 @@ func (o RulesetArrayOutput) ToRulesetArrayOutputWithContext(ctx context.Context)
 }
 
 func (o RulesetArrayOutput) Index(i pulumi.IntInput) RulesetOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Ruleset {
-		return vs[0].([]Ruleset)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Ruleset {
+		return vs[0].([]*Ruleset)[vs[1].(int)]
 	}).(RulesetOutput)
 }
 
 type RulesetMapOutput struct{ *pulumi.OutputState }
 
 func (RulesetMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]Ruleset)(nil))
+	return reflect.TypeOf((*map[string]*Ruleset)(nil)).Elem()
 }
 
 func (o RulesetMapOutput) ToRulesetMapOutput() RulesetMapOutput {
@@ -341,18 +278,16 @@ func (o RulesetMapOutput) ToRulesetMapOutputWithContext(ctx context.Context) Rul
 }
 
 func (o RulesetMapOutput) MapIndex(k pulumi.StringInput) RulesetOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Ruleset {
-		return vs[0].(map[string]Ruleset)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Ruleset {
+		return vs[0].(map[string]*Ruleset)[vs[1].(string)]
 	}).(RulesetOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetInput)(nil)).Elem(), &Ruleset{})
-	pulumi.RegisterInputType(reflect.TypeOf((*RulesetPtrInput)(nil)).Elem(), &Ruleset{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetArrayInput)(nil)).Elem(), RulesetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetMapInput)(nil)).Elem(), RulesetMap{})
 	pulumi.RegisterOutputType(RulesetOutput{})
-	pulumi.RegisterOutputType(RulesetPtrOutput{})
 	pulumi.RegisterOutputType(RulesetArrayOutput{})
 	pulumi.RegisterOutputType(RulesetMapOutput{})
 }

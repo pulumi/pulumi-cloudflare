@@ -159,19 +159,19 @@ export class RateLimit extends pulumi.CustomResource {
      */
     constructor(name: string, args: RateLimitArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RateLimitArgs | RateLimitState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RateLimitState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["bypassUrlPatterns"] = state ? state.bypassUrlPatterns : undefined;
-            inputs["correlate"] = state ? state.correlate : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disabled"] = state ? state.disabled : undefined;
-            inputs["match"] = state ? state.match : undefined;
-            inputs["period"] = state ? state.period : undefined;
-            inputs["threshold"] = state ? state.threshold : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["bypassUrlPatterns"] = state ? state.bypassUrlPatterns : undefined;
+            resourceInputs["correlate"] = state ? state.correlate : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disabled"] = state ? state.disabled : undefined;
+            resourceInputs["match"] = state ? state.match : undefined;
+            resourceInputs["period"] = state ? state.period : undefined;
+            resourceInputs["threshold"] = state ? state.threshold : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RateLimitArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -186,20 +186,18 @@ export class RateLimit extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["bypassUrlPatterns"] = args ? args.bypassUrlPatterns : undefined;
-            inputs["correlate"] = args ? args.correlate : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["match"] = args ? args.match : undefined;
-            inputs["period"] = args ? args.period : undefined;
-            inputs["threshold"] = args ? args.threshold : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["bypassUrlPatterns"] = args ? args.bypassUrlPatterns : undefined;
+            resourceInputs["correlate"] = args ? args.correlate : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disabled"] = args ? args.disabled : undefined;
+            resourceInputs["match"] = args ? args.match : undefined;
+            resourceInputs["period"] = args ? args.period : undefined;
+            resourceInputs["threshold"] = args ? args.threshold : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(RateLimit.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(RateLimit.__pulumiType, name, resourceInputs, opts);
     }
 }
 

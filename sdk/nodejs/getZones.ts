@@ -67,9 +67,7 @@ export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promi
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("cloudflare:index/getZones:getZones", {
         "filter": args.filter,
     }, opts);

@@ -6,8 +6,8 @@ require (
 	cloud.google.com/go/kms v1.1.0 // indirect
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220113024000-5925aab64290
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.11.0
-	github.com/pulumi/pulumi/sdk/v3 v3.17.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.18.0
+	github.com/pulumi/pulumi/sdk/v3 v3.23.2
 )
 
 replace (

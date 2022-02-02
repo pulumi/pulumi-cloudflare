@@ -230,7 +230,7 @@ type AccessIdentityProviderInput interface {
 }
 
 func (*AccessIdentityProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessIdentityProvider)(nil))
+	return reflect.TypeOf((**AccessIdentityProvider)(nil)).Elem()
 }
 
 func (i *AccessIdentityProvider) ToAccessIdentityProviderOutput() AccessIdentityProviderOutput {
@@ -239,35 +239,6 @@ func (i *AccessIdentityProvider) ToAccessIdentityProviderOutput() AccessIdentity
 
 func (i *AccessIdentityProvider) ToAccessIdentityProviderOutputWithContext(ctx context.Context) AccessIdentityProviderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderOutput)
-}
-
-func (i *AccessIdentityProvider) ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput {
-	return i.ToAccessIdentityProviderPtrOutputWithContext(context.Background())
-}
-
-func (i *AccessIdentityProvider) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderPtrOutput)
-}
-
-type AccessIdentityProviderPtrInput interface {
-	pulumi.Input
-
-	ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput
-	ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput
-}
-
-type accessIdentityProviderPtrType AccessIdentityProviderArgs
-
-func (*accessIdentityProviderPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessIdentityProvider)(nil))
-}
-
-func (i *accessIdentityProviderPtrType) ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput {
-	return i.ToAccessIdentityProviderPtrOutputWithContext(context.Background())
-}
-
-func (i *accessIdentityProviderPtrType) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderPtrOutput)
 }
 
 // AccessIdentityProviderArrayInput is an input type that accepts AccessIdentityProviderArray and AccessIdentityProviderArrayOutput values.
@@ -323,7 +294,7 @@ func (i AccessIdentityProviderMap) ToAccessIdentityProviderMapOutputWithContext(
 type AccessIdentityProviderOutput struct{ *pulumi.OutputState }
 
 func (AccessIdentityProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessIdentityProvider)(nil))
+	return reflect.TypeOf((**AccessIdentityProvider)(nil)).Elem()
 }
 
 func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutput() AccessIdentityProviderOutput {
@@ -334,44 +305,10 @@ func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutputWithContext(
 	return o
 }
 
-func (o AccessIdentityProviderOutput) ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput {
-	return o.ToAccessIdentityProviderPtrOutputWithContext(context.Background())
-}
-
-func (o AccessIdentityProviderOutput) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessIdentityProvider) *AccessIdentityProvider {
-		return &v
-	}).(AccessIdentityProviderPtrOutput)
-}
-
-type AccessIdentityProviderPtrOutput struct{ *pulumi.OutputState }
-
-func (AccessIdentityProviderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessIdentityProvider)(nil))
-}
-
-func (o AccessIdentityProviderPtrOutput) ToAccessIdentityProviderPtrOutput() AccessIdentityProviderPtrOutput {
-	return o
-}
-
-func (o AccessIdentityProviderPtrOutput) ToAccessIdentityProviderPtrOutputWithContext(ctx context.Context) AccessIdentityProviderPtrOutput {
-	return o
-}
-
-func (o AccessIdentityProviderPtrOutput) Elem() AccessIdentityProviderOutput {
-	return o.ApplyT(func(v *AccessIdentityProvider) AccessIdentityProvider {
-		if v != nil {
-			return *v
-		}
-		var ret AccessIdentityProvider
-		return ret
-	}).(AccessIdentityProviderOutput)
-}
-
 type AccessIdentityProviderArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessIdentityProviderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessIdentityProvider)(nil))
+	return reflect.TypeOf((*[]*AccessIdentityProvider)(nil)).Elem()
 }
 
 func (o AccessIdentityProviderArrayOutput) ToAccessIdentityProviderArrayOutput() AccessIdentityProviderArrayOutput {
@@ -383,15 +320,15 @@ func (o AccessIdentityProviderArrayOutput) ToAccessIdentityProviderArrayOutputWi
 }
 
 func (o AccessIdentityProviderArrayOutput) Index(i pulumi.IntInput) AccessIdentityProviderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessIdentityProvider {
-		return vs[0].([]AccessIdentityProvider)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessIdentityProvider {
+		return vs[0].([]*AccessIdentityProvider)[vs[1].(int)]
 	}).(AccessIdentityProviderOutput)
 }
 
 type AccessIdentityProviderMapOutput struct{ *pulumi.OutputState }
 
 func (AccessIdentityProviderMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AccessIdentityProvider)(nil))
+	return reflect.TypeOf((*map[string]*AccessIdentityProvider)(nil)).Elem()
 }
 
 func (o AccessIdentityProviderMapOutput) ToAccessIdentityProviderMapOutput() AccessIdentityProviderMapOutput {
@@ -403,18 +340,16 @@ func (o AccessIdentityProviderMapOutput) ToAccessIdentityProviderMapOutputWithCo
 }
 
 func (o AccessIdentityProviderMapOutput) MapIndex(k pulumi.StringInput) AccessIdentityProviderOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessIdentityProvider {
-		return vs[0].(map[string]AccessIdentityProvider)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AccessIdentityProvider {
+		return vs[0].(map[string]*AccessIdentityProvider)[vs[1].(string)]
 	}).(AccessIdentityProviderOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderInput)(nil)).Elem(), &AccessIdentityProvider{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderPtrInput)(nil)).Elem(), &AccessIdentityProvider{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderArrayInput)(nil)).Elem(), AccessIdentityProviderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderMapInput)(nil)).Elem(), AccessIdentityProviderMap{})
 	pulumi.RegisterOutputType(AccessIdentityProviderOutput{})
-	pulumi.RegisterOutputType(AccessIdentityProviderPtrOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderArrayOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderMapOutput{})
 }

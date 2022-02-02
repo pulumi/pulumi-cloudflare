@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Cloudflare
 {
@@ -50,7 +49,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetWafPackagesResult> InvokeAsync(GetWafPackagesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWafPackagesResult>("cloudflare:index/getWafPackages:getWafPackages", args ?? new GetWafPackagesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetWafPackagesResult>("cloudflare:index/getWafPackages:getWafPackages", args ?? new GetWafPackagesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to look up [WAF Rule Packages](https://api.cloudflare.com/#waf-rule-packages-properties).
@@ -90,7 +89,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetWafPackagesResult> Invoke(GetWafPackagesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWafPackagesResult>("cloudflare:index/getWafPackages:getWafPackages", args ?? new GetWafPackagesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetWafPackagesResult>("cloudflare:index/getWafPackages:getWafPackages", args ?? new GetWafPackagesInvokeArgs(), options.WithDefaults());
     }
 
 

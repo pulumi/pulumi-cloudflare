@@ -77,13 +77,13 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomHostnameFallbackOriginArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomHostnameFallbackOriginArgs | CustomHostnameFallbackOriginState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomHostnameFallbackOriginState | undefined;
-            inputs["origin"] = state ? state.origin : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["origin"] = state ? state.origin : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomHostnameFallbackOriginArgs | undefined;
             if ((!args || args.origin === undefined) && !opts.urn) {
@@ -92,14 +92,12 @@ export class CustomHostnameFallbackOrigin extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["origin"] = args ? args.origin : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["origin"] = args ? args.origin : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomHostnameFallbackOrigin.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomHostnameFallbackOrigin.__pulumiType, name, resourceInputs, opts);
     }
 }
 

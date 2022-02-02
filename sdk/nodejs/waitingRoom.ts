@@ -123,23 +123,23 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     constructor(name: string, args: WaitingRoomArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WaitingRoomArgs | WaitingRoomState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WaitingRoomState | undefined;
-            inputs["customPageHtml"] = state ? state.customPageHtml : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["disableSessionRenewal"] = state ? state.disableSessionRenewal : undefined;
-            inputs["host"] = state ? state.host : undefined;
-            inputs["jsonResponseEnabled"] = state ? state.jsonResponseEnabled : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["newUsersPerMinute"] = state ? state.newUsersPerMinute : undefined;
-            inputs["path"] = state ? state.path : undefined;
-            inputs["queueAll"] = state ? state.queueAll : undefined;
-            inputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            inputs["suspended"] = state ? state.suspended : undefined;
-            inputs["totalActiveUsers"] = state ? state.totalActiveUsers : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["customPageHtml"] = state ? state.customPageHtml : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableSessionRenewal"] = state ? state.disableSessionRenewal : undefined;
+            resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["jsonResponseEnabled"] = state ? state.jsonResponseEnabled : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["newUsersPerMinute"] = state ? state.newUsersPerMinute : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["queueAll"] = state ? state.queueAll : undefined;
+            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
+            resourceInputs["suspended"] = state ? state.suspended : undefined;
+            resourceInputs["totalActiveUsers"] = state ? state.totalActiveUsers : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WaitingRoomArgs | undefined;
             if ((!args || args.host === undefined) && !opts.urn) {
@@ -157,24 +157,22 @@ export class WaitingRoom extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["customPageHtml"] = args ? args.customPageHtml : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["disableSessionRenewal"] = args ? args.disableSessionRenewal : undefined;
-            inputs["host"] = args ? args.host : undefined;
-            inputs["jsonResponseEnabled"] = args ? args.jsonResponseEnabled : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["newUsersPerMinute"] = args ? args.newUsersPerMinute : undefined;
-            inputs["path"] = args ? args.path : undefined;
-            inputs["queueAll"] = args ? args.queueAll : undefined;
-            inputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            inputs["suspended"] = args ? args.suspended : undefined;
-            inputs["totalActiveUsers"] = args ? args.totalActiveUsers : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["customPageHtml"] = args ? args.customPageHtml : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableSessionRenewal"] = args ? args.disableSessionRenewal : undefined;
+            resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["jsonResponseEnabled"] = args ? args.jsonResponseEnabled : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["newUsersPerMinute"] = args ? args.newUsersPerMinute : undefined;
+            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["queueAll"] = args ? args.queueAll : undefined;
+            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
+            resourceInputs["suspended"] = args ? args.suspended : undefined;
+            resourceInputs["totalActiveUsers"] = args ? args.totalActiveUsers : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WaitingRoom.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WaitingRoom.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -140,24 +140,24 @@ export class Record extends pulumi.CustomResource {
      */
     constructor(name: string, args: RecordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RecordArgs | RecordState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RecordState | undefined;
-            inputs["allowOverwrite"] = state ? state.allowOverwrite : undefined;
-            inputs["createdOn"] = state ? state.createdOn : undefined;
-            inputs["data"] = state ? state.data : undefined;
-            inputs["hostname"] = state ? state.hostname : undefined;
-            inputs["metadata"] = state ? state.metadata : undefined;
-            inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["proxiable"] = state ? state.proxiable : undefined;
-            inputs["proxied"] = state ? state.proxied : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["value"] = state ? state.value : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["allowOverwrite"] = state ? state.allowOverwrite : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["data"] = state ? state.data : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["metadata"] = state ? state.metadata : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["proxiable"] = state ? state.proxiable : undefined;
+            resourceInputs["proxied"] = state ? state.proxied : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RecordArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
@@ -169,25 +169,23 @@ export class Record extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["allowOverwrite"] = args ? args.allowOverwrite : undefined;
-            inputs["data"] = args ? args.data : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["proxied"] = args ? args.proxied : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["value"] = args ? args.value : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["createdOn"] = undefined /*out*/;
-            inputs["hostname"] = undefined /*out*/;
-            inputs["metadata"] = undefined /*out*/;
-            inputs["modifiedOn"] = undefined /*out*/;
-            inputs["proxiable"] = undefined /*out*/;
+            resourceInputs["allowOverwrite"] = args ? args.allowOverwrite : undefined;
+            resourceInputs["data"] = args ? args.data : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["proxied"] = args ? args.proxied : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["hostname"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["proxiable"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Record.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Record.__pulumiType, name, resourceInputs, opts);
     }
 }
 

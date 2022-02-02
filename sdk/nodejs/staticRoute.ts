@@ -104,18 +104,18 @@ export class StaticRoute extends pulumi.CustomResource {
      */
     constructor(name: string, args: StaticRouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StaticRouteArgs | StaticRouteState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as StaticRouteState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["coloNames"] = state ? state.coloNames : undefined;
-            inputs["coloRegions"] = state ? state.coloRegions : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["nexthop"] = state ? state.nexthop : undefined;
-            inputs["prefix"] = state ? state.prefix : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["coloNames"] = state ? state.coloNames : undefined;
+            resourceInputs["coloRegions"] = state ? state.coloRegions : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["nexthop"] = state ? state.nexthop : undefined;
+            resourceInputs["prefix"] = state ? state.prefix : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["weight"] = state ? state.weight : undefined;
         } else {
             const args = argsOrState as StaticRouteArgs | undefined;
             if ((!args || args.nexthop === undefined) && !opts.urn) {
@@ -127,19 +127,17 @@ export class StaticRoute extends pulumi.CustomResource {
             if ((!args || args.priority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["coloNames"] = args ? args.coloNames : undefined;
-            inputs["coloRegions"] = args ? args.coloRegions : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["nexthop"] = args ? args.nexthop : undefined;
-            inputs["prefix"] = args ? args.prefix : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["coloNames"] = args ? args.coloNames : undefined;
+            resourceInputs["coloRegions"] = args ? args.coloRegions : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["nexthop"] = args ? args.nexthop : undefined;
+            resourceInputs["prefix"] = args ? args.prefix : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["weight"] = args ? args.weight : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(StaticRoute.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(StaticRoute.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -121,14 +121,14 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
      */
     constructor(name: string, args: AuthenticatedOriginPullsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthenticatedOriginPullsArgs | AuthenticatedOriginPullsState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthenticatedOriginPullsState | undefined;
-            inputs["authenticatedOriginPullsCertificate"] = state ? state.authenticatedOriginPullsCertificate : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["hostname"] = state ? state.hostname : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["authenticatedOriginPullsCertificate"] = state ? state.authenticatedOriginPullsCertificate : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AuthenticatedOriginPullsArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
@@ -137,15 +137,13 @@ export class AuthenticatedOriginPulls extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["authenticatedOriginPullsCertificate"] = args ? args.authenticatedOriginPullsCertificate : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["hostname"] = args ? args.hostname : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["authenticatedOriginPullsCertificate"] = args ? args.authenticatedOriginPullsCertificate : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AuthenticatedOriginPulls.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AuthenticatedOriginPulls.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -201,7 +201,7 @@ type AuthenticatedOriginPullsInput interface {
 }
 
 func (*AuthenticatedOriginPulls) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticatedOriginPulls)(nil))
+	return reflect.TypeOf((**AuthenticatedOriginPulls)(nil)).Elem()
 }
 
 func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutput() AuthenticatedOriginPullsOutput {
@@ -210,35 +210,6 @@ func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutput() Authentica
 
 func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutputWithContext(ctx context.Context) AuthenticatedOriginPullsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsOutput)
-}
-
-func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsPtrOutput() AuthenticatedOriginPullsPtrOutput {
-	return i.ToAuthenticatedOriginPullsPtrOutputWithContext(context.Background())
-}
-
-func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsPtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsPtrOutput)
-}
-
-type AuthenticatedOriginPullsPtrInput interface {
-	pulumi.Input
-
-	ToAuthenticatedOriginPullsPtrOutput() AuthenticatedOriginPullsPtrOutput
-	ToAuthenticatedOriginPullsPtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsPtrOutput
-}
-
-type authenticatedOriginPullsPtrType AuthenticatedOriginPullsArgs
-
-func (*authenticatedOriginPullsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthenticatedOriginPulls)(nil))
-}
-
-func (i *authenticatedOriginPullsPtrType) ToAuthenticatedOriginPullsPtrOutput() AuthenticatedOriginPullsPtrOutput {
-	return i.ToAuthenticatedOriginPullsPtrOutputWithContext(context.Background())
-}
-
-func (i *authenticatedOriginPullsPtrType) ToAuthenticatedOriginPullsPtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsPtrOutput)
 }
 
 // AuthenticatedOriginPullsArrayInput is an input type that accepts AuthenticatedOriginPullsArray and AuthenticatedOriginPullsArrayOutput values.
@@ -294,7 +265,7 @@ func (i AuthenticatedOriginPullsMap) ToAuthenticatedOriginPullsMapOutputWithCont
 type AuthenticatedOriginPullsOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticatedOriginPulls)(nil))
+	return reflect.TypeOf((**AuthenticatedOriginPulls)(nil)).Elem()
 }
 
 func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutput() AuthenticatedOriginPullsOutput {
@@ -305,44 +276,10 @@ func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutputWithCont
 	return o
 }
 
-func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsPtrOutput() AuthenticatedOriginPullsPtrOutput {
-	return o.ToAuthenticatedOriginPullsPtrOutputWithContext(context.Background())
-}
-
-func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsPtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticatedOriginPulls) *AuthenticatedOriginPulls {
-		return &v
-	}).(AuthenticatedOriginPullsPtrOutput)
-}
-
-type AuthenticatedOriginPullsPtrOutput struct{ *pulumi.OutputState }
-
-func (AuthenticatedOriginPullsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthenticatedOriginPulls)(nil))
-}
-
-func (o AuthenticatedOriginPullsPtrOutput) ToAuthenticatedOriginPullsPtrOutput() AuthenticatedOriginPullsPtrOutput {
-	return o
-}
-
-func (o AuthenticatedOriginPullsPtrOutput) ToAuthenticatedOriginPullsPtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsPtrOutput {
-	return o
-}
-
-func (o AuthenticatedOriginPullsPtrOutput) Elem() AuthenticatedOriginPullsOutput {
-	return o.ApplyT(func(v *AuthenticatedOriginPulls) AuthenticatedOriginPulls {
-		if v != nil {
-			return *v
-		}
-		var ret AuthenticatedOriginPulls
-		return ret
-	}).(AuthenticatedOriginPullsOutput)
-}
-
 type AuthenticatedOriginPullsArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuthenticatedOriginPulls)(nil))
+	return reflect.TypeOf((*[]*AuthenticatedOriginPulls)(nil)).Elem()
 }
 
 func (o AuthenticatedOriginPullsArrayOutput) ToAuthenticatedOriginPullsArrayOutput() AuthenticatedOriginPullsArrayOutput {
@@ -354,15 +291,15 @@ func (o AuthenticatedOriginPullsArrayOutput) ToAuthenticatedOriginPullsArrayOutp
 }
 
 func (o AuthenticatedOriginPullsArrayOutput) Index(i pulumi.IntInput) AuthenticatedOriginPullsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthenticatedOriginPulls {
-		return vs[0].([]AuthenticatedOriginPulls)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthenticatedOriginPulls {
+		return vs[0].([]*AuthenticatedOriginPulls)[vs[1].(int)]
 	}).(AuthenticatedOriginPullsOutput)
 }
 
 type AuthenticatedOriginPullsMapOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AuthenticatedOriginPulls)(nil))
+	return reflect.TypeOf((*map[string]*AuthenticatedOriginPulls)(nil)).Elem()
 }
 
 func (o AuthenticatedOriginPullsMapOutput) ToAuthenticatedOriginPullsMapOutput() AuthenticatedOriginPullsMapOutput {
@@ -374,18 +311,16 @@ func (o AuthenticatedOriginPullsMapOutput) ToAuthenticatedOriginPullsMapOutputWi
 }
 
 func (o AuthenticatedOriginPullsMapOutput) MapIndex(k pulumi.StringInput) AuthenticatedOriginPullsOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthenticatedOriginPulls {
-		return vs[0].(map[string]AuthenticatedOriginPulls)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AuthenticatedOriginPulls {
+		return vs[0].(map[string]*AuthenticatedOriginPulls)[vs[1].(string)]
 	}).(AuthenticatedOriginPullsOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsInput)(nil)).Elem(), &AuthenticatedOriginPulls{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsPtrInput)(nil)).Elem(), &AuthenticatedOriginPulls{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsArrayInput)(nil)).Elem(), AuthenticatedOriginPullsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsMapInput)(nil)).Elem(), AuthenticatedOriginPullsMap{})
 	pulumi.RegisterOutputType(AuthenticatedOriginPullsOutput{})
-	pulumi.RegisterOutputType(AuthenticatedOriginPullsPtrOutput{})
 	pulumi.RegisterOutputType(AuthenticatedOriginPullsArrayOutput{})
 	pulumi.RegisterOutputType(AuthenticatedOriginPullsMapOutput{})
 }

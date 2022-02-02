@@ -96,15 +96,15 @@ export class IpList extends pulumi.CustomResource {
      */
     constructor(name: string, args: IpListArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IpListArgs | IpListState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IpListState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["items"] = state ? state.items : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["name"] = state ? state.name : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["items"] = state ? state.items : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as IpListArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -116,16 +116,14 @@ export class IpList extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["items"] = args ? args.items : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["items"] = args ? args.items : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(IpList.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(IpList.__pulumiType, name, resourceInputs, opts);
     }
 }
 

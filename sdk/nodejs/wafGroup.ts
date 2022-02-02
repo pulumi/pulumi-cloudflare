@@ -82,14 +82,14 @@ export class WafGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: WafGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WafGroupArgs | WafGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WafGroupState | undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["packageId"] = state ? state.packageId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["packageId"] = state ? state.packageId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafGroupArgs | undefined;
             if ((!args || args.groupId === undefined) && !opts.urn) {
@@ -98,15 +98,13 @@ export class WafGroup extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["groupId"] = args ? args.groupId : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["packageId"] = args ? args.packageId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["groupId"] = args ? args.groupId : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["packageId"] = args ? args.packageId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WafGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WafGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 

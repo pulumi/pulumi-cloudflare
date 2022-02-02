@@ -93,42 +93,40 @@ export class CustomSsl extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomSslArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomSslArgs | CustomSslState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomSslState | undefined;
-            inputs["customSslOptions"] = state ? state.customSslOptions : undefined;
-            inputs["customSslPriorities"] = state ? state.customSslPriorities : undefined;
-            inputs["expiresOn"] = state ? state.expiresOn : undefined;
-            inputs["hosts"] = state ? state.hosts : undefined;
-            inputs["issuer"] = state ? state.issuer : undefined;
-            inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["signature"] = state ? state.signature : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["uploadedOn"] = state ? state.uploadedOn : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["customSslOptions"] = state ? state.customSslOptions : undefined;
+            resourceInputs["customSslPriorities"] = state ? state.customSslPriorities : undefined;
+            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
+            resourceInputs["hosts"] = state ? state.hosts : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["signature"] = state ? state.signature : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["uploadedOn"] = state ? state.uploadedOn : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomSslArgs | undefined;
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["customSslOptions"] = args ? args.customSslOptions : undefined;
-            inputs["customSslPriorities"] = args ? args.customSslPriorities : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["expiresOn"] = undefined /*out*/;
-            inputs["hosts"] = undefined /*out*/;
-            inputs["issuer"] = undefined /*out*/;
-            inputs["modifiedOn"] = undefined /*out*/;
-            inputs["priority"] = undefined /*out*/;
-            inputs["signature"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["uploadedOn"] = undefined /*out*/;
+            resourceInputs["customSslOptions"] = args ? args.customSslOptions : undefined;
+            resourceInputs["customSslPriorities"] = args ? args.customSslPriorities : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["expiresOn"] = undefined /*out*/;
+            resourceInputs["hosts"] = undefined /*out*/;
+            resourceInputs["issuer"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["priority"] = undefined /*out*/;
+            resourceInputs["signature"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["uploadedOn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomSsl.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomSsl.__pulumiType, name, resourceInputs, opts);
     }
 }
 

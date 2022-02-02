@@ -182,7 +182,7 @@ type ZoneLockdownInput interface {
 }
 
 func (*ZoneLockdown) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneLockdown)(nil))
+	return reflect.TypeOf((**ZoneLockdown)(nil)).Elem()
 }
 
 func (i *ZoneLockdown) ToZoneLockdownOutput() ZoneLockdownOutput {
@@ -191,35 +191,6 @@ func (i *ZoneLockdown) ToZoneLockdownOutput() ZoneLockdownOutput {
 
 func (i *ZoneLockdown) ToZoneLockdownOutputWithContext(ctx context.Context) ZoneLockdownOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneLockdownOutput)
-}
-
-func (i *ZoneLockdown) ToZoneLockdownPtrOutput() ZoneLockdownPtrOutput {
-	return i.ToZoneLockdownPtrOutputWithContext(context.Background())
-}
-
-func (i *ZoneLockdown) ToZoneLockdownPtrOutputWithContext(ctx context.Context) ZoneLockdownPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneLockdownPtrOutput)
-}
-
-type ZoneLockdownPtrInput interface {
-	pulumi.Input
-
-	ToZoneLockdownPtrOutput() ZoneLockdownPtrOutput
-	ToZoneLockdownPtrOutputWithContext(ctx context.Context) ZoneLockdownPtrOutput
-}
-
-type zoneLockdownPtrType ZoneLockdownArgs
-
-func (*zoneLockdownPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneLockdown)(nil))
-}
-
-func (i *zoneLockdownPtrType) ToZoneLockdownPtrOutput() ZoneLockdownPtrOutput {
-	return i.ToZoneLockdownPtrOutputWithContext(context.Background())
-}
-
-func (i *zoneLockdownPtrType) ToZoneLockdownPtrOutputWithContext(ctx context.Context) ZoneLockdownPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneLockdownPtrOutput)
 }
 
 // ZoneLockdownArrayInput is an input type that accepts ZoneLockdownArray and ZoneLockdownArrayOutput values.
@@ -275,7 +246,7 @@ func (i ZoneLockdownMap) ToZoneLockdownMapOutputWithContext(ctx context.Context)
 type ZoneLockdownOutput struct{ *pulumi.OutputState }
 
 func (ZoneLockdownOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneLockdown)(nil))
+	return reflect.TypeOf((**ZoneLockdown)(nil)).Elem()
 }
 
 func (o ZoneLockdownOutput) ToZoneLockdownOutput() ZoneLockdownOutput {
@@ -286,44 +257,10 @@ func (o ZoneLockdownOutput) ToZoneLockdownOutputWithContext(ctx context.Context)
 	return o
 }
 
-func (o ZoneLockdownOutput) ToZoneLockdownPtrOutput() ZoneLockdownPtrOutput {
-	return o.ToZoneLockdownPtrOutputWithContext(context.Background())
-}
-
-func (o ZoneLockdownOutput) ToZoneLockdownPtrOutputWithContext(ctx context.Context) ZoneLockdownPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneLockdown) *ZoneLockdown {
-		return &v
-	}).(ZoneLockdownPtrOutput)
-}
-
-type ZoneLockdownPtrOutput struct{ *pulumi.OutputState }
-
-func (ZoneLockdownPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneLockdown)(nil))
-}
-
-func (o ZoneLockdownPtrOutput) ToZoneLockdownPtrOutput() ZoneLockdownPtrOutput {
-	return o
-}
-
-func (o ZoneLockdownPtrOutput) ToZoneLockdownPtrOutputWithContext(ctx context.Context) ZoneLockdownPtrOutput {
-	return o
-}
-
-func (o ZoneLockdownPtrOutput) Elem() ZoneLockdownOutput {
-	return o.ApplyT(func(v *ZoneLockdown) ZoneLockdown {
-		if v != nil {
-			return *v
-		}
-		var ret ZoneLockdown
-		return ret
-	}).(ZoneLockdownOutput)
-}
-
 type ZoneLockdownArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneLockdownArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ZoneLockdown)(nil))
+	return reflect.TypeOf((*[]*ZoneLockdown)(nil)).Elem()
 }
 
 func (o ZoneLockdownArrayOutput) ToZoneLockdownArrayOutput() ZoneLockdownArrayOutput {
@@ -335,15 +272,15 @@ func (o ZoneLockdownArrayOutput) ToZoneLockdownArrayOutputWithContext(ctx contex
 }
 
 func (o ZoneLockdownArrayOutput) Index(i pulumi.IntInput) ZoneLockdownOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneLockdown {
-		return vs[0].([]ZoneLockdown)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneLockdown {
+		return vs[0].([]*ZoneLockdown)[vs[1].(int)]
 	}).(ZoneLockdownOutput)
 }
 
 type ZoneLockdownMapOutput struct{ *pulumi.OutputState }
 
 func (ZoneLockdownMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ZoneLockdown)(nil))
+	return reflect.TypeOf((*map[string]*ZoneLockdown)(nil)).Elem()
 }
 
 func (o ZoneLockdownMapOutput) ToZoneLockdownMapOutput() ZoneLockdownMapOutput {
@@ -355,18 +292,16 @@ func (o ZoneLockdownMapOutput) ToZoneLockdownMapOutputWithContext(ctx context.Co
 }
 
 func (o ZoneLockdownMapOutput) MapIndex(k pulumi.StringInput) ZoneLockdownOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ZoneLockdown {
-		return vs[0].(map[string]ZoneLockdown)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ZoneLockdown {
+		return vs[0].(map[string]*ZoneLockdown)[vs[1].(string)]
 	}).(ZoneLockdownOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownInput)(nil)).Elem(), &ZoneLockdown{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownPtrInput)(nil)).Elem(), &ZoneLockdown{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownArrayInput)(nil)).Elem(), ZoneLockdownArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneLockdownMapInput)(nil)).Elem(), ZoneLockdownMap{})
 	pulumi.RegisterOutputType(ZoneLockdownOutput{})
-	pulumi.RegisterOutputType(ZoneLockdownPtrOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownArrayOutput{})
 	pulumi.RegisterOutputType(ZoneLockdownMapOutput{})
 }

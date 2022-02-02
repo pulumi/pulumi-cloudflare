@@ -97,15 +97,15 @@ export class PageRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: PageRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PageRuleArgs | PageRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PageRuleState | undefined;
-            inputs["actions"] = state ? state.actions : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["target"] = state ? state.target : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["actions"] = state ? state.actions : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["target"] = state ? state.target : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as PageRuleArgs | undefined;
             if ((!args || args.actions === undefined) && !opts.urn) {
@@ -117,16 +117,14 @@ export class PageRule extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["actions"] = args ? args.actions : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["status"] = args ? args.status : undefined;
-            inputs["target"] = args ? args.target : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["actions"] = args ? args.actions : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["target"] = args ? args.target : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(PageRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(PageRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

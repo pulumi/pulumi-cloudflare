@@ -84,12 +84,12 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkerCronTriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkerCronTriggerArgs | WorkerCronTriggerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerCronTriggerState | undefined;
-            inputs["schedules"] = state ? state.schedules : undefined;
-            inputs["scriptName"] = state ? state.scriptName : undefined;
+            resourceInputs["schedules"] = state ? state.schedules : undefined;
+            resourceInputs["scriptName"] = state ? state.scriptName : undefined;
         } else {
             const args = argsOrState as WorkerCronTriggerArgs | undefined;
             if ((!args || args.schedules === undefined) && !opts.urn) {
@@ -98,13 +98,11 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
             if ((!args || args.scriptName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
-            inputs["schedules"] = args ? args.schedules : undefined;
-            inputs["scriptName"] = args ? args.scriptName : undefined;
+            resourceInputs["schedules"] = args ? args.schedules : undefined;
+            resourceInputs["scriptName"] = args ? args.scriptName : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WorkerCronTrigger.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WorkerCronTrigger.__pulumiType, name, resourceInputs, opts);
     }
 }
 

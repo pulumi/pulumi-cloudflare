@@ -160,27 +160,27 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     constructor(name: string, args: LoadBalancerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerArgs | LoadBalancerState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            inputs["createdOn"] = state ? state.createdOn : undefined;
-            inputs["defaultPoolIds"] = state ? state.defaultPoolIds : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["fallbackPoolId"] = state ? state.fallbackPoolId : undefined;
-            inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["popPools"] = state ? state.popPools : undefined;
-            inputs["proxied"] = state ? state.proxied : undefined;
-            inputs["regionPools"] = state ? state.regionPools : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
-            inputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
-            inputs["sessionAffinityAttributes"] = state ? state.sessionAffinityAttributes : undefined;
-            inputs["sessionAffinityTtl"] = state ? state.sessionAffinityTtl : undefined;
-            inputs["steeringPolicy"] = state ? state.steeringPolicy : undefined;
-            inputs["ttl"] = state ? state.ttl : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["defaultPoolIds"] = state ? state.defaultPoolIds : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["fallbackPoolId"] = state ? state.fallbackPoolId : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["popPools"] = state ? state.popPools : undefined;
+            resourceInputs["proxied"] = state ? state.proxied : undefined;
+            resourceInputs["regionPools"] = state ? state.regionPools : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
+            resourceInputs["sessionAffinityAttributes"] = state ? state.sessionAffinityAttributes : undefined;
+            resourceInputs["sessionAffinityTtl"] = state ? state.sessionAffinityTtl : undefined;
+            resourceInputs["steeringPolicy"] = state ? state.steeringPolicy : undefined;
+            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
             if ((!args || args.defaultPoolIds === undefined) && !opts.urn) {
@@ -195,28 +195,26 @@ export class LoadBalancer extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["fallbackPoolId"] = args ? args.fallbackPoolId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["popPools"] = args ? args.popPools : undefined;
-            inputs["proxied"] = args ? args.proxied : undefined;
-            inputs["regionPools"] = args ? args.regionPools : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
-            inputs["sessionAffinityAttributes"] = args ? args.sessionAffinityAttributes : undefined;
-            inputs["sessionAffinityTtl"] = args ? args.sessionAffinityTtl : undefined;
-            inputs["steeringPolicy"] = args ? args.steeringPolicy : undefined;
-            inputs["ttl"] = args ? args.ttl : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["createdOn"] = undefined /*out*/;
-            inputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["defaultPoolIds"] = args ? args.defaultPoolIds : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["fallbackPoolId"] = args ? args.fallbackPoolId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["popPools"] = args ? args.popPools : undefined;
+            resourceInputs["proxied"] = args ? args.proxied : undefined;
+            resourceInputs["regionPools"] = args ? args.regionPools : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
+            resourceInputs["sessionAffinityAttributes"] = args ? args.sessionAffinityAttributes : undefined;
+            resourceInputs["sessionAffinityTtl"] = args ? args.sessionAffinityTtl : undefined;
+            resourceInputs["steeringPolicy"] = args ? args.steeringPolicy : undefined;
+            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LoadBalancer.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LoadBalancer.__pulumiType, name, resourceInputs, opts);
     }
 }
 

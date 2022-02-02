@@ -124,22 +124,22 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: TeamsRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TeamsRuleArgs | TeamsRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsRuleState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["devicePosture"] = state ? state.devicePosture : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["filters"] = state ? state.filters : undefined;
-            inputs["identity"] = state ? state.identity : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["precedence"] = state ? state.precedence : undefined;
-            inputs["ruleSettings"] = state ? state.ruleSettings : undefined;
-            inputs["traffic"] = state ? state.traffic : undefined;
-            inputs["version"] = state ? state.version : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["devicePosture"] = state ? state.devicePosture : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["filters"] = state ? state.filters : undefined;
+            resourceInputs["identity"] = state ? state.identity : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["precedence"] = state ? state.precedence : undefined;
+            resourceInputs["ruleSettings"] = state ? state.ruleSettings : undefined;
+            resourceInputs["traffic"] = state ? state.traffic : undefined;
+            resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as TeamsRuleArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -157,23 +157,21 @@ export class TeamsRule extends pulumi.CustomResource {
             if ((!args || args.precedence === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'precedence'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["action"] = args ? args.action : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["devicePosture"] = args ? args.devicePosture : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["filters"] = args ? args.filters : undefined;
-            inputs["identity"] = args ? args.identity : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["precedence"] = args ? args.precedence : undefined;
-            inputs["ruleSettings"] = args ? args.ruleSettings : undefined;
-            inputs["traffic"] = args ? args.traffic : undefined;
-            inputs["version"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["devicePosture"] = args ? args.devicePosture : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["filters"] = args ? args.filters : undefined;
+            resourceInputs["identity"] = args ? args.identity : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["precedence"] = args ? args.precedence : undefined;
+            resourceInputs["ruleSettings"] = args ? args.ruleSettings : undefined;
+            resourceInputs["traffic"] = args ? args.traffic : undefined;
+            resourceInputs["version"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TeamsRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TeamsRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

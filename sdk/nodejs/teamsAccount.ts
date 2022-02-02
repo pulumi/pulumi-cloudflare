@@ -89,30 +89,28 @@ export class TeamsAccount extends pulumi.CustomResource {
      */
     constructor(name: string, args: TeamsAccountArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TeamsAccountArgs | TeamsAccountState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsAccountState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["activityLogEnabled"] = state ? state.activityLogEnabled : undefined;
-            inputs["antivirus"] = state ? state.antivirus : undefined;
-            inputs["blockPage"] = state ? state.blockPage : undefined;
-            inputs["tlsDecryptEnabled"] = state ? state.tlsDecryptEnabled : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["activityLogEnabled"] = state ? state.activityLogEnabled : undefined;
+            resourceInputs["antivirus"] = state ? state.antivirus : undefined;
+            resourceInputs["blockPage"] = state ? state.blockPage : undefined;
+            resourceInputs["tlsDecryptEnabled"] = state ? state.tlsDecryptEnabled : undefined;
         } else {
             const args = argsOrState as TeamsAccountArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["activityLogEnabled"] = args ? args.activityLogEnabled : undefined;
-            inputs["antivirus"] = args ? args.antivirus : undefined;
-            inputs["blockPage"] = args ? args.blockPage : undefined;
-            inputs["tlsDecryptEnabled"] = args ? args.tlsDecryptEnabled : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["activityLogEnabled"] = args ? args.activityLogEnabled : undefined;
+            resourceInputs["antivirus"] = args ? args.antivirus : undefined;
+            resourceInputs["blockPage"] = args ? args.blockPage : undefined;
+            resourceInputs["tlsDecryptEnabled"] = args ? args.tlsDecryptEnabled : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TeamsAccount.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TeamsAccount.__pulumiType, name, resourceInputs, opts);
     }
 }
 

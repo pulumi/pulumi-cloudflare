@@ -88,17 +88,17 @@ export class CustomHostname extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomHostnameArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomHostnameArgs | CustomHostnameState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomHostnameState | undefined;
-            inputs["customOriginServer"] = state ? state.customOriginServer : undefined;
-            inputs["hostname"] = state ? state.hostname : undefined;
-            inputs["ownershipVerification"] = state ? state.ownershipVerification : undefined;
-            inputs["ownershipVerificationHttp"] = state ? state.ownershipVerificationHttp : undefined;
-            inputs["ssls"] = state ? state.ssls : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["customOriginServer"] = state ? state.customOriginServer : undefined;
+            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            resourceInputs["ownershipVerification"] = state ? state.ownershipVerification : undefined;
+            resourceInputs["ownershipVerificationHttp"] = state ? state.ownershipVerificationHttp : undefined;
+            resourceInputs["ssls"] = state ? state.ssls : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomHostnameArgs | undefined;
             if ((!args || args.hostname === undefined) && !opts.urn) {
@@ -107,18 +107,16 @@ export class CustomHostname extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["customOriginServer"] = args ? args.customOriginServer : undefined;
-            inputs["hostname"] = args ? args.hostname : undefined;
-            inputs["ssls"] = args ? args.ssls : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["ownershipVerification"] = undefined /*out*/;
-            inputs["ownershipVerificationHttp"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["customOriginServer"] = args ? args.customOriginServer : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
+            resourceInputs["ssls"] = args ? args.ssls : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["ownershipVerification"] = undefined /*out*/;
+            resourceInputs["ownershipVerificationHttp"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomHostname.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomHostname.__pulumiType, name, resourceInputs, opts);
     }
 }
 

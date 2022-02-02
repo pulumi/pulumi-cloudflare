@@ -55,6 +55,7 @@ setup(name='pulumi_cloudflare',
       package_data={
           'pulumi_cloudflare': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

@@ -154,7 +154,7 @@ type ArgoTunnelInput interface {
 }
 
 func (*ArgoTunnel) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArgoTunnel)(nil))
+	return reflect.TypeOf((**ArgoTunnel)(nil)).Elem()
 }
 
 func (i *ArgoTunnel) ToArgoTunnelOutput() ArgoTunnelOutput {
@@ -163,35 +163,6 @@ func (i *ArgoTunnel) ToArgoTunnelOutput() ArgoTunnelOutput {
 
 func (i *ArgoTunnel) ToArgoTunnelOutputWithContext(ctx context.Context) ArgoTunnelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ArgoTunnelOutput)
-}
-
-func (i *ArgoTunnel) ToArgoTunnelPtrOutput() ArgoTunnelPtrOutput {
-	return i.ToArgoTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *ArgoTunnel) ToArgoTunnelPtrOutputWithContext(ctx context.Context) ArgoTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArgoTunnelPtrOutput)
-}
-
-type ArgoTunnelPtrInput interface {
-	pulumi.Input
-
-	ToArgoTunnelPtrOutput() ArgoTunnelPtrOutput
-	ToArgoTunnelPtrOutputWithContext(ctx context.Context) ArgoTunnelPtrOutput
-}
-
-type argoTunnelPtrType ArgoTunnelArgs
-
-func (*argoTunnelPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ArgoTunnel)(nil))
-}
-
-func (i *argoTunnelPtrType) ToArgoTunnelPtrOutput() ArgoTunnelPtrOutput {
-	return i.ToArgoTunnelPtrOutputWithContext(context.Background())
-}
-
-func (i *argoTunnelPtrType) ToArgoTunnelPtrOutputWithContext(ctx context.Context) ArgoTunnelPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ArgoTunnelPtrOutput)
 }
 
 // ArgoTunnelArrayInput is an input type that accepts ArgoTunnelArray and ArgoTunnelArrayOutput values.
@@ -247,7 +218,7 @@ func (i ArgoTunnelMap) ToArgoTunnelMapOutputWithContext(ctx context.Context) Arg
 type ArgoTunnelOutput struct{ *pulumi.OutputState }
 
 func (ArgoTunnelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ArgoTunnel)(nil))
+	return reflect.TypeOf((**ArgoTunnel)(nil)).Elem()
 }
 
 func (o ArgoTunnelOutput) ToArgoTunnelOutput() ArgoTunnelOutput {
@@ -258,44 +229,10 @@ func (o ArgoTunnelOutput) ToArgoTunnelOutputWithContext(ctx context.Context) Arg
 	return o
 }
 
-func (o ArgoTunnelOutput) ToArgoTunnelPtrOutput() ArgoTunnelPtrOutput {
-	return o.ToArgoTunnelPtrOutputWithContext(context.Background())
-}
-
-func (o ArgoTunnelOutput) ToArgoTunnelPtrOutputWithContext(ctx context.Context) ArgoTunnelPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArgoTunnel) *ArgoTunnel {
-		return &v
-	}).(ArgoTunnelPtrOutput)
-}
-
-type ArgoTunnelPtrOutput struct{ *pulumi.OutputState }
-
-func (ArgoTunnelPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ArgoTunnel)(nil))
-}
-
-func (o ArgoTunnelPtrOutput) ToArgoTunnelPtrOutput() ArgoTunnelPtrOutput {
-	return o
-}
-
-func (o ArgoTunnelPtrOutput) ToArgoTunnelPtrOutputWithContext(ctx context.Context) ArgoTunnelPtrOutput {
-	return o
-}
-
-func (o ArgoTunnelPtrOutput) Elem() ArgoTunnelOutput {
-	return o.ApplyT(func(v *ArgoTunnel) ArgoTunnel {
-		if v != nil {
-			return *v
-		}
-		var ret ArgoTunnel
-		return ret
-	}).(ArgoTunnelOutput)
-}
-
 type ArgoTunnelArrayOutput struct{ *pulumi.OutputState }
 
 func (ArgoTunnelArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ArgoTunnel)(nil))
+	return reflect.TypeOf((*[]*ArgoTunnel)(nil)).Elem()
 }
 
 func (o ArgoTunnelArrayOutput) ToArgoTunnelArrayOutput() ArgoTunnelArrayOutput {
@@ -307,15 +244,15 @@ func (o ArgoTunnelArrayOutput) ToArgoTunnelArrayOutputWithContext(ctx context.Co
 }
 
 func (o ArgoTunnelArrayOutput) Index(i pulumi.IntInput) ArgoTunnelOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ArgoTunnel {
-		return vs[0].([]ArgoTunnel)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ArgoTunnel {
+		return vs[0].([]*ArgoTunnel)[vs[1].(int)]
 	}).(ArgoTunnelOutput)
 }
 
 type ArgoTunnelMapOutput struct{ *pulumi.OutputState }
 
 func (ArgoTunnelMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ArgoTunnel)(nil))
+	return reflect.TypeOf((*map[string]*ArgoTunnel)(nil)).Elem()
 }
 
 func (o ArgoTunnelMapOutput) ToArgoTunnelMapOutput() ArgoTunnelMapOutput {
@@ -327,18 +264,16 @@ func (o ArgoTunnelMapOutput) ToArgoTunnelMapOutputWithContext(ctx context.Contex
 }
 
 func (o ArgoTunnelMapOutput) MapIndex(k pulumi.StringInput) ArgoTunnelOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ArgoTunnel {
-		return vs[0].(map[string]ArgoTunnel)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ArgoTunnel {
+		return vs[0].(map[string]*ArgoTunnel)[vs[1].(string)]
 	}).(ArgoTunnelOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgoTunnelInput)(nil)).Elem(), &ArgoTunnel{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ArgoTunnelPtrInput)(nil)).Elem(), &ArgoTunnel{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgoTunnelArrayInput)(nil)).Elem(), ArgoTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArgoTunnelMapInput)(nil)).Elem(), ArgoTunnelMap{})
 	pulumi.RegisterOutputType(ArgoTunnelOutput{})
-	pulumi.RegisterOutputType(ArgoTunnelPtrOutput{})
 	pulumi.RegisterOutputType(ArgoTunnelArrayOutput{})
 	pulumi.RegisterOutputType(ArgoTunnelMapOutput{})
 }

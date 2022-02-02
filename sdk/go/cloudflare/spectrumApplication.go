@@ -265,7 +265,7 @@ type SpectrumApplicationInput interface {
 }
 
 func (*SpectrumApplication) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpectrumApplication)(nil))
+	return reflect.TypeOf((**SpectrumApplication)(nil)).Elem()
 }
 
 func (i *SpectrumApplication) ToSpectrumApplicationOutput() SpectrumApplicationOutput {
@@ -274,35 +274,6 @@ func (i *SpectrumApplication) ToSpectrumApplicationOutput() SpectrumApplicationO
 
 func (i *SpectrumApplication) ToSpectrumApplicationOutputWithContext(ctx context.Context) SpectrumApplicationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationOutput)
-}
-
-func (i *SpectrumApplication) ToSpectrumApplicationPtrOutput() SpectrumApplicationPtrOutput {
-	return i.ToSpectrumApplicationPtrOutputWithContext(context.Background())
-}
-
-func (i *SpectrumApplication) ToSpectrumApplicationPtrOutputWithContext(ctx context.Context) SpectrumApplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationPtrOutput)
-}
-
-type SpectrumApplicationPtrInput interface {
-	pulumi.Input
-
-	ToSpectrumApplicationPtrOutput() SpectrumApplicationPtrOutput
-	ToSpectrumApplicationPtrOutputWithContext(ctx context.Context) SpectrumApplicationPtrOutput
-}
-
-type spectrumApplicationPtrType SpectrumApplicationArgs
-
-func (*spectrumApplicationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SpectrumApplication)(nil))
-}
-
-func (i *spectrumApplicationPtrType) ToSpectrumApplicationPtrOutput() SpectrumApplicationPtrOutput {
-	return i.ToSpectrumApplicationPtrOutputWithContext(context.Background())
-}
-
-func (i *spectrumApplicationPtrType) ToSpectrumApplicationPtrOutputWithContext(ctx context.Context) SpectrumApplicationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationPtrOutput)
 }
 
 // SpectrumApplicationArrayInput is an input type that accepts SpectrumApplicationArray and SpectrumApplicationArrayOutput values.
@@ -358,7 +329,7 @@ func (i SpectrumApplicationMap) ToSpectrumApplicationMapOutputWithContext(ctx co
 type SpectrumApplicationOutput struct{ *pulumi.OutputState }
 
 func (SpectrumApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SpectrumApplication)(nil))
+	return reflect.TypeOf((**SpectrumApplication)(nil)).Elem()
 }
 
 func (o SpectrumApplicationOutput) ToSpectrumApplicationOutput() SpectrumApplicationOutput {
@@ -369,44 +340,10 @@ func (o SpectrumApplicationOutput) ToSpectrumApplicationOutputWithContext(ctx co
 	return o
 }
 
-func (o SpectrumApplicationOutput) ToSpectrumApplicationPtrOutput() SpectrumApplicationPtrOutput {
-	return o.ToSpectrumApplicationPtrOutputWithContext(context.Background())
-}
-
-func (o SpectrumApplicationOutput) ToSpectrumApplicationPtrOutputWithContext(ctx context.Context) SpectrumApplicationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SpectrumApplication) *SpectrumApplication {
-		return &v
-	}).(SpectrumApplicationPtrOutput)
-}
-
-type SpectrumApplicationPtrOutput struct{ *pulumi.OutputState }
-
-func (SpectrumApplicationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SpectrumApplication)(nil))
-}
-
-func (o SpectrumApplicationPtrOutput) ToSpectrumApplicationPtrOutput() SpectrumApplicationPtrOutput {
-	return o
-}
-
-func (o SpectrumApplicationPtrOutput) ToSpectrumApplicationPtrOutputWithContext(ctx context.Context) SpectrumApplicationPtrOutput {
-	return o
-}
-
-func (o SpectrumApplicationPtrOutput) Elem() SpectrumApplicationOutput {
-	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplication {
-		if v != nil {
-			return *v
-		}
-		var ret SpectrumApplication
-		return ret
-	}).(SpectrumApplicationOutput)
-}
-
 type SpectrumApplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (SpectrumApplicationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SpectrumApplication)(nil))
+	return reflect.TypeOf((*[]*SpectrumApplication)(nil)).Elem()
 }
 
 func (o SpectrumApplicationArrayOutput) ToSpectrumApplicationArrayOutput() SpectrumApplicationArrayOutput {
@@ -418,15 +355,15 @@ func (o SpectrumApplicationArrayOutput) ToSpectrumApplicationArrayOutputWithCont
 }
 
 func (o SpectrumApplicationArrayOutput) Index(i pulumi.IntInput) SpectrumApplicationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpectrumApplication {
-		return vs[0].([]SpectrumApplication)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpectrumApplication {
+		return vs[0].([]*SpectrumApplication)[vs[1].(int)]
 	}).(SpectrumApplicationOutput)
 }
 
 type SpectrumApplicationMapOutput struct{ *pulumi.OutputState }
 
 func (SpectrumApplicationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]SpectrumApplication)(nil))
+	return reflect.TypeOf((*map[string]*SpectrumApplication)(nil)).Elem()
 }
 
 func (o SpectrumApplicationMapOutput) ToSpectrumApplicationMapOutput() SpectrumApplicationMapOutput {
@@ -438,18 +375,16 @@ func (o SpectrumApplicationMapOutput) ToSpectrumApplicationMapOutputWithContext(
 }
 
 func (o SpectrumApplicationMapOutput) MapIndex(k pulumi.StringInput) SpectrumApplicationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SpectrumApplication {
-		return vs[0].(map[string]SpectrumApplication)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *SpectrumApplication {
+		return vs[0].(map[string]*SpectrumApplication)[vs[1].(string)]
 	}).(SpectrumApplicationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationInput)(nil)).Elem(), &SpectrumApplication{})
-	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationPtrInput)(nil)).Elem(), &SpectrumApplication{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationArrayInput)(nil)).Elem(), SpectrumApplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationMapInput)(nil)).Elem(), SpectrumApplicationMap{})
 	pulumi.RegisterOutputType(SpectrumApplicationOutput{})
-	pulumi.RegisterOutputType(SpectrumApplicationPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationArrayOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationMapOutput{})
 }

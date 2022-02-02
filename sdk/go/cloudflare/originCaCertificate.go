@@ -190,7 +190,7 @@ type OriginCaCertificateInput interface {
 }
 
 func (*OriginCaCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginCaCertificate)(nil))
+	return reflect.TypeOf((**OriginCaCertificate)(nil)).Elem()
 }
 
 func (i *OriginCaCertificate) ToOriginCaCertificateOutput() OriginCaCertificateOutput {
@@ -199,35 +199,6 @@ func (i *OriginCaCertificate) ToOriginCaCertificateOutput() OriginCaCertificateO
 
 func (i *OriginCaCertificate) ToOriginCaCertificateOutputWithContext(ctx context.Context) OriginCaCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificateOutput)
-}
-
-func (i *OriginCaCertificate) ToOriginCaCertificatePtrOutput() OriginCaCertificatePtrOutput {
-	return i.ToOriginCaCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *OriginCaCertificate) ToOriginCaCertificatePtrOutputWithContext(ctx context.Context) OriginCaCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificatePtrOutput)
-}
-
-type OriginCaCertificatePtrInput interface {
-	pulumi.Input
-
-	ToOriginCaCertificatePtrOutput() OriginCaCertificatePtrOutput
-	ToOriginCaCertificatePtrOutputWithContext(ctx context.Context) OriginCaCertificatePtrOutput
-}
-
-type originCaCertificatePtrType OriginCaCertificateArgs
-
-func (*originCaCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OriginCaCertificate)(nil))
-}
-
-func (i *originCaCertificatePtrType) ToOriginCaCertificatePtrOutput() OriginCaCertificatePtrOutput {
-	return i.ToOriginCaCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *originCaCertificatePtrType) ToOriginCaCertificatePtrOutputWithContext(ctx context.Context) OriginCaCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificatePtrOutput)
 }
 
 // OriginCaCertificateArrayInput is an input type that accepts OriginCaCertificateArray and OriginCaCertificateArrayOutput values.
@@ -283,7 +254,7 @@ func (i OriginCaCertificateMap) ToOriginCaCertificateMapOutputWithContext(ctx co
 type OriginCaCertificateOutput struct{ *pulumi.OutputState }
 
 func (OriginCaCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OriginCaCertificate)(nil))
+	return reflect.TypeOf((**OriginCaCertificate)(nil)).Elem()
 }
 
 func (o OriginCaCertificateOutput) ToOriginCaCertificateOutput() OriginCaCertificateOutput {
@@ -294,44 +265,10 @@ func (o OriginCaCertificateOutput) ToOriginCaCertificateOutputWithContext(ctx co
 	return o
 }
 
-func (o OriginCaCertificateOutput) ToOriginCaCertificatePtrOutput() OriginCaCertificatePtrOutput {
-	return o.ToOriginCaCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o OriginCaCertificateOutput) ToOriginCaCertificatePtrOutputWithContext(ctx context.Context) OriginCaCertificatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v OriginCaCertificate) *OriginCaCertificate {
-		return &v
-	}).(OriginCaCertificatePtrOutput)
-}
-
-type OriginCaCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (OriginCaCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OriginCaCertificate)(nil))
-}
-
-func (o OriginCaCertificatePtrOutput) ToOriginCaCertificatePtrOutput() OriginCaCertificatePtrOutput {
-	return o
-}
-
-func (o OriginCaCertificatePtrOutput) ToOriginCaCertificatePtrOutputWithContext(ctx context.Context) OriginCaCertificatePtrOutput {
-	return o
-}
-
-func (o OriginCaCertificatePtrOutput) Elem() OriginCaCertificateOutput {
-	return o.ApplyT(func(v *OriginCaCertificate) OriginCaCertificate {
-		if v != nil {
-			return *v
-		}
-		var ret OriginCaCertificate
-		return ret
-	}).(OriginCaCertificateOutput)
-}
-
 type OriginCaCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (OriginCaCertificateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]OriginCaCertificate)(nil))
+	return reflect.TypeOf((*[]*OriginCaCertificate)(nil)).Elem()
 }
 
 func (o OriginCaCertificateArrayOutput) ToOriginCaCertificateArrayOutput() OriginCaCertificateArrayOutput {
@@ -343,15 +280,15 @@ func (o OriginCaCertificateArrayOutput) ToOriginCaCertificateArrayOutputWithCont
 }
 
 func (o OriginCaCertificateArrayOutput) Index(i pulumi.IntInput) OriginCaCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OriginCaCertificate {
-		return vs[0].([]OriginCaCertificate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OriginCaCertificate {
+		return vs[0].([]*OriginCaCertificate)[vs[1].(int)]
 	}).(OriginCaCertificateOutput)
 }
 
 type OriginCaCertificateMapOutput struct{ *pulumi.OutputState }
 
 func (OriginCaCertificateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]OriginCaCertificate)(nil))
+	return reflect.TypeOf((*map[string]*OriginCaCertificate)(nil)).Elem()
 }
 
 func (o OriginCaCertificateMapOutput) ToOriginCaCertificateMapOutput() OriginCaCertificateMapOutput {
@@ -363,18 +300,16 @@ func (o OriginCaCertificateMapOutput) ToOriginCaCertificateMapOutputWithContext(
 }
 
 func (o OriginCaCertificateMapOutput) MapIndex(k pulumi.StringInput) OriginCaCertificateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OriginCaCertificate {
-		return vs[0].(map[string]OriginCaCertificate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *OriginCaCertificate {
+		return vs[0].(map[string]*OriginCaCertificate)[vs[1].(string)]
 	}).(OriginCaCertificateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OriginCaCertificateInput)(nil)).Elem(), &OriginCaCertificate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*OriginCaCertificatePtrInput)(nil)).Elem(), &OriginCaCertificate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OriginCaCertificateArrayInput)(nil)).Elem(), OriginCaCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OriginCaCertificateMapInput)(nil)).Elem(), OriginCaCertificateMap{})
 	pulumi.RegisterOutputType(OriginCaCertificateOutput{})
-	pulumi.RegisterOutputType(OriginCaCertificatePtrOutput{})
 	pulumi.RegisterOutputType(OriginCaCertificateArrayOutput{})
 	pulumi.RegisterOutputType(OriginCaCertificateMapOutput{})
 }

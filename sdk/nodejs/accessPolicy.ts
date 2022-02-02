@@ -149,23 +149,23 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessPolicyArgs | AccessPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["applicationId"] = state ? state.applicationId : undefined;
-            inputs["approvalGroups"] = state ? state.approvalGroups : undefined;
-            inputs["approvalRequired"] = state ? state.approvalRequired : undefined;
-            inputs["decision"] = state ? state.decision : undefined;
-            inputs["excludes"] = state ? state.excludes : undefined;
-            inputs["includes"] = state ? state.includes : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["precedence"] = state ? state.precedence : undefined;
-            inputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
-            inputs["purposeJustificationRequired"] = state ? state.purposeJustificationRequired : undefined;
-            inputs["requires"] = state ? state.requires : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["approvalGroups"] = state ? state.approvalGroups : undefined;
+            resourceInputs["approvalRequired"] = state ? state.approvalRequired : undefined;
+            resourceInputs["decision"] = state ? state.decision : undefined;
+            resourceInputs["excludes"] = state ? state.excludes : undefined;
+            resourceInputs["includes"] = state ? state.includes : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["precedence"] = state ? state.precedence : undefined;
+            resourceInputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
+            resourceInputs["purposeJustificationRequired"] = state ? state.purposeJustificationRequired : undefined;
+            resourceInputs["requires"] = state ? state.requires : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
             if ((!args || args.applicationId === undefined) && !opts.urn) {
@@ -183,24 +183,22 @@ export class AccessPolicy extends pulumi.CustomResource {
             if ((!args || args.precedence === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'precedence'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["applicationId"] = args ? args.applicationId : undefined;
-            inputs["approvalGroups"] = args ? args.approvalGroups : undefined;
-            inputs["approvalRequired"] = args ? args.approvalRequired : undefined;
-            inputs["decision"] = args ? args.decision : undefined;
-            inputs["excludes"] = args ? args.excludes : undefined;
-            inputs["includes"] = args ? args.includes : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["precedence"] = args ? args.precedence : undefined;
-            inputs["purposeJustificationPrompt"] = args ? args.purposeJustificationPrompt : undefined;
-            inputs["purposeJustificationRequired"] = args ? args.purposeJustificationRequired : undefined;
-            inputs["requires"] = args ? args.requires : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
+            resourceInputs["approvalGroups"] = args ? args.approvalGroups : undefined;
+            resourceInputs["approvalRequired"] = args ? args.approvalRequired : undefined;
+            resourceInputs["decision"] = args ? args.decision : undefined;
+            resourceInputs["excludes"] = args ? args.excludes : undefined;
+            resourceInputs["includes"] = args ? args.includes : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["precedence"] = args ? args.precedence : undefined;
+            resourceInputs["purposeJustificationPrompt"] = args ? args.purposeJustificationPrompt : undefined;
+            resourceInputs["purposeJustificationRequired"] = args ? args.purposeJustificationRequired : undefined;
+            resourceInputs["requires"] = args ? args.requires : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessPolicy.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

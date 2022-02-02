@@ -96,15 +96,15 @@ export class CustomPages extends pulumi.CustomResource {
      */
     constructor(name: string, args: CustomPagesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomPagesArgs | CustomPagesState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomPagesState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["state"] = state ? state.state : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["url"] = state ? state.url : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CustomPagesArgs | undefined;
             if ((!args || args.type === undefined) && !opts.urn) {
@@ -113,16 +113,14 @@ export class CustomPages extends pulumi.CustomResource {
             if ((!args || args.url === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["state"] = args ? args.state : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CustomPages.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CustomPages.__pulumiType, name, resourceInputs, opts);
     }
 }
 

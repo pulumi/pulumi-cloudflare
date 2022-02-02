@@ -134,15 +134,15 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessIdentityProviderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessIdentityProviderArgs | AccessIdentityProviderState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessIdentityProviderState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["configs"] = state ? state.configs : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["configs"] = state ? state.configs : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessIdentityProviderArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
@@ -151,16 +151,14 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["configs"] = args ? args.configs : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["configs"] = args ? args.configs : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessIdentityProvider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessIdentityProvider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

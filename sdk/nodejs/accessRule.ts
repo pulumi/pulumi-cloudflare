@@ -76,14 +76,14 @@ export class AccessRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessRuleArgs | AccessRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessRuleState | undefined;
-            inputs["configuration"] = state ? state.configuration : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["notes"] = state ? state.notes : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["configuration"] = state ? state.configuration : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["notes"] = state ? state.notes : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessRuleArgs | undefined;
             if ((!args || args.configuration === undefined) && !opts.urn) {
@@ -92,15 +92,13 @@ export class AccessRule extends pulumi.CustomResource {
             if ((!args || args.mode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            inputs["configuration"] = args ? args.configuration : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["notes"] = args ? args.notes : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["configuration"] = args ? args.configuration : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["notes"] = args ? args.notes : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

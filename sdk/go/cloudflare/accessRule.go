@@ -134,7 +134,7 @@ type AccessRuleInput interface {
 }
 
 func (*AccessRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessRule)(nil))
+	return reflect.TypeOf((**AccessRule)(nil)).Elem()
 }
 
 func (i *AccessRule) ToAccessRuleOutput() AccessRuleOutput {
@@ -143,35 +143,6 @@ func (i *AccessRule) ToAccessRuleOutput() AccessRuleOutput {
 
 func (i *AccessRule) ToAccessRuleOutputWithContext(ctx context.Context) AccessRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessRuleOutput)
-}
-
-func (i *AccessRule) ToAccessRulePtrOutput() AccessRulePtrOutput {
-	return i.ToAccessRulePtrOutputWithContext(context.Background())
-}
-
-func (i *AccessRule) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessRulePtrOutput)
-}
-
-type AccessRulePtrInput interface {
-	pulumi.Input
-
-	ToAccessRulePtrOutput() AccessRulePtrOutput
-	ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput
-}
-
-type accessRulePtrType AccessRuleArgs
-
-func (*accessRulePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessRule)(nil))
-}
-
-func (i *accessRulePtrType) ToAccessRulePtrOutput() AccessRulePtrOutput {
-	return i.ToAccessRulePtrOutputWithContext(context.Background())
-}
-
-func (i *accessRulePtrType) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessRulePtrOutput)
 }
 
 // AccessRuleArrayInput is an input type that accepts AccessRuleArray and AccessRuleArrayOutput values.
@@ -227,7 +198,7 @@ func (i AccessRuleMap) ToAccessRuleMapOutputWithContext(ctx context.Context) Acc
 type AccessRuleOutput struct{ *pulumi.OutputState }
 
 func (AccessRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessRule)(nil))
+	return reflect.TypeOf((**AccessRule)(nil)).Elem()
 }
 
 func (o AccessRuleOutput) ToAccessRuleOutput() AccessRuleOutput {
@@ -238,44 +209,10 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
-func (o AccessRuleOutput) ToAccessRulePtrOutput() AccessRulePtrOutput {
-	return o.ToAccessRulePtrOutputWithContext(context.Background())
-}
-
-func (o AccessRuleOutput) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessRule) *AccessRule {
-		return &v
-	}).(AccessRulePtrOutput)
-}
-
-type AccessRulePtrOutput struct{ *pulumi.OutputState }
-
-func (AccessRulePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessRule)(nil))
-}
-
-func (o AccessRulePtrOutput) ToAccessRulePtrOutput() AccessRulePtrOutput {
-	return o
-}
-
-func (o AccessRulePtrOutput) ToAccessRulePtrOutputWithContext(ctx context.Context) AccessRulePtrOutput {
-	return o
-}
-
-func (o AccessRulePtrOutput) Elem() AccessRuleOutput {
-	return o.ApplyT(func(v *AccessRule) AccessRule {
-		if v != nil {
-			return *v
-		}
-		var ret AccessRule
-		return ret
-	}).(AccessRuleOutput)
-}
-
 type AccessRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessRule)(nil))
+	return reflect.TypeOf((*[]*AccessRule)(nil)).Elem()
 }
 
 func (o AccessRuleArrayOutput) ToAccessRuleArrayOutput() AccessRuleArrayOutput {
@@ -287,15 +224,15 @@ func (o AccessRuleArrayOutput) ToAccessRuleArrayOutputWithContext(ctx context.Co
 }
 
 func (o AccessRuleArrayOutput) Index(i pulumi.IntInput) AccessRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessRule {
-		return vs[0].([]AccessRule)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessRule {
+		return vs[0].([]*AccessRule)[vs[1].(int)]
 	}).(AccessRuleOutput)
 }
 
 type AccessRuleMapOutput struct{ *pulumi.OutputState }
 
 func (AccessRuleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AccessRule)(nil))
+	return reflect.TypeOf((*map[string]*AccessRule)(nil)).Elem()
 }
 
 func (o AccessRuleMapOutput) ToAccessRuleMapOutput() AccessRuleMapOutput {
@@ -307,18 +244,16 @@ func (o AccessRuleMapOutput) ToAccessRuleMapOutputWithContext(ctx context.Contex
 }
 
 func (o AccessRuleMapOutput) MapIndex(k pulumi.StringInput) AccessRuleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessRule {
-		return vs[0].(map[string]AccessRule)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AccessRule {
+		return vs[0].(map[string]*AccessRule)[vs[1].(string)]
 	}).(AccessRuleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleInput)(nil)).Elem(), &AccessRule{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessRulePtrInput)(nil)).Elem(), &AccessRule{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleArrayInput)(nil)).Elem(), AccessRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessRuleMapInput)(nil)).Elem(), AccessRuleMap{})
 	pulumi.RegisterOutputType(AccessRuleOutput{})
-	pulumi.RegisterOutputType(AccessRulePtrOutput{})
 	pulumi.RegisterOutputType(AccessRuleArrayOutput{})
 	pulumi.RegisterOutputType(AccessRuleMapOutput{})
 }

@@ -109,19 +109,19 @@ export class TeamsLocation extends pulumi.CustomResource {
      */
     constructor(name: string, args: TeamsLocationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TeamsLocationArgs | TeamsLocationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsLocationState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["anonymizedLogsEnabled"] = state ? state.anonymizedLogsEnabled : undefined;
-            inputs["clientDefault"] = state ? state.clientDefault : undefined;
-            inputs["dohSubdomain"] = state ? state.dohSubdomain : undefined;
-            inputs["ip"] = state ? state.ip : undefined;
-            inputs["ipv4Destination"] = state ? state.ipv4Destination : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["networks"] = state ? state.networks : undefined;
-            inputs["policyIds"] = state ? state.policyIds : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["anonymizedLogsEnabled"] = state ? state.anonymizedLogsEnabled : undefined;
+            resourceInputs["clientDefault"] = state ? state.clientDefault : undefined;
+            resourceInputs["dohSubdomain"] = state ? state.dohSubdomain : undefined;
+            resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["ipv4Destination"] = state ? state.ipv4Destination : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["networks"] = state ? state.networks : undefined;
+            resourceInputs["policyIds"] = state ? state.policyIds : undefined;
         } else {
             const args = argsOrState as TeamsLocationArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -130,20 +130,18 @@ export class TeamsLocation extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["clientDefault"] = args ? args.clientDefault : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["networks"] = args ? args.networks : undefined;
-            inputs["anonymizedLogsEnabled"] = undefined /*out*/;
-            inputs["dohSubdomain"] = undefined /*out*/;
-            inputs["ip"] = undefined /*out*/;
-            inputs["ipv4Destination"] = undefined /*out*/;
-            inputs["policyIds"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["clientDefault"] = args ? args.clientDefault : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["anonymizedLogsEnabled"] = undefined /*out*/;
+            resourceInputs["dohSubdomain"] = undefined /*out*/;
+            resourceInputs["ip"] = undefined /*out*/;
+            resourceInputs["ipv4Destination"] = undefined /*out*/;
+            resourceInputs["policyIds"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TeamsLocation.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TeamsLocation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

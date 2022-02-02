@@ -80,18 +80,18 @@ export class Ruleset extends pulumi.CustomResource {
      */
     constructor(name: string, args: RulesetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RulesetArgs | RulesetState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RulesetState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["kind"] = state ? state.kind : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["phase"] = state ? state.phase : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
-            inputs["shareableEntitlementName"] = state ? state.shareableEntitlementName : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["phase"] = state ? state.phase : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["shareableEntitlementName"] = state ? state.shareableEntitlementName : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RulesetArgs | undefined;
             if ((!args || args.description === undefined) && !opts.urn) {
@@ -106,19 +106,17 @@ export class Ruleset extends pulumi.CustomResource {
             if ((!args || args.phase === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'phase'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["kind"] = args ? args.kind : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["phase"] = args ? args.phase : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["shareableEntitlementName"] = args ? args.shareableEntitlementName : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["phase"] = args ? args.phase : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["shareableEntitlementName"] = args ? args.shareableEntitlementName : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Ruleset.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Ruleset.__pulumiType, name, resourceInputs, opts);
     }
 }
 

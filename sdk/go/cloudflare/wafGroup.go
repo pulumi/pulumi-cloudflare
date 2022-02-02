@@ -153,7 +153,7 @@ type WafGroupInput interface {
 }
 
 func (*WafGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafGroup)(nil))
+	return reflect.TypeOf((**WafGroup)(nil)).Elem()
 }
 
 func (i *WafGroup) ToWafGroupOutput() WafGroupOutput {
@@ -162,35 +162,6 @@ func (i *WafGroup) ToWafGroupOutput() WafGroupOutput {
 
 func (i *WafGroup) ToWafGroupOutputWithContext(ctx context.Context) WafGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WafGroupOutput)
-}
-
-func (i *WafGroup) ToWafGroupPtrOutput() WafGroupPtrOutput {
-	return i.ToWafGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *WafGroup) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WafGroupPtrOutput)
-}
-
-type WafGroupPtrInput interface {
-	pulumi.Input
-
-	ToWafGroupPtrOutput() WafGroupPtrOutput
-	ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput
-}
-
-type wafGroupPtrType WafGroupArgs
-
-func (*wafGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WafGroup)(nil))
-}
-
-func (i *wafGroupPtrType) ToWafGroupPtrOutput() WafGroupPtrOutput {
-	return i.ToWafGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *wafGroupPtrType) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WafGroupPtrOutput)
 }
 
 // WafGroupArrayInput is an input type that accepts WafGroupArray and WafGroupArrayOutput values.
@@ -246,7 +217,7 @@ func (i WafGroupMap) ToWafGroupMapOutputWithContext(ctx context.Context) WafGrou
 type WafGroupOutput struct{ *pulumi.OutputState }
 
 func (WafGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WafGroup)(nil))
+	return reflect.TypeOf((**WafGroup)(nil)).Elem()
 }
 
 func (o WafGroupOutput) ToWafGroupOutput() WafGroupOutput {
@@ -257,44 +228,10 @@ func (o WafGroupOutput) ToWafGroupOutputWithContext(ctx context.Context) WafGrou
 	return o
 }
 
-func (o WafGroupOutput) ToWafGroupPtrOutput() WafGroupPtrOutput {
-	return o.ToWafGroupPtrOutputWithContext(context.Background())
-}
-
-func (o WafGroupOutput) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WafGroup) *WafGroup {
-		return &v
-	}).(WafGroupPtrOutput)
-}
-
-type WafGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (WafGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WafGroup)(nil))
-}
-
-func (o WafGroupPtrOutput) ToWafGroupPtrOutput() WafGroupPtrOutput {
-	return o
-}
-
-func (o WafGroupPtrOutput) ToWafGroupPtrOutputWithContext(ctx context.Context) WafGroupPtrOutput {
-	return o
-}
-
-func (o WafGroupPtrOutput) Elem() WafGroupOutput {
-	return o.ApplyT(func(v *WafGroup) WafGroup {
-		if v != nil {
-			return *v
-		}
-		var ret WafGroup
-		return ret
-	}).(WafGroupOutput)
-}
-
 type WafGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (WafGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WafGroup)(nil))
+	return reflect.TypeOf((*[]*WafGroup)(nil)).Elem()
 }
 
 func (o WafGroupArrayOutput) ToWafGroupArrayOutput() WafGroupArrayOutput {
@@ -306,15 +243,15 @@ func (o WafGroupArrayOutput) ToWafGroupArrayOutputWithContext(ctx context.Contex
 }
 
 func (o WafGroupArrayOutput) Index(i pulumi.IntInput) WafGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WafGroup {
-		return vs[0].([]WafGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WafGroup {
+		return vs[0].([]*WafGroup)[vs[1].(int)]
 	}).(WafGroupOutput)
 }
 
 type WafGroupMapOutput struct{ *pulumi.OutputState }
 
 func (WafGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WafGroup)(nil))
+	return reflect.TypeOf((*map[string]*WafGroup)(nil)).Elem()
 }
 
 func (o WafGroupMapOutput) ToWafGroupMapOutput() WafGroupMapOutput {
@@ -326,18 +263,16 @@ func (o WafGroupMapOutput) ToWafGroupMapOutputWithContext(ctx context.Context) W
 }
 
 func (o WafGroupMapOutput) MapIndex(k pulumi.StringInput) WafGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WafGroup {
-		return vs[0].(map[string]WafGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WafGroup {
+		return vs[0].(map[string]*WafGroup)[vs[1].(string)]
 	}).(WafGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WafGroupInput)(nil)).Elem(), &WafGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WafGroupPtrInput)(nil)).Elem(), &WafGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WafGroupArrayInput)(nil)).Elem(), WafGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WafGroupMapInput)(nil)).Elem(), WafGroupMap{})
 	pulumi.RegisterOutputType(WafGroupOutput{})
-	pulumi.RegisterOutputType(WafGroupPtrOutput{})
 	pulumi.RegisterOutputType(WafGroupArrayOutput{})
 	pulumi.RegisterOutputType(WafGroupMapOutput{})
 }

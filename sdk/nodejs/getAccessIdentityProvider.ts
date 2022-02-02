@@ -33,9 +33,7 @@ export function getAccessIdentityProvider(args: GetAccessIdentityProviderArgs, o
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", {
         "accountId": args.accountId,
         "name": args.name,

@@ -147,24 +147,24 @@ export class LoadBalancerPool extends pulumi.CustomResource {
      */
     constructor(name: string, args: LoadBalancerPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerPoolArgs | LoadBalancerPoolState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerPoolState | undefined;
-            inputs["checkRegions"] = state ? state.checkRegions : undefined;
-            inputs["createdOn"] = state ? state.createdOn : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["latitude"] = state ? state.latitude : undefined;
-            inputs["loadSheddings"] = state ? state.loadSheddings : undefined;
-            inputs["longitude"] = state ? state.longitude : undefined;
-            inputs["minimumOrigins"] = state ? state.minimumOrigins : undefined;
-            inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            inputs["monitor"] = state ? state.monitor : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["notificationEmail"] = state ? state.notificationEmail : undefined;
-            inputs["originSteerings"] = state ? state.originSteerings : undefined;
-            inputs["origins"] = state ? state.origins : undefined;
+            resourceInputs["checkRegions"] = state ? state.checkRegions : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["latitude"] = state ? state.latitude : undefined;
+            resourceInputs["loadSheddings"] = state ? state.loadSheddings : undefined;
+            resourceInputs["longitude"] = state ? state.longitude : undefined;
+            resourceInputs["minimumOrigins"] = state ? state.minimumOrigins : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["monitor"] = state ? state.monitor : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["notificationEmail"] = state ? state.notificationEmail : undefined;
+            resourceInputs["originSteerings"] = state ? state.originSteerings : undefined;
+            resourceInputs["origins"] = state ? state.origins : undefined;
         } else {
             const args = argsOrState as LoadBalancerPoolArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
@@ -173,25 +173,23 @@ export class LoadBalancerPool extends pulumi.CustomResource {
             if ((!args || args.origins === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'origins'");
             }
-            inputs["checkRegions"] = args ? args.checkRegions : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["latitude"] = args ? args.latitude : undefined;
-            inputs["loadSheddings"] = args ? args.loadSheddings : undefined;
-            inputs["longitude"] = args ? args.longitude : undefined;
-            inputs["minimumOrigins"] = args ? args.minimumOrigins : undefined;
-            inputs["monitor"] = args ? args.monitor : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["notificationEmail"] = args ? args.notificationEmail : undefined;
-            inputs["originSteerings"] = args ? args.originSteerings : undefined;
-            inputs["origins"] = args ? args.origins : undefined;
-            inputs["createdOn"] = undefined /*out*/;
-            inputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["checkRegions"] = args ? args.checkRegions : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["latitude"] = args ? args.latitude : undefined;
+            resourceInputs["loadSheddings"] = args ? args.loadSheddings : undefined;
+            resourceInputs["longitude"] = args ? args.longitude : undefined;
+            resourceInputs["minimumOrigins"] = args ? args.minimumOrigins : undefined;
+            resourceInputs["monitor"] = args ? args.monitor : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["notificationEmail"] = args ? args.notificationEmail : undefined;
+            resourceInputs["originSteerings"] = args ? args.originSteerings : undefined;
+            resourceInputs["origins"] = args ? args.origins : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LoadBalancerPool.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LoadBalancerPool.__pulumiType, name, resourceInputs, opts);
     }
 }
 
