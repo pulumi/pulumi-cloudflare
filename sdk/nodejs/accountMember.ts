@@ -78,12 +78,12 @@ export class AccountMember extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccountMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountMemberArgs | AccountMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccountMemberState | undefined;
-            inputs["emailAddress"] = state ? state.emailAddress : undefined;
-            inputs["roleIds"] = state ? state.roleIds : undefined;
+            resourceInputs["emailAddress"] = state ? state.emailAddress : undefined;
+            resourceInputs["roleIds"] = state ? state.roleIds : undefined;
         } else {
             const args = argsOrState as AccountMemberArgs | undefined;
             if ((!args || args.emailAddress === undefined) && !opts.urn) {
@@ -92,13 +92,11 @@ export class AccountMember extends pulumi.CustomResource {
             if ((!args || args.roleIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleIds'");
             }
-            inputs["emailAddress"] = args ? args.emailAddress : undefined;
-            inputs["roleIds"] = args ? args.roleIds : undefined;
+            resourceInputs["emailAddress"] = args ? args.emailAddress : undefined;
+            resourceInputs["roleIds"] = args ? args.roleIds : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccountMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccountMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -73,12 +73,12 @@ export class LogpullRetention extends pulumi.CustomResource {
      */
     constructor(name: string, args: LogpullRetentionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LogpullRetentionArgs | LogpullRetentionState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogpullRetentionState | undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LogpullRetentionArgs | undefined;
             if ((!args || args.enabled === undefined) && !opts.urn) {
@@ -87,13 +87,11 @@ export class LogpullRetention extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LogpullRetention.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LogpullRetention.__pulumiType, name, resourceInputs, opts);
     }
 }
 

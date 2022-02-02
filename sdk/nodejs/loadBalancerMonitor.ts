@@ -153,49 +153,47 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     constructor(name: string, args?: LoadBalancerMonitorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LoadBalancerMonitorArgs | LoadBalancerMonitorState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerMonitorState | undefined;
-            inputs["allowInsecure"] = state ? state.allowInsecure : undefined;
-            inputs["createdOn"] = state ? state.createdOn : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["expectedBody"] = state ? state.expectedBody : undefined;
-            inputs["expectedCodes"] = state ? state.expectedCodes : undefined;
-            inputs["followRedirects"] = state ? state.followRedirects : undefined;
-            inputs["headers"] = state ? state.headers : undefined;
-            inputs["interval"] = state ? state.interval : undefined;
-            inputs["method"] = state ? state.method : undefined;
-            inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            inputs["path"] = state ? state.path : undefined;
-            inputs["port"] = state ? state.port : undefined;
-            inputs["probeZone"] = state ? state.probeZone : undefined;
-            inputs["retries"] = state ? state.retries : undefined;
-            inputs["timeout"] = state ? state.timeout : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["allowInsecure"] = state ? state.allowInsecure : undefined;
+            resourceInputs["createdOn"] = state ? state.createdOn : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expectedBody"] = state ? state.expectedBody : undefined;
+            resourceInputs["expectedCodes"] = state ? state.expectedCodes : undefined;
+            resourceInputs["followRedirects"] = state ? state.followRedirects : undefined;
+            resourceInputs["headers"] = state ? state.headers : undefined;
+            resourceInputs["interval"] = state ? state.interval : undefined;
+            resourceInputs["method"] = state ? state.method : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["path"] = state ? state.path : undefined;
+            resourceInputs["port"] = state ? state.port : undefined;
+            resourceInputs["probeZone"] = state ? state.probeZone : undefined;
+            resourceInputs["retries"] = state ? state.retries : undefined;
+            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as LoadBalancerMonitorArgs | undefined;
-            inputs["allowInsecure"] = args ? args.allowInsecure : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["expectedBody"] = args ? args.expectedBody : undefined;
-            inputs["expectedCodes"] = args ? args.expectedCodes : undefined;
-            inputs["followRedirects"] = args ? args.followRedirects : undefined;
-            inputs["headers"] = args ? args.headers : undefined;
-            inputs["interval"] = args ? args.interval : undefined;
-            inputs["method"] = args ? args.method : undefined;
-            inputs["path"] = args ? args.path : undefined;
-            inputs["port"] = args ? args.port : undefined;
-            inputs["probeZone"] = args ? args.probeZone : undefined;
-            inputs["retries"] = args ? args.retries : undefined;
-            inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["createdOn"] = undefined /*out*/;
-            inputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["allowInsecure"] = args ? args.allowInsecure : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["expectedBody"] = args ? args.expectedBody : undefined;
+            resourceInputs["expectedCodes"] = args ? args.expectedCodes : undefined;
+            resourceInputs["followRedirects"] = args ? args.followRedirects : undefined;
+            resourceInputs["headers"] = args ? args.headers : undefined;
+            resourceInputs["interval"] = args ? args.interval : undefined;
+            resourceInputs["method"] = args ? args.method : undefined;
+            resourceInputs["path"] = args ? args.path : undefined;
+            resourceInputs["port"] = args ? args.port : undefined;
+            resourceInputs["probeZone"] = args ? args.probeZone : undefined;
+            resourceInputs["retries"] = args ? args.retries : undefined;
+            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["createdOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LoadBalancerMonitor.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LoadBalancerMonitor.__pulumiType, name, resourceInputs, opts);
     }
 }
 

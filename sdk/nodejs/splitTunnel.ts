@@ -93,13 +93,13 @@ export class SplitTunnel extends pulumi.CustomResource {
      */
     constructor(name: string, args: SplitTunnelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SplitTunnelArgs | SplitTunnelState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SplitTunnelState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["tunnels"] = state ? state.tunnels : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["tunnels"] = state ? state.tunnels : undefined;
         } else {
             const args = argsOrState as SplitTunnelArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -111,14 +111,12 @@ export class SplitTunnel extends pulumi.CustomResource {
             if ((!args || args.tunnels === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tunnels'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["tunnels"] = args ? args.tunnels : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["tunnels"] = args ? args.tunnels : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SplitTunnel.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SplitTunnel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

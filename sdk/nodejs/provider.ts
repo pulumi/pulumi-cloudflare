@@ -62,26 +62,24 @@ export class Provider extends pulumi.ProviderResource {
      * @param opts A bag of options that control this resource's behavior.
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["apiBasePath"] = args ? args.apiBasePath : undefined;
-            inputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) ?? (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
-            inputs["apiHostname"] = args ? args.apiHostname : undefined;
-            inputs["apiKey"] = args ? args.apiKey : undefined;
-            inputs["apiToken"] = args ? args.apiToken : undefined;
-            inputs["apiUserServiceKey"] = args ? args.apiUserServiceKey : undefined;
-            inputs["email"] = args ? args.email : undefined;
-            inputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) ?? (<any>utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
-            inputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) ?? (<any>utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
-            inputs["retries"] = pulumi.output((args ? args.retries : undefined) ?? (<any>utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3)).apply(JSON.stringify);
-            inputs["rps"] = pulumi.output((args ? args.rps : undefined) ?? (<any>utilities.getEnvNumber("CLOUDFLARE_RPS") || 4)).apply(JSON.stringify);
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["apiBasePath"] = args ? args.apiBasePath : undefined;
+            resourceInputs["apiClientLogging"] = pulumi.output((args ? args.apiClientLogging : undefined) ?? (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false)).apply(JSON.stringify);
+            resourceInputs["apiHostname"] = args ? args.apiHostname : undefined;
+            resourceInputs["apiKey"] = args ? args.apiKey : undefined;
+            resourceInputs["apiToken"] = args ? args.apiToken : undefined;
+            resourceInputs["apiUserServiceKey"] = args ? args.apiUserServiceKey : undefined;
+            resourceInputs["email"] = args ? args.email : undefined;
+            resourceInputs["maxBackoff"] = pulumi.output((args ? args.maxBackoff : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30)).apply(JSON.stringify);
+            resourceInputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
+            resourceInputs["retries"] = pulumi.output((args ? args.retries : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3)).apply(JSON.stringify);
+            resourceInputs["rps"] = pulumi.output((args ? args.rps : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_RPS") || 4)).apply(JSON.stringify);
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Provider.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
 

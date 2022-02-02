@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Cloudflare
 {
@@ -39,7 +38,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZoneDnssecResult> InvokeAsync(GetZoneDnssecArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to look up [Zone][1] DNSSEC settings.
@@ -68,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZoneDnssecResult> Invoke(GetZoneDnssecInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecInvokeArgs(), options.WithDefaults());
     }
 
 

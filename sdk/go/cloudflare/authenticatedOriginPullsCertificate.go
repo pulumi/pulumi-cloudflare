@@ -193,7 +193,7 @@ type AuthenticatedOriginPullsCertificateInput interface {
 }
 
 func (*AuthenticatedOriginPullsCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticatedOriginPullsCertificate)(nil))
+	return reflect.TypeOf((**AuthenticatedOriginPullsCertificate)(nil)).Elem()
 }
 
 func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificateOutput() AuthenticatedOriginPullsCertificateOutput {
@@ -202,35 +202,6 @@ func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertific
 
 func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateOutput)
-}
-
-func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput {
-	return i.ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificatePtrOutput)
-}
-
-type AuthenticatedOriginPullsCertificatePtrInput interface {
-	pulumi.Input
-
-	ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput
-	ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput
-}
-
-type authenticatedOriginPullsCertificatePtrType AuthenticatedOriginPullsCertificateArgs
-
-func (*authenticatedOriginPullsCertificatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthenticatedOriginPullsCertificate)(nil))
-}
-
-func (i *authenticatedOriginPullsCertificatePtrType) ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput {
-	return i.ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(context.Background())
-}
-
-func (i *authenticatedOriginPullsCertificatePtrType) ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificatePtrOutput)
 }
 
 // AuthenticatedOriginPullsCertificateArrayInput is an input type that accepts AuthenticatedOriginPullsCertificateArray and AuthenticatedOriginPullsCertificateArrayOutput values.
@@ -286,7 +257,7 @@ func (i AuthenticatedOriginPullsCertificateMap) ToAuthenticatedOriginPullsCertif
 type AuthenticatedOriginPullsCertificateOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthenticatedOriginPullsCertificate)(nil))
+	return reflect.TypeOf((**AuthenticatedOriginPullsCertificate)(nil)).Elem()
 }
 
 func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificateOutput() AuthenticatedOriginPullsCertificateOutput {
@@ -297,44 +268,10 @@ func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCer
 	return o
 }
 
-func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput {
-	return o.ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(context.Background())
-}
-
-func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthenticatedOriginPullsCertificate) *AuthenticatedOriginPullsCertificate {
-		return &v
-	}).(AuthenticatedOriginPullsCertificatePtrOutput)
-}
-
-type AuthenticatedOriginPullsCertificatePtrOutput struct{ *pulumi.OutputState }
-
-func (AuthenticatedOriginPullsCertificatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AuthenticatedOriginPullsCertificate)(nil))
-}
-
-func (o AuthenticatedOriginPullsCertificatePtrOutput) ToAuthenticatedOriginPullsCertificatePtrOutput() AuthenticatedOriginPullsCertificatePtrOutput {
-	return o
-}
-
-func (o AuthenticatedOriginPullsCertificatePtrOutput) ToAuthenticatedOriginPullsCertificatePtrOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificatePtrOutput {
-	return o
-}
-
-func (o AuthenticatedOriginPullsCertificatePtrOutput) Elem() AuthenticatedOriginPullsCertificateOutput {
-	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) AuthenticatedOriginPullsCertificate {
-		if v != nil {
-			return *v
-		}
-		var ret AuthenticatedOriginPullsCertificate
-		return ret
-	}).(AuthenticatedOriginPullsCertificateOutput)
-}
-
 type AuthenticatedOriginPullsCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsCertificateArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuthenticatedOriginPullsCertificate)(nil))
+	return reflect.TypeOf((*[]*AuthenticatedOriginPullsCertificate)(nil)).Elem()
 }
 
 func (o AuthenticatedOriginPullsCertificateArrayOutput) ToAuthenticatedOriginPullsCertificateArrayOutput() AuthenticatedOriginPullsCertificateArrayOutput {
@@ -346,15 +283,15 @@ func (o AuthenticatedOriginPullsCertificateArrayOutput) ToAuthenticatedOriginPul
 }
 
 func (o AuthenticatedOriginPullsCertificateArrayOutput) Index(i pulumi.IntInput) AuthenticatedOriginPullsCertificateOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthenticatedOriginPullsCertificate {
-		return vs[0].([]AuthenticatedOriginPullsCertificate)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthenticatedOriginPullsCertificate {
+		return vs[0].([]*AuthenticatedOriginPullsCertificate)[vs[1].(int)]
 	}).(AuthenticatedOriginPullsCertificateOutput)
 }
 
 type AuthenticatedOriginPullsCertificateMapOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsCertificateMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AuthenticatedOriginPullsCertificate)(nil))
+	return reflect.TypeOf((*map[string]*AuthenticatedOriginPullsCertificate)(nil)).Elem()
 }
 
 func (o AuthenticatedOriginPullsCertificateMapOutput) ToAuthenticatedOriginPullsCertificateMapOutput() AuthenticatedOriginPullsCertificateMapOutput {
@@ -366,18 +303,16 @@ func (o AuthenticatedOriginPullsCertificateMapOutput) ToAuthenticatedOriginPulls
 }
 
 func (o AuthenticatedOriginPullsCertificateMapOutput) MapIndex(k pulumi.StringInput) AuthenticatedOriginPullsCertificateOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthenticatedOriginPullsCertificate {
-		return vs[0].(map[string]AuthenticatedOriginPullsCertificate)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AuthenticatedOriginPullsCertificate {
+		return vs[0].(map[string]*AuthenticatedOriginPullsCertificate)[vs[1].(string)]
 	}).(AuthenticatedOriginPullsCertificateOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsCertificateInput)(nil)).Elem(), &AuthenticatedOriginPullsCertificate{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsCertificatePtrInput)(nil)).Elem(), &AuthenticatedOriginPullsCertificate{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsCertificateArrayInput)(nil)).Elem(), AuthenticatedOriginPullsCertificateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthenticatedOriginPullsCertificateMapInput)(nil)).Elem(), AuthenticatedOriginPullsCertificateMap{})
 	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificateOutput{})
-	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificatePtrOutput{})
 	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificateArrayOutput{})
 	pulumi.RegisterOutputType(AuthenticatedOriginPullsCertificateMapOutput{})
 }

@@ -89,18 +89,18 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
      */
     constructor(name: string, args: NotificationPolicyWebhooksArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotificationPolicyWebhooksArgs | NotificationPolicyWebhooksState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NotificationPolicyWebhooksState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["createdAt"] = state ? state.createdAt : undefined;
-            inputs["lastFailure"] = state ? state.lastFailure : undefined;
-            inputs["lastSuccess"] = state ? state.lastSuccess : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["url"] = state ? state.url : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
+            resourceInputs["lastFailure"] = state ? state.lastFailure : undefined;
+            resourceInputs["lastSuccess"] = state ? state.lastSuccess : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as NotificationPolicyWebhooksArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -109,19 +109,17 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["secret"] = args ? args.secret : undefined;
-            inputs["url"] = args ? args.url : undefined;
-            inputs["createdAt"] = undefined /*out*/;
-            inputs["lastFailure"] = undefined /*out*/;
-            inputs["lastSuccess"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["createdAt"] = undefined /*out*/;
+            resourceInputs["lastFailure"] = undefined /*out*/;
+            resourceInputs["lastSuccess"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(NotificationPolicyWebhooks.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(NotificationPolicyWebhooks.__pulumiType, name, resourceInputs, opts);
     }
 }
 

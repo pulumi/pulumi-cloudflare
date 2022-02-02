@@ -98,34 +98,32 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
      */
     constructor(name: string, args: ZoneSettingsOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneSettingsOverrideArgs | ZoneSettingsOverrideState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneSettingsOverrideState | undefined;
-            inputs["initialSettings"] = state ? state.initialSettings : undefined;
-            inputs["initialSettingsReadAt"] = state ? state.initialSettingsReadAt : undefined;
-            inputs["readonlySettings"] = state ? state.readonlySettings : undefined;
-            inputs["settings"] = state ? state.settings : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
-            inputs["zoneStatus"] = state ? state.zoneStatus : undefined;
-            inputs["zoneType"] = state ? state.zoneType : undefined;
+            resourceInputs["initialSettings"] = state ? state.initialSettings : undefined;
+            resourceInputs["initialSettingsReadAt"] = state ? state.initialSettingsReadAt : undefined;
+            resourceInputs["readonlySettings"] = state ? state.readonlySettings : undefined;
+            resourceInputs["settings"] = state ? state.settings : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["zoneStatus"] = state ? state.zoneStatus : undefined;
+            resourceInputs["zoneType"] = state ? state.zoneType : undefined;
         } else {
             const args = argsOrState as ZoneSettingsOverrideArgs | undefined;
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["settings"] = args ? args.settings : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["initialSettings"] = undefined /*out*/;
-            inputs["initialSettingsReadAt"] = undefined /*out*/;
-            inputs["readonlySettings"] = undefined /*out*/;
-            inputs["zoneStatus"] = undefined /*out*/;
-            inputs["zoneType"] = undefined /*out*/;
+            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["initialSettings"] = undefined /*out*/;
+            resourceInputs["initialSettingsReadAt"] = undefined /*out*/;
+            resourceInputs["readonlySettings"] = undefined /*out*/;
+            resourceInputs["zoneStatus"] = undefined /*out*/;
+            resourceInputs["zoneType"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ZoneSettingsOverride.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ZoneSettingsOverride.__pulumiType, name, resourceInputs, opts);
     }
 }
 

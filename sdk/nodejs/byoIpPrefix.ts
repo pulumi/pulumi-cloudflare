@@ -78,26 +78,24 @@ export class ByoIpPrefix extends pulumi.CustomResource {
      */
     constructor(name: string, args: ByoIpPrefixArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ByoIpPrefixArgs | ByoIpPrefixState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ByoIpPrefixState | undefined;
-            inputs["advertisement"] = state ? state.advertisement : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["prefixId"] = state ? state.prefixId : undefined;
+            resourceInputs["advertisement"] = state ? state.advertisement : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["prefixId"] = state ? state.prefixId : undefined;
         } else {
             const args = argsOrState as ByoIpPrefixArgs | undefined;
             if ((!args || args.prefixId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'prefixId'");
             }
-            inputs["advertisement"] = args ? args.advertisement : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["prefixId"] = args ? args.prefixId : undefined;
+            resourceInputs["advertisement"] = args ? args.advertisement : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["prefixId"] = args ? args.prefixId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ByoIpPrefix.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ByoIpPrefix.__pulumiType, name, resourceInputs, opts);
     }
 }
 

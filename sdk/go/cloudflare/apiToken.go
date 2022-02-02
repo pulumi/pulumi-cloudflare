@@ -141,7 +141,7 @@ type ApiTokenInput interface {
 }
 
 func (*ApiToken) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiToken)(nil))
+	return reflect.TypeOf((**ApiToken)(nil)).Elem()
 }
 
 func (i *ApiToken) ToApiTokenOutput() ApiTokenOutput {
@@ -150,35 +150,6 @@ func (i *ApiToken) ToApiTokenOutput() ApiTokenOutput {
 
 func (i *ApiToken) ToApiTokenOutputWithContext(ctx context.Context) ApiTokenOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenOutput)
-}
-
-func (i *ApiToken) ToApiTokenPtrOutput() ApiTokenPtrOutput {
-	return i.ToApiTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *ApiToken) ToApiTokenPtrOutputWithContext(ctx context.Context) ApiTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenPtrOutput)
-}
-
-type ApiTokenPtrInput interface {
-	pulumi.Input
-
-	ToApiTokenPtrOutput() ApiTokenPtrOutput
-	ToApiTokenPtrOutputWithContext(ctx context.Context) ApiTokenPtrOutput
-}
-
-type apiTokenPtrType ApiTokenArgs
-
-func (*apiTokenPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiToken)(nil))
-}
-
-func (i *apiTokenPtrType) ToApiTokenPtrOutput() ApiTokenPtrOutput {
-	return i.ToApiTokenPtrOutputWithContext(context.Background())
-}
-
-func (i *apiTokenPtrType) ToApiTokenPtrOutputWithContext(ctx context.Context) ApiTokenPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenPtrOutput)
 }
 
 // ApiTokenArrayInput is an input type that accepts ApiTokenArray and ApiTokenArrayOutput values.
@@ -234,7 +205,7 @@ func (i ApiTokenMap) ToApiTokenMapOutputWithContext(ctx context.Context) ApiToke
 type ApiTokenOutput struct{ *pulumi.OutputState }
 
 func (ApiTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiToken)(nil))
+	return reflect.TypeOf((**ApiToken)(nil)).Elem()
 }
 
 func (o ApiTokenOutput) ToApiTokenOutput() ApiTokenOutput {
@@ -245,44 +216,10 @@ func (o ApiTokenOutput) ToApiTokenOutputWithContext(ctx context.Context) ApiToke
 	return o
 }
 
-func (o ApiTokenOutput) ToApiTokenPtrOutput() ApiTokenPtrOutput {
-	return o.ToApiTokenPtrOutputWithContext(context.Background())
-}
-
-func (o ApiTokenOutput) ToApiTokenPtrOutputWithContext(ctx context.Context) ApiTokenPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiToken) *ApiToken {
-		return &v
-	}).(ApiTokenPtrOutput)
-}
-
-type ApiTokenPtrOutput struct{ *pulumi.OutputState }
-
-func (ApiTokenPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApiToken)(nil))
-}
-
-func (o ApiTokenPtrOutput) ToApiTokenPtrOutput() ApiTokenPtrOutput {
-	return o
-}
-
-func (o ApiTokenPtrOutput) ToApiTokenPtrOutputWithContext(ctx context.Context) ApiTokenPtrOutput {
-	return o
-}
-
-func (o ApiTokenPtrOutput) Elem() ApiTokenOutput {
-	return o.ApplyT(func(v *ApiToken) ApiToken {
-		if v != nil {
-			return *v
-		}
-		var ret ApiToken
-		return ret
-	}).(ApiTokenOutput)
-}
-
 type ApiTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApiToken)(nil))
+	return reflect.TypeOf((*[]*ApiToken)(nil)).Elem()
 }
 
 func (o ApiTokenArrayOutput) ToApiTokenArrayOutput() ApiTokenArrayOutput {
@@ -294,15 +231,15 @@ func (o ApiTokenArrayOutput) ToApiTokenArrayOutputWithContext(ctx context.Contex
 }
 
 func (o ApiTokenArrayOutput) Index(i pulumi.IntInput) ApiTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiToken {
-		return vs[0].([]ApiToken)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiToken {
+		return vs[0].([]*ApiToken)[vs[1].(int)]
 	}).(ApiTokenOutput)
 }
 
 type ApiTokenMapOutput struct{ *pulumi.OutputState }
 
 func (ApiTokenMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ApiToken)(nil))
+	return reflect.TypeOf((*map[string]*ApiToken)(nil)).Elem()
 }
 
 func (o ApiTokenMapOutput) ToApiTokenMapOutput() ApiTokenMapOutput {
@@ -314,18 +251,16 @@ func (o ApiTokenMapOutput) ToApiTokenMapOutputWithContext(ctx context.Context) A
 }
 
 func (o ApiTokenMapOutput) MapIndex(k pulumi.StringInput) ApiTokenOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApiToken {
-		return vs[0].(map[string]ApiToken)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ApiToken {
+		return vs[0].(map[string]*ApiToken)[vs[1].(string)]
 	}).(ApiTokenOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenInput)(nil)).Elem(), &ApiToken{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenPtrInput)(nil)).Elem(), &ApiToken{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenArrayInput)(nil)).Elem(), ApiTokenArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenMapInput)(nil)).Elem(), ApiTokenMap{})
 	pulumi.RegisterOutputType(ApiTokenOutput{})
-	pulumi.RegisterOutputType(ApiTokenPtrOutput{})
 	pulumi.RegisterOutputType(ApiTokenArrayOutput{})
 	pulumi.RegisterOutputType(ApiTokenMapOutput{})
 }

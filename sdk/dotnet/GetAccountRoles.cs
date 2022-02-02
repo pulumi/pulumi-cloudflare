@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Cloudflare
 {
@@ -16,13 +15,13 @@ namespace Pulumi.Cloudflare
         /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
         /// </summary>
         public static Task<GetAccountRolesResult> InvokeAsync(GetAccountRolesArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
         /// </summary>
         public static Output<GetAccountRolesResult> Invoke(GetAccountRolesInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetAccountRolesResult>("cloudflare:index/getAccountRoles:getAccountRoles", args ?? new GetAccountRolesInvokeArgs(), options.WithDefaults());
     }
 
 

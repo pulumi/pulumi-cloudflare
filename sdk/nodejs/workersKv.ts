@@ -79,13 +79,13 @@ export class WorkersKv extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkersKvArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkersKvArgs | WorkersKvState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersKvState | undefined;
-            inputs["key"] = state ? state.key : undefined;
-            inputs["namespaceId"] = state ? state.namespaceId : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["key"] = state ? state.key : undefined;
+            resourceInputs["namespaceId"] = state ? state.namespaceId : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as WorkersKvArgs | undefined;
             if ((!args || args.key === undefined) && !opts.urn) {
@@ -97,14 +97,12 @@ export class WorkersKv extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["key"] = args ? args.key : undefined;
-            inputs["namespaceId"] = args ? args.namespaceId : undefined;
-            inputs["value"] = args ? args.value : undefined;
+            resourceInputs["key"] = args ? args.key : undefined;
+            resourceInputs["namespaceId"] = args ? args.namespaceId : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WorkersKv.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WorkersKv.__pulumiType, name, resourceInputs, opts);
     }
 }
 

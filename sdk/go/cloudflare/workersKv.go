@@ -152,7 +152,7 @@ type WorkersKvInput interface {
 }
 
 func (*WorkersKv) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkersKv)(nil))
+	return reflect.TypeOf((**WorkersKv)(nil)).Elem()
 }
 
 func (i *WorkersKv) ToWorkersKvOutput() WorkersKvOutput {
@@ -161,35 +161,6 @@ func (i *WorkersKv) ToWorkersKvOutput() WorkersKvOutput {
 
 func (i *WorkersKv) ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvOutput)
-}
-
-func (i *WorkersKv) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
-	return i.ToWorkersKvPtrOutputWithContext(context.Background())
-}
-
-func (i *WorkersKv) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvPtrOutput)
-}
-
-type WorkersKvPtrInput interface {
-	pulumi.Input
-
-	ToWorkersKvPtrOutput() WorkersKvPtrOutput
-	ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput
-}
-
-type workersKvPtrType WorkersKvArgs
-
-func (*workersKvPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkersKv)(nil))
-}
-
-func (i *workersKvPtrType) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
-	return i.ToWorkersKvPtrOutputWithContext(context.Background())
-}
-
-func (i *workersKvPtrType) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvPtrOutput)
 }
 
 // WorkersKvArrayInput is an input type that accepts WorkersKvArray and WorkersKvArrayOutput values.
@@ -245,7 +216,7 @@ func (i WorkersKvMap) ToWorkersKvMapOutputWithContext(ctx context.Context) Worke
 type WorkersKvOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkersKv)(nil))
+	return reflect.TypeOf((**WorkersKv)(nil)).Elem()
 }
 
 func (o WorkersKvOutput) ToWorkersKvOutput() WorkersKvOutput {
@@ -256,44 +227,10 @@ func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) Worke
 	return o
 }
 
-func (o WorkersKvOutput) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
-	return o.ToWorkersKvPtrOutputWithContext(context.Background())
-}
-
-func (o WorkersKvOutput) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkersKv) *WorkersKv {
-		return &v
-	}).(WorkersKvPtrOutput)
-}
-
-type WorkersKvPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkersKvPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkersKv)(nil))
-}
-
-func (o WorkersKvPtrOutput) ToWorkersKvPtrOutput() WorkersKvPtrOutput {
-	return o
-}
-
-func (o WorkersKvPtrOutput) ToWorkersKvPtrOutputWithContext(ctx context.Context) WorkersKvPtrOutput {
-	return o
-}
-
-func (o WorkersKvPtrOutput) Elem() WorkersKvOutput {
-	return o.ApplyT(func(v *WorkersKv) WorkersKv {
-		if v != nil {
-			return *v
-		}
-		var ret WorkersKv
-		return ret
-	}).(WorkersKvOutput)
-}
-
 type WorkersKvArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WorkersKv)(nil))
+	return reflect.TypeOf((*[]*WorkersKv)(nil)).Elem()
 }
 
 func (o WorkersKvArrayOutput) ToWorkersKvArrayOutput() WorkersKvArrayOutput {
@@ -305,15 +242,15 @@ func (o WorkersKvArrayOutput) ToWorkersKvArrayOutputWithContext(ctx context.Cont
 }
 
 func (o WorkersKvArrayOutput) Index(i pulumi.IntInput) WorkersKvOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkersKv {
-		return vs[0].([]WorkersKv)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkersKv {
+		return vs[0].([]*WorkersKv)[vs[1].(int)]
 	}).(WorkersKvOutput)
 }
 
 type WorkersKvMapOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WorkersKv)(nil))
+	return reflect.TypeOf((*map[string]*WorkersKv)(nil)).Elem()
 }
 
 func (o WorkersKvMapOutput) ToWorkersKvMapOutput() WorkersKvMapOutput {
@@ -325,18 +262,16 @@ func (o WorkersKvMapOutput) ToWorkersKvMapOutputWithContext(ctx context.Context)
 }
 
 func (o WorkersKvMapOutput) MapIndex(k pulumi.StringInput) WorkersKvOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WorkersKv {
-		return vs[0].(map[string]WorkersKv)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WorkersKv {
+		return vs[0].(map[string]*WorkersKv)[vs[1].(string)]
 	}).(WorkersKvOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvInput)(nil)).Elem(), &WorkersKv{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvPtrInput)(nil)).Elem(), &WorkersKv{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvArrayInput)(nil)).Elem(), WorkersKvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkersKvMapInput)(nil)).Elem(), WorkersKvMap{})
 	pulumi.RegisterOutputType(WorkersKvOutput{})
-	pulumi.RegisterOutputType(WorkersKvPtrOutput{})
 	pulumi.RegisterOutputType(WorkersKvArrayOutput{})
 	pulumi.RegisterOutputType(WorkersKvMapOutput{})
 }

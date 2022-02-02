@@ -88,32 +88,30 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessMutualTlsCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessMutualTlsCertificateArgs | AccessMutualTlsCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessMutualTlsCertificateState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["associatedHostnames"] = state ? state.associatedHostnames : undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["fingerprint"] = state ? state.fingerprint : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["associatedHostnames"] = state ? state.associatedHostnames : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessMutualTlsCertificateArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["associatedHostnames"] = args ? args.associatedHostnames : undefined;
-            inputs["certificate"] = args ? args.certificate : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["fingerprint"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["associatedHostnames"] = args ? args.associatedHostnames : undefined;
+            resourceInputs["certificate"] = args ? args.certificate : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["fingerprint"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessMutualTlsCertificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessMutualTlsCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -96,16 +96,16 @@ export class ZoneLockdown extends pulumi.CustomResource {
      */
     constructor(name: string, args: ZoneLockdownArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneLockdownArgs | ZoneLockdownState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneLockdownState | undefined;
-            inputs["configurations"] = state ? state.configurations : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["paused"] = state ? state.paused : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["urls"] = state ? state.urls : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["configurations"] = state ? state.configurations : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["paused"] = state ? state.paused : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["urls"] = state ? state.urls : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneLockdownArgs | undefined;
             if ((!args || args.configurations === undefined) && !opts.urn) {
@@ -117,17 +117,15 @@ export class ZoneLockdown extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["configurations"] = args ? args.configurations : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["paused"] = args ? args.paused : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["urls"] = args ? args.urls : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["configurations"] = args ? args.configurations : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["urls"] = args ? args.urls : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ZoneLockdown.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ZoneLockdown.__pulumiType, name, resourceInputs, opts);
     }
 }
 

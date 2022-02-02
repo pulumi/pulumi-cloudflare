@@ -131,24 +131,24 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     constructor(name: string, args: SpectrumApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SpectrumApplicationArgs | SpectrumApplicationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpectrumApplicationState | undefined;
-            inputs["argoSmartRouting"] = state ? state.argoSmartRouting : undefined;
-            inputs["dns"] = state ? state.dns : undefined;
-            inputs["edgeIpConnectivity"] = state ? state.edgeIpConnectivity : undefined;
-            inputs["edgeIps"] = state ? state.edgeIps : undefined;
-            inputs["ipFirewall"] = state ? state.ipFirewall : undefined;
-            inputs["originDirects"] = state ? state.originDirects : undefined;
-            inputs["originDns"] = state ? state.originDns : undefined;
-            inputs["originPort"] = state ? state.originPort : undefined;
-            inputs["originPortRange"] = state ? state.originPortRange : undefined;
-            inputs["protocol"] = state ? state.protocol : undefined;
-            inputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
-            inputs["tls"] = state ? state.tls : undefined;
-            inputs["trafficType"] = state ? state.trafficType : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["argoSmartRouting"] = state ? state.argoSmartRouting : undefined;
+            resourceInputs["dns"] = state ? state.dns : undefined;
+            resourceInputs["edgeIpConnectivity"] = state ? state.edgeIpConnectivity : undefined;
+            resourceInputs["edgeIps"] = state ? state.edgeIps : undefined;
+            resourceInputs["ipFirewall"] = state ? state.ipFirewall : undefined;
+            resourceInputs["originDirects"] = state ? state.originDirects : undefined;
+            resourceInputs["originDns"] = state ? state.originDns : undefined;
+            resourceInputs["originPort"] = state ? state.originPort : undefined;
+            resourceInputs["originPortRange"] = state ? state.originPortRange : undefined;
+            resourceInputs["protocol"] = state ? state.protocol : undefined;
+            resourceInputs["proxyProtocol"] = state ? state.proxyProtocol : undefined;
+            resourceInputs["tls"] = state ? state.tls : undefined;
+            resourceInputs["trafficType"] = state ? state.trafficType : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as SpectrumApplicationArgs | undefined;
             if ((!args || args.dns === undefined) && !opts.urn) {
@@ -160,25 +160,23 @@ export class SpectrumApplication extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["argoSmartRouting"] = args ? args.argoSmartRouting : undefined;
-            inputs["dns"] = args ? args.dns : undefined;
-            inputs["edgeIpConnectivity"] = args ? args.edgeIpConnectivity : undefined;
-            inputs["edgeIps"] = args ? args.edgeIps : undefined;
-            inputs["ipFirewall"] = args ? args.ipFirewall : undefined;
-            inputs["originDirects"] = args ? args.originDirects : undefined;
-            inputs["originDns"] = args ? args.originDns : undefined;
-            inputs["originPort"] = args ? args.originPort : undefined;
-            inputs["originPortRange"] = args ? args.originPortRange : undefined;
-            inputs["protocol"] = args ? args.protocol : undefined;
-            inputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
-            inputs["tls"] = args ? args.tls : undefined;
-            inputs["trafficType"] = args ? args.trafficType : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["argoSmartRouting"] = args ? args.argoSmartRouting : undefined;
+            resourceInputs["dns"] = args ? args.dns : undefined;
+            resourceInputs["edgeIpConnectivity"] = args ? args.edgeIpConnectivity : undefined;
+            resourceInputs["edgeIps"] = args ? args.edgeIps : undefined;
+            resourceInputs["ipFirewall"] = args ? args.ipFirewall : undefined;
+            resourceInputs["originDirects"] = args ? args.originDirects : undefined;
+            resourceInputs["originDns"] = args ? args.originDns : undefined;
+            resourceInputs["originPort"] = args ? args.originPort : undefined;
+            resourceInputs["originPortRange"] = args ? args.originPortRange : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["proxyProtocol"] = args ? args.proxyProtocol : undefined;
+            resourceInputs["tls"] = args ? args.tls : undefined;
+            resourceInputs["trafficType"] = args ? args.trafficType : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(SpectrumApplication.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(SpectrumApplication.__pulumiType, name, resourceInputs, opts);
     }
 }
 

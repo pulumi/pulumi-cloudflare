@@ -86,15 +86,15 @@ export class WafRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: WafRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WafRuleArgs | WafRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WafRuleState | undefined;
-            inputs["groupId"] = state ? state.groupId : undefined;
-            inputs["mode"] = state ? state.mode : undefined;
-            inputs["packageId"] = state ? state.packageId : undefined;
-            inputs["ruleId"] = state ? state.ruleId : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
+            resourceInputs["mode"] = state ? state.mode : undefined;
+            resourceInputs["packageId"] = state ? state.packageId : undefined;
+            resourceInputs["ruleId"] = state ? state.ruleId : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafRuleArgs | undefined;
             if ((!args || args.mode === undefined) && !opts.urn) {
@@ -106,16 +106,14 @@ export class WafRule extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["mode"] = args ? args.mode : undefined;
-            inputs["packageId"] = args ? args.packageId : undefined;
-            inputs["ruleId"] = args ? args.ruleId : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["groupId"] = undefined /*out*/;
+            resourceInputs["mode"] = args ? args.mode : undefined;
+            resourceInputs["packageId"] = args ? args.packageId : undefined;
+            resourceInputs["ruleId"] = args ? args.ruleId : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["groupId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WafRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WafRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

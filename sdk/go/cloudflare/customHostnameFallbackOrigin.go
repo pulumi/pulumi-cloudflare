@@ -138,7 +138,7 @@ type CustomHostnameFallbackOriginInput interface {
 }
 
 func (*CustomHostnameFallbackOrigin) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameFallbackOrigin)(nil))
+	return reflect.TypeOf((**CustomHostnameFallbackOrigin)(nil)).Elem()
 }
 
 func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutput() CustomHostnameFallbackOriginOutput {
@@ -147,35 +147,6 @@ func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutput() Cu
 
 func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameFallbackOriginOutput)
-}
-
-func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginPtrOutput() CustomHostnameFallbackOriginPtrOutput {
-	return i.ToCustomHostnameFallbackOriginPtrOutputWithContext(context.Background())
-}
-
-func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginPtrOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameFallbackOriginPtrOutput)
-}
-
-type CustomHostnameFallbackOriginPtrInput interface {
-	pulumi.Input
-
-	ToCustomHostnameFallbackOriginPtrOutput() CustomHostnameFallbackOriginPtrOutput
-	ToCustomHostnameFallbackOriginPtrOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginPtrOutput
-}
-
-type customHostnameFallbackOriginPtrType CustomHostnameFallbackOriginArgs
-
-func (*customHostnameFallbackOriginPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomHostnameFallbackOrigin)(nil))
-}
-
-func (i *customHostnameFallbackOriginPtrType) ToCustomHostnameFallbackOriginPtrOutput() CustomHostnameFallbackOriginPtrOutput {
-	return i.ToCustomHostnameFallbackOriginPtrOutputWithContext(context.Background())
-}
-
-func (i *customHostnameFallbackOriginPtrType) ToCustomHostnameFallbackOriginPtrOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameFallbackOriginPtrOutput)
 }
 
 // CustomHostnameFallbackOriginArrayInput is an input type that accepts CustomHostnameFallbackOriginArray and CustomHostnameFallbackOriginArrayOutput values.
@@ -231,7 +202,7 @@ func (i CustomHostnameFallbackOriginMap) ToCustomHostnameFallbackOriginMapOutput
 type CustomHostnameFallbackOriginOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnameFallbackOriginOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomHostnameFallbackOrigin)(nil))
+	return reflect.TypeOf((**CustomHostnameFallbackOrigin)(nil)).Elem()
 }
 
 func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginOutput() CustomHostnameFallbackOriginOutput {
@@ -242,44 +213,10 @@ func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginOutput
 	return o
 }
 
-func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginPtrOutput() CustomHostnameFallbackOriginPtrOutput {
-	return o.ToCustomHostnameFallbackOriginPtrOutputWithContext(context.Background())
-}
-
-func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginPtrOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomHostnameFallbackOrigin) *CustomHostnameFallbackOrigin {
-		return &v
-	}).(CustomHostnameFallbackOriginPtrOutput)
-}
-
-type CustomHostnameFallbackOriginPtrOutput struct{ *pulumi.OutputState }
-
-func (CustomHostnameFallbackOriginPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CustomHostnameFallbackOrigin)(nil))
-}
-
-func (o CustomHostnameFallbackOriginPtrOutput) ToCustomHostnameFallbackOriginPtrOutput() CustomHostnameFallbackOriginPtrOutput {
-	return o
-}
-
-func (o CustomHostnameFallbackOriginPtrOutput) ToCustomHostnameFallbackOriginPtrOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginPtrOutput {
-	return o
-}
-
-func (o CustomHostnameFallbackOriginPtrOutput) Elem() CustomHostnameFallbackOriginOutput {
-	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) CustomHostnameFallbackOrigin {
-		if v != nil {
-			return *v
-		}
-		var ret CustomHostnameFallbackOrigin
-		return ret
-	}).(CustomHostnameFallbackOriginOutput)
-}
-
 type CustomHostnameFallbackOriginArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnameFallbackOriginArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomHostnameFallbackOrigin)(nil))
+	return reflect.TypeOf((*[]*CustomHostnameFallbackOrigin)(nil)).Elem()
 }
 
 func (o CustomHostnameFallbackOriginArrayOutput) ToCustomHostnameFallbackOriginArrayOutput() CustomHostnameFallbackOriginArrayOutput {
@@ -291,15 +228,15 @@ func (o CustomHostnameFallbackOriginArrayOutput) ToCustomHostnameFallbackOriginA
 }
 
 func (o CustomHostnameFallbackOriginArrayOutput) Index(i pulumi.IntInput) CustomHostnameFallbackOriginOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomHostnameFallbackOrigin {
-		return vs[0].([]CustomHostnameFallbackOrigin)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomHostnameFallbackOrigin {
+		return vs[0].([]*CustomHostnameFallbackOrigin)[vs[1].(int)]
 	}).(CustomHostnameFallbackOriginOutput)
 }
 
 type CustomHostnameFallbackOriginMapOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnameFallbackOriginMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]CustomHostnameFallbackOrigin)(nil))
+	return reflect.TypeOf((*map[string]*CustomHostnameFallbackOrigin)(nil)).Elem()
 }
 
 func (o CustomHostnameFallbackOriginMapOutput) ToCustomHostnameFallbackOriginMapOutput() CustomHostnameFallbackOriginMapOutput {
@@ -311,18 +248,16 @@ func (o CustomHostnameFallbackOriginMapOutput) ToCustomHostnameFallbackOriginMap
 }
 
 func (o CustomHostnameFallbackOriginMapOutput) MapIndex(k pulumi.StringInput) CustomHostnameFallbackOriginOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomHostnameFallbackOrigin {
-		return vs[0].(map[string]CustomHostnameFallbackOrigin)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CustomHostnameFallbackOrigin {
+		return vs[0].(map[string]*CustomHostnameFallbackOrigin)[vs[1].(string)]
 	}).(CustomHostnameFallbackOriginOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameFallbackOriginInput)(nil)).Elem(), &CustomHostnameFallbackOrigin{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameFallbackOriginPtrInput)(nil)).Elem(), &CustomHostnameFallbackOrigin{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameFallbackOriginArrayInput)(nil)).Elem(), CustomHostnameFallbackOriginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameFallbackOriginMapInput)(nil)).Elem(), CustomHostnameFallbackOriginMap{})
 	pulumi.RegisterOutputType(CustomHostnameFallbackOriginOutput{})
-	pulumi.RegisterOutputType(CustomHostnameFallbackOriginPtrOutput{})
 	pulumi.RegisterOutputType(CustomHostnameFallbackOriginArrayOutput{})
 	pulumi.RegisterOutputType(CustomHostnameFallbackOriginMapOutput{})
 }

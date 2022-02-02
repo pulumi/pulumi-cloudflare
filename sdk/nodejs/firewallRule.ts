@@ -105,17 +105,17 @@ export class FirewallRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: FirewallRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallRuleArgs | FirewallRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallRuleState | undefined;
-            inputs["action"] = state ? state.action : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["filterId"] = state ? state.filterId : undefined;
-            inputs["paused"] = state ? state.paused : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["products"] = state ? state.products : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["action"] = state ? state.action : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["filterId"] = state ? state.filterId : undefined;
+            resourceInputs["paused"] = state ? state.paused : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["products"] = state ? state.products : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
             if ((!args || args.action === undefined) && !opts.urn) {
@@ -127,18 +127,16 @@ export class FirewallRule extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["action"] = args ? args.action : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["filterId"] = args ? args.filterId : undefined;
-            inputs["paused"] = args ? args.paused : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["products"] = args ? args.products : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["action"] = args ? args.action : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["filterId"] = args ? args.filterId : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["products"] = args ? args.products : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(FirewallRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(FirewallRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

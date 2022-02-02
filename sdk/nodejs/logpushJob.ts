@@ -92,18 +92,18 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     constructor(name: string, args: LogpushJobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LogpushJobArgs | LogpushJobState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogpushJobState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["dataset"] = state ? state.dataset : undefined;
-            inputs["destinationConf"] = state ? state.destinationConf : undefined;
-            inputs["enabled"] = state ? state.enabled : undefined;
-            inputs["logpullOptions"] = state ? state.logpullOptions : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["ownershipChallenge"] = state ? state.ownershipChallenge : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["dataset"] = state ? state.dataset : undefined;
+            resourceInputs["destinationConf"] = state ? state.destinationConf : undefined;
+            resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["logpullOptions"] = state ? state.logpullOptions : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ownershipChallenge"] = state ? state.ownershipChallenge : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LogpushJobArgs | undefined;
             if ((!args || args.dataset === undefined) && !opts.urn) {
@@ -112,19 +112,17 @@ export class LogpushJob extends pulumi.CustomResource {
             if ((!args || args.destinationConf === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationConf'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["dataset"] = args ? args.dataset : undefined;
-            inputs["destinationConf"] = args ? args.destinationConf : undefined;
-            inputs["enabled"] = args ? args.enabled : undefined;
-            inputs["logpullOptions"] = args ? args.logpullOptions : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["dataset"] = args ? args.dataset : undefined;
+            resourceInputs["destinationConf"] = args ? args.destinationConf : undefined;
+            resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["logpullOptions"] = args ? args.logpullOptions : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LogpushJob.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LogpushJob.__pulumiType, name, resourceInputs, opts);
     }
 }
 

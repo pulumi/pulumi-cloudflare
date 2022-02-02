@@ -182,17 +182,17 @@ export class ApiToken extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApiTokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiTokenArgs | ApiTokenState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiTokenState | undefined;
-            inputs["condition"] = state ? state.condition : undefined;
-            inputs["issuedOn"] = state ? state.issuedOn : undefined;
-            inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["policies"] = state ? state.policies : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
+            resourceInputs["issuedOn"] = state ? state.issuedOn : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["policies"] = state ? state.policies : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApiTokenArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
@@ -201,18 +201,16 @@ export class ApiToken extends pulumi.CustomResource {
             if ((!args || args.policies === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policies'");
             }
-            inputs["condition"] = args ? args.condition : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["policies"] = args ? args.policies : undefined;
-            inputs["issuedOn"] = undefined /*out*/;
-            inputs["modifiedOn"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["value"] = undefined /*out*/;
+            resourceInputs["condition"] = args ? args.condition : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
+            resourceInputs["issuedOn"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["value"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApiToken.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApiToken.__pulumiType, name, resourceInputs, opts);
     }
 }
 

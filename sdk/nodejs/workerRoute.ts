@@ -83,13 +83,13 @@ export class WorkerRoute extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkerRouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkerRouteArgs | WorkerRouteState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerRouteState | undefined;
-            inputs["pattern"] = state ? state.pattern : undefined;
-            inputs["scriptName"] = state ? state.scriptName : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["pattern"] = state ? state.pattern : undefined;
+            resourceInputs["scriptName"] = state ? state.scriptName : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WorkerRouteArgs | undefined;
             if ((!args || args.pattern === undefined) && !opts.urn) {
@@ -98,14 +98,12 @@ export class WorkerRoute extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["pattern"] = args ? args.pattern : undefined;
-            inputs["scriptName"] = args ? args.scriptName : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["pattern"] = args ? args.pattern : undefined;
+            resourceInputs["scriptName"] = args ? args.scriptName : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WorkerRoute.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WorkerRoute.__pulumiType, name, resourceInputs, opts);
     }
 }
 

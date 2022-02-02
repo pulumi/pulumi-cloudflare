@@ -32,9 +32,7 @@ export function getWafPackages(args: GetWafPackagesArgs, opts?: pulumi.InvokeOpt
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("cloudflare:index/getWafPackages:getWafPackages", {
         "filter": args.filter,
         "zoneId": args.zoneId,

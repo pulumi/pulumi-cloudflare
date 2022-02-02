@@ -70,22 +70,20 @@ export class WorkersKvNamespace extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkersKvNamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkersKvNamespaceArgs | WorkersKvNamespaceState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkersKvNamespaceState | undefined;
-            inputs["title"] = state ? state.title : undefined;
+            resourceInputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as WorkersKvNamespaceArgs | undefined;
             if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
-            inputs["title"] = args ? args.title : undefined;
+            resourceInputs["title"] = args ? args.title : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WorkersKvNamespace.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WorkersKvNamespace.__pulumiType, name, resourceInputs, opts);
     }
 }
 

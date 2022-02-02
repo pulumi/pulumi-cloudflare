@@ -257,7 +257,7 @@ type WaitingRoomInput interface {
 }
 
 func (*WaitingRoom) ElementType() reflect.Type {
-	return reflect.TypeOf((*WaitingRoom)(nil))
+	return reflect.TypeOf((**WaitingRoom)(nil)).Elem()
 }
 
 func (i *WaitingRoom) ToWaitingRoomOutput() WaitingRoomOutput {
@@ -266,35 +266,6 @@ func (i *WaitingRoom) ToWaitingRoomOutput() WaitingRoomOutput {
 
 func (i *WaitingRoom) ToWaitingRoomOutputWithContext(ctx context.Context) WaitingRoomOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomOutput)
-}
-
-func (i *WaitingRoom) ToWaitingRoomPtrOutput() WaitingRoomPtrOutput {
-	return i.ToWaitingRoomPtrOutputWithContext(context.Background())
-}
-
-func (i *WaitingRoom) ToWaitingRoomPtrOutputWithContext(ctx context.Context) WaitingRoomPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomPtrOutput)
-}
-
-type WaitingRoomPtrInput interface {
-	pulumi.Input
-
-	ToWaitingRoomPtrOutput() WaitingRoomPtrOutput
-	ToWaitingRoomPtrOutputWithContext(ctx context.Context) WaitingRoomPtrOutput
-}
-
-type waitingRoomPtrType WaitingRoomArgs
-
-func (*waitingRoomPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**WaitingRoom)(nil))
-}
-
-func (i *waitingRoomPtrType) ToWaitingRoomPtrOutput() WaitingRoomPtrOutput {
-	return i.ToWaitingRoomPtrOutputWithContext(context.Background())
-}
-
-func (i *waitingRoomPtrType) ToWaitingRoomPtrOutputWithContext(ctx context.Context) WaitingRoomPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomPtrOutput)
 }
 
 // WaitingRoomArrayInput is an input type that accepts WaitingRoomArray and WaitingRoomArrayOutput values.
@@ -350,7 +321,7 @@ func (i WaitingRoomMap) ToWaitingRoomMapOutputWithContext(ctx context.Context) W
 type WaitingRoomOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WaitingRoom)(nil))
+	return reflect.TypeOf((**WaitingRoom)(nil)).Elem()
 }
 
 func (o WaitingRoomOutput) ToWaitingRoomOutput() WaitingRoomOutput {
@@ -361,44 +332,10 @@ func (o WaitingRoomOutput) ToWaitingRoomOutputWithContext(ctx context.Context) W
 	return o
 }
 
-func (o WaitingRoomOutput) ToWaitingRoomPtrOutput() WaitingRoomPtrOutput {
-	return o.ToWaitingRoomPtrOutputWithContext(context.Background())
-}
-
-func (o WaitingRoomOutput) ToWaitingRoomPtrOutputWithContext(ctx context.Context) WaitingRoomPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v WaitingRoom) *WaitingRoom {
-		return &v
-	}).(WaitingRoomPtrOutput)
-}
-
-type WaitingRoomPtrOutput struct{ *pulumi.OutputState }
-
-func (WaitingRoomPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WaitingRoom)(nil))
-}
-
-func (o WaitingRoomPtrOutput) ToWaitingRoomPtrOutput() WaitingRoomPtrOutput {
-	return o
-}
-
-func (o WaitingRoomPtrOutput) ToWaitingRoomPtrOutputWithContext(ctx context.Context) WaitingRoomPtrOutput {
-	return o
-}
-
-func (o WaitingRoomPtrOutput) Elem() WaitingRoomOutput {
-	return o.ApplyT(func(v *WaitingRoom) WaitingRoom {
-		if v != nil {
-			return *v
-		}
-		var ret WaitingRoom
-		return ret
-	}).(WaitingRoomOutput)
-}
-
 type WaitingRoomArrayOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WaitingRoom)(nil))
+	return reflect.TypeOf((*[]*WaitingRoom)(nil)).Elem()
 }
 
 func (o WaitingRoomArrayOutput) ToWaitingRoomArrayOutput() WaitingRoomArrayOutput {
@@ -410,15 +347,15 @@ func (o WaitingRoomArrayOutput) ToWaitingRoomArrayOutputWithContext(ctx context.
 }
 
 func (o WaitingRoomArrayOutput) Index(i pulumi.IntInput) WaitingRoomOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WaitingRoom {
-		return vs[0].([]WaitingRoom)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WaitingRoom {
+		return vs[0].([]*WaitingRoom)[vs[1].(int)]
 	}).(WaitingRoomOutput)
 }
 
 type WaitingRoomMapOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]WaitingRoom)(nil))
+	return reflect.TypeOf((*map[string]*WaitingRoom)(nil)).Elem()
 }
 
 func (o WaitingRoomMapOutput) ToWaitingRoomMapOutput() WaitingRoomMapOutput {
@@ -430,18 +367,16 @@ func (o WaitingRoomMapOutput) ToWaitingRoomMapOutputWithContext(ctx context.Cont
 }
 
 func (o WaitingRoomMapOutput) MapIndex(k pulumi.StringInput) WaitingRoomOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WaitingRoom {
-		return vs[0].(map[string]WaitingRoom)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *WaitingRoom {
+		return vs[0].(map[string]*WaitingRoom)[vs[1].(string)]
 	}).(WaitingRoomOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomInput)(nil)).Elem(), &WaitingRoom{})
-	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomPtrInput)(nil)).Elem(), &WaitingRoom{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomArrayInput)(nil)).Elem(), WaitingRoomArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomMapInput)(nil)).Elem(), WaitingRoomMap{})
 	pulumi.RegisterOutputType(WaitingRoomOutput{})
-	pulumi.RegisterOutputType(WaitingRoomPtrOutput{})
 	pulumi.RegisterOutputType(WaitingRoomArrayOutput{})
 	pulumi.RegisterOutputType(WaitingRoomMapOutput{})
 }

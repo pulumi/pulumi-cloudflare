@@ -112,19 +112,19 @@ export class WafOverride extends pulumi.CustomResource {
      */
     constructor(name: string, args: WafOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WafOverrideArgs | WafOverrideState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WafOverrideState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["groups"] = state ? state.groups : undefined;
-            inputs["overrideId"] = state ? state.overrideId : undefined;
-            inputs["paused"] = state ? state.paused : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["rewriteAction"] = state ? state.rewriteAction : undefined;
-            inputs["rules"] = state ? state.rules : undefined;
-            inputs["urls"] = state ? state.urls : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["groups"] = state ? state.groups : undefined;
+            resourceInputs["overrideId"] = state ? state.overrideId : undefined;
+            resourceInputs["paused"] = state ? state.paused : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["rewriteAction"] = state ? state.rewriteAction : undefined;
+            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["urls"] = state ? state.urls : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as WafOverrideArgs | undefined;
             if ((!args || args.urls === undefined) && !opts.urn) {
@@ -133,20 +133,18 @@ export class WafOverride extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["groups"] = args ? args.groups : undefined;
-            inputs["paused"] = args ? args.paused : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["rewriteAction"] = args ? args.rewriteAction : undefined;
-            inputs["rules"] = args ? args.rules : undefined;
-            inputs["urls"] = args ? args.urls : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["overrideId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["groups"] = args ? args.groups : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["rewriteAction"] = args ? args.rewriteAction : undefined;
+            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["urls"] = args ? args.urls : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["overrideId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WafOverride.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WafOverride.__pulumiType, name, resourceInputs, opts);
     }
 }
 

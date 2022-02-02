@@ -13,9 +13,7 @@ export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeO
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("cloudflare:index/getAccountRoles:getAccountRoles", {
         "accountId": args.accountId,
     }, opts);

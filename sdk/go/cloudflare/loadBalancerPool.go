@@ -281,7 +281,7 @@ type LoadBalancerPoolInput interface {
 }
 
 func (*LoadBalancerPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerPool)(nil))
+	return reflect.TypeOf((**LoadBalancerPool)(nil)).Elem()
 }
 
 func (i *LoadBalancerPool) ToLoadBalancerPoolOutput() LoadBalancerPoolOutput {
@@ -290,35 +290,6 @@ func (i *LoadBalancerPool) ToLoadBalancerPoolOutput() LoadBalancerPoolOutput {
 
 func (i *LoadBalancerPool) ToLoadBalancerPoolOutputWithContext(ctx context.Context) LoadBalancerPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolOutput)
-}
-
-func (i *LoadBalancerPool) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput {
-	return i.ToLoadBalancerPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *LoadBalancerPool) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolPtrOutput)
-}
-
-type LoadBalancerPoolPtrInput interface {
-	pulumi.Input
-
-	ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput
-	ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput
-}
-
-type loadBalancerPoolPtrType LoadBalancerPoolArgs
-
-func (*loadBalancerPoolPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadBalancerPool)(nil))
-}
-
-func (i *loadBalancerPoolPtrType) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput {
-	return i.ToLoadBalancerPoolPtrOutputWithContext(context.Background())
-}
-
-func (i *loadBalancerPoolPtrType) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolPtrOutput)
 }
 
 // LoadBalancerPoolArrayInput is an input type that accepts LoadBalancerPoolArray and LoadBalancerPoolArrayOutput values.
@@ -374,7 +345,7 @@ func (i LoadBalancerPoolMap) ToLoadBalancerPoolMapOutputWithContext(ctx context.
 type LoadBalancerPoolOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoadBalancerPool)(nil))
+	return reflect.TypeOf((**LoadBalancerPool)(nil)).Elem()
 }
 
 func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutput() LoadBalancerPoolOutput {
@@ -385,44 +356,10 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.
 	return o
 }
 
-func (o LoadBalancerPoolOutput) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput {
-	return o.ToLoadBalancerPoolPtrOutputWithContext(context.Background())
-}
-
-func (o LoadBalancerPoolOutput) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadBalancerPool) *LoadBalancerPool {
-		return &v
-	}).(LoadBalancerPoolPtrOutput)
-}
-
-type LoadBalancerPoolPtrOutput struct{ *pulumi.OutputState }
-
-func (LoadBalancerPoolPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoadBalancerPool)(nil))
-}
-
-func (o LoadBalancerPoolPtrOutput) ToLoadBalancerPoolPtrOutput() LoadBalancerPoolPtrOutput {
-	return o
-}
-
-func (o LoadBalancerPoolPtrOutput) ToLoadBalancerPoolPtrOutputWithContext(ctx context.Context) LoadBalancerPoolPtrOutput {
-	return o
-}
-
-func (o LoadBalancerPoolPtrOutput) Elem() LoadBalancerPoolOutput {
-	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPool {
-		if v != nil {
-			return *v
-		}
-		var ret LoadBalancerPool
-		return ret
-	}).(LoadBalancerPoolOutput)
-}
-
 type LoadBalancerPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoadBalancerPool)(nil))
+	return reflect.TypeOf((*[]*LoadBalancerPool)(nil)).Elem()
 }
 
 func (o LoadBalancerPoolArrayOutput) ToLoadBalancerPoolArrayOutput() LoadBalancerPoolArrayOutput {
@@ -434,15 +371,15 @@ func (o LoadBalancerPoolArrayOutput) ToLoadBalancerPoolArrayOutputWithContext(ct
 }
 
 func (o LoadBalancerPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerPoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoadBalancerPool {
-		return vs[0].([]LoadBalancerPool)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LoadBalancerPool {
+		return vs[0].([]*LoadBalancerPool)[vs[1].(int)]
 	}).(LoadBalancerPoolOutput)
 }
 
 type LoadBalancerPoolMapOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LoadBalancerPool)(nil))
+	return reflect.TypeOf((*map[string]*LoadBalancerPool)(nil)).Elem()
 }
 
 func (o LoadBalancerPoolMapOutput) ToLoadBalancerPoolMapOutput() LoadBalancerPoolMapOutput {
@@ -454,18 +391,16 @@ func (o LoadBalancerPoolMapOutput) ToLoadBalancerPoolMapOutputWithContext(ctx co
 }
 
 func (o LoadBalancerPoolMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerPoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LoadBalancerPool {
-		return vs[0].(map[string]LoadBalancerPool)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *LoadBalancerPool {
+		return vs[0].(map[string]*LoadBalancerPool)[vs[1].(string)]
 	}).(LoadBalancerPoolOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolInput)(nil)).Elem(), &LoadBalancerPool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolPtrInput)(nil)).Elem(), &LoadBalancerPool{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolArrayInput)(nil)).Elem(), LoadBalancerPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerPoolMapInput)(nil)).Elem(), LoadBalancerPoolMap{})
 	pulumi.RegisterOutputType(LoadBalancerPoolOutput{})
-	pulumi.RegisterOutputType(LoadBalancerPoolPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerPoolMapOutput{})
 }

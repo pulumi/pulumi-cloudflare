@@ -41,7 +41,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = cloudflare.NewAccessGroup(ctx, "testGroupIndex_accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
+// 		_, err = cloudflare.NewAccessGroup(ctx, "testGroupIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
 // 			AccountId: pulumi.String("975ecf5a45e3bcb680dba0722a420ad9"),
 // 			Name:      pulumi.String("staging group"),
 // 			Includes: AccessGroupIncludeArray{
@@ -250,7 +250,7 @@ type AccessGroupInput interface {
 }
 
 func (*AccessGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessGroup)(nil))
+	return reflect.TypeOf((**AccessGroup)(nil)).Elem()
 }
 
 func (i *AccessGroup) ToAccessGroupOutput() AccessGroupOutput {
@@ -259,35 +259,6 @@ func (i *AccessGroup) ToAccessGroupOutput() AccessGroupOutput {
 
 func (i *AccessGroup) ToAccessGroupOutputWithContext(ctx context.Context) AccessGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupOutput)
-}
-
-func (i *AccessGroup) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
-	return i.ToAccessGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *AccessGroup) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupPtrOutput)
-}
-
-type AccessGroupPtrInput interface {
-	pulumi.Input
-
-	ToAccessGroupPtrOutput() AccessGroupPtrOutput
-	ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput
-}
-
-type accessGroupPtrType AccessGroupArgs
-
-func (*accessGroupPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessGroup)(nil))
-}
-
-func (i *accessGroupPtrType) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
-	return i.ToAccessGroupPtrOutputWithContext(context.Background())
-}
-
-func (i *accessGroupPtrType) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupPtrOutput)
 }
 
 // AccessGroupArrayInput is an input type that accepts AccessGroupArray and AccessGroupArrayOutput values.
@@ -343,7 +314,7 @@ func (i AccessGroupMap) ToAccessGroupMapOutputWithContext(ctx context.Context) A
 type AccessGroupOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessGroup)(nil))
+	return reflect.TypeOf((**AccessGroup)(nil)).Elem()
 }
 
 func (o AccessGroupOutput) ToAccessGroupOutput() AccessGroupOutput {
@@ -354,44 +325,10 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
-func (o AccessGroupOutput) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
-	return o.ToAccessGroupPtrOutputWithContext(context.Background())
-}
-
-func (o AccessGroupOutput) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroup) *AccessGroup {
-		return &v
-	}).(AccessGroupPtrOutput)
-}
-
-type AccessGroupPtrOutput struct{ *pulumi.OutputState }
-
-func (AccessGroupPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessGroup)(nil))
-}
-
-func (o AccessGroupPtrOutput) ToAccessGroupPtrOutput() AccessGroupPtrOutput {
-	return o
-}
-
-func (o AccessGroupPtrOutput) ToAccessGroupPtrOutputWithContext(ctx context.Context) AccessGroupPtrOutput {
-	return o
-}
-
-func (o AccessGroupPtrOutput) Elem() AccessGroupOutput {
-	return o.ApplyT(func(v *AccessGroup) AccessGroup {
-		if v != nil {
-			return *v
-		}
-		var ret AccessGroup
-		return ret
-	}).(AccessGroupOutput)
-}
-
 type AccessGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessGroup)(nil))
+	return reflect.TypeOf((*[]*AccessGroup)(nil)).Elem()
 }
 
 func (o AccessGroupArrayOutput) ToAccessGroupArrayOutput() AccessGroupArrayOutput {
@@ -403,15 +340,15 @@ func (o AccessGroupArrayOutput) ToAccessGroupArrayOutputWithContext(ctx context.
 }
 
 func (o AccessGroupArrayOutput) Index(i pulumi.IntInput) AccessGroupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroup {
-		return vs[0].([]AccessGroup)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessGroup {
+		return vs[0].([]*AccessGroup)[vs[1].(int)]
 	}).(AccessGroupOutput)
 }
 
 type AccessGroupMapOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AccessGroup)(nil))
+	return reflect.TypeOf((*map[string]*AccessGroup)(nil)).Elem()
 }
 
 func (o AccessGroupMapOutput) ToAccessGroupMapOutput() AccessGroupMapOutput {
@@ -423,18 +360,16 @@ func (o AccessGroupMapOutput) ToAccessGroupMapOutputWithContext(ctx context.Cont
 }
 
 func (o AccessGroupMapOutput) MapIndex(k pulumi.StringInput) AccessGroupOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessGroup {
-		return vs[0].(map[string]AccessGroup)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AccessGroup {
+		return vs[0].(map[string]*AccessGroup)[vs[1].(string)]
 	}).(AccessGroupOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupInput)(nil)).Elem(), &AccessGroup{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupPtrInput)(nil)).Elem(), &AccessGroup{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupArrayInput)(nil)).Elem(), AccessGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupMapInput)(nil)).Elem(), AccessGroupMap{})
 	pulumi.RegisterOutputType(AccessGroupOutput{})
-	pulumi.RegisterOutputType(AccessGroupPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupMapOutput{})
 }

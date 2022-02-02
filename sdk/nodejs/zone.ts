@@ -92,40 +92,38 @@ export class Zone extends pulumi.CustomResource {
      */
     constructor(name: string, args: ZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneArgs | ZoneState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            inputs["jumpStart"] = state ? state.jumpStart : undefined;
-            inputs["meta"] = state ? state.meta : undefined;
-            inputs["nameServers"] = state ? state.nameServers : undefined;
-            inputs["paused"] = state ? state.paused : undefined;
-            inputs["plan"] = state ? state.plan : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["vanityNameServers"] = state ? state.vanityNameServers : undefined;
-            inputs["verificationKey"] = state ? state.verificationKey : undefined;
-            inputs["zone"] = state ? state.zone : undefined;
+            resourceInputs["jumpStart"] = state ? state.jumpStart : undefined;
+            resourceInputs["meta"] = state ? state.meta : undefined;
+            resourceInputs["nameServers"] = state ? state.nameServers : undefined;
+            resourceInputs["paused"] = state ? state.paused : undefined;
+            resourceInputs["plan"] = state ? state.plan : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["vanityNameServers"] = state ? state.vanityNameServers : undefined;
+            resourceInputs["verificationKey"] = state ? state.verificationKey : undefined;
+            resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
-            inputs["jumpStart"] = args ? args.jumpStart : undefined;
-            inputs["paused"] = args ? args.paused : undefined;
-            inputs["plan"] = args ? args.plan : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["zone"] = args ? args.zone : undefined;
-            inputs["meta"] = undefined /*out*/;
-            inputs["nameServers"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
-            inputs["vanityNameServers"] = undefined /*out*/;
-            inputs["verificationKey"] = undefined /*out*/;
+            resourceInputs["jumpStart"] = args ? args.jumpStart : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["plan"] = args ? args.plan : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["meta"] = undefined /*out*/;
+            resourceInputs["nameServers"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["vanityNameServers"] = undefined /*out*/;
+            resourceInputs["verificationKey"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Zone.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Zone.__pulumiType, name, resourceInputs, opts);
     }
 }
 

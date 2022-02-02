@@ -104,16 +104,16 @@ export class OriginCaCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: OriginCaCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OriginCaCertificateArgs | OriginCaCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as OriginCaCertificateState | undefined;
-            inputs["certificate"] = state ? state.certificate : undefined;
-            inputs["csr"] = state ? state.csr : undefined;
-            inputs["expiresOn"] = state ? state.expiresOn : undefined;
-            inputs["hostnames"] = state ? state.hostnames : undefined;
-            inputs["requestType"] = state ? state.requestType : undefined;
-            inputs["requestedValidity"] = state ? state.requestedValidity : undefined;
+            resourceInputs["certificate"] = state ? state.certificate : undefined;
+            resourceInputs["csr"] = state ? state.csr : undefined;
+            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
+            resourceInputs["hostnames"] = state ? state.hostnames : undefined;
+            resourceInputs["requestType"] = state ? state.requestType : undefined;
+            resourceInputs["requestedValidity"] = state ? state.requestedValidity : undefined;
         } else {
             const args = argsOrState as OriginCaCertificateArgs | undefined;
             if ((!args || args.hostnames === undefined) && !opts.urn) {
@@ -122,17 +122,15 @@ export class OriginCaCertificate extends pulumi.CustomResource {
             if ((!args || args.requestType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'requestType'");
             }
-            inputs["csr"] = args ? args.csr : undefined;
-            inputs["hostnames"] = args ? args.hostnames : undefined;
-            inputs["requestType"] = args ? args.requestType : undefined;
-            inputs["requestedValidity"] = args ? args.requestedValidity : undefined;
-            inputs["certificate"] = undefined /*out*/;
-            inputs["expiresOn"] = undefined /*out*/;
+            resourceInputs["csr"] = args ? args.csr : undefined;
+            resourceInputs["hostnames"] = args ? args.hostnames : undefined;
+            resourceInputs["requestType"] = args ? args.requestType : undefined;
+            resourceInputs["requestedValidity"] = args ? args.requestedValidity : undefined;
+            resourceInputs["certificate"] = undefined /*out*/;
+            resourceInputs["expiresOn"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(OriginCaCertificate.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(OriginCaCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

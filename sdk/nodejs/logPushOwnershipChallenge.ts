@@ -86,28 +86,26 @@ export class LogPushOwnershipChallenge extends pulumi.CustomResource {
      */
     constructor(name: string, args: LogPushOwnershipChallengeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LogPushOwnershipChallengeArgs | LogPushOwnershipChallengeState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LogPushOwnershipChallengeState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["destinationConf"] = state ? state.destinationConf : undefined;
-            inputs["ownershipChallengeFilename"] = state ? state.ownershipChallengeFilename : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["destinationConf"] = state ? state.destinationConf : undefined;
+            resourceInputs["ownershipChallengeFilename"] = state ? state.ownershipChallengeFilename : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as LogPushOwnershipChallengeArgs | undefined;
             if ((!args || args.destinationConf === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationConf'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["destinationConf"] = args ? args.destinationConf : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["ownershipChallengeFilename"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["destinationConf"] = args ? args.destinationConf : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["ownershipChallengeFilename"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(LogPushOwnershipChallenge.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(LogPushOwnershipChallenge.__pulumiType, name, resourceInputs, opts);
     }
 }
 

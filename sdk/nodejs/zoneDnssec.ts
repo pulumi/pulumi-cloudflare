@@ -113,44 +113,42 @@ export class ZoneDnssec extends pulumi.CustomResource {
      */
     constructor(name: string, args: ZoneDnssecArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ZoneDnssecArgs | ZoneDnssecState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneDnssecState | undefined;
-            inputs["algorithm"] = state ? state.algorithm : undefined;
-            inputs["digest"] = state ? state.digest : undefined;
-            inputs["digestAlgorithm"] = state ? state.digestAlgorithm : undefined;
-            inputs["digestType"] = state ? state.digestType : undefined;
-            inputs["ds"] = state ? state.ds : undefined;
-            inputs["flags"] = state ? state.flags : undefined;
-            inputs["keyTag"] = state ? state.keyTag : undefined;
-            inputs["keyType"] = state ? state.keyType : undefined;
-            inputs["modifiedOn"] = state ? state.modifiedOn : undefined;
-            inputs["publicKey"] = state ? state.publicKey : undefined;
-            inputs["status"] = state ? state.status : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
+            resourceInputs["digest"] = state ? state.digest : undefined;
+            resourceInputs["digestAlgorithm"] = state ? state.digestAlgorithm : undefined;
+            resourceInputs["digestType"] = state ? state.digestType : undefined;
+            resourceInputs["ds"] = state ? state.ds : undefined;
+            resourceInputs["flags"] = state ? state.flags : undefined;
+            resourceInputs["keyTag"] = state ? state.keyTag : undefined;
+            resourceInputs["keyType"] = state ? state.keyType : undefined;
+            resourceInputs["modifiedOn"] = state ? state.modifiedOn : undefined;
+            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as ZoneDnssecArgs | undefined;
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["modifiedOn"] = args ? args.modifiedOn : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["algorithm"] = undefined /*out*/;
-            inputs["digest"] = undefined /*out*/;
-            inputs["digestAlgorithm"] = undefined /*out*/;
-            inputs["digestType"] = undefined /*out*/;
-            inputs["ds"] = undefined /*out*/;
-            inputs["flags"] = undefined /*out*/;
-            inputs["keyTag"] = undefined /*out*/;
-            inputs["keyType"] = undefined /*out*/;
-            inputs["publicKey"] = undefined /*out*/;
-            inputs["status"] = undefined /*out*/;
+            resourceInputs["modifiedOn"] = args ? args.modifiedOn : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["algorithm"] = undefined /*out*/;
+            resourceInputs["digest"] = undefined /*out*/;
+            resourceInputs["digestAlgorithm"] = undefined /*out*/;
+            resourceInputs["digestType"] = undefined /*out*/;
+            resourceInputs["ds"] = undefined /*out*/;
+            resourceInputs["flags"] = undefined /*out*/;
+            resourceInputs["keyTag"] = undefined /*out*/;
+            resourceInputs["keyType"] = undefined /*out*/;
+            resourceInputs["publicKey"] = undefined /*out*/;
+            resourceInputs["status"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ZoneDnssec.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ZoneDnssec.__pulumiType, name, resourceInputs, opts);
     }
 }
 

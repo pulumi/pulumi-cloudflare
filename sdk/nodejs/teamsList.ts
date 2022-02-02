@@ -92,15 +92,15 @@ export class TeamsList extends pulumi.CustomResource {
      */
     constructor(name: string, args: TeamsListArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TeamsListArgs | TeamsListState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TeamsListState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["items"] = state ? state.items : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["items"] = state ? state.items : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as TeamsListArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -112,16 +112,14 @@ export class TeamsList extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["items"] = args ? args.items : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["items"] = args ? args.items : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(TeamsList.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(TeamsList.__pulumiType, name, resourceInputs, opts);
     }
 }
 

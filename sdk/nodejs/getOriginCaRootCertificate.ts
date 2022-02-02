@@ -23,9 +23,7 @@ export function getOriginCaRootCertificate(args: GetOriginCaRootCertificateArgs,
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", {
         "algorithm": args.algorithm,
     }, opts);

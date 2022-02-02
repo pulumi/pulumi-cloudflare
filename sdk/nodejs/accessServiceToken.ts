@@ -95,34 +95,32 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessServiceTokenArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessServiceTokenArgs | AccessServiceTokenState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessServiceTokenState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["clientId"] = state ? state.clientId : undefined;
-            inputs["clientSecret"] = state ? state.clientSecret : undefined;
-            inputs["expiresAt"] = state ? state.expiresAt : undefined;
-            inputs["minDaysForRenewal"] = state ? state.minDaysForRenewal : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["clientId"] = state ? state.clientId : undefined;
+            resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
+            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
+            resourceInputs["minDaysForRenewal"] = state ? state.minDaysForRenewal : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessServiceTokenArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["minDaysForRenewal"] = args ? args.minDaysForRenewal : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["clientId"] = undefined /*out*/;
-            inputs["clientSecret"] = undefined /*out*/;
-            inputs["expiresAt"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["minDaysForRenewal"] = args ? args.minDaysForRenewal : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["clientId"] = undefined /*out*/;
+            resourceInputs["clientSecret"] = undefined /*out*/;
+            resourceInputs["expiresAt"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessServiceToken.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessServiceToken.__pulumiType, name, resourceInputs, opts);
     }
 }
 

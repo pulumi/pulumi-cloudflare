@@ -84,14 +84,14 @@ export class ArgoTunnel extends pulumi.CustomResource {
      */
     constructor(name: string, args: ArgoTunnelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ArgoTunnelArgs | ArgoTunnelState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ArgoTunnelState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["cname"] = state ? state.cname : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["cname"] = state ? state.cname : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["secret"] = state ? state.secret : undefined;
         } else {
             const args = argsOrState as ArgoTunnelArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -103,15 +103,13 @@ export class ArgoTunnel extends pulumi.CustomResource {
             if ((!args || args.secret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["secret"] = args ? args.secret : undefined;
-            inputs["cname"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["secret"] = args ? args.secret : undefined;
+            resourceInputs["cname"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ArgoTunnel.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ArgoTunnel.__pulumiType, name, resourceInputs, opts);
     }
 }
 

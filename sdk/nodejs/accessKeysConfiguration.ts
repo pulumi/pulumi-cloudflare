@@ -44,24 +44,22 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessKeysConfigurationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessKeysConfigurationArgs | AccessKeysConfigurationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessKeysConfigurationState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["keyRotationIntervalDays"] = state ? state.keyRotationIntervalDays : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["keyRotationIntervalDays"] = state ? state.keyRotationIntervalDays : undefined;
         } else {
             const args = argsOrState as AccessKeysConfigurationArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accountId'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["keyRotationIntervalDays"] = args ? args.keyRotationIntervalDays : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["keyRotationIntervalDays"] = args ? args.keyRotationIntervalDays : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessKeysConfiguration.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessKeysConfiguration.__pulumiType, name, resourceInputs, opts);
     }
 }
 

@@ -89,17 +89,17 @@ export class CertificatePack extends pulumi.CustomResource {
      */
     constructor(name: string, args: CertificatePackArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificatePackArgs | CertificatePackState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificatePackState | undefined;
-            inputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
-            inputs["cloudflareBranding"] = state ? state.cloudflareBranding : undefined;
-            inputs["hosts"] = state ? state.hosts : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["validationMethod"] = state ? state.validationMethod : undefined;
-            inputs["validityDays"] = state ? state.validityDays : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
+            resourceInputs["cloudflareBranding"] = state ? state.cloudflareBranding : undefined;
+            resourceInputs["hosts"] = state ? state.hosts : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["validationMethod"] = state ? state.validationMethod : undefined;
+            resourceInputs["validityDays"] = state ? state.validityDays : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CertificatePackArgs | undefined;
             if ((!args || args.hosts === undefined) && !opts.urn) {
@@ -111,18 +111,16 @@ export class CertificatePack extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
-            inputs["cloudflareBranding"] = args ? args.cloudflareBranding : undefined;
-            inputs["hosts"] = args ? args.hosts : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["validationMethod"] = args ? args.validationMethod : undefined;
-            inputs["validityDays"] = args ? args.validityDays : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
+            resourceInputs["cloudflareBranding"] = args ? args.cloudflareBranding : undefined;
+            resourceInputs["hosts"] = args ? args.hosts : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["validationMethod"] = args ? args.validationMethod : undefined;
+            resourceInputs["validityDays"] = args ? args.validityDays : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(CertificatePack.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(CertificatePack.__pulumiType, name, resourceInputs, opts);
     }
 }
 

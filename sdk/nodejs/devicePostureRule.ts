@@ -105,17 +105,17 @@ export class DevicePostureRule extends pulumi.CustomResource {
      */
     constructor(name: string, args: DevicePostureRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DevicePostureRuleArgs | DevicePostureRuleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DevicePostureRuleState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["inputs"] = state ? state.inputs : undefined;
-            inputs["matches"] = state ? state.matches : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["schedule"] = state ? state.schedule : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["inputs"] = state ? state.inputs : undefined;
+            resourceInputs["matches"] = state ? state.matches : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["schedule"] = state ? state.schedule : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DevicePostureRuleArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -124,18 +124,16 @@ export class DevicePostureRule extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["inputs"] = args ? args.inputs : undefined;
-            inputs["matches"] = args ? args.matches : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["schedule"] = args ? args.schedule : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["inputs"] = args ? args.inputs : undefined;
+            resourceInputs["matches"] = args ? args.matches : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["schedule"] = args ? args.schedule : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DevicePostureRule.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DevicePostureRule.__pulumiType, name, resourceInputs, opts);
     }
 }
 

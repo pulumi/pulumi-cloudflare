@@ -187,7 +187,7 @@ type LogpushJobInput interface {
 }
 
 func (*LogpushJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogpushJob)(nil))
+	return reflect.TypeOf((**LogpushJob)(nil)).Elem()
 }
 
 func (i *LogpushJob) ToLogpushJobOutput() LogpushJobOutput {
@@ -196,35 +196,6 @@ func (i *LogpushJob) ToLogpushJobOutput() LogpushJobOutput {
 
 func (i *LogpushJob) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobOutput)
-}
-
-func (i *LogpushJob) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
-	return i.ToLogpushJobPtrOutputWithContext(context.Background())
-}
-
-func (i *LogpushJob) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobPtrOutput)
-}
-
-type LogpushJobPtrInput interface {
-	pulumi.Input
-
-	ToLogpushJobPtrOutput() LogpushJobPtrOutput
-	ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput
-}
-
-type logpushJobPtrType LogpushJobArgs
-
-func (*logpushJobPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogpushJob)(nil))
-}
-
-func (i *logpushJobPtrType) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
-	return i.ToLogpushJobPtrOutputWithContext(context.Background())
-}
-
-func (i *logpushJobPtrType) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobPtrOutput)
 }
 
 // LogpushJobArrayInput is an input type that accepts LogpushJobArray and LogpushJobArrayOutput values.
@@ -280,7 +251,7 @@ func (i LogpushJobMap) ToLogpushJobMapOutputWithContext(ctx context.Context) Log
 type LogpushJobOutput struct{ *pulumi.OutputState }
 
 func (LogpushJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogpushJob)(nil))
+	return reflect.TypeOf((**LogpushJob)(nil)).Elem()
 }
 
 func (o LogpushJobOutput) ToLogpushJobOutput() LogpushJobOutput {
@@ -291,44 +262,10 @@ func (o LogpushJobOutput) ToLogpushJobOutputWithContext(ctx context.Context) Log
 	return o
 }
 
-func (o LogpushJobOutput) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
-	return o.ToLogpushJobPtrOutputWithContext(context.Background())
-}
-
-func (o LogpushJobOutput) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogpushJob) *LogpushJob {
-		return &v
-	}).(LogpushJobPtrOutput)
-}
-
-type LogpushJobPtrOutput struct{ *pulumi.OutputState }
-
-func (LogpushJobPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogpushJob)(nil))
-}
-
-func (o LogpushJobPtrOutput) ToLogpushJobPtrOutput() LogpushJobPtrOutput {
-	return o
-}
-
-func (o LogpushJobPtrOutput) ToLogpushJobPtrOutputWithContext(ctx context.Context) LogpushJobPtrOutput {
-	return o
-}
-
-func (o LogpushJobPtrOutput) Elem() LogpushJobOutput {
-	return o.ApplyT(func(v *LogpushJob) LogpushJob {
-		if v != nil {
-			return *v
-		}
-		var ret LogpushJob
-		return ret
-	}).(LogpushJobOutput)
-}
-
 type LogpushJobArrayOutput struct{ *pulumi.OutputState }
 
 func (LogpushJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogpushJob)(nil))
+	return reflect.TypeOf((*[]*LogpushJob)(nil)).Elem()
 }
 
 func (o LogpushJobArrayOutput) ToLogpushJobArrayOutput() LogpushJobArrayOutput {
@@ -340,15 +277,15 @@ func (o LogpushJobArrayOutput) ToLogpushJobArrayOutputWithContext(ctx context.Co
 }
 
 func (o LogpushJobArrayOutput) Index(i pulumi.IntInput) LogpushJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogpushJob {
-		return vs[0].([]LogpushJob)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogpushJob {
+		return vs[0].([]*LogpushJob)[vs[1].(int)]
 	}).(LogpushJobOutput)
 }
 
 type LogpushJobMapOutput struct{ *pulumi.OutputState }
 
 func (LogpushJobMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LogpushJob)(nil))
+	return reflect.TypeOf((*map[string]*LogpushJob)(nil)).Elem()
 }
 
 func (o LogpushJobMapOutput) ToLogpushJobMapOutput() LogpushJobMapOutput {
@@ -360,18 +297,16 @@ func (o LogpushJobMapOutput) ToLogpushJobMapOutputWithContext(ctx context.Contex
 }
 
 func (o LogpushJobMapOutput) MapIndex(k pulumi.StringInput) LogpushJobOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogpushJob {
-		return vs[0].(map[string]LogpushJob)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *LogpushJob {
+		return vs[0].(map[string]*LogpushJob)[vs[1].(string)]
 	}).(LogpushJobOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobInput)(nil)).Elem(), &LogpushJob{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobPtrInput)(nil)).Elem(), &LogpushJob{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobArrayInput)(nil)).Elem(), LogpushJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobMapInput)(nil)).Elem(), LogpushJobMap{})
 	pulumi.RegisterOutputType(LogpushJobOutput{})
-	pulumi.RegisterOutputType(LogpushJobPtrOutput{})
 	pulumi.RegisterOutputType(LogpushJobArrayOutput{})
 	pulumi.RegisterOutputType(LogpushJobMapOutput{})
 }

@@ -88,15 +88,15 @@ export class Filter extends pulumi.CustomResource {
      */
     constructor(name: string, args: FilterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FilterArgs | FilterState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FilterState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["expression"] = state ? state.expression : undefined;
-            inputs["paused"] = state ? state.paused : undefined;
-            inputs["ref"] = state ? state.ref : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["paused"] = state ? state.paused : undefined;
+            resourceInputs["ref"] = state ? state.ref : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as FilterArgs | undefined;
             if ((!args || args.expression === undefined) && !opts.urn) {
@@ -105,16 +105,14 @@ export class Filter extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["expression"] = args ? args.expression : undefined;
-            inputs["paused"] = args ? args.paused : undefined;
-            inputs["ref"] = args ? args.ref : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["paused"] = args ? args.paused : undefined;
+            resourceInputs["ref"] = args ? args.ref : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Filter.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Filter.__pulumiType, name, resourceInputs, opts);
     }
 }
 

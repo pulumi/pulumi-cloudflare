@@ -99,16 +99,16 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     constructor(name: string, args: WorkerScriptArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkerScriptArgs | WorkerScriptState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerScriptState | undefined;
-            inputs["content"] = state ? state.content : undefined;
-            inputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
-            inputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
-            inputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
+            resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
+            resourceInputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
+            resourceInputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
             if ((!args || args.content === undefined) && !opts.urn) {
@@ -117,17 +117,15 @@ export class WorkerScript extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["content"] = args ? args.content : undefined;
-            inputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
-            inputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
-            inputs["webassemblyBindings"] = args ? args.webassemblyBindings : undefined;
+            resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
+            resourceInputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
+            resourceInputs["webassemblyBindings"] = args ? args.webassemblyBindings : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(WorkerScript.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(WorkerScript.__pulumiType, name, resourceInputs, opts);
     }
 }
 

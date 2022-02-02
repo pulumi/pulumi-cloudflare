@@ -196,7 +196,7 @@ type ZoneDnssecInput interface {
 }
 
 func (*ZoneDnssec) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneDnssec)(nil))
+	return reflect.TypeOf((**ZoneDnssec)(nil)).Elem()
 }
 
 func (i *ZoneDnssec) ToZoneDnssecOutput() ZoneDnssecOutput {
@@ -205,35 +205,6 @@ func (i *ZoneDnssec) ToZoneDnssecOutput() ZoneDnssecOutput {
 
 func (i *ZoneDnssec) ToZoneDnssecOutputWithContext(ctx context.Context) ZoneDnssecOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecOutput)
-}
-
-func (i *ZoneDnssec) ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput {
-	return i.ToZoneDnssecPtrOutputWithContext(context.Background())
-}
-
-func (i *ZoneDnssec) ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecPtrOutput)
-}
-
-type ZoneDnssecPtrInput interface {
-	pulumi.Input
-
-	ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput
-	ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput
-}
-
-type zoneDnssecPtrType ZoneDnssecArgs
-
-func (*zoneDnssecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneDnssec)(nil))
-}
-
-func (i *zoneDnssecPtrType) ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput {
-	return i.ToZoneDnssecPtrOutputWithContext(context.Background())
-}
-
-func (i *zoneDnssecPtrType) ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecPtrOutput)
 }
 
 // ZoneDnssecArrayInput is an input type that accepts ZoneDnssecArray and ZoneDnssecArrayOutput values.
@@ -289,7 +260,7 @@ func (i ZoneDnssecMap) ToZoneDnssecMapOutputWithContext(ctx context.Context) Zon
 type ZoneDnssecOutput struct{ *pulumi.OutputState }
 
 func (ZoneDnssecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ZoneDnssec)(nil))
+	return reflect.TypeOf((**ZoneDnssec)(nil)).Elem()
 }
 
 func (o ZoneDnssecOutput) ToZoneDnssecOutput() ZoneDnssecOutput {
@@ -300,44 +271,10 @@ func (o ZoneDnssecOutput) ToZoneDnssecOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
-func (o ZoneDnssecOutput) ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput {
-	return o.ToZoneDnssecPtrOutputWithContext(context.Background())
-}
-
-func (o ZoneDnssecOutput) ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneDnssec) *ZoneDnssec {
-		return &v
-	}).(ZoneDnssecPtrOutput)
-}
-
-type ZoneDnssecPtrOutput struct{ *pulumi.OutputState }
-
-func (ZoneDnssecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZoneDnssec)(nil))
-}
-
-func (o ZoneDnssecPtrOutput) ToZoneDnssecPtrOutput() ZoneDnssecPtrOutput {
-	return o
-}
-
-func (o ZoneDnssecPtrOutput) ToZoneDnssecPtrOutputWithContext(ctx context.Context) ZoneDnssecPtrOutput {
-	return o
-}
-
-func (o ZoneDnssecPtrOutput) Elem() ZoneDnssecOutput {
-	return o.ApplyT(func(v *ZoneDnssec) ZoneDnssec {
-		if v != nil {
-			return *v
-		}
-		var ret ZoneDnssec
-		return ret
-	}).(ZoneDnssecOutput)
-}
-
 type ZoneDnssecArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneDnssecArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ZoneDnssec)(nil))
+	return reflect.TypeOf((*[]*ZoneDnssec)(nil)).Elem()
 }
 
 func (o ZoneDnssecArrayOutput) ToZoneDnssecArrayOutput() ZoneDnssecArrayOutput {
@@ -349,15 +286,15 @@ func (o ZoneDnssecArrayOutput) ToZoneDnssecArrayOutputWithContext(ctx context.Co
 }
 
 func (o ZoneDnssecArrayOutput) Index(i pulumi.IntInput) ZoneDnssecOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ZoneDnssec {
-		return vs[0].([]ZoneDnssec)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneDnssec {
+		return vs[0].([]*ZoneDnssec)[vs[1].(int)]
 	}).(ZoneDnssecOutput)
 }
 
 type ZoneDnssecMapOutput struct{ *pulumi.OutputState }
 
 func (ZoneDnssecMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ZoneDnssec)(nil))
+	return reflect.TypeOf((*map[string]*ZoneDnssec)(nil)).Elem()
 }
 
 func (o ZoneDnssecMapOutput) ToZoneDnssecMapOutput() ZoneDnssecMapOutput {
@@ -369,18 +306,16 @@ func (o ZoneDnssecMapOutput) ToZoneDnssecMapOutputWithContext(ctx context.Contex
 }
 
 func (o ZoneDnssecMapOutput) MapIndex(k pulumi.StringInput) ZoneDnssecOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ZoneDnssec {
-		return vs[0].(map[string]ZoneDnssec)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ZoneDnssec {
+		return vs[0].(map[string]*ZoneDnssec)[vs[1].(string)]
 	}).(ZoneDnssecOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDnssecInput)(nil)).Elem(), &ZoneDnssec{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDnssecPtrInput)(nil)).Elem(), &ZoneDnssec{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDnssecArrayInput)(nil)).Elem(), ZoneDnssecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDnssecMapInput)(nil)).Elem(), ZoneDnssecMap{})
 	pulumi.RegisterOutputType(ZoneDnssecOutput{})
-	pulumi.RegisterOutputType(ZoneDnssecPtrOutput{})
 	pulumi.RegisterOutputType(ZoneDnssecArrayOutput{})
 	pulumi.RegisterOutputType(ZoneDnssecMapOutput{})
 }

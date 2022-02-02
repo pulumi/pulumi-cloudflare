@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi.Utilities;
 
 namespace Pulumi.Cloudflare
 {
@@ -76,7 +75,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to look up [zone] info. This is the singular alternative
@@ -142,7 +141,7 @@ namespace Pulumi.Cloudflare
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithVersion());
+            => Pulumi.Deployment.Instance.Invoke<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
     }
 
 

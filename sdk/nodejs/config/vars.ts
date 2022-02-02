@@ -35,7 +35,7 @@ Object.defineProperty(exports, "apiBasePath", {
 export declare const apiClientLogging: boolean;
 Object.defineProperty(exports, "apiClientLogging", {
     get() {
-        return __config.getObject<boolean>("apiClientLogging") ?? (<any>utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
+        return __config.getObject<boolean>("apiClientLogging") ?? (utilities.getEnvBoolean("CLOUDFLARE_API_CLIENT_LOGGING") || false);
     },
     enumerable: true,
 });
@@ -101,7 +101,7 @@ Object.defineProperty(exports, "email", {
 export declare const maxBackoff: number;
 Object.defineProperty(exports, "maxBackoff", {
     get() {
-        return __config.getObject<number>("maxBackoff") ?? (<any>utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30);
+        return __config.getObject<number>("maxBackoff") ?? (utilities.getEnvNumber("CLOUDFLARE_MAX_BACKOFF") || 30);
     },
     enumerable: true,
 });
@@ -112,7 +112,7 @@ Object.defineProperty(exports, "maxBackoff", {
 export declare const minBackoff: number;
 Object.defineProperty(exports, "minBackoff", {
     get() {
-        return __config.getObject<number>("minBackoff") ?? (<any>utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1);
+        return __config.getObject<number>("minBackoff") ?? (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1);
     },
     enumerable: true,
 });
@@ -123,7 +123,7 @@ Object.defineProperty(exports, "minBackoff", {
 export declare const retries: number;
 Object.defineProperty(exports, "retries", {
     get() {
-        return __config.getObject<number>("retries") ?? (<any>utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3);
+        return __config.getObject<number>("retries") ?? (utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3);
     },
     enumerable: true,
 });
@@ -134,7 +134,7 @@ Object.defineProperty(exports, "retries", {
 export declare const rps: number;
 Object.defineProperty(exports, "rps", {
     get() {
-        return __config.getObject<number>("rps") ?? (<any>utilities.getEnvNumber("CLOUDFLARE_RPS") || 4);
+        return __config.getObject<number>("rps") ?? (utilities.getEnvNumber("CLOUDFLARE_RPS") || 4);
     },
     enumerable: true,
 });

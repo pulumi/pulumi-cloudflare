@@ -149,28 +149,28 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessApplicationArgs | AccessApplicationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessApplicationState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["allowedIdps"] = state ? state.allowedIdps : undefined;
-            inputs["appLauncherVisible"] = state ? state.appLauncherVisible : undefined;
-            inputs["aud"] = state ? state.aud : undefined;
-            inputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
-            inputs["corsHeaders"] = state ? state.corsHeaders : undefined;
-            inputs["customDenyMessage"] = state ? state.customDenyMessage : undefined;
-            inputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
-            inputs["httpOnlyCookieAttribute"] = state ? state.httpOnlyCookieAttribute : undefined;
-            inputs["logoUrl"] = state ? state.logoUrl : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
-            inputs["sessionDuration"] = state ? state.sessionDuration : undefined;
-            inputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["allowedIdps"] = state ? state.allowedIdps : undefined;
+            resourceInputs["appLauncherVisible"] = state ? state.appLauncherVisible : undefined;
+            resourceInputs["aud"] = state ? state.aud : undefined;
+            resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
+            resourceInputs["corsHeaders"] = state ? state.corsHeaders : undefined;
+            resourceInputs["customDenyMessage"] = state ? state.customDenyMessage : undefined;
+            resourceInputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
+            resourceInputs["httpOnlyCookieAttribute"] = state ? state.httpOnlyCookieAttribute : undefined;
+            resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
+            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
+            resourceInputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessApplicationArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -179,29 +179,27 @@ export class AccessApplication extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["allowedIdps"] = args ? args.allowedIdps : undefined;
-            inputs["appLauncherVisible"] = args ? args.appLauncherVisible : undefined;
-            inputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
-            inputs["corsHeaders"] = args ? args.corsHeaders : undefined;
-            inputs["customDenyMessage"] = args ? args.customDenyMessage : undefined;
-            inputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
-            inputs["httpOnlyCookieAttribute"] = args ? args.httpOnlyCookieAttribute : undefined;
-            inputs["logoUrl"] = args ? args.logoUrl : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
-            inputs["sessionDuration"] = args ? args.sessionDuration : undefined;
-            inputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
-            inputs["aud"] = undefined /*out*/;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["allowedIdps"] = args ? args.allowedIdps : undefined;
+            resourceInputs["appLauncherVisible"] = args ? args.appLauncherVisible : undefined;
+            resourceInputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
+            resourceInputs["corsHeaders"] = args ? args.corsHeaders : undefined;
+            resourceInputs["customDenyMessage"] = args ? args.customDenyMessage : undefined;
+            resourceInputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
+            resourceInputs["httpOnlyCookieAttribute"] = args ? args.httpOnlyCookieAttribute : undefined;
+            resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
+            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
+            resourceInputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["aud"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessApplication.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessApplication.__pulumiType, name, resourceInputs, opts);
     }
 }
 

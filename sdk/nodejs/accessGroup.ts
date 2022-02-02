@@ -146,16 +146,16 @@ export class AccessGroup extends pulumi.CustomResource {
      */
     constructor(name: string, args: AccessGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessGroupArgs | AccessGroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AccessGroupState | undefined;
-            inputs["accountId"] = state ? state.accountId : undefined;
-            inputs["excludes"] = state ? state.excludes : undefined;
-            inputs["includes"] = state ? state.includes : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["requires"] = state ? state.requires : undefined;
-            inputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["excludes"] = state ? state.excludes : undefined;
+            resourceInputs["includes"] = state ? state.includes : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["requires"] = state ? state.requires : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessGroupArgs | undefined;
             if ((!args || args.includes === undefined) && !opts.urn) {
@@ -164,17 +164,15 @@ export class AccessGroup extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            inputs["accountId"] = args ? args.accountId : undefined;
-            inputs["excludes"] = args ? args.excludes : undefined;
-            inputs["includes"] = args ? args.includes : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["requires"] = args ? args.requires : undefined;
-            inputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["excludes"] = args ? args.excludes : undefined;
+            resourceInputs["includes"] = args ? args.includes : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["requires"] = args ? args.requires : undefined;
+            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AccessGroup.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AccessGroup.__pulumiType, name, resourceInputs, opts);
     }
 }
 
