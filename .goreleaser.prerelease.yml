@@ -24,6 +24,7 @@ builds:
   - darwin
   - windows
   - linux
+  ignore: []
   ldflags:
   - -X github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-cloudflare/
