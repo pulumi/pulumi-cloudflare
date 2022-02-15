@@ -27,7 +27,7 @@ class RulesetArgs:
         The set of arguments for constructing a Ruleset resource.
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the HTTP request header to target.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[str] account_id: The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rule-based overrides (refer to the nested schema).
@@ -75,7 +75,7 @@ class RulesetArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the ruleset.
+        Name of the HTTP request header to target.
         """
         return pulumi.get(self, "name")
 
@@ -160,7 +160,7 @@ class _RulesetState:
         :param pulumi.Input[str] account_id: The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the HTTP request header to target.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
@@ -223,7 +223,7 @@ class _RulesetState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the ruleset.
+        Name of the HTTP request header to target.
         """
         return pulumi.get(self, "name")
 
@@ -295,7 +295,8 @@ class Ruleset(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets.
+        The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)
+        allows you to create and deploy rules and rulesets.
         The engine syntax, inspired by the Wireshark Display Filter language, is the
         same syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine
         in different products, allowing you to configure several products using the same
@@ -327,9 +328,9 @@ class Ruleset(pulumi.CustomResource):
             phase="http_request_firewall_managed",
             rules=[cloudflare.RulesetRuleArgs(
                 action="execute",
-                action_parameters=[cloudflare.RulesetRuleActionParameterArgs(
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
                     id="efb7b8c949ac4650a09736fc376e9aee",
-                )],
+                ),
                 description="Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset",
                 enabled=True,
                 expression="true",
@@ -343,26 +344,119 @@ class Ruleset(pulumi.CustomResource):
             phase="http_request_firewall_managed",
             rules=[cloudflare.RulesetRuleArgs(
                 action="execute",
-                action_parameters=[cloudflare.RulesetRuleActionParameterArgs(
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
                     id="efb7b8c949ac4650a09736fc376e9aee",
-                    overrides=cloudflare.RulesetRuleActionParameterOverridesArgs(
+                    overrides=cloudflare.RulesetRuleActionParametersOverridesArgs(
                         categories=[
-                            cloudflare.RulesetRuleActionParameterOverridesCategoryArgs(
+                            cloudflare.RulesetRuleActionParametersOverridesCategoryArgs(
                                 action="block",
                                 category="wordpress",
                                 enabled=True,
                             ),
-                            cloudflare.RulesetRuleActionParameterOverridesCategoryArgs(
+                            cloudflare.RulesetRuleActionParametersOverridesCategoryArgs(
                                 action="block",
                                 category="joomla",
                                 enabled=True,
                             ),
                         ],
                     ),
-                )],
+                ),
                 description="overrides to only enable wordpress rules to block",
                 enabled=False,
                 expression="true",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Rewrite the URI path component to a static path
+        transform_uri_rule_path = cloudflare.Ruleset("transformUriRulePath",
+            description="change the URI path to a new static path",
+            kind="zone",
+            name="transform rule for URI path",
+            phase="http_request_transform",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="rewrite",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    uri=cloudflare.RulesetRuleActionParametersUriArgs(
+                        path=cloudflare.RulesetRuleActionParametersUriPathArgs(
+                            value="/my-new-route",
+                        ),
+                    ),
+                ),
+                description="example URI path transform rule",
+                enabled=True,
+                expression="(http.host eq \"example.com\" and http.uri.path eq \"/old-path\")",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Rewrite the URI query component to a static query
+        transform_uri_rule_query = cloudflare.Ruleset("transformUriRuleQuery",
+            description="change the URI query to a new static query",
+            kind="zone",
+            name="transform rule for URI query parameter",
+            phase="http_request_transform",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="rewrite",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    uri=cloudflare.RulesetRuleActionParametersUriArgs(
+                        query=cloudflare.RulesetRuleActionParametersUriQueryArgs(
+                            value="old=new_again",
+                        ),
+                    ),
+                ),
+                description="URI transformation query example",
+                enabled=True,
+                expression="true",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Rewrite HTTP headers to a modified values
+        transform_uri_http_headers = cloudflare.Ruleset("transformUriHttpHeaders",
+            description="modify HTTP headers before reaching origin",
+            kind="zone",
+            name="transform rule for HTTP headers",
+            phase="http_request_late_transform",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="rewrite",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    headers=[
+                        cloudflare.RulesetRuleActionParametersHeaderArgs(
+                            name="example-http-header-1",
+                            operation="set",
+                            value="my-http-header-value-1",
+                        ),
+                        cloudflare.RulesetRuleActionParametersHeaderArgs(
+                            expression="cf.zone.name",
+                            name="example-http-header-2",
+                            operation="set",
+                        ),
+                        cloudflare.RulesetRuleActionParametersHeaderArgs(
+                            name="example-http-header-3-to-remove",
+                            operation="remove",
+                        ),
+                    ],
+                ),
+                description="example request header transform rule",
+                enabled=False,
+                expression="true",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # HTTP rate limit for an API route
+        rate_limiting_example = cloudflare.Ruleset("rateLimitingExample",
+            description="apply HTTP rate limiting for a route",
+            kind="zone",
+            name="restrict API requests count",
+            phase="http_ratelimit",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="block",
+                description="rate limit for API",
+                enabled=True,
+                expression="(http.request.uri.path matches \"^/api/\")",
+                ratelimit=cloudflare.RulesetRuleRatelimitArgs(
+                    characteristics=[
+                        "cf.colo.id",
+                        "ip.src",
+                    ],
+                    mitigation_timeout=600,
+                    period=60,
+                    requests_per_period=100,
+                ),
             )],
             zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
         ```
@@ -376,7 +470,7 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the HTTP request header to target.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
@@ -389,7 +483,8 @@ class Ruleset(pulumi.CustomResource):
                  args: RulesetArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets.
+        The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)
+        allows you to create and deploy rules and rulesets.
         The engine syntax, inspired by the Wireshark Display Filter language, is the
         same syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine
         in different products, allowing you to configure several products using the same
@@ -421,9 +516,9 @@ class Ruleset(pulumi.CustomResource):
             phase="http_request_firewall_managed",
             rules=[cloudflare.RulesetRuleArgs(
                 action="execute",
-                action_parameters=[cloudflare.RulesetRuleActionParameterArgs(
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
                     id="efb7b8c949ac4650a09736fc376e9aee",
-                )],
+                ),
                 description="Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset",
                 enabled=True,
                 expression="true",
@@ -437,26 +532,119 @@ class Ruleset(pulumi.CustomResource):
             phase="http_request_firewall_managed",
             rules=[cloudflare.RulesetRuleArgs(
                 action="execute",
-                action_parameters=[cloudflare.RulesetRuleActionParameterArgs(
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
                     id="efb7b8c949ac4650a09736fc376e9aee",
-                    overrides=cloudflare.RulesetRuleActionParameterOverridesArgs(
+                    overrides=cloudflare.RulesetRuleActionParametersOverridesArgs(
                         categories=[
-                            cloudflare.RulesetRuleActionParameterOverridesCategoryArgs(
+                            cloudflare.RulesetRuleActionParametersOverridesCategoryArgs(
                                 action="block",
                                 category="wordpress",
                                 enabled=True,
                             ),
-                            cloudflare.RulesetRuleActionParameterOverridesCategoryArgs(
+                            cloudflare.RulesetRuleActionParametersOverridesCategoryArgs(
                                 action="block",
                                 category="joomla",
                                 enabled=True,
                             ),
                         ],
                     ),
-                )],
+                ),
                 description="overrides to only enable wordpress rules to block",
                 enabled=False,
                 expression="true",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Rewrite the URI path component to a static path
+        transform_uri_rule_path = cloudflare.Ruleset("transformUriRulePath",
+            description="change the URI path to a new static path",
+            kind="zone",
+            name="transform rule for URI path",
+            phase="http_request_transform",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="rewrite",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    uri=cloudflare.RulesetRuleActionParametersUriArgs(
+                        path=cloudflare.RulesetRuleActionParametersUriPathArgs(
+                            value="/my-new-route",
+                        ),
+                    ),
+                ),
+                description="example URI path transform rule",
+                enabled=True,
+                expression="(http.host eq \"example.com\" and http.uri.path eq \"/old-path\")",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Rewrite the URI query component to a static query
+        transform_uri_rule_query = cloudflare.Ruleset("transformUriRuleQuery",
+            description="change the URI query to a new static query",
+            kind="zone",
+            name="transform rule for URI query parameter",
+            phase="http_request_transform",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="rewrite",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    uri=cloudflare.RulesetRuleActionParametersUriArgs(
+                        query=cloudflare.RulesetRuleActionParametersUriQueryArgs(
+                            value="old=new_again",
+                        ),
+                    ),
+                ),
+                description="URI transformation query example",
+                enabled=True,
+                expression="true",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # Rewrite HTTP headers to a modified values
+        transform_uri_http_headers = cloudflare.Ruleset("transformUriHttpHeaders",
+            description="modify HTTP headers before reaching origin",
+            kind="zone",
+            name="transform rule for HTTP headers",
+            phase="http_request_late_transform",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="rewrite",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    headers=[
+                        cloudflare.RulesetRuleActionParametersHeaderArgs(
+                            name="example-http-header-1",
+                            operation="set",
+                            value="my-http-header-value-1",
+                        ),
+                        cloudflare.RulesetRuleActionParametersHeaderArgs(
+                            expression="cf.zone.name",
+                            name="example-http-header-2",
+                            operation="set",
+                        ),
+                        cloudflare.RulesetRuleActionParametersHeaderArgs(
+                            name="example-http-header-3-to-remove",
+                            operation="remove",
+                        ),
+                    ],
+                ),
+                description="example request header transform rule",
+                enabled=False,
+                expression="true",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # HTTP rate limit for an API route
+        rate_limiting_example = cloudflare.Ruleset("rateLimitingExample",
+            description="apply HTTP rate limiting for a route",
+            kind="zone",
+            name="restrict API requests count",
+            phase="http_ratelimit",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="block",
+                description="rate limit for API",
+                enabled=True,
+                expression="(http.request.uri.path matches \"^/api/\")",
+                ratelimit=cloudflare.RulesetRuleRatelimitArgs(
+                    characteristics=[
+                        "cf.colo.id",
+                        "ip.src",
+                    ],
+                    mitigation_timeout=600,
+                    period=60,
+                    requests_per_period=100,
+                ),
             )],
             zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
         ```
@@ -544,7 +732,7 @@ class Ruleset(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
         :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
-        :param pulumi.Input[str] name: Name of the ruleset.
+        :param pulumi.Input[str] name: Name of the HTTP request header to target.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RulesetRuleArgs']]]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
@@ -592,7 +780,7 @@ class Ruleset(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the ruleset.
+        Name of the HTTP request header to target.
         """
         return pulumi.get(self, "name")
 

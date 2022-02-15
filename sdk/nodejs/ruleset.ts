@@ -6,7 +6,8 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets.
+ * The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)
+ * allows you to create and deploy rules and rulesets.
  * The engine syntax, inspired by the Wireshark Display Filter language, is the
  * same syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine
  * in different products, allowing you to configure several products using the same
@@ -39,9 +40,9 @@ import * as utilities from "./utilities";
  *     phase: "http_request_firewall_managed",
  *     rules: [{
  *         action: "execute",
- *         actionParameters: [{
+ *         actionParameters: {
  *             id: "efb7b8c949ac4650a09736fc376e9aee",
- *         }],
+ *         },
  *         description: "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset",
  *         enabled: true,
  *         expression: "true",
@@ -56,7 +57,7 @@ import * as utilities from "./utilities";
  *     phase: "http_request_firewall_managed",
  *     rules: [{
  *         action: "execute",
- *         actionParameters: [{
+ *         actionParameters: {
  *             id: "efb7b8c949ac4650a09736fc376e9aee",
  *             overrides: {
  *                 categories: [
@@ -72,10 +73,107 @@ import * as utilities from "./utilities";
  *                     },
  *                 ],
  *             },
- *         }],
+ *         },
  *         description: "overrides to only enable wordpress rules to block",
  *         enabled: false,
  *         expression: "true",
+ *     }],
+ *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ * });
+ * // Rewrite the URI path component to a static path
+ * const transformUriRulePath = new cloudflare.Ruleset("transform_uri_rule_path", {
+ *     description: "change the URI path to a new static path",
+ *     kind: "zone",
+ *     name: "transform rule for URI path",
+ *     phase: "http_request_transform",
+ *     rules: [{
+ *         action: "rewrite",
+ *         actionParameters: {
+ *             uri: {
+ *                 path: {
+ *                     value: "/my-new-route",
+ *                 },
+ *             },
+ *         },
+ *         description: "example URI path transform rule",
+ *         enabled: true,
+ *         expression: "(http.host eq \"example.com\" and http.uri.path eq \"/old-path\")",
+ *     }],
+ *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ * });
+ * // Rewrite the URI query component to a static query
+ * const transformUriRuleQuery = new cloudflare.Ruleset("transform_uri_rule_query", {
+ *     description: "change the URI query to a new static query",
+ *     kind: "zone",
+ *     name: "transform rule for URI query parameter",
+ *     phase: "http_request_transform",
+ *     rules: [{
+ *         action: "rewrite",
+ *         actionParameters: {
+ *             uri: {
+ *                 query: {
+ *                     value: "old=new_again",
+ *                 },
+ *             },
+ *         },
+ *         description: "URI transformation query example",
+ *         enabled: true,
+ *         expression: "true",
+ *     }],
+ *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ * });
+ * // Rewrite HTTP headers to a modified values
+ * const transformUriHttpHeaders = new cloudflare.Ruleset("transform_uri_http_headers", {
+ *     description: "modify HTTP headers before reaching origin",
+ *     kind: "zone",
+ *     name: "transform rule for HTTP headers",
+ *     phase: "http_request_late_transform",
+ *     rules: [{
+ *         action: "rewrite",
+ *         actionParameters: {
+ *             headers: [
+ *                 {
+ *                     name: "example-http-header-1",
+ *                     operation: "set",
+ *                     value: "my-http-header-value-1",
+ *                 },
+ *                 {
+ *                     expression: "cf.zone.name",
+ *                     name: "example-http-header-2",
+ *                     operation: "set",
+ *                 },
+ *                 {
+ *                     name: "example-http-header-3-to-remove",
+ *                     operation: "remove",
+ *                 },
+ *             ],
+ *         },
+ *         description: "example request header transform rule",
+ *         enabled: false,
+ *         expression: "true",
+ *     }],
+ *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ * });
+ * // HTTP rate limit for an API route
+ * const rateLimitingExample = new cloudflare.Ruleset("rate_limiting_example", {
+ *     description: "apply HTTP rate limiting for a route",
+ *     kind: "zone",
+ *     name: "restrict API requests count",
+ *     phase: "http_ratelimit",
+ *     rules: [{
+ *         action: "block",
+ *         description: "rate limit for API",
+ *         enabled: true,
+ *         expression: "(http.request.uri.path matches \"^/api/\")",
+ *         ratelimit: {
+ *             characteristics: [
+ *                 "cf.colo.id",
+ *                 "ip.src",
+ *             ],
+ *             mitigationTimeout: 600,
+ *             period: 60,
+ *             requestsPerPeriod: 100,
+ *         },
  *     }],
  *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
  * });
@@ -126,7 +224,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the ruleset.
+     * Name of the HTTP request header to target.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -214,7 +312,7 @@ export interface RulesetState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the ruleset.
+     * Name of the HTTP request header to target.
      */
     name?: pulumi.Input<string>;
     /**
@@ -252,7 +350,7 @@ export interface RulesetArgs {
      */
     kind: pulumi.Input<string>;
     /**
-     * Name of the ruleset.
+     * Name of the HTTP request header to target.
      */
     name: pulumi.Input<string>;
     /**

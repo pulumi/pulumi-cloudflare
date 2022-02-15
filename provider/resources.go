@@ -199,6 +199,9 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_notification_policy_webhooks":  {Tok: makeResource(mainMod, "NotificationPolicyWebhooks")},
 			"cloudflare_ruleset":                       {Tok: makeResource(mainMod, "Ruleset")},
 			"cloudflare_teams_location":                {Tok: makeResource(mainMod, "TeamsLocation")},
+			"cloudflare_access_keys_configuration":     {Tok: makeResource(mainMod, "AccessKeysConfiguration")},
+			"cloudflare_teams_account":                 {Tok: makeResource(mainMod, "TeamsAccount")},
+			"cloudflare_teams_rule":                    {Tok: makeResource(mainMod, "TeamsRule")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":                   {Tok: makeDataSource(mainMod, "getIpRanges")},

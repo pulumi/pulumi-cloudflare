@@ -1317,6 +1317,43 @@
                 }
             }
         },
+        "cloudflare:index/AccessPolicyApprovalGroup:AccessPolicyApprovalGroup": {
+            "properties": {
+                "approvalsNeeded": {
+                    "type": "integer",
+                    "description": "Number of approvals needed.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emailAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of emails to request approval from.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emailListUuid": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "approvalsNeeded"
+            ]
+        },
         "cloudflare:index/AccessPolicyExclude:AccessPolicyExclude": {
             "properties": {
                 "anyValidServiceToken": {
@@ -4400,10 +4437,7 @@
                     }
                 },
                 "actionParameters": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameter:RulesetRuleActionParameter"
-                    },
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParameters:RulesetRuleActionParameters",
                     "description": "List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).\n",
                     "language": {
                         "python": {
@@ -4447,6 +4481,15 @@
                         }
                     }
                 },
+                "ratelimit": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleRatelimit:RulesetRuleRatelimit",
+                    "description": "List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "ref": {
                     "type": "string",
                     "description": "Rule reference.\n",
@@ -4482,8 +4525,20 @@
                 }
             }
         },
-        "cloudflare:index/RulesetRuleActionParameter:RulesetRuleActionParameter": {
+        "cloudflare:index/RulesetRuleActionParameters:RulesetRuleActionParameters": {
             "properties": {
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersHeader:RulesetRuleActionParametersHeader"
+                    },
+                    "description": "List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "id": {
                     "type": "string",
                     "description": "Rule ID to apply the override to.\n",
@@ -4501,8 +4556,17 @@
                         }
                     }
                 },
+                "matchedData": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersMatchedData:RulesetRuleActionParametersMatchedData",
+                    "description": "List of properties to configure WAF payload logging (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "overrides": {
-                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverrides:RulesetRuleActionParameterOverrides",
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersOverrides:RulesetRuleActionParametersOverrides",
                     "description": "List of override configurations to apply to the ruleset (refer to the nested schema).\n",
                     "language": {
                         "python": {
@@ -4522,20 +4586,41 @@
                         }
                     }
                 },
-                "ruleset": {
-                    "type": "string",
-                    "description": "Which ruleset to target. Valid value is `\"current\"`.\n",
+                "rules": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "List of rule-based overrides (refer to the nested schema).\n",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
                 },
-                "uris": {
+                "ruleset": {
+                    "type": "string",
+                    "description": "Which ruleset ID to target.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "rulesets": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUri:RulesetRuleActionParameterUri"
+                        "type": "string"
                     },
+                    "description": "List of managed WAF rule IDs to target. Only valid when the \"action\" is set to skip.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "uri": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersUri:RulesetRuleActionParametersUri",
                     "description": "List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).\n",
                     "language": {
                         "python": {
@@ -4552,14 +4637,76 @@
                     }
                 }
             },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "version"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/RulesetRuleActionParametersHeader:RulesetRuleActionParametersHeader": {
+            "properties": {
+                "expression": {
+                    "type": "string",
+                    "description": "Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the HTTP request header to target.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operation": {
+                    "type": "string",
+                    "description": "Action to perform on the HTTP request header. Valid values are `\"set\"` or `\"remove\"`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Static string value of the updated URI path or query string component. Conflicts with `expression`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
             "type": "object"
         },
-        "cloudflare:index/RulesetRuleActionParameterOverrides:RulesetRuleActionParameterOverrides": {
+        "cloudflare:index/RulesetRuleActionParametersMatchedData:RulesetRuleActionParametersMatchedData": {
+            "properties": {
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleActionParametersOverrides:RulesetRuleActionParametersOverrides": {
             "properties": {
                 "categories": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverridesCategory:RulesetRuleActionParameterOverridesCategory"
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersOverridesCategory:RulesetRuleActionParametersOverridesCategory"
                     },
                     "description": "List of tag-based overrides (refer to the nested schema).\n",
                     "language": {
@@ -4580,7 +4727,7 @@
                 "rules": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterOverridesRule:RulesetRuleActionParameterOverridesRule"
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersOverridesRule:RulesetRuleActionParametersOverridesRule"
                     },
                     "description": "List of rule-based overrides (refer to the nested schema).\n",
                     "language": {
@@ -4592,7 +4739,7 @@
             },
             "type": "object"
         },
-        "cloudflare:index/RulesetRuleActionParameterOverridesCategory:RulesetRuleActionParameterOverridesCategory": {
+        "cloudflare:index/RulesetRuleActionParametersOverridesCategory:RulesetRuleActionParametersOverridesCategory": {
             "properties": {
                 "action": {
                     "type": "string",
@@ -4624,7 +4771,7 @@
             },
             "type": "object"
         },
-        "cloudflare:index/RulesetRuleActionParameterOverridesRule:RulesetRuleActionParameterOverridesRule": {
+        "cloudflare:index/RulesetRuleActionParametersOverridesRule:RulesetRuleActionParametersOverridesRule": {
             "properties": {
                 "action": {
                     "type": "string",
@@ -4665,7 +4812,7 @@
             },
             "type": "object"
         },
-        "cloudflare:index/RulesetRuleActionParameterUri:RulesetRuleActionParameterUri": {
+        "cloudflare:index/RulesetRuleActionParametersUri:RulesetRuleActionParametersUri": {
             "properties": {
                 "origin": {
                     "type": "boolean",
@@ -4675,11 +4822,8 @@
                         }
                     }
                 },
-                "paths": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUriPath:RulesetRuleActionParameterUriPath"
-                    },
+                "path": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersUriPath:RulesetRuleActionParametersUriPath",
                     "description": "URI path configuration when performing a URL rewrite (refer to the nested schema).\n",
                     "language": {
                         "python": {
@@ -4687,11 +4831,8 @@
                         }
                     }
                 },
-                "queries": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParameterUriQuery:RulesetRuleActionParameterUriQuery"
-                    },
+                "query": {
+                    "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersUriQuery:RulesetRuleActionParametersUriQuery",
                     "description": "Query string configuration when performing a URL rewrite (refer to the nested schema).\n",
                     "language": {
                         "python": {
@@ -4702,7 +4843,7 @@
             },
             "type": "object"
         },
-        "cloudflare:index/RulesetRuleActionParameterUriPath:RulesetRuleActionParameterUriPath": {
+        "cloudflare:index/RulesetRuleActionParametersUriPath:RulesetRuleActionParametersUriPath": {
             "properties": {
                 "expression": {
                     "type": "string",
@@ -4725,7 +4866,7 @@
             },
             "type": "object"
         },
-        "cloudflare:index/RulesetRuleActionParameterUriQuery:RulesetRuleActionParameterUriQuery": {
+        "cloudflare:index/RulesetRuleActionParametersUriQuery:RulesetRuleActionParametersUriQuery": {
             "properties": {
                 "expression": {
                     "type": "string",
@@ -4739,6 +4880,59 @@
                 "value": {
                     "type": "string",
                     "description": "Static string value of the updated URI path or query string component. Conflicts with `expression`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleRatelimit:RulesetRuleRatelimit": {
+            "properties": {
+                "characteristics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of parameters that define how Cloudflare tracks the request rate for this rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mitigationExpression": {
+                    "type": "string",
+                    "description": "Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "mitigationTimeout": {
+                    "type": "integer",
+                    "description": "Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "period": {
+                    "type": "integer",
+                    "description": "The period of time to consider (in seconds) when evaluating the request rate.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestsPerPeriod": {
+                    "type": "integer",
+                    "description": "The number of requests over the period of time that will trigger the Rate Limiting rule.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4819,10 +5013,104 @@
                 "start"
             ]
         },
+        "cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus": {
+            "properties": {
+                "enabledDownloadPhase": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabledUploadPhase": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "failClosed": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabledDownloadPhase",
+                "enabledUploadPhase",
+                "failClosed"
+            ]
+        },
+        "cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage": {
+            "properties": {
+                "backgroundColor": {
+                    "type": "string",
+                    "description": "Hex code of block page background color.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicator of enablement.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "footerText": {
+                    "type": "string",
+                    "description": "Block page header text.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "headerText": {
+                    "type": "string",
+                    "description": "Block page footer text.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logoPath": {
+                    "type": "string",
+                    "description": "URL of block page logo.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of block page configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork": {
             "properties": {
                 "id": {
                     "type": "string",
+                    "description": "ID of the teams location.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4850,6 +5138,115 @@
                     ]
                 }
             }
+        },
+        "cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings": {
+            "properties": {
+                "bisoAdminControls": {
+                    "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsBisoAdminControls:TeamsRuleRuleSettingsBisoAdminControls",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "blockPageEnabled": {
+                    "type": "boolean",
+                    "description": "Indicator of block page enablement.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "blockPageReason": {
+                    "type": "string",
+                    "description": "The displayed reason for a user being blocked.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "l4override": {
+                    "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsL4override:TeamsRuleRuleSettingsL4override",
+                    "description": "Settings to forward layer 4 traffic.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "overrideHost": {
+                    "type": "string",
+                    "description": "The host to override matching DNS queries with.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "overrideIps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The IPs to override matching DNS queries with.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/TeamsRuleRuleSettingsBisoAdminControls:TeamsRuleRuleSettingsBisoAdminControls": {
+            "properties": {
+                "disableCopyPaste": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disablePrinting": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/TeamsRuleRuleSettingsL4override:TeamsRuleRuleSettingsL4override": {
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "description": "Override IP to forward traffic to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Override Port to forward traffic to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "ip",
+                "port"
+            ]
         },
         "cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding": {
             "properties": {
@@ -7108,6 +7505,43 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration": {
+            "properties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "accountId",
+                "keyRotationIntervalDays"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string"
+                },
+                "keyRotationIntervalDays": {
+                    "type": "integer"
+                }
+            },
+            "requiredInputs": [
+                "accountId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessKeysConfiguration resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "keyRotationIntervalDays": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate": {
             "description": "Provides a Cloudflare Access Mutual TLS Certificate resource. Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server and can be used with Access to only allows requests from devices with a corresponding client certificate.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst myCert = new cloudflare.AccessMutualTlsCertificate(\"myCert\", {\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name: \"My Root Cert\",\n    certificate: _var.ca_pem,\n    associatedHostnames: [\"staging.example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_cert = cloudflare.AccessMutualTlsCertificate(\"myCert\",\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name=\"My Root Cert\",\n    certificate=var[\"ca_pem\"],\n    associated_hostnames=[\"staging.example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var myCert = new Cloudflare.AccessMutualTlsCertificate(\"myCert\", new Cloudflare.AccessMutualTlsCertificateArgs\n        {\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Name = \"My Root Cert\",\n            Certificate = @var.Ca_pem,\n            AssociatedHostnames = \n            {\n                \"staging.example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessMutualTlsCertificate(ctx, \"myCert\", \u0026cloudflare.AccessMutualTlsCertificateArgs{\n\t\t\tZoneId:      pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tName:        pulumi.String(\"My Root Cert\"),\n\t\t\tCertificate: pulumi.Any(_var.Ca_pem),\n\t\t\tAssociatedHostnames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"staging.example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Mutual TLS Certificate can be imported using a composite ID composed of the account or zone and the mutual TLS certificate ID in the form of`account/ACCOUNT_ID/MUTUAL_TLS_CERTIFICATE_ID` or `zone/ZONE_ID/MUTUAL_TLS_CERTIFICATE_ID`.\n\n```sh\n $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate staging account/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
             "properties": {
@@ -7216,6 +7650,13 @@
                     "type": "string",
                     "description": "The ID of the application the policy is associated with.\n"
                 },
+                "approvalGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessPolicyApprovalGroup:AccessPolicyApprovalGroup"
+                    },
+                    "description": "List of approval group blocks for configuring additional approvals (refer to the nested schema).\n"
+                },
                 "decision": {
                     "type": "string",
                     "description": "Defines the action Access will take if the policy matches the user.\nAllowed values: `allow`, `deny`, `non_identity`, `bypass`\n"
@@ -7241,6 +7682,14 @@
                 "precedence": {
                     "type": "integer",
                     "description": "The unique precedence for policies on a single application. Integer.\n"
+                },
+                "purposeJustificationPrompt": {
+                    "type": "string",
+                    "description": "String to present to the user when purpose justification is enabled.\n"
+                },
+                "purposeJustificationRequired": {
+                    "type": "boolean",
+                    "description": "Boolean of whether to prompt the user for a justification for accessing the resource.\n"
                 },
                 "requires": {
                     "type": "array",
@@ -7272,6 +7721,13 @@
                     "type": "string",
                     "description": "The ID of the application the policy is associated with.\n"
                 },
+                "approvalGroups": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessPolicyApprovalGroup:AccessPolicyApprovalGroup"
+                    },
+                    "description": "List of approval group blocks for configuring additional approvals (refer to the nested schema).\n"
+                },
                 "decision": {
                     "type": "string",
                     "description": "Defines the action Access will take if the policy matches the user.\nAllowed values: `allow`, `deny`, `non_identity`, `bypass`\n"
@@ -7297,6 +7753,14 @@
                 "precedence": {
                     "type": "integer",
                     "description": "The unique precedence for policies on a single application. Integer.\n"
+                },
+                "purposeJustificationPrompt": {
+                    "type": "string",
+                    "description": "String to present to the user when purpose justification is enabled.\n"
+                },
+                "purposeJustificationRequired": {
+                    "type": "boolean",
+                    "description": "Boolean of whether to prompt the user for a justification for accessing the resource.\n"
                 },
                 "requires": {
                     "type": "array",
@@ -7328,6 +7792,13 @@
                         "type": "string",
                         "description": "The ID of the application the policy is associated with.\n"
                     },
+                    "approvalGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/AccessPolicyApprovalGroup:AccessPolicyApprovalGroup"
+                        },
+                        "description": "List of approval group blocks for configuring additional approvals (refer to the nested schema).\n"
+                    },
                     "decision": {
                         "type": "string",
                         "description": "Defines the action Access will take if the policy matches the user.\nAllowed values: `allow`, `deny`, `non_identity`, `bypass`\n"
@@ -7353,6 +7824,14 @@
                     "precedence": {
                         "type": "integer",
                         "description": "The unique precedence for policies on a single application. Integer.\n"
+                    },
+                    "purposeJustificationPrompt": {
+                        "type": "string",
+                        "description": "String to present to the user when purpose justification is enabled.\n"
+                    },
+                    "purposeJustificationRequired": {
+                        "type": "boolean",
+                        "description": "Boolean of whether to prompt the user for a justification for accessing the resource.\n"
                     },
                     "requires": {
                         "type": "array",
@@ -11040,7 +11519,7 @@
             }
         },
         "cloudflare:index/ruleset:Ruleset": {
-            "description": "The Cloudflare Ruleset Engine allows you to create and deploy rules and rulesets.\nThe engine syntax, inspired by the Wireshark Display Filter language, is the\nsame syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine\nin different products, allowing you to configure several products using the same\nbasic syntax.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Magic Transit\nconst magicTransitExample = new cloudflare.Ruleset(\"magic_transit_example\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"example magic transit ruleset description\",\n    kind: \"root\",\n    name: \"account magic transit\",\n    phase: \"magic_transit\",\n    rules: [{\n        action: \"allow\",\n        description: \"Allow TCP Ephemeral Ports\",\n        expression: \"tcp.dstport in { 32768..65535 }\",\n    }],\n});\n// Zone-level WAF Managed Ruleset\nconst zoneLevelManagedWaf = new cloudflare.Ruleset(\"zone_level_managed_waf\", {\n    description: \"managed WAF ruleset description\",\n    kind: \"zone\",\n    name: \"managed WAF\",\n    phase: \"http_request_firewall_managed\",\n    rules: [{\n        action: \"execute\",\n        actionParameters: [{\n            id: \"efb7b8c949ac4650a09736fc376e9aee\",\n        }],\n        description: \"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n        enabled: true,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Zone-level WAF with tag-based overrides\nconst zoneLevelManagedWafWithCategoryBasedOverrides = new cloudflare.Ruleset(\"zone_level_managed_waf_with_category_based_overrides\", {\n    description: \"managed WAF with tag-based overrides ruleset description\",\n    kind: \"zone\",\n    name: \"managed WAF with tag-based overrides\",\n    phase: \"http_request_firewall_managed\",\n    rules: [{\n        action: \"execute\",\n        actionParameters: [{\n            id: \"efb7b8c949ac4650a09736fc376e9aee\",\n            overrides: {\n                categories: [\n                    {\n                        action: \"block\",\n                        category: \"wordpress\",\n                        enabled: true,\n                    },\n                    {\n                        action: \"block\",\n                        category: \"joomla\",\n                        enabled: true,\n                    },\n                ],\n            },\n        }],\n        description: \"overrides to only enable wordpress rules to block\",\n        enabled: false,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Magic Transit\nmagic_transit_example = cloudflare.Ruleset(\"magicTransitExample\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"example magic transit ruleset description\",\n    kind=\"root\",\n    name=\"account magic transit\",\n    phase=\"magic_transit\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"allow\",\n        description=\"Allow TCP Ephemeral Ports\",\n        expression=\"tcp.dstport in { 32768..65535 }\",\n    )])\n# Zone-level WAF Managed Ruleset\nzone_level_managed_waf = cloudflare.Ruleset(\"zoneLevelManagedWaf\",\n    description=\"managed WAF ruleset description\",\n    kind=\"zone\",\n    name=\"managed WAF\",\n    phase=\"http_request_firewall_managed\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"execute\",\n        action_parameters=[cloudflare.RulesetRuleActionParameterArgs(\n            id=\"efb7b8c949ac4650a09736fc376e9aee\",\n        )],\n        description=\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n        enabled=True,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Zone-level WAF with tag-based overrides\nzone_level_managed_waf_with_category_based_overrides = cloudflare.Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\",\n    description=\"managed WAF with tag-based overrides ruleset description\",\n    kind=\"zone\",\n    name=\"managed WAF with tag-based overrides\",\n    phase=\"http_request_firewall_managed\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"execute\",\n        action_parameters=[cloudflare.RulesetRuleActionParameterArgs(\n            id=\"efb7b8c949ac4650a09736fc376e9aee\",\n            overrides=cloudflare.RulesetRuleActionParameterOverridesArgs(\n                categories=[\n                    cloudflare.RulesetRuleActionParameterOverridesCategoryArgs(\n                        action=\"block\",\n                        category=\"wordpress\",\n                        enabled=True,\n                    ),\n                    cloudflare.RulesetRuleActionParameterOverridesCategoryArgs(\n                        action=\"block\",\n                        category=\"joomla\",\n                        enabled=True,\n                    ),\n                ],\n            ),\n        )],\n        description=\"overrides to only enable wordpress rules to block\",\n        enabled=False,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Magic Transit\n        var magicTransitExample = new Cloudflare.Ruleset(\"magicTransitExample\", new Cloudflare.RulesetArgs\n        {\n            AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"example magic transit ruleset description\",\n            Kind = \"root\",\n            Name = \"account magic transit\",\n            Phase = \"magic_transit\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"allow\",\n                    Description = \"Allow TCP Ephemeral Ports\",\n                    Expression = \"tcp.dstport in { 32768..65535 }\",\n                },\n            },\n        });\n        // Zone-level WAF Managed Ruleset\n        var zoneLevelManagedWaf = new Cloudflare.Ruleset(\"zoneLevelManagedWaf\", new Cloudflare.RulesetArgs\n        {\n            Description = \"managed WAF ruleset description\",\n            Kind = \"zone\",\n            Name = \"managed WAF\",\n            Phase = \"http_request_firewall_managed\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"execute\",\n                    ActionParameters = \n                    {\n                        new Cloudflare.Inputs.RulesetRuleActionParameterArgs\n                        {\n                            Id = \"efb7b8c949ac4650a09736fc376e9aee\",\n                        },\n                    },\n                    Description = \"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n                    Enabled = true,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Zone-level WAF with tag-based overrides\n        var zoneLevelManagedWafWithCategoryBasedOverrides = new Cloudflare.Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\", new Cloudflare.RulesetArgs\n        {\n            Description = \"managed WAF with tag-based overrides ruleset description\",\n            Kind = \"zone\",\n            Name = \"managed WAF with tag-based overrides\",\n            Phase = \"http_request_firewall_managed\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"execute\",\n                    ActionParameters = \n                    {\n                        new Cloudflare.Inputs.RulesetRuleActionParameterArgs\n                        {\n                            Id = \"efb7b8c949ac4650a09736fc376e9aee\",\n                            Overrides = new Cloudflare.Inputs.RulesetRuleActionParameterOverridesArgs\n                            {\n                                Categories = \n                                {\n                                    new Cloudflare.Inputs.RulesetRuleActionParameterOverridesCategoryArgs\n                                    {\n                                        Action = \"block\",\n                                        Category = \"wordpress\",\n                                        Enabled = true,\n                                    },\n                                    new Cloudflare.Inputs.RulesetRuleActionParameterOverridesCategoryArgs\n                                    {\n                                        Action = \"block\",\n                                        Category = \"joomla\",\n                                        Enabled = true,\n                                    },\n                                },\n                            },\n                        },\n                    },\n                    Description = \"overrides to only enable wordpress rules to block\",\n                    Enabled = false,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewRuleset(ctx, \"magicTransitExample\", \u0026cloudflare.RulesetArgs{\n\t\t\tAccountId:   pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"example magic transit ruleset description\"),\n\t\t\tKind:        pulumi.String(\"root\"),\n\t\t\tName:        pulumi.String(\"account magic transit\"),\n\t\t\tPhase:       pulumi.String(\"magic_transit\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction:      pulumi.String(\"allow\"),\n\t\t\t\t\tDescription: pulumi.String(\"Allow TCP Ephemeral Ports\"),\n\t\t\t\t\tExpression:  pulumi.String(\"tcp.dstport in { 32768..65535 }\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"zoneLevelManagedWaf\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"managed WAF ruleset description\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"managed WAF\"),\n\t\t\tPhase:       pulumi.String(\"http_request_firewall_managed\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"execute\"),\n\t\t\t\t\tActionParameters: cloudflare.RulesetRuleActionParameterArray{\n\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParameterArgs{\n\t\t\t\t\t\t\tId: pulumi.String(\"efb7b8c949ac4650a09736fc376e9aee\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"zoneLevelManagedWafWithCategoryBasedOverrides\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"managed WAF with tag-based overrides ruleset description\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"managed WAF with tag-based overrides\"),\n\t\t\tPhase:       pulumi.String(\"http_request_firewall_managed\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"execute\"),\n\t\t\t\t\tActionParameters: cloudflare.RulesetRuleActionParameterArray{\n\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParameterArgs{\n\t\t\t\t\t\t\tId: pulumi.String(\"efb7b8c949ac4650a09736fc376e9aee\"),\n\t\t\t\t\t\t\tOverrides: \u0026cloudflare.RulesetRuleActionParameterOverridesArgs{\n\t\t\t\t\t\t\t\tCategories: cloudflare.RulesetRuleActionParameterOverridesCategoryArray{\n\t\t\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParameterOverridesCategoryArgs{\n\t\t\t\t\t\t\t\t\t\tAction:   pulumi.String(\"block\"),\n\t\t\t\t\t\t\t\t\t\tCategory: pulumi.String(\"wordpress\"),\n\t\t\t\t\t\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParameterOverridesCategoryArgs{\n\t\t\t\t\t\t\t\t\t\tAction:   pulumi.String(\"block\"),\n\t\t\t\t\t\t\t\t\t\tCategory: pulumi.String(\"joomla\"),\n\t\t\t\t\t\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"overrides to only enable wordpress rules to block\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCurrently, you cannot import rulesets. ",
+            "description": "The [Cloudflare Ruleset Engine](https://developers.cloudflare.com/firewall/cf-rulesets)\nallows you to create and deploy rules and rulesets.\nThe engine syntax, inspired by the Wireshark Display Filter language, is the\nsame syntax used in custom Firewall Rules. Cloudflare uses the Ruleset Engine\nin different products, allowing you to configure several products using the same\nbasic syntax.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Magic Transit\nconst magicTransitExample = new cloudflare.Ruleset(\"magic_transit_example\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"example magic transit ruleset description\",\n    kind: \"root\",\n    name: \"account magic transit\",\n    phase: \"magic_transit\",\n    rules: [{\n        action: \"allow\",\n        description: \"Allow TCP Ephemeral Ports\",\n        expression: \"tcp.dstport in { 32768..65535 }\",\n    }],\n});\n// Zone-level WAF Managed Ruleset\nconst zoneLevelManagedWaf = new cloudflare.Ruleset(\"zone_level_managed_waf\", {\n    description: \"managed WAF ruleset description\",\n    kind: \"zone\",\n    name: \"managed WAF\",\n    phase: \"http_request_firewall_managed\",\n    rules: [{\n        action: \"execute\",\n        actionParameters: {\n            id: \"efb7b8c949ac4650a09736fc376e9aee\",\n        },\n        description: \"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n        enabled: true,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Zone-level WAF with tag-based overrides\nconst zoneLevelManagedWafWithCategoryBasedOverrides = new cloudflare.Ruleset(\"zone_level_managed_waf_with_category_based_overrides\", {\n    description: \"managed WAF with tag-based overrides ruleset description\",\n    kind: \"zone\",\n    name: \"managed WAF with tag-based overrides\",\n    phase: \"http_request_firewall_managed\",\n    rules: [{\n        action: \"execute\",\n        actionParameters: {\n            id: \"efb7b8c949ac4650a09736fc376e9aee\",\n            overrides: {\n                categories: [\n                    {\n                        action: \"block\",\n                        category: \"wordpress\",\n                        enabled: true,\n                    },\n                    {\n                        action: \"block\",\n                        category: \"joomla\",\n                        enabled: true,\n                    },\n                ],\n            },\n        },\n        description: \"overrides to only enable wordpress rules to block\",\n        enabled: false,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Rewrite the URI path component to a static path\nconst transformUriRulePath = new cloudflare.Ruleset(\"transform_uri_rule_path\", {\n    description: \"change the URI path to a new static path\",\n    kind: \"zone\",\n    name: \"transform rule for URI path\",\n    phase: \"http_request_transform\",\n    rules: [{\n        action: \"rewrite\",\n        actionParameters: {\n            uri: {\n                path: {\n                    value: \"/my-new-route\",\n                },\n            },\n        },\n        description: \"example URI path transform rule\",\n        enabled: true,\n        expression: \"(http.host eq \\\"example.com\\\" and http.uri.path eq \\\"/old-path\\\")\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Rewrite the URI query component to a static query\nconst transformUriRuleQuery = new cloudflare.Ruleset(\"transform_uri_rule_query\", {\n    description: \"change the URI query to a new static query\",\n    kind: \"zone\",\n    name: \"transform rule for URI query parameter\",\n    phase: \"http_request_transform\",\n    rules: [{\n        action: \"rewrite\",\n        actionParameters: {\n            uri: {\n                query: {\n                    value: \"old=new_again\",\n                },\n            },\n        },\n        description: \"URI transformation query example\",\n        enabled: true,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// Rewrite HTTP headers to a modified values\nconst transformUriHttpHeaders = new cloudflare.Ruleset(\"transform_uri_http_headers\", {\n    description: \"modify HTTP headers before reaching origin\",\n    kind: \"zone\",\n    name: \"transform rule for HTTP headers\",\n    phase: \"http_request_late_transform\",\n    rules: [{\n        action: \"rewrite\",\n        actionParameters: {\n            headers: [\n                {\n                    name: \"example-http-header-1\",\n                    operation: \"set\",\n                    value: \"my-http-header-value-1\",\n                },\n                {\n                    expression: \"cf.zone.name\",\n                    name: \"example-http-header-2\",\n                    operation: \"set\",\n                },\n                {\n                    name: \"example-http-header-3-to-remove\",\n                    operation: \"remove\",\n                },\n            ],\n        },\n        description: \"example request header transform rule\",\n        enabled: false,\n        expression: \"true\",\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n// HTTP rate limit for an API route\nconst rateLimitingExample = new cloudflare.Ruleset(\"rate_limiting_example\", {\n    description: \"apply HTTP rate limiting for a route\",\n    kind: \"zone\",\n    name: \"restrict API requests count\",\n    phase: \"http_ratelimit\",\n    rules: [{\n        action: \"block\",\n        description: \"rate limit for API\",\n        enabled: true,\n        expression: \"(http.request.uri.path matches \\\"^/api/\\\")\",\n        ratelimit: {\n            characteristics: [\n                \"cf.colo.id\",\n                \"ip.src\",\n            ],\n            mitigationTimeout: 600,\n            period: 60,\n            requestsPerPeriod: 100,\n        },\n    }],\n    zoneId: \"cb029e245cfdd66dc8d2e570d5dd3322\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Magic Transit\nmagic_transit_example = cloudflare.Ruleset(\"magicTransitExample\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"example magic transit ruleset description\",\n    kind=\"root\",\n    name=\"account magic transit\",\n    phase=\"magic_transit\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"allow\",\n        description=\"Allow TCP Ephemeral Ports\",\n        expression=\"tcp.dstport in { 32768..65535 }\",\n    )])\n# Zone-level WAF Managed Ruleset\nzone_level_managed_waf = cloudflare.Ruleset(\"zoneLevelManagedWaf\",\n    description=\"managed WAF ruleset description\",\n    kind=\"zone\",\n    name=\"managed WAF\",\n    phase=\"http_request_firewall_managed\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"execute\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            id=\"efb7b8c949ac4650a09736fc376e9aee\",\n        ),\n        description=\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n        enabled=True,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Zone-level WAF with tag-based overrides\nzone_level_managed_waf_with_category_based_overrides = cloudflare.Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\",\n    description=\"managed WAF with tag-based overrides ruleset description\",\n    kind=\"zone\",\n    name=\"managed WAF with tag-based overrides\",\n    phase=\"http_request_firewall_managed\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"execute\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            id=\"efb7b8c949ac4650a09736fc376e9aee\",\n            overrides=cloudflare.RulesetRuleActionParametersOverridesArgs(\n                categories=[\n                    cloudflare.RulesetRuleActionParametersOverridesCategoryArgs(\n                        action=\"block\",\n                        category=\"wordpress\",\n                        enabled=True,\n                    ),\n                    cloudflare.RulesetRuleActionParametersOverridesCategoryArgs(\n                        action=\"block\",\n                        category=\"joomla\",\n                        enabled=True,\n                    ),\n                ],\n            ),\n        ),\n        description=\"overrides to only enable wordpress rules to block\",\n        enabled=False,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Rewrite the URI path component to a static path\ntransform_uri_rule_path = cloudflare.Ruleset(\"transformUriRulePath\",\n    description=\"change the URI path to a new static path\",\n    kind=\"zone\",\n    name=\"transform rule for URI path\",\n    phase=\"http_request_transform\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"rewrite\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            uri=cloudflare.RulesetRuleActionParametersUriArgs(\n                path=cloudflare.RulesetRuleActionParametersUriPathArgs(\n                    value=\"/my-new-route\",\n                ),\n            ),\n        ),\n        description=\"example URI path transform rule\",\n        enabled=True,\n        expression=\"(http.host eq \\\"example.com\\\" and http.uri.path eq \\\"/old-path\\\")\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Rewrite the URI query component to a static query\ntransform_uri_rule_query = cloudflare.Ruleset(\"transformUriRuleQuery\",\n    description=\"change the URI query to a new static query\",\n    kind=\"zone\",\n    name=\"transform rule for URI query parameter\",\n    phase=\"http_request_transform\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"rewrite\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            uri=cloudflare.RulesetRuleActionParametersUriArgs(\n                query=cloudflare.RulesetRuleActionParametersUriQueryArgs(\n                    value=\"old=new_again\",\n                ),\n            ),\n        ),\n        description=\"URI transformation query example\",\n        enabled=True,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# Rewrite HTTP headers to a modified values\ntransform_uri_http_headers = cloudflare.Ruleset(\"transformUriHttpHeaders\",\n    description=\"modify HTTP headers before reaching origin\",\n    kind=\"zone\",\n    name=\"transform rule for HTTP headers\",\n    phase=\"http_request_late_transform\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"rewrite\",\n        action_parameters=cloudflare.RulesetRuleActionParametersArgs(\n            headers=[\n                cloudflare.RulesetRuleActionParametersHeaderArgs(\n                    name=\"example-http-header-1\",\n                    operation=\"set\",\n                    value=\"my-http-header-value-1\",\n                ),\n                cloudflare.RulesetRuleActionParametersHeaderArgs(\n                    expression=\"cf.zone.name\",\n                    name=\"example-http-header-2\",\n                    operation=\"set\",\n                ),\n                cloudflare.RulesetRuleActionParametersHeaderArgs(\n                    name=\"example-http-header-3-to-remove\",\n                    operation=\"remove\",\n                ),\n            ],\n        ),\n        description=\"example request header transform rule\",\n        enabled=False,\n        expression=\"true\",\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n# HTTP rate limit for an API route\nrate_limiting_example = cloudflare.Ruleset(\"rateLimitingExample\",\n    description=\"apply HTTP rate limiting for a route\",\n    kind=\"zone\",\n    name=\"restrict API requests count\",\n    phase=\"http_ratelimit\",\n    rules=[cloudflare.RulesetRuleArgs(\n        action=\"block\",\n        description=\"rate limit for API\",\n        enabled=True,\n        expression=\"(http.request.uri.path matches \\\"^/api/\\\")\",\n        ratelimit=cloudflare.RulesetRuleRatelimitArgs(\n            characteristics=[\n                \"cf.colo.id\",\n                \"ip.src\",\n            ],\n            mitigation_timeout=600,\n            period=60,\n            requests_per_period=100,\n        ),\n    )],\n    zone_id=\"cb029e245cfdd66dc8d2e570d5dd3322\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Magic Transit\n        var magicTransitExample = new Cloudflare.Ruleset(\"magicTransitExample\", new Cloudflare.RulesetArgs\n        {\n            AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n            Description = \"example magic transit ruleset description\",\n            Kind = \"root\",\n            Name = \"account magic transit\",\n            Phase = \"magic_transit\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"allow\",\n                    Description = \"Allow TCP Ephemeral Ports\",\n                    Expression = \"tcp.dstport in { 32768..65535 }\",\n                },\n            },\n        });\n        // Zone-level WAF Managed Ruleset\n        var zoneLevelManagedWaf = new Cloudflare.Ruleset(\"zoneLevelManagedWaf\", new Cloudflare.RulesetArgs\n        {\n            Description = \"managed WAF ruleset description\",\n            Kind = \"zone\",\n            Name = \"managed WAF\",\n            Phase = \"http_request_firewall_managed\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"execute\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Id = \"efb7b8c949ac4650a09736fc376e9aee\",\n                    },\n                    Description = \"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\",\n                    Enabled = true,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Zone-level WAF with tag-based overrides\n        var zoneLevelManagedWafWithCategoryBasedOverrides = new Cloudflare.Ruleset(\"zoneLevelManagedWafWithCategoryBasedOverrides\", new Cloudflare.RulesetArgs\n        {\n            Description = \"managed WAF with tag-based overrides ruleset description\",\n            Kind = \"zone\",\n            Name = \"managed WAF with tag-based overrides\",\n            Phase = \"http_request_firewall_managed\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"execute\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Id = \"efb7b8c949ac4650a09736fc376e9aee\",\n                        Overrides = new Cloudflare.Inputs.RulesetRuleActionParametersOverridesArgs\n                        {\n                            Categories = \n                            {\n                                new Cloudflare.Inputs.RulesetRuleActionParametersOverridesCategoryArgs\n                                {\n                                    Action = \"block\",\n                                    Category = \"wordpress\",\n                                    Enabled = true,\n                                },\n                                new Cloudflare.Inputs.RulesetRuleActionParametersOverridesCategoryArgs\n                                {\n                                    Action = \"block\",\n                                    Category = \"joomla\",\n                                    Enabled = true,\n                                },\n                            },\n                        },\n                    },\n                    Description = \"overrides to only enable wordpress rules to block\",\n                    Enabled = false,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Rewrite the URI path component to a static path\n        var transformUriRulePath = new Cloudflare.Ruleset(\"transformUriRulePath\", new Cloudflare.RulesetArgs\n        {\n            Description = \"change the URI path to a new static path\",\n            Kind = \"zone\",\n            Name = \"transform rule for URI path\",\n            Phase = \"http_request_transform\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"rewrite\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Uri = new Cloudflare.Inputs.RulesetRuleActionParametersUriArgs\n                        {\n                            Path = new Cloudflare.Inputs.RulesetRuleActionParametersUriPathArgs\n                            {\n                                Value = \"/my-new-route\",\n                            },\n                        },\n                    },\n                    Description = \"example URI path transform rule\",\n                    Enabled = true,\n                    Expression = \"(http.host eq \\\"example.com\\\" and http.uri.path eq \\\"/old-path\\\")\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Rewrite the URI query component to a static query\n        var transformUriRuleQuery = new Cloudflare.Ruleset(\"transformUriRuleQuery\", new Cloudflare.RulesetArgs\n        {\n            Description = \"change the URI query to a new static query\",\n            Kind = \"zone\",\n            Name = \"transform rule for URI query parameter\",\n            Phase = \"http_request_transform\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"rewrite\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Uri = new Cloudflare.Inputs.RulesetRuleActionParametersUriArgs\n                        {\n                            Query = new Cloudflare.Inputs.RulesetRuleActionParametersUriQueryArgs\n                            {\n                                Value = \"old=new_again\",\n                            },\n                        },\n                    },\n                    Description = \"URI transformation query example\",\n                    Enabled = true,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // Rewrite HTTP headers to a modified values\n        var transformUriHttpHeaders = new Cloudflare.Ruleset(\"transformUriHttpHeaders\", new Cloudflare.RulesetArgs\n        {\n            Description = \"modify HTTP headers before reaching origin\",\n            Kind = \"zone\",\n            Name = \"transform rule for HTTP headers\",\n            Phase = \"http_request_late_transform\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"rewrite\",\n                    ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs\n                    {\n                        Headers = \n                        {\n                            new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs\n                            {\n                                Name = \"example-http-header-1\",\n                                Operation = \"set\",\n                                Value = \"my-http-header-value-1\",\n                            },\n                            new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs\n                            {\n                                Expression = \"cf.zone.name\",\n                                Name = \"example-http-header-2\",\n                                Operation = \"set\",\n                            },\n                            new Cloudflare.Inputs.RulesetRuleActionParametersHeaderArgs\n                            {\n                                Name = \"example-http-header-3-to-remove\",\n                                Operation = \"remove\",\n                            },\n                        },\n                    },\n                    Description = \"example request header transform rule\",\n                    Enabled = false,\n                    Expression = \"true\",\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n        // HTTP rate limit for an API route\n        var rateLimitingExample = new Cloudflare.Ruleset(\"rateLimitingExample\", new Cloudflare.RulesetArgs\n        {\n            Description = \"apply HTTP rate limiting for a route\",\n            Kind = \"zone\",\n            Name = \"restrict API requests count\",\n            Phase = \"http_ratelimit\",\n            Rules = \n            {\n                new Cloudflare.Inputs.RulesetRuleArgs\n                {\n                    Action = \"block\",\n                    Description = \"rate limit for API\",\n                    Enabled = true,\n                    Expression = \"(http.request.uri.path matches \\\"^/api/\\\")\",\n                    Ratelimit = new Cloudflare.Inputs.RulesetRuleRatelimitArgs\n                    {\n                        Characteristics = \n                        {\n                            \"cf.colo.id\",\n                            \"ip.src\",\n                        },\n                        MitigationTimeout = 600,\n                        Period = 60,\n                        RequestsPerPeriod = 100,\n                    },\n                },\n            },\n            ZoneId = \"cb029e245cfdd66dc8d2e570d5dd3322\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewRuleset(ctx, \"magicTransitExample\", \u0026cloudflare.RulesetArgs{\n\t\t\tAccountId:   pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"example magic transit ruleset description\"),\n\t\t\tKind:        pulumi.String(\"root\"),\n\t\t\tName:        pulumi.String(\"account magic transit\"),\n\t\t\tPhase:       pulumi.String(\"magic_transit\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction:      pulumi.String(\"allow\"),\n\t\t\t\t\tDescription: pulumi.String(\"Allow TCP Ephemeral Ports\"),\n\t\t\t\t\tExpression:  pulumi.String(\"tcp.dstport in { 32768..65535 }\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"zoneLevelManagedWaf\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"managed WAF ruleset description\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"managed WAF\"),\n\t\t\tPhase:       pulumi.String(\"http_request_firewall_managed\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"execute\"),\n\t\t\t\t\tActionParameters: \u0026cloudflare.RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tId: pulumi.String(\"efb7b8c949ac4650a09736fc376e9aee\"),\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"zoneLevelManagedWafWithCategoryBasedOverrides\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"managed WAF with tag-based overrides ruleset description\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"managed WAF with tag-based overrides\"),\n\t\t\tPhase:       pulumi.String(\"http_request_firewall_managed\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"execute\"),\n\t\t\t\t\tActionParameters: \u0026cloudflare.RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tId: pulumi.String(\"efb7b8c949ac4650a09736fc376e9aee\"),\n\t\t\t\t\t\tOverrides: \u0026cloudflare.RulesetRuleActionParametersOverridesArgs{\n\t\t\t\t\t\t\tCategories: cloudflare.RulesetRuleActionParametersOverridesCategoryArray{\n\t\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParametersOverridesCategoryArgs{\n\t\t\t\t\t\t\t\t\tAction:   pulumi.String(\"block\"),\n\t\t\t\t\t\t\t\t\tCategory: pulumi.String(\"wordpress\"),\n\t\t\t\t\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParametersOverridesCategoryArgs{\n\t\t\t\t\t\t\t\t\tAction:   pulumi.String(\"block\"),\n\t\t\t\t\t\t\t\t\tCategory: pulumi.String(\"joomla\"),\n\t\t\t\t\t\t\t\t\tEnabled:  pulumi.Bool(true),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"overrides to only enable wordpress rules to block\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"transformUriRulePath\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"change the URI path to a new static path\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"transform rule for URI path\"),\n\t\t\tPhase:       pulumi.String(\"http_request_transform\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"rewrite\"),\n\t\t\t\t\tActionParameters: \u0026cloudflare.RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tUri: \u0026cloudflare.RulesetRuleActionParametersUriArgs{\n\t\t\t\t\t\t\tPath: \u0026cloudflare.RulesetRuleActionParametersUriPathArgs{\n\t\t\t\t\t\t\t\tValue: pulumi.String(\"/my-new-route\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"example URI path transform rule\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"(http.host eq \\\"example.com\\\" and http.uri.path eq \\\"/old-path\\\")\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"transformUriRuleQuery\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"change the URI query to a new static query\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"transform rule for URI query parameter\"),\n\t\t\tPhase:       pulumi.String(\"http_request_transform\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"rewrite\"),\n\t\t\t\t\tActionParameters: \u0026cloudflare.RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tUri: \u0026cloudflare.RulesetRuleActionParametersUriArgs{\n\t\t\t\t\t\t\tQuery: \u0026cloudflare.RulesetRuleActionParametersUriQueryArgs{\n\t\t\t\t\t\t\t\tValue: pulumi.String(\"old=new_again\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"URI transformation query example\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"transformUriHttpHeaders\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"modify HTTP headers before reaching origin\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"transform rule for HTTP headers\"),\n\t\t\tPhase:       pulumi.String(\"http_request_late_transform\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction: pulumi.String(\"rewrite\"),\n\t\t\t\t\tActionParameters: \u0026cloudflare.RulesetRuleActionParametersArgs{\n\t\t\t\t\t\tHeaders: cloudflare.RulesetRuleActionParametersHeaderArray{\n\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParametersHeaderArgs{\n\t\t\t\t\t\t\t\tName:      pulumi.String(\"example-http-header-1\"),\n\t\t\t\t\t\t\t\tOperation: pulumi.String(\"set\"),\n\t\t\t\t\t\t\t\tValue:     pulumi.String(\"my-http-header-value-1\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParametersHeaderArgs{\n\t\t\t\t\t\t\t\tExpression: pulumi.String(\"cf.zone.name\"),\n\t\t\t\t\t\t\t\tName:       pulumi.String(\"example-http-header-2\"),\n\t\t\t\t\t\t\t\tOperation:  pulumi.String(\"set\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\u0026cloudflare.RulesetRuleActionParametersHeaderArgs{\n\t\t\t\t\t\t\t\tName:      pulumi.String(\"example-http-header-3-to-remove\"),\n\t\t\t\t\t\t\t\tOperation: pulumi.String(\"remove\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"example request header transform rule\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(false),\n\t\t\t\t\tExpression:  pulumi.String(\"true\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewRuleset(ctx, \"rateLimitingExample\", \u0026cloudflare.RulesetArgs{\n\t\t\tDescription: pulumi.String(\"apply HTTP rate limiting for a route\"),\n\t\t\tKind:        pulumi.String(\"zone\"),\n\t\t\tName:        pulumi.String(\"restrict API requests count\"),\n\t\t\tPhase:       pulumi.String(\"http_ratelimit\"),\n\t\t\tRules: cloudflare.RulesetRuleArray{\n\t\t\t\t\u0026cloudflare.RulesetRuleArgs{\n\t\t\t\t\tAction:      pulumi.String(\"block\"),\n\t\t\t\t\tDescription: pulumi.String(\"rate limit for API\"),\n\t\t\t\t\tEnabled:     pulumi.Bool(true),\n\t\t\t\t\tExpression:  pulumi.String(\"(http.request.uri.path matches \\\"^/api/\\\")\"),\n\t\t\t\t\tRatelimit: \u0026cloudflare.RulesetRuleRatelimitArgs{\n\t\t\t\t\t\tCharacteristics: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"cf.colo.id\"),\n\t\t\t\t\t\t\tpulumi.String(\"ip.src\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tMitigationTimeout: pulumi.Int(600),\n\t\t\t\t\t\tPeriod:            pulumi.Int(60),\n\t\t\t\t\t\tRequestsPerPeriod: pulumi.Int(100),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"cb029e245cfdd66dc8d2e570d5dd3322\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCurrently, you cannot import rulesets. ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -11056,7 +11535,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the ruleset.\n"
+                    "description": "Name of the HTTP request header to target.\n"
                 },
                 "phase": {
                     "type": "string",
@@ -11099,7 +11578,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the ruleset.\n"
+                    "description": "Name of the HTTP request header to target.\n"
                 },
                 "phase": {
                     "type": "string",
@@ -11144,7 +11623,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the ruleset.\n"
+                        "description": "Name of the HTTP request header to target.\n"
                     },
                     "phase": {
                         "type": "string",
@@ -11515,6 +11994,82 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/teamsAccount:TeamsAccount": {
+            "description": "Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst main = new cloudflare.TeamsAccount(\"main\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    blockPage: {\n        backgroundColor: \"#000000\",\n        footerText: \"hello\",\n        headerText: \"hello\",\n        logoPath: \"https://google.com\",\n    },\n    tlsDecryptEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmain = cloudflare.TeamsAccount(\"main\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    block_page=cloudflare.TeamsAccountBlockPageArgs(\n        background_color=\"#000000\",\n        footer_text=\"hello\",\n        header_text=\"hello\",\n        logo_path=\"https://google.com\",\n    ),\n    tls_decrypt_enabled=True)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = new Cloudflare.TeamsAccount(\"main\", new Cloudflare.TeamsAccountArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs\n            {\n                BackgroundColor = \"#000000\",\n                FooterText = \"hello\",\n                HeaderText = \"hello\",\n                LogoPath = \"https://google.com\",\n            },\n            TlsDecryptEnabled = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsAccount(ctx, \"main\", \u0026cloudflare.TeamsAccountArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tBlockPage: \u0026cloudflare.TeamsAccountBlockPageArgs{\n\t\t\t\tBackgroundColor: pulumi.String(\"#000000\"),\n\t\t\t\tFooterText:      pulumi.String(\"hello\"),\n\t\t\t\tHeaderText:      pulumi.String(\"hello\"),\n\t\t\t\tLogoPath:        pulumi.String(\"https://google.com\"),\n\t\t\t},\n\t\t\tTlsDecryptEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSince a Teams account does not have a unique resource ID, configuration can be imported using the account ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the teams location should be added.\n"
+                },
+                "activityLogEnabled": {
+                    "type": "boolean"
+                },
+                "antivirus": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus",
+                    "description": "Configuration for antivirus traffic scanning.\n"
+                },
+                "blockPage": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
+                    "description": "Configuration for a custom block page.\n"
+                },
+                "tlsDecryptEnabled": {
+                    "type": "boolean",
+                    "description": "Indicator that decryption of TLS traffic is enabled.\n"
+                }
+            },
+            "required": [
+                "accountId"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the teams location should be added.\n"
+                },
+                "activityLogEnabled": {
+                    "type": "boolean"
+                },
+                "antivirus": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus",
+                    "description": "Configuration for antivirus traffic scanning.\n"
+                },
+                "blockPage": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
+                    "description": "Configuration for a custom block page.\n"
+                },
+                "tlsDecryptEnabled": {
+                    "type": "boolean",
+                    "description": "Indicator that decryption of TLS traffic is enabled.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamsAccount resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the teams location should be added.\n"
+                    },
+                    "activityLogEnabled": {
+                        "type": "boolean"
+                    },
+                    "antivirus": {
+                        "$ref": "#/types/cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus",
+                        "description": "Configuration for antivirus traffic scanning.\n"
+                    },
+                    "blockPage": {
+                        "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
+                        "description": "Configuration for a custom block page.\n"
+                    },
+                    "tlsDecryptEnabled": {
+                        "type": "boolean",
+                        "description": "Indicator that decryption of TLS traffic is enabled.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/teamsList:TeamsList": {
             "description": "Provides a Cloudflare Teams List resource. Teams lists are referenced when creating secure web gateway policies or device posture rules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst corporateDevices = new cloudflare.TeamsList(\"corporate_devices\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    description: \"Serial numbers for all corporate devices.\",\n    items: [\n        \"8GE8721REF\",\n        \"5RE8543EGG\",\n        \"1YE2880LNP\",\n    ],\n    name: \"Corporate devices\",\n    type: \"SERIAL\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ncorporate_devices = cloudflare.TeamsList(\"corporateDevices\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    description=\"Serial numbers for all corporate devices.\",\n    items=[\n        \"8GE8721REF\",\n        \"5RE8543EGG\",\n        \"1YE2880LNP\",\n    ],\n    name=\"Corporate devices\",\n    type=\"SERIAL\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var corporateDevices = new Cloudflare.TeamsList(\"corporateDevices\", new Cloudflare.TeamsListArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Description = \"Serial numbers for all corporate devices.\",\n            Items = \n            {\n                \"8GE8721REF\",\n                \"5RE8543EGG\",\n                \"1YE2880LNP\",\n            },\n            Name = \"Corporate devices\",\n            Type = \"SERIAL\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsList(ctx, \"corporateDevices\", \u0026cloudflare.TeamsListArgs{\n\t\t\tAccountId:   pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tDescription: pulumi.String(\"Serial numbers for all corporate devices.\"),\n\t\t\tItems: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"8GE8721REF\"),\n\t\t\t\tpulumi.String(\"5RE8543EGG\"),\n\t\t\t\tpulumi.String(\"1YE2880LNP\"),\n\t\t\t},\n\t\t\tName: pulumi.String(\"Corporate devices\"),\n\t\t\tType: pulumi.String(\"SERIAL\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTeams lists can be imported using a composite ID formed of account ID and teams list ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsList:TeamsList corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
             "properties": {
@@ -11608,33 +12163,42 @@
             }
         },
         "cloudflare:index/teamsLocation:TeamsLocation": {
+            "description": "Provides a Cloudflare Teams Location resource. Teams Locations are referenced\nwhen creating secure web gateway policies.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst corporateOffice = new cloudflare.TeamsLocation(\"corporate_office\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    clientDefault: true,\n    name: \"office\",\n    networks: [\n        {\n            network: \"203.0.113.1/32\",\n        },\n        {\n            network: \"203.0.113.2/32\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ncorporate_office = cloudflare.TeamsLocation(\"corporateOffice\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    client_default=True,\n    name=\"office\",\n    networks=[\n        cloudflare.TeamsLocationNetworkArgs(\n            network=\"203.0.113.1/32\",\n        ),\n        cloudflare.TeamsLocationNetworkArgs(\n            network=\"203.0.113.2/32\",\n        ),\n    ])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var corporateOffice = new Cloudflare.TeamsLocation(\"corporateOffice\", new Cloudflare.TeamsLocationArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            ClientDefault = true,\n            Name = \"office\",\n            Networks = \n            {\n                new Cloudflare.Inputs.TeamsLocationNetworkArgs\n                {\n                    Network = \"203.0.113.1/32\",\n                },\n                new Cloudflare.Inputs.TeamsLocationNetworkArgs\n                {\n                    Network = \"203.0.113.2/32\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsLocation(ctx, \"corporateOffice\", \u0026cloudflare.TeamsLocationArgs{\n\t\t\tAccountId:     pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tClientDefault: pulumi.Bool(true),\n\t\t\tName:          pulumi.String(\"office\"),\n\t\t\tNetworks: cloudflare.TeamsLocationNetworkArray{\n\t\t\t\t\u0026cloudflare.TeamsLocationNetworkArgs{\n\t\t\t\t\tNetwork: pulumi.String(\"203.0.113.1/32\"),\n\t\t\t\t},\n\t\t\t\t\u0026cloudflare.TeamsLocationNetworkArgs{\n\t\t\t\t\tNetwork: pulumi.String(\"203.0.113.2/32\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTeams locations can be imported using a composite ID formed of account ID and teams location ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
             "properties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The account to which the teams location should be added.\n"
                 },
                 "anonymizedLogsEnabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicator that anonymized logs are enabled.\n"
                 },
                 "clientDefault": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicator that this is the default location.\n"
                 },
                 "dohSubdomain": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The FQDN that DoH clients should be pointed at.\n"
                 },
                 "ip": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Client IP address\n"
                 },
                 "ipv4Destination": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "IP to direct all IPv4 DNS queries too.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the teams location.\n"
                 },
                 "networks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork"
-                    }
+                    },
+                    "description": "The networks CIDRs that comprise the location.\n"
                 },
                 "policyIds": {
                     "type": "array",
@@ -11654,19 +12218,23 @@
             ],
             "inputProperties": {
                 "accountId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The account to which the teams location should be added.\n"
                 },
                 "clientDefault": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Indicator that this is the default location.\n"
                 },
                 "name": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Name of the teams location.\n"
                 },
                 "networks": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork"
-                    }
+                    },
+                    "description": "The networks CIDRs that comprise the location.\n"
                 }
             },
             "requiredInputs": [
@@ -11677,37 +12245,208 @@
                 "description": "Input properties used for looking up and filtering TeamsLocation resources.\n",
                 "properties": {
                     "accountId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The account to which the teams location should be added.\n"
                     },
                     "anonymizedLogsEnabled": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Indicator that anonymized logs are enabled.\n"
                     },
                     "clientDefault": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Indicator that this is the default location.\n"
                     },
                     "dohSubdomain": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The FQDN that DoH clients should be pointed at.\n"
                     },
                     "ip": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Client IP address\n"
                     },
                     "ipv4Destination": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "IP to direct all IPv4 DNS queries too.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name of the teams location.\n"
                     },
                     "networks": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork"
-                        }
+                        },
+                        "description": "The networks CIDRs that comprise the location.\n"
                     },
                     "policyIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/teamsRule:TeamsRule": {
+            "description": "Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst rule1 = new cloudflare.TeamsRule(\"rule1\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    action: \"l4_override\",\n    description: \"desc\",\n    filters: [\"l4\"],\n    name: \"office\",\n    precedence: 1,\n    ruleSettings: {\n        blockPageEnabled: false,\n        blockPageReason: \"access not permitted\",\n        l4override: {\n            ip: \"192.0.2.1\",\n            port: 1234,\n        },\n    },\n    traffic: \"any(dns.domains[*] == \\\"com.example\\\")\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nrule1 = cloudflare.TeamsRule(\"rule1\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    action=\"l4_override\",\n    description=\"desc\",\n    filters=[\"l4\"],\n    name=\"office\",\n    precedence=1,\n    rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(\n        block_page_enabled=False,\n        block_page_reason=\"access not permitted\",\n        l4override=cloudflare.TeamsRuleRuleSettingsL4overrideArgs(\n            ip=\"192.0.2.1\",\n            port=1234,\n        ),\n    ),\n    traffic=\"any(dns.domains[*] == \\\"com.example\\\")\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var rule1 = new Cloudflare.TeamsRule(\"rule1\", new Cloudflare.TeamsRuleArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Action = \"l4_override\",\n            Description = \"desc\",\n            Filters = \n            {\n                \"l4\",\n            },\n            Name = \"office\",\n            Precedence = 1,\n            RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs\n            {\n                BlockPageEnabled = false,\n                BlockPageReason = \"access not permitted\",\n                L4override = new Cloudflare.Inputs.TeamsRuleRuleSettingsL4overrideArgs\n                {\n                    Ip = \"192.0.2.1\",\n                    Port = 1234,\n                },\n            },\n            Traffic = \"any(dns.domains[*] == \\\"com.example\\\")\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsRule(ctx, \"rule1\", \u0026cloudflare.TeamsRuleArgs{\n\t\t\tAccountId:   pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tAction:      pulumi.String(\"l4_override\"),\n\t\t\tDescription: pulumi.String(\"desc\"),\n\t\t\tFilters: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"l4\"),\n\t\t\t},\n\t\t\tName:       pulumi.String(\"office\"),\n\t\t\tPrecedence: pulumi.Int(1),\n\t\t\tRuleSettings: \u0026cloudflare.TeamsRuleRuleSettingsArgs{\n\t\t\t\tBlockPageEnabled: pulumi.Bool(false),\n\t\t\t\tBlockPageReason:  pulumi.String(\"access not permitted\"),\n\t\t\t\tL4override: \u0026cloudflare.TeamsRuleRuleSettingsL4overrideArgs{\n\t\t\t\t\tIp:   pulumi.String(\"192.0.2.1\"),\n\t\t\t\t\tPort: pulumi.Int(1234),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTraffic: pulumi.String(\"any(dns.domains[*] == \\\"com.example\\\")\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTeams Rules can be imported using a composite ID formed of account ID and teams rule ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the teams rule should be added.\n"
+                },
+                "action": {
+                    "type": "string",
+                    "description": "The action executed by matched teams rule.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the teams rule.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicator of rule enablement.\n"
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The protocol or layer to evaluate the traffic and identity expressions.\n"
+                },
+                "identity": {
+                    "type": "string",
+                    "description": "The wirefilter expression to be used for identity matching.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the teams rule.\n"
+                },
+                "precedence": {
+                    "type": "integer",
+                    "description": "The evaluation precedence of the teams rule.\n"
+                },
+                "ruleSettings": {
+                    "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings",
+                    "description": "Additional rule settings.\n"
+                },
+                "traffic": {
+                    "type": "string",
+                    "description": "The wirefilter expression to be used for traffic matching.\n"
+                },
+                "version": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "accountId",
+                "action",
+                "description",
+                "name",
+                "precedence",
+                "version"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the teams rule should be added.\n"
+                },
+                "action": {
+                    "type": "string",
+                    "description": "The action executed by matched teams rule.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the teams rule.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicator of rule enablement.\n"
+                },
+                "filters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The protocol or layer to evaluate the traffic and identity expressions.\n"
+                },
+                "identity": {
+                    "type": "string",
+                    "description": "The wirefilter expression to be used for identity matching.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the teams rule.\n"
+                },
+                "precedence": {
+                    "type": "integer",
+                    "description": "The evaluation precedence of the teams rule.\n"
+                },
+                "ruleSettings": {
+                    "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings",
+                    "description": "Additional rule settings.\n"
+                },
+                "traffic": {
+                    "type": "string",
+                    "description": "The wirefilter expression to be used for traffic matching.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "action",
+                "description",
+                "name",
+                "precedence"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamsRule resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the teams rule should be added.\n"
+                    },
+                    "action": {
+                        "type": "string",
+                        "description": "The action executed by matched teams rule.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the teams rule.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Indicator of rule enablement.\n"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The protocol or layer to evaluate the traffic and identity expressions.\n"
+                    },
+                    "identity": {
+                        "type": "string",
+                        "description": "The wirefilter expression to be used for identity matching.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the teams rule.\n"
+                    },
+                    "precedence": {
+                        "type": "integer",
+                        "description": "The evaluation precedence of the teams rule.\n"
+                    },
+                    "ruleSettings": {
+                        "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings",
+                        "description": "Additional rule settings.\n"
+                    },
+                    "traffic": {
+                        "type": "string",
+                        "description": "The wirefilter expression to be used for traffic matching.\n"
+                    },
+                    "version": {
+                        "type": "integer"
                     }
                 },
                 "type": "object"

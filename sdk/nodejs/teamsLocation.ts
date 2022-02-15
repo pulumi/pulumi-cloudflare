@@ -5,6 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a Cloudflare Teams Location resource. Teams Locations are referenced
+ * when creating secure web gateway policies.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const corporateOffice = new cloudflare.TeamsLocation("corporate_office", {
+ *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     clientDefault: true,
+ *     name: "office",
+ *     networks: [
+ *         {
+ *             network: "203.0.113.1/32",
+ *         },
+ *         {
+ *             network: "203.0.113.2/32",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Teams locations can be imported using a composite ID formed of account ID and teams location ID.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ * ```
+ */
 export class TeamsLocation extends pulumi.CustomResource {
     /**
      * Get an existing TeamsLocation resource's state with the given name, ID, and optional extra
@@ -33,13 +66,37 @@ export class TeamsLocation extends pulumi.CustomResource {
         return obj['__pulumiType'] === TeamsLocation.__pulumiType;
     }
 
+    /**
+     * The account to which the teams location should be added.
+     */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Indicator that anonymized logs are enabled.
+     */
     public /*out*/ readonly anonymizedLogsEnabled!: pulumi.Output<boolean>;
+    /**
+     * Indicator that this is the default location.
+     */
     public readonly clientDefault!: pulumi.Output<boolean | undefined>;
+    /**
+     * The FQDN that DoH clients should be pointed at.
+     */
     public /*out*/ readonly dohSubdomain!: pulumi.Output<string>;
+    /**
+     * Client IP address
+     */
     public /*out*/ readonly ip!: pulumi.Output<string>;
+    /**
+     * IP to direct all IPv4 DNS queries too.
+     */
     public /*out*/ readonly ipv4Destination!: pulumi.Output<string>;
+    /**
+     * Name of the teams location.
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The networks CIDRs that comprise the location.
+     */
     public readonly networks!: pulumi.Output<outputs.TeamsLocationNetwork[] | undefined>;
     public /*out*/ readonly policyIds!: pulumi.Output<string[]>;
 
@@ -94,13 +151,37 @@ export class TeamsLocation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering TeamsLocation resources.
  */
 export interface TeamsLocationState {
+    /**
+     * The account to which the teams location should be added.
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * Indicator that anonymized logs are enabled.
+     */
     anonymizedLogsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Indicator that this is the default location.
+     */
     clientDefault?: pulumi.Input<boolean>;
+    /**
+     * The FQDN that DoH clients should be pointed at.
+     */
     dohSubdomain?: pulumi.Input<string>;
+    /**
+     * Client IP address
+     */
     ip?: pulumi.Input<string>;
+    /**
+     * IP to direct all IPv4 DNS queries too.
+     */
     ipv4Destination?: pulumi.Input<string>;
+    /**
+     * Name of the teams location.
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The networks CIDRs that comprise the location.
+     */
     networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationNetwork>[]>;
     policyIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -109,8 +190,20 @@ export interface TeamsLocationState {
  * The set of arguments for constructing a TeamsLocation resource.
  */
 export interface TeamsLocationArgs {
+    /**
+     * The account to which the teams location should be added.
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * Indicator that this is the default location.
+     */
     clientDefault?: pulumi.Input<boolean>;
+    /**
+     * Name of the teams location.
+     */
     name: pulumi.Input<string>;
+    /**
+     * The networks CIDRs that comprise the location.
+     */
     networks?: pulumi.Input<pulumi.Input<inputs.TeamsLocationNetwork>[]>;
 }

@@ -9,6 +9,7 @@ from .access_application import *
 from .access_ca_certificate import *
 from .access_group import *
 from .access_identity_provider import *
+from .access_keys_configuration import *
 from .access_mutual_tls_certificate import *
 from .access_policy import *
 from .access_rule import *
@@ -55,8 +56,10 @@ from .record import *
 from .ruleset import *
 from .spectrum_application import *
 from .static_route import *
+from .teams_account import *
 from .teams_list import *
 from .teams_location import *
+from .teams_rule import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
@@ -113,6 +116,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/accessIdentityProvider:AccessIdentityProvider": "AccessIdentityProvider"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessKeysConfiguration",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration": "AccessKeysConfiguration"
   }
  },
  {
@@ -413,6 +424,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/teamsAccount",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsAccount:TeamsAccount": "TeamsAccount"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/teamsList",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -425,6 +444,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/teamsLocation:TeamsLocation": "TeamsLocation"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/teamsRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsRule:TeamsRule": "TeamsRule"
   }
  },
  {

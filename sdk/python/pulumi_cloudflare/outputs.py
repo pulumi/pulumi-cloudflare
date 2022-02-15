@@ -30,6 +30,7 @@ __all__ = [
     'AccessGroupRequireOkta',
     'AccessGroupRequireSaml',
     'AccessIdentityProviderConfig',
+    'AccessPolicyApprovalGroup',
     'AccessPolicyExclude',
     'AccessPolicyExcludeAzure',
     'AccessPolicyExcludeGithub',
@@ -94,17 +95,25 @@ __all__ = [
     'RateLimitMatchResponse',
     'RecordData',
     'RulesetRule',
-    'RulesetRuleActionParameter',
-    'RulesetRuleActionParameterOverrides',
-    'RulesetRuleActionParameterOverridesCategory',
-    'RulesetRuleActionParameterOverridesRule',
-    'RulesetRuleActionParameterUri',
-    'RulesetRuleActionParameterUriPath',
-    'RulesetRuleActionParameterUriQuery',
+    'RulesetRuleActionParameters',
+    'RulesetRuleActionParametersHeader',
+    'RulesetRuleActionParametersMatchedData',
+    'RulesetRuleActionParametersOverrides',
+    'RulesetRuleActionParametersOverridesCategory',
+    'RulesetRuleActionParametersOverridesRule',
+    'RulesetRuleActionParametersUri',
+    'RulesetRuleActionParametersUriPath',
+    'RulesetRuleActionParametersUriQuery',
+    'RulesetRuleRatelimit',
     'SpectrumApplicationDns',
     'SpectrumApplicationOriginDns',
     'SpectrumApplicationOriginPortRange',
+    'TeamsAccountAntivirus',
+    'TeamsAccountBlockPage',
     'TeamsLocationNetwork',
+    'TeamsRuleRuleSettings',
+    'TeamsRuleRuleSettingsBisoAdminControls',
+    'TeamsRuleRuleSettingsL4override',
     'WorkerScriptKvNamespaceBinding',
     'WorkerScriptPlainTextBinding',
     'WorkerScriptSecretTextBinding',
@@ -1691,6 +1700,65 @@ class AccessIdentityProviderConfig(dict):
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[str]:
         return pulumi.get(self, "token_url")
+
+
+@pulumi.output_type
+class AccessPolicyApprovalGroup(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approvalsNeeded":
+            suggest = "approvals_needed"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+        elif key == "emailListUuid":
+            suggest = "email_list_uuid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyApprovalGroup. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyApprovalGroup.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyApprovalGroup.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 approvals_needed: int,
+                 email_addresses: Optional[Sequence[str]] = None,
+                 email_list_uuid: Optional[str] = None):
+        """
+        :param int approvals_needed: Number of approvals needed.
+        :param Sequence[str] email_addresses: List of emails to request approval from.
+        """
+        pulumi.set(__self__, "approvals_needed", approvals_needed)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if email_list_uuid is not None:
+            pulumi.set(__self__, "email_list_uuid", email_list_uuid)
+
+    @property
+    @pulumi.getter(name="approvalsNeeded")
+    def approvals_needed(self) -> int:
+        """
+        Number of approvals needed.
+        """
+        return pulumi.get(self, "approvals_needed")
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[Sequence[str]]:
+        """
+        List of emails to request approval from.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @property
+    @pulumi.getter(name="emailListUuid")
+    def email_list_uuid(self) -> Optional[str]:
+        return pulumi.get(self, "email_list_uuid")
 
 
 @pulumi.output_type
@@ -6109,18 +6177,20 @@ class RulesetRule(dict):
                  description: str,
                  expression: str,
                  action: Optional[str] = None,
-                 action_parameters: Optional[Sequence['outputs.RulesetRuleActionParameter']] = None,
+                 action_parameters: Optional['outputs.RulesetRuleActionParameters'] = None,
                  enabled: Optional[bool] = None,
                  id: Optional[str] = None,
+                 ratelimit: Optional['outputs.RulesetRuleRatelimit'] = None,
                  ref: Optional[str] = None,
                  version: Optional[str] = None):
         """
         :param str description: Brief summary of the ruleset rule and its intended use.
         :param str expression: Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
         :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
-        :param Sequence['RulesetRuleActionParameterArgs'] action_parameters: List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
+        :param 'RulesetRuleActionParametersArgs' action_parameters: List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
         :param str id: Rule ID to apply the override to.
+        :param 'RulesetRuleRatelimitArgs' ratelimit: List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
         :param str ref: Rule reference.
         """
         pulumi.set(__self__, "description", description)
@@ -6133,6 +6203,8 @@ class RulesetRule(dict):
             pulumi.set(__self__, "enabled", enabled)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if ratelimit is not None:
+            pulumi.set(__self__, "ratelimit", ratelimit)
         if ref is not None:
             pulumi.set(__self__, "ref", ref)
         if version is not None:
@@ -6164,7 +6236,7 @@ class RulesetRule(dict):
 
     @property
     @pulumi.getter(name="actionParameters")
-    def action_parameters(self) -> Optional[Sequence['outputs.RulesetRuleActionParameter']]:
+    def action_parameters(self) -> Optional['outputs.RulesetRuleActionParameters']:
         """
         List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
         """
@@ -6188,6 +6260,14 @@ class RulesetRule(dict):
 
     @property
     @pulumi.getter
+    def ratelimit(self) -> Optional['outputs.RulesetRuleRatelimit']:
+        """
+        List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
+        """
+        return pulumi.get(self, "ratelimit")
+
+    @property
+    @pulumi.getter
     def ref(self) -> Optional[str]:
         """
         Rule reference.
@@ -6201,36 +6281,77 @@ class RulesetRule(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParameter(dict):
+class RulesetRuleActionParameters(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "matchedData":
+            suggest = "matched_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParameters. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RulesetRuleActionParameters.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RulesetRuleActionParameters.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 headers: Optional[Sequence['outputs.RulesetRuleActionParametersHeader']] = None,
                  id: Optional[str] = None,
                  increment: Optional[int] = None,
-                 overrides: Optional['outputs.RulesetRuleActionParameterOverrides'] = None,
+                 matched_data: Optional['outputs.RulesetRuleActionParametersMatchedData'] = None,
+                 overrides: Optional['outputs.RulesetRuleActionParametersOverrides'] = None,
                  products: Optional[Sequence[str]] = None,
+                 rules: Optional[Mapping[str, str]] = None,
                  ruleset: Optional[str] = None,
-                 uris: Optional[Sequence['outputs.RulesetRuleActionParameterUri']] = None,
+                 rulesets: Optional[Sequence[str]] = None,
+                 uri: Optional['outputs.RulesetRuleActionParametersUri'] = None,
                  version: Optional[str] = None):
         """
+        :param Sequence['RulesetRuleActionParametersHeaderArgs'] headers: List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
         :param str id: Rule ID to apply the override to.
-        :param 'RulesetRuleActionParameterOverridesArgs' overrides: List of override configurations to apply to the ruleset (refer to the nested schema).
+        :param 'RulesetRuleActionParametersMatchedDataArgs' matched_data: List of properties to configure WAF payload logging (refer to the nested schema).
+        :param 'RulesetRuleActionParametersOverridesArgs' overrides: List of override configurations to apply to the ruleset (refer to the nested schema).
         :param Sequence[str] products: Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
-        :param str ruleset: Which ruleset to target. Valid value is `"current"`.
-        :param Sequence['RulesetRuleActionParameterUriArgs'] uris: List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
+        :param Mapping[str, str] rules: List of rule-based overrides (refer to the nested schema).
+        :param str ruleset: Which ruleset ID to target.
+        :param Sequence[str] rulesets: List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
+        :param 'RulesetRuleActionParametersUriArgs' uri: List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
         """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if increment is not None:
             pulumi.set(__self__, "increment", increment)
+        if matched_data is not None:
+            pulumi.set(__self__, "matched_data", matched_data)
         if overrides is not None:
             pulumi.set(__self__, "overrides", overrides)
         if products is not None:
             pulumi.set(__self__, "products", products)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if ruleset is not None:
             pulumi.set(__self__, "ruleset", ruleset)
-        if uris is not None:
-            pulumi.set(__self__, "uris", uris)
+        if rulesets is not None:
+            pulumi.set(__self__, "rulesets", rulesets)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.RulesetRuleActionParametersHeader']]:
+        """
+        List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
+        """
+        return pulumi.get(self, "headers")
 
     @property
     @pulumi.getter
@@ -6246,8 +6367,16 @@ class RulesetRuleActionParameter(dict):
         return pulumi.get(self, "increment")
 
     @property
+    @pulumi.getter(name="matchedData")
+    def matched_data(self) -> Optional['outputs.RulesetRuleActionParametersMatchedData']:
+        """
+        List of properties to configure WAF payload logging (refer to the nested schema).
+        """
+        return pulumi.get(self, "matched_data")
+
+    @property
     @pulumi.getter
-    def overrides(self) -> Optional['outputs.RulesetRuleActionParameterOverrides']:
+    def overrides(self) -> Optional['outputs.RulesetRuleActionParametersOverrides']:
         """
         List of override configurations to apply to the ruleset (refer to the nested schema).
         """
@@ -6263,19 +6392,35 @@ class RulesetRuleActionParameter(dict):
 
     @property
     @pulumi.getter
+    def rules(self) -> Optional[Mapping[str, str]]:
+        """
+        List of rule-based overrides (refer to the nested schema).
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter
     def ruleset(self) -> Optional[str]:
         """
-        Which ruleset to target. Valid value is `"current"`.
+        Which ruleset ID to target.
         """
         return pulumi.get(self, "ruleset")
 
     @property
     @pulumi.getter
-    def uris(self) -> Optional[Sequence['outputs.RulesetRuleActionParameterUri']]:
+    def rulesets(self) -> Optional[Sequence[str]]:
+        """
+        List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
+        """
+        return pulumi.get(self, "rulesets")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional['outputs.RulesetRuleActionParametersUri']:
         """
         List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
         """
-        return pulumi.get(self, "uris")
+        return pulumi.get(self, "uri")
 
     @property
     @pulumi.getter
@@ -6284,15 +6429,106 @@ class RulesetRuleActionParameter(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParameterOverrides(dict):
+class RulesetRuleActionParametersHeader(dict):
     def __init__(__self__, *,
-                 categories: Optional[Sequence['outputs.RulesetRuleActionParameterOverridesCategory']] = None,
-                 enabled: Optional[bool] = None,
-                 rules: Optional[Sequence['outputs.RulesetRuleActionParameterOverridesRule']] = None):
+                 expression: Optional[str] = None,
+                 name: Optional[str] = None,
+                 operation: Optional[str] = None,
+                 value: Optional[str] = None):
         """
-        :param Sequence['RulesetRuleActionParameterOverridesCategoryArgs'] categories: List of tag-based overrides (refer to the nested schema).
+        :param str expression: Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+        :param str name: Name of the HTTP request header to target.
+        :param str operation: Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
+        :param str value: Static string value of the updated URI path or query string component. Conflicts with `expression`.
+        """
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if operation is not None:
+            pulumi.set(__self__, "operation", operation)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the HTTP request header to target.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> Optional[str]:
+        """
+        Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
+        """
+        return pulumi.get(self, "operation")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Static string value of the updated URI path or query string component. Conflicts with `expression`.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RulesetRuleActionParametersMatchedData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersMatchedData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RulesetRuleActionParametersMatchedData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RulesetRuleActionParametersMatchedData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_key: Optional[str] = None):
+        """
+        :param str public_key: Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+        """
+        if public_key is not None:
+            pulumi.set(__self__, "public_key", public_key)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> Optional[str]:
+        """
+        Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
+        """
+        return pulumi.get(self, "public_key")
+
+
+@pulumi.output_type
+class RulesetRuleActionParametersOverrides(dict):
+    def __init__(__self__, *,
+                 categories: Optional[Sequence['outputs.RulesetRuleActionParametersOverridesCategory']] = None,
+                 enabled: Optional[bool] = None,
+                 rules: Optional[Sequence['outputs.RulesetRuleActionParametersOverridesRule']] = None):
+        """
+        :param Sequence['RulesetRuleActionParametersOverridesCategoryArgs'] categories: List of tag-based overrides (refer to the nested schema).
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
-        :param Sequence['RulesetRuleActionParameterOverridesRuleArgs'] rules: List of rule-based overrides (refer to the nested schema).
+        :param Sequence['RulesetRuleActionParametersOverridesRuleArgs'] rules: List of rule-based overrides (refer to the nested schema).
         """
         if categories is not None:
             pulumi.set(__self__, "categories", categories)
@@ -6303,7 +6539,7 @@ class RulesetRuleActionParameterOverrides(dict):
 
     @property
     @pulumi.getter
-    def categories(self) -> Optional[Sequence['outputs.RulesetRuleActionParameterOverridesCategory']]:
+    def categories(self) -> Optional[Sequence['outputs.RulesetRuleActionParametersOverridesCategory']]:
         """
         List of tag-based overrides (refer to the nested schema).
         """
@@ -6319,7 +6555,7 @@ class RulesetRuleActionParameterOverrides(dict):
 
     @property
     @pulumi.getter
-    def rules(self) -> Optional[Sequence['outputs.RulesetRuleActionParameterOverridesRule']]:
+    def rules(self) -> Optional[Sequence['outputs.RulesetRuleActionParametersOverridesRule']]:
         """
         List of rule-based overrides (refer to the nested schema).
         """
@@ -6327,7 +6563,7 @@ class RulesetRuleActionParameterOverrides(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParameterOverridesCategory(dict):
+class RulesetRuleActionParametersOverridesCategory(dict):
     def __init__(__self__, *,
                  action: Optional[str] = None,
                  category: Optional[str] = None,
@@ -6370,7 +6606,7 @@ class RulesetRuleActionParameterOverridesCategory(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParameterOverridesRule(dict):
+class RulesetRuleActionParametersOverridesRule(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -6378,14 +6614,14 @@ class RulesetRuleActionParameterOverridesRule(dict):
             suggest = "score_threshold"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParameterOverridesRule. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersOverridesRule. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        RulesetRuleActionParameterOverridesRule.__key_warning(key)
+        RulesetRuleActionParametersOverridesRule.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        RulesetRuleActionParameterOverridesRule.__key_warning(key)
+        RulesetRuleActionParametersOverridesRule.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -6442,21 +6678,21 @@ class RulesetRuleActionParameterOverridesRule(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParameterUri(dict):
+class RulesetRuleActionParametersUri(dict):
     def __init__(__self__, *,
                  origin: Optional[bool] = None,
-                 paths: Optional[Sequence['outputs.RulesetRuleActionParameterUriPath']] = None,
-                 queries: Optional[Sequence['outputs.RulesetRuleActionParameterUriQuery']] = None):
+                 path: Optional['outputs.RulesetRuleActionParametersUriPath'] = None,
+                 query: Optional['outputs.RulesetRuleActionParametersUriQuery'] = None):
         """
-        :param Sequence['RulesetRuleActionParameterUriPathArgs'] paths: URI path configuration when performing a URL rewrite (refer to the nested schema).
-        :param Sequence['RulesetRuleActionParameterUriQueryArgs'] queries: Query string configuration when performing a URL rewrite (refer to the nested schema).
+        :param 'RulesetRuleActionParametersUriPathArgs' path: URI path configuration when performing a URL rewrite (refer to the nested schema).
+        :param 'RulesetRuleActionParametersUriQueryArgs' query: Query string configuration when performing a URL rewrite (refer to the nested schema).
         """
         if origin is not None:
             pulumi.set(__self__, "origin", origin)
-        if paths is not None:
-            pulumi.set(__self__, "paths", paths)
-        if queries is not None:
-            pulumi.set(__self__, "queries", queries)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
 
     @property
     @pulumi.getter
@@ -6465,23 +6701,23 @@ class RulesetRuleActionParameterUri(dict):
 
     @property
     @pulumi.getter
-    def paths(self) -> Optional[Sequence['outputs.RulesetRuleActionParameterUriPath']]:
+    def path(self) -> Optional['outputs.RulesetRuleActionParametersUriPath']:
         """
         URI path configuration when performing a URL rewrite (refer to the nested schema).
         """
-        return pulumi.get(self, "paths")
+        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter
-    def queries(self) -> Optional[Sequence['outputs.RulesetRuleActionParameterUriQuery']]:
+    def query(self) -> Optional['outputs.RulesetRuleActionParametersUriQuery']:
         """
         Query string configuration when performing a URL rewrite (refer to the nested schema).
         """
-        return pulumi.get(self, "queries")
+        return pulumi.get(self, "query")
 
 
 @pulumi.output_type
-class RulesetRuleActionParameterUriPath(dict):
+class RulesetRuleActionParametersUriPath(dict):
     def __init__(__self__, *,
                  expression: Optional[str] = None,
                  value: Optional[str] = None):
@@ -6512,7 +6748,7 @@ class RulesetRuleActionParameterUriPath(dict):
 
 
 @pulumi.output_type
-class RulesetRuleActionParameterUriQuery(dict):
+class RulesetRuleActionParametersUriQuery(dict):
     def __init__(__self__, *,
                  expression: Optional[str] = None,
                  value: Optional[str] = None):
@@ -6540,6 +6776,94 @@ class RulesetRuleActionParameterUriQuery(dict):
         Static string value of the updated URI path or query string component. Conflicts with `expression`.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RulesetRuleRatelimit(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mitigationExpression":
+            suggest = "mitigation_expression"
+        elif key == "mitigationTimeout":
+            suggest = "mitigation_timeout"
+        elif key == "requestsPerPeriod":
+            suggest = "requests_per_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleRatelimit. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RulesetRuleRatelimit.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RulesetRuleRatelimit.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 characteristics: Optional[Sequence[str]] = None,
+                 mitigation_expression: Optional[str] = None,
+                 mitigation_timeout: Optional[int] = None,
+                 period: Optional[int] = None,
+                 requests_per_period: Optional[int] = None):
+        """
+        :param Sequence[str] characteristics: List of parameters that define how Cloudflare tracks the request rate for this rule.
+        :param str mitigation_expression: Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
+        :param int mitigation_timeout: Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+        :param int period: The period of time to consider (in seconds) when evaluating the request rate.
+        :param int requests_per_period: The number of requests over the period of time that will trigger the Rate Limiting rule.
+        """
+        if characteristics is not None:
+            pulumi.set(__self__, "characteristics", characteristics)
+        if mitigation_expression is not None:
+            pulumi.set(__self__, "mitigation_expression", mitigation_expression)
+        if mitigation_timeout is not None:
+            pulumi.set(__self__, "mitigation_timeout", mitigation_timeout)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if requests_per_period is not None:
+            pulumi.set(__self__, "requests_per_period", requests_per_period)
+
+    @property
+    @pulumi.getter
+    def characteristics(self) -> Optional[Sequence[str]]:
+        """
+        List of parameters that define how Cloudflare tracks the request rate for this rule.
+        """
+        return pulumi.get(self, "characteristics")
+
+    @property
+    @pulumi.getter(name="mitigationExpression")
+    def mitigation_expression(self) -> Optional[str]:
+        """
+        Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
+        """
+        return pulumi.get(self, "mitigation_expression")
+
+    @property
+    @pulumi.getter(name="mitigationTimeout")
+    def mitigation_timeout(self) -> Optional[int]:
+        """
+        Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+        """
+        return pulumi.get(self, "mitigation_timeout")
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[int]:
+        """
+        The period of time to consider (in seconds) when evaluating the request rate.
+        """
+        return pulumi.get(self, "period")
+
+    @property
+    @pulumi.getter(name="requestsPerPeriod")
+    def requests_per_period(self) -> Optional[int]:
+        """
+        The number of requests over the period of time that will trigger the Rate Limiting rule.
+        """
+        return pulumi.get(self, "requests_per_period")
 
 
 @pulumi.output_type
@@ -6619,10 +6943,162 @@ class SpectrumApplicationOriginPortRange(dict):
 
 
 @pulumi.output_type
+class TeamsAccountAntivirus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledDownloadPhase":
+            suggest = "enabled_download_phase"
+        elif key == "enabledUploadPhase":
+            suggest = "enabled_upload_phase"
+        elif key == "failClosed":
+            suggest = "fail_closed"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsAccountAntivirus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsAccountAntivirus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsAccountAntivirus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled_download_phase: bool,
+                 enabled_upload_phase: bool,
+                 fail_closed: bool):
+        pulumi.set(__self__, "enabled_download_phase", enabled_download_phase)
+        pulumi.set(__self__, "enabled_upload_phase", enabled_upload_phase)
+        pulumi.set(__self__, "fail_closed", fail_closed)
+
+    @property
+    @pulumi.getter(name="enabledDownloadPhase")
+    def enabled_download_phase(self) -> bool:
+        return pulumi.get(self, "enabled_download_phase")
+
+    @property
+    @pulumi.getter(name="enabledUploadPhase")
+    def enabled_upload_phase(self) -> bool:
+        return pulumi.get(self, "enabled_upload_phase")
+
+    @property
+    @pulumi.getter(name="failClosed")
+    def fail_closed(self) -> bool:
+        return pulumi.get(self, "fail_closed")
+
+
+@pulumi.output_type
+class TeamsAccountBlockPage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backgroundColor":
+            suggest = "background_color"
+        elif key == "footerText":
+            suggest = "footer_text"
+        elif key == "headerText":
+            suggest = "header_text"
+        elif key == "logoPath":
+            suggest = "logo_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsAccountBlockPage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsAccountBlockPage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsAccountBlockPage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 background_color: Optional[str] = None,
+                 enabled: Optional[bool] = None,
+                 footer_text: Optional[str] = None,
+                 header_text: Optional[str] = None,
+                 logo_path: Optional[str] = None,
+                 name: Optional[str] = None):
+        """
+        :param str background_color: Hex code of block page background color.
+        :param bool enabled: Indicator of enablement.
+        :param str footer_text: Block page header text.
+        :param str header_text: Block page footer text.
+        :param str logo_path: URL of block page logo.
+        :param str name: Name of block page configuration.
+        """
+        if background_color is not None:
+            pulumi.set(__self__, "background_color", background_color)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if footer_text is not None:
+            pulumi.set(__self__, "footer_text", footer_text)
+        if header_text is not None:
+            pulumi.set(__self__, "header_text", header_text)
+        if logo_path is not None:
+            pulumi.set(__self__, "logo_path", logo_path)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="backgroundColor")
+    def background_color(self) -> Optional[str]:
+        """
+        Hex code of block page background color.
+        """
+        return pulumi.get(self, "background_color")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Indicator of enablement.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="footerText")
+    def footer_text(self) -> Optional[str]:
+        """
+        Block page header text.
+        """
+        return pulumi.get(self, "footer_text")
+
+    @property
+    @pulumi.getter(name="headerText")
+    def header_text(self) -> Optional[str]:
+        """
+        Block page footer text.
+        """
+        return pulumi.get(self, "header_text")
+
+    @property
+    @pulumi.getter(name="logoPath")
+    def logo_path(self) -> Optional[str]:
+        """
+        URL of block page logo.
+        """
+        return pulumi.get(self, "logo_path")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of block page configuration.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class TeamsLocationNetwork(dict):
     def __init__(__self__, *,
                  network: str,
                  id: Optional[str] = None):
+        """
+        :param str id: ID of the teams location.
+        """
         pulumi.set(__self__, "network", network)
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -6635,7 +7111,179 @@ class TeamsLocationNetwork(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
+        """
+        ID of the teams location.
+        """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bisoAdminControls":
+            suggest = "biso_admin_controls"
+        elif key == "blockPageEnabled":
+            suggest = "block_page_enabled"
+        elif key == "blockPageReason":
+            suggest = "block_page_reason"
+        elif key == "overrideHost":
+            suggest = "override_host"
+        elif key == "overrideIps":
+            suggest = "override_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsRuleRuleSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsRuleRuleSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsRuleRuleSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 biso_admin_controls: Optional['outputs.TeamsRuleRuleSettingsBisoAdminControls'] = None,
+                 block_page_enabled: Optional[bool] = None,
+                 block_page_reason: Optional[str] = None,
+                 l4override: Optional['outputs.TeamsRuleRuleSettingsL4override'] = None,
+                 override_host: Optional[str] = None,
+                 override_ips: Optional[Sequence[str]] = None):
+        """
+        :param bool block_page_enabled: Indicator of block page enablement.
+        :param str block_page_reason: The displayed reason for a user being blocked.
+        :param 'TeamsRuleRuleSettingsL4overrideArgs' l4override: Settings to forward layer 4 traffic.
+        :param str override_host: The host to override matching DNS queries with.
+        :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
+        """
+        if biso_admin_controls is not None:
+            pulumi.set(__self__, "biso_admin_controls", biso_admin_controls)
+        if block_page_enabled is not None:
+            pulumi.set(__self__, "block_page_enabled", block_page_enabled)
+        if block_page_reason is not None:
+            pulumi.set(__self__, "block_page_reason", block_page_reason)
+        if l4override is not None:
+            pulumi.set(__self__, "l4override", l4override)
+        if override_host is not None:
+            pulumi.set(__self__, "override_host", override_host)
+        if override_ips is not None:
+            pulumi.set(__self__, "override_ips", override_ips)
+
+    @property
+    @pulumi.getter(name="bisoAdminControls")
+    def biso_admin_controls(self) -> Optional['outputs.TeamsRuleRuleSettingsBisoAdminControls']:
+        return pulumi.get(self, "biso_admin_controls")
+
+    @property
+    @pulumi.getter(name="blockPageEnabled")
+    def block_page_enabled(self) -> Optional[bool]:
+        """
+        Indicator of block page enablement.
+        """
+        return pulumi.get(self, "block_page_enabled")
+
+    @property
+    @pulumi.getter(name="blockPageReason")
+    def block_page_reason(self) -> Optional[str]:
+        """
+        The displayed reason for a user being blocked.
+        """
+        return pulumi.get(self, "block_page_reason")
+
+    @property
+    @pulumi.getter
+    def l4override(self) -> Optional['outputs.TeamsRuleRuleSettingsL4override']:
+        """
+        Settings to forward layer 4 traffic.
+        """
+        return pulumi.get(self, "l4override")
+
+    @property
+    @pulumi.getter(name="overrideHost")
+    def override_host(self) -> Optional[str]:
+        """
+        The host to override matching DNS queries with.
+        """
+        return pulumi.get(self, "override_host")
+
+    @property
+    @pulumi.getter(name="overrideIps")
+    def override_ips(self) -> Optional[Sequence[str]]:
+        """
+        The IPs to override matching DNS queries with.
+        """
+        return pulumi.get(self, "override_ips")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettingsBisoAdminControls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableCopyPaste":
+            suggest = "disable_copy_paste"
+        elif key == "disablePrinting":
+            suggest = "disable_printing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsRuleRuleSettingsBisoAdminControls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsRuleRuleSettingsBisoAdminControls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsRuleRuleSettingsBisoAdminControls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_copy_paste: Optional[bool] = None,
+                 disable_printing: Optional[bool] = None):
+        if disable_copy_paste is not None:
+            pulumi.set(__self__, "disable_copy_paste", disable_copy_paste)
+        if disable_printing is not None:
+            pulumi.set(__self__, "disable_printing", disable_printing)
+
+    @property
+    @pulumi.getter(name="disableCopyPaste")
+    def disable_copy_paste(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_copy_paste")
+
+    @property
+    @pulumi.getter(name="disablePrinting")
+    def disable_printing(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_printing")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettingsL4override(dict):
+    def __init__(__self__, *,
+                 ip: str,
+                 port: int):
+        """
+        :param str ip: Override IP to forward traffic to.
+        :param int port: Override Port to forward traffic to.
+        """
+        pulumi.set(__self__, "ip", ip)
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        Override IP to forward traffic to.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Override Port to forward traffic to.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type

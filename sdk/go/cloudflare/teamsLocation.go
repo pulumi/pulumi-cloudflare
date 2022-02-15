@@ -11,18 +11,69 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a Cloudflare Teams Location resource. Teams Locations are referenced
+// when creating secure web gateway policies.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewTeamsLocation(ctx, "corporateOffice", &cloudflare.TeamsLocationArgs{
+// 			AccountId:     pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			ClientDefault: pulumi.Bool(true),
+// 			Name:          pulumi.String("office"),
+// 			Networks: cloudflare.TeamsLocationNetworkArray{
+// 				&cloudflare.TeamsLocationNetworkArgs{
+// 					Network: pulumi.String("203.0.113.1/32"),
+// 				},
+// 				&cloudflare.TeamsLocationNetworkArgs{
+// 					Network: pulumi.String("203.0.113.2/32"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Teams locations can be imported using a composite ID formed of account ID and teams location ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+// ```
 type TeamsLocation struct {
 	pulumi.CustomResourceState
 
-	AccountId             pulumi.StringOutput             `pulumi:"accountId"`
-	AnonymizedLogsEnabled pulumi.BoolOutput               `pulumi:"anonymizedLogsEnabled"`
-	ClientDefault         pulumi.BoolPtrOutput            `pulumi:"clientDefault"`
-	DohSubdomain          pulumi.StringOutput             `pulumi:"dohSubdomain"`
-	Ip                    pulumi.StringOutput             `pulumi:"ip"`
-	Ipv4Destination       pulumi.StringOutput             `pulumi:"ipv4Destination"`
-	Name                  pulumi.StringOutput             `pulumi:"name"`
-	Networks              TeamsLocationNetworkArrayOutput `pulumi:"networks"`
-	PolicyIds             pulumi.StringArrayOutput        `pulumi:"policyIds"`
+	// The account to which the teams location should be added.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Indicator that anonymized logs are enabled.
+	AnonymizedLogsEnabled pulumi.BoolOutput `pulumi:"anonymizedLogsEnabled"`
+	// Indicator that this is the default location.
+	ClientDefault pulumi.BoolPtrOutput `pulumi:"clientDefault"`
+	// The FQDN that DoH clients should be pointed at.
+	DohSubdomain pulumi.StringOutput `pulumi:"dohSubdomain"`
+	// Client IP address
+	Ip pulumi.StringOutput `pulumi:"ip"`
+	// IP to direct all IPv4 DNS queries too.
+	Ipv4Destination pulumi.StringOutput `pulumi:"ipv4Destination"`
+	// Name of the teams location.
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The networks CIDRs that comprise the location.
+	Networks  TeamsLocationNetworkArrayOutput `pulumi:"networks"`
+	PolicyIds pulumi.StringArrayOutput        `pulumi:"policyIds"`
 }
 
 // NewTeamsLocation registers a new resource with the given unique name, arguments, and options.
@@ -60,27 +111,43 @@ func GetTeamsLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TeamsLocation resources.
 type teamsLocationState struct {
-	AccountId             *string                `pulumi:"accountId"`
-	AnonymizedLogsEnabled *bool                  `pulumi:"anonymizedLogsEnabled"`
-	ClientDefault         *bool                  `pulumi:"clientDefault"`
-	DohSubdomain          *string                `pulumi:"dohSubdomain"`
-	Ip                    *string                `pulumi:"ip"`
-	Ipv4Destination       *string                `pulumi:"ipv4Destination"`
-	Name                  *string                `pulumi:"name"`
-	Networks              []TeamsLocationNetwork `pulumi:"networks"`
-	PolicyIds             []string               `pulumi:"policyIds"`
+	// The account to which the teams location should be added.
+	AccountId *string `pulumi:"accountId"`
+	// Indicator that anonymized logs are enabled.
+	AnonymizedLogsEnabled *bool `pulumi:"anonymizedLogsEnabled"`
+	// Indicator that this is the default location.
+	ClientDefault *bool `pulumi:"clientDefault"`
+	// The FQDN that DoH clients should be pointed at.
+	DohSubdomain *string `pulumi:"dohSubdomain"`
+	// Client IP address
+	Ip *string `pulumi:"ip"`
+	// IP to direct all IPv4 DNS queries too.
+	Ipv4Destination *string `pulumi:"ipv4Destination"`
+	// Name of the teams location.
+	Name *string `pulumi:"name"`
+	// The networks CIDRs that comprise the location.
+	Networks  []TeamsLocationNetwork `pulumi:"networks"`
+	PolicyIds []string               `pulumi:"policyIds"`
 }
 
 type TeamsLocationState struct {
-	AccountId             pulumi.StringPtrInput
+	// The account to which the teams location should be added.
+	AccountId pulumi.StringPtrInput
+	// Indicator that anonymized logs are enabled.
 	AnonymizedLogsEnabled pulumi.BoolPtrInput
-	ClientDefault         pulumi.BoolPtrInput
-	DohSubdomain          pulumi.StringPtrInput
-	Ip                    pulumi.StringPtrInput
-	Ipv4Destination       pulumi.StringPtrInput
-	Name                  pulumi.StringPtrInput
-	Networks              TeamsLocationNetworkArrayInput
-	PolicyIds             pulumi.StringArrayInput
+	// Indicator that this is the default location.
+	ClientDefault pulumi.BoolPtrInput
+	// The FQDN that DoH clients should be pointed at.
+	DohSubdomain pulumi.StringPtrInput
+	// Client IP address
+	Ip pulumi.StringPtrInput
+	// IP to direct all IPv4 DNS queries too.
+	Ipv4Destination pulumi.StringPtrInput
+	// Name of the teams location.
+	Name pulumi.StringPtrInput
+	// The networks CIDRs that comprise the location.
+	Networks  TeamsLocationNetworkArrayInput
+	PolicyIds pulumi.StringArrayInput
 }
 
 func (TeamsLocationState) ElementType() reflect.Type {
@@ -88,18 +155,26 @@ func (TeamsLocationState) ElementType() reflect.Type {
 }
 
 type teamsLocationArgs struct {
-	AccountId     string                 `pulumi:"accountId"`
-	ClientDefault *bool                  `pulumi:"clientDefault"`
-	Name          string                 `pulumi:"name"`
-	Networks      []TeamsLocationNetwork `pulumi:"networks"`
+	// The account to which the teams location should be added.
+	AccountId string `pulumi:"accountId"`
+	// Indicator that this is the default location.
+	ClientDefault *bool `pulumi:"clientDefault"`
+	// Name of the teams location.
+	Name string `pulumi:"name"`
+	// The networks CIDRs that comprise the location.
+	Networks []TeamsLocationNetwork `pulumi:"networks"`
 }
 
 // The set of arguments for constructing a TeamsLocation resource.
 type TeamsLocationArgs struct {
-	AccountId     pulumi.StringInput
+	// The account to which the teams location should be added.
+	AccountId pulumi.StringInput
+	// Indicator that this is the default location.
 	ClientDefault pulumi.BoolPtrInput
-	Name          pulumi.StringInput
-	Networks      TeamsLocationNetworkArrayInput
+	// Name of the teams location.
+	Name pulumi.StringInput
+	// The networks CIDRs that comprise the location.
+	Networks TeamsLocationNetworkArrayInput
 }
 
 func (TeamsLocationArgs) ElementType() reflect.Type {

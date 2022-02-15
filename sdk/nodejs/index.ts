@@ -9,6 +9,7 @@ export * from "./accessApplication";
 export * from "./accessCaCertificate";
 export * from "./accessGroup";
 export * from "./accessIdentityProvider";
+export * from "./accessKeysConfiguration";
 export * from "./accessMutualTlsCertificate";
 export * from "./accessPolicy";
 export * from "./accessRule";
@@ -55,8 +56,10 @@ export * from "./record";
 export * from "./ruleset";
 export * from "./spectrumApplication";
 export * from "./staticRoute";
+export * from "./teamsAccount";
 export * from "./teamsList";
 export * from "./teamsLocation";
+export * from "./teamsRule";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
@@ -86,6 +89,7 @@ import { AccessApplication } from "./accessApplication";
 import { AccessCaCertificate } from "./accessCaCertificate";
 import { AccessGroup } from "./accessGroup";
 import { AccessIdentityProvider } from "./accessIdentityProvider";
+import { AccessKeysConfiguration } from "./accessKeysConfiguration";
 import { AccessMutualTlsCertificate } from "./accessMutualTlsCertificate";
 import { AccessPolicy } from "./accessPolicy";
 import { AccessRule } from "./accessRule";
@@ -123,8 +127,10 @@ import { Record } from "./record";
 import { Ruleset } from "./ruleset";
 import { SpectrumApplication } from "./spectrumApplication";
 import { StaticRoute } from "./staticRoute";
+import { TeamsAccount } from "./teamsAccount";
 import { TeamsList } from "./teamsList";
 import { TeamsLocation } from "./teamsLocation";
+import { TeamsRule } from "./teamsRule";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
@@ -152,6 +158,8 @@ const _module = {
                 return new AccessGroup(name, <any>undefined, { urn })
             case "cloudflare:index/accessIdentityProvider:AccessIdentityProvider":
                 return new AccessIdentityProvider(name, <any>undefined, { urn })
+            case "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration":
+                return new AccessKeysConfiguration(name, <any>undefined, { urn })
             case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
                 return new AccessMutualTlsCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/accessPolicy:AccessPolicy":
@@ -226,10 +234,14 @@ const _module = {
                 return new SpectrumApplication(name, <any>undefined, { urn })
             case "cloudflare:index/staticRoute:StaticRoute":
                 return new StaticRoute(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsAccount:TeamsAccount":
+                return new TeamsAccount(name, <any>undefined, { urn })
             case "cloudflare:index/teamsList:TeamsList":
                 return new TeamsList(name, <any>undefined, { urn })
             case "cloudflare:index/teamsLocation:TeamsLocation":
                 return new TeamsLocation(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsRule:TeamsRule":
+                return new TeamsRule(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
                 return new WafGroup(name, <any>undefined, { urn })
             case "cloudflare:index/wafOverride:WafOverride":
@@ -267,6 +279,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accessApplication", _
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessKeysConfiguration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessRule", _module)
@@ -304,8 +317,10 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/staticRoute", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsAccount", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)
