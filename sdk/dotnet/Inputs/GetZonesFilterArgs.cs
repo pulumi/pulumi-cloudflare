@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class GetZonesFilterInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Only search for zones in this account.
+        /// </summary>
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
+        /// <summary>
         /// The type of search to perform for the `name` value
         /// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
         /// to `"exact"`.

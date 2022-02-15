@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RateLimitActionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
+        /// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

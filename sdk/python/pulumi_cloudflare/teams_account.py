@@ -19,13 +19,20 @@ class TeamsAccountArgs:
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
                  antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
                  block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
-                 tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None):
+                 fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
+                 logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
+                 proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
+                 tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
+                 url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a TeamsAccount resource.
         :param pulumi.Input[str] account_id: The account to which the teams location should be added.
-        :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration for antivirus traffic scanning.
+        :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['TeamsAccountBlockPageArgs'] block_page: Configuration for a custom block page.
+        :param pulumi.Input['TeamsAccountFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input['TeamsAccountProxyArgs'] proxy: Configuration block for specifying which protocols are proxied.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
         pulumi.set(__self__, "account_id", account_id)
         if activity_log_enabled is not None:
@@ -34,8 +41,16 @@ class TeamsAccountArgs:
             pulumi.set(__self__, "antivirus", antivirus)
         if block_page is not None:
             pulumi.set(__self__, "block_page", block_page)
+        if fips is not None:
+            pulumi.set(__self__, "fips", fips)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
         if tls_decrypt_enabled is not None:
             pulumi.set(__self__, "tls_decrypt_enabled", tls_decrypt_enabled)
+        if url_browser_isolation_enabled is not None:
+            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
 
     @property
     @pulumi.getter(name="accountId")
@@ -62,7 +77,7 @@ class TeamsAccountArgs:
     @pulumi.getter
     def antivirus(self) -> Optional[pulumi.Input['TeamsAccountAntivirusArgs']]:
         """
-        Configuration for antivirus traffic scanning.
+        Configuration block for antivirus traffic scanning.
         """
         return pulumi.get(self, "antivirus")
 
@@ -83,6 +98,39 @@ class TeamsAccountArgs:
         pulumi.set(self, "block_page", value)
 
     @property
+    @pulumi.getter
+    def fips(self) -> Optional[pulumi.Input['TeamsAccountFipsArgs']]:
+        """
+        Configure compliance with Federal Information Processing Standards.
+        """
+        return pulumi.get(self, "fips")
+
+    @fips.setter
+    def fips(self, value: Optional[pulumi.Input['TeamsAccountFipsArgs']]):
+        pulumi.set(self, "fips", value)
+
+    @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['TeamsAccountLoggingArgs']]:
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['TeamsAccountLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
+    @pulumi.getter
+    def proxy(self) -> Optional[pulumi.Input['TeamsAccountProxyArgs']]:
+        """
+        Configuration block for specifying which protocols are proxied.
+        """
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: Optional[pulumi.Input['TeamsAccountProxyArgs']]):
+        pulumi.set(self, "proxy", value)
+
+    @property
     @pulumi.getter(name="tlsDecryptEnabled")
     def tls_decrypt_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -94,6 +142,18 @@ class TeamsAccountArgs:
     def tls_decrypt_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "tls_decrypt_enabled", value)
 
+    @property
+    @pulumi.getter(name="urlBrowserIsolationEnabled")
+    def url_browser_isolation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Safely browse websites in Browser Isolation through a URL.
+        """
+        return pulumi.get(self, "url_browser_isolation_enabled")
+
+    @url_browser_isolation_enabled.setter
+    def url_browser_isolation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "url_browser_isolation_enabled", value)
+
 
 @pulumi.input_type
 class _TeamsAccountState:
@@ -102,13 +162,20 @@ class _TeamsAccountState:
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
                  antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
                  block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
-                 tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None):
+                 fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
+                 logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
+                 proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
+                 tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
+                 url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering TeamsAccount resources.
         :param pulumi.Input[str] account_id: The account to which the teams location should be added.
-        :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration for antivirus traffic scanning.
+        :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['TeamsAccountBlockPageArgs'] block_page: Configuration for a custom block page.
+        :param pulumi.Input['TeamsAccountFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input['TeamsAccountProxyArgs'] proxy: Configuration block for specifying which protocols are proxied.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -118,8 +185,16 @@ class _TeamsAccountState:
             pulumi.set(__self__, "antivirus", antivirus)
         if block_page is not None:
             pulumi.set(__self__, "block_page", block_page)
+        if fips is not None:
+            pulumi.set(__self__, "fips", fips)
+        if logging is not None:
+            pulumi.set(__self__, "logging", logging)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
         if tls_decrypt_enabled is not None:
             pulumi.set(__self__, "tls_decrypt_enabled", tls_decrypt_enabled)
+        if url_browser_isolation_enabled is not None:
+            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
 
     @property
     @pulumi.getter(name="accountId")
@@ -146,7 +221,7 @@ class _TeamsAccountState:
     @pulumi.getter
     def antivirus(self) -> Optional[pulumi.Input['TeamsAccountAntivirusArgs']]:
         """
-        Configuration for antivirus traffic scanning.
+        Configuration block for antivirus traffic scanning.
         """
         return pulumi.get(self, "antivirus")
 
@@ -167,6 +242,39 @@ class _TeamsAccountState:
         pulumi.set(self, "block_page", value)
 
     @property
+    @pulumi.getter
+    def fips(self) -> Optional[pulumi.Input['TeamsAccountFipsArgs']]:
+        """
+        Configure compliance with Federal Information Processing Standards.
+        """
+        return pulumi.get(self, "fips")
+
+    @fips.setter
+    def fips(self, value: Optional[pulumi.Input['TeamsAccountFipsArgs']]):
+        pulumi.set(self, "fips", value)
+
+    @property
+    @pulumi.getter
+    def logging(self) -> Optional[pulumi.Input['TeamsAccountLoggingArgs']]:
+        return pulumi.get(self, "logging")
+
+    @logging.setter
+    def logging(self, value: Optional[pulumi.Input['TeamsAccountLoggingArgs']]):
+        pulumi.set(self, "logging", value)
+
+    @property
+    @pulumi.getter
+    def proxy(self) -> Optional[pulumi.Input['TeamsAccountProxyArgs']]:
+        """
+        Configuration block for specifying which protocols are proxied.
+        """
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: Optional[pulumi.Input['TeamsAccountProxyArgs']]):
+        pulumi.set(self, "proxy", value)
+
+    @property
     @pulumi.getter(name="tlsDecryptEnabled")
     def tls_decrypt_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -178,6 +286,18 @@ class _TeamsAccountState:
     def tls_decrypt_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "tls_decrypt_enabled", value)
 
+    @property
+    @pulumi.getter(name="urlBrowserIsolationEnabled")
+    def url_browser_isolation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Safely browse websites in Browser Isolation through a URL.
+        """
+        return pulumi.get(self, "url_browser_isolation_enabled")
+
+    @url_browser_isolation_enabled.setter
+    def url_browser_isolation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "url_browser_isolation_enabled", value)
+
 
 class TeamsAccount(pulumi.CustomResource):
     @overload
@@ -188,7 +308,11 @@ class TeamsAccount(pulumi.CustomResource):
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
                  antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
                  block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
+                 fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+                 proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
                  tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
+                 url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.
@@ -201,13 +325,43 @@ class TeamsAccount(pulumi.CustomResource):
 
         main = cloudflare.TeamsAccount("main",
             account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            antivirus=cloudflare.TeamsAccountAntivirusArgs(
+                enabled_download_phase=True,
+                enabled_upload_phase=False,
+                fail_closed=True,
+            ),
             block_page=cloudflare.TeamsAccountBlockPageArgs(
                 background_color="#000000",
                 footer_text="hello",
                 header_text="hello",
                 logo_path="https://google.com",
             ),
-            tls_decrypt_enabled=True)
+            fips=cloudflare.TeamsAccountFipsArgs(
+                tls=True,
+            ),
+            logging=cloudflare.TeamsAccountLoggingArgs(
+                redact_pii=True,
+                settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(
+                    dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(
+                        log_all=False,
+                        log_blocks=True,
+                    ),
+                    http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(
+                        log_all=True,
+                        log_blocks=True,
+                    ),
+                    l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(
+                        log_all=False,
+                        log_blocks=True,
+                    ),
+                ),
+            ),
+            proxy=cloudflare.TeamsAccountProxyArgs(
+                tcp=True,
+                udp=True,
+            ),
+            tls_decrypt_enabled=True,
+            url_browser_isolation_enabled=True)
         ```
 
         ## Import
@@ -221,9 +375,12 @@ class TeamsAccount(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the teams location should be added.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration for antivirus traffic scanning.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']] proxy: Configuration block for specifying which protocols are proxied.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
         ...
     @overload
@@ -242,13 +399,43 @@ class TeamsAccount(pulumi.CustomResource):
 
         main = cloudflare.TeamsAccount("main",
             account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            antivirus=cloudflare.TeamsAccountAntivirusArgs(
+                enabled_download_phase=True,
+                enabled_upload_phase=False,
+                fail_closed=True,
+            ),
             block_page=cloudflare.TeamsAccountBlockPageArgs(
                 background_color="#000000",
                 footer_text="hello",
                 header_text="hello",
                 logo_path="https://google.com",
             ),
-            tls_decrypt_enabled=True)
+            fips=cloudflare.TeamsAccountFipsArgs(
+                tls=True,
+            ),
+            logging=cloudflare.TeamsAccountLoggingArgs(
+                redact_pii=True,
+                settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(
+                    dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(
+                        log_all=False,
+                        log_blocks=True,
+                    ),
+                    http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(
+                        log_all=True,
+                        log_blocks=True,
+                    ),
+                    l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(
+                        log_all=False,
+                        log_blocks=True,
+                    ),
+                ),
+            ),
+            proxy=cloudflare.TeamsAccountProxyArgs(
+                tcp=True,
+                udp=True,
+            ),
+            tls_decrypt_enabled=True,
+            url_browser_isolation_enabled=True)
         ```
 
         ## Import
@@ -278,7 +465,11 @@ class TeamsAccount(pulumi.CustomResource):
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
                  antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
                  block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
+                 fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
+                 logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+                 proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
                  tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
+                 url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -297,7 +488,11 @@ class TeamsAccount(pulumi.CustomResource):
             __props__.__dict__["activity_log_enabled"] = activity_log_enabled
             __props__.__dict__["antivirus"] = antivirus
             __props__.__dict__["block_page"] = block_page
+            __props__.__dict__["fips"] = fips
+            __props__.__dict__["logging"] = logging
+            __props__.__dict__["proxy"] = proxy
             __props__.__dict__["tls_decrypt_enabled"] = tls_decrypt_enabled
+            __props__.__dict__["url_browser_isolation_enabled"] = url_browser_isolation_enabled
         super(TeamsAccount, __self__).__init__(
             'cloudflare:index/teamsAccount:TeamsAccount',
             resource_name,
@@ -312,7 +507,11 @@ class TeamsAccount(pulumi.CustomResource):
             activity_log_enabled: Optional[pulumi.Input[bool]] = None,
             antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
             block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
-            tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None) -> 'TeamsAccount':
+            fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
+            logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+            proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
+            tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
+            url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None) -> 'TeamsAccount':
         """
         Get an existing TeamsAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -321,9 +520,12 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the teams location should be added.
-        :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration for antivirus traffic scanning.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']] proxy: Configuration block for specifying which protocols are proxied.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -333,7 +535,11 @@ class TeamsAccount(pulumi.CustomResource):
         __props__.__dict__["activity_log_enabled"] = activity_log_enabled
         __props__.__dict__["antivirus"] = antivirus
         __props__.__dict__["block_page"] = block_page
+        __props__.__dict__["fips"] = fips
+        __props__.__dict__["logging"] = logging
+        __props__.__dict__["proxy"] = proxy
         __props__.__dict__["tls_decrypt_enabled"] = tls_decrypt_enabled
+        __props__.__dict__["url_browser_isolation_enabled"] = url_browser_isolation_enabled
         return TeamsAccount(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -353,7 +559,7 @@ class TeamsAccount(pulumi.CustomResource):
     @pulumi.getter
     def antivirus(self) -> pulumi.Output[Optional['outputs.TeamsAccountAntivirus']]:
         """
-        Configuration for antivirus traffic scanning.
+        Configuration block for antivirus traffic scanning.
         """
         return pulumi.get(self, "antivirus")
 
@@ -366,10 +572,39 @@ class TeamsAccount(pulumi.CustomResource):
         return pulumi.get(self, "block_page")
 
     @property
+    @pulumi.getter
+    def fips(self) -> pulumi.Output[Optional['outputs.TeamsAccountFips']]:
+        """
+        Configure compliance with Federal Information Processing Standards.
+        """
+        return pulumi.get(self, "fips")
+
+    @property
+    @pulumi.getter
+    def logging(self) -> pulumi.Output[Optional['outputs.TeamsAccountLogging']]:
+        return pulumi.get(self, "logging")
+
+    @property
+    @pulumi.getter
+    def proxy(self) -> pulumi.Output[Optional['outputs.TeamsAccountProxy']]:
+        """
+        Configuration block for specifying which protocols are proxied.
+        """
+        return pulumi.get(self, "proxy")
+
+    @property
     @pulumi.getter(name="tlsDecryptEnabled")
     def tls_decrypt_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         Indicator that decryption of TLS traffic is enabled.
         """
         return pulumi.get(self, "tls_decrypt_enabled")
+
+    @property
+    @pulumi.getter(name="urlBrowserIsolationEnabled")
+    def url_browser_isolation_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Safely browse websites in Browser Isolation through a URL.
+        """
+        return pulumi.get(self, "url_browser_isolation_enabled")
 

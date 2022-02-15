@@ -37,7 +37,7 @@ class TeamsRuleArgs:
         :param pulumi.Input[bool] enabled: Indicator of rule enablement.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
-        :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings.
+        :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings (refer to the nested schema).
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         pulumi.set(__self__, "account_id", account_id)
@@ -170,7 +170,7 @@ class TeamsRuleArgs:
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']]:
         """
-        Additional rule settings.
+        Additional rule settings (refer to the nested schema).
         """
         return pulumi.get(self, "rule_settings")
 
@@ -217,7 +217,7 @@ class _TeamsRuleState:
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
-        :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings.
+        :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings (refer to the nested schema).
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         if account_id is not None:
@@ -357,7 +357,7 @@ class _TeamsRuleState:
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']]:
         """
-        Additional rule settings.
+        Additional rule settings (refer to the nested schema).
         """
         return pulumi.get(self, "rule_settings")
 
@@ -414,21 +414,17 @@ class TeamsRule(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         rule1 = cloudflare.TeamsRule("rule1",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
-            action="l4_override",
+            account_id="d57c3de47a013c03ca7e237dd3e61d7d",
+            action="block",
             description="desc",
-            filters=["l4"],
+            filters=["http"],
             name="office",
             precedence=1,
             rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(
-                block_page_enabled=False,
+                block_page_enabled=True,
                 block_page_reason="access not permitted",
-                l4override=cloudflare.TeamsRuleRuleSettingsL4overrideArgs(
-                    ip="192.0.2.1",
-                    port=1234,
-                ),
             ),
-            traffic="any(dns.domains[*] == \"com.example\")")
+            traffic="http.request.uri == \"https://www.example.com/malicious\"")
         ```
 
         ## Import
@@ -450,7 +446,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
-        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings.
+        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings (refer to the nested schema).
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         ...
@@ -469,21 +465,17 @@ class TeamsRule(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         rule1 = cloudflare.TeamsRule("rule1",
-            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
-            action="l4_override",
+            account_id="d57c3de47a013c03ca7e237dd3e61d7d",
+            action="block",
             description="desc",
-            filters=["l4"],
+            filters=["http"],
             name="office",
             precedence=1,
             rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(
-                block_page_enabled=False,
+                block_page_enabled=True,
                 block_page_reason="access not permitted",
-                l4override=cloudflare.TeamsRuleRuleSettingsL4overrideArgs(
-                    ip="192.0.2.1",
-                    port=1234,
-                ),
             ),
-            traffic="any(dns.domains[*] == \"com.example\")")
+            traffic="http.request.uri == \"https://www.example.com/malicious\"")
         ```
 
         ## Import
@@ -592,7 +584,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
-        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings.
+        :param pulumi.Input[pulumi.InputType['TeamsRuleRuleSettingsArgs']] rule_settings: Additional rule settings (refer to the nested schema).
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -689,7 +681,7 @@ class TeamsRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleSettings")
     def rule_settings(self) -> pulumi.Output[Optional['outputs.TeamsRuleRuleSettings']]:
         """
-        Additional rule settings.
+        Additional rule settings (refer to the nested schema).
         """
         return pulumi.get(self, "rule_settings")
 

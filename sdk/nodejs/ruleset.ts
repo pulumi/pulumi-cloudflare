@@ -45,7 +45,7 @@ export class Ruleset extends pulumi.CustomResource {
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
-    public readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
      */
@@ -94,9 +94,6 @@ export class Ruleset extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as RulesetArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'description'");
-            }
             if ((!args || args.kind === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
@@ -169,7 +166,7 @@ export interface RulesetArgs {
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
      */

@@ -15,21 +15,17 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const rule1 = new cloudflare.TeamsRule("rule1", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     action: "l4_override",
+ *     accountId: "d57c3de47a013c03ca7e237dd3e61d7d",
+ *     action: "block",
  *     description: "desc",
- *     filters: ["l4"],
+ *     filters: ["http"],
  *     name: "office",
  *     precedence: 1,
  *     ruleSettings: {
- *         blockPageEnabled: false,
+ *         blockPageEnabled: true,
  *         blockPageReason: "access not permitted",
- *         l4override: {
- *             ip: "192.0.2.1",
- *             port: 1234,
- *         },
  *     },
- *     traffic: "any(dns.domains[*] == \"com.example\")",
+ *     traffic: "http.request.uri == \"https://www.example.com/malicious\"",
  * });
  * ```
  *
@@ -106,7 +102,7 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     public readonly precedence!: pulumi.Output<number>;
     /**
-     * Additional rule settings.
+     * Additional rule settings (refer to the nested schema).
      */
     public readonly ruleSettings!: pulumi.Output<outputs.TeamsRuleRuleSettings | undefined>;
     /**
@@ -216,7 +212,7 @@ export interface TeamsRuleState {
      */
     precedence?: pulumi.Input<number>;
     /**
-     * Additional rule settings.
+     * Additional rule settings (refer to the nested schema).
      */
     ruleSettings?: pulumi.Input<inputs.TeamsRuleRuleSettings>;
     /**
@@ -267,7 +263,7 @@ export interface TeamsRuleArgs {
      */
     precedence: pulumi.Input<number>;
     /**
-     * Additional rule settings.
+     * Additional rule settings (refer to the nested schema).
      */
     ruleSettings?: pulumi.Input<inputs.TeamsRuleRuleSettings>;
     /**

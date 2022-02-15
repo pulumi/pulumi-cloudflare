@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsAccountAntivirus
     {
+        /// <summary>
+        /// Scan on file download.
+        /// </summary>
         public readonly bool EnabledDownloadPhase;
+        /// <summary>
+        /// Scan on file upload.
+        /// </summary>
         public readonly bool EnabledUploadPhase;
+        /// <summary>
+        /// Block requests for files that cannot be scanned.
+        /// </summary>
         public readonly bool FailClosed;
 
         [OutputConstructor]

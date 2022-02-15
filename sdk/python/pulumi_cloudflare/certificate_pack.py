@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['CertificatePackArgs', 'CertificatePack']
 
@@ -18,7 +20,9 @@ class CertificatePackArgs:
                  zone_id: pulumi.Input[str],
                  certificate_authority: Optional[pulumi.Input[str]] = None,
                  cloudflare_branding: Optional[pulumi.Input[bool]] = None,
+                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
                  validation_method: Optional[pulumi.Input[str]] = None,
+                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
                  validity_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a CertificatePack resource.
@@ -47,8 +51,12 @@ class CertificatePackArgs:
             pulumi.set(__self__, "certificate_authority", certificate_authority)
         if cloudflare_branding is not None:
             pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
+        if validation_errors is not None:
+            pulumi.set(__self__, "validation_errors", validation_errors)
         if validation_method is not None:
             pulumi.set(__self__, "validation_method", validation_method)
+        if validation_records is not None:
+            pulumi.set(__self__, "validation_records", validation_records)
         if validity_days is not None:
             pulumi.set(__self__, "validity_days", validity_days)
 
@@ -120,6 +128,15 @@ class CertificatePackArgs:
         pulumi.set(self, "cloudflare_branding", value)
 
     @property
+    @pulumi.getter(name="validationErrors")
+    def validation_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]:
+        return pulumi.get(self, "validation_errors")
+
+    @validation_errors.setter
+    def validation_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]):
+        pulumi.set(self, "validation_errors", value)
+
+    @property
     @pulumi.getter(name="validationMethod")
     def validation_method(self) -> Optional[pulumi.Input[str]]:
         """
@@ -131,6 +148,15 @@ class CertificatePackArgs:
     @validation_method.setter
     def validation_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "validation_method", value)
+
+    @property
+    @pulumi.getter(name="validationRecords")
+    def validation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]:
+        return pulumi.get(self, "validation_records")
+
+    @validation_records.setter
+    def validation_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]):
+        pulumi.set(self, "validation_records", value)
 
     @property
     @pulumi.getter(name="validityDays")
@@ -154,7 +180,9 @@ class _CertificatePackState:
                  cloudflare_branding: Optional[pulumi.Input[bool]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
                  validation_method: Optional[pulumi.Input[str]] = None,
+                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
                  validity_days: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -185,8 +213,12 @@ class _CertificatePackState:
             pulumi.set(__self__, "hosts", hosts)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if validation_errors is not None:
+            pulumi.set(__self__, "validation_errors", validation_errors)
         if validation_method is not None:
             pulumi.set(__self__, "validation_method", validation_method)
+        if validation_records is not None:
+            pulumi.set(__self__, "validation_records", validation_records)
         if validity_days is not None:
             pulumi.set(__self__, "validity_days", validity_days)
         if zone_id is not None:
@@ -248,6 +280,15 @@ class _CertificatePackState:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="validationErrors")
+    def validation_errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]:
+        return pulumi.get(self, "validation_errors")
+
+    @validation_errors.setter
+    def validation_errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]]):
+        pulumi.set(self, "validation_errors", value)
+
+    @property
     @pulumi.getter(name="validationMethod")
     def validation_method(self) -> Optional[pulumi.Input[str]]:
         """
@@ -259,6 +300,15 @@ class _CertificatePackState:
     @validation_method.setter
     def validation_method(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "validation_method", value)
+
+    @property
+    @pulumi.getter(name="validationRecords")
+    def validation_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]:
+        return pulumi.get(self, "validation_records")
+
+    @validation_records.setter
+    def validation_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]]):
+        pulumi.set(self, "validation_records", value)
 
     @property
     @pulumi.getter(name="validityDays")
@@ -296,7 +346,9 @@ class CertificatePack(pulumi.CustomResource):
                  cloudflare_branding: Optional[pulumi.Input[bool]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificatePackValidationErrorArgs']]]]] = None,
                  validation_method: Optional[pulumi.Input[str]] = None,
+                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificatePackValidationRecordArgs']]]]] = None,
                  validity_days: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -363,7 +415,9 @@ class CertificatePack(pulumi.CustomResource):
                  cloudflare_branding: Optional[pulumi.Input[bool]] = None,
                  hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificatePackValidationErrorArgs']]]]] = None,
                  validation_method: Optional[pulumi.Input[str]] = None,
+                 validation_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificatePackValidationRecordArgs']]]]] = None,
                  validity_days: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -386,7 +440,9 @@ class CertificatePack(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
+            __props__.__dict__["validation_errors"] = validation_errors
             __props__.__dict__["validation_method"] = validation_method
+            __props__.__dict__["validation_records"] = validation_records
             __props__.__dict__["validity_days"] = validity_days
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")
@@ -405,7 +461,9 @@ class CertificatePack(pulumi.CustomResource):
             cloudflare_branding: Optional[pulumi.Input[bool]] = None,
             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
+            validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificatePackValidationErrorArgs']]]]] = None,
             validation_method: Optional[pulumi.Input[str]] = None,
+            validation_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CertificatePackValidationRecordArgs']]]]] = None,
             validity_days: Optional[pulumi.Input[int]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'CertificatePack':
         """
@@ -441,14 +499,16 @@ class CertificatePack(pulumi.CustomResource):
         __props__.__dict__["cloudflare_branding"] = cloudflare_branding
         __props__.__dict__["hosts"] = hosts
         __props__.__dict__["type"] = type
+        __props__.__dict__["validation_errors"] = validation_errors
         __props__.__dict__["validation_method"] = validation_method
+        __props__.__dict__["validation_records"] = validation_records
         __props__.__dict__["validity_days"] = validity_days
         __props__.__dict__["zone_id"] = zone_id
         return CertificatePack(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="certificateAuthority")
-    def certificate_authority(self) -> pulumi.Output[Optional[str]]:
+    def certificate_authority(self) -> pulumi.Output[str]:
         """
         Which certificate
         authority to issue the certificate pack. Allowed values: `"digicert"`,
@@ -486,6 +546,11 @@ class CertificatePack(pulumi.CustomResource):
         return pulumi.get(self, "type")
 
     @property
+    @pulumi.getter(name="validationErrors")
+    def validation_errors(self) -> pulumi.Output[Sequence['outputs.CertificatePackValidationError']]:
+        return pulumi.get(self, "validation_errors")
+
+    @property
     @pulumi.getter(name="validationMethod")
     def validation_method(self) -> pulumi.Output[Optional[str]]:
         """
@@ -493,6 +558,11 @@ class CertificatePack(pulumi.CustomResource):
         use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
         """
         return pulumi.get(self, "validation_method")
+
+    @property
+    @pulumi.getter(name="validationRecords")
+    def validation_records(self) -> pulumi.Output[Sequence['outputs.CertificatePackValidationRecord']]:
+        return pulumi.get(self, "validation_records")
 
     @property
     @pulumi.getter(name="validityDays")

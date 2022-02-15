@@ -12,6 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsRuleRuleSettingsGetArgs : Pulumi.ResourceArgs
     {
+        [Input("addHeaders")]
+        private InputMap<string>? _addHeaders;
+
+        /// <summary>
+        /// Add custom headers to allowed requests in the form of key-value pairs.
+        /// </summary>
+        public InputMap<string> AddHeaders
+        {
+            get => _addHeaders ?? (_addHeaders = new InputMap<string>());
+            set => _addHeaders = value;
+        }
+
+        /// <summary>
+        /// Configure how browser isolation behaves (refer to the nested schema).
+        /// </summary>
         [Input("bisoAdminControls")]
         public Input<Inputs.TeamsRuleRuleSettingsBisoAdminControlsGetArgs>? BisoAdminControls { get; set; }
 
@@ -28,7 +43,13 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? BlockPageReason { get; set; }
 
         /// <summary>
-        /// Settings to forward layer 4 traffic.
+        /// Configure how session check behaves (refer to the nested schema).
+        /// </summary>
+        [Input("checkSession")]
+        public Input<Inputs.TeamsRuleRuleSettingsCheckSessionGetArgs>? CheckSession { get; set; }
+
+        /// <summary>
+        /// Settings to forward layer 4 traffic (refer to the nested schema).
         /// </summary>
         [Input("l4override")]
         public Input<Inputs.TeamsRuleRuleSettingsL4overrideGetArgs>? L4override { get; set; }

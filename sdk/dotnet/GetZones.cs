@@ -86,6 +86,27 @@ namespace Pulumi.Cloudflare
         /// 
         /// }
         /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetZonesFilterArgs
+        ///             {
+        ///                 AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+        ///                 Status = "active",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
@@ -161,6 +182,27 @@ namespace Pulumi.Cloudflare
         ///                 LookupType = "contains",
         ///                 Match = "^not-",
         ///                 Name = "example",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs
+        ///         {
+        ///             Filter = new Cloudflare.Inputs.GetZonesFilterArgs
+        ///             {
+        ///                 AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+        ///                 Status = "active",
         ///             },
         ///         }));
         ///     }

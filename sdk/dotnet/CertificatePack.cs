@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// `"lets_encrypt"`.
         /// </summary>
         [Output("certificateAuthority")]
-        public Output<string?> CertificateAuthority { get; private set; } = null!;
+        public Output<string> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
         /// Whether or not to include
@@ -52,12 +52,18 @@ namespace Pulumi.Cloudflare
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
+        [Output("validationErrors")]
+        public Output<ImmutableArray<Outputs.CertificatePackValidationError>> ValidationErrors { get; private set; } = null!;
+
         /// <summary>
         /// Which validation method to
         /// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
         /// </summary>
         [Output("validationMethod")]
         public Output<string?> ValidationMethod { get; private set; } = null!;
+
+        [Output("validationRecords")]
+        public Output<ImmutableArray<Outputs.CertificatePackValidationRecord>> ValidationRecords { get; private set; } = null!;
 
         /// <summary>
         /// How long the certificate is valid
@@ -156,12 +162,28 @@ namespace Pulumi.Cloudflare
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
+        [Input("validationErrors")]
+        private InputList<Inputs.CertificatePackValidationErrorArgs>? _validationErrors;
+        public InputList<Inputs.CertificatePackValidationErrorArgs> ValidationErrors
+        {
+            get => _validationErrors ?? (_validationErrors = new InputList<Inputs.CertificatePackValidationErrorArgs>());
+            set => _validationErrors = value;
+        }
+
         /// <summary>
         /// Which validation method to
         /// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
         /// </summary>
         [Input("validationMethod")]
         public Input<string>? ValidationMethod { get; set; }
+
+        [Input("validationRecords")]
+        private InputList<Inputs.CertificatePackValidationRecordArgs>? _validationRecords;
+        public InputList<Inputs.CertificatePackValidationRecordArgs> ValidationRecords
+        {
+            get => _validationRecords ?? (_validationRecords = new InputList<Inputs.CertificatePackValidationRecordArgs>());
+            set => _validationRecords = value;
+        }
 
         /// <summary>
         /// How long the certificate is valid
@@ -221,12 +243,28 @@ namespace Pulumi.Cloudflare
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("validationErrors")]
+        private InputList<Inputs.CertificatePackValidationErrorGetArgs>? _validationErrors;
+        public InputList<Inputs.CertificatePackValidationErrorGetArgs> ValidationErrors
+        {
+            get => _validationErrors ?? (_validationErrors = new InputList<Inputs.CertificatePackValidationErrorGetArgs>());
+            set => _validationErrors = value;
+        }
+
         /// <summary>
         /// Which validation method to
         /// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
         /// </summary>
         [Input("validationMethod")]
         public Input<string>? ValidationMethod { get; set; }
+
+        [Input("validationRecords")]
+        private InputList<Inputs.CertificatePackValidationRecordGetArgs>? _validationRecords;
+        public InputList<Inputs.CertificatePackValidationRecordGetArgs> ValidationRecords
+        {
+            get => _validationRecords ?? (_validationRecords = new InputList<Inputs.CertificatePackValidationRecordGetArgs>());
+            set => _validationRecords = value;
+        }
 
         /// <summary>
         /// How long the certificate is valid

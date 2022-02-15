@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -46,7 +47,7 @@ export class CertificatePack extends pulumi.CustomResource {
      * authority to issue the certificate pack. Allowed values: `"digicert"`,
      * `"letsEncrypt"`.
      */
-    public readonly certificateAuthority!: pulumi.Output<string | undefined>;
+    public readonly certificateAuthority!: pulumi.Output<string>;
     /**
      * Whether or not to include
      * Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
@@ -64,11 +65,13 @@ export class CertificatePack extends pulumi.CustomResource {
      * Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
      */
     public readonly type!: pulumi.Output<string>;
+    public readonly validationErrors!: pulumi.Output<outputs.CertificatePackValidationError[]>;
     /**
      * Which validation method to
      * use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
      */
     public readonly validationMethod!: pulumi.Output<string | undefined>;
+    public readonly validationRecords!: pulumi.Output<outputs.CertificatePackValidationRecord[]>;
     /**
      * How long the certificate is valid
      * for. Note: If using Let's Encrypt, this value can only be 90 days.
@@ -97,7 +100,9 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["cloudflareBranding"] = state ? state.cloudflareBranding : undefined;
             resourceInputs["hosts"] = state ? state.hosts : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["validationErrors"] = state ? state.validationErrors : undefined;
             resourceInputs["validationMethod"] = state ? state.validationMethod : undefined;
+            resourceInputs["validationRecords"] = state ? state.validationRecords : undefined;
             resourceInputs["validityDays"] = state ? state.validityDays : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -115,7 +120,9 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["cloudflareBranding"] = args ? args.cloudflareBranding : undefined;
             resourceInputs["hosts"] = args ? args.hosts : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["validationErrors"] = args ? args.validationErrors : undefined;
             resourceInputs["validationMethod"] = args ? args.validationMethod : undefined;
+            resourceInputs["validationRecords"] = args ? args.validationRecords : undefined;
             resourceInputs["validityDays"] = args ? args.validityDays : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
@@ -151,11 +158,13 @@ export interface CertificatePackState {
      * Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
      */
     type?: pulumi.Input<string>;
+    validationErrors?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationError>[]>;
     /**
      * Which validation method to
      * use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
      */
     validationMethod?: pulumi.Input<string>;
+    validationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationRecord>[]>;
     /**
      * How long the certificate is valid
      * for. Note: If using Let's Encrypt, this value can only be 90 days.
@@ -195,11 +204,13 @@ export interface CertificatePackArgs {
      * Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
      */
     type: pulumi.Input<string>;
+    validationErrors?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationError>[]>;
     /**
      * Which validation method to
      * use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
      */
     validationMethod?: pulumi.Input<string>;
+    validationRecords?: pulumi.Input<pulumi.Input<inputs.CertificatePackValidationRecord>[]>;
     /**
      * How long the certificate is valid
      * for. Note: If using Let's Encrypt, this value can only be 90 days.

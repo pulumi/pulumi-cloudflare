@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
         /// Brief summary of the ruleset rule and its intended use.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
@@ -120,8 +120,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
         /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.

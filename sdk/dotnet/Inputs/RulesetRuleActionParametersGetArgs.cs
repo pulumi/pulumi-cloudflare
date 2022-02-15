@@ -45,6 +45,14 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("overrides")]
         public Input<Inputs.RulesetRuleActionParametersOverridesGetArgs>? Overrides { get; set; }
 
+        [Input("phases")]
+        private InputList<string>? _phases;
+        public InputList<string> Phases
+        {
+            get => _phases ?? (_phases = new InputList<string>());
+            set => _phases = value;
+        }
+
         [Input("products")]
         private InputList<string>? _products;
 

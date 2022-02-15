@@ -54,7 +54,7 @@ export class LogpushJob extends pulumi.CustomResource {
     /**
      * Which type of dataset resource to use. Available values are
      * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
-     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports"`
+     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
      */
     public readonly dataset!: pulumi.Output<string>;
     /**
@@ -137,7 +137,7 @@ export interface LogpushJobState {
     /**
      * Which type of dataset resource to use. Available values are
      * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
-     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports"`
+     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
      */
     dataset?: pulumi.Input<string>;
     /**
@@ -178,7 +178,7 @@ export interface LogpushJobArgs {
     /**
      * Which type of dataset resource to use. Available values are
      * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
-     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports"`
+     * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
      */
     dataset: pulumi.Input<string>;
     /**

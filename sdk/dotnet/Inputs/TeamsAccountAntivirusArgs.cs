@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsAccountAntivirusArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Scan on file download.
+        /// </summary>
         [Input("enabledDownloadPhase", required: true)]
         public Input<bool> EnabledDownloadPhase { get; set; } = null!;
 
+        /// <summary>
+        /// Scan on file upload.
+        /// </summary>
         [Input("enabledUploadPhase", required: true)]
         public Input<bool> EnabledUploadPhase { get; set; } = null!;
 
+        /// <summary>
+        /// Block requests for files that cannot be scanned.
+        /// </summary>
         [Input("failClosed", required: true)]
         public Input<bool> FailClosed { get; set; } = null!;
 

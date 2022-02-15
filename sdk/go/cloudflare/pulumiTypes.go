@@ -5373,10 +5373,232 @@ func (o ApiTokenPolicyArrayOutput) Index(i pulumi.IntInput) ApiTokenPolicyOutput
 	}).(ApiTokenPolicyOutput)
 }
 
+type CertificatePackValidationError struct {
+	Message *string `pulumi:"message"`
+}
+
+// CertificatePackValidationErrorInput is an input type that accepts CertificatePackValidationErrorArgs and CertificatePackValidationErrorOutput values.
+// You can construct a concrete instance of `CertificatePackValidationErrorInput` via:
+//
+//          CertificatePackValidationErrorArgs{...}
+type CertificatePackValidationErrorInput interface {
+	pulumi.Input
+
+	ToCertificatePackValidationErrorOutput() CertificatePackValidationErrorOutput
+	ToCertificatePackValidationErrorOutputWithContext(context.Context) CertificatePackValidationErrorOutput
+}
+
+type CertificatePackValidationErrorArgs struct {
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (CertificatePackValidationErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificatePackValidationError)(nil)).Elem()
+}
+
+func (i CertificatePackValidationErrorArgs) ToCertificatePackValidationErrorOutput() CertificatePackValidationErrorOutput {
+	return i.ToCertificatePackValidationErrorOutputWithContext(context.Background())
+}
+
+func (i CertificatePackValidationErrorArgs) ToCertificatePackValidationErrorOutputWithContext(ctx context.Context) CertificatePackValidationErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackValidationErrorOutput)
+}
+
+// CertificatePackValidationErrorArrayInput is an input type that accepts CertificatePackValidationErrorArray and CertificatePackValidationErrorArrayOutput values.
+// You can construct a concrete instance of `CertificatePackValidationErrorArrayInput` via:
+//
+//          CertificatePackValidationErrorArray{ CertificatePackValidationErrorArgs{...} }
+type CertificatePackValidationErrorArrayInput interface {
+	pulumi.Input
+
+	ToCertificatePackValidationErrorArrayOutput() CertificatePackValidationErrorArrayOutput
+	ToCertificatePackValidationErrorArrayOutputWithContext(context.Context) CertificatePackValidationErrorArrayOutput
+}
+
+type CertificatePackValidationErrorArray []CertificatePackValidationErrorInput
+
+func (CertificatePackValidationErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificatePackValidationError)(nil)).Elem()
+}
+
+func (i CertificatePackValidationErrorArray) ToCertificatePackValidationErrorArrayOutput() CertificatePackValidationErrorArrayOutput {
+	return i.ToCertificatePackValidationErrorArrayOutputWithContext(context.Background())
+}
+
+func (i CertificatePackValidationErrorArray) ToCertificatePackValidationErrorArrayOutputWithContext(ctx context.Context) CertificatePackValidationErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackValidationErrorArrayOutput)
+}
+
+type CertificatePackValidationErrorOutput struct{ *pulumi.OutputState }
+
+func (CertificatePackValidationErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificatePackValidationError)(nil)).Elem()
+}
+
+func (o CertificatePackValidationErrorOutput) ToCertificatePackValidationErrorOutput() CertificatePackValidationErrorOutput {
+	return o
+}
+
+func (o CertificatePackValidationErrorOutput) ToCertificatePackValidationErrorOutputWithContext(ctx context.Context) CertificatePackValidationErrorOutput {
+	return o
+}
+
+func (o CertificatePackValidationErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificatePackValidationError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type CertificatePackValidationErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificatePackValidationErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificatePackValidationError)(nil)).Elem()
+}
+
+func (o CertificatePackValidationErrorArrayOutput) ToCertificatePackValidationErrorArrayOutput() CertificatePackValidationErrorArrayOutput {
+	return o
+}
+
+func (o CertificatePackValidationErrorArrayOutput) ToCertificatePackValidationErrorArrayOutputWithContext(ctx context.Context) CertificatePackValidationErrorArrayOutput {
+	return o
+}
+
+func (o CertificatePackValidationErrorArrayOutput) Index(i pulumi.IntInput) CertificatePackValidationErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificatePackValidationError {
+		return vs[0].([]CertificatePackValidationError)[vs[1].(int)]
+	}).(CertificatePackValidationErrorOutput)
+}
+
+type CertificatePackValidationRecord struct {
+	CnameName   *string  `pulumi:"cnameName"`
+	CnameTarget *string  `pulumi:"cnameTarget"`
+	Emails      []string `pulumi:"emails"`
+	HttpBody    *string  `pulumi:"httpBody"`
+	HttpUrl     *string  `pulumi:"httpUrl"`
+	TxtName     *string  `pulumi:"txtName"`
+	TxtValue    *string  `pulumi:"txtValue"`
+}
+
+// CertificatePackValidationRecordInput is an input type that accepts CertificatePackValidationRecordArgs and CertificatePackValidationRecordOutput values.
+// You can construct a concrete instance of `CertificatePackValidationRecordInput` via:
+//
+//          CertificatePackValidationRecordArgs{...}
+type CertificatePackValidationRecordInput interface {
+	pulumi.Input
+
+	ToCertificatePackValidationRecordOutput() CertificatePackValidationRecordOutput
+	ToCertificatePackValidationRecordOutputWithContext(context.Context) CertificatePackValidationRecordOutput
+}
+
+type CertificatePackValidationRecordArgs struct {
+	CnameName   pulumi.StringPtrInput   `pulumi:"cnameName"`
+	CnameTarget pulumi.StringPtrInput   `pulumi:"cnameTarget"`
+	Emails      pulumi.StringArrayInput `pulumi:"emails"`
+	HttpBody    pulumi.StringPtrInput   `pulumi:"httpBody"`
+	HttpUrl     pulumi.StringPtrInput   `pulumi:"httpUrl"`
+	TxtName     pulumi.StringPtrInput   `pulumi:"txtName"`
+	TxtValue    pulumi.StringPtrInput   `pulumi:"txtValue"`
+}
+
+func (CertificatePackValidationRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificatePackValidationRecord)(nil)).Elem()
+}
+
+func (i CertificatePackValidationRecordArgs) ToCertificatePackValidationRecordOutput() CertificatePackValidationRecordOutput {
+	return i.ToCertificatePackValidationRecordOutputWithContext(context.Background())
+}
+
+func (i CertificatePackValidationRecordArgs) ToCertificatePackValidationRecordOutputWithContext(ctx context.Context) CertificatePackValidationRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackValidationRecordOutput)
+}
+
+// CertificatePackValidationRecordArrayInput is an input type that accepts CertificatePackValidationRecordArray and CertificatePackValidationRecordArrayOutput values.
+// You can construct a concrete instance of `CertificatePackValidationRecordArrayInput` via:
+//
+//          CertificatePackValidationRecordArray{ CertificatePackValidationRecordArgs{...} }
+type CertificatePackValidationRecordArrayInput interface {
+	pulumi.Input
+
+	ToCertificatePackValidationRecordArrayOutput() CertificatePackValidationRecordArrayOutput
+	ToCertificatePackValidationRecordArrayOutputWithContext(context.Context) CertificatePackValidationRecordArrayOutput
+}
+
+type CertificatePackValidationRecordArray []CertificatePackValidationRecordInput
+
+func (CertificatePackValidationRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificatePackValidationRecord)(nil)).Elem()
+}
+
+func (i CertificatePackValidationRecordArray) ToCertificatePackValidationRecordArrayOutput() CertificatePackValidationRecordArrayOutput {
+	return i.ToCertificatePackValidationRecordArrayOutputWithContext(context.Background())
+}
+
+func (i CertificatePackValidationRecordArray) ToCertificatePackValidationRecordArrayOutputWithContext(ctx context.Context) CertificatePackValidationRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackValidationRecordArrayOutput)
+}
+
+type CertificatePackValidationRecordOutput struct{ *pulumi.OutputState }
+
+func (CertificatePackValidationRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificatePackValidationRecord)(nil)).Elem()
+}
+
+func (o CertificatePackValidationRecordOutput) ToCertificatePackValidationRecordOutput() CertificatePackValidationRecordOutput {
+	return o
+}
+
+func (o CertificatePackValidationRecordOutput) ToCertificatePackValidationRecordOutputWithContext(ctx context.Context) CertificatePackValidationRecordOutput {
+	return o
+}
+
+func (o CertificatePackValidationRecordOutput) CnameName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificatePackValidationRecord) *string { return v.CnameName }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificatePackValidationRecordOutput) CnameTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificatePackValidationRecord) *string { return v.CnameTarget }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificatePackValidationRecordOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificatePackValidationRecord) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o CertificatePackValidationRecordOutput) HttpBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificatePackValidationRecord) *string { return v.HttpBody }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificatePackValidationRecordOutput) HttpUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificatePackValidationRecord) *string { return v.HttpUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificatePackValidationRecordOutput) TxtName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificatePackValidationRecord) *string { return v.TxtName }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificatePackValidationRecordOutput) TxtValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificatePackValidationRecord) *string { return v.TxtValue }).(pulumi.StringPtrOutput)
+}
+
+type CertificatePackValidationRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificatePackValidationRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificatePackValidationRecord)(nil)).Elem()
+}
+
+func (o CertificatePackValidationRecordArrayOutput) ToCertificatePackValidationRecordArrayOutput() CertificatePackValidationRecordArrayOutput {
+	return o
+}
+
+func (o CertificatePackValidationRecordArrayOutput) ToCertificatePackValidationRecordArrayOutputWithContext(ctx context.Context) CertificatePackValidationRecordArrayOutput {
+	return o
+}
+
+func (o CertificatePackValidationRecordArrayOutput) Index(i pulumi.IntInput) CertificatePackValidationRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificatePackValidationRecord {
+		return vs[0].([]CertificatePackValidationRecord)[vs[1].(int)]
+	}).(CertificatePackValidationRecordOutput)
+}
+
 type CustomHostnameSsl struct {
 	CertificateAuthority *string `pulumi:"certificateAuthority"`
-	CnameName            *string `pulumi:"cnameName"`
-	CnameTarget          *string `pulumi:"cnameTarget"`
 	// If a custom uploaded certificate is used.
 	CustomCertificate *string `pulumi:"customCertificate"`
 	// The key for a custom uploaded certificate.
@@ -5388,7 +5610,9 @@ type CustomHostnameSsl struct {
 	Settings []CustomHostnameSslSetting `pulumi:"settings"`
 	Status   *string                    `pulumi:"status"`
 	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-	Type *string `pulumi:"type"`
+	Type              *string                             `pulumi:"type"`
+	ValidationErrors  []CustomHostnameSslValidationError  `pulumi:"validationErrors"`
+	ValidationRecords []CustomHostnameSslValidationRecord `pulumi:"validationRecords"`
 	// Indicates whether the certificate covers a wildcard.
 	Wildcard *bool `pulumi:"wildcard"`
 }
@@ -5406,8 +5630,6 @@ type CustomHostnameSslInput interface {
 
 type CustomHostnameSslArgs struct {
 	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
-	CnameName            pulumi.StringPtrInput `pulumi:"cnameName"`
-	CnameTarget          pulumi.StringPtrInput `pulumi:"cnameTarget"`
 	// If a custom uploaded certificate is used.
 	CustomCertificate pulumi.StringPtrInput `pulumi:"customCertificate"`
 	// The key for a custom uploaded certificate.
@@ -5419,7 +5641,9 @@ type CustomHostnameSslArgs struct {
 	Settings CustomHostnameSslSettingArrayInput `pulumi:"settings"`
 	Status   pulumi.StringPtrInput              `pulumi:"status"`
 	// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type              pulumi.StringPtrInput                       `pulumi:"type"`
+	ValidationErrors  CustomHostnameSslValidationErrorArrayInput  `pulumi:"validationErrors"`
+	ValidationRecords CustomHostnameSslValidationRecordArrayInput `pulumi:"validationRecords"`
 	// Indicates whether the certificate covers a wildcard.
 	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
 }
@@ -5479,14 +5703,6 @@ func (o CustomHostnameSslOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
 }
 
-func (o CustomHostnameSslOutput) CnameName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CnameName }).(pulumi.StringPtrOutput)
-}
-
-func (o CustomHostnameSslOutput) CnameTarget() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CnameTarget }).(pulumi.StringPtrOutput)
-}
-
 // If a custom uploaded certificate is used.
 func (o CustomHostnameSslOutput) CustomCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.CustomCertificate }).(pulumi.StringPtrOutput)
@@ -5515,6 +5731,14 @@ func (o CustomHostnameSslOutput) Status() pulumi.StringPtrOutput {
 // Level of validation to be used for this hostname. Domain validation ("dv") must be used.
 func (o CustomHostnameSslOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomHostnameSsl) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameSslOutput) ValidationErrors() CustomHostnameSslValidationErrorArrayOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) []CustomHostnameSslValidationError { return v.ValidationErrors }).(CustomHostnameSslValidationErrorArrayOutput)
+}
+
+func (o CustomHostnameSslOutput) ValidationRecords() CustomHostnameSslValidationRecordArrayOutput {
+	return o.ApplyT(func(v CustomHostnameSsl) []CustomHostnameSslValidationRecord { return v.ValidationRecords }).(CustomHostnameSslValidationRecordArrayOutput)
 }
 
 // Indicates whether the certificate covers a wildcard.
@@ -5676,6 +5900,230 @@ func (o CustomHostnameSslSettingArrayOutput) Index(i pulumi.IntInput) CustomHost
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomHostnameSslSetting {
 		return vs[0].([]CustomHostnameSslSetting)[vs[1].(int)]
 	}).(CustomHostnameSslSettingOutput)
+}
+
+type CustomHostnameSslValidationError struct {
+	Message *string `pulumi:"message"`
+}
+
+// CustomHostnameSslValidationErrorInput is an input type that accepts CustomHostnameSslValidationErrorArgs and CustomHostnameSslValidationErrorOutput values.
+// You can construct a concrete instance of `CustomHostnameSslValidationErrorInput` via:
+//
+//          CustomHostnameSslValidationErrorArgs{...}
+type CustomHostnameSslValidationErrorInput interface {
+	pulumi.Input
+
+	ToCustomHostnameSslValidationErrorOutput() CustomHostnameSslValidationErrorOutput
+	ToCustomHostnameSslValidationErrorOutputWithContext(context.Context) CustomHostnameSslValidationErrorOutput
+}
+
+type CustomHostnameSslValidationErrorArgs struct {
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (CustomHostnameSslValidationErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameSslValidationError)(nil)).Elem()
+}
+
+func (i CustomHostnameSslValidationErrorArgs) ToCustomHostnameSslValidationErrorOutput() CustomHostnameSslValidationErrorOutput {
+	return i.ToCustomHostnameSslValidationErrorOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameSslValidationErrorArgs) ToCustomHostnameSslValidationErrorOutputWithContext(ctx context.Context) CustomHostnameSslValidationErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameSslValidationErrorOutput)
+}
+
+// CustomHostnameSslValidationErrorArrayInput is an input type that accepts CustomHostnameSslValidationErrorArray and CustomHostnameSslValidationErrorArrayOutput values.
+// You can construct a concrete instance of `CustomHostnameSslValidationErrorArrayInput` via:
+//
+//          CustomHostnameSslValidationErrorArray{ CustomHostnameSslValidationErrorArgs{...} }
+type CustomHostnameSslValidationErrorArrayInput interface {
+	pulumi.Input
+
+	ToCustomHostnameSslValidationErrorArrayOutput() CustomHostnameSslValidationErrorArrayOutput
+	ToCustomHostnameSslValidationErrorArrayOutputWithContext(context.Context) CustomHostnameSslValidationErrorArrayOutput
+}
+
+type CustomHostnameSslValidationErrorArray []CustomHostnameSslValidationErrorInput
+
+func (CustomHostnameSslValidationErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostnameSslValidationError)(nil)).Elem()
+}
+
+func (i CustomHostnameSslValidationErrorArray) ToCustomHostnameSslValidationErrorArrayOutput() CustomHostnameSslValidationErrorArrayOutput {
+	return i.ToCustomHostnameSslValidationErrorArrayOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameSslValidationErrorArray) ToCustomHostnameSslValidationErrorArrayOutputWithContext(ctx context.Context) CustomHostnameSslValidationErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameSslValidationErrorArrayOutput)
+}
+
+type CustomHostnameSslValidationErrorOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameSslValidationErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameSslValidationError)(nil)).Elem()
+}
+
+func (o CustomHostnameSslValidationErrorOutput) ToCustomHostnameSslValidationErrorOutput() CustomHostnameSslValidationErrorOutput {
+	return o
+}
+
+func (o CustomHostnameSslValidationErrorOutput) ToCustomHostnameSslValidationErrorOutputWithContext(ctx context.Context) CustomHostnameSslValidationErrorOutput {
+	return o
+}
+
+func (o CustomHostnameSslValidationErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslValidationError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type CustomHostnameSslValidationErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameSslValidationErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostnameSslValidationError)(nil)).Elem()
+}
+
+func (o CustomHostnameSslValidationErrorArrayOutput) ToCustomHostnameSslValidationErrorArrayOutput() CustomHostnameSslValidationErrorArrayOutput {
+	return o
+}
+
+func (o CustomHostnameSslValidationErrorArrayOutput) ToCustomHostnameSslValidationErrorArrayOutputWithContext(ctx context.Context) CustomHostnameSslValidationErrorArrayOutput {
+	return o
+}
+
+func (o CustomHostnameSslValidationErrorArrayOutput) Index(i pulumi.IntInput) CustomHostnameSslValidationErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomHostnameSslValidationError {
+		return vs[0].([]CustomHostnameSslValidationError)[vs[1].(int)]
+	}).(CustomHostnameSslValidationErrorOutput)
+}
+
+type CustomHostnameSslValidationRecord struct {
+	CnameName   *string  `pulumi:"cnameName"`
+	CnameTarget *string  `pulumi:"cnameTarget"`
+	Emails      []string `pulumi:"emails"`
+	HttpBody    *string  `pulumi:"httpBody"`
+	HttpUrl     *string  `pulumi:"httpUrl"`
+	TxtName     *string  `pulumi:"txtName"`
+	TxtValue    *string  `pulumi:"txtValue"`
+}
+
+// CustomHostnameSslValidationRecordInput is an input type that accepts CustomHostnameSslValidationRecordArgs and CustomHostnameSslValidationRecordOutput values.
+// You can construct a concrete instance of `CustomHostnameSslValidationRecordInput` via:
+//
+//          CustomHostnameSslValidationRecordArgs{...}
+type CustomHostnameSslValidationRecordInput interface {
+	pulumi.Input
+
+	ToCustomHostnameSslValidationRecordOutput() CustomHostnameSslValidationRecordOutput
+	ToCustomHostnameSslValidationRecordOutputWithContext(context.Context) CustomHostnameSslValidationRecordOutput
+}
+
+type CustomHostnameSslValidationRecordArgs struct {
+	CnameName   pulumi.StringPtrInput   `pulumi:"cnameName"`
+	CnameTarget pulumi.StringPtrInput   `pulumi:"cnameTarget"`
+	Emails      pulumi.StringArrayInput `pulumi:"emails"`
+	HttpBody    pulumi.StringPtrInput   `pulumi:"httpBody"`
+	HttpUrl     pulumi.StringPtrInput   `pulumi:"httpUrl"`
+	TxtName     pulumi.StringPtrInput   `pulumi:"txtName"`
+	TxtValue    pulumi.StringPtrInput   `pulumi:"txtValue"`
+}
+
+func (CustomHostnameSslValidationRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameSslValidationRecord)(nil)).Elem()
+}
+
+func (i CustomHostnameSslValidationRecordArgs) ToCustomHostnameSslValidationRecordOutput() CustomHostnameSslValidationRecordOutput {
+	return i.ToCustomHostnameSslValidationRecordOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameSslValidationRecordArgs) ToCustomHostnameSslValidationRecordOutputWithContext(ctx context.Context) CustomHostnameSslValidationRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameSslValidationRecordOutput)
+}
+
+// CustomHostnameSslValidationRecordArrayInput is an input type that accepts CustomHostnameSslValidationRecordArray and CustomHostnameSslValidationRecordArrayOutput values.
+// You can construct a concrete instance of `CustomHostnameSslValidationRecordArrayInput` via:
+//
+//          CustomHostnameSslValidationRecordArray{ CustomHostnameSslValidationRecordArgs{...} }
+type CustomHostnameSslValidationRecordArrayInput interface {
+	pulumi.Input
+
+	ToCustomHostnameSslValidationRecordArrayOutput() CustomHostnameSslValidationRecordArrayOutput
+	ToCustomHostnameSslValidationRecordArrayOutputWithContext(context.Context) CustomHostnameSslValidationRecordArrayOutput
+}
+
+type CustomHostnameSslValidationRecordArray []CustomHostnameSslValidationRecordInput
+
+func (CustomHostnameSslValidationRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostnameSslValidationRecord)(nil)).Elem()
+}
+
+func (i CustomHostnameSslValidationRecordArray) ToCustomHostnameSslValidationRecordArrayOutput() CustomHostnameSslValidationRecordArrayOutput {
+	return i.ToCustomHostnameSslValidationRecordArrayOutputWithContext(context.Background())
+}
+
+func (i CustomHostnameSslValidationRecordArray) ToCustomHostnameSslValidationRecordArrayOutputWithContext(ctx context.Context) CustomHostnameSslValidationRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameSslValidationRecordArrayOutput)
+}
+
+type CustomHostnameSslValidationRecordOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameSslValidationRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomHostnameSslValidationRecord)(nil)).Elem()
+}
+
+func (o CustomHostnameSslValidationRecordOutput) ToCustomHostnameSslValidationRecordOutput() CustomHostnameSslValidationRecordOutput {
+	return o
+}
+
+func (o CustomHostnameSslValidationRecordOutput) ToCustomHostnameSslValidationRecordOutputWithContext(ctx context.Context) CustomHostnameSslValidationRecordOutput {
+	return o
+}
+
+func (o CustomHostnameSslValidationRecordOutput) CnameName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslValidationRecord) *string { return v.CnameName }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameSslValidationRecordOutput) CnameTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslValidationRecord) *string { return v.CnameTarget }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameSslValidationRecordOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomHostnameSslValidationRecord) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o CustomHostnameSslValidationRecordOutput) HttpBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslValidationRecord) *string { return v.HttpBody }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameSslValidationRecordOutput) HttpUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslValidationRecord) *string { return v.HttpUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameSslValidationRecordOutput) TxtName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslValidationRecord) *string { return v.TxtName }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomHostnameSslValidationRecordOutput) TxtValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomHostnameSslValidationRecord) *string { return v.TxtValue }).(pulumi.StringPtrOutput)
+}
+
+type CustomHostnameSslValidationRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomHostnameSslValidationRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomHostnameSslValidationRecord)(nil)).Elem()
+}
+
+func (o CustomHostnameSslValidationRecordArrayOutput) ToCustomHostnameSslValidationRecordArrayOutput() CustomHostnameSslValidationRecordArrayOutput {
+	return o
+}
+
+func (o CustomHostnameSslValidationRecordArrayOutput) ToCustomHostnameSslValidationRecordArrayOutputWithContext(ctx context.Context) CustomHostnameSslValidationRecordArrayOutput {
+	return o
+}
+
+func (o CustomHostnameSslValidationRecordArrayOutput) Index(i pulumi.IntInput) CustomHostnameSslValidationRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomHostnameSslValidationRecord {
+		return vs[0].([]CustomHostnameSslValidationRecord)[vs[1].(int)]
+	}).(CustomHostnameSslValidationRecordOutput)
 }
 
 type CustomSslCustomSslOptions struct {
@@ -5991,6 +6439,130 @@ func (o CustomSslCustomSslPriorityArrayOutput) Index(i pulumi.IntInput) CustomSs
 	}).(CustomSslCustomSslPriorityOutput)
 }
 
+type DevicePostureIntegrationConfig struct {
+	// The third-party API's URL.
+	ApiUrl *string `pulumi:"apiUrl"`
+	// The third-party authorization API URL.
+	AuthUrl *string `pulumi:"authUrl"`
+	// The client identifier for authenticating API calls.
+	ClientId *string `pulumi:"clientId"`
+	// The client secret for authenticating API calls.
+	ClientSecret *string `pulumi:"clientSecret"`
+}
+
+// DevicePostureIntegrationConfigInput is an input type that accepts DevicePostureIntegrationConfigArgs and DevicePostureIntegrationConfigOutput values.
+// You can construct a concrete instance of `DevicePostureIntegrationConfigInput` via:
+//
+//          DevicePostureIntegrationConfigArgs{...}
+type DevicePostureIntegrationConfigInput interface {
+	pulumi.Input
+
+	ToDevicePostureIntegrationConfigOutput() DevicePostureIntegrationConfigOutput
+	ToDevicePostureIntegrationConfigOutputWithContext(context.Context) DevicePostureIntegrationConfigOutput
+}
+
+type DevicePostureIntegrationConfigArgs struct {
+	// The third-party API's URL.
+	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
+	// The third-party authorization API URL.
+	AuthUrl pulumi.StringPtrInput `pulumi:"authUrl"`
+	// The client identifier for authenticating API calls.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The client secret for authenticating API calls.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+}
+
+func (DevicePostureIntegrationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePostureIntegrationConfig)(nil)).Elem()
+}
+
+func (i DevicePostureIntegrationConfigArgs) ToDevicePostureIntegrationConfigOutput() DevicePostureIntegrationConfigOutput {
+	return i.ToDevicePostureIntegrationConfigOutputWithContext(context.Background())
+}
+
+func (i DevicePostureIntegrationConfigArgs) ToDevicePostureIntegrationConfigOutputWithContext(ctx context.Context) DevicePostureIntegrationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureIntegrationConfigOutput)
+}
+
+// DevicePostureIntegrationConfigArrayInput is an input type that accepts DevicePostureIntegrationConfigArray and DevicePostureIntegrationConfigArrayOutput values.
+// You can construct a concrete instance of `DevicePostureIntegrationConfigArrayInput` via:
+//
+//          DevicePostureIntegrationConfigArray{ DevicePostureIntegrationConfigArgs{...} }
+type DevicePostureIntegrationConfigArrayInput interface {
+	pulumi.Input
+
+	ToDevicePostureIntegrationConfigArrayOutput() DevicePostureIntegrationConfigArrayOutput
+	ToDevicePostureIntegrationConfigArrayOutputWithContext(context.Context) DevicePostureIntegrationConfigArrayOutput
+}
+
+type DevicePostureIntegrationConfigArray []DevicePostureIntegrationConfigInput
+
+func (DevicePostureIntegrationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevicePostureIntegrationConfig)(nil)).Elem()
+}
+
+func (i DevicePostureIntegrationConfigArray) ToDevicePostureIntegrationConfigArrayOutput() DevicePostureIntegrationConfigArrayOutput {
+	return i.ToDevicePostureIntegrationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DevicePostureIntegrationConfigArray) ToDevicePostureIntegrationConfigArrayOutputWithContext(ctx context.Context) DevicePostureIntegrationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureIntegrationConfigArrayOutput)
+}
+
+type DevicePostureIntegrationConfigOutput struct{ *pulumi.OutputState }
+
+func (DevicePostureIntegrationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevicePostureIntegrationConfig)(nil)).Elem()
+}
+
+func (o DevicePostureIntegrationConfigOutput) ToDevicePostureIntegrationConfigOutput() DevicePostureIntegrationConfigOutput {
+	return o
+}
+
+func (o DevicePostureIntegrationConfigOutput) ToDevicePostureIntegrationConfigOutputWithContext(ctx context.Context) DevicePostureIntegrationConfigOutput {
+	return o
+}
+
+// The third-party API's URL.
+func (o DevicePostureIntegrationConfigOutput) ApiUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureIntegrationConfig) *string { return v.ApiUrl }).(pulumi.StringPtrOutput)
+}
+
+// The third-party authorization API URL.
+func (o DevicePostureIntegrationConfigOutput) AuthUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureIntegrationConfig) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
+}
+
+// The client identifier for authenticating API calls.
+func (o DevicePostureIntegrationConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureIntegrationConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The client secret for authenticating API calls.
+func (o DevicePostureIntegrationConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureIntegrationConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+type DevicePostureIntegrationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DevicePostureIntegrationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DevicePostureIntegrationConfig)(nil)).Elem()
+}
+
+func (o DevicePostureIntegrationConfigArrayOutput) ToDevicePostureIntegrationConfigArrayOutput() DevicePostureIntegrationConfigArrayOutput {
+	return o
+}
+
+func (o DevicePostureIntegrationConfigArrayOutput) ToDevicePostureIntegrationConfigArrayOutputWithContext(ctx context.Context) DevicePostureIntegrationConfigArrayOutput {
+	return o
+}
+
+func (o DevicePostureIntegrationConfigArrayOutput) Index(i pulumi.IntInput) DevicePostureIntegrationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevicePostureIntegrationConfig {
+		return vs[0].([]DevicePostureIntegrationConfig)[vs[1].(int)]
+	}).(DevicePostureIntegrationConfigOutput)
+}
+
 type DevicePostureRuleInputType struct {
 	ComplianceStatus *string `pulumi:"complianceStatus"`
 	ConnectionId     *string `pulumi:"connectionId"`
@@ -6285,6 +6857,121 @@ func (o DevicePostureRuleMatchArrayOutput) Index(i pulumi.IntInput) DevicePostur
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevicePostureRuleMatch {
 		return vs[0].([]DevicePostureRuleMatch)[vs[1].(int)]
 	}).(DevicePostureRuleMatchOutput)
+}
+
+type FallbackDomainDomain struct {
+	// The description of the domain.
+	Description *string `pulumi:"description"`
+	// The DNS servers to receive the redirected request.
+	DnsServers []string `pulumi:"dnsServers"`
+	// The domain to ignore DNS requests.
+	Suffix *string `pulumi:"suffix"`
+}
+
+// FallbackDomainDomainInput is an input type that accepts FallbackDomainDomainArgs and FallbackDomainDomainOutput values.
+// You can construct a concrete instance of `FallbackDomainDomainInput` via:
+//
+//          FallbackDomainDomainArgs{...}
+type FallbackDomainDomainInput interface {
+	pulumi.Input
+
+	ToFallbackDomainDomainOutput() FallbackDomainDomainOutput
+	ToFallbackDomainDomainOutputWithContext(context.Context) FallbackDomainDomainOutput
+}
+
+type FallbackDomainDomainArgs struct {
+	// The description of the domain.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The DNS servers to receive the redirected request.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// The domain to ignore DNS requests.
+	Suffix pulumi.StringPtrInput `pulumi:"suffix"`
+}
+
+func (FallbackDomainDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FallbackDomainDomain)(nil)).Elem()
+}
+
+func (i FallbackDomainDomainArgs) ToFallbackDomainDomainOutput() FallbackDomainDomainOutput {
+	return i.ToFallbackDomainDomainOutputWithContext(context.Background())
+}
+
+func (i FallbackDomainDomainArgs) ToFallbackDomainDomainOutputWithContext(ctx context.Context) FallbackDomainDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FallbackDomainDomainOutput)
+}
+
+// FallbackDomainDomainArrayInput is an input type that accepts FallbackDomainDomainArray and FallbackDomainDomainArrayOutput values.
+// You can construct a concrete instance of `FallbackDomainDomainArrayInput` via:
+//
+//          FallbackDomainDomainArray{ FallbackDomainDomainArgs{...} }
+type FallbackDomainDomainArrayInput interface {
+	pulumi.Input
+
+	ToFallbackDomainDomainArrayOutput() FallbackDomainDomainArrayOutput
+	ToFallbackDomainDomainArrayOutputWithContext(context.Context) FallbackDomainDomainArrayOutput
+}
+
+type FallbackDomainDomainArray []FallbackDomainDomainInput
+
+func (FallbackDomainDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FallbackDomainDomain)(nil)).Elem()
+}
+
+func (i FallbackDomainDomainArray) ToFallbackDomainDomainArrayOutput() FallbackDomainDomainArrayOutput {
+	return i.ToFallbackDomainDomainArrayOutputWithContext(context.Background())
+}
+
+func (i FallbackDomainDomainArray) ToFallbackDomainDomainArrayOutputWithContext(ctx context.Context) FallbackDomainDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FallbackDomainDomainArrayOutput)
+}
+
+type FallbackDomainDomainOutput struct{ *pulumi.OutputState }
+
+func (FallbackDomainDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FallbackDomainDomain)(nil)).Elem()
+}
+
+func (o FallbackDomainDomainOutput) ToFallbackDomainDomainOutput() FallbackDomainDomainOutput {
+	return o
+}
+
+func (o FallbackDomainDomainOutput) ToFallbackDomainDomainOutputWithContext(ctx context.Context) FallbackDomainDomainOutput {
+	return o
+}
+
+// The description of the domain.
+func (o FallbackDomainDomainOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FallbackDomainDomain) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The DNS servers to receive the redirected request.
+func (o FallbackDomainDomainOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FallbackDomainDomain) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// The domain to ignore DNS requests.
+func (o FallbackDomainDomainOutput) Suffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FallbackDomainDomain) *string { return v.Suffix }).(pulumi.StringPtrOutput)
+}
+
+type FallbackDomainDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (FallbackDomainDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FallbackDomainDomain)(nil)).Elem()
+}
+
+func (o FallbackDomainDomainArrayOutput) ToFallbackDomainDomainArrayOutput() FallbackDomainDomainArrayOutput {
+	return o
+}
+
+func (o FallbackDomainDomainArrayOutput) ToFallbackDomainDomainArrayOutputWithContext(ctx context.Context) FallbackDomainDomainArrayOutput {
+	return o
+}
+
+func (o FallbackDomainDomainArrayOutput) Index(i pulumi.IntInput) FallbackDomainDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FallbackDomainDomain {
+		return vs[0].([]FallbackDomainDomain)[vs[1].(int)]
+	}).(FallbackDomainDomainOutput)
 }
 
 type HealthcheckHeader struct {
@@ -10545,7 +11232,7 @@ func (o PageRuleActionsMinifyArrayOutput) Index(i pulumi.IntInput) PageRuleActio
 }
 
 type RateLimitAction struct {
-	// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
+	// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
 	Mode string `pulumi:"mode"`
 	// Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
 	Response *RateLimitActionResponse `pulumi:"response"`
@@ -10565,7 +11252,7 @@ type RateLimitActionInput interface {
 }
 
 type RateLimitActionArgs struct {
-	// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
+	// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// Custom content-type and body to return, this overrides the custom error for the zone. This field is not required. Omission will result in default HTML error page. Definition below.
 	Response RateLimitActionResponsePtrInput `pulumi:"response"`
@@ -10650,7 +11337,7 @@ func (o RateLimitActionOutput) ToRateLimitActionPtrOutputWithContext(ctx context
 	}).(RateLimitActionPtrOutput)
 }
 
-// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
+// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
 func (o RateLimitActionOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v RateLimitAction) string { return v.Mode }).(pulumi.StringOutput)
 }
@@ -10689,7 +11376,7 @@ func (o RateLimitActionPtrOutput) Elem() RateLimitActionOutput {
 	}).(RateLimitActionOutput)
 }
 
-// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
+// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
 func (o RateLimitActionPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RateLimitAction) *string {
 		if v == nil {
@@ -12238,7 +12925,7 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 }
 
 type RulesetRule struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action *string `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
 	ActionParameters *RulesetRuleActionParameters `pulumi:"actionParameters"`
@@ -12271,7 +12958,7 @@ type RulesetRuleInput interface {
 }
 
 type RulesetRuleArgs struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
 	ActionParameters RulesetRuleActionParametersPtrInput `pulumi:"actionParameters"`
@@ -12343,7 +13030,7 @@ func (o RulesetRuleOutput) ToRulesetRuleOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 func (o RulesetRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -12422,6 +13109,7 @@ type RulesetRuleActionParameters struct {
 	MatchedData *RulesetRuleActionParametersMatchedData `pulumi:"matchedData"`
 	// List of override configurations to apply to the ruleset (refer to the nested schema).
 	Overrides *RulesetRuleActionParametersOverrides `pulumi:"overrides"`
+	Phases    []string                              `pulumi:"phases"`
 	// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 	Products []string `pulumi:"products"`
 	// List of rule-based overrides (refer to the nested schema).
@@ -12456,6 +13144,7 @@ type RulesetRuleActionParametersArgs struct {
 	MatchedData RulesetRuleActionParametersMatchedDataPtrInput `pulumi:"matchedData"`
 	// List of override configurations to apply to the ruleset (refer to the nested schema).
 	Overrides RulesetRuleActionParametersOverridesPtrInput `pulumi:"overrides"`
+	Phases    pulumi.StringArrayInput                      `pulumi:"phases"`
 	// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 	Products pulumi.StringArrayInput `pulumi:"products"`
 	// List of rule-based overrides (refer to the nested schema).
@@ -12570,6 +13259,10 @@ func (o RulesetRuleActionParametersOutput) Overrides() RulesetRuleActionParamete
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOverrides { return v.Overrides }).(RulesetRuleActionParametersOverridesPtrOutput)
 }
 
+func (o RulesetRuleActionParametersOutput) Phases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Phases }).(pulumi.StringArrayOutput)
+}
+
 // Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 func (o RulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
@@ -12670,6 +13363,15 @@ func (o RulesetRuleActionParametersPtrOutput) Overrides() RulesetRuleActionParam
 		}
 		return v.Overrides
 	}).(RulesetRuleActionParametersOverridesPtrOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) Phases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Phases
+	}).(pulumi.StringArrayOutput)
 }
 
 // Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
@@ -12993,7 +13695,7 @@ func (o RulesetRuleActionParametersMatchedDataPtrOutput) PublicKey() pulumi.Stri
 }
 
 type RulesetRuleActionParametersOverrides struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action *string `pulumi:"action"`
 	// List of tag-based overrides (refer to the nested schema).
 	Categories []RulesetRuleActionParametersOverridesCategory `pulumi:"categories"`
@@ -13015,7 +13717,7 @@ type RulesetRuleActionParametersOverridesInput interface {
 }
 
 type RulesetRuleActionParametersOverridesArgs struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of tag-based overrides (refer to the nested schema).
 	Categories RulesetRuleActionParametersOverridesCategoryArrayInput `pulumi:"categories"`
@@ -13102,7 +13804,7 @@ func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParameter
 	}).(RulesetRuleActionParametersOverridesPtrOutput)
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 func (o RulesetRuleActionParametersOverridesOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -13150,7 +13852,7 @@ func (o RulesetRuleActionParametersOverridesPtrOutput) Elem() RulesetRuleActionP
 	}).(RulesetRuleActionParametersOverridesOutput)
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 func (o RulesetRuleActionParametersOverridesPtrOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) *string {
 		if v == nil {
@@ -13191,7 +13893,7 @@ func (o RulesetRuleActionParametersOverridesPtrOutput) Rules() RulesetRuleAction
 }
 
 type RulesetRuleActionParametersOverridesCategory struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action *string `pulumi:"action"`
 	// Tag name to apply the ruleset rule override to.
 	Category *string `pulumi:"category"`
@@ -13211,7 +13913,7 @@ type RulesetRuleActionParametersOverridesCategoryInput interface {
 }
 
 type RulesetRuleActionParametersOverridesCategoryArgs struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Tag name to apply the ruleset rule override to.
 	Category pulumi.StringPtrInput `pulumi:"category"`
@@ -13270,7 +13972,7 @@ func (o RulesetRuleActionParametersOverridesCategoryOutput) ToRulesetRuleActionP
 	return o
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 func (o RulesetRuleActionParametersOverridesCategoryOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -13306,7 +14008,7 @@ func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) Index(i pulumi.
 }
 
 type RulesetRuleActionParametersOverridesRule struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action *string `pulumi:"action"`
 	// Defines if the current rule-level override enables or disables the rule.
 	Enabled *bool `pulumi:"enabled"`
@@ -13330,7 +14032,7 @@ type RulesetRuleActionParametersOverridesRuleInput interface {
 }
 
 type RulesetRuleActionParametersOverridesRuleArgs struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Defines if the current rule-level override enables or disables the rule.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -13393,7 +14095,7 @@ func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParam
 	return o
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
 func (o RulesetRuleActionParametersOverridesRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -14855,9 +15557,12 @@ func (o SplitTunnelTunnelArrayOutput) Index(i pulumi.IntInput) SplitTunnelTunnel
 }
 
 type TeamsAccountAntivirus struct {
+	// Scan on file download.
 	EnabledDownloadPhase bool `pulumi:"enabledDownloadPhase"`
-	EnabledUploadPhase   bool `pulumi:"enabledUploadPhase"`
-	FailClosed           bool `pulumi:"failClosed"`
+	// Scan on file upload.
+	EnabledUploadPhase bool `pulumi:"enabledUploadPhase"`
+	// Block requests for files that cannot be scanned.
+	FailClosed bool `pulumi:"failClosed"`
 }
 
 // TeamsAccountAntivirusInput is an input type that accepts TeamsAccountAntivirusArgs and TeamsAccountAntivirusOutput values.
@@ -14872,9 +15577,12 @@ type TeamsAccountAntivirusInput interface {
 }
 
 type TeamsAccountAntivirusArgs struct {
+	// Scan on file download.
 	EnabledDownloadPhase pulumi.BoolInput `pulumi:"enabledDownloadPhase"`
-	EnabledUploadPhase   pulumi.BoolInput `pulumi:"enabledUploadPhase"`
-	FailClosed           pulumi.BoolInput `pulumi:"failClosed"`
+	// Scan on file upload.
+	EnabledUploadPhase pulumi.BoolInput `pulumi:"enabledUploadPhase"`
+	// Block requests for files that cannot be scanned.
+	FailClosed pulumi.BoolInput `pulumi:"failClosed"`
 }
 
 func (TeamsAccountAntivirusArgs) ElementType() reflect.Type {
@@ -14954,14 +15662,17 @@ func (o TeamsAccountAntivirusOutput) ToTeamsAccountAntivirusPtrOutputWithContext
 	}).(TeamsAccountAntivirusPtrOutput)
 }
 
+// Scan on file download.
 func (o TeamsAccountAntivirusOutput) EnabledDownloadPhase() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsAccountAntivirus) bool { return v.EnabledDownloadPhase }).(pulumi.BoolOutput)
 }
 
+// Scan on file upload.
 func (o TeamsAccountAntivirusOutput) EnabledUploadPhase() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsAccountAntivirus) bool { return v.EnabledUploadPhase }).(pulumi.BoolOutput)
 }
 
+// Block requests for files that cannot be scanned.
 func (o TeamsAccountAntivirusOutput) FailClosed() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsAccountAntivirus) bool { return v.FailClosed }).(pulumi.BoolOutput)
 }
@@ -14990,6 +15701,7 @@ func (o TeamsAccountAntivirusPtrOutput) Elem() TeamsAccountAntivirusOutput {
 	}).(TeamsAccountAntivirusOutput)
 }
 
+// Scan on file download.
 func (o TeamsAccountAntivirusPtrOutput) EnabledDownloadPhase() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsAccountAntivirus) *bool {
 		if v == nil {
@@ -14999,6 +15711,7 @@ func (o TeamsAccountAntivirusPtrOutput) EnabledDownloadPhase() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Scan on file upload.
 func (o TeamsAccountAntivirusPtrOutput) EnabledUploadPhase() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsAccountAntivirus) *bool {
 		if v == nil {
@@ -15008,6 +15721,7 @@ func (o TeamsAccountAntivirusPtrOutput) EnabledUploadPhase() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Block requests for files that cannot be scanned.
 func (o TeamsAccountAntivirusPtrOutput) FailClosed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsAccountAntivirus) *bool {
 		if v == nil {
@@ -15249,6 +15963,1070 @@ func (o TeamsAccountBlockPagePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TeamsAccountFips struct {
+	// Only allow FIPS-compliant TLS configuration.
+	Tls *bool `pulumi:"tls"`
+}
+
+// TeamsAccountFipsInput is an input type that accepts TeamsAccountFipsArgs and TeamsAccountFipsOutput values.
+// You can construct a concrete instance of `TeamsAccountFipsInput` via:
+//
+//          TeamsAccountFipsArgs{...}
+type TeamsAccountFipsInput interface {
+	pulumi.Input
+
+	ToTeamsAccountFipsOutput() TeamsAccountFipsOutput
+	ToTeamsAccountFipsOutputWithContext(context.Context) TeamsAccountFipsOutput
+}
+
+type TeamsAccountFipsArgs struct {
+	// Only allow FIPS-compliant TLS configuration.
+	Tls pulumi.BoolPtrInput `pulumi:"tls"`
+}
+
+func (TeamsAccountFipsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountFips)(nil)).Elem()
+}
+
+func (i TeamsAccountFipsArgs) ToTeamsAccountFipsOutput() TeamsAccountFipsOutput {
+	return i.ToTeamsAccountFipsOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountFipsArgs) ToTeamsAccountFipsOutputWithContext(ctx context.Context) TeamsAccountFipsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountFipsOutput)
+}
+
+func (i TeamsAccountFipsArgs) ToTeamsAccountFipsPtrOutput() TeamsAccountFipsPtrOutput {
+	return i.ToTeamsAccountFipsPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountFipsArgs) ToTeamsAccountFipsPtrOutputWithContext(ctx context.Context) TeamsAccountFipsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountFipsOutput).ToTeamsAccountFipsPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountFipsPtrInput is an input type that accepts TeamsAccountFipsArgs, TeamsAccountFipsPtr and TeamsAccountFipsPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountFipsPtrInput` via:
+//
+//          TeamsAccountFipsArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountFipsPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountFipsPtrOutput() TeamsAccountFipsPtrOutput
+	ToTeamsAccountFipsPtrOutputWithContext(context.Context) TeamsAccountFipsPtrOutput
+}
+
+type teamsAccountFipsPtrType TeamsAccountFipsArgs
+
+func TeamsAccountFipsPtr(v *TeamsAccountFipsArgs) TeamsAccountFipsPtrInput {
+	return (*teamsAccountFipsPtrType)(v)
+}
+
+func (*teamsAccountFipsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountFips)(nil)).Elem()
+}
+
+func (i *teamsAccountFipsPtrType) ToTeamsAccountFipsPtrOutput() TeamsAccountFipsPtrOutput {
+	return i.ToTeamsAccountFipsPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountFipsPtrType) ToTeamsAccountFipsPtrOutputWithContext(ctx context.Context) TeamsAccountFipsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountFipsPtrOutput)
+}
+
+type TeamsAccountFipsOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountFipsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountFips)(nil)).Elem()
+}
+
+func (o TeamsAccountFipsOutput) ToTeamsAccountFipsOutput() TeamsAccountFipsOutput {
+	return o
+}
+
+func (o TeamsAccountFipsOutput) ToTeamsAccountFipsOutputWithContext(ctx context.Context) TeamsAccountFipsOutput {
+	return o
+}
+
+func (o TeamsAccountFipsOutput) ToTeamsAccountFipsPtrOutput() TeamsAccountFipsPtrOutput {
+	return o.ToTeamsAccountFipsPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountFipsOutput) ToTeamsAccountFipsPtrOutputWithContext(ctx context.Context) TeamsAccountFipsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountFips) *TeamsAccountFips {
+		return &v
+	}).(TeamsAccountFipsPtrOutput)
+}
+
+// Only allow FIPS-compliant TLS configuration.
+func (o TeamsAccountFipsOutput) Tls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsAccountFips) *bool { return v.Tls }).(pulumi.BoolPtrOutput)
+}
+
+type TeamsAccountFipsPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountFipsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountFips)(nil)).Elem()
+}
+
+func (o TeamsAccountFipsPtrOutput) ToTeamsAccountFipsPtrOutput() TeamsAccountFipsPtrOutput {
+	return o
+}
+
+func (o TeamsAccountFipsPtrOutput) ToTeamsAccountFipsPtrOutputWithContext(ctx context.Context) TeamsAccountFipsPtrOutput {
+	return o
+}
+
+func (o TeamsAccountFipsPtrOutput) Elem() TeamsAccountFipsOutput {
+	return o.ApplyT(func(v *TeamsAccountFips) TeamsAccountFips {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountFips
+		return ret
+	}).(TeamsAccountFipsOutput)
+}
+
+// Only allow FIPS-compliant TLS configuration.
+func (o TeamsAccountFipsPtrOutput) Tls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountFips) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Tls
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsAccountLogging struct {
+	// Redact personally identifiable information from activity logging (PII fields are: source IP,
+	// user email, user ID, device ID, URL, referrer, user agent).
+	RedactPii bool `pulumi:"redactPii"`
+	// Represents whether all requests are logged or only the blocked requests are
+	// logged in DNS, HTTP and L4 filters.
+	SettingsByRuleType TeamsAccountLoggingSettingsByRuleType `pulumi:"settingsByRuleType"`
+}
+
+// TeamsAccountLoggingInput is an input type that accepts TeamsAccountLoggingArgs and TeamsAccountLoggingOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingInput` via:
+//
+//          TeamsAccountLoggingArgs{...}
+type TeamsAccountLoggingInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingOutput() TeamsAccountLoggingOutput
+	ToTeamsAccountLoggingOutputWithContext(context.Context) TeamsAccountLoggingOutput
+}
+
+type TeamsAccountLoggingArgs struct {
+	// Redact personally identifiable information from activity logging (PII fields are: source IP,
+	// user email, user ID, device ID, URL, referrer, user agent).
+	RedactPii pulumi.BoolInput `pulumi:"redactPii"`
+	// Represents whether all requests are logged or only the blocked requests are
+	// logged in DNS, HTTP and L4 filters.
+	SettingsByRuleType TeamsAccountLoggingSettingsByRuleTypeInput `pulumi:"settingsByRuleType"`
+}
+
+func (TeamsAccountLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLogging)(nil)).Elem()
+}
+
+func (i TeamsAccountLoggingArgs) ToTeamsAccountLoggingOutput() TeamsAccountLoggingOutput {
+	return i.ToTeamsAccountLoggingOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingArgs) ToTeamsAccountLoggingOutputWithContext(ctx context.Context) TeamsAccountLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingOutput)
+}
+
+func (i TeamsAccountLoggingArgs) ToTeamsAccountLoggingPtrOutput() TeamsAccountLoggingPtrOutput {
+	return i.ToTeamsAccountLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingArgs) ToTeamsAccountLoggingPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingOutput).ToTeamsAccountLoggingPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountLoggingPtrInput is an input type that accepts TeamsAccountLoggingArgs, TeamsAccountLoggingPtr and TeamsAccountLoggingPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingPtrInput` via:
+//
+//          TeamsAccountLoggingArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountLoggingPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingPtrOutput() TeamsAccountLoggingPtrOutput
+	ToTeamsAccountLoggingPtrOutputWithContext(context.Context) TeamsAccountLoggingPtrOutput
+}
+
+type teamsAccountLoggingPtrType TeamsAccountLoggingArgs
+
+func TeamsAccountLoggingPtr(v *TeamsAccountLoggingArgs) TeamsAccountLoggingPtrInput {
+	return (*teamsAccountLoggingPtrType)(v)
+}
+
+func (*teamsAccountLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLogging)(nil)).Elem()
+}
+
+func (i *teamsAccountLoggingPtrType) ToTeamsAccountLoggingPtrOutput() TeamsAccountLoggingPtrOutput {
+	return i.ToTeamsAccountLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountLoggingPtrType) ToTeamsAccountLoggingPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingPtrOutput)
+}
+
+type TeamsAccountLoggingOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLogging)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingOutput) ToTeamsAccountLoggingOutput() TeamsAccountLoggingOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingOutput) ToTeamsAccountLoggingOutputWithContext(ctx context.Context) TeamsAccountLoggingOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingOutput) ToTeamsAccountLoggingPtrOutput() TeamsAccountLoggingPtrOutput {
+	return o.ToTeamsAccountLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountLoggingOutput) ToTeamsAccountLoggingPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountLogging) *TeamsAccountLogging {
+		return &v
+	}).(TeamsAccountLoggingPtrOutput)
+}
+
+// Redact personally identifiable information from activity logging (PII fields are: source IP,
+// user email, user ID, device ID, URL, referrer, user agent).
+func (o TeamsAccountLoggingOutput) RedactPii() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountLogging) bool { return v.RedactPii }).(pulumi.BoolOutput)
+}
+
+// Represents whether all requests are logged or only the blocked requests are
+// logged in DNS, HTTP and L4 filters.
+func (o TeamsAccountLoggingOutput) SettingsByRuleType() TeamsAccountLoggingSettingsByRuleTypeOutput {
+	return o.ApplyT(func(v TeamsAccountLogging) TeamsAccountLoggingSettingsByRuleType { return v.SettingsByRuleType }).(TeamsAccountLoggingSettingsByRuleTypeOutput)
+}
+
+type TeamsAccountLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLogging)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingPtrOutput) ToTeamsAccountLoggingPtrOutput() TeamsAccountLoggingPtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingPtrOutput) ToTeamsAccountLoggingPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingPtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingPtrOutput) Elem() TeamsAccountLoggingOutput {
+	return o.ApplyT(func(v *TeamsAccountLogging) TeamsAccountLogging {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountLogging
+		return ret
+	}).(TeamsAccountLoggingOutput)
+}
+
+// Redact personally identifiable information from activity logging (PII fields are: source IP,
+// user email, user ID, device ID, URL, referrer, user agent).
+func (o TeamsAccountLoggingPtrOutput) RedactPii() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLogging) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.RedactPii
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents whether all requests are logged or only the blocked requests are
+// logged in DNS, HTTP and L4 filters.
+func (o TeamsAccountLoggingPtrOutput) SettingsByRuleType() TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLogging) *TeamsAccountLoggingSettingsByRuleType {
+		if v == nil {
+			return nil
+		}
+		return &v.SettingsByRuleType
+	}).(TeamsAccountLoggingSettingsByRuleTypePtrOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleType struct {
+	Dns  TeamsAccountLoggingSettingsByRuleTypeDns  `pulumi:"dns"`
+	Http TeamsAccountLoggingSettingsByRuleTypeHttp `pulumi:"http"`
+	L4   TeamsAccountLoggingSettingsByRuleTypeL4   `pulumi:"l4"`
+}
+
+// TeamsAccountLoggingSettingsByRuleTypeInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeArgs and TeamsAccountLoggingSettingsByRuleTypeOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeInput` via:
+//
+//          TeamsAccountLoggingSettingsByRuleTypeArgs{...}
+type TeamsAccountLoggingSettingsByRuleTypeInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingSettingsByRuleTypeOutput() TeamsAccountLoggingSettingsByRuleTypeOutput
+	ToTeamsAccountLoggingSettingsByRuleTypeOutputWithContext(context.Context) TeamsAccountLoggingSettingsByRuleTypeOutput
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeArgs struct {
+	Dns  TeamsAccountLoggingSettingsByRuleTypeDnsInput  `pulumi:"dns"`
+	Http TeamsAccountLoggingSettingsByRuleTypeHttpInput `pulumi:"http"`
+	L4   TeamsAccountLoggingSettingsByRuleTypeL4Input   `pulumi:"l4"`
+}
+
+func (TeamsAccountLoggingSettingsByRuleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleType)(nil)).Elem()
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeArgs) ToTeamsAccountLoggingSettingsByRuleTypeOutput() TeamsAccountLoggingSettingsByRuleTypeOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeArgs) ToTeamsAccountLoggingSettingsByRuleTypeOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeOutput)
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeArgs) ToTeamsAccountLoggingSettingsByRuleTypePtrOutput() TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeArgs) ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeOutput).ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(ctx)
+}
+
+// TeamsAccountLoggingSettingsByRuleTypePtrInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeArgs, TeamsAccountLoggingSettingsByRuleTypePtr and TeamsAccountLoggingSettingsByRuleTypePtrOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypePtrInput` via:
+//
+//          TeamsAccountLoggingSettingsByRuleTypeArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountLoggingSettingsByRuleTypePtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingSettingsByRuleTypePtrOutput() TeamsAccountLoggingSettingsByRuleTypePtrOutput
+	ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(context.Context) TeamsAccountLoggingSettingsByRuleTypePtrOutput
+}
+
+type teamsAccountLoggingSettingsByRuleTypePtrType TeamsAccountLoggingSettingsByRuleTypeArgs
+
+func TeamsAccountLoggingSettingsByRuleTypePtr(v *TeamsAccountLoggingSettingsByRuleTypeArgs) TeamsAccountLoggingSettingsByRuleTypePtrInput {
+	return (*teamsAccountLoggingSettingsByRuleTypePtrType)(v)
+}
+
+func (*teamsAccountLoggingSettingsByRuleTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLoggingSettingsByRuleType)(nil)).Elem()
+}
+
+func (i *teamsAccountLoggingSettingsByRuleTypePtrType) ToTeamsAccountLoggingSettingsByRuleTypePtrOutput() TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountLoggingSettingsByRuleTypePtrType) ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypePtrOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingSettingsByRuleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleType)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeOutput) ToTeamsAccountLoggingSettingsByRuleTypeOutput() TeamsAccountLoggingSettingsByRuleTypeOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeOutput) ToTeamsAccountLoggingSettingsByRuleTypeOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeOutput) ToTeamsAccountLoggingSettingsByRuleTypePtrOutput() TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return o.ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeOutput) ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountLoggingSettingsByRuleType) *TeamsAccountLoggingSettingsByRuleType {
+		return &v
+	}).(TeamsAccountLoggingSettingsByRuleTypePtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeOutput) Dns() TeamsAccountLoggingSettingsByRuleTypeDnsOutput {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleType) TeamsAccountLoggingSettingsByRuleTypeDns { return v.Dns }).(TeamsAccountLoggingSettingsByRuleTypeDnsOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeOutput) Http() TeamsAccountLoggingSettingsByRuleTypeHttpOutput {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleType) TeamsAccountLoggingSettingsByRuleTypeHttp { return v.Http }).(TeamsAccountLoggingSettingsByRuleTypeHttpOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeOutput) L4() TeamsAccountLoggingSettingsByRuleTypeL4Output {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleType) TeamsAccountLoggingSettingsByRuleTypeL4 { return v.L4 }).(TeamsAccountLoggingSettingsByRuleTypeL4Output)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingSettingsByRuleTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLoggingSettingsByRuleType)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypePtrOutput) ToTeamsAccountLoggingSettingsByRuleTypePtrOutput() TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypePtrOutput) ToTeamsAccountLoggingSettingsByRuleTypePtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypePtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypePtrOutput) Elem() TeamsAccountLoggingSettingsByRuleTypeOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleType) TeamsAccountLoggingSettingsByRuleType {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountLoggingSettingsByRuleType
+		return ret
+	}).(TeamsAccountLoggingSettingsByRuleTypeOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypePtrOutput) Dns() TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleType) *TeamsAccountLoggingSettingsByRuleTypeDns {
+		if v == nil {
+			return nil
+		}
+		return &v.Dns
+	}).(TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypePtrOutput) Http() TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleType) *TeamsAccountLoggingSettingsByRuleTypeHttp {
+		if v == nil {
+			return nil
+		}
+		return &v.Http
+	}).(TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypePtrOutput) L4() TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleType) *TeamsAccountLoggingSettingsByRuleTypeL4 {
+		if v == nil {
+			return nil
+		}
+		return &v.L4
+	}).(TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeDns struct {
+	LogAll    bool `pulumi:"logAll"`
+	LogBlocks bool `pulumi:"logBlocks"`
+}
+
+// TeamsAccountLoggingSettingsByRuleTypeDnsInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeDnsArgs and TeamsAccountLoggingSettingsByRuleTypeDnsOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeDnsInput` via:
+//
+//          TeamsAccountLoggingSettingsByRuleTypeDnsArgs{...}
+type TeamsAccountLoggingSettingsByRuleTypeDnsInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingSettingsByRuleTypeDnsOutput() TeamsAccountLoggingSettingsByRuleTypeDnsOutput
+	ToTeamsAccountLoggingSettingsByRuleTypeDnsOutputWithContext(context.Context) TeamsAccountLoggingSettingsByRuleTypeDnsOutput
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeDnsArgs struct {
+	LogAll    pulumi.BoolInput `pulumi:"logAll"`
+	LogBlocks pulumi.BoolInput `pulumi:"logBlocks"`
+}
+
+func (TeamsAccountLoggingSettingsByRuleTypeDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeDns)(nil)).Elem()
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeDnsArgs) ToTeamsAccountLoggingSettingsByRuleTypeDnsOutput() TeamsAccountLoggingSettingsByRuleTypeDnsOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeDnsOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeDnsArgs) ToTeamsAccountLoggingSettingsByRuleTypeDnsOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeDnsOutput)
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeDnsArgs) ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput() TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeDnsArgs) ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeDnsOutput).ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountLoggingSettingsByRuleTypeDnsPtrInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeDnsArgs, TeamsAccountLoggingSettingsByRuleTypeDnsPtr and TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeDnsPtrInput` via:
+//
+//          TeamsAccountLoggingSettingsByRuleTypeDnsArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountLoggingSettingsByRuleTypeDnsPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput() TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput
+	ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(context.Context) TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput
+}
+
+type teamsAccountLoggingSettingsByRuleTypeDnsPtrType TeamsAccountLoggingSettingsByRuleTypeDnsArgs
+
+func TeamsAccountLoggingSettingsByRuleTypeDnsPtr(v *TeamsAccountLoggingSettingsByRuleTypeDnsArgs) TeamsAccountLoggingSettingsByRuleTypeDnsPtrInput {
+	return (*teamsAccountLoggingSettingsByRuleTypeDnsPtrType)(v)
+}
+
+func (*teamsAccountLoggingSettingsByRuleTypeDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLoggingSettingsByRuleTypeDns)(nil)).Elem()
+}
+
+func (i *teamsAccountLoggingSettingsByRuleTypeDnsPtrType) ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput() TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountLoggingSettingsByRuleTypeDnsPtrType) ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeDnsOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingSettingsByRuleTypeDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeDns)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsOutput) ToTeamsAccountLoggingSettingsByRuleTypeDnsOutput() TeamsAccountLoggingSettingsByRuleTypeDnsOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsOutput) ToTeamsAccountLoggingSettingsByRuleTypeDnsOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeDnsOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsOutput) ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput() TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o.ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsOutput) ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountLoggingSettingsByRuleTypeDns) *TeamsAccountLoggingSettingsByRuleTypeDns {
+		return &v
+	}).(TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsOutput) LogAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleTypeDns) bool { return v.LogAll }).(pulumi.BoolOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsOutput) LogBlocks() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleTypeDns) bool { return v.LogBlocks }).(pulumi.BoolOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLoggingSettingsByRuleTypeDns)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput) ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput() TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput) ToTeamsAccountLoggingSettingsByRuleTypeDnsPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput) Elem() TeamsAccountLoggingSettingsByRuleTypeDnsOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeDns) TeamsAccountLoggingSettingsByRuleTypeDns {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountLoggingSettingsByRuleTypeDns
+		return ret
+	}).(TeamsAccountLoggingSettingsByRuleTypeDnsOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeDns) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.LogAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeDns) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.LogBlocks
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeHttp struct {
+	LogAll    bool `pulumi:"logAll"`
+	LogBlocks bool `pulumi:"logBlocks"`
+}
+
+// TeamsAccountLoggingSettingsByRuleTypeHttpInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeHttpArgs and TeamsAccountLoggingSettingsByRuleTypeHttpOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeHttpInput` via:
+//
+//          TeamsAccountLoggingSettingsByRuleTypeHttpArgs{...}
+type TeamsAccountLoggingSettingsByRuleTypeHttpInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingSettingsByRuleTypeHttpOutput() TeamsAccountLoggingSettingsByRuleTypeHttpOutput
+	ToTeamsAccountLoggingSettingsByRuleTypeHttpOutputWithContext(context.Context) TeamsAccountLoggingSettingsByRuleTypeHttpOutput
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeHttpArgs struct {
+	LogAll    pulumi.BoolInput `pulumi:"logAll"`
+	LogBlocks pulumi.BoolInput `pulumi:"logBlocks"`
+}
+
+func (TeamsAccountLoggingSettingsByRuleTypeHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeHttp)(nil)).Elem()
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeHttpArgs) ToTeamsAccountLoggingSettingsByRuleTypeHttpOutput() TeamsAccountLoggingSettingsByRuleTypeHttpOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeHttpOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeHttpArgs) ToTeamsAccountLoggingSettingsByRuleTypeHttpOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeHttpOutput)
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeHttpArgs) ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput() TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeHttpArgs) ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeHttpOutput).ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeHttpArgs, TeamsAccountLoggingSettingsByRuleTypeHttpPtr and TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput` via:
+//
+//          TeamsAccountLoggingSettingsByRuleTypeHttpArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput() TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput
+	ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(context.Context) TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput
+}
+
+type teamsAccountLoggingSettingsByRuleTypeHttpPtrType TeamsAccountLoggingSettingsByRuleTypeHttpArgs
+
+func TeamsAccountLoggingSettingsByRuleTypeHttpPtr(v *TeamsAccountLoggingSettingsByRuleTypeHttpArgs) TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput {
+	return (*teamsAccountLoggingSettingsByRuleTypeHttpPtrType)(v)
+}
+
+func (*teamsAccountLoggingSettingsByRuleTypeHttpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLoggingSettingsByRuleTypeHttp)(nil)).Elem()
+}
+
+func (i *teamsAccountLoggingSettingsByRuleTypeHttpPtrType) ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput() TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountLoggingSettingsByRuleTypeHttpPtrType) ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeHttpOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingSettingsByRuleTypeHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeHttp)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpOutput) ToTeamsAccountLoggingSettingsByRuleTypeHttpOutput() TeamsAccountLoggingSettingsByRuleTypeHttpOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpOutput) ToTeamsAccountLoggingSettingsByRuleTypeHttpOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeHttpOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpOutput) ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput() TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o.ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpOutput) ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountLoggingSettingsByRuleTypeHttp) *TeamsAccountLoggingSettingsByRuleTypeHttp {
+		return &v
+	}).(TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpOutput) LogAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleTypeHttp) bool { return v.LogAll }).(pulumi.BoolOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpOutput) LogBlocks() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleTypeHttp) bool { return v.LogBlocks }).(pulumi.BoolOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLoggingSettingsByRuleTypeHttp)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput) ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput() TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput) ToTeamsAccountLoggingSettingsByRuleTypeHttpPtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput) Elem() TeamsAccountLoggingSettingsByRuleTypeHttpOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeHttp) TeamsAccountLoggingSettingsByRuleTypeHttp {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountLoggingSettingsByRuleTypeHttp
+		return ret
+	}).(TeamsAccountLoggingSettingsByRuleTypeHttpOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeHttp) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.LogAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeHttp) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.LogBlocks
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeL4 struct {
+	LogAll    bool `pulumi:"logAll"`
+	LogBlocks bool `pulumi:"logBlocks"`
+}
+
+// TeamsAccountLoggingSettingsByRuleTypeL4Input is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeL4Args and TeamsAccountLoggingSettingsByRuleTypeL4Output values.
+// You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeL4Input` via:
+//
+//          TeamsAccountLoggingSettingsByRuleTypeL4Args{...}
+type TeamsAccountLoggingSettingsByRuleTypeL4Input interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingSettingsByRuleTypeL4Output() TeamsAccountLoggingSettingsByRuleTypeL4Output
+	ToTeamsAccountLoggingSettingsByRuleTypeL4OutputWithContext(context.Context) TeamsAccountLoggingSettingsByRuleTypeL4Output
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeL4Args struct {
+	LogAll    pulumi.BoolInput `pulumi:"logAll"`
+	LogBlocks pulumi.BoolInput `pulumi:"logBlocks"`
+}
+
+func (TeamsAccountLoggingSettingsByRuleTypeL4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeL4)(nil)).Elem()
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeL4Args) ToTeamsAccountLoggingSettingsByRuleTypeL4Output() TeamsAccountLoggingSettingsByRuleTypeL4Output {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeL4OutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeL4Args) ToTeamsAccountLoggingSettingsByRuleTypeL4OutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeL4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeL4Output)
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeL4Args) ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutput() TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountLoggingSettingsByRuleTypeL4Args) ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeL4Output).ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx)
+}
+
+// TeamsAccountLoggingSettingsByRuleTypeL4PtrInput is an input type that accepts TeamsAccountLoggingSettingsByRuleTypeL4Args, TeamsAccountLoggingSettingsByRuleTypeL4Ptr and TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput values.
+// You can construct a concrete instance of `TeamsAccountLoggingSettingsByRuleTypeL4PtrInput` via:
+//
+//          TeamsAccountLoggingSettingsByRuleTypeL4Args{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountLoggingSettingsByRuleTypeL4PtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutput() TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput
+	ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(context.Context) TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput
+}
+
+type teamsAccountLoggingSettingsByRuleTypeL4PtrType TeamsAccountLoggingSettingsByRuleTypeL4Args
+
+func TeamsAccountLoggingSettingsByRuleTypeL4Ptr(v *TeamsAccountLoggingSettingsByRuleTypeL4Args) TeamsAccountLoggingSettingsByRuleTypeL4PtrInput {
+	return (*teamsAccountLoggingSettingsByRuleTypeL4PtrType)(v)
+}
+
+func (*teamsAccountLoggingSettingsByRuleTypeL4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLoggingSettingsByRuleTypeL4)(nil)).Elem()
+}
+
+func (i *teamsAccountLoggingSettingsByRuleTypeL4PtrType) ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutput() TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return i.ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountLoggingSettingsByRuleTypeL4PtrType) ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeL4Output struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingSettingsByRuleTypeL4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeL4)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4Output) ToTeamsAccountLoggingSettingsByRuleTypeL4Output() TeamsAccountLoggingSettingsByRuleTypeL4Output {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4Output) ToTeamsAccountLoggingSettingsByRuleTypeL4OutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeL4Output {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4Output) ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutput() TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return o.ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4Output) ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountLoggingSettingsByRuleTypeL4) *TeamsAccountLoggingSettingsByRuleTypeL4 {
+		return &v
+	}).(TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4Output) LogAll() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleTypeL4) bool { return v.LogAll }).(pulumi.BoolOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4Output) LogBlocks() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountLoggingSettingsByRuleTypeL4) bool { return v.LogBlocks }).(pulumi.BoolOutput)
+}
+
+type TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountLoggingSettingsByRuleTypeL4)(nil)).Elem()
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput) ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutput() TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput) ToTeamsAccountLoggingSettingsByRuleTypeL4PtrOutputWithContext(ctx context.Context) TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput {
+	return o
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput) Elem() TeamsAccountLoggingSettingsByRuleTypeL4Output {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeL4) TeamsAccountLoggingSettingsByRuleTypeL4 {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountLoggingSettingsByRuleTypeL4
+		return ret
+	}).(TeamsAccountLoggingSettingsByRuleTypeL4Output)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput) LogAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeL4) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.LogAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput) LogBlocks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountLoggingSettingsByRuleTypeL4) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.LogBlocks
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsAccountProxy struct {
+	// Whether gateway proxy is enabled on gateway devices for tcp traffic.
+	Tcp bool `pulumi:"tcp"`
+	// Whether gateway proxy is enabled on gateway devices for udp traffic.
+	Udp bool `pulumi:"udp"`
+}
+
+// TeamsAccountProxyInput is an input type that accepts TeamsAccountProxyArgs and TeamsAccountProxyOutput values.
+// You can construct a concrete instance of `TeamsAccountProxyInput` via:
+//
+//          TeamsAccountProxyArgs{...}
+type TeamsAccountProxyInput interface {
+	pulumi.Input
+
+	ToTeamsAccountProxyOutput() TeamsAccountProxyOutput
+	ToTeamsAccountProxyOutputWithContext(context.Context) TeamsAccountProxyOutput
+}
+
+type TeamsAccountProxyArgs struct {
+	// Whether gateway proxy is enabled on gateway devices for tcp traffic.
+	Tcp pulumi.BoolInput `pulumi:"tcp"`
+	// Whether gateway proxy is enabled on gateway devices for udp traffic.
+	Udp pulumi.BoolInput `pulumi:"udp"`
+}
+
+func (TeamsAccountProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountProxy)(nil)).Elem()
+}
+
+func (i TeamsAccountProxyArgs) ToTeamsAccountProxyOutput() TeamsAccountProxyOutput {
+	return i.ToTeamsAccountProxyOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountProxyArgs) ToTeamsAccountProxyOutputWithContext(ctx context.Context) TeamsAccountProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountProxyOutput)
+}
+
+func (i TeamsAccountProxyArgs) ToTeamsAccountProxyPtrOutput() TeamsAccountProxyPtrOutput {
+	return i.ToTeamsAccountProxyPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountProxyArgs) ToTeamsAccountProxyPtrOutputWithContext(ctx context.Context) TeamsAccountProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountProxyOutput).ToTeamsAccountProxyPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountProxyPtrInput is an input type that accepts TeamsAccountProxyArgs, TeamsAccountProxyPtr and TeamsAccountProxyPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountProxyPtrInput` via:
+//
+//          TeamsAccountProxyArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsAccountProxyPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountProxyPtrOutput() TeamsAccountProxyPtrOutput
+	ToTeamsAccountProxyPtrOutputWithContext(context.Context) TeamsAccountProxyPtrOutput
+}
+
+type teamsAccountProxyPtrType TeamsAccountProxyArgs
+
+func TeamsAccountProxyPtr(v *TeamsAccountProxyArgs) TeamsAccountProxyPtrInput {
+	return (*teamsAccountProxyPtrType)(v)
+}
+
+func (*teamsAccountProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountProxy)(nil)).Elem()
+}
+
+func (i *teamsAccountProxyPtrType) ToTeamsAccountProxyPtrOutput() TeamsAccountProxyPtrOutput {
+	return i.ToTeamsAccountProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountProxyPtrType) ToTeamsAccountProxyPtrOutputWithContext(ctx context.Context) TeamsAccountProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountProxyPtrOutput)
+}
+
+type TeamsAccountProxyOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountProxy)(nil)).Elem()
+}
+
+func (o TeamsAccountProxyOutput) ToTeamsAccountProxyOutput() TeamsAccountProxyOutput {
+	return o
+}
+
+func (o TeamsAccountProxyOutput) ToTeamsAccountProxyOutputWithContext(ctx context.Context) TeamsAccountProxyOutput {
+	return o
+}
+
+func (o TeamsAccountProxyOutput) ToTeamsAccountProxyPtrOutput() TeamsAccountProxyPtrOutput {
+	return o.ToTeamsAccountProxyPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountProxyOutput) ToTeamsAccountProxyPtrOutputWithContext(ctx context.Context) TeamsAccountProxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountProxy) *TeamsAccountProxy {
+		return &v
+	}).(TeamsAccountProxyPtrOutput)
+}
+
+// Whether gateway proxy is enabled on gateway devices for tcp traffic.
+func (o TeamsAccountProxyOutput) Tcp() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountProxy) bool { return v.Tcp }).(pulumi.BoolOutput)
+}
+
+// Whether gateway proxy is enabled on gateway devices for udp traffic.
+func (o TeamsAccountProxyOutput) Udp() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountProxy) bool { return v.Udp }).(pulumi.BoolOutput)
+}
+
+type TeamsAccountProxyPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountProxy)(nil)).Elem()
+}
+
+func (o TeamsAccountProxyPtrOutput) ToTeamsAccountProxyPtrOutput() TeamsAccountProxyPtrOutput {
+	return o
+}
+
+func (o TeamsAccountProxyPtrOutput) ToTeamsAccountProxyPtrOutputWithContext(ctx context.Context) TeamsAccountProxyPtrOutput {
+	return o
+}
+
+func (o TeamsAccountProxyPtrOutput) Elem() TeamsAccountProxyOutput {
+	return o.ApplyT(func(v *TeamsAccountProxy) TeamsAccountProxy {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountProxy
+		return ret
+	}).(TeamsAccountProxyOutput)
+}
+
+// Whether gateway proxy is enabled on gateway devices for tcp traffic.
+func (o TeamsAccountProxyPtrOutput) Tcp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Tcp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether gateway proxy is enabled on gateway devices for udp traffic.
+func (o TeamsAccountProxyPtrOutput) Udp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Udp
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TeamsLocationNetwork struct {
 	// ID of the teams location.
 	Id      *string `pulumi:"id"`
@@ -15353,12 +17131,17 @@ func (o TeamsLocationNetworkArrayOutput) Index(i pulumi.IntInput) TeamsLocationN
 }
 
 type TeamsRuleRuleSettings struct {
+	// Add custom headers to allowed requests in the form of key-value pairs.
+	AddHeaders map[string]string `pulumi:"addHeaders"`
+	// Configure how browser isolation behaves (refer to the nested schema).
 	BisoAdminControls *TeamsRuleRuleSettingsBisoAdminControls `pulumi:"bisoAdminControls"`
 	// Indicator of block page enablement.
 	BlockPageEnabled *bool `pulumi:"blockPageEnabled"`
 	// The displayed reason for a user being blocked.
 	BlockPageReason *string `pulumi:"blockPageReason"`
-	// Settings to forward layer 4 traffic.
+	// Configure how session check behaves (refer to the nested schema).
+	CheckSession *TeamsRuleRuleSettingsCheckSession `pulumi:"checkSession"`
+	// Settings to forward layer 4 traffic (refer to the nested schema).
 	L4override *TeamsRuleRuleSettingsL4override `pulumi:"l4override"`
 	// The host to override matching DNS queries with.
 	OverrideHost *string `pulumi:"overrideHost"`
@@ -15378,12 +17161,17 @@ type TeamsRuleRuleSettingsInput interface {
 }
 
 type TeamsRuleRuleSettingsArgs struct {
+	// Add custom headers to allowed requests in the form of key-value pairs.
+	AddHeaders pulumi.StringMapInput `pulumi:"addHeaders"`
+	// Configure how browser isolation behaves (refer to the nested schema).
 	BisoAdminControls TeamsRuleRuleSettingsBisoAdminControlsPtrInput `pulumi:"bisoAdminControls"`
 	// Indicator of block page enablement.
 	BlockPageEnabled pulumi.BoolPtrInput `pulumi:"blockPageEnabled"`
 	// The displayed reason for a user being blocked.
 	BlockPageReason pulumi.StringPtrInput `pulumi:"blockPageReason"`
-	// Settings to forward layer 4 traffic.
+	// Configure how session check behaves (refer to the nested schema).
+	CheckSession TeamsRuleRuleSettingsCheckSessionPtrInput `pulumi:"checkSession"`
+	// Settings to forward layer 4 traffic (refer to the nested schema).
 	L4override TeamsRuleRuleSettingsL4overridePtrInput `pulumi:"l4override"`
 	// The host to override matching DNS queries with.
 	OverrideHost pulumi.StringPtrInput `pulumi:"overrideHost"`
@@ -15468,6 +17256,12 @@ func (o TeamsRuleRuleSettingsOutput) ToTeamsRuleRuleSettingsPtrOutputWithContext
 	}).(TeamsRuleRuleSettingsPtrOutput)
 }
 
+// Add custom headers to allowed requests in the form of key-value pairs.
+func (o TeamsRuleRuleSettingsOutput) AddHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) map[string]string { return v.AddHeaders }).(pulumi.StringMapOutput)
+}
+
+// Configure how browser isolation behaves (refer to the nested schema).
 func (o TeamsRuleRuleSettingsOutput) BisoAdminControls() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsBisoAdminControls { return v.BisoAdminControls }).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
 }
@@ -15482,7 +17276,12 @@ func (o TeamsRuleRuleSettingsOutput) BlockPageReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *string { return v.BlockPageReason }).(pulumi.StringPtrOutput)
 }
 
-// Settings to forward layer 4 traffic.
+// Configure how session check behaves (refer to the nested schema).
+func (o TeamsRuleRuleSettingsOutput) CheckSession() TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsCheckSession { return v.CheckSession }).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
+}
+
+// Settings to forward layer 4 traffic (refer to the nested schema).
 func (o TeamsRuleRuleSettingsOutput) L4override() TeamsRuleRuleSettingsL4overridePtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsL4override { return v.L4override }).(TeamsRuleRuleSettingsL4overridePtrOutput)
 }
@@ -15521,6 +17320,17 @@ func (o TeamsRuleRuleSettingsPtrOutput) Elem() TeamsRuleRuleSettingsOutput {
 	}).(TeamsRuleRuleSettingsOutput)
 }
 
+// Add custom headers to allowed requests in the form of key-value pairs.
+func (o TeamsRuleRuleSettingsPtrOutput) AddHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AddHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Configure how browser isolation behaves (refer to the nested schema).
 func (o TeamsRuleRuleSettingsPtrOutput) BisoAdminControls() TeamsRuleRuleSettingsBisoAdminControlsPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsBisoAdminControls {
 		if v == nil {
@@ -15550,7 +17360,17 @@ func (o TeamsRuleRuleSettingsPtrOutput) BlockPageReason() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Settings to forward layer 4 traffic.
+// Configure how session check behaves (refer to the nested schema).
+func (o TeamsRuleRuleSettingsPtrOutput) CheckSession() TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsCheckSession {
+		if v == nil {
+			return nil
+		}
+		return v.CheckSession
+	}).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
+}
+
+// Settings to forward layer 4 traffic (refer to the nested schema).
 func (o TeamsRuleRuleSettingsPtrOutput) L4override() TeamsRuleRuleSettingsL4overridePtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsL4override {
 		if v == nil {
@@ -15581,8 +17401,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) OverrideIps() pulumi.StringArrayOutput {
 }
 
 type TeamsRuleRuleSettingsBisoAdminControls struct {
+	// Disable copy-paste.
 	DisableCopyPaste *bool `pulumi:"disableCopyPaste"`
-	DisablePrinting  *bool `pulumi:"disablePrinting"`
+	// Disable download.
+	DisableDownload *bool `pulumi:"disableDownload"`
+	// Disable keyboard usage.
+	DisableKeyboard *bool `pulumi:"disableKeyboard"`
+	// Disable printing.
+	DisablePrinting *bool `pulumi:"disablePrinting"`
+	// Disable upload.
+	DisableUpload *bool `pulumi:"disableUpload"`
 }
 
 // TeamsRuleRuleSettingsBisoAdminControlsInput is an input type that accepts TeamsRuleRuleSettingsBisoAdminControlsArgs and TeamsRuleRuleSettingsBisoAdminControlsOutput values.
@@ -15597,8 +17425,16 @@ type TeamsRuleRuleSettingsBisoAdminControlsInput interface {
 }
 
 type TeamsRuleRuleSettingsBisoAdminControlsArgs struct {
+	// Disable copy-paste.
 	DisableCopyPaste pulumi.BoolPtrInput `pulumi:"disableCopyPaste"`
-	DisablePrinting  pulumi.BoolPtrInput `pulumi:"disablePrinting"`
+	// Disable download.
+	DisableDownload pulumi.BoolPtrInput `pulumi:"disableDownload"`
+	// Disable keyboard usage.
+	DisableKeyboard pulumi.BoolPtrInput `pulumi:"disableKeyboard"`
+	// Disable printing.
+	DisablePrinting pulumi.BoolPtrInput `pulumi:"disablePrinting"`
+	// Disable upload.
+	DisableUpload pulumi.BoolPtrInput `pulumi:"disableUpload"`
 }
 
 func (TeamsRuleRuleSettingsBisoAdminControlsArgs) ElementType() reflect.Type {
@@ -15678,12 +17514,29 @@ func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) ToTeamsRuleRuleSettingsBis
 	}).(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput)
 }
 
+// Disable copy-paste.
 func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisableCopyPaste() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisableCopyPaste }).(pulumi.BoolPtrOutput)
 }
 
+// Disable download.
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisableDownload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisableDownload }).(pulumi.BoolPtrOutput)
+}
+
+// Disable keyboard usage.
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisableKeyboard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisableKeyboard }).(pulumi.BoolPtrOutput)
+}
+
+// Disable printing.
 func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisablePrinting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisablePrinting }).(pulumi.BoolPtrOutput)
+}
+
+// Disable upload.
+func (o TeamsRuleRuleSettingsBisoAdminControlsOutput) DisableUpload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsBisoAdminControls) *bool { return v.DisableUpload }).(pulumi.BoolPtrOutput)
 }
 
 type TeamsRuleRuleSettingsBisoAdminControlsPtrOutput struct{ *pulumi.OutputState }
@@ -15710,6 +17563,7 @@ func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) Elem() TeamsRuleRuleSet
 	}).(TeamsRuleRuleSettingsBisoAdminControlsOutput)
 }
 
+// Disable copy-paste.
 func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisableCopyPaste() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) *bool {
 		if v == nil {
@@ -15719,12 +17573,199 @@ func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisableCopyPaste() pulu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Disable download.
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisableDownload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableDownload
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable keyboard usage.
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisableKeyboard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableKeyboard
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable printing.
 func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisablePrinting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.DisablePrinting
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable upload.
+func (o TeamsRuleRuleSettingsBisoAdminControlsPtrOutput) DisableUpload() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsBisoAdminControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableUpload
+	}).(pulumi.BoolPtrOutput)
+}
+
+type TeamsRuleRuleSettingsCheckSession struct {
+	// Configure how fresh the session needs to be to be considered valid.
+	Duration string `pulumi:"duration"`
+	// Enable session enforcement for this rule.
+	Enforce bool `pulumi:"enforce"`
+}
+
+// TeamsRuleRuleSettingsCheckSessionInput is an input type that accepts TeamsRuleRuleSettingsCheckSessionArgs and TeamsRuleRuleSettingsCheckSessionOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsCheckSessionInput` via:
+//
+//          TeamsRuleRuleSettingsCheckSessionArgs{...}
+type TeamsRuleRuleSettingsCheckSessionInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsCheckSessionOutput() TeamsRuleRuleSettingsCheckSessionOutput
+	ToTeamsRuleRuleSettingsCheckSessionOutputWithContext(context.Context) TeamsRuleRuleSettingsCheckSessionOutput
+}
+
+type TeamsRuleRuleSettingsCheckSessionArgs struct {
+	// Configure how fresh the session needs to be to be considered valid.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Enable session enforcement for this rule.
+	Enforce pulumi.BoolInput `pulumi:"enforce"`
+}
+
+func (TeamsRuleRuleSettingsCheckSessionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsCheckSession)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsCheckSessionArgs) ToTeamsRuleRuleSettingsCheckSessionOutput() TeamsRuleRuleSettingsCheckSessionOutput {
+	return i.ToTeamsRuleRuleSettingsCheckSessionOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsCheckSessionArgs) ToTeamsRuleRuleSettingsCheckSessionOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsCheckSessionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsCheckSessionOutput)
+}
+
+func (i TeamsRuleRuleSettingsCheckSessionArgs) ToTeamsRuleRuleSettingsCheckSessionPtrOutput() TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return i.ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsCheckSessionArgs) ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsCheckSessionOutput).ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsCheckSessionPtrInput is an input type that accepts TeamsRuleRuleSettingsCheckSessionArgs, TeamsRuleRuleSettingsCheckSessionPtr and TeamsRuleRuleSettingsCheckSessionPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsCheckSessionPtrInput` via:
+//
+//          TeamsRuleRuleSettingsCheckSessionArgs{...}
+//
+//  or:
+//
+//          nil
+type TeamsRuleRuleSettingsCheckSessionPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsCheckSessionPtrOutput() TeamsRuleRuleSettingsCheckSessionPtrOutput
+	ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsCheckSessionPtrOutput
+}
+
+type teamsRuleRuleSettingsCheckSessionPtrType TeamsRuleRuleSettingsCheckSessionArgs
+
+func TeamsRuleRuleSettingsCheckSessionPtr(v *TeamsRuleRuleSettingsCheckSessionArgs) TeamsRuleRuleSettingsCheckSessionPtrInput {
+	return (*teamsRuleRuleSettingsCheckSessionPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsCheckSessionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsCheckSession)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsCheckSessionPtrType) ToTeamsRuleRuleSettingsCheckSessionPtrOutput() TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return i.ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsCheckSessionPtrType) ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
+}
+
+type TeamsRuleRuleSettingsCheckSessionOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsCheckSessionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsCheckSession)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsCheckSessionOutput) ToTeamsRuleRuleSettingsCheckSessionOutput() TeamsRuleRuleSettingsCheckSessionOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsCheckSessionOutput) ToTeamsRuleRuleSettingsCheckSessionOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsCheckSessionOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsCheckSessionOutput) ToTeamsRuleRuleSettingsCheckSessionPtrOutput() TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return o.ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsCheckSessionOutput) ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsCheckSession) *TeamsRuleRuleSettingsCheckSession {
+		return &v
+	}).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
+}
+
+// Configure how fresh the session needs to be to be considered valid.
+func (o TeamsRuleRuleSettingsCheckSessionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsCheckSession) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Enable session enforcement for this rule.
+func (o TeamsRuleRuleSettingsCheckSessionOutput) Enforce() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsCheckSession) bool { return v.Enforce }).(pulumi.BoolOutput)
+}
+
+type TeamsRuleRuleSettingsCheckSessionPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsCheckSessionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsCheckSession)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsCheckSessionPtrOutput) ToTeamsRuleRuleSettingsCheckSessionPtrOutput() TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsCheckSessionPtrOutput) ToTeamsRuleRuleSettingsCheckSessionPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsCheckSessionPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsCheckSessionPtrOutput) Elem() TeamsRuleRuleSettingsCheckSessionOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsCheckSession) TeamsRuleRuleSettingsCheckSession {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsCheckSession
+		return ret
+	}).(TeamsRuleRuleSettingsCheckSessionOutput)
+}
+
+// Configure how fresh the session needs to be to be considered valid.
+func (o TeamsRuleRuleSettingsCheckSessionPtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsCheckSession) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable session enforcement for this rule.
+func (o TeamsRuleRuleSettingsCheckSessionPtrOutput) Enforce() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsCheckSession) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enforce
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -19091,6 +21132,220 @@ func (o GetAccountRolesRoleArrayOutput) Index(i pulumi.IntInput) GetAccountRoles
 	}).(GetAccountRolesRoleOutput)
 }
 
+type GetDevicesDevice struct {
+	// When the device was created.
+	Created *string `pulumi:"created"`
+	// The type of the device.
+	DeviceType *string `pulumi:"deviceType"`
+	// Device ID.
+	Id *string `pulumi:"id"`
+	// IPv4 or IPv6 address.
+	Ip *string `pulumi:"ip"`
+	// The device's public key.
+	Key *string `pulumi:"key"`
+	// When the device was last seen.
+	LastSeen *string `pulumi:"lastSeen"`
+	// The device model name.
+	Model *string `pulumi:"model"`
+	// The device name.
+	Name *string `pulumi:"name"`
+	// The operating system version.
+	OsVersion *string `pulumi:"osVersion"`
+	// When the device was updated.
+	Updated *string `pulumi:"updated"`
+	// User's email.
+	UserEmail *string `pulumi:"userEmail"`
+	// User's ID.
+	UserId *string `pulumi:"userId"`
+	// User's Name.
+	UserName *string `pulumi:"userName"`
+	// The WARP client version.
+	Version *string `pulumi:"version"`
+}
+
+// GetDevicesDeviceInput is an input type that accepts GetDevicesDeviceArgs and GetDevicesDeviceOutput values.
+// You can construct a concrete instance of `GetDevicesDeviceInput` via:
+//
+//          GetDevicesDeviceArgs{...}
+type GetDevicesDeviceInput interface {
+	pulumi.Input
+
+	ToGetDevicesDeviceOutput() GetDevicesDeviceOutput
+	ToGetDevicesDeviceOutputWithContext(context.Context) GetDevicesDeviceOutput
+}
+
+type GetDevicesDeviceArgs struct {
+	// When the device was created.
+	Created pulumi.StringPtrInput `pulumi:"created"`
+	// The type of the device.
+	DeviceType pulumi.StringPtrInput `pulumi:"deviceType"`
+	// Device ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// IPv4 or IPv6 address.
+	Ip pulumi.StringPtrInput `pulumi:"ip"`
+	// The device's public key.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// When the device was last seen.
+	LastSeen pulumi.StringPtrInput `pulumi:"lastSeen"`
+	// The device model name.
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// The device name.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The operating system version.
+	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+	// When the device was updated.
+	Updated pulumi.StringPtrInput `pulumi:"updated"`
+	// User's email.
+	UserEmail pulumi.StringPtrInput `pulumi:"userEmail"`
+	// User's ID.
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+	// User's Name.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
+	// The WARP client version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (GetDevicesDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesDevice)(nil)).Elem()
+}
+
+func (i GetDevicesDeviceArgs) ToGetDevicesDeviceOutput() GetDevicesDeviceOutput {
+	return i.ToGetDevicesDeviceOutputWithContext(context.Background())
+}
+
+func (i GetDevicesDeviceArgs) ToGetDevicesDeviceOutputWithContext(ctx context.Context) GetDevicesDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesDeviceOutput)
+}
+
+// GetDevicesDeviceArrayInput is an input type that accepts GetDevicesDeviceArray and GetDevicesDeviceArrayOutput values.
+// You can construct a concrete instance of `GetDevicesDeviceArrayInput` via:
+//
+//          GetDevicesDeviceArray{ GetDevicesDeviceArgs{...} }
+type GetDevicesDeviceArrayInput interface {
+	pulumi.Input
+
+	ToGetDevicesDeviceArrayOutput() GetDevicesDeviceArrayOutput
+	ToGetDevicesDeviceArrayOutputWithContext(context.Context) GetDevicesDeviceArrayOutput
+}
+
+type GetDevicesDeviceArray []GetDevicesDeviceInput
+
+func (GetDevicesDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesDevice)(nil)).Elem()
+}
+
+func (i GetDevicesDeviceArray) ToGetDevicesDeviceArrayOutput() GetDevicesDeviceArrayOutput {
+	return i.ToGetDevicesDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDevicesDeviceArray) ToGetDevicesDeviceArrayOutputWithContext(ctx context.Context) GetDevicesDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicesDeviceArrayOutput)
+}
+
+type GetDevicesDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicesDevice)(nil)).Elem()
+}
+
+func (o GetDevicesDeviceOutput) ToGetDevicesDeviceOutput() GetDevicesDeviceOutput {
+	return o
+}
+
+func (o GetDevicesDeviceOutput) ToGetDevicesDeviceOutputWithContext(ctx context.Context) GetDevicesDeviceOutput {
+	return o
+}
+
+// When the device was created.
+func (o GetDevicesDeviceOutput) Created() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Created }).(pulumi.StringPtrOutput)
+}
+
+// The type of the device.
+func (o GetDevicesDeviceOutput) DeviceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.DeviceType }).(pulumi.StringPtrOutput)
+}
+
+// Device ID.
+func (o GetDevicesDeviceOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// IPv4 or IPv6 address.
+func (o GetDevicesDeviceOutput) Ip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Ip }).(pulumi.StringPtrOutput)
+}
+
+// The device's public key.
+func (o GetDevicesDeviceOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// When the device was last seen.
+func (o GetDevicesDeviceOutput) LastSeen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.LastSeen }).(pulumi.StringPtrOutput)
+}
+
+// The device model name.
+func (o GetDevicesDeviceOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// The device name.
+func (o GetDevicesDeviceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The operating system version.
+func (o GetDevicesDeviceOutput) OsVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
+}
+
+// When the device was updated.
+func (o GetDevicesDeviceOutput) Updated() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Updated }).(pulumi.StringPtrOutput)
+}
+
+// User's email.
+func (o GetDevicesDeviceOutput) UserEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.UserEmail }).(pulumi.StringPtrOutput)
+}
+
+// User's ID.
+func (o GetDevicesDeviceOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+// User's Name.
+func (o GetDevicesDeviceOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.UserName }).(pulumi.StringPtrOutput)
+}
+
+// The WARP client version.
+func (o GetDevicesDeviceOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type GetDevicesDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDevicesDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicesDevice)(nil)).Elem()
+}
+
+func (o GetDevicesDeviceArrayOutput) ToGetDevicesDeviceArrayOutput() GetDevicesDeviceArrayOutput {
+	return o
+}
+
+func (o GetDevicesDeviceArrayOutput) ToGetDevicesDeviceArrayOutputWithContext(ctx context.Context) GetDevicesDeviceArrayOutput {
+	return o
+}
+
+func (o GetDevicesDeviceArrayOutput) Index(i pulumi.IntInput) GetDevicesDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicesDevice {
+		return vs[0].([]GetDevicesDevice)[vs[1].(int)]
+	}).(GetDevicesDeviceOutput)
+}
+
 type GetWafGroupsFilter struct {
 	// Mode of the WAF Rule Groups to lookup. Valid values: on and off.
 	Mode *string `pulumi:"mode"`
@@ -20079,6 +22334,8 @@ func (o GetWafRulesRuleArrayOutput) Index(i pulumi.IntInput) GetWafRulesRuleOutp
 }
 
 type GetZonesFilter struct {
+	// Only search for zones in this account.
+	AccountId *string `pulumi:"accountId"`
 	// The type of search to perform for the `name` value
 	// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
 	// to `"exact"`.
@@ -20110,6 +22367,8 @@ type GetZonesFilterInput interface {
 }
 
 type GetZonesFilterArgs struct {
+	// Only search for zones in this account.
+	AccountId pulumi.StringPtrInput `pulumi:"accountId"`
 	// The type of search to perform for the `name` value
 	// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
 	// to `"exact"`.
@@ -20153,6 +22412,11 @@ func (o GetZonesFilterOutput) ToGetZonesFilterOutput() GetZonesFilterOutput {
 
 func (o GetZonesFilterOutput) ToGetZonesFilterOutputWithContext(ctx context.Context) GetZonesFilterOutput {
 	return o
+}
+
+// Only search for zones in this account.
+func (o GetZonesFilterOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetZonesFilter) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
 // The type of search to perform for the `name` value
@@ -20380,18 +22644,30 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenConditionRequestIpPtrInput)(nil)).Elem(), ApiTokenConditionRequestIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenPolicyInput)(nil)).Elem(), ApiTokenPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApiTokenPolicyArrayInput)(nil)).Elem(), ApiTokenPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackValidationErrorInput)(nil)).Elem(), CertificatePackValidationErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackValidationErrorArrayInput)(nil)).Elem(), CertificatePackValidationErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackValidationRecordInput)(nil)).Elem(), CertificatePackValidationRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificatePackValidationRecordArrayInput)(nil)).Elem(), CertificatePackValidationRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslInput)(nil)).Elem(), CustomHostnameSslArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslArrayInput)(nil)).Elem(), CustomHostnameSslArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslSettingInput)(nil)).Elem(), CustomHostnameSslSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslSettingArrayInput)(nil)).Elem(), CustomHostnameSslSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslValidationErrorInput)(nil)).Elem(), CustomHostnameSslValidationErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslValidationErrorArrayInput)(nil)).Elem(), CustomHostnameSslValidationErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslValidationRecordInput)(nil)).Elem(), CustomHostnameSslValidationRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomHostnameSslValidationRecordArrayInput)(nil)).Elem(), CustomHostnameSslValidationRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslOptionsInput)(nil)).Elem(), CustomSslCustomSslOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslOptionsPtrInput)(nil)).Elem(), CustomSslCustomSslOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslPriorityInput)(nil)).Elem(), CustomSslCustomSslPriorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomSslCustomSslPriorityArrayInput)(nil)).Elem(), CustomSslCustomSslPriorityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureIntegrationConfigInput)(nil)).Elem(), DevicePostureIntegrationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureIntegrationConfigArrayInput)(nil)).Elem(), DevicePostureIntegrationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleInputTypeInput)(nil)).Elem(), DevicePostureRuleInputTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleInputTypeArrayInput)(nil)).Elem(), DevicePostureRuleInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleMatchInput)(nil)).Elem(), DevicePostureRuleMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleMatchArrayInput)(nil)).Elem(), DevicePostureRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FallbackDomainDomainInput)(nil)).Elem(), FallbackDomainDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FallbackDomainDomainArrayInput)(nil)).Elem(), FallbackDomainDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderInput)(nil)).Elem(), HealthcheckHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderArrayInput)(nil)).Elem(), HealthcheckHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IpListItemInput)(nil)).Elem(), IpListItemArgs{})
@@ -20496,12 +22772,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusPtrInput)(nil)).Elem(), TeamsAccountAntivirusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPageInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPagePtrInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountFipsInput)(nil)).Elem(), TeamsAccountFipsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountFipsPtrInput)(nil)).Elem(), TeamsAccountFipsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingInput)(nil)).Elem(), TeamsAccountLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingPtrInput)(nil)).Elem(), TeamsAccountLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypePtrInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeDnsInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeDnsPtrInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeHttpInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeHttpPtrInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeL4Input)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeL4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingSettingsByRuleTypeL4PtrInput)(nil)).Elem(), TeamsAccountLoggingSettingsByRuleTypeL4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountProxyInput)(nil)).Elem(), TeamsAccountProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountProxyPtrInput)(nil)).Elem(), TeamsAccountProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkInput)(nil)).Elem(), TeamsLocationNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkArrayInput)(nil)).Elem(), TeamsLocationNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControlsInput)(nil)).Elem(), TeamsRuleRuleSettingsBisoAdminControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControlsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsBisoAdminControlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsCheckSessionInput)(nil)).Elem(), TeamsRuleRuleSettingsCheckSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsCheckSessionPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsCheckSessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overrideInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overridePtrInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArgs{})
@@ -20532,6 +22824,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsSecurityHeaderPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsSecurityHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountRolesRoleInput)(nil)).Elem(), GetAccountRolesRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountRolesRoleArrayInput)(nil)).Elem(), GetAccountRolesRoleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceInput)(nil)).Elem(), GetDevicesDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsFilterPtrInput)(nil)).Elem(), GetWafGroupsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetWafGroupsGroupInput)(nil)).Elem(), GetWafGroupsGroupArgs{})
@@ -20633,18 +22927,30 @@ func init() {
 	pulumi.RegisterOutputType(ApiTokenConditionRequestIpPtrOutput{})
 	pulumi.RegisterOutputType(ApiTokenPolicyOutput{})
 	pulumi.RegisterOutputType(ApiTokenPolicyArrayOutput{})
+	pulumi.RegisterOutputType(CertificatePackValidationErrorOutput{})
+	pulumi.RegisterOutputType(CertificatePackValidationErrorArrayOutput{})
+	pulumi.RegisterOutputType(CertificatePackValidationRecordOutput{})
+	pulumi.RegisterOutputType(CertificatePackValidationRecordArrayOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslArrayOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslSettingOutput{})
 	pulumi.RegisterOutputType(CustomHostnameSslSettingArrayOutput{})
+	pulumi.RegisterOutputType(CustomHostnameSslValidationErrorOutput{})
+	pulumi.RegisterOutputType(CustomHostnameSslValidationErrorArrayOutput{})
+	pulumi.RegisterOutputType(CustomHostnameSslValidationRecordOutput{})
+	pulumi.RegisterOutputType(CustomHostnameSslValidationRecordArrayOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslOptionsOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslOptionsPtrOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityOutput{})
 	pulumi.RegisterOutputType(CustomSslCustomSslPriorityArrayOutput{})
+	pulumi.RegisterOutputType(DevicePostureIntegrationConfigOutput{})
+	pulumi.RegisterOutputType(DevicePostureIntegrationConfigArrayOutput{})
 	pulumi.RegisterOutputType(DevicePostureRuleInputTypeOutput{})
 	pulumi.RegisterOutputType(DevicePostureRuleInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(DevicePostureRuleMatchOutput{})
 	pulumi.RegisterOutputType(DevicePostureRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(FallbackDomainDomainOutput{})
+	pulumi.RegisterOutputType(FallbackDomainDomainArrayOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderArrayOutput{})
 	pulumi.RegisterOutputType(IpListItemOutput{})
@@ -20749,12 +23055,28 @@ func init() {
 	pulumi.RegisterOutputType(TeamsAccountAntivirusPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBlockPageOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBlockPagePtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountFipsOutput{})
+	pulumi.RegisterOutputType(TeamsAccountFipsPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypePtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeDnsOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeDnsPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeHttpOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeHttpPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeL4Output{})
+	pulumi.RegisterOutputType(TeamsAccountLoggingSettingsByRuleTypeL4PtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountProxyOutput{})
+	pulumi.RegisterOutputType(TeamsAccountProxyPtrOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkArrayOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsBisoAdminControlsOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsCheckSessionOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsCheckSessionPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overrideOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overridePtrOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
@@ -20785,6 +23107,8 @@ func init() {
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput{})
 	pulumi.RegisterOutputType(GetAccountRolesRoleOutput{})
 	pulumi.RegisterOutputType(GetAccountRolesRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetDevicesDeviceOutput{})
+	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsFilterOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsFilterPtrOutput{})
 	pulumi.RegisterOutputType(GetWafGroupsGroupOutput{})

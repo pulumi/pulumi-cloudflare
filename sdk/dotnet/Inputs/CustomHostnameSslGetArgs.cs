@@ -15,12 +15,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("certificateAuthority")]
         public Input<string>? CertificateAuthority { get; set; }
 
-        [Input("cnameName")]
-        public Input<string>? CnameName { get; set; }
-
-        [Input("cnameTarget")]
-        public Input<string>? CnameTarget { get; set; }
-
         /// <summary>
         /// If a custom uploaded certificate is used.
         /// </summary>
@@ -60,6 +54,22 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("validationErrors")]
+        private InputList<Inputs.CustomHostnameSslValidationErrorGetArgs>? _validationErrors;
+        public InputList<Inputs.CustomHostnameSslValidationErrorGetArgs> ValidationErrors
+        {
+            get => _validationErrors ?? (_validationErrors = new InputList<Inputs.CustomHostnameSslValidationErrorGetArgs>());
+            set => _validationErrors = value;
+        }
+
+        [Input("validationRecords")]
+        private InputList<Inputs.CustomHostnameSslValidationRecordGetArgs>? _validationRecords;
+        public InputList<Inputs.CustomHostnameSslValidationRecordGetArgs> ValidationRecords
+        {
+            get => _validationRecords ?? (_validationRecords = new InputList<Inputs.CustomHostnameSslValidationRecordGetArgs>());
+            set => _validationRecords = value;
+        }
 
         /// <summary>
         /// Indicates whether the certificate covers a wildcard.

@@ -27,13 +27,43 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewTeamsAccount(ctx, "main", &cloudflare.TeamsAccountArgs{
 // 			AccountId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			Antivirus: &TeamsAccountAntivirusArgs{
+// 				EnabledDownloadPhase: pulumi.Bool(true),
+// 				EnabledUploadPhase:   pulumi.Bool(false),
+// 				FailClosed:           pulumi.Bool(true),
+// 			},
 // 			BlockPage: &TeamsAccountBlockPageArgs{
 // 				BackgroundColor: pulumi.String("#000000"),
 // 				FooterText:      pulumi.String("hello"),
 // 				HeaderText:      pulumi.String("hello"),
 // 				LogoPath:        pulumi.String("https://google.com"),
 // 			},
-// 			TlsDecryptEnabled: pulumi.Bool(true),
+// 			Fips: &TeamsAccountFipsArgs{
+// 				Tls: pulumi.Bool(true),
+// 			},
+// 			Logging: &TeamsAccountLoggingArgs{
+// 				RedactPii: pulumi.Bool(true),
+// 				SettingsByRuleType: &TeamsAccountLoggingSettingsByRuleTypeArgs{
+// 					Dns: &TeamsAccountLoggingSettingsByRuleTypeDnsArgs{
+// 						LogAll:    pulumi.Bool(false),
+// 						LogBlocks: pulumi.Bool(true),
+// 					},
+// 					Http: &TeamsAccountLoggingSettingsByRuleTypeHttpArgs{
+// 						LogAll:    pulumi.Bool(true),
+// 						LogBlocks: pulumi.Bool(true),
+// 					},
+// 					L4: &TeamsAccountLoggingSettingsByRuleTypeL4Args{
+// 						LogAll:    pulumi.Bool(false),
+// 						LogBlocks: pulumi.Bool(true),
+// 					},
+// 				},
+// 			},
+// 			Proxy: &TeamsAccountProxyArgs{
+// 				Tcp: pulumi.Bool(true),
+// 				Udp: pulumi.Bool(true),
+// 			},
+// 			TlsDecryptEnabled:          pulumi.Bool(true),
+// 			UrlBrowserIsolationEnabled: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -56,12 +86,19 @@ type TeamsAccount struct {
 	// The account to which the teams location should be added.
 	AccountId          pulumi.StringOutput  `pulumi:"accountId"`
 	ActivityLogEnabled pulumi.BoolPtrOutput `pulumi:"activityLogEnabled"`
-	// Configuration for antivirus traffic scanning.
+	// Configuration block for antivirus traffic scanning.
 	Antivirus TeamsAccountAntivirusPtrOutput `pulumi:"antivirus"`
 	// Configuration for a custom block page.
 	BlockPage TeamsAccountBlockPagePtrOutput `pulumi:"blockPage"`
+	// Configure compliance with Federal Information Processing Standards.
+	Fips    TeamsAccountFipsPtrOutput    `pulumi:"fips"`
+	Logging TeamsAccountLoggingPtrOutput `pulumi:"logging"`
+	// Configuration block for specifying which protocols are proxied.
+	Proxy TeamsAccountProxyPtrOutput `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrOutput `pulumi:"tlsDecryptEnabled"`
+	// Safely browse websites in Browser Isolation through a URL.
+	UrlBrowserIsolationEnabled pulumi.BoolPtrOutput `pulumi:"urlBrowserIsolationEnabled"`
 }
 
 // NewTeamsAccount registers a new resource with the given unique name, arguments, and options.
@@ -99,24 +136,38 @@ type teamsAccountState struct {
 	// The account to which the teams location should be added.
 	AccountId          *string `pulumi:"accountId"`
 	ActivityLogEnabled *bool   `pulumi:"activityLogEnabled"`
-	// Configuration for antivirus traffic scanning.
+	// Configuration block for antivirus traffic scanning.
 	Antivirus *TeamsAccountAntivirus `pulumi:"antivirus"`
 	// Configuration for a custom block page.
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
+	// Configure compliance with Federal Information Processing Standards.
+	Fips    *TeamsAccountFips    `pulumi:"fips"`
+	Logging *TeamsAccountLogging `pulumi:"logging"`
+	// Configuration block for specifying which protocols are proxied.
+	Proxy *TeamsAccountProxy `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
+	// Safely browse websites in Browser Isolation through a URL.
+	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
 }
 
 type TeamsAccountState struct {
 	// The account to which the teams location should be added.
 	AccountId          pulumi.StringPtrInput
 	ActivityLogEnabled pulumi.BoolPtrInput
-	// Configuration for antivirus traffic scanning.
+	// Configuration block for antivirus traffic scanning.
 	Antivirus TeamsAccountAntivirusPtrInput
 	// Configuration for a custom block page.
 	BlockPage TeamsAccountBlockPagePtrInput
+	// Configure compliance with Federal Information Processing Standards.
+	Fips    TeamsAccountFipsPtrInput
+	Logging TeamsAccountLoggingPtrInput
+	// Configuration block for specifying which protocols are proxied.
+	Proxy TeamsAccountProxyPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrInput
+	// Safely browse websites in Browser Isolation through a URL.
+	UrlBrowserIsolationEnabled pulumi.BoolPtrInput
 }
 
 func (TeamsAccountState) ElementType() reflect.Type {
@@ -127,12 +178,19 @@ type teamsAccountArgs struct {
 	// The account to which the teams location should be added.
 	AccountId          string `pulumi:"accountId"`
 	ActivityLogEnabled *bool  `pulumi:"activityLogEnabled"`
-	// Configuration for antivirus traffic scanning.
+	// Configuration block for antivirus traffic scanning.
 	Antivirus *TeamsAccountAntivirus `pulumi:"antivirus"`
 	// Configuration for a custom block page.
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
+	// Configure compliance with Federal Information Processing Standards.
+	Fips    *TeamsAccountFips    `pulumi:"fips"`
+	Logging *TeamsAccountLogging `pulumi:"logging"`
+	// Configuration block for specifying which protocols are proxied.
+	Proxy *TeamsAccountProxy `pulumi:"proxy"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
+	// Safely browse websites in Browser Isolation through a URL.
+	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
 }
 
 // The set of arguments for constructing a TeamsAccount resource.
@@ -140,12 +198,19 @@ type TeamsAccountArgs struct {
 	// The account to which the teams location should be added.
 	AccountId          pulumi.StringInput
 	ActivityLogEnabled pulumi.BoolPtrInput
-	// Configuration for antivirus traffic scanning.
+	// Configuration block for antivirus traffic scanning.
 	Antivirus TeamsAccountAntivirusPtrInput
 	// Configuration for a custom block page.
 	BlockPage TeamsAccountBlockPagePtrInput
+	// Configure compliance with Federal Information Processing Standards.
+	Fips    TeamsAccountFipsPtrInput
+	Logging TeamsAccountLoggingPtrInput
+	// Configuration block for specifying which protocols are proxied.
+	Proxy TeamsAccountProxyPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrInput
+	// Safely browse websites in Browser Isolation through a URL.
+	UrlBrowserIsolationEnabled pulumi.BoolPtrInput
 }
 
 func (TeamsAccountArgs) ElementType() reflect.Type {

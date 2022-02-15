@@ -24,26 +24,21 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         var rule1 = new Cloudflare.TeamsRule("rule1", new Cloudflare.TeamsRuleArgs
     ///         {
-    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Action = "l4_override",
+    ///             AccountId = "d57c3de47a013c03ca7e237dd3e61d7d",
+    ///             Action = "block",
     ///             Description = "desc",
     ///             Filters = 
     ///             {
-    ///                 "l4",
+    ///                 "http",
     ///             },
     ///             Name = "office",
     ///             Precedence = 1,
     ///             RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs
     ///             {
-    ///                 BlockPageEnabled = false,
+    ///                 BlockPageEnabled = true,
     ///                 BlockPageReason = "access not permitted",
-    ///                 L4override = new Cloudflare.Inputs.TeamsRuleRuleSettingsL4overrideArgs
-    ///                 {
-    ///                     Ip = "192.0.2.1",
-    ///                     Port = 1234,
-    ///                 },
     ///             },
-    ///             Traffic = "any(dns.domains[*] == \"com.example\")",
+    ///             Traffic = "http.request.uri == \"https://www.example.com/malicious\"",
     ///         });
     ///     }
     /// 
@@ -116,7 +111,7 @@ namespace Pulumi.Cloudflare
         public Output<int> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// Additional rule settings.
+        /// Additional rule settings (refer to the nested schema).
         /// </summary>
         [Output("ruleSettings")]
         public Output<Outputs.TeamsRuleRuleSettings?> RuleSettings { get; private set; } = null!;
@@ -237,7 +232,7 @@ namespace Pulumi.Cloudflare
         public Input<int> Precedence { get; set; } = null!;
 
         /// <summary>
-        /// Additional rule settings.
+        /// Additional rule settings (refer to the nested schema).
         /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.TeamsRuleRuleSettingsArgs>? RuleSettings { get; set; }
@@ -316,7 +311,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// Additional rule settings.
+        /// Additional rule settings (refer to the nested schema).
         /// </summary>
         [Input("ruleSettings")]
         public Input<Inputs.TeamsRuleRuleSettingsGetArgs>? RuleSettings { get; set; }

@@ -14,8 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class CustomHostnameSsl
     {
         public readonly string? CertificateAuthority;
-        public readonly string? CnameName;
-        public readonly string? CnameTarget;
         /// <summary>
         /// If a custom uploaded certificate is used.
         /// </summary>
@@ -38,6 +36,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// Level of validation to be used for this hostname. Domain validation ("dv") must be used.
         /// </summary>
         public readonly string? Type;
+        public readonly ImmutableArray<Outputs.CustomHostnameSslValidationError> ValidationErrors;
+        public readonly ImmutableArray<Outputs.CustomHostnameSslValidationRecord> ValidationRecords;
         /// <summary>
         /// Indicates whether the certificate covers a wildcard.
         /// </summary>
@@ -46,10 +46,6 @@ namespace Pulumi.Cloudflare.Outputs
         [OutputConstructor]
         private CustomHostnameSsl(
             string? certificateAuthority,
-
-            string? cnameName,
-
-            string? cnameTarget,
 
             string? customCertificate,
 
@@ -63,17 +59,21 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? type,
 
+            ImmutableArray<Outputs.CustomHostnameSslValidationError> validationErrors,
+
+            ImmutableArray<Outputs.CustomHostnameSslValidationRecord> validationRecords,
+
             bool? wildcard)
         {
             CertificateAuthority = certificateAuthority;
-            CnameName = cnameName;
-            CnameTarget = cnameTarget;
             CustomCertificate = customCertificate;
             CustomKey = customKey;
             Method = method;
             Settings = settings;
             Status = status;
             Type = type;
+            ValidationErrors = validationErrors;
+            ValidationRecords = validationRecords;
             Wildcard = wildcard;
         }
     }
