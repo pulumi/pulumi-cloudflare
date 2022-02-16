@@ -24,7 +24,7 @@ type CertificatePack struct {
 	// Which certificate
 	// authority to issue the certificate pack. Allowed values: `"digicert"`,
 	// `"letsEncrypt"`.
-	CertificateAuthority pulumi.StringPtrOutput `pulumi:"certificateAuthority"`
+	CertificateAuthority pulumi.StringOutput `pulumi:"certificateAuthority"`
 	// Whether or not to include
 	// Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name
 	// if set to `true`.
@@ -35,10 +35,12 @@ type CertificatePack struct {
 	Hosts pulumi.StringArrayOutput `pulumi:"hosts"`
 	// Certificate pack configuration type.
 	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
-	Type pulumi.StringOutput `pulumi:"type"`
+	Type             pulumi.StringOutput                       `pulumi:"type"`
+	ValidationErrors CertificatePackValidationErrorArrayOutput `pulumi:"validationErrors"`
 	// Which validation method to
 	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-	ValidationMethod pulumi.StringPtrOutput `pulumi:"validationMethod"`
+	ValidationMethod  pulumi.StringPtrOutput                     `pulumi:"validationMethod"`
+	ValidationRecords CertificatePackValidationRecordArrayOutput `pulumi:"validationRecords"`
 	// How long the certificate is valid
 	// for. Note: If using Let's Encrypt, this value can only be 90 days.
 	// Allowed values: 14, 30, 90, 365.
@@ -99,10 +101,12 @@ type certificatePackState struct {
 	Hosts []string `pulumi:"hosts"`
 	// Certificate pack configuration type.
 	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
-	Type *string `pulumi:"type"`
+	Type             *string                          `pulumi:"type"`
+	ValidationErrors []CertificatePackValidationError `pulumi:"validationErrors"`
 	// Which validation method to
 	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-	ValidationMethod *string `pulumi:"validationMethod"`
+	ValidationMethod  *string                           `pulumi:"validationMethod"`
+	ValidationRecords []CertificatePackValidationRecord `pulumi:"validationRecords"`
 	// How long the certificate is valid
 	// for. Note: If using Let's Encrypt, this value can only be 90 days.
 	// Allowed values: 14, 30, 90, 365.
@@ -126,10 +130,12 @@ type CertificatePackState struct {
 	Hosts pulumi.StringArrayInput
 	// Certificate pack configuration type.
 	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
-	Type pulumi.StringPtrInput
+	Type             pulumi.StringPtrInput
+	ValidationErrors CertificatePackValidationErrorArrayInput
 	// Which validation method to
 	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-	ValidationMethod pulumi.StringPtrInput
+	ValidationMethod  pulumi.StringPtrInput
+	ValidationRecords CertificatePackValidationRecordArrayInput
 	// How long the certificate is valid
 	// for. Note: If using Let's Encrypt, this value can only be 90 days.
 	// Allowed values: 14, 30, 90, 365.
@@ -157,10 +163,12 @@ type certificatePackArgs struct {
 	Hosts []string `pulumi:"hosts"`
 	// Certificate pack configuration type.
 	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
-	Type string `pulumi:"type"`
+	Type             string                           `pulumi:"type"`
+	ValidationErrors []CertificatePackValidationError `pulumi:"validationErrors"`
 	// Which validation method to
 	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-	ValidationMethod *string `pulumi:"validationMethod"`
+	ValidationMethod  *string                           `pulumi:"validationMethod"`
+	ValidationRecords []CertificatePackValidationRecord `pulumi:"validationRecords"`
 	// How long the certificate is valid
 	// for. Note: If using Let's Encrypt, this value can only be 90 days.
 	// Allowed values: 14, 30, 90, 365.
@@ -185,10 +193,12 @@ type CertificatePackArgs struct {
 	Hosts pulumi.StringArrayInput
 	// Certificate pack configuration type.
 	// Allowed values: `"custom"`, `"dedicatedCustom"`, `"advanced"`.
-	Type pulumi.StringInput
+	Type             pulumi.StringInput
+	ValidationErrors CertificatePackValidationErrorArrayInput
 	// Which validation method to
 	// use in order to prove domain ownership. Allowed values: `"txt"`, `"http"`, `"email"`.
-	ValidationMethod pulumi.StringPtrInput
+	ValidationMethod  pulumi.StringPtrInput
+	ValidationRecords CertificatePackValidationRecordArrayInput
 	// How long the certificate is valid
 	// for. Note: If using Let's Encrypt, this value can only be 90 days.
 	// Allowed values: 14, 30, 90, 365.

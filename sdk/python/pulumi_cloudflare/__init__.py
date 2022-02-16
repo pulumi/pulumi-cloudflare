@@ -26,12 +26,15 @@ from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
+from .device_posture_integration import *
 from .device_posture_rule import *
+from .fallback_domain import *
 from .filter import *
 from .firewall_rule import *
 from .get_access_identity_provider import *
 from .get_account_roles import *
 from .get_api_token_permission_groups import *
+from .get_devices import *
 from .get_ip_ranges import *
 from .get_origin_ca_root_certificate import *
 from .get_waf_groups import *
@@ -40,8 +43,10 @@ from .get_waf_rules import *
 from .get_zone import *
 from .get_zone_dnssec import *
 from .get_zones import *
+from .gre_tunnel import *
 from .healthcheck import *
 from .ip_list import *
+from .ipsec_tunnel import *
 from .load_balancer import *
 from .load_balancer_monitor import *
 from .load_balancer_pool import *
@@ -75,6 +80,7 @@ from .worker_script import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .zone import *
+from .zone_cache_variants import *
 from .zone_dnssec import *
 from .zone_lockdown import *
 from .zone_settings_override import *
@@ -261,10 +267,26 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/devicePostureIntegration",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/devicePostureIntegration:DevicePostureIntegration": "DevicePostureIntegration"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/devicePostureRule",
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/devicePostureRule:DevicePostureRule": "DevicePostureRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/fallbackDomain",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/fallbackDomain:FallbackDomain": "FallbackDomain"
   }
  },
  {
@@ -285,6 +307,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/greTunnel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/greTunnel:GreTunnel": "GreTunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/healthcheck",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -297,6 +327,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/ipList:IpList": "IpList"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/ipsecTunnel",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/ipsecTunnel:IpsecTunnel": "IpsecTunnel"
   }
  },
  {
@@ -553,6 +591,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zone:Zone": "Zone"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zoneCacheVariants",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zoneCacheVariants:ZoneCacheVariants": "ZoneCacheVariants"
   }
  },
  {

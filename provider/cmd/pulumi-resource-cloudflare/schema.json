@@ -2443,16 +2443,28 @@
                 "resources"
             ]
         },
-        "cloudflare:index/CustomHostnameSsl:CustomHostnameSsl": {
+        "cloudflare:index/CertificatePackValidationError:CertificatePackValidationError": {
             "properties": {
-                "certificateAuthority": {
+                "message": {
                     "type": "string",
                     "language": {
                         "python": {
                             "mapCase": false
                         }
                     }
-                },
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "message"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/CertificatePackValidationRecord:CertificatePackValidationRecord": {
+            "properties": {
                 "cnameName": {
                     "type": "string",
                     "language": {
@@ -2462,6 +2474,75 @@
                     }
                 },
                 "cnameTarget": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpBody": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "txtName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "txtValue": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cnameName",
+                        "cnameTarget",
+                        "emails",
+                        "httpBody",
+                        "httpUrl",
+                        "txtName",
+                        "txtValue"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/CustomHostnameSsl:CustomHostnameSsl": {
+            "properties": {
+                "certificateAuthority": {
                     "type": "string",
                     "language": {
                         "python": {
@@ -2525,6 +2606,28 @@
                         }
                     }
                 },
+                "validationErrors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/CustomHostnameSslValidationError:CustomHostnameSslValidationError"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "validationRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/CustomHostnameSslValidationRecord:CustomHostnameSslValidationRecord"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "wildcard": {
                     "type": "boolean",
                     "description": "Indicates whether the certificate covers a wildcard.\n",
@@ -2539,8 +2642,11 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "certificateAuthority",
                         "settings",
-                        "status"
+                        "status",
+                        "validationErrors",
+                        "validationRecords"
                     ]
                 }
             }
@@ -2597,6 +2703,103 @@
                 }
             },
             "type": "object"
+        },
+        "cloudflare:index/CustomHostnameSslValidationError:CustomHostnameSslValidationError": {
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "message"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/CustomHostnameSslValidationRecord:CustomHostnameSslValidationRecord": {
+            "properties": {
+                "cnameName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cnameTarget": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "emails": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpBody": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "httpUrl": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "txtName": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "txtValue": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cnameName",
+                        "cnameTarget",
+                        "emails",
+                        "httpBody",
+                        "httpUrl",
+                        "txtName",
+                        "txtValue"
+                    ]
+                }
+            }
         },
         "cloudflare:index/CustomSslCustomSslOptions:CustomSslCustomSslOptions": {
             "properties": {
@@ -2660,6 +2863,47 @@
                 },
                 "priority": {
                     "type": "integer",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/DevicePostureIntegrationConfig:DevicePostureIntegrationConfig": {
+            "properties": {
+                "apiUrl": {
+                    "type": "string",
+                    "description": "The third-party API's URL.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "authUrl": {
+                    "type": "string",
+                    "description": "The third-party authorization API URL.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientId": {
+                    "type": "string",
+                    "description": "The client identifier for authenticating API calls.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientSecret": {
+                    "type": "string",
+                    "description": "The client secret for authenticating API calls.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2804,6 +3048,41 @@
                 "platform": {
                     "type": "string",
                     "description": "The platform of the device. Valid values are `windows`, `mac`, `linux`, `android`, and `ios`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/FallbackDomainDomain:FallbackDomainDomain": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the domain.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "dnsServers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The DNS servers to receive the redirected request.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "suffix": {
+                    "type": "string",
+                    "description": "The domain to ignore DNS requests.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4143,7 +4422,7 @@
             "properties": {
                 "mode": {
                     "type": "string",
-                    "description": "The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.\n",
+                    "description": "The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4667,7 +4946,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4821,6 +5100,17 @@
                         }
                     }
                 },
+                "phases": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "products": {
                     "type": "array",
                     "items": {
@@ -4952,7 +5242,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4999,7 +5289,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5031,7 +5321,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5337,6 +5627,7 @@
             "properties": {
                 "enabledDownloadPhase": {
                     "type": "boolean",
+                    "description": "Scan on file download.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5345,6 +5636,7 @@
                 },
                 "enabledUploadPhase": {
                     "type": "boolean",
+                    "description": "Scan on file upload.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5353,6 +5645,7 @@
                 },
                 "failClosed": {
                     "type": "boolean",
+                    "description": "Block requests for files that cannot be scanned.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5426,6 +5719,183 @@
             },
             "type": "object"
         },
+        "cloudflare:index/TeamsAccountFips:TeamsAccountFips": {
+            "properties": {
+                "tls": {
+                    "type": "boolean",
+                    "description": "Only allow FIPS-compliant TLS configuration.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/TeamsAccountLogging:TeamsAccountLogging": {
+            "properties": {
+                "redactPii": {
+                    "type": "boolean",
+                    "description": "Redact personally identifiable information from activity logging (PII fields are: source IP,\nuser email, user ID, device ID, URL, referrer, user agent).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "settingsByRuleType": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountLoggingSettingsByRuleType:TeamsAccountLoggingSettingsByRuleType",
+                    "description": "Represents whether all requests are logged or only the blocked requests are\nlogged in DNS, HTTP and L4 filters.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "redactPii",
+                "settingsByRuleType"
+            ]
+        },
+        "cloudflare:index/TeamsAccountLoggingSettingsByRuleType:TeamsAccountLoggingSettingsByRuleType": {
+            "properties": {
+                "dns": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeDns:TeamsAccountLoggingSettingsByRuleTypeDns",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "http": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeHttp:TeamsAccountLoggingSettingsByRuleTypeHttp",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "l4": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeL4:TeamsAccountLoggingSettingsByRuleTypeL4",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "dns",
+                "http",
+                "l4"
+            ]
+        },
+        "cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeDns:TeamsAccountLoggingSettingsByRuleTypeDns": {
+            "properties": {
+                "logAll": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logBlocks": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "logAll",
+                "logBlocks"
+            ]
+        },
+        "cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeHttp:TeamsAccountLoggingSettingsByRuleTypeHttp": {
+            "properties": {
+                "logAll": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logBlocks": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "logAll",
+                "logBlocks"
+            ]
+        },
+        "cloudflare:index/TeamsAccountLoggingSettingsByRuleTypeL4:TeamsAccountLoggingSettingsByRuleTypeL4": {
+            "properties": {
+                "logAll": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "logBlocks": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "logAll",
+                "logBlocks"
+            ]
+        },
+        "cloudflare:index/TeamsAccountProxy:TeamsAccountProxy": {
+            "properties": {
+                "tcp": {
+                    "type": "boolean",
+                    "description": "Whether gateway proxy is enabled on gateway devices for tcp traffic.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "udp": {
+                    "type": "boolean",
+                    "description": "Whether gateway proxy is enabled on gateway devices for udp traffic.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "tcp",
+                "udp"
+            ]
+        },
         "cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork": {
             "properties": {
                 "id": {
@@ -5461,8 +5931,21 @@
         },
         "cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings": {
             "properties": {
+                "addHeaders": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Add custom headers to allowed requests in the form of key-value pairs.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "bisoAdminControls": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsBisoAdminControls:TeamsRuleRuleSettingsBisoAdminControls",
+                    "description": "Configure how browser isolation behaves (refer to the nested schema).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5487,9 +5970,18 @@
                         }
                     }
                 },
+                "checkSession": {
+                    "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsCheckSession:TeamsRuleRuleSettingsCheckSession",
+                    "description": "Configure how session check behaves (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "l4override": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsL4override:TeamsRuleRuleSettingsL4override",
-                    "description": "Settings to forward layer 4 traffic.\n",
+                    "description": "Settings to forward layer 4 traffic (refer to the nested schema).\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5524,6 +6016,25 @@
             "properties": {
                 "disableCopyPaste": {
                     "type": "boolean",
+                    "description": "Disable copy-paste.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disableDownload": {
+                    "type": "boolean",
+                    "description": "Disable download.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disableKeyboard": {
+                    "type": "boolean",
+                    "description": "Disable keyboard usage.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5532,6 +6043,16 @@
                 },
                 "disablePrinting": {
                     "type": "boolean",
+                    "description": "Disable printing.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "disableUpload": {
+                    "type": "boolean",
+                    "description": "Disable upload.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5540,6 +6061,33 @@
                 }
             },
             "type": "object"
+        },
+        "cloudflare:index/TeamsRuleRuleSettingsCheckSession:TeamsRuleRuleSettingsCheckSession": {
+            "properties": {
+                "duration": {
+                    "type": "string",
+                    "description": "Configure how fresh the session needs to be to be considered valid.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enforce": {
+                    "type": "boolean",
+                    "description": "Enable session enforcement for this rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "duration",
+                "enforce"
+            ]
         },
         "cloudflare:index/TeamsRuleRuleSettingsL4override:TeamsRuleRuleSettingsL4override": {
             "properties": {
@@ -7030,6 +7578,137 @@
             },
             "type": "object"
         },
+        "cloudflare:index/getDevicesDevice:getDevicesDevice": {
+            "properties": {
+                "created": {
+                    "type": "string",
+                    "description": "When the device was created.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "deviceType": {
+                    "type": "string",
+                    "description": "The type of the device.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Device ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "IPv4 or IPv6 address.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The device's public key.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "lastSeen": {
+                    "type": "string",
+                    "description": "When the device was last seen.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "model": {
+                    "type": "string",
+                    "description": "The device model name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The device name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "osVersion": {
+                    "type": "string",
+                    "description": "The operating system version.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "updated": {
+                    "type": "string",
+                    "description": "When the device was updated.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userEmail": {
+                    "type": "string",
+                    "description": "User's email.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "User's ID.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "User's Name.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The WARP client version.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/getWafGroupsFilter:getWafGroupsFilter": {
             "properties": {
                 "mode": {
@@ -7344,6 +8023,15 @@
         },
         "cloudflare:index/getZonesFilter:getZonesFilter": {
             "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "Only search for zones in this account.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "lookupType": {
                     "type": "string",
                     "description": "The type of search to perform for the `name` value\nwhen querying the zone API. Valid values: `\"exact\"` and `\"contains\"`. Defaults\nto `\"exact\"`.\n",
@@ -9131,9 +9819,21 @@
                     "type": "string",
                     "description": "Certificate pack configuration type.\nAllowed values: `\"custom\"`, `\"dedicated_custom\"`, `\"advanced\"`.\n"
                 },
+                "validationErrors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/CertificatePackValidationError:CertificatePackValidationError"
+                    }
+                },
                 "validationMethod": {
                     "type": "string",
                     "description": "Which validation method to\nuse in order to prove domain ownership. Allowed values: `\"txt\"`, `\"http\"`, `\"email\"`.\n"
+                },
+                "validationRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/CertificatePackValidationRecord:CertificatePackValidationRecord"
+                    }
                 },
                 "validityDays": {
                     "type": "integer",
@@ -9145,8 +9845,11 @@
                 }
             },
             "required": [
+                "certificateAuthority",
                 "hosts",
                 "type",
+                "validationErrors",
+                "validationRecords",
                 "zoneId"
             ],
             "inputProperties": {
@@ -9169,9 +9872,21 @@
                     "type": "string",
                     "description": "Certificate pack configuration type.\nAllowed values: `\"custom\"`, `\"dedicated_custom\"`, `\"advanced\"`.\n"
                 },
+                "validationErrors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/CertificatePackValidationError:CertificatePackValidationError"
+                    }
+                },
                 "validationMethod": {
                     "type": "string",
                     "description": "Which validation method to\nuse in order to prove domain ownership. Allowed values: `\"txt\"`, `\"http\"`, `\"email\"`.\n"
+                },
+                "validationRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/CertificatePackValidationRecord:CertificatePackValidationRecord"
+                    }
                 },
                 "validityDays": {
                     "type": "integer",
@@ -9209,9 +9924,21 @@
                         "type": "string",
                         "description": "Certificate pack configuration type.\nAllowed values: `\"custom\"`, `\"dedicated_custom\"`, `\"advanced\"`.\n"
                     },
+                    "validationErrors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/CertificatePackValidationError:CertificatePackValidationError"
+                        }
+                    },
                     "validationMethod": {
                         "type": "string",
                         "description": "Which validation method to\nuse in order to prove domain ownership. Allowed values: `\"txt\"`, `\"http\"`, `\"email\"`.\n"
+                    },
+                    "validationRecords": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/CertificatePackValidationRecord:CertificatePackValidationRecord"
+                        }
                     },
                     "validityDays": {
                         "type": "integer",
@@ -9591,6 +10318,116 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/devicePostureIntegration:DevicePostureIntegration": {
+            "description": "Provides a Cloudflare Device Posture Integration resource. Device posture integrations configure third-party data providers for device posture rules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst thirdPartyDevicesPostureIntegration = new cloudflare.DevicePostureIntegration(\"third_party_devices_posture_integration\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    configs: [{\n        apiUrl: \"https://example.com/api\",\n        authUrl: \"https://example.com/connect/token\",\n        clientId: \"client-id\",\n        clientSecret: \"client-secret\",\n    }],\n    interval: \"24h\",\n    name: \"Device posture integration\",\n    type: \"workspace_one\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nthird_party_devices_posture_integration = cloudflare.DevicePostureIntegration(\"thirdPartyDevicesPostureIntegration\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    configs=[cloudflare.DevicePostureIntegrationConfigArgs(\n        api_url=\"https://example.com/api\",\n        auth_url=\"https://example.com/connect/token\",\n        client_id=\"client-id\",\n        client_secret=\"client-secret\",\n    )],\n    interval=\"24h\",\n    name=\"Device posture integration\",\n    type=\"workspace_one\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var thirdPartyDevicesPostureIntegration = new Cloudflare.DevicePostureIntegration(\"thirdPartyDevicesPostureIntegration\", new Cloudflare.DevicePostureIntegrationArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Configs = \n            {\n                new Cloudflare.Inputs.DevicePostureIntegrationConfigArgs\n                {\n                    ApiUrl = \"https://example.com/api\",\n                    AuthUrl = \"https://example.com/connect/token\",\n                    ClientId = \"client-id\",\n                    ClientSecret = \"client-secret\",\n                },\n            },\n            Interval = \"24h\",\n            Name = \"Device posture integration\",\n            Type = \"workspace_one\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDevicePostureIntegration(ctx, \"thirdPartyDevicesPostureIntegration\", \u0026cloudflare.DevicePostureIntegrationArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tConfigs: DevicePostureIntegrationConfigArray{\n\t\t\t\t\u0026DevicePostureIntegrationConfigArgs{\n\t\t\t\t\tApiUrl:       pulumi.String(\"https://example.com/api\"),\n\t\t\t\t\tAuthUrl:      pulumi.String(\"https://example.com/connect/token\"),\n\t\t\t\t\tClientId:     pulumi.String(\"client-id\"),\n\t\t\t\t\tClientSecret: pulumi.String(\"client-secret\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tInterval: pulumi.String(\"24h\"),\n\t\t\tName:     pulumi.String(\"Device posture integration\"),\n\t\t\tType:     pulumi.String(\"workspace_one\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDevice posture integrations can be imported using a composite ID formed of account ID and device posture integration ID.\n\n```sh\n $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/0ade592a-62d6-46ab-bac8-01f47c7fa792\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the device posture integration should be added.\n"
+                },
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/DevicePostureIntegrationConfig:DevicePostureIntegrationConfig"
+                    },
+                    "description": "The device posture integration's connection authorization parameters.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the device posture integration.\n"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "interval": {
+                    "type": "string",
+                    "description": "Indicates the frequency with which to poll the third-party API.\nMust be in the format `\"1h\"` or `\"30m\"`. Valid units are `h` and `m`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the device posture integration.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The device posture integration type. Valid values are `workspace_one`.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "id",
+                "name",
+                "type"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the device posture integration should be added.\n"
+                },
+                "configs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/DevicePostureIntegrationConfig:DevicePostureIntegrationConfig"
+                    },
+                    "description": "The device posture integration's connection authorization parameters.\n"
+                },
+                "identifier": {
+                    "type": "string"
+                },
+                "interval": {
+                    "type": "string",
+                    "description": "Indicates the frequency with which to poll the third-party API.\nMust be in the format `\"1h\"` or `\"30m\"`. Valid units are `h` and `m`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the device posture integration.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The device posture integration type. Valid values are `workspace_one`.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name",
+                "type"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DevicePostureIntegration resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the device posture integration should be added.\n"
+                    },
+                    "configs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/DevicePostureIntegrationConfig:DevicePostureIntegrationConfig"
+                        },
+                        "description": "The device posture integration's connection authorization parameters.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the device posture integration.\n"
+                    },
+                    "identifier": {
+                        "type": "string"
+                    },
+                    "interval": {
+                        "type": "string",
+                        "description": "Indicates the frequency with which to poll the third-party API.\nMust be in the format `\"1h\"` or `\"30m\"`. Valid units are `h` and `m`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the device posture integration.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The device posture integration type. Valid values are `workspace_one`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/devicePostureRule:DevicePostureRule": {
             "description": "Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst corporateDevicesPostureRule = new cloudflare.DevicePostureRule(\"corporateDevicesPostureRule\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name: \"Corporate devices posture rule\",\n    type: \"serial_number\",\n    description: \"Device posture rule for corporate devices.\",\n    schedule: \"24h\",\n    matches: [{\n        platform: \"mac\",\n    }],\n    inputs: [{\n        id: cloudflare_teams_list.corporate_devices.id,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ncorporate_devices_posture_rule = cloudflare.DevicePostureRule(\"corporateDevicesPostureRule\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    name=\"Corporate devices posture rule\",\n    type=\"serial_number\",\n    description=\"Device posture rule for corporate devices.\",\n    schedule=\"24h\",\n    matches=[cloudflare.DevicePostureRuleMatchArgs(\n        platform=\"mac\",\n    )],\n    inputs=[cloudflare.DevicePostureRuleInputArgs(\n        id=cloudflare_teams_list[\"corporate_devices\"][\"id\"],\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var corporateDevicesPostureRule = new Cloudflare.DevicePostureRule(\"corporateDevicesPostureRule\", new Cloudflare.DevicePostureRuleArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Name = \"Corporate devices posture rule\",\n            Type = \"serial_number\",\n            Description = \"Device posture rule for corporate devices.\",\n            Schedule = \"24h\",\n            Matches = \n            {\n                new Cloudflare.Inputs.DevicePostureRuleMatchArgs\n                {\n                    Platform = \"mac\",\n                },\n            },\n            Inputs = \n            {\n                new Cloudflare.Inputs.DevicePostureRuleInputArgs\n                {\n                    Id = cloudflare_teams_list.Corporate_devices.Id,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDevicePostureRule(ctx, \"corporateDevicesPostureRule\", \u0026cloudflare.DevicePostureRuleArgs{\n\t\t\tAccountId:   pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tName:        pulumi.String(\"Corporate devices posture rule\"),\n\t\t\tType:        pulumi.String(\"serial_number\"),\n\t\t\tDescription: pulumi.String(\"Device posture rule for corporate devices.\"),\n\t\t\tSchedule:    pulumi.String(\"24h\"),\n\t\t\tMatches: DevicePostureRuleMatchArray{\n\t\t\t\t\u0026DevicePostureRuleMatchArgs{\n\t\t\t\t\tPlatform: pulumi.String(\"mac\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tInputs: DevicePostureRuleInputArray{\n\t\t\t\t\u0026DevicePostureRuleInputArgs{\n\t\t\t\t\tId: pulumi.Any(cloudflare_teams_list.Corporate_devices.Id),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDevice posture rules can be imported using a composite ID formed of account ID and device posture rule ID.\n\n```sh\n $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
             "properties": {
@@ -9710,6 +10547,60 @@
                     "type": {
                         "type": "string",
                         "description": "The device posture rule type. Valid values are `file`, `application`, and `serial_number`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/fallbackDomain:FallbackDomain": {
+            "description": "Provides a Cloudflare Fallback Domain resource. Fallback domains are used to ignore DNS requests to a given list of domains. These DNS requests will be passed back to other DNS servers configured on existing network interfaces on the device.\n\n\n## Import\n\nFallback Domains can be imported using the account identifer.\n\n```sh\n $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example 1d5fdc9e88c8a8c4518b068cd94331fe\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the device posture rule should be added.\n"
+                },
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/FallbackDomainDomain:FallbackDomainDomain"
+                    },
+                    "description": "The value of the domain attributes (refer to the nested schema).\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "domains"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the device posture rule should be added.\n"
+                },
+                "domains": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/FallbackDomainDomain:FallbackDomainDomain"
+                    },
+                    "description": "The value of the domain attributes (refer to the nested schema).\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "domains"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering FallbackDomain resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the device posture rule should be added.\n"
+                    },
+                    "domains": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/FallbackDomainDomain:FallbackDomainDomain"
+                        },
+                        "description": "The value of the domain attributes (refer to the nested schema).\n"
                     }
                 },
                 "type": "object"
@@ -9904,6 +10795,168 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The DNS zone to which the Filter should be added.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/greTunnel:GreTunnel": {
+            "description": "Provides a resource, that manages GRE tunnels for Magic Transit.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.GreTunnel(\"example\", {\n    accountId: \"c4a7362d577a6c3019a474fd6f485821\",\n    cloudflareGreEndpoint: \"203.0.113.1\",\n    customerGreEndpoint: \"203.0.113.1\",\n    description: \"Tunnel for ISP X\",\n    healthCheckEnabled: true,\n    healthCheckTarget: \"203.0.113.1\",\n    healthCheckType: \"reply\",\n    interfaceAddress: \"192.0.2.0/31\",\n    mtu: 1476,\n    name: \"GRE_1\",\n    ttl: 64,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.GreTunnel(\"example\",\n    account_id=\"c4a7362d577a6c3019a474fd6f485821\",\n    cloudflare_gre_endpoint=\"203.0.113.1\",\n    customer_gre_endpoint=\"203.0.113.1\",\n    description=\"Tunnel for ISP X\",\n    health_check_enabled=True,\n    health_check_target=\"203.0.113.1\",\n    health_check_type=\"reply\",\n    interface_address=\"192.0.2.0/31\",\n    mtu=1476,\n    name=\"GRE_1\",\n    ttl=64)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.GreTunnel(\"example\", new Cloudflare.GreTunnelArgs\n        {\n            AccountId = \"c4a7362d577a6c3019a474fd6f485821\",\n            CloudflareGreEndpoint = \"203.0.113.1\",\n            CustomerGreEndpoint = \"203.0.113.1\",\n            Description = \"Tunnel for ISP X\",\n            HealthCheckEnabled = true,\n            HealthCheckTarget = \"203.0.113.1\",\n            HealthCheckType = \"reply\",\n            InterfaceAddress = \"192.0.2.0/31\",\n            Mtu = 1476,\n            Name = \"GRE_1\",\n            Ttl = 64,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewGreTunnel(ctx, \"example\", \u0026cloudflare.GreTunnelArgs{\n\t\t\tAccountId:             pulumi.String(\"c4a7362d577a6c3019a474fd6f485821\"),\n\t\t\tCloudflareGreEndpoint: pulumi.String(\"203.0.113.1\"),\n\t\t\tCustomerGreEndpoint:   pulumi.String(\"203.0.113.1\"),\n\t\t\tDescription:           pulumi.String(\"Tunnel for ISP X\"),\n\t\t\tHealthCheckEnabled:    pulumi.Bool(true),\n\t\t\tHealthCheckTarget:     pulumi.String(\"203.0.113.1\"),\n\t\t\tHealthCheckType:       pulumi.String(\"reply\"),\n\t\t\tInterfaceAddress:      pulumi.String(\"192.0.2.0/31\"),\n\t\t\tMtu:                   pulumi.Int(1476),\n\t\t\tName:                  pulumi.String(\"GRE_1\"),\n\t\t\tTtl:                   pulumi.Int(64),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing GRE tunnel can be imported using the account ID and tunnel ID\n\n```sh\n $ pulumi import cloudflare:index/greTunnel:GreTunnel example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the tunnel is being created.\n"
+                },
+                "cloudflareGreEndpoint": {
+                    "type": "string",
+                    "description": "The IP address assigned to the Cloudflare side of the GRE tunnel.\n"
+                },
+                "customerGreEndpoint": {
+                    "type": "string",
+                    "description": "The IP address assigned to the customer side of the GRE tunnel.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the GRE tunnel.\n"
+                },
+                "healthCheckEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies if ICMP tunnel health checks are enabled Default: `true`.\n"
+                },
+                "healthCheckTarget": {
+                    "type": "string",
+                    "description": "The IP address of the customer endpoint that will receive tunnel health checks. Default: `\u003ccustomer_gre_endpoint\u003e`.\n"
+                },
+                "healthCheckType": {
+                    "type": "string",
+                    "description": "Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.\n"
+                },
+                "interfaceAddress": {
+                    "type": "string",
+                    "description": "31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the GRE tunnel.\n"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.\n"
+                }
+            },
+            "required": [
+                "cloudflareGreEndpoint",
+                "customerGreEndpoint",
+                "healthCheckEnabled",
+                "healthCheckTarget",
+                "healthCheckType",
+                "interfaceAddress",
+                "mtu",
+                "name",
+                "ttl"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the tunnel is being created.\n"
+                },
+                "cloudflareGreEndpoint": {
+                    "type": "string",
+                    "description": "The IP address assigned to the Cloudflare side of the GRE tunnel.\n"
+                },
+                "customerGreEndpoint": {
+                    "type": "string",
+                    "description": "The IP address assigned to the customer side of the GRE tunnel.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the GRE tunnel.\n"
+                },
+                "healthCheckEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies if ICMP tunnel health checks are enabled Default: `true`.\n"
+                },
+                "healthCheckTarget": {
+                    "type": "string",
+                    "description": "The IP address of the customer endpoint that will receive tunnel health checks. Default: `\u003ccustomer_gre_endpoint\u003e`.\n"
+                },
+                "healthCheckType": {
+                    "type": "string",
+                    "description": "Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.\n"
+                },
+                "interfaceAddress": {
+                    "type": "string",
+                    "description": "31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.\n"
+                },
+                "mtu": {
+                    "type": "integer",
+                    "description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the GRE tunnel.\n"
+                },
+                "ttl": {
+                    "type": "integer",
+                    "description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.\n"
+                }
+            },
+            "requiredInputs": [
+                "cloudflareGreEndpoint",
+                "customerGreEndpoint",
+                "interfaceAddress",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GreTunnel resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account where the tunnel is being created.\n"
+                    },
+                    "cloudflareGreEndpoint": {
+                        "type": "string",
+                        "description": "The IP address assigned to the Cloudflare side of the GRE tunnel.\n"
+                    },
+                    "customerGreEndpoint": {
+                        "type": "string",
+                        "description": "The IP address assigned to the customer side of the GRE tunnel.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "An optional description of the GRE tunnel.\n"
+                    },
+                    "healthCheckEnabled": {
+                        "type": "boolean",
+                        "description": "Specifies if ICMP tunnel health checks are enabled Default: `true`.\n"
+                    },
+                    "healthCheckTarget": {
+                        "type": "string",
+                        "description": "The IP address of the customer endpoint that will receive tunnel health checks. Default: `\u003ccustomer_gre_endpoint\u003e`.\n"
+                    },
+                    "healthCheckType": {
+                        "type": "string",
+                        "description": "Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.\n"
+                    },
+                    "interfaceAddress": {
+                        "type": "string",
+                        "description": "31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.\n"
+                    },
+                    "mtu": {
+                        "type": "integer",
+                        "description": "Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the GRE tunnel.\n"
+                    },
+                    "ttl": {
+                        "type": "integer",
+                        "description": "Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.\n"
                     }
                 },
                 "type": "object"
@@ -10334,6 +11387,103 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/ipsecTunnel:IpsecTunnel": {
+            "description": "Provides a resource, that manages IPsec tunnels for Magic Transit.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.IpsecTunnel(\"example\", {\n    accountId: \"c4a7362d577a6c3019a474fd6f485821\",\n    cloudflareEndpoint: \"203.0.113.1\",\n    customerEndpoint: \"203.0.113.1\",\n    description: \"Tunnel for ISP X\",\n    interfaceAddress: \"192.0.2.0/31\",\n    name: \"IPsec_1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.IpsecTunnel(\"example\",\n    account_id=\"c4a7362d577a6c3019a474fd6f485821\",\n    cloudflare_endpoint=\"203.0.113.1\",\n    customer_endpoint=\"203.0.113.1\",\n    description=\"Tunnel for ISP X\",\n    interface_address=\"192.0.2.0/31\",\n    name=\"IPsec_1\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.IpsecTunnel(\"example\", new Cloudflare.IpsecTunnelArgs\n        {\n            AccountId = \"c4a7362d577a6c3019a474fd6f485821\",\n            CloudflareEndpoint = \"203.0.113.1\",\n            CustomerEndpoint = \"203.0.113.1\",\n            Description = \"Tunnel for ISP X\",\n            InterfaceAddress = \"192.0.2.0/31\",\n            Name = \"IPsec_1\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewIpsecTunnel(ctx, \"example\", \u0026cloudflare.IpsecTunnelArgs{\n\t\t\tAccountId:          pulumi.String(\"c4a7362d577a6c3019a474fd6f485821\"),\n\t\t\tCloudflareEndpoint: pulumi.String(\"203.0.113.1\"),\n\t\t\tCustomerEndpoint:   pulumi.String(\"203.0.113.1\"),\n\t\t\tDescription:        pulumi.String(\"Tunnel for ISP X\"),\n\t\t\tInterfaceAddress:   pulumi.String(\"192.0.2.0/31\"),\n\t\t\tName:               pulumi.String(\"IPsec_1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing IPsec tunnel can be imported using the account ID and tunnel ID\n\n```sh\n $ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the tunnel is being created.\n"
+                },
+                "cloudflareEndpoint": {
+                    "type": "string",
+                    "description": "IP address assigned to the Cloudflare side of the IPsec tunnel.\n"
+                },
+                "customerEndpoint": {
+                    "type": "string",
+                    "description": "IP address assigned to the customer side of the IPsec tunnel.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the IPsec tunnel.\n"
+                },
+                "interfaceAddress": {
+                    "type": "string",
+                    "description": "31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the IPsec tunnel.\n"
+                }
+            },
+            "required": [
+                "cloudflareEndpoint",
+                "customerEndpoint",
+                "interfaceAddress",
+                "name"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The ID of the account where the tunnel is being created.\n"
+                },
+                "cloudflareEndpoint": {
+                    "type": "string",
+                    "description": "IP address assigned to the Cloudflare side of the IPsec tunnel.\n"
+                },
+                "customerEndpoint": {
+                    "type": "string",
+                    "description": "IP address assigned to the customer side of the IPsec tunnel.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "An optional description of the IPsec tunnel.\n"
+                },
+                "interfaceAddress": {
+                    "type": "string",
+                    "description": "31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the IPsec tunnel.\n"
+                }
+            },
+            "requiredInputs": [
+                "cloudflareEndpoint",
+                "customerEndpoint",
+                "interfaceAddress",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IpsecTunnel resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The ID of the account where the tunnel is being created.\n"
+                    },
+                    "cloudflareEndpoint": {
+                        "type": "string",
+                        "description": "IP address assigned to the Cloudflare side of the IPsec tunnel.\n"
+                    },
+                    "customerEndpoint": {
+                        "type": "string",
+                        "description": "IP address assigned to the customer side of the IPsec tunnel.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "An optional description of the IPsec tunnel.\n"
+                    },
+                    "interfaceAddress": {
+                        "type": "string",
+                        "description": "31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the IPsec tunnel.\n"
                     }
                 },
                 "type": "object"
@@ -11161,7 +12311,7 @@
                 },
                 "dataset": {
                     "type": "string",
-                    "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\"`\n"
+                    "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\", \"dns_logs\"`\n"
                 },
                 "destinationConf": {
                     "type": "string",
@@ -11199,7 +12349,7 @@
                 },
                 "dataset": {
                     "type": "string",
-                    "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\"`\n"
+                    "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\", \"dns_logs\"`\n"
                 },
                 "destinationConf": {
                     "type": "string",
@@ -11239,7 +12389,7 @@
                     },
                     "dataset": {
                         "type": "string",
-                        "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\"`\n"
+                        "description": "Which type of dataset resource to use. Available values are\n- [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `\"audit_logs\"`, `\"gateway_dns\"`, `\"gateway_http\"`, `\"gateway_network\"`\n- [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `\"firewall_events\"`, `\"http_requests\"`, `\"spectrum_events\"`, `\"nel_reports\", \"dns_logs\"`\n"
                     },
                     "destinationConf": {
                         "type": "string",
@@ -12204,7 +13354,6 @@
                 }
             },
             "required": [
-                "description",
                 "kind",
                 "name",
                 "phase"
@@ -12247,7 +13396,6 @@
                 }
             },
             "requiredInputs": [
-                "description",
                 "kind",
                 "name",
                 "phase"
@@ -12709,7 +13857,7 @@
             }
         },
         "cloudflare:index/teamsAccount:TeamsAccount": {
-            "description": "Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst main = new cloudflare.TeamsAccount(\"main\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    blockPage: {\n        backgroundColor: \"#000000\",\n        footerText: \"hello\",\n        headerText: \"hello\",\n        logoPath: \"https://google.com\",\n    },\n    tlsDecryptEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmain = cloudflare.TeamsAccount(\"main\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    block_page=cloudflare.TeamsAccountBlockPageArgs(\n        background_color=\"#000000\",\n        footer_text=\"hello\",\n        header_text=\"hello\",\n        logo_path=\"https://google.com\",\n    ),\n    tls_decrypt_enabled=True)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = new Cloudflare.TeamsAccount(\"main\", new Cloudflare.TeamsAccountArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs\n            {\n                BackgroundColor = \"#000000\",\n                FooterText = \"hello\",\n                HeaderText = \"hello\",\n                LogoPath = \"https://google.com\",\n            },\n            TlsDecryptEnabled = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsAccount(ctx, \"main\", \u0026cloudflare.TeamsAccountArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tBlockPage: \u0026TeamsAccountBlockPageArgs{\n\t\t\t\tBackgroundColor: pulumi.String(\"#000000\"),\n\t\t\t\tFooterText:      pulumi.String(\"hello\"),\n\t\t\t\tHeaderText:      pulumi.String(\"hello\"),\n\t\t\t\tLogoPath:        pulumi.String(\"https://google.com\"),\n\t\t\t},\n\t\t\tTlsDecryptEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSince a Teams account does not have a unique resource ID, configuration can be imported using the account ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322\n```\n\n ",
+            "description": "Provides a Cloudflare Teams Account resource. The Teams Account resource defines configuration for secure web gateway.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst main = new cloudflare.TeamsAccount(\"main\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    antivirus: {\n        enabledDownloadPhase: true,\n        enabledUploadPhase: false,\n        failClosed: true,\n    },\n    blockPage: {\n        backgroundColor: \"#000000\",\n        footerText: \"hello\",\n        headerText: \"hello\",\n        logoPath: \"https://google.com\",\n    },\n    fips: {\n        tls: true,\n    },\n    logging: {\n        redactPii: true,\n        settingsByRuleType: {\n            dns: {\n                logAll: false,\n                logBlocks: true,\n            },\n            http: {\n                logAll: true,\n                logBlocks: true,\n            },\n            l4: {\n                logAll: false,\n                logBlocks: true,\n            },\n        },\n    },\n    proxy: {\n        tcp: true,\n        udp: true,\n    },\n    tlsDecryptEnabled: true,\n    urlBrowserIsolationEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmain = cloudflare.TeamsAccount(\"main\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    antivirus=cloudflare.TeamsAccountAntivirusArgs(\n        enabled_download_phase=True,\n        enabled_upload_phase=False,\n        fail_closed=True,\n    ),\n    block_page=cloudflare.TeamsAccountBlockPageArgs(\n        background_color=\"#000000\",\n        footer_text=\"hello\",\n        header_text=\"hello\",\n        logo_path=\"https://google.com\",\n    ),\n    fips=cloudflare.TeamsAccountFipsArgs(\n        tls=True,\n    ),\n    logging=cloudflare.TeamsAccountLoggingArgs(\n        redact_pii=True,\n        settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(\n            dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(\n                log_all=False,\n                log_blocks=True,\n            ),\n            http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(\n                log_all=True,\n                log_blocks=True,\n            ),\n            l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(\n                log_all=False,\n                log_blocks=True,\n            ),\n        ),\n    ),\n    proxy=cloudflare.TeamsAccountProxyArgs(\n        tcp=True,\n        udp=True,\n    ),\n    tls_decrypt_enabled=True,\n    url_browser_isolation_enabled=True)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var main = new Cloudflare.TeamsAccount(\"main\", new Cloudflare.TeamsAccountArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs\n            {\n                EnabledDownloadPhase = true,\n                EnabledUploadPhase = false,\n                FailClosed = true,\n            },\n            BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs\n            {\n                BackgroundColor = \"#000000\",\n                FooterText = \"hello\",\n                HeaderText = \"hello\",\n                LogoPath = \"https://google.com\",\n            },\n            Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs\n            {\n                Tls = true,\n            },\n            Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs\n            {\n                RedactPii = true,\n                SettingsByRuleType = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeArgs\n                {\n                    Dns = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs\n                    {\n                        LogAll = false,\n                        LogBlocks = true,\n                    },\n                    Http = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs\n                    {\n                        LogAll = true,\n                        LogBlocks = true,\n                    },\n                    L4 = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args\n                    {\n                        LogAll = false,\n                        LogBlocks = true,\n                    },\n                },\n            },\n            Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs\n            {\n                Tcp = true,\n                Udp = true,\n            },\n            TlsDecryptEnabled = true,\n            UrlBrowserIsolationEnabled = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsAccount(ctx, \"main\", \u0026cloudflare.TeamsAccountArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tAntivirus: \u0026TeamsAccountAntivirusArgs{\n\t\t\t\tEnabledDownloadPhase: pulumi.Bool(true),\n\t\t\t\tEnabledUploadPhase:   pulumi.Bool(false),\n\t\t\t\tFailClosed:           pulumi.Bool(true),\n\t\t\t},\n\t\t\tBlockPage: \u0026TeamsAccountBlockPageArgs{\n\t\t\t\tBackgroundColor: pulumi.String(\"#000000\"),\n\t\t\t\tFooterText:      pulumi.String(\"hello\"),\n\t\t\t\tHeaderText:      pulumi.String(\"hello\"),\n\t\t\t\tLogoPath:        pulumi.String(\"https://google.com\"),\n\t\t\t},\n\t\t\tFips: \u0026TeamsAccountFipsArgs{\n\t\t\t\tTls: pulumi.Bool(true),\n\t\t\t},\n\t\t\tLogging: \u0026TeamsAccountLoggingArgs{\n\t\t\t\tRedactPii: pulumi.Bool(true),\n\t\t\t\tSettingsByRuleType: \u0026TeamsAccountLoggingSettingsByRuleTypeArgs{\n\t\t\t\t\tDns: \u0026TeamsAccountLoggingSettingsByRuleTypeDnsArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tHttp: \u0026TeamsAccountLoggingSettingsByRuleTypeHttpArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(true),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tL4: \u0026TeamsAccountLoggingSettingsByRuleTypeL4Args{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tProxy: \u0026TeamsAccountProxyArgs{\n\t\t\t\tTcp: pulumi.Bool(true),\n\t\t\t\tUdp: pulumi.Bool(true),\n\t\t\t},\n\t\t\tTlsDecryptEnabled:          pulumi.Bool(true),\n\t\t\tUrlBrowserIsolationEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nSince a Teams account does not have a unique resource ID, configuration can be imported using the account ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example cb029e245cfdd66dc8d2e570d5dd3322\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -12720,15 +13868,30 @@
                 },
                 "antivirus": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus",
-                    "description": "Configuration for antivirus traffic scanning.\n"
+                    "description": "Configuration block for antivirus traffic scanning.\n"
                 },
                 "blockPage": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
                     "description": "Configuration for a custom block page.\n"
                 },
+                "fips": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountFips:TeamsAccountFips",
+                    "description": "Configure compliance with Federal Information Processing Standards.\n"
+                },
+                "logging": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountLogging:TeamsAccountLogging"
+                },
+                "proxy": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountProxy:TeamsAccountProxy",
+                    "description": "Configuration block for specifying which protocols are proxied.\n"
+                },
                 "tlsDecryptEnabled": {
                     "type": "boolean",
                     "description": "Indicator that decryption of TLS traffic is enabled.\n"
+                },
+                "urlBrowserIsolationEnabled": {
+                    "type": "boolean",
+                    "description": "Safely browse websites in Browser Isolation through a URL.\n"
                 }
             },
             "required": [
@@ -12744,15 +13907,30 @@
                 },
                 "antivirus": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus",
-                    "description": "Configuration for antivirus traffic scanning.\n"
+                    "description": "Configuration block for antivirus traffic scanning.\n"
                 },
                 "blockPage": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
                     "description": "Configuration for a custom block page.\n"
                 },
+                "fips": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountFips:TeamsAccountFips",
+                    "description": "Configure compliance with Federal Information Processing Standards.\n"
+                },
+                "logging": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountLogging:TeamsAccountLogging"
+                },
+                "proxy": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountProxy:TeamsAccountProxy",
+                    "description": "Configuration block for specifying which protocols are proxied.\n"
+                },
                 "tlsDecryptEnabled": {
                     "type": "boolean",
                     "description": "Indicator that decryption of TLS traffic is enabled.\n"
+                },
+                "urlBrowserIsolationEnabled": {
+                    "type": "boolean",
+                    "description": "Safely browse websites in Browser Isolation through a URL.\n"
                 }
             },
             "requiredInputs": [
@@ -12770,15 +13948,30 @@
                     },
                     "antivirus": {
                         "$ref": "#/types/cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus",
-                        "description": "Configuration for antivirus traffic scanning.\n"
+                        "description": "Configuration block for antivirus traffic scanning.\n"
                     },
                     "blockPage": {
                         "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
                         "description": "Configuration for a custom block page.\n"
                     },
+                    "fips": {
+                        "$ref": "#/types/cloudflare:index/TeamsAccountFips:TeamsAccountFips",
+                        "description": "Configure compliance with Federal Information Processing Standards.\n"
+                    },
+                    "logging": {
+                        "$ref": "#/types/cloudflare:index/TeamsAccountLogging:TeamsAccountLogging"
+                    },
+                    "proxy": {
+                        "$ref": "#/types/cloudflare:index/TeamsAccountProxy:TeamsAccountProxy",
+                        "description": "Configuration block for specifying which protocols are proxied.\n"
+                    },
                     "tlsDecryptEnabled": {
                         "type": "boolean",
                         "description": "Indicator that decryption of TLS traffic is enabled.\n"
+                    },
+                    "urlBrowserIsolationEnabled": {
+                        "type": "boolean",
+                        "description": "Safely browse websites in Browser Isolation through a URL.\n"
                     }
                 },
                 "type": "object"
@@ -13004,7 +14197,7 @@
             }
         },
         "cloudflare:index/teamsRule:TeamsRule": {
-            "description": "Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst rule1 = new cloudflare.TeamsRule(\"rule1\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    action: \"l4_override\",\n    description: \"desc\",\n    filters: [\"l4\"],\n    name: \"office\",\n    precedence: 1,\n    ruleSettings: {\n        blockPageEnabled: false,\n        blockPageReason: \"access not permitted\",\n        l4override: {\n            ip: \"192.0.2.1\",\n            port: 1234,\n        },\n    },\n    traffic: \"any(dns.domains[*] == \\\"com.example\\\")\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nrule1 = cloudflare.TeamsRule(\"rule1\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    action=\"l4_override\",\n    description=\"desc\",\n    filters=[\"l4\"],\n    name=\"office\",\n    precedence=1,\n    rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(\n        block_page_enabled=False,\n        block_page_reason=\"access not permitted\",\n        l4override=cloudflare.TeamsRuleRuleSettingsL4overrideArgs(\n            ip=\"192.0.2.1\",\n            port=1234,\n        ),\n    ),\n    traffic=\"any(dns.domains[*] == \\\"com.example\\\")\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var rule1 = new Cloudflare.TeamsRule(\"rule1\", new Cloudflare.TeamsRuleArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Action = \"l4_override\",\n            Description = \"desc\",\n            Filters = \n            {\n                \"l4\",\n            },\n            Name = \"office\",\n            Precedence = 1,\n            RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs\n            {\n                BlockPageEnabled = false,\n                BlockPageReason = \"access not permitted\",\n                L4override = new Cloudflare.Inputs.TeamsRuleRuleSettingsL4overrideArgs\n                {\n                    Ip = \"192.0.2.1\",\n                    Port = 1234,\n                },\n            },\n            Traffic = \"any(dns.domains[*] == \\\"com.example\\\")\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsRule(ctx, \"rule1\", \u0026cloudflare.TeamsRuleArgs{\n\t\t\tAccountId:   pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tAction:      pulumi.String(\"l4_override\"),\n\t\t\tDescription: pulumi.String(\"desc\"),\n\t\t\tFilters: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"l4\"),\n\t\t\t},\n\t\t\tName:       pulumi.String(\"office\"),\n\t\t\tPrecedence: pulumi.Int(1),\n\t\t\tRuleSettings: \u0026TeamsRuleRuleSettingsArgs{\n\t\t\t\tBlockPageEnabled: pulumi.Bool(false),\n\t\t\t\tBlockPageReason:  pulumi.String(\"access not permitted\"),\n\t\t\t\tL4override: \u0026TeamsRuleRuleSettingsL4overrideArgs{\n\t\t\t\t\tIp:   pulumi.String(\"192.0.2.1\"),\n\t\t\t\t\tPort: pulumi.Int(1234),\n\t\t\t\t},\n\t\t\t},\n\t\t\tTraffic: pulumi.String(\"any(dns.domains[*] == \\\"com.example\\\")\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTeams Rules can be imported using a composite ID formed of account ID and teams rule ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
+            "description": "Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst rule1 = new cloudflare.TeamsRule(\"rule1\", {\n    accountId: \"d57c3de47a013c03ca7e237dd3e61d7d\",\n    action: \"block\",\n    description: \"desc\",\n    filters: [\"http\"],\n    name: \"office\",\n    precedence: 1,\n    ruleSettings: {\n        blockPageEnabled: true,\n        blockPageReason: \"access not permitted\",\n    },\n    traffic: \"http.request.uri == \\\"https://www.example.com/malicious\\\"\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nrule1 = cloudflare.TeamsRule(\"rule1\",\n    account_id=\"d57c3de47a013c03ca7e237dd3e61d7d\",\n    action=\"block\",\n    description=\"desc\",\n    filters=[\"http\"],\n    name=\"office\",\n    precedence=1,\n    rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(\n        block_page_enabled=True,\n        block_page_reason=\"access not permitted\",\n    ),\n    traffic=\"http.request.uri == \\\"https://www.example.com/malicious\\\"\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var rule1 = new Cloudflare.TeamsRule(\"rule1\", new Cloudflare.TeamsRuleArgs\n        {\n            AccountId = \"d57c3de47a013c03ca7e237dd3e61d7d\",\n            Action = \"block\",\n            Description = \"desc\",\n            Filters = \n            {\n                \"http\",\n            },\n            Name = \"office\",\n            Precedence = 1,\n            RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs\n            {\n                BlockPageEnabled = true,\n                BlockPageReason = \"access not permitted\",\n            },\n            Traffic = \"http.request.uri == \\\"https://www.example.com/malicious\\\"\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsRule(ctx, \"rule1\", \u0026cloudflare.TeamsRuleArgs{\n\t\t\tAccountId:   pulumi.String(\"d57c3de47a013c03ca7e237dd3e61d7d\"),\n\t\t\tAction:      pulumi.String(\"block\"),\n\t\t\tDescription: pulumi.String(\"desc\"),\n\t\t\tFilters: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"http\"),\n\t\t\t},\n\t\t\tName:       pulumi.String(\"office\"),\n\t\t\tPrecedence: pulumi.Int(1),\n\t\t\tRuleSettings: \u0026TeamsRuleRuleSettingsArgs{\n\t\t\t\tBlockPageEnabled: pulumi.Bool(true),\n\t\t\t\tBlockPageReason:  pulumi.String(\"access not permitted\"),\n\t\t\t},\n\t\t\tTraffic: pulumi.String(\"http.request.uri == \\\"https://www.example.com/malicious\\\"\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTeams Rules can be imported using a composite ID formed of account ID and teams rule ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsRule:TeamsRule rule1 cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -13047,7 +14240,7 @@
                 },
                 "ruleSettings": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings",
-                    "description": "Additional rule settings.\n"
+                    "description": "Additional rule settings (refer to the nested schema).\n"
                 },
                 "traffic": {
                     "type": "string",
@@ -13107,7 +14300,7 @@
                 },
                 "ruleSettings": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings",
-                    "description": "Additional rule settings.\n"
+                    "description": "Additional rule settings (refer to the nested schema).\n"
                 },
                 "traffic": {
                     "type": "string",
@@ -13165,7 +14358,7 @@
                     },
                     "ruleSettings": {
                         "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettings:TeamsRuleRuleSettings",
-                        "description": "Additional rule settings.\n"
+                        "description": "Additional rule settings (refer to the nested schema).\n"
                     },
                     "traffic": {
                         "type": "string",
@@ -14215,6 +15408,231 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/zoneCacheVariants:ZoneCacheVariants": {
+            "properties": {
+                "avifs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "bmps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "gifs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jp2s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jpegs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jpg2s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jpgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pngs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tiffs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tifs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "webps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "zoneId": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "zoneId"
+            ],
+            "inputProperties": {
+                "avifs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "bmps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "gifs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jp2s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jpegs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jpg2s": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "jpgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "pngs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tiffs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "tifs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "webps": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "zoneId": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ZoneCacheVariants resources.\n",
+                "properties": {
+                    "avifs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "bmps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "gifs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "jp2s": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "jpegs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "jpg2s": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "jpgs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "pngs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tiffs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "tifs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "webps": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "zoneId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/zoneDnssec:ZoneDnssec": {
             "description": "Provides a Cloudflare Zone DNSSEC resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleZone = new cloudflare.Zone(\"exampleZone\", {zone: \"example.com\"});\nconst exampleZoneDnssec = new cloudflare.ZoneDnssec(\"exampleZoneDnssec\", {zoneId: exampleZone.id});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_zone = cloudflare.Zone(\"exampleZone\", zone=\"example.com\")\nexample_zone_dnssec = cloudflare.ZoneDnssec(\"exampleZoneDnssec\", zone_id=example_zone.id)\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleZone = new Cloudflare.Zone(\"exampleZone\", new Cloudflare.ZoneArgs\n        {\n            Zone = \"example.com\",\n        });\n        var exampleZoneDnssec = new Cloudflare.ZoneDnssec(\"exampleZoneDnssec\", new Cloudflare.ZoneDnssecArgs\n        {\n            ZoneId = exampleZone.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleZone, err := cloudflare.NewZone(ctx, \"exampleZone\", \u0026cloudflare.ZoneArgs{\n\t\t\tZone: pulumi.String(\"example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewZoneDnssec(ctx, \"exampleZoneDnssec\", \u0026cloudflare.ZoneDnssecArgs{\n\t\t\tZoneId: exampleZone.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nZone DNSSEC resource can be imported using a zone ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e\n```\n\n where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) ",
             "properties": {
@@ -14676,6 +16094,47 @@
                 ]
             }
         },
+        "cloudflare:index/getDevices:getDevices": {
+            "description": "Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst devices = pulumi.output(cloudflare.getDevices({\n    accountId: \"c68973221045fe805dfb9aa520153148\",\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ndevices = cloudflare.get_devices(account_id=\"c68973221045fe805dfb9aa520153148\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var devices = Output.Create(Cloudflare.GetDevices.InvokeAsync(new Cloudflare.GetDevicesArgs\n        {\n            AccountId = \"c68973221045fe805dfb9aa520153148\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetDevices(ctx, \u0026GetDevicesArgs{\n\t\t\tAccountId: \"c68973221045fe805dfb9aa520153148\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDevices.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account for which to list the devices.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDevices.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string"
+                    },
+                    "devices": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getDevicesDevice:getDevicesDevice"
+                        },
+                        "description": "A list of device object. See below for nested attributes.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "devices",
+                    "id"
+                ]
+            }
+        },
         "cloudflare:index/getIpRanges:getIpRanges": {
             "description": "Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as gcp from \"@pulumi/gcp\";\n\nconst cloudflare = cloudflare.getIpRanges({});\nconst allowCloudflareIngress = new gcp.compute.Firewall(\"allowCloudflareIngress\", {\n    network: \"default\",\n    sourceRanges: cloudflare.then(cloudflare =\u003e cloudflare.ipv4CidrBlocks),\n    allows: [{\n        ports: \"443\",\n        protocol: \"tcp\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_gcp as gcp\n\ncloudflare = cloudflare.get_ip_ranges()\nallow_cloudflare_ingress = gcp.compute.Firewall(\"allowCloudflareIngress\",\n    network=\"default\",\n    source_ranges=cloudflare.ipv4_cidr_blocks,\n    allows=[gcp.compute.FirewallAllowArgs(\n        ports=\"443\",\n        protocol=\"tcp\",\n    )])\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Gcp = Pulumi.Gcp;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var cloudflare = Output.Create(Cloudflare.GetIpRanges.InvokeAsync());\n        var allowCloudflareIngress = new Gcp.Compute.Firewall(\"allowCloudflareIngress\", new Gcp.Compute.FirewallArgs\n        {\n            Network = \"default\",\n            SourceRanges = cloudflare.Apply(cloudflare =\u003e cloudflare.Ipv4CidrBlocks),\n            Allows = \n            {\n                new Gcp.Compute.Inputs.FirewallAllowArgs\n                {\n                    Ports = \"443\",\n                    Protocol = \"tcp\",\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/compute\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcloudflare, err := cloudflare.GetIpRanges(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = compute.NewFirewall(ctx, \"allowCloudflareIngress\", \u0026compute.FirewallArgs{\n\t\t\tNetwork:      pulumi.String(\"default\"),\n\t\t\tSourceRanges: interface{}(cloudflare.Ipv4CidrBlocks),\n\t\t\tAllows: compute.FirewallAllowArray{\n\t\t\t\t\u0026compute.FirewallAllowArgs{\n\t\t\t\t\tPorts:    pulumi.StringArray(\"443\"),\n\t\t\t\t\tProtocol: pulumi.String(\"tcp\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "outputs": {
@@ -15093,7 +16552,7 @@
             }
         },
         "cloudflare:index/getZones:getZones": {
-            "description": "Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGiven you have the following zones in Cloudflare.\n\n- example.com\n- example.net\n- not-example.com\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for a single zone that you know exists using an exact match.\n// API request will be for zones?name=example.com. Will not match not-example.com\n// or example.net.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        name: \"example.com\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    name=\"example.com\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                Name = \"example.com\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026GetZonesArgs{\n\t\t\tFilter: GetZonesFilter{\n\t\t\t\tName: \"example.com\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\".\n// API request will be for zones?name=contains:example. Will return all three\n// zones.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        name: \"example\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026GetZonesArgs{\n\t\t\tFilter: GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\" but start with \"not-\".\n// API request will be for zones?name=contains:example. Will perform client side\n// filtering using the provided regex and will only match the single zone,\n// not-example.com.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        match: \"^not-\",\n        name: \"example\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    match=\"^not-\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Match = \"^not-\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026GetZonesArgs{\n\t\t\tFilter: GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tMatch:      \"^not-\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to look up [Zone](https://api.cloudflare.com/#zone-properties) records.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\nGiven you have the following zones in Cloudflare.\n\n- example.com\n- example.net\n- not-example.com\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for a single zone that you know exists using an exact match.\n// API request will be for zones?name=example.com. Will not match not-example.com\n// or example.net.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        name: \"example.com\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    name=\"example.com\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                Name = \"example.com\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026GetZonesArgs{\n\t\t\tFilter: GetZonesFilter{\n\t\t\t\tName: \"example.com\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\".\n// API request will be for zones?name=contains:example. Will return all three\n// zones.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        name: \"example\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026GetZonesArgs{\n\t\t\tFilter: GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all zones which include \"example\" but start with \"not-\".\n// API request will be for zones?name=contains:example. Will perform client side\n// filtering using the provided regex and will only match the single zone,\n// not-example.com.\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        lookupType: \"contains\",\n        match: \"^not-\",\n        name: \"example\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    lookup_type=\"contains\",\n    match=\"^not-\",\n    name=\"example\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                LookupType = \"contains\",\n                Match = \"^not-\",\n                Name = \"example\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026GetZonesArgs{\n\t\t\tFilter: GetZonesFilter{\n\t\t\t\tLookupType: \"contains\",\n\t\t\t\tMatch:      \"^not-\",\n\t\t\t\tName:       \"example\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Look for all active zones in an account\nconst example = pulumi.output(cloudflare.getZones({\n    filter: {\n        accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        status: \"active\",\n    },\n}));\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    status=\"active\",\n))\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(Cloudflare.GetZones.InvokeAsync(new Cloudflare.GetZonesArgs\n        {\n            Filter = new Cloudflare.Inputs.GetZonesFilterArgs\n            {\n                AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n                Status = \"active\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetZones(ctx, \u0026GetZonesArgs{\n\t\t\tFilter: GetZonesFilter{\n\t\t\t\tAccountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n\t\t\t\tStatus:    \"active\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getZones.\n",
                 "properties": {

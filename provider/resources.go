@@ -202,6 +202,11 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_teams_rule":                    {Tok: makeResource(mainMod, "TeamsRule")},
 			"cloudflare_access_keys_configuration":     {Tok: makeResource(mainMod, "AccessKeysConfiguration")},
 			"cloudflare_split_tunnel":                  {Tok: makeResource(mainMod, "SplitTunnel")},
+			"cloudflare_gre_tunnel":                    {Tok: makeResource(mainMod, "GreTunnel")},
+			"cloudflare_zone_cache_variants":           {Tok: makeResource(mainMod, "ZoneCacheVariants")},
+			"cloudflare_ipsec_tunnel":                  {Tok: makeResource(mainMod, "IpsecTunnel")},
+			"cloudflare_device_posture_integration":    {Tok: makeResource(mainMod, "DevicePostureIntegration")},
+			"cloudflare_fallback_domain":               {Tok: makeResource(mainMod, "FallbackDomain")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":                   {Tok: makeDataSource(mainMod, "getIpRanges")},
@@ -215,6 +220,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_access_identity_provider":    {Tok: makeDataSource(mainMod, "getAccessIdentityProvider")},
 			"cloudflare_account_roles":               {Tok: makeDataSource(mainMod, "getAccountRoles")},
 			"cloudflare_zone":                        {Tok: makeDataSource(mainMod, "getZone")},
+			"cloudflare_devices":                     {Tok: makeDataSource(mainMod, "getDevices")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

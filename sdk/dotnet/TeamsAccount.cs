@@ -25,6 +25,12 @@ namespace Pulumi.Cloudflare
     ///         var main = new Cloudflare.TeamsAccount("main", new Cloudflare.TeamsAccountArgs
     ///         {
     ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs
+    ///             {
+    ///                 EnabledDownloadPhase = true,
+    ///                 EnabledUploadPhase = false,
+    ///                 FailClosed = true,
+    ///             },
     ///             BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs
     ///             {
     ///                 BackgroundColor = "#000000",
@@ -32,7 +38,39 @@ namespace Pulumi.Cloudflare
     ///                 HeaderText = "hello",
     ///                 LogoPath = "https://google.com",
     ///             },
+    ///             Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs
+    ///             {
+    ///                 Tls = true,
+    ///             },
+    ///             Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs
+    ///             {
+    ///                 RedactPii = true,
+    ///                 SettingsByRuleType = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeArgs
+    ///                 {
+    ///                     Dns = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs
+    ///                     {
+    ///                         LogAll = false,
+    ///                         LogBlocks = true,
+    ///                     },
+    ///                     Http = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs
+    ///                     {
+    ///                         LogAll = true,
+    ///                         LogBlocks = true,
+    ///                     },
+    ///                     L4 = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args
+    ///                     {
+    ///                         LogAll = false,
+    ///                         LogBlocks = true,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs
+    ///             {
+    ///                 Tcp = true,
+    ///                 Udp = true,
+    ///             },
     ///             TlsDecryptEnabled = true,
+    ///             UrlBrowserIsolationEnabled = true,
     ///         });
     ///     }
     /// 
@@ -60,7 +98,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ActivityLogEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for antivirus traffic scanning.
+        /// Configuration block for antivirus traffic scanning.
         /// </summary>
         [Output("antivirus")]
         public Output<Outputs.TeamsAccountAntivirus?> Antivirus { get; private set; } = null!;
@@ -72,10 +110,31 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsAccountBlockPage?> BlockPage { get; private set; } = null!;
 
         /// <summary>
+        /// Configure compliance with Federal Information Processing Standards.
+        /// </summary>
+        [Output("fips")]
+        public Output<Outputs.TeamsAccountFips?> Fips { get; private set; } = null!;
+
+        [Output("logging")]
+        public Output<Outputs.TeamsAccountLogging?> Logging { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration block for specifying which protocols are proxied.
+        /// </summary>
+        [Output("proxy")]
+        public Output<Outputs.TeamsAccountProxy?> Proxy { get; private set; } = null!;
+
+        /// <summary>
         /// Indicator that decryption of TLS traffic is enabled.
         /// </summary>
         [Output("tlsDecryptEnabled")]
         public Output<bool?> TlsDecryptEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Safely browse websites in Browser Isolation through a URL.
+        /// </summary>
+        [Output("urlBrowserIsolationEnabled")]
+        public Output<bool?> UrlBrowserIsolationEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -133,7 +192,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ActivityLogEnabled { get; set; }
 
         /// <summary>
-        /// Configuration for antivirus traffic scanning.
+        /// Configuration block for antivirus traffic scanning.
         /// </summary>
         [Input("antivirus")]
         public Input<Inputs.TeamsAccountAntivirusArgs>? Antivirus { get; set; }
@@ -145,10 +204,31 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountBlockPageArgs>? BlockPage { get; set; }
 
         /// <summary>
+        /// Configure compliance with Federal Information Processing Standards.
+        /// </summary>
+        [Input("fips")]
+        public Input<Inputs.TeamsAccountFipsArgs>? Fips { get; set; }
+
+        [Input("logging")]
+        public Input<Inputs.TeamsAccountLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// Configuration block for specifying which protocols are proxied.
+        /// </summary>
+        [Input("proxy")]
+        public Input<Inputs.TeamsAccountProxyArgs>? Proxy { get; set; }
+
+        /// <summary>
         /// Indicator that decryption of TLS traffic is enabled.
         /// </summary>
         [Input("tlsDecryptEnabled")]
         public Input<bool>? TlsDecryptEnabled { get; set; }
+
+        /// <summary>
+        /// Safely browse websites in Browser Isolation through a URL.
+        /// </summary>
+        [Input("urlBrowserIsolationEnabled")]
+        public Input<bool>? UrlBrowserIsolationEnabled { get; set; }
 
         public TeamsAccountArgs()
         {
@@ -167,7 +247,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ActivityLogEnabled { get; set; }
 
         /// <summary>
-        /// Configuration for antivirus traffic scanning.
+        /// Configuration block for antivirus traffic scanning.
         /// </summary>
         [Input("antivirus")]
         public Input<Inputs.TeamsAccountAntivirusGetArgs>? Antivirus { get; set; }
@@ -179,10 +259,31 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountBlockPageGetArgs>? BlockPage { get; set; }
 
         /// <summary>
+        /// Configure compliance with Federal Information Processing Standards.
+        /// </summary>
+        [Input("fips")]
+        public Input<Inputs.TeamsAccountFipsGetArgs>? Fips { get; set; }
+
+        [Input("logging")]
+        public Input<Inputs.TeamsAccountLoggingGetArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// Configuration block for specifying which protocols are proxied.
+        /// </summary>
+        [Input("proxy")]
+        public Input<Inputs.TeamsAccountProxyGetArgs>? Proxy { get; set; }
+
+        /// <summary>
         /// Indicator that decryption of TLS traffic is enabled.
         /// </summary>
         [Input("tlsDecryptEnabled")]
         public Input<bool>? TlsDecryptEnabled { get; set; }
+
+        /// <summary>
+        /// Safely browse websites in Browser Isolation through a URL.
+        /// </summary>
+        [Input("urlBrowserIsolationEnabled")]
+        public Input<bool>? UrlBrowserIsolationEnabled { get; set; }
 
         public TeamsAccountState()
         {

@@ -15,49 +15,38 @@ __all__ = ['RulesetArgs', 'Ruleset']
 @pulumi.input_type
 class RulesetArgs:
     def __init__(__self__, *,
-                 description: pulumi.Input[str],
                  kind: pulumi.Input[str],
                  name: pulumi.Input[str],
                  phase: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]] = None,
                  shareable_entitlement_name: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Ruleset resource.
-        :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[str] kind: Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
         :param pulumi.Input[str] name: Name of the HTTP request header to target.
         :param pulumi.Input[str] phase: Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         :param pulumi.Input[str] account_id: The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
+        :param pulumi.Input[str] description: Brief summary of the ruleset rule and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] shareable_entitlement_name: Name of entitlement that is shareable between entities.
         :param pulumi.Input[str] zone_id: The ID of the zone where the ruleset is being created. Conflicts with `"account_id"`.
         """
-        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "phase", phase)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if shareable_entitlement_name is not None:
             pulumi.set(__self__, "shareable_entitlement_name", shareable_entitlement_name)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def description(self) -> pulumi.Input[str]:
-        """
-        Brief summary of the ruleset rule and its intended use.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: pulumi.Input[str]):
-        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -106,6 +95,18 @@ class RulesetArgs:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Brief summary of the ruleset rule and its intended use.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -357,8 +358,6 @@ class Ruleset(pulumi.CustomResource):
             __props__ = RulesetArgs.__new__(RulesetArgs)
 
             __props__.__dict__["account_id"] = account_id
-            if description is None and not opts.urn:
-                raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
@@ -430,7 +429,7 @@ class Ruleset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         Brief summary of the ruleset rule and its intended use.
         """

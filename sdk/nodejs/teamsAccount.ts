@@ -16,13 +16,43 @@ import * as utilities from "./utilities";
  *
  * const main = new cloudflare.TeamsAccount("main", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     antivirus: {
+ *         enabledDownloadPhase: true,
+ *         enabledUploadPhase: false,
+ *         failClosed: true,
+ *     },
  *     blockPage: {
  *         backgroundColor: "#000000",
  *         footerText: "hello",
  *         headerText: "hello",
  *         logoPath: "https://google.com",
  *     },
+ *     fips: {
+ *         tls: true,
+ *     },
+ *     logging: {
+ *         redactPii: true,
+ *         settingsByRuleType: {
+ *             dns: {
+ *                 logAll: false,
+ *                 logBlocks: true,
+ *             },
+ *             http: {
+ *                 logAll: true,
+ *                 logBlocks: true,
+ *             },
+ *             l4: {
+ *                 logAll: false,
+ *                 logBlocks: true,
+ *             },
+ *         },
+ *     },
+ *     proxy: {
+ *         tcp: true,
+ *         udp: true,
+ *     },
  *     tlsDecryptEnabled: true,
+ *     urlBrowserIsolationEnabled: true,
  * });
  * ```
  *
@@ -68,7 +98,7 @@ export class TeamsAccount extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string>;
     public readonly activityLogEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Configuration for antivirus traffic scanning.
+     * Configuration block for antivirus traffic scanning.
      */
     public readonly antivirus!: pulumi.Output<outputs.TeamsAccountAntivirus | undefined>;
     /**
@@ -76,9 +106,22 @@ export class TeamsAccount extends pulumi.CustomResource {
      */
     public readonly blockPage!: pulumi.Output<outputs.TeamsAccountBlockPage | undefined>;
     /**
+     * Configure compliance with Federal Information Processing Standards.
+     */
+    public readonly fips!: pulumi.Output<outputs.TeamsAccountFips | undefined>;
+    public readonly logging!: pulumi.Output<outputs.TeamsAccountLogging | undefined>;
+    /**
+     * Configuration block for specifying which protocols are proxied.
+     */
+    public readonly proxy!: pulumi.Output<outputs.TeamsAccountProxy | undefined>;
+    /**
      * Indicator that decryption of TLS traffic is enabled.
      */
     public readonly tlsDecryptEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Safely browse websites in Browser Isolation through a URL.
+     */
+    public readonly urlBrowserIsolationEnabled!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a TeamsAccount resource with the given unique name, arguments, and options.
@@ -97,7 +140,11 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["activityLogEnabled"] = state ? state.activityLogEnabled : undefined;
             resourceInputs["antivirus"] = state ? state.antivirus : undefined;
             resourceInputs["blockPage"] = state ? state.blockPage : undefined;
+            resourceInputs["fips"] = state ? state.fips : undefined;
+            resourceInputs["logging"] = state ? state.logging : undefined;
+            resourceInputs["proxy"] = state ? state.proxy : undefined;
             resourceInputs["tlsDecryptEnabled"] = state ? state.tlsDecryptEnabled : undefined;
+            resourceInputs["urlBrowserIsolationEnabled"] = state ? state.urlBrowserIsolationEnabled : undefined;
         } else {
             const args = argsOrState as TeamsAccountArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -107,7 +154,11 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["activityLogEnabled"] = args ? args.activityLogEnabled : undefined;
             resourceInputs["antivirus"] = args ? args.antivirus : undefined;
             resourceInputs["blockPage"] = args ? args.blockPage : undefined;
+            resourceInputs["fips"] = args ? args.fips : undefined;
+            resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["proxy"] = args ? args.proxy : undefined;
             resourceInputs["tlsDecryptEnabled"] = args ? args.tlsDecryptEnabled : undefined;
+            resourceInputs["urlBrowserIsolationEnabled"] = args ? args.urlBrowserIsolationEnabled : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TeamsAccount.__pulumiType, name, resourceInputs, opts);
@@ -124,7 +175,7 @@ export interface TeamsAccountState {
     accountId?: pulumi.Input<string>;
     activityLogEnabled?: pulumi.Input<boolean>;
     /**
-     * Configuration for antivirus traffic scanning.
+     * Configuration block for antivirus traffic scanning.
      */
     antivirus?: pulumi.Input<inputs.TeamsAccountAntivirus>;
     /**
@@ -132,9 +183,22 @@ export interface TeamsAccountState {
      */
     blockPage?: pulumi.Input<inputs.TeamsAccountBlockPage>;
     /**
+     * Configure compliance with Federal Information Processing Standards.
+     */
+    fips?: pulumi.Input<inputs.TeamsAccountFips>;
+    logging?: pulumi.Input<inputs.TeamsAccountLogging>;
+    /**
+     * Configuration block for specifying which protocols are proxied.
+     */
+    proxy?: pulumi.Input<inputs.TeamsAccountProxy>;
+    /**
      * Indicator that decryption of TLS traffic is enabled.
      */
     tlsDecryptEnabled?: pulumi.Input<boolean>;
+    /**
+     * Safely browse websites in Browser Isolation through a URL.
+     */
+    urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -147,7 +211,7 @@ export interface TeamsAccountArgs {
     accountId: pulumi.Input<string>;
     activityLogEnabled?: pulumi.Input<boolean>;
     /**
-     * Configuration for antivirus traffic scanning.
+     * Configuration block for antivirus traffic scanning.
      */
     antivirus?: pulumi.Input<inputs.TeamsAccountAntivirus>;
     /**
@@ -155,7 +219,20 @@ export interface TeamsAccountArgs {
      */
     blockPage?: pulumi.Input<inputs.TeamsAccountBlockPage>;
     /**
+     * Configure compliance with Federal Information Processing Standards.
+     */
+    fips?: pulumi.Input<inputs.TeamsAccountFips>;
+    logging?: pulumi.Input<inputs.TeamsAccountLogging>;
+    /**
+     * Configuration block for specifying which protocols are proxied.
+     */
+    proxy?: pulumi.Input<inputs.TeamsAccountProxy>;
+    /**
      * Indicator that decryption of TLS traffic is enabled.
      */
     tlsDecryptEnabled?: pulumi.Input<boolean>;
+    /**
+     * Safely browse websites in Browser Isolation through a URL.
+     */
+    urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
 }

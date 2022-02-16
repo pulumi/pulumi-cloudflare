@@ -13,6 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsRuleRuleSettings
     {
+        /// <summary>
+        /// Add custom headers to allowed requests in the form of key-value pairs.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? AddHeaders;
+        /// <summary>
+        /// Configure how browser isolation behaves (refer to the nested schema).
+        /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsBisoAdminControls? BisoAdminControls;
         /// <summary>
         /// Indicator of block page enablement.
@@ -23,7 +30,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? BlockPageReason;
         /// <summary>
-        /// Settings to forward layer 4 traffic.
+        /// Configure how session check behaves (refer to the nested schema).
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsCheckSession? CheckSession;
+        /// <summary>
+        /// Settings to forward layer 4 traffic (refer to the nested schema).
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsL4override? L4override;
         /// <summary>
@@ -37,11 +48,15 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private TeamsRuleRuleSettings(
+            ImmutableDictionary<string, string>? addHeaders,
+
             Outputs.TeamsRuleRuleSettingsBisoAdminControls? bisoAdminControls,
 
             bool? blockPageEnabled,
 
             string? blockPageReason,
+
+            Outputs.TeamsRuleRuleSettingsCheckSession? checkSession,
 
             Outputs.TeamsRuleRuleSettingsL4override? l4override,
 
@@ -49,9 +64,11 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> overrideIps)
         {
+            AddHeaders = addHeaders;
             BisoAdminControls = bisoAdminControls;
             BlockPageEnabled = blockPageEnabled;
             BlockPageReason = blockPageReason;
+            CheckSession = checkSession;
             L4override = l4override;
             OverrideHost = overrideHost;
             OverrideIps = overrideIps;

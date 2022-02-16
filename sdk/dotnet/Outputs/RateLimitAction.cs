@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RateLimitAction
     {
         /// <summary>
-        /// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
+        /// The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
         /// </summary>
         public readonly string Mode;
         /// <summary>

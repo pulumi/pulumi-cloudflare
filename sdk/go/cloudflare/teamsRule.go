@@ -26,23 +26,19 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewTeamsRule(ctx, "rule1", &cloudflare.TeamsRuleArgs{
-// 			AccountId:   pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Action:      pulumi.String("l4_override"),
+// 			AccountId:   pulumi.String("d57c3de47a013c03ca7e237dd3e61d7d"),
+// 			Action:      pulumi.String("block"),
 // 			Description: pulumi.String("desc"),
 // 			Filters: pulumi.StringArray{
-// 				pulumi.String("l4"),
+// 				pulumi.String("http"),
 // 			},
 // 			Name:       pulumi.String("office"),
 // 			Precedence: pulumi.Int(1),
 // 			RuleSettings: &TeamsRuleRuleSettingsArgs{
-// 				BlockPageEnabled: pulumi.Bool(false),
+// 				BlockPageEnabled: pulumi.Bool(true),
 // 				BlockPageReason:  pulumi.String("access not permitted"),
-// 				L4override: &TeamsRuleRuleSettingsL4overrideArgs{
-// 					Ip:   pulumi.String("192.0.2.1"),
-// 					Port: pulumi.Int(1234),
-// 				},
 // 			},
-// 			Traffic: pulumi.String("any(dns.domains[*] == \"com.example\")"),
+// 			Traffic: pulumi.String("http.request.uri == \"https://www.example.com/malicious\""),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -80,7 +76,7 @@ type TeamsRule struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The evaluation precedence of the teams rule.
 	Precedence pulumi.IntOutput `pulumi:"precedence"`
-	// Additional rule settings.
+	// Additional rule settings (refer to the nested schema).
 	RuleSettings TeamsRuleRuleSettingsPtrOutput `pulumi:"ruleSettings"`
 	// The wirefilter expression to be used for traffic matching.
 	Traffic pulumi.StringPtrOutput `pulumi:"traffic"`
@@ -149,7 +145,7 @@ type teamsRuleState struct {
 	Name *string `pulumi:"name"`
 	// The evaluation precedence of the teams rule.
 	Precedence *int `pulumi:"precedence"`
-	// Additional rule settings.
+	// Additional rule settings (refer to the nested schema).
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The wirefilter expression to be used for traffic matching.
 	Traffic *string `pulumi:"traffic"`
@@ -175,7 +171,7 @@ type TeamsRuleState struct {
 	Name pulumi.StringPtrInput
 	// The evaluation precedence of the teams rule.
 	Precedence pulumi.IntPtrInput
-	// Additional rule settings.
+	// Additional rule settings (refer to the nested schema).
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// The wirefilter expression to be used for traffic matching.
 	Traffic pulumi.StringPtrInput
@@ -205,7 +201,7 @@ type teamsRuleArgs struct {
 	Name string `pulumi:"name"`
 	// The evaluation precedence of the teams rule.
 	Precedence int `pulumi:"precedence"`
-	// Additional rule settings.
+	// Additional rule settings (refer to the nested schema).
 	RuleSettings *TeamsRuleRuleSettings `pulumi:"ruleSettings"`
 	// The wirefilter expression to be used for traffic matching.
 	Traffic *string `pulumi:"traffic"`
@@ -231,7 +227,7 @@ type TeamsRuleArgs struct {
 	Name pulumi.StringInput
 	// The evaluation precedence of the teams rule.
 	Precedence pulumi.IntInput
-	// Additional rule settings.
+	// Additional rule settings (refer to the nested schema).
 	RuleSettings TeamsRuleRuleSettingsPtrInput
 	// The wirefilter expression to be used for traffic matching.
 	Traffic pulumi.StringPtrInput

@@ -20,7 +20,7 @@ type Ruleset struct {
 	// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Brief summary of the ruleset rule and its intended use.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Name of the HTTP request header to target.
@@ -42,9 +42,6 @@ func NewRuleset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Description == nil {
-		return nil, errors.New("invalid value for required argument 'Description'")
-	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
@@ -121,7 +118,7 @@ type rulesetArgs struct {
 	// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
 	AccountId *string `pulumi:"accountId"`
 	// Brief summary of the ruleset rule and its intended use.
-	Description string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
 	Kind string `pulumi:"kind"`
 	// Name of the HTTP request header to target.
@@ -141,7 +138,7 @@ type RulesetArgs struct {
 	// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
 	AccountId pulumi.StringPtrInput
 	// Brief summary of the ruleset rule and its intended use.
-	Description pulumi.StringInput
+	Description pulumi.StringPtrInput
 	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
 	Kind pulumi.StringInput
 	// Name of the HTTP request header to target.

@@ -62,16 +62,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
 		r = &CustomSsl{}
+	case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
+		r = &DevicePostureIntegration{}
 	case "cloudflare:index/devicePostureRule:DevicePostureRule":
 		r = &DevicePostureRule{}
+	case "cloudflare:index/fallbackDomain:FallbackDomain":
+		r = &FallbackDomain{}
 	case "cloudflare:index/filter:Filter":
 		r = &Filter{}
 	case "cloudflare:index/firewallRule:FirewallRule":
 		r = &FirewallRule{}
+	case "cloudflare:index/greTunnel:GreTunnel":
+		r = &GreTunnel{}
 	case "cloudflare:index/healthcheck:Healthcheck":
 		r = &Healthcheck{}
 	case "cloudflare:index/ipList:IpList":
 		r = &IpList{}
+	case "cloudflare:index/ipsecTunnel:IpsecTunnel":
+		r = &IpsecTunnel{}
 	case "cloudflare:index/loadBalancer:LoadBalancer":
 		r = &LoadBalancer{}
 	case "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
@@ -136,6 +144,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkersKvNamespace{}
 	case "cloudflare:index/zone:Zone":
 		r = &Zone{}
+	case "cloudflare:index/zoneCacheVariants:ZoneCacheVariants":
+		r = &ZoneCacheVariants{}
 	case "cloudflare:index/zoneDnssec:ZoneDnssec":
 		r = &ZoneDnssec{}
 	case "cloudflare:index/zoneLockdown:ZoneLockdown":
@@ -280,7 +290,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/devicePostureIntegration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/devicePostureRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/fallbackDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -295,12 +315,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/greTunnel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/healthcheck",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/ipList",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/ipsecTunnel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -461,6 +491,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zone",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zoneCacheVariants",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

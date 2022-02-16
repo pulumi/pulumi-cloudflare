@@ -26,12 +26,15 @@ export * from "./customHostname";
 export * from "./customHostnameFallbackOrigin";
 export * from "./customPages";
 export * from "./customSsl";
+export * from "./devicePostureIntegration";
 export * from "./devicePostureRule";
+export * from "./fallbackDomain";
 export * from "./filter";
 export * from "./firewallRule";
 export * from "./getAccessIdentityProvider";
 export * from "./getAccountRoles";
 export * from "./getApiTokenPermissionGroups";
+export * from "./getDevices";
 export * from "./getIpRanges";
 export * from "./getOriginCaRootCertificate";
 export * from "./getWafGroups";
@@ -40,8 +43,10 @@ export * from "./getWafRules";
 export * from "./getZone";
 export * from "./getZoneDnssec";
 export * from "./getZones";
+export * from "./greTunnel";
 export * from "./healthcheck";
 export * from "./ipList";
+export * from "./ipsecTunnel";
 export * from "./loadBalancer";
 export * from "./loadBalancerMonitor";
 export * from "./loadBalancerPool";
@@ -75,6 +80,7 @@ export * from "./workerScript";
 export * from "./workersKv";
 export * from "./workersKvNamespace";
 export * from "./zone";
+export * from "./zoneCacheVariants";
 export * from "./zoneDnssec";
 export * from "./zoneLockdown";
 export * from "./zoneSettingsOverride";
@@ -110,11 +116,15 @@ import { CustomHostname } from "./customHostname";
 import { CustomHostnameFallbackOrigin } from "./customHostnameFallbackOrigin";
 import { CustomPages } from "./customPages";
 import { CustomSsl } from "./customSsl";
+import { DevicePostureIntegration } from "./devicePostureIntegration";
 import { DevicePostureRule } from "./devicePostureRule";
+import { FallbackDomain } from "./fallbackDomain";
 import { Filter } from "./filter";
 import { FirewallRule } from "./firewallRule";
+import { GreTunnel } from "./greTunnel";
 import { Healthcheck } from "./healthcheck";
 import { IpList } from "./ipList";
+import { IpsecTunnel } from "./ipsecTunnel";
 import { LoadBalancer } from "./loadBalancer";
 import { LoadBalancerMonitor } from "./loadBalancerMonitor";
 import { LoadBalancerPool } from "./loadBalancerPool";
@@ -147,6 +157,7 @@ import { WorkerScript } from "./workerScript";
 import { WorkersKv } from "./workersKv";
 import { WorkersKvNamespace } from "./workersKvNamespace";
 import { Zone } from "./zone";
+import { ZoneCacheVariants } from "./zoneCacheVariants";
 import { ZoneDnssec } from "./zoneDnssec";
 import { ZoneLockdown } from "./zoneLockdown";
 import { ZoneSettingsOverride } from "./zoneSettingsOverride";
@@ -197,16 +208,24 @@ const _module = {
                 return new CustomPages(name, <any>undefined, { urn })
             case "cloudflare:index/customSsl:CustomSsl":
                 return new CustomSsl(name, <any>undefined, { urn })
+            case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
+                return new DevicePostureIntegration(name, <any>undefined, { urn })
             case "cloudflare:index/devicePostureRule:DevicePostureRule":
                 return new DevicePostureRule(name, <any>undefined, { urn })
+            case "cloudflare:index/fallbackDomain:FallbackDomain":
+                return new FallbackDomain(name, <any>undefined, { urn })
             case "cloudflare:index/filter:Filter":
                 return new Filter(name, <any>undefined, { urn })
             case "cloudflare:index/firewallRule:FirewallRule":
                 return new FirewallRule(name, <any>undefined, { urn })
+            case "cloudflare:index/greTunnel:GreTunnel":
+                return new GreTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/healthcheck:Healthcheck":
                 return new Healthcheck(name, <any>undefined, { urn })
             case "cloudflare:index/ipList:IpList":
                 return new IpList(name, <any>undefined, { urn })
+            case "cloudflare:index/ipsecTunnel:IpsecTunnel":
+                return new IpsecTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
@@ -271,6 +290,8 @@ const _module = {
                 return new WorkersKvNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/zone:Zone":
                 return new Zone(name, <any>undefined, { urn })
+            case "cloudflare:index/zoneCacheVariants:ZoneCacheVariants":
+                return new ZoneCacheVariants(name, <any>undefined, { urn })
             case "cloudflare:index/zoneDnssec:ZoneDnssec":
                 return new ZoneDnssec(name, <any>undefined, { urn })
             case "cloudflare:index/zoneLockdown:ZoneLockdown":
@@ -303,11 +324,15 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _mod
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/fallbackDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/filter", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/firewallRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/greTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipList", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancerMonitor", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancerPool", _module)
@@ -340,6 +365,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _modul
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zone", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheVariants", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneDnssec", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneLockdown", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneSettingsOverride", _module)

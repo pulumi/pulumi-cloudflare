@@ -453,10 +453,22 @@ export interface ApiTokenPolicy {
     resources: {[key: string]: string};
 }
 
+export interface CertificatePackValidationError {
+    message: string;
+}
+
+export interface CertificatePackValidationRecord {
+    cnameName: string;
+    cnameTarget: string;
+    emails: string[];
+    httpBody: string;
+    httpUrl: string;
+    txtName: string;
+    txtValue: string;
+}
+
 export interface CustomHostnameSsl {
-    certificateAuthority?: string;
-    cnameName?: string;
-    cnameTarget?: string;
+    certificateAuthority: string;
     /**
      * If a custom uploaded certificate is used.
      */
@@ -479,6 +491,8 @@ export interface CustomHostnameSsl {
      * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
      */
     type?: string;
+    validationErrors: outputs.CustomHostnameSslValidationError[];
+    validationRecords: outputs.CustomHostnameSslValidationRecord[];
     /**
      * Indicates whether the certificate covers a wildcard.
      */
@@ -509,6 +523,20 @@ export interface CustomHostnameSslSetting {
     tls13?: string;
 }
 
+export interface CustomHostnameSslValidationError {
+    message: string;
+}
+
+export interface CustomHostnameSslValidationRecord {
+    cnameName: string;
+    cnameTarget: string;
+    emails: string[];
+    httpBody: string;
+    httpUrl: string;
+    txtName: string;
+    txtValue: string;
+}
+
 export interface CustomSslCustomSslOptions {
     /**
      * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
@@ -535,6 +563,25 @@ export interface CustomSslCustomSslOptions {
 export interface CustomSslCustomSslPriority {
     id?: string;
     priority?: number;
+}
+
+export interface DevicePostureIntegrationConfig {
+    /**
+     * The third-party API's URL.
+     */
+    apiUrl?: string;
+    /**
+     * The third-party authorization API URL.
+     */
+    authUrl?: string;
+    /**
+     * The client identifier for authenticating API calls.
+     */
+    clientId?: string;
+    /**
+     * The client secret for authenticating API calls.
+     */
+    clientSecret?: string;
 }
 
 export interface DevicePostureRuleInput {
@@ -593,6 +640,21 @@ export interface DevicePostureRuleMatch {
     platform?: string;
 }
 
+export interface FallbackDomainDomain {
+    /**
+     * The description of the domain.
+     */
+    description?: string;
+    /**
+     * The DNS servers to receive the redirected request.
+     */
+    dnsServers?: string[];
+    /**
+     * The domain to ignore DNS requests.
+     */
+    suffix?: string;
+}
+
 export interface GetAccountRolesRole {
     /**
      * Description of role's permissions
@@ -606,6 +668,65 @@ export interface GetAccountRolesRole {
      * Role Name
      */
     name?: string;
+}
+
+export interface GetDevicesDevice {
+    /**
+     * When the device was created.
+     */
+    created?: string;
+    /**
+     * The type of the device.
+     */
+    deviceType?: string;
+    /**
+     * Device ID.
+     */
+    id?: string;
+    /**
+     * IPv4 or IPv6 address.
+     */
+    ip?: string;
+    /**
+     * The device's public key.
+     */
+    key?: string;
+    /**
+     * When the device was last seen.
+     */
+    lastSeen?: string;
+    /**
+     * The device model name.
+     */
+    model?: string;
+    /**
+     * The device name.
+     */
+    name?: string;
+    /**
+     * The operating system version.
+     */
+    osVersion?: string;
+    /**
+     * When the device was updated.
+     */
+    updated?: string;
+    /**
+     * User's email.
+     */
+    userEmail?: string;
+    /**
+     * User's ID.
+     */
+    userId?: string;
+    /**
+     * User's Name.
+     */
+    userName?: string;
+    /**
+     * The WARP client version.
+     */
+    version?: string;
 }
 
 export interface GetWafGroupsFilter {
@@ -751,6 +872,10 @@ export interface GetWafRulesRule {
 }
 
 export interface GetZonesFilter {
+    /**
+     * Only search for zones in this account.
+     */
+    accountId?: string;
     /**
      * The type of search to perform for the `name` value
      * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
@@ -1318,7 +1443,7 @@ export interface PageRuleActionsMinify {
 
 export interface RateLimitAction {
     /**
-     * The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
+     * The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
      */
     mode: string;
     /**
@@ -1446,7 +1571,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
     action?: string;
     /**
@@ -1502,6 +1627,7 @@ export interface RulesetRuleActionParameters {
      * List of override configurations to apply to the ruleset (refer to the nested schema).
      */
     overrides?: outputs.RulesetRuleActionParametersOverrides;
+    phases?: string[];
     /**
      * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
      */
@@ -1553,7 +1679,7 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOverrides {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
     action?: string;
     /**
@@ -1572,7 +1698,7 @@ export interface RulesetRuleActionParametersOverrides {
 
 export interface RulesetRuleActionParametersOverridesCategory {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
     action?: string;
     /**
@@ -1587,7 +1713,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
     action?: string;
     /**
@@ -1721,8 +1847,17 @@ export interface SplitTunnelTunnel {
 }
 
 export interface TeamsAccountAntivirus {
+    /**
+     * Scan on file download.
+     */
     enabledDownloadPhase: boolean;
+    /**
+     * Scan on file upload.
+     */
     enabledUploadPhase: boolean;
+    /**
+     * Block requests for files that cannot be scanned.
+     */
     failClosed: boolean;
 }
 
@@ -1753,6 +1888,58 @@ export interface TeamsAccountBlockPage {
     name?: string;
 }
 
+export interface TeamsAccountFips {
+    /**
+     * Only allow FIPS-compliant TLS configuration.
+     */
+    tls?: boolean;
+}
+
+export interface TeamsAccountLogging {
+    /**
+     * Redact personally identifiable information from activity logging (PII fields are: source IP,
+     * user email, user ID, device ID, URL, referrer, user agent).
+     */
+    redactPii: boolean;
+    /**
+     * Represents whether all requests are logged or only the blocked requests are
+     * logged in DNS, HTTP and L4 filters.
+     */
+    settingsByRuleType: outputs.TeamsAccountLoggingSettingsByRuleType;
+}
+
+export interface TeamsAccountLoggingSettingsByRuleType {
+    dns: outputs.TeamsAccountLoggingSettingsByRuleTypeDns;
+    http: outputs.TeamsAccountLoggingSettingsByRuleTypeHttp;
+    l4: outputs.TeamsAccountLoggingSettingsByRuleTypeL4;
+}
+
+export interface TeamsAccountLoggingSettingsByRuleTypeDns {
+    logAll: boolean;
+    logBlocks: boolean;
+}
+
+export interface TeamsAccountLoggingSettingsByRuleTypeHttp {
+    logAll: boolean;
+    logBlocks: boolean;
+}
+
+export interface TeamsAccountLoggingSettingsByRuleTypeL4 {
+    logAll: boolean;
+    logBlocks: boolean;
+}
+
+export interface TeamsAccountProxy {
+    /**
+     * Whether gateway proxy is enabled on gateway devices for tcp traffic.
+     */
+    tcp: boolean;
+    /**
+     * Whether gateway proxy is enabled on gateway devices for udp traffic.
+     */
+    udp: boolean;
+}
+
 export interface TeamsLocationNetwork {
     /**
      * ID of the teams location.
@@ -1762,6 +1949,13 @@ export interface TeamsLocationNetwork {
 }
 
 export interface TeamsRuleRuleSettings {
+    /**
+     * Add custom headers to allowed requests in the form of key-value pairs.
+     */
+    addHeaders?: {[key: string]: string};
+    /**
+     * Configure how browser isolation behaves (refer to the nested schema).
+     */
     bisoAdminControls?: outputs.TeamsRuleRuleSettingsBisoAdminControls;
     /**
      * Indicator of block page enablement.
@@ -1772,7 +1966,11 @@ export interface TeamsRuleRuleSettings {
      */
     blockPageReason?: string;
     /**
-     * Settings to forward layer 4 traffic.
+     * Configure how session check behaves (refer to the nested schema).
+     */
+    checkSession?: outputs.TeamsRuleRuleSettingsCheckSession;
+    /**
+     * Settings to forward layer 4 traffic (refer to the nested schema).
      */
     l4override?: outputs.TeamsRuleRuleSettingsL4override;
     /**
@@ -1786,8 +1984,37 @@ export interface TeamsRuleRuleSettings {
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
+    /**
+     * Disable copy-paste.
+     */
     disableCopyPaste?: boolean;
+    /**
+     * Disable download.
+     */
+    disableDownload?: boolean;
+    /**
+     * Disable keyboard usage.
+     */
+    disableKeyboard?: boolean;
+    /**
+     * Disable printing.
+     */
     disablePrinting?: boolean;
+    /**
+     * Disable upload.
+     */
+    disableUpload?: boolean;
+}
+
+export interface TeamsRuleRuleSettingsCheckSession {
+    /**
+     * Configure how fresh the session needs to be to be considered valid.
+     */
+    duration: string;
+    /**
+     * Enable session enforcement for this rule.
+     */
+    enforce: boolean;
 }
 
 export interface TeamsRuleRuleSettingsL4override {

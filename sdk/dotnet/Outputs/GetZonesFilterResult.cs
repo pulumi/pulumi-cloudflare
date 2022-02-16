@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetZonesFilterResult
     {
         /// <summary>
+        /// Only search for zones in this account.
+        /// </summary>
+        public readonly string? AccountId;
+        /// <summary>
         /// The type of search to perform for the `name` value
         /// when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
         /// to `"exact"`.
@@ -43,6 +47,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetZonesFilterResult(
+            string? accountId,
+
             string? lookupType,
 
             string? match,
@@ -53,6 +59,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? status)
         {
+            AccountId = accountId;
             LookupType = lookupType;
             Match = match;
             Name = name;

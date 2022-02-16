@@ -12,11 +12,35 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsRuleRuleSettingsBisoAdminControlsGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Disable copy-paste.
+        /// </summary>
         [Input("disableCopyPaste")]
         public Input<bool>? DisableCopyPaste { get; set; }
 
+        /// <summary>
+        /// Disable download.
+        /// </summary>
+        [Input("disableDownload")]
+        public Input<bool>? DisableDownload { get; set; }
+
+        /// <summary>
+        /// Disable keyboard usage.
+        /// </summary>
+        [Input("disableKeyboard")]
+        public Input<bool>? DisableKeyboard { get; set; }
+
+        /// <summary>
+        /// Disable printing.
+        /// </summary>
         [Input("disablePrinting")]
         public Input<bool>? DisablePrinting { get; set; }
+
+        /// <summary>
+        /// Disable upload.
+        /// </summary>
+        [Input("disableUpload")]
+        public Input<bool>? DisableUpload { get; set; }
 
         public TeamsRuleRuleSettingsBisoAdminControlsGetArgs()
         {

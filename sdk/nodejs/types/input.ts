@@ -453,10 +453,22 @@ export interface ApiTokenPolicy {
     resources: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
-export interface CustomHostnameSsl {
-    certificateAuthority?: pulumi.Input<string>;
+export interface CertificatePackValidationError {
+    message?: pulumi.Input<string>;
+}
+
+export interface CertificatePackValidationRecord {
     cnameName?: pulumi.Input<string>;
     cnameTarget?: pulumi.Input<string>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    httpBody?: pulumi.Input<string>;
+    httpUrl?: pulumi.Input<string>;
+    txtName?: pulumi.Input<string>;
+    txtValue?: pulumi.Input<string>;
+}
+
+export interface CustomHostnameSsl {
+    certificateAuthority?: pulumi.Input<string>;
     /**
      * If a custom uploaded certificate is used.
      */
@@ -479,6 +491,8 @@ export interface CustomHostnameSsl {
      * Level of validation to be used for this hostname. Domain validation ("dv") must be used.
      */
     type?: pulumi.Input<string>;
+    validationErrors?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSslValidationError>[]>;
+    validationRecords?: pulumi.Input<pulumi.Input<inputs.CustomHostnameSslValidationRecord>[]>;
     /**
      * Indicates whether the certificate covers a wildcard.
      */
@@ -509,6 +523,20 @@ export interface CustomHostnameSslSetting {
     tls13?: pulumi.Input<string>;
 }
 
+export interface CustomHostnameSslValidationError {
+    message?: pulumi.Input<string>;
+}
+
+export interface CustomHostnameSslValidationRecord {
+    cnameName?: pulumi.Input<string>;
+    cnameTarget?: pulumi.Input<string>;
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    httpBody?: pulumi.Input<string>;
+    httpUrl?: pulumi.Input<string>;
+    txtName?: pulumi.Input<string>;
+    txtValue?: pulumi.Input<string>;
+}
+
 export interface CustomSslCustomSslOptions {
     /**
      * Method of building intermediate certificate chain. A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Valid values are `ubiquitous` (default), `optimal`, `force`.
@@ -535,6 +563,25 @@ export interface CustomSslCustomSslOptions {
 export interface CustomSslCustomSslPriority {
     id?: pulumi.Input<string>;
     priority?: pulumi.Input<number>;
+}
+
+export interface DevicePostureIntegrationConfig {
+    /**
+     * The third-party API's URL.
+     */
+    apiUrl?: pulumi.Input<string>;
+    /**
+     * The third-party authorization API URL.
+     */
+    authUrl?: pulumi.Input<string>;
+    /**
+     * The client identifier for authenticating API calls.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The client secret for authenticating API calls.
+     */
+    clientSecret?: pulumi.Input<string>;
 }
 
 export interface DevicePostureRuleInput {
@@ -593,15 +640,19 @@ export interface DevicePostureRuleMatch {
     platform?: pulumi.Input<string>;
 }
 
-export interface GetWafGroupsFilter {
+export interface FallbackDomainDomain {
     /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     * The description of the domain.
      */
-    mode?: string;
+    description?: pulumi.Input<string>;
     /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     * The DNS servers to receive the redirected request.
      */
-    name?: string;
+    dnsServers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The domain to ignore DNS requests.
+     */
+    suffix?: pulumi.Input<string>;
 }
 
 export interface GetWafGroupsFilterArgs {
@@ -613,6 +664,17 @@ export interface GetWafGroupsFilterArgs {
      * A regular expression matching the name of the WAF Rule Groups to lookup.
      */
     name?: pulumi.Input<string>;
+}
+
+export interface GetWafGroupsFilter {
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
+    mode?: string;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
+    name?: string;
 }
 
 export interface GetWafPackagesFilter {
@@ -683,37 +745,11 @@ export interface GetWafRulesFilterArgs {
     mode?: pulumi.Input<string>;
 }
 
-export interface GetZonesFilter {
-    /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
-     */
-    lookupType?: string;
-    /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
-     */
-    match?: string;
-    /**
-     * A string value to search for.
-     */
-    name?: string;
-    /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
-     */
-    paused?: boolean;
-    /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
-     */
-    status?: string;
-}
-
 export interface GetZonesFilterArgs {
+    /**
+     * Only search for zones in this account.
+     */
+    accountId?: pulumi.Input<string>;
     /**
      * The type of search to perform for the `name` value
      * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
@@ -741,6 +777,40 @@ export interface GetZonesFilterArgs {
      * `"read only"`.
      */
     status?: pulumi.Input<string>;
+}
+
+export interface GetZonesFilter {
+    /**
+     * Only search for zones in this account.
+     */
+    accountId?: string;
+    /**
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+     * to `"exact"`.
+     */
+    lookupType?: string;
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookupType`
+     * are performed on the Cloudflare server side.
+     */
+    match?: string;
+    /**
+     * A string value to search for.
+     */
+    name?: string;
+    /**
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
+     */
+    paused?: boolean;
+    /**
+     * Status of the zone to lookup. Valid values: `"active"`,
+     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+     * `"read only"`.
+     */
+    status?: string;
 }
 
 export interface HealthcheckHeader {
@@ -1270,7 +1340,7 @@ export interface PageRuleActionsMinify {
 
 export interface RateLimitAction {
     /**
-     * The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge' and 'js_challenge'.
+     * The type of action to perform. Allowable values are 'simulate', 'ban', 'challenge', 'js_challenge' and 'managed_challenge'.
      */
     mode: pulumi.Input<string>;
     /**
@@ -1398,7 +1468,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1454,6 +1524,7 @@ export interface RulesetRuleActionParameters {
      * List of override configurations to apply to the ruleset (refer to the nested schema).
      */
     overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
+    phases?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
      */
@@ -1505,7 +1576,7 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOverrides {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1524,7 +1595,7 @@ export interface RulesetRuleActionParametersOverrides {
 
 export interface RulesetRuleActionParametersOverridesCategory {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1539,7 +1610,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1673,8 +1744,17 @@ export interface SplitTunnelTunnel {
 }
 
 export interface TeamsAccountAntivirus {
+    /**
+     * Scan on file download.
+     */
     enabledDownloadPhase: pulumi.Input<boolean>;
+    /**
+     * Scan on file upload.
+     */
     enabledUploadPhase: pulumi.Input<boolean>;
+    /**
+     * Block requests for files that cannot be scanned.
+     */
     failClosed: pulumi.Input<boolean>;
 }
 
@@ -1705,6 +1785,58 @@ export interface TeamsAccountBlockPage {
     name?: pulumi.Input<string>;
 }
 
+export interface TeamsAccountFips {
+    /**
+     * Only allow FIPS-compliant TLS configuration.
+     */
+    tls?: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountLogging {
+    /**
+     * Redact personally identifiable information from activity logging (PII fields are: source IP,
+     * user email, user ID, device ID, URL, referrer, user agent).
+     */
+    redactPii: pulumi.Input<boolean>;
+    /**
+     * Represents whether all requests are logged or only the blocked requests are
+     * logged in DNS, HTTP and L4 filters.
+     */
+    settingsByRuleType: pulumi.Input<inputs.TeamsAccountLoggingSettingsByRuleType>;
+}
+
+export interface TeamsAccountLoggingSettingsByRuleType {
+    dns: pulumi.Input<inputs.TeamsAccountLoggingSettingsByRuleTypeDns>;
+    http: pulumi.Input<inputs.TeamsAccountLoggingSettingsByRuleTypeHttp>;
+    l4: pulumi.Input<inputs.TeamsAccountLoggingSettingsByRuleTypeL4>;
+}
+
+export interface TeamsAccountLoggingSettingsByRuleTypeDns {
+    logAll: pulumi.Input<boolean>;
+    logBlocks: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountLoggingSettingsByRuleTypeHttp {
+    logAll: pulumi.Input<boolean>;
+    logBlocks: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountLoggingSettingsByRuleTypeL4 {
+    logAll: pulumi.Input<boolean>;
+    logBlocks: pulumi.Input<boolean>;
+}
+
+export interface TeamsAccountProxy {
+    /**
+     * Whether gateway proxy is enabled on gateway devices for tcp traffic.
+     */
+    tcp: pulumi.Input<boolean>;
+    /**
+     * Whether gateway proxy is enabled on gateway devices for udp traffic.
+     */
+    udp: pulumi.Input<boolean>;
+}
+
 export interface TeamsLocationNetwork {
     /**
      * ID of the teams location.
@@ -1714,6 +1846,13 @@ export interface TeamsLocationNetwork {
 }
 
 export interface TeamsRuleRuleSettings {
+    /**
+     * Add custom headers to allowed requests in the form of key-value pairs.
+     */
+    addHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Configure how browser isolation behaves (refer to the nested schema).
+     */
     bisoAdminControls?: pulumi.Input<inputs.TeamsRuleRuleSettingsBisoAdminControls>;
     /**
      * Indicator of block page enablement.
@@ -1724,7 +1863,11 @@ export interface TeamsRuleRuleSettings {
      */
     blockPageReason?: pulumi.Input<string>;
     /**
-     * Settings to forward layer 4 traffic.
+     * Configure how session check behaves (refer to the nested schema).
+     */
+    checkSession?: pulumi.Input<inputs.TeamsRuleRuleSettingsCheckSession>;
+    /**
+     * Settings to forward layer 4 traffic (refer to the nested schema).
      */
     l4override?: pulumi.Input<inputs.TeamsRuleRuleSettingsL4override>;
     /**
@@ -1738,8 +1881,37 @@ export interface TeamsRuleRuleSettings {
 }
 
 export interface TeamsRuleRuleSettingsBisoAdminControls {
+    /**
+     * Disable copy-paste.
+     */
     disableCopyPaste?: pulumi.Input<boolean>;
+    /**
+     * Disable download.
+     */
+    disableDownload?: pulumi.Input<boolean>;
+    /**
+     * Disable keyboard usage.
+     */
+    disableKeyboard?: pulumi.Input<boolean>;
+    /**
+     * Disable printing.
+     */
     disablePrinting?: pulumi.Input<boolean>;
+    /**
+     * Disable upload.
+     */
+    disableUpload?: pulumi.Input<boolean>;
+}
+
+export interface TeamsRuleRuleSettingsCheckSession {
+    /**
+     * Configure how fresh the session needs to be to be considered valid.
+     */
+    duration: pulumi.Input<string>;
+    /**
+     * Enable session enforcement for this rule.
+     */
+    enforce: pulumi.Input<boolean>;
 }
 
 export interface TeamsRuleRuleSettingsL4override {

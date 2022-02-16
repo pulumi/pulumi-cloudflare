@@ -61,6 +61,19 @@ import * as utilities from "./utilities";
  *     },
  * }));
  * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Look for all active zones in an account
+ * const example = pulumi.output(cloudflare.getZones({
+ *     filter: {
+ *         accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *         status: "active",
+ *     },
+ * }));
+ * ```
  */
 export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     if (!opts) {

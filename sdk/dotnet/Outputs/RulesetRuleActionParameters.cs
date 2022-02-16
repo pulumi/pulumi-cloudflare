@@ -30,6 +30,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// List of override configurations to apply to the ruleset (refer to the nested schema).
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
+        public readonly ImmutableArray<string> Phases;
         /// <summary>
         /// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
         /// </summary>
@@ -64,6 +65,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParametersOverrides? overrides,
 
+            ImmutableArray<string> phases,
+
             ImmutableArray<string> products,
 
             ImmutableDictionary<string, string>? rules,
@@ -81,6 +84,7 @@ namespace Pulumi.Cloudflare.Outputs
             Increment = increment;
             MatchedData = matchedData;
             Overrides = overrides;
+            Phases = phases;
             Products = products;
             Rules = rules;
             Ruleset = ruleset;
