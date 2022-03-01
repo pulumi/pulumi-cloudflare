@@ -26,14 +26,13 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "a25a9a7e9c00afc1fb2e0245519d725b"
 // 		test, err := cloudflare.GetWafRules(ctx, &GetWafRulesArgs{
 // 			ZoneId:    "ae36f999674d196762efcc5abb06b345",
-// 			PackageId: &opt0,
+// 			PackageId: pulumi.StringRef("a25a9a7e9c00afc1fb2e0245519d725b"),
 // 			Filter: GetWafRulesFilter{
-// 				Description: ".*example.*",
-// 				Mode:        "on",
-// 				GroupId:     "de677e5818985db1285d0e80225f06e5",
+// 				Description: pulumi.StringRef(".*example.*"),
+// 				Mode:        pulumi.StringRef("on"),
+// 				GroupId:     pulumi.StringRef("de677e5818985db1285d0e80225f06e5"),
 // 			},
 // 		}, nil)
 // 		if err != nil {

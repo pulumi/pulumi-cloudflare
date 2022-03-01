@@ -307,6 +307,37 @@ class LogpushJob(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+        ### Manual Inspection Of S3 Bucket)
+
+        - Create `LogPushOwnershipChallenge` resource
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        ownership_challenge = cloudflare.LogPushOwnershipChallenge("ownershipChallenge",
+            destination_conf="s3://my-bucket-path?region=us-west-2",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
+
+        - Check S3 bucket for your ownership challenge filename and grab the contents.
+        - Create the `LogpushJob` substituting in your manual `ownership_challenge`.
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_job = cloudflare.LogpushJob("exampleJob",
+            dataset="http_requests",
+            destination_conf="s3://my-bucket-path?region=us-west-2",
+            enabled=True,
+            logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+            name="My-logpush-job",
+            ownership_challenge="0000000000000",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
+
         ## Import
 
         Logpush jobs can be imported using a composite ID formed of* `identifierType` - Either `account` or `zone`. * `identifierID` - The ID of the account or zone. * `jobID` - The Logpush Job ID to import. Import an account-scoped job using `account/:accountID/:jobID`
@@ -342,6 +373,37 @@ class LogpushJob(pulumi.CustomResource):
                  args: LogpushJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+        ### Manual Inspection Of S3 Bucket)
+
+        - Create `LogPushOwnershipChallenge` resource
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        ownership_challenge = cloudflare.LogPushOwnershipChallenge("ownershipChallenge",
+            destination_conf="s3://my-bucket-path?region=us-west-2",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
+
+        - Check S3 bucket for your ownership challenge filename and grab the contents.
+        - Create the `LogpushJob` substituting in your manual `ownership_challenge`.
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_job = cloudflare.LogpushJob("exampleJob",
+            dataset="http_requests",
+            destination_conf="s3://my-bucket-path?region=us-west-2",
+            enabled=True,
+            logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+            name="My-logpush-job",
+            ownership_challenge="0000000000000",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
+
         ## Import
 
         Logpush jobs can be imported using a composite ID formed of* `identifierType` - Either `account` or `zone`. * `identifierID` - The ID of the account or zone. * `jobID` - The Logpush Job ID to import. Import an account-scoped job using `account/:accountID/:jobID`

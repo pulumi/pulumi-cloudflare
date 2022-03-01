@@ -11,6 +11,64 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewCertificatePack(ctx, "dedicatedCustomExample", &cloudflare.CertificatePackArgs{
+// 			Hosts: pulumi.StringArray{
+// 				pulumi.String("example.com"),
+// 				pulumi.String("sub.example.com"),
+// 			},
+// 			Type:   pulumi.String("dedicated_custom"),
+// 			ZoneId: pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewCertificatePack(ctx, "advancedExampleForDigicert", &cloudflare.CertificatePackArgs{
+// 			CertificateAuthority: pulumi.String("digicert"),
+// 			CloudflareBranding:   pulumi.Bool(false),
+// 			Hosts: pulumi.StringArray{
+// 				pulumi.String("example.com"),
+// 				pulumi.String("sub.example.com"),
+// 			},
+// 			Type:             pulumi.String("advanced"),
+// 			ValidationMethod: pulumi.String("txt"),
+// 			ValidityDays:     pulumi.Int(30),
+// 			ZoneId:           pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudflare.NewCertificatePack(ctx, "advancedExampleForLetsEncrypt", &cloudflare.CertificatePackArgs{
+// 			CertificateAuthority: pulumi.String("lets_encrypt"),
+// 			CloudflareBranding:   pulumi.Bool(false),
+// 			Hosts: pulumi.StringArray{
+// 				pulumi.String("example.com"),
+// 				pulumi.String("*.example.com"),
+// 			},
+// 			Type:             pulumi.String("advanced"),
+// 			ValidationMethod: pulumi.String("http"),
+// 			ValidityDays:     pulumi.Int(90),
+// 			ZoneId:           pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Certificate packs can be imported using a composite ID of the zone ID and certificate pack ID. This isn't recommended and it is advised to replace the certificate entirely instead.

@@ -10,6 +10,61 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dedicatedCustomExample = new Cloudflare.CertificatePack("dedicatedCustomExample", new Cloudflare.CertificatePackArgs
+    ///         {
+    ///             Hosts = 
+    ///             {
+    ///                 "example.com",
+    ///                 "sub.example.com",
+    ///             },
+    ///             Type = "dedicated_custom",
+    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         });
+    ///         // Advanced certificate manager for DigiCert
+    ///         var advancedExampleForDigicert = new Cloudflare.CertificatePack("advancedExampleForDigicert", new Cloudflare.CertificatePackArgs
+    ///         {
+    ///             CertificateAuthority = "digicert",
+    ///             CloudflareBranding = false,
+    ///             Hosts = 
+    ///             {
+    ///                 "example.com",
+    ///                 "sub.example.com",
+    ///             },
+    ///             Type = "advanced",
+    ///             ValidationMethod = "txt",
+    ///             ValidityDays = 30,
+    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         });
+    ///         // Advanced certificate manager for Let's Encrypt
+    ///         var advancedExampleForLetsEncrypt = new Cloudflare.CertificatePack("advancedExampleForLetsEncrypt", new Cloudflare.CertificatePackArgs
+    ///         {
+    ///             CertificateAuthority = "lets_encrypt",
+    ///             CloudflareBranding = false,
+    ///             Hosts = 
+    ///             {
+    ///                 "example.com",
+    ///                 "*.example.com",
+    ///             },
+    ///             Type = "advanced",
+    ///             ValidationMethod = "http",
+    ///             ValidityDays = 90,
+    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Certificate packs can be imported using a composite ID of the zone ID and certificate pack ID. This isn't recommended and it is advised to replace the certificate entirely instead.

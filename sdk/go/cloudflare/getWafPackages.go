@@ -28,10 +28,10 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		test, err := cloudflare.GetWafPackages(ctx, &GetWafPackagesArgs{
 // 			Filter: GetWafPackagesFilter{
-// 				Name:          ".*example.*",
-// 				DetectionMode: "anomaly",
-// 				Sensitivity:   "high",
-// 				ActionMode:    "challenge",
+// 				Name:          pulumi.StringRef(".*example.*"),
+// 				DetectionMode: pulumi.StringRef("anomaly"),
+// 				Sensitivity:   pulumi.StringRef("high"),
+// 				ActionMode:    pulumi.StringRef("challenge"),
 // 			},
 // 		}, nil)
 // 		if err != nil {

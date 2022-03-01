@@ -28,8 +28,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		test, err := cloudflare.GetWafGroups(ctx, &GetWafGroupsArgs{
 // 			Filter: GetWafGroupsFilter{
-// 				Name: ".*example.*",
-// 				Mode: "on",
+// 				Name: pulumi.StringRef(".*example.*"),
+// 				Mode: pulumi.StringRef("on"),
 // 			},
 // 		}, nil)
 // 		if err != nil {

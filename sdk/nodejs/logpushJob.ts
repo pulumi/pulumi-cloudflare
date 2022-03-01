@@ -5,6 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ * ### Manual Inspection Of S3 Bucket)
+ *
+ * - Create `cloudflare.LogPushOwnershipChallenge` resource
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const ownershipChallenge = new cloudflare.LogPushOwnershipChallenge("ownership_challenge", {
+ *     destinationConf: "s3://my-bucket-path?region=us-west-2",
+ *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ * });
+ * ```
+ *
+ * - Check S3 bucket for your ownership challenge filename and grab the contents.
+ * - Create the `cloudflare.LogpushJob` substituting in your manual `ownershipChallenge`.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleJob = new cloudflare.LogpushJob("example_job", {
+ *     dataset: "http_requests",
+ *     destinationConf: "s3://my-bucket-path?region=us-west-2",
+ *     enabled: true,
+ *     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
+ *     name: "My-logpush-job",
+ *     ownershipChallenge: "0000000000000",
+ *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Logpush jobs can be imported using a composite ID formed of* `identifierType` - Either `account` or `zone`. * `identifierID` - The ID of the account or zone. * `jobID` - The Logpush Job ID to import. Import an account-scoped job using `account/:accountID/:jobID`

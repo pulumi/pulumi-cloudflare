@@ -24,10 +24,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example-account-id"
 // 		mainAccessIdentityProvider, err := cloudflare.LookupAccessIdentityProvider(ctx, &GetAccessIdentityProviderArgs{
 // 			Name:      "Google SSO",
-// 			AccountId: &opt0,
+// 			AccountId: pulumi.StringRef("example-account-id"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
