@@ -353,6 +353,45 @@ class CertificatePack(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        dedicated_custom_example = cloudflare.CertificatePack("dedicatedCustomExample",
+            hosts=[
+                "example.com",
+                "sub.example.com",
+            ],
+            type="dedicated_custom",
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        # Advanced certificate manager for DigiCert
+        advanced_example_for_digicert = cloudflare.CertificatePack("advancedExampleForDigicert",
+            certificate_authority="digicert",
+            cloudflare_branding=False,
+            hosts=[
+                "example.com",
+                "sub.example.com",
+            ],
+            type="advanced",
+            validation_method="txt",
+            validity_days=30,
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        # Advanced certificate manager for Let's Encrypt
+        advanced_example_for_lets_encrypt = cloudflare.CertificatePack("advancedExampleForLetsEncrypt",
+            certificate_authority="lets_encrypt",
+            cloudflare_branding=False,
+            hosts=[
+                "example.com",
+                "*.example.com",
+            ],
+            type="advanced",
+            validation_method="http",
+            validity_days=90,
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        ```
+
         ## Import
 
         Certificate packs can be imported using a composite ID of the zone ID and certificate pack ID. This isn't recommended and it is advised to replace the certificate entirely instead.
@@ -388,6 +427,45 @@ class CertificatePack(pulumi.CustomResource):
                  args: CertificatePackArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        dedicated_custom_example = cloudflare.CertificatePack("dedicatedCustomExample",
+            hosts=[
+                "example.com",
+                "sub.example.com",
+            ],
+            type="dedicated_custom",
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        # Advanced certificate manager for DigiCert
+        advanced_example_for_digicert = cloudflare.CertificatePack("advancedExampleForDigicert",
+            certificate_authority="digicert",
+            cloudflare_branding=False,
+            hosts=[
+                "example.com",
+                "sub.example.com",
+            ],
+            type="advanced",
+            validation_method="txt",
+            validity_days=30,
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        # Advanced certificate manager for Let's Encrypt
+        advanced_example_for_lets_encrypt = cloudflare.CertificatePack("advancedExampleForLetsEncrypt",
+            certificate_authority="lets_encrypt",
+            cloudflare_branding=False,
+            hosts=[
+                "example.com",
+                "*.example.com",
+            ],
+            type="advanced",
+            validation_method="http",
+            validity_days=90,
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        ```
+
         ## Import
 
         Certificate packs can be imported using a composite ID of the zone ID and certificate pack ID. This isn't recommended and it is advised to replace the certificate entirely instead.

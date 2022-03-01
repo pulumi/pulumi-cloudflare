@@ -10,6 +10,55 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// ## Example Usage
+    /// ### Manual Inspection Of S3 Bucket)
+    /// 
+    /// - Create `cloudflare.LogPushOwnershipChallenge` resource
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ownershipChallenge = new Cloudflare.LogPushOwnershipChallenge("ownershipChallenge", new Cloudflare.LogPushOwnershipChallengeArgs
+    ///         {
+    ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// - Check S3 bucket for your ownership challenge filename and grab the contents.
+    /// - Create the `cloudflare.LogpushJob` substituting in your manual `ownership_challenge`.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleJob = new Cloudflare.LogpushJob("exampleJob", new Cloudflare.LogpushJobArgs
+    ///         {
+    ///             Dataset = "http_requests",
+    ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
+    ///             Enabled = true,
+    ///             LogpullOptions = "fields=RayID,ClientIP,EdgeStartTimestamp&amp;timestamps=rfc3339",
+    ///             Name = "My-logpush-job",
+    ///             OwnershipChallenge = "0000000000000",
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Logpush jobs can be imported using a composite ID formed of* `identifierType` - Either `account` or `zone`. * `identifierID` - The ID of the account or zone. * `jobID` - The Logpush Job ID to import. Import an account-scoped job using `account/:accountID/:jobID`

@@ -11,6 +11,63 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+// ### Manual Inspection Of S3 Bucket)
+//
+// - Create `LogPushOwnershipChallenge` resource
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewLogPushOwnershipChallenge(ctx, "ownershipChallenge", &cloudflare.LogPushOwnershipChallengeArgs{
+// 			DestinationConf: pulumi.String("s3://my-bucket-path?region=us-west-2"),
+// 			ZoneId:          pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// - Check S3 bucket for your ownership challenge filename and grab the contents.
+// - Create the `LogpushJob` substituting in your manual `ownershipChallenge`.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewLogpushJob(ctx, "exampleJob", &cloudflare.LogpushJobArgs{
+// 			Dataset:            pulumi.String("http_requests"),
+// 			DestinationConf:    pulumi.String("s3://my-bucket-path?region=us-west-2"),
+// 			Enabled:            pulumi.Bool(true),
+// 			LogpullOptions:     pulumi.String("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339"),
+// 			Name:               pulumi.String("My-logpush-job"),
+// 			OwnershipChallenge: pulumi.String("0000000000000"),
+// 			ZoneId:             pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Logpush jobs can be imported using a composite ID formed of* `identifierType` - Either `account` or `zone`. * `identifierID` - The ID of the account or zone. * `jobID` - The Logpush Job ID to import. Import an account-scoped job using `account/:accountID/:jobID`

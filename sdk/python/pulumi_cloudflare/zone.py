@@ -277,6 +277,15 @@ class Zone(pulumi.CustomResource):
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Zone("example", zone="example.com")
+        ```
+
         ## Import
 
         Zone resource can be imported using a zone ID, e.g.
@@ -302,6 +311,15 @@ class Zone(pulumi.CustomResource):
                  args: ZoneArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Zone("example", zone="example.com")
+        ```
+
         ## Import
 
         Zone resource can be imported using a zone ID, e.g.

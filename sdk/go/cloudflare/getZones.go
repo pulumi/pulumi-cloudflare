@@ -32,7 +32,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.GetZones(ctx, &GetZonesArgs{
 // 			Filter: GetZonesFilter{
-// 				Name: "example.com",
+// 				Name: pulumi.StringRef("example.com"),
 // 			},
 // 		}, nil)
 // 		if err != nil {
@@ -55,8 +55,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.GetZones(ctx, &GetZonesArgs{
 // 			Filter: GetZonesFilter{
-// 				LookupType: "contains",
-// 				Name:       "example",
+// 				LookupType: pulumi.StringRef("contains"),
+// 				Name:       pulumi.StringRef("example"),
 // 			},
 // 		}, nil)
 // 		if err != nil {
@@ -79,9 +79,9 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.GetZones(ctx, &GetZonesArgs{
 // 			Filter: GetZonesFilter{
-// 				LookupType: "contains",
-// 				Match:      "^not-",
-// 				Name:       "example",
+// 				LookupType: pulumi.StringRef("contains"),
+// 				Match:      pulumi.StringRef("^not-"),
+// 				Name:       pulumi.StringRef("example"),
 // 			},
 // 		}, nil)
 // 		if err != nil {
@@ -104,8 +104,8 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.GetZones(ctx, &GetZonesArgs{
 // 			Filter: GetZonesFilter{
-// 				AccountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
-// 				Status:    "active",
+// 				AccountId: pulumi.StringRef("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 				Status:    pulumi.StringRef("active"),
 // 			},
 // 		}, nil)
 // 		if err != nil {

@@ -6,6 +6,48 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const dedicatedCustomExample = new cloudflare.CertificatePack("dedicated_custom_example", {
+ *     hosts: [
+ *         "example.com",
+ *         "sub.example.com",
+ *     ],
+ *     type: "dedicated_custom",
+ *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * });
+ * // Advanced certificate manager for DigiCert
+ * const advancedExampleForDigicert = new cloudflare.CertificatePack("advanced_example_for_digicert", {
+ *     certificateAuthority: "digicert",
+ *     cloudflareBranding: false,
+ *     hosts: [
+ *         "example.com",
+ *         "sub.example.com",
+ *     ],
+ *     type: "advanced",
+ *     validationMethod: "txt",
+ *     validityDays: 30,
+ *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * });
+ * // Advanced certificate manager for Let's Encrypt
+ * const advancedExampleForLetsEncrypt = new cloudflare.CertificatePack("advanced_example_for_lets_encrypt", {
+ *     certificateAuthority: "lets_encrypt",
+ *     cloudflareBranding: false,
+ *     hosts: [
+ *         "example.com",
+ *         "*.example.com",
+ *     ],
+ *     type: "advanced",
+ *     validationMethod: "http",
+ *     validityDays: 90,
+ *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Certificate packs can be imported using a composite ID of the zone ID and certificate pack ID. This isn't recommended and it is advised to replace the certificate entirely instead.

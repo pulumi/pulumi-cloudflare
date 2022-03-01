@@ -5,6 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.Zone("example", {
+ *     zone: "example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Zone resource can be imported using a zone ID, e.g.

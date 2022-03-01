@@ -30,9 +30,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "0b6d347b01d437a092be84c2edfce72c"
 // 		_, err := cloudflare.LookupZone(ctx, &GetZoneArgs{
-// 			ZoneId: &opt0,
+// 			ZoneId: pulumi.StringRef("0b6d347b01d437a092be84c2edfce72c"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -56,9 +55,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "example.com"
 // 		exampleZone, err := cloudflare.LookupZone(ctx, &GetZoneArgs{
-// 			Name: &opt0,
+// 			Name: pulumi.StringRef("example.com"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
