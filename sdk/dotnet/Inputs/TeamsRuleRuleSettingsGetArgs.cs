@@ -49,6 +49,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsRuleRuleSettingsCheckSessionGetArgs>? CheckSession { get; set; }
 
         /// <summary>
+        /// Disable DNSSEC validation (must be Allow rule)
+        /// </summary>
+        [Input("insecureDisableDnssecValidation")]
+        public Input<bool>? InsecureDisableDnssecValidation { get; set; }
+
+        /// <summary>
         /// Settings to forward layer 4 traffic (refer to the nested schema).
         /// </summary>
         [Input("l4override")]

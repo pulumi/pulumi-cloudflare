@@ -57,6 +57,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> CustomOriginServer { get; private set; } = null!;
 
         /// <summary>
+        /// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        /// </summary>
+        [Output("customOriginSni")]
+        public Output<string?> CustomOriginSni { get; private set; } = null!;
+
+        /// <summary>
         /// Hostname you intend to request a certificate for.
         /// </summary>
         [Output("hostname")]
@@ -136,6 +142,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomOriginServer { get; set; }
 
         /// <summary>
+        /// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        /// </summary>
+        [Input("customOriginSni")]
+        public Input<string>? CustomOriginSni { get; set; }
+
+        /// <summary>
         /// Hostname you intend to request a certificate for.
         /// </summary>
         [Input("hostname", required: true)]
@@ -171,6 +183,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("customOriginServer")]
         public Input<string>? CustomOriginServer { get; set; }
+
+        /// <summary>
+        /// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        /// </summary>
+        [Input("customOriginSni")]
+        public Input<string>? CustomOriginSni { get; set; }
 
         /// <summary>
         /// Hostname you intend to request a certificate for.

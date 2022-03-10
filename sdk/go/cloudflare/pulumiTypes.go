@@ -14781,9 +14781,8 @@ func (o RulesetRuleExposedCredentialCheckPtrOutput) UsernameExpression() pulumi.
 
 type RulesetRuleRatelimit struct {
 	// List of parameters that define how Cloudflare tracks the request rate for this rule.
-	Characteristics []string `pulumi:"characteristics"`
-	// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
-	MitigationExpression *string `pulumi:"mitigationExpression"`
+	Characteristics    []string `pulumi:"characteristics"`
+	CountingExpression *string  `pulumi:"countingExpression"`
 	// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
 	MitigationTimeout *int `pulumi:"mitigationTimeout"`
 	// The period of time to consider (in seconds) when evaluating the request rate.
@@ -14805,9 +14804,8 @@ type RulesetRuleRatelimitInput interface {
 
 type RulesetRuleRatelimitArgs struct {
 	// List of parameters that define how Cloudflare tracks the request rate for this rule.
-	Characteristics pulumi.StringArrayInput `pulumi:"characteristics"`
-	// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
-	MitigationExpression pulumi.StringPtrInput `pulumi:"mitigationExpression"`
+	Characteristics    pulumi.StringArrayInput `pulumi:"characteristics"`
+	CountingExpression pulumi.StringPtrInput   `pulumi:"countingExpression"`
 	// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
 	MitigationTimeout pulumi.IntPtrInput `pulumi:"mitigationTimeout"`
 	// The period of time to consider (in seconds) when evaluating the request rate.
@@ -14898,9 +14896,8 @@ func (o RulesetRuleRatelimitOutput) Characteristics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleRatelimit) []string { return v.Characteristics }).(pulumi.StringArrayOutput)
 }
 
-// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
-func (o RulesetRuleRatelimitOutput) MitigationExpression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *string { return v.MitigationExpression }).(pulumi.StringPtrOutput)
+func (o RulesetRuleRatelimitOutput) CountingExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) *string { return v.CountingExpression }).(pulumi.StringPtrOutput)
 }
 
 // Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
@@ -14952,13 +14949,12 @@ func (o RulesetRuleRatelimitPtrOutput) Characteristics() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
-func (o RulesetRuleRatelimitPtrOutput) MitigationExpression() pulumi.StringPtrOutput {
+func (o RulesetRuleRatelimitPtrOutput) CountingExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleRatelimit) *string {
 		if v == nil {
 			return nil
 		}
-		return v.MitigationExpression
+		return v.CountingExpression
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17141,6 +17137,8 @@ type TeamsRuleRuleSettings struct {
 	BlockPageReason *string `pulumi:"blockPageReason"`
 	// Configure how session check behaves (refer to the nested schema).
 	CheckSession *TeamsRuleRuleSettingsCheckSession `pulumi:"checkSession"`
+	// Disable DNSSEC validation (must be Allow rule)
+	InsecureDisableDnssecValidation *bool `pulumi:"insecureDisableDnssecValidation"`
 	// Settings to forward layer 4 traffic (refer to the nested schema).
 	L4override *TeamsRuleRuleSettingsL4override `pulumi:"l4override"`
 	// The host to override matching DNS queries with.
@@ -17171,6 +17169,8 @@ type TeamsRuleRuleSettingsArgs struct {
 	BlockPageReason pulumi.StringPtrInput `pulumi:"blockPageReason"`
 	// Configure how session check behaves (refer to the nested schema).
 	CheckSession TeamsRuleRuleSettingsCheckSessionPtrInput `pulumi:"checkSession"`
+	// Disable DNSSEC validation (must be Allow rule)
+	InsecureDisableDnssecValidation pulumi.BoolPtrInput `pulumi:"insecureDisableDnssecValidation"`
 	// Settings to forward layer 4 traffic (refer to the nested schema).
 	L4override TeamsRuleRuleSettingsL4overridePtrInput `pulumi:"l4override"`
 	// The host to override matching DNS queries with.
@@ -17281,6 +17281,11 @@ func (o TeamsRuleRuleSettingsOutput) CheckSession() TeamsRuleRuleSettingsCheckSe
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsCheckSession { return v.CheckSession }).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
 }
 
+// Disable DNSSEC validation (must be Allow rule)
+func (o TeamsRuleRuleSettingsOutput) InsecureDisableDnssecValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *bool { return v.InsecureDisableDnssecValidation }).(pulumi.BoolPtrOutput)
+}
+
 // Settings to forward layer 4 traffic (refer to the nested schema).
 func (o TeamsRuleRuleSettingsOutput) L4override() TeamsRuleRuleSettingsL4overridePtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsL4override { return v.L4override }).(TeamsRuleRuleSettingsL4overridePtrOutput)
@@ -17368,6 +17373,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) CheckSession() TeamsRuleRuleSettingsChec
 		}
 		return v.CheckSession
 	}).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
+}
+
+// Disable DNSSEC validation (must be Allow rule)
+func (o TeamsRuleRuleSettingsPtrOutput) InsecureDisableDnssecValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InsecureDisableDnssecValidation
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Settings to forward layer 4 traffic (refer to the nested schema).

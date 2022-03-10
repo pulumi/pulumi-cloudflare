@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
+        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
+        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
@@ -217,7 +217,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.
+        /// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

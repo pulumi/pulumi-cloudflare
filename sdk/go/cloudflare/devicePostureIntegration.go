@@ -60,10 +60,8 @@ type DevicePostureIntegration struct {
 	// The account to which the device posture integration should be added.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The device posture integration's connection authorization parameters.
-	Configs DevicePostureIntegrationConfigArrayOutput `pulumi:"configs"`
-	// ID of the device posture integration.
-	Id         pulumi.StringOutput    `pulumi:"id"`
-	Identifier pulumi.StringPtrOutput `pulumi:"identifier"`
+	Configs    DevicePostureIntegrationConfigArrayOutput `pulumi:"configs"`
+	Identifier pulumi.StringPtrOutput                    `pulumi:"identifier"`
 	// Indicates the frequency with which to poll the third-party API.
 	// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
 	Interval pulumi.StringPtrOutput `pulumi:"interval"`
@@ -114,10 +112,8 @@ type devicePostureIntegrationState struct {
 	// The account to which the device posture integration should be added.
 	AccountId *string `pulumi:"accountId"`
 	// The device posture integration's connection authorization parameters.
-	Configs []DevicePostureIntegrationConfig `pulumi:"configs"`
-	// ID of the device posture integration.
-	Id         *string `pulumi:"id"`
-	Identifier *string `pulumi:"identifier"`
+	Configs    []DevicePostureIntegrationConfig `pulumi:"configs"`
+	Identifier *string                          `pulumi:"identifier"`
 	// Indicates the frequency with which to poll the third-party API.
 	// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
 	Interval *string `pulumi:"interval"`
@@ -131,9 +127,7 @@ type DevicePostureIntegrationState struct {
 	// The account to which the device posture integration should be added.
 	AccountId pulumi.StringPtrInput
 	// The device posture integration's connection authorization parameters.
-	Configs DevicePostureIntegrationConfigArrayInput
-	// ID of the device posture integration.
-	Id         pulumi.StringPtrInput
+	Configs    DevicePostureIntegrationConfigArrayInput
 	Identifier pulumi.StringPtrInput
 	// Indicates the frequency with which to poll the third-party API.
 	// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.

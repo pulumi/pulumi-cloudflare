@@ -22,7 +22,7 @@ class AccessRuleArgs:
         """
         The set of arguments for constructing a AccessRule resource.
         :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: Rule configuration to apply to a matched request. It's a complex value. See description below.
-        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
         """
@@ -49,7 +49,7 @@ class AccessRuleArgs:
     @pulumi.getter
     def mode(self) -> pulumi.Input[str]:
         """
-        The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         """
         return pulumi.get(self, "mode")
 
@@ -92,7 +92,7 @@ class _AccessRuleState:
         """
         Input properties used for looking up and filtering AccessRule resources.
         :param pulumi.Input['AccessRuleConfigurationArgs'] configuration: Rule configuration to apply to a matched request. It's a complex value. See description below.
-        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
         """
@@ -121,7 +121,7 @@ class _AccessRuleState:
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
-        The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         """
         return pulumi.get(self, "mode")
 
@@ -184,7 +184,7 @@ class AccessRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AccessRuleConfigurationArgs']] configuration: Rule configuration to apply to a matched request. It's a complex value. See description below.
-        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
         """
@@ -272,7 +272,7 @@ class AccessRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AccessRuleConfigurationArgs']] configuration: Rule configuration to apply to a matched request. It's a complex value. See description below.
-        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        :param pulumi.Input[str] mode: The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access rule should be added.
         """
@@ -298,7 +298,7 @@ class AccessRule(pulumi.CustomResource):
     @pulumi.getter
     def mode(self) -> pulumi.Output[str]:
         """
-        The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         """
         return pulumi.get(self, "mode")
 
