@@ -31,7 +31,7 @@ type AccessRule struct {
 
 	// Rule configuration to apply to a matched request. It's a complex value. See description below.
 	Configuration AccessRuleConfigurationOutput `pulumi:"configuration"`
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
@@ -76,7 +76,7 @@ func GetAccessRule(ctx *pulumi.Context,
 type accessRuleState struct {
 	// Rule configuration to apply to a matched request. It's a complex value. See description below.
 	Configuration *AccessRuleConfiguration `pulumi:"configuration"`
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
 	Mode *string `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes *string `pulumi:"notes"`
@@ -87,7 +87,7 @@ type accessRuleState struct {
 type AccessRuleState struct {
 	// Rule configuration to apply to a matched request. It's a complex value. See description below.
 	Configuration AccessRuleConfigurationPtrInput
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
 	Mode pulumi.StringPtrInput
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrInput
@@ -102,7 +102,7 @@ func (AccessRuleState) ElementType() reflect.Type {
 type accessRuleArgs struct {
 	// Rule configuration to apply to a matched request. It's a complex value. See description below.
 	Configuration AccessRuleConfiguration `pulumi:"configuration"`
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
 	Mode string `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes *string `pulumi:"notes"`
@@ -114,7 +114,7 @@ type accessRuleArgs struct {
 type AccessRuleArgs struct {
 	// Rule configuration to apply to a matched request. It's a complex value. See description below.
 	Configuration AccessRuleConfigurationInput
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge"
+	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
 	Mode pulumi.StringInput
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrInput

@@ -17,10 +17,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// List of parameters that define how Cloudflare tracks the request rate for this rule.
         /// </summary>
         public readonly ImmutableArray<string> Characteristics;
-        /// <summary>
-        /// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
-        /// </summary>
-        public readonly string? MitigationExpression;
+        public readonly string? CountingExpression;
         /// <summary>
         /// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
         /// </summary>
@@ -38,7 +35,7 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRuleRatelimit(
             ImmutableArray<string> characteristics,
 
-            string? mitigationExpression,
+            string? countingExpression,
 
             int? mitigationTimeout,
 
@@ -47,7 +44,7 @@ namespace Pulumi.Cloudflare.Outputs
             int? requestsPerPeriod)
         {
             Characteristics = characteristics;
-            MitigationExpression = mitigationExpression;
+            CountingExpression = countingExpression;
             MitigationTimeout = mitigationTimeout;
             Period = period;
             RequestsPerPeriod = requestsPerPeriod;

@@ -4,6 +4,64 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a resource which customizes Cloudflare zone cache variants.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.ZoneCacheVariants("example", {
+ *     avifs: [
+ *         "image/avif",
+ *         "image/webp",
+ *     ],
+ *     bmps: [
+ *         "image/bmp",
+ *         "image/webp",
+ *     ],
+ *     gifs: [
+ *         "image/gif",
+ *         "image/webp",
+ *     ],
+ *     jp2s: [
+ *         "image/jp2",
+ *         "image/webp",
+ *     ],
+ *     jpegs: [
+ *         "image/jpeg",
+ *         "image/webp",
+ *     ],
+ *     jpgs: [
+ *         "image/jpg",
+ *         "image/webp",
+ *     ],
+ *     jpg2s: [
+ *         "image/jpg2",
+ *         "image/webp",
+ *     ],
+ *     pngs: [
+ *         "image/png",
+ *         "image/webp",
+ *     ],
+ *     tifs: [
+ *         "image/tif",
+ *         "image/webp",
+ *     ],
+ *     tiffs: [
+ *         "image/tiff",
+ *         "image/webp",
+ *     ],
+ *     webps: [
+ *         "image/jpeg",
+ *         "image/webp",
+ *     ],
+ *     zoneId: "7df50664b7f90274f4d77cdfee701380",
+ * });
+ * ```
+ */
 export class ZoneCacheVariants extends pulumi.CustomResource {
     /**
      * Get an existing ZoneCacheVariants resource's state with the given name, ID, and optional extra
@@ -32,17 +90,53 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZoneCacheVariants.__pulumiType;
     }
 
+    /**
+     * List of strings with the MIME types of all the variants that should be served for avif
+     */
     public readonly avifs!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for bmp
+     */
     public readonly bmps!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for gif
+     */
     public readonly gifs!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jp2
+     */
     public readonly jp2s!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpeg
+     */
     public readonly jpegs!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpg2
+     */
     public readonly jpg2s!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpg
+     */
     public readonly jpgs!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for png
+     */
     public readonly pngs!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for tiff
+     */
     public readonly tiffs!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for tif
+     */
     public readonly tifs!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for webp
+     */
     public readonly webps!: pulumi.Output<string[] | undefined>;
+    /**
+     * The ID of the DNS zone in which to apply the cache variants setting
+     */
     public readonly zoneId!: pulumi.Output<string>;
 
     /**
@@ -97,17 +191,53 @@ export class ZoneCacheVariants extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZoneCacheVariants resources.
  */
 export interface ZoneCacheVariantsState {
+    /**
+     * List of strings with the MIME types of all the variants that should be served for avif
+     */
     avifs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for bmp
+     */
     bmps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for gif
+     */
     gifs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jp2
+     */
     jp2s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpeg
+     */
     jpegs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpg2
+     */
     jpg2s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpg
+     */
     jpgs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for png
+     */
     pngs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for tiff
+     */
     tiffs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for tif
+     */
     tifs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for webp
+     */
     webps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the DNS zone in which to apply the cache variants setting
+     */
     zoneId?: pulumi.Input<string>;
 }
 
@@ -115,16 +245,52 @@ export interface ZoneCacheVariantsState {
  * The set of arguments for constructing a ZoneCacheVariants resource.
  */
 export interface ZoneCacheVariantsArgs {
+    /**
+     * List of strings with the MIME types of all the variants that should be served for avif
+     */
     avifs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for bmp
+     */
     bmps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for gif
+     */
     gifs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jp2
+     */
     jp2s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpeg
+     */
     jpegs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpg2
+     */
     jpg2s?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for jpg
+     */
     jpgs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for png
+     */
     pngs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for tiff
+     */
     tiffs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for tif
+     */
     tifs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of strings with the MIME types of all the variants that should be served for webp
+     */
     webps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The ID of the DNS zone in which to apply the cache variants setting
+     */
     zoneId: pulumi.Input<string>;
 }

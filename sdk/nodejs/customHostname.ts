@@ -64,6 +64,10 @@ export class CustomHostname extends pulumi.CustomResource {
      */
     public readonly customOriginServer!: pulumi.Output<string | undefined>;
     /**
+     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     */
+    public readonly customOriginSni!: pulumi.Output<string | undefined>;
+    /**
      * Hostname you intend to request a certificate for.
      */
     public readonly hostname!: pulumi.Output<string>;
@@ -93,6 +97,7 @@ export class CustomHostname extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CustomHostnameState | undefined;
             resourceInputs["customOriginServer"] = state ? state.customOriginServer : undefined;
+            resourceInputs["customOriginSni"] = state ? state.customOriginSni : undefined;
             resourceInputs["hostname"] = state ? state.hostname : undefined;
             resourceInputs["ownershipVerification"] = state ? state.ownershipVerification : undefined;
             resourceInputs["ownershipVerificationHttp"] = state ? state.ownershipVerificationHttp : undefined;
@@ -108,6 +113,7 @@ export class CustomHostname extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["customOriginServer"] = args ? args.customOriginServer : undefined;
+            resourceInputs["customOriginSni"] = args ? args.customOriginSni : undefined;
             resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["ssls"] = args ? args.ssls : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -128,6 +134,10 @@ export interface CustomHostnameState {
      * The custom origin server used for certificates.
      */
     customOriginServer?: pulumi.Input<string>;
+    /**
+     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     */
+    customOriginSni?: pulumi.Input<string>;
     /**
      * Hostname you intend to request a certificate for.
      */
@@ -153,6 +163,10 @@ export interface CustomHostnameArgs {
      * The custom origin server used for certificates.
      */
     customOriginServer?: pulumi.Input<string>;
+    /**
+     * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+     */
+    customOriginSni?: pulumi.Input<string>;
     /**
      * Hostname you intend to request a certificate for.
      */

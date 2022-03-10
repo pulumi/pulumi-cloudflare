@@ -7217,8 +7217,8 @@ class RulesetRuleRatelimit(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "mitigationExpression":
-            suggest = "mitigation_expression"
+        if key == "countingExpression":
+            suggest = "counting_expression"
         elif key == "mitigationTimeout":
             suggest = "mitigation_timeout"
         elif key == "requestsPerPeriod":
@@ -7237,21 +7237,20 @@ class RulesetRuleRatelimit(dict):
 
     def __init__(__self__, *,
                  characteristics: Optional[Sequence[str]] = None,
-                 mitigation_expression: Optional[str] = None,
+                 counting_expression: Optional[str] = None,
                  mitigation_timeout: Optional[int] = None,
                  period: Optional[int] = None,
                  requests_per_period: Optional[int] = None):
         """
         :param Sequence[str] characteristics: List of parameters that define how Cloudflare tracks the request rate for this rule.
-        :param str mitigation_expression: Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
         :param int mitigation_timeout: Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
         :param int period: The period of time to consider (in seconds) when evaluating the request rate.
         :param int requests_per_period: The number of requests over the period of time that will trigger the Rate Limiting rule.
         """
         if characteristics is not None:
             pulumi.set(__self__, "characteristics", characteristics)
-        if mitigation_expression is not None:
-            pulumi.set(__self__, "mitigation_expression", mitigation_expression)
+        if counting_expression is not None:
+            pulumi.set(__self__, "counting_expression", counting_expression)
         if mitigation_timeout is not None:
             pulumi.set(__self__, "mitigation_timeout", mitigation_timeout)
         if period is not None:
@@ -7268,12 +7267,9 @@ class RulesetRuleRatelimit(dict):
         return pulumi.get(self, "characteristics")
 
     @property
-    @pulumi.getter(name="mitigationExpression")
-    def mitigation_expression(self) -> Optional[str]:
-        """
-        Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
-        """
-        return pulumi.get(self, "mitigation_expression")
+    @pulumi.getter(name="countingExpression")
+    def counting_expression(self) -> Optional[str]:
+        return pulumi.get(self, "counting_expression")
 
     @property
     @pulumi.getter(name="mitigationTimeout")
@@ -7863,6 +7859,8 @@ class TeamsRuleRuleSettings(dict):
             suggest = "block_page_reason"
         elif key == "checkSession":
             suggest = "check_session"
+        elif key == "insecureDisableDnssecValidation":
+            suggest = "insecure_disable_dnssec_validation"
         elif key == "overrideHost":
             suggest = "override_host"
         elif key == "overrideIps":
@@ -7885,6 +7883,7 @@ class TeamsRuleRuleSettings(dict):
                  block_page_enabled: Optional[bool] = None,
                  block_page_reason: Optional[str] = None,
                  check_session: Optional['outputs.TeamsRuleRuleSettingsCheckSession'] = None,
+                 insecure_disable_dnssec_validation: Optional[bool] = None,
                  l4override: Optional['outputs.TeamsRuleRuleSettingsL4override'] = None,
                  override_host: Optional[str] = None,
                  override_ips: Optional[Sequence[str]] = None):
@@ -7894,6 +7893,7 @@ class TeamsRuleRuleSettings(dict):
         :param bool block_page_enabled: Indicator of block page enablement.
         :param str block_page_reason: The displayed reason for a user being blocked.
         :param 'TeamsRuleRuleSettingsCheckSessionArgs' check_session: Configure how session check behaves (refer to the nested schema).
+        :param bool insecure_disable_dnssec_validation: Disable DNSSEC validation (must be Allow rule)
         :param 'TeamsRuleRuleSettingsL4overrideArgs' l4override: Settings to forward layer 4 traffic (refer to the nested schema).
         :param str override_host: The host to override matching DNS queries with.
         :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
@@ -7908,6 +7908,8 @@ class TeamsRuleRuleSettings(dict):
             pulumi.set(__self__, "block_page_reason", block_page_reason)
         if check_session is not None:
             pulumi.set(__self__, "check_session", check_session)
+        if insecure_disable_dnssec_validation is not None:
+            pulumi.set(__self__, "insecure_disable_dnssec_validation", insecure_disable_dnssec_validation)
         if l4override is not None:
             pulumi.set(__self__, "l4override", l4override)
         if override_host is not None:
@@ -7954,6 +7956,14 @@ class TeamsRuleRuleSettings(dict):
         Configure how session check behaves (refer to the nested schema).
         """
         return pulumi.get(self, "check_session")
+
+    @property
+    @pulumi.getter(name="insecureDisableDnssecValidation")
+    def insecure_disable_dnssec_validation(self) -> Optional[bool]:
+        """
+        Disable DNSSEC validation (must be Allow rule)
+        """
+        return pulumi.get(self, "insecure_disable_dnssec_validation")
 
     @property
     @pulumi.getter

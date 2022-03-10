@@ -67,12 +67,6 @@ namespace Pulumi.Cloudflare
         [Output("configs")]
         public Output<ImmutableArray<Outputs.DevicePostureIntegrationConfig>> Configs { get; private set; } = null!;
 
-        /// <summary>
-        /// ID of the device posture integration.
-        /// </summary>
-        [Output("id")]
-        public Output<string> Id { get; private set; } = null!;
-
         [Output("identifier")]
         public Output<string?> Identifier { get; private set; } = null!;
 
@@ -205,12 +199,6 @@ namespace Pulumi.Cloudflare
             get => _configs ?? (_configs = new InputList<Inputs.DevicePostureIntegrationConfigGetArgs>());
             set => _configs = value;
         }
-
-        /// <summary>
-        /// ID of the device posture integration.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
 
         [Input("identifier")]
         public Input<string>? Identifier { get; set; }

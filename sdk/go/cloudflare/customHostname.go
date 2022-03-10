@@ -54,6 +54,8 @@ type CustomHostname struct {
 
 	// The custom origin server used for certificates.
 	CustomOriginServer pulumi.StringPtrOutput `pulumi:"customOriginServer"`
+	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+	CustomOriginSni pulumi.StringPtrOutput `pulumi:"customOriginSni"`
 	// Hostname you intend to request a certificate for.
 	Hostname                  pulumi.StringOutput    `pulumi:"hostname"`
 	OwnershipVerification     pulumi.StringMapOutput `pulumi:"ownershipVerification"`
@@ -102,6 +104,8 @@ func GetCustomHostname(ctx *pulumi.Context,
 type customHostnameState struct {
 	// The custom origin server used for certificates.
 	CustomOriginServer *string `pulumi:"customOriginServer"`
+	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+	CustomOriginSni *string `pulumi:"customOriginSni"`
 	// Hostname you intend to request a certificate for.
 	Hostname                  *string           `pulumi:"hostname"`
 	OwnershipVerification     map[string]string `pulumi:"ownershipVerification"`
@@ -116,6 +120,8 @@ type customHostnameState struct {
 type CustomHostnameState struct {
 	// The custom origin server used for certificates.
 	CustomOriginServer pulumi.StringPtrInput
+	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+	CustomOriginSni pulumi.StringPtrInput
 	// Hostname you intend to request a certificate for.
 	Hostname                  pulumi.StringPtrInput
 	OwnershipVerification     pulumi.StringMapInput
@@ -134,6 +140,8 @@ func (CustomHostnameState) ElementType() reflect.Type {
 type customHostnameArgs struct {
 	// The custom origin server used for certificates.
 	CustomOriginServer *string `pulumi:"customOriginServer"`
+	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+	CustomOriginSni *string `pulumi:"customOriginSni"`
 	// Hostname you intend to request a certificate for.
 	Hostname string `pulumi:"hostname"`
 	// SSL configuration of the certificate. See further notes below.
@@ -146,6 +154,8 @@ type customHostnameArgs struct {
 type CustomHostnameArgs struct {
 	// The custom origin server used for certificates.
 	CustomOriginServer pulumi.StringPtrInput
+	// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+	CustomOriginSni pulumi.StringPtrInput
 	// Hostname you intend to request a certificate for.
 	Hostname pulumi.StringInput
 	// SSL configuration of the certificate. See further notes below.

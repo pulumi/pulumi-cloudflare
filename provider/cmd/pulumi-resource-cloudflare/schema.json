@@ -5481,9 +5481,8 @@
                         }
                     }
                 },
-                "mitigationExpression": {
+                "countingExpression": {
                     "type": "string",
-                    "description": "Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5973,6 +5972,15 @@
                 "checkSession": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsCheckSession:TeamsRuleRuleSettingsCheckSession",
                     "description": "Configure how session check behaves (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "insecureDisableDnssecValidation": {
+                    "type": "boolean",
+                    "description": "Disable DNSSEC validation (must be Allow rule)\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -9127,7 +9135,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"whitelist\", \"js_challenge\"\n"
+                    "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"whitelist\", \"js_challenge\", \"managed_challenge\"\n"
                 },
                 "notes": {
                     "type": "string",
@@ -9150,7 +9158,7 @@
                 },
                 "mode": {
                     "type": "string",
-                    "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"whitelist\", \"js_challenge\"\n"
+                    "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"whitelist\", \"js_challenge\", \"managed_challenge\"\n"
                 },
                 "notes": {
                     "type": "string",
@@ -9174,7 +9182,7 @@
                     },
                     "mode": {
                         "type": "string",
-                        "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"whitelist\", \"js_challenge\"\n"
+                        "description": "The action to apply to a matched request. Allowed values: \"block\", \"challenge\", \"whitelist\", \"js_challenge\", \"managed_challenge\"\n"
                     },
                     "notes": {
                         "type": "string",
@@ -9959,6 +9967,10 @@
                     "type": "string",
                     "description": "The custom origin server used for certificates.\n"
                 },
+                "customOriginSni": {
+                    "type": "string",
+                    "description": "The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.\n"
+                },
                 "hostname": {
                     "type": "string",
                     "description": "Hostname you intend to request a certificate for.\n"
@@ -10002,6 +10014,10 @@
                     "type": "string",
                     "description": "The custom origin server used for certificates.\n"
                 },
+                "customOriginSni": {
+                    "type": "string",
+                    "description": "The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.\n"
+                },
                 "hostname": {
                     "type": "string",
                     "description": "Hostname you intend to request a certificate for.\n"
@@ -10028,6 +10044,10 @@
                     "customOriginServer": {
                         "type": "string",
                         "description": "The custom origin server used for certificates.\n"
+                    },
+                    "customOriginSni": {
+                        "type": "string",
+                        "description": "The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.\n"
                     },
                     "hostname": {
                         "type": "string",
@@ -10332,10 +10352,6 @@
                     },
                     "description": "The device posture integration's connection authorization parameters.\n"
                 },
-                "id": {
-                    "type": "string",
-                    "description": "ID of the device posture integration.\n"
-                },
                 "identifier": {
                     "type": "string"
                 },
@@ -10354,7 +10370,6 @@
             },
             "required": [
                 "accountId",
-                "id",
                 "name",
                 "type"
             ],
@@ -10404,10 +10419,6 @@
                             "$ref": "#/types/cloudflare:index/DevicePostureIntegrationConfig:DevicePostureIntegrationConfig"
                         },
                         "description": "The device posture integration's connection authorization parameters.\n"
-                    },
-                    "id": {
-                        "type": "string",
-                        "description": "ID of the device posture integration.\n"
                     },
                     "identifier": {
                         "type": "string"
@@ -15278,7 +15289,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.\n"
+                    "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.\n"
                 },
                 "status": {
                     "type": "string",
@@ -15329,7 +15340,7 @@
                 },
                 "plan": {
                     "type": "string",
-                    "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.\n"
+                    "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.\n"
                 },
                 "type": {
                     "type": "string",
@@ -15374,7 +15385,7 @@
                     },
                     "plan": {
                         "type": "string",
-                        "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`.\n"
+                        "description": "The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`, `partners_workers_ss`, `image_resizing_enterprise`.\n"
                     },
                     "status": {
                         "type": "string",
@@ -15409,75 +15420,88 @@
             }
         },
         "cloudflare:index/zoneCacheVariants:ZoneCacheVariants": {
+            "description": "Provides a resource which customizes Cloudflare zone cache variants.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ZoneCacheVariants(\"example\", {\n    avifs: [\n        \"image/avif\",\n        \"image/webp\",\n    ],\n    bmps: [\n        \"image/bmp\",\n        \"image/webp\",\n    ],\n    gifs: [\n        \"image/gif\",\n        \"image/webp\",\n    ],\n    jp2s: [\n        \"image/jp2\",\n        \"image/webp\",\n    ],\n    jpegs: [\n        \"image/jpeg\",\n        \"image/webp\",\n    ],\n    jpgs: [\n        \"image/jpg\",\n        \"image/webp\",\n    ],\n    jpg2s: [\n        \"image/jpg2\",\n        \"image/webp\",\n    ],\n    pngs: [\n        \"image/png\",\n        \"image/webp\",\n    ],\n    tifs: [\n        \"image/tif\",\n        \"image/webp\",\n    ],\n    tiffs: [\n        \"image/tiff\",\n        \"image/webp\",\n    ],\n    webps: [\n        \"image/jpeg\",\n        \"image/webp\",\n    ],\n    zoneId: \"7df50664b7f90274f4d77cdfee701380\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ZoneCacheVariants(\"example\",\n    avifs=[\n        \"image/avif\",\n        \"image/webp\",\n    ],\n    bmps=[\n        \"image/bmp\",\n        \"image/webp\",\n    ],\n    gifs=[\n        \"image/gif\",\n        \"image/webp\",\n    ],\n    jp2s=[\n        \"image/jp2\",\n        \"image/webp\",\n    ],\n    jpegs=[\n        \"image/jpeg\",\n        \"image/webp\",\n    ],\n    jpgs=[\n        \"image/jpg\",\n        \"image/webp\",\n    ],\n    jpg2s=[\n        \"image/jpg2\",\n        \"image/webp\",\n    ],\n    pngs=[\n        \"image/png\",\n        \"image/webp\",\n    ],\n    tifs=[\n        \"image/tif\",\n        \"image/webp\",\n    ],\n    tiffs=[\n        \"image/tiff\",\n        \"image/webp\",\n    ],\n    webps=[\n        \"image/jpeg\",\n        \"image/webp\",\n    ],\n    zone_id=\"7df50664b7f90274f4d77cdfee701380\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.ZoneCacheVariants(\"example\", new Cloudflare.ZoneCacheVariantsArgs\n        {\n            Avifs = \n            {\n                \"image/avif\",\n                \"image/webp\",\n            },\n            Bmps = \n            {\n                \"image/bmp\",\n                \"image/webp\",\n            },\n            Gifs = \n            {\n                \"image/gif\",\n                \"image/webp\",\n            },\n            Jp2s = \n            {\n                \"image/jp2\",\n                \"image/webp\",\n            },\n            Jpegs = \n            {\n                \"image/jpeg\",\n                \"image/webp\",\n            },\n            Jpgs = \n            {\n                \"image/jpg\",\n                \"image/webp\",\n            },\n            Jpg2s = \n            {\n                \"image/jpg2\",\n                \"image/webp\",\n            },\n            Pngs = \n            {\n                \"image/png\",\n                \"image/webp\",\n            },\n            Tifs = \n            {\n                \"image/tif\",\n                \"image/webp\",\n            },\n            Tiffs = \n            {\n                \"image/tiff\",\n                \"image/webp\",\n            },\n            Webps = \n            {\n                \"image/jpeg\",\n                \"image/webp\",\n            },\n            ZoneId = \"7df50664b7f90274f4d77cdfee701380\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZoneCacheVariants(ctx, \"example\", \u0026cloudflare.ZoneCacheVariantsArgs{\n\t\t\tAvifs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/avif\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tBmps: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/bmp\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tGifs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/gif\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tJp2s: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/jp2\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tJpegs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/jpeg\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tJpgs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/jpg\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tJpg2s: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/jpg2\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tPngs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/png\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tTifs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/tif\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tTiffs: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/tiff\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tWebps: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"image/jpeg\"),\n\t\t\t\tpulumi.String(\"image/webp\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"7df50664b7f90274f4d77cdfee701380\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "avifs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for avif\n"
                 },
                 "bmps": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for bmp\n"
                 },
                 "gifs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for gif\n"
                 },
                 "jp2s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for jp2\n"
                 },
                 "jpegs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for jpeg\n"
                 },
                 "jpg2s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for jpg2\n"
                 },
                 "jpgs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for jpg\n"
                 },
                 "pngs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for png\n"
                 },
                 "tiffs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for tiff\n"
                 },
                 "tifs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for tif\n"
                 },
                 "webps": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for webp\n"
                 },
                 "zoneId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the DNS zone in which to apply the cache variants setting\n"
                 }
             },
             "required": [
@@ -15488,70 +15512,82 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for avif\n"
                 },
                 "bmps": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for bmp\n"
                 },
                 "gifs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for gif\n"
                 },
                 "jp2s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for jp2\n"
                 },
                 "jpegs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for jpeg\n"
                 },
                 "jpg2s": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for jpg2\n"
                 },
                 "jpgs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for jpg\n"
                 },
                 "pngs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for png\n"
                 },
                 "tiffs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for tiff\n"
                 },
                 "tifs": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for tif\n"
                 },
                 "webps": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "List of strings with the MIME types of all the variants that should be served for webp\n"
                 },
                 "zoneId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The ID of the DNS zone in which to apply the cache variants setting\n"
                 }
             },
             "requiredInputs": [
@@ -15564,70 +15600,82 @@
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for avif\n"
                     },
                     "bmps": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for bmp\n"
                     },
                     "gifs": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for gif\n"
                     },
                     "jp2s": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for jp2\n"
                     },
                     "jpegs": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for jpeg\n"
                     },
                     "jpg2s": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for jpg2\n"
                     },
                     "jpgs": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for jpg\n"
                     },
                     "pngs": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for png\n"
                     },
                     "tiffs": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for tiff\n"
                     },
                     "tifs": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for tif\n"
                     },
                     "webps": {
                         "type": "array",
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "description": "List of strings with the MIME types of all the variants that should be served for webp\n"
                     },
                     "zoneId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The ID of the DNS zone in which to apply the cache variants setting\n"
                     }
                 },
                 "type": "object"

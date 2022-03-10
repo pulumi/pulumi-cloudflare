@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.AccessRuleConfiguration> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccessRuleConfigurationArgs> Configuration { get; set; } = null!;
 
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.AccessRuleConfigurationGetArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge"
+        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }

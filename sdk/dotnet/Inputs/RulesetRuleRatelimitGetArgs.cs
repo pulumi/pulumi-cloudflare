@@ -24,11 +24,8 @@ namespace Pulumi.Cloudflare.Inputs
             set => _characteristics = value;
         }
 
-        /// <summary>
-        /// Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
-        /// </summary>
-        [Input("mitigationExpression")]
-        public Input<string>? MitigationExpression { get; set; }
+        [Input("countingExpression")]
+        public Input<string>? CountingExpression { get; set; }
 
         /// <summary>
         /// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.

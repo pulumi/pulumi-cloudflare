@@ -18,18 +18,22 @@ class CustomHostnameArgs:
                  hostname: pulumi.Input[str],
                  zone_id: pulumi.Input[str],
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
+                 custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None):
         """
         The set of arguments for constructing a CustomHostname resource.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
         :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
+        :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate. See further notes below.
         """
         pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "zone_id", zone_id)
         if custom_origin_server is not None:
             pulumi.set(__self__, "custom_origin_server", custom_origin_server)
+        if custom_origin_sni is not None:
+            pulumi.set(__self__, "custom_origin_sni", custom_origin_sni)
         if ssls is not None:
             pulumi.set(__self__, "ssls", ssls)
 
@@ -70,6 +74,18 @@ class CustomHostnameArgs:
         pulumi.set(self, "custom_origin_server", value)
 
     @property
+    @pulumi.getter(name="customOriginSni")
+    def custom_origin_sni(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        """
+        return pulumi.get(self, "custom_origin_sni")
+
+    @custom_origin_sni.setter
+    def custom_origin_sni(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_origin_sni", value)
+
+    @property
     @pulumi.getter
     def ssls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]]:
         """
@@ -86,6 +102,7 @@ class CustomHostnameArgs:
 class _CustomHostnameState:
     def __init__(__self__, *,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
+                 custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ownership_verification: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ownership_verification_http: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -95,12 +112,15 @@ class _CustomHostnameState:
         """
         Input properties used for looking up and filtering CustomHostname resources.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
+        :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
         :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL configuration of the certificate. See further notes below.
         :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
         """
         if custom_origin_server is not None:
             pulumi.set(__self__, "custom_origin_server", custom_origin_server)
+        if custom_origin_sni is not None:
+            pulumi.set(__self__, "custom_origin_sni", custom_origin_sni)
         if hostname is not None:
             pulumi.set(__self__, "hostname", hostname)
         if ownership_verification is not None:
@@ -125,6 +145,18 @@ class _CustomHostnameState:
     @custom_origin_server.setter
     def custom_origin_server(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_origin_server", value)
+
+    @property
+    @pulumi.getter(name="customOriginSni")
+    def custom_origin_sni(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        """
+        return pulumi.get(self, "custom_origin_sni")
+
+    @custom_origin_sni.setter
+    def custom_origin_sni(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_origin_sni", value)
 
     @property
     @pulumi.getter
@@ -196,6 +228,7 @@ class CustomHostname(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
+                 custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ssls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -228,6 +261,7 @@ class CustomHostname(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
+        :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate. See further notes below.
         :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
@@ -279,6 +313,7 @@ class CustomHostname(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_origin_server: Optional[pulumi.Input[str]] = None,
+                 custom_origin_sni: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  ssls: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -295,6 +330,7 @@ class CustomHostname(pulumi.CustomResource):
             __props__ = CustomHostnameArgs.__new__(CustomHostnameArgs)
 
             __props__.__dict__["custom_origin_server"] = custom_origin_server
+            __props__.__dict__["custom_origin_sni"] = custom_origin_sni
             if hostname is None and not opts.urn:
                 raise TypeError("Missing required property 'hostname'")
             __props__.__dict__["hostname"] = hostname
@@ -316,6 +352,7 @@ class CustomHostname(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_origin_server: Optional[pulumi.Input[str]] = None,
+            custom_origin_sni: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             ownership_verification: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             ownership_verification_http: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -330,6 +367,7 @@ class CustomHostname(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_origin_server: The custom origin server used for certificates.
+        :param pulumi.Input[str] custom_origin_sni: The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
         :param pulumi.Input[str] hostname: Hostname you intend to request a certificate for.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomHostnameSslArgs']]]] ssls: SSL configuration of the certificate. See further notes below.
         :param pulumi.Input[str] zone_id: The DNS zone ID where the custom hostname should be assigned.
@@ -339,6 +377,7 @@ class CustomHostname(pulumi.CustomResource):
         __props__ = _CustomHostnameState.__new__(_CustomHostnameState)
 
         __props__.__dict__["custom_origin_server"] = custom_origin_server
+        __props__.__dict__["custom_origin_sni"] = custom_origin_sni
         __props__.__dict__["hostname"] = hostname
         __props__.__dict__["ownership_verification"] = ownership_verification
         __props__.__dict__["ownership_verification_http"] = ownership_verification_http
@@ -354,6 +393,14 @@ class CustomHostname(pulumi.CustomResource):
         The custom origin server used for certificates.
         """
         return pulumi.get(self, "custom_origin_server")
+
+    @property
+    @pulumi.getter(name="customOriginSni")
+    def custom_origin_sni(self) -> pulumi.Output[Optional[str]]:
+        """
+        The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+        """
+        return pulumi.get(self, "custom_origin_sni")
 
     @property
     @pulumi.getter

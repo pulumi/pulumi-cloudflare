@@ -72,10 +72,6 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
      * The device posture integration's connection authorization parameters.
      */
     public readonly configs!: pulumi.Output<outputs.DevicePostureIntegrationConfig[] | undefined>;
-    /**
-     * ID of the device posture integration.
-     */
-    public /*out*/ readonly id!: pulumi.Output<string>;
     public readonly identifier!: pulumi.Output<string | undefined>;
     /**
      * Indicates the frequency with which to poll the third-party API.
@@ -106,7 +102,6 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
             const state = argsOrState as DevicePostureIntegrationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["id"] = state ? state.id : undefined;
             resourceInputs["identifier"] = state ? state.identifier : undefined;
             resourceInputs["interval"] = state ? state.interval : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -128,7 +123,6 @@ export class DevicePostureIntegration extends pulumi.CustomResource {
             resourceInputs["interval"] = args ? args.interval : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["id"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DevicePostureIntegration.__pulumiType, name, resourceInputs, opts);
@@ -147,10 +141,6 @@ export interface DevicePostureIntegrationState {
      * The device posture integration's connection authorization parameters.
      */
     configs?: pulumi.Input<pulumi.Input<inputs.DevicePostureIntegrationConfig>[]>;
-    /**
-     * ID of the device posture integration.
-     */
-    id?: pulumi.Input<string>;
     identifier?: pulumi.Input<string>;
     /**
      * Indicates the frequency with which to poll the third-party API.

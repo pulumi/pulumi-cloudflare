@@ -34,6 +34,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsCheckSession? CheckSession;
         /// <summary>
+        /// Disable DNSSEC validation (must be Allow rule)
+        /// </summary>
+        public readonly bool? InsecureDisableDnssecValidation;
+        /// <summary>
         /// Settings to forward layer 4 traffic (refer to the nested schema).
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsL4override? L4override;
@@ -58,6 +62,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsRuleRuleSettingsCheckSession? checkSession,
 
+            bool? insecureDisableDnssecValidation,
+
             Outputs.TeamsRuleRuleSettingsL4override? l4override,
 
             string? overrideHost,
@@ -69,6 +75,7 @@ namespace Pulumi.Cloudflare.Outputs
             BlockPageEnabled = blockPageEnabled;
             BlockPageReason = blockPageReason;
             CheckSession = checkSession;
+            InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
             L4override = l4override;
             OverrideHost = overrideHost;
             OverrideIps = overrideIps;

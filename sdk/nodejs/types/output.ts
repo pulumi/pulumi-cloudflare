@@ -1784,10 +1784,7 @@ export interface RulesetRuleRatelimit {
      * List of parameters that define how Cloudflare tracks the request rate for this rule.
      */
     characteristics?: string[];
-    /**
-     * Scope of the mitigation action. Allows you to specify an action scope different from the rule scope. Refer to the [rate limiting parameters documentation](https://developers.cloudflare.com/firewall/cf-rulesets/custom-rules/rate-limiting/parameters) for full details.
-     */
-    mitigationExpression?: string;
+    countingExpression?: string;
     /**
      * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
      */
@@ -1969,6 +1966,10 @@ export interface TeamsRuleRuleSettings {
      * Configure how session check behaves (refer to the nested schema).
      */
     checkSession?: outputs.TeamsRuleRuleSettingsCheckSession;
+    /**
+     * Disable DNSSEC validation (must be Allow rule)
+     */
+    insecureDisableDnssecValidation?: boolean;
     /**
      * Settings to forward layer 4 traffic (refer to the nested schema).
      */

@@ -116,7 +116,6 @@ class _DevicePostureIntegrationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  configs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -125,7 +124,6 @@ class _DevicePostureIntegrationState:
         Input properties used for looking up and filtering DevicePostureIntegration resources.
         :param pulumi.Input[str] account_id: The account to which the device posture integration should be added.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]] configs: The device posture integration's connection authorization parameters.
-        :param pulumi.Input[str] id: ID of the device posture integration.
         :param pulumi.Input[str] interval: Indicates the frequency with which to poll the third-party API.
                Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
         :param pulumi.Input[str] name: Name of the device posture integration.
@@ -135,8 +133,6 @@ class _DevicePostureIntegrationState:
             pulumi.set(__self__, "account_id", account_id)
         if configs is not None:
             pulumi.set(__self__, "configs", configs)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if identifier is not None:
             pulumi.set(__self__, "identifier", identifier)
         if interval is not None:
@@ -169,18 +165,6 @@ class _DevicePostureIntegrationState:
     @configs.setter
     def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]]):
         pulumi.set(self, "configs", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        ID of the device posture integration.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -361,7 +345,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-            __props__.__dict__["id"] = None
         super(DevicePostureIntegration, __self__).__init__(
             'cloudflare:index/devicePostureIntegration:DevicePostureIntegration',
             resource_name,
@@ -374,7 +357,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureIntegrationConfigArgs']]]]] = None,
-            id: Optional[pulumi.Input[str]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             interval: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -388,7 +370,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the device posture integration should be added.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureIntegrationConfigArgs']]]] configs: The device posture integration's connection authorization parameters.
-        :param pulumi.Input[str] id: ID of the device posture integration.
         :param pulumi.Input[str] interval: Indicates the frequency with which to poll the third-party API.
                Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
         :param pulumi.Input[str] name: Name of the device posture integration.
@@ -400,7 +381,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["configs"] = configs
-        __props__.__dict__["id"] = id
         __props__.__dict__["identifier"] = identifier
         __props__.__dict__["interval"] = interval
         __props__.__dict__["name"] = name
@@ -422,14 +402,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
         The device posture integration's connection authorization parameters.
         """
         return pulumi.get(self, "configs")
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Output[str]:
-        """
-        ID of the device posture integration.
-        """
-        return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
