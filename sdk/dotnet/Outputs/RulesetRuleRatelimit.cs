@@ -17,6 +17,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// List of parameters that define how Cloudflare tracks the request rate for this rule.
         /// </summary>
         public readonly ImmutableArray<string> Characteristics;
+        /// <summary>
+        /// Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// </summary>
         public readonly string? CountingExpression;
         /// <summary>
         /// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
@@ -30,6 +33,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The number of requests over the period of time that will trigger the Rate Limiting rule.
         /// </summary>
         public readonly int? RequestsPerPeriod;
+        /// <summary>
+        /// Whether to include requests to origin within the Rate Limiting count.
+        /// </summary>
+        public readonly bool? RequestsToOrigin;
 
         [OutputConstructor]
         private RulesetRuleRatelimit(
@@ -41,13 +48,16 @@ namespace Pulumi.Cloudflare.Outputs
 
             int? period,
 
-            int? requestsPerPeriod)
+            int? requestsPerPeriod,
+
+            bool? requestsToOrigin)
         {
             Characteristics = characteristics;
             CountingExpression = countingExpression;
             MitigationTimeout = mitigationTimeout;
             Period = period;
             RequestsPerPeriod = requestsPerPeriod;
+            RequestsToOrigin = requestsToOrigin;
         }
     }
 }

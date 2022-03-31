@@ -78,6 +78,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? DisableSecurity;
         /// <summary>
+        /// Boolean of whether this action is enabled. Default: false.
+        /// </summary>
+        public readonly bool? DisableZaraz;
+        /// <summary>
         /// The Time To Live for the edge cache.
         /// </summary>
         public readonly int? EdgeCacheTtl;
@@ -196,6 +200,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? disableSecurity,
 
+            bool? disableZaraz,
+
             int? edgeCacheTtl,
 
             string? emailObfuscation,
@@ -254,6 +260,7 @@ namespace Pulumi.Cloudflare.Outputs
             DisablePerformance = disablePerformance;
             DisableRailgun = disableRailgun;
             DisableSecurity = disableSecurity;
+            DisableZaraz = disableZaraz;
             EdgeCacheTtl = edgeCacheTtl;
             EmailObfuscation = emailObfuscation;
             ExplicitCacheControl = explicitCacheControl;

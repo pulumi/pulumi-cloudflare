@@ -715,21 +715,6 @@ export interface GetWafPackagesFilterArgs {
     sensitivity?: pulumi.Input<string>;
 }
 
-export interface GetWafRulesFilter {
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
-    description?: string;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
-    groupId?: string;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
-    mode?: string;
-}
-
 export interface GetWafRulesFilterArgs {
     /**
      * A regular expression matching the description of the WAF Rules to lookup.
@@ -743,6 +728,21 @@ export interface GetWafRulesFilterArgs {
      * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
     mode?: pulumi.Input<string>;
+}
+
+export interface GetWafRulesFilter {
+    /**
+     * A regular expression matching the description of the WAF Rules to lookup.
+     */
+    description?: string;
+    /**
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
+     */
+    groupId?: string;
+    /**
+     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+     */
+    mode?: string;
 }
 
 export interface GetZonesFilterArgs {
@@ -1129,6 +1129,10 @@ export interface PageRuleActions {
      */
     disableSecurity?: pulumi.Input<boolean>;
     /**
+     * Boolean of whether this action is enabled. Default: false.
+     */
+    disableZaraz?: pulumi.Input<boolean>;
+    /**
      * The Time To Live for the edge cache.
      */
     edgeCacheTtl?: pulumi.Input<number>;
@@ -1468,7 +1472,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1530,6 +1534,10 @@ export interface RulesetRuleActionParameters {
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * List of parameters that configure the response given to end users (refer to the nested schema).
+     */
+    responses?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersResponse>[]>;
+    /**
      * List of rule-based overrides (refer to the nested schema).
      */
     rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -1576,7 +1584,7 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOverrides {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1595,7 +1603,7 @@ export interface RulesetRuleActionParametersOverrides {
 
 export interface RulesetRuleActionParametersOverridesCategory {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1610,7 +1618,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -1629,6 +1637,21 @@ export interface RulesetRuleActionParametersOverridesRule {
      * Sensitivity level for a ruleset rule override.
      */
     sensitivityLevel?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersResponse {
+    /**
+     * Body content to include in the response.
+     */
+    content?: pulumi.Input<string>;
+    /**
+     * HTTP content type to send in the response.
+     */
+    contentType?: pulumi.Input<string>;
+    /**
+     * HTTP status code to send in the response.
+     */
+    statusCode?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersUri {
@@ -1681,6 +1704,9 @@ export interface RulesetRuleRatelimit {
      * List of parameters that define how Cloudflare tracks the request rate for this rule.
      */
     characteristics?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     */
     countingExpression?: pulumi.Input<string>;
     /**
      * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
@@ -1694,6 +1720,10 @@ export interface RulesetRuleRatelimit {
      * The number of requests over the period of time that will trigger the Rate Limiting rule.
      */
     requestsPerPeriod?: pulumi.Input<number>;
+    /**
+     * Whether to include requests to origin within the Rate Limiting count.
+     */
+    requestsToOrigin?: pulumi.Input<boolean>;
 }
 
 export interface SpectrumApplicationDns {

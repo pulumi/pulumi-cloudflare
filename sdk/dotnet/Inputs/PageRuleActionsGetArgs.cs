@@ -115,6 +115,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? DisableSecurity { get; set; }
 
         /// <summary>
+        /// Boolean of whether this action is enabled. Default: false.
+        /// </summary>
+        [Input("disableZaraz")]
+        public Input<bool>? DisableZaraz { get; set; }
+
+        /// <summary>
         /// The Time To Live for the edge cache.
         /// </summary>
         [Input("edgeCacheTtl")]

@@ -26,6 +26,7 @@ from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
+from .device_policy_certificates import *
 from .device_posture_integration import *
 from .device_posture_rule import *
 from .fallback_domain import *
@@ -68,12 +69,14 @@ from .static_route import *
 from .teams_account import *
 from .teams_list import *
 from .teams_location import *
+from .teams_proxy_endpoint import *
 from .teams_rule import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
 from .waf_rule import *
 from .waiting_room import *
+from .waiting_room_event import *
 from .worker_cron_trigger import *
 from .worker_route import *
 from .worker_script import *
@@ -263,6 +266,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/customSsl:CustomSsl": "CustomSsl"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/devicePolicyCertificates",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates": "DevicePolicyCertificates"
   }
  },
  {
@@ -499,6 +510,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/teamsProxyEndpoint",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint": "TeamsProxyEndpoint"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/teamsRule",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -543,6 +562,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/waitingRoom:WaitingRoom": "WaitingRoom"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/waitingRoomEvent",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/waitingRoomEvent:WaitingRoomEvent": "WaitingRoomEvent"
   }
  },
  {

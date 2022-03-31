@@ -3886,6 +3886,15 @@
                         }
                     }
                 },
+                "disableZaraz": {
+                    "type": "boolean",
+                    "description": "Boolean of whether this action is enabled. Default: false.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "edgeCacheTtl": {
                     "type": "integer",
                     "description": "The Time To Live for the edge cache.\n",
@@ -4946,7 +4955,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or `\"skip\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5123,6 +5132,18 @@
                         }
                     }
                 },
+                "responses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersResponse:RulesetRuleActionParametersResponse"
+                    },
+                    "description": "List of parameters that configure the response given to end users (refer to the nested schema).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "rules": {
                     "type": "object",
                     "additionalProperties": {
@@ -5242,7 +5263,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or `\"skip\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5289,7 +5310,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or `\"skip\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5321,7 +5342,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or  `\"skip\"`.\n",
+                    "description": "Action to perform in the rule-level override. Valid values are `\"block\"`, `\"challenge\"`, `\"ddos_dynamic\"`, `\"execute\"`, `\"force_connection_close\"`, `\"js_challenge\"`, `\"managed_challenge\"`, `\"log\"`, `\"rewrite\"`, `\"score\"`, or `\"skip\"`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5358,6 +5379,38 @@
                 "sensitivityLevel": {
                     "type": "string",
                     "description": "Sensitivity level for a ruleset rule override.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/RulesetRuleActionParametersResponse:RulesetRuleActionParametersResponse": {
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "description": "Body content to include in the response.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "contentType": {
+                    "type": "string",
+                    "description": "HTTP content type to send in the response.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "description": "HTTP status code to send in the response.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5483,6 +5536,7 @@
                 },
                 "countingExpression": {
                     "type": "string",
+                    "description": "Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -5510,6 +5564,15 @@
                 "requestsPerPeriod": {
                     "type": "integer",
                     "description": "The number of requests over the period of time that will trigger the Rate Limiting rule.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestsToOrigin": {
+                    "type": "boolean",
+                    "description": "Whether to include requests to origin within the Rate Limiting count.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -10338,6 +10401,51 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates": {
+            "description": "Provides a Cloudflare device policy certificates resource. Device policy certificate resources enable client device certificate generation.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.DevicePolicyCertificates(\"example\", {\n    enabled: true,\n    zoneId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.DevicePolicyCertificates(\"example\",\n    enabled=True,\n    zone_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new Cloudflare.DevicePolicyCertificates(\"example\", new Cloudflare.DevicePolicyCertificatesArgs\n        {\n            Enabled = true,\n            ZoneId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDevicePolicyCertificates(ctx, \"example\", \u0026cloudflare.DevicePolicyCertificatesArgs{\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t\tZoneId:  pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDevice policy certificate settings can be imported using the zone ID.\n\n```sh\n $ pulumi import cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates example cb029e245cfdd66dc8d2e570d5dd3322\n```\n\n ",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "True if certificate generation is enabled.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID where certificate generation is allowed.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "True if certificate generation is enabled.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID where certificate generation is allowed.\n"
+                }
+            },
+            "requiredInputs": [
+                "enabled",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DevicePolicyCertificates resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "True if certificate generation is enabled.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID where certificate generation is allowed.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/devicePostureIntegration:DevicePostureIntegration": {
             "description": "Provides a Cloudflare Device Posture Integration resource. Device posture integrations configure third-party data providers for device posture rules.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst thirdPartyDevicesPostureIntegration = new cloudflare.DevicePostureIntegration(\"third_party_devices_posture_integration\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    configs: [{\n        apiUrl: \"https://example.com/api\",\n        authUrl: \"https://example.com/connect/token\",\n        clientId: \"client-id\",\n        clientSecret: \"client-secret\",\n    }],\n    interval: \"24h\",\n    name: \"Device posture integration\",\n    type: \"workspace_one\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nthird_party_devices_posture_integration = cloudflare.DevicePostureIntegration(\"thirdPartyDevicesPostureIntegration\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    configs=[cloudflare.DevicePostureIntegrationConfigArgs(\n        api_url=\"https://example.com/api\",\n        auth_url=\"https://example.com/connect/token\",\n        client_id=\"client-id\",\n        client_secret=\"client-secret\",\n    )],\n    interval=\"24h\",\n    name=\"Device posture integration\",\n    type=\"workspace_one\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var thirdPartyDevicesPostureIntegration = new Cloudflare.DevicePostureIntegration(\"thirdPartyDevicesPostureIntegration\", new Cloudflare.DevicePostureIntegrationArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Configs = \n            {\n                new Cloudflare.Inputs.DevicePostureIntegrationConfigArgs\n                {\n                    ApiUrl = \"https://example.com/api\",\n                    AuthUrl = \"https://example.com/connect/token\",\n                    ClientId = \"client-id\",\n                    ClientSecret = \"client-secret\",\n                },\n            },\n            Interval = \"24h\",\n            Name = \"Device posture integration\",\n            Type = \"workspace_one\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDevicePostureIntegration(ctx, \"thirdPartyDevicesPostureIntegration\", \u0026cloudflare.DevicePostureIntegrationArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tConfigs: DevicePostureIntegrationConfigArray{\n\t\t\t\t\u0026DevicePostureIntegrationConfigArgs{\n\t\t\t\t\tApiUrl:       pulumi.String(\"https://example.com/api\"),\n\t\t\t\t\tAuthUrl:      pulumi.String(\"https://example.com/connect/token\"),\n\t\t\t\t\tClientId:     pulumi.String(\"client-id\"),\n\t\t\t\t\tClientSecret: pulumi.String(\"client-secret\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tInterval: pulumi.String(\"24h\"),\n\t\t\tName:     pulumi.String(\"Device posture integration\"),\n\t\t\tType:     pulumi.String(\"workspace_one\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDevice posture integrations can be imported using a composite ID formed of account ID and device posture integration ID.\n\n```sh\n $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration corporate_devices cb029e245cfdd66dc8d2e570d5dd3322/0ade592a-62d6-46ab-bac8-01f47c7fa792\n```\n\n ",
             "properties": {
@@ -13521,6 +13629,7 @@
             },
             "required": [
                 "dns",
+                "edgeIpConnectivity",
                 "protocol",
                 "zoneId"
             ],
@@ -14202,6 +14311,83 @@
                         "items": {
                             "type": "string"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint": {
+            "description": "Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy Endpoints are used for pointing proxy clients at\nCloudflare Secure Gateway.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst corporateOffice = new cloudflare.TeamsProxyEndpoint(\"corporate_office\", {\n    accountId: \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    ips: [\"192.0.2.0/24\"],\n    name: \"office\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\ncorporate_office = cloudflare.TeamsProxyEndpoint(\"corporateOffice\",\n    account_id=\"1d5fdc9e88c8a8c4518b068cd94331fe\",\n    ips=[\"192.0.2.0/24\"],\n    name=\"office\")\n```\n```csharp\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var corporateOffice = new Cloudflare.TeamsProxyEndpoint(\"corporateOffice\", new Cloudflare.TeamsProxyEndpointArgs\n        {\n            AccountId = \"1d5fdc9e88c8a8c4518b068cd94331fe\",\n            Ips = \n            {\n                \"192.0.2.0/24\",\n            },\n            Name = \"office\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsProxyEndpoint(ctx, \"corporateOffice\", \u0026cloudflare.TeamsProxyEndpointArgs{\n\t\t\tAccountId: pulumi.String(\"1d5fdc9e88c8a8c4518b068cd94331fe\"),\n\t\t\tIps: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"192.0.2.0/24\"),\n\t\t\t},\n\t\t\tName: pulumi.String(\"office\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nTeams Proxy Endpoints can be imported using a composite ID formed of account ID and teams proxy_endpoint ID.\n\n```sh\n $ pulumi import cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint corporate_office cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the teams proxy endpoint should be added.\n"
+                },
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The networks CIDRs that will be allowed to initiate proxy connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the teams proxy endpoint.\n"
+                },
+                "subdomain": {
+                    "type": "string",
+                    "description": "The FQDN that proxy clients should be pointed at.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "ips",
+                "name",
+                "subdomain"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account to which the teams proxy endpoint should be added.\n"
+                },
+                "ips": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The networks CIDRs that will be allowed to initiate proxy connections.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the teams proxy endpoint.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "ips",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering TeamsProxyEndpoint resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account to which the teams proxy endpoint should be added.\n"
+                    },
+                    "ips": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The networks CIDRs that will be allowed to initiate proxy connections.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the teams proxy endpoint.\n"
+                    },
+                    "subdomain": {
+                        "type": "string",
+                        "description": "The FQDN that proxy clients should be pointed at.\n"
                     }
                 },
                 "type": "object"
@@ -14940,6 +15126,227 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The DNS zone ID to apply to.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/waitingRoomEvent:WaitingRoomEvent": {
+            "description": "Provides a Cloudflare Waiting Room Event resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.WaitingRoomVent(\"example\", {\n    eventEndTime: \"2006-01-02T20:04:05Z\",\n    eventStartTime: \"2006-01-02T15:04:05Z\",\n    name: \"foo\",\n    waitingRoomId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    zoneId: \"ae36f999674d196762efcc5abb06b345\",\n});\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nWaiting room events can be imported using a composite ID formed of zone ID, waiting room ID, and waiting room event ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e/25756b2dfe6e378a06b033b670413757\n```\n\n where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - waiting room ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-waiting-rooms) * `25756b2dfe6e378a06b033b670413757` - waiting room event ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-events) ",
+            "properties": {
+                "createdOn": {
+                    "type": "string"
+                },
+                "customPageHtml": {
+                    "type": "string",
+                    "description": "This a templated html file that will be rendered at the edge.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description to let users add more details about the waiting room event.\n"
+                },
+                "disableSessionRenewal": {
+                    "type": "boolean",
+                    "description": "Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.\n"
+                },
+                "eventEndTime": {
+                    "type": "string",
+                    "description": "ISO 8601 timestamp that marks the end of the event.\n"
+                },
+                "eventStartTime": {
+                    "type": "string",
+                    "description": "ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.\n"
+                },
+                "modifiedOn": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.\n"
+                },
+                "newUsersPerMinute": {
+                    "type": "integer",
+                    "description": "The number of new users that will be let into the route every minute.\n"
+                },
+                "prequeueStartTime": {
+                    "type": "string",
+                    "description": "ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.\n"
+                },
+                "queueingMethod": {
+                    "type": "string",
+                    "description": "The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.\n"
+                },
+                "sessionDuration": {
+                    "type": "integer",
+                    "description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5\n"
+                },
+                "shuffleAtEventStart": {
+                    "type": "boolean",
+                    "description": "Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Default: false.\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "If suspended, the traffic doesn't go to the waiting room. Default: false.\n"
+                },
+                "totalActiveUsers": {
+                    "type": "integer",
+                    "description": "The total number of active user sessions on the route at a point in time.\n"
+                },
+                "waitingRoomId": {
+                    "type": "string",
+                    "description": "The Waiting Room ID the event should apply to.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID to apply to.\n"
+                }
+            },
+            "required": [
+                "createdOn",
+                "eventEndTime",
+                "eventStartTime",
+                "modifiedOn",
+                "name",
+                "waitingRoomId",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "customPageHtml": {
+                    "type": "string",
+                    "description": "This a templated html file that will be rendered at the edge.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description to let users add more details about the waiting room event.\n"
+                },
+                "disableSessionRenewal": {
+                    "type": "boolean",
+                    "description": "Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.\n"
+                },
+                "eventEndTime": {
+                    "type": "string",
+                    "description": "ISO 8601 timestamp that marks the end of the event.\n"
+                },
+                "eventStartTime": {
+                    "type": "string",
+                    "description": "ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.\n"
+                },
+                "newUsersPerMinute": {
+                    "type": "integer",
+                    "description": "The number of new users that will be let into the route every minute.\n"
+                },
+                "prequeueStartTime": {
+                    "type": "string",
+                    "description": "ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.\n"
+                },
+                "queueingMethod": {
+                    "type": "string",
+                    "description": "The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.\n"
+                },
+                "sessionDuration": {
+                    "type": "integer",
+                    "description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5\n"
+                },
+                "shuffleAtEventStart": {
+                    "type": "boolean",
+                    "description": "Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Default: false.\n"
+                },
+                "suspended": {
+                    "type": "boolean",
+                    "description": "If suspended, the traffic doesn't go to the waiting room. Default: false.\n"
+                },
+                "totalActiveUsers": {
+                    "type": "integer",
+                    "description": "The total number of active user sessions on the route at a point in time.\n"
+                },
+                "waitingRoomId": {
+                    "type": "string",
+                    "description": "The Waiting Room ID the event should apply to.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone ID to apply to.\n"
+                }
+            },
+            "requiredInputs": [
+                "eventEndTime",
+                "eventStartTime",
+                "name",
+                "waitingRoomId",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WaitingRoomEvent resources.\n",
+                "properties": {
+                    "createdOn": {
+                        "type": "string"
+                    },
+                    "customPageHtml": {
+                        "type": "string",
+                        "description": "This a templated html file that will be rendered at the edge.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description to let users add more details about the waiting room event.\n"
+                    },
+                    "disableSessionRenewal": {
+                        "type": "boolean",
+                        "description": "Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.\n"
+                    },
+                    "eventEndTime": {
+                        "type": "string",
+                        "description": "ISO 8601 timestamp that marks the end of the event.\n"
+                    },
+                    "eventStartTime": {
+                        "type": "string",
+                        "description": "ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.\n"
+                    },
+                    "modifiedOn": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.\n"
+                    },
+                    "newUsersPerMinute": {
+                        "type": "integer",
+                        "description": "The number of new users that will be let into the route every minute.\n"
+                    },
+                    "prequeueStartTime": {
+                        "type": "string",
+                        "description": "ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.\n"
+                    },
+                    "queueingMethod": {
+                        "type": "string",
+                        "description": "The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.\n"
+                    },
+                    "sessionDuration": {
+                        "type": "integer",
+                        "description": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5\n"
+                    },
+                    "shuffleAtEventStart": {
+                        "type": "boolean",
+                        "description": "Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Default: false.\n"
+                    },
+                    "suspended": {
+                        "type": "boolean",
+                        "description": "If suspended, the traffic doesn't go to the waiting room. Default: false.\n"
+                    },
+                    "totalActiveUsers": {
+                        "type": "integer",
+                        "description": "The total number of active user sessions on the route at a point in time.\n"
+                    },
+                    "waitingRoomId": {
+                        "type": "string",
+                        "description": "The Waiting Room ID the event should apply to.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone ID to apply to.\n"
                     }
                 },
                 "type": "object"

@@ -723,7 +723,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="edgeIpConnectivity")
-    def edge_ip_connectivity(self) -> pulumi.Output[Optional[str]]:
+    def edge_ip_connectivity(self) -> pulumi.Output[str]:
         """
         . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
         """
