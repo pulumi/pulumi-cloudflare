@@ -36,6 +36,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Products;
         /// <summary>
+        /// List of parameters that configure the response given to end users (refer to the nested schema).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponse> Responses;
+        /// <summary>
         /// List of rule-based overrides (refer to the nested schema).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Rules;
@@ -69,6 +73,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> products,
 
+            ImmutableArray<Outputs.RulesetRuleActionParametersResponse> responses,
+
             ImmutableDictionary<string, string>? rules,
 
             string? ruleset,
@@ -86,6 +92,7 @@ namespace Pulumi.Cloudflare.Outputs
             Overrides = overrides;
             Phases = phases;
             Products = products;
+            Responses = responses;
             Rules = rules;
             Ruleset = ruleset;
             Rulesets = rulesets;

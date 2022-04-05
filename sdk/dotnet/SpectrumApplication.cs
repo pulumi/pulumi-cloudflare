@@ -72,7 +72,7 @@ namespace Pulumi.Cloudflare
         /// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
         /// </summary>
         [Output("edgeIpConnectivity")]
-        public Output<string?> EdgeIpConnectivity { get; private set; } = null!;
+        public Output<string> EdgeIpConnectivity { get; private set; } = null!;
 
         /// <summary>
         /// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.

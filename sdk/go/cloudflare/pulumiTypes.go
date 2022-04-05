@@ -9032,6 +9032,8 @@ type PageRuleActions struct {
 	DisableRailgun *bool `pulumi:"disableRailgun"`
 	// Boolean of whether this action is enabled. Default: false.
 	DisableSecurity *bool `pulumi:"disableSecurity"`
+	// Boolean of whether this action is enabled. Default: false.
+	DisableZaraz *bool `pulumi:"disableZaraz"`
 	// The Time To Live for the edge cache.
 	EdgeCacheTtl *int `pulumi:"edgeCacheTtl"`
 	// Whether this action is `"on"` or `"off"`.
@@ -9120,6 +9122,8 @@ type PageRuleActionsArgs struct {
 	DisableRailgun pulumi.BoolPtrInput `pulumi:"disableRailgun"`
 	// Boolean of whether this action is enabled. Default: false.
 	DisableSecurity pulumi.BoolPtrInput `pulumi:"disableSecurity"`
+	// Boolean of whether this action is enabled. Default: false.
+	DisableZaraz pulumi.BoolPtrInput `pulumi:"disableZaraz"`
 	// The Time To Live for the edge cache.
 	EdgeCacheTtl pulumi.IntPtrInput `pulumi:"edgeCacheTtl"`
 	// Whether this action is `"on"` or `"off"`.
@@ -9319,6 +9323,11 @@ func (o PageRuleActionsOutput) DisableRailgun() pulumi.BoolPtrOutput {
 // Boolean of whether this action is enabled. Default: false.
 func (o PageRuleActionsOutput) DisableSecurity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PageRuleActions) *bool { return v.DisableSecurity }).(pulumi.BoolPtrOutput)
+}
+
+// Boolean of whether this action is enabled. Default: false.
+func (o PageRuleActionsOutput) DisableZaraz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PageRuleActions) *bool { return v.DisableZaraz }).(pulumi.BoolPtrOutput)
 }
 
 // The Time To Live for the edge cache.
@@ -9607,6 +9616,16 @@ func (o PageRuleActionsPtrOutput) DisableSecurity() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.DisableSecurity
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Boolean of whether this action is enabled. Default: false.
+func (o PageRuleActionsPtrOutput) DisableZaraz() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PageRuleActions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableZaraz
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -12925,7 +12944,7 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 }
 
 type RulesetRule struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 	Action *string `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
 	ActionParameters *RulesetRuleActionParameters `pulumi:"actionParameters"`
@@ -12958,7 +12977,7 @@ type RulesetRuleInput interface {
 }
 
 type RulesetRuleArgs struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
 	ActionParameters RulesetRuleActionParametersPtrInput `pulumi:"actionParameters"`
@@ -13030,7 +13049,7 @@ func (o RulesetRuleOutput) ToRulesetRuleOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 func (o RulesetRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -13112,6 +13131,8 @@ type RulesetRuleActionParameters struct {
 	Phases    []string                              `pulumi:"phases"`
 	// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 	Products []string `pulumi:"products"`
+	// List of parameters that configure the response given to end users (refer to the nested schema).
+	Responses []RulesetRuleActionParametersResponse `pulumi:"responses"`
 	// List of rule-based overrides (refer to the nested schema).
 	Rules map[string]string `pulumi:"rules"`
 	// Which ruleset ID to target.
@@ -13147,6 +13168,8 @@ type RulesetRuleActionParametersArgs struct {
 	Phases    pulumi.StringArrayInput                      `pulumi:"phases"`
 	// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 	Products pulumi.StringArrayInput `pulumi:"products"`
+	// List of parameters that configure the response given to end users (refer to the nested schema).
+	Responses RulesetRuleActionParametersResponseArrayInput `pulumi:"responses"`
 	// List of rule-based overrides (refer to the nested schema).
 	Rules pulumi.StringMapInput `pulumi:"rules"`
 	// Which ruleset ID to target.
@@ -13268,6 +13291,11 @@ func (o RulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
 }
 
+// List of parameters that configure the response given to end users (refer to the nested schema).
+func (o RulesetRuleActionParametersOutput) Responses() RulesetRuleActionParametersResponseArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersResponse { return v.Responses }).(RulesetRuleActionParametersResponseArrayOutput)
+}
+
 // List of rule-based overrides (refer to the nested schema).
 func (o RulesetRuleActionParametersOutput) Rules() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) map[string]string { return v.Rules }).(pulumi.StringMapOutput)
@@ -13382,6 +13410,16 @@ func (o RulesetRuleActionParametersPtrOutput) Products() pulumi.StringArrayOutpu
 		}
 		return v.Products
 	}).(pulumi.StringArrayOutput)
+}
+
+// List of parameters that configure the response given to end users (refer to the nested schema).
+func (o RulesetRuleActionParametersPtrOutput) Responses() RulesetRuleActionParametersResponseArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []RulesetRuleActionParametersResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Responses
+	}).(RulesetRuleActionParametersResponseArrayOutput)
 }
 
 // List of rule-based overrides (refer to the nested schema).
@@ -13695,7 +13733,7 @@ func (o RulesetRuleActionParametersMatchedDataPtrOutput) PublicKey() pulumi.Stri
 }
 
 type RulesetRuleActionParametersOverrides struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 	Action *string `pulumi:"action"`
 	// List of tag-based overrides (refer to the nested schema).
 	Categories []RulesetRuleActionParametersOverridesCategory `pulumi:"categories"`
@@ -13717,7 +13755,7 @@ type RulesetRuleActionParametersOverridesInput interface {
 }
 
 type RulesetRuleActionParametersOverridesArgs struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of tag-based overrides (refer to the nested schema).
 	Categories RulesetRuleActionParametersOverridesCategoryArrayInput `pulumi:"categories"`
@@ -13804,7 +13842,7 @@ func (o RulesetRuleActionParametersOverridesOutput) ToRulesetRuleActionParameter
 	}).(RulesetRuleActionParametersOverridesPtrOutput)
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 func (o RulesetRuleActionParametersOverridesOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverrides) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -13852,7 +13890,7 @@ func (o RulesetRuleActionParametersOverridesPtrOutput) Elem() RulesetRuleActionP
 	}).(RulesetRuleActionParametersOverridesOutput)
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 func (o RulesetRuleActionParametersOverridesPtrOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParametersOverrides) *string {
 		if v == nil {
@@ -13893,7 +13931,7 @@ func (o RulesetRuleActionParametersOverridesPtrOutput) Rules() RulesetRuleAction
 }
 
 type RulesetRuleActionParametersOverridesCategory struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 	Action *string `pulumi:"action"`
 	// Tag name to apply the ruleset rule override to.
 	Category *string `pulumi:"category"`
@@ -13913,7 +13951,7 @@ type RulesetRuleActionParametersOverridesCategoryInput interface {
 }
 
 type RulesetRuleActionParametersOverridesCategoryArgs struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Tag name to apply the ruleset rule override to.
 	Category pulumi.StringPtrInput `pulumi:"category"`
@@ -13972,7 +14010,7 @@ func (o RulesetRuleActionParametersOverridesCategoryOutput) ToRulesetRuleActionP
 	return o
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 func (o RulesetRuleActionParametersOverridesCategoryOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesCategory) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -14008,7 +14046,7 @@ func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) Index(i pulumi.
 }
 
 type RulesetRuleActionParametersOverridesRule struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 	Action *string `pulumi:"action"`
 	// Defines if the current rule-level override enables or disables the rule.
 	Enabled *bool `pulumi:"enabled"`
@@ -14032,7 +14070,7 @@ type RulesetRuleActionParametersOverridesRuleInput interface {
 }
 
 type RulesetRuleActionParametersOverridesRuleArgs struct {
-	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+	// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Defines if the current rule-level override enables or disables the rule.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -14095,7 +14133,7 @@ func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParam
 	return o
 }
 
-// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
 func (o RulesetRuleActionParametersOverridesRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -14138,6 +14176,121 @@ func (o RulesetRuleActionParametersOverridesRuleArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersOverridesRule {
 		return vs[0].([]RulesetRuleActionParametersOverridesRule)[vs[1].(int)]
 	}).(RulesetRuleActionParametersOverridesRuleOutput)
+}
+
+type RulesetRuleActionParametersResponse struct {
+	// Body content to include in the response.
+	Content *string `pulumi:"content"`
+	// HTTP content type to send in the response.
+	ContentType *string `pulumi:"contentType"`
+	// HTTP status code to send in the response.
+	StatusCode *int `pulumi:"statusCode"`
+}
+
+// RulesetRuleActionParametersResponseInput is an input type that accepts RulesetRuleActionParametersResponseArgs and RulesetRuleActionParametersResponseOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersResponseInput` via:
+//
+//          RulesetRuleActionParametersResponseArgs{...}
+type RulesetRuleActionParametersResponseInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersResponseOutput() RulesetRuleActionParametersResponseOutput
+	ToRulesetRuleActionParametersResponseOutputWithContext(context.Context) RulesetRuleActionParametersResponseOutput
+}
+
+type RulesetRuleActionParametersResponseArgs struct {
+	// Body content to include in the response.
+	Content pulumi.StringPtrInput `pulumi:"content"`
+	// HTTP content type to send in the response.
+	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
+	// HTTP status code to send in the response.
+	StatusCode pulumi.IntPtrInput `pulumi:"statusCode"`
+}
+
+func (RulesetRuleActionParametersResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersResponse)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersResponseArgs) ToRulesetRuleActionParametersResponseOutput() RulesetRuleActionParametersResponseOutput {
+	return i.ToRulesetRuleActionParametersResponseOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersResponseArgs) ToRulesetRuleActionParametersResponseOutputWithContext(ctx context.Context) RulesetRuleActionParametersResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersResponseOutput)
+}
+
+// RulesetRuleActionParametersResponseArrayInput is an input type that accepts RulesetRuleActionParametersResponseArray and RulesetRuleActionParametersResponseArrayOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersResponseArrayInput` via:
+//
+//          RulesetRuleActionParametersResponseArray{ RulesetRuleActionParametersResponseArgs{...} }
+type RulesetRuleActionParametersResponseArrayInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersResponseArrayOutput() RulesetRuleActionParametersResponseArrayOutput
+	ToRulesetRuleActionParametersResponseArrayOutputWithContext(context.Context) RulesetRuleActionParametersResponseArrayOutput
+}
+
+type RulesetRuleActionParametersResponseArray []RulesetRuleActionParametersResponseInput
+
+func (RulesetRuleActionParametersResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersResponse)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersResponseArray) ToRulesetRuleActionParametersResponseArrayOutput() RulesetRuleActionParametersResponseArrayOutput {
+	return i.ToRulesetRuleActionParametersResponseArrayOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersResponseArray) ToRulesetRuleActionParametersResponseArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersResponseArrayOutput)
+}
+
+type RulesetRuleActionParametersResponseOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersResponse)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersResponseOutput) ToRulesetRuleActionParametersResponseOutput() RulesetRuleActionParametersResponseOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersResponseOutput) ToRulesetRuleActionParametersResponseOutputWithContext(ctx context.Context) RulesetRuleActionParametersResponseOutput {
+	return o
+}
+
+// Body content to include in the response.
+func (o RulesetRuleActionParametersResponseOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersResponse) *string { return v.Content }).(pulumi.StringPtrOutput)
+}
+
+// HTTP content type to send in the response.
+func (o RulesetRuleActionParametersResponseOutput) ContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersResponse) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+}
+
+// HTTP status code to send in the response.
+func (o RulesetRuleActionParametersResponseOutput) StatusCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersResponse) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
+}
+
+type RulesetRuleActionParametersResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RulesetRuleActionParametersResponse)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersResponseArrayOutput) ToRulesetRuleActionParametersResponseArrayOutput() RulesetRuleActionParametersResponseArrayOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersResponseArrayOutput) ToRulesetRuleActionParametersResponseArrayOutputWithContext(ctx context.Context) RulesetRuleActionParametersResponseArrayOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersResponseArrayOutput) Index(i pulumi.IntInput) RulesetRuleActionParametersResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesetRuleActionParametersResponse {
+		return vs[0].([]RulesetRuleActionParametersResponse)[vs[1].(int)]
+	}).(RulesetRuleActionParametersResponseOutput)
 }
 
 type RulesetRuleActionParametersUri struct {
@@ -14781,14 +14934,17 @@ func (o RulesetRuleExposedCredentialCheckPtrOutput) UsernameExpression() pulumi.
 
 type RulesetRuleRatelimit struct {
 	// List of parameters that define how Cloudflare tracks the request rate for this rule.
-	Characteristics    []string `pulumi:"characteristics"`
-	CountingExpression *string  `pulumi:"countingExpression"`
+	Characteristics []string `pulumi:"characteristics"`
+	// Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+	CountingExpression *string `pulumi:"countingExpression"`
 	// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
 	MitigationTimeout *int `pulumi:"mitigationTimeout"`
 	// The period of time to consider (in seconds) when evaluating the request rate.
 	Period *int `pulumi:"period"`
 	// The number of requests over the period of time that will trigger the Rate Limiting rule.
 	RequestsPerPeriod *int `pulumi:"requestsPerPeriod"`
+	// Whether to include requests to origin within the Rate Limiting count.
+	RequestsToOrigin *bool `pulumi:"requestsToOrigin"`
 }
 
 // RulesetRuleRatelimitInput is an input type that accepts RulesetRuleRatelimitArgs and RulesetRuleRatelimitOutput values.
@@ -14804,14 +14960,17 @@ type RulesetRuleRatelimitInput interface {
 
 type RulesetRuleRatelimitArgs struct {
 	// List of parameters that define how Cloudflare tracks the request rate for this rule.
-	Characteristics    pulumi.StringArrayInput `pulumi:"characteristics"`
-	CountingExpression pulumi.StringPtrInput   `pulumi:"countingExpression"`
+	Characteristics pulumi.StringArrayInput `pulumi:"characteristics"`
+	// Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+	CountingExpression pulumi.StringPtrInput `pulumi:"countingExpression"`
 	// Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
 	MitigationTimeout pulumi.IntPtrInput `pulumi:"mitigationTimeout"`
 	// The period of time to consider (in seconds) when evaluating the request rate.
 	Period pulumi.IntPtrInput `pulumi:"period"`
 	// The number of requests over the period of time that will trigger the Rate Limiting rule.
 	RequestsPerPeriod pulumi.IntPtrInput `pulumi:"requestsPerPeriod"`
+	// Whether to include requests to origin within the Rate Limiting count.
+	RequestsToOrigin pulumi.BoolPtrInput `pulumi:"requestsToOrigin"`
 }
 
 func (RulesetRuleRatelimitArgs) ElementType() reflect.Type {
@@ -14896,6 +15055,7 @@ func (o RulesetRuleRatelimitOutput) Characteristics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleRatelimit) []string { return v.Characteristics }).(pulumi.StringArrayOutput)
 }
 
+// Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
 func (o RulesetRuleRatelimitOutput) CountingExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleRatelimit) *string { return v.CountingExpression }).(pulumi.StringPtrOutput)
 }
@@ -14913,6 +15073,11 @@ func (o RulesetRuleRatelimitOutput) Period() pulumi.IntPtrOutput {
 // The number of requests over the period of time that will trigger the Rate Limiting rule.
 func (o RulesetRuleRatelimitOutput) RequestsPerPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RulesetRuleRatelimit) *int { return v.RequestsPerPeriod }).(pulumi.IntPtrOutput)
+}
+
+// Whether to include requests to origin within the Rate Limiting count.
+func (o RulesetRuleRatelimitOutput) RequestsToOrigin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) *bool { return v.RequestsToOrigin }).(pulumi.BoolPtrOutput)
 }
 
 type RulesetRuleRatelimitPtrOutput struct{ *pulumi.OutputState }
@@ -14949,6 +15114,7 @@ func (o RulesetRuleRatelimitPtrOutput) Characteristics() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
 func (o RulesetRuleRatelimitPtrOutput) CountingExpression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleRatelimit) *string {
 		if v == nil {
@@ -14986,6 +15152,16 @@ func (o RulesetRuleRatelimitPtrOutput) RequestsPerPeriod() pulumi.IntPtrOutput {
 		}
 		return v.RequestsPerPeriod
 	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to include requests to origin within the Rate Limiting count.
+func (o RulesetRuleRatelimitPtrOutput) RequestsToOrigin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleRatelimit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequestsToOrigin
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SpectrumApplicationDns struct {
@@ -22765,6 +22941,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesCategoryArrayInput)(nil)).Elem(), RulesetRuleActionParametersOverridesCategoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesRuleInput)(nil)).Elem(), RulesetRuleActionParametersOverridesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesRuleArrayInput)(nil)).Elem(), RulesetRuleActionParametersOverridesRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersResponseInput)(nil)).Elem(), RulesetRuleActionParametersResponseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersResponseArrayInput)(nil)).Elem(), RulesetRuleActionParametersResponseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriInput)(nil)).Elem(), RulesetRuleActionParametersUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriPathInput)(nil)).Elem(), RulesetRuleActionParametersUriPathArgs{})
@@ -23048,6 +23226,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesCategoryArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesRuleOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesRuleArrayOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersResponseOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersResponseArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriPathOutput{})

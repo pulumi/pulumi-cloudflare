@@ -26,6 +26,7 @@ export * from "./customHostname";
 export * from "./customHostnameFallbackOrigin";
 export * from "./customPages";
 export * from "./customSsl";
+export * from "./devicePolicyCertificates";
 export * from "./devicePostureIntegration";
 export * from "./devicePostureRule";
 export * from "./fallbackDomain";
@@ -68,12 +69,14 @@ export * from "./staticRoute";
 export * from "./teamsAccount";
 export * from "./teamsList";
 export * from "./teamsLocation";
+export * from "./teamsProxyEndpoint";
 export * from "./teamsRule";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
 export * from "./wafRule";
 export * from "./waitingRoom";
+export * from "./waitingRoomEvent";
 export * from "./workerCronTrigger";
 export * from "./workerRoute";
 export * from "./workerScript";
@@ -116,6 +119,7 @@ import { CustomHostname } from "./customHostname";
 import { CustomHostnameFallbackOrigin } from "./customHostnameFallbackOrigin";
 import { CustomPages } from "./customPages";
 import { CustomSsl } from "./customSsl";
+import { DevicePolicyCertificates } from "./devicePolicyCertificates";
 import { DevicePostureIntegration } from "./devicePostureIntegration";
 import { DevicePostureRule } from "./devicePostureRule";
 import { FallbackDomain } from "./fallbackDomain";
@@ -145,12 +149,14 @@ import { StaticRoute } from "./staticRoute";
 import { TeamsAccount } from "./teamsAccount";
 import { TeamsList } from "./teamsList";
 import { TeamsLocation } from "./teamsLocation";
+import { TeamsProxyEndpoint } from "./teamsProxyEndpoint";
 import { TeamsRule } from "./teamsRule";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
 import { WafRule } from "./wafRule";
 import { WaitingRoom } from "./waitingRoom";
+import { WaitingRoomEvent } from "./waitingRoomEvent";
 import { WorkerCronTrigger } from "./workerCronTrigger";
 import { WorkerRoute } from "./workerRoute";
 import { WorkerScript } from "./workerScript";
@@ -208,6 +214,8 @@ const _module = {
                 return new CustomPages(name, <any>undefined, { urn })
             case "cloudflare:index/customSsl:CustomSsl":
                 return new CustomSsl(name, <any>undefined, { urn })
+            case "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates":
+                return new DevicePolicyCertificates(name, <any>undefined, { urn })
             case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
                 return new DevicePostureIntegration(name, <any>undefined, { urn })
             case "cloudflare:index/devicePostureRule:DevicePostureRule":
@@ -266,6 +274,8 @@ const _module = {
                 return new TeamsList(name, <any>undefined, { urn })
             case "cloudflare:index/teamsLocation:TeamsLocation":
                 return new TeamsLocation(name, <any>undefined, { urn })
+            case "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint":
+                return new TeamsProxyEndpoint(name, <any>undefined, { urn })
             case "cloudflare:index/teamsRule:TeamsRule":
                 return new TeamsRule(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
@@ -278,6 +288,8 @@ const _module = {
                 return new WafRule(name, <any>undefined, { urn })
             case "cloudflare:index/waitingRoom:WaitingRoom":
                 return new WaitingRoom(name, <any>undefined, { urn })
+            case "cloudflare:index/waitingRoomEvent:WaitingRoomEvent":
+                return new WaitingRoomEvent(name, <any>undefined, { urn })
             case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
                 return new WorkerCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workerRoute:WorkerRoute":
@@ -324,6 +336,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _mod
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/devicePolicyCertificates", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureIntegration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePostureRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/fallbackDomain", _module)
@@ -353,12 +366,14 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/staticRoute", _module
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsAccount", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoom", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomEvent", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)

@@ -65,6 +65,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _products = value;
         }
 
+        [Input("responses")]
+        private InputList<Inputs.RulesetRuleActionParametersResponseArgs>? _responses;
+
+        /// <summary>
+        /// List of parameters that configure the response given to end users (refer to the nested schema).
+        /// </summary>
+        public InputList<Inputs.RulesetRuleActionParametersResponseArgs> Responses
+        {
+            get => _responses ?? (_responses = new InputList<Inputs.RulesetRuleActionParametersResponseArgs>());
+            set => _responses = value;
+        }
+
         [Input("rules")]
         private InputMap<string>? _rules;
 

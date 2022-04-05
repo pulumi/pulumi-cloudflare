@@ -62,6 +62,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
 		r = &CustomSsl{}
+	case "cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates":
+		r = &DevicePolicyCertificates{}
 	case "cloudflare:index/devicePostureIntegration:DevicePostureIntegration":
 		r = &DevicePostureIntegration{}
 	case "cloudflare:index/devicePostureRule:DevicePostureRule":
@@ -120,6 +122,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamsList{}
 	case "cloudflare:index/teamsLocation:TeamsLocation":
 		r = &TeamsLocation{}
+	case "cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint":
+		r = &TeamsProxyEndpoint{}
 	case "cloudflare:index/teamsRule:TeamsRule":
 		r = &TeamsRule{}
 	case "cloudflare:index/wafGroup:WafGroup":
@@ -132,6 +136,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WafRule{}
 	case "cloudflare:index/waitingRoom:WaitingRoom":
 		r = &WaitingRoom{}
+	case "cloudflare:index/waitingRoomEvent:WaitingRoomEvent":
+		r = &WaitingRoomEvent{}
 	case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
 		r = &WorkerCronTrigger{}
 	case "cloudflare:index/workerRoute:WorkerRoute":
@@ -290,6 +296,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/devicePolicyCertificates",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/devicePostureIntegration",
 		&module{version},
 	)
@@ -435,6 +446,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/teamsProxyEndpoint",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/teamsRule",
 		&module{version},
 	)
@@ -461,6 +477,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/waitingRoom",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/waitingRoomEvent",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

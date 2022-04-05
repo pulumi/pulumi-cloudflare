@@ -62,7 +62,7 @@ type SpectrumApplication struct {
 	// The name and type of DNS record for the Spectrum application. Fields documented below.
 	Dns SpectrumApplicationDnsOutput `pulumi:"dns"`
 	// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
-	EdgeIpConnectivity pulumi.StringPtrOutput `pulumi:"edgeIpConnectivity"`
+	EdgeIpConnectivity pulumi.StringOutput `pulumi:"edgeIpConnectivity"`
 	// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
 	EdgeIps pulumi.StringArrayOutput `pulumi:"edgeIps"`
 	// Enables the IP Firewall for this application. Defaults to `true`.

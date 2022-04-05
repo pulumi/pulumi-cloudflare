@@ -106,6 +106,7 @@ __all__ = [
     'RulesetRuleActionParametersOverrides',
     'RulesetRuleActionParametersOverridesCategory',
     'RulesetRuleActionParametersOverridesRule',
+    'RulesetRuleActionParametersResponse',
     'RulesetRuleActionParametersUri',
     'RulesetRuleActionParametersUriPath',
     'RulesetRuleActionParametersUriQuery',
@@ -4935,6 +4936,8 @@ class PageRuleActions(dict):
             suggest = "disable_railgun"
         elif key == "disableSecurity":
             suggest = "disable_security"
+        elif key == "disableZaraz":
+            suggest = "disable_zaraz"
         elif key == "edgeCacheTtl":
             suggest = "edge_cache_ttl"
         elif key == "emailObfuscation":
@@ -4996,6 +4999,7 @@ class PageRuleActions(dict):
                  disable_performance: Optional[bool] = None,
                  disable_railgun: Optional[bool] = None,
                  disable_security: Optional[bool] = None,
+                 disable_zaraz: Optional[bool] = None,
                  edge_cache_ttl: Optional[int] = None,
                  email_obfuscation: Optional[str] = None,
                  explicit_cache_control: Optional[str] = None,
@@ -5034,6 +5038,7 @@ class PageRuleActions(dict):
         :param bool disable_performance: Boolean of whether this action is enabled. Default: false.
         :param bool disable_railgun: Boolean of whether this action is enabled. Default: false.
         :param bool disable_security: Boolean of whether this action is enabled. Default: false.
+        :param bool disable_zaraz: Boolean of whether this action is enabled. Default: false.
         :param int edge_cache_ttl: The Time To Live for the edge cache.
         :param str email_obfuscation: Whether this action is `"on"` or `"off"`.
         :param str explicit_cache_control: Whether origin Cache-Control action is `"on"` or `"off"`.
@@ -5088,6 +5093,8 @@ class PageRuleActions(dict):
             pulumi.set(__self__, "disable_railgun", disable_railgun)
         if disable_security is not None:
             pulumi.set(__self__, "disable_security", disable_security)
+        if disable_zaraz is not None:
+            pulumi.set(__self__, "disable_zaraz", disable_zaraz)
         if edge_cache_ttl is not None:
             pulumi.set(__self__, "edge_cache_ttl", edge_cache_ttl)
         if email_obfuscation is not None:
@@ -5258,6 +5265,14 @@ class PageRuleActions(dict):
         Boolean of whether this action is enabled. Default: false.
         """
         return pulumi.get(self, "disable_security")
+
+    @property
+    @pulumi.getter(name="disableZaraz")
+    def disable_zaraz(self) -> Optional[bool]:
+        """
+        Boolean of whether this action is enabled. Default: false.
+        """
+        return pulumi.get(self, "disable_zaraz")
 
     @property
     @pulumi.getter(name="edgeCacheTtl")
@@ -6525,7 +6540,7 @@ class RulesetRule(dict):
         """
         :param str description: Brief summary of the ruleset rule and its intended use.
         :param str expression: Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
         :param 'RulesetRuleActionParametersArgs' action_parameters: List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
         :param 'RulesetRuleExposedCredentialCheckArgs' exposed_credential_check: List of parameters that configure exposed credential checks (refer to the nested schema).
@@ -6572,7 +6587,7 @@ class RulesetRule(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
         """
         return pulumi.get(self, "action")
 
@@ -6657,6 +6672,7 @@ class RulesetRuleActionParameters(dict):
                  overrides: Optional['outputs.RulesetRuleActionParametersOverrides'] = None,
                  phases: Optional[Sequence[str]] = None,
                  products: Optional[Sequence[str]] = None,
+                 responses: Optional[Sequence['outputs.RulesetRuleActionParametersResponse']] = None,
                  rules: Optional[Mapping[str, str]] = None,
                  ruleset: Optional[str] = None,
                  rulesets: Optional[Sequence[str]] = None,
@@ -6668,6 +6684,7 @@ class RulesetRuleActionParameters(dict):
         :param 'RulesetRuleActionParametersMatchedDataArgs' matched_data: List of properties to configure WAF payload logging (refer to the nested schema).
         :param 'RulesetRuleActionParametersOverridesArgs' overrides: List of override configurations to apply to the ruleset (refer to the nested schema).
         :param Sequence[str] products: Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+        :param Sequence['RulesetRuleActionParametersResponseArgs'] responses: List of parameters that configure the response given to end users (refer to the nested schema).
         :param Mapping[str, str] rules: List of rule-based overrides (refer to the nested schema).
         :param str ruleset: Which ruleset ID to target.
         :param Sequence[str] rulesets: List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
@@ -6687,6 +6704,8 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "phases", phases)
         if products is not None:
             pulumi.set(__self__, "products", products)
+        if responses is not None:
+            pulumi.set(__self__, "responses", responses)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
         if ruleset is not None:
@@ -6747,6 +6766,14 @@ class RulesetRuleActionParameters(dict):
         Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
         """
         return pulumi.get(self, "products")
+
+    @property
+    @pulumi.getter
+    def responses(self) -> Optional[Sequence['outputs.RulesetRuleActionParametersResponse']]:
+        """
+        List of parameters that configure the response given to end users (refer to the nested schema).
+        """
+        return pulumi.get(self, "responses")
 
     @property
     @pulumi.getter
@@ -6885,7 +6912,7 @@ class RulesetRuleActionParametersOverrides(dict):
                  enabled: Optional[bool] = None,
                  rules: Optional[Sequence['outputs.RulesetRuleActionParametersOverridesRule']] = None):
         """
-        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
         :param Sequence['RulesetRuleActionParametersOverridesCategoryArgs'] categories: List of tag-based overrides (refer to the nested schema).
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
         :param Sequence['RulesetRuleActionParametersOverridesRuleArgs'] rules: List of rule-based overrides (refer to the nested schema).
@@ -6903,7 +6930,7 @@ class RulesetRuleActionParametersOverrides(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
         """
         return pulumi.get(self, "action")
 
@@ -6939,7 +6966,7 @@ class RulesetRuleActionParametersOverridesCategory(dict):
                  category: Optional[str] = None,
                  enabled: Optional[bool] = None):
         """
-        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
         :param str category: Tag name to apply the ruleset rule override to.
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
         """
@@ -6954,7 +6981,7 @@ class RulesetRuleActionParametersOverridesCategory(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
         """
         return pulumi.get(self, "action")
 
@@ -7003,7 +7030,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
                  score_threshold: Optional[int] = None,
                  sensitivity_level: Optional[str] = None):
         """
-        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        :param str action: Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
         :param str id: Rule ID to apply the override to.
         :param int score_threshold: Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
@@ -7024,7 +7051,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+        Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
         """
         return pulumi.get(self, "action")
 
@@ -7059,6 +7086,68 @@ class RulesetRuleActionParametersOverridesRule(dict):
         Sensitivity level for a ruleset rule override.
         """
         return pulumi.get(self, "sensitivity_level")
+
+
+@pulumi.output_type
+class RulesetRuleActionParametersResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+        elif key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParametersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RulesetRuleActionParametersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RulesetRuleActionParametersResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content: Optional[str] = None,
+                 content_type: Optional[str] = None,
+                 status_code: Optional[int] = None):
+        """
+        :param str content: Body content to include in the response.
+        :param str content_type: HTTP content type to send in the response.
+        :param int status_code: HTTP status code to send in the response.
+        """
+        if content is not None:
+            pulumi.set(__self__, "content", content)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if status_code is not None:
+            pulumi.set(__self__, "status_code", status_code)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        """
+        Body content to include in the response.
+        """
+        return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[str]:
+        """
+        HTTP content type to send in the response.
+        """
+        return pulumi.get(self, "content_type")
+
+    @property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> Optional[int]:
+        """
+        HTTP status code to send in the response.
+        """
+        return pulumi.get(self, "status_code")
 
 
 @pulumi.output_type
@@ -7223,6 +7312,8 @@ class RulesetRuleRatelimit(dict):
             suggest = "mitigation_timeout"
         elif key == "requestsPerPeriod":
             suggest = "requests_per_period"
+        elif key == "requestsToOrigin":
+            suggest = "requests_to_origin"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RulesetRuleRatelimit. Access the value via the '{suggest}' property getter instead.")
@@ -7240,12 +7331,15 @@ class RulesetRuleRatelimit(dict):
                  counting_expression: Optional[str] = None,
                  mitigation_timeout: Optional[int] = None,
                  period: Optional[int] = None,
-                 requests_per_period: Optional[int] = None):
+                 requests_per_period: Optional[int] = None,
+                 requests_to_origin: Optional[bool] = None):
         """
         :param Sequence[str] characteristics: List of parameters that define how Cloudflare tracks the request rate for this rule.
+        :param str counting_expression: Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         :param int mitigation_timeout: Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
         :param int period: The period of time to consider (in seconds) when evaluating the request rate.
         :param int requests_per_period: The number of requests over the period of time that will trigger the Rate Limiting rule.
+        :param bool requests_to_origin: Whether to include requests to origin within the Rate Limiting count.
         """
         if characteristics is not None:
             pulumi.set(__self__, "characteristics", characteristics)
@@ -7257,6 +7351,8 @@ class RulesetRuleRatelimit(dict):
             pulumi.set(__self__, "period", period)
         if requests_per_period is not None:
             pulumi.set(__self__, "requests_per_period", requests_per_period)
+        if requests_to_origin is not None:
+            pulumi.set(__self__, "requests_to_origin", requests_to_origin)
 
     @property
     @pulumi.getter
@@ -7269,6 +7365,9 @@ class RulesetRuleRatelimit(dict):
     @property
     @pulumi.getter(name="countingExpression")
     def counting_expression(self) -> Optional[str]:
+        """
+        Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        """
         return pulumi.get(self, "counting_expression")
 
     @property
@@ -7294,6 +7393,14 @@ class RulesetRuleRatelimit(dict):
         The number of requests over the period of time that will trigger the Rate Limiting rule.
         """
         return pulumi.get(self, "requests_per_period")
+
+    @property
+    @pulumi.getter(name="requestsToOrigin")
+    def requests_to_origin(self) -> Optional[bool]:
+        """
+        Whether to include requests to origin within the Rate Limiting count.
+        """
+        return pulumi.get(self, "requests_to_origin")
 
 
 @pulumi.output_type

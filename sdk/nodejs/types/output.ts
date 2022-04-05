@@ -1232,6 +1232,10 @@ export interface PageRuleActions {
      */
     disableSecurity?: boolean;
     /**
+     * Boolean of whether this action is enabled. Default: false.
+     */
+    disableZaraz?: boolean;
+    /**
      * The Time To Live for the edge cache.
      */
     edgeCacheTtl?: number;
@@ -1571,7 +1575,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
      */
     action?: string;
     /**
@@ -1633,6 +1637,10 @@ export interface RulesetRuleActionParameters {
      */
     products?: string[];
     /**
+     * List of parameters that configure the response given to end users (refer to the nested schema).
+     */
+    responses?: outputs.RulesetRuleActionParametersResponse[];
+    /**
      * List of rule-based overrides (refer to the nested schema).
      */
     rules?: {[key: string]: string};
@@ -1679,7 +1687,7 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOverrides {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
      */
     action?: string;
     /**
@@ -1698,7 +1706,7 @@ export interface RulesetRuleActionParametersOverrides {
 
 export interface RulesetRuleActionParametersOverridesCategory {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
      */
     action?: string;
     /**
@@ -1713,7 +1721,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or  `"skip"`.
+     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
      */
     action?: string;
     /**
@@ -1732,6 +1740,21 @@ export interface RulesetRuleActionParametersOverridesRule {
      * Sensitivity level for a ruleset rule override.
      */
     sensitivityLevel?: string;
+}
+
+export interface RulesetRuleActionParametersResponse {
+    /**
+     * Body content to include in the response.
+     */
+    content?: string;
+    /**
+     * HTTP content type to send in the response.
+     */
+    contentType?: string;
+    /**
+     * HTTP status code to send in the response.
+     */
+    statusCode?: number;
 }
 
 export interface RulesetRuleActionParametersUri {
@@ -1784,6 +1807,9 @@ export interface RulesetRuleRatelimit {
      * List of parameters that define how Cloudflare tracks the request rate for this rule.
      */
     characteristics?: string[];
+    /**
+     * Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     */
     countingExpression?: string;
     /**
      * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
@@ -1797,6 +1823,10 @@ export interface RulesetRuleRatelimit {
      * The number of requests over the period of time that will trigger the Rate Limiting rule.
      */
     requestsPerPeriod?: number;
+    /**
+     * Whether to include requests to origin within the Rate Limiting count.
+     */
+    requestsToOrigin?: boolean;
 }
 
 export interface SpectrumApplicationDns {
@@ -2378,4 +2408,3 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload: boolean;
 }
-

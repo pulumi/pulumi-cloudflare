@@ -24,6 +24,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _characteristics = value;
         }
 
+        /// <summary>
+        /// Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// </summary>
         [Input("countingExpression")]
         public Input<string>? CountingExpression { get; set; }
 
@@ -44,6 +47,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("requestsPerPeriod")]
         public Input<int>? RequestsPerPeriod { get; set; }
+
+        /// <summary>
+        /// Whether to include requests to origin within the Rate Limiting count.
+        /// </summary>
+        [Input("requestsToOrigin")]
+        public Input<bool>? RequestsToOrigin { get; set; }
 
         public RulesetRuleRatelimitGetArgs()
         {

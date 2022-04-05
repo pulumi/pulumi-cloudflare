@@ -76,7 +76,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
     /**
      * . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
      */
-    public readonly edgeIpConnectivity!: pulumi.Output<string | undefined>;
+    public readonly edgeIpConnectivity!: pulumi.Output<string>;
     /**
      * . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
      */
