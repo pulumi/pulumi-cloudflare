@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  *     name: "staging policy",
- *     precedence: "1",
+ *     precedence: 1,
  *     decision: "allow",
  *     includes: [{
  *         emails: ["test@example.com"],
@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  *     name: "staging policy",
- *     precedence: "1",
+ *     precedence: 1,
  *     decision: "allow",
  *     includes: [{
  *         emails: ["test@example.com"],
