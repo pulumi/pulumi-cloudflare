@@ -1,6 +1,6 @@
 archives:
 - id: archive
-  name_template: '{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}'
+  name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
 before:
   hooks:
   - make tfgen
@@ -26,11 +26,12 @@ builds:
   - linux
   ignore: []
   ldflags:
-  - -X github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version.Version={{.Tag}}
+  - -X
+    github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version.Version={{.Tag}}
   main: ./cmd/pulumi-resource-cloudflare/
 changelog:
   skip: true
 release:
   disable: true
 snapshot:
-  name_template: '{{ .Tag }}-SNAPSHOT'
+  name_template: "{{ .Tag }}-SNAPSHOT"
