@@ -26,8 +26,8 @@ jobs:
         reaction-token: ${{ secrets.GITHUB_TOKEN }}
         repository: pulumi/pulumi-cloudflare
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
-    strategy: {}
-"on":
+name: command-dispatch
+on:
   issue_comment:
     types:
     - created
