@@ -6,6 +6,7 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./accessApplication";
+export * from "./accessBookmark";
 export * from "./accessCaCertificate";
 export * from "./accessGroup";
 export * from "./accessIdentityProvider";
@@ -71,6 +72,7 @@ export * from "./teamsList";
 export * from "./teamsLocation";
 export * from "./teamsProxyEndpoint";
 export * from "./teamsRule";
+export * from "./tunnelRoute";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
@@ -99,6 +101,7 @@ export {
 
 // Import resources to register:
 import { AccessApplication } from "./accessApplication";
+import { AccessBookmark } from "./accessBookmark";
 import { AccessCaCertificate } from "./accessCaCertificate";
 import { AccessGroup } from "./accessGroup";
 import { AccessIdentityProvider } from "./accessIdentityProvider";
@@ -151,6 +154,7 @@ import { TeamsList } from "./teamsList";
 import { TeamsLocation } from "./teamsLocation";
 import { TeamsProxyEndpoint } from "./teamsProxyEndpoint";
 import { TeamsRule } from "./teamsRule";
+import { TunnelRoute } from "./tunnelRoute";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
@@ -174,6 +178,8 @@ const _module = {
         switch (type) {
             case "cloudflare:index/accessApplication:AccessApplication":
                 return new AccessApplication(name, <any>undefined, { urn })
+            case "cloudflare:index/accessBookmark:AccessBookmark":
+                return new AccessBookmark(name, <any>undefined, { urn })
             case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
                 return new AccessCaCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/accessGroup:AccessGroup":
@@ -278,6 +284,8 @@ const _module = {
                 return new TeamsProxyEndpoint(name, <any>undefined, { urn })
             case "cloudflare:index/teamsRule:TeamsRule":
                 return new TeamsRule(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnelRoute:TunnelRoute":
+                return new TunnelRoute(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
                 return new WafGroup(name, <any>undefined, { urn })
             case "cloudflare:index/wafOverride:WafOverride":
@@ -316,6 +324,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessApplication", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessBookmark", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
@@ -368,6 +377,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)

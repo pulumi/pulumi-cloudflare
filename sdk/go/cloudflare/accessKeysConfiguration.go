@@ -161,6 +161,14 @@ func (o AccessKeysConfigurationOutput) ToAccessKeysConfigurationOutputWithContex
 	return o
 }
 
+func (o AccessKeysConfigurationOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o AccessKeysConfigurationOutput) KeyRotationIntervalDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.IntOutput { return v.KeyRotationIntervalDays }).(pulumi.IntOutput)
+}
+
 type AccessKeysConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessKeysConfigurationArrayOutput) ElementType() reflect.Type {

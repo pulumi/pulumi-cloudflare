@@ -257,6 +257,36 @@ func (o IpsecTunnelOutput) ToIpsecTunnelOutputWithContext(ctx context.Context) I
 	return o
 }
 
+// The ID of the account where the tunnel is being created.
+func (o IpsecTunnelOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpsecTunnel) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// IP address assigned to the Cloudflare side of the IPsec tunnel.
+func (o IpsecTunnelOutput) CloudflareEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpsecTunnel) pulumi.StringOutput { return v.CloudflareEndpoint }).(pulumi.StringOutput)
+}
+
+// IP address assigned to the customer side of the IPsec tunnel.
+func (o IpsecTunnelOutput) CustomerEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpsecTunnel) pulumi.StringOutput { return v.CustomerEndpoint }).(pulumi.StringOutput)
+}
+
+// An optional description of the IPsec tunnel.
+func (o IpsecTunnelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpsecTunnel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+func (o IpsecTunnelOutput) InterfaceAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpsecTunnel) pulumi.StringOutput { return v.InterfaceAddress }).(pulumi.StringOutput)
+}
+
+// Name of the IPsec tunnel.
+func (o IpsecTunnelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpsecTunnel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type IpsecTunnelArrayOutput struct{ *pulumi.OutputState }
 
 func (IpsecTunnelArrayOutput) ElementType() reflect.Type {

@@ -63,7 +63,7 @@ type CustomPages struct {
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-	// `500Errors`, `1000Errors`, `alwaysOnline`.
+	// `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// URL of where the custom page source is located.
 	Url pulumi.StringOutput `pulumi:"url"`
@@ -115,7 +115,7 @@ type customPagesState struct {
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-	// `500Errors`, `1000Errors`, `alwaysOnline`.
+	// `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
 	Type *string `pulumi:"type"`
 	// URL of where the custom page source is located.
 	Url *string `pulumi:"url"`
@@ -133,7 +133,7 @@ type CustomPagesState struct {
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-	// `500Errors`, `1000Errors`, `alwaysOnline`.
+	// `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
 	Type pulumi.StringPtrInput
 	// URL of where the custom page source is located.
 	Url pulumi.StringPtrInput
@@ -155,7 +155,7 @@ type customPagesArgs struct {
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-	// `500Errors`, `1000Errors`, `alwaysOnline`.
+	// `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
 	Type string `pulumi:"type"`
 	// URL of where the custom page source is located.
 	Url string `pulumi:"url"`
@@ -174,7 +174,7 @@ type CustomPagesArgs struct {
 	// The type of custom page you wish to update. Must
 	// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
 	// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-	// `500Errors`, `1000Errors`, `alwaysOnline`.
+	// `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
 	Type pulumi.StringInput
 	// URL of where the custom page source is located.
 	Url pulumi.StringInput
@@ -268,6 +268,36 @@ func (o CustomPagesOutput) ToCustomPagesOutput() CustomPagesOutput {
 
 func (o CustomPagesOutput) ToCustomPagesOutputWithContext(ctx context.Context) CustomPagesOutput {
 	return o
+}
+
+// The account ID where the custom pages should be
+// updated. Either `accountId` or `zoneId` must be provided. If
+// `accountId` is present, it will override the zone setting.
+func (o CustomPagesOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+func (o CustomPagesOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The type of custom page you wish to update. Must
+// be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
+// `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
+// `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
+func (o CustomPagesOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// URL of where the custom page source is located.
+func (o CustomPagesOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
+}
+
+// The zone ID where the custom pages should be
+// updated. Either `zoneId` or `accountId` must be provided.
+func (o CustomPagesOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPages) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type CustomPagesArrayOutput struct{ *pulumi.OutputState }

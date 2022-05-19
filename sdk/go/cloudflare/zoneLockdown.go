@@ -257,6 +257,35 @@ func (o ZoneLockdownOutput) ToZoneLockdownOutputWithContext(ctx context.Context)
 	return o
 }
 
+// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+func (o ZoneLockdownOutput) Configurations() ZoneLockdownConfigurationArrayOutput {
+	return o.ApplyT(func(v *ZoneLockdown) ZoneLockdownConfigurationArrayOutput { return v.Configurations }).(ZoneLockdownConfigurationArrayOutput)
+}
+
+// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
+func (o ZoneLockdownOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Boolean of whether this zone lockdown is currently paused. Default: false.
+func (o ZoneLockdownOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+func (o ZoneLockdownOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
+func (o ZoneLockdownOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+// The DNS zone ID to which the access rule should be added.
+func (o ZoneLockdownOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneLockdown) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ZoneLockdownArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneLockdownArrayOutput) ElementType() reflect.Type {

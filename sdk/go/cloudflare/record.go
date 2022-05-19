@@ -327,6 +327,75 @@ func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutpu
 	return o
 }
 
+func (o RecordOutput) AllowOverwrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Record) pulumi.BoolPtrOutput { return v.AllowOverwrite }).(pulumi.BoolPtrOutput)
+}
+
+// The RFC3339 timestamp of when the record was created
+func (o RecordOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Map of attributes that constitute the record value. Primarily used for LOC and SRV record types. Either this or `value` must be specified
+func (o RecordOutput) Data() RecordDataPtrOutput {
+	return o.ApplyT(func(v *Record) RecordDataPtrOutput { return v.Data }).(RecordDataPtrOutput)
+}
+
+// The FQDN of the record
+func (o RecordOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// A key-value map of string metadata Cloudflare associates with the record
+func (o RecordOutput) Metadata() pulumi.MapOutput {
+	return o.ApplyT(func(v *Record) pulumi.MapOutput { return v.Metadata }).(pulumi.MapOutput)
+}
+
+// The RFC3339 timestamp of when the record was last modified
+func (o RecordOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The name of the record
+func (o RecordOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The priority of the record
+func (o RecordOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Record) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Shows whether this record can be proxied, must be true if setting `proxied=true`
+func (o RecordOutput) Proxiable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Record) pulumi.BoolOutput { return v.Proxiable }).(pulumi.BoolOutput)
+}
+
+// Whether the record gets Cloudflare's origin protection; defaults to `false`.
+func (o RecordOutput) Proxied() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Record) pulumi.BoolPtrOutput { return v.Proxied }).(pulumi.BoolPtrOutput)
+}
+
+// The TTL of the record ([automatic: '1'](https://api.cloudflare.com/#dns-records-for-a-zone-create-dns-record))
+func (o RecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *Record) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The type of the record
+func (o RecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The (string) value of the record. Either this or `data` must be specified
+func (o RecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
+// The DNS zone ID to add the record to
+func (o RecordOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type RecordArrayOutput struct{ *pulumi.OutputState }
 
 func (RecordArrayOutput) ElementType() reflect.Type {

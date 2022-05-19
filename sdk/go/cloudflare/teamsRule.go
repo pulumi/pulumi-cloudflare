@@ -320,6 +320,65 @@ func (o TeamsRuleOutput) ToTeamsRuleOutputWithContext(ctx context.Context) Teams
 	return o
 }
 
+// The account to which the teams rule should be added.
+func (o TeamsRuleOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The action executed by matched teams rule.
+func (o TeamsRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// The description of the teams rule.
+func (o TeamsRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The wirefilter expression to be used for devicePosture check matching.
+func (o TeamsRuleOutput) DevicePosture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.DevicePosture }).(pulumi.StringPtrOutput)
+}
+
+// Indicator of rule enablement.
+func (o TeamsRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The protocol or layer to evaluate the traffic and identity expressions.
+func (o TeamsRuleOutput) Filters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringArrayOutput { return v.Filters }).(pulumi.StringArrayOutput)
+}
+
+// The wirefilter expression to be used for identity matching.
+func (o TeamsRuleOutput) Identity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.Identity }).(pulumi.StringPtrOutput)
+}
+
+// The name of the teams rule.
+func (o TeamsRuleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The evaluation precedence of the teams rule.
+func (o TeamsRuleOutput) Precedence() pulumi.IntOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.IntOutput { return v.Precedence }).(pulumi.IntOutput)
+}
+
+// Additional rule settings (refer to the nested schema).
+func (o TeamsRuleOutput) RuleSettings() TeamsRuleRuleSettingsPtrOutput {
+	return o.ApplyT(func(v *TeamsRule) TeamsRuleRuleSettingsPtrOutput { return v.RuleSettings }).(TeamsRuleRuleSettingsPtrOutput)
+}
+
+// The wirefilter expression to be used for traffic matching.
+func (o TeamsRuleOutput) Traffic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.Traffic }).(pulumi.StringPtrOutput)
+}
+
+func (o TeamsRuleOutput) Version() pulumi.IntOutput {
+	return o.ApplyT(func(v *TeamsRule) pulumi.IntOutput { return v.Version }).(pulumi.IntOutput)
+}
+
 type TeamsRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (TeamsRuleArrayOutput) ElementType() reflect.Type {

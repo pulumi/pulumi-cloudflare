@@ -241,6 +241,35 @@ func (o AccessMutualTlsCertificateOutput) ToAccessMutualTlsCertificateOutputWith
 	return o
 }
 
+// The account to which the certificate should be added. Conflicts with `zoneId`.
+func (o AccessMutualTlsCertificateOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The hostnames that will be prompted for this certificate.
+func (o AccessMutualTlsCertificateOutput) AssociatedHostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringArrayOutput { return v.AssociatedHostnames }).(pulumi.StringArrayOutput)
+}
+
+// The Root CA for your certificates.
+func (o AccessMutualTlsCertificateOutput) Certificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringPtrOutput { return v.Certificate }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessMutualTlsCertificateOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The name of the certificate.
+func (o AccessMutualTlsCertificateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+func (o AccessMutualTlsCertificateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type AccessMutualTlsCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessMutualTlsCertificateArrayOutput) ElementType() reflect.Type {

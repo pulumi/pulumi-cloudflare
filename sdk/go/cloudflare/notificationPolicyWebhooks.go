@@ -251,6 +251,44 @@ func (o NotificationPolicyWebhooksOutput) ToNotificationPolicyWebhooksOutputWith
 	return o
 }
 
+// The ID of the account for which the webhook destination has to be connected.
+func (o NotificationPolicyWebhooksOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o NotificationPolicyWebhooksOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+func (o NotificationPolicyWebhooksOutput) LastFailure() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.LastFailure }).(pulumi.StringOutput)
+}
+
+func (o NotificationPolicyWebhooksOutput) LastSuccess() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.LastSuccess }).(pulumi.StringOutput)
+}
+
+// The name of the webhook destination.
+func (o NotificationPolicyWebhooksOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
+// Secrets are not returned in any API response body.
+// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
+func (o NotificationPolicyWebhooksOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringPtrOutput { return v.Secret }).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationPolicyWebhooksOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The URL of the webhook destinations.
+func (o NotificationPolicyWebhooksOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NotificationPolicyWebhooks) pulumi.StringPtrOutput { return v.Url }).(pulumi.StringPtrOutput)
+}
+
 type NotificationPolicyWebhooksArrayOutput struct{ *pulumi.OutputState }
 
 func (NotificationPolicyWebhooksArrayOutput) ElementType() reflect.Type {

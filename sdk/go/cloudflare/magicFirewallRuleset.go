@@ -239,6 +239,25 @@ func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetOutputWithContext(ctx 
 	return o
 }
 
+// The ID of the account where the ruleset is being created.
+func (o MagicFirewallRulesetOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicFirewallRuleset) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// A note that can be used to annotate the rule.
+func (o MagicFirewallRulesetOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MagicFirewallRuleset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name of the ruleset.
+func (o MagicFirewallRulesetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *MagicFirewallRuleset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o MagicFirewallRulesetOutput) Rules() pulumi.StringMapArrayOutput {
+	return o.ApplyT(func(v *MagicFirewallRuleset) pulumi.StringMapArrayOutput { return v.Rules }).(pulumi.StringMapArrayOutput)
+}
+
 type MagicFirewallRulesetArrayOutput struct{ *pulumi.OutputState }
 
 func (MagicFirewallRulesetArrayOutput) ElementType() reflect.Type {

@@ -54,8 +54,8 @@ class HealthcheckArgs:
         :param pulumi.Input[Sequence[pulumi.Input['HealthcheckHeaderArgs']]] headers: The header name.
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)
         :param pulumi.Input[str] method: The TCP connection method to use for the health check. Valid values: `connection_established` (Default: `connection_established`).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to.
-        :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+        :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
         :param pulumi.Input[str] path: The endpoint path to health check against. (Default: `/`)
         :param pulumi.Input[int] port: Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
@@ -89,7 +89,13 @@ class HealthcheckArgs:
         if method is not None:
             pulumi.set(__self__, "method", method)
         if notification_email_addresses is not None:
+            warnings.warn("""Use `cloudflare_notification_policy` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_email_addresses is deprecated: Use `cloudflare_notification_policy` instead.""")
+        if notification_email_addresses is not None:
             pulumi.set(__self__, "notification_email_addresses", notification_email_addresses)
+        if notification_suspended is not None:
+            warnings.warn("""Use `cloudflare_notification_policy` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_suspended is deprecated: Use `cloudflare_notification_policy` instead.""")
         if notification_suspended is not None:
             pulumi.set(__self__, "notification_suspended", notification_suspended)
         if path is not None:
@@ -287,7 +293,7 @@ class HealthcheckArgs:
     @pulumi.getter(name="notificationEmailAddresses")
     def notification_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of email addresses we want to send the notifications to.
+        A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
         """
         return pulumi.get(self, "notification_email_addresses")
 
@@ -299,7 +305,7 @@ class HealthcheckArgs:
     @pulumi.getter(name="notificationSuspended")
     def notification_suspended(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
         """
         return pulumi.get(self, "notification_suspended")
 
@@ -410,8 +416,8 @@ class _HealthcheckState:
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)
         :param pulumi.Input[str] method: The TCP connection method to use for the health check. Valid values: `connection_established` (Default: `connection_established`).
         :param pulumi.Input[str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to.
-        :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+        :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
         :param pulumi.Input[str] path: The endpoint path to health check against. (Default: `/`)
         :param pulumi.Input[int] port: Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
@@ -451,7 +457,13 @@ class _HealthcheckState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if notification_email_addresses is not None:
+            warnings.warn("""Use `cloudflare_notification_policy` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_email_addresses is deprecated: Use `cloudflare_notification_policy` instead.""")
+        if notification_email_addresses is not None:
             pulumi.set(__self__, "notification_email_addresses", notification_email_addresses)
+        if notification_suspended is not None:
+            warnings.warn("""Use `cloudflare_notification_policy` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_suspended is deprecated: Use `cloudflare_notification_policy` instead.""")
         if notification_suspended is not None:
             pulumi.set(__self__, "notification_suspended", notification_suspended)
         if path is not None:
@@ -647,7 +659,7 @@ class _HealthcheckState:
     @pulumi.getter(name="notificationEmailAddresses")
     def notification_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of email addresses we want to send the notifications to.
+        A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
         """
         return pulumi.get(self, "notification_email_addresses")
 
@@ -659,7 +671,7 @@ class _HealthcheckState:
     @pulumi.getter(name="notificationSuspended")
     def notification_suspended(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
         """
         return pulumi.get(self, "notification_suspended")
 
@@ -868,8 +880,8 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)
         :param pulumi.Input[str] method: The TCP connection method to use for the health check. Valid values: `connection_established` (Default: `connection_established`).
         :param pulumi.Input[str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to.
-        :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+        :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
         :param pulumi.Input[str] path: The endpoint path to health check against. (Default: `/`)
         :param pulumi.Input[int] port: Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
@@ -1023,7 +1035,13 @@ class Healthcheck(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            if notification_email_addresses is not None and not opts.urn:
+                warnings.warn("""Use `cloudflare_notification_policy` instead.""", DeprecationWarning)
+                pulumi.log.warn("""notification_email_addresses is deprecated: Use `cloudflare_notification_policy` instead.""")
             __props__.__dict__["notification_email_addresses"] = notification_email_addresses
+            if notification_suspended is not None and not opts.urn:
+                warnings.warn("""Use `cloudflare_notification_policy` instead.""", DeprecationWarning)
+                pulumi.log.warn("""notification_suspended is deprecated: Use `cloudflare_notification_policy` instead.""")
             __props__.__dict__["notification_suspended"] = notification_suspended
             __props__.__dict__["path"] = path
             __props__.__dict__["port"] = port
@@ -1092,8 +1110,8 @@ class Healthcheck(pulumi.CustomResource):
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)
         :param pulumi.Input[str] method: The TCP connection method to use for the health check. Valid values: `connection_established` (Default: `connection_established`).
         :param pulumi.Input[str] name: A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to.
-        :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+        :param pulumi.Input[bool] notification_suspended: Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
         :param pulumi.Input[str] path: The endpoint path to health check against. (Default: `/`)
         :param pulumi.Input[int] port: Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
         :param pulumi.Input[int] retries: The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
@@ -1250,7 +1268,7 @@ class Healthcheck(pulumi.CustomResource):
     @pulumi.getter(name="notificationEmailAddresses")
     def notification_email_addresses(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of email addresses we want to send the notifications to.
+        A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
         """
         return pulumi.get(self, "notification_email_addresses")
 
@@ -1258,7 +1276,7 @@ class Healthcheck(pulumi.CustomResource):
     @pulumi.getter(name="notificationSuspended")
     def notification_suspended(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
         """
         return pulumi.get(self, "notification_suspended")
 

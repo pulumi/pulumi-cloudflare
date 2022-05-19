@@ -224,6 +224,21 @@ func (o WorkerRouteOutput) ToWorkerRouteOutputWithContext(ctx context.Context) W
 	return o
 }
 
+// The [route pattern](https://developers.cloudflare.com/workers/about/routes/)
+func (o WorkerRouteOutput) Pattern() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerRoute) pulumi.StringOutput { return v.Pattern }).(pulumi.StringOutput)
+}
+
+// Which worker script to run for requests that match the route pattern. If `scriptName` is empty, workers will be skipped for matching requests.
+func (o WorkerRouteOutput) ScriptName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerRoute) pulumi.StringPtrOutput { return v.ScriptName }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID to add the route to.
+func (o WorkerRouteOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerRoute) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type WorkerRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkerRouteArrayOutput) ElementType() reflect.Type {

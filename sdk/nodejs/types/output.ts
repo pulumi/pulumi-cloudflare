@@ -1150,6 +1150,42 @@ export interface NotificationPolicyEmailIntegration {
     name?: string;
 }
 
+export interface NotificationPolicyFilters {
+    /**
+     * State of the pool to alert on. Example: `"true"`, `"false"`.
+     */
+    enableds?: string[];
+    /**
+     * Identifier health check.
+     */
+    healthCheckIds?: string[];
+    /**
+     * A numerical limit. Example: `"100"`
+     */
+    limits?: string[];
+    /**
+     * Load balancer pool identifier.
+     */
+    poolIds?: string[];
+    /**
+     * Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
+     */
+    products?: string[];
+    services?: string[];
+    /**
+     * A numerical limit. Example: `"99.9"`
+     */
+    slos?: string[];
+    /**
+     * Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
+     */
+    statuses?: string[];
+    /**
+     * A list of zone identifiers.
+     */
+    zones?: string[];
+}
+
 export interface NotificationPolicyPagerdutyIntegration {
     id: string;
     /**
@@ -1585,7 +1621,7 @@ export interface RulesetRule {
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
-    description: string;
+    description?: string;
     /**
      * Defines if the current rule-level override enables or disables the rule.
      */
@@ -1603,6 +1639,10 @@ export interface RulesetRule {
      */
     id: string;
     /**
+     * List parameters to configure how the rule generates logs (refer to the nested schema).
+     */
+    logging?: outputs.RulesetRuleLogging;
+    /**
      * List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
      */
     ratelimit?: outputs.RulesetRuleRatelimit;
@@ -1619,6 +1659,10 @@ export interface RulesetRuleActionParameters {
      */
     headers?: outputs.RulesetRuleActionParametersHeader[];
     /**
+     * Host Header that request origin receives.
+     */
+    hostHeader?: string;
+    /**
      * Rule ID to apply the override to.
      */
     id?: string;
@@ -1627,6 +1671,10 @@ export interface RulesetRuleActionParameters {
      * List of properties to configure WAF payload logging (refer to the nested schema).
      */
     matchedData?: outputs.RulesetRuleActionParametersMatchedData;
+    /**
+     * List of properties to change request origin (refer to the nested schema).
+     */
+    origin?: outputs.RulesetRuleActionParametersOrigin;
     /**
      * List of override configurations to apply to the ruleset (refer to the nested schema).
      */
@@ -1683,6 +1731,17 @@ export interface RulesetRuleActionParametersMatchedData {
      * Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
      */
     publicKey?: string;
+}
+
+export interface RulesetRuleActionParametersOrigin {
+    /**
+     * Origin Hostname where request is sent.
+     */
+    host?: string;
+    /**
+     * Oirign Port where request is sent.
+     */
+    port?: number;
 }
 
 export interface RulesetRuleActionParametersOverrides {
@@ -1758,6 +1817,9 @@ export interface RulesetRuleActionParametersResponse {
 }
 
 export interface RulesetRuleActionParametersUri {
+    /**
+     * List of properties to change request origin (refer to the nested schema).
+     */
     origin?: boolean;
     /**
      * URI path configuration when performing a URL rewrite (refer to the nested schema).
@@ -1800,6 +1862,13 @@ export interface RulesetRuleExposedCredentialCheck {
      * Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
      */
     usernameExpression?: string;
+}
+
+export interface RulesetRuleLogging {
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: boolean;
 }
 
 export interface RulesetRuleRatelimit {
@@ -2408,3 +2477,4 @@ export interface ZoneSettingsOverrideSettingsSecurityHeader {
      */
     preload: boolean;
 }
+

@@ -232,6 +232,34 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
     ///         });
+    ///         // Change origin for an API route
+    ///         var httpOriginExample = new Cloudflare.Ruleset("httpOriginExample", new Cloudflare.RulesetArgs
+    ///         {
+    ///             Description = "Change origin for a route",
+    ///             Kind = "zone",
+    ///             Name = "Change to some origin",
+    ///             Phase = "http_request_origin",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "route",
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
+    ///                     {
+    ///                         HostHeader = "some.host",
+    ///                         Origin = new Cloudflare.Inputs.RulesetRuleActionParametersOriginArgs
+    ///                         {
+    ///                             Host = "some.host",
+    ///                             Port = 80,
+    ///                         },
+    ///                     },
+    ///                     Description = "change origin to some.host",
+    ///                     Enabled = true,
+    ///                     Expression = "(http.request.uri.path matches \"^/api/\")",
+    ///                 },
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
     ///     }
     /// 
     /// }
@@ -269,7 +297,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_origin"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         /// </summary>
         [Output("phase")]
         public Output<string> Phase { get; private set; } = null!;
@@ -363,7 +391,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_origin"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         /// </summary>
         [Input("phase", required: true)]
         public Input<string> Phase { get; set; } = null!;
@@ -424,7 +452,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_origin"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
         /// </summary>
         [Input("phase")]
         public Input<string>? Phase { get; set; }

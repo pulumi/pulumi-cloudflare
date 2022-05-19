@@ -239,6 +239,27 @@ func (o LogPushOwnershipChallengeOutput) ToLogPushOwnershipChallengeOutputWithCo
 	return o
 }
 
+// The account ID where the logpush ownership challenge should be created. Either `accountId` or `zoneId` are required.
+func (o LogPushOwnershipChallengeOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogPushOwnershipChallenge) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
+func (o LogPushOwnershipChallengeOutput) DestinationConf() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogPushOwnershipChallenge) pulumi.StringOutput { return v.DestinationConf }).(pulumi.StringOutput)
+}
+
+// The filename of the ownership challenge which
+// contains the contents required for Logpush Job creation.
+func (o LogPushOwnershipChallengeOutput) OwnershipChallengeFilename() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogPushOwnershipChallenge) pulumi.StringOutput { return v.OwnershipChallengeFilename }).(pulumi.StringOutput)
+}
+
+// The zone ID where the logpush ownership challenge should be created. Either `accountId` or `zoneId` are required.
+func (o LogPushOwnershipChallengeOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogPushOwnershipChallenge) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
 type LogPushOwnershipChallengeArrayOutput struct{ *pulumi.OutputState }
 
 func (LogPushOwnershipChallengeArrayOutput) ElementType() reflect.Type {

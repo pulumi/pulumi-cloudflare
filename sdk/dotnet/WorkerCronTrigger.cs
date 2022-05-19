@@ -56,6 +56,9 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/workerCronTrigger:WorkerCronTrigger")]
     public partial class WorkerCronTrigger : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// List of cron expressions to execute the Worker Script
         /// </summary>
@@ -114,6 +117,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkerCronTriggerArgs : Pulumi.ResourceArgs
     {
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
         [Input("schedules", required: true)]
         private InputList<string>? _schedules;
 
@@ -139,6 +145,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class WorkerCronTriggerState : Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         [Input("schedules")]
         private InputList<string>? _schedules;
 

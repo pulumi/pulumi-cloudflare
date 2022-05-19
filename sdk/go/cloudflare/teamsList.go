@@ -62,7 +62,7 @@ type TeamsList struct {
 	Items pulumi.StringArrayOutput `pulumi:"items"`
 	// Name of the teams list.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -112,7 +112,7 @@ type teamsListState struct {
 	Items []string `pulumi:"items"`
 	// Name of the teams list.
 	Name *string `pulumi:"name"`
-	// The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
 	Type *string `pulumi:"type"`
 }
 
@@ -125,7 +125,7 @@ type TeamsListState struct {
 	Items pulumi.StringArrayInput
 	// Name of the teams list.
 	Name pulumi.StringPtrInput
-	// The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
 	Type pulumi.StringPtrInput
 }
 
@@ -142,7 +142,7 @@ type teamsListArgs struct {
 	Items []string `pulumi:"items"`
 	// Name of the teams list.
 	Name string `pulumi:"name"`
-	// The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
 	Type string `pulumi:"type"`
 }
 
@@ -156,7 +156,7 @@ type TeamsListArgs struct {
 	Items pulumi.StringArrayInput
 	// Name of the teams list.
 	Name pulumi.StringInput
-	// The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+	// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
 	Type pulumi.StringInput
 }
 
@@ -245,6 +245,31 @@ func (o TeamsListOutput) ToTeamsListOutput() TeamsListOutput {
 
 func (o TeamsListOutput) ToTeamsListOutputWithContext(ctx context.Context) TeamsListOutput {
 	return o
+}
+
+// The account to which the teams list should be added.
+func (o TeamsListOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The description of the teams list.
+func (o TeamsListOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The items of the teams list.
+func (o TeamsListOutput) Items() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TeamsList) pulumi.StringArrayOutput { return v.Items }).(pulumi.StringArrayOutput)
+}
+
+// Name of the teams list.
+func (o TeamsListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+func (o TeamsListOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsList) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type TeamsListArrayOutput struct{ *pulumi.OutputState }

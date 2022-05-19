@@ -204,13 +204,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of email addresses we want to send the notifications to.
+        /// A list of email addresses we want to send the notifications to. *Deprecated, use `cloudflare.NotificationPolicy` instead.*
         /// </summary>
         [Output("notificationEmailAddresses")]
         public Output<ImmutableArray<string>> NotificationEmailAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        /// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `cloudflare.NotificationPolicy` instead.*
         /// </summary>
         [Output("notificationSuspended")]
         public Output<bool?> NotificationSuspended { get; private set; } = null!;
@@ -403,8 +403,9 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _notificationEmailAddresses;
 
         /// <summary>
-        /// A list of email addresses we want to send the notifications to.
+        /// A list of email addresses we want to send the notifications to. *Deprecated, use `cloudflare.NotificationPolicy` instead.*
         /// </summary>
+        [Obsolete(@"Use `cloudflare_notification_policy` instead.")]
         public InputList<string> NotificationEmailAddresses
         {
             get => _notificationEmailAddresses ?? (_notificationEmailAddresses = new InputList<string>());
@@ -412,7 +413,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        /// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `cloudflare.NotificationPolicy` instead.*
         /// </summary>
         [Input("notificationSuspended")]
         public Input<bool>? NotificationSuspended { get; set; }
@@ -572,8 +573,9 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _notificationEmailAddresses;
 
         /// <summary>
-        /// A list of email addresses we want to send the notifications to.
+        /// A list of email addresses we want to send the notifications to. *Deprecated, use `cloudflare.NotificationPolicy` instead.*
         /// </summary>
+        [Obsolete(@"Use `cloudflare_notification_policy` instead.")]
         public InputList<string> NotificationEmailAddresses
         {
             get => _notificationEmailAddresses ?? (_notificationEmailAddresses = new InputList<string>());
@@ -581,7 +583,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+        /// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `cloudflare.NotificationPolicy` instead.*
         /// </summary>
         [Input("notificationSuspended")]
         public Input<bool>? NotificationSuspended { get; set; }

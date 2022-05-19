@@ -163,11 +163,15 @@ export class Healthcheck extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of email addresses we want to send the notifications to.
+     * A list of email addresses we want to send the notifications to. *Deprecated, use `cloudflare.NotificationPolicy` instead.*
+     *
+     * @deprecated Use `cloudflare_notification_policy` instead.
      */
     public readonly notificationEmailAddresses!: pulumi.Output<string[] | undefined>;
     /**
-     * Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+     * Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `cloudflare.NotificationPolicy` instead.*
+     *
+     * @deprecated Use `cloudflare_notification_policy` instead.
      */
     public readonly notificationSuspended!: pulumi.Output<boolean | undefined>;
     /**
@@ -339,11 +343,15 @@ export interface HealthcheckState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of email addresses we want to send the notifications to.
+     * A list of email addresses we want to send the notifications to. *Deprecated, use `cloudflare.NotificationPolicy` instead.*
+     *
+     * @deprecated Use `cloudflare_notification_policy` instead.
      */
     notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+     * Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `cloudflare.NotificationPolicy` instead.*
+     *
+     * @deprecated Use `cloudflare_notification_policy` instead.
      */
     notificationSuspended?: pulumi.Input<boolean>;
     /**
@@ -433,11 +441,15 @@ export interface HealthcheckArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * A list of email addresses we want to send the notifications to.
+     * A list of email addresses we want to send the notifications to. *Deprecated, use `cloudflare.NotificationPolicy` instead.*
+     *
+     * @deprecated Use `cloudflare_notification_policy` instead.
      */
     notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+     * Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `cloudflare.NotificationPolicy` instead.*
+     *
+     * @deprecated Use `cloudflare_notification_policy` instead.
      */
     notificationSuspended?: pulumi.Input<boolean>;
     /**

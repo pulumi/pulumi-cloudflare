@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         /// The type of custom page you wish to update. Must
         /// be one of `basic_challenge`, `waf_challenge`, `waf_block`,
         /// `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        /// `500_errors`, `1000_errors`, `always_online`.
+        /// `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Cloudflare
         /// The type of custom page you wish to update. Must
         /// be one of `basic_challenge`, `waf_challenge`, `waf_block`,
         /// `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        /// `500_errors`, `1000_errors`, `always_online`.
+        /// `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.Cloudflare
         /// The type of custom page you wish to update. Must
         /// be one of `basic_challenge`, `waf_challenge`, `waf_block`,
         /// `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        /// `500_errors`, `1000_errors`, `always_online`.
+        /// `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

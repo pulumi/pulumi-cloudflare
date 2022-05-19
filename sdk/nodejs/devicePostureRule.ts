@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *     type: "serial_number",
  *     description: "Device posture rule for corporate devices.",
  *     schedule: "24h",
+ *     expiration: "24h",
  *     matches: [{
  *         platform: "mac",
  *     }],
@@ -74,6 +75,11 @@ export class DevicePostureRule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Expire posture results after the specified amount of time.
+     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     */
+    public readonly expiration!: pulumi.Output<string | undefined>;
+    /**
      * The value to be checked against. See below for reference
      * structure.
      */
@@ -111,6 +117,7 @@ export class DevicePostureRule extends pulumi.CustomResource {
             const state = argsOrState as DevicePostureRuleState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expiration"] = state ? state.expiration : undefined;
             resourceInputs["inputs"] = state ? state.inputs : undefined;
             resourceInputs["matches"] = state ? state.matches : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -126,6 +133,7 @@ export class DevicePostureRule extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["expiration"] = args ? args.expiration : undefined;
             resourceInputs["inputs"] = args ? args.inputs : undefined;
             resourceInputs["matches"] = args ? args.matches : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -149,6 +157,11 @@ export interface DevicePostureRuleState {
      * The description of the device posture rule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Expire posture results after the specified amount of time.
+     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     */
+    expiration?: pulumi.Input<string>;
     /**
      * The value to be checked against. See below for reference
      * structure.
@@ -185,6 +198,11 @@ export interface DevicePostureRuleArgs {
      * The description of the device posture rule.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Expire posture results after the specified amount of time.
+     * Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+     */
+    expiration?: pulumi.Input<string>;
     /**
      * The value to be checked against. See below for reference
      * structure.

@@ -213,6 +213,21 @@ func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginOutput
 	return o
 }
 
+// Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
+func (o CustomHostnameFallbackOriginOutput) Origin() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) pulumi.StringOutput { return v.Origin }).(pulumi.StringOutput)
+}
+
+// Status of the fallback origin's activation.
+func (o CustomHostnameFallbackOriginOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The DNS zone ID where the custom hostname should be assigned.
+func (o CustomHostnameFallbackOriginOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomHostnameFallbackOrigin) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type CustomHostnameFallbackOriginArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnameFallbackOriginArrayOutput) ElementType() reflect.Type {

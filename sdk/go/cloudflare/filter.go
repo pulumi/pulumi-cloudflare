@@ -240,6 +240,31 @@ func (o FilterOutput) ToFilterOutputWithContext(ctx context.Context) FilterOutpu
 	return o
 }
 
+// A note that you can use to describe the purpose of the filter.
+func (o FilterOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The filter expression to be used.
+func (o FilterOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Whether this filter is currently paused. Boolean value.
+func (o FilterOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+// Short reference tag to quickly select related rules.
+func (o FilterOutput) Ref() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Ref }).(pulumi.StringPtrOutput)
+}
+
+// The DNS zone to which the Filter should be added.
+func (o FilterOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type FilterArrayOutput struct{ *pulumi.OutputState }
 
 func (FilterArrayOutput) ElementType() reflect.Type {

@@ -395,6 +395,91 @@ func (o LoadBalancerOutput) ToLoadBalancerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The RFC3339 timestamp of when the load balancer was created.
+func (o LoadBalancerOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// A list of pool IDs ordered by their failover priority. Used whenever region/pop pools are not defined.
+func (o LoadBalancerOutput) DefaultPoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.DefaultPoolIds }).(pulumi.StringArrayOutput)
+}
+
+// Free text description.
+func (o LoadBalancerOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Enable or disable the load balancer. Defaults to `true` (enabled).
+func (o LoadBalancerOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The pool ID to use when all other pools are detected as unhealthy.
+func (o LoadBalancerOutput) FallbackPoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.FallbackPoolId }).(pulumi.StringOutput)
+}
+
+// The RFC3339 timestamp of when the load balancer was last modified.
+func (o LoadBalancerOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Human readable name for this rule.
+func (o LoadBalancerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// See popPools above.
+func (o LoadBalancerOutput) PopPools() LoadBalancerPopPoolArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerPopPoolArrayOutput { return v.PopPools }).(LoadBalancerPopPoolArrayOutput)
+}
+
+// Whether the hostname gets Cloudflare's origin protection. Defaults to `false`.
+func (o LoadBalancerOutput) Proxied() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.BoolPtrOutput { return v.Proxied }).(pulumi.BoolPtrOutput)
+}
+
+// See regionPools above.
+func (o LoadBalancerOutput) RegionPools() LoadBalancerRegionPoolArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerRegionPoolArrayOutput { return v.RegionPools }).(LoadBalancerRegionPoolArrayOutput)
+}
+
+// A list of conditions and overrides for each load balancer operation. See the field documentation below.
+func (o LoadBalancerOutput) Rules() LoadBalancerRuleArrayOutput {
+	return o.ApplyT(func(v *LoadBalancer) LoadBalancerRuleArrayOutput { return v.Rules }).(LoadBalancerRuleArrayOutput)
+}
+
+// See field above.
+func (o LoadBalancerOutput) SessionAffinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.SessionAffinity }).(pulumi.StringPtrOutput)
+}
+
+// See field above.
+func (o LoadBalancerOutput) SessionAffinityAttributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringMapOutput { return v.SessionAffinityAttributes }).(pulumi.StringMapOutput)
+}
+
+// See field above.
+func (o LoadBalancerOutput) SessionAffinityTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.IntPtrOutput { return v.SessionAffinityTtl }).(pulumi.IntPtrOutput)
+}
+
+// See field above.
+func (o LoadBalancerOutput) SteeringPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.SteeringPolicy }).(pulumi.StringOutput)
+}
+
+// See field above.
+func (o LoadBalancerOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The zone ID to add the load balancer to.
+func (o LoadBalancerOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type LoadBalancerArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerArrayOutput) ElementType() reflect.Type {

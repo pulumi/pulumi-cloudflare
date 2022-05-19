@@ -217,6 +217,21 @@ func (o ArgoOutput) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 	return o
 }
 
+// Whether smart routing is enabled. Valid values: `on` or `off`.
+func (o ArgoOutput) SmartRouting() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Argo) pulumi.StringPtrOutput { return v.SmartRouting }).(pulumi.StringPtrOutput)
+}
+
+// Whether tiered caching is enabled. Valid values: `on` or `off`.
+func (o ArgoOutput) TieredCaching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Argo) pulumi.StringPtrOutput { return v.TieredCaching }).(pulumi.StringPtrOutput)
+}
+
+// The DNS zone ID that you wish to manage Argo on.
+func (o ArgoOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Argo) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ArgoArrayOutput struct{ *pulumi.OutputState }
 
 func (ArgoArrayOutput) ElementType() reflect.Type {

@@ -79,7 +79,7 @@ export class TeamsList extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -144,7 +144,7 @@ export interface TeamsListState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
      */
     type?: pulumi.Input<string>;
 }
@@ -170,7 +170,7 @@ export interface TeamsListArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+     * The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
      */
     type: pulumi.Input<string>;
 }

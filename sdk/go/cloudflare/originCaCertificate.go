@@ -265,6 +265,36 @@ func (o OriginCaCertificateOutput) ToOriginCaCertificateOutputWithContext(ctx co
 	return o
 }
 
+// The Origin CA certificate
+func (o OriginCaCertificateOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
+}
+
+// The Certificate Signing Request. Must be newline-encoded.
+func (o OriginCaCertificateOutput) Csr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringPtrOutput { return v.Csr }).(pulumi.StringPtrOutput)
+}
+
+// The datetime when the certificate will expire.
+func (o OriginCaCertificateOutput) ExpiresOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+// An array of hostnames or wildcard names bound to the certificate.
+func (o OriginCaCertificateOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringArrayOutput { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+// The signature type desired on the certificate.
+func (o OriginCaCertificateOutput) RequestType() pulumi.StringOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.StringOutput { return v.RequestType }).(pulumi.StringOutput)
+}
+
+// The number of days for which the certificate should be valid.
+func (o OriginCaCertificateOutput) RequestedValidity() pulumi.IntOutput {
+	return o.ApplyT(func(v *OriginCaCertificate) pulumi.IntOutput { return v.RequestedValidity }).(pulumi.IntOutput)
+}
+
 type OriginCaCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (OriginCaCertificateArrayOutput) ElementType() reflect.Type {

@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
         /// <summary>
+        /// Host Header that request origin receives.
+        /// </summary>
+        public readonly string? HostHeader;
+        /// <summary>
         /// Rule ID to apply the override to.
         /// </summary>
         public readonly string? Id;
@@ -26,6 +30,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// List of properties to configure WAF payload logging (refer to the nested schema).
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersMatchedData? MatchedData;
+        /// <summary>
+        /// List of properties to change request origin (refer to the nested schema).
+        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
         /// <summary>
         /// List of override configurations to apply to the ruleset (refer to the nested schema).
         /// </summary>
@@ -61,11 +69,15 @@ namespace Pulumi.Cloudflare.Outputs
         private RulesetRuleActionParameters(
             ImmutableArray<Outputs.RulesetRuleActionParametersHeader> headers,
 
+            string? hostHeader,
+
             string? id,
 
             int? increment,
 
             Outputs.RulesetRuleActionParametersMatchedData? matchedData,
+
+            Outputs.RulesetRuleActionParametersOrigin? origin,
 
             Outputs.RulesetRuleActionParametersOverrides? overrides,
 
@@ -86,9 +98,11 @@ namespace Pulumi.Cloudflare.Outputs
             string? version)
         {
             Headers = headers;
+            HostHeader = hostHeader;
             Id = id;
             Increment = increment;
             MatchedData = matchedData;
+            Origin = origin;
             Overrides = overrides;
             Phases = phases;
             Products = products;

@@ -209,6 +209,26 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
+// Rule configuration to apply to a matched request. It's a complex value. See description below.
+func (o AccessRuleOutput) Configuration() AccessRuleConfigurationOutput {
+	return o.ApplyT(func(v *AccessRule) AccessRuleConfigurationOutput { return v.Configuration }).(AccessRuleConfigurationOutput)
+}
+
+// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
+func (o AccessRuleOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
+// A personal note about the rule. Typically used as a reminder or explanation for the rule.
+func (o AccessRuleOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+// The DNS zone to which the access rule should be added.
+func (o AccessRuleOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type AccessRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessRuleArrayOutput) ElementType() reflect.Type {

@@ -273,6 +273,40 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
+func (o FirewallRuleOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
+}
+
+// A description of the rule to help identify it.
+func (o FirewallRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o FirewallRuleOutput) FilterId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.FilterId }).(pulumi.StringOutput)
+}
+
+// Whether this filter based firewall rule is currently paused. Boolean value.
+func (o FirewallRuleOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+func (o FirewallRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+func (o FirewallRuleOutput) Products() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringArrayOutput { return v.Products }).(pulumi.StringArrayOutput)
+}
+
+// The DNS zone to which the Filter should be added.
+func (o FirewallRuleOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type FirewallRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallRuleArrayOutput) ElementType() reflect.Type {

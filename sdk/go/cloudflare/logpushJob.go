@@ -87,7 +87,7 @@ type LogpushJob struct {
 	// The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Which type of dataset resource to use. Available values are
-	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
 	// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
@@ -143,7 +143,7 @@ type logpushJobState struct {
 	// The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
 	AccountId *string `pulumi:"accountId"`
 	// Which type of dataset resource to use. Available values are
-	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
 	// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
 	Dataset *string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
@@ -165,7 +165,7 @@ type LogpushJobState struct {
 	// The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
 	AccountId pulumi.StringPtrInput
 	// Which type of dataset resource to use. Available values are
-	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
 	// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
 	Dataset pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
@@ -191,7 +191,7 @@ type logpushJobArgs struct {
 	// The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
 	AccountId *string `pulumi:"accountId"`
 	// Which type of dataset resource to use. Available values are
-	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
 	// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
 	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
@@ -214,7 +214,7 @@ type LogpushJobArgs struct {
 	// The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
 	AccountId pulumi.StringPtrInput
 	// Which type of dataset resource to use. Available values are
-	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+	// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
 	// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
 	Dataset pulumi.StringInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
@@ -317,6 +317,49 @@ func (o LogpushJobOutput) ToLogpushJobOutput() LogpushJobOutput {
 
 func (o LogpushJobOutput) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput {
 	return o
+}
+
+// The account ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
+func (o LogpushJobOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Which type of dataset resource to use. Available values are
+// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
+// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
+func (o LogpushJobOutput) Dataset() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
+}
+
+// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+func (o LogpushJobOutput) DestinationConf() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.DestinationConf }).(pulumi.StringOutput)
+}
+
+// Whether to enable the job.
+func (o LogpushJobOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+func (o LogpushJobOutput) LogpullOptions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.LogpullOptions }).(pulumi.StringPtrOutput)
+}
+
+// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+func (o LogpushJobOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
+// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+func (o LogpushJobOutput) OwnershipChallenge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.OwnershipChallenge }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID where the logpush job should be created. Either `accountId` or `zoneId` are required.
+func (o LogpushJobOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }
 
 type LogpushJobArrayOutput struct{ *pulumi.OutputState }

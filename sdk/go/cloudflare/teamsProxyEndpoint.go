@@ -230,6 +230,26 @@ func (o TeamsProxyEndpointOutput) ToTeamsProxyEndpointOutputWithContext(ctx cont
 	return o
 }
 
+// The account to which the teams proxy endpoint should be added.
+func (o TeamsProxyEndpointOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The networks CIDRs that will be allowed to initiate proxy connections.
+func (o TeamsProxyEndpointOutput) Ips() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringArrayOutput { return v.Ips }).(pulumi.StringArrayOutput)
+}
+
+// Name of the teams proxy endpoint.
+func (o TeamsProxyEndpointOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The FQDN that proxy clients should be pointed at.
+func (o TeamsProxyEndpointOutput) Subdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsProxyEndpoint) pulumi.StringOutput { return v.Subdomain }).(pulumi.StringOutput)
+}
+
 type TeamsProxyEndpointArrayOutput struct{ *pulumi.OutputState }
 
 func (TeamsProxyEndpointArrayOutput) ElementType() reflect.Type {

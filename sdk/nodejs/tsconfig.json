@@ -14,6 +14,7 @@
     },
     "files": [
         "accessApplication.ts",
+        "accessBookmark.ts",
         "accessCaCertificate.ts",
         "accessGroup.ts",
         "accessIdentityProvider.ts",
@@ -82,6 +83,7 @@
         "teamsLocation.ts",
         "teamsProxyEndpoint.ts",
         "teamsRule.ts",
+        "tunnelRoute.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",

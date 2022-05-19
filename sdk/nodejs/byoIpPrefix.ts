@@ -56,6 +56,7 @@ export class ByoIpPrefix extends pulumi.CustomResource {
         return obj['__pulumiType'] === ByoIpPrefix.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
      */
@@ -82,14 +83,19 @@ export class ByoIpPrefix extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ByoIpPrefixState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["advertisement"] = state ? state.advertisement : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["prefixId"] = state ? state.prefixId : undefined;
         } else {
             const args = argsOrState as ByoIpPrefixArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.prefixId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'prefixId'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["advertisement"] = args ? args.advertisement : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["prefixId"] = args ? args.prefixId : undefined;
@@ -103,6 +109,7 @@ export class ByoIpPrefix extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ByoIpPrefix resources.
  */
 export interface ByoIpPrefixState {
+    accountId?: pulumi.Input<string>;
     /**
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
      */
@@ -121,6 +128,7 @@ export interface ByoIpPrefixState {
  * The set of arguments for constructing a ByoIpPrefix resource.
  */
 export interface ByoIpPrefixArgs {
+    accountId: pulumi.Input<string>;
     /**
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
      */

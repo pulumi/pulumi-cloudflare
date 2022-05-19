@@ -195,6 +195,11 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx cont
 	return o
 }
 
+// The name of the namespace you wish to create.
+func (o WorkersKvNamespaceOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersKvNamespace) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
+}
+
 type WorkersKvNamespaceArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvNamespaceArrayOutput) ElementType() reflect.Type {

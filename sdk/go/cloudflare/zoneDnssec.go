@@ -271,6 +271,66 @@ func (o ZoneDnssecOutput) ToZoneDnssecOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
+// Zone DNSSEC algorithm.
+func (o ZoneDnssecOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// Zone DNSSEC digest.
+func (o ZoneDnssecOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.Digest }).(pulumi.StringOutput)
+}
+
+// Digest algorithm use for Zone DNSSEC.
+func (o ZoneDnssecOutput) DigestAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.DigestAlgorithm }).(pulumi.StringOutput)
+}
+
+// Digest Type for Zone DNSSEC.
+func (o ZoneDnssecOutput) DigestType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.DigestType }).(pulumi.StringOutput)
+}
+
+// DS for the Zone DNSSEC.
+func (o ZoneDnssecOutput) Ds() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.Ds }).(pulumi.StringOutput)
+}
+
+// Zone DNSSEC flags.
+func (o ZoneDnssecOutput) Flags() pulumi.IntOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.IntOutput { return v.Flags }).(pulumi.IntOutput)
+}
+
+// Key Tag for the Zone DNSSEC.
+func (o ZoneDnssecOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.IntOutput { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+// Key type used for Zone DNSSEC.
+func (o ZoneDnssecOutput) KeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.KeyType }).(pulumi.StringOutput)
+}
+
+// Zone DNSSEC updated time.
+func (o ZoneDnssecOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Public Key for the Zone DNSSEC.
+func (o ZoneDnssecOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// The status of the Zone DNSSEC.
+func (o ZoneDnssecOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The zone id for the zone.
+func (o ZoneDnssecOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneDnssec) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type ZoneDnssecArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneDnssecArrayOutput) ElementType() reflect.Type {

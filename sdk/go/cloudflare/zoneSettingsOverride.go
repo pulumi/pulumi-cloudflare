@@ -242,6 +242,41 @@ func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverrideOutputWithContext(ctx 
 	return o
 }
 
+// Settings present in the zone at the time the resource is created. This will be used to restore the original settings when this resource is destroyed. Shares the same schema as the `settings` attribute (Above).
+func (o ZoneSettingsOverrideOutput) InitialSettings() ZoneSettingsOverrideInitialSettingArrayOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverride) ZoneSettingsOverrideInitialSettingArrayOutput { return v.InitialSettings }).(ZoneSettingsOverrideInitialSettingArrayOutput)
+}
+
+// Time when this resource was created and the `initialSettings` were set.
+func (o ZoneSettingsOverrideOutput) InitialSettingsReadAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringOutput { return v.InitialSettingsReadAt }).(pulumi.StringOutput)
+}
+
+// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
+// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+func (o ZoneSettingsOverrideOutput) ReadonlySettings() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringArrayOutput { return v.ReadonlySettings }).(pulumi.StringArrayOutput)
+}
+
+// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
+func (o ZoneSettingsOverrideOutput) Settings() ZoneSettingsOverrideSettingsOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverride) ZoneSettingsOverrideSettingsOutput { return v.Settings }).(ZoneSettingsOverrideSettingsOutput)
+}
+
+// The DNS zone ID to which apply settings.
+func (o ZoneSettingsOverrideOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
+func (o ZoneSettingsOverrideOutput) ZoneStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringOutput { return v.ZoneStatus }).(pulumi.StringOutput)
+}
+
+func (o ZoneSettingsOverrideOutput) ZoneType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringOutput { return v.ZoneType }).(pulumi.StringOutput)
+}
+
 type ZoneSettingsOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneSettingsOverrideArrayOutput) ElementType() reflect.Type {

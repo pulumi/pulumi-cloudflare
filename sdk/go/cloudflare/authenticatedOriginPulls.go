@@ -276,6 +276,26 @@ func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutputWithCont
 	return o
 }
 
+// The id of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
+func (o AuthenticatedOriginPullsOutput) AuthenticatedOriginPullsCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringPtrOutput { return v.AuthenticatedOriginPullsCertificate }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not to enable Authenticated Origin Pulls on the given zone or hostname.
+func (o AuthenticatedOriginPullsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
+func (o AuthenticatedOriginPullsOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringPtrOutput { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The zone ID to upload the certificate to.
+func (o AuthenticatedOriginPullsOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPulls) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type AuthenticatedOriginPullsArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsArrayOutput) ElementType() reflect.Type {

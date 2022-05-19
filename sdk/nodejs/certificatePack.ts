@@ -44,6 +44,7 @@ import * as utilities from "./utilities";
  *     type: "advanced",
  *     validationMethod: "http",
  *     validityDays: 90,
+ *     waitForActiveStatus: true,
  *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  * });
  * ```
@@ -98,8 +99,8 @@ export class CertificatePack extends pulumi.CustomResource {
     public readonly cloudflareBranding!: pulumi.Output<boolean | undefined>;
     /**
      * List of hostnames to provision the certificate pack for.
-     * Note: If using Let's Encrypt, you cannot use individual subdomains and only a
-     * wildcard for subdomain is available.
+     * The zone name must be included as a host. Note: If using Let's Encrypt, you
+     * cannot use individual subdomains and only a wildcard for subdomain is available.
      */
     public readonly hosts!: pulumi.Output<string[]>;
     /**
@@ -120,6 +121,11 @@ export class CertificatePack extends pulumi.CustomResource {
      * Allowed values: 14, 30, 90, 365.
      */
     public readonly validityDays!: pulumi.Output<number | undefined>;
+    /**
+     * Whether or not to wait for a certificate
+     * pack to reach status `active` during creation. Defaults to `false`.
+     */
+    public readonly waitForActiveStatus!: pulumi.Output<boolean | undefined>;
     /**
      * The DNS zone to which the certificate pack should be added.
      */
@@ -146,6 +152,7 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["validationMethod"] = state ? state.validationMethod : undefined;
             resourceInputs["validationRecords"] = state ? state.validationRecords : undefined;
             resourceInputs["validityDays"] = state ? state.validityDays : undefined;
+            resourceInputs["waitForActiveStatus"] = state ? state.waitForActiveStatus : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as CertificatePackArgs | undefined;
@@ -166,6 +173,7 @@ export class CertificatePack extends pulumi.CustomResource {
             resourceInputs["validationMethod"] = args ? args.validationMethod : undefined;
             resourceInputs["validationRecords"] = args ? args.validationRecords : undefined;
             resourceInputs["validityDays"] = args ? args.validityDays : undefined;
+            resourceInputs["waitForActiveStatus"] = args ? args.waitForActiveStatus : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -191,8 +199,8 @@ export interface CertificatePackState {
     cloudflareBranding?: pulumi.Input<boolean>;
     /**
      * List of hostnames to provision the certificate pack for.
-     * Note: If using Let's Encrypt, you cannot use individual subdomains and only a
-     * wildcard for subdomain is available.
+     * The zone name must be included as a host. Note: If using Let's Encrypt, you
+     * cannot use individual subdomains and only a wildcard for subdomain is available.
      */
     hosts?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -213,6 +221,11 @@ export interface CertificatePackState {
      * Allowed values: 14, 30, 90, 365.
      */
     validityDays?: pulumi.Input<number>;
+    /**
+     * Whether or not to wait for a certificate
+     * pack to reach status `active` during creation. Defaults to `false`.
+     */
+    waitForActiveStatus?: pulumi.Input<boolean>;
     /**
      * The DNS zone to which the certificate pack should be added.
      */
@@ -237,8 +250,8 @@ export interface CertificatePackArgs {
     cloudflareBranding?: pulumi.Input<boolean>;
     /**
      * List of hostnames to provision the certificate pack for.
-     * Note: If using Let's Encrypt, you cannot use individual subdomains and only a
-     * wildcard for subdomain is available.
+     * The zone name must be included as a host. Note: If using Let's Encrypt, you
+     * cannot use individual subdomains and only a wildcard for subdomain is available.
      */
     hosts: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -259,6 +272,11 @@ export interface CertificatePackArgs {
      * Allowed values: 14, 30, 90, 365.
      */
     validityDays?: pulumi.Input<number>;
+    /**
+     * Whether or not to wait for a certificate
+     * pack to reach status `active` during creation. Defaults to `false`.
+     */
+    waitForActiveStatus?: pulumi.Input<boolean>;
     /**
      * The DNS zone to which the certificate pack should be added.
      */

@@ -260,6 +260,36 @@ func (o DevicePostureIntegrationOutput) ToDevicePostureIntegrationOutputWithCont
 	return o
 }
 
+// The account to which the device posture integration should be added.
+func (o DevicePostureIntegrationOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevicePostureIntegration) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The device posture integration's connection authorization parameters.
+func (o DevicePostureIntegrationOutput) Configs() DevicePostureIntegrationConfigArrayOutput {
+	return o.ApplyT(func(v *DevicePostureIntegration) DevicePostureIntegrationConfigArrayOutput { return v.Configs }).(DevicePostureIntegrationConfigArrayOutput)
+}
+
+func (o DevicePostureIntegrationOutput) Identifier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevicePostureIntegration) pulumi.StringPtrOutput { return v.Identifier }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the frequency with which to poll the third-party API.
+// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+func (o DevicePostureIntegrationOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevicePostureIntegration) pulumi.StringPtrOutput { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// Name of the device posture integration.
+func (o DevicePostureIntegrationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevicePostureIntegration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The device posture integration type. Valid values are `workspaceOne`.
+func (o DevicePostureIntegrationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevicePostureIntegration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
 type DevicePostureIntegrationArrayOutput struct{ *pulumi.OutputState }
 
 func (DevicePostureIntegrationArrayOutput) ElementType() reflect.Type {

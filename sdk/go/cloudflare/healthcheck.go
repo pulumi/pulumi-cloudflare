@@ -147,9 +147,13 @@ type Healthcheck struct {
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of email addresses we want to send the notifications to.
+	// A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationEmailAddresses pulumi.StringArrayOutput `pulumi:"notificationEmailAddresses"`
-	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationSuspended pulumi.BoolPtrOutput `pulumi:"notificationSuspended"`
 	// The endpoint path to health check against. (Default: `/`)
 	Path pulumi.StringPtrOutput `pulumi:"path"`
@@ -236,9 +240,13 @@ type healthcheckState struct {
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name *string `pulumi:"name"`
-	// A list of email addresses we want to send the notifications to.
+	// A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationEmailAddresses []string `pulumi:"notificationEmailAddresses"`
-	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationSuspended *bool `pulumi:"notificationSuspended"`
 	// The endpoint path to health check against. (Default: `/`)
 	Path *string `pulumi:"path"`
@@ -285,9 +293,13 @@ type HealthcheckState struct {
 	ModifiedOn pulumi.StringPtrInput
 	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringPtrInput
-	// A list of email addresses we want to send the notifications to.
+	// A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationEmailAddresses pulumi.StringArrayInput
-	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationSuspended pulumi.BoolPtrInput
 	// The endpoint path to health check against. (Default: `/`)
 	Path pulumi.StringPtrInput
@@ -336,9 +348,13 @@ type healthcheckArgs struct {
 	Method *string `pulumi:"method"`
 	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name string `pulumi:"name"`
-	// A list of email addresses we want to send the notifications to.
+	// A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationEmailAddresses []string `pulumi:"notificationEmailAddresses"`
-	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationSuspended *bool `pulumi:"notificationSuspended"`
 	// The endpoint path to health check against. (Default: `/`)
 	Path *string `pulumi:"path"`
@@ -384,9 +400,13 @@ type HealthcheckArgs struct {
 	Method pulumi.StringPtrInput
 	// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
 	Name pulumi.StringInput
-	// A list of email addresses we want to send the notifications to.
+	// A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationEmailAddresses pulumi.StringArrayInput
-	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`).
+	// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
+	//
+	// Deprecated: Use `cloudflare_notification_policy` instead.
 	NotificationSuspended pulumi.BoolPtrInput
 	// The endpoint path to health check against. (Default: `/`)
 	Path pulumi.StringPtrInput
@@ -489,6 +509,128 @@ func (o HealthcheckOutput) ToHealthcheckOutput() HealthcheckOutput {
 
 func (o HealthcheckOutput) ToHealthcheckOutputWithContext(ctx context.Context) HealthcheckOutput {
 	return o
+}
+
+// The hostname or IP address of the origin server to run health checks on.
+func (o HealthcheckOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
+}
+
+// Do not validate the certificate when the health check uses HTTPS. Valid values: `true` or `false` (Default: `false`).
+func (o HealthcheckOutput) AllowInsecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.BoolPtrOutput { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// A list of regions from which to run health checks. If not set Cloudflare will pick a default region. Valid values: `WNAM`, `ENAM`, `WEU`, `EEU`, `NSAM`, `SSAM`, `OC`, `ME`, `NAF`, `SAF`, `IN`, `SEAS`, `NEAS`, `ALL_REGIONS`.
+func (o HealthcheckOutput) CheckRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringArrayOutput { return v.CheckRegions }).(pulumi.StringArrayOutput)
+}
+
+// The number of consecutive fails required from a health check before changing the health to unhealthy. (Default: `1`)
+func (o HealthcheckOutput) ConsecutiveFails() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.ConsecutiveFails }).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive successes required from a health check before changing the health to healthy. (Default: `1`)
+func (o HealthcheckOutput) ConsecutiveSuccesses() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.ConsecutiveSuccesses }).(pulumi.IntPtrOutput)
+}
+
+func (o HealthcheckOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// A human-readable description of the health check.
+func (o HealthcheckOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy.
+func (o HealthcheckOutput) ExpectedBody() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringPtrOutput { return v.ExpectedBody }).(pulumi.StringPtrOutput)
+}
+
+// The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. (Default: `["200"]`)
+func (o HealthcheckOutput) ExpectedCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringArrayOutput { return v.ExpectedCodes }).(pulumi.StringArrayOutput)
+}
+
+// Follow redirects if the origin returns a 3xx status code. Valid values: `true` or `false` (Default: `false`).
+func (o HealthcheckOutput) FollowRedirects() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.BoolPtrOutput { return v.FollowRedirects }).(pulumi.BoolPtrOutput)
+}
+
+// The header name.
+func (o HealthcheckOutput) Headers() HealthcheckHeaderArrayOutput {
+	return o.ApplyT(func(v *Healthcheck) HealthcheckHeaderArrayOutput { return v.Headers }).(HealthcheckHeaderArrayOutput)
+}
+
+// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. (Default: `60`)
+func (o HealthcheckOutput) Interval() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.Interval }).(pulumi.IntPtrOutput)
+}
+
+// The TCP connection method to use for the health check. Valid values: `connectionEstablished` (Default: `connectionEstablished`).
+func (o HealthcheckOutput) Method() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Method }).(pulumi.StringOutput)
+}
+
+func (o HealthcheckOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.
+func (o HealthcheckOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of email addresses we want to send the notifications to. *Deprecated, use `NotificationPolicy` instead.*
+//
+// Deprecated: Use `cloudflare_notification_policy` instead.
+func (o HealthcheckOutput) NotificationEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringArrayOutput { return v.NotificationEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Whether the notifications are suspended or not. Useful for maintenance periods. Valid values: `true` or `false` (Default: `false`). *Deprecated, use `NotificationPolicy` instead.*
+//
+// Deprecated: Use `cloudflare_notification_policy` instead.
+func (o HealthcheckOutput) NotificationSuspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.BoolPtrOutput { return v.NotificationSuspended }).(pulumi.BoolPtrOutput)
+}
+
+// The endpoint path to health check against. (Default: `/`)
+func (o HealthcheckOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Port number to connect to for the health check.  Valid values are in the range `0-65535` (Default: `80`).
+func (o HealthcheckOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. (Default: `2`)
+func (o HealthcheckOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.Retries }).(pulumi.IntPtrOutput)
+}
+
+// If suspended, no health checks are sent to the origin. Valid values: `true` or `false` (Default: `false`).
+func (o HealthcheckOutput) Suspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
+}
+
+// The timeout (in seconds) before marking the health check as failed. (Default: `5`)
+func (o HealthcheckOutput) Timeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.IntPtrOutput { return v.Timeout }).(pulumi.IntPtrOutput)
+}
+
+// The protocol to use for the health check. Valid values: `HTTP`, `HTTPS`, `TCP`.
+func (o HealthcheckOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The DNS zone ID to which apply settings.
+func (o HealthcheckOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Healthcheck) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type HealthcheckArrayOutput struct{ *pulumi.OutputState }

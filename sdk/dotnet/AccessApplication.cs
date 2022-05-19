@@ -131,9 +131,16 @@ namespace Pulumi.Cloudflare
         [Output("enableBindingCookie")]
         public Output<bool?> EnableBindingCookie { get; private set; } = null!;
 
+        /// <summary>
+        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// </summary>
         [Output("httpOnlyCookieAttribute")]
-        public Output<bool?> HttpOnlyCookieAttribute { get; private set; } = null!;
+        public Output<bool> HttpOnlyCookieAttribute { get; private set; } = null!;
 
+        /// <summary>
+        /// Image URL for the logo shown in the app launcher
+        /// dashboard.
+        /// </summary>
         [Output("logoUrl")]
         public Output<string?> LogoUrl { get; private set; } = null!;
 
@@ -143,8 +150,19 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Defines the same-site cookie setting
+        /// for access tokens. Valid values are `none`, `lax`, and `strict`.
+        /// </summary>
         [Output("sameSiteCookieAttribute")]
         public Output<string?> SameSiteCookieAttribute { get; private set; } = null!;
+
+        /// <summary>
+        /// Option to return a 401 status code in
+        /// service authentication rules on failed requests.
+        /// </summary>
+        [Output("serviceAuth401Redirect")]
+        public Output<bool?> ServiceAuth401Redirect { get; private set; } = null!;
 
         /// <summary>
         /// How often a user will be forced to
@@ -154,6 +172,10 @@ namespace Pulumi.Cloudflare
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
 
+        /// <summary>
+        /// Option to skip the authorization interstitial
+        /// when using the CLI.
+        /// </summary>
         [Output("skipInterstitial")]
         public Output<bool?> SkipInterstitial { get; private set; } = null!;
 
@@ -286,9 +308,16 @@ namespace Pulumi.Cloudflare
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
 
+        /// <summary>
+        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// </summary>
         [Input("httpOnlyCookieAttribute")]
         public Input<bool>? HttpOnlyCookieAttribute { get; set; }
 
+        /// <summary>
+        /// Image URL for the logo shown in the app launcher
+        /// dashboard.
+        /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
 
@@ -298,8 +327,19 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Defines the same-site cookie setting
+        /// for access tokens. Valid values are `none`, `lax`, and `strict`.
+        /// </summary>
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
+
+        /// <summary>
+        /// Option to return a 401 status code in
+        /// service authentication rules on failed requests.
+        /// </summary>
+        [Input("serviceAuth401Redirect")]
+        public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
         /// How often a user will be forced to
@@ -309,6 +349,10 @@ namespace Pulumi.Cloudflare
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
 
+        /// <summary>
+        /// Option to skip the authorization interstitial
+        /// when using the CLI.
+        /// </summary>
         [Input("skipInterstitial")]
         public Input<bool>? SkipInterstitial { get; set; }
 
@@ -408,9 +452,16 @@ namespace Pulumi.Cloudflare
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
 
+        /// <summary>
+        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// </summary>
         [Input("httpOnlyCookieAttribute")]
         public Input<bool>? HttpOnlyCookieAttribute { get; set; }
 
+        /// <summary>
+        /// Image URL for the logo shown in the app launcher
+        /// dashboard.
+        /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
 
@@ -420,8 +471,19 @@ namespace Pulumi.Cloudflare
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Defines the same-site cookie setting
+        /// for access tokens. Valid values are `none`, `lax`, and `strict`.
+        /// </summary>
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
+
+        /// <summary>
+        /// Option to return a 401 status code in
+        /// service authentication rules on failed requests.
+        /// </summary>
+        [Input("serviceAuth401Redirect")]
+        public Input<bool>? ServiceAuth401Redirect { get; set; }
 
         /// <summary>
         /// How often a user will be forced to
@@ -431,6 +493,10 @@ namespace Pulumi.Cloudflare
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
 
+        /// <summary>
+        /// Option to skip the authorization interstitial
+        /// when using the CLI.
+        /// </summary>
         [Input("skipInterstitial")]
         public Input<bool>? SkipInterstitial { get; set; }
 

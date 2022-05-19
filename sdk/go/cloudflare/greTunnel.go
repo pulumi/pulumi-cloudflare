@@ -312,6 +312,61 @@ func (o GreTunnelOutput) ToGreTunnelOutputWithContext(ctx context.Context) GreTu
 	return o
 }
 
+// The ID of the account where the tunnel is being created.
+func (o GreTunnelOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// The IP address assigned to the Cloudflare side of the GRE tunnel.
+func (o GreTunnelOutput) CloudflareGreEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.CloudflareGreEndpoint }).(pulumi.StringOutput)
+}
+
+// The IP address assigned to the customer side of the GRE tunnel.
+func (o GreTunnelOutput) CustomerGreEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.CustomerGreEndpoint }).(pulumi.StringOutput)
+}
+
+// An optional description of the GRE tunnel.
+func (o GreTunnelOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specifies if ICMP tunnel health checks are enabled Default: `true`.
+func (o GreTunnelOutput) HealthCheckEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.BoolOutput { return v.HealthCheckEnabled }).(pulumi.BoolOutput)
+}
+
+// The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
+func (o GreTunnelOutput) HealthCheckTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.HealthCheckTarget }).(pulumi.StringOutput)
+}
+
+// Specifies the ICMP echo type for the health check (`request` or `reply`) Default: `reply`.
+func (o GreTunnelOutput) HealthCheckType() pulumi.StringOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.HealthCheckType }).(pulumi.StringOutput)
+}
+
+// 31-bit prefix (/31 in CIDR notation) supporting 2 hosts, one for each side of the tunnel.
+func (o GreTunnelOutput) InterfaceAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.InterfaceAddress }).(pulumi.StringOutput)
+}
+
+// Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. Maximum value 1476 and minimum value 576. Default: `1476`.
+func (o GreTunnelOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
+}
+
+// Name of the GRE tunnel.
+func (o GreTunnelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Time To Live (TTL) in number of hops of the GRE tunnel. Minimum value 64. Default: `64`.
+func (o GreTunnelOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *GreTunnel) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
+}
+
 type GreTunnelArrayOutput struct{ *pulumi.OutputState }
 
 func (GreTunnelArrayOutput) ElementType() reflect.Type {

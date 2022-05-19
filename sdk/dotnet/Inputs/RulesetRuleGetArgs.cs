@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
         /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Defines if the current rule-level override enables or disables the rule.
@@ -53,6 +53,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// List parameters to configure how the rule generates logs (refer to the nested schema).
+        /// </summary>
+        [Input("logging")]
+        public Input<Inputs.RulesetRuleLoggingGetArgs>? Logging { get; set; }
 
         /// <summary>
         /// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).

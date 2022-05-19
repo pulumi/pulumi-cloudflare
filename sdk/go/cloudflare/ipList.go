@@ -248,6 +248,30 @@ func (o IpListOutput) ToIpListOutputWithContext(ctx context.Context) IpListOutpu
 	return o
 }
 
+// The ID of the account where the IP List is being created.
+func (o IpListOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpList) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// A note that can be used to annotate the List. Maximum Length: 500
+func (o IpListOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IpList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o IpListOutput) Items() IpListItemArrayOutput {
+	return o.ApplyT(func(v *IpList) IpListItemArrayOutput { return v.Items }).(IpListItemArrayOutput)
+}
+
+// The kind of values in the List. Valid values: `ip`.
+func (o IpListOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpList) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The name of the list (used in filter expressions). Valid pattern: `^[a-zA-Z0-9_]+$`. Maximum Length: 50
+func (o IpListOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *IpList) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
 type IpListArrayOutput struct{ *pulumi.OutputState }
 
 func (IpListArrayOutput) ElementType() reflect.Type {

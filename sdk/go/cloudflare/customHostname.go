@@ -251,6 +251,43 @@ func (o CustomHostnameOutput) ToCustomHostnameOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The custom origin server used for certificates.
+func (o CustomHostnameOutput) CustomOriginServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringPtrOutput { return v.CustomOriginServer }).(pulumi.StringPtrOutput)
+}
+
+// The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
+func (o CustomHostnameOutput) CustomOriginSni() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringPtrOutput { return v.CustomOriginSni }).(pulumi.StringPtrOutput)
+}
+
+// Hostname you intend to request a certificate for.
+func (o CustomHostnameOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o CustomHostnameOutput) OwnershipVerification() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringMapOutput { return v.OwnershipVerification }).(pulumi.StringMapOutput)
+}
+
+func (o CustomHostnameOutput) OwnershipVerificationHttp() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringMapOutput { return v.OwnershipVerificationHttp }).(pulumi.StringMapOutput)
+}
+
+// SSL configuration of the certificate. See further notes below.
+func (o CustomHostnameOutput) Ssls() CustomHostnameSslArrayOutput {
+	return o.ApplyT(func(v *CustomHostname) CustomHostnameSslArrayOutput { return v.Ssls }).(CustomHostnameSslArrayOutput)
+}
+
+func (o CustomHostnameOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The DNS zone ID where the custom hostname should be assigned.
+func (o CustomHostnameOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomHostname) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type CustomHostnameArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnameArrayOutput) ElementType() reflect.Type {
