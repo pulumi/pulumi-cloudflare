@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersUri
     {
+        /// <summary>
+        /// List of properties to change request origin (refer to the nested schema).
+        /// </summary>
         public readonly bool? Origin;
         /// <summary>
         /// URI path configuration when performing a URL rewrite (refer to the nested schema).

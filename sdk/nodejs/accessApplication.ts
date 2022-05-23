@@ -116,19 +116,39 @@ export class AccessApplication extends pulumi.CustomResource {
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
-    public readonly httpOnlyCookieAttribute!: pulumi.Output<boolean | undefined>;
+    /**
+     * Option to add the `HttpOnly` cookie flag to access tokens.
+     */
+    public readonly httpOnlyCookieAttribute!: pulumi.Output<boolean>;
+    /**
+     * Image URL for the logo shown in the app launcher
+     * dashboard.
+     */
     public readonly logoUrl!: pulumi.Output<string | undefined>;
     /**
      * Friendly name of the Access Application.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Defines the same-site cookie setting
+     * for access tokens. Valid values are `none`, `lax`, and `strict`.
+     */
     public readonly sameSiteCookieAttribute!: pulumi.Output<string | undefined>;
+    /**
+     * Option to return a 401 status code in
+     * service authentication rules on failed requests.
+     */
+    public readonly serviceAuth401Redirect!: pulumi.Output<boolean | undefined>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
+    /**
+     * Option to skip the authorization interstitial
+     * when using the CLI.
+     */
     public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
     /**
      * The application type. Defaults to `selfHosted`. Valid
@@ -167,6 +187,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
+            resourceInputs["serviceAuth401Redirect"] = state ? state.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
@@ -192,6 +213,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
+            resourceInputs["serviceAuth401Redirect"] = args ? args.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -251,19 +273,39 @@ export interface AccessApplicationState {
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     enableBindingCookie?: pulumi.Input<boolean>;
+    /**
+     * Option to add the `HttpOnly` cookie flag to access tokens.
+     */
     httpOnlyCookieAttribute?: pulumi.Input<boolean>;
+    /**
+     * Image URL for the logo shown in the app launcher
+     * dashboard.
+     */
     logoUrl?: pulumi.Input<string>;
     /**
      * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Defines the same-site cookie setting
+     * for access tokens. Valid values are `none`, `lax`, and `strict`.
+     */
     sameSiteCookieAttribute?: pulumi.Input<string>;
+    /**
+     * Option to return a 401 status code in
+     * service authentication rules on failed requests.
+     */
+    serviceAuth401Redirect?: pulumi.Input<boolean>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
+    /**
+     * Option to skip the authorization interstitial
+     * when using the CLI.
+     */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
      * The application type. Defaults to `selfHosted`. Valid
@@ -320,19 +362,39 @@ export interface AccessApplicationArgs {
      * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
      */
     enableBindingCookie?: pulumi.Input<boolean>;
+    /**
+     * Option to add the `HttpOnly` cookie flag to access tokens.
+     */
     httpOnlyCookieAttribute?: pulumi.Input<boolean>;
+    /**
+     * Image URL for the logo shown in the app launcher
+     * dashboard.
+     */
     logoUrl?: pulumi.Input<string>;
     /**
      * Friendly name of the Access Application.
      */
     name: pulumi.Input<string>;
+    /**
+     * Defines the same-site cookie setting
+     * for access tokens. Valid values are `none`, `lax`, and `strict`.
+     */
     sameSiteCookieAttribute?: pulumi.Input<string>;
+    /**
+     * Option to return a 401 status code in
+     * service authentication rules on failed requests.
+     */
+    serviceAuth401Redirect?: pulumi.Input<boolean>;
     /**
      * How often a user will be forced to
      * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
      * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
      */
     sessionDuration?: pulumi.Input<string>;
+    /**
+     * Option to skip the authorization interstitial
+     * when using the CLI.
+     */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
      * The application type. Defaults to `selfHosted`. Valid

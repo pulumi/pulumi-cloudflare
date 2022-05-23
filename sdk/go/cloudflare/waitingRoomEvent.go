@@ -330,6 +330,89 @@ func (o WaitingRoomEventOutput) ToWaitingRoomEventOutputWithContext(ctx context.
 	return o
 }
 
+func (o WaitingRoomEventOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// This a templated html file that will be rendered at the edge.
+func (o WaitingRoomEventOutput) CustomPageHtml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.CustomPageHtml }).(pulumi.StringPtrOutput)
+}
+
+// A description to let users add more details about the waiting room event.
+func (o WaitingRoomEventOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.
+func (o WaitingRoomEventOutput) DisableSessionRenewal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.BoolPtrOutput { return v.DisableSessionRenewal }).(pulumi.BoolPtrOutput)
+}
+
+// ISO 8601 timestamp that marks the end of the event.
+func (o WaitingRoomEventOutput) EventEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.EventEndTime }).(pulumi.StringOutput)
+}
+
+// ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.
+func (o WaitingRoomEventOutput) EventStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.EventStartTime }).(pulumi.StringOutput)
+}
+
+func (o WaitingRoomEventOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
+func (o WaitingRoomEventOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of new users that will be let into the route every minute.
+func (o WaitingRoomEventOutput) NewUsersPerMinute() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.IntPtrOutput { return v.NewUsersPerMinute }).(pulumi.IntPtrOutput)
+}
+
+// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.
+func (o WaitingRoomEventOutput) PrequeueStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.PrequeueStartTime }).(pulumi.StringPtrOutput)
+}
+
+// The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.
+func (o WaitingRoomEventOutput) QueueingMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringPtrOutput { return v.QueueingMethod }).(pulumi.StringPtrOutput)
+}
+
+// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+func (o WaitingRoomEventOutput) SessionDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.IntPtrOutput { return v.SessionDuration }).(pulumi.IntPtrOutput)
+}
+
+// Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Default: false.
+func (o WaitingRoomEventOutput) ShuffleAtEventStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.BoolPtrOutput { return v.ShuffleAtEventStart }).(pulumi.BoolPtrOutput)
+}
+
+// If suspended, the traffic doesn't go to the waiting room. Default: false.
+func (o WaitingRoomEventOutput) Suspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
+}
+
+// The total number of active user sessions on the route at a point in time.
+func (o WaitingRoomEventOutput) TotalActiveUsers() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.IntPtrOutput { return v.TotalActiveUsers }).(pulumi.IntPtrOutput)
+}
+
+// The Waiting Room ID the event should apply to.
+func (o WaitingRoomEventOutput) WaitingRoomId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.WaitingRoomId }).(pulumi.StringOutput)
+}
+
+// The zone ID to apply to.
+func (o WaitingRoomEventOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoomEvent) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type WaitingRoomEventArrayOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomEventArrayOutput) ElementType() reflect.Type {

@@ -28,6 +28,7 @@ class AccessApplicationArgs:
                  http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -48,9 +49,18 @@ class AccessApplicationArgs:
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
+               dashboard.
+        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
+               for access tokens. Valid values are `none`, `lax`, and `strict`.
+        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in
+               service authentication rules on failed requests.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial
+               when using the CLI.
         :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
                values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
@@ -79,6 +89,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "logo_url", logo_url)
         if same_site_cookie_attribute is not None:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
+        if service_auth401_redirect is not None:
+            pulumi.set(__self__, "service_auth401_redirect", service_auth401_redirect)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
         if skip_interstitial is not None:
@@ -215,6 +227,9 @@ class AccessApplicationArgs:
     @property
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to add the `HttpOnly` cookie flag to access tokens.
+        """
         return pulumi.get(self, "http_only_cookie_attribute")
 
     @http_only_cookie_attribute.setter
@@ -224,6 +239,10 @@ class AccessApplicationArgs:
     @property
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image URL for the logo shown in the app launcher
+        dashboard.
+        """
         return pulumi.get(self, "logo_url")
 
     @logo_url.setter
@@ -233,11 +252,28 @@ class AccessApplicationArgs:
     @property
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the same-site cookie setting
+        for access tokens. Valid values are `none`, `lax`, and `strict`.
+        """
         return pulumi.get(self, "same_site_cookie_attribute")
 
     @same_site_cookie_attribute.setter
     def same_site_cookie_attribute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "same_site_cookie_attribute", value)
+
+    @property
+    @pulumi.getter(name="serviceAuth401Redirect")
+    def service_auth401_redirect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to return a 401 status code in
+        service authentication rules on failed requests.
+        """
+        return pulumi.get(self, "service_auth401_redirect")
+
+    @service_auth401_redirect.setter
+    def service_auth401_redirect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_auth401_redirect", value)
 
     @property
     @pulumi.getter(name="sessionDuration")
@@ -256,6 +292,10 @@ class AccessApplicationArgs:
     @property
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to skip the authorization interstitial
+        when using the CLI.
+        """
         return pulumi.get(self, "skip_interstitial")
 
     @skip_interstitial.setter
@@ -305,6 +345,7 @@ class _AccessApplicationState:
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -325,10 +366,19 @@ class _AccessApplicationState:
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
+               dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
+               for access tokens. Valid values are `none`, `lax`, and `strict`.
+        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in
+               service authentication rules on failed requests.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial
+               when using the CLI.
         :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
                values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
@@ -361,6 +411,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "name", name)
         if same_site_cookie_attribute is not None:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
+        if service_auth401_redirect is not None:
+            pulumi.set(__self__, "service_auth401_redirect", service_auth401_redirect)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
         if skip_interstitial is not None:
@@ -497,6 +549,9 @@ class _AccessApplicationState:
     @property
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to add the `HttpOnly` cookie flag to access tokens.
+        """
         return pulumi.get(self, "http_only_cookie_attribute")
 
     @http_only_cookie_attribute.setter
@@ -506,6 +561,10 @@ class _AccessApplicationState:
     @property
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Image URL for the logo shown in the app launcher
+        dashboard.
+        """
         return pulumi.get(self, "logo_url")
 
     @logo_url.setter
@@ -527,11 +586,28 @@ class _AccessApplicationState:
     @property
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines the same-site cookie setting
+        for access tokens. Valid values are `none`, `lax`, and `strict`.
+        """
         return pulumi.get(self, "same_site_cookie_attribute")
 
     @same_site_cookie_attribute.setter
     def same_site_cookie_attribute(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "same_site_cookie_attribute", value)
+
+    @property
+    @pulumi.getter(name="serviceAuth401Redirect")
+    def service_auth401_redirect(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to return a 401 status code in
+        service authentication rules on failed requests.
+        """
+        return pulumi.get(self, "service_auth401_redirect")
+
+    @service_auth401_redirect.setter
+    def service_auth401_redirect(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "service_auth401_redirect", value)
 
     @property
     @pulumi.getter(name="sessionDuration")
@@ -550,6 +626,10 @@ class _AccessApplicationState:
     @property
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Option to skip the authorization interstitial
+        when using the CLI.
+        """
         return pulumi.get(self, "skip_interstitial")
 
     @skip_interstitial.setter
@@ -600,6 +680,7 @@ class AccessApplication(pulumi.CustomResource):
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -658,10 +739,19 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
+               dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
+               for access tokens. Valid values are `none`, `lax`, and `strict`.
+        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in
+               service authentication rules on failed requests.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial
+               when using the CLI.
         :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
                values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
@@ -738,6 +828,7 @@ class AccessApplication(pulumi.CustomResource):
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -771,6 +862,7 @@ class AccessApplication(pulumi.CustomResource):
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
+            __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["skip_interstitial"] = skip_interstitial
             __props__.__dict__["type"] = type
@@ -800,6 +892,7 @@ class AccessApplication(pulumi.CustomResource):
             logo_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+            service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
             skip_interstitial: Optional[pulumi.Input[bool]] = None,
             type: Optional[pulumi.Input[str]] = None,
@@ -825,10 +918,19 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
+               dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
+               for access tokens. Valid values are `none`, `lax`, and `strict`.
+        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in
+               service authentication rules on failed requests.
         :param pulumi.Input[str] session_duration: How often a user will be forced to
                re-authorise. Must be in the format `"48h"` or `"2h45m"`.
                Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial
+               when using the CLI.
         :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
                values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
         :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
@@ -851,6 +953,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["name"] = name
         __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
+        __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["skip_interstitial"] = skip_interstitial
         __props__.__dict__["type"] = type
@@ -943,12 +1046,19 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpOnlyCookieAttribute")
-    def http_only_cookie_attribute(self) -> pulumi.Output[Optional[bool]]:
+    def http_only_cookie_attribute(self) -> pulumi.Output[bool]:
+        """
+        Option to add the `HttpOnly` cookie flag to access tokens.
+        """
         return pulumi.get(self, "http_only_cookie_attribute")
 
     @property
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        Image URL for the logo shown in the app launcher
+        dashboard.
+        """
         return pulumi.get(self, "logo_url")
 
     @property
@@ -962,7 +1072,20 @@ class AccessApplication(pulumi.CustomResource):
     @property
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> pulumi.Output[Optional[str]]:
+        """
+        Defines the same-site cookie setting
+        for access tokens. Valid values are `none`, `lax`, and `strict`.
+        """
         return pulumi.get(self, "same_site_cookie_attribute")
+
+    @property
+    @pulumi.getter(name="serviceAuth401Redirect")
+    def service_auth401_redirect(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Option to return a 401 status code in
+        service authentication rules on failed requests.
+        """
+        return pulumi.get(self, "service_auth401_redirect")
 
     @property
     @pulumi.getter(name="sessionDuration")
@@ -977,6 +1100,10 @@ class AccessApplication(pulumi.CustomResource):
     @property
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Option to skip the authorization interstitial
+        when using the CLI.
+        """
         return pulumi.get(self, "skip_interstitial")
 
     @property

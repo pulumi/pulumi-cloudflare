@@ -25,6 +25,12 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// Host Header that request origin receives.
+        /// </summary>
+        [Input("hostHeader")]
+        public Input<string>? HostHeader { get; set; }
+
+        /// <summary>
         /// Rule ID to apply the override to.
         /// </summary>
         [Input("id")]
@@ -38,6 +44,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("matchedData")]
         public Input<Inputs.RulesetRuleActionParametersMatchedDataGetArgs>? MatchedData { get; set; }
+
+        /// <summary>
+        /// List of properties to change request origin (refer to the nested schema).
+        /// </summary>
+        [Input("origin")]
+        public Input<Inputs.RulesetRuleActionParametersOriginGetArgs>? Origin { get; set; }
 
         /// <summary>
         /// List of override configurations to apply to the ruleset (refer to the nested schema).

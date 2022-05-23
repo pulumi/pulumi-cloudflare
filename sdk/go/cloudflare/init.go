@@ -22,6 +22,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "cloudflare:index/accessApplication:AccessApplication":
 		r = &AccessApplication{}
+	case "cloudflare:index/accessBookmark:AccessBookmark":
+		r = &AccessBookmark{}
 	case "cloudflare:index/accessCaCertificate:AccessCaCertificate":
 		r = &AccessCaCertificate{}
 	case "cloudflare:index/accessGroup:AccessGroup":
@@ -126,6 +128,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamsProxyEndpoint{}
 	case "cloudflare:index/teamsRule:TeamsRule":
 		r = &TeamsRule{}
+	case "cloudflare:index/tunnelRoute:TunnelRoute":
+		r = &TunnelRoute{}
 	case "cloudflare:index/wafGroup:WafGroup":
 		r = &WafGroup{}
 	case "cloudflare:index/wafOverride:WafOverride":
@@ -189,6 +193,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessApplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessBookmark",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -449,6 +458,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/teamsRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tunnelRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

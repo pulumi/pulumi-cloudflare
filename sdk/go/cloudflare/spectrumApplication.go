@@ -340,6 +340,76 @@ func (o SpectrumApplicationOutput) ToSpectrumApplicationOutputWithContext(ctx co
 	return o
 }
 
+// . Enables Argo Smart Routing. Defaults to `false`.
+func (o SpectrumApplicationOutput) ArgoSmartRouting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.BoolPtrOutput { return v.ArgoSmartRouting }).(pulumi.BoolPtrOutput)
+}
+
+// The name and type of DNS record for the Spectrum application. Fields documented below.
+func (o SpectrumApplicationOutput) Dns() SpectrumApplicationDnsOutput {
+	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplicationDnsOutput { return v.Dns }).(SpectrumApplicationDnsOutput)
+}
+
+// . Choose which types of IP addresses will be provisioned for this subdomain. Valid values are: `all`, `ipv4`, `ipv6`. Defaults to `all`.
+func (o SpectrumApplicationOutput) EdgeIpConnectivity() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.EdgeIpConnectivity }).(pulumi.StringOutput)
+}
+
+// . A list of edge IPs (IPv4 and/or IPv6) to configure Spectrum application to. Requires [Bring Your Own IP](https://developers.cloudflare.com/spectrum/getting-started/byoip/) provisioned.
+func (o SpectrumApplicationOutput) EdgeIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringArrayOutput { return v.EdgeIps }).(pulumi.StringArrayOutput)
+}
+
+// Enables the IP Firewall for this application. Defaults to `true`.
+func (o SpectrumApplicationOutput) IpFirewall() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.BoolPtrOutput { return v.IpFirewall }).(pulumi.BoolPtrOutput)
+}
+
+// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
+func (o SpectrumApplicationOutput) OriginDirects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringArrayOutput { return v.OriginDirects }).(pulumi.StringArrayOutput)
+}
+
+// A destination DNS addresses to the origin. Fields documented below.
+func (o SpectrumApplicationOutput) OriginDns() SpectrumApplicationOriginDnsPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplicationOriginDnsPtrOutput { return v.OriginDns }).(SpectrumApplicationOriginDnsPtrOutput)
+}
+
+// If using `originDns` and not `originPortRange`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
+func (o SpectrumApplicationOutput) OriginPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.IntPtrOutput { return v.OriginPort }).(pulumi.IntPtrOutput)
+}
+
+// If using `originDns` and not `originPort`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+func (o SpectrumApplicationOutput) OriginPortRange() SpectrumApplicationOriginPortRangePtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) SpectrumApplicationOriginPortRangePtrOutput { return v.OriginPortRange }).(SpectrumApplicationOriginPortRangePtrOutput)
+}
+
+// The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
+func (o SpectrumApplicationOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
+func (o SpectrumApplicationOutput) ProxyProtocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringPtrOutput { return v.ProxyProtocol }).(pulumi.StringPtrOutput)
+}
+
+// TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
+func (o SpectrumApplicationOutput) Tls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringPtrOutput { return v.Tls }).(pulumi.StringPtrOutput)
+}
+
+// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+func (o SpectrumApplicationOutput) TrafficType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringPtrOutput { return v.TrafficType }).(pulumi.StringPtrOutput)
+}
+
+// The DNS zone ID to add the application to
+func (o SpectrumApplicationOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SpectrumApplication) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type SpectrumApplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (SpectrumApplicationArrayOutput) ElementType() reflect.Type {

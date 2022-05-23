@@ -284,6 +284,50 @@ func (o WafOverrideOutput) ToWafOverrideOutputWithContext(ctx context.Context) W
 	return o
 }
 
+// Description of what the WAF override does.
+func (o WafOverrideOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Similar to `rules`; which WAF groups you want to alter.
+func (o WafOverrideOutput) Groups() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.StringMapOutput { return v.Groups }).(pulumi.StringMapOutput)
+}
+
+func (o WafOverrideOutput) OverrideId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.StringOutput { return v.OverrideId }).(pulumi.StringOutput)
+}
+
+// Whether this package is currently paused.
+func (o WafOverrideOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+// Relative priority of this configuration when multiple configurations match a single URL.
+func (o WafOverrideOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// When a WAF rule matches, substitute its configured action for a different action specified by this definition.
+func (o WafOverrideOutput) RewriteAction() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.StringMapOutput { return v.RewriteAction }).(pulumi.StringMapOutput)
+}
+
+// A list of WAF rule ID to rule action you intend to apply.
+func (o WafOverrideOutput) Rules() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.StringMapOutput { return v.Rules }).(pulumi.StringMapOutput)
+}
+
+// An array of URLs to apply the WAF override to.
+func (o WafOverrideOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
+// The DNS zone to which the WAF override condition should be added.
+func (o WafOverrideOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafOverride) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type WafOverrideArrayOutput struct{ *pulumi.OutputState }
 
 func (WafOverrideArrayOutput) ElementType() reflect.Type {

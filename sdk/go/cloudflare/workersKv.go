@@ -47,7 +47,7 @@ import (
 // ## Import
 //
 // ```sh
-//  $ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6_test-key
+//  $ pulumi import cloudflare:index/workersKv:WorkersKv example beaeb6716c9443eaa4deef11763ccca6/test-key
 // ```
 //
 //  where- `beaeb6716c9443eaa4deef11763ccca6` is the ID of the namespace and `test-key` is the key
@@ -225,6 +225,21 @@ func (o WorkersKvOutput) ToWorkersKvOutput() WorkersKvOutput {
 
 func (o WorkersKvOutput) ToWorkersKvOutputWithContext(ctx context.Context) WorkersKvOutput {
 	return o
+}
+
+// The key name
+func (o WorkersKvOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.Key }).(pulumi.StringOutput)
+}
+
+// The ID of the Workers KV namespace in which you want to create the KV pair
+func (o WorkersKvOutput) NamespaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.NamespaceId }).(pulumi.StringOutput)
+}
+
+// The string value to be stored in the key
+func (o WorkersKvOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkersKv) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
 type WorkersKvArrayOutput struct{ *pulumi.OutputState }

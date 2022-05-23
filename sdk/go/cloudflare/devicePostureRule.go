@@ -31,6 +31,7 @@ import (
 // 			Type:        pulumi.String("serial_number"),
 // 			Description: pulumi.String("Device posture rule for corporate devices."),
 // 			Schedule:    pulumi.String("24h"),
+// 			Expiration:  pulumi.String("24h"),
 // 			Matches: DevicePostureRuleMatchArray{
 // 				&DevicePostureRuleMatchArgs{
 // 					Platform: pulumi.String("mac"),
@@ -64,6 +65,9 @@ type DevicePostureRule struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The description of the device posture rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Expire posture results after the specified amount of time.
+	// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
 	// The value to be checked against. See below for reference
 	// structure.
 	Inputs DevicePostureRuleInputTypeArrayOutput `pulumi:"inputs"`
@@ -117,6 +121,9 @@ type devicePostureRuleState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The description of the device posture rule.
 	Description *string `pulumi:"description"`
+	// Expire posture results after the specified amount of time.
+	// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+	Expiration *string `pulumi:"expiration"`
 	// The value to be checked against. See below for reference
 	// structure.
 	Inputs []DevicePostureRuleInputType `pulumi:"inputs"`
@@ -136,6 +143,9 @@ type DevicePostureRuleState struct {
 	AccountId pulumi.StringPtrInput
 	// The description of the device posture rule.
 	Description pulumi.StringPtrInput
+	// Expire posture results after the specified amount of time.
+	// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+	Expiration pulumi.StringPtrInput
 	// The value to be checked against. See below for reference
 	// structure.
 	Inputs DevicePostureRuleInputTypeArrayInput
@@ -159,6 +169,9 @@ type devicePostureRuleArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// The description of the device posture rule.
 	Description *string `pulumi:"description"`
+	// Expire posture results after the specified amount of time.
+	// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+	Expiration *string `pulumi:"expiration"`
 	// The value to be checked against. See below for reference
 	// structure.
 	Inputs []DevicePostureRuleInputType `pulumi:"inputs"`
@@ -179,6 +192,9 @@ type DevicePostureRuleArgs struct {
 	AccountId pulumi.StringInput
 	// The description of the device posture rule.
 	Description pulumi.StringPtrInput
+	// Expire posture results after the specified amount of time.
+	// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+	Expiration pulumi.StringPtrInput
 	// The value to be checked against. See below for reference
 	// structure.
 	Inputs DevicePostureRuleInputTypeArrayInput
@@ -278,6 +294,49 @@ func (o DevicePostureRuleOutput) ToDevicePostureRuleOutput() DevicePostureRuleOu
 
 func (o DevicePostureRuleOutput) ToDevicePostureRuleOutputWithContext(ctx context.Context) DevicePostureRuleOutput {
 	return o
+}
+
+// The account to which the device posture rule should be added.
+func (o DevicePostureRuleOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The description of the device posture rule.
+func (o DevicePostureRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Expire posture results after the specified amount of time.
+// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+func (o DevicePostureRuleOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringPtrOutput { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// The value to be checked against. See below for reference
+// structure.
+func (o DevicePostureRuleOutput) Inputs() DevicePostureRuleInputTypeArrayOutput {
+	return o.ApplyT(func(v *DevicePostureRule) DevicePostureRuleInputTypeArrayOutput { return v.Inputs }).(DevicePostureRuleInputTypeArrayOutput)
+}
+
+// The conditions that the client must match to run the rule. See below for reference structure.
+func (o DevicePostureRuleOutput) Matches() DevicePostureRuleMatchArrayOutput {
+	return o.ApplyT(func(v *DevicePostureRule) DevicePostureRuleMatchArrayOutput { return v.Matches }).(DevicePostureRuleMatchArrayOutput)
+}
+
+// Name of the device posture rule.
+func (o DevicePostureRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tells the client when to run the device posture check.
+// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+func (o DevicePostureRuleOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringPtrOutput { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// The device posture rule type. Valid values are `file`, `application`, and `serialNumber`.
+func (o DevicePostureRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 type DevicePostureRuleArrayOutput struct{ *pulumi.OutputState }

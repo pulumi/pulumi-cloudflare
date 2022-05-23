@@ -237,6 +237,31 @@ func (o WafRuleOutput) ToWafRuleOutputWithContext(ctx context.Context) WafRuleOu
 	return o
 }
 
+// The ID of the WAF Rule Group that contains the rule.
+func (o WafRuleOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The mode of the rule, can be one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
+func (o WafRuleOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The ID of the WAF Rule Package that contains the rule.
+func (o WafRuleOutput) PackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.PackageId }).(pulumi.StringOutput)
+}
+
+// The WAF Rule ID.
+func (o WafRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// The DNS zone ID to apply to.
+func (o WafRuleOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type WafRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (WafRuleArrayOutput) ElementType() reflect.Type {

@@ -86,7 +86,7 @@ export class LogpushJob extends pulumi.CustomResource {
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
      * Which type of dataset resource to use. Available values are
-     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
      * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
      */
     public readonly dataset!: pulumi.Output<string>;
@@ -169,7 +169,7 @@ export interface LogpushJobState {
     accountId?: pulumi.Input<string>;
     /**
      * Which type of dataset resource to use. Available values are
-     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
      * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
      */
     dataset?: pulumi.Input<string>;
@@ -210,7 +210,7 @@ export interface LogpushJobArgs {
     accountId?: pulumi.Input<string>;
     /**
      * Which type of dataset resource to use. Available values are
-     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`
+     * - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"auditLogs"`, `"gatewayDns"`, `"gatewayHttp"`, `"gatewayNetwork"`, `"networkAnalyticsLogs"`
      * - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewallEvents"`, `"httpRequests"`, `"spectrumEvents"`, `"nelReports", "dnsLogs"`
      */
     dataset: pulumi.Input<string>;

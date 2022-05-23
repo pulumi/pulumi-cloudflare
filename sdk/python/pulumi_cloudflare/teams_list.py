@@ -22,7 +22,7 @@ class TeamsListArgs:
         The set of arguments for constructing a TeamsList resource.
         :param pulumi.Input[str] account_id: The account to which the teams list should be added.
         :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        :param pulumi.Input[str] type: The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
         """
@@ -62,7 +62,7 @@ class TeamsListArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         """
         return pulumi.get(self, "type")
 
@@ -109,7 +109,7 @@ class _TeamsListState:
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
         :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        :param pulumi.Input[str] type: The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -174,7 +174,7 @@ class _TeamsListState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         """
         return pulumi.get(self, "type")
 
@@ -229,7 +229,7 @@ class TeamsList(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
         :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        :param pulumi.Input[str] type: The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         """
         ...
     @overload
@@ -335,7 +335,7 @@ class TeamsList(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
         :param pulumi.Input[str] name: Name of the teams list.
-        :param pulumi.Input[str] type: The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        :param pulumi.Input[str] type: The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -384,7 +384,7 @@ class TeamsList(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         """
         return pulumi.get(self, "type")
 

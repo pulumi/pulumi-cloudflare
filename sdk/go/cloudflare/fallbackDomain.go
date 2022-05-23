@@ -183,6 +183,16 @@ func (o FallbackDomainOutput) ToFallbackDomainOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The account to which the device posture rule should be added.
+func (o FallbackDomainOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *FallbackDomain) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The value of the domain attributes (refer to the nested schema).
+func (o FallbackDomainOutput) Domains() FallbackDomainDomainArrayOutput {
+	return o.ApplyT(func(v *FallbackDomain) FallbackDomainDomainArrayOutput { return v.Domains }).(FallbackDomainDomainArrayOutput)
+}
+
 type FallbackDomainArrayOutput struct{ *pulumi.OutputState }
 
 func (FallbackDomainArrayOutput) ElementType() reflect.Type {

@@ -300,6 +300,49 @@ func (o TeamsAccountOutput) ToTeamsAccountOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The account to which the teams location should be added.
+func (o TeamsAccountOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsAccount) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+func (o TeamsAccountOutput) ActivityLogEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.ActivityLogEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration block for antivirus traffic scanning.
+func (o TeamsAccountOutput) Antivirus() TeamsAccountAntivirusPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountAntivirusPtrOutput { return v.Antivirus }).(TeamsAccountAntivirusPtrOutput)
+}
+
+// Configuration for a custom block page.
+func (o TeamsAccountOutput) BlockPage() TeamsAccountBlockPagePtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountBlockPagePtrOutput { return v.BlockPage }).(TeamsAccountBlockPagePtrOutput)
+}
+
+// Configure compliance with Federal Information Processing Standards.
+func (o TeamsAccountOutput) Fips() TeamsAccountFipsPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountFipsPtrOutput { return v.Fips }).(TeamsAccountFipsPtrOutput)
+}
+
+func (o TeamsAccountOutput) Logging() TeamsAccountLoggingPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountLoggingPtrOutput { return v.Logging }).(TeamsAccountLoggingPtrOutput)
+}
+
+// Configuration block for specifying which protocols are proxied.
+func (o TeamsAccountOutput) Proxy() TeamsAccountProxyPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountProxyPtrOutput { return v.Proxy }).(TeamsAccountProxyPtrOutput)
+}
+
+// Indicator that decryption of TLS traffic is enabled.
+func (o TeamsAccountOutput) TlsDecryptEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.TlsDecryptEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Safely browse websites in Browser Isolation through a URL.
+func (o TeamsAccountOutput) UrlBrowserIsolationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.UrlBrowserIsolationEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type TeamsAccountArrayOutput struct{ *pulumi.OutputState }
 
 func (TeamsAccountArrayOutput) ElementType() reflect.Type {

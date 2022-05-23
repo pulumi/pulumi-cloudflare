@@ -18,6 +18,7 @@ class DevicePostureRuleArgs:
                  account_id: pulumi.Input[str],
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 expiration: Optional[pulumi.Input[str]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,8 @@ class DevicePostureRuleArgs:
         :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
         :param pulumi.Input[str] type: The device posture rule type. Valid values are `file`, `application`, and `serial_number`.
         :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time.
+               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: The value to be checked against. See below for reference
                structure.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule. See below for reference structure.
@@ -38,6 +41,8 @@ class DevicePostureRuleArgs:
         pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
         if inputs is not None:
             pulumi.set(__self__, "inputs", inputs)
         if matches is not None:
@@ -82,6 +87,19 @@ class DevicePostureRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expire posture results after the specified amount of time.
+        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        """
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration", value)
 
     @property
     @pulumi.getter
@@ -139,6 +157,7 @@ class _DevicePostureRuleState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiration: Optional[pulumi.Input[str]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -148,6 +167,8 @@ class _DevicePostureRuleState:
         Input properties used for looking up and filtering DevicePostureRule resources.
         :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
         :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time.
+               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: The value to be checked against. See below for reference
                structure.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule. See below for reference structure.
@@ -160,6 +181,8 @@ class _DevicePostureRuleState:
             pulumi.set(__self__, "account_id", account_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
         if inputs is not None:
             pulumi.set(__self__, "inputs", inputs)
         if matches is not None:
@@ -194,6 +217,19 @@ class _DevicePostureRuleState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Expire posture results after the specified amount of time.
+        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        """
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration", value)
 
     @property
     @pulumi.getter
@@ -265,6 +301,7 @@ class DevicePostureRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiration: Optional[pulumi.Input[str]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]]] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -286,6 +323,7 @@ class DevicePostureRule(pulumi.CustomResource):
             type="serial_number",
             description="Device posture rule for corporate devices.",
             schedule="24h",
+            expiration="24h",
             matches=[cloudflare.DevicePostureRuleMatchArgs(
                 platform="mac",
             )],
@@ -306,6 +344,8 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
         :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time.
+               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]] inputs: The value to be checked against. See below for reference
                structure.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule. See below for reference structure.
@@ -335,6 +375,7 @@ class DevicePostureRule(pulumi.CustomResource):
             type="serial_number",
             description="Device posture rule for corporate devices.",
             schedule="24h",
+            expiration="24h",
             matches=[cloudflare.DevicePostureRuleMatchArgs(
                 platform="mac",
             )],
@@ -368,6 +409,7 @@ class DevicePostureRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 expiration: Optional[pulumi.Input[str]] = None,
                  inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]]] = None,
                  matches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -389,6 +431,7 @@ class DevicePostureRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
+            __props__.__dict__["expiration"] = expiration
             __props__.__dict__["inputs"] = inputs
             __props__.__dict__["matches"] = matches
             __props__.__dict__["name"] = name
@@ -408,6 +451,7 @@ class DevicePostureRule(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            expiration: Optional[pulumi.Input[str]] = None,
             inputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]]] = None,
             matches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -422,6 +466,8 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account to which the device posture rule should be added.
         :param pulumi.Input[str] description: The description of the device posture rule.
+        :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time.
+               Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]] inputs: The value to be checked against. See below for reference
                structure.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule. See below for reference structure.
@@ -436,6 +482,7 @@ class DevicePostureRule(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["description"] = description
+        __props__.__dict__["expiration"] = expiration
         __props__.__dict__["inputs"] = inputs
         __props__.__dict__["matches"] = matches
         __props__.__dict__["name"] = name
@@ -458,6 +505,15 @@ class DevicePostureRule(pulumi.CustomResource):
         The description of the device posture rule.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> pulumi.Output[Optional[str]]:
+        """
+        Expire posture results after the specified amount of time.
+        Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        """
+        return pulumi.get(self, "expiration")
 
     @property
     @pulumi.getter

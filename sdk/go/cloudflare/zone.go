@@ -266,6 +266,57 @@ func (o ZoneOutput) ToZoneOutputWithContext(ctx context.Context) ZoneOutput {
 	return o
 }
 
+// Boolean of whether to scan for DNS records on creation. Ignored after zone is created. Default: false.
+func (o ZoneOutput) JumpStart() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.BoolPtrOutput { return v.JumpStart }).(pulumi.BoolPtrOutput)
+}
+
+func (o ZoneOutput) Meta() pulumi.BoolMapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.BoolMapOutput { return v.Meta }).(pulumi.BoolMapOutput)
+}
+
+// Cloudflare-assigned name servers. This is only populated for zones that use Cloudflare DNS.
+func (o ZoneOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+// Boolean of whether this zone is paused (traffic bypasses Cloudflare). Default: false.
+func (o ZoneOutput) Paused() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the commercial plan to apply to the zone, can be updated once the zone is created; one of `free`, `pro`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`, `partnersWorkersSs`, `imageResizingEnterprise`.
+func (o ZoneOutput) Plan() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
+}
+
+// Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
+func (o ZoneOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
+func (o ZoneOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// List of Vanity Nameservers (if set).
+// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+func (o ZoneOutput) VanityNameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.VanityNameServers }).(pulumi.StringArrayOutput)
+}
+
+// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
+func (o ZoneOutput) VerificationKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.VerificationKey }).(pulumi.StringOutput)
+}
+
+// The DNS zone name which will be added.
+func (o ZoneOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
+}
+
 type ZoneArrayOutput struct{ *pulumi.OutputState }
 
 func (ZoneArrayOutput) ElementType() reflect.Type {

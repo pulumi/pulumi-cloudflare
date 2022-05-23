@@ -356,6 +356,76 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.
 	return o
 }
 
+// A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://support.cloudflare.com/hc/en-us/articles/115000540888-Load-Balancing-Geographic-Regions).
+func (o LoadBalancerPoolOutput) CheckRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringArrayOutput { return v.CheckRegions }).(pulumi.StringArrayOutput)
+}
+
+// The RFC3339 timestamp of when the load balancer was created.
+func (o LoadBalancerPoolOutput) CreatedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.CreatedOn }).(pulumi.StringOutput)
+}
+
+// Free text description.
+func (o LoadBalancerPoolOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable (the default) this origin within the Pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool.
+func (o LoadBalancerPoolOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The latitude this pool is physically located at; used for proximity steering. Values should be between -90 and 90.
+func (o LoadBalancerPoolOutput) Latitude() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.Float64PtrOutput { return v.Latitude }).(pulumi.Float64PtrOutput)
+}
+
+// Setting for controlling load shedding for this pool.
+func (o LoadBalancerPoolOutput) LoadSheddings() LoadBalancerPoolLoadSheddingArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolLoadSheddingArrayOutput { return v.LoadSheddings }).(LoadBalancerPoolLoadSheddingArrayOutput)
+}
+
+// The longitude this pool is physically located at; used for proximity steering. Values should be between -180 and 180.
+func (o LoadBalancerPoolOutput) Longitude() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.Float64PtrOutput { return v.Longitude }).(pulumi.Float64PtrOutput)
+}
+
+// The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Default: 1.
+func (o LoadBalancerPoolOutput) MinimumOrigins() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.IntPtrOutput { return v.MinimumOrigins }).(pulumi.IntPtrOutput)
+}
+
+// The RFC3339 timestamp of when the load balancer was last modified.
+func (o LoadBalancerPoolOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// The ID of the Monitor to use for health checking origins within this pool.
+func (o LoadBalancerPoolOutput) Monitor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Monitor }).(pulumi.StringPtrOutput)
+}
+
+// A human-identifiable name for the origin.
+func (o LoadBalancerPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
+func (o LoadBalancerPoolOutput) NotificationEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.NotificationEmail }).(pulumi.StringPtrOutput)
+}
+
+// Set an origin steering policy to control origin selection within a pool.
+func (o LoadBalancerPoolOutput) OriginSteerings() LoadBalancerPoolOriginSteeringArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginSteeringArrayOutput { return v.OriginSteerings }).(LoadBalancerPoolOriginSteeringArrayOutput)
+}
+
+// The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. It's a complex value. See description below.
+func (o LoadBalancerPoolOutput) Origins() LoadBalancerPoolOriginArrayOutput {
+	return o.ApplyT(func(v *LoadBalancerPool) LoadBalancerPoolOriginArrayOutput { return v.Origins }).(LoadBalancerPoolOriginArrayOutput)
+}
+
 type LoadBalancerPoolArrayOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPoolArrayOutput) ElementType() reflect.Type {

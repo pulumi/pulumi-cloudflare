@@ -207,6 +207,16 @@ func (o DevicePolicyCertificatesOutput) ToDevicePolicyCertificatesOutputWithCont
 	return o
 }
 
+// True if certificate generation is enabled.
+func (o DevicePolicyCertificatesOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *DevicePolicyCertificates) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The zone ID where certificate generation is allowed.
+func (o DevicePolicyCertificatesOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DevicePolicyCertificates) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type DevicePolicyCertificatesArrayOutput struct{ *pulumi.OutputState }
 
 func (DevicePolicyCertificatesArrayOutput) ElementType() reflect.Type {

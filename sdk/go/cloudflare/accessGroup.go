@@ -325,6 +325,39 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The ID of the account the group is associated with. Conflicts with `zoneId`.
+func (o AccessGroupOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// A series of access conditions, see below for
+// full list.
+func (o AccessGroupOutput) Excludes() AccessGroupExcludeArrayOutput {
+	return o.ApplyT(func(v *AccessGroup) AccessGroupExcludeArrayOutput { return v.Excludes }).(AccessGroupExcludeArrayOutput)
+}
+
+// A series of access conditions, see below for
+// full list.
+func (o AccessGroupOutput) Includes() AccessGroupIncludeArrayOutput {
+	return o.ApplyT(func(v *AccessGroup) AccessGroupIncludeArrayOutput { return v.Includes }).(AccessGroupIncludeArrayOutput)
+}
+
+// Friendly name of the Access Group.
+func (o AccessGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A series of access conditions, see below for
+// full list.
+func (o AccessGroupOutput) Requires() AccessGroupRequireArrayOutput {
+	return o.ApplyT(func(v *AccessGroup) AccessGroupRequireArrayOutput { return v.Requires }).(AccessGroupRequireArrayOutput)
+}
+
+// The ID of the zone the group is associated with. Conflicts with `accountId`.
+func (o AccessGroupOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type AccessGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessGroupArrayOutput) ElementType() reflect.Type {

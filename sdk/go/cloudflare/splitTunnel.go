@@ -240,6 +240,21 @@ func (o SplitTunnelOutput) ToSplitTunnelOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The account to which the device posture rule should be added.
+func (o SplitTunnelOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SplitTunnel) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The split tunnel mode. Valid values are `include` or `exclude`.
+func (o SplitTunnelOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *SplitTunnel) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The value of the tunnel attributes (refer to the nested schema).
+func (o SplitTunnelOutput) Tunnels() SplitTunnelTunnelArrayOutput {
+	return o.ApplyT(func(v *SplitTunnel) SplitTunnelTunnelArrayOutput { return v.Tunnels }).(SplitTunnelTunnelArrayOutput)
+}
+
 type SplitTunnelArrayOutput struct{ *pulumi.OutputState }
 
 func (SplitTunnelArrayOutput) ElementType() reflect.Type {

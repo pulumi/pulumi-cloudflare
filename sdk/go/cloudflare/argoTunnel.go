@@ -229,6 +229,26 @@ func (o ArgoTunnelOutput) ToArgoTunnelOutputWithContext(ctx context.Context) Arg
 	return o
 }
 
+// The Cloudflare account ID that you wish to manage the Argo Tunnel on.
+func (o ArgoTunnelOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArgoTunnel) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Usable CNAME for accessing the Argo Tunnel.
+func (o ArgoTunnelOutput) Cname() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArgoTunnel) pulumi.StringOutput { return v.Cname }).(pulumi.StringOutput)
+}
+
+// A user-friendly name chosen when the tunnel is created. Cannot be empty.
+func (o ArgoTunnelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArgoTunnel) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
+func (o ArgoTunnelOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArgoTunnel) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
 type ArgoTunnelArrayOutput struct{ *pulumi.OutputState }
 
 func (ArgoTunnelArrayOutput) ElementType() reflect.Type {

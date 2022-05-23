@@ -109,6 +109,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"cloudflare_access_application":    {Tok: makeResource(mainMod, "AccessApplication")},
+			"cloudflare_access_bookmark":       {Tok: makeResource(mainMod, "AccessBookmark")},
 			"cloudflare_access_policy":         {Tok: makeResource(mainMod, "AccessPolicy")},
 			"cloudflare_access_rule":           {Tok: makeResource(mainMod, "AccessRule")},
 			"cloudflare_account_member":        {Tok: makeResource(mainMod, "AccountMember")},
@@ -125,6 +126,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_rate_limit":            {Tok: makeResource(mainMod, "RateLimit")},
 			"cloudflare_record":                {Tok: makeResource(mainMod, "Record")},
 			"cloudflare_spectrum_application":  {Tok: makeResource(mainMod, "SpectrumApplication")},
+			"cloudflare_tunnel_route":          {Tok: makeResource(mainMod, "TunnelRoute")},
 			"cloudflare_waf_rule":              {Tok: makeResource(mainMod, "WafRule")},
 			"cloudflare_worker_route":          {Tok: makeResource(mainMod, "WorkerRoute")},
 			"cloudflare_worker_cron_trigger":   {Tok: makeResource(mainMod, "WorkerCronTrigger")},

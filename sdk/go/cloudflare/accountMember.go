@@ -212,6 +212,16 @@ func (o AccountMemberOutput) ToAccountMemberOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+func (o AccountMemberOutput) EmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.EmailAddress }).(pulumi.StringOutput)
+}
+
+// Array of account role IDs that you want to assign to a member.
+func (o AccountMemberOutput) RoleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccountMember) pulumi.StringArrayOutput { return v.RoleIds }).(pulumi.StringArrayOutput)
+}
+
 type AccountMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (AccountMemberArrayOutput) ElementType() reflect.Type {

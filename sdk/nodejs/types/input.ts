@@ -1047,6 +1047,42 @@ export interface NotificationPolicyEmailIntegration {
     name?: pulumi.Input<string>;
 }
 
+export interface NotificationPolicyFilters {
+    /**
+     * State of the pool to alert on. Example: `"true"`, `"false"`.
+     */
+    enableds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifier health check.
+     */
+    healthCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A numerical limit. Example: `"100"`
+     */
+    limits?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Load balancer pool identifier.
+     */
+    poolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
+     */
+    products?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A numerical limit. Example: `"99.9"`
+     */
+    slos?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
+     */
+    statuses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of zone identifiers.
+     */
+    zones?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface NotificationPolicyPagerdutyIntegration {
     id: pulumi.Input<string>;
     /**
@@ -1482,7 +1518,7 @@ export interface RulesetRule {
     /**
      * Brief summary of the ruleset rule and its intended use.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Defines if the current rule-level override enables or disables the rule.
      */
@@ -1500,6 +1536,10 @@ export interface RulesetRule {
      */
     id?: pulumi.Input<string>;
     /**
+     * List parameters to configure how the rule generates logs (refer to the nested schema).
+     */
+    logging?: pulumi.Input<inputs.RulesetRuleLogging>;
+    /**
      * List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
      */
     ratelimit?: pulumi.Input<inputs.RulesetRuleRatelimit>;
@@ -1516,6 +1556,10 @@ export interface RulesetRuleActionParameters {
      */
     headers?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
     /**
+     * Host Header that request origin receives.
+     */
+    hostHeader?: pulumi.Input<string>;
+    /**
      * Rule ID to apply the override to.
      */
     id?: pulumi.Input<string>;
@@ -1524,6 +1568,10 @@ export interface RulesetRuleActionParameters {
      * List of properties to configure WAF payload logging (refer to the nested schema).
      */
     matchedData?: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
+    /**
+     * List of properties to change request origin (refer to the nested schema).
+     */
+    origin?: pulumi.Input<inputs.RulesetRuleActionParametersOrigin>;
     /**
      * List of override configurations to apply to the ruleset (refer to the nested schema).
      */
@@ -1580,6 +1628,17 @@ export interface RulesetRuleActionParametersMatchedData {
      * Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
      */
     publicKey?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersOrigin {
+    /**
+     * Origin Hostname where request is sent.
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Oirign Port where request is sent.
+     */
+    port?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersOverrides {
@@ -1655,6 +1714,9 @@ export interface RulesetRuleActionParametersResponse {
 }
 
 export interface RulesetRuleActionParametersUri {
+    /**
+     * List of properties to change request origin (refer to the nested schema).
+     */
     origin?: pulumi.Input<boolean>;
     /**
      * URI path configuration when performing a URL rewrite (refer to the nested schema).
@@ -1697,6 +1759,13 @@ export interface RulesetRuleExposedCredentialCheck {
      * Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
      */
     usernameExpression?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleLogging {
+    /**
+     * Defines if the current rule-level override enables or disables the rule.
+     */
+    enabled?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleRatelimit {

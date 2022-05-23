@@ -235,6 +235,31 @@ func (o AccessCaCertificateOutput) ToAccessCaCertificateOutputWithContext(ctx co
 	return o
 }
 
+// The account to which the Access CA certificate should be added. Conflicts with `zoneId`.
+func (o AccessCaCertificateOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCaCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Access Application ID to associate with the CA certificate.
+func (o AccessCaCertificateOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCaCertificate) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// Application Audience (AUD) Tag of the CA certificate
+func (o AccessCaCertificateOutput) Aud() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCaCertificate) pulumi.StringOutput { return v.Aud }).(pulumi.StringOutput)
+}
+
+// Cryptographic public key of the generated CA certificate
+func (o AccessCaCertificateOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCaCertificate) pulumi.StringOutput { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+// The DNS zone to which the Access CA certificate should be added. Conflicts with `accountId`.
+func (o AccessCaCertificateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessCaCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type AccessCaCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessCaCertificateArrayOutput) ElementType() reflect.Type {

@@ -6,6 +6,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .access_application import *
+from .access_bookmark import *
 from .access_ca_certificate import *
 from .access_group import *
 from .access_identity_provider import *
@@ -71,6 +72,7 @@ from .teams_list import *
 from .teams_location import *
 from .teams_proxy_endpoint import *
 from .teams_rule import *
+from .tunnel_route import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
@@ -106,6 +108,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/accessApplication:AccessApplication": "AccessApplication"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessBookmark",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessBookmark:AccessBookmark": "AccessBookmark"
   }
  },
  {
@@ -522,6 +532,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/teamsRule:TeamsRule": "TeamsRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tunnelRoute",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnelRoute:TunnelRoute": "TunnelRoute"
   }
  },
  {

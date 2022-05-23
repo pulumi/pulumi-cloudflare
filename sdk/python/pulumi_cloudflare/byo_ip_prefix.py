@@ -13,6 +13,7 @@ __all__ = ['ByoIpPrefixArgs', 'ByoIpPrefix']
 @pulumi.input_type
 class ByoIpPrefixArgs:
     def __init__(__self__, *,
+                 account_id: pulumi.Input[str],
                  prefix_id: pulumi.Input[str],
                  advertisement: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None):
@@ -22,11 +23,21 @@ class ByoIpPrefixArgs:
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         :param pulumi.Input[str] description: The description of the prefix.
         """
+        pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "prefix_id", prefix_id)
         if advertisement is not None:
             pulumi.set(__self__, "advertisement", advertisement)
         if description is not None:
             pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter(name="prefixId")
@@ -68,6 +79,7 @@ class ByoIpPrefixArgs:
 @pulumi.input_type
 class _ByoIpPrefixState:
     def __init__(__self__, *,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  advertisement: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  prefix_id: Optional[pulumi.Input[str]] = None):
@@ -77,12 +89,23 @@ class _ByoIpPrefixState:
         :param pulumi.Input[str] description: The description of the prefix.
         :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
         """
+        if account_id is not None:
+            pulumi.set(__self__, "account_id", account_id)
         if advertisement is not None:
             pulumi.set(__self__, "advertisement", advertisement)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if prefix_id is not None:
             pulumi.set(__self__, "prefix_id", prefix_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "account_id")
+
+    @account_id.setter
+    def account_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "account_id", value)
 
     @property
     @pulumi.getter
@@ -126,6 +149,7 @@ class ByoIpPrefix(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  advertisement: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  prefix_id: Optional[pulumi.Input[str]] = None,
@@ -203,6 +227,7 @@ class ByoIpPrefix(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  advertisement: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  prefix_id: Optional[pulumi.Input[str]] = None,
@@ -218,6 +243,9 @@ class ByoIpPrefix(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ByoIpPrefixArgs.__new__(ByoIpPrefixArgs)
 
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
+            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["advertisement"] = advertisement
             __props__.__dict__["description"] = description
             if prefix_id is None and not opts.urn:
@@ -233,6 +261,7 @@ class ByoIpPrefix(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: Optional[pulumi.Input[str]] = None,
             advertisement: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             prefix_id: Optional[pulumi.Input[str]] = None) -> 'ByoIpPrefix':
@@ -251,10 +280,16 @@ class ByoIpPrefix(pulumi.CustomResource):
 
         __props__ = _ByoIpPrefixState.__new__(_ByoIpPrefixState)
 
+        __props__.__dict__["account_id"] = account_id
         __props__.__dict__["advertisement"] = advertisement
         __props__.__dict__["description"] = description
         __props__.__dict__["prefix_id"] = prefix_id
         return ByoIpPrefix(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter

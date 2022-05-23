@@ -29,6 +29,7 @@ namespace Pulumi.Cloudflare
     ///             Type = "serial_number",
     ///             Description = "Device posture rule for corporate devices.",
     ///             Schedule = "24h",
+    ///             Expiration = "24h",
     ///             Matches = 
     ///             {
     ///                 new Cloudflare.Inputs.DevicePostureRuleMatchArgs
@@ -71,6 +72,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Expire posture results after the specified amount of time.
+        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// </summary>
+        [Output("expiration")]
+        public Output<string?> Expiration { get; private set; } = null!;
 
         /// <summary>
         /// The value to be checked against. See below for reference
@@ -162,6 +170,13 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Expire posture results after the specified amount of time.
+        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// </summary>
+        [Input("expiration")]
+        public Input<string>? Expiration { get; set; }
+
         [Input("inputs")]
         private InputList<Inputs.DevicePostureRuleInputArgs>? _inputs;
 
@@ -224,6 +239,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Expire posture results after the specified amount of time.
+        /// Must be in the format `"1h"` or `"30m"`. Valid units are `h` and `m`.
+        /// </summary>
+        [Input("expiration")]
+        public Input<string>? Expiration { get; set; }
 
         [Input("inputs")]
         private InputList<Inputs.DevicePostureRuleInputGetArgs>? _inputs;

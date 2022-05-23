@@ -66,6 +66,7 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkerCronTrigger.__pulumiType;
     }
 
+    public readonly accountId!: pulumi.Output<string>;
     /**
      * List of cron expressions to execute the Worker Script
      */
@@ -88,16 +89,21 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkerCronTriggerState | undefined;
+            resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["schedules"] = state ? state.schedules : undefined;
             resourceInputs["scriptName"] = state ? state.scriptName : undefined;
         } else {
             const args = argsOrState as WorkerCronTriggerArgs | undefined;
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
+            }
             if ((!args || args.schedules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'schedules'");
             }
             if ((!args || args.scriptName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'scriptName'");
             }
+            resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["schedules"] = args ? args.schedules : undefined;
             resourceInputs["scriptName"] = args ? args.scriptName : undefined;
         }
@@ -110,6 +116,7 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkerCronTrigger resources.
  */
 export interface WorkerCronTriggerState {
+    accountId?: pulumi.Input<string>;
     /**
      * List of cron expressions to execute the Worker Script
      */
@@ -124,6 +131,7 @@ export interface WorkerCronTriggerState {
  * The set of arguments for constructing a WorkerCronTrigger resource.
  */
 export interface WorkerCronTriggerArgs {
+    accountId: pulumi.Input<string>;
     /**
      * List of cron expressions to execute the Worker Script
      */

@@ -23,7 +23,7 @@ class CustomPagesArgs:
         :param pulumi.Input[str] type: The type of custom page you wish to update. Must
                be one of `basic_challenge`, `waf_challenge`, `waf_block`,
                `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-               `500_errors`, `1000_errors`, `always_online`.
+               `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] account_id: The account ID where the custom pages should be
                updated. Either `account_id` or `zone_id` must be provided. If
@@ -47,7 +47,7 @@ class CustomPagesArgs:
         The type of custom page you wish to update. Must
         be one of `basic_challenge`, `waf_challenge`, `waf_block`,
         `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        `500_errors`, `1000_errors`, `always_online`.
+        `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 
@@ -120,7 +120,7 @@ class _CustomPagesState:
         :param pulumi.Input[str] type: The type of custom page you wish to update. Must
                be one of `basic_challenge`, `waf_challenge`, `waf_block`,
                `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-               `500_errors`, `1000_errors`, `always_online`.
+               `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
                updated. Either `zone_id` or `account_id` must be provided.
@@ -166,7 +166,7 @@ class _CustomPagesState:
         The type of custom page you wish to update. Must
         be one of `basic_challenge`, `waf_challenge`, `waf_block`,
         `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        `500_errors`, `1000_errors`, `always_online`.
+        `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 
@@ -249,7 +249,7 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of custom page you wish to update. Must
                be one of `basic_challenge`, `waf_challenge`, `waf_block`,
                `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-               `500_errors`, `1000_errors`, `always_online`.
+               `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
                updated. Either `zone_id` or `account_id` must be provided.
@@ -359,7 +359,7 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of custom page you wish to update. Must
                be one of `basic_challenge`, `waf_challenge`, `waf_block`,
                `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-               `500_errors`, `1000_errors`, `always_online`.
+               `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone ID where the custom pages should be
                updated. Either `zone_id` or `account_id` must be provided.
@@ -397,7 +397,7 @@ class CustomPages(pulumi.CustomResource):
         The type of custom page you wish to update. Must
         be one of `basic_challenge`, `waf_challenge`, `waf_block`,
         `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`,
-        `500_errors`, `1000_errors`, `always_online`.
+        `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 

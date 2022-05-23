@@ -264,6 +264,50 @@ func (o TeamsLocationOutput) ToTeamsLocationOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The account to which the teams location should be added.
+func (o TeamsLocationOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// Indicator that anonymized logs are enabled.
+func (o TeamsLocationOutput) AnonymizedLogsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.BoolOutput { return v.AnonymizedLogsEnabled }).(pulumi.BoolOutput)
+}
+
+// Indicator that this is the default location.
+func (o TeamsLocationOutput) ClientDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.BoolPtrOutput { return v.ClientDefault }).(pulumi.BoolPtrOutput)
+}
+
+// The FQDN that DoH clients should be pointed at.
+func (o TeamsLocationOutput) DohSubdomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.DohSubdomain }).(pulumi.StringOutput)
+}
+
+// Client IP address
+func (o TeamsLocationOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
+}
+
+// IP to direct all IPv4 DNS queries too.
+func (o TeamsLocationOutput) Ipv4Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.Ipv4Destination }).(pulumi.StringOutput)
+}
+
+// Name of the teams location.
+func (o TeamsLocationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The networks CIDRs that comprise the location.
+func (o TeamsLocationOutput) Networks() TeamsLocationNetworkArrayOutput {
+	return o.ApplyT(func(v *TeamsLocation) TeamsLocationNetworkArrayOutput { return v.Networks }).(TeamsLocationNetworkArrayOutput)
+}
+
+func (o TeamsLocationOutput) PolicyIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.StringArrayOutput { return v.PolicyIds }).(pulumi.StringArrayOutput)
+}
+
 type TeamsLocationArrayOutput struct{ *pulumi.OutputState }
 
 func (TeamsLocationArrayOutput) ElementType() reflect.Type {

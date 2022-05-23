@@ -229,6 +229,26 @@ func (o WafPackageOutput) ToWafPackageOutputWithContext(ctx context.Context) Waf
 	return o
 }
 
+// The action mode of the package, can be one of ["block", "challenge", "simulate"].
+func (o WafPackageOutput) ActionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafPackage) pulumi.StringPtrOutput { return v.ActionMode }).(pulumi.StringPtrOutput)
+}
+
+// The WAF Package ID.
+func (o WafPackageOutput) PackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafPackage) pulumi.StringOutput { return v.PackageId }).(pulumi.StringOutput)
+}
+
+// The sensitivity of the package, can be one of ["high", "medium", "low", "off"].
+func (o WafPackageOutput) Sensitivity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafPackage) pulumi.StringPtrOutput { return v.Sensitivity }).(pulumi.StringPtrOutput)
+}
+
+// The DNS zone ID to apply to.
+func (o WafPackageOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafPackage) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type WafPackageArrayOutput struct{ *pulumi.OutputState }
 
 func (WafPackageArrayOutput) ElementType() reflect.Type {

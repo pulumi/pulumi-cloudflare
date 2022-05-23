@@ -74,7 +74,7 @@ export class CustomPages extends pulumi.CustomResource {
      * The type of custom page you wish to update. Must
      * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
      * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-     * `500Errors`, `1000Errors`, `alwaysOnline`.
+     * `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export interface CustomPagesState {
      * The type of custom page you wish to update. Must
      * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
      * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-     * `500Errors`, `1000Errors`, `alwaysOnline`.
+     * `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -168,7 +168,7 @@ export interface CustomPagesArgs {
      * The type of custom page you wish to update. Must
      * be one of `basicChallenge`, `wafChallenge`, `wafBlock`,
      * `ratelimitBlock`, `countryChallenge`, `ipBlock`, `underAttack`,
-     * `500Errors`, `1000Errors`, `alwaysOnline`.
+     * `500Errors`, `1000Errors`, `alwaysOnline`, `managedChallenge`.
      */
     type: pulumi.Input<string>;
     /**

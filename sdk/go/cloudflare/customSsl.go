@@ -245,6 +245,52 @@ func (o CustomSslOutput) ToCustomSslOutputWithContext(ctx context.Context) Custo
 	return o
 }
 
+// The certificate, private key and associated optional parameters, such as bundle_method, geo_restrictions, and type.
+func (o CustomSslOutput) CustomSslOptions() CustomSslCustomSslOptionsPtrOutput {
+	return o.ApplyT(func(v *CustomSsl) CustomSslCustomSslOptionsPtrOutput { return v.CustomSslOptions }).(CustomSslCustomSslOptionsPtrOutput)
+}
+
+func (o CustomSslOutput) CustomSslPriorities() CustomSslCustomSslPriorityArrayOutput {
+	return o.ApplyT(func(v *CustomSsl) CustomSslCustomSslPriorityArrayOutput { return v.CustomSslPriorities }).(CustomSslCustomSslPriorityArrayOutput)
+}
+
+func (o CustomSslOutput) ExpiresOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+func (o CustomSslOutput) Hosts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringArrayOutput { return v.Hosts }).(pulumi.StringArrayOutput)
+}
+
+func (o CustomSslOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
+}
+
+func (o CustomSslOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+func (o CustomSslOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+func (o CustomSslOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Signature }).(pulumi.StringOutput)
+}
+
+func (o CustomSslOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+func (o CustomSslOutput) UploadedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
+}
+
+// The DNS zone id to the custom ssl cert should be added.
+func (o CustomSslOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomSsl) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type CustomSslArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomSslArrayOutput) ElementType() reflect.Type {

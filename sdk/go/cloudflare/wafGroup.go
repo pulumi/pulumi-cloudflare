@@ -228,6 +228,26 @@ func (o WafGroupOutput) ToWafGroupOutputWithContext(ctx context.Context) WafGrou
 	return o
 }
 
+// The WAF Rule Group ID.
+func (o WafGroupOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafGroup) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
+}
+
+// The mode of the group, can be one of ["on", "off"].
+func (o WafGroupOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WafGroup) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the WAF Rule Package that contains the group.
+func (o WafGroupOutput) PackageId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafGroup) pulumi.StringOutput { return v.PackageId }).(pulumi.StringOutput)
+}
+
+// The DNS zone ID to apply to.
+func (o WafGroupOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafGroup) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type WafGroupArrayOutput struct{ *pulumi.OutputState }
 
 func (WafGroupArrayOutput) ElementType() reflect.Type {

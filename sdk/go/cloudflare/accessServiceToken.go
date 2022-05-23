@@ -241,6 +241,40 @@ func (o AccessServiceTokenOutput) ToAccessServiceTokenOutputWithContext(ctx cont
 	return o
 }
 
+// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+func (o AccessServiceTokenOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// UUID client ID associated with the Service Token.
+func (o AccessServiceTokenOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// A secret for interacting with Access protocols.
+func (o AccessServiceTokenOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Date when the token expires
+func (o AccessServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+func (o AccessServiceTokenOutput) MinDaysForRenewal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.IntPtrOutput { return v.MinDaysForRenewal }).(pulumi.IntPtrOutput)
+}
+
+// Friendly name of the token's intent.
+func (o AccessServiceTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+func (o AccessServiceTokenOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
 type AccessServiceTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessServiceTokenArrayOutput) ElementType() reflect.Type {

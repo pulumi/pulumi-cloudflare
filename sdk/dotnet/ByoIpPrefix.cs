@@ -44,6 +44,9 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/byoIpPrefix:ByoIpPrefix")]
     public partial class ByoIpPrefix : Pulumi.CustomResource
     {
+        [Output("accountId")]
+        public Output<string> AccountId { get; private set; } = null!;
+
         /// <summary>
         /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         /// </summary>
@@ -108,6 +111,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ByoIpPrefixArgs : Pulumi.ResourceArgs
     {
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
+
         /// <summary>
         /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         /// </summary>
@@ -133,6 +139,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ByoIpPrefixState : Pulumi.ResourceArgs
     {
+        [Input("accountId")]
+        public Input<string>? AccountId { get; set; }
+
         /// <summary>
         /// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         /// </summary>

@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Brief summary of the ruleset rule and its intended use.
         /// </summary>
-        public readonly string Description;
+        public readonly string? Description;
         /// <summary>
         /// Defines if the current rule-level override enables or disables the rule.
         /// </summary>
@@ -42,6 +42,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
+        /// List parameters to configure how the rule generates logs (refer to the nested schema).
+        /// </summary>
+        public readonly Outputs.RulesetRuleLogging? Logging;
+        /// <summary>
         /// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
         /// </summary>
         public readonly Outputs.RulesetRuleRatelimit? Ratelimit;
@@ -57,7 +61,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParameters? actionParameters,
 
-            string description,
+            string? description,
 
             bool? enabled,
 
@@ -66,6 +70,8 @@ namespace Pulumi.Cloudflare.Outputs
             string expression,
 
             string? id,
+
+            Outputs.RulesetRuleLogging? logging,
 
             Outputs.RulesetRuleRatelimit? ratelimit,
 
@@ -80,6 +86,7 @@ namespace Pulumi.Cloudflare.Outputs
             ExposedCredentialCheck = exposedCredentialCheck;
             Expression = expression;
             Id = id;
+            Logging = logging;
             Ratelimit = ratelimit;
             Ref = @ref;
             Version = version;

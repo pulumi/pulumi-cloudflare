@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// mechanisms supported are email, webhooks, and PagerDuty.
     /// 
     /// ## Example Usage
+    /// ### Basic Example
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -56,6 +57,60 @@ namespace Pulumi.Cloudflare
     /// 
     /// }
     /// ```
+    /// ### With Filters
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Cloudflare.NotificationPolicy("example", new Cloudflare.NotificationPolicyArgs
+    ///         {
+    ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
+    ///             AlertType = "health_check_status_notification",
+    ///             Description = "Notification policy to alert on unhealthy Healthcheck status",
+    ///             EmailIntegrations = 
+    ///             {
+    ///                 new Cloudflare.Inputs.NotificationPolicyEmailIntegrationArgs
+    ///                 {
+    ///                     Id = "myemail@example.com",
+    ///                 },
+    ///             },
+    ///             Enabled = true,
+    ///             Filters = new Cloudflare.Inputs.NotificationPolicyFiltersArgs
+    ///             {
+    ///                 HealthCheckIds = 
+    ///                 {
+    ///                     "699d98642c564d2e855e9661899b7252",
+    ///                 },
+    ///                 Statuses = 
+    ///                 {
+    ///                     "Unhealthy",
+    ///                 },
+    ///             },
+    ///             Name = "Policy for Healthcheck notification",
+    ///             PagerdutyIntegrations = 
+    ///             {
+    ///                 new Cloudflare.Inputs.NotificationPolicyPagerdutyIntegrationArgs
+    ///                 {
+    ///                     Id = "850129d136459401860572c5d964d27k",
+    ///                 },
+    ///             },
+    ///             WebhooksIntegrations = 
+    ///             {
+    ///                 new Cloudflare.Inputs.NotificationPolicyWebhooksIntegrationArgs
+    ///                 {
+    ///                     Id = "1860572c5d964d27aa0f379d13645940",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -75,13 +130,10 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification.
+        /// The event type that will trigger the dispatch of a notification (refer to the nested schema).
         /// </summary>
         [Output("alertType")]
         public Output<string> AlertType { get; private set; } = null!;
-
-        [Output("conditions")]
-        public Output<ImmutableDictionary<string, object>?> Conditions { get; private set; } = null!;
 
         [Output("created")]
         public Output<string> Created { get; private set; } = null!;
@@ -99,16 +151,16 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.NotificationPolicyEmailIntegration>> EmailIntegrations { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the notification policy, a boolean value.
+        /// State of the pool to alert on. Example: `"true"`, `"false"`.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Optional filterable items for a policy.
+        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
         /// </summary>
         [Output("filters")]
-        public Output<ImmutableDictionary<string, ImmutableArray<object>>?> Filters { get; private set; } = null!;
+        public Output<Outputs.NotificationPolicyFilters?> Filters { get; private set; } = null!;
 
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
@@ -184,18 +236,10 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification.
+        /// The event type that will trigger the dispatch of a notification (refer to the nested schema).
         /// </summary>
         [Input("alertType", required: true)]
         public Input<string> AlertType { get; set; } = null!;
-
-        [Input("conditions")]
-        private InputMap<object>? _conditions;
-        public InputMap<object> Conditions
-        {
-            get => _conditions ?? (_conditions = new InputMap<object>());
-            set => _conditions = value;
-        }
 
         /// <summary>
         /// Description of the notification policy.
@@ -216,22 +260,16 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The status of the notification policy, a boolean value.
+        /// State of the pool to alert on. Example: `"true"`, `"false"`.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
-        [Input("filters")]
-        private InputMap<ImmutableArray<object>>? _filters;
-
         /// <summary>
-        /// Optional filterable items for a policy.
+        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
         /// </summary>
-        public InputMap<ImmutableArray<object>> Filters
-        {
-            get => _filters ?? (_filters = new InputMap<ImmutableArray<object>>());
-            set => _filters = value;
-        }
+        [Input("filters")]
+        public Input<Inputs.NotificationPolicyFiltersArgs>? Filters { get; set; }
 
         /// <summary>
         /// The name of the notification policy.
@@ -277,18 +315,10 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The event type that will trigger the dispatch of a notification.
+        /// The event type that will trigger the dispatch of a notification (refer to the nested schema).
         /// </summary>
         [Input("alertType")]
         public Input<string>? AlertType { get; set; }
-
-        [Input("conditions")]
-        private InputMap<object>? _conditions;
-        public InputMap<object> Conditions
-        {
-            get => _conditions ?? (_conditions = new InputMap<object>());
-            set => _conditions = value;
-        }
 
         [Input("created")]
         public Input<string>? Created { get; set; }
@@ -312,22 +342,16 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The status of the notification policy, a boolean value.
+        /// State of the pool to alert on. Example: `"true"`, `"false"`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("filters")]
-        private InputMap<ImmutableArray<object>>? _filters;
-
         /// <summary>
-        /// Optional filterable items for a policy.
+        /// An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
         /// </summary>
-        public InputMap<ImmutableArray<object>> Filters
-        {
-            get => _filters ?? (_filters = new InputMap<ImmutableArray<object>>());
-            set => _filters = value;
-        }
+        [Input("filters")]
+        public Input<Inputs.NotificationPolicyFiltersGetArgs>? Filters { get; set; }
 
         [Input("modified")]
         public Input<string>? Modified { get; set; }

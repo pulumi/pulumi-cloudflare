@@ -216,6 +216,41 @@ func (o ApiTokenOutput) ToApiTokenOutputWithContext(ctx context.Context) ApiToke
 	return o
 }
 
+// Condition block. See the definition below.
+func (o ApiTokenOutput) Condition() ApiTokenConditionPtrOutput {
+	return o.ApplyT(func(v *ApiToken) ApiTokenConditionPtrOutput { return v.Condition }).(ApiTokenConditionPtrOutput)
+}
+
+// The RFC3339 timestamp of when the API Token was issued.
+func (o ApiTokenOutput) IssuedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.IssuedOn }).(pulumi.StringOutput)
+}
+
+// The RFC3339 timestamp of when the API Token was last modified.
+func (o ApiTokenOutput) ModifiedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
+}
+
+// Name of the APIToken.
+func (o ApiTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Permissions policy. Multiple policy blocks can be defined.
+// See the definition below.
+func (o ApiTokenOutput) Policies() ApiTokenPolicyArrayOutput {
+	return o.ApplyT(func(v *ApiToken) ApiTokenPolicyArrayOutput { return v.Policies }).(ApiTokenPolicyArrayOutput)
+}
+
+func (o ApiTokenOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The value of the API Token.
+func (o ApiTokenOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type ApiTokenArrayOutput struct{ *pulumi.OutputState }
 
 func (ApiTokenArrayOutput) ElementType() reflect.Type {

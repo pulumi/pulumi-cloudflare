@@ -207,6 +207,16 @@ func (o LogpullRetentionOutput) ToLogpullRetentionOutputWithContext(ctx context.
 	return o
 }
 
+// Whether you wish to retain logs or not.
+func (o LogpullRetentionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *LogpullRetention) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The zone ID to apply the log retention to.
+func (o LogpullRetentionOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogpullRetention) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type LogpullRetentionArrayOutput struct{ *pulumi.OutputState }
 
 func (LogpullRetentionArrayOutput) ElementType() reflect.Type {

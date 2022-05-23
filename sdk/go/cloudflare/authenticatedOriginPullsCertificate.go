@@ -268,6 +268,50 @@ func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCer
 	return o
 }
 
+// The public client certificate.
+func (o AuthenticatedOriginPullsCertificateOutput) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Certificate }).(pulumi.StringOutput)
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) ExpiresOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The private key of the client certificate.
+func (o AuthenticatedOriginPullsCertificateOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) SerialNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.SerialNumber }).(pulumi.StringOutput)
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Signature }).(pulumi.StringOutput)
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// The form of Authenticated Origin Pulls to upload the certificate to.
+func (o AuthenticatedOriginPullsCertificateOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) UploadedOn() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.UploadedOn }).(pulumi.StringOutput)
+}
+
+// The zone ID to upload the certificate to.
+func (o AuthenticatedOriginPullsCertificateOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AuthenticatedOriginPullsCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type AuthenticatedOriginPullsCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsCertificateArrayOutput) ElementType() reflect.Type {

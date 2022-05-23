@@ -58,6 +58,7 @@ namespace Pulumi.Cloudflare
     ///             Type = "advanced",
     ///             ValidationMethod = "http",
     ///             ValidityDays = 90,
+    ///             WaitForActiveStatus = true,
     ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
     ///         });
     ///     }
@@ -94,8 +95,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// List of hostnames to provision the certificate pack for.
-        /// Note: If using Let's Encrypt, you cannot use individual subdomains and only a
-        /// wildcard for subdomain is available.
+        /// The zone name must be included as a host. Note: If using Let's Encrypt, you
+        /// cannot use individual subdomains and only a wildcard for subdomain is available.
         /// </summary>
         [Output("hosts")]
         public Output<ImmutableArray<string>> Hosts { get; private set; } = null!;
@@ -127,6 +128,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("validityDays")]
         public Output<int?> ValidityDays { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not to wait for a certificate
+        /// pack to reach status `active` during creation. Defaults to `false`.
+        /// </summary>
+        [Output("waitForActiveStatus")]
+        public Output<bool?> WaitForActiveStatus { get; private set; } = null!;
 
         /// <summary>
         /// The DNS zone to which the certificate pack should be added.
@@ -201,8 +209,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// List of hostnames to provision the certificate pack for.
-        /// Note: If using Let's Encrypt, you cannot use individual subdomains and only a
-        /// wildcard for subdomain is available.
+        /// The zone name must be included as a host. Note: If using Let's Encrypt, you
+        /// cannot use individual subdomains and only a wildcard for subdomain is available.
         /// </summary>
         public InputList<string> Hosts
         {
@@ -249,6 +257,13 @@ namespace Pulumi.Cloudflare
         public Input<int>? ValidityDays { get; set; }
 
         /// <summary>
+        /// Whether or not to wait for a certificate
+        /// pack to reach status `active` during creation. Defaults to `false`.
+        /// </summary>
+        [Input("waitForActiveStatus")]
+        public Input<bool>? WaitForActiveStatus { get; set; }
+
+        /// <summary>
         /// The DNS zone to which the certificate pack should be added.
         /// </summary>
         [Input("zoneId", required: true)]
@@ -282,8 +297,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// List of hostnames to provision the certificate pack for.
-        /// Note: If using Let's Encrypt, you cannot use individual subdomains and only a
-        /// wildcard for subdomain is available.
+        /// The zone name must be included as a host. Note: If using Let's Encrypt, you
+        /// cannot use individual subdomains and only a wildcard for subdomain is available.
         /// </summary>
         public InputList<string> Hosts
         {
@@ -328,6 +343,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("validityDays")]
         public Input<int>? ValidityDays { get; set; }
+
+        /// <summary>
+        /// Whether or not to wait for a certificate
+        /// pack to reach status `active` during creation. Defaults to `false`.
+        /// </summary>
+        [Input("waitForActiveStatus")]
+        public Input<bool>? WaitForActiveStatus { get; set; }
 
         /// <summary>
         /// The DNS zone to which the certificate pack should be added.

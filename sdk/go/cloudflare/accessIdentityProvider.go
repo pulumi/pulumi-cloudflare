@@ -305,6 +305,33 @@ func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutputWithContext(
 	return o
 }
 
+// The account ID the provider should be associated with. Conflicts with `zoneId`.
+func (o AccessIdentityProviderOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessIdentityProvider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Provider configuration from the [developer documentation][accessIdentityProviderGuide].
+func (o AccessIdentityProviderOutput) Configs() AccessIdentityProviderConfigArrayOutput {
+	return o.ApplyT(func(v *AccessIdentityProvider) AccessIdentityProviderConfigArrayOutput { return v.Configs }).(AccessIdentityProviderConfigArrayOutput)
+}
+
+// Friendly name of the Access Identity Provider configuration.
+func (o AccessIdentityProviderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessIdentityProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provider type to use. Must be one of: `"centrify"`,
+// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
+// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+func (o AccessIdentityProviderOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessIdentityProvider) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The zone ID the provider should be associated with. Conflicts with `accountId`.
+func (o AccessIdentityProviderOutput) ZoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessIdentityProvider) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
+}
+
 type AccessIdentityProviderArrayOutput struct{ *pulumi.OutputState }
 
 func (AccessIdentityProviderArrayOutput) ElementType() reflect.Type {

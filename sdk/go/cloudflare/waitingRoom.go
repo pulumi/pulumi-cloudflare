@@ -332,6 +332,71 @@ func (o WaitingRoomOutput) ToWaitingRoomOutputWithContext(ctx context.Context) W
 	return o
 }
 
+// This a templated html file that will be rendered at the edge.
+func (o WaitingRoomOutput) CustomPageHtml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.CustomPageHtml }).(pulumi.StringPtrOutput)
+}
+
+// A description to let users add more details about the waiting room.
+func (o WaitingRoomOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Disables automatic renewal of session cookies. Default: false.
+func (o WaitingRoomOutput) DisableSessionRenewal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.DisableSessionRenewal }).(pulumi.BoolPtrOutput)
+}
+
+// Host name for which the waiting room will be applied (no wildcards).
+func (o WaitingRoomOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
+}
+
+// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+func (o WaitingRoomOutput) JsonResponseEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.JsonResponseEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A unique name to identify the waiting room.
+func (o WaitingRoomOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of new users that will be let into the route every minute.
+func (o WaitingRoomOutput) NewUsersPerMinute() pulumi.IntOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.NewUsersPerMinute }).(pulumi.IntOutput)
+}
+
+// The path within the host to enable the waiting room on. Default: "/".
+func (o WaitingRoomOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// If queueAll is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+func (o WaitingRoomOutput) QueueAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.QueueAll }).(pulumi.BoolPtrOutput)
+}
+
+// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+func (o WaitingRoomOutput) SessionDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.IntPtrOutput { return v.SessionDuration }).(pulumi.IntPtrOutput)
+}
+
+// If suspended, the traffic doesn't go to the waiting room. Default: false.
+func (o WaitingRoomOutput) Suspended() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
+}
+
+// The total number of active user sessions on the route at a point in time.
+func (o WaitingRoomOutput) TotalActiveUsers() pulumi.IntOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.TotalActiveUsers }).(pulumi.IntOutput)
+}
+
+// The DNS zone ID to apply to.
+func (o WaitingRoomOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type WaitingRoomArrayOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomArrayOutput) ElementType() reflect.Type {

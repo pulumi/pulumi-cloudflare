@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Which type of dataset resource to use. Available values are
-        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`
+        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`, `"network_analytics_logs"`
         /// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
         /// </summary>
         [Output("dataset")]
@@ -181,7 +181,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Which type of dataset resource to use. Available values are
-        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`
+        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`, `"network_analytics_logs"`
         /// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
         /// </summary>
         [Input("dataset", required: true)]
@@ -239,7 +239,7 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Which type of dataset resource to use. Available values are
-        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`
+        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`, `"network_analytics_logs"`
         /// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
         /// </summary>
         [Input("dataset")]

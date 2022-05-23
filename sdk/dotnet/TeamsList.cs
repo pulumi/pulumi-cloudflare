@@ -76,7 +76,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        /// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        /// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The teams list type. Valid values are `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
+        /// The teams list type. Valid values are `IP`, `SERIAL`, `URL`, `DOMAIN`, and `EMAIL`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

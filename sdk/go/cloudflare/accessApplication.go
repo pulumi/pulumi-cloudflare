@@ -89,17 +89,27 @@ type AccessApplication struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie     pulumi.BoolPtrOutput   `pulumi:"enableBindingCookie"`
-	HttpOnlyCookieAttribute pulumi.BoolPtrOutput   `pulumi:"httpOnlyCookieAttribute"`
-	LogoUrl                 pulumi.StringPtrOutput `pulumi:"logoUrl"`
+	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
+	// Option to add the `HttpOnly` cookie flag to access tokens.
+	HttpOnlyCookieAttribute pulumi.BoolOutput `pulumi:"httpOnlyCookieAttribute"`
+	// Image URL for the logo shown in the app launcher
+	// dashboard.
+	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
-	Name                    pulumi.StringOutput    `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Defines the same-site cookie setting
+	// for access tokens. Valid values are `none`, `lax`, and `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
+	// Option to return a 401 status code in
+	// service authentication rules on failed requests.
+	ServiceAuth401Redirect pulumi.BoolPtrOutput `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration  pulumi.StringPtrOutput `pulumi:"sessionDuration"`
-	SkipInterstitial pulumi.BoolPtrOutput   `pulumi:"skipInterstitial"`
+	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
+	// Option to skip the authorization interstitial
+	// when using the CLI.
+	SkipInterstitial pulumi.BoolPtrOutput `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -165,17 +175,27 @@ type accessApplicationState struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie     *bool   `pulumi:"enableBindingCookie"`
-	HttpOnlyCookieAttribute *bool   `pulumi:"httpOnlyCookieAttribute"`
-	LogoUrl                 *string `pulumi:"logoUrl"`
+	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
+	// Option to add the `HttpOnly` cookie flag to access tokens.
+	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
+	// Image URL for the logo shown in the app launcher
+	// dashboard.
+	LogoUrl *string `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
-	Name                    *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Defines the same-site cookie setting
+	// for access tokens. Valid values are `none`, `lax`, and `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
+	// Option to return a 401 status code in
+	// service authentication rules on failed requests.
+	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration  *string `pulumi:"sessionDuration"`
-	SkipInterstitial *bool   `pulumi:"skipInterstitial"`
+	SessionDuration *string `pulumi:"sessionDuration"`
+	// Option to skip the authorization interstitial
+	// when using the CLI.
+	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
 	Type *string `pulumi:"type"`
@@ -207,16 +227,26 @@ type AccessApplicationState struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie     pulumi.BoolPtrInput
+	EnableBindingCookie pulumi.BoolPtrInput
+	// Option to add the `HttpOnly` cookie flag to access tokens.
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
-	LogoUrl                 pulumi.StringPtrInput
+	// Image URL for the logo shown in the app launcher
+	// dashboard.
+	LogoUrl pulumi.StringPtrInput
 	// Friendly name of the Access Application.
-	Name                    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Defines the same-site cookie setting
+	// for access tokens. Valid values are `none`, `lax`, and `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
+	// Option to return a 401 status code in
+	// service authentication rules on failed requests.
+	ServiceAuth401Redirect pulumi.BoolPtrInput
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration  pulumi.StringPtrInput
+	SessionDuration pulumi.StringPtrInput
+	// Option to skip the authorization interstitial
+	// when using the CLI.
 	SkipInterstitial pulumi.BoolPtrInput
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
@@ -251,17 +281,27 @@ type accessApplicationArgs struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie     *bool   `pulumi:"enableBindingCookie"`
-	HttpOnlyCookieAttribute *bool   `pulumi:"httpOnlyCookieAttribute"`
-	LogoUrl                 *string `pulumi:"logoUrl"`
+	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
+	// Option to add the `HttpOnly` cookie flag to access tokens.
+	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
+	// Image URL for the logo shown in the app launcher
+	// dashboard.
+	LogoUrl *string `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
-	Name                    string  `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// Defines the same-site cookie setting
+	// for access tokens. Valid values are `none`, `lax`, and `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
+	// Option to return a 401 status code in
+	// service authentication rules on failed requests.
+	ServiceAuth401Redirect *bool `pulumi:"serviceAuth401Redirect"`
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration  *string `pulumi:"sessionDuration"`
-	SkipInterstitial *bool   `pulumi:"skipInterstitial"`
+	SessionDuration *string `pulumi:"sessionDuration"`
+	// Option to skip the authorization interstitial
+	// when using the CLI.
+	SkipInterstitial *bool `pulumi:"skipInterstitial"`
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
 	Type *string `pulumi:"type"`
@@ -292,16 +332,26 @@ type AccessApplicationArgs struct {
 	// Cloudflare Access in front of. Can include subdomains or paths. Or both.
 	Domain pulumi.StringInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-	EnableBindingCookie     pulumi.BoolPtrInput
+	EnableBindingCookie pulumi.BoolPtrInput
+	// Option to add the `HttpOnly` cookie flag to access tokens.
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
-	LogoUrl                 pulumi.StringPtrInput
+	// Image URL for the logo shown in the app launcher
+	// dashboard.
+	LogoUrl pulumi.StringPtrInput
 	// Friendly name of the Access Application.
-	Name                    pulumi.StringInput
+	Name pulumi.StringInput
+	// Defines the same-site cookie setting
+	// for access tokens. Valid values are `none`, `lax`, and `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
+	// Option to return a 401 status code in
+	// service authentication rules on failed requests.
+	ServiceAuth401Redirect pulumi.BoolPtrInput
 	// How often a user will be forced to
 	// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
 	// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-	SessionDuration  pulumi.StringPtrInput
+	SessionDuration pulumi.StringPtrInput
+	// Option to skip the authorization interstitial
+	// when using the CLI.
 	SkipInterstitial pulumi.BoolPtrInput
 	// The application type. Defaults to `selfHosted`. Valid
 	// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
@@ -395,6 +445,112 @@ func (o AccessApplicationOutput) ToAccessApplicationOutput() AccessApplicationOu
 
 func (o AccessApplicationOutput) ToAccessApplicationOutputWithContext(ctx context.Context) AccessApplicationOutput {
 	return o
+}
+
+// The account to which the access application should be added. Conflicts with `zoneId`.
+func (o AccessApplicationOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The identity providers selected for the application.
+func (o AccessApplicationOutput) AllowedIdps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.AllowedIdps }).(pulumi.StringArrayOutput)
+}
+
+// Option to show/hide applications in App Launcher. Defaults to `true`.
+func (o AccessApplicationOutput) AppLauncherVisible() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AppLauncherVisible }).(pulumi.BoolPtrOutput)
+}
+
+// Application Audience (AUD) Tag of the application
+func (o AccessApplicationOutput) Aud() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Aud }).(pulumi.StringOutput)
+}
+
+// Option to skip identity provider
+// selection if only one is configured in allowed_idps. Defaults to `false`
+// (disabled).
+func (o AccessApplicationOutput) AutoRedirectToIdentity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// CORS configuration for the Access Application. See
+// below for reference structure.
+func (o AccessApplicationOutput) CorsHeaders() AccessApplicationCorsHeaderArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationCorsHeaderArrayOutput { return v.CorsHeaders }).(AccessApplicationCorsHeaderArrayOutput)
+}
+
+// Option that returns a custom error message when a user is denied access to the application.
+func (o AccessApplicationOutput) CustomDenyMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomDenyMessage }).(pulumi.StringPtrOutput)
+}
+
+// Option that redirects to a custom URL when a user is denied access to the application.
+func (o AccessApplicationOutput) CustomDenyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomDenyUrl }).(pulumi.StringPtrOutput)
+}
+
+// The complete URL of the asset you wish to put
+// Cloudflare Access in front of. Can include subdomains or paths. Or both.
+func (o AccessApplicationOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+func (o AccessApplicationOutput) EnableBindingCookie() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.EnableBindingCookie }).(pulumi.BoolPtrOutput)
+}
+
+// Option to add the `HttpOnly` cookie flag to access tokens.
+func (o AccessApplicationOutput) HttpOnlyCookieAttribute() pulumi.BoolOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolOutput { return v.HttpOnlyCookieAttribute }).(pulumi.BoolOutput)
+}
+
+// Image URL for the logo shown in the app launcher
+// dashboard.
+func (o AccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.LogoUrl }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Application.
+func (o AccessApplicationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Defines the same-site cookie setting
+// for access tokens. Valid values are `none`, `lax`, and `strict`.
+func (o AccessApplicationOutput) SameSiteCookieAttribute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SameSiteCookieAttribute }).(pulumi.StringPtrOutput)
+}
+
+// Option to return a 401 status code in
+// service authentication rules on failed requests.
+func (o AccessApplicationOutput) ServiceAuth401Redirect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.ServiceAuth401Redirect }).(pulumi.BoolPtrOutput)
+}
+
+// How often a user will be forced to
+// re-authorise. Must be in the format `"48h"` or `"2h45m"`.
+// Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+func (o AccessApplicationOutput) SessionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
+}
+
+// Option to skip the authorization interstitial
+// when using the CLI.
+func (o AccessApplicationOutput) SkipInterstitial() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.SkipInterstitial }).(pulumi.BoolPtrOutput)
+}
+
+// The application type. Defaults to `selfHosted`. Valid
+// values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
+func (o AccessApplicationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The DNS zone to which the access application should be added. Conflicts with `accountId`.
+func (o AccessApplicationOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type AccessApplicationArrayOutput struct{ *pulumi.OutputState }

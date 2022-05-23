@@ -278,6 +278,32 @@ func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The script content.
+func (o WorkerScriptOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+}
+
+func (o WorkerScriptOutput) KvNamespaceBindings() WorkerScriptKvNamespaceBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptKvNamespaceBindingArrayOutput { return v.KvNamespaceBindings }).(WorkerScriptKvNamespaceBindingArrayOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WorkerScriptOutput) PlainTextBindings() WorkerScriptPlainTextBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptPlainTextBindingArrayOutput { return v.PlainTextBindings }).(WorkerScriptPlainTextBindingArrayOutput)
+}
+
+func (o WorkerScriptOutput) SecretTextBindings() WorkerScriptSecretTextBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptSecretTextBindingArrayOutput { return v.SecretTextBindings }).(WorkerScriptSecretTextBindingArrayOutput)
+}
+
+func (o WorkerScriptOutput) WebassemblyBindings() WorkerScriptWebassemblyBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptWebassemblyBindingArrayOutput { return v.WebassemblyBindings }).(WorkerScriptWebassemblyBindingArrayOutput)
+}
+
 type WorkerScriptArrayOutput struct{ *pulumi.OutputState }
 
 func (WorkerScriptArrayOutput) ElementType() reflect.Type {

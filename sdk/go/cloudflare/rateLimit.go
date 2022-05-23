@@ -342,6 +342,51 @@ func (o RateLimitOutput) ToRateLimitOutputWithContext(ctx context.Context) RateL
 	return o
 }
 
+// The action to be performed when the threshold of matched traffic within the period defined is exceeded.
+func (o RateLimitOutput) Action() RateLimitActionOutput {
+	return o.ApplyT(func(v *RateLimit) RateLimitActionOutput { return v.Action }).(RateLimitActionOutput)
+}
+
+// URLs matching the patterns specified here will be excluded from rate limiting.
+func (o RateLimitOutput) BypassUrlPatterns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.StringArrayOutput { return v.BypassUrlPatterns }).(pulumi.StringArrayOutput)
+}
+
+// Determines how rate limiting is applied. By default if not specified, rate limiting applies to the clients IP address.
+func (o RateLimitOutput) Correlate() RateLimitCorrelatePtrOutput {
+	return o.ApplyT(func(v *RateLimit) RateLimitCorrelatePtrOutput { return v.Correlate }).(RateLimitCorrelatePtrOutput)
+}
+
+// A note that you can use to describe the reason for a rate limit. This value is sanitized and all tags are removed.
+func (o RateLimitOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Whether this ratelimit is currently disabled. Default: `false`.
+func (o RateLimitOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.BoolPtrOutput { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone. See definition below.
+func (o RateLimitOutput) Match() RateLimitMatchOutput {
+	return o.ApplyT(func(v *RateLimit) RateLimitMatchOutput { return v.Match }).(RateLimitMatchOutput)
+}
+
+// The time in seconds to count matching traffic. If the count exceeds threshold within this period the action will be performed (min: 1, max: 86,400).
+func (o RateLimitOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.IntOutput { return v.Period }).(pulumi.IntOutput)
+}
+
+// The threshold that triggers the rate limit mitigations, combine with period. i.e. threshold per period (min: 2, max: 1,000,000).
+func (o RateLimitOutput) Threshold() pulumi.IntOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.IntOutput { return v.Threshold }).(pulumi.IntOutput)
+}
+
+// The DNS zone ID to apply rate limiting to.
+func (o RateLimitOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *RateLimit) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type RateLimitArrayOutput struct{ *pulumi.OutputState }
 
 func (RateLimitArrayOutput) ElementType() reflect.Type {

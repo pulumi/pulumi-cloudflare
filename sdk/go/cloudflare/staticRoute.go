@@ -281,6 +281,46 @@ func (o StaticRouteOutput) ToStaticRouteOutputWithContext(ctx context.Context) S
 	return o
 }
 
+// The ID of the account where the static route is being created.
+func (o StaticRouteOutput) AccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
+}
+
+// Optional list of Cloudflare colocation names for this static route.
+func (o StaticRouteOutput) ColoNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringArrayOutput { return v.ColoNames }).(pulumi.StringArrayOutput)
+}
+
+// Optional list of Cloudflare colocation regions for this static route.
+func (o StaticRouteOutput) ColoRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringArrayOutput { return v.ColoRegions }).(pulumi.StringArrayOutput)
+}
+
+// Description of the static route.
+func (o StaticRouteOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The nexthop IP address where traffic will be routed to.
+func (o StaticRouteOutput) Nexthop() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.Nexthop }).(pulumi.StringOutput)
+}
+
+// Your network prefix using CIDR notation.
+func (o StaticRouteOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.StringOutput { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// The priority for the static route.
+func (o StaticRouteOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The optional weight for ECMP routes.
+func (o StaticRouteOutput) Weight() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StaticRoute) pulumi.IntPtrOutput { return v.Weight }).(pulumi.IntPtrOutput)
+}
+
 type StaticRouteArrayOutput struct{ *pulumi.OutputState }
 
 func (StaticRouteArrayOutput) ElementType() reflect.Type {

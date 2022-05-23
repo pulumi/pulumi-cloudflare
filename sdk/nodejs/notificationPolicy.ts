@@ -10,6 +10,7 @@ import * as utilities from "./utilities";
  * mechanisms supported are email, webhooks, and PagerDuty.
  *
  * ## Example Usage
+ * ### Basic Example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -24,6 +25,33 @@ import * as utilities from "./utilities";
  *     }],
  *     enabled: true,
  *     name: "Policy for SSL notification events",
+ *     pagerdutyIntegrations: [{
+ *         id: "850129d136459401860572c5d964d27k",
+ *     }],
+ *     webhooksIntegrations: [{
+ *         id: "1860572c5d964d27aa0f379d13645940",
+ *     }],
+ * });
+ * ```
+ * ### With Filters
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.NotificationPolicy("example", {
+ *     accountId: "c4a7362d577a6c3019a474fd6f485821",
+ *     alertType: "health_check_status_notification",
+ *     description: "Notification policy to alert on unhealthy Healthcheck status",
+ *     emailIntegrations: [{
+ *         id: "myemail@example.com",
+ *     }],
+ *     enabled: true,
+ *     filters: {
+ *         healthCheckIds: ["699d98642c564d2e855e9661899b7252"],
+ *         statuses: ["Unhealthy"],
+ *     },
+ *     name: "Policy for Healthcheck notification",
  *     pagerdutyIntegrations: [{
  *         id: "850129d136459401860572c5d964d27k",
  *     }],
@@ -74,10 +102,9 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The event type that will trigger the dispatch of a notification.
+     * The event type that will trigger the dispatch of a notification (refer to the nested schema).
      */
     public readonly alertType!: pulumi.Output<string>;
-    public readonly conditions!: pulumi.Output<{[key: string]: any} | undefined>;
     public /*out*/ readonly created!: pulumi.Output<string>;
     /**
      * Description of the notification policy.
@@ -88,13 +115,13 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly emailIntegrations!: pulumi.Output<outputs.NotificationPolicyEmailIntegration[] | undefined>;
     /**
-     * The status of the notification policy, a boolean value.
+     * State of the pool to alert on. Example: `"true"`, `"false"`.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Optional filterable items for a policy.
+     * An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
      */
-    public readonly filters!: pulumi.Output<{[key: string]: any[]} | undefined>;
+    public readonly filters!: pulumi.Output<outputs.NotificationPolicyFilters | undefined>;
     public /*out*/ readonly modified!: pulumi.Output<string>;
     /**
      * The name of the notification policy.
@@ -124,7 +151,6 @@ export class NotificationPolicy extends pulumi.CustomResource {
             const state = argsOrState as NotificationPolicyState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["alertType"] = state ? state.alertType : undefined;
-            resourceInputs["conditions"] = state ? state.conditions : undefined;
             resourceInputs["created"] = state ? state.created : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["emailIntegrations"] = state ? state.emailIntegrations : undefined;
@@ -150,7 +176,6 @@ export class NotificationPolicy extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["alertType"] = args ? args.alertType : undefined;
-            resourceInputs["conditions"] = args ? args.conditions : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["emailIntegrations"] = args ? args.emailIntegrations : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
@@ -175,10 +200,9 @@ export interface NotificationPolicyState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The event type that will trigger the dispatch of a notification.
+     * The event type that will trigger the dispatch of a notification (refer to the nested schema).
      */
     alertType?: pulumi.Input<string>;
-    conditions?: pulumi.Input<{[key: string]: any}>;
     created?: pulumi.Input<string>;
     /**
      * Description of the notification policy.
@@ -189,13 +213,13 @@ export interface NotificationPolicyState {
      */
     emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
     /**
-     * The status of the notification policy, a boolean value.
+     * State of the pool to alert on. Example: `"true"`, `"false"`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Optional filterable items for a policy.
+     * An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
      */
-    filters?: pulumi.Input<{[key: string]: pulumi.Input<any[]>}>;
+    filters?: pulumi.Input<inputs.NotificationPolicyFilters>;
     modified?: pulumi.Input<string>;
     /**
      * The name of the notification policy.
@@ -220,10 +244,9 @@ export interface NotificationPolicyArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * The event type that will trigger the dispatch of a notification.
+     * The event type that will trigger the dispatch of a notification (refer to the nested schema).
      */
     alertType: pulumi.Input<string>;
-    conditions?: pulumi.Input<{[key: string]: any}>;
     /**
      * Description of the notification policy.
      */
@@ -233,13 +256,13 @@ export interface NotificationPolicyArgs {
      */
     emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
     /**
-     * The status of the notification policy, a boolean value.
+     * State of the pool to alert on. Example: `"true"`, `"false"`.
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Optional filterable items for a policy.
+     * An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
      */
-    filters?: pulumi.Input<{[key: string]: pulumi.Input<any[]>}>;
+    filters?: pulumi.Input<inputs.NotificationPolicyFilters>;
     /**
      * The name of the notification policy.
      */

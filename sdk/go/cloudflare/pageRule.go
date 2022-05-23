@@ -254,6 +254,31 @@ func (o PageRuleOutput) ToPageRuleOutputWithContext(ctx context.Context) PageRul
 	return o
 }
 
+// The actions taken by the page rule, options given below.
+func (o PageRuleOutput) Actions() PageRuleActionsOutput {
+	return o.ApplyT(func(v *PageRule) PageRuleActionsOutput { return v.Actions }).(PageRuleActionsOutput)
+}
+
+// The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
+func (o PageRuleOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Whether the page rule is active or disabled.
+func (o PageRuleOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The URL pattern to target with the page rule.
+func (o PageRuleOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.Target }).(pulumi.StringOutput)
+}
+
+// The DNS zone ID to which the page rule should be added.
+func (o PageRuleOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PageRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
+}
+
 type PageRuleArrayOutput struct{ *pulumi.OutputState }
 
 func (PageRuleArrayOutput) ElementType() reflect.Type {

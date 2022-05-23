@@ -8793,6 +8793,291 @@ func (o NotificationPolicyEmailIntegrationArrayOutput) Index(i pulumi.IntInput) 
 	}).(NotificationPolicyEmailIntegrationOutput)
 }
 
+type NotificationPolicyFilters struct {
+	// State of the pool to alert on. Example: `"true"`, `"false"`.
+	Enableds []string `pulumi:"enableds"`
+	// Identifier health check.
+	HealthCheckIds []string `pulumi:"healthCheckIds"`
+	// A numerical limit. Example: `"100"`
+	Limits []string `pulumi:"limits"`
+	// Load balancer pool identifier.
+	PoolIds []string `pulumi:"poolIds"`
+	// Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
+	Products []string `pulumi:"products"`
+	Services []string `pulumi:"services"`
+	// A numerical limit. Example: `"99.9"`
+	Slos []string `pulumi:"slos"`
+	// Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
+	Statuses []string `pulumi:"statuses"`
+	// A list of zone identifiers.
+	Zones []string `pulumi:"zones"`
+}
+
+// NotificationPolicyFiltersInput is an input type that accepts NotificationPolicyFiltersArgs and NotificationPolicyFiltersOutput values.
+// You can construct a concrete instance of `NotificationPolicyFiltersInput` via:
+//
+//          NotificationPolicyFiltersArgs{...}
+type NotificationPolicyFiltersInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyFiltersOutput() NotificationPolicyFiltersOutput
+	ToNotificationPolicyFiltersOutputWithContext(context.Context) NotificationPolicyFiltersOutput
+}
+
+type NotificationPolicyFiltersArgs struct {
+	// State of the pool to alert on. Example: `"true"`, `"false"`.
+	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
+	// Identifier health check.
+	HealthCheckIds pulumi.StringArrayInput `pulumi:"healthCheckIds"`
+	// A numerical limit. Example: `"100"`
+	Limits pulumi.StringArrayInput `pulumi:"limits"`
+	// Load balancer pool identifier.
+	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
+	// Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
+	Products pulumi.StringArrayInput `pulumi:"products"`
+	Services pulumi.StringArrayInput `pulumi:"services"`
+	// A numerical limit. Example: `"99.9"`
+	Slos pulumi.StringArrayInput `pulumi:"slos"`
+	// Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
+	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
+	// A list of zone identifiers.
+	Zones pulumi.StringArrayInput `pulumi:"zones"`
+}
+
+func (NotificationPolicyFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyFilters)(nil)).Elem()
+}
+
+func (i NotificationPolicyFiltersArgs) ToNotificationPolicyFiltersOutput() NotificationPolicyFiltersOutput {
+	return i.ToNotificationPolicyFiltersOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyFiltersArgs) ToNotificationPolicyFiltersOutputWithContext(ctx context.Context) NotificationPolicyFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyFiltersOutput)
+}
+
+func (i NotificationPolicyFiltersArgs) ToNotificationPolicyFiltersPtrOutput() NotificationPolicyFiltersPtrOutput {
+	return i.ToNotificationPolicyFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i NotificationPolicyFiltersArgs) ToNotificationPolicyFiltersPtrOutputWithContext(ctx context.Context) NotificationPolicyFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyFiltersOutput).ToNotificationPolicyFiltersPtrOutputWithContext(ctx)
+}
+
+// NotificationPolicyFiltersPtrInput is an input type that accepts NotificationPolicyFiltersArgs, NotificationPolicyFiltersPtr and NotificationPolicyFiltersPtrOutput values.
+// You can construct a concrete instance of `NotificationPolicyFiltersPtrInput` via:
+//
+//          NotificationPolicyFiltersArgs{...}
+//
+//  or:
+//
+//          nil
+type NotificationPolicyFiltersPtrInput interface {
+	pulumi.Input
+
+	ToNotificationPolicyFiltersPtrOutput() NotificationPolicyFiltersPtrOutput
+	ToNotificationPolicyFiltersPtrOutputWithContext(context.Context) NotificationPolicyFiltersPtrOutput
+}
+
+type notificationPolicyFiltersPtrType NotificationPolicyFiltersArgs
+
+func NotificationPolicyFiltersPtr(v *NotificationPolicyFiltersArgs) NotificationPolicyFiltersPtrInput {
+	return (*notificationPolicyFiltersPtrType)(v)
+}
+
+func (*notificationPolicyFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationPolicyFilters)(nil)).Elem()
+}
+
+func (i *notificationPolicyFiltersPtrType) ToNotificationPolicyFiltersPtrOutput() NotificationPolicyFiltersPtrOutput {
+	return i.ToNotificationPolicyFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationPolicyFiltersPtrType) ToNotificationPolicyFiltersPtrOutputWithContext(ctx context.Context) NotificationPolicyFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyFiltersPtrOutput)
+}
+
+type NotificationPolicyFiltersOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationPolicyFilters)(nil)).Elem()
+}
+
+func (o NotificationPolicyFiltersOutput) ToNotificationPolicyFiltersOutput() NotificationPolicyFiltersOutput {
+	return o
+}
+
+func (o NotificationPolicyFiltersOutput) ToNotificationPolicyFiltersOutputWithContext(ctx context.Context) NotificationPolicyFiltersOutput {
+	return o
+}
+
+func (o NotificationPolicyFiltersOutput) ToNotificationPolicyFiltersPtrOutput() NotificationPolicyFiltersPtrOutput {
+	return o.ToNotificationPolicyFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationPolicyFiltersOutput) ToNotificationPolicyFiltersPtrOutputWithContext(ctx context.Context) NotificationPolicyFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationPolicyFilters) *NotificationPolicyFilters {
+		return &v
+	}).(NotificationPolicyFiltersPtrOutput)
+}
+
+// State of the pool to alert on. Example: `"true"`, `"false"`.
+func (o NotificationPolicyFiltersOutput) Enableds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Enableds }).(pulumi.StringArrayOutput)
+}
+
+// Identifier health check.
+func (o NotificationPolicyFiltersOutput) HealthCheckIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.HealthCheckIds }).(pulumi.StringArrayOutput)
+}
+
+// A numerical limit. Example: `"100"`
+func (o NotificationPolicyFiltersOutput) Limits() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Limits }).(pulumi.StringArrayOutput)
+}
+
+// Load balancer pool identifier.
+func (o NotificationPolicyFiltersOutput) PoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.PoolIds }).(pulumi.StringArrayOutput)
+}
+
+// Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
+func (o NotificationPolicyFiltersOutput) Products() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Products }).(pulumi.StringArrayOutput)
+}
+
+func (o NotificationPolicyFiltersOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Services }).(pulumi.StringArrayOutput)
+}
+
+// A numerical limit. Example: `"99.9"`
+func (o NotificationPolicyFiltersOutput) Slos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Slos }).(pulumi.StringArrayOutput)
+}
+
+// Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
+func (o NotificationPolicyFiltersOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Statuses }).(pulumi.StringArrayOutput)
+}
+
+// A list of zone identifiers.
+func (o NotificationPolicyFiltersOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type NotificationPolicyFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationPolicyFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationPolicyFilters)(nil)).Elem()
+}
+
+func (o NotificationPolicyFiltersPtrOutput) ToNotificationPolicyFiltersPtrOutput() NotificationPolicyFiltersPtrOutput {
+	return o
+}
+
+func (o NotificationPolicyFiltersPtrOutput) ToNotificationPolicyFiltersPtrOutputWithContext(ctx context.Context) NotificationPolicyFiltersPtrOutput {
+	return o
+}
+
+func (o NotificationPolicyFiltersPtrOutput) Elem() NotificationPolicyFiltersOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) NotificationPolicyFilters {
+		if v != nil {
+			return *v
+		}
+		var ret NotificationPolicyFilters
+		return ret
+	}).(NotificationPolicyFiltersOutput)
+}
+
+// State of the pool to alert on. Example: `"true"`, `"false"`.
+func (o NotificationPolicyFiltersPtrOutput) Enableds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Enableds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Identifier health check.
+func (o NotificationPolicyFiltersPtrOutput) HealthCheckIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheckIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// A numerical limit. Example: `"100"`
+func (o NotificationPolicyFiltersPtrOutput) Limits() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Limits
+	}).(pulumi.StringArrayOutput)
+}
+
+// Load balancer pool identifier.
+func (o NotificationPolicyFiltersPtrOutput) PoolIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
+func (o NotificationPolicyFiltersPtrOutput) Products() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Products
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o NotificationPolicyFiltersPtrOutput) Services() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Services
+	}).(pulumi.StringArrayOutput)
+}
+
+// A numerical limit. Example: `"99.9"`
+func (o NotificationPolicyFiltersPtrOutput) Slos() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Slos
+	}).(pulumi.StringArrayOutput)
+}
+
+// Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
+func (o NotificationPolicyFiltersPtrOutput) Statuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Statuses
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of zone identifiers.
+func (o NotificationPolicyFiltersPtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
 type NotificationPolicyPagerdutyIntegration struct {
 	Id string `pulumi:"id"`
 	// The name of the notification policy.
@@ -12949,7 +13234,7 @@ type RulesetRule struct {
 	// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
 	ActionParameters *RulesetRuleActionParameters `pulumi:"actionParameters"`
 	// Brief summary of the ruleset rule and its intended use.
-	Description string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	// Defines if the current rule-level override enables or disables the rule.
 	Enabled *bool `pulumi:"enabled"`
 	// List of parameters that configure exposed credential checks (refer to the nested schema).
@@ -12958,6 +13243,8 @@ type RulesetRule struct {
 	Expression string `pulumi:"expression"`
 	// Rule ID to apply the override to.
 	Id *string `pulumi:"id"`
+	// List parameters to configure how the rule generates logs (refer to the nested schema).
+	Logging *RulesetRuleLogging `pulumi:"logging"`
 	// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
 	Ratelimit *RulesetRuleRatelimit `pulumi:"ratelimit"`
 	// Rule reference.
@@ -12982,7 +13269,7 @@ type RulesetRuleArgs struct {
 	// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
 	ActionParameters RulesetRuleActionParametersPtrInput `pulumi:"actionParameters"`
 	// Brief summary of the ruleset rule and its intended use.
-	Description pulumi.StringInput `pulumi:"description"`
+	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Defines if the current rule-level override enables or disables the rule.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// List of parameters that configure exposed credential checks (refer to the nested schema).
@@ -12991,6 +13278,8 @@ type RulesetRuleArgs struct {
 	Expression pulumi.StringInput `pulumi:"expression"`
 	// Rule ID to apply the override to.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// List parameters to configure how the rule generates logs (refer to the nested schema).
+	Logging RulesetRuleLoggingPtrInput `pulumi:"logging"`
 	// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
 	Ratelimit RulesetRuleRatelimitPtrInput `pulumi:"ratelimit"`
 	// Rule reference.
@@ -13060,8 +13349,8 @@ func (o RulesetRuleOutput) ActionParameters() RulesetRuleActionParametersPtrOutp
 }
 
 // Brief summary of the ruleset rule and its intended use.
-func (o RulesetRuleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesetRule) string { return v.Description }).(pulumi.StringOutput)
+func (o RulesetRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRule) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Defines if the current rule-level override enables or disables the rule.
@@ -13082,6 +13371,11 @@ func (o RulesetRuleOutput) Expression() pulumi.StringOutput {
 // Rule ID to apply the override to.
 func (o RulesetRuleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// List parameters to configure how the rule generates logs (refer to the nested schema).
+func (o RulesetRuleOutput) Logging() RulesetRuleLoggingPtrOutput {
+	return o.ApplyT(func(v RulesetRule) *RulesetRuleLogging { return v.Logging }).(RulesetRuleLoggingPtrOutput)
 }
 
 // List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
@@ -13121,11 +13415,15 @@ func (o RulesetRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleOutput {
 type RulesetRuleActionParameters struct {
 	// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
 	Headers []RulesetRuleActionParametersHeader `pulumi:"headers"`
+	// Host Header that request origin receives.
+	HostHeader *string `pulumi:"hostHeader"`
 	// Rule ID to apply the override to.
 	Id        *string `pulumi:"id"`
 	Increment *int    `pulumi:"increment"`
 	// List of properties to configure WAF payload logging (refer to the nested schema).
 	MatchedData *RulesetRuleActionParametersMatchedData `pulumi:"matchedData"`
+	// List of properties to change request origin (refer to the nested schema).
+	Origin *RulesetRuleActionParametersOrigin `pulumi:"origin"`
 	// List of override configurations to apply to the ruleset (refer to the nested schema).
 	Overrides *RulesetRuleActionParametersOverrides `pulumi:"overrides"`
 	Phases    []string                              `pulumi:"phases"`
@@ -13158,11 +13456,15 @@ type RulesetRuleActionParametersInput interface {
 type RulesetRuleActionParametersArgs struct {
 	// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
 	Headers RulesetRuleActionParametersHeaderArrayInput `pulumi:"headers"`
+	// Host Header that request origin receives.
+	HostHeader pulumi.StringPtrInput `pulumi:"hostHeader"`
 	// Rule ID to apply the override to.
 	Id        pulumi.StringPtrInput `pulumi:"id"`
 	Increment pulumi.IntPtrInput    `pulumi:"increment"`
 	// List of properties to configure WAF payload logging (refer to the nested schema).
 	MatchedData RulesetRuleActionParametersMatchedDataPtrInput `pulumi:"matchedData"`
+	// List of properties to change request origin (refer to the nested schema).
+	Origin RulesetRuleActionParametersOriginPtrInput `pulumi:"origin"`
 	// List of override configurations to apply to the ruleset (refer to the nested schema).
 	Overrides RulesetRuleActionParametersOverridesPtrInput `pulumi:"overrides"`
 	Phases    pulumi.StringArrayInput                      `pulumi:"phases"`
@@ -13263,6 +13565,11 @@ func (o RulesetRuleActionParametersOutput) Headers() RulesetRuleActionParameters
 	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersHeader { return v.Headers }).(RulesetRuleActionParametersHeaderArrayOutput)
 }
 
+// Host Header that request origin receives.
+func (o RulesetRuleActionParametersOutput) HostHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.HostHeader }).(pulumi.StringPtrOutput)
+}
+
 // Rule ID to apply the override to.
 func (o RulesetRuleActionParametersOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -13275,6 +13582,11 @@ func (o RulesetRuleActionParametersOutput) Increment() pulumi.IntPtrOutput {
 // List of properties to configure WAF payload logging (refer to the nested schema).
 func (o RulesetRuleActionParametersOutput) MatchedData() RulesetRuleActionParametersMatchedDataPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersMatchedData { return v.MatchedData }).(RulesetRuleActionParametersMatchedDataPtrOutput)
+}
+
+// List of properties to change request origin (refer to the nested schema).
+func (o RulesetRuleActionParametersOutput) Origin() RulesetRuleActionParametersOriginPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOrigin { return v.Origin }).(RulesetRuleActionParametersOriginPtrOutput)
 }
 
 // List of override configurations to apply to the ruleset (refer to the nested schema).
@@ -13354,6 +13666,16 @@ func (o RulesetRuleActionParametersPtrOutput) Headers() RulesetRuleActionParamet
 	}).(RulesetRuleActionParametersHeaderArrayOutput)
 }
 
+// Host Header that request origin receives.
+func (o RulesetRuleActionParametersPtrOutput) HostHeader() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostHeader
+	}).(pulumi.StringPtrOutput)
+}
+
 // Rule ID to apply the override to.
 func (o RulesetRuleActionParametersPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *string {
@@ -13381,6 +13703,16 @@ func (o RulesetRuleActionParametersPtrOutput) MatchedData() RulesetRuleActionPar
 		}
 		return v.MatchedData
 	}).(RulesetRuleActionParametersMatchedDataPtrOutput)
+}
+
+// List of properties to change request origin (refer to the nested schema).
+func (o RulesetRuleActionParametersPtrOutput) Origin() RulesetRuleActionParametersOriginPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *RulesetRuleActionParametersOrigin {
+		if v == nil {
+			return nil
+		}
+		return v.Origin
+	}).(RulesetRuleActionParametersOriginPtrOutput)
 }
 
 // List of override configurations to apply to the ruleset (refer to the nested schema).
@@ -13730,6 +14062,162 @@ func (o RulesetRuleActionParametersMatchedDataPtrOutput) PublicKey() pulumi.Stri
 		}
 		return v.PublicKey
 	}).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleActionParametersOrigin struct {
+	// Origin Hostname where request is sent.
+	Host *string `pulumi:"host"`
+	// Oirign Port where request is sent.
+	Port *int `pulumi:"port"`
+}
+
+// RulesetRuleActionParametersOriginInput is an input type that accepts RulesetRuleActionParametersOriginArgs and RulesetRuleActionParametersOriginOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOriginInput` via:
+//
+//          RulesetRuleActionParametersOriginArgs{...}
+type RulesetRuleActionParametersOriginInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersOriginOutput() RulesetRuleActionParametersOriginOutput
+	ToRulesetRuleActionParametersOriginOutputWithContext(context.Context) RulesetRuleActionParametersOriginOutput
+}
+
+type RulesetRuleActionParametersOriginArgs struct {
+	// Origin Hostname where request is sent.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Oirign Port where request is sent.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (RulesetRuleActionParametersOriginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOrigin)(nil)).Elem()
+}
+
+func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOriginOutput() RulesetRuleActionParametersOriginOutput {
+	return i.ToRulesetRuleActionParametersOriginOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOriginOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginOutput)
+}
+
+func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput {
+	return i.ToRulesetRuleActionParametersOriginPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleActionParametersOriginArgs) ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginOutput).ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleActionParametersOriginPtrInput is an input type that accepts RulesetRuleActionParametersOriginArgs, RulesetRuleActionParametersOriginPtr and RulesetRuleActionParametersOriginPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleActionParametersOriginPtrInput` via:
+//
+//          RulesetRuleActionParametersOriginArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleActionParametersOriginPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput
+	ToRulesetRuleActionParametersOriginPtrOutputWithContext(context.Context) RulesetRuleActionParametersOriginPtrOutput
+}
+
+type rulesetRuleActionParametersOriginPtrType RulesetRuleActionParametersOriginArgs
+
+func RulesetRuleActionParametersOriginPtr(v *RulesetRuleActionParametersOriginArgs) RulesetRuleActionParametersOriginPtrInput {
+	return (*rulesetRuleActionParametersOriginPtrType)(v)
+}
+
+func (*rulesetRuleActionParametersOriginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersOrigin)(nil)).Elem()
+}
+
+func (i *rulesetRuleActionParametersOriginPtrType) ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput {
+	return i.ToRulesetRuleActionParametersOriginPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleActionParametersOriginPtrType) ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleActionParametersOriginPtrOutput)
+}
+
+type RulesetRuleActionParametersOriginOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersOriginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleActionParametersOrigin)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersOriginOutput) ToRulesetRuleActionParametersOriginOutput() RulesetRuleActionParametersOriginOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOriginOutput) ToRulesetRuleActionParametersOriginOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOriginOutput) ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput {
+	return o.ToRulesetRuleActionParametersOriginPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleActionParametersOriginOutput) ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleActionParametersOrigin) *RulesetRuleActionParametersOrigin {
+		return &v
+	}).(RulesetRuleActionParametersOriginPtrOutput)
+}
+
+// Origin Hostname where request is sent.
+func (o RulesetRuleActionParametersOriginOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOrigin) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Oirign Port where request is sent.
+func (o RulesetRuleActionParametersOriginOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParametersOrigin) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type RulesetRuleActionParametersOriginPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleActionParametersOriginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleActionParametersOrigin)(nil)).Elem()
+}
+
+func (o RulesetRuleActionParametersOriginPtrOutput) ToRulesetRuleActionParametersOriginPtrOutput() RulesetRuleActionParametersOriginPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOriginPtrOutput) ToRulesetRuleActionParametersOriginPtrOutputWithContext(ctx context.Context) RulesetRuleActionParametersOriginPtrOutput {
+	return o
+}
+
+func (o RulesetRuleActionParametersOriginPtrOutput) Elem() RulesetRuleActionParametersOriginOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOrigin) RulesetRuleActionParametersOrigin {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleActionParametersOrigin
+		return ret
+	}).(RulesetRuleActionParametersOriginOutput)
+}
+
+// Origin Hostname where request is sent.
+func (o RulesetRuleActionParametersOriginPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOrigin) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Oirign Port where request is sent.
+func (o RulesetRuleActionParametersOriginPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParametersOrigin) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type RulesetRuleActionParametersOverrides struct {
@@ -14294,6 +14782,7 @@ func (o RulesetRuleActionParametersResponseArrayOutput) Index(i pulumi.IntInput)
 }
 
 type RulesetRuleActionParametersUri struct {
+	// List of properties to change request origin (refer to the nested schema).
 	Origin *bool `pulumi:"origin"`
 	// URI path configuration when performing a URL rewrite (refer to the nested schema).
 	Path *RulesetRuleActionParametersUriPath `pulumi:"path"`
@@ -14313,6 +14802,7 @@ type RulesetRuleActionParametersUriInput interface {
 }
 
 type RulesetRuleActionParametersUriArgs struct {
+	// List of properties to change request origin (refer to the nested schema).
 	Origin pulumi.BoolPtrInput `pulumi:"origin"`
 	// URI path configuration when performing a URL rewrite (refer to the nested schema).
 	Path RulesetRuleActionParametersUriPathPtrInput `pulumi:"path"`
@@ -14397,6 +14887,7 @@ func (o RulesetRuleActionParametersUriOutput) ToRulesetRuleActionParametersUriPt
 	}).(RulesetRuleActionParametersUriPtrOutput)
 }
 
+// List of properties to change request origin (refer to the nested schema).
 func (o RulesetRuleActionParametersUriOutput) Origin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersUri) *bool { return v.Origin }).(pulumi.BoolPtrOutput)
 }
@@ -14435,6 +14926,7 @@ func (o RulesetRuleActionParametersUriPtrOutput) Elem() RulesetRuleActionParamet
 	}).(RulesetRuleActionParametersUriOutput)
 }
 
+// List of properties to change request origin (refer to the nested schema).
 func (o RulesetRuleActionParametersUriPtrOutput) Origin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParametersUri) *bool {
 		if v == nil {
@@ -14930,6 +15422,143 @@ func (o RulesetRuleExposedCredentialCheckPtrOutput) UsernameExpression() pulumi.
 		}
 		return v.UsernameExpression
 	}).(pulumi.StringPtrOutput)
+}
+
+type RulesetRuleLogging struct {
+	// Defines if the current rule-level override enables or disables the rule.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// RulesetRuleLoggingInput is an input type that accepts RulesetRuleLoggingArgs and RulesetRuleLoggingOutput values.
+// You can construct a concrete instance of `RulesetRuleLoggingInput` via:
+//
+//          RulesetRuleLoggingArgs{...}
+type RulesetRuleLoggingInput interface {
+	pulumi.Input
+
+	ToRulesetRuleLoggingOutput() RulesetRuleLoggingOutput
+	ToRulesetRuleLoggingOutputWithContext(context.Context) RulesetRuleLoggingOutput
+}
+
+type RulesetRuleLoggingArgs struct {
+	// Defines if the current rule-level override enables or disables the rule.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (RulesetRuleLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleLogging)(nil)).Elem()
+}
+
+func (i RulesetRuleLoggingArgs) ToRulesetRuleLoggingOutput() RulesetRuleLoggingOutput {
+	return i.ToRulesetRuleLoggingOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleLoggingArgs) ToRulesetRuleLoggingOutputWithContext(ctx context.Context) RulesetRuleLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleLoggingOutput)
+}
+
+func (i RulesetRuleLoggingArgs) ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput {
+	return i.ToRulesetRuleLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i RulesetRuleLoggingArgs) ToRulesetRuleLoggingPtrOutputWithContext(ctx context.Context) RulesetRuleLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleLoggingOutput).ToRulesetRuleLoggingPtrOutputWithContext(ctx)
+}
+
+// RulesetRuleLoggingPtrInput is an input type that accepts RulesetRuleLoggingArgs, RulesetRuleLoggingPtr and RulesetRuleLoggingPtrOutput values.
+// You can construct a concrete instance of `RulesetRuleLoggingPtrInput` via:
+//
+//          RulesetRuleLoggingArgs{...}
+//
+//  or:
+//
+//          nil
+type RulesetRuleLoggingPtrInput interface {
+	pulumi.Input
+
+	ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput
+	ToRulesetRuleLoggingPtrOutputWithContext(context.Context) RulesetRuleLoggingPtrOutput
+}
+
+type rulesetRuleLoggingPtrType RulesetRuleLoggingArgs
+
+func RulesetRuleLoggingPtr(v *RulesetRuleLoggingArgs) RulesetRuleLoggingPtrInput {
+	return (*rulesetRuleLoggingPtrType)(v)
+}
+
+func (*rulesetRuleLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleLogging)(nil)).Elem()
+}
+
+func (i *rulesetRuleLoggingPtrType) ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput {
+	return i.ToRulesetRuleLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *rulesetRuleLoggingPtrType) ToRulesetRuleLoggingPtrOutputWithContext(ctx context.Context) RulesetRuleLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RulesetRuleLoggingPtrOutput)
+}
+
+type RulesetRuleLoggingOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RulesetRuleLogging)(nil)).Elem()
+}
+
+func (o RulesetRuleLoggingOutput) ToRulesetRuleLoggingOutput() RulesetRuleLoggingOutput {
+	return o
+}
+
+func (o RulesetRuleLoggingOutput) ToRulesetRuleLoggingOutputWithContext(ctx context.Context) RulesetRuleLoggingOutput {
+	return o
+}
+
+func (o RulesetRuleLoggingOutput) ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput {
+	return o.ToRulesetRuleLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o RulesetRuleLoggingOutput) ToRulesetRuleLoggingPtrOutputWithContext(ctx context.Context) RulesetRuleLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RulesetRuleLogging) *RulesetRuleLogging {
+		return &v
+	}).(RulesetRuleLoggingPtrOutput)
+}
+
+// Defines if the current rule-level override enables or disables the rule.
+func (o RulesetRuleLoggingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleLogging) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type RulesetRuleLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (RulesetRuleLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RulesetRuleLogging)(nil)).Elem()
+}
+
+func (o RulesetRuleLoggingPtrOutput) ToRulesetRuleLoggingPtrOutput() RulesetRuleLoggingPtrOutput {
+	return o
+}
+
+func (o RulesetRuleLoggingPtrOutput) ToRulesetRuleLoggingPtrOutputWithContext(ctx context.Context) RulesetRuleLoggingPtrOutput {
+	return o
+}
+
+func (o RulesetRuleLoggingPtrOutput) Elem() RulesetRuleLoggingOutput {
+	return o.ApplyT(func(v *RulesetRuleLogging) RulesetRuleLogging {
+		if v != nil {
+			return *v
+		}
+		var ret RulesetRuleLogging
+		return ret
+	}).(RulesetRuleLoggingOutput)
+}
+
+// Defines if the current rule-level override enables or disables the rule.
+func (o RulesetRuleLoggingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleLogging) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type RulesetRuleRatelimit struct {
@@ -22889,6 +23518,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideRegionPoolArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideRegionPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyEmailIntegrationInput)(nil)).Elem(), NotificationPolicyEmailIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyEmailIntegrationArrayInput)(nil)).Elem(), NotificationPolicyEmailIntegrationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyFiltersInput)(nil)).Elem(), NotificationPolicyFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyFiltersPtrInput)(nil)).Elem(), NotificationPolicyFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyPagerdutyIntegrationInput)(nil)).Elem(), NotificationPolicyPagerdutyIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyPagerdutyIntegrationArrayInput)(nil)).Elem(), NotificationPolicyPagerdutyIntegrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationPolicyWebhooksIntegrationInput)(nil)).Elem(), NotificationPolicyWebhooksIntegrationArgs{})
@@ -22935,6 +23566,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersHeaderArrayInput)(nil)).Elem(), RulesetRuleActionParametersHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersMatchedDataInput)(nil)).Elem(), RulesetRuleActionParametersMatchedDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersMatchedDataPtrInput)(nil)).Elem(), RulesetRuleActionParametersMatchedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOriginInput)(nil)).Elem(), RulesetRuleActionParametersOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOriginPtrInput)(nil)).Elem(), RulesetRuleActionParametersOriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesInput)(nil)).Elem(), RulesetRuleActionParametersOverridesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesPtrInput)(nil)).Elem(), RulesetRuleActionParametersOverridesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersOverridesCategoryInput)(nil)).Elem(), RulesetRuleActionParametersOverridesCategoryArgs{})
@@ -22951,6 +23584,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersUriQueryPtrInput)(nil)).Elem(), RulesetRuleActionParametersUriQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleExposedCredentialCheckInput)(nil)).Elem(), RulesetRuleExposedCredentialCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleExposedCredentialCheckPtrInput)(nil)).Elem(), RulesetRuleExposedCredentialCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleLoggingInput)(nil)).Elem(), RulesetRuleLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleLoggingPtrInput)(nil)).Elem(), RulesetRuleLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleRatelimitPtrInput)(nil)).Elem(), RulesetRuleRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpectrumApplicationDnsInput)(nil)).Elem(), SpectrumApplicationDnsArgs{})
@@ -23174,6 +23809,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerRuleOverrideRegionPoolArrayOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyEmailIntegrationOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyEmailIntegrationArrayOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyFiltersOutput{})
+	pulumi.RegisterOutputType(NotificationPolicyFiltersPtrOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyPagerdutyIntegrationOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyPagerdutyIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(NotificationPolicyWebhooksIntegrationOutput{})
@@ -23220,6 +23857,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersHeaderArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersMatchedDataOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersMatchedDataPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOriginOutput{})
+	pulumi.RegisterOutputType(RulesetRuleActionParametersOriginPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOverridesCategoryOutput{})
@@ -23236,6 +23875,8 @@ func init() {
 	pulumi.RegisterOutputType(RulesetRuleActionParametersUriQueryPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleExposedCredentialCheckOutput{})
 	pulumi.RegisterOutputType(RulesetRuleExposedCredentialCheckPtrOutput{})
+	pulumi.RegisterOutputType(RulesetRuleLoggingOutput{})
+	pulumi.RegisterOutputType(RulesetRuleLoggingPtrOutput{})
 	pulumi.RegisterOutputType(RulesetRuleRatelimitOutput{})
 	pulumi.RegisterOutputType(RulesetRuleRatelimitPtrOutput{})
 	pulumi.RegisterOutputType(SpectrumApplicationDnsOutput{})
