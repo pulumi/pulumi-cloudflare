@@ -93,7 +93,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.18.x
         language:
         - nodejs
         - python
@@ -159,7 +159,7 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-        - 1.17.x
+        - 1.18.x
   lint_sdk:
     container: golangci/golangci-lint:latest
     if: github.event_name == 'repository_dispatch' ||
@@ -201,7 +201,7 @@ jobs:
       fail-fast: true
       matrix:
         goversion:
-        - 1.17.x
+        - 1.18.x
   prerequisites:
     if: github.event_name == 'repository_dispatch' ||
       github.event.pull_request.head.repo.full_name == github.repository
@@ -275,7 +275,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.18.x
         nodeversion:
         - 14.x
         pythonversion:
@@ -369,7 +369,7 @@ jobs:
         dotnetversion:
         - 3.1.301
         goversion:
-        - 1.17.x
+        - 1.18.x
         language:
         - nodejs
         - python
