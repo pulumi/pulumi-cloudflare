@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParameters
     {
         /// <summary>
+        /// List of cookie values to include as part of custom fields logging.
+        /// </summary>
+        public readonly ImmutableArray<string> CookieFields;
+        /// <summary>
         /// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
@@ -44,6 +48,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Products;
         /// <summary>
+        /// List of request headers to include as part of custom fields logging, in lowercase.
+        /// </summary>
+        public readonly ImmutableArray<string> RequestFields;
+        /// <summary>
+        /// List of response headers to include as part of custom fields logging, in lowercase.
+        /// </summary>
+        public readonly ImmutableArray<string> ResponseFields;
+        /// <summary>
         /// List of parameters that configure the response given to end users (refer to the nested schema).
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponse> Responses;
@@ -67,6 +79,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
+            ImmutableArray<string> cookieFields,
+
             ImmutableArray<Outputs.RulesetRuleActionParametersHeader> headers,
 
             string? hostHeader,
@@ -85,6 +99,10 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> products,
 
+            ImmutableArray<string> requestFields,
+
+            ImmutableArray<string> responseFields,
+
             ImmutableArray<Outputs.RulesetRuleActionParametersResponse> responses,
 
             ImmutableDictionary<string, string>? rules,
@@ -97,6 +115,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? version)
         {
+            CookieFields = cookieFields;
             Headers = headers;
             HostHeader = hostHeader;
             Id = id;
@@ -106,6 +125,8 @@ namespace Pulumi.Cloudflare.Outputs
             Overrides = overrides;
             Phases = phases;
             Products = products;
+            RequestFields = requestFields;
+            ResponseFields = responseFields;
             Responses = responses;
             Rules = rules;
             Ruleset = ruleset;

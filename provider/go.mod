@@ -43,7 +43,7 @@ require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
 	github.com/cloudflare/cloudflare-go v0.40.1-0.20220602010313-668778596a1c // indirect
-	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220531051658-8a97894e0e61 // indirect
+	github.com/cloudflare/terraform-provider-cloudflare v0.0.0-00010101000000-000000000000 // indirect
 	github.com/cncf/udpa/go v0.0.0-20210930031921-04548b0d99d4 // indirect
 	github.com/cncf/xds/go v0.0.0-20211130200136-a8f946100490 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -205,6 +205,8 @@ require (
 
 replace (
 	cloud.google.com/go/storage => cloud.google.com/go/storage v1.16.1
+	github.com/cloudflare/cloudflare-go => github.com/mapped/cloudflare-go v0.40.1-0.20220603175700-567edc574e2c
+	github.com/cloudflare/terraform-provider-cloudflare => github.com/mapped/terraform-provider-cloudflare v1.18.2-0.20220604053233-3f7c27d1822c
 	github.com/cloudflare/terraform-provider-cloudflare/shim => ./shim
 	github.com/hashicorp/go-getter v1.5.0 => github.com/hashicorp/go-getter v1.4.0
 	github.com/hashicorp/terraform-exec => github.com/hashicorp/terraform-exec v0.15.0

@@ -132,10 +132,10 @@ namespace Pulumi.Cloudflare
         public Output<bool?> EnableBindingCookie { get; private set; } = null!;
 
         /// <summary>
-        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         /// </summary>
         [Output("httpOnlyCookieAttribute")]
-        public Output<bool> HttpOnlyCookieAttribute { get; private set; } = null!;
+        public Output<bool?> HttpOnlyCookieAttribute { get; private set; } = null!;
 
         /// <summary>
         /// Image URL for the logo shown in the app launcher
@@ -309,7 +309,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? EnableBindingCookie { get; set; }
 
         /// <summary>
-        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         /// </summary>
         [Input("httpOnlyCookieAttribute")]
         public Input<bool>? HttpOnlyCookieAttribute { get; set; }
@@ -453,7 +453,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? EnableBindingCookie { get; set; }
 
         /// <summary>
-        /// Option to add the `HttpOnly` cookie flag to access tokens.
+        /// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         /// </summary>
         [Input("httpOnlyCookieAttribute")]
         public Input<bool>? HttpOnlyCookieAttribute { get; set; }

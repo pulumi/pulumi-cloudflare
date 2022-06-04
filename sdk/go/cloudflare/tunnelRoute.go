@@ -27,10 +27,11 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewTunnelRoute(ctx, "example", &cloudflare.TunnelRouteArgs{
-// 			AccountId: pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
-// 			Comment:   pulumi.String("New tunnel route for documentation"),
-// 			Network:   pulumi.String("192.0.2.24/32"),
-// 			TunnelId:  pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+// 			AccountId:        pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+// 			Comment:          pulumi.String("New tunnel route for documentation"),
+// 			Network:          pulumi.String("192.0.2.24/32"),
+// 			TunnelId:         pulumi.String("f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"),
+// 			VirtualNetworkId: pulumi.String("bdc39a3c-3104-4c23-8ac0-9f455dda691a"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -59,10 +60,11 @@ import (
 // 			return err
 // 		}
 // 		_, err = cloudflare.NewTunnelRoute(ctx, "example", &cloudflare.TunnelRouteArgs{
-// 			AccountId: pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
-// 			TunnelId:  tunnel.ID(),
-// 			Network:   pulumi.String("192.0.2.24/32"),
-// 			Comment:   pulumi.String("New tunnel route for documentation"),
+// 			AccountId:        pulumi.String("c4a7362d577a6c3019a474fd6f485821"),
+// 			TunnelId:         tunnel.ID(),
+// 			Network:          pulumi.String("192.0.2.24/32"),
+// 			Comment:          pulumi.String("New tunnel route for documentation"),
+// 			VirtualNetworkId: pulumi.String("bdc39a3c-3104-4c23-8ac0-9f455dda691a"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -74,10 +76,16 @@ import (
 //
 // ## Import
 //
-// An existing tunnel route can be imported using the account ID and network CIDR.
+// An existing tunnel route can be imported using the account ID and network CIDR
 //
 // ```sh
 //  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute cloudflare_tunnel_route c4a7362d577a6c3019a474fd6f485821/192.0.2.24/32
+// ```
+//
+//  or using account ID, network CIDR and virtual network ID.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute cloudflare_tunnel_route c4a7362d577a6c3019a474fd6f485821/192.0.2.24/32/bdc39a3c-3104-4c23-8ac0-9f455dda691a
 // ```
 type TunnelRoute struct {
 	pulumi.CustomResourceState
@@ -90,6 +98,8 @@ type TunnelRoute struct {
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId pulumi.StringOutput `pulumi:"tunnelId"`
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	VirtualNetworkId pulumi.StringPtrOutput `pulumi:"virtualNetworkId"`
 }
 
 // NewTunnelRoute registers a new resource with the given unique name, arguments, and options.
@@ -138,6 +148,8 @@ type tunnelRouteState struct {
 	Network *string `pulumi:"network"`
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId *string `pulumi:"tunnelId"`
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
 
 type TunnelRouteState struct {
@@ -149,6 +161,8 @@ type TunnelRouteState struct {
 	Network pulumi.StringPtrInput
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId pulumi.StringPtrInput
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	VirtualNetworkId pulumi.StringPtrInput
 }
 
 func (TunnelRouteState) ElementType() reflect.Type {
@@ -164,6 +178,8 @@ type tunnelRouteArgs struct {
 	Network string `pulumi:"network"`
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId string `pulumi:"tunnelId"`
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 }
 
 // The set of arguments for constructing a TunnelRoute resource.
@@ -176,6 +192,8 @@ type TunnelRouteArgs struct {
 	Network pulumi.StringInput
 	// The ID of the tunnel that will service the tunnel route.
 	TunnelId pulumi.StringInput
+	// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+	VirtualNetworkId pulumi.StringPtrInput
 }
 
 func (TunnelRouteArgs) ElementType() reflect.Type {
@@ -283,6 +301,11 @@ func (o TunnelRouteOutput) Network() pulumi.StringOutput {
 // The ID of the tunnel that will service the tunnel route.
 func (o TunnelRouteOutput) TunnelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TunnelRoute) pulumi.StringOutput { return v.TunnelId }).(pulumi.StringOutput)
+}
+
+// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+func (o TunnelRouteOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TunnelRoute) pulumi.StringPtrOutput { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
 }
 
 type TunnelRouteArrayOutput struct{ *pulumi.OutputState }

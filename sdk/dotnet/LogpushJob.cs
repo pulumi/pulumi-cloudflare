@@ -49,6 +49,7 @@ namespace Pulumi.Cloudflare
     ///             Dataset = "http_requests",
     ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
     ///             Enabled = true,
+    ///             Frequency = "high",
     ///             LogpullOptions = "fields=RayID,ClientIP,EdgeStartTimestamp&amp;timestamps=rfc3339",
     ///             Name = "My-logpush-job",
     ///             OwnershipChallenge = "0000000000000",
@@ -101,6 +102,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
+
+        /// <summary>
+        /// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+        /// </summary>
+        [Output("frequency")]
+        public Output<string?> Frequency { get; private set; } = null!;
 
         /// <summary>
         /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -200,6 +207,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
+        /// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+        /// </summary>
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
+
+        /// <summary>
         /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         /// </summary>
         [Input("logpullOptions")]
@@ -256,6 +269,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+        /// </summary>
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
 
         /// <summary>
         /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).

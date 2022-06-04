@@ -13,18 +13,21 @@ __all__ = [
     'AccessApplicationCorsHeader',
     'AccessGroupExclude',
     'AccessGroupExcludeAzure',
+    'AccessGroupExcludeExternalEvaluation',
     'AccessGroupExcludeGithub',
     'AccessGroupExcludeGsuite',
     'AccessGroupExcludeOkta',
     'AccessGroupExcludeSaml',
     'AccessGroupInclude',
     'AccessGroupIncludeAzure',
+    'AccessGroupIncludeExternalEvaluation',
     'AccessGroupIncludeGithub',
     'AccessGroupIncludeGsuite',
     'AccessGroupIncludeOkta',
     'AccessGroupIncludeSaml',
     'AccessGroupRequire',
     'AccessGroupRequireAzure',
+    'AccessGroupRequireExternalEvaluation',
     'AccessGroupRequireGithub',
     'AccessGroupRequireGsuite',
     'AccessGroupRequireOkta',
@@ -33,18 +36,21 @@ __all__ = [
     'AccessPolicyApprovalGroup',
     'AccessPolicyExclude',
     'AccessPolicyExcludeAzure',
+    'AccessPolicyExcludeExternalEvaluation',
     'AccessPolicyExcludeGithub',
     'AccessPolicyExcludeGsuite',
     'AccessPolicyExcludeOkta',
     'AccessPolicyExcludeSaml',
     'AccessPolicyInclude',
     'AccessPolicyIncludeAzure',
+    'AccessPolicyIncludeExternalEvaluation',
     'AccessPolicyIncludeGithub',
     'AccessPolicyIncludeGsuite',
     'AccessPolicyIncludeOkta',
     'AccessPolicyIncludeSaml',
     'AccessPolicyRequire',
     'AccessPolicyRequireAzure',
+    'AccessPolicyRequireExternalEvaluation',
     'AccessPolicyRequireGithub',
     'AccessPolicyRequireGsuite',
     'AccessPolicyRequireOkta',
@@ -319,6 +325,8 @@ class AccessGroupExclude(dict):
             suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "externalEvaluation":
+            suggest = "external_evaluation"
         elif key == "loginMethods":
             suggest = "login_methods"
         elif key == "serviceTokens":
@@ -345,6 +353,7 @@ class AccessGroupExclude(dict):
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
+                 external_evaluation: Optional['outputs.AccessGroupExcludeExternalEvaluation'] = None,
                  geos: Optional[Sequence[str]] = None,
                  githubs: Optional[Sequence['outputs.AccessGroupExcludeGithub']] = None,
                  groups: Optional[Sequence[str]] = None,
@@ -372,6 +381,8 @@ class AccessGroupExclude(dict):
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -435,6 +446,11 @@ class AccessGroupExclude(dict):
     @pulumi.getter
     def everyone(self) -> Optional[bool]:
         return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional['outputs.AccessGroupExcludeExternalEvaluation']:
+        return pulumi.get(self, "external_evaluation")
 
     @property
     @pulumi.getter
@@ -518,6 +534,46 @@ class AccessGroupExcludeAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class AccessGroupExcludeExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupExcludeExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupExcludeExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupExcludeExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
 
 
 @pulumi.output_type
@@ -719,6 +775,8 @@ class AccessGroupInclude(dict):
             suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "externalEvaluation":
+            suggest = "external_evaluation"
         elif key == "loginMethods":
             suggest = "login_methods"
         elif key == "serviceTokens":
@@ -745,6 +803,7 @@ class AccessGroupInclude(dict):
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
+                 external_evaluation: Optional['outputs.AccessGroupIncludeExternalEvaluation'] = None,
                  geos: Optional[Sequence[str]] = None,
                  githubs: Optional[Sequence['outputs.AccessGroupIncludeGithub']] = None,
                  groups: Optional[Sequence[str]] = None,
@@ -772,6 +831,8 @@ class AccessGroupInclude(dict):
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -835,6 +896,11 @@ class AccessGroupInclude(dict):
     @pulumi.getter
     def everyone(self) -> Optional[bool]:
         return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional['outputs.AccessGroupIncludeExternalEvaluation']:
+        return pulumi.get(self, "external_evaluation")
 
     @property
     @pulumi.getter
@@ -918,6 +984,46 @@ class AccessGroupIncludeAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class AccessGroupIncludeExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupIncludeExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupIncludeExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupIncludeExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
 
 
 @pulumi.output_type
@@ -1119,6 +1225,8 @@ class AccessGroupRequire(dict):
             suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "externalEvaluation":
+            suggest = "external_evaluation"
         elif key == "loginMethods":
             suggest = "login_methods"
         elif key == "serviceTokens":
@@ -1145,6 +1253,7 @@ class AccessGroupRequire(dict):
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
+                 external_evaluation: Optional['outputs.AccessGroupRequireExternalEvaluation'] = None,
                  geos: Optional[Sequence[str]] = None,
                  githubs: Optional[Sequence['outputs.AccessGroupRequireGithub']] = None,
                  groups: Optional[Sequence[str]] = None,
@@ -1172,6 +1281,8 @@ class AccessGroupRequire(dict):
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -1235,6 +1346,11 @@ class AccessGroupRequire(dict):
     @pulumi.getter
     def everyone(self) -> Optional[bool]:
         return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional['outputs.AccessGroupRequireExternalEvaluation']:
+        return pulumi.get(self, "external_evaluation")
 
     @property
     @pulumi.getter
@@ -1318,6 +1434,46 @@ class AccessGroupRequireAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class AccessGroupRequireExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequireExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupRequireExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupRequireExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
 
 
 @pulumi.output_type
@@ -1796,6 +1952,8 @@ class AccessPolicyExclude(dict):
             suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "externalEvaluation":
+            suggest = "external_evaluation"
         elif key == "loginMethods":
             suggest = "login_methods"
         elif key == "serviceTokens":
@@ -1822,6 +1980,7 @@ class AccessPolicyExclude(dict):
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
+                 external_evaluation: Optional['outputs.AccessPolicyExcludeExternalEvaluation'] = None,
                  geos: Optional[Sequence[str]] = None,
                  githubs: Optional[Sequence['outputs.AccessPolicyExcludeGithub']] = None,
                  groups: Optional[Sequence[str]] = None,
@@ -1849,6 +2008,8 @@ class AccessPolicyExclude(dict):
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -1912,6 +2073,11 @@ class AccessPolicyExclude(dict):
     @pulumi.getter
     def everyone(self) -> Optional[bool]:
         return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional['outputs.AccessPolicyExcludeExternalEvaluation']:
+        return pulumi.get(self, "external_evaluation")
 
     @property
     @pulumi.getter
@@ -1995,6 +2161,46 @@ class AccessPolicyExcludeAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class AccessPolicyExcludeExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExcludeExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyExcludeExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyExcludeExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
 
 
 @pulumi.output_type
@@ -2196,6 +2402,8 @@ class AccessPolicyInclude(dict):
             suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "externalEvaluation":
+            suggest = "external_evaluation"
         elif key == "loginMethods":
             suggest = "login_methods"
         elif key == "serviceTokens":
@@ -2222,6 +2430,7 @@ class AccessPolicyInclude(dict):
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
+                 external_evaluation: Optional['outputs.AccessPolicyIncludeExternalEvaluation'] = None,
                  geos: Optional[Sequence[str]] = None,
                  githubs: Optional[Sequence['outputs.AccessPolicyIncludeGithub']] = None,
                  groups: Optional[Sequence[str]] = None,
@@ -2249,6 +2458,8 @@ class AccessPolicyInclude(dict):
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -2312,6 +2523,11 @@ class AccessPolicyInclude(dict):
     @pulumi.getter
     def everyone(self) -> Optional[bool]:
         return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional['outputs.AccessPolicyIncludeExternalEvaluation']:
+        return pulumi.get(self, "external_evaluation")
 
     @property
     @pulumi.getter
@@ -2395,6 +2611,46 @@ class AccessPolicyIncludeAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class AccessPolicyIncludeExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyIncludeExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyIncludeExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyIncludeExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
 
 
 @pulumi.output_type
@@ -2596,6 +2852,8 @@ class AccessPolicyRequire(dict):
             suggest = "device_postures"
         elif key == "emailDomains":
             suggest = "email_domains"
+        elif key == "externalEvaluation":
+            suggest = "external_evaluation"
         elif key == "loginMethods":
             suggest = "login_methods"
         elif key == "serviceTokens":
@@ -2622,6 +2880,7 @@ class AccessPolicyRequire(dict):
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
                  everyone: Optional[bool] = None,
+                 external_evaluation: Optional['outputs.AccessPolicyRequireExternalEvaluation'] = None,
                  geos: Optional[Sequence[str]] = None,
                  githubs: Optional[Sequence['outputs.AccessPolicyRequireGithub']] = None,
                  groups: Optional[Sequence[str]] = None,
@@ -2649,6 +2908,8 @@ class AccessPolicyRequire(dict):
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -2712,6 +2973,11 @@ class AccessPolicyRequire(dict):
     @pulumi.getter
     def everyone(self) -> Optional[bool]:
         return pulumi.get(self, "everyone")
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional['outputs.AccessPolicyRequireExternalEvaluation']:
+        return pulumi.get(self, "external_evaluation")
 
     @property
     @pulumi.getter
@@ -2795,6 +3061,46 @@ class AccessPolicyRequireAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "ids")
+
+
+@pulumi.output_type
+class AccessPolicyRequireExternalEvaluation(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluateUrl":
+            suggest = "evaluate_url"
+        elif key == "keysUrl":
+            suggest = "keys_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequireExternalEvaluation. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyRequireExternalEvaluation.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyRequireExternalEvaluation.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluate_url: Optional[str] = None,
+                 keys_url: Optional[str] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[str]:
+        return pulumi.get(self, "evaluate_url")
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[str]:
+        return pulumi.get(self, "keys_url")
 
 
 @pulumi.output_type
@@ -6796,10 +7102,16 @@ class RulesetRuleActionParameters(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "hostHeader":
+        if key == "cookieFields":
+            suggest = "cookie_fields"
+        elif key == "hostHeader":
             suggest = "host_header"
         elif key == "matchedData":
             suggest = "matched_data"
+        elif key == "requestFields":
+            suggest = "request_fields"
+        elif key == "responseFields":
+            suggest = "response_fields"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in RulesetRuleActionParameters. Access the value via the '{suggest}' property getter instead.")
@@ -6813,6 +7125,7 @@ class RulesetRuleActionParameters(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cookie_fields: Optional[Sequence[str]] = None,
                  headers: Optional[Sequence['outputs.RulesetRuleActionParametersHeader']] = None,
                  host_header: Optional[str] = None,
                  id: Optional[str] = None,
@@ -6822,6 +7135,8 @@ class RulesetRuleActionParameters(dict):
                  overrides: Optional['outputs.RulesetRuleActionParametersOverrides'] = None,
                  phases: Optional[Sequence[str]] = None,
                  products: Optional[Sequence[str]] = None,
+                 request_fields: Optional[Sequence[str]] = None,
+                 response_fields: Optional[Sequence[str]] = None,
                  responses: Optional[Sequence['outputs.RulesetRuleActionParametersResponse']] = None,
                  rules: Optional[Mapping[str, str]] = None,
                  ruleset: Optional[str] = None,
@@ -6829,6 +7144,7 @@ class RulesetRuleActionParameters(dict):
                  uri: Optional['outputs.RulesetRuleActionParametersUri'] = None,
                  version: Optional[str] = None):
         """
+        :param Sequence[str] cookie_fields: List of cookie values to include as part of custom fields logging.
         :param Sequence['RulesetRuleActionParametersHeaderArgs'] headers: List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
         :param str host_header: Host Header that request origin receives.
         :param str id: Rule ID to apply the override to.
@@ -6836,12 +7152,16 @@ class RulesetRuleActionParameters(dict):
         :param 'RulesetRuleActionParametersOriginArgs' origin: List of properties to change request origin (refer to the nested schema).
         :param 'RulesetRuleActionParametersOverridesArgs' overrides: List of override configurations to apply to the ruleset (refer to the nested schema).
         :param Sequence[str] products: Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+        :param Sequence[str] request_fields: List of request headers to include as part of custom fields logging, in lowercase.
+        :param Sequence[str] response_fields: List of response headers to include as part of custom fields logging, in lowercase.
         :param Sequence['RulesetRuleActionParametersResponseArgs'] responses: List of parameters that configure the response given to end users (refer to the nested schema).
         :param Mapping[str, str] rules: List of rule-based overrides (refer to the nested schema).
         :param str ruleset: Which ruleset ID to target.
         :param Sequence[str] rulesets: List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
         :param 'RulesetRuleActionParametersUriArgs' uri: List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
         """
+        if cookie_fields is not None:
+            pulumi.set(__self__, "cookie_fields", cookie_fields)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if host_header is not None:
@@ -6860,6 +7180,10 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "phases", phases)
         if products is not None:
             pulumi.set(__self__, "products", products)
+        if request_fields is not None:
+            pulumi.set(__self__, "request_fields", request_fields)
+        if response_fields is not None:
+            pulumi.set(__self__, "response_fields", response_fields)
         if responses is not None:
             pulumi.set(__self__, "responses", responses)
         if rules is not None:
@@ -6872,6 +7196,14 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "uri", uri)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="cookieFields")
+    def cookie_fields(self) -> Optional[Sequence[str]]:
+        """
+        List of cookie values to include as part of custom fields logging.
+        """
+        return pulumi.get(self, "cookie_fields")
 
     @property
     @pulumi.getter
@@ -6938,6 +7270,22 @@ class RulesetRuleActionParameters(dict):
         Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
         """
         return pulumi.get(self, "products")
+
+    @property
+    @pulumi.getter(name="requestFields")
+    def request_fields(self) -> Optional[Sequence[str]]:
+        """
+        List of request headers to include as part of custom fields logging, in lowercase.
+        """
+        return pulumi.get(self, "request_fields")
+
+    @property
+    @pulumi.getter(name="responseFields")
+    def response_fields(self) -> Optional[Sequence[str]]:
+        """
+        List of response headers to include as part of custom fields logging, in lowercase.
+        """
+        return pulumi.get(self, "response_fields")
 
     @property
     @pulumi.getter

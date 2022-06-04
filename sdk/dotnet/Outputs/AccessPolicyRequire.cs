@@ -22,6 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> EmailDomains;
         public readonly ImmutableArray<string> Emails;
         public readonly bool? Everyone;
+        public readonly Outputs.AccessPolicyRequireExternalEvaluation? ExternalEvaluation;
         public readonly ImmutableArray<string> Geos;
         public readonly ImmutableArray<Outputs.AccessPolicyRequireGithub> Githubs;
         public readonly ImmutableArray<string> Groups;
@@ -52,6 +53,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? everyone,
 
+            Outputs.AccessPolicyRequireExternalEvaluation? externalEvaluation,
+
             ImmutableArray<string> geos,
 
             ImmutableArray<Outputs.AccessPolicyRequireGithub> githubs,
@@ -79,6 +82,7 @@ namespace Pulumi.Cloudflare.Outputs
             EmailDomains = emailDomains;
             Emails = emails;
             Everyone = everyone;
+            ExternalEvaluation = externalEvaluation;
             Geos = geos;
             Githubs = githubs;
             Groups = groups;

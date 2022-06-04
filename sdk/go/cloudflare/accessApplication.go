@@ -90,8 +90,8 @@ type AccessApplication struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
-	// Option to add the `HttpOnly` cookie flag to access tokens.
-	HttpOnlyCookieAttribute pulumi.BoolOutput `pulumi:"httpOnlyCookieAttribute"`
+	// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
+	HttpOnlyCookieAttribute pulumi.BoolPtrOutput `pulumi:"httpOnlyCookieAttribute"`
 	// Image URL for the logo shown in the app launcher
 	// dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
@@ -176,7 +176,7 @@ type accessApplicationState struct {
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
-	// Option to add the `HttpOnly` cookie flag to access tokens.
+	// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
 	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
 	// Image URL for the logo shown in the app launcher
 	// dashboard.
@@ -228,7 +228,7 @@ type AccessApplicationState struct {
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrInput
-	// Option to add the `HttpOnly` cookie flag to access tokens.
+	// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
 	// Image URL for the logo shown in the app launcher
 	// dashboard.
@@ -282,7 +282,7 @@ type accessApplicationArgs struct {
 	Domain string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
-	// Option to add the `HttpOnly` cookie flag to access tokens.
+	// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
 	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
 	// Image URL for the logo shown in the app launcher
 	// dashboard.
@@ -333,7 +333,7 @@ type AccessApplicationArgs struct {
 	Domain pulumi.StringInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrInput
-	// Option to add the `HttpOnly` cookie flag to access tokens.
+	// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
 	// Image URL for the logo shown in the app launcher
 	// dashboard.
@@ -501,9 +501,9 @@ func (o AccessApplicationOutput) EnableBindingCookie() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.EnableBindingCookie }).(pulumi.BoolPtrOutput)
 }
 
-// Option to add the `HttpOnly` cookie flag to access tokens.
-func (o AccessApplicationOutput) HttpOnlyCookieAttribute() pulumi.BoolOutput {
-	return o.ApplyT(func(v *AccessApplication) pulumi.BoolOutput { return v.HttpOnlyCookieAttribute }).(pulumi.BoolOutput)
+// Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
+func (o AccessApplicationOutput) HttpOnlyCookieAttribute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.HttpOnlyCookieAttribute }).(pulumi.BoolPtrOutput)
 }
 
 // Image URL for the logo shown in the app launcher

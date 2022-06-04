@@ -17,6 +17,7 @@ class LogpushJobArgs:
                  destination_conf: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 frequency: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class LogpushJobArgs:
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         :param pulumi.Input[str] account_id: The account ID where the logpush job should be created. Either `account_id` or `zone_id` are required.
         :param pulumi.Input[bool] enabled: Whether to enable the job.
+        :param pulumi.Input[str] frequency: `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
@@ -41,6 +43,8 @@ class LogpushJobArgs:
             pulumi.set(__self__, "account_id", account_id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
         if logpull_options is not None:
             pulumi.set(__self__, "logpull_options", logpull_options)
         if name is not None:
@@ -101,6 +105,18 @@ class LogpushJobArgs:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
+
+    @property
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> Optional[pulumi.Input[str]]:
         """
@@ -157,6 +173,7 @@ class _LogpushJobState:
                  dataset: Optional[pulumi.Input[str]] = None,
                  destination_conf: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 frequency: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -169,6 +186,7 @@ class _LogpushJobState:
                - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
+        :param pulumi.Input[str] frequency: `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
@@ -183,6 +201,8 @@ class _LogpushJobState:
             pulumi.set(__self__, "destination_conf", destination_conf)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
+        if frequency is not None:
+            pulumi.set(__self__, "frequency", frequency)
         if logpull_options is not None:
             pulumi.set(__self__, "logpull_options", logpull_options)
         if name is not None:
@@ -243,6 +263,18 @@ class _LogpushJobState:
         pulumi.set(self, "enabled", value)
 
     @property
+    @pulumi.getter
+    def frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "frequency", value)
+
+    @property
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> Optional[pulumi.Input[str]]:
         """
@@ -301,6 +333,7 @@ class LogpushJob(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[str]] = None,
                  destination_conf: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 frequency: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -332,6 +365,7 @@ class LogpushJob(pulumi.CustomResource):
             dataset="http_requests",
             destination_conf="s3://my-bucket-path?region=us-west-2",
             enabled=True,
+            frequency="high",
             logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
             name="My-logpush-job",
             ownership_challenge="0000000000000",
@@ -360,6 +394,7 @@ class LogpushJob(pulumi.CustomResource):
                - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
+        :param pulumi.Input[str] frequency: `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
@@ -398,6 +433,7 @@ class LogpushJob(pulumi.CustomResource):
             dataset="http_requests",
             destination_conf="s3://my-bucket-path?region=us-west-2",
             enabled=True,
+            frequency="high",
             logpull_options="fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
             name="My-logpush-job",
             ownership_challenge="0000000000000",
@@ -437,6 +473,7 @@ class LogpushJob(pulumi.CustomResource):
                  dataset: Optional[pulumi.Input[str]] = None,
                  destination_conf: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
+                 frequency: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -461,6 +498,7 @@ class LogpushJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'destination_conf'")
             __props__.__dict__["destination_conf"] = destination_conf
             __props__.__dict__["enabled"] = enabled
+            __props__.__dict__["frequency"] = frequency
             __props__.__dict__["logpull_options"] = logpull_options
             __props__.__dict__["name"] = name
             __props__.__dict__["ownership_challenge"] = ownership_challenge
@@ -479,6 +517,7 @@ class LogpushJob(pulumi.CustomResource):
             dataset: Optional[pulumi.Input[str]] = None,
             destination_conf: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
+            frequency: Optional[pulumi.Input[str]] = None,
             logpull_options: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -496,6 +535,7 @@ class LogpushJob(pulumi.CustomResource):
                - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         :param pulumi.Input[bool] enabled: Whether to enable the job.
+        :param pulumi.Input[str] frequency: `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
@@ -510,6 +550,7 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["dataset"] = dataset
         __props__.__dict__["destination_conf"] = destination_conf
         __props__.__dict__["enabled"] = enabled
+        __props__.__dict__["frequency"] = frequency
         __props__.__dict__["logpull_options"] = logpull_options
         __props__.__dict__["name"] = name
         __props__.__dict__["ownership_challenge"] = ownership_challenge
@@ -549,6 +590,14 @@ class LogpushJob(pulumi.CustomResource):
         Whether to enable the job.
         """
         return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Output[Optional[str]]:
+        """
+        `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+        """
+        return pulumi.get(self, "frequency")
 
     @property
     @pulumi.getter(name="logpullOptions")

@@ -66,6 +66,10 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly customPageHtml!: pulumi.Output<string | undefined>;
     /**
+     * The language to use for the default waiting room page (refer to the nested schema).
+     */
+    public readonly defaultTemplateLanguage!: pulumi.Output<string | undefined>;
+    /**
      * A description to let users add more details about the waiting room.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -128,6 +132,7 @@ export class WaitingRoom extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as WaitingRoomState | undefined;
             resourceInputs["customPageHtml"] = state ? state.customPageHtml : undefined;
+            resourceInputs["defaultTemplateLanguage"] = state ? state.defaultTemplateLanguage : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disableSessionRenewal"] = state ? state.disableSessionRenewal : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
@@ -158,6 +163,7 @@ export class WaitingRoom extends pulumi.CustomResource {
                 throw new Error("Missing required property 'zoneId'");
             }
             resourceInputs["customPageHtml"] = args ? args.customPageHtml : undefined;
+            resourceInputs["defaultTemplateLanguage"] = args ? args.defaultTemplateLanguage : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disableSessionRenewal"] = args ? args.disableSessionRenewal : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
@@ -184,6 +190,10 @@ export interface WaitingRoomState {
      * This a templated html file that will be rendered at the edge.
      */
     customPageHtml?: pulumi.Input<string>;
+    /**
+     * The language to use for the default waiting room page (refer to the nested schema).
+     */
+    defaultTemplateLanguage?: pulumi.Input<string>;
     /**
      * A description to let users add more details about the waiting room.
      */
@@ -242,6 +252,10 @@ export interface WaitingRoomArgs {
      * This a templated html file that will be rendered at the edge.
      */
     customPageHtml?: pulumi.Input<string>;
+    /**
+     * The language to use for the default waiting room page (refer to the nested schema).
+     */
+    defaultTemplateLanguage?: pulumi.Input<string>;
     /**
      * A description to let users add more details about the waiting room.
      */

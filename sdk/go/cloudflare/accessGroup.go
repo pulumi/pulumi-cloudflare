@@ -97,6 +97,8 @@ import (
 // * `okta` - (Optional) Use Okta as the `include` condition. Example:
 // * `saml` - (Optional) Use an external SAML setup as the `include` condition.
 // Example:
+//   * `externalEvaluation` - (Optional) Pass a user's identity to an external URL as the `include` condition.
+//     Example:
 //
 // ## Import
 //

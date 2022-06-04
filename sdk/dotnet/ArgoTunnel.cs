@@ -70,6 +70,12 @@ namespace Pulumi.Cloudflare
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
 
+        /// <summary>
+        /// Token used by a connector to authenticate and run the tunnel.
+        /// </summary>
+        [Output("tunnelToken")]
+        public Output<string> TunnelToken { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ArgoTunnel resource with the given unique name, arguments, and options.
@@ -164,6 +170,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("secret")]
         public Input<string>? Secret { get; set; }
+
+        /// <summary>
+        /// Token used by a connector to authenticate and run the tunnel.
+        /// </summary>
+        [Input("tunnelToken")]
+        public Input<string>? TunnelToken { get; set; }
 
         public ArgoTunnelState()
         {

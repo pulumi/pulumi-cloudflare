@@ -191,6 +191,37 @@ import * as utilities from "./utilities";
  *     }],
  *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
  * });
+ * // custom fields logging
+ * const customFieldsLoggingExample = new cloudflare.Ruleset("custom_fields_logging_example", {
+ *     description: "add custom fields to logging",
+ *     kind: "zone",
+ *     name: "log custom fields",
+ *     phase: "http_log_custom_fields",
+ *     rules: [{
+ *         action: "log_custom_field",
+ *         actionParameters: {
+ *             cookieFields: [
+ *                 "__ga",
+ *                 "accountNumber",
+ *                 "__cfruid",
+ *             ],
+ *             requestFields: [
+ *                 "content-type",
+ *                 "x-forwarded-for",
+ *                 "host",
+ *             ],
+ *             responseFields: [
+ *                 "server",
+ *                 "content-type",
+ *                 "allow",
+ *             ],
+ *         },
+ *         description: "log custom fields rule",
+ *         enabled: true,
+ *         expression: "true",
+ *     }],
+ *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ * });
  * ```
  *
  * ## Import

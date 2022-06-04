@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersGetArgs : Pulumi.ResourceArgs
     {
+        [Input("cookieFields")]
+        private InputList<string>? _cookieFields;
+
+        /// <summary>
+        /// List of cookie values to include as part of custom fields logging.
+        /// </summary>
+        public InputList<string> CookieFields
+        {
+            get => _cookieFields ?? (_cookieFields = new InputList<string>());
+            set => _cookieFields = value;
+        }
+
         [Input("headers")]
         private InputList<Inputs.RulesetRuleActionParametersHeaderGetArgs>? _headers;
 
@@ -75,6 +87,30 @@ namespace Pulumi.Cloudflare.Inputs
         {
             get => _products ?? (_products = new InputList<string>());
             set => _products = value;
+        }
+
+        [Input("requestFields")]
+        private InputList<string>? _requestFields;
+
+        /// <summary>
+        /// List of request headers to include as part of custom fields logging, in lowercase.
+        /// </summary>
+        public InputList<string> RequestFields
+        {
+            get => _requestFields ?? (_requestFields = new InputList<string>());
+            set => _requestFields = value;
+        }
+
+        [Input("responseFields")]
+        private InputList<string>? _responseFields;
+
+        /// <summary>
+        /// List of response headers to include as part of custom fields logging, in lowercase.
+        /// </summary>
+        public InputList<string> ResponseFields
+        {
+            get => _responseFields ?? (_responseFields = new InputList<string>());
+            set => _responseFields = value;
         }
 
         [Input("responses")]

@@ -73,6 +73,7 @@ export * from "./teamsLocation";
 export * from "./teamsProxyEndpoint";
 export * from "./teamsRule";
 export * from "./tunnelRoute";
+export * from "./tunnelVirtualNetwork";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
@@ -155,6 +156,7 @@ import { TeamsLocation } from "./teamsLocation";
 import { TeamsProxyEndpoint } from "./teamsProxyEndpoint";
 import { TeamsRule } from "./teamsRule";
 import { TunnelRoute } from "./tunnelRoute";
+import { TunnelVirtualNetwork } from "./tunnelVirtualNetwork";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
@@ -286,6 +288,8 @@ const _module = {
                 return new TeamsRule(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelRoute:TunnelRoute":
                 return new TunnelRoute(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
+                return new TunnelVirtualNetwork(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
                 return new WafGroup(name, <any>undefined, { urn })
             case "cloudflare:index/wafOverride:WafOverride":
@@ -378,6 +382,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)

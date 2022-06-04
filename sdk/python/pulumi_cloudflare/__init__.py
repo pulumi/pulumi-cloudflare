@@ -73,6 +73,7 @@ from .teams_location import *
 from .teams_proxy_endpoint import *
 from .teams_rule import *
 from .tunnel_route import *
+from .tunnel_virtual_network import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
@@ -540,6 +541,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/tunnelRoute:TunnelRoute": "TunnelRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tunnelVirtualNetwork",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork": "TunnelVirtualNetwork"
   }
  },
  {

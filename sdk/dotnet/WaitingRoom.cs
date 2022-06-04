@@ -56,6 +56,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> CustomPageHtml { get; private set; } = null!;
 
         /// <summary>
+        /// The language to use for the default waiting room page (refer to the nested schema).
+        /// </summary>
+        [Output("defaultTemplateLanguage")]
+        public Output<string?> DefaultTemplateLanguage { get; private set; } = null!;
+
+        /// <summary>
         /// A description to let users add more details about the waiting room.
         /// </summary>
         [Output("description")]
@@ -180,6 +186,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
+        /// The language to use for the default waiting room page (refer to the nested schema).
+        /// </summary>
+        [Input("defaultTemplateLanguage")]
+        public Input<string>? DefaultTemplateLanguage { get; set; }
+
+        /// <summary>
         /// A description to let users add more details about the waiting room.
         /// </summary>
         [Input("description")]
@@ -263,6 +275,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
+
+        /// <summary>
+        /// The language to use for the default waiting room page (refer to the nested schema).
+        /// </summary>
+        [Input("defaultTemplateLanguage")]
+        public Input<string>? DefaultTemplateLanguage { get; set; }
 
         /// <summary>
         /// A description to let users add more details about the waiting room.

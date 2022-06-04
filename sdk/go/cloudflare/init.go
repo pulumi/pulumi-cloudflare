@@ -130,6 +130,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamsRule{}
 	case "cloudflare:index/tunnelRoute:TunnelRoute":
 		r = &TunnelRoute{}
+	case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
+		r = &TunnelVirtualNetwork{}
 	case "cloudflare:index/wafGroup:WafGroup":
 		r = &WafGroup{}
 	case "cloudflare:index/wafOverride:WafOverride":
@@ -463,6 +465,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/tunnelRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tunnelVirtualNetwork",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

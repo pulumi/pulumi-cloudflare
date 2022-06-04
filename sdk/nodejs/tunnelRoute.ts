@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *     comment: "New tunnel route for documentation",
  *     network: "192.0.2.24/32",
  *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+ *     virtualNetworkId: "bdc39a3c-3104-4c23-8ac0-9f455dda691a",
  * });
  * ```
  *
@@ -36,15 +37,22 @@ import * as utilities from "./utilities";
  *     tunnelId: tunnel.id,
  *     network: "192.0.2.24/32",
  *     comment: "New tunnel route for documentation",
+ *     virtualNetworkId: "bdc39a3c-3104-4c23-8ac0-9f455dda691a",
  * });
  * ```
  *
  * ## Import
  *
- * An existing tunnel route can be imported using the account ID and network CIDR.
+ * An existing tunnel route can be imported using the account ID and network CIDR
  *
  * ```sh
  *  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute cloudflare_tunnel_route c4a7362d577a6c3019a474fd6f485821/192.0.2.24/32
+ * ```
+ *
+ *  or using account ID, network CIDR and virtual network ID.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute cloudflare_tunnel_route c4a7362d577a6c3019a474fd6f485821/192.0.2.24/32/bdc39a3c-3104-4c23-8ac0-9f455dda691a
  * ```
  */
 export class TunnelRoute extends pulumi.CustomResource {
@@ -91,6 +99,10 @@ export class TunnelRoute extends pulumi.CustomResource {
      * The ID of the tunnel that will service the tunnel route.
      */
     public readonly tunnelId!: pulumi.Output<string>;
+    /**
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     */
+    public readonly virtualNetworkId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a TunnelRoute resource with the given unique name, arguments, and options.
@@ -109,6 +121,7 @@ export class TunnelRoute extends pulumi.CustomResource {
             resourceInputs["comment"] = state ? state.comment : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["tunnelId"] = state ? state.tunnelId : undefined;
+            resourceInputs["virtualNetworkId"] = state ? state.virtualNetworkId : undefined;
         } else {
             const args = argsOrState as TunnelRouteArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -124,6 +137,7 @@ export class TunnelRoute extends pulumi.CustomResource {
             resourceInputs["comment"] = args ? args.comment : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["tunnelId"] = args ? args.tunnelId : undefined;
+            resourceInputs["virtualNetworkId"] = args ? args.virtualNetworkId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(TunnelRoute.__pulumiType, name, resourceInputs, opts);
@@ -150,6 +164,10 @@ export interface TunnelRouteState {
      * The ID of the tunnel that will service the tunnel route.
      */
     tunnelId?: pulumi.Input<string>;
+    /**
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     */
+    virtualNetworkId?: pulumi.Input<string>;
 }
 
 /**
@@ -172,4 +190,8 @@ export interface TunnelRouteArgs {
      * The ID of the tunnel that will service the tunnel route.
      */
     tunnelId: pulumi.Input<string>;
+    /**
+     * The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided.
+     */
+    virtualNetworkId?: pulumi.Input<string>;
 }

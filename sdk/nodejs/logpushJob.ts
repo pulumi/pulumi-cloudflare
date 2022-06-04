@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *     dataset: "http_requests",
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  *     enabled: true,
+ *     frequency: "high",
  *     logpullOptions: "fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339",
  *     name: "My-logpush-job",
  *     ownershipChallenge: "0000000000000",
@@ -99,6 +100,10 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
+     * `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+     */
+    public readonly frequency!: pulumi.Output<string | undefined>;
+    /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     public readonly logpullOptions!: pulumi.Output<string | undefined>;
@@ -133,6 +138,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["dataset"] = state ? state.dataset : undefined;
             resourceInputs["destinationConf"] = state ? state.destinationConf : undefined;
             resourceInputs["enabled"] = state ? state.enabled : undefined;
+            resourceInputs["frequency"] = state ? state.frequency : undefined;
             resourceInputs["logpullOptions"] = state ? state.logpullOptions : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ownershipChallenge"] = state ? state.ownershipChallenge : undefined;
@@ -149,6 +155,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["dataset"] = args ? args.dataset : undefined;
             resourceInputs["destinationConf"] = args ? args.destinationConf : undefined;
             resourceInputs["enabled"] = args ? args.enabled : undefined;
+            resourceInputs["frequency"] = args ? args.frequency : undefined;
             resourceInputs["logpullOptions"] = args ? args.logpullOptions : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
@@ -181,6 +188,10 @@ export interface LogpushJobState {
      * Whether to enable the job.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+     */
+    frequency?: pulumi.Input<string>;
     /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
@@ -222,6 +233,10 @@ export interface LogpushJobArgs {
      * Whether to enable the job.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+     */
+    frequency?: pulumi.Input<string>;
     /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */

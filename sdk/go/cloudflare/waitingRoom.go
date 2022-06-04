@@ -55,6 +55,8 @@ type WaitingRoom struct {
 
 	// This a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrOutput `pulumi:"customPageHtml"`
+	// The language to use for the default waiting room page (refer to the nested schema).
+	DefaultTemplateLanguage pulumi.StringPtrOutput `pulumi:"defaultTemplateLanguage"`
 	// A description to let users add more details about the waiting room.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disables automatic renewal of session cookies. Default: false.
@@ -127,6 +129,8 @@ func GetWaitingRoom(ctx *pulumi.Context,
 type waitingRoomState struct {
 	// This a templated html file that will be rendered at the edge.
 	CustomPageHtml *string `pulumi:"customPageHtml"`
+	// The language to use for the default waiting room page (refer to the nested schema).
+	DefaultTemplateLanguage *string `pulumi:"defaultTemplateLanguage"`
 	// A description to let users add more details about the waiting room.
 	Description *string `pulumi:"description"`
 	// Disables automatic renewal of session cookies. Default: false.
@@ -156,6 +160,8 @@ type waitingRoomState struct {
 type WaitingRoomState struct {
 	// This a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrInput
+	// The language to use for the default waiting room page (refer to the nested schema).
+	DefaultTemplateLanguage pulumi.StringPtrInput
 	// A description to let users add more details about the waiting room.
 	Description pulumi.StringPtrInput
 	// Disables automatic renewal of session cookies. Default: false.
@@ -189,6 +195,8 @@ func (WaitingRoomState) ElementType() reflect.Type {
 type waitingRoomArgs struct {
 	// This a templated html file that will be rendered at the edge.
 	CustomPageHtml *string `pulumi:"customPageHtml"`
+	// The language to use for the default waiting room page (refer to the nested schema).
+	DefaultTemplateLanguage *string `pulumi:"defaultTemplateLanguage"`
 	// A description to let users add more details about the waiting room.
 	Description *string `pulumi:"description"`
 	// Disables automatic renewal of session cookies. Default: false.
@@ -219,6 +227,8 @@ type waitingRoomArgs struct {
 type WaitingRoomArgs struct {
 	// This a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrInput
+	// The language to use for the default waiting room page (refer to the nested schema).
+	DefaultTemplateLanguage pulumi.StringPtrInput
 	// A description to let users add more details about the waiting room.
 	Description pulumi.StringPtrInput
 	// Disables automatic renewal of session cookies. Default: false.
@@ -335,6 +345,11 @@ func (o WaitingRoomOutput) ToWaitingRoomOutputWithContext(ctx context.Context) W
 // This a templated html file that will be rendered at the edge.
 func (o WaitingRoomOutput) CustomPageHtml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.CustomPageHtml }).(pulumi.StringPtrOutput)
+}
+
+// The language to use for the default waiting room page (refer to the nested schema).
+func (o WaitingRoomOutput) DefaultTemplateLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.DefaultTemplateLanguage }).(pulumi.StringPtrOutput)
 }
 
 // A description to let users add more details about the waiting room.

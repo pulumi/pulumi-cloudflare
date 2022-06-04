@@ -74,6 +74,10 @@ export class ArgoTunnel extends pulumi.CustomResource {
      * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
      */
     public readonly secret!: pulumi.Output<string>;
+    /**
+     * Token used by a connector to authenticate and run the tunnel.
+     */
+    public /*out*/ readonly tunnelToken!: pulumi.Output<string>;
 
     /**
      * Create a ArgoTunnel resource with the given unique name, arguments, and options.
@@ -92,6 +96,7 @@ export class ArgoTunnel extends pulumi.CustomResource {
             resourceInputs["cname"] = state ? state.cname : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["secret"] = state ? state.secret : undefined;
+            resourceInputs["tunnelToken"] = state ? state.tunnelToken : undefined;
         } else {
             const args = argsOrState as ArgoTunnelArgs | undefined;
             if ((!args || args.accountId === undefined) && !opts.urn) {
@@ -107,6 +112,7 @@ export class ArgoTunnel extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["secret"] = args ? args.secret : undefined;
             resourceInputs["cname"] = undefined /*out*/;
+            resourceInputs["tunnelToken"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ArgoTunnel.__pulumiType, name, resourceInputs, opts);
@@ -133,6 +139,10 @@ export interface ArgoTunnelState {
      * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
      */
     secret?: pulumi.Input<string>;
+    /**
+     * Token used by a connector to authenticate and run the tunnel.
+     */
+    tunnelToken?: pulumi.Input<string>;
 }
 
 /**

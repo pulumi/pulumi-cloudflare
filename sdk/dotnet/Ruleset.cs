@@ -260,6 +260,46 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
     ///         });
+    ///         // custom fields logging
+    ///         var customFieldsLoggingExample = new Cloudflare.Ruleset("customFieldsLoggingExample", new Cloudflare.RulesetArgs
+    ///         {
+    ///             Description = "add custom fields to logging",
+    ///             Kind = "zone",
+    ///             Name = "log custom fields",
+    ///             Phase = "http_log_custom_fields",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "log_custom_field",
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
+    ///                     {
+    ///                         CookieFields = 
+    ///                         {
+    ///                             "__ga",
+    ///                             "accountNumber",
+    ///                             "__cfruid",
+    ///                         },
+    ///                         RequestFields = 
+    ///                         {
+    ///                             "content-type",
+    ///                             "x-forwarded-for",
+    ///                             "host",
+    ///                         },
+    ///                         ResponseFields = 
+    ///                         {
+    ///                             "server",
+    ///                             "content-type",
+    ///                             "allow",
+    ///                         },
+    ///                     },
+    ///                     Description = "log custom fields rule",
+    ///                     Enabled = true,
+    ///                     Expression = "true",
+    ///                 },
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
     ///     }
     /// 
     /// }

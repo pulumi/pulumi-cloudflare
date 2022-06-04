@@ -49,7 +49,7 @@ class AccessApplicationArgs:
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
                dashboard.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
@@ -228,7 +228,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens.
+        Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 
@@ -366,7 +366,7 @@ class _AccessApplicationState:
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
                dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
@@ -550,7 +550,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens.
+        Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 
@@ -739,7 +739,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
                dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
@@ -918,7 +918,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
                Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
                dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
@@ -1046,9 +1046,9 @@ class AccessApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="httpOnlyCookieAttribute")
-    def http_only_cookie_attribute(self) -> pulumi.Output[bool]:
+    def http_only_cookie_attribute(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens.
+        Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WaitingRoomVent("example", {
+ * const example = new cloudflare.WaitingRoomEvent("example", {
  *     eventEndTime: "2006-01-02T20:04:05Z",
  *     eventStartTime: "2006-01-02T15:04:05Z",
  *     name: "foo",

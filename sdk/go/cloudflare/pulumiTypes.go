@@ -189,24 +189,25 @@ func (o AccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput) AccessA
 }
 
 type AccessGroupExclude struct {
-	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
-	AuthMethod           *string                    `pulumi:"authMethod"`
-	Azures               []AccessGroupExcludeAzure  `pulumi:"azures"`
-	Certificate          *bool                      `pulumi:"certificate"`
-	CommonName           *string                    `pulumi:"commonName"`
-	DevicePostures       []string                   `pulumi:"devicePostures"`
-	EmailDomains         []string                   `pulumi:"emailDomains"`
-	Emails               []string                   `pulumi:"emails"`
-	Everyone             *bool                      `pulumi:"everyone"`
-	Geos                 []string                   `pulumi:"geos"`
-	Githubs              []AccessGroupExcludeGithub `pulumi:"githubs"`
-	Groups               []string                   `pulumi:"groups"`
-	Gsuites              []AccessGroupExcludeGsuite `pulumi:"gsuites"`
-	Ips                  []string                   `pulumi:"ips"`
-	LoginMethods         []string                   `pulumi:"loginMethods"`
-	Oktas                []AccessGroupExcludeOkta   `pulumi:"oktas"`
-	Samls                []AccessGroupExcludeSaml   `pulumi:"samls"`
-	ServiceTokens        []string                   `pulumi:"serviceTokens"`
+	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                               `pulumi:"authMethod"`
+	Azures               []AccessGroupExcludeAzure             `pulumi:"azures"`
+	Certificate          *bool                                 `pulumi:"certificate"`
+	CommonName           *string                               `pulumi:"commonName"`
+	DevicePostures       []string                              `pulumi:"devicePostures"`
+	EmailDomains         []string                              `pulumi:"emailDomains"`
+	Emails               []string                              `pulumi:"emails"`
+	Everyone             *bool                                 `pulumi:"everyone"`
+	ExternalEvaluation   *AccessGroupExcludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos                 []string                              `pulumi:"geos"`
+	Githubs              []AccessGroupExcludeGithub            `pulumi:"githubs"`
+	Groups               []string                              `pulumi:"groups"`
+	Gsuites              []AccessGroupExcludeGsuite            `pulumi:"gsuites"`
+	Ips                  []string                              `pulumi:"ips"`
+	LoginMethods         []string                              `pulumi:"loginMethods"`
+	Oktas                []AccessGroupExcludeOkta              `pulumi:"oktas"`
+	Samls                []AccessGroupExcludeSaml              `pulumi:"samls"`
+	ServiceTokens        []string                              `pulumi:"serviceTokens"`
 }
 
 // AccessGroupExcludeInput is an input type that accepts AccessGroupExcludeArgs and AccessGroupExcludeOutput values.
@@ -221,24 +222,25 @@ type AccessGroupExcludeInput interface {
 }
 
 type AccessGroupExcludeArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
-	AuthMethod           pulumi.StringPtrInput              `pulumi:"authMethod"`
-	Azures               AccessGroupExcludeAzureArrayInput  `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput            `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
-	Geos                 pulumi.StringArrayInput            `pulumi:"geos"`
-	Githubs              AccessGroupExcludeGithubArrayInput `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
-	Gsuites              AccessGroupExcludeGsuiteArrayInput `pulumi:"gsuites"`
-	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput            `pulumi:"loginMethods"`
-	Oktas                AccessGroupExcludeOktaArrayInput   `pulumi:"oktas"`
-	Samls                AccessGroupExcludeSamlArrayInput   `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
+	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
+	Azures               AccessGroupExcludeAzureArrayInput            `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                        `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput                      `pulumi:"devicePostures"`
+	EmailDomains         pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput                      `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	ExternalEvaluation   AccessGroupExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos                 pulumi.StringArrayInput                      `pulumi:"geos"`
+	Githubs              AccessGroupExcludeGithubArrayInput           `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
+	Gsuites              AccessGroupExcludeGsuiteArrayInput           `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput                      `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput                      `pulumi:"loginMethods"`
+	Oktas                AccessGroupExcludeOktaArrayInput             `pulumi:"oktas"`
+	Samls                AccessGroupExcludeSamlArrayInput             `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput                      `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupExcludeArgs) ElementType() reflect.Type {
@@ -326,6 +328,10 @@ func (o AccessGroupExcludeOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessGroupExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupExcludeOutput) ExternalEvaluation() AccessGroupExcludeExternalEvaluationPtrOutput {
+	return o.ApplyT(func(v AccessGroupExclude) *AccessGroupExcludeExternalEvaluation { return v.ExternalEvaluation }).(AccessGroupExcludeExternalEvaluationPtrOutput)
 }
 
 func (o AccessGroupExcludeOutput) Geos() pulumi.StringArrayOutput {
@@ -482,6 +488,154 @@ func (o AccessGroupExcludeAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupExcludeAzure {
 		return vs[0].([]AccessGroupExcludeAzure)[vs[1].(int)]
 	}).(AccessGroupExcludeAzureOutput)
+}
+
+type AccessGroupExcludeExternalEvaluation struct {
+	EvaluateUrl *string `pulumi:"evaluateUrl"`
+	KeysUrl     *string `pulumi:"keysUrl"`
+}
+
+// AccessGroupExcludeExternalEvaluationInput is an input type that accepts AccessGroupExcludeExternalEvaluationArgs and AccessGroupExcludeExternalEvaluationOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeExternalEvaluationInput` via:
+//
+//          AccessGroupExcludeExternalEvaluationArgs{...}
+type AccessGroupExcludeExternalEvaluationInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeExternalEvaluationOutput() AccessGroupExcludeExternalEvaluationOutput
+	ToAccessGroupExcludeExternalEvaluationOutputWithContext(context.Context) AccessGroupExcludeExternalEvaluationOutput
+}
+
+type AccessGroupExcludeExternalEvaluationArgs struct {
+	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
+	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+}
+
+func (AccessGroupExcludeExternalEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeExternalEvaluationArgs) ToAccessGroupExcludeExternalEvaluationOutput() AccessGroupExcludeExternalEvaluationOutput {
+	return i.ToAccessGroupExcludeExternalEvaluationOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeExternalEvaluationArgs) ToAccessGroupExcludeExternalEvaluationOutputWithContext(ctx context.Context) AccessGroupExcludeExternalEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeExternalEvaluationOutput)
+}
+
+func (i AccessGroupExcludeExternalEvaluationArgs) ToAccessGroupExcludeExternalEvaluationPtrOutput() AccessGroupExcludeExternalEvaluationPtrOutput {
+	return i.ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeExternalEvaluationArgs) ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupExcludeExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeExternalEvaluationOutput).ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(ctx)
+}
+
+// AccessGroupExcludeExternalEvaluationPtrInput is an input type that accepts AccessGroupExcludeExternalEvaluationArgs, AccessGroupExcludeExternalEvaluationPtr and AccessGroupExcludeExternalEvaluationPtrOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeExternalEvaluationPtrInput` via:
+//
+//          AccessGroupExcludeExternalEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessGroupExcludeExternalEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeExternalEvaluationPtrOutput() AccessGroupExcludeExternalEvaluationPtrOutput
+	ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(context.Context) AccessGroupExcludeExternalEvaluationPtrOutput
+}
+
+type accessGroupExcludeExternalEvaluationPtrType AccessGroupExcludeExternalEvaluationArgs
+
+func AccessGroupExcludeExternalEvaluationPtr(v *AccessGroupExcludeExternalEvaluationArgs) AccessGroupExcludeExternalEvaluationPtrInput {
+	return (*accessGroupExcludeExternalEvaluationPtrType)(v)
+}
+
+func (*accessGroupExcludeExternalEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i *accessGroupExcludeExternalEvaluationPtrType) ToAccessGroupExcludeExternalEvaluationPtrOutput() AccessGroupExcludeExternalEvaluationPtrOutput {
+	return i.ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupExcludeExternalEvaluationPtrType) ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupExcludeExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeExternalEvaluationPtrOutput)
+}
+
+type AccessGroupExcludeExternalEvaluationOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeExternalEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeExternalEvaluationOutput) ToAccessGroupExcludeExternalEvaluationOutput() AccessGroupExcludeExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessGroupExcludeExternalEvaluationOutput) ToAccessGroupExcludeExternalEvaluationOutputWithContext(ctx context.Context) AccessGroupExcludeExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessGroupExcludeExternalEvaluationOutput) ToAccessGroupExcludeExternalEvaluationPtrOutput() AccessGroupExcludeExternalEvaluationPtrOutput {
+	return o.ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupExcludeExternalEvaluationOutput) ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupExcludeExternalEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupExcludeExternalEvaluation) *AccessGroupExcludeExternalEvaluation {
+		return &v
+	}).(AccessGroupExcludeExternalEvaluationPtrOutput)
+}
+
+func (o AccessGroupExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupExcludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupExcludeExternalEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeExternalEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeExternalEvaluationPtrOutput) ToAccessGroupExcludeExternalEvaluationPtrOutput() AccessGroupExcludeExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessGroupExcludeExternalEvaluationPtrOutput) ToAccessGroupExcludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupExcludeExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessGroupExcludeExternalEvaluationPtrOutput) Elem() AccessGroupExcludeExternalEvaluationOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeExternalEvaluation) AccessGroupExcludeExternalEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupExcludeExternalEvaluation
+		return ret
+	}).(AccessGroupExcludeExternalEvaluationOutput)
+}
+
+func (o AccessGroupExcludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupExcludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupExcludeExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeysUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type AccessGroupExcludeGithub struct {
@@ -903,24 +1057,25 @@ func (o AccessGroupExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupE
 }
 
 type AccessGroupInclude struct {
-	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
-	AuthMethod           *string                    `pulumi:"authMethod"`
-	Azures               []AccessGroupIncludeAzure  `pulumi:"azures"`
-	Certificate          *bool                      `pulumi:"certificate"`
-	CommonName           *string                    `pulumi:"commonName"`
-	DevicePostures       []string                   `pulumi:"devicePostures"`
-	EmailDomains         []string                   `pulumi:"emailDomains"`
-	Emails               []string                   `pulumi:"emails"`
-	Everyone             *bool                      `pulumi:"everyone"`
-	Geos                 []string                   `pulumi:"geos"`
-	Githubs              []AccessGroupIncludeGithub `pulumi:"githubs"`
-	Groups               []string                   `pulumi:"groups"`
-	Gsuites              []AccessGroupIncludeGsuite `pulumi:"gsuites"`
-	Ips                  []string                   `pulumi:"ips"`
-	LoginMethods         []string                   `pulumi:"loginMethods"`
-	Oktas                []AccessGroupIncludeOkta   `pulumi:"oktas"`
-	Samls                []AccessGroupIncludeSaml   `pulumi:"samls"`
-	ServiceTokens        []string                   `pulumi:"serviceTokens"`
+	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                               `pulumi:"authMethod"`
+	Azures               []AccessGroupIncludeAzure             `pulumi:"azures"`
+	Certificate          *bool                                 `pulumi:"certificate"`
+	CommonName           *string                               `pulumi:"commonName"`
+	DevicePostures       []string                              `pulumi:"devicePostures"`
+	EmailDomains         []string                              `pulumi:"emailDomains"`
+	Emails               []string                              `pulumi:"emails"`
+	Everyone             *bool                                 `pulumi:"everyone"`
+	ExternalEvaluation   *AccessGroupIncludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos                 []string                              `pulumi:"geos"`
+	Githubs              []AccessGroupIncludeGithub            `pulumi:"githubs"`
+	Groups               []string                              `pulumi:"groups"`
+	Gsuites              []AccessGroupIncludeGsuite            `pulumi:"gsuites"`
+	Ips                  []string                              `pulumi:"ips"`
+	LoginMethods         []string                              `pulumi:"loginMethods"`
+	Oktas                []AccessGroupIncludeOkta              `pulumi:"oktas"`
+	Samls                []AccessGroupIncludeSaml              `pulumi:"samls"`
+	ServiceTokens        []string                              `pulumi:"serviceTokens"`
 }
 
 // AccessGroupIncludeInput is an input type that accepts AccessGroupIncludeArgs and AccessGroupIncludeOutput values.
@@ -935,24 +1090,25 @@ type AccessGroupIncludeInput interface {
 }
 
 type AccessGroupIncludeArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
-	AuthMethod           pulumi.StringPtrInput              `pulumi:"authMethod"`
-	Azures               AccessGroupIncludeAzureArrayInput  `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput            `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
-	Geos                 pulumi.StringArrayInput            `pulumi:"geos"`
-	Githubs              AccessGroupIncludeGithubArrayInput `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
-	Gsuites              AccessGroupIncludeGsuiteArrayInput `pulumi:"gsuites"`
-	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput            `pulumi:"loginMethods"`
-	Oktas                AccessGroupIncludeOktaArrayInput   `pulumi:"oktas"`
-	Samls                AccessGroupIncludeSamlArrayInput   `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
+	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
+	Azures               AccessGroupIncludeAzureArrayInput            `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                        `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput                      `pulumi:"devicePostures"`
+	EmailDomains         pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput                      `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	ExternalEvaluation   AccessGroupIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos                 pulumi.StringArrayInput                      `pulumi:"geos"`
+	Githubs              AccessGroupIncludeGithubArrayInput           `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
+	Gsuites              AccessGroupIncludeGsuiteArrayInput           `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput                      `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput                      `pulumi:"loginMethods"`
+	Oktas                AccessGroupIncludeOktaArrayInput             `pulumi:"oktas"`
+	Samls                AccessGroupIncludeSamlArrayInput             `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput                      `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupIncludeArgs) ElementType() reflect.Type {
@@ -1040,6 +1196,10 @@ func (o AccessGroupIncludeOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessGroupIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupIncludeOutput) ExternalEvaluation() AccessGroupIncludeExternalEvaluationPtrOutput {
+	return o.ApplyT(func(v AccessGroupInclude) *AccessGroupIncludeExternalEvaluation { return v.ExternalEvaluation }).(AccessGroupIncludeExternalEvaluationPtrOutput)
 }
 
 func (o AccessGroupIncludeOutput) Geos() pulumi.StringArrayOutput {
@@ -1196,6 +1356,154 @@ func (o AccessGroupIncludeAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupIncludeAzure {
 		return vs[0].([]AccessGroupIncludeAzure)[vs[1].(int)]
 	}).(AccessGroupIncludeAzureOutput)
+}
+
+type AccessGroupIncludeExternalEvaluation struct {
+	EvaluateUrl *string `pulumi:"evaluateUrl"`
+	KeysUrl     *string `pulumi:"keysUrl"`
+}
+
+// AccessGroupIncludeExternalEvaluationInput is an input type that accepts AccessGroupIncludeExternalEvaluationArgs and AccessGroupIncludeExternalEvaluationOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeExternalEvaluationInput` via:
+//
+//          AccessGroupIncludeExternalEvaluationArgs{...}
+type AccessGroupIncludeExternalEvaluationInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeExternalEvaluationOutput() AccessGroupIncludeExternalEvaluationOutput
+	ToAccessGroupIncludeExternalEvaluationOutputWithContext(context.Context) AccessGroupIncludeExternalEvaluationOutput
+}
+
+type AccessGroupIncludeExternalEvaluationArgs struct {
+	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
+	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+}
+
+func (AccessGroupIncludeExternalEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeExternalEvaluationArgs) ToAccessGroupIncludeExternalEvaluationOutput() AccessGroupIncludeExternalEvaluationOutput {
+	return i.ToAccessGroupIncludeExternalEvaluationOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeExternalEvaluationArgs) ToAccessGroupIncludeExternalEvaluationOutputWithContext(ctx context.Context) AccessGroupIncludeExternalEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeExternalEvaluationOutput)
+}
+
+func (i AccessGroupIncludeExternalEvaluationArgs) ToAccessGroupIncludeExternalEvaluationPtrOutput() AccessGroupIncludeExternalEvaluationPtrOutput {
+	return i.ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeExternalEvaluationArgs) ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupIncludeExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeExternalEvaluationOutput).ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(ctx)
+}
+
+// AccessGroupIncludeExternalEvaluationPtrInput is an input type that accepts AccessGroupIncludeExternalEvaluationArgs, AccessGroupIncludeExternalEvaluationPtr and AccessGroupIncludeExternalEvaluationPtrOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeExternalEvaluationPtrInput` via:
+//
+//          AccessGroupIncludeExternalEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessGroupIncludeExternalEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeExternalEvaluationPtrOutput() AccessGroupIncludeExternalEvaluationPtrOutput
+	ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(context.Context) AccessGroupIncludeExternalEvaluationPtrOutput
+}
+
+type accessGroupIncludeExternalEvaluationPtrType AccessGroupIncludeExternalEvaluationArgs
+
+func AccessGroupIncludeExternalEvaluationPtr(v *AccessGroupIncludeExternalEvaluationArgs) AccessGroupIncludeExternalEvaluationPtrInput {
+	return (*accessGroupIncludeExternalEvaluationPtrType)(v)
+}
+
+func (*accessGroupIncludeExternalEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupIncludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i *accessGroupIncludeExternalEvaluationPtrType) ToAccessGroupIncludeExternalEvaluationPtrOutput() AccessGroupIncludeExternalEvaluationPtrOutput {
+	return i.ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupIncludeExternalEvaluationPtrType) ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupIncludeExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeExternalEvaluationPtrOutput)
+}
+
+type AccessGroupIncludeExternalEvaluationOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeExternalEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeExternalEvaluationOutput) ToAccessGroupIncludeExternalEvaluationOutput() AccessGroupIncludeExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessGroupIncludeExternalEvaluationOutput) ToAccessGroupIncludeExternalEvaluationOutputWithContext(ctx context.Context) AccessGroupIncludeExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessGroupIncludeExternalEvaluationOutput) ToAccessGroupIncludeExternalEvaluationPtrOutput() AccessGroupIncludeExternalEvaluationPtrOutput {
+	return o.ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupIncludeExternalEvaluationOutput) ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupIncludeExternalEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupIncludeExternalEvaluation) *AccessGroupIncludeExternalEvaluation {
+		return &v
+	}).(AccessGroupIncludeExternalEvaluationPtrOutput)
+}
+
+func (o AccessGroupIncludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupIncludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupIncludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupIncludeExternalEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeExternalEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupIncludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeExternalEvaluationPtrOutput) ToAccessGroupIncludeExternalEvaluationPtrOutput() AccessGroupIncludeExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessGroupIncludeExternalEvaluationPtrOutput) ToAccessGroupIncludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupIncludeExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessGroupIncludeExternalEvaluationPtrOutput) Elem() AccessGroupIncludeExternalEvaluationOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeExternalEvaluation) AccessGroupIncludeExternalEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupIncludeExternalEvaluation
+		return ret
+	}).(AccessGroupIncludeExternalEvaluationOutput)
+}
+
+func (o AccessGroupIncludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupIncludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupIncludeExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeysUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type AccessGroupIncludeGithub struct {
@@ -1617,24 +1925,25 @@ func (o AccessGroupIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupI
 }
 
 type AccessGroupRequire struct {
-	AnyValidServiceToken *bool                      `pulumi:"anyValidServiceToken"`
-	AuthMethod           *string                    `pulumi:"authMethod"`
-	Azures               []AccessGroupRequireAzure  `pulumi:"azures"`
-	Certificate          *bool                      `pulumi:"certificate"`
-	CommonName           *string                    `pulumi:"commonName"`
-	DevicePostures       []string                   `pulumi:"devicePostures"`
-	EmailDomains         []string                   `pulumi:"emailDomains"`
-	Emails               []string                   `pulumi:"emails"`
-	Everyone             *bool                      `pulumi:"everyone"`
-	Geos                 []string                   `pulumi:"geos"`
-	Githubs              []AccessGroupRequireGithub `pulumi:"githubs"`
-	Groups               []string                   `pulumi:"groups"`
-	Gsuites              []AccessGroupRequireGsuite `pulumi:"gsuites"`
-	Ips                  []string                   `pulumi:"ips"`
-	LoginMethods         []string                   `pulumi:"loginMethods"`
-	Oktas                []AccessGroupRequireOkta   `pulumi:"oktas"`
-	Samls                []AccessGroupRequireSaml   `pulumi:"samls"`
-	ServiceTokens        []string                   `pulumi:"serviceTokens"`
+	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                               `pulumi:"authMethod"`
+	Azures               []AccessGroupRequireAzure             `pulumi:"azures"`
+	Certificate          *bool                                 `pulumi:"certificate"`
+	CommonName           *string                               `pulumi:"commonName"`
+	DevicePostures       []string                              `pulumi:"devicePostures"`
+	EmailDomains         []string                              `pulumi:"emailDomains"`
+	Emails               []string                              `pulumi:"emails"`
+	Everyone             *bool                                 `pulumi:"everyone"`
+	ExternalEvaluation   *AccessGroupRequireExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos                 []string                              `pulumi:"geos"`
+	Githubs              []AccessGroupRequireGithub            `pulumi:"githubs"`
+	Groups               []string                              `pulumi:"groups"`
+	Gsuites              []AccessGroupRequireGsuite            `pulumi:"gsuites"`
+	Ips                  []string                              `pulumi:"ips"`
+	LoginMethods         []string                              `pulumi:"loginMethods"`
+	Oktas                []AccessGroupRequireOkta              `pulumi:"oktas"`
+	Samls                []AccessGroupRequireSaml              `pulumi:"samls"`
+	ServiceTokens        []string                              `pulumi:"serviceTokens"`
 }
 
 // AccessGroupRequireInput is an input type that accepts AccessGroupRequireArgs and AccessGroupRequireOutput values.
@@ -1649,24 +1958,25 @@ type AccessGroupRequireInput interface {
 }
 
 type AccessGroupRequireArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                `pulumi:"anyValidServiceToken"`
-	AuthMethod           pulumi.StringPtrInput              `pulumi:"authMethod"`
-	Azures               AccessGroupRequireAzureArrayInput  `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput              `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput            `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput            `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput            `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                `pulumi:"everyone"`
-	Geos                 pulumi.StringArrayInput            `pulumi:"geos"`
-	Githubs              AccessGroupRequireGithubArrayInput `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput            `pulumi:"groups"`
-	Gsuites              AccessGroupRequireGsuiteArrayInput `pulumi:"gsuites"`
-	Ips                  pulumi.StringArrayInput            `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput            `pulumi:"loginMethods"`
-	Oktas                AccessGroupRequireOktaArrayInput   `pulumi:"oktas"`
-	Samls                AccessGroupRequireSamlArrayInput   `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput            `pulumi:"serviceTokens"`
+	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
+	Azures               AccessGroupRequireAzureArrayInput            `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                        `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput                      `pulumi:"devicePostures"`
+	EmailDomains         pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput                      `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	ExternalEvaluation   AccessGroupRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos                 pulumi.StringArrayInput                      `pulumi:"geos"`
+	Githubs              AccessGroupRequireGithubArrayInput           `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
+	Gsuites              AccessGroupRequireGsuiteArrayInput           `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput                      `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput                      `pulumi:"loginMethods"`
+	Oktas                AccessGroupRequireOktaArrayInput             `pulumi:"oktas"`
+	Samls                AccessGroupRequireSamlArrayInput             `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput                      `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupRequireArgs) ElementType() reflect.Type {
@@ -1754,6 +2064,10 @@ func (o AccessGroupRequireOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessGroupRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupRequireOutput) ExternalEvaluation() AccessGroupRequireExternalEvaluationPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequire) *AccessGroupRequireExternalEvaluation { return v.ExternalEvaluation }).(AccessGroupRequireExternalEvaluationPtrOutput)
 }
 
 func (o AccessGroupRequireOutput) Geos() pulumi.StringArrayOutput {
@@ -1910,6 +2224,154 @@ func (o AccessGroupRequireAzureArrayOutput) Index(i pulumi.IntInput) AccessGroup
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequireAzure {
 		return vs[0].([]AccessGroupRequireAzure)[vs[1].(int)]
 	}).(AccessGroupRequireAzureOutput)
+}
+
+type AccessGroupRequireExternalEvaluation struct {
+	EvaluateUrl *string `pulumi:"evaluateUrl"`
+	KeysUrl     *string `pulumi:"keysUrl"`
+}
+
+// AccessGroupRequireExternalEvaluationInput is an input type that accepts AccessGroupRequireExternalEvaluationArgs and AccessGroupRequireExternalEvaluationOutput values.
+// You can construct a concrete instance of `AccessGroupRequireExternalEvaluationInput` via:
+//
+//          AccessGroupRequireExternalEvaluationArgs{...}
+type AccessGroupRequireExternalEvaluationInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireExternalEvaluationOutput() AccessGroupRequireExternalEvaluationOutput
+	ToAccessGroupRequireExternalEvaluationOutputWithContext(context.Context) AccessGroupRequireExternalEvaluationOutput
+}
+
+type AccessGroupRequireExternalEvaluationArgs struct {
+	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
+	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+}
+
+func (AccessGroupRequireExternalEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireExternalEvaluation)(nil)).Elem()
+}
+
+func (i AccessGroupRequireExternalEvaluationArgs) ToAccessGroupRequireExternalEvaluationOutput() AccessGroupRequireExternalEvaluationOutput {
+	return i.ToAccessGroupRequireExternalEvaluationOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireExternalEvaluationArgs) ToAccessGroupRequireExternalEvaluationOutputWithContext(ctx context.Context) AccessGroupRequireExternalEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireExternalEvaluationOutput)
+}
+
+func (i AccessGroupRequireExternalEvaluationArgs) ToAccessGroupRequireExternalEvaluationPtrOutput() AccessGroupRequireExternalEvaluationPtrOutput {
+	return i.ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireExternalEvaluationArgs) ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupRequireExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireExternalEvaluationOutput).ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(ctx)
+}
+
+// AccessGroupRequireExternalEvaluationPtrInput is an input type that accepts AccessGroupRequireExternalEvaluationArgs, AccessGroupRequireExternalEvaluationPtr and AccessGroupRequireExternalEvaluationPtrOutput values.
+// You can construct a concrete instance of `AccessGroupRequireExternalEvaluationPtrInput` via:
+//
+//          AccessGroupRequireExternalEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessGroupRequireExternalEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireExternalEvaluationPtrOutput() AccessGroupRequireExternalEvaluationPtrOutput
+	ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(context.Context) AccessGroupRequireExternalEvaluationPtrOutput
+}
+
+type accessGroupRequireExternalEvaluationPtrType AccessGroupRequireExternalEvaluationArgs
+
+func AccessGroupRequireExternalEvaluationPtr(v *AccessGroupRequireExternalEvaluationArgs) AccessGroupRequireExternalEvaluationPtrInput {
+	return (*accessGroupRequireExternalEvaluationPtrType)(v)
+}
+
+func (*accessGroupRequireExternalEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupRequireExternalEvaluation)(nil)).Elem()
+}
+
+func (i *accessGroupRequireExternalEvaluationPtrType) ToAccessGroupRequireExternalEvaluationPtrOutput() AccessGroupRequireExternalEvaluationPtrOutput {
+	return i.ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessGroupRequireExternalEvaluationPtrType) ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupRequireExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireExternalEvaluationPtrOutput)
+}
+
+type AccessGroupRequireExternalEvaluationOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireExternalEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessGroupRequireExternalEvaluationOutput) ToAccessGroupRequireExternalEvaluationOutput() AccessGroupRequireExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessGroupRequireExternalEvaluationOutput) ToAccessGroupRequireExternalEvaluationOutputWithContext(ctx context.Context) AccessGroupRequireExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessGroupRequireExternalEvaluationOutput) ToAccessGroupRequireExternalEvaluationPtrOutput() AccessGroupRequireExternalEvaluationPtrOutput {
+	return o.ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessGroupRequireExternalEvaluationOutput) ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupRequireExternalEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessGroupRequireExternalEvaluation) *AccessGroupRequireExternalEvaluation {
+		return &v
+	}).(AccessGroupRequireExternalEvaluationPtrOutput)
+}
+
+func (o AccessGroupRequireExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupRequireExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessGroupRequireExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
+}
+
+type AccessGroupRequireExternalEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireExternalEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessGroupRequireExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessGroupRequireExternalEvaluationPtrOutput) ToAccessGroupRequireExternalEvaluationPtrOutput() AccessGroupRequireExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessGroupRequireExternalEvaluationPtrOutput) ToAccessGroupRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessGroupRequireExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessGroupRequireExternalEvaluationPtrOutput) Elem() AccessGroupRequireExternalEvaluationOutput {
+	return o.ApplyT(func(v *AccessGroupRequireExternalEvaluation) AccessGroupRequireExternalEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret AccessGroupRequireExternalEvaluation
+		return ret
+	}).(AccessGroupRequireExternalEvaluationOutput)
+}
+
+func (o AccessGroupRequireExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupRequireExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessGroupRequireExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessGroupRequireExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeysUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type AccessGroupRequireGithub struct {
@@ -2651,24 +3113,25 @@ func (o AccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyExclude struct {
-	AnyValidServiceToken *bool                       `pulumi:"anyValidServiceToken"`
-	AuthMethod           *string                     `pulumi:"authMethod"`
-	Azures               []AccessPolicyExcludeAzure  `pulumi:"azures"`
-	Certificate          *bool                       `pulumi:"certificate"`
-	CommonName           *string                     `pulumi:"commonName"`
-	DevicePostures       []string                    `pulumi:"devicePostures"`
-	EmailDomains         []string                    `pulumi:"emailDomains"`
-	Emails               []string                    `pulumi:"emails"`
-	Everyone             *bool                       `pulumi:"everyone"`
-	Geos                 []string                    `pulumi:"geos"`
-	Githubs              []AccessPolicyExcludeGithub `pulumi:"githubs"`
-	Groups               []string                    `pulumi:"groups"`
-	Gsuites              []AccessPolicyExcludeGsuite `pulumi:"gsuites"`
-	Ips                  []string                    `pulumi:"ips"`
-	LoginMethods         []string                    `pulumi:"loginMethods"`
-	Oktas                []AccessPolicyExcludeOkta   `pulumi:"oktas"`
-	Samls                []AccessPolicyExcludeSaml   `pulumi:"samls"`
-	ServiceTokens        []string                    `pulumi:"serviceTokens"`
+	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                                `pulumi:"authMethod"`
+	Azures               []AccessPolicyExcludeAzure             `pulumi:"azures"`
+	Certificate          *bool                                  `pulumi:"certificate"`
+	CommonName           *string                                `pulumi:"commonName"`
+	DevicePostures       []string                               `pulumi:"devicePostures"`
+	EmailDomains         []string                               `pulumi:"emailDomains"`
+	Emails               []string                               `pulumi:"emails"`
+	Everyone             *bool                                  `pulumi:"everyone"`
+	ExternalEvaluation   *AccessPolicyExcludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos                 []string                               `pulumi:"geos"`
+	Githubs              []AccessPolicyExcludeGithub            `pulumi:"githubs"`
+	Groups               []string                               `pulumi:"groups"`
+	Gsuites              []AccessPolicyExcludeGsuite            `pulumi:"gsuites"`
+	Ips                  []string                               `pulumi:"ips"`
+	LoginMethods         []string                               `pulumi:"loginMethods"`
+	Oktas                []AccessPolicyExcludeOkta              `pulumi:"oktas"`
+	Samls                []AccessPolicyExcludeSaml              `pulumi:"samls"`
+	ServiceTokens        []string                               `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyExcludeInput is an input type that accepts AccessPolicyExcludeArgs and AccessPolicyExcludeOutput values.
@@ -2683,24 +3146,25 @@ type AccessPolicyExcludeInput interface {
 }
 
 type AccessPolicyExcludeArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                 `pulumi:"anyValidServiceToken"`
-	AuthMethod           pulumi.StringPtrInput               `pulumi:"authMethod"`
-	Azures               AccessPolicyExcludeAzureArrayInput  `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput             `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
-	Geos                 pulumi.StringArrayInput             `pulumi:"geos"`
-	Githubs              AccessPolicyExcludeGithubArrayInput `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
-	Gsuites              AccessPolicyExcludeGsuiteArrayInput `pulumi:"gsuites"`
-	Ips                  pulumi.StringArrayInput             `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput             `pulumi:"loginMethods"`
-	Oktas                AccessPolicyExcludeOktaArrayInput   `pulumi:"oktas"`
-	Samls                AccessPolicyExcludeSamlArrayInput   `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput             `pulumi:"serviceTokens"`
+	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
+	Azures               AccessPolicyExcludeAzureArrayInput            `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                         `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput                       `pulumi:"devicePostures"`
+	EmailDomains         pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput                       `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	ExternalEvaluation   AccessPolicyExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos                 pulumi.StringArrayInput                       `pulumi:"geos"`
+	Githubs              AccessPolicyExcludeGithubArrayInput           `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
+	Gsuites              AccessPolicyExcludeGsuiteArrayInput           `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput                       `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput                       `pulumi:"loginMethods"`
+	Oktas                AccessPolicyExcludeOktaArrayInput             `pulumi:"oktas"`
+	Samls                AccessPolicyExcludeSamlArrayInput             `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput                       `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyExcludeArgs) ElementType() reflect.Type {
@@ -2788,6 +3252,10 @@ func (o AccessPolicyExcludeOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessPolicyExcludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyExcludeOutput) ExternalEvaluation() AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) *AccessPolicyExcludeExternalEvaluation { return v.ExternalEvaluation }).(AccessPolicyExcludeExternalEvaluationPtrOutput)
 }
 
 func (o AccessPolicyExcludeOutput) Geos() pulumi.StringArrayOutput {
@@ -2944,6 +3412,154 @@ func (o AccessPolicyExcludeAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyExcludeAzure {
 		return vs[0].([]AccessPolicyExcludeAzure)[vs[1].(int)]
 	}).(AccessPolicyExcludeAzureOutput)
+}
+
+type AccessPolicyExcludeExternalEvaluation struct {
+	EvaluateUrl *string `pulumi:"evaluateUrl"`
+	KeysUrl     *string `pulumi:"keysUrl"`
+}
+
+// AccessPolicyExcludeExternalEvaluationInput is an input type that accepts AccessPolicyExcludeExternalEvaluationArgs and AccessPolicyExcludeExternalEvaluationOutput values.
+// You can construct a concrete instance of `AccessPolicyExcludeExternalEvaluationInput` via:
+//
+//          AccessPolicyExcludeExternalEvaluationArgs{...}
+type AccessPolicyExcludeExternalEvaluationInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeExternalEvaluationOutput() AccessPolicyExcludeExternalEvaluationOutput
+	ToAccessPolicyExcludeExternalEvaluationOutputWithContext(context.Context) AccessPolicyExcludeExternalEvaluationOutput
+}
+
+type AccessPolicyExcludeExternalEvaluationArgs struct {
+	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
+	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+}
+
+func (AccessPolicyExcludeExternalEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeExternalEvaluationArgs) ToAccessPolicyExcludeExternalEvaluationOutput() AccessPolicyExcludeExternalEvaluationOutput {
+	return i.ToAccessPolicyExcludeExternalEvaluationOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeExternalEvaluationArgs) ToAccessPolicyExcludeExternalEvaluationOutputWithContext(ctx context.Context) AccessPolicyExcludeExternalEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeExternalEvaluationOutput)
+}
+
+func (i AccessPolicyExcludeExternalEvaluationArgs) ToAccessPolicyExcludeExternalEvaluationPtrOutput() AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return i.ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeExternalEvaluationArgs) ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeExternalEvaluationOutput).ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyExcludeExternalEvaluationPtrInput is an input type that accepts AccessPolicyExcludeExternalEvaluationArgs, AccessPolicyExcludeExternalEvaluationPtr and AccessPolicyExcludeExternalEvaluationPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyExcludeExternalEvaluationPtrInput` via:
+//
+//          AccessPolicyExcludeExternalEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessPolicyExcludeExternalEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeExternalEvaluationPtrOutput() AccessPolicyExcludeExternalEvaluationPtrOutput
+	ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(context.Context) AccessPolicyExcludeExternalEvaluationPtrOutput
+}
+
+type accessPolicyExcludeExternalEvaluationPtrType AccessPolicyExcludeExternalEvaluationArgs
+
+func AccessPolicyExcludeExternalEvaluationPtr(v *AccessPolicyExcludeExternalEvaluationArgs) AccessPolicyExcludeExternalEvaluationPtrInput {
+	return (*accessPolicyExcludeExternalEvaluationPtrType)(v)
+}
+
+func (*accessPolicyExcludeExternalEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i *accessPolicyExcludeExternalEvaluationPtrType) ToAccessPolicyExcludeExternalEvaluationPtrOutput() AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return i.ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyExcludeExternalEvaluationPtrType) ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeExternalEvaluationPtrOutput)
+}
+
+type AccessPolicyExcludeExternalEvaluationOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyExcludeExternalEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeExternalEvaluationOutput) ToAccessPolicyExcludeExternalEvaluationOutput() AccessPolicyExcludeExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeExternalEvaluationOutput) ToAccessPolicyExcludeExternalEvaluationOutputWithContext(ctx context.Context) AccessPolicyExcludeExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeExternalEvaluationOutput) ToAccessPolicyExcludeExternalEvaluationPtrOutput() AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return o.ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyExcludeExternalEvaluationOutput) ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyExcludeExternalEvaluation) *AccessPolicyExcludeExternalEvaluation {
+		return &v
+	}).(AccessPolicyExcludeExternalEvaluationPtrOutput)
+}
+
+func (o AccessPolicyExcludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyExcludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyExcludeExternalEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyExcludeExternalEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyExcludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeExternalEvaluationPtrOutput) ToAccessPolicyExcludeExternalEvaluationPtrOutput() AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeExternalEvaluationPtrOutput) ToAccessPolicyExcludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyExcludeExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeExternalEvaluationPtrOutput) Elem() AccessPolicyExcludeExternalEvaluationOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeExternalEvaluation) AccessPolicyExcludeExternalEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyExcludeExternalEvaluation
+		return ret
+	}).(AccessPolicyExcludeExternalEvaluationOutput)
+}
+
+func (o AccessPolicyExcludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyExcludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyExcludeExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeysUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type AccessPolicyExcludeGithub struct {
@@ -3365,24 +3981,25 @@ func (o AccessPolicyExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyInclude struct {
-	AnyValidServiceToken *bool                       `pulumi:"anyValidServiceToken"`
-	AuthMethod           *string                     `pulumi:"authMethod"`
-	Azures               []AccessPolicyIncludeAzure  `pulumi:"azures"`
-	Certificate          *bool                       `pulumi:"certificate"`
-	CommonName           *string                     `pulumi:"commonName"`
-	DevicePostures       []string                    `pulumi:"devicePostures"`
-	EmailDomains         []string                    `pulumi:"emailDomains"`
-	Emails               []string                    `pulumi:"emails"`
-	Everyone             *bool                       `pulumi:"everyone"`
-	Geos                 []string                    `pulumi:"geos"`
-	Githubs              []AccessPolicyIncludeGithub `pulumi:"githubs"`
-	Groups               []string                    `pulumi:"groups"`
-	Gsuites              []AccessPolicyIncludeGsuite `pulumi:"gsuites"`
-	Ips                  []string                    `pulumi:"ips"`
-	LoginMethods         []string                    `pulumi:"loginMethods"`
-	Oktas                []AccessPolicyIncludeOkta   `pulumi:"oktas"`
-	Samls                []AccessPolicyIncludeSaml   `pulumi:"samls"`
-	ServiceTokens        []string                    `pulumi:"serviceTokens"`
+	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                                `pulumi:"authMethod"`
+	Azures               []AccessPolicyIncludeAzure             `pulumi:"azures"`
+	Certificate          *bool                                  `pulumi:"certificate"`
+	CommonName           *string                                `pulumi:"commonName"`
+	DevicePostures       []string                               `pulumi:"devicePostures"`
+	EmailDomains         []string                               `pulumi:"emailDomains"`
+	Emails               []string                               `pulumi:"emails"`
+	Everyone             *bool                                  `pulumi:"everyone"`
+	ExternalEvaluation   *AccessPolicyIncludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos                 []string                               `pulumi:"geos"`
+	Githubs              []AccessPolicyIncludeGithub            `pulumi:"githubs"`
+	Groups               []string                               `pulumi:"groups"`
+	Gsuites              []AccessPolicyIncludeGsuite            `pulumi:"gsuites"`
+	Ips                  []string                               `pulumi:"ips"`
+	LoginMethods         []string                               `pulumi:"loginMethods"`
+	Oktas                []AccessPolicyIncludeOkta              `pulumi:"oktas"`
+	Samls                []AccessPolicyIncludeSaml              `pulumi:"samls"`
+	ServiceTokens        []string                               `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyIncludeInput is an input type that accepts AccessPolicyIncludeArgs and AccessPolicyIncludeOutput values.
@@ -3397,24 +4014,25 @@ type AccessPolicyIncludeInput interface {
 }
 
 type AccessPolicyIncludeArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                 `pulumi:"anyValidServiceToken"`
-	AuthMethod           pulumi.StringPtrInput               `pulumi:"authMethod"`
-	Azures               AccessPolicyIncludeAzureArrayInput  `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput             `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
-	Geos                 pulumi.StringArrayInput             `pulumi:"geos"`
-	Githubs              AccessPolicyIncludeGithubArrayInput `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
-	Gsuites              AccessPolicyIncludeGsuiteArrayInput `pulumi:"gsuites"`
-	Ips                  pulumi.StringArrayInput             `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput             `pulumi:"loginMethods"`
-	Oktas                AccessPolicyIncludeOktaArrayInput   `pulumi:"oktas"`
-	Samls                AccessPolicyIncludeSamlArrayInput   `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput             `pulumi:"serviceTokens"`
+	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
+	Azures               AccessPolicyIncludeAzureArrayInput            `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                         `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput                       `pulumi:"devicePostures"`
+	EmailDomains         pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput                       `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	ExternalEvaluation   AccessPolicyIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos                 pulumi.StringArrayInput                       `pulumi:"geos"`
+	Githubs              AccessPolicyIncludeGithubArrayInput           `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
+	Gsuites              AccessPolicyIncludeGsuiteArrayInput           `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput                       `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput                       `pulumi:"loginMethods"`
+	Oktas                AccessPolicyIncludeOktaArrayInput             `pulumi:"oktas"`
+	Samls                AccessPolicyIncludeSamlArrayInput             `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput                       `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyIncludeArgs) ElementType() reflect.Type {
@@ -3502,6 +4120,10 @@ func (o AccessPolicyIncludeOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessPolicyIncludeOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyIncludeOutput) ExternalEvaluation() AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) *AccessPolicyIncludeExternalEvaluation { return v.ExternalEvaluation }).(AccessPolicyIncludeExternalEvaluationPtrOutput)
 }
 
 func (o AccessPolicyIncludeOutput) Geos() pulumi.StringArrayOutput {
@@ -3658,6 +4280,154 @@ func (o AccessPolicyIncludeAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyIncludeAzure {
 		return vs[0].([]AccessPolicyIncludeAzure)[vs[1].(int)]
 	}).(AccessPolicyIncludeAzureOutput)
+}
+
+type AccessPolicyIncludeExternalEvaluation struct {
+	EvaluateUrl *string `pulumi:"evaluateUrl"`
+	KeysUrl     *string `pulumi:"keysUrl"`
+}
+
+// AccessPolicyIncludeExternalEvaluationInput is an input type that accepts AccessPolicyIncludeExternalEvaluationArgs and AccessPolicyIncludeExternalEvaluationOutput values.
+// You can construct a concrete instance of `AccessPolicyIncludeExternalEvaluationInput` via:
+//
+//          AccessPolicyIncludeExternalEvaluationArgs{...}
+type AccessPolicyIncludeExternalEvaluationInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeExternalEvaluationOutput() AccessPolicyIncludeExternalEvaluationOutput
+	ToAccessPolicyIncludeExternalEvaluationOutputWithContext(context.Context) AccessPolicyIncludeExternalEvaluationOutput
+}
+
+type AccessPolicyIncludeExternalEvaluationArgs struct {
+	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
+	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+}
+
+func (AccessPolicyIncludeExternalEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeExternalEvaluationArgs) ToAccessPolicyIncludeExternalEvaluationOutput() AccessPolicyIncludeExternalEvaluationOutput {
+	return i.ToAccessPolicyIncludeExternalEvaluationOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeExternalEvaluationArgs) ToAccessPolicyIncludeExternalEvaluationOutputWithContext(ctx context.Context) AccessPolicyIncludeExternalEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeExternalEvaluationOutput)
+}
+
+func (i AccessPolicyIncludeExternalEvaluationArgs) ToAccessPolicyIncludeExternalEvaluationPtrOutput() AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return i.ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeExternalEvaluationArgs) ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeExternalEvaluationOutput).ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyIncludeExternalEvaluationPtrInput is an input type that accepts AccessPolicyIncludeExternalEvaluationArgs, AccessPolicyIncludeExternalEvaluationPtr and AccessPolicyIncludeExternalEvaluationPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyIncludeExternalEvaluationPtrInput` via:
+//
+//          AccessPolicyIncludeExternalEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessPolicyIncludeExternalEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeExternalEvaluationPtrOutput() AccessPolicyIncludeExternalEvaluationPtrOutput
+	ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(context.Context) AccessPolicyIncludeExternalEvaluationPtrOutput
+}
+
+type accessPolicyIncludeExternalEvaluationPtrType AccessPolicyIncludeExternalEvaluationArgs
+
+func AccessPolicyIncludeExternalEvaluationPtr(v *AccessPolicyIncludeExternalEvaluationArgs) AccessPolicyIncludeExternalEvaluationPtrInput {
+	return (*accessPolicyIncludeExternalEvaluationPtrType)(v)
+}
+
+func (*accessPolicyIncludeExternalEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIncludeExternalEvaluation)(nil)).Elem()
+}
+
+func (i *accessPolicyIncludeExternalEvaluationPtrType) ToAccessPolicyIncludeExternalEvaluationPtrOutput() AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return i.ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyIncludeExternalEvaluationPtrType) ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeExternalEvaluationPtrOutput)
+}
+
+type AccessPolicyIncludeExternalEvaluationOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIncludeExternalEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeExternalEvaluationOutput) ToAccessPolicyIncludeExternalEvaluationOutput() AccessPolicyIncludeExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeExternalEvaluationOutput) ToAccessPolicyIncludeExternalEvaluationOutputWithContext(ctx context.Context) AccessPolicyIncludeExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeExternalEvaluationOutput) ToAccessPolicyIncludeExternalEvaluationPtrOutput() AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return o.ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyIncludeExternalEvaluationOutput) ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyIncludeExternalEvaluation) *AccessPolicyIncludeExternalEvaluation {
+		return &v
+	}).(AccessPolicyIncludeExternalEvaluationPtrOutput)
+}
+
+func (o AccessPolicyIncludeExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIncludeExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyIncludeExternalEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIncludeExternalEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyIncludeExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeExternalEvaluationPtrOutput) ToAccessPolicyIncludeExternalEvaluationPtrOutput() AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeExternalEvaluationPtrOutput) ToAccessPolicyIncludeExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyIncludeExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeExternalEvaluationPtrOutput) Elem() AccessPolicyIncludeExternalEvaluationOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeExternalEvaluation) AccessPolicyIncludeExternalEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyIncludeExternalEvaluation
+		return ret
+	}).(AccessPolicyIncludeExternalEvaluationOutput)
+}
+
+func (o AccessPolicyIncludeExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyIncludeExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyIncludeExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeysUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type AccessPolicyIncludeGithub struct {
@@ -4079,24 +4849,25 @@ func (o AccessPolicyIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyRequire struct {
-	AnyValidServiceToken *bool                       `pulumi:"anyValidServiceToken"`
-	AuthMethod           *string                     `pulumi:"authMethod"`
-	Azures               []AccessPolicyRequireAzure  `pulumi:"azures"`
-	Certificate          *bool                       `pulumi:"certificate"`
-	CommonName           *string                     `pulumi:"commonName"`
-	DevicePostures       []string                    `pulumi:"devicePostures"`
-	EmailDomains         []string                    `pulumi:"emailDomains"`
-	Emails               []string                    `pulumi:"emails"`
-	Everyone             *bool                       `pulumi:"everyone"`
-	Geos                 []string                    `pulumi:"geos"`
-	Githubs              []AccessPolicyRequireGithub `pulumi:"githubs"`
-	Groups               []string                    `pulumi:"groups"`
-	Gsuites              []AccessPolicyRequireGsuite `pulumi:"gsuites"`
-	Ips                  []string                    `pulumi:"ips"`
-	LoginMethods         []string                    `pulumi:"loginMethods"`
-	Oktas                []AccessPolicyRequireOkta   `pulumi:"oktas"`
-	Samls                []AccessPolicyRequireSaml   `pulumi:"samls"`
-	ServiceTokens        []string                    `pulumi:"serviceTokens"`
+	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
+	AuthMethod           *string                                `pulumi:"authMethod"`
+	Azures               []AccessPolicyRequireAzure             `pulumi:"azures"`
+	Certificate          *bool                                  `pulumi:"certificate"`
+	CommonName           *string                                `pulumi:"commonName"`
+	DevicePostures       []string                               `pulumi:"devicePostures"`
+	EmailDomains         []string                               `pulumi:"emailDomains"`
+	Emails               []string                               `pulumi:"emails"`
+	Everyone             *bool                                  `pulumi:"everyone"`
+	ExternalEvaluation   *AccessPolicyRequireExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos                 []string                               `pulumi:"geos"`
+	Githubs              []AccessPolicyRequireGithub            `pulumi:"githubs"`
+	Groups               []string                               `pulumi:"groups"`
+	Gsuites              []AccessPolicyRequireGsuite            `pulumi:"gsuites"`
+	Ips                  []string                               `pulumi:"ips"`
+	LoginMethods         []string                               `pulumi:"loginMethods"`
+	Oktas                []AccessPolicyRequireOkta              `pulumi:"oktas"`
+	Samls                []AccessPolicyRequireSaml              `pulumi:"samls"`
+	ServiceTokens        []string                               `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyRequireInput is an input type that accepts AccessPolicyRequireArgs and AccessPolicyRequireOutput values.
@@ -4111,24 +4882,25 @@ type AccessPolicyRequireInput interface {
 }
 
 type AccessPolicyRequireArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                 `pulumi:"anyValidServiceToken"`
-	AuthMethod           pulumi.StringPtrInput               `pulumi:"authMethod"`
-	Azures               AccessPolicyRequireAzureArrayInput  `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                 `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput               `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput             `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput             `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput             `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                 `pulumi:"everyone"`
-	Geos                 pulumi.StringArrayInput             `pulumi:"geos"`
-	Githubs              AccessPolicyRequireGithubArrayInput `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput             `pulumi:"groups"`
-	Gsuites              AccessPolicyRequireGsuiteArrayInput `pulumi:"gsuites"`
-	Ips                  pulumi.StringArrayInput             `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput             `pulumi:"loginMethods"`
-	Oktas                AccessPolicyRequireOktaArrayInput   `pulumi:"oktas"`
-	Samls                AccessPolicyRequireSamlArrayInput   `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput             `pulumi:"serviceTokens"`
+	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
+	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
+	Azures               AccessPolicyRequireAzureArrayInput            `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                         `pulumi:"commonName"`
+	DevicePostures       pulumi.StringArrayInput                       `pulumi:"devicePostures"`
+	EmailDomains         pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	Emails               pulumi.StringArrayInput                       `pulumi:"emails"`
+	Everyone             pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	ExternalEvaluation   AccessPolicyRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos                 pulumi.StringArrayInput                       `pulumi:"geos"`
+	Githubs              AccessPolicyRequireGithubArrayInput           `pulumi:"githubs"`
+	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
+	Gsuites              AccessPolicyRequireGsuiteArrayInput           `pulumi:"gsuites"`
+	Ips                  pulumi.StringArrayInput                       `pulumi:"ips"`
+	LoginMethods         pulumi.StringArrayInput                       `pulumi:"loginMethods"`
+	Oktas                AccessPolicyRequireOktaArrayInput             `pulumi:"oktas"`
+	Samls                AccessPolicyRequireSamlArrayInput             `pulumi:"samls"`
+	ServiceTokens        pulumi.StringArrayInput                       `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyRequireArgs) ElementType() reflect.Type {
@@ -4216,6 +4988,10 @@ func (o AccessPolicyRequireOutput) Emails() pulumi.StringArrayOutput {
 
 func (o AccessPolicyRequireOutput) Everyone() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *bool { return v.Everyone }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyRequireOutput) ExternalEvaluation() AccessPolicyRequireExternalEvaluationPtrOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) *AccessPolicyRequireExternalEvaluation { return v.ExternalEvaluation }).(AccessPolicyRequireExternalEvaluationPtrOutput)
 }
 
 func (o AccessPolicyRequireOutput) Geos() pulumi.StringArrayOutput {
@@ -4372,6 +5148,154 @@ func (o AccessPolicyRequireAzureArrayOutput) Index(i pulumi.IntInput) AccessPoli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyRequireAzure {
 		return vs[0].([]AccessPolicyRequireAzure)[vs[1].(int)]
 	}).(AccessPolicyRequireAzureOutput)
+}
+
+type AccessPolicyRequireExternalEvaluation struct {
+	EvaluateUrl *string `pulumi:"evaluateUrl"`
+	KeysUrl     *string `pulumi:"keysUrl"`
+}
+
+// AccessPolicyRequireExternalEvaluationInput is an input type that accepts AccessPolicyRequireExternalEvaluationArgs and AccessPolicyRequireExternalEvaluationOutput values.
+// You can construct a concrete instance of `AccessPolicyRequireExternalEvaluationInput` via:
+//
+//          AccessPolicyRequireExternalEvaluationArgs{...}
+type AccessPolicyRequireExternalEvaluationInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireExternalEvaluationOutput() AccessPolicyRequireExternalEvaluationOutput
+	ToAccessPolicyRequireExternalEvaluationOutputWithContext(context.Context) AccessPolicyRequireExternalEvaluationOutput
+}
+
+type AccessPolicyRequireExternalEvaluationArgs struct {
+	EvaluateUrl pulumi.StringPtrInput `pulumi:"evaluateUrl"`
+	KeysUrl     pulumi.StringPtrInput `pulumi:"keysUrl"`
+}
+
+func (AccessPolicyRequireExternalEvaluationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireExternalEvaluation)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireExternalEvaluationArgs) ToAccessPolicyRequireExternalEvaluationOutput() AccessPolicyRequireExternalEvaluationOutput {
+	return i.ToAccessPolicyRequireExternalEvaluationOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireExternalEvaluationArgs) ToAccessPolicyRequireExternalEvaluationOutputWithContext(ctx context.Context) AccessPolicyRequireExternalEvaluationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireExternalEvaluationOutput)
+}
+
+func (i AccessPolicyRequireExternalEvaluationArgs) ToAccessPolicyRequireExternalEvaluationPtrOutput() AccessPolicyRequireExternalEvaluationPtrOutput {
+	return i.ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireExternalEvaluationArgs) ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyRequireExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireExternalEvaluationOutput).ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(ctx)
+}
+
+// AccessPolicyRequireExternalEvaluationPtrInput is an input type that accepts AccessPolicyRequireExternalEvaluationArgs, AccessPolicyRequireExternalEvaluationPtr and AccessPolicyRequireExternalEvaluationPtrOutput values.
+// You can construct a concrete instance of `AccessPolicyRequireExternalEvaluationPtrInput` via:
+//
+//          AccessPolicyRequireExternalEvaluationArgs{...}
+//
+//  or:
+//
+//          nil
+type AccessPolicyRequireExternalEvaluationPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireExternalEvaluationPtrOutput() AccessPolicyRequireExternalEvaluationPtrOutput
+	ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(context.Context) AccessPolicyRequireExternalEvaluationPtrOutput
+}
+
+type accessPolicyRequireExternalEvaluationPtrType AccessPolicyRequireExternalEvaluationArgs
+
+func AccessPolicyRequireExternalEvaluationPtr(v *AccessPolicyRequireExternalEvaluationArgs) AccessPolicyRequireExternalEvaluationPtrInput {
+	return (*accessPolicyRequireExternalEvaluationPtrType)(v)
+}
+
+func (*accessPolicyRequireExternalEvaluationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyRequireExternalEvaluation)(nil)).Elem()
+}
+
+func (i *accessPolicyRequireExternalEvaluationPtrType) ToAccessPolicyRequireExternalEvaluationPtrOutput() AccessPolicyRequireExternalEvaluationPtrOutput {
+	return i.ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyRequireExternalEvaluationPtrType) ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyRequireExternalEvaluationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireExternalEvaluationPtrOutput)
+}
+
+type AccessPolicyRequireExternalEvaluationOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyRequireExternalEvaluationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireExternalEvaluationOutput) ToAccessPolicyRequireExternalEvaluationOutput() AccessPolicyRequireExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessPolicyRequireExternalEvaluationOutput) ToAccessPolicyRequireExternalEvaluationOutputWithContext(ctx context.Context) AccessPolicyRequireExternalEvaluationOutput {
+	return o
+}
+
+func (o AccessPolicyRequireExternalEvaluationOutput) ToAccessPolicyRequireExternalEvaluationPtrOutput() AccessPolicyRequireExternalEvaluationPtrOutput {
+	return o.ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyRequireExternalEvaluationOutput) ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyRequireExternalEvaluationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPolicyRequireExternalEvaluation) *AccessPolicyRequireExternalEvaluation {
+		return &v
+	}).(AccessPolicyRequireExternalEvaluationPtrOutput)
+}
+
+func (o AccessPolicyRequireExternalEvaluationOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyRequireExternalEvaluation) *string { return v.EvaluateUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyRequireExternalEvaluationOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPolicyRequireExternalEvaluation) *string { return v.KeysUrl }).(pulumi.StringPtrOutput)
+}
+
+type AccessPolicyRequireExternalEvaluationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyRequireExternalEvaluationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicyRequireExternalEvaluation)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireExternalEvaluationPtrOutput) ToAccessPolicyRequireExternalEvaluationPtrOutput() AccessPolicyRequireExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessPolicyRequireExternalEvaluationPtrOutput) ToAccessPolicyRequireExternalEvaluationPtrOutputWithContext(ctx context.Context) AccessPolicyRequireExternalEvaluationPtrOutput {
+	return o
+}
+
+func (o AccessPolicyRequireExternalEvaluationPtrOutput) Elem() AccessPolicyRequireExternalEvaluationOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireExternalEvaluation) AccessPolicyRequireExternalEvaluation {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPolicyRequireExternalEvaluation
+		return ret
+	}).(AccessPolicyRequireExternalEvaluationOutput)
+}
+
+func (o AccessPolicyRequireExternalEvaluationPtrOutput) EvaluateUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EvaluateUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessPolicyRequireExternalEvaluationPtrOutput) KeysUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicyRequireExternalEvaluation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeysUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type AccessPolicyRequireGithub struct {
@@ -13413,6 +14337,8 @@ func (o RulesetRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleOutput {
 }
 
 type RulesetRuleActionParameters struct {
+	// List of cookie values to include as part of custom fields logging.
+	CookieFields []string `pulumi:"cookieFields"`
 	// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
 	Headers []RulesetRuleActionParametersHeader `pulumi:"headers"`
 	// Host Header that request origin receives.
@@ -13429,6 +14355,10 @@ type RulesetRuleActionParameters struct {
 	Phases    []string                              `pulumi:"phases"`
 	// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 	Products []string `pulumi:"products"`
+	// List of request headers to include as part of custom fields logging, in lowercase.
+	RequestFields []string `pulumi:"requestFields"`
+	// List of response headers to include as part of custom fields logging, in lowercase.
+	ResponseFields []string `pulumi:"responseFields"`
 	// List of parameters that configure the response given to end users (refer to the nested schema).
 	Responses []RulesetRuleActionParametersResponse `pulumi:"responses"`
 	// List of rule-based overrides (refer to the nested schema).
@@ -13454,6 +14384,8 @@ type RulesetRuleActionParametersInput interface {
 }
 
 type RulesetRuleActionParametersArgs struct {
+	// List of cookie values to include as part of custom fields logging.
+	CookieFields pulumi.StringArrayInput `pulumi:"cookieFields"`
 	// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
 	Headers RulesetRuleActionParametersHeaderArrayInput `pulumi:"headers"`
 	// Host Header that request origin receives.
@@ -13470,6 +14402,10 @@ type RulesetRuleActionParametersArgs struct {
 	Phases    pulumi.StringArrayInput                      `pulumi:"phases"`
 	// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 	Products pulumi.StringArrayInput `pulumi:"products"`
+	// List of request headers to include as part of custom fields logging, in lowercase.
+	RequestFields pulumi.StringArrayInput `pulumi:"requestFields"`
+	// List of response headers to include as part of custom fields logging, in lowercase.
+	ResponseFields pulumi.StringArrayInput `pulumi:"responseFields"`
 	// List of parameters that configure the response given to end users (refer to the nested schema).
 	Responses RulesetRuleActionParametersResponseArrayInput `pulumi:"responses"`
 	// List of rule-based overrides (refer to the nested schema).
@@ -13560,6 +14496,11 @@ func (o RulesetRuleActionParametersOutput) ToRulesetRuleActionParametersPtrOutpu
 	}).(RulesetRuleActionParametersPtrOutput)
 }
 
+// List of cookie values to include as part of custom fields logging.
+func (o RulesetRuleActionParametersOutput) CookieFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.CookieFields }).(pulumi.StringArrayOutput)
+}
+
 // List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
 func (o RulesetRuleActionParametersOutput) Headers() RulesetRuleActionParametersHeaderArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []RulesetRuleActionParametersHeader { return v.Headers }).(RulesetRuleActionParametersHeaderArrayOutput)
@@ -13601,6 +14542,16 @@ func (o RulesetRuleActionParametersOutput) Phases() pulumi.StringArrayOutput {
 // Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
 func (o RulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
+}
+
+// List of request headers to include as part of custom fields logging, in lowercase.
+func (o RulesetRuleActionParametersOutput) RequestFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.RequestFields }).(pulumi.StringArrayOutput)
+}
+
+// List of response headers to include as part of custom fields logging, in lowercase.
+func (o RulesetRuleActionParametersOutput) ResponseFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.ResponseFields }).(pulumi.StringArrayOutput)
 }
 
 // List of parameters that configure the response given to end users (refer to the nested schema).
@@ -13654,6 +14605,16 @@ func (o RulesetRuleActionParametersPtrOutput) Elem() RulesetRuleActionParameters
 		var ret RulesetRuleActionParameters
 		return ret
 	}).(RulesetRuleActionParametersOutput)
+}
+
+// List of cookie values to include as part of custom fields logging.
+func (o RulesetRuleActionParametersPtrOutput) CookieFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CookieFields
+	}).(pulumi.StringArrayOutput)
 }
 
 // List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
@@ -13741,6 +14702,26 @@ func (o RulesetRuleActionParametersPtrOutput) Products() pulumi.StringArrayOutpu
 			return nil
 		}
 		return v.Products
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of request headers to include as part of custom fields logging, in lowercase.
+func (o RulesetRuleActionParametersPtrOutput) RequestFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestFields
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of response headers to include as part of custom fields logging, in lowercase.
+func (o RulesetRuleActionParametersPtrOutput) ResponseFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseFields
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -23384,6 +24365,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeArrayInput)(nil)).Elem(), AccessGroupExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAzureInput)(nil)).Elem(), AccessGroupExcludeAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAzureArrayInput)(nil)).Elem(), AccessGroupExcludeAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeExternalEvaluationInput)(nil)).Elem(), AccessGroupExcludeExternalEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeExternalEvaluationPtrInput)(nil)).Elem(), AccessGroupExcludeExternalEvaluationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeGithubInput)(nil)).Elem(), AccessGroupExcludeGithubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeGithubArrayInput)(nil)).Elem(), AccessGroupExcludeGithubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeGsuiteInput)(nil)).Elem(), AccessGroupExcludeGsuiteArgs{})
@@ -23396,6 +24379,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeArrayInput)(nil)).Elem(), AccessGroupIncludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeAzureInput)(nil)).Elem(), AccessGroupIncludeAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeAzureArrayInput)(nil)).Elem(), AccessGroupIncludeAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeExternalEvaluationInput)(nil)).Elem(), AccessGroupIncludeExternalEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeExternalEvaluationPtrInput)(nil)).Elem(), AccessGroupIncludeExternalEvaluationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeGithubInput)(nil)).Elem(), AccessGroupIncludeGithubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeGithubArrayInput)(nil)).Elem(), AccessGroupIncludeGithubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeGsuiteInput)(nil)).Elem(), AccessGroupIncludeGsuiteArgs{})
@@ -23408,6 +24393,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireArrayInput)(nil)).Elem(), AccessGroupRequireArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireAzureInput)(nil)).Elem(), AccessGroupRequireAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireAzureArrayInput)(nil)).Elem(), AccessGroupRequireAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireExternalEvaluationInput)(nil)).Elem(), AccessGroupRequireExternalEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireExternalEvaluationPtrInput)(nil)).Elem(), AccessGroupRequireExternalEvaluationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireGithubInput)(nil)).Elem(), AccessGroupRequireGithubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireGithubArrayInput)(nil)).Elem(), AccessGroupRequireGithubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireGsuiteInput)(nil)).Elem(), AccessGroupRequireGsuiteArgs{})
@@ -23424,6 +24411,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeArrayInput)(nil)).Elem(), AccessPolicyExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAzureInput)(nil)).Elem(), AccessPolicyExcludeAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAzureArrayInput)(nil)).Elem(), AccessPolicyExcludeAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeExternalEvaluationInput)(nil)).Elem(), AccessPolicyExcludeExternalEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeExternalEvaluationPtrInput)(nil)).Elem(), AccessPolicyExcludeExternalEvaluationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeGithubInput)(nil)).Elem(), AccessPolicyExcludeGithubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeGithubArrayInput)(nil)).Elem(), AccessPolicyExcludeGithubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeGsuiteInput)(nil)).Elem(), AccessPolicyExcludeGsuiteArgs{})
@@ -23436,6 +24425,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeArrayInput)(nil)).Elem(), AccessPolicyIncludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeAzureInput)(nil)).Elem(), AccessPolicyIncludeAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeAzureArrayInput)(nil)).Elem(), AccessPolicyIncludeAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeExternalEvaluationInput)(nil)).Elem(), AccessPolicyIncludeExternalEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeExternalEvaluationPtrInput)(nil)).Elem(), AccessPolicyIncludeExternalEvaluationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeGithubInput)(nil)).Elem(), AccessPolicyIncludeGithubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeGithubArrayInput)(nil)).Elem(), AccessPolicyIncludeGithubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeGsuiteInput)(nil)).Elem(), AccessPolicyIncludeGsuiteArgs{})
@@ -23448,6 +24439,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireArrayInput)(nil)).Elem(), AccessPolicyRequireArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireAzureInput)(nil)).Elem(), AccessPolicyRequireAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireAzureArrayInput)(nil)).Elem(), AccessPolicyRequireAzureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireExternalEvaluationInput)(nil)).Elem(), AccessPolicyRequireExternalEvaluationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireExternalEvaluationPtrInput)(nil)).Elem(), AccessPolicyRequireExternalEvaluationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireGithubInput)(nil)).Elem(), AccessPolicyRequireGithubArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireGithubArrayInput)(nil)).Elem(), AccessPolicyRequireGithubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireGsuiteInput)(nil)).Elem(), AccessPolicyRequireGsuiteArgs{})
@@ -23675,6 +24668,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAzureOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeExternalEvaluationOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeExternalEvaluationPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeGithubOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeGithubArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeGsuiteOutput{})
@@ -23687,6 +24682,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupIncludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeAzureOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeExternalEvaluationOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeExternalEvaluationPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeGithubOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeGithubArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeGsuiteOutput{})
@@ -23699,6 +24696,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupRequireArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireAzureOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireExternalEvaluationOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireExternalEvaluationPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireGithubOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireGithubArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireGsuiteOutput{})
@@ -23715,6 +24714,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeAzureOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeExternalEvaluationOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeExternalEvaluationPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeGithubOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeGithubArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeGsuiteOutput{})
@@ -23727,6 +24728,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyIncludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeAzureOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeExternalEvaluationOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeExternalEvaluationPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeGithubOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeGithubArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeGsuiteOutput{})
@@ -23739,6 +24742,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyRequireArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireAzureOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireAzureArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireExternalEvaluationOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireExternalEvaluationPtrOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireGithubOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireGithubArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireGsuiteOutput{})
