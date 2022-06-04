@@ -19,7 +19,7 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/cloudflare/terraform-provider-cloudflare/cloudflare"
+	providerShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
 	"github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
@@ -63,7 +63,7 @@ func makeResource(mod string, res string) tokens.Type {
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(cloudflare.Provider())
+	p := shimv2.NewProvider(providerShim.NewProvider(version.Version))
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
