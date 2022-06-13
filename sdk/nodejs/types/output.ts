@@ -55,6 +55,7 @@ export interface AccessGroupExclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessGroupExcludeExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessGroupExcludeGithub[];
     groups?: string[];
@@ -69,6 +70,11 @@ export interface AccessGroupExclude {
 export interface AccessGroupExcludeAzure {
     identityProviderId?: string;
     ids?: string[];
+}
+
+export interface AccessGroupExcludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
 }
 
 export interface AccessGroupExcludeGithub {
@@ -109,6 +115,7 @@ export interface AccessGroupInclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessGroupIncludeExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessGroupIncludeGithub[];
     groups?: string[];
@@ -123,6 +130,11 @@ export interface AccessGroupInclude {
 export interface AccessGroupIncludeAzure {
     identityProviderId?: string;
     ids?: string[];
+}
+
+export interface AccessGroupIncludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
 }
 
 export interface AccessGroupIncludeGithub {
@@ -163,6 +175,7 @@ export interface AccessGroupRequire {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessGroupRequireExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessGroupRequireGithub[];
     groups?: string[];
@@ -177,6 +190,11 @@ export interface AccessGroupRequire {
 export interface AccessGroupRequireAzure {
     identityProviderId?: string;
     ids?: string[];
+}
+
+export interface AccessGroupRequireExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
 }
 
 export interface AccessGroupRequireGithub {
@@ -252,6 +270,7 @@ export interface AccessPolicyExclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessPolicyExcludeExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessPolicyExcludeGithub[];
     groups?: string[];
@@ -266,6 +285,11 @@ export interface AccessPolicyExclude {
 export interface AccessPolicyExcludeAzure {
     identityProviderId?: string;
     ids?: string[];
+}
+
+export interface AccessPolicyExcludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
 }
 
 export interface AccessPolicyExcludeGithub {
@@ -306,6 +330,7 @@ export interface AccessPolicyInclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessPolicyIncludeExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessPolicyIncludeGithub[];
     groups?: string[];
@@ -320,6 +345,11 @@ export interface AccessPolicyInclude {
 export interface AccessPolicyIncludeAzure {
     identityProviderId?: string;
     ids?: string[];
+}
+
+export interface AccessPolicyIncludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
 }
 
 export interface AccessPolicyIncludeGithub {
@@ -360,6 +390,7 @@ export interface AccessPolicyRequire {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessPolicyRequireExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessPolicyRequireGithub[];
     groups?: string[];
@@ -374,6 +405,11 @@ export interface AccessPolicyRequire {
 export interface AccessPolicyRequireAzure {
     identityProviderId?: string;
     ids?: string[];
+}
+
+export interface AccessPolicyRequireExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
 }
 
 export interface AccessPolicyRequireGithub {
@@ -1655,6 +1691,10 @@ export interface RulesetRule {
 
 export interface RulesetRuleActionParameters {
     /**
+     * List of cookie values to include as part of custom fields logging.
+     */
+    cookieFields?: string[];
+    /**
      * List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
      */
     headers?: outputs.RulesetRuleActionParametersHeader[];
@@ -1684,6 +1724,14 @@ export interface RulesetRuleActionParameters {
      * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
      */
     products?: string[];
+    /**
+     * List of request headers to include as part of custom fields logging, in lowercase.
+     */
+    requestFields?: string[];
+    /**
+     * List of response headers to include as part of custom fields logging, in lowercase.
+     */
+    responseFields?: string[];
     /**
      * List of parameters that configure the response given to end users (refer to the nested schema).
      */

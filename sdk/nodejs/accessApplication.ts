@@ -117,9 +117,9 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
     /**
-     * Option to add the `HttpOnly` cookie flag to access tokens.
+     * Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
      */
-    public readonly httpOnlyCookieAttribute!: pulumi.Output<boolean>;
+    public readonly httpOnlyCookieAttribute!: pulumi.Output<boolean | undefined>;
     /**
      * Image URL for the logo shown in the app launcher
      * dashboard.
@@ -274,7 +274,7 @@ export interface AccessApplicationState {
      */
     enableBindingCookie?: pulumi.Input<boolean>;
     /**
-     * Option to add the `HttpOnly` cookie flag to access tokens.
+     * Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
      */
     httpOnlyCookieAttribute?: pulumi.Input<boolean>;
     /**
@@ -363,7 +363,7 @@ export interface AccessApplicationArgs {
      */
     enableBindingCookie?: pulumi.Input<boolean>;
     /**
-     * Option to add the `HttpOnly` cookie flag to access tokens.
+     * Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
      */
     httpOnlyCookieAttribute?: pulumi.Input<boolean>;
     /**

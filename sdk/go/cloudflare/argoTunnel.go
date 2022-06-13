@@ -58,6 +58,8 @@ type ArgoTunnel struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
 	Secret pulumi.StringOutput `pulumi:"secret"`
+	// Token used by a connector to authenticate and run the tunnel.
+	TunnelToken pulumi.StringOutput `pulumi:"tunnelToken"`
 }
 
 // NewArgoTunnel registers a new resource with the given unique name, arguments, and options.
@@ -106,6 +108,8 @@ type argoTunnelState struct {
 	Name *string `pulumi:"name"`
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
 	Secret *string `pulumi:"secret"`
+	// Token used by a connector to authenticate and run the tunnel.
+	TunnelToken *string `pulumi:"tunnelToken"`
 }
 
 type ArgoTunnelState struct {
@@ -117,6 +121,8 @@ type ArgoTunnelState struct {
 	Name pulumi.StringPtrInput
 	// 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
 	Secret pulumi.StringPtrInput
+	// Token used by a connector to authenticate and run the tunnel.
+	TunnelToken pulumi.StringPtrInput
 }
 
 func (ArgoTunnelState) ElementType() reflect.Type {
@@ -247,6 +253,11 @@ func (o ArgoTunnelOutput) Name() pulumi.StringOutput {
 // 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password.
 func (o ArgoTunnelOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArgoTunnel) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
+}
+
+// Token used by a connector to authenticate and run the tunnel.
+func (o ArgoTunnelOutput) TunnelToken() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArgoTunnel) pulumi.StringOutput { return v.TunnelToken }).(pulumi.StringOutput)
 }
 
 type ArgoTunnelArrayOutput struct{ *pulumi.OutputState }

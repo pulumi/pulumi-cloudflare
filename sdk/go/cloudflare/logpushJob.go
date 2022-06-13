@@ -55,6 +55,7 @@ import (
 // 			Dataset:            pulumi.String("http_requests"),
 // 			DestinationConf:    pulumi.String("s3://my-bucket-path?region=us-west-2"),
 // 			Enabled:            pulumi.Bool(true),
+// 			Frequency:          pulumi.String("high"),
 // 			LogpullOptions:     pulumi.String("fields=RayID,ClientIP,EdgeStartTimestamp&timestamps=rfc3339"),
 // 			Name:               pulumi.String("My-logpush-job"),
 // 			OwnershipChallenge: pulumi.String("0000000000000"),
@@ -94,6 +95,8 @@ type LogpushJob struct {
 	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
 	// Whether to enable the job.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -150,6 +153,8 @@ type logpushJobState struct {
 	DestinationConf *string `pulumi:"destinationConf"`
 	// Whether to enable the job.
 	Enabled *bool `pulumi:"enabled"`
+	// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+	Frequency *string `pulumi:"frequency"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -172,6 +177,8 @@ type LogpushJobState struct {
 	DestinationConf pulumi.StringPtrInput
 	// Whether to enable the job.
 	Enabled pulumi.BoolPtrInput
+	// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+	Frequency pulumi.StringPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -198,6 +205,8 @@ type logpushJobArgs struct {
 	DestinationConf string `pulumi:"destinationConf"`
 	// Whether to enable the job.
 	Enabled *bool `pulumi:"enabled"`
+	// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+	Frequency *string `pulumi:"frequency"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -221,6 +230,8 @@ type LogpushJobArgs struct {
 	DestinationConf pulumi.StringInput
 	// Whether to enable the job.
 	Enabled pulumi.BoolPtrInput
+	// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+	Frequency pulumi.StringPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
 	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
@@ -339,6 +350,11 @@ func (o LogpushJobOutput) DestinationConf() pulumi.StringOutput {
 // Whether to enable the job.
 func (o LogpushJobOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// `"high"` or `"low"`. A higher frequency will result in logs being pushed on faster with smaller files. `"low"` frequency will push logs less often with larger files.
+func (o LogpushJobOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
 // Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).

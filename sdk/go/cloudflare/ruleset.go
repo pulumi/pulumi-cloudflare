@@ -234,6 +234,41 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		_, err = cloudflare.NewRuleset(ctx, "customFieldsLoggingExample", &cloudflare.RulesetArgs{
+// 			Description: pulumi.String("add custom fields to logging"),
+// 			Kind:        pulumi.String("zone"),
+// 			Name:        pulumi.String("log custom fields"),
+// 			Phase:       pulumi.String("http_log_custom_fields"),
+// 			Rules: RulesetRuleArray{
+// 				&RulesetRuleArgs{
+// 					Action: pulumi.String("log_custom_field"),
+// 					ActionParameters: &RulesetRuleActionParametersArgs{
+// 						CookieFields: pulumi.StringArray{
+// 							pulumi.String("__ga"),
+// 							pulumi.String("accountNumber"),
+// 							pulumi.String("__cfruid"),
+// 						},
+// 						RequestFields: pulumi.StringArray{
+// 							pulumi.String("content-type"),
+// 							pulumi.String("x-forwarded-for"),
+// 							pulumi.String("host"),
+// 						},
+// 						ResponseFields: pulumi.StringArray{
+// 							pulumi.String("server"),
+// 							pulumi.String("content-type"),
+// 							pulumi.String("allow"),
+// 						},
+// 					},
+// 					Description: pulumi.String("log custom fields rule"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Expression:  pulumi.String("true"),
+// 				},
+// 			},
+// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		return nil
 // 	})
 // }

@@ -19,6 +19,7 @@ class WaitingRoomArgs:
                  total_active_users: pulumi.Input[int],
                  zone_id: pulumi.Input[str],
                  custom_page_html: Optional[pulumi.Input[str]] = None,
+                 default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  json_response_enabled: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +35,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
         :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
         :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page (refer to the nested schema).
         :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
@@ -49,6 +51,8 @@ class WaitingRoomArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
+        if default_template_language is not None:
+            pulumi.set(__self__, "default_template_language", default_template_language)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
@@ -135,6 +139,18 @@ class WaitingRoomArgs:
     @custom_page_html.setter
     def custom_page_html(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_page_html", value)
+
+    @property
+    @pulumi.getter(name="defaultTemplateLanguage")
+    def default_template_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language to use for the default waiting room page (refer to the nested schema).
+        """
+        return pulumi.get(self, "default_template_language")
+
+    @default_template_language.setter
+    def default_template_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_template_language", value)
 
     @property
     @pulumi.getter
@@ -225,6 +241,7 @@ class WaitingRoomArgs:
 class _WaitingRoomState:
     def __init__(__self__, *,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
+                 default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -240,6 +257,7 @@ class _WaitingRoomState:
         """
         Input properties used for looking up and filtering WaitingRoom resources.
         :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page (refer to the nested schema).
         :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
@@ -255,6 +273,8 @@ class _WaitingRoomState:
         """
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
+        if default_template_language is not None:
+            pulumi.set(__self__, "default_template_language", default_template_language)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
@@ -291,6 +311,18 @@ class _WaitingRoomState:
     @custom_page_html.setter
     def custom_page_html(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_page_html", value)
+
+    @property
+    @pulumi.getter(name="defaultTemplateLanguage")
+    def default_template_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language to use for the default waiting room page (refer to the nested schema).
+        """
+        return pulumi.get(self, "default_template_language")
+
+    @default_template_language.setter
+    def default_template_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_template_language", value)
 
     @property
     @pulumi.getter
@@ -443,6 +475,7 @@ class WaitingRoom(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
+                 default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -487,6 +520,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page (refer to the nested schema).
         :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
@@ -550,6 +584,7 @@ class WaitingRoom(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
+                 default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -575,6 +610,7 @@ class WaitingRoom(pulumi.CustomResource):
             __props__ = WaitingRoomArgs.__new__(WaitingRoomArgs)
 
             __props__.__dict__["custom_page_html"] = custom_page_html
+            __props__.__dict__["default_template_language"] = default_template_language
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_session_renewal"] = disable_session_renewal
             if host is None and not opts.urn:
@@ -608,6 +644,7 @@ class WaitingRoom(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_page_html: Optional[pulumi.Input[str]] = None,
+            default_template_language: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
@@ -628,6 +665,7 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page (refer to the nested schema).
         :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
         :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
@@ -646,6 +684,7 @@ class WaitingRoom(pulumi.CustomResource):
         __props__ = _WaitingRoomState.__new__(_WaitingRoomState)
 
         __props__.__dict__["custom_page_html"] = custom_page_html
+        __props__.__dict__["default_template_language"] = default_template_language
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_session_renewal"] = disable_session_renewal
         __props__.__dict__["host"] = host
@@ -667,6 +706,14 @@ class WaitingRoom(pulumi.CustomResource):
         This a templated html file that will be rendered at the edge.
         """
         return pulumi.get(self, "custom_page_html")
+
+    @property
+    @pulumi.getter(name="defaultTemplateLanguage")
+    def default_template_language(self) -> pulumi.Output[Optional[str]]:
+        """
+        The language to use for the default waiting room page (refer to the nested schema).
+        """
+        return pulumi.get(self, "default_template_language")
 
     @property
     @pulumi.getter

@@ -55,6 +55,7 @@ export interface AccessGroupExclude {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupExcludeExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -69,6 +70,11 @@ export interface AccessGroupExclude {
 export interface AccessGroupExcludeAzure {
     identityProviderId?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupExcludeExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessGroupExcludeGithub {
@@ -109,6 +115,7 @@ export interface AccessGroupInclude {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupIncludeExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -123,6 +130,11 @@ export interface AccessGroupInclude {
 export interface AccessGroupIncludeAzure {
     identityProviderId?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupIncludeExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessGroupIncludeGithub {
@@ -163,6 +175,7 @@ export interface AccessGroupRequire {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupRequireExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -177,6 +190,11 @@ export interface AccessGroupRequire {
 export interface AccessGroupRequireAzure {
     identityProviderId?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupRequireExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequireGithub {
@@ -252,6 +270,7 @@ export interface AccessPolicyExclude {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyExcludeExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -266,6 +285,11 @@ export interface AccessPolicyExclude {
 export interface AccessPolicyExcludeAzure {
     identityProviderId?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyExcludeExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyExcludeGithub {
@@ -306,6 +330,7 @@ export interface AccessPolicyInclude {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyIncludeExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -320,6 +345,11 @@ export interface AccessPolicyInclude {
 export interface AccessPolicyIncludeAzure {
     identityProviderId?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyIncludeExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyIncludeGithub {
@@ -360,6 +390,7 @@ export interface AccessPolicyRequire {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyRequireExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -374,6 +405,11 @@ export interface AccessPolicyRequire {
 export interface AccessPolicyRequireAzure {
     identityProviderId?: pulumi.Input<string>;
     ids?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyRequireExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequireGithub {
@@ -655,17 +691,6 @@ export interface FallbackDomainDomain {
     suffix?: pulumi.Input<string>;
 }
 
-export interface GetWafGroupsFilterArgs {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
-    mode?: pulumi.Input<string>;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
-    name?: pulumi.Input<string>;
-}
-
 export interface GetWafGroupsFilter {
     /**
      * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
@@ -675,6 +700,17 @@ export interface GetWafGroupsFilter {
      * A regular expression matching the name of the WAF Rule Groups to lookup.
      */
     name?: string;
+}
+
+export interface GetWafGroupsFilterArgs {
+    /**
+     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * A regular expression matching the name of the WAF Rule Groups to lookup.
+     */
+    name?: pulumi.Input<string>;
 }
 
 export interface GetWafPackagesFilter {
@@ -715,21 +751,6 @@ export interface GetWafPackagesFilterArgs {
     sensitivity?: pulumi.Input<string>;
 }
 
-export interface GetWafRulesFilterArgs {
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
-    groupId?: pulumi.Input<string>;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
-    mode?: pulumi.Input<string>;
-}
-
 export interface GetWafRulesFilter {
     /**
      * A regular expression matching the description of the WAF Rules to lookup.
@@ -745,38 +766,19 @@ export interface GetWafRulesFilter {
     mode?: string;
 }
 
-export interface GetZonesFilterArgs {
+export interface GetWafRulesFilterArgs {
     /**
-     * Only search for zones in this account.
+     * A regular expression matching the description of the WAF Rules to lookup.
      */
-    accountId?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
+     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
      */
-    lookupType?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string>;
     /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
+     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
      */
-    match?: pulumi.Input<string>;
-    /**
-     * A string value to search for.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
-     */
-    paused?: pulumi.Input<boolean>;
-    /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
-     */
-    status?: pulumi.Input<string>;
+    mode?: pulumi.Input<string>;
 }
 
 export interface GetZonesFilter {
@@ -811,6 +813,40 @@ export interface GetZonesFilter {
      * `"read only"`.
      */
     status?: string;
+}
+
+export interface GetZonesFilterArgs {
+    /**
+     * Only search for zones in this account.
+     */
+    accountId?: pulumi.Input<string>;
+    /**
+     * The type of search to perform for the `name` value
+     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
+     * to `"exact"`.
+     */
+    lookupType?: pulumi.Input<string>;
+    /**
+     * A RE2 compatible regular expression to filter the
+     * results. This is performed client side whereas the `name` and `lookupType`
+     * are performed on the Cloudflare server side.
+     */
+    match?: pulumi.Input<string>;
+    /**
+     * A string value to search for.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Paused status of the zone to lookup. Valid values are
+     * `true` or `false`.
+     */
+    paused?: pulumi.Input<boolean>;
+    /**
+     * Status of the zone to lookup. Valid values: `"active"`,
+     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
+     * `"read only"`.
+     */
+    status?: pulumi.Input<string>;
 }
 
 export interface HealthcheckHeader {
@@ -1552,6 +1588,10 @@ export interface RulesetRule {
 
 export interface RulesetRuleActionParameters {
     /**
+     * List of cookie values to include as part of custom fields logging.
+     */
+    cookieFields?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
      */
     headers?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
@@ -1581,6 +1621,14 @@ export interface RulesetRuleActionParameters {
      * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of request headers to include as part of custom fields logging, in lowercase.
+     */
+    requestFields?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of response headers to include as part of custom fields logging, in lowercase.
+     */
+    responseFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * List of parameters that configure the response given to end users (refer to the nested schema).
      */

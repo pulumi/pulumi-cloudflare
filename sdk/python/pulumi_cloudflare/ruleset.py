@@ -473,6 +473,36 @@ class Ruleset(pulumi.CustomResource):
                 expression="(http.request.uri.path matches \"^/api/\")",
             )],
             zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # custom fields logging
+        custom_fields_logging_example = cloudflare.Ruleset("customFieldsLoggingExample",
+            description="add custom fields to logging",
+            kind="zone",
+            name="log custom fields",
+            phase="http_log_custom_fields",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="log_custom_field",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    cookie_fields=[
+                        "__ga",
+                        "accountNumber",
+                        "__cfruid",
+                    ],
+                    request_fields=[
+                        "content-type",
+                        "x-forwarded-for",
+                        "host",
+                    ],
+                    response_fields=[
+                        "server",
+                        "content-type",
+                        "allow",
+                    ],
+                ),
+                description="log custom fields rule",
+                enabled=True,
+                expression="true",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
         ```
 
         ## Import
@@ -672,6 +702,36 @@ class Ruleset(pulumi.CustomResource):
                 description="change origin to some.host",
                 enabled=True,
                 expression="(http.request.uri.path matches \"^/api/\")",
+            )],
+            zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
+        # custom fields logging
+        custom_fields_logging_example = cloudflare.Ruleset("customFieldsLoggingExample",
+            description="add custom fields to logging",
+            kind="zone",
+            name="log custom fields",
+            phase="http_log_custom_fields",
+            rules=[cloudflare.RulesetRuleArgs(
+                action="log_custom_field",
+                action_parameters=cloudflare.RulesetRuleActionParametersArgs(
+                    cookie_fields=[
+                        "__ga",
+                        "accountNumber",
+                        "__cfruid",
+                    ],
+                    request_fields=[
+                        "content-type",
+                        "x-forwarded-for",
+                        "host",
+                    ],
+                    response_fields=[
+                        "server",
+                        "content-type",
+                        "allow",
+                    ],
+                ),
+                description="log custom fields rule",
+                enabled=True,
+                expression="true",
             )],
             zone_id="cb029e245cfdd66dc8d2e570d5dd3322")
         ```

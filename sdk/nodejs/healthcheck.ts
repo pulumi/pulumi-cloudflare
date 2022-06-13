@@ -79,6 +79,16 @@ import * as utilities from "./utilities";
  *     consecutiveSuccesses: 2,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Healthchecks can be imported using a composite ID formed of zone ID and healthcheck ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/healthcheck:Healthcheck example 9a7806061c88ada191ed06f989cc3dac/699d98642c564d2e855e9661899b7252
+ * ```
+ *
+ *  where* `9a7806061c88ada191ed06f989cc3dac` - the zone ID * `699d98642c564d2e855e9661899b7252` - healthcheck ID as returned by [API](https://api.cloudflare.com/#health-checks-list-health-checks)
  */
 export class Healthcheck extends pulumi.CustomResource {
     /**

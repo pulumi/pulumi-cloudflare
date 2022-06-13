@@ -12,18 +12,21 @@ __all__ = [
     'AccessApplicationCorsHeaderArgs',
     'AccessGroupExcludeArgs',
     'AccessGroupExcludeAzureArgs',
+    'AccessGroupExcludeExternalEvaluationArgs',
     'AccessGroupExcludeGithubArgs',
     'AccessGroupExcludeGsuiteArgs',
     'AccessGroupExcludeOktaArgs',
     'AccessGroupExcludeSamlArgs',
     'AccessGroupIncludeArgs',
     'AccessGroupIncludeAzureArgs',
+    'AccessGroupIncludeExternalEvaluationArgs',
     'AccessGroupIncludeGithubArgs',
     'AccessGroupIncludeGsuiteArgs',
     'AccessGroupIncludeOktaArgs',
     'AccessGroupIncludeSamlArgs',
     'AccessGroupRequireArgs',
     'AccessGroupRequireAzureArgs',
+    'AccessGroupRequireExternalEvaluationArgs',
     'AccessGroupRequireGithubArgs',
     'AccessGroupRequireGsuiteArgs',
     'AccessGroupRequireOktaArgs',
@@ -32,18 +35,21 @@ __all__ = [
     'AccessPolicyApprovalGroupArgs',
     'AccessPolicyExcludeArgs',
     'AccessPolicyExcludeAzureArgs',
+    'AccessPolicyExcludeExternalEvaluationArgs',
     'AccessPolicyExcludeGithubArgs',
     'AccessPolicyExcludeGsuiteArgs',
     'AccessPolicyExcludeOktaArgs',
     'AccessPolicyExcludeSamlArgs',
     'AccessPolicyIncludeArgs',
     'AccessPolicyIncludeAzureArgs',
+    'AccessPolicyIncludeExternalEvaluationArgs',
     'AccessPolicyIncludeGithubArgs',
     'AccessPolicyIncludeGsuiteArgs',
     'AccessPolicyIncludeOktaArgs',
     'AccessPolicyIncludeSamlArgs',
     'AccessPolicyRequireArgs',
     'AccessPolicyRequireAzureArgs',
+    'AccessPolicyRequireExternalEvaluationArgs',
     'AccessPolicyRequireGithubArgs',
     'AccessPolicyRequireGsuiteArgs',
     'AccessPolicyRequireOktaArgs',
@@ -310,6 +316,7 @@ class AccessGroupExcludeArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessGroupExcludeExternalEvaluationArgs']] = None,
                  geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -337,6 +344,8 @@ class AccessGroupExcludeArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -436,6 +445,15 @@ class AccessGroupExcludeArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupExcludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessGroupExcludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
 
     @property
     @pulumi.getter
@@ -546,6 +564,35 @@ class AccessGroupExcludeAzureArgs:
     @ids.setter
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
+
+
+@pulumi.input_type
+class AccessGroupExcludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: Optional[pulumi.Input[str]] = None,
+                 keys_url: Optional[pulumi.Input[str]] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keys_url", value)
 
 
 @pulumi.input_type
@@ -712,6 +759,7 @@ class AccessGroupIncludeArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessGroupIncludeExternalEvaluationArgs']] = None,
                  geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -739,6 +787,8 @@ class AccessGroupIncludeArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -838,6 +888,15 @@ class AccessGroupIncludeArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupIncludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessGroupIncludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
 
     @property
     @pulumi.getter
@@ -948,6 +1007,35 @@ class AccessGroupIncludeAzureArgs:
     @ids.setter
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
+
+
+@pulumi.input_type
+class AccessGroupIncludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: Optional[pulumi.Input[str]] = None,
+                 keys_url: Optional[pulumi.Input[str]] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keys_url", value)
 
 
 @pulumi.input_type
@@ -1114,6 +1202,7 @@ class AccessGroupRequireArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessGroupRequireExternalEvaluationArgs']] = None,
                  geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1141,6 +1230,8 @@ class AccessGroupRequireArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -1240,6 +1331,15 @@ class AccessGroupRequireArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessGroupRequireExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessGroupRequireExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
 
     @property
     @pulumi.getter
@@ -1350,6 +1450,35 @@ class AccessGroupRequireAzureArgs:
     @ids.setter
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
+
+
+@pulumi.input_type
+class AccessGroupRequireExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: Optional[pulumi.Input[str]] = None,
+                 keys_url: Optional[pulumi.Input[str]] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keys_url", value)
 
 
 @pulumi.input_type
@@ -1811,6 +1940,7 @@ class AccessPolicyExcludeArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs']] = None,
                  geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1838,6 +1968,8 @@ class AccessPolicyExcludeArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -1937,6 +2069,15 @@ class AccessPolicyExcludeArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
 
     @property
     @pulumi.getter
@@ -2047,6 +2188,35 @@ class AccessPolicyExcludeAzureArgs:
     @ids.setter
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
+
+
+@pulumi.input_type
+class AccessPolicyExcludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: Optional[pulumi.Input[str]] = None,
+                 keys_url: Optional[pulumi.Input[str]] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keys_url", value)
 
 
 @pulumi.input_type
@@ -2213,6 +2383,7 @@ class AccessPolicyIncludeArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs']] = None,
                  geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2240,6 +2411,8 @@ class AccessPolicyIncludeArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -2339,6 +2512,15 @@ class AccessPolicyIncludeArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
 
     @property
     @pulumi.getter
@@ -2449,6 +2631,35 @@ class AccessPolicyIncludeAzureArgs:
     @ids.setter
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
+
+
+@pulumi.input_type
+class AccessPolicyIncludeExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: Optional[pulumi.Input[str]] = None,
+                 keys_url: Optional[pulumi.Input[str]] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keys_url", value)
 
 
 @pulumi.input_type
@@ -2615,6 +2826,7 @@ class AccessPolicyRequireArgs:
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
+                 external_evaluation: Optional[pulumi.Input['AccessPolicyRequireExternalEvaluationArgs']] = None,
                  geos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  githubs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireGithubArgs']]]] = None,
                  groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2642,6 +2854,8 @@ class AccessPolicyRequireArgs:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
             pulumi.set(__self__, "everyone", everyone)
+        if external_evaluation is not None:
+            pulumi.set(__self__, "external_evaluation", external_evaluation)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
         if githubs is not None:
@@ -2741,6 +2955,15 @@ class AccessPolicyRequireArgs:
     @everyone.setter
     def everyone(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "everyone", value)
+
+    @property
+    @pulumi.getter(name="externalEvaluation")
+    def external_evaluation(self) -> Optional[pulumi.Input['AccessPolicyRequireExternalEvaluationArgs']]:
+        return pulumi.get(self, "external_evaluation")
+
+    @external_evaluation.setter
+    def external_evaluation(self, value: Optional[pulumi.Input['AccessPolicyRequireExternalEvaluationArgs']]):
+        pulumi.set(self, "external_evaluation", value)
 
     @property
     @pulumi.getter
@@ -2851,6 +3074,35 @@ class AccessPolicyRequireAzureArgs:
     @ids.setter
     def ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ids", value)
+
+
+@pulumi.input_type
+class AccessPolicyRequireExternalEvaluationArgs:
+    def __init__(__self__, *,
+                 evaluate_url: Optional[pulumi.Input[str]] = None,
+                 keys_url: Optional[pulumi.Input[str]] = None):
+        if evaluate_url is not None:
+            pulumi.set(__self__, "evaluate_url", evaluate_url)
+        if keys_url is not None:
+            pulumi.set(__self__, "keys_url", keys_url)
+
+    @property
+    @pulumi.getter(name="evaluateUrl")
+    def evaluate_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "evaluate_url")
+
+    @evaluate_url.setter
+    def evaluate_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluate_url", value)
+
+    @property
+    @pulumi.getter(name="keysUrl")
+    def keys_url(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "keys_url")
+
+    @keys_url.setter
+    def keys_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "keys_url", value)
 
 
 @pulumi.input_type
@@ -7145,6 +7397,7 @@ class RulesetRuleArgs:
 @pulumi.input_type
 class RulesetRuleActionParametersArgs:
     def __init__(__self__, *,
+                 cookie_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersHeaderArgs']]]] = None,
                  host_header: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -7154,6 +7407,8 @@ class RulesetRuleActionParametersArgs:
                  overrides: Optional[pulumi.Input['RulesetRuleActionParametersOverridesArgs']] = None,
                  phases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 response_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  responses: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersResponseArgs']]]] = None,
                  rules: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ruleset: Optional[pulumi.Input[str]] = None,
@@ -7161,6 +7416,7 @@ class RulesetRuleActionParametersArgs:
                  uri: Optional[pulumi.Input['RulesetRuleActionParametersUriArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cookie_fields: List of cookie values to include as part of custom fields logging.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersHeaderArgs']]] headers: List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
         :param pulumi.Input[str] host_header: Host Header that request origin receives.
         :param pulumi.Input[str] id: Rule ID to apply the override to.
@@ -7168,12 +7424,16 @@ class RulesetRuleActionParametersArgs:
         :param pulumi.Input['RulesetRuleActionParametersOriginArgs'] origin: List of properties to change request origin (refer to the nested schema).
         :param pulumi.Input['RulesetRuleActionParametersOverridesArgs'] overrides: List of override configurations to apply to the ruleset (refer to the nested schema).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] products: Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] request_fields: List of request headers to include as part of custom fields logging, in lowercase.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] response_fields: List of response headers to include as part of custom fields logging, in lowercase.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersResponseArgs']]] responses: List of parameters that configure the response given to end users (refer to the nested schema).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rules: List of rule-based overrides (refer to the nested schema).
         :param pulumi.Input[str] ruleset: Which ruleset ID to target.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rulesets: List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
         :param pulumi.Input['RulesetRuleActionParametersUriArgs'] uri: List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
         """
+        if cookie_fields is not None:
+            pulumi.set(__self__, "cookie_fields", cookie_fields)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
         if host_header is not None:
@@ -7192,6 +7452,10 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "phases", phases)
         if products is not None:
             pulumi.set(__self__, "products", products)
+        if request_fields is not None:
+            pulumi.set(__self__, "request_fields", request_fields)
+        if response_fields is not None:
+            pulumi.set(__self__, "response_fields", response_fields)
         if responses is not None:
             pulumi.set(__self__, "responses", responses)
         if rules is not None:
@@ -7204,6 +7468,18 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "uri", uri)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="cookieFields")
+    def cookie_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of cookie values to include as part of custom fields logging.
+        """
+        return pulumi.get(self, "cookie_fields")
+
+    @cookie_fields.setter
+    def cookie_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "cookie_fields", value)
 
     @property
     @pulumi.getter
@@ -7306,6 +7582,30 @@ class RulesetRuleActionParametersArgs:
     @products.setter
     def products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "products", value)
+
+    @property
+    @pulumi.getter(name="requestFields")
+    def request_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of request headers to include as part of custom fields logging, in lowercase.
+        """
+        return pulumi.get(self, "request_fields")
+
+    @request_fields.setter
+    def request_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "request_fields", value)
+
+    @property
+    @pulumi.getter(name="responseFields")
+    def response_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of response headers to include as part of custom fields logging, in lowercase.
+        """
+        return pulumi.get(self, "response_fields")
+
+    @response_fields.setter
+    def response_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "response_fields", value)
 
     @property
     @pulumi.getter
