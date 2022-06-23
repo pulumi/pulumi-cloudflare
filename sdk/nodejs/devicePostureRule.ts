@@ -8,28 +8,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const corporateDevicesPostureRule = new cloudflare.DevicePostureRule("corporateDevicesPostureRule", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     name: "Corporate devices posture rule",
- *     type: "serial_number",
- *     description: "Device posture rule for corporate devices.",
- *     schedule: "24h",
- *     expiration: "24h",
- *     matches: [{
- *         platform: "mac",
- *     }],
- *     inputs: [{
- *         id: cloudflare_teams_list.corporate_devices.id,
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Device posture rules can be imported using a composite ID formed of account ID and device posture rule ID.

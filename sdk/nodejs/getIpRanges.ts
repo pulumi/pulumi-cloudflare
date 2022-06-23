@@ -6,24 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as gcp from "@pulumi/gcp";
- *
- * const cloudflare = cloudflare.getIpRanges({});
- * const allowCloudflareIngress = new gcp.compute.Firewall("allowCloudflareIngress", {
- *     network: "default",
- *     sourceRanges: cloudflare.then(cloudflare => cloudflare.ipv4CidrBlocks),
- *     allows: [{
- *         ports: "443",
- *         protocol: "tcp",
- *     }],
- * });
- * ```
  */
 export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> {
     if (!opts) {

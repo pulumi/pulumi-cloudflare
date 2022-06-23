@@ -7,20 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Access Mutual TLS Certificate resource. Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server and can be used with Access to only allows requests from devices with a corresponding client certificate.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const myCert = new cloudflare.AccessMutualTlsCertificate("myCert", {
- *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     name: "My Root Cert",
- *     certificate: _var.ca_pem,
- *     associatedHostnames: ["staging.example.com"],
- * });
- * ```
- *
  * ## Import
  *
  * Access Mutual TLS Certificate can be imported using a composite ID composed of the account or zone and the mutual TLS certificate ID in the form of`account/ACCOUNT_ID/MUTUAL_TLS_CERTIFICATE_ID` or `zone/ZONE_ID/MUTUAL_TLS_CERTIFICATE_ID`.

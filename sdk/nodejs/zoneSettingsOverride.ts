@@ -7,34 +7,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource which customizes Cloudflare zone settings. Note that after destroying this resource Zone Settings will be reset to their initial values.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const test = new cloudflare.ZoneSettingsOverride("test", {
- *     zoneId: _var.cloudflare_zone_id,
- *     settings: {
- *         brotli: "on",
- *         challengeTtl: 2700,
- *         securityLevel: "high",
- *         opportunisticEncryption: "on",
- *         automaticHttpsRewrites: "on",
- *         mirage: "on",
- *         waf: "on",
- *         minify: {
- *             css: "on",
- *             js: "off",
- *             html: "off",
- *         },
- *         securityHeader: {
- *             enabled: true,
- *         },
- *     },
- * });
- * ```
  */
 export class ZoneSettingsOverride extends pulumi.CustomResource {
     /**

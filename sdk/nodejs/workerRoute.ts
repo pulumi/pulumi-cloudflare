@@ -7,22 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `accountId` provider argument.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const myScript = new cloudflare.WorkerScript("myScript", {});
- * // see "cloudflare_worker_script" documentation ...
- * // Runs the specified worker script for all URLs that match `example.com/*`
- * const myRoute = new cloudflare.WorkerRoute("myRoute", {
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- *     pattern: "example.com/*",
- *     scriptName: myScript.name,
- * });
- * ```
- *
  * ## Import
  *
  * Records can be imported using a composite ID formed of zone ID and route ID, e.g.

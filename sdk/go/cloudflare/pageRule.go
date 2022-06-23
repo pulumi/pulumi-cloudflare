@@ -29,7 +29,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 // 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
-// 			Target:   pulumi.String(fmt.Sprintf("%v%v%v", "sub.", _var.Cloudflare_zone, "/page")),
+// 			Target:   pulumi.String(fmt.Sprintf("sub.%v/page", _var.Cloudflare_zone)),
 // 			Priority: pulumi.Int(1),
 // 			Actions: &PageRuleActionsArgs{
 // 				Ssl:              pulumi.String("flexible"),

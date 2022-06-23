@@ -10,26 +10,6 @@ import * as utilities from "./utilities";
  * schedule. Worker Cron Triggers are ideal for running periodic jobs for
  * maintenance or calling third-party APIs to collect up-to-date data.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * from "fs";
- *
- * const exampleScript = new cloudflare.WorkerScript("exampleScript", {
- *     name: "example-script",
- *     content: fs.readFileSync("path/to/my.js"),
- * });
- * const exampleTrigger = new cloudflare.WorkerCronTrigger("exampleTrigger", {
- *     scriptName: exampleScript.name,
- *     schedules: [
- *         "*&#47;5 * * * *",
- *         "10 7 * * mon-fri",
- *     ],
- * });
- * ```
- *
  * ## Import
  *
  * Worker Cron Triggers can be imported using the script name of the Worker they are targeting.

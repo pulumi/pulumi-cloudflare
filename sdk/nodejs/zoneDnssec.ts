@@ -7,16 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Zone DNSSEC resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleZone = new cloudflare.Zone("exampleZone", {zone: "example.com"});
- * const exampleZoneDnssec = new cloudflare.ZoneDnssec("exampleZoneDnssec", {zoneId: exampleZone.id});
- * ```
- *
  * ## Import
  *
  * Zone DNSSEC resource can be imported using a zone ID, e.g.

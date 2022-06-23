@@ -33,7 +33,7 @@ import (
 // 			Period:    pulumi.Int(2),
 // 			Match: &RateLimitMatchArgs{
 // 				Request: &RateLimitMatchRequestArgs{
-// 					UrlPattern: pulumi.String(fmt.Sprintf("%v%v", _var.Cloudflare_zone, "/*")),
+// 					UrlPattern: pulumi.String(fmt.Sprintf("%v/*", _var.Cloudflare_zone)),
 // 					Schemes: pulumi.StringArray{
 // 						pulumi.String("HTTP"),
 // 						pulumi.String("HTTPS"),
@@ -84,8 +84,8 @@ import (
 // 			Disabled:    pulumi.Bool(false),
 // 			Description: pulumi.String("example rate limit for a zone"),
 // 			BypassUrlPatterns: pulumi.StringArray{
-// 				pulumi.String(fmt.Sprintf("%v%v", _var.Cloudflare_zone, "/bypass1")),
-// 				pulumi.String(fmt.Sprintf("%v%v", _var.Cloudflare_zone, "/bypass2")),
+// 				pulumi.String(fmt.Sprintf("%v/bypass1", _var.Cloudflare_zone)),
+// 				pulumi.String(fmt.Sprintf("%v/bypass2", _var.Cloudflare_zone)),
 // 			},
 // 		})
 // 		if err != nil {

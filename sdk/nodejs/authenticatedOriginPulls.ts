@@ -7,46 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Authenticated Origin Pulls resource. An `cloudflare.AuthenticatedOriginPulls` resource is required to use Per-Zone or Per-Hostname Authenticated Origin Pulls.
  *
- * ## Example Usage
- *
- * The arguments that you provide determine which form of Authenticated Origin Pulls to use:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Authenticated Origin Pulls
- * const myAop = new cloudflare.AuthenticatedOriginPulls("myAop", {
- *     zoneId: _var.cloudflare_zone_id,
- *     enabled: true,
- * });
- * // Per-Zone Authenticated Origin Pulls
- * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", {
- *     zoneId: _var.cloudflare_zone_id,
- *     certificate: "-----INSERT CERTIFICATE-----",
- *     privateKey: "-----INSERT PRIVATE KEY-----",
- *     type: "per-zone",
- * });
- * const myPerZoneAop = new cloudflare.AuthenticatedOriginPulls("myPerZoneAop", {
- *     zoneId: _var.cloudflare_zone_id,
- *     authenticatedOriginPullsCertificate: myPerZoneAopCert.id,
- *     enabled: true,
- * });
- * // Per-Hostname Authenticated Origin Pulls
- * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", {
- *     zoneId: _var.cloudflare_zone_id,
- *     certificate: "-----INSERT CERTIFICATE-----",
- *     privateKey: "-----INSERT PRIVATE KEY-----",
- *     type: "per-hostname",
- * });
- * const myPerHostnameAop = new cloudflare.AuthenticatedOriginPulls("myPerHostnameAop", {
- *     zoneId: _var.cloudflare_zone_id,
- *     authenticatedOriginPullsCertificate: myPerHostnameAopCert.id,
- *     hostname: "aop.example.com",
- *     enabled: true,
- * });
- * ```
- *
  * ## Import
  *
  * Authenticated Origin Pull configuration can be imported using a composite ID formed of the zone ID, the form of Authenticated Origin Pulls, and the certificate ID, with each section filled or left blank e.g. # Import Authenticated Origin Pull configuration

@@ -8,37 +8,6 @@ import * as utilities from "./utilities";
  * Provides a resource, that manages Cloudflare tunnel routes for Zero Trust. Tunnel
  * routes are used to direct IP traffic through Cloudflare Tunnels.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.TunnelRoute("example", {
- *     accountId: "c4a7362d577a6c3019a474fd6f485821",
- *     comment: "New tunnel route for documentation",
- *     network: "192.0.2.24/32",
- *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const tunnel = new cloudflare.ArgoTunnel("tunnel", {
- *     accountId: "c4a7362d577a6c3019a474fd6f485821",
- *     name: "my_tunnel",
- *     secret: "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
- * });
- * const example = new cloudflare.TunnelRoute("example", {
- *     accountId: "c4a7362d577a6c3019a474fd6f485821",
- *     tunnelId: tunnel.id,
- *     network: "192.0.2.24/32",
- *     comment: "New tunnel route for documentation",
- * });
- * ```
- *
  * ## Import
  *
  * An existing tunnel route can be imported using the account ID and network CIDR.

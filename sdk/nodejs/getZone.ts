@@ -24,26 +24,6 @@ import * as utilities from "./utilities";
  *     zoneId: "0b6d347b01d437a092be84c2edfce72c",
  * }));
  * ```
- * ### Example usage with other resources
- *
- * The example below fetches the zone information for example.com and then is
- * referenced in the `cloudflare.Record` section.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleZone = cloudflare.getZone({
- *     name: "example.com",
- * });
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     zoneId: exampleZone.then(exampleZone => exampleZone.id),
- *     name: "www",
- *     value: "203.0.113.1",
- *     type: "A",
- *     proxied: true,
- * });
- * ```
  */
 export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     args = args || {};

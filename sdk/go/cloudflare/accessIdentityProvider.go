@@ -58,7 +58,7 @@ import (
 // 						pulumi.String("email"),
 // 						pulumi.String("username"),
 // 					},
-// 					IdpPublicCert: pulumi.String(fmt.Sprintf("%v%v", "MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\n", "uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\n")),
+// 					IdpPublicCert: pulumi.String(fmt.Sprintf("MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\n")),
 // 					IssuerUrl:     pulumi.String("jumpcloud"),
 // 					SignRequest:   pulumi.Bool(false),
 // 					SsoTargetUrl:  pulumi.String("https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess"),

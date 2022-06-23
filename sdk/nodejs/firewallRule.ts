@@ -13,25 +13,6 @@ import * as utilities from "./utilities";
  * If you want to configure Custom Firewall rules, you need to use cloudflare_ruleset, because Custom Rules are built upon the
  * [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const wordpressFilter = new cloudflare.Filter("wordpressFilter", {
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- *     description: "Wordpress break-in attempts that are outside of the office",
- *     expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
- * });
- * const wordpressFirewallRule = new cloudflare.FirewallRule("wordpressFirewallRule", {
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- *     description: "Block wordpress break-in attempts",
- *     filterId: wordpressFilter.id,
- *     action: "block",
- * });
- * ```
- *
  * ## Import
  *
  * Firewall Rule can be imported using a composite ID formed of zone ID and rule ID, e.g.

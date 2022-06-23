@@ -10,43 +10,6 @@ import * as utilities from "./utilities";
  * in conjunction with Access Applications to restrict access to a
  * particular resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Allowing access to `test@example.com` email address only
- * const testPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyAccessPolicy", {
- *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- *     name: "staging policy",
- *     precedence: 1,
- *     decision: "allow",
- *     includes: [{
- *         emails: ["test@example.com"],
- *     }],
- *     requires: [{
- *         emails: ["test@example.com"],
- *     }],
- * });
- * // Allowing `test@example.com` to access but only when coming from a
- * // specific IP.
- * const testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", {
- *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
- *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
- *     name: "staging policy",
- *     precedence: 1,
- *     decision: "allow",
- *     includes: [{
- *         emails: ["test@example.com"],
- *     }],
- *     requires: [{
- *         ips: [_var.office_ip],
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * Access Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy

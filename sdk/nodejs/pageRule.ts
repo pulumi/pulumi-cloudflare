@@ -8,29 +8,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare page rule resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Add a page rule to the domain
- * const foobar = new cloudflare.PageRule("foobar", {
- *     zoneId: _var.cloudflare_zone_id,
- *     target: `sub.${_var.cloudflare_zone}/page`,
- *     priority: 1,
- *     actions: {
- *         ssl: "flexible",
- *         emailObfuscation: "on",
- *         minifies: [{
- *             html: "off",
- *             css: "on",
- *             js: "on",
- *         }],
- *     },
- * });
- * ```
- *
  * ## Import
  *
  * Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
