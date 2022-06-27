@@ -31,10 +31,22 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? ClientId { get; set; }
 
         /// <summary>
+        /// The client key for authenticating API calls.
+        /// </summary>
+        [Input("clientKey")]
+        public Input<string>? ClientKey { get; set; }
+
+        /// <summary>
         /// The client secret for authenticating API calls.
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
+        /// The customer identifier for authenticating API calls.
+        /// </summary>
+        [Input("customerId")]
+        public Input<string>? CustomerId { get; set; }
 
         public DevicePostureIntegrationConfigGetArgs()
         {

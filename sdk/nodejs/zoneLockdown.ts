@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
  * ```
  *
- *  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
+ *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
  */
 export class ZoneLockdown extends pulumi.CustomResource {
     /**
@@ -66,7 +66,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
     }
 
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
      */
     public readonly configurations!: pulumi.Output<outputs.ZoneLockdownConfiguration[]>;
     /**
@@ -134,7 +134,7 @@ export class ZoneLockdown extends pulumi.CustomResource {
  */
 export interface ZoneLockdownState {
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
      */
     configurations?: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**
@@ -161,7 +161,7 @@ export interface ZoneLockdownState {
  */
 export interface ZoneLockdownArgs {
     /**
-     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+     * A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
      */
     configurations: pulumi.Input<pulumi.Input<inputs.ZoneLockdownConfiguration>[]>;
     /**

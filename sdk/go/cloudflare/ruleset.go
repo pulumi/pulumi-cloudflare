@@ -11,290 +11,28 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewRuleset(ctx, "magicTransitExample", &cloudflare.RulesetArgs{
-// 			AccountId:   pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Description: pulumi.String("example magic transit ruleset description"),
-// 			Kind:        pulumi.String("root"),
-// 			Name:        pulumi.String("account magic transit"),
-// 			Phase:       pulumi.String("magic_transit"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action:      pulumi.String("allow"),
-// 					Description: pulumi.String("Allow TCP Ephemeral Ports"),
-// 					Expression:  pulumi.String("tcp.dstport in { 32768..65535 }"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRuleset(ctx, "zoneLevelManagedWaf", &cloudflare.RulesetArgs{
-// 			Description: pulumi.String("managed WAF ruleset description"),
-// 			Kind:        pulumi.String("zone"),
-// 			Name:        pulumi.String("managed WAF"),
-// 			Phase:       pulumi.String("http_request_firewall_managed"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action: pulumi.String("execute"),
-// 					ActionParameters: &RulesetRuleActionParametersArgs{
-// 						Id: pulumi.String("efb7b8c949ac4650a09736fc376e9aee"),
-// 					},
-// 					Description: pulumi.String("Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset"),
-// 					Enabled:     pulumi.Bool(true),
-// 					Expression:  pulumi.String("true"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRuleset(ctx, "zoneLevelManagedWafWithCategoryBasedOverrides", &cloudflare.RulesetArgs{
-// 			Description: pulumi.String("managed WAF with tag-based overrides ruleset description"),
-// 			Kind:        pulumi.String("zone"),
-// 			Name:        pulumi.String("managed WAF with tag-based overrides"),
-// 			Phase:       pulumi.String("http_request_firewall_managed"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action: pulumi.String("execute"),
-// 					ActionParameters: &RulesetRuleActionParametersArgs{
-// 						Id: pulumi.String("efb7b8c949ac4650a09736fc376e9aee"),
-// 						Overrides: &RulesetRuleActionParametersOverridesArgs{
-// 							Categories: RulesetRuleActionParametersOverridesCategoryArray{
-// 								&RulesetRuleActionParametersOverridesCategoryArgs{
-// 									Action:   pulumi.String("block"),
-// 									Category: pulumi.String("wordpress"),
-// 									Enabled:  pulumi.Bool(true),
-// 								},
-// 								&RulesetRuleActionParametersOverridesCategoryArgs{
-// 									Action:   pulumi.String("block"),
-// 									Category: pulumi.String("joomla"),
-// 									Enabled:  pulumi.Bool(true),
-// 								},
-// 							},
-// 						},
-// 					},
-// 					Description: pulumi.String("overrides to only enable wordpress rules to block"),
-// 					Enabled:     pulumi.Bool(false),
-// 					Expression:  pulumi.String("true"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRuleset(ctx, "transformUriRulePath", &cloudflare.RulesetArgs{
-// 			Description: pulumi.String("change the URI path to a new static path"),
-// 			Kind:        pulumi.String("zone"),
-// 			Name:        pulumi.String("transform rule for URI path"),
-// 			Phase:       pulumi.String("http_request_transform"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action: pulumi.String("rewrite"),
-// 					ActionParameters: &RulesetRuleActionParametersArgs{
-// 						Uri: &RulesetRuleActionParametersUriArgs{
-// 							Path: &RulesetRuleActionParametersUriPathArgs{
-// 								Value: pulumi.String("/my-new-route"),
-// 							},
-// 						},
-// 					},
-// 					Description: pulumi.String("example URI path transform rule"),
-// 					Enabled:     pulumi.Bool(true),
-// 					Expression:  pulumi.String("(http.host eq \"example.com\" and http.request.uri.path eq \"/old-path\")"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRuleset(ctx, "transformUriRuleQuery", &cloudflare.RulesetArgs{
-// 			Description: pulumi.String("change the URI query to a new static query"),
-// 			Kind:        pulumi.String("zone"),
-// 			Name:        pulumi.String("transform rule for URI query parameter"),
-// 			Phase:       pulumi.String("http_request_transform"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action: pulumi.String("rewrite"),
-// 					ActionParameters: &RulesetRuleActionParametersArgs{
-// 						Uri: &RulesetRuleActionParametersUriArgs{
-// 							Query: &RulesetRuleActionParametersUriQueryArgs{
-// 								Value: pulumi.String("old=new_again"),
-// 							},
-// 						},
-// 					},
-// 					Description: pulumi.String("URI transformation query example"),
-// 					Enabled:     pulumi.Bool(true),
-// 					Expression:  pulumi.String("true"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRuleset(ctx, "transformUriHttpHeaders", &cloudflare.RulesetArgs{
-// 			Description: pulumi.String("modify HTTP headers before reaching origin"),
-// 			Kind:        pulumi.String("zone"),
-// 			Name:        pulumi.String("transform rule for HTTP headers"),
-// 			Phase:       pulumi.String("http_request_late_transform"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action: pulumi.String("rewrite"),
-// 					ActionParameters: &RulesetRuleActionParametersArgs{
-// 						Headers: RulesetRuleActionParametersHeaderArray{
-// 							&RulesetRuleActionParametersHeaderArgs{
-// 								Name:      pulumi.String("example-http-header-1"),
-// 								Operation: pulumi.String("set"),
-// 								Value:     pulumi.String("my-http-header-value-1"),
-// 							},
-// 							&RulesetRuleActionParametersHeaderArgs{
-// 								Expression: pulumi.String("cf.zone.name"),
-// 								Name:       pulumi.String("example-http-header-2"),
-// 								Operation:  pulumi.String("set"),
-// 							},
-// 							&RulesetRuleActionParametersHeaderArgs{
-// 								Name:      pulumi.String("example-http-header-3-to-remove"),
-// 								Operation: pulumi.String("remove"),
-// 							},
-// 						},
-// 					},
-// 					Description: pulumi.String("example request header transform rule"),
-// 					Enabled:     pulumi.Bool(false),
-// 					Expression:  pulumi.String("true"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRuleset(ctx, "rateLimitingExample", &cloudflare.RulesetArgs{
-// 			Description: pulumi.String("apply HTTP rate limiting for a route"),
-// 			Kind:        pulumi.String("zone"),
-// 			Name:        pulumi.String("restrict API requests count"),
-// 			Phase:       pulumi.String("http_ratelimit"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action:      pulumi.String("block"),
-// 					Description: pulumi.String("rate limit for API"),
-// 					Enabled:     pulumi.Bool(true),
-// 					Expression:  pulumi.String("(http.request.uri.path matches \"^/api/\")"),
-// 					Ratelimit: &RulesetRuleRatelimitArgs{
-// 						Characteristics: pulumi.StringArray{
-// 							pulumi.String("cf.colo.id"),
-// 							pulumi.String("ip.src"),
-// 						},
-// 						MitigationTimeout: pulumi.Int(600),
-// 						Period:            pulumi.Int(60),
-// 						RequestsPerPeriod: pulumi.Int(100),
-// 					},
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRuleset(ctx, "httpOriginExample", &cloudflare.RulesetArgs{
-// 			Description: pulumi.String("Change origin for a route"),
-// 			Kind:        pulumi.String("zone"),
-// 			Name:        pulumi.String("Change to some origin"),
-// 			Phase:       pulumi.String("http_request_origin"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action: pulumi.String("route"),
-// 					ActionParameters: &RulesetRuleActionParametersArgs{
-// 						HostHeader: pulumi.String("some.host"),
-// 						Origin: &RulesetRuleActionParametersOriginArgs{
-// 							Host: pulumi.String("some.host"),
-// 							Port: pulumi.Int(80),
-// 						},
-// 					},
-// 					Description: pulumi.String("change origin to some.host"),
-// 					Enabled:     pulumi.Bool(true),
-// 					Expression:  pulumi.String("(http.request.uri.path matches \"^/api/\")"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewRuleset(ctx, "customFieldsLoggingExample", &cloudflare.RulesetArgs{
-// 			Description: pulumi.String("add custom fields to logging"),
-// 			Kind:        pulumi.String("zone"),
-// 			Name:        pulumi.String("log custom fields"),
-// 			Phase:       pulumi.String("http_log_custom_fields"),
-// 			Rules: RulesetRuleArray{
-// 				&RulesetRuleArgs{
-// 					Action: pulumi.String("log_custom_field"),
-// 					ActionParameters: &RulesetRuleActionParametersArgs{
-// 						CookieFields: pulumi.StringArray{
-// 							pulumi.String("__ga"),
-// 							pulumi.String("accountNumber"),
-// 							pulumi.String("__cfruid"),
-// 						},
-// 						RequestFields: pulumi.StringArray{
-// 							pulumi.String("content-type"),
-// 							pulumi.String("x-forwarded-for"),
-// 							pulumi.String("host"),
-// 						},
-// 						ResponseFields: pulumi.StringArray{
-// 							pulumi.String("server"),
-// 							pulumi.String("content-type"),
-// 							pulumi.String("allow"),
-// 						},
-// 					},
-// 					Description: pulumi.String("log custom fields rule"),
-// 					Enabled:     pulumi.Bool(true),
-// 					Expression:  pulumi.String("true"),
-// 				},
-// 			},
-// 			ZoneId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Import
-//
-// Currently, you cannot import rulesets.
 type Ruleset struct {
 	pulumi.CustomResourceState
 
-	// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Brief summary of the ruleset rule and its intended use.
+	// Brief summary of the ruleset and its intended use.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Name of the HTTP request header to target.
+	// Name of the ruleset.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+	// `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+	// `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+	// `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+	// `http_ratelimit`, `http_request_sbfm`
 	Phase pulumi.StringOutput `pulumi:"phase"`
-	// List of rule-based overrides (refer to the nested schema).
+	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayOutput `pulumi:"rules"`
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName pulumi.StringPtrOutput `pulumi:"shareableEntitlementName"`
-	// The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -336,40 +74,48 @@ func GetRuleset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Ruleset resources.
 type rulesetState struct {
-	// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Brief summary of the ruleset rule and its intended use.
+	// Brief summary of the ruleset and its intended use.
 	Description *string `pulumi:"description"`
-	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
 	Kind *string `pulumi:"kind"`
-	// Name of the HTTP request header to target.
+	// Name of the ruleset.
 	Name *string `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+	// `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+	// `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+	// `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+	// `http_ratelimit`, `http_request_sbfm`
 	Phase *string `pulumi:"phase"`
-	// List of rule-based overrides (refer to the nested schema).
+	// List of rules to apply to the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName *string `pulumi:"shareableEntitlementName"`
-	// The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type RulesetState struct {
-	// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Brief summary of the ruleset rule and its intended use.
+	// Brief summary of the ruleset and its intended use.
 	Description pulumi.StringPtrInput
-	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
 	Kind pulumi.StringPtrInput
-	// Name of the HTTP request header to target.
+	// Name of the ruleset.
 	Name pulumi.StringPtrInput
-	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+	// `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+	// `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+	// `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+	// `http_ratelimit`, `http_request_sbfm`
 	Phase pulumi.StringPtrInput
-	// List of rule-based overrides (refer to the nested schema).
+	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayInput
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName pulumi.StringPtrInput
-	// The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -378,41 +124,49 @@ func (RulesetState) ElementType() reflect.Type {
 }
 
 type rulesetArgs struct {
-	// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Brief summary of the ruleset rule and its intended use.
+	// Brief summary of the ruleset and its intended use.
 	Description *string `pulumi:"description"`
-	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
 	Kind string `pulumi:"kind"`
-	// Name of the HTTP request header to target.
+	// Name of the ruleset.
 	Name string `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+	// `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+	// `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+	// `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+	// `http_ratelimit`, `http_request_sbfm`
 	Phase string `pulumi:"phase"`
-	// List of rule-based overrides (refer to the nested schema).
+	// List of rules to apply to the ruleset.
 	Rules []RulesetRule `pulumi:"rules"`
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName *string `pulumi:"shareableEntitlementName"`
-	// The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Ruleset resource.
 type RulesetArgs struct {
-	// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Brief summary of the ruleset rule and its intended use.
+	// Brief summary of the ruleset and its intended use.
 	Description pulumi.StringPtrInput
-	// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
 	Kind pulumi.StringInput
-	// Name of the HTTP request header to target.
+	// Name of the ruleset.
 	Name pulumi.StringInput
-	// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+	// `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+	// `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+	// `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+	// `http_ratelimit`, `http_request_sbfm`
 	Phase pulumi.StringInput
-	// List of rule-based overrides (refer to the nested schema).
+	// List of rules to apply to the ruleset.
 	Rules RulesetRuleArrayInput
 	// Name of entitlement that is shareable between entities.
 	ShareableEntitlementName pulumi.StringPtrInput
-	// The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -503,32 +257,36 @@ func (o RulesetOutput) ToRulesetOutputWithContext(ctx context.Context) RulesetOu
 	return o
 }
 
-// The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+// The account identifier to target for the resource.
 func (o RulesetOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Brief summary of the ruleset rule and its intended use.
+// Brief summary of the ruleset and its intended use.
 func (o RulesetOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
 func (o RulesetOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Name of the HTTP request header to target.
+// Name of the ruleset.
 func (o RulesetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+// `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+// `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+// `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+// `http_ratelimit`, `http_request_sbfm`
 func (o RulesetOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Phase }).(pulumi.StringOutput)
 }
 
-// List of rule-based overrides (refer to the nested schema).
+// List of rules to apply to the ruleset.
 func (o RulesetOutput) Rules() RulesetRuleArrayOutput {
 	return o.ApplyT(func(v *Ruleset) RulesetRuleArrayOutput { return v.Rules }).(RulesetRuleArrayOutput)
 }
@@ -538,7 +296,7 @@ func (o RulesetOutput) ShareableEntitlementName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.ShareableEntitlementName }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+// The zone identifier to target for the resource.
 func (o RulesetOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

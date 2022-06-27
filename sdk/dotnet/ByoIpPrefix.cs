@@ -44,6 +44,9 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/byoIpPrefix:ByoIpPrefix")]
     public partial class ByoIpPrefix : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
@@ -111,6 +114,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ByoIpPrefixArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -139,6 +145,9 @@ namespace Pulumi.Cloudflare
 
     public sealed class ByoIpPrefixState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 

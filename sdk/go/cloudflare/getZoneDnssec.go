@@ -10,30 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to look up [Zone][1] DNSSEC settings.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.LookupZoneDnssec(ctx, &GetZoneDnssecArgs{
-// 			ZoneId: "<zone_id>",
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 func LookupZoneDnssec(ctx *pulumi.Context, args *LookupZoneDnssecArgs, opts ...pulumi.InvokeOption) (*LookupZoneDnssecResult, error) {
 	var rv LookupZoneDnssecResult
 	err := ctx.Invoke("cloudflare:index/getZoneDnssec:getZoneDnssec", args, &rv, opts...)
@@ -45,35 +21,24 @@ func LookupZoneDnssec(ctx *pulumi.Context, args *LookupZoneDnssecArgs, opts ...p
 
 // A collection of arguments for invoking getZoneDnssec.
 type LookupZoneDnssecArgs struct {
-	// The zone id for the zone.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getZoneDnssec.
 type LookupZoneDnssecResult struct {
-	// Zone DNSSEC algorithm.
-	Algorithm string `pulumi:"algorithm"`
-	// Zone DNSSEC digest.
-	Digest string `pulumi:"digest"`
-	// Digest algorithm use for Zone DNSSEC.
+	Algorithm       string `pulumi:"algorithm"`
+	Digest          string `pulumi:"digest"`
 	DigestAlgorithm string `pulumi:"digestAlgorithm"`
-	// Digest Type for Zone DNSSEC.
-	DigestType string `pulumi:"digestType"`
-	// DS for the Zone DNSSEC.
-	Ds string `pulumi:"ds"`
-	// Zone DNSSEC flags.
-	Flags int `pulumi:"flags"`
+	DigestType      string `pulumi:"digestType"`
+	Ds              string `pulumi:"ds"`
+	Flags           int    `pulumi:"flags"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// Key Tag for the Zone DNSSEC.
-	KeyTag int `pulumi:"keyTag"`
-	// Key type used for Zone DNSSEC.
-	KeyType string `pulumi:"keyType"`
-	// Public Key for the Zone DNSSEC.
+	Id        string `pulumi:"id"`
+	KeyTag    int    `pulumi:"keyTag"`
+	KeyType   string `pulumi:"keyType"`
 	PublicKey string `pulumi:"publicKey"`
-	// The status of the Zone DNSSEC.
-	Status string `pulumi:"status"`
-	ZoneId string `pulumi:"zoneId"`
+	Status    string `pulumi:"status"`
+	ZoneId    string `pulumi:"zoneId"`
 }
 
 func LookupZoneDnssecOutput(ctx *pulumi.Context, args LookupZoneDnssecOutputArgs, opts ...pulumi.InvokeOption) LookupZoneDnssecResultOutput {
@@ -91,7 +56,6 @@ func LookupZoneDnssecOutput(ctx *pulumi.Context, args LookupZoneDnssecOutputArgs
 
 // A collection of arguments for invoking getZoneDnssec.
 type LookupZoneDnssecOutputArgs struct {
-	// The zone id for the zone.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -114,32 +78,26 @@ func (o LookupZoneDnssecResultOutput) ToLookupZoneDnssecResultOutputWithContext(
 	return o
 }
 
-// Zone DNSSEC algorithm.
 func (o LookupZoneDnssecResultOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// Zone DNSSEC digest.
 func (o LookupZoneDnssecResultOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.Digest }).(pulumi.StringOutput)
 }
 
-// Digest algorithm use for Zone DNSSEC.
 func (o LookupZoneDnssecResultOutput) DigestAlgorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.DigestAlgorithm }).(pulumi.StringOutput)
 }
 
-// Digest Type for Zone DNSSEC.
 func (o LookupZoneDnssecResultOutput) DigestType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.DigestType }).(pulumi.StringOutput)
 }
 
-// DS for the Zone DNSSEC.
 func (o LookupZoneDnssecResultOutput) Ds() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.Ds }).(pulumi.StringOutput)
 }
 
-// Zone DNSSEC flags.
 func (o LookupZoneDnssecResultOutput) Flags() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) int { return v.Flags }).(pulumi.IntOutput)
 }
@@ -149,22 +107,18 @@ func (o LookupZoneDnssecResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Key Tag for the Zone DNSSEC.
 func (o LookupZoneDnssecResultOutput) KeyTag() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) int { return v.KeyTag }).(pulumi.IntOutput)
 }
 
-// Key type used for Zone DNSSEC.
 func (o LookupZoneDnssecResultOutput) KeyType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.KeyType }).(pulumi.StringOutput)
 }
 
-// Public Key for the Zone DNSSEC.
 func (o LookupZoneDnssecResultOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-// The status of the Zone DNSSEC.
 func (o LookupZoneDnssecResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneDnssecResult) string { return v.Status }).(pulumi.StringOutput)
 }

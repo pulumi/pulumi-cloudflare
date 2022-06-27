@@ -19,6 +19,7 @@ class ByoIpPrefixArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ByoIpPrefix resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         :param pulumi.Input[str] description: The description of the prefix.
@@ -33,6 +34,9 @@ class ByoIpPrefixArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -85,6 +89,7 @@ class _ByoIpPrefixState:
                  prefix_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ByoIpPrefix resources.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         :param pulumi.Input[str] description: The description of the prefix.
         :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
@@ -101,6 +106,9 @@ class _ByoIpPrefixState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -179,6 +187,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         :param pulumi.Input[str] description: The description of the prefix.
         :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
@@ -272,6 +281,7 @@ class ByoIpPrefix(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
         :param pulumi.Input[str] description: The description of the prefix.
         :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID.
@@ -289,6 +299,9 @@ class ByoIpPrefix(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @property

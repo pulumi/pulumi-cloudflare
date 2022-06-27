@@ -18,6 +18,7 @@ class WorkerCronTriggerArgs:
                  script_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a WorkerCronTrigger resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
         :param pulumi.Input[str] script_name: Worker script to target for the schedules
         """
@@ -28,6 +29,9 @@ class WorkerCronTriggerArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -67,6 +71,7 @@ class _WorkerCronTriggerState:
                  script_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WorkerCronTrigger resources.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
         :param pulumi.Input[str] script_name: Worker script to target for the schedules
         """
@@ -80,6 +85,9 @@ class _WorkerCronTriggerState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -153,6 +161,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
         :param pulumi.Input[str] script_name: Worker script to target for the schedules
         """
@@ -252,6 +261,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: List of cron expressions to execute the Worker Script
         :param pulumi.Input[str] script_name: Worker script to target for the schedules
         """
@@ -267,6 +277,9 @@ class WorkerCronTrigger(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @property

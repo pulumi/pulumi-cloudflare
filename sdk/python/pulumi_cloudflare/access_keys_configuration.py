@@ -17,6 +17,8 @@ class AccessKeysConfigurationArgs:
                  key_rotation_interval_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a AccessKeysConfiguration resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
         """
         pulumi.set(__self__, "account_id", account_id)
         if key_rotation_interval_days is not None:
@@ -25,6 +27,9 @@ class AccessKeysConfigurationArgs:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -34,6 +39,9 @@ class AccessKeysConfigurationArgs:
     @property
     @pulumi.getter(name="keyRotationIntervalDays")
     def key_rotation_interval_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of days to trigger a rotation of the keys.
+        """
         return pulumi.get(self, "key_rotation_interval_days")
 
     @key_rotation_interval_days.setter
@@ -48,6 +56,8 @@ class _AccessKeysConfigurationState:
                  key_rotation_interval_days: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering AccessKeysConfiguration resources.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -57,6 +67,9 @@ class _AccessKeysConfigurationState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -66,6 +79,9 @@ class _AccessKeysConfigurationState:
     @property
     @pulumi.getter(name="keyRotationIntervalDays")
     def key_rotation_interval_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of days to trigger a rotation of the keys.
+        """
         return pulumi.get(self, "key_rotation_interval_days")
 
     @key_rotation_interval_days.setter
@@ -85,6 +101,8 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         Create a AccessKeysConfiguration resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
         """
         ...
     @overload
@@ -146,6 +164,8 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -158,10 +178,16 @@ class AccessKeysConfiguration(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
+        """
+        The account identifier to target for the resource.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="keyRotationIntervalDays")
     def key_rotation_interval_days(self) -> pulumi.Output[int]:
+        """
+        Number of days to trigger a rotation of the keys.
+        """
         return pulumi.get(self, "key_rotation_interval_days")
 

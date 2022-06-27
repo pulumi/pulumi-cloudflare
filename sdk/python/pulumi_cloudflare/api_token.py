@@ -20,10 +20,9 @@ class ApiTokenArgs:
                  condition: Optional[pulumi.Input['ApiTokenConditionArgs']] = None):
         """
         The set of arguments for constructing a ApiToken resource.
-        :param pulumi.Input[str] name: Name of the APIToken.
+        :param pulumi.Input[str] name: Name of the API Token.
         :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Permissions policy. Multiple policy blocks can be defined.
-               See the definition below.
-        :param pulumi.Input['ApiTokenConditionArgs'] condition: Condition block. See the definition below.
+        :param pulumi.Input['ApiTokenConditionArgs'] condition: Conditions under which the token should be considered valid.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "policies", policies)
@@ -34,7 +33,7 @@ class ApiTokenArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the APIToken.
+        Name of the API Token.
         """
         return pulumi.get(self, "name")
 
@@ -47,7 +46,6 @@ class ApiTokenArgs:
     def policies(self) -> pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]:
         """
         Permissions policy. Multiple policy blocks can be defined.
-        See the definition below.
         """
         return pulumi.get(self, "policies")
 
@@ -59,7 +57,7 @@ class ApiTokenArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['ApiTokenConditionArgs']]:
         """
-        Condition block. See the definition below.
+        Conditions under which the token should be considered valid.
         """
         return pulumi.get(self, "condition")
 
@@ -80,12 +78,11 @@ class _ApiTokenState:
                  value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApiToken resources.
-        :param pulumi.Input['ApiTokenConditionArgs'] condition: Condition block. See the definition below.
-        :param pulumi.Input[str] issued_on: The RFC3339 timestamp of when the API Token was issued.
-        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the API Token was last modified.
-        :param pulumi.Input[str] name: Name of the APIToken.
+        :param pulumi.Input['ApiTokenConditionArgs'] condition: Conditions under which the token should be considered valid.
+        :param pulumi.Input[str] issued_on: Timestamp of when the token was issued.
+        :param pulumi.Input[str] modified_on: Timestamp of when the token was last modified.
+        :param pulumi.Input[str] name: Name of the API Token.
         :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Permissions policy. Multiple policy blocks can be defined.
-               See the definition below.
         :param pulumi.Input[str] value: The value of the API Token.
         """
         if condition is not None:
@@ -107,7 +104,7 @@ class _ApiTokenState:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['ApiTokenConditionArgs']]:
         """
-        Condition block. See the definition below.
+        Conditions under which the token should be considered valid.
         """
         return pulumi.get(self, "condition")
 
@@ -119,7 +116,7 @@ class _ApiTokenState:
     @pulumi.getter(name="issuedOn")
     def issued_on(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC3339 timestamp of when the API Token was issued.
+        Timestamp of when the token was issued.
         """
         return pulumi.get(self, "issued_on")
 
@@ -131,7 +128,7 @@ class _ApiTokenState:
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> Optional[pulumi.Input[str]]:
         """
-        The RFC3339 timestamp of when the API Token was last modified.
+        Timestamp of when the token was last modified.
         """
         return pulumi.get(self, "modified_on")
 
@@ -143,7 +140,7 @@ class _ApiTokenState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the APIToken.
+        Name of the API Token.
         """
         return pulumi.get(self, "name")
 
@@ -156,7 +153,6 @@ class _ApiTokenState:
     def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]]:
         """
         Permissions policy. Multiple policy blocks can be defined.
-        See the definition below.
         """
         return pulumi.get(self, "policies")
 
@@ -198,117 +194,13 @@ class ApiToken(pulumi.CustomResource):
         """
         Provides a resource which manages Cloudflare API tokens.
 
-        Read more about permission groups and their applicable scopes in
-        [the official documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
-
-        ## Example Usage
-        ### User Permissions
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        all = cloudflare.get_api_token_permission_groups()
-        # Token allowed to create new tokens.
-        # Can only be used from specific ip range.
-        api_token_create = cloudflare.ApiToken("apiTokenCreate",
-            name="api_token_create",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[all.permissions["API Tokens Write"]],
-                resources={
-                    f"com.cloudflare.api.user.{var['user_id']}": "*",
-                },
-            )],
-            condition=cloudflare.ApiTokenConditionArgs(
-                request_ip=cloudflare.ApiTokenConditionRequestIpArgs(
-                    ins=["192.0.2.1/32"],
-                    not_ins=["198.51.100.1/32"],
-                ),
-            ))
-        ```
-        ### Account permissions
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        all = cloudflare.get_api_token_permission_groups()
-        # Token allowed to read audit logs from all accounts.
-        logs_account_all = cloudflare.ApiToken("logsAccountAll",
-            name="logs_account_all",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[all.permissions["Access: Audit Logs Read"]],
-                resources={
-                    "com.cloudflare.api.account.*": "*",
-                },
-            )])
-        # Token allowed to read audit logs from specific account.
-        logs_account = cloudflare.ApiToken("logsAccount",
-            name="logs_account",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[all.permissions["Access: Audit Logs Read"]],
-                resources={
-                    f"com.cloudflare.api.account.{var['account_id']}": "*",
-                },
-            )])
-        ```
-        ### Zone Permissions
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_cloudflare as cloudflare
-
-        all = cloudflare.get_api_token_permission_groups()
-        # Token allowed to edit DNS entries and TLS certs for specific zone.
-        dns_tls_edit = cloudflare.ApiToken("dnsTlsEdit",
-            name="dns_tls_edit",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[
-                    all.permissions["DNS Write"],
-                    all.permissions["SSL and Certificates Write"],
-                ],
-                resources={
-                    f"com.cloudflare.api.account.zone.{var['zone_id']}": "*",
-                },
-            )])
-        # Token allowed to edit DNS entries for all zones except one.
-        dns_tls_edit_all_except_one = cloudflare.ApiToken("dnsTlsEditAllExceptOne",
-            name="dns_tls_edit_all_except_one",
-            policies=[
-                cloudflare.ApiTokenPolicyArgs(
-                    permission_groups=[all.permissions["DNS Write"]],
-                    resources={
-                        "com.cloudflare.api.account.zone.*": "*",
-                    },
-                ),
-                cloudflare.ApiTokenPolicyArgs(
-                    permission_groups=[all.permissions["DNS Write"]],
-                    resources={
-                        f"com.cloudflare.api.account.zone.{var['zone_id']}": "*",
-                    },
-                    effect="deny",
-                ),
-            ])
-        # Token allowed to edit DNS entries for all zones from specific account.
-        dns_edit_all_account = cloudflare.ApiToken("dnsEditAllAccount",
-            name="dns_edit_all_account",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[all.permissions["DNS Write"]],
-                resources={
-                    f"com.cloudflare.api.account.{var['account_id']}": json.dumps({
-                        "com.cloudflare.api.account.zone.*": "*",
-                    }),
-                },
-            )])
-        ```
+        Read more about permission groups and their applicable scopes in the [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']] condition: Condition block. See the definition below.
-        :param pulumi.Input[str] name: Name of the APIToken.
+        :param pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']] condition: Conditions under which the token should be considered valid.
+        :param pulumi.Input[str] name: Name of the API Token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]] policies: Permissions policy. Multiple policy blocks can be defined.
-               See the definition below.
         """
         ...
     @overload
@@ -319,110 +211,7 @@ class ApiToken(pulumi.CustomResource):
         """
         Provides a resource which manages Cloudflare API tokens.
 
-        Read more about permission groups and their applicable scopes in
-        [the official documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
-
-        ## Example Usage
-        ### User Permissions
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        all = cloudflare.get_api_token_permission_groups()
-        # Token allowed to create new tokens.
-        # Can only be used from specific ip range.
-        api_token_create = cloudflare.ApiToken("apiTokenCreate",
-            name="api_token_create",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[all.permissions["API Tokens Write"]],
-                resources={
-                    f"com.cloudflare.api.user.{var['user_id']}": "*",
-                },
-            )],
-            condition=cloudflare.ApiTokenConditionArgs(
-                request_ip=cloudflare.ApiTokenConditionRequestIpArgs(
-                    ins=["192.0.2.1/32"],
-                    not_ins=["198.51.100.1/32"],
-                ),
-            ))
-        ```
-        ### Account permissions
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        all = cloudflare.get_api_token_permission_groups()
-        # Token allowed to read audit logs from all accounts.
-        logs_account_all = cloudflare.ApiToken("logsAccountAll",
-            name="logs_account_all",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[all.permissions["Access: Audit Logs Read"]],
-                resources={
-                    "com.cloudflare.api.account.*": "*",
-                },
-            )])
-        # Token allowed to read audit logs from specific account.
-        logs_account = cloudflare.ApiToken("logsAccount",
-            name="logs_account",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[all.permissions["Access: Audit Logs Read"]],
-                resources={
-                    f"com.cloudflare.api.account.{var['account_id']}": "*",
-                },
-            )])
-        ```
-        ### Zone Permissions
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_cloudflare as cloudflare
-
-        all = cloudflare.get_api_token_permission_groups()
-        # Token allowed to edit DNS entries and TLS certs for specific zone.
-        dns_tls_edit = cloudflare.ApiToken("dnsTlsEdit",
-            name="dns_tls_edit",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[
-                    all.permissions["DNS Write"],
-                    all.permissions["SSL and Certificates Write"],
-                ],
-                resources={
-                    f"com.cloudflare.api.account.zone.{var['zone_id']}": "*",
-                },
-            )])
-        # Token allowed to edit DNS entries for all zones except one.
-        dns_tls_edit_all_except_one = cloudflare.ApiToken("dnsTlsEditAllExceptOne",
-            name="dns_tls_edit_all_except_one",
-            policies=[
-                cloudflare.ApiTokenPolicyArgs(
-                    permission_groups=[all.permissions["DNS Write"]],
-                    resources={
-                        "com.cloudflare.api.account.zone.*": "*",
-                    },
-                ),
-                cloudflare.ApiTokenPolicyArgs(
-                    permission_groups=[all.permissions["DNS Write"]],
-                    resources={
-                        f"com.cloudflare.api.account.zone.{var['zone_id']}": "*",
-                    },
-                    effect="deny",
-                ),
-            ])
-        # Token allowed to edit DNS entries for all zones from specific account.
-        dns_edit_all_account = cloudflare.ApiToken("dnsEditAllAccount",
-            name="dns_edit_all_account",
-            policies=[cloudflare.ApiTokenPolicyArgs(
-                permission_groups=[all.permissions["DNS Write"]],
-                resources={
-                    f"com.cloudflare.api.account.{var['account_id']}": json.dumps({
-                        "com.cloudflare.api.account.zone.*": "*",
-                    }),
-                },
-            )])
-        ```
+        Read more about permission groups and their applicable scopes in the [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
 
         :param str resource_name: The name of the resource.
         :param ApiTokenArgs args: The arguments to use to populate this resource's properties.
@@ -489,12 +278,11 @@ class ApiToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']] condition: Condition block. See the definition below.
-        :param pulumi.Input[str] issued_on: The RFC3339 timestamp of when the API Token was issued.
-        :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the API Token was last modified.
-        :param pulumi.Input[str] name: Name of the APIToken.
+        :param pulumi.Input[pulumi.InputType['ApiTokenConditionArgs']] condition: Conditions under which the token should be considered valid.
+        :param pulumi.Input[str] issued_on: Timestamp of when the token was issued.
+        :param pulumi.Input[str] modified_on: Timestamp of when the token was last modified.
+        :param pulumi.Input[str] name: Name of the API Token.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiTokenPolicyArgs']]]] policies: Permissions policy. Multiple policy blocks can be defined.
-               See the definition below.
         :param pulumi.Input[str] value: The value of the API Token.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -514,7 +302,7 @@ class ApiToken(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.ApiTokenCondition']]:
         """
-        Condition block. See the definition below.
+        Conditions under which the token should be considered valid.
         """
         return pulumi.get(self, "condition")
 
@@ -522,7 +310,7 @@ class ApiToken(pulumi.CustomResource):
     @pulumi.getter(name="issuedOn")
     def issued_on(self) -> pulumi.Output[str]:
         """
-        The RFC3339 timestamp of when the API Token was issued.
+        Timestamp of when the token was issued.
         """
         return pulumi.get(self, "issued_on")
 
@@ -530,7 +318,7 @@ class ApiToken(pulumi.CustomResource):
     @pulumi.getter(name="modifiedOn")
     def modified_on(self) -> pulumi.Output[str]:
         """
-        The RFC3339 timestamp of when the API Token was last modified.
+        Timestamp of when the token was last modified.
         """
         return pulumi.get(self, "modified_on")
 
@@ -538,7 +326,7 @@ class ApiToken(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the APIToken.
+        Name of the API Token.
         """
         return pulumi.get(self, "name")
 
@@ -547,7 +335,6 @@ class ApiToken(pulumi.CustomResource):
     def policies(self) -> pulumi.Output[Sequence['outputs.ApiTokenPolicy']]:
         """
         Permissions policy. Multiple policy blocks can be defined.
-        See the definition below.
         """
         return pulumi.get(self, "policies")
 

@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Access Service Tokens are used for service-to-service communication
-// when an application is behind Cloudflare Access.
+// Access Service Tokens are used for service-to-service communication when an application is behind Cloudflare Access.
 //
 // ## Example Usage
 //
@@ -41,28 +40,27 @@ import (
 //
 // ## Import
 //
-// ~> **Important:** If you are importing an Access Service Token you will not have the `client_secret` available in the state for use. The `client_secret` is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources. Access Service Tokens can be imported using a composite ID formed of account ID and Service Token ID.
+// # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken my_app cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//  $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
 // ```
-//
-//  where * `cb029e245cfdd66dc8d2e570d5dd3322` - Account ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Service Token ID
 type AccessServiceToken struct {
 	pulumi.CustomResourceState
 
-	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// UUID client ID associated with the Service Token.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// A secret for interacting with Access protocols.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
 	// Date when the token expires
-	ExpiresAt         pulumi.StringOutput `pulumi:"expiresAt"`
+	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
+	// Regenerates the token if terraform is run within the specified amount of days before expiration
 	MinDaysForRenewal pulumi.IntPtrOutput `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
 }
 
@@ -98,34 +96,36 @@ func GetAccessServiceToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessServiceToken resources.
 type accessServiceTokenState struct {
-	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// UUID client ID associated with the Service Token.
 	ClientId *string `pulumi:"clientId"`
 	// A secret for interacting with Access protocols.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Date when the token expires
-	ExpiresAt         *string `pulumi:"expiresAt"`
-	MinDaysForRenewal *int    `pulumi:"minDaysForRenewal"`
+	ExpiresAt *string `pulumi:"expiresAt"`
+	// Regenerates the token if terraform is run within the specified amount of days before expiration
+	MinDaysForRenewal *int `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name *string `pulumi:"name"`
-	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessServiceTokenState struct {
-	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// UUID client ID associated with the Service Token.
 	ClientId pulumi.StringPtrInput
 	// A secret for interacting with Access protocols.
 	ClientSecret pulumi.StringPtrInput
 	// Date when the token expires
-	ExpiresAt         pulumi.StringPtrInput
+	ExpiresAt pulumi.StringPtrInput
+	// Regenerates the token if terraform is run within the specified amount of days before expiration
 	MinDaysForRenewal pulumi.IntPtrInput
 	// Friendly name of the token's intent.
 	Name pulumi.StringPtrInput
-	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -134,23 +134,25 @@ func (AccessServiceTokenState) ElementType() reflect.Type {
 }
 
 type accessServiceTokenArgs struct {
-	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
-	AccountId         *string `pulumi:"accountId"`
-	MinDaysForRenewal *int    `pulumi:"minDaysForRenewal"`
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	// Regenerates the token if terraform is run within the specified amount of days before expiration
+	MinDaysForRenewal *int `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name string `pulumi:"name"`
-	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessServiceToken resource.
 type AccessServiceTokenArgs struct {
-	// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
-	AccountId         pulumi.StringPtrInput
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
+	// Regenerates the token if terraform is run within the specified amount of days before expiration
 	MinDaysForRenewal pulumi.IntPtrInput
 	// Friendly name of the token's intent.
 	Name pulumi.StringInput
-	// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -241,7 +243,7 @@ func (o AccessServiceTokenOutput) ToAccessServiceTokenOutputWithContext(ctx cont
 	return o
 }
 
-// The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+// The account identifier to target for the resource.
 func (o AccessServiceTokenOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
@@ -261,6 +263,7 @@ func (o AccessServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
+// Regenerates the token if terraform is run within the specified amount of days before expiration
 func (o AccessServiceTokenOutput) MinDaysForRenewal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.IntPtrOutput { return v.MinDaysForRenewal }).(pulumi.IntPtrOutput)
 }
@@ -270,7 +273,7 @@ func (o AccessServiceTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+// The zone identifier to target for the resource.
 func (o AccessServiceTokenOutput) ZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringPtrOutput { return v.ZoneId }).(pulumi.StringPtrOutput)
 }

@@ -35,35 +35,25 @@ class AccessApplicationArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessApplication resource.
-        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
-               Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
-        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
-        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
-               selection if only one is configured in allowed_idps. Defaults to `false`
-               (disabled).
-        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See
-               below for reference structure.
+        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher.
+        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
-        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
-        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
-               dashboard.
-        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
-               for access tokens. Valid values are `none`, `lax`, and `strict`.
-        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in
-               service authentication rules on failed requests.
-        :param pulumi.Input[str] session_duration: How often a user will be forced to
-               re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-               Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial
-               when using the CLI.
-        :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
-               values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+               additional "binding" cookie on requests.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
+        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI.
+        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "name", name)
@@ -104,8 +94,7 @@ class AccessApplicationArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        The complete URL of the asset you wish to put
-        Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
         """
         return pulumi.get(self, "domain")
 
@@ -129,7 +118,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the access application should be added. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -153,7 +142,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="appLauncherVisible")
     def app_launcher_visible(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to show/hide applications in App Launcher. Defaults to `true`.
+        Option to show/hide applications in App Launcher.
         """
         return pulumi.get(self, "app_launcher_visible")
 
@@ -165,9 +154,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="autoRedirectToIdentity")
     def auto_redirect_to_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip identity provider
-        selection if only one is configured in allowed_idps. Defaults to `false`
-        (disabled).
+        Option to skip identity provider selection if only one is configured in `allowed_idps`.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
 
@@ -179,8 +166,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="corsHeaders")
     def cors_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]]:
         """
-        CORS configuration for the Access Application. See
-        below for reference structure.
+        CORS configuration for the Access Application. See below for reference structure.
         """
         return pulumi.get(self, "cors_headers")
 
@@ -216,7 +202,8 @@ class AccessApplicationArgs:
     @pulumi.getter(name="enableBindingCookie")
     def enable_binding_cookie(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+        additional "binding" cookie on requests.
         """
         return pulumi.get(self, "enable_binding_cookie")
 
@@ -228,7 +215,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
+        Option to add the `HttpOnly` cookie flag to access tokens.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 
@@ -240,8 +227,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Image URL for the logo shown in the app launcher
-        dashboard.
+        Image URL for the logo shown in the app launcher dashboard.
         """
         return pulumi.get(self, "logo_url")
 
@@ -253,8 +239,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the same-site cookie setting
-        for access tokens. Valid values are `none`, `lax`, and `strict`.
+        Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
         """
         return pulumi.get(self, "same_site_cookie_attribute")
 
@@ -266,8 +251,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="serviceAuth401Redirect")
     def service_auth401_redirect(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to return a 401 status code in
-        service authentication rules on failed requests.
+        Option to return a 401 status code in service authentication rules on failed requests.
         """
         return pulumi.get(self, "service_auth401_redirect")
 
@@ -279,9 +263,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        How often a user will be forced to
-        re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-        Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
         """
         return pulumi.get(self, "session_duration")
 
@@ -293,8 +275,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip the authorization interstitial
-        when using the CLI.
+        Option to skip the authorization interstitial when using the CLI.
         """
         return pulumi.get(self, "skip_interstitial")
 
@@ -306,8 +287,7 @@ class AccessApplicationArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type. Defaults to `self_hosted`. Valid
-        values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
+        The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
         """
         return pulumi.get(self, "type")
 
@@ -319,7 +299,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -352,36 +332,26 @@ class _AccessApplicationState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessApplication resources.
-        :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
-        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
-        :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
-        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
-               selection if only one is configured in allowed_idps. Defaults to `false`
-               (disabled).
-        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See
-               below for reference structure.
+        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher.
+        :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application.
+        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
-        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
-               Cloudflare Access in front of. Can include subdomains or paths. Or both.
-        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
-        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
-               dashboard.
+        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+               additional "binding" cookie on requests.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
-               for access tokens. Valid values are `none`, `lax`, and `strict`.
-        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in
-               service authentication rules on failed requests.
-        :param pulumi.Input[str] session_duration: How often a user will be forced to
-               re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-               Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial
-               when using the CLI.
-        :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
-               values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI.
+        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -426,7 +396,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account to which the access application should be added. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -450,7 +420,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="appLauncherVisible")
     def app_launcher_visible(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to show/hide applications in App Launcher. Defaults to `true`.
+        Option to show/hide applications in App Launcher.
         """
         return pulumi.get(self, "app_launcher_visible")
 
@@ -462,7 +432,7 @@ class _AccessApplicationState:
     @pulumi.getter
     def aud(self) -> Optional[pulumi.Input[str]]:
         """
-        Application Audience (AUD) Tag of the application
+        Application Audience (AUD) Tag of the application.
         """
         return pulumi.get(self, "aud")
 
@@ -474,9 +444,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="autoRedirectToIdentity")
     def auto_redirect_to_identity(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip identity provider
-        selection if only one is configured in allowed_idps. Defaults to `false`
-        (disabled).
+        Option to skip identity provider selection if only one is configured in `allowed_idps`.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
 
@@ -488,8 +456,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="corsHeaders")
     def cors_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]]:
         """
-        CORS configuration for the Access Application. See
-        below for reference structure.
+        CORS configuration for the Access Application. See below for reference structure.
         """
         return pulumi.get(self, "cors_headers")
 
@@ -525,8 +492,7 @@ class _AccessApplicationState:
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The complete URL of the asset you wish to put
-        Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
         """
         return pulumi.get(self, "domain")
 
@@ -538,7 +504,8 @@ class _AccessApplicationState:
     @pulumi.getter(name="enableBindingCookie")
     def enable_binding_cookie(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+        additional "binding" cookie on requests.
         """
         return pulumi.get(self, "enable_binding_cookie")
 
@@ -550,7 +517,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
+        Option to add the `HttpOnly` cookie flag to access tokens.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 
@@ -562,8 +529,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Image URL for the logo shown in the app launcher
-        dashboard.
+        Image URL for the logo shown in the app launcher dashboard.
         """
         return pulumi.get(self, "logo_url")
 
@@ -587,8 +553,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the same-site cookie setting
-        for access tokens. Valid values are `none`, `lax`, and `strict`.
+        Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
         """
         return pulumi.get(self, "same_site_cookie_attribute")
 
@@ -600,8 +565,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="serviceAuth401Redirect")
     def service_auth401_redirect(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to return a 401 status code in
-        service authentication rules on failed requests.
+        Option to return a 401 status code in service authentication rules on failed requests.
         """
         return pulumi.get(self, "service_auth401_redirect")
 
@@ -613,9 +577,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        How often a user will be forced to
-        re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-        Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
         """
         return pulumi.get(self, "session_duration")
 
@@ -627,8 +589,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> Optional[pulumi.Input[bool]]:
         """
-        Option to skip the authorization interstitial
-        when using the CLI.
+        Option to skip the authorization interstitial when using the CLI.
         """
         return pulumi.get(self, "skip_interstitial")
 
@@ -640,8 +601,7 @@ class _AccessApplicationState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The application type. Defaults to `self_hosted`. Valid
-        values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
+        The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
         """
         return pulumi.get(self, "type")
 
@@ -653,7 +613,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -687,74 +647,37 @@ class AccessApplication(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Access Application resource. Access Applications
-        are used to restrict access to a whole application using an
+        Provides a Cloudflare Access Application resource. Access
+        Applications are used to restrict access to a whole application using an
         authorisation gateway managed by Cloudflare.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # With CORS configuration
-        staging_app = cloudflare.AccessApplication("stagingApp",
-            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
-                allow_credentials=True,
-                allowed_methods=[
-                    "GET",
-                    "POST",
-                    "OPTIONS",
-                ],
-                allowed_origins=["https://example.com"],
-                max_age=10,
-            )],
-            domain="staging.example.com",
-            name="staging application",
-            session_duration="24h",
-            type="self_hosted",
-            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
-        ```
-
-        ## Import
-
-        Access Applications can be imported using a composite ID formed of account ID and application ID.
-
-        ```sh
-         $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
-        ```
+        > It's required that an `account_id` or `zone_id` is provided and in
+        most cases using either is fine. However, if you're using a scoped
+        access token, you must provide the argument that matches the token's
+        scope. For example, an access token that is scoped to the "example.com"
+        zone needs to use the `zone_id` argument.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
-        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
-        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
-               selection if only one is configured in allowed_idps. Defaults to `false`
-               (disabled).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
-               below for reference structure.
+        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher.
+        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
-        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
-               Cloudflare Access in front of. Can include subdomains or paths. Or both.
-        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
-        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
-               dashboard.
+        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+               additional "binding" cookie on requests.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
-               for access tokens. Valid values are `none`, `lax`, and `strict`.
-        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in
-               service authentication rules on failed requests.
-        :param pulumi.Input[str] session_duration: How often a user will be forced to
-               re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-               Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial
-               when using the CLI.
-        :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
-               values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI.
+        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -763,42 +686,15 @@ class AccessApplication(pulumi.CustomResource):
                  args: AccessApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Access Application resource. Access Applications
-        are used to restrict access to a whole application using an
+        Provides a Cloudflare Access Application resource. Access
+        Applications are used to restrict access to a whole application using an
         authorisation gateway managed by Cloudflare.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # With CORS configuration
-        staging_app = cloudflare.AccessApplication("stagingApp",
-            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
-                allow_credentials=True,
-                allowed_methods=[
-                    "GET",
-                    "POST",
-                    "OPTIONS",
-                ],
-                allowed_origins=["https://example.com"],
-                max_age=10,
-            )],
-            domain="staging.example.com",
-            name="staging application",
-            session_duration="24h",
-            type="self_hosted",
-            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
-        ```
-
-        ## Import
-
-        Access Applications can be imported using a composite ID formed of account ID and application ID.
-
-        ```sh
-         $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
-        ```
+        > It's required that an `account_id` or `zone_id` is provided and in
+        most cases using either is fine. However, if you're using a scoped
+        access token, you must provide the argument that matches the token's
+        scope. For example, an access token that is scoped to the "example.com"
+        zone needs to use the `zone_id` argument.
 
         :param str resource_name: The name of the resource.
         :param AccessApplicationArgs args: The arguments to use to populate this resource's properties.
@@ -904,36 +800,26 @@ class AccessApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account to which the access application should be added. Conflicts with `zone_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
-        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
-        :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application
-        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider
-               selection if only one is configured in allowed_idps. Defaults to `false`
-               (disabled).
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See
-               below for reference structure.
+        :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher.
+        :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application.
+        :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
-        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put
-               Cloudflare Access in front of. Can include subdomains or paths. Or both.
-        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
-        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher
-               dashboard.
+        :param pulumi.Input[str] domain: The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+               additional "binding" cookie on requests.
+        :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
-        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting
-               for access tokens. Valid values are `none`, `lax`, and `strict`.
-        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in
-               service authentication rules on failed requests.
-        :param pulumi.Input[str] session_duration: How often a user will be forced to
-               re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-               Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
-        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial
-               when using the CLI.
-        :param pulumi.Input[str] type: The application type. Defaults to `self_hosted`. Valid
-               values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
+        :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
+        :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI.
+        :param pulumi.Input[str] type: The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -964,7 +850,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account to which the access application should be added. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -980,7 +866,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="appLauncherVisible")
     def app_launcher_visible(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to show/hide applications in App Launcher. Defaults to `true`.
+        Option to show/hide applications in App Launcher.
         """
         return pulumi.get(self, "app_launcher_visible")
 
@@ -988,7 +874,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def aud(self) -> pulumi.Output[str]:
         """
-        Application Audience (AUD) Tag of the application
+        Application Audience (AUD) Tag of the application.
         """
         return pulumi.get(self, "aud")
 
@@ -996,9 +882,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="autoRedirectToIdentity")
     def auto_redirect_to_identity(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to skip identity provider
-        selection if only one is configured in allowed_idps. Defaults to `false`
-        (disabled).
+        Option to skip identity provider selection if only one is configured in `allowed_idps`.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
 
@@ -1006,8 +890,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="corsHeaders")
     def cors_headers(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationCorsHeader']]]:
         """
-        CORS configuration for the Access Application. See
-        below for reference structure.
+        CORS configuration for the Access Application. See below for reference structure.
         """
         return pulumi.get(self, "cors_headers")
 
@@ -1031,8 +914,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        The complete URL of the asset you wish to put
-        Cloudflare Access in front of. Can include subdomains or paths. Or both.
+        The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
         """
         return pulumi.get(self, "domain")
 
@@ -1040,7 +922,8 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="enableBindingCookie")
     def enable_binding_cookie(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+        additional "binding" cookie on requests.
         """
         return pulumi.get(self, "enable_binding_cookie")
 
@@ -1048,7 +931,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
+        Option to add the `HttpOnly` cookie flag to access tokens.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
 
@@ -1056,8 +939,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Image URL for the logo shown in the app launcher
-        dashboard.
+        Image URL for the logo shown in the app launcher dashboard.
         """
         return pulumi.get(self, "logo_url")
 
@@ -1073,8 +955,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="sameSiteCookieAttribute")
     def same_site_cookie_attribute(self) -> pulumi.Output[Optional[str]]:
         """
-        Defines the same-site cookie setting
-        for access tokens. Valid values are `none`, `lax`, and `strict`.
+        Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
         """
         return pulumi.get(self, "same_site_cookie_attribute")
 
@@ -1082,8 +963,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="serviceAuth401Redirect")
     def service_auth401_redirect(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to return a 401 status code in
-        service authentication rules on failed requests.
+        Option to return a 401 status code in service authentication rules on failed requests.
         """
         return pulumi.get(self, "service_auth401_redirect")
 
@@ -1091,9 +971,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Output[Optional[str]]:
         """
-        How often a user will be forced to
-        re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-        Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
         """
         return pulumi.get(self, "session_duration")
 
@@ -1101,8 +979,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="skipInterstitial")
     def skip_interstitial(self) -> pulumi.Output[Optional[bool]]:
         """
-        Option to skip the authorization interstitial
-        when using the CLI.
+        Option to skip the authorization interstitial when using the CLI.
         """
         return pulumi.get(self, "skip_interstitial")
 
@@ -1110,8 +987,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        The application type. Defaults to `self_hosted`. Valid
-        values are `self_hosted`, `ssh`, `vnc`, `file` or `bookmark`.
+        The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
         """
         return pulumi.get(self, "type")
 
@@ -1119,7 +995,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone to which the access application should be added. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

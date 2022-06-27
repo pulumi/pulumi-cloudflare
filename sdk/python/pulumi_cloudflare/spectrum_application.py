@@ -41,10 +41,10 @@ class SpectrumApplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input['SpectrumApplicationOriginDnsArgs'] origin_dns: A destination DNS addresses to the origin. Fields documented below.
         :param pulumi.Input[int] origin_port: If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
-        :param pulumi.Input['SpectrumApplicationOriginPortRangeArgs'] origin_port_range: If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        :param pulumi.Input['SpectrumApplicationOriginPortRangeArgs'] origin_port_range: If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         """
         pulumi.set(__self__, "dns", dns)
         pulumi.set(__self__, "protocol", protocol)
@@ -196,7 +196,7 @@ class SpectrumApplicationArgs:
     @pulumi.getter(name="originPortRange")
     def origin_port_range(self) -> Optional[pulumi.Input['SpectrumApplicationOriginPortRangeArgs']]:
         """
-        If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         """
         return pulumi.get(self, "origin_port_range")
 
@@ -232,7 +232,7 @@ class SpectrumApplicationArgs:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         """
         return pulumi.get(self, "traffic_type")
 
@@ -268,11 +268,11 @@ class _SpectrumApplicationState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input['SpectrumApplicationOriginDnsArgs'] origin_dns: A destination DNS addresses to the origin. Fields documented below.
         :param pulumi.Input[int] origin_port: If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
-        :param pulumi.Input['SpectrumApplicationOriginPortRangeArgs'] origin_port_range: If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        :param pulumi.Input['SpectrumApplicationOriginPortRangeArgs'] origin_port_range: If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to
         """
         if argo_smart_routing is not None:
@@ -404,7 +404,7 @@ class _SpectrumApplicationState:
     @pulumi.getter(name="originPortRange")
     def origin_port_range(self) -> Optional[pulumi.Input['SpectrumApplicationOriginPortRangeArgs']]:
         """
-        If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         """
         return pulumi.get(self, "origin_port_range")
 
@@ -452,7 +452,7 @@ class _SpectrumApplicationState:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         """
         return pulumi.get(self, "traffic_type")
 
@@ -522,7 +522,7 @@ class SpectrumApplication(pulumi.CustomResource):
          $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) * `9a7806061c88ada191ed06f989cc3dac` - Application ID
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) - `9a7806061c88ada191ed06f989cc3dac` - Application ID
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -534,11 +534,11 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginDnsArgs']] origin_dns: A destination DNS addresses to the origin. Fields documented below.
         :param pulumi.Input[int] origin_port: If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
-        :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginPortRangeArgs']] origin_port_range: If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginPortRangeArgs']] origin_port_range: If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to
         """
         ...
@@ -576,7 +576,7 @@ class SpectrumApplication(pulumi.CustomResource):
          $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) * `9a7806061c88ada191ed06f989cc3dac` - Application ID
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) - `9a7806061c88ada191ed06f989cc3dac` - Application ID
 
         :param str resource_name: The name of the resource.
         :param SpectrumApplicationArgs args: The arguments to use to populate this resource's properties.
@@ -678,11 +678,11 @@ class SpectrumApplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginDnsArgs']] origin_dns: A destination DNS addresses to the origin. Fields documented below.
         :param pulumi.Input[int] origin_port: If using `origin_dns` and not `origin_port_range`, this is a required attribute. Origin port to proxy traffice to e.g. `22`.
-        :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginPortRangeArgs']] origin_port_range: If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginPortRangeArgs']] origin_port_range: If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare’s edge. e.g. `tcp/22`.
         :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Valid values are: `off`, `v1`, `v2`, and `simple`. Defaults to `off`.
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Valid values are: `off`, `flexible`, `full` and `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         :param pulumi.Input[str] zone_id: The DNS zone ID to add the application to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -773,7 +773,7 @@ class SpectrumApplication(pulumi.CustomResource):
     @pulumi.getter(name="originPortRange")
     def origin_port_range(self) -> pulumi.Output[Optional['outputs.SpectrumApplicationOriginPortRange']]:
         """
-        If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         """
         return pulumi.get(self, "origin_port_range")
 
@@ -805,7 +805,7 @@ class SpectrumApplication(pulumi.CustomResource):
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         """
         return pulumi.get(self, "traffic_type")
 

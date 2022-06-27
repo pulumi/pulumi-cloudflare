@@ -32,7 +32,13 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
         return obj['__pulumiType'] === AccessKeysConfiguration.__pulumiType;
     }
 
+    /**
+     * The account identifier to target for the resource.
+     */
     public readonly accountId!: pulumi.Output<string>;
+    /**
+     * Number of days to trigger a rotation of the keys.
+     */
     public readonly keyRotationIntervalDays!: pulumi.Output<number>;
 
     /**
@@ -67,7 +73,13 @@ export class AccessKeysConfiguration extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AccessKeysConfiguration resources.
  */
 export interface AccessKeysConfigurationState {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: pulumi.Input<string>;
+    /**
+     * Number of days to trigger a rotation of the keys.
+     */
     keyRotationIntervalDays?: pulumi.Input<number>;
 }
 
@@ -75,6 +87,12 @@ export interface AccessKeysConfigurationState {
  * The set of arguments for constructing a AccessKeysConfiguration resource.
  */
 export interface AccessKeysConfigurationArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId: pulumi.Input<string>;
+    /**
+     * Number of days to trigger a rotation of the keys.
+     */
     keyRotationIntervalDays?: pulumi.Input<number>;
 }

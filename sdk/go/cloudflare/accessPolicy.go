@@ -11,116 +11,43 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Policy resource. Access Policies are used
-// in conjunction with Access Applications to restrict access to a
-// particular resource.
+// Provides a Cloudflare Access Policy resource. Access Policies are used in conjunction with Access Applications to restrict access to a particular resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessPolicy(ctx, "testPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
-// 			ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 			ZoneId:        pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:          pulumi.String("staging policy"),
-// 			Precedence:    pulumi.Int(1),
-// 			Decision:      pulumi.String("allow"),
-// 			Includes: AccessPolicyIncludeArray{
-// 				&AccessPolicyIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 			Requires: AccessPolicyRequireArray{
-// 				&AccessPolicyRequireArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = cloudflare.NewAccessPolicy(ctx, "testPolicyIndex/accessPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
-// 			ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
-// 			ZoneId:        pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-// 			Name:          pulumi.String("staging policy"),
-// 			Precedence:    pulumi.Int(1),
-// 			Decision:      pulumi.String("allow"),
-// 			Includes: AccessPolicyIncludeArray{
-// 				&AccessPolicyIncludeArgs{
-// 					Emails: pulumi.StringArray{
-// 						pulumi.String("test@example.com"),
-// 					},
-// 				},
-// 			},
-// 			Requires: AccessPolicyRequireArray{
-// 				&AccessPolicyRequireArgs{
-// 					Ips: pulumi.StringArray{
-// 						pulumi.Any(_var.Office_ip),
-// 					},
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Import
-//
-// Access Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy
-//
-// ```sh
-//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
-// ```
-//
-// # import an account level Access policy
-//
-// ```sh
-//  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
-// ```
+// > It's required that an `accountId` or `zoneId` is provided and in
+// most cases using either is fine. However, if you're using a scoped
+// access token, you must provide the argument that matches the token's
+// scope. For example, an access token that is scoped to the "example.com"
+// zone needs to use the `zoneId` argument.
 type AccessPolicy struct {
 	pulumi.CustomResourceState
 
-	// The account to which the access rule should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The ID of the application the policy is associated with.
-	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
+	ApplicationId    pulumi.StringOutput                  `pulumi:"applicationId"`
 	ApprovalGroups   AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	ApprovalRequired pulumi.BoolPtrOutput                 `pulumi:"approvalRequired"`
-	// Defines the action Access will take if the policy matches the user.
-	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+	// `bypass`
 	Decision pulumi.StringOutput `pulumi:"decision"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes AccessPolicyExcludeArrayOutput `pulumi:"excludes"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayOutput `pulumi:"includes"`
-	// Friendly name of the Access Application.
+	// Friendly name of the Access Policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The unique precedence for policies on a single application. Integer.
+	// The unique precedence for policies on a single application.
 	Precedence pulumi.IntOutput `pulumi:"precedence"`
-	// String to present to the user when purpose justification is enabled.
+	// The prompt to display to the user for a justification for accessing the resource.
 	PurposeJustificationPrompt pulumi.StringPtrOutput `pulumi:"purposeJustificationPrompt"`
-	// Boolean of whether to prompt the user for a justification for accessing the resource.
+	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired pulumi.BoolPtrOutput `pulumi:"purposeJustificationRequired"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
-	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -168,60 +95,64 @@ func GetAccessPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPolicy resources.
 type accessPolicyState struct {
-	// The account to which the access rule should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with.
-	ApplicationId *string `pulumi:"applicationId"`
-	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
+	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
-	// Defines the action Access will take if the policy matches the user.
-	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+	// `bypass`
 	Decision *string `pulumi:"decision"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes []AccessPolicyExclude `pulumi:"excludes"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes []AccessPolicyInclude `pulumi:"includes"`
-	// Friendly name of the Access Application.
+	// Friendly name of the Access Policy.
 	Name *string `pulumi:"name"`
-	// The unique precedence for policies on a single application. Integer.
+	// The unique precedence for policies on a single application.
 	Precedence *int `pulumi:"precedence"`
-	// String to present to the user when purpose justification is enabled.
+	// The prompt to display to the user for a justification for accessing the resource.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
-	// Boolean of whether to prompt the user for a justification for accessing the resource.
+	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
-	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessPolicyState struct {
-	// The account to which the access rule should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with.
-	ApplicationId pulumi.StringPtrInput
-	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
+	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
-	// Defines the action Access will take if the policy matches the user.
-	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+	// `bypass`
 	Decision pulumi.StringPtrInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes AccessPolicyExcludeArrayInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayInput
-	// Friendly name of the Access Application.
+	// Friendly name of the Access Policy.
 	Name pulumi.StringPtrInput
-	// The unique precedence for policies on a single application. Integer.
+	// The unique precedence for policies on a single application.
 	Precedence pulumi.IntPtrInput
-	// String to present to the user when purpose justification is enabled.
+	// The prompt to display to the user for a justification for accessing the resource.
 	PurposeJustificationPrompt pulumi.StringPtrInput
-	// Boolean of whether to prompt the user for a justification for accessing the resource.
+	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired pulumi.BoolPtrInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
-	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -230,61 +161,65 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	// The account to which the access rule should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with.
-	ApplicationId string `pulumi:"applicationId"`
-	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
+	ApplicationId    string                      `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
-	// Defines the action Access will take if the policy matches the user.
-	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+	// `bypass`
 	Decision string `pulumi:"decision"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes []AccessPolicyExclude `pulumi:"excludes"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes []AccessPolicyInclude `pulumi:"includes"`
-	// Friendly name of the Access Application.
+	// Friendly name of the Access Policy.
 	Name string `pulumi:"name"`
-	// The unique precedence for policies on a single application. Integer.
+	// The unique precedence for policies on a single application.
 	Precedence int `pulumi:"precedence"`
-	// String to present to the user when purpose justification is enabled.
+	// The prompt to display to the user for a justification for accessing the resource.
 	PurposeJustificationPrompt *string `pulumi:"purposeJustificationPrompt"`
-	// Boolean of whether to prompt the user for a justification for accessing the resource.
+	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires []AccessPolicyRequire `pulumi:"requires"`
-	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	// The account to which the access rule should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with.
-	ApplicationId pulumi.StringInput
-	// List of approval group blocks for configuring additional approvals (refer to the nested schema).
+	ApplicationId    pulumi.StringInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
-	// Defines the action Access will take if the policy matches the user.
-	// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
+	// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+	// `bypass`
 	Decision pulumi.StringInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Excludes AccessPolicyExcludeArrayInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Includes AccessPolicyIncludeArrayInput
-	// Friendly name of the Access Application.
+	// Friendly name of the Access Policy.
 	Name pulumi.StringInput
-	// The unique precedence for policies on a single application. Integer.
+	// The unique precedence for policies on a single application.
 	Precedence pulumi.IntInput
-	// String to present to the user when purpose justification is enabled.
+	// The prompt to display to the user for a justification for accessing the resource.
 	PurposeJustificationPrompt pulumi.StringPtrInput
-	// Boolean of whether to prompt the user for a justification for accessing the resource.
+	// Whether to prompt the user for a justification for accessing the resource.
 	PurposeJustificationRequired pulumi.BoolPtrInput
-	// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+	// A series of access conditions, see [Access
+	// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 	Requires AccessPolicyRequireArrayInput
-	// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -375,7 +310,7 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The account to which the access rule should be added. Conflicts with `zoneId`.
+// The account identifier to target for the resource.
 func (o AccessPolicyOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -385,7 +320,6 @@ func (o AccessPolicyOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// List of approval group blocks for configuring additional approvals (refer to the nested schema).
 func (o AccessPolicyOutput) ApprovalGroups() AccessPolicyApprovalGroupArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyApprovalGroupArrayOutput { return v.ApprovalGroups }).(AccessPolicyApprovalGroupArrayOutput)
 }
@@ -394,48 +328,51 @@ func (o AccessPolicyOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
-// Defines the action Access will take if the policy matches the user.
-// Allowed values: `allow`, `deny`, `nonIdentity`, `bypass`
+// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+// `bypass`
 func (o AccessPolicyOutput) Decision() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Decision }).(pulumi.StringOutput)
 }
 
-// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+// A series of access conditions, see [Access
+// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 func (o AccessPolicyOutput) Excludes() AccessPolicyExcludeArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyExcludeArrayOutput { return v.Excludes }).(AccessPolicyExcludeArrayOutput)
 }
 
-// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+// A series of access conditions, see [Access
+// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 func (o AccessPolicyOutput) Includes() AccessPolicyIncludeArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyIncludeArrayOutput { return v.Includes }).(AccessPolicyIncludeArrayOutput)
 }
 
-// Friendly name of the Access Application.
+// Friendly name of the Access Policy.
 func (o AccessPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The unique precedence for policies on a single application. Integer.
+// The unique precedence for policies on a single application.
 func (o AccessPolicyOutput) Precedence() pulumi.IntOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.IntOutput { return v.Precedence }).(pulumi.IntOutput)
 }
 
-// String to present to the user when purpose justification is enabled.
+// The prompt to display to the user for a justification for accessing the resource.
 func (o AccessPolicyOutput) PurposeJustificationPrompt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.PurposeJustificationPrompt }).(pulumi.StringPtrOutput)
 }
 
-// Boolean of whether to prompt the user for a justification for accessing the resource.
+// Whether to prompt the user for a justification for accessing the resource.
 func (o AccessPolicyOutput) PurposeJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.BoolPtrOutput { return v.PurposeJustificationRequired }).(pulumi.BoolPtrOutput)
 }
 
-// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+// A series of access conditions, see [Access
+// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
 func (o AccessPolicyOutput) Requires() AccessPolicyRequireArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyRequireArrayOutput { return v.Requires }).(AccessPolicyRequireArrayOutput)
 }
 
-// The DNS zone to which the access rule should be added. Conflicts with `accountId`.
+// The zone identifier to target for the resource.
 func (o AccessPolicyOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -18,11 +18,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Methods;
         /// <summary>
-        /// HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
+        /// HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
         /// </summary>
         public readonly ImmutableArray<string> Schemes;
         /// <summary>
-        /// The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use * for all traffic to your zone. Default: '*'.
+        /// The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone. Default: '_'.
         /// </summary>
         public readonly string? UrlPattern;
 

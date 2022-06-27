@@ -39,9 +39,6 @@ class GetOriginCaRootCertificateResult:
     @property
     @pulumi.getter(name="certPem")
     def cert_pem(self) -> str:
-        """
-        The Origin CA root certificate in PEM format.
-        """
         return pulumi.get(self, "cert_pem")
 
     @property
@@ -67,19 +64,7 @@ class AwaitableGetOriginCaRootCertificateResult(GetOriginCaRootCertificateResult
 def get_origin_ca_root_certificate(algorithm: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOriginCaRootCertificateResult:
     """
-    Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    origin_ca = cloudflare.get_origin_ca_root_certificate(algorithm="<algorithm>")
-    ```
-
-
-    :param str algorithm: The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['algorithm'] = algorithm
@@ -99,18 +84,6 @@ def get_origin_ca_root_certificate(algorithm: Optional[str] = None,
 def get_origin_ca_root_certificate_output(algorithm: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOriginCaRootCertificateResult]:
     """
-    Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    origin_ca = cloudflare.get_origin_ca_root_certificate(algorithm="<algorithm>")
-    ```
-
-
-    :param str algorithm: The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
+    Use this data source to access information about an existing resource.
     """
     ...

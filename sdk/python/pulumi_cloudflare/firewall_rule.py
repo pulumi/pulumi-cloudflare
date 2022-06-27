@@ -286,7 +286,7 @@ class FirewallRule(pulumi.CustomResource):
          $ pulumi import cloudflare:index/firewallRule:FirewallRule default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -337,7 +337,7 @@ class FirewallRule(pulumi.CustomResource):
          $ pulumi import cloudflare:index/firewallRule:FirewallRule default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules)
 
         :param str resource_name: The name of the resource.
         :param FirewallRuleArgs args: The arguments to use to populate this resource's properties.

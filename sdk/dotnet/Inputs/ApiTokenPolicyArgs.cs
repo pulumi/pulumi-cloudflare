@@ -12,20 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ApiTokenPolicyArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Policy effect. Valid values are `allow` or `deny`. `allow`
-        /// is set as default.
-        /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
 
         [Input("permissionGroups", required: true)]
         private InputList<string>? _permissionGroups;
-
-        /// <summary>
-        /// List of permissions groups
-        /// ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
-        /// </summary>
         public InputList<string> PermissionGroups
         {
             get => _permissionGroups ?? (_permissionGroups = new InputList<string>());
@@ -34,11 +25,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("resources", required: true)]
         private InputMap<string>? _resources;
-
-        /// <summary>
-        /// Map describes what operations against which resources
-        /// are allowed or denied.
-        /// </summary>
         public InputMap<string> Resources
         {
             get => _resources ?? (_resources = new InputMap<string>());

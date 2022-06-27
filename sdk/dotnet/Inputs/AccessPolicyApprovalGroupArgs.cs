@@ -12,18 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyApprovalGroupArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Number of approvals needed.
-        /// </summary>
         [Input("approvalsNeeded", required: true)]
         public Input<int> ApprovalsNeeded { get; set; } = null!;
 
         [Input("emailAddresses")]
         private InputList<string>? _emailAddresses;
-
-        /// <summary>
-        /// List of emails to request approval from.
-        /// </summary>
         public InputList<string> EmailAddresses
         {
             get => _emailAddresses ?? (_emailAddresses = new InputList<string>());

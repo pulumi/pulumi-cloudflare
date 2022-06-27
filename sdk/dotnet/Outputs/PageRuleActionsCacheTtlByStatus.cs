@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string Codes;
         /// <summary>
         /// Duration a resource lives in the Cloudflare cache.
-        /// * positive number - cache for specified duration in seconds
+        /// - positive number - cache for specified duration in seconds
         /// </summary>
         public readonly int Ttl;
 

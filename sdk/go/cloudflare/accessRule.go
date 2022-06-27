@@ -15,27 +15,34 @@ import (
 //
 // ## Import
 //
-// Records can be imported using a composite ID formed of access rule type, access rule type identifier and identifer value, e.g.
+// # User level access rule import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//  $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
 // ```
 //
-//  where* `zone` - access rule type (`account`, `zone` or `user`) * `cb029e245cfdd66dc8d2e570d5dd3322` - access rule type ID (i.e the zone ID
+// # Zone level access rule import.
 //
-//  or account ID you wish to target) * `d41d8cd98f00b204e9800998ecf8427e` - access rule ID as returned by
+// ```sh
+//  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
+// ```
 //
-//  respective API endpoint for the type you are attempting to import.
+// # Account level access rule import.
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
+// ```
 type AccessRule struct {
 	pulumi.CustomResourceState
 
-	// Rule configuration to apply to a matched request. It's a complex value. See description below.
+	// Rule configuration to apply to a matched request.
 	Configuration AccessRuleConfigurationOutput `pulumi:"configuration"`
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+	// `managed_challenge`
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
-	// The DNS zone to which the access rule should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -74,24 +81,26 @@ func GetAccessRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessRule resources.
 type accessRuleState struct {
-	// Rule configuration to apply to a matched request. It's a complex value. See description below.
+	// Rule configuration to apply to a matched request.
 	Configuration *AccessRuleConfiguration `pulumi:"configuration"`
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+	// `managed_challenge`
 	Mode *string `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes *string `pulumi:"notes"`
-	// The DNS zone to which the access rule should be added.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessRuleState struct {
-	// Rule configuration to apply to a matched request. It's a complex value. See description below.
+	// Rule configuration to apply to a matched request.
 	Configuration AccessRuleConfigurationPtrInput
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+	// `managed_challenge`
 	Mode pulumi.StringPtrInput
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrInput
-	// The DNS zone to which the access rule should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -100,25 +109,27 @@ func (AccessRuleState) ElementType() reflect.Type {
 }
 
 type accessRuleArgs struct {
-	// Rule configuration to apply to a matched request. It's a complex value. See description below.
+	// Rule configuration to apply to a matched request.
 	Configuration AccessRuleConfiguration `pulumi:"configuration"`
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+	// `managed_challenge`
 	Mode string `pulumi:"mode"`
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes *string `pulumi:"notes"`
-	// The DNS zone to which the access rule should be added.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessRule resource.
 type AccessRuleArgs struct {
-	// Rule configuration to apply to a matched request. It's a complex value. See description below.
+	// Rule configuration to apply to a matched request.
 	Configuration AccessRuleConfigurationInput
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+	// `managed_challenge`
 	Mode pulumi.StringInput
 	// A personal note about the rule. Typically used as a reminder or explanation for the rule.
 	Notes pulumi.StringPtrInput
-	// The DNS zone to which the access rule should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -209,12 +220,13 @@ func (o AccessRuleOutput) ToAccessRuleOutputWithContext(ctx context.Context) Acc
 	return o
 }
 
-// Rule configuration to apply to a matched request. It's a complex value. See description below.
+// Rule configuration to apply to a matched request.
 func (o AccessRuleOutput) Configuration() AccessRuleConfigurationOutput {
 	return o.ApplyT(func(v *AccessRule) AccessRuleConfigurationOutput { return v.Configuration }).(AccessRuleConfigurationOutput)
 }
 
-// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "jsChallenge", "managedChallenge"
+// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+// `managed_challenge`
 func (o AccessRuleOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
 }
@@ -224,7 +236,7 @@ func (o AccessRuleOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
-// The DNS zone to which the access rule should be added.
+// The zone identifier to target for the resource.
 func (o AccessRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

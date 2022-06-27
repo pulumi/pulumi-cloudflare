@@ -129,7 +129,7 @@ class WorkersKv(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Workers KV Pair.  *NOTE:*  This resource uses the Cloudflare account APIs.  This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Workers KV Pair. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -165,7 +165,7 @@ class WorkersKv(pulumi.CustomResource):
                  args: WorkersKvArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Workers KV Pair.  *NOTE:*  This resource uses the Cloudflare account APIs.  This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Workers KV Pair. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 

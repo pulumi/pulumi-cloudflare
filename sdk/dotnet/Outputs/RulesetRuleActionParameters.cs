@@ -13,67 +13,22 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParameters
     {
-        /// <summary>
-        /// List of cookie values to include as part of custom fields logging.
-        /// </summary>
         public readonly ImmutableArray<string> CookieFields;
-        /// <summary>
-        /// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
-        /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
-        /// <summary>
-        /// Host Header that request origin receives.
-        /// </summary>
         public readonly string? HostHeader;
-        /// <summary>
-        /// Rule ID to apply the override to.
-        /// </summary>
         public readonly string? Id;
         public readonly int? Increment;
-        /// <summary>
-        /// List of properties to configure WAF payload logging (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersMatchedData? MatchedData;
-        /// <summary>
-        /// List of properties to change request origin (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
-        /// <summary>
-        /// List of override configurations to apply to the ruleset (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
         public readonly ImmutableArray<string> Phases;
-        /// <summary>
-        /// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
-        /// </summary>
         public readonly ImmutableArray<string> Products;
-        /// <summary>
-        /// List of request headers to include as part of custom fields logging, in lowercase.
-        /// </summary>
         public readonly ImmutableArray<string> RequestFields;
-        /// <summary>
-        /// List of response headers to include as part of custom fields logging, in lowercase.
-        /// </summary>
         public readonly ImmutableArray<string> ResponseFields;
-        /// <summary>
-        /// List of parameters that configure the response given to end users (refer to the nested schema).
-        /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponse> Responses;
-        /// <summary>
-        /// List of rule-based overrides (refer to the nested schema).
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Rules;
-        /// <summary>
-        /// Which ruleset ID to target.
-        /// </summary>
         public readonly string? Ruleset;
-        /// <summary>
-        /// List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
-        /// </summary>
         public readonly ImmutableArray<string> Rulesets;
-        /// <summary>
-        /// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUri? Uri;
         public readonly string? Version;
 

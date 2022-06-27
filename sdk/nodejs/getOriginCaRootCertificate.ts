@@ -4,20 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const originCa = pulumi.output(cloudflare.getOriginCaRootCertificate({
- *     algorithm: "<algorithm>",
- * }));
- * ```
- */
 export function getOriginCaRootCertificate(args: GetOriginCaRootCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaRootCertificateResult> {
     if (!opts) {
         opts = {}
@@ -33,9 +19,6 @@ export function getOriginCaRootCertificate(args: GetOriginCaRootCertificateArgs,
  * A collection of arguments for invoking getOriginCaRootCertificate.
  */
 export interface GetOriginCaRootCertificateArgs {
-    /**
-     * The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
-     */
     algorithm: string;
 }
 
@@ -44,9 +27,6 @@ export interface GetOriginCaRootCertificateArgs {
  */
 export interface GetOriginCaRootCertificateResult {
     readonly algorithm: string;
-    /**
-     * The Origin CA root certificate in PEM format.
-     */
     readonly certPem: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -62,8 +42,5 @@ export function getOriginCaRootCertificateOutput(args: GetOriginCaRootCertificat
  * A collection of arguments for invoking getOriginCaRootCertificate.
  */
 export interface GetOriginCaRootCertificateOutputArgs {
-    /**
-     * The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
-     */
     algorithm: pulumi.Input<string>;
 }

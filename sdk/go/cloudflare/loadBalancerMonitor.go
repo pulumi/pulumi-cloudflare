@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 // ### HTTP Monitor
+//
 // ```go
 // package main
 //
@@ -56,6 +57,7 @@ import (
 // }
 // ```
 // ### TCP Monitor
+//
 // ```go
 // package main
 //

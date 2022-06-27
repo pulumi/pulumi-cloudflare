@@ -61,49 +61,31 @@ class GetZoneDnssecResult:
     @property
     @pulumi.getter
     def algorithm(self) -> str:
-        """
-        Zone DNSSEC algorithm.
-        """
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter
     def digest(self) -> str:
-        """
-        Zone DNSSEC digest.
-        """
         return pulumi.get(self, "digest")
 
     @property
     @pulumi.getter(name="digestAlgorithm")
     def digest_algorithm(self) -> str:
-        """
-        Digest algorithm use for Zone DNSSEC.
-        """
         return pulumi.get(self, "digest_algorithm")
 
     @property
     @pulumi.getter(name="digestType")
     def digest_type(self) -> str:
-        """
-        Digest Type for Zone DNSSEC.
-        """
         return pulumi.get(self, "digest_type")
 
     @property
     @pulumi.getter
     def ds(self) -> str:
-        """
-        DS for the Zone DNSSEC.
-        """
         return pulumi.get(self, "ds")
 
     @property
     @pulumi.getter
     def flags(self) -> int:
-        """
-        Zone DNSSEC flags.
-        """
         return pulumi.get(self, "flags")
 
     @property
@@ -117,33 +99,21 @@ class GetZoneDnssecResult:
     @property
     @pulumi.getter(name="keyTag")
     def key_tag(self) -> int:
-        """
-        Key Tag for the Zone DNSSEC.
-        """
         return pulumi.get(self, "key_tag")
 
     @property
     @pulumi.getter(name="keyType")
     def key_type(self) -> str:
-        """
-        Key type used for Zone DNSSEC.
-        """
         return pulumi.get(self, "key_type")
 
     @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
-        """
-        Public Key for the Zone DNSSEC.
-        """
         return pulumi.get(self, "public_key")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The status of the Zone DNSSEC.
-        """
         return pulumi.get(self, "status")
 
     @property
@@ -175,19 +145,7 @@ class AwaitableGetZoneDnssecResult(GetZoneDnssecResult):
 def get_zone_dnssec(zone_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneDnssecResult:
     """
-    Use this data source to look up [Zone][1] DNSSEC settings.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zone_dnssec(zone_id="<zone_id>")
-    ```
-
-
-    :param str zone_id: The zone id for the zone.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['zoneId'] = zone_id
@@ -216,18 +174,6 @@ def get_zone_dnssec(zone_id: Optional[str] = None,
 def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneDnssecResult]:
     """
-    Use this data source to look up [Zone][1] DNSSEC settings.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zone_dnssec(zone_id="<zone_id>")
-    ```
-
-
-    :param str zone_id: The zone id for the zone.
+    Use this data source to access information about an existing resource.
     """
     ...

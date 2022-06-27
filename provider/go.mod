@@ -28,9 +28,9 @@ require (
 	github.com/Azure/go-autorest/autorest/validation v0.3.1 // indirect
 	github.com/Azure/go-autorest/logger v0.2.1 // indirect
 	github.com/Azure/go-autorest/tracing v0.6.0 // indirect
-	github.com/Masterminds/goutils v1.1.0 // indirect
-	github.com/Masterminds/semver v1.5.0 // indirect
-	github.com/Masterminds/sprig v2.22.0+incompatible // indirect
+	github.com/Masterminds/goutils v1.1.1 // indirect
+	github.com/Masterminds/semver/v3 v3.1.1 // indirect
+	github.com/Masterminds/sprig/v3 v3.2.2 // indirect
 	github.com/Microsoft/go-winio v0.5.1 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
@@ -52,8 +52,8 @@ require (
 	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
-	github.com/cloudflare/cloudflare-go v0.40.0 // indirect
-	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220601000207-774ee9bddbed // indirect
+	github.com/cloudflare/cloudflare-go v0.41.0 // indirect
+	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220614204315-0cf91fc6c0e5 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
@@ -82,7 +82,7 @@ require (
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320 // indirect
 	github.com/hashicorp/go-getter v1.5.3 // indirect
-	github.com/hashicorp/go-hclog v1.2.0 // indirect
+	github.com/hashicorp/go-hclog v1.2.1 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-plugin v1.4.4 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.0 // indirect
@@ -99,7 +99,7 @@ require (
 	github.com/hashicorp/terraform-exec v0.16.1 // indirect
 	github.com/hashicorp/terraform-json v0.14.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.9.1 // indirect
-	github.com/hashicorp/terraform-plugin-log v0.4.0 // indirect
+	github.com/hashicorp/terraform-plugin-log v0.4.1 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.17.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.0.0-20210412075316-9b2996cce896 // indirect
@@ -110,7 +110,7 @@ require (
 	github.com/huandu/xstrings v1.3.2 // indirect
 	github.com/iancoleman/strcase v0.2.0 // indirect
 	github.com/ijc/Gotty v0.0.0-20170406111628-a8b993ba6abd // indirect
-	github.com/imdario/mergo v0.3.12 // indirect
+	github.com/imdario/mergo v0.3.13 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
@@ -123,7 +123,7 @@ require (
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/mgutz/ansi v0.0.0-20170206155736-9520e82c474b // indirect
-	github.com/mitchellh/cli v1.1.2 // indirect
+	github.com/mitchellh/cli v1.1.4 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/go-ps v1.0.0 // indirect
@@ -157,12 +157,13 @@ require (
 	github.com/sabhiram/go-gitignore v0.0.0-20210923224102-525f6e181f06 // indirect
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
 	github.com/sergi/go-diff v1.2.0 // indirect
+	github.com/shopspring/decimal v1.3.1 // indirect
 	github.com/spf13/afero v1.8.2 // indirect
-	github.com/spf13/cast v1.4.1 // indirect
+	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.4.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/src-d/gcfg v1.4.0 // indirect
-	github.com/stretchr/testify v1.7.1 // indirect
+	github.com/stretchr/testify v1.7.2 // indirect
 	github.com/terraform-providers/terraform-provider-archive v1.3.0 // indirect
 	github.com/terraform-providers/terraform-provider-http v1.2.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
@@ -183,12 +184,12 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	gocloud.dev v0.24.0 // indirect
 	gocloud.dev/secrets/hashivault v0.24.0 // indirect
-	golang.org/x/crypto v0.0.0-20220411220226-7b82a4e95df4 // indirect
+	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220106191415-9b9b3d81d5e3 // indirect
 	golang.org/x/net v0.0.0-20220412020605-290c469a71a5 // indirect
 	golang.org/x/oauth2 v0.0.0-20220411215720-9780585627b5 // indirect
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
-	golang.org/x/sys v0.0.0-20220422013727-9388b58f7150 // indirect
+	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/time v0.0.0-20220224211638-0e9765cccd65 // indirect

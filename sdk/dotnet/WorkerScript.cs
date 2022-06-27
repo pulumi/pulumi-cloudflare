@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+    /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
     /// 
     /// ## Example Usage
     /// 
@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
     /// ```
     /// 
-    ///  where* `script_name` - the script name
+    ///  where- `script_name` - the script name
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerScript:WorkerScript")]
     public partial class WorkerScript : Pulumi.CustomResource

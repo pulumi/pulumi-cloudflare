@@ -12,15 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersOriginGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Origin Hostname where request is sent.
-        /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
-        /// <summary>
-        /// Oirign Port where request is sent.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

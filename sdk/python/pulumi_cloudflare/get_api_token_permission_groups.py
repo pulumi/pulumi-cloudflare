@@ -38,10 +38,6 @@ class GetApiTokenPermissionGroupsResult:
     @property
     @pulumi.getter
     def permissions(self) -> Mapping[str, Any]:
-        """
-        A map of permission groups where keys are human-readable permission names
-        and values are permission IDs.
-        """
         return pulumi.get(self, "permissions")
 
 
@@ -57,17 +53,7 @@ class AwaitableGetApiTokenPermissionGroupsResult(GetApiTokenPermissionGroupsResu
 
 def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiTokenPermissionGroupsResult:
     """
-    Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    test = cloudflare.get_api_token_permission_groups()
-    pulumi.export("dnsReadPermissionId", test.permissions["DNS Read"])
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     if opts is None:

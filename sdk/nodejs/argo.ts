@@ -22,13 +22,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Argo settings can be imported the zone ID.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/argo:Argo example d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/argo:Argo example <zone_id>
  * ```
- *
- *  where `d41d8cd98f00b204e9800998ecf8427e` is the zone ID.
  */
 export class Argo extends pulumi.CustomResource {
     /**
@@ -59,15 +55,15 @@ export class Argo extends pulumi.CustomResource {
     }
 
     /**
-     * Whether smart routing is enabled. Valid values: `on` or `off`.
+     * Whether smart routing is enabled. Available values: `on`, `off`
      */
     public readonly smartRouting!: pulumi.Output<string | undefined>;
     /**
-     * Whether tiered caching is enabled. Valid values: `on` or `off`.
+     * Whether tiered caching is enabled. Available values: `on`, `off`
      */
     public readonly tieredCaching!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone ID that you wish to manage Argo on.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -106,15 +102,15 @@ export class Argo extends pulumi.CustomResource {
  */
 export interface ArgoState {
     /**
-     * Whether smart routing is enabled. Valid values: `on` or `off`.
+     * Whether smart routing is enabled. Available values: `on`, `off`
      */
     smartRouting?: pulumi.Input<string>;
     /**
-     * Whether tiered caching is enabled. Valid values: `on` or `off`.
+     * Whether tiered caching is enabled. Available values: `on`, `off`
      */
     tieredCaching?: pulumi.Input<string>;
     /**
-     * The DNS zone ID that you wish to manage Argo on.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -124,15 +120,15 @@ export interface ArgoState {
  */
 export interface ArgoArgs {
     /**
-     * Whether smart routing is enabled. Valid values: `on` or `off`.
+     * Whether smart routing is enabled. Available values: `on`, `off`
      */
     smartRouting?: pulumi.Input<string>;
     /**
-     * Whether tiered caching is enabled. Valid values: `on` or `off`.
+     * Whether tiered caching is enabled. Available values: `on`, `off`
      */
     tieredCaching?: pulumi.Input<string>;
     /**
-     * The DNS zone ID that you wish to manage Argo on.
+     * The zone identifier to target for the resource.
      */
     zoneId: pulumi.Input<string>;
 }

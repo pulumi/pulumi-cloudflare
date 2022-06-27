@@ -20,8 +20,9 @@ class AccessServiceTokenArgs:
         """
         The set of arguments for constructing a AccessServiceToken resource.
         :param pulumi.Input[str] name: Friendly name of the token's intent.
-        :param pulumi.Input[str] account_id: The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
-        :param pulumi.Input[str] zone_id: The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[int] min_days_for_renewal: Regenerates the token if terraform is run within the specified amount of days before expiration
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         pulumi.set(__self__, "name", name)
         if account_id is not None:
@@ -47,7 +48,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -58,6 +59,9 @@ class AccessServiceTokenArgs:
     @property
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> Optional[pulumi.Input[int]]:
+        """
+        Regenerates the token if terraform is run within the specified amount of days before expiration
+        """
         return pulumi.get(self, "min_days_for_renewal")
 
     @min_days_for_renewal.setter
@@ -68,7 +72,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -89,12 +93,13 @@ class _AccessServiceTokenState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessServiceToken resources.
-        :param pulumi.Input[str] account_id: The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token.
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols.
         :param pulumi.Input[str] expires_at: Date when the token expires
+        :param pulumi.Input[int] min_days_for_renewal: Regenerates the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
-        :param pulumi.Input[str] zone_id: The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -115,7 +120,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -162,6 +167,9 @@ class _AccessServiceTokenState:
     @property
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> Optional[pulumi.Input[int]]:
+        """
+        Regenerates the token if terraform is run within the specified amount of days before expiration
+        """
         return pulumi.get(self, "min_days_for_renewal")
 
     @min_days_for_renewal.setter
@@ -184,7 +192,7 @@ class _AccessServiceTokenState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -204,8 +212,7 @@ class AccessServiceToken(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Access Service Tokens are used for service-to-service communication
-        when an application is behind Cloudflare Access.
+        Access Service Tokens are used for service-to-service communication when an application is behind Cloudflare Access.
 
         ## Example Usage
 
@@ -222,19 +229,18 @@ class AccessServiceToken(pulumi.CustomResource):
 
         ## Import
 
-        ~> **Important:** If you are importing an Access Service Token you will not have the `client_secret` available in the state for use. The `client_secret` is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources. Access Service Tokens can be imported using a composite ID formed of account ID and Service Token ID.
+        # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
 
         ```sh
-         $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken my_app cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
         ```
-
-         where * `cb029e245cfdd66dc8d2e570d5dd3322` - Account ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Service Token ID
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[int] min_days_for_renewal: Regenerates the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
-        :param pulumi.Input[str] zone_id: The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -243,8 +249,7 @@ class AccessServiceToken(pulumi.CustomResource):
                  args: AccessServiceTokenArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Access Service Tokens are used for service-to-service communication
-        when an application is behind Cloudflare Access.
+        Access Service Tokens are used for service-to-service communication when an application is behind Cloudflare Access.
 
         ## Example Usage
 
@@ -261,13 +266,11 @@ class AccessServiceToken(pulumi.CustomResource):
 
         ## Import
 
-        ~> **Important:** If you are importing an Access Service Token you will not have the `client_secret` available in the state for use. The `client_secret` is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources. Access Service Tokens can be imported using a composite ID formed of account ID and Service Token ID.
+        # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
 
         ```sh
-         $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken my_app cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
         ```
-
-         where * `cb029e245cfdd66dc8d2e570d5dd3322` - Account ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Service Token ID
 
         :param str resource_name: The name of the resource.
         :param AccessServiceTokenArgs args: The arguments to use to populate this resource's properties.
@@ -333,12 +336,13 @@ class AccessServiceToken(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token.
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols.
         :param pulumi.Input[str] expires_at: Date when the token expires
+        :param pulumi.Input[int] min_days_for_renewal: Regenerates the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
-        :param pulumi.Input[str] zone_id: The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -357,7 +361,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the account where the Access Service is being created. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -388,6 +392,9 @@ class AccessServiceToken(pulumi.CustomResource):
     @property
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> pulumi.Output[Optional[int]]:
+        """
+        Regenerates the token if terraform is run within the specified amount of days before expiration
+        """
         return pulumi.get(self, "min_days_for_renewal")
 
     @property
@@ -402,7 +409,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the zone where the Access Service is being created. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

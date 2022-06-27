@@ -14,8 +14,10 @@ import (
 type AccessKeysConfiguration struct {
 	pulumi.CustomResourceState
 
-	AccountId               pulumi.StringOutput `pulumi:"accountId"`
-	KeyRotationIntervalDays pulumi.IntOutput    `pulumi:"keyRotationIntervalDays"`
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// Number of days to trigger a rotation of the keys.
+	KeyRotationIntervalDays pulumi.IntOutput `pulumi:"keyRotationIntervalDays"`
 }
 
 // NewAccessKeysConfiguration registers a new resource with the given unique name, arguments, and options.
@@ -50,12 +52,16 @@ func GetAccessKeysConfiguration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessKeysConfiguration resources.
 type accessKeysConfigurationState struct {
-	AccountId               *string `pulumi:"accountId"`
-	KeyRotationIntervalDays *int    `pulumi:"keyRotationIntervalDays"`
+	// The account identifier to target for the resource.
+	AccountId *string `pulumi:"accountId"`
+	// Number of days to trigger a rotation of the keys.
+	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
 }
 
 type AccessKeysConfigurationState struct {
-	AccountId               pulumi.StringPtrInput
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrInput
+	// Number of days to trigger a rotation of the keys.
 	KeyRotationIntervalDays pulumi.IntPtrInput
 }
 
@@ -64,13 +70,17 @@ func (AccessKeysConfigurationState) ElementType() reflect.Type {
 }
 
 type accessKeysConfigurationArgs struct {
-	AccountId               string `pulumi:"accountId"`
-	KeyRotationIntervalDays *int   `pulumi:"keyRotationIntervalDays"`
+	// The account identifier to target for the resource.
+	AccountId string `pulumi:"accountId"`
+	// Number of days to trigger a rotation of the keys.
+	KeyRotationIntervalDays *int `pulumi:"keyRotationIntervalDays"`
 }
 
 // The set of arguments for constructing a AccessKeysConfiguration resource.
 type AccessKeysConfigurationArgs struct {
-	AccountId               pulumi.StringInput
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringInput
+	// Number of days to trigger a rotation of the keys.
 	KeyRotationIntervalDays pulumi.IntPtrInput
 }
 
@@ -161,10 +171,12 @@ func (o AccessKeysConfigurationOutput) ToAccessKeysConfigurationOutputWithContex
 	return o
 }
 
+// The account identifier to target for the resource.
 func (o AccessKeysConfigurationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// Number of days to trigger a rotation of the keys.
 func (o AccessKeysConfigurationOutput) KeyRotationIntervalDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *AccessKeysConfiguration) pulumi.IntOutput { return v.KeyRotationIntervalDays }).(pulumi.IntOutput)
 }

@@ -218,7 +218,7 @@ class Filter(pulumi.CustomResource):
          $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -257,7 +257,7 @@ class Filter(pulumi.CustomResource):
          $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
 
         :param str resource_name: The name of the resource.
         :param FilterArgs args: The arguments to use to populate this resource's properties.

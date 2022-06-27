@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
     /// ```
     /// 
-    ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) * `9a7806061c88ada191ed06f989cc3dac` - Application ID
+    ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones) - `9a7806061c88ada191ed06f989cc3dac` - Application ID
     /// </summary>
     [CloudflareResourceType("cloudflare:index/spectrumApplication:SpectrumApplication")]
     public partial class SpectrumApplication : Pulumi.CustomResource
@@ -105,7 +105,7 @@ namespace Pulumi.Cloudflare
         public Output<int?> OriginPort { get; private set; } = null!;
 
         /// <summary>
-        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         /// </summary>
         [Output("originPortRange")]
         public Output<Outputs.SpectrumApplicationOriginPortRange?> OriginPortRange { get; private set; } = null!;
@@ -129,7 +129,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Tls { get; private set; } = null!;
 
         /// <summary>
-        /// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        /// Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         /// </summary>
         [Output("trafficType")]
         public Output<string?> TrafficType { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? OriginPort { get; set; }
 
         /// <summary>
-        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         /// </summary>
         [Input("originPortRange")]
         public Input<Inputs.SpectrumApplicationOriginPortRangeArgs>? OriginPortRange { get; set; }
@@ -271,7 +271,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Tls { get; set; }
 
         /// <summary>
-        /// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        /// Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? OriginPort { get; set; }
 
         /// <summary>
-        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to.  When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
+        /// If using `origin_dns` and not `origin_port`, this is a required attribute. Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Fields documented below.
         /// </summary>
         [Input("originPortRange")]
         public Input<Inputs.SpectrumApplicationOriginPortRangeGetArgs>? OriginPortRange { get; set; }
@@ -374,7 +374,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Tls { get; set; }
 
         /// <summary>
-        /// Sets application type. Valid values are: `direct`, `http`, `https`.  Defaults to `direct`.
+        /// Sets application type. Valid values are: `direct`, `http`, `https`. Defaults to `direct`.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }

@@ -52,9 +52,9 @@ from .ipsec_tunnel import *
 from .load_balancer import *
 from .load_balancer_monitor import *
 from .load_balancer_pool import *
-from .log_push_ownership_challenge import *
 from .logpull_retention import *
 from .logpush_job import *
+from .logpush_ownership_challenge import *
 from .magic_firewall_ruleset import *
 from .notification_policy import *
 from .notification_policy_webhooks import *
@@ -73,6 +73,7 @@ from .teams_location import *
 from .teams_proxy_endpoint import *
 from .teams_rule import *
 from .tunnel_route import *
+from .tunnel_virtual_network import *
 from .waf_group import *
 from .waf_override import *
 from .waf_package import *
@@ -384,14 +385,6 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
-  "mod": "index/logPushOwnershipChallenge",
-  "fqn": "pulumi_cloudflare",
-  "classes": {
-   "cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge": "LogPushOwnershipChallenge"
-  }
- },
- {
-  "pkg": "cloudflare",
   "mod": "index/logpullRetention",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -404,6 +397,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/logpushJob:LogpushJob": "LogpushJob"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/logpushOwnershipChallenge",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge": "LogpushOwnershipChallenge"
   }
  },
  {
@@ -540,6 +541,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/tunnelRoute:TunnelRoute": "TunnelRoute"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/tunnelVirtualNetwork",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork": "TunnelVirtualNetwork"
   }
  },
  {

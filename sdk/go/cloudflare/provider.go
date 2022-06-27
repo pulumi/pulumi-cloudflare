@@ -17,19 +17,26 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	// Configure API client to always use that account
+	// Configure API client to always use a specific account. Alternatively, can be configured using the
+	// `CLOUDFLARE_ACCOUNT_ID` environment variable.
+	//
+	// Deprecated: Use resource specific `account_id` attributes instead.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Configure the base path used by the API client
+	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+	// environment variable.
 	ApiBasePath pulumi.StringPtrOutput `pulumi:"apiBasePath"`
-	// Configure the hostname used by the API client
+	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+	// environment variable.
 	ApiHostname pulumi.StringPtrOutput `pulumi:"apiHostname"`
-	// The API key for operations.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
 	ApiKey pulumi.StringPtrOutput `pulumi:"apiKey"`
-	// The API Token for operations.
+	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
 	ApiToken pulumi.StringPtrOutput `pulumi:"apiToken"`
-	// A special Cloudflare API key good for a restricted set of endpoints
+	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
 	ApiUserServiceKey pulumi.StringPtrOutput `pulumi:"apiUserServiceKey"`
-	// A registered Cloudflare email address
+	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+	// variable.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
 }
 
@@ -64,57 +71,81 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	// Configure API client to always use that account
+	// Configure API client to always use a specific account. Alternatively, can be configured using the
+	// `CLOUDFLARE_ACCOUNT_ID` environment variable.
+	//
+	// Deprecated: Use resource specific `account_id` attributes instead.
 	AccountId *string `pulumi:"accountId"`
-	// Configure the base path used by the API client
+	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+	// environment variable.
 	ApiBasePath *string `pulumi:"apiBasePath"`
-	// Whether to print logs from the API client (using the default log library logger)
+	// Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
+	// the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
 	ApiClientLogging *bool `pulumi:"apiClientLogging"`
-	// Configure the hostname used by the API client
+	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+	// environment variable.
 	ApiHostname *string `pulumi:"apiHostname"`
-	// The API key for operations.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
 	ApiKey *string `pulumi:"apiKey"`
-	// The API Token for operations.
+	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
 	ApiToken *string `pulumi:"apiToken"`
-	// A special Cloudflare API key good for a restricted set of endpoints
+	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
 	ApiUserServiceKey *string `pulumi:"apiUserServiceKey"`
-	// A registered Cloudflare email address
+	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+	// variable.
 	Email *string `pulumi:"email"`
-	// Maximum backoff period in seconds after failed API calls
+	// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+	// `CLOUDFLARE_MAX_BACKOFF` environment variable.
 	MaxBackoff *int `pulumi:"maxBackoff"`
-	// Minimum backoff period in seconds after failed API calls
+	// Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+	// `CLOUDFLARE_MIN_BACKOFF` environment variable.
 	MinBackoff *int `pulumi:"minBackoff"`
-	// Maximum number of retries to perform when an API request fails
+	// Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
+	// `CLOUDFLARE_RETRIES` environment variable.
 	Retries *int `pulumi:"retries"`
-	// RPS limit to apply when making calls to the API
+	// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
+	// variable.
 	Rps *int `pulumi:"rps"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	// Configure API client to always use that account
+	// Configure API client to always use a specific account. Alternatively, can be configured using the
+	// `CLOUDFLARE_ACCOUNT_ID` environment variable.
+	//
+	// Deprecated: Use resource specific `account_id` attributes instead.
 	AccountId pulumi.StringPtrInput
-	// Configure the base path used by the API client
+	// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+	// environment variable.
 	ApiBasePath pulumi.StringPtrInput
-	// Whether to print logs from the API client (using the default log library logger)
+	// Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
+	// the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
 	ApiClientLogging pulumi.BoolPtrInput
-	// Configure the hostname used by the API client
+	// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+	// environment variable.
 	ApiHostname pulumi.StringPtrInput
-	// The API key for operations.
+	// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
 	ApiKey pulumi.StringPtrInput
-	// The API Token for operations.
+	// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
 	ApiToken pulumi.StringPtrInput
-	// A special Cloudflare API key good for a restricted set of endpoints
+	// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+	// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
 	ApiUserServiceKey pulumi.StringPtrInput
-	// A registered Cloudflare email address
+	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+	// variable.
 	Email pulumi.StringPtrInput
-	// Maximum backoff period in seconds after failed API calls
+	// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+	// `CLOUDFLARE_MAX_BACKOFF` environment variable.
 	MaxBackoff pulumi.IntPtrInput
-	// Minimum backoff period in seconds after failed API calls
+	// Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+	// `CLOUDFLARE_MIN_BACKOFF` environment variable.
 	MinBackoff pulumi.IntPtrInput
-	// Maximum number of retries to perform when an API request fails
+	// Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
+	// `CLOUDFLARE_RETRIES` environment variable.
 	Retries pulumi.IntPtrInput
-	// RPS limit to apply when making calls to the API
+	// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
+	// variable.
 	Rps pulumi.IntPtrInput
 }
 
@@ -155,37 +186,44 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
-// Configure API client to always use that account
+// Configure API client to always use a specific account. Alternatively, can be configured using the
+// `CLOUDFLARE_ACCOUNT_ID` environment variable.
+//
+// Deprecated: Use resource specific `account_id` attributes instead.
 func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Configure the base path used by the API client
+// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+// environment variable.
 func (o ProviderOutput) ApiBasePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiBasePath }).(pulumi.StringPtrOutput)
 }
 
-// Configure the hostname used by the API client
+// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+// environment variable.
 func (o ProviderOutput) ApiHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiHostname }).(pulumi.StringPtrOutput)
 }
 
-// The API key for operations.
+// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
 func (o ProviderOutput) ApiKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiKey }).(pulumi.StringPtrOutput)
 }
 
-// The API Token for operations.
+// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
 func (o ProviderOutput) ApiToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiToken }).(pulumi.StringPtrOutput)
 }
 
-// A special Cloudflare API key good for a restricted set of endpoints
+// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
 func (o ProviderOutput) ApiUserServiceKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApiUserServiceKey }).(pulumi.StringPtrOutput)
 }
 
-// A registered Cloudflare email address
+// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+// variable.
 func (o ProviderOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
 }

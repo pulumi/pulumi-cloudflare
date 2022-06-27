@@ -6,43 +6,15 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Application resource. Access Applications
- * are used to restrict access to a whole application using an
+ * Provides a Cloudflare Access Application resource. Access
+ * Applications are used to restrict access to a whole application using an
  * authorisation gateway managed by Cloudflare.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // With CORS configuration
- * const stagingApp = new cloudflare.AccessApplication("staging_app", {
- *     corsHeaders: [{
- *         allowCredentials: true,
- *         allowedMethods: [
- *             "GET",
- *             "POST",
- *             "OPTIONS",
- *         ],
- *         allowedOrigins: ["https://example.com"],
- *         maxAge: 10,
- *     }],
- *     domain: "staging.example.com",
- *     name: "staging application",
- *     sessionDuration: "24h",
- *     type: "self_hosted",
- *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- * });
- * ```
- *
- * ## Import
- *
- * Access Applications can be imported using a composite ID formed of account ID and application ID.
- *
- * ```sh
- *  $ pulumi import cloudflare:index/accessApplication:AccessApplication staging cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
- * ```
+ * > It's required that an `accountId` or `zoneId` is provided and in
+ * most cases using either is fine. However, if you're using a scoped
+ * access token, you must provide the argument that matches the token's
+ * scope. For example, an access token that is scoped to the "example.com"
+ * zone needs to use the `zoneId` argument.
  */
 export class AccessApplication extends pulumi.CustomResource {
     /**
@@ -73,7 +45,7 @@ export class AccessApplication extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the access application should be added. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -81,22 +53,19 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly allowedIdps!: pulumi.Output<string[] | undefined>;
     /**
-     * Option to show/hide applications in App Launcher. Defaults to `true`.
+     * Option to show/hide applications in App Launcher.
      */
     public readonly appLauncherVisible!: pulumi.Output<boolean | undefined>;
     /**
-     * Application Audience (AUD) Tag of the application
+     * Application Audience (AUD) Tag of the application.
      */
     public /*out*/ readonly aud!: pulumi.Output<string>;
     /**
-     * Option to skip identity provider
-     * selection if only one is configured in allowed_idps. Defaults to `false`
-     * (disabled).
+     * Option to skip identity provider selection if only one is configured in `allowed_idps`.
      */
     public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
     /**
-     * CORS configuration for the Access Application. See
-     * below for reference structure.
+     * CORS configuration for the Access Application. See below for reference structure.
      */
     public readonly corsHeaders!: pulumi.Output<outputs.AccessApplicationCorsHeader[] | undefined>;
     /**
@@ -108,21 +77,20 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly customDenyUrl!: pulumi.Output<string | undefined>;
     /**
-     * The complete URL of the asset you wish to put
-     * Cloudflare Access in front of. Can include subdomains or paths. Or both.
+     * The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+     * additional "binding" cookie on requests.
      */
     public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
     /**
-     * Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
+     * Option to add the `HttpOnly` cookie flag to access tokens.
      */
     public readonly httpOnlyCookieAttribute!: pulumi.Output<boolean | undefined>;
     /**
-     * Image URL for the logo shown in the app launcher
-     * dashboard.
+     * Image URL for the logo shown in the app launcher dashboard.
      */
     public readonly logoUrl!: pulumi.Output<string | undefined>;
     /**
@@ -130,33 +98,27 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Defines the same-site cookie setting
-     * for access tokens. Valid values are `none`, `lax`, and `strict`.
+     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
      */
     public readonly sameSiteCookieAttribute!: pulumi.Output<string | undefined>;
     /**
-     * Option to return a 401 status code in
-     * service authentication rules on failed requests.
+     * Option to return a 401 status code in service authentication rules on failed requests.
      */
     public readonly serviceAuth401Redirect!: pulumi.Output<boolean | undefined>;
     /**
-     * How often a user will be forced to
-     * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-     * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
-     * Option to skip the authorization interstitial
-     * when using the CLI.
+     * Option to skip the authorization interstitial when using the CLI.
      */
     public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
     /**
-     * The application type. Defaults to `selfHosted`. Valid
-     * values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
+     * The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone to which the access application should be added. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -230,7 +192,7 @@ export class AccessApplication extends pulumi.CustomResource {
  */
 export interface AccessApplicationState {
     /**
-     * The account to which the access application should be added. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -238,22 +200,19 @@ export interface AccessApplicationState {
      */
     allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Option to show/hide applications in App Launcher. Defaults to `true`.
+     * Option to show/hide applications in App Launcher.
      */
     appLauncherVisible?: pulumi.Input<boolean>;
     /**
-     * Application Audience (AUD) Tag of the application
+     * Application Audience (AUD) Tag of the application.
      */
     aud?: pulumi.Input<string>;
     /**
-     * Option to skip identity provider
-     * selection if only one is configured in allowed_idps. Defaults to `false`
-     * (disabled).
+     * Option to skip identity provider selection if only one is configured in `allowed_idps`.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     /**
-     * CORS configuration for the Access Application. See
-     * below for reference structure.
+     * CORS configuration for the Access Application. See below for reference structure.
      */
     corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
     /**
@@ -265,21 +224,20 @@ export interface AccessApplicationState {
      */
     customDenyUrl?: pulumi.Input<string>;
     /**
-     * The complete URL of the asset you wish to put
-     * Cloudflare Access in front of. Can include subdomains or paths. Or both.
+     * The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
      */
     domain?: pulumi.Input<string>;
     /**
-     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+     * additional "binding" cookie on requests.
      */
     enableBindingCookie?: pulumi.Input<boolean>;
     /**
-     * Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
+     * Option to add the `HttpOnly` cookie flag to access tokens.
      */
     httpOnlyCookieAttribute?: pulumi.Input<boolean>;
     /**
-     * Image URL for the logo shown in the app launcher
-     * dashboard.
+     * Image URL for the logo shown in the app launcher dashboard.
      */
     logoUrl?: pulumi.Input<string>;
     /**
@@ -287,33 +245,27 @@ export interface AccessApplicationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Defines the same-site cookie setting
-     * for access tokens. Valid values are `none`, `lax`, and `strict`.
+     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
     /**
-     * Option to return a 401 status code in
-     * service authentication rules on failed requests.
+     * Option to return a 401 status code in service authentication rules on failed requests.
      */
     serviceAuth401Redirect?: pulumi.Input<boolean>;
     /**
-     * How often a user will be forced to
-     * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-     * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
      */
     sessionDuration?: pulumi.Input<string>;
     /**
-     * Option to skip the authorization interstitial
-     * when using the CLI.
+     * Option to skip the authorization interstitial when using the CLI.
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
-     * The application type. Defaults to `selfHosted`. Valid
-     * values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
+     * The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
      */
     type?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the access application should be added. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -323,7 +275,7 @@ export interface AccessApplicationState {
  */
 export interface AccessApplicationArgs {
     /**
-     * The account to which the access application should be added. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -331,18 +283,15 @@ export interface AccessApplicationArgs {
      */
     allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Option to show/hide applications in App Launcher. Defaults to `true`.
+     * Option to show/hide applications in App Launcher.
      */
     appLauncherVisible?: pulumi.Input<boolean>;
     /**
-     * Option to skip identity provider
-     * selection if only one is configured in allowed_idps. Defaults to `false`
-     * (disabled).
+     * Option to skip identity provider selection if only one is configured in `allowed_idps`.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
     /**
-     * CORS configuration for the Access Application. See
-     * below for reference structure.
+     * CORS configuration for the Access Application. See below for reference structure.
      */
     corsHeaders?: pulumi.Input<pulumi.Input<inputs.AccessApplicationCorsHeader>[]>;
     /**
@@ -354,21 +303,20 @@ export interface AccessApplicationArgs {
      */
     customDenyUrl?: pulumi.Input<string>;
     /**
-     * The complete URL of the asset you wish to put
-     * Cloudflare Access in front of. Can include subdomains or paths. Or both.
+     * The complete URL of the asset you wish to put Cloudflare Access in front of. Can include subdomains or paths. Or both.
      */
     domain: pulumi.Input<string>;
     /**
-     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+     * Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an
+     * additional "binding" cookie on requests.
      */
     enableBindingCookie?: pulumi.Input<boolean>;
     /**
-     * Option to add the `HttpOnly` cookie flag to access tokens. Defaults to `true`.
+     * Option to add the `HttpOnly` cookie flag to access tokens.
      */
     httpOnlyCookieAttribute?: pulumi.Input<boolean>;
     /**
-     * Image URL for the logo shown in the app launcher
-     * dashboard.
+     * Image URL for the logo shown in the app launcher dashboard.
      */
     logoUrl?: pulumi.Input<string>;
     /**
@@ -376,33 +324,27 @@ export interface AccessApplicationArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * Defines the same-site cookie setting
-     * for access tokens. Valid values are `none`, `lax`, and `strict`.
+     * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
     /**
-     * Option to return a 401 status code in
-     * service authentication rules on failed requests.
+     * Option to return a 401 status code in service authentication rules on failed requests.
      */
     serviceAuth401Redirect?: pulumi.Input<boolean>;
     /**
-     * How often a user will be forced to
-     * re-authorise. Must be in the format `"48h"` or `"2h45m"`.
-     * Valid time units are `ns`, `us` (or `µs`), `ms`, `s`, `m`, `h`. Defaults to `24h`.
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`
      */
     sessionDuration?: pulumi.Input<string>;
     /**
-     * Option to skip the authorization interstitial
-     * when using the CLI.
+     * Option to skip the authorization interstitial when using the CLI.
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
-     * The application type. Defaults to `selfHosted`. Valid
-     * values are `selfHosted`, `ssh`, `vnc`, `file` or `bookmark`.
+     * The application type. Available values: `self_hosted`, `ssh`, `vnc`, `file`
      */
     type?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the access application should be added. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

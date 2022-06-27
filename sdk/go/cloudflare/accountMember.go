@@ -42,19 +42,16 @@ import (
 //
 // ## Import
 //
-// Account members can be imported using a composite ID formed of account ID and account member ID, e.g.
-//
 // ```sh
-//  $ pulumi import cloudflare:index/accountMember:AccountMember example_user d41d8cd98f00b204e9800998ecf8427e/b58c6f14d292556214bd64909bcdb118
+//  $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
 // ```
-//
-//  where* `d41d8cd98f00b204e9800998ecf8427e` - account ID as returned by the [API](https://api.cloudflare.com/#accounts-account-details) * `b58c6f14d292556214bd64909bcdb118` - account member ID as returned by the [API](https://api.cloudflare.com/#account-members-member-details)
 type AccountMember struct {
 	pulumi.CustomResourceState
 
-	// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+	// cannot be updated.
 	EmailAddress pulumi.StringOutput `pulumi:"emailAddress"`
-	// Array of account role IDs that you want to assign to a member.
+	// List of account role IDs that you want to assign to a member.
 	RoleIds pulumi.StringArrayOutput `pulumi:"roleIds"`
 }
 
@@ -93,16 +90,18 @@ func GetAccountMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccountMember resources.
 type accountMemberState struct {
-	// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+	// cannot be updated.
 	EmailAddress *string `pulumi:"emailAddress"`
-	// Array of account role IDs that you want to assign to a member.
+	// List of account role IDs that you want to assign to a member.
 	RoleIds []string `pulumi:"roleIds"`
 }
 
 type AccountMemberState struct {
-	// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+	// cannot be updated.
 	EmailAddress pulumi.StringPtrInput
-	// Array of account role IDs that you want to assign to a member.
+	// List of account role IDs that you want to assign to a member.
 	RoleIds pulumi.StringArrayInput
 }
 
@@ -111,17 +110,19 @@ func (AccountMemberState) ElementType() reflect.Type {
 }
 
 type accountMemberArgs struct {
-	// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+	// cannot be updated.
 	EmailAddress string `pulumi:"emailAddress"`
-	// Array of account role IDs that you want to assign to a member.
+	// List of account role IDs that you want to assign to a member.
 	RoleIds []string `pulumi:"roleIds"`
 }
 
 // The set of arguments for constructing a AccountMember resource.
 type AccountMemberArgs struct {
-	// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+	// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+	// cannot be updated.
 	EmailAddress pulumi.StringInput
-	// Array of account role IDs that you want to assign to a member.
+	// List of account role IDs that you want to assign to a member.
 	RoleIds pulumi.StringArrayInput
 }
 
@@ -212,12 +213,13 @@ func (o AccountMemberOutput) ToAccountMemberOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+// cannot be updated.
 func (o AccountMemberOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringOutput { return v.EmailAddress }).(pulumi.StringOutput)
 }
 
-// Array of account role IDs that you want to assign to a member.
+// List of account role IDs that you want to assign to a member.
 func (o AccountMemberOutput) RoleIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccountMember) pulumi.StringArrayOutput { return v.RoleIds }).(pulumi.StringArrayOutput)
 }

@@ -12,41 +12,30 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersOverridesGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         [Input("categories")]
         private InputList<Inputs.RulesetRuleActionParametersOverridesCategoryGetArgs>? _categories;
-
-        /// <summary>
-        /// List of tag-based overrides (refer to the nested schema).
-        /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersOverridesCategoryGetArgs> Categories
         {
             get => _categories ?? (_categories = new InputList<Inputs.RulesetRuleActionParametersOverridesCategoryGetArgs>());
             set => _categories = value;
         }
 
-        /// <summary>
-        /// Defines if the current rule-level override enables or disables the rule.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("rules")]
         private InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs>? _rules;
-
-        /// <summary>
-        /// List of rule-based overrides (refer to the nested schema).
-        /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs> Rules
         {
             get => _rules ?? (_rules = new InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs>());
             set => _rules = value;
         }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public RulesetRuleActionParametersOverridesGetArgs()
         {

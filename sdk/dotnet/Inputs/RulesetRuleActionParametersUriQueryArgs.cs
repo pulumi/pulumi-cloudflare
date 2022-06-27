@@ -12,15 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersUriQueryArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-        /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
-        /// <summary>
-        /// Static string value of the updated URI path or query string component. Conflicts with `expression`.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

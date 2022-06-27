@@ -62,6 +62,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("oneloginAccount")]
         public Input<string>? OneloginAccount { get; set; }
 
+        [Input("pkceEnabled")]
+        public Input<bool>? PkceEnabled { get; set; }
+
         [Input("redirectUrl")]
         public Input<string>? RedirectUrl { get; set; }
 

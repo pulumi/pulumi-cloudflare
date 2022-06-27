@@ -60,8 +60,8 @@ type ZoneSettingsOverride struct {
 	// Time when this resource was created and the `initialSettings` were set.
 	InitialSettingsReadAt pulumi.StringOutput `pulumi:"initialSettingsReadAt"`
 	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-	// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-	// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+	// - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+	// - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
 	ReadonlySettings pulumi.StringArrayOutput `pulumi:"readonlySettings"`
 	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 	Settings ZoneSettingsOverrideSettingsOutput `pulumi:"settings"`
@@ -108,8 +108,8 @@ type zoneSettingsOverrideState struct {
 	// Time when this resource was created and the `initialSettings` were set.
 	InitialSettingsReadAt *string `pulumi:"initialSettingsReadAt"`
 	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-	// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-	// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+	// - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+	// - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
 	ReadonlySettings []string `pulumi:"readonlySettings"`
 	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 	Settings *ZoneSettingsOverrideSettings `pulumi:"settings"`
@@ -125,8 +125,8 @@ type ZoneSettingsOverrideState struct {
 	// Time when this resource was created and the `initialSettings` were set.
 	InitialSettingsReadAt pulumi.StringPtrInput
 	// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-	// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-	// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+	// - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+	// - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
 	ReadonlySettings pulumi.StringArrayInput
 	// Settings overrides that will be applied to the zone. If a setting is not specified the existing setting will be used. For a full list of available settings see below.
 	Settings ZoneSettingsOverrideSettingsPtrInput
@@ -253,8 +253,8 @@ func (o ZoneSettingsOverrideOutput) InitialSettingsReadAt() pulumi.StringOutput 
 }
 
 // Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-// * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-// * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+// - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+// - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
 func (o ZoneSettingsOverrideOutput) ReadonlySettings() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverride) pulumi.StringArrayOutput { return v.ReadonlySettings }).(pulumi.StringArrayOutput)
 }

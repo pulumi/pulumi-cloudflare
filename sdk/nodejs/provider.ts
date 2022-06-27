@@ -26,31 +26,38 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * Configure API client to always use that account
+     * Configure API client to always use a specific account. Alternatively, can be configured using the
+     * `CLOUDFLARE_ACCOUNT_ID` environment variable.
+     *
+     * @deprecated Use resource specific `account_id` attributes instead.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Configure the base path used by the API client
+     * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+     * environment variable.
      */
     public readonly apiBasePath!: pulumi.Output<string | undefined>;
     /**
-     * Configure the hostname used by the API client
+     * Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+     * environment variable.
      */
     public readonly apiHostname!: pulumi.Output<string | undefined>;
     /**
-     * The API key for operations.
+     * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
      */
     public readonly apiKey!: pulumi.Output<string | undefined>;
     /**
-     * The API Token for operations.
+     * The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
      */
     public readonly apiToken!: pulumi.Output<string | undefined>;
     /**
-     * A special Cloudflare API key good for a restricted set of endpoints
+     * A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+     * `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
      */
     public readonly apiUserServiceKey!: pulumi.Output<string | undefined>;
     /**
-     * A registered Cloudflare email address
+     * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+     * variable.
      */
     public readonly email!: pulumi.Output<string | undefined>;
 
@@ -88,51 +95,63 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Configure API client to always use that account
+     * Configure API client to always use a specific account. Alternatively, can be configured using the
+     * `CLOUDFLARE_ACCOUNT_ID` environment variable.
+     *
+     * @deprecated Use resource specific `account_id` attributes instead.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Configure the base path used by the API client
+     * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+     * environment variable.
      */
     apiBasePath?: pulumi.Input<string>;
     /**
-     * Whether to print logs from the API client (using the default log library logger)
+     * Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
+     * the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
      */
     apiClientLogging?: pulumi.Input<boolean>;
     /**
-     * Configure the hostname used by the API client
+     * Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+     * environment variable.
      */
     apiHostname?: pulumi.Input<string>;
     /**
-     * The API key for operations.
+     * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
      */
     apiKey?: pulumi.Input<string>;
     /**
-     * The API Token for operations.
+     * The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
      */
     apiToken?: pulumi.Input<string>;
     /**
-     * A special Cloudflare API key good for a restricted set of endpoints
+     * A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+     * `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
      */
     apiUserServiceKey?: pulumi.Input<string>;
     /**
-     * A registered Cloudflare email address
+     * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+     * variable.
      */
     email?: pulumi.Input<string>;
     /**
-     * Maximum backoff period in seconds after failed API calls
+     * Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+     * `CLOUDFLARE_MAX_BACKOFF` environment variable.
      */
     maxBackoff?: pulumi.Input<number>;
     /**
-     * Minimum backoff period in seconds after failed API calls
+     * Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+     * `CLOUDFLARE_MIN_BACKOFF` environment variable.
      */
     minBackoff?: pulumi.Input<number>;
     /**
-     * Maximum number of retries to perform when an API request fails
+     * Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
+     * `CLOUDFLARE_RETRIES` environment variable.
      */
     retries?: pulumi.Input<number>;
     /**
-     * RPS limit to apply when making calls to the API
+     * RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
+     * variable.
      */
     rps?: pulumi.Input<number>;
 }

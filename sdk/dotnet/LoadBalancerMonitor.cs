@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// ### HTTP Monitor
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
@@ -55,6 +56,7 @@ namespace Pulumi.Cloudflare
     /// }
     /// ```
     /// ### TCP Monitor
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;

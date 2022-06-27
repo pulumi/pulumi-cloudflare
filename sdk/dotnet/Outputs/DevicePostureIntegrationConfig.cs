@@ -26,9 +26,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
+        /// The client key for authenticating API calls.
+        /// </summary>
+        public readonly string? ClientKey;
+        /// <summary>
         /// The client secret for authenticating API calls.
         /// </summary>
         public readonly string? ClientSecret;
+        /// <summary>
+        /// The customer identifier for authenticating API calls.
+        /// </summary>
+        public readonly string? CustomerId;
 
         [OutputConstructor]
         private DevicePostureIntegrationConfig(
@@ -38,12 +46,18 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? clientId,
 
-            string? clientSecret)
+            string? clientKey,
+
+            string? clientSecret,
+
+            string? customerId)
         {
             ApiUrl = apiUrl;
             AuthUrl = authUrl;
             ClientId = clientId;
+            ClientKey = clientKey;
             ClientSecret = clientSecret;
+            CustomerId = customerId;
         }
     }
 }

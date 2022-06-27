@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
         /// Secrets are not returned in any API response body.
         /// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         /// </summary>
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
         /// Secrets are not returned in any API response body.
         /// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         /// </summary>
@@ -184,7 +184,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        /// An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
         /// Secrets are not returned in any API response body.
         /// Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         /// </summary>

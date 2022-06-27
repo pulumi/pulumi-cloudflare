@@ -40,21 +40,17 @@ import (
 //
 // ## Import
 //
-// Argo settings can be imported the zone ID.
-//
 // ```sh
-//  $ pulumi import cloudflare:index/argo:Argo example d41d8cd98f00b204e9800998ecf8427e
+//  $ pulumi import cloudflare:index/argo:Argo example <zone_id>
 // ```
-//
-//  where `d41d8cd98f00b204e9800998ecf8427e` is the zone ID.
 type Argo struct {
 	pulumi.CustomResourceState
 
-	// Whether smart routing is enabled. Valid values: `on` or `off`.
+	// Whether smart routing is enabled. Available values: `on`, `off`
 	SmartRouting pulumi.StringPtrOutput `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Valid values: `on` or `off`.
+	// Whether tiered caching is enabled. Available values: `on`, `off`
 	TieredCaching pulumi.StringPtrOutput `pulumi:"tieredCaching"`
-	// The DNS zone ID that you wish to manage Argo on.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -90,20 +86,20 @@ func GetArgo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Argo resources.
 type argoState struct {
-	// Whether smart routing is enabled. Valid values: `on` or `off`.
+	// Whether smart routing is enabled. Available values: `on`, `off`
 	SmartRouting *string `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Valid values: `on` or `off`.
+	// Whether tiered caching is enabled. Available values: `on`, `off`
 	TieredCaching *string `pulumi:"tieredCaching"`
-	// The DNS zone ID that you wish to manage Argo on.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type ArgoState struct {
-	// Whether smart routing is enabled. Valid values: `on` or `off`.
+	// Whether smart routing is enabled. Available values: `on`, `off`
 	SmartRouting pulumi.StringPtrInput
-	// Whether tiered caching is enabled. Valid values: `on` or `off`.
+	// Whether tiered caching is enabled. Available values: `on`, `off`
 	TieredCaching pulumi.StringPtrInput
-	// The DNS zone ID that you wish to manage Argo on.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -112,21 +108,21 @@ func (ArgoState) ElementType() reflect.Type {
 }
 
 type argoArgs struct {
-	// Whether smart routing is enabled. Valid values: `on` or `off`.
+	// Whether smart routing is enabled. Available values: `on`, `off`
 	SmartRouting *string `pulumi:"smartRouting"`
-	// Whether tiered caching is enabled. Valid values: `on` or `off`.
+	// Whether tiered caching is enabled. Available values: `on`, `off`
 	TieredCaching *string `pulumi:"tieredCaching"`
-	// The DNS zone ID that you wish to manage Argo on.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Argo resource.
 type ArgoArgs struct {
-	// Whether smart routing is enabled. Valid values: `on` or `off`.
+	// Whether smart routing is enabled. Available values: `on`, `off`
 	SmartRouting pulumi.StringPtrInput
-	// Whether tiered caching is enabled. Valid values: `on` or `off`.
+	// Whether tiered caching is enabled. Available values: `on`, `off`
 	TieredCaching pulumi.StringPtrInput
-	// The DNS zone ID that you wish to manage Argo on.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -217,17 +213,17 @@ func (o ArgoOutput) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 	return o
 }
 
-// Whether smart routing is enabled. Valid values: `on` or `off`.
+// Whether smart routing is enabled. Available values: `on`, `off`
 func (o ArgoOutput) SmartRouting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Argo) pulumi.StringPtrOutput { return v.SmartRouting }).(pulumi.StringPtrOutput)
 }
 
-// Whether tiered caching is enabled. Valid values: `on` or `off`.
+// Whether tiered caching is enabled. Available values: `on`, `off`
 func (o ArgoOutput) TieredCaching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Argo) pulumi.StringPtrOutput { return v.TieredCaching }).(pulumi.StringPtrOutput)
 }
 
-// The DNS zone ID that you wish to manage Argo on.
+// The zone identifier to target for the resource.
 func (o ArgoOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Argo) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -13,45 +13,15 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRule
     {
-        /// <summary>
-        /// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-        /// </summary>
         public readonly string? Action;
-        /// <summary>
-        /// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleActionParameters? ActionParameters;
-        /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
-        /// </summary>
         public readonly string? Description;
-        /// <summary>
-        /// Defines if the current rule-level override enables or disables the rule.
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// List of parameters that configure exposed credential checks (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleExposedCredentialCheck? ExposedCredentialCheck;
-        /// <summary>
-        /// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-        /// </summary>
         public readonly string Expression;
-        /// <summary>
-        /// Rule ID to apply the override to.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// List parameters to configure how the rule generates logs (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleLogging? Logging;
-        /// <summary>
-        /// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleRatelimit? Ratelimit;
-        /// <summary>
-        /// Rule reference.
-        /// </summary>
         public readonly string? Ref;
         public readonly string? Version;
 

@@ -52,9 +52,9 @@ export * from "./ipsecTunnel";
 export * from "./loadBalancer";
 export * from "./loadBalancerMonitor";
 export * from "./loadBalancerPool";
-export * from "./logPushOwnershipChallenge";
 export * from "./logpullRetention";
 export * from "./logpushJob";
+export * from "./logpushOwnershipChallenge";
 export * from "./magicFirewallRuleset";
 export * from "./notificationPolicy";
 export * from "./notificationPolicyWebhooks";
@@ -73,6 +73,7 @@ export * from "./teamsLocation";
 export * from "./teamsProxyEndpoint";
 export * from "./teamsRule";
 export * from "./tunnelRoute";
+export * from "./tunnelVirtualNetwork";
 export * from "./wafGroup";
 export * from "./wafOverride";
 export * from "./wafPackage";
@@ -135,9 +136,9 @@ import { IpsecTunnel } from "./ipsecTunnel";
 import { LoadBalancer } from "./loadBalancer";
 import { LoadBalancerMonitor } from "./loadBalancerMonitor";
 import { LoadBalancerPool } from "./loadBalancerPool";
-import { LogPushOwnershipChallenge } from "./logPushOwnershipChallenge";
 import { LogpullRetention } from "./logpullRetention";
 import { LogpushJob } from "./logpushJob";
+import { LogpushOwnershipChallenge } from "./logpushOwnershipChallenge";
 import { MagicFirewallRuleset } from "./magicFirewallRuleset";
 import { NotificationPolicy } from "./notificationPolicy";
 import { NotificationPolicyWebhooks } from "./notificationPolicyWebhooks";
@@ -155,6 +156,7 @@ import { TeamsLocation } from "./teamsLocation";
 import { TeamsProxyEndpoint } from "./teamsProxyEndpoint";
 import { TeamsRule } from "./teamsRule";
 import { TunnelRoute } from "./tunnelRoute";
+import { TunnelVirtualNetwork } from "./tunnelVirtualNetwork";
 import { WafGroup } from "./wafGroup";
 import { WafOverride } from "./wafOverride";
 import { WafPackage } from "./wafPackage";
@@ -246,12 +248,12 @@ const _module = {
                 return new LoadBalancerMonitor(name, <any>undefined, { urn })
             case "cloudflare:index/loadBalancerPool:LoadBalancerPool":
                 return new LoadBalancerPool(name, <any>undefined, { urn })
-            case "cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge":
-                return new LogPushOwnershipChallenge(name, <any>undefined, { urn })
             case "cloudflare:index/logpullRetention:LogpullRetention":
                 return new LogpullRetention(name, <any>undefined, { urn })
             case "cloudflare:index/logpushJob:LogpushJob":
                 return new LogpushJob(name, <any>undefined, { urn })
+            case "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge":
+                return new LogpushOwnershipChallenge(name, <any>undefined, { urn })
             case "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
                 return new MagicFirewallRuleset(name, <any>undefined, { urn })
             case "cloudflare:index/notificationPolicy:NotificationPolicy":
@@ -286,6 +288,8 @@ const _module = {
                 return new TeamsRule(name, <any>undefined, { urn })
             case "cloudflare:index/tunnelRoute:TunnelRoute":
                 return new TunnelRoute(name, <any>undefined, { urn })
+            case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
+                return new TunnelVirtualNetwork(name, <any>undefined, { urn })
             case "cloudflare:index/wafGroup:WafGroup":
                 return new WafGroup(name, <any>undefined, { urn })
             case "cloudflare:index/wafOverride:WafOverride":
@@ -358,9 +362,9 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancerMonitor", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancerPool", _module)
-pulumi.runtime.registerResourceModule("cloudflare", "index/logPushOwnershipChallenge", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpullRetention", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpushJob", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/logpushOwnershipChallenge", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicFirewallRuleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicyWebhooks", _module)
@@ -378,6 +382,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/teamsLocation", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsProxyEndpoint", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/teamsRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelRoute", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/tunnelVirtualNetwork", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafGroup", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafOverride", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/wafPackage", _module)

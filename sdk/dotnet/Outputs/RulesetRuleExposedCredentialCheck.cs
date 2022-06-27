@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleExposedCredentialCheck
     {
-        /// <summary>
-        /// Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
-        /// </summary>
         public readonly string? PasswordExpression;
-        /// <summary>
-        /// Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
-        /// </summary>
         public readonly string? UsernameExpression;
 
         [OutputConstructor]

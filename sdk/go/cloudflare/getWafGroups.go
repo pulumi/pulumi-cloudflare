@@ -10,36 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to look up [WAF Rule Groups](https://api.cloudflare.com/#waf-rule-groups-properties).
-//
-// ## Example Usage
-//
-// The example below matches all WAF Rule Groups that contain the word `example` and are currently `on`. The matched WAF Rule Groups are then returned as output.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := cloudflare.GetWafGroups(ctx, &GetWafGroupsArgs{
-// 			Filter: GetWafGroupsFilter{
-// 				Name: pulumi.StringRef(".*example.*"),
-// 				Mode: pulumi.StringRef("on"),
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("wafGroups", test.Groups)
-// 		return nil
-// 	})
-// }
-// ```
 func GetWafGroups(ctx *pulumi.Context, args *GetWafGroupsArgs, opts ...pulumi.InvokeOption) (*GetWafGroupsResult, error) {
 	var rv GetWafGroupsResult
 	err := ctx.Invoke("cloudflare:index/getWafGroups:getWafGroups", args, &rv, opts...)
@@ -51,23 +21,17 @@ func GetWafGroups(ctx *pulumi.Context, args *GetWafGroupsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getWafGroups.
 type GetWafGroupsArgs struct {
-	// One or more values used to look up WAF Rule Groups. If more than one value is given all
-	// values must match in order to be included, see below for full list.
-	Filter *GetWafGroupsFilter `pulumi:"filter"`
-	// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-	PackageId *string `pulumi:"packageId"`
-	// The ID of the DNS zone in which to search for the WAF Rule Groups.
-	ZoneId string `pulumi:"zoneId"`
+	Filter    *GetWafGroupsFilter `pulumi:"filter"`
+	PackageId *string             `pulumi:"packageId"`
+	ZoneId    string              `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWafGroups.
 type GetWafGroupsResult struct {
 	Filter *GetWafGroupsFilter `pulumi:"filter"`
-	// A map of WAF Rule Groups details. Full list below:
 	Groups []GetWafGroupsGroup `pulumi:"groups"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// The ID of the WAF Rule Package that contains the WAF Rule Group
+	Id        string  `pulumi:"id"`
 	PackageId *string `pulumi:"packageId"`
 	ZoneId    string  `pulumi:"zoneId"`
 }
@@ -87,13 +51,9 @@ func GetWafGroupsOutput(ctx *pulumi.Context, args GetWafGroupsOutputArgs, opts .
 
 // A collection of arguments for invoking getWafGroups.
 type GetWafGroupsOutputArgs struct {
-	// One or more values used to look up WAF Rule Groups. If more than one value is given all
-	// values must match in order to be included, see below for full list.
-	Filter GetWafGroupsFilterPtrInput `pulumi:"filter"`
-	// The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-	PackageId pulumi.StringPtrInput `pulumi:"packageId"`
-	// The ID of the DNS zone in which to search for the WAF Rule Groups.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	Filter    GetWafGroupsFilterPtrInput `pulumi:"filter"`
+	PackageId pulumi.StringPtrInput      `pulumi:"packageId"`
+	ZoneId    pulumi.StringInput         `pulumi:"zoneId"`
 }
 
 func (GetWafGroupsOutputArgs) ElementType() reflect.Type {
@@ -119,7 +79,6 @@ func (o GetWafGroupsResultOutput) Filter() GetWafGroupsFilterPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsResult) *GetWafGroupsFilter { return v.Filter }).(GetWafGroupsFilterPtrOutput)
 }
 
-// A map of WAF Rule Groups details. Full list below:
 func (o GetWafGroupsResultOutput) Groups() GetWafGroupsGroupArrayOutput {
 	return o.ApplyT(func(v GetWafGroupsResult) []GetWafGroupsGroup { return v.Groups }).(GetWafGroupsGroupArrayOutput)
 }
@@ -129,7 +88,6 @@ func (o GetWafGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafGroupsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the WAF Rule Package that contains the WAF Rule Group
 func (o GetWafGroupsResultOutput) PackageId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetWafGroupsResult) *string { return v.PackageId }).(pulumi.StringPtrOutput)
 }

@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource, that manages Cloudflare tunnel routes for Zero Trust. Tunnel
-    /// routes are used to direct IP traffic through Cloudflare Tunnels.
+    /// Provides a resource, that manages Cloudflare tunnel routes for Zero Trust. Tunnel routes are used to direct IP traffic through Cloudflare Tunnels.
     /// 
     /// ## Example Usage
     /// 
@@ -23,38 +22,29 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
-    ///         var example = new Cloudflare.TunnelRoute("example", new Cloudflare.TunnelRouteArgs
+    ///         // Tunnel route
+    ///         var exampleTunnelRoute = new Cloudflare.TunnelRoute("exampleTunnelRoute", new Cloudflare.TunnelRouteArgs
     ///         {
     ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
-    ///             Comment = "New tunnel route for documentation",
-    ///             Network = "192.0.2.24/32",
     ///             TunnelId = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
+    ///             Network = "192.0.2.24/32",
+    ///             Comment = "New tunnel route for documentation",
+    ///             VirtualNetworkId = "bdc39a3c-3104-4c23-8ac0-9f455dda691a",
     ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
+    ///         // Tunnel with tunnel route
     ///         var tunnel = new Cloudflare.ArgoTunnel("tunnel", new Cloudflare.ArgoTunnelArgs
     ///         {
     ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
     ///             Name = "my_tunnel",
     ///             Secret = "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
     ///         });
-    ///         var example = new Cloudflare.TunnelRoute("example", new Cloudflare.TunnelRouteArgs
+    ///         var exampleIndex_tunnelRouteTunnelRoute = new Cloudflare.TunnelRoute("exampleIndex/tunnelRouteTunnelRoute", new Cloudflare.TunnelRouteArgs
     ///         {
     ///             AccountId = "c4a7362d577a6c3019a474fd6f485821",
     ///             TunnelId = tunnel.Id,
     ///             Network = "192.0.2.24/32",
     ///             Comment = "New tunnel route for documentation",
+    ///             VirtualNetworkId = "bdc39a3c-3104-4c23-8ac0-9f455dda691a",
     ///         });
     ///     }
     /// 
@@ -63,17 +53,17 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// An existing tunnel route can be imported using the account ID and network CIDR.
+    /// # Use account ID, network CIDR and virtual network ID.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute cloudflare_tunnel_route c4a7362d577a6c3019a474fd6f485821/192.0.2.24/32
+    ///  $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute cloudflare_tunnel_route &lt;account_id/&lt;network_cidr&gt;/&lt;virtual_network_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/tunnelRoute:TunnelRoute")]
     public partial class TunnelRoute : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the account where the tunnel route is being created.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -95,6 +85,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("tunnelId")]
         public Output<string> TunnelId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if
+        /// none is provided.
+        /// </summary>
+        [Output("virtualNetworkId")]
+        public Output<string?> VirtualNetworkId { get; private set; } = null!;
 
 
         /// <summary>
@@ -143,7 +140,7 @@ namespace Pulumi.Cloudflare
     public sealed class TunnelRouteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account where the tunnel route is being created.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -166,6 +163,13 @@ namespace Pulumi.Cloudflare
         [Input("tunnelId", required: true)]
         public Input<string> TunnelId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if
+        /// none is provided.
+        /// </summary>
+        [Input("virtualNetworkId")]
+        public Input<string>? VirtualNetworkId { get; set; }
+
         public TunnelRouteArgs()
         {
         }
@@ -174,7 +178,7 @@ namespace Pulumi.Cloudflare
     public sealed class TunnelRouteState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account where the tunnel route is being created.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -196,6 +200,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("tunnelId")]
         public Input<string>? TunnelId { get; set; }
+
+        /// <summary>
+        /// The ID of the virtual network for which this route is being added; uses the default virtual network of the account if
+        /// none is provided.
+        /// </summary>
+        [Input("virtualNetworkId")]
+        public Input<string>? VirtualNetworkId { get; set; }
 
         public TunnelRouteState()
         {

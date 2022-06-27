@@ -12,11 +12,11 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleLoggingArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Defines if the current rule-level override enables or disables the rule.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public RulesetRuleLoggingArgs()
         {

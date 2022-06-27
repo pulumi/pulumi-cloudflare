@@ -6,73 +6,13 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Cloudflare Access Identity Provider resource. Identity Providers are
- * used as an authentication or authorisation source within Access.
+ * Provides a Cloudflare Access Identity Provider resource. Identity Providers are used as an authentication or authorisation source within Access.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // one time pin
- * const pinLogin = new cloudflare.AccessIdentityProvider("pin_login", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     name: "PIN login",
- *     type: "onetimepin",
- * });
- * // oauth
- * const githubOauth = new cloudflare.AccessIdentityProvider("github_oauth", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     configs: [{
- *         clientId: "example",
- *         clientSecret: "secret_key",
- *     }],
- *     name: "GitHub OAuth",
- *     type: "github",
- * });
- * // saml
- * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloud_saml", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     configs: [{
- *         attributes: [
- *             "email",
- *             "username",
- *         ],
- *         idpPublicCert: `MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o`,
- *         issuerUrl: "jumpcloud",
- *         signRequest: false,
- *         ssoTargetUrl: "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
- *     }],
- *     name: "JumpCloud SAML",
- *     type: "saml",
- * });
- * // okta
- * const okta = new cloudflare.AccessIdentityProvider("okta", {
- *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     configs: [{
- *         apiToken: "okta_api_token",
- *         clientId: "example",
- *         clientSecret: "secret_key",
- *     }],
- *     name: "Okta",
- *     type: "okta",
- * });
- * ```
- *
- * Please refer to the [developers.cloudflare.com Access documentation][accessIdentityProviderGuide]
- * for full reference on what is available and how to configure your provider.
- *
- * ## Import
- *
- * Access Identity Providers can be imported using a composite ID formed of account ID and Access Identity Provider ID.
- *
- * ```sh
- *  $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider my_idp cb029e245cfdd66dc8d2e570d5dd3322/e00e1c13-e350-44fe-96c5-fb75c954871c
- * ```
- *
- *  [access_identity_provider_guide]https://developers.cloudflare.com/access/configuring-identity-providers/
+ * > It's required that an `accountId` or `zoneId` is provided and in
+ * most cases using either is fine. However, if you're using a scoped
+ * access token, you must provide the argument that matches the token's
+ * scope. For example, an access token that is scoped to the "example.com"
+ * zone needs to use the `zoneId` argument.
  */
 export class AccessIdentityProvider extends pulumi.CustomResource {
     /**
@@ -103,11 +43,12 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
     }
 
     /**
-     * The account ID the provider should be associated with. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Provider configuration from the [developer documentation][accessIdentityProviderGuide].
+     * Provider configuration from the [developer
+     * documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      */
     public readonly configs!: pulumi.Output<outputs.AccessIdentityProviderConfig[] | undefined>;
     /**
@@ -115,13 +56,12 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The provider type to use. Must be one of: `"centrify"`,
-     * `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-     * `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+     * `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The zone ID the provider should be associated with. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -167,11 +107,12 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
  */
 export interface AccessIdentityProviderState {
     /**
-     * The account ID the provider should be associated with. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Provider configuration from the [developer documentation][accessIdentityProviderGuide].
+     * Provider configuration from the [developer
+     * documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      */
     configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
     /**
@@ -179,13 +120,12 @@ export interface AccessIdentityProviderState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The provider type to use. Must be one of: `"centrify"`,
-     * `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-     * `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+     * `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone ID the provider should be associated with. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -195,11 +135,12 @@ export interface AccessIdentityProviderState {
  */
 export interface AccessIdentityProviderArgs {
     /**
-     * The account ID the provider should be associated with. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Provider configuration from the [developer documentation][accessIdentityProviderGuide].
+     * Provider configuration from the [developer
+     * documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      */
     configs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderConfig>[]>;
     /**
@@ -207,13 +148,12 @@ export interface AccessIdentityProviderArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The provider type to use. Must be one of: `"centrify"`,
-     * `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-     * `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+     * `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
      */
     type: pulumi.Input<string>;
     /**
-     * The zone ID the provider should be associated with. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

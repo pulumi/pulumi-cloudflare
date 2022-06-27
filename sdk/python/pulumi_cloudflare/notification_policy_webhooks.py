@@ -21,7 +21,7 @@ class NotificationPolicyWebhooksArgs:
         The set of arguments for constructing a NotificationPolicyWebhooks resource.
         :param pulumi.Input[str] account_id: The ID of the account for which the webhook destination has to be connected.
         :param pulumi.Input[str] name: The name of the webhook destination.
-        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
                Secrets are not returned in any API response body.
                Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         :param pulumi.Input[str] url: The URL of the webhook destinations.
@@ -61,7 +61,7 @@ class NotificationPolicyWebhooksArgs:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
         Secrets are not returned in any API response body.
         Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         """
@@ -99,7 +99,7 @@ class _NotificationPolicyWebhooksState:
         Input properties used for looking up and filtering NotificationPolicyWebhooks resources.
         :param pulumi.Input[str] account_id: The ID of the account for which the webhook destination has to be connected.
         :param pulumi.Input[str] name: The name of the webhook destination.
-        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
                Secrets are not returned in any API response body.
                Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         :param pulumi.Input[str] url: The URL of the webhook destinations.
@@ -176,7 +176,7 @@ class _NotificationPolicyWebhooksState:
     @pulumi.getter
     def secret(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
         Secrets are not returned in any API response body.
         Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         """
@@ -246,7 +246,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account for which the webhook destination has to be connected.
         :param pulumi.Input[str] name: The name of the webhook destination.
-        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
                Secrets are not returned in any API response body.
                Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         :param pulumi.Input[str] url: The URL of the webhook destinations.
@@ -351,7 +351,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The ID of the account for which the webhook destination has to be connected.
         :param pulumi.Input[str] name: The name of the webhook destination.
-        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
                Secrets are not returned in any API response body.
                Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         :param pulumi.Input[str] url: The URL of the webhook destinations.
@@ -405,7 +405,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
     @pulumi.getter
     def secret(self) -> pulumi.Output[Optional[str]]:
         """
-        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+        An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
         Secrets are not returned in any API response body.
         Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
         """

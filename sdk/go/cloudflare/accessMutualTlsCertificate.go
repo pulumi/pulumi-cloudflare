@@ -13,45 +13,15 @@ import (
 
 // Provides a Cloudflare Access Mutual TLS Certificate resource. Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server and can be used with Access to only allows requests from devices with a corresponding client certificate.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudflare.NewAccessMutualTlsCertificate(ctx, "myCert", &cloudflare.AccessMutualTlsCertificateArgs{
-// 			ZoneId:      pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
-// 			Name:        pulumi.String("My Root Cert"),
-// 			Certificate: pulumi.Any(_var.Ca_pem),
-// 			AssociatedHostnames: pulumi.StringArray{
-// 				pulumi.String("staging.example.com"),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// ## Import
-//
-// Access Mutual TLS Certificate can be imported using a composite ID composed of the account or zone and the mutual TLS certificate ID in the form of`account/ACCOUNT_ID/MUTUAL_TLS_CERTIFICATE_ID` or `zone/ZONE_ID/MUTUAL_TLS_CERTIFICATE_ID`.
-//
-// ```sh
-//  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate staging account/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
-// ```
+// > It's required that an `accountId` or `zoneId` is provided and in
+// most cases using either is fine. However, if you're using a scoped
+// access token, you must provide the argument that matches the token's
+// scope. For example, an access token that is scoped to the "example.com"
+// zone needs to use the `zoneId` argument.
 type AccessMutualTlsCertificate struct {
 	pulumi.CustomResourceState
 
-	// The account to which the certificate should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The hostnames that will be prompted for this certificate.
 	AssociatedHostnames pulumi.StringArrayOutput `pulumi:"associatedHostnames"`
@@ -60,7 +30,7 @@ type AccessMutualTlsCertificate struct {
 	Fingerprint pulumi.StringOutput    `pulumi:"fingerprint"`
 	// The name of the certificate.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -96,7 +66,7 @@ func GetAccessMutualTlsCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessMutualTlsCertificate resources.
 type accessMutualTlsCertificateState struct {
-	// The account to which the certificate should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// The hostnames that will be prompted for this certificate.
 	AssociatedHostnames []string `pulumi:"associatedHostnames"`
@@ -105,12 +75,12 @@ type accessMutualTlsCertificateState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The name of the certificate.
 	Name *string `pulumi:"name"`
-	// The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessMutualTlsCertificateState struct {
-	// The account to which the certificate should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// The hostnames that will be prompted for this certificate.
 	AssociatedHostnames pulumi.StringArrayInput
@@ -119,7 +89,7 @@ type AccessMutualTlsCertificateState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The name of the certificate.
 	Name pulumi.StringPtrInput
-	// The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -128,7 +98,7 @@ func (AccessMutualTlsCertificateState) ElementType() reflect.Type {
 }
 
 type accessMutualTlsCertificateArgs struct {
-	// The account to which the certificate should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// The hostnames that will be prompted for this certificate.
 	AssociatedHostnames []string `pulumi:"associatedHostnames"`
@@ -136,13 +106,13 @@ type accessMutualTlsCertificateArgs struct {
 	Certificate *string `pulumi:"certificate"`
 	// The name of the certificate.
 	Name string `pulumi:"name"`
-	// The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessMutualTlsCertificate resource.
 type AccessMutualTlsCertificateArgs struct {
-	// The account to which the certificate should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// The hostnames that will be prompted for this certificate.
 	AssociatedHostnames pulumi.StringArrayInput
@@ -150,7 +120,7 @@ type AccessMutualTlsCertificateArgs struct {
 	Certificate pulumi.StringPtrInput
 	// The name of the certificate.
 	Name pulumi.StringInput
-	// The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -241,7 +211,7 @@ func (o AccessMutualTlsCertificateOutput) ToAccessMutualTlsCertificateOutputWith
 	return o
 }
 
-// The account to which the certificate should be added. Conflicts with `zoneId`.
+// The account identifier to target for the resource.
 func (o AccessMutualTlsCertificateOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -265,7 +235,7 @@ func (o AccessMutualTlsCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+// The zone identifier to target for the resource.
 func (o AccessMutualTlsCertificateOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessMutualTlsCertificate) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

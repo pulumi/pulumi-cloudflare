@@ -69,7 +69,7 @@ export class NotificationPolicyWebhooks extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
      * Secrets are not returned in any API response body.
      * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
      */
@@ -139,7 +139,7 @@ export interface NotificationPolicyWebhooksState {
      */
     name?: pulumi.Input<string>;
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
      * Secrets are not returned in any API response body.
      * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
      */
@@ -164,7 +164,7 @@ export interface NotificationPolicyWebhooksArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. 
+     * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification.
      * Secrets are not returned in any API response body.
      * Refer to the documentation for more details - https://api.cloudflare.com/#notification-webhooks-create-webhook.
      */

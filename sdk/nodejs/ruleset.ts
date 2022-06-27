@@ -5,229 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Magic Transit
- * const magicTransitExample = new cloudflare.Ruleset("magic_transit_example", {
- *     accountId: "d41d8cd98f00b204e9800998ecf8427e",
- *     description: "example magic transit ruleset description",
- *     kind: "root",
- *     name: "account magic transit",
- *     phase: "magic_transit",
- *     rules: [{
- *         action: "allow",
- *         description: "Allow TCP Ephemeral Ports",
- *         expression: "tcp.dstport in { 32768..65535 }",
- *     }],
- * });
- * // Zone-level WAF Managed Ruleset
- * const zoneLevelManagedWaf = new cloudflare.Ruleset("zone_level_managed_waf", {
- *     description: "managed WAF ruleset description",
- *     kind: "zone",
- *     name: "managed WAF",
- *     phase: "http_request_firewall_managed",
- *     rules: [{
- *         action: "execute",
- *         actionParameters: {
- *             id: "efb7b8c949ac4650a09736fc376e9aee",
- *         },
- *         description: "Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset",
- *         enabled: true,
- *         expression: "true",
- *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
- * });
- * // Zone-level WAF with tag-based overrides
- * const zoneLevelManagedWafWithCategoryBasedOverrides = new cloudflare.Ruleset("zone_level_managed_waf_with_category_based_overrides", {
- *     description: "managed WAF with tag-based overrides ruleset description",
- *     kind: "zone",
- *     name: "managed WAF with tag-based overrides",
- *     phase: "http_request_firewall_managed",
- *     rules: [{
- *         action: "execute",
- *         actionParameters: {
- *             id: "efb7b8c949ac4650a09736fc376e9aee",
- *             overrides: {
- *                 categories: [
- *                     {
- *                         action: "block",
- *                         category: "wordpress",
- *                         enabled: true,
- *                     },
- *                     {
- *                         action: "block",
- *                         category: "joomla",
- *                         enabled: true,
- *                     },
- *                 ],
- *             },
- *         },
- *         description: "overrides to only enable wordpress rules to block",
- *         enabled: false,
- *         expression: "true",
- *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
- * });
- * // Rewrite the URI path component to a static path
- * const transformUriRulePath = new cloudflare.Ruleset("transform_uri_rule_path", {
- *     description: "change the URI path to a new static path",
- *     kind: "zone",
- *     name: "transform rule for URI path",
- *     phase: "http_request_transform",
- *     rules: [{
- *         action: "rewrite",
- *         actionParameters: {
- *             uri: {
- *                 path: {
- *                     value: "/my-new-route",
- *                 },
- *             },
- *         },
- *         description: "example URI path transform rule",
- *         enabled: true,
- *         expression: "(http.host eq \"example.com\" and http.request.uri.path eq \"/old-path\")",
- *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
- * });
- * // Rewrite the URI query component to a static query
- * const transformUriRuleQuery = new cloudflare.Ruleset("transform_uri_rule_query", {
- *     description: "change the URI query to a new static query",
- *     kind: "zone",
- *     name: "transform rule for URI query parameter",
- *     phase: "http_request_transform",
- *     rules: [{
- *         action: "rewrite",
- *         actionParameters: {
- *             uri: {
- *                 query: {
- *                     value: "old=new_again",
- *                 },
- *             },
- *         },
- *         description: "URI transformation query example",
- *         enabled: true,
- *         expression: "true",
- *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
- * });
- * // Rewrite HTTP headers to a modified values
- * const transformUriHttpHeaders = new cloudflare.Ruleset("transform_uri_http_headers", {
- *     description: "modify HTTP headers before reaching origin",
- *     kind: "zone",
- *     name: "transform rule for HTTP headers",
- *     phase: "http_request_late_transform",
- *     rules: [{
- *         action: "rewrite",
- *         actionParameters: {
- *             headers: [
- *                 {
- *                     name: "example-http-header-1",
- *                     operation: "set",
- *                     value: "my-http-header-value-1",
- *                 },
- *                 {
- *                     expression: "cf.zone.name",
- *                     name: "example-http-header-2",
- *                     operation: "set",
- *                 },
- *                 {
- *                     name: "example-http-header-3-to-remove",
- *                     operation: "remove",
- *                 },
- *             ],
- *         },
- *         description: "example request header transform rule",
- *         enabled: false,
- *         expression: "true",
- *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
- * });
- * // HTTP rate limit for an API route
- * const rateLimitingExample = new cloudflare.Ruleset("rate_limiting_example", {
- *     description: "apply HTTP rate limiting for a route",
- *     kind: "zone",
- *     name: "restrict API requests count",
- *     phase: "http_ratelimit",
- *     rules: [{
- *         action: "block",
- *         description: "rate limit for API",
- *         enabled: true,
- *         expression: "(http.request.uri.path matches \"^/api/\")",
- *         ratelimit: {
- *             characteristics: [
- *                 "cf.colo.id",
- *                 "ip.src",
- *             ],
- *             mitigationTimeout: 600,
- *             period: 60,
- *             requestsPerPeriod: 100,
- *         },
- *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
- * });
- * // Change origin for an API route
- * const httpOriginExample = new cloudflare.Ruleset("http_origin_example", {
- *     description: "Change origin for a route",
- *     kind: "zone",
- *     name: "Change to some origin",
- *     phase: "http_request_origin",
- *     rules: [{
- *         action: "route",
- *         actionParameters: {
- *             hostHeader: "some.host",
- *             origin: {
- *                 host: "some.host",
- *                 port: 80,
- *             },
- *         },
- *         description: "change origin to some.host",
- *         enabled: true,
- *         expression: "(http.request.uri.path matches \"^/api/\")",
- *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
- * });
- * // custom fields logging
- * const customFieldsLoggingExample = new cloudflare.Ruleset("custom_fields_logging_example", {
- *     description: "add custom fields to logging",
- *     kind: "zone",
- *     name: "log custom fields",
- *     phase: "http_log_custom_fields",
- *     rules: [{
- *         action: "log_custom_field",
- *         actionParameters: {
- *             cookieFields: [
- *                 "__ga",
- *                 "accountNumber",
- *                 "__cfruid",
- *             ],
- *             requestFields: [
- *                 "content-type",
- *                 "x-forwarded-for",
- *                 "host",
- *             ],
- *             responseFields: [
- *                 "server",
- *                 "content-type",
- *                 "allow",
- *             ],
- *         },
- *         description: "log custom fields rule",
- *         enabled: true,
- *         expression: "true",
- *     }],
- *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
- * });
- * ```
- *
- * ## Import
- *
- * Currently, you cannot import rulesets.
- */
 export class Ruleset extends pulumi.CustomResource {
     /**
      * Get an existing Ruleset resource's state with the given name, ID, and optional extra
@@ -257,27 +34,31 @@ export class Ruleset extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the HTTP request header to target.
+     * Name of the ruleset.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+     * `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+     * `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+     * `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+     * `http_ratelimit`, `http_request_sbfm`
      */
     public readonly phase!: pulumi.Output<string>;
     /**
-     * List of rule-based overrides (refer to the nested schema).
+     * List of rules to apply to the ruleset.
      */
     public readonly rules!: pulumi.Output<outputs.RulesetRule[] | undefined>;
     /**
@@ -285,7 +66,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly shareableEntitlementName!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -340,27 +121,31 @@ export class Ruleset extends pulumi.CustomResource {
  */
 export interface RulesetState {
     /**
-     * The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the HTTP request header to target.
+     * Name of the ruleset.
      */
     name?: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+     * `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+     * `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+     * `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+     * `http_ratelimit`, `http_request_sbfm`
      */
     phase?: pulumi.Input<string>;
     /**
-     * List of rule-based overrides (refer to the nested schema).
+     * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
@@ -368,7 +153,7 @@ export interface RulesetState {
      */
     shareableEntitlementName?: pulumi.Input<string>;
     /**
-     * The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -378,27 +163,31 @@ export interface RulesetState {
  */
 export interface RulesetArgs {
     /**
-     * The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
      */
     kind: pulumi.Input<string>;
     /**
-     * Name of the HTTP request header to target.
+     * Name of the ruleset.
      */
     name: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+     * `http_log_custom_fields`, `http_request_firewall_custom`, `http_request_firewall_managed`,
+     * `http_request_late_transform`, `http_request_main`, `http_request_sanitize`, `http_request_transform`,
+     * `http_request_origin`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`,
+     * `http_ratelimit`, `http_request_sbfm`
      */
     phase: pulumi.Input<string>;
     /**
-     * List of rule-based overrides (refer to the nested schema).
+     * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
@@ -406,7 +195,7 @@ export interface RulesetArgs {
      */
     shareableEntitlementName?: pulumi.Input<string>;
     /**
-     * The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

@@ -7,27 +7,11 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Access Mutual TLS Certificate resource. Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server and can be used with Access to only allows requests from devices with a corresponding client certificate.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const myCert = new cloudflare.AccessMutualTlsCertificate("myCert", {
- *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
- *     name: "My Root Cert",
- *     certificate: _var.ca_pem,
- *     associatedHostnames: ["staging.example.com"],
- * });
- * ```
- *
- * ## Import
- *
- * Access Mutual TLS Certificate can be imported using a composite ID composed of the account or zone and the mutual TLS certificate ID in the form of`account/ACCOUNT_ID/MUTUAL_TLS_CERTIFICATE_ID` or `zone/ZONE_ID/MUTUAL_TLS_CERTIFICATE_ID`.
- *
- * ```sh
- *  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate staging account/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
- * ```
+ * > It's required that an `accountId` or `zoneId` is provided and in
+ * most cases using either is fine. However, if you're using a scoped
+ * access token, you must provide the argument that matches the token's
+ * scope. For example, an access token that is scoped to the "example.com"
+ * zone needs to use the `zoneId` argument.
  */
 export class AccessMutualTlsCertificate extends pulumi.CustomResource {
     /**
@@ -58,7 +42,7 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The account to which the certificate should be added. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -75,7 +59,7 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -120,7 +104,7 @@ export class AccessMutualTlsCertificate extends pulumi.CustomResource {
  */
 export interface AccessMutualTlsCertificateState {
     /**
-     * The account to which the certificate should be added. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -137,7 +121,7 @@ export interface AccessMutualTlsCertificateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -147,7 +131,7 @@ export interface AccessMutualTlsCertificateState {
  */
 export interface AccessMutualTlsCertificateArgs {
     /**
-     * The account to which the certificate should be added. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -163,7 +147,7 @@ export interface AccessMutualTlsCertificateArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The DNS zone to which the certificate should be added. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

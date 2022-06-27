@@ -130,7 +130,7 @@ class WorkerRoute(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -155,7 +155,7 @@ class WorkerRoute(pulumi.CustomResource):
          $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -170,7 +170,7 @@ class WorkerRoute(pulumi.CustomResource):
                  args: WorkerRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -195,7 +195,7 @@ class WorkerRoute(pulumi.CustomResource):
          $ pulumi import cloudflare:index/workerRoute:WorkerRoute default d41d8cd98f00b204e9800998ecf8427e/9a7806061c88ada191ed06f989cc3dac
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9a7806061c88ada191ed06f989cc3dac` - route ID as returned by [API](https://api.cloudflare.com/#worker-filters-list-filters)
 
         :param str resource_name: The name of the resource.
         :param WorkerRouteArgs args: The arguments to use to populate this resource's properties.

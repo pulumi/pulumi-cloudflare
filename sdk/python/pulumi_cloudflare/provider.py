@@ -27,19 +27,32 @@ class ProviderArgs:
                  rps: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] account_id: Configure API client to always use that account
-        :param pulumi.Input[str] api_base_path: Configure the base path used by the API client
-        :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger)
-        :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client
-        :param pulumi.Input[str] api_key: The API key for operations.
-        :param pulumi.Input[str] api_token: The API Token for operations.
-        :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints
-        :param pulumi.Input[str] email: A registered Cloudflare email address
-        :param pulumi.Input[int] max_backoff: Maximum backoff period in seconds after failed API calls
-        :param pulumi.Input[int] min_backoff: Minimum backoff period in seconds after failed API calls
-        :param pulumi.Input[int] retries: Maximum number of retries to perform when an API request fails
-        :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API
+        :param pulumi.Input[str] account_id: Configure API client to always use a specific account. Alternatively, can be configured using the
+               `CLOUDFLARE_ACCOUNT_ID` environment variable.
+        :param pulumi.Input[str] api_base_path: Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+               environment variable.
+        :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
+               the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
+        :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+               environment variable.
+        :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+        :param pulumi.Input[str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+        :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+               `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+        :param pulumi.Input[str] email: A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+               variable.
+        :param pulumi.Input[int] max_backoff: Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+               `CLOUDFLARE_MAX_BACKOFF` environment variable.
+        :param pulumi.Input[int] min_backoff: Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+               `CLOUDFLARE_MIN_BACKOFF` environment variable.
+        :param pulumi.Input[int] retries: Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
+               `CLOUDFLARE_RETRIES` environment variable.
+        :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
+               variable.
         """
+        if account_id is not None:
+            warnings.warn("""Use resource specific `account_id` attributes instead.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: Use resource specific `account_id` attributes instead.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if api_base_path is not None:
@@ -79,7 +92,8 @@ class ProviderArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Configure API client to always use that account
+        Configure API client to always use a specific account. Alternatively, can be configured using the
+        `CLOUDFLARE_ACCOUNT_ID` environment variable.
         """
         return pulumi.get(self, "account_id")
 
@@ -91,7 +105,8 @@ class ProviderArgs:
     @pulumi.getter(name="apiBasePath")
     def api_base_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Configure the base path used by the API client
+        Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+        environment variable.
         """
         return pulumi.get(self, "api_base_path")
 
@@ -103,7 +118,8 @@ class ProviderArgs:
     @pulumi.getter(name="apiClientLogging")
     def api_client_logging(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to print logs from the API client (using the default log library logger)
+        Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
+        the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
         """
         return pulumi.get(self, "api_client_logging")
 
@@ -115,7 +131,8 @@ class ProviderArgs:
     @pulumi.getter(name="apiHostname")
     def api_hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        Configure the hostname used by the API client
+        Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+        environment variable.
         """
         return pulumi.get(self, "api_hostname")
 
@@ -127,7 +144,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiKey")
     def api_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The API key for operations.
+        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
         """
         return pulumi.get(self, "api_key")
 
@@ -139,7 +156,7 @@ class ProviderArgs:
     @pulumi.getter(name="apiToken")
     def api_token(self) -> Optional[pulumi.Input[str]]:
         """
-        The API Token for operations.
+        The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
         """
         return pulumi.get(self, "api_token")
 
@@ -151,7 +168,8 @@ class ProviderArgs:
     @pulumi.getter(name="apiUserServiceKey")
     def api_user_service_key(self) -> Optional[pulumi.Input[str]]:
         """
-        A special Cloudflare API key good for a restricted set of endpoints
+        A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+        `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
         """
         return pulumi.get(self, "api_user_service_key")
 
@@ -163,7 +181,8 @@ class ProviderArgs:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        A registered Cloudflare email address
+        A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+        variable.
         """
         return pulumi.get(self, "email")
 
@@ -175,7 +194,8 @@ class ProviderArgs:
     @pulumi.getter(name="maxBackoff")
     def max_backoff(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum backoff period in seconds after failed API calls
+        Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+        `CLOUDFLARE_MAX_BACKOFF` environment variable.
         """
         return pulumi.get(self, "max_backoff")
 
@@ -187,7 +207,8 @@ class ProviderArgs:
     @pulumi.getter(name="minBackoff")
     def min_backoff(self) -> Optional[pulumi.Input[int]]:
         """
-        Minimum backoff period in seconds after failed API calls
+        Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+        `CLOUDFLARE_MIN_BACKOFF` environment variable.
         """
         return pulumi.get(self, "min_backoff")
 
@@ -199,7 +220,8 @@ class ProviderArgs:
     @pulumi.getter
     def retries(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of retries to perform when an API request fails
+        Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
+        `CLOUDFLARE_RETRIES` environment variable.
         """
         return pulumi.get(self, "retries")
 
@@ -211,7 +233,8 @@ class ProviderArgs:
     @pulumi.getter
     def rps(self) -> Optional[pulumi.Input[int]]:
         """
-        RPS limit to apply when making calls to the API
+        RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
+        variable.
         """
         return pulumi.get(self, "rps")
 
@@ -246,18 +269,28 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Configure API client to always use that account
-        :param pulumi.Input[str] api_base_path: Configure the base path used by the API client
-        :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger)
-        :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client
-        :param pulumi.Input[str] api_key: The API key for operations.
-        :param pulumi.Input[str] api_token: The API Token for operations.
-        :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints
-        :param pulumi.Input[str] email: A registered Cloudflare email address
-        :param pulumi.Input[int] max_backoff: Maximum backoff period in seconds after failed API calls
-        :param pulumi.Input[int] min_backoff: Minimum backoff period in seconds after failed API calls
-        :param pulumi.Input[int] retries: Maximum number of retries to perform when an API request fails
-        :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API
+        :param pulumi.Input[str] account_id: Configure API client to always use a specific account. Alternatively, can be configured using the
+               `CLOUDFLARE_ACCOUNT_ID` environment variable.
+        :param pulumi.Input[str] api_base_path: Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+               environment variable.
+        :param pulumi.Input[bool] api_client_logging: Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
+               the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
+        :param pulumi.Input[str] api_hostname: Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+               environment variable.
+        :param pulumi.Input[str] api_key: The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
+        :param pulumi.Input[str] api_token: The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
+        :param pulumi.Input[str] api_user_service_key: A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+               `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
+        :param pulumi.Input[str] email: A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+               variable.
+        :param pulumi.Input[int] max_backoff: Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+               `CLOUDFLARE_MAX_BACKOFF` environment variable.
+        :param pulumi.Input[int] min_backoff: Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+               `CLOUDFLARE_MIN_BACKOFF` environment variable.
+        :param pulumi.Input[int] retries: Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
+               `CLOUDFLARE_RETRIES` environment variable.
+        :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
+               variable.
         """
         ...
     @overload
@@ -310,6 +343,9 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            if account_id is not None and not opts.urn:
+                warnings.warn("""Use resource specific `account_id` attributes instead.""", DeprecationWarning)
+                pulumi.log.warn("""account_id is deprecated: Use resource specific `account_id` attributes instead.""")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["api_base_path"] = api_base_path
             if api_client_logging is None:
@@ -342,7 +378,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Configure API client to always use that account
+        Configure API client to always use a specific account. Alternatively, can be configured using the
+        `CLOUDFLARE_ACCOUNT_ID` environment variable.
         """
         return pulumi.get(self, "account_id")
 
@@ -350,7 +387,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiBasePath")
     def api_base_path(self) -> pulumi.Output[Optional[str]]:
         """
-        Configure the base path used by the API client
+        Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+        environment variable.
         """
         return pulumi.get(self, "api_base_path")
 
@@ -358,7 +396,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiHostname")
     def api_hostname(self) -> pulumi.Output[Optional[str]]:
         """
-        Configure the hostname used by the API client
+        Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+        environment variable.
         """
         return pulumi.get(self, "api_hostname")
 
@@ -366,7 +405,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiKey")
     def api_key(self) -> pulumi.Output[Optional[str]]:
         """
-        The API key for operations.
+        The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
         """
         return pulumi.get(self, "api_key")
 
@@ -374,7 +413,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiToken")
     def api_token(self) -> pulumi.Output[Optional[str]]:
         """
-        The API Token for operations.
+        The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
         """
         return pulumi.get(self, "api_token")
 
@@ -382,7 +421,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apiUserServiceKey")
     def api_user_service_key(self) -> pulumi.Output[Optional[str]]:
         """
-        A special Cloudflare API key good for a restricted set of endpoints
+        A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+        `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
         """
         return pulumi.get(self, "api_user_service_key")
 
@@ -390,7 +430,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[Optional[str]]:
         """
-        A registered Cloudflare email address
+        A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+        variable.
         """
         return pulumi.get(self, "email")
 

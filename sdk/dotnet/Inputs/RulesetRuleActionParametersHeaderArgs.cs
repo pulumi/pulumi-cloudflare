@@ -12,27 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersHeaderArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-        /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
-        /// <summary>
-        /// Name of the HTTP request header to target.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
-        /// </summary>
         [Input("operation")]
         public Input<string>? Operation { get; set; }
 
-        /// <summary>
-        /// Static string value of the updated URI path or query string component. Conflicts with `expression`.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

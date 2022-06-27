@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
     /// ```
     /// 
-    ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+    ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zone:Zone")]
     public partial class Zone : Pulumi.CustomResource
@@ -83,8 +83,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// List of Vanity Nameservers (if set).
-        /// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-        /// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+        /// - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+        /// - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         /// </summary>
         [Output("vanityNameServers")]
         public Output<ImmutableArray<string>> VanityNameServers { get; private set; } = null!;
@@ -239,8 +239,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// List of Vanity Nameservers (if set).
-        /// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-        /// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+        /// - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+        /// - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         /// </summary>
         public InputList<string> VanityNameServers
         {

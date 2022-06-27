@@ -22,6 +22,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Waiting Room Event
     ///         var example = new Cloudflare.WaitingRoomEvent("example", new Cloudflare.WaitingRoomEventArgs
     ///         {
     ///             EventEndTime = "2006-01-02T20:04:05Z",
@@ -37,34 +38,35 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Waiting room events can be imported using a composite ID formed of zone ID, waiting room ID, and waiting room event ID, e.g.
+    /// # Use the Zone ID, Waiting Room ID, and Event ID to import.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e/25756b2dfe6e378a06b033b670413757
+    ///  $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default &lt;zone_id&gt;/&lt;waiting_room_id&gt;/&lt;waiting_room_event_id&gt;
     /// ```
-    /// 
-    ///  where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - waiting room ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-waiting-rooms) * `25756b2dfe6e378a06b033b670413757` - waiting room event ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-events)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/waitingRoomEvent:WaitingRoomEvent")]
     public partial class WaitingRoomEvent : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Creation time.
+        /// </summary>
         [Output("createdOn")]
         public Output<string> CreatedOn { get; private set; } = null!;
 
         /// <summary>
-        /// This a templated html file that will be rendered at the edge.
+        /// This is a templated html file that will be rendered at the edge.
         /// </summary>
         [Output("customPageHtml")]
         public Output<string?> CustomPageHtml { get; private set; } = null!;
 
         /// <summary>
-        /// A description to let users add more details about the waiting room event.
+        /// A description to let users add more details about the event.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.
+        /// Disables automatic renewal of session cookies.
         /// </summary>
         [Output("disableSessionRenewal")]
         public Output<bool?> DisableSessionRenewal { get; private set; } = null!;
@@ -76,11 +78,14 @@ namespace Pulumi.Cloudflare
         public Output<string> EventEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.
+        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
         /// </summary>
         [Output("eventStartTime")]
         public Output<string> EventStartTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Last modified time.
+        /// </summary>
         [Output("modifiedOn")]
         public Output<string> ModifiedOn { get; private set; } = null!;
 
@@ -97,31 +102,33 @@ namespace Pulumi.Cloudflare
         public Output<int?> NewUsersPerMinute { get; private set; } = null!;
 
         /// <summary>
-        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.
+        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
+        /// before `event_start_time`.
         /// </summary>
         [Output("prequeueStartTime")]
         public Output<string?> PrequeueStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
         /// </summary>
         [Output("queueingMethod")]
         public Output<string?> QueueingMethod { get; private set; } = null!;
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         /// </summary>
         [Output("sessionDuration")]
         public Output<int?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Default: false.
+        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
+        /// null.
         /// </summary>
         [Output("shuffleAtEventStart")]
         public Output<bool?> ShuffleAtEventStart { get; private set; } = null!;
 
         /// <summary>
-        /// If suspended, the traffic doesn't go to the waiting room. Default: false.
+        /// If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
         /// </summary>
         [Output("suspended")]
         public Output<bool?> Suspended { get; private set; } = null!;
@@ -139,7 +146,7 @@ namespace Pulumi.Cloudflare
         public Output<string> WaitingRoomId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID to apply to.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -191,19 +198,19 @@ namespace Pulumi.Cloudflare
     public sealed class WaitingRoomEventArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This a templated html file that will be rendered at the edge.
+        /// This is a templated html file that will be rendered at the edge.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// A description to let users add more details about the waiting room event.
+        /// A description to let users add more details about the event.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.
+        /// Disables automatic renewal of session cookies.
         /// </summary>
         [Input("disableSessionRenewal")]
         public Input<bool>? DisableSessionRenewal { get; set; }
@@ -215,7 +222,7 @@ namespace Pulumi.Cloudflare
         public Input<string> EventEndTime { get; set; } = null!;
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.
+        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
         /// </summary>
         [Input("eventStartTime", required: true)]
         public Input<string> EventStartTime { get; set; } = null!;
@@ -233,31 +240,33 @@ namespace Pulumi.Cloudflare
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.
+        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
+        /// before `event_start_time`.
         /// </summary>
         [Input("prequeueStartTime")]
         public Input<string>? PrequeueStartTime { get; set; }
 
         /// <summary>
-        /// The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Default: false.
+        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
+        /// null.
         /// </summary>
         [Input("shuffleAtEventStart")]
         public Input<bool>? ShuffleAtEventStart { get; set; }
 
         /// <summary>
-        /// If suspended, the traffic doesn't go to the waiting room. Default: false.
+        /// If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
@@ -275,7 +284,7 @@ namespace Pulumi.Cloudflare
         public Input<string> WaitingRoomId { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID to apply to.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -287,23 +296,26 @@ namespace Pulumi.Cloudflare
 
     public sealed class WaitingRoomEventState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Creation time.
+        /// </summary>
         [Input("createdOn")]
         public Input<string>? CreatedOn { get; set; }
 
         /// <summary>
-        /// This a templated html file that will be rendered at the edge.
+        /// This is a templated html file that will be rendered at the edge.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// A description to let users add more details about the waiting room event.
+        /// A description to let users add more details about the event.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.
+        /// Disables automatic renewal of session cookies.
         /// </summary>
         [Input("disableSessionRenewal")]
         public Input<bool>? DisableSessionRenewal { get; set; }
@@ -315,11 +327,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? EventEndTime { get; set; }
 
         /// <summary>
-        /// ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.
+        /// ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
         /// </summary>
         [Input("eventStartTime")]
         public Input<string>? EventStartTime { get; set; }
 
+        /// <summary>
+        /// Last modified time.
+        /// </summary>
         [Input("modifiedOn")]
         public Input<string>? ModifiedOn { get; set; }
 
@@ -336,31 +351,33 @@ namespace Pulumi.Cloudflare
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.
+        /// ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
+        /// before `event_start_time`.
         /// </summary>
         [Input("prequeueStartTime")]
         public Input<string>? PrequeueStartTime { get; set; }
 
         /// <summary>
-        /// The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.
+        /// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
 
         /// <summary>
-        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not null. Default: false.
+        /// Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
+        /// null.
         /// </summary>
         [Input("shuffleAtEventStart")]
         public Input<bool>? ShuffleAtEventStart { get; set; }
 
         /// <summary>
-        /// If suspended, the traffic doesn't go to the waiting room. Default: false.
+        /// If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
@@ -378,7 +395,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? WaitingRoomId { get; set; }
 
         /// <summary>
-        /// The zone ID to apply to.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

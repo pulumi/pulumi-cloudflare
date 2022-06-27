@@ -12,21 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersUriArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// List of properties to change request origin (refer to the nested schema).
-        /// </summary>
         [Input("origin")]
         public Input<bool>? Origin { get; set; }
 
-        /// <summary>
-        /// URI path configuration when performing a URL rewrite (refer to the nested schema).
-        /// </summary>
         [Input("path")]
         public Input<Inputs.RulesetRuleActionParametersUriPathArgs>? Path { get; set; }
 
-        /// <summary>
-        /// Query string configuration when performing a URL rewrite (refer to the nested schema).
-        /// </summary>
         [Input("query")]
         public Input<Inputs.RulesetRuleActionParametersUriQueryArgs>? Query { get; set; }
 

@@ -12,44 +12,17 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Access Mutual TLS Certificate resource. Mutual TLS authentication ensures that the traffic is secure and trusted in both directions between a client and server and can be used with Access to only allows requests from devices with a corresponding client certificate.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myCert = new Cloudflare.AccessMutualTlsCertificate("myCert", new Cloudflare.AccessMutualTlsCertificateArgs
-    ///         {
-    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
-    ///             Name = "My Root Cert",
-    ///             Certificate = @var.Ca_pem,
-    ///             AssociatedHostnames = 
-    ///             {
-    ///                 "staging.example.com",
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Access Mutual TLS Certificate can be imported using a composite ID composed of the account or zone and the mutual TLS certificate ID in the form of`account/ACCOUNT_ID/MUTUAL_TLS_CERTIFICATE_ID` or `zone/ZONE_ID/MUTUAL_TLS_CERTIFICATE_ID`.
-    /// 
-    /// ```sh
-    ///  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate staging account/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
-    /// ```
+    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
+    /// most cases using either is fine. However, if you're using a scoped
+    /// access token, you must provide the argument that matches the token's
+    /// scope. For example, an access token that is scoped to the "example.com"
+    /// zone needs to use the `zone_id` argument.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate")]
     public partial class AccessMutualTlsCertificate : Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the certificate should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -76,7 +49,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the certificate should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -128,7 +101,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessMutualTlsCertificateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the certificate should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -158,7 +131,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the certificate should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -171,7 +144,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessMutualTlsCertificateState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the certificate should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -204,7 +177,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The DNS zone to which the certificate should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

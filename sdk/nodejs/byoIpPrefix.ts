@@ -56,6 +56,9 @@ export class ByoIpPrefix extends pulumi.CustomResource {
         return obj['__pulumiType'] === ByoIpPrefix.__pulumiType;
     }
 
+    /**
+     * The account identifier to target for the resource.
+     */
     public readonly accountId!: pulumi.Output<string>;
     /**
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
@@ -109,6 +112,9 @@ export class ByoIpPrefix extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ByoIpPrefix resources.
  */
 export interface ByoIpPrefixState {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: pulumi.Input<string>;
     /**
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
@@ -128,6 +134,9 @@ export interface ByoIpPrefixState {
  * The set of arguments for constructing a ByoIpPrefix resource.
  */
 export interface ByoIpPrefixArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId: pulumi.Input<string>;
     /**
      * Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.

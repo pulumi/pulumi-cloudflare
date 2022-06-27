@@ -8,7 +8,8 @@ declare var exports: any;
 const __config = new pulumi.Config("cloudflare");
 
 /**
- * Configure API client to always use that account
+ * Configure API client to always use a specific account. Alternatively, can be configured using the
+ * `CLOUDFLARE_ACCOUNT_ID` environment variable.
  */
 export declare const accountId: string | undefined;
 Object.defineProperty(exports, "accountId", {
@@ -19,7 +20,8 @@ Object.defineProperty(exports, "accountId", {
 });
 
 /**
- * Configure the base path used by the API client
+ * Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+ * environment variable.
  */
 export declare const apiBasePath: string | undefined;
 Object.defineProperty(exports, "apiBasePath", {
@@ -30,7 +32,8 @@ Object.defineProperty(exports, "apiBasePath", {
 });
 
 /**
- * Whether to print logs from the API client (using the default log library logger)
+ * Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
+ * the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
  */
 export declare const apiClientLogging: boolean;
 Object.defineProperty(exports, "apiClientLogging", {
@@ -41,7 +44,8 @@ Object.defineProperty(exports, "apiClientLogging", {
 });
 
 /**
- * Configure the hostname used by the API client
+ * Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+ * environment variable.
  */
 export declare const apiHostname: string | undefined;
 Object.defineProperty(exports, "apiHostname", {
@@ -52,7 +56,7 @@ Object.defineProperty(exports, "apiHostname", {
 });
 
 /**
- * The API key for operations.
+ * The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
  */
 export declare const apiKey: string | undefined;
 Object.defineProperty(exports, "apiKey", {
@@ -63,7 +67,7 @@ Object.defineProperty(exports, "apiKey", {
 });
 
 /**
- * The API Token for operations.
+ * The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
  */
 export declare const apiToken: string | undefined;
 Object.defineProperty(exports, "apiToken", {
@@ -74,7 +78,8 @@ Object.defineProperty(exports, "apiToken", {
 });
 
 /**
- * A special Cloudflare API key good for a restricted set of endpoints
+ * A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+ * `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
  */
 export declare const apiUserServiceKey: string | undefined;
 Object.defineProperty(exports, "apiUserServiceKey", {
@@ -85,7 +90,8 @@ Object.defineProperty(exports, "apiUserServiceKey", {
 });
 
 /**
- * A registered Cloudflare email address
+ * A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+ * variable.
  */
 export declare const email: string | undefined;
 Object.defineProperty(exports, "email", {
@@ -96,7 +102,8 @@ Object.defineProperty(exports, "email", {
 });
 
 /**
- * Maximum backoff period in seconds after failed API calls
+ * Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+ * `CLOUDFLARE_MAX_BACKOFF` environment variable.
  */
 export declare const maxBackoff: number;
 Object.defineProperty(exports, "maxBackoff", {
@@ -107,7 +114,8 @@ Object.defineProperty(exports, "maxBackoff", {
 });
 
 /**
- * Minimum backoff period in seconds after failed API calls
+ * Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+ * `CLOUDFLARE_MIN_BACKOFF` environment variable.
  */
 export declare const minBackoff: number;
 Object.defineProperty(exports, "minBackoff", {
@@ -118,7 +126,8 @@ Object.defineProperty(exports, "minBackoff", {
 });
 
 /**
- * Maximum number of retries to perform when an API request fails
+ * Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
+ * `CLOUDFLARE_RETRIES` environment variable.
  */
 export declare const retries: number;
 Object.defineProperty(exports, "retries", {
@@ -129,7 +138,8 @@ Object.defineProperty(exports, "retries", {
 });
 
 /**
- * RPS limit to apply when making calls to the API
+ * RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
+ * variable.
  */
 export declare const rps: number;
 Object.defineProperty(exports, "rps", {
