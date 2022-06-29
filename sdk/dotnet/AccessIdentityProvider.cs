@@ -10,8 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Identity Provider resource. Identity Providers are
-    /// used as an authentication or authorisation source within Access.
+    /// Provides a Cloudflare Access Identity Provider resource. Identity Providers are used as an authentication or authorisation source within Access.
+    /// 
+    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
+    /// most cases using either is fine. However, if you're using a scoped
+    /// access token, you must provide the argument that matches the token's
+    /// scope. For example, an access token that is scoped to the "example.com"
+    /// zone needs to use the `zone_id` argument.
     /// 
     /// ## Example Usage
     /// 
@@ -90,30 +95,24 @@ namespace Pulumi.Cloudflare
     /// }
     /// ```
     /// 
-    /// Please refer to the [developers.cloudflare.com Access documentation][access_identity_provider_guide]
-    /// for full reference on what is available and how to configure your provider.
-    /// 
     /// ## Import
     /// 
-    /// Access Identity Providers can be imported using a composite ID formed of account ID and Access Identity Provider ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider my_idp cb029e245cfdd66dc8d2e570d5dd3322/e00e1c13-e350-44fe-96c5-fb75c954871c
+    ///  $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example &lt;account_id&gt;/&lt;identity_provider_id&gt;
     /// ```
-    /// 
-    ///  [access_identity_provider_guide]https://developers.cloudflare.com/access/configuring-identity-providers/
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessIdentityProvider:AccessIdentityProvider")]
     public partial class AccessIdentityProvider : Pulumi.CustomResource
     {
         /// <summary>
-        /// The account ID the provider should be associated with. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Provider configuration from the [developer documentation][access_identity_provider_guide].
+        /// Provider configuration from the [developer
+        /// documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         /// </summary>
         [Output("configs")]
         public Output<ImmutableArray<Outputs.AccessIdentityProviderConfig>> Configs { get; private set; } = null!;
@@ -125,15 +124,14 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The provider type to use. Must be one of: `"centrify"`,
-        /// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-        /// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+        /// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+        /// `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID the provider should be associated with. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -185,7 +183,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessIdentityProviderArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID the provider should be associated with. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -194,7 +192,8 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessIdentityProviderConfigArgs>? _configs;
 
         /// <summary>
-        /// Provider configuration from the [developer documentation][access_identity_provider_guide].
+        /// Provider configuration from the [developer
+        /// documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         /// </summary>
         public InputList<Inputs.AccessIdentityProviderConfigArgs> Configs
         {
@@ -209,15 +208,14 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The provider type to use. Must be one of: `"centrify"`,
-        /// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-        /// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+        /// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+        /// `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID the provider should be associated with. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -230,7 +228,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessIdentityProviderState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID the provider should be associated with. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -239,7 +237,8 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessIdentityProviderConfigGetArgs>? _configs;
 
         /// <summary>
-        /// Provider configuration from the [developer documentation][access_identity_provider_guide].
+        /// Provider configuration from the [developer
+        /// documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         /// </summary>
         public InputList<Inputs.AccessIdentityProviderConfigGetArgs> Configs
         {
@@ -254,15 +253,14 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The provider type to use. Must be one of: `"centrify"`,
-        /// `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-        /// `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+        /// The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+        /// `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The zone ID the provider should be associated with. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

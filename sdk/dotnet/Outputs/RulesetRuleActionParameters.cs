@@ -13,60 +13,44 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParameters
     {
-        /// <summary>
-        /// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
-        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersBrowserTtl? BrowserTtl;
+        public readonly bool? BypassCache;
+        public readonly Outputs.RulesetRuleActionParametersCacheKey? CacheKey;
+        public readonly ImmutableArray<string> CookieFields;
+        public readonly Outputs.RulesetRuleActionParametersEdgeTtl? EdgeTtl;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
-        /// <summary>
-        /// Host Header that request origin receives.
-        /// </summary>
         public readonly string? HostHeader;
-        /// <summary>
-        /// Rule ID to apply the override to.
-        /// </summary>
         public readonly string? Id;
         public readonly int? Increment;
-        /// <summary>
-        /// List of properties to configure WAF payload logging (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersMatchedData? MatchedData;
-        /// <summary>
-        /// List of properties to change request origin (refer to the nested schema).
-        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
-        /// <summary>
-        /// List of override configurations to apply to the ruleset (refer to the nested schema).
-        /// </summary>
+        public readonly bool? OriginErrorPagePassthru;
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
         public readonly ImmutableArray<string> Phases;
-        /// <summary>
-        /// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
-        /// </summary>
         public readonly ImmutableArray<string> Products;
-        /// <summary>
-        /// List of parameters that configure the response given to end users (refer to the nested schema).
-        /// </summary>
+        public readonly ImmutableArray<string> RequestFields;
+        public readonly bool? RespectStrongEtags;
+        public readonly ImmutableArray<string> ResponseFields;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponse> Responses;
-        /// <summary>
-        /// List of rule-based overrides (refer to the nested schema).
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Rules;
-        /// <summary>
-        /// Which ruleset ID to target.
-        /// </summary>
         public readonly string? Ruleset;
-        /// <summary>
-        /// List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
-        /// </summary>
         public readonly ImmutableArray<string> Rulesets;
-        /// <summary>
-        /// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
-        /// </summary>
+        public readonly Outputs.RulesetRuleActionParametersServeStale? ServeStale;
         public readonly Outputs.RulesetRuleActionParametersUri? Uri;
         public readonly string? Version;
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
+            Outputs.RulesetRuleActionParametersBrowserTtl? browserTtl,
+
+            bool? bypassCache,
+
+            Outputs.RulesetRuleActionParametersCacheKey? cacheKey,
+
+            ImmutableArray<string> cookieFields,
+
+            Outputs.RulesetRuleActionParametersEdgeTtl? edgeTtl,
+
             ImmutableArray<Outputs.RulesetRuleActionParametersHeader> headers,
 
             string? hostHeader,
@@ -79,11 +63,19 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParametersOrigin? origin,
 
+            bool? originErrorPagePassthru,
+
             Outputs.RulesetRuleActionParametersOverrides? overrides,
 
             ImmutableArray<string> phases,
 
             ImmutableArray<string> products,
+
+            ImmutableArray<string> requestFields,
+
+            bool? respectStrongEtags,
+
+            ImmutableArray<string> responseFields,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersResponse> responses,
 
@@ -93,23 +85,35 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> rulesets,
 
+            Outputs.RulesetRuleActionParametersServeStale? serveStale,
+
             Outputs.RulesetRuleActionParametersUri? uri,
 
             string? version)
         {
+            BrowserTtl = browserTtl;
+            BypassCache = bypassCache;
+            CacheKey = cacheKey;
+            CookieFields = cookieFields;
+            EdgeTtl = edgeTtl;
             Headers = headers;
             HostHeader = hostHeader;
             Id = id;
             Increment = increment;
             MatchedData = matchedData;
             Origin = origin;
+            OriginErrorPagePassthru = originErrorPagePassthru;
             Overrides = overrides;
             Phases = phases;
             Products = products;
+            RequestFields = requestFields;
+            RespectStrongEtags = respectStrongEtags;
+            ResponseFields = responseFields;
             Responses = responses;
             Rules = rules;
             Ruleset = ruleset;
             Rulesets = rulesets;
+            ServeStale = serveStale;
             Uri = uri;
             Version = version;
         }

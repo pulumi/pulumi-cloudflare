@@ -13,21 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersHeader
     {
-        /// <summary>
-        /// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-        /// </summary>
         public readonly string? Expression;
-        /// <summary>
-        /// Name of the HTTP request header to target.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
-        /// </summary>
         public readonly string? Operation;
-        /// <summary>
-        /// Static string value of the updated URI path or query string component. Conflicts with `expression`.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

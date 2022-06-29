@@ -13,7 +13,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.WaitingRoomVent("example", {
+ * // Waiting Room Event
+ * const example = new cloudflare.WaitingRoomEvent("example", {
  *     eventEndTime: "2006-01-02T20:04:05Z",
  *     eventStartTime: "2006-01-02T15:04:05Z",
  *     name: "foo",
@@ -24,13 +25,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Waiting room events can be imported using a composite ID formed of zone ID, waiting room ID, and waiting room event ID, e.g.
+ * # Use the Zone ID, Waiting Room ID, and Event ID to import.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e/25756b2dfe6e378a06b033b670413757
+ *  $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
  * ```
- *
- *  where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - waiting room ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-waiting-rooms) * `25756b2dfe6e378a06b033b670413757` - waiting room event ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-events)
  */
 export class WaitingRoomEvent extends pulumi.CustomResource {
     /**
@@ -60,17 +59,20 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
         return obj['__pulumiType'] === WaitingRoomEvent.__pulumiType;
     }
 
+    /**
+     * Creation time.
+     */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
     /**
-     * This a templated html file that will be rendered at the edge.
+     * This is a templated html file that will be rendered at the edge.
      */
     public readonly customPageHtml!: pulumi.Output<string | undefined>;
     /**
-     * A description to let users add more details about the waiting room event.
+     * A description to let users add more details about the event.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.
+     * Disables automatic renewal of session cookies.
      */
     public readonly disableSessionRenewal!: pulumi.Output<boolean | undefined>;
     /**
@@ -78,9 +80,12 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly eventEndTime!: pulumi.Output<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
      */
     public readonly eventStartTime!: pulumi.Output<string>;
+    /**
+     * Last modified time.
+     */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
      * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
@@ -91,23 +96,25 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly newUsersPerMinute!: pulumi.Output<number | undefined>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.
+     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
+     * before `event_start_time`.
      */
     public readonly prequeueStartTime!: pulumi.Output<string | undefined>;
     /**
-     * The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
      */
     public readonly queueingMethod!: pulumi.Output<string | undefined>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
      */
     public readonly sessionDuration!: pulumi.Output<number | undefined>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Default: false.
+     * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
+     * null.
      */
     public readonly shuffleAtEventStart!: pulumi.Output<boolean | undefined>;
     /**
-     * If suspended, the traffic doesn't go to the waiting room. Default: false.
+     * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
     public readonly suspended!: pulumi.Output<boolean | undefined>;
     /**
@@ -119,7 +126,7 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
      */
     public readonly waitingRoomId!: pulumi.Output<string>;
     /**
-     * The zone ID to apply to.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -197,17 +204,20 @@ export class WaitingRoomEvent extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WaitingRoomEvent resources.
  */
 export interface WaitingRoomEventState {
+    /**
+     * Creation time.
+     */
     createdOn?: pulumi.Input<string>;
     /**
-     * This a templated html file that will be rendered at the edge.
+     * This is a templated html file that will be rendered at the edge.
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * A description to let users add more details about the waiting room event.
+     * A description to let users add more details about the event.
      */
     description?: pulumi.Input<string>;
     /**
-     * Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.
+     * Disables automatic renewal of session cookies.
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
@@ -215,9 +225,12 @@ export interface WaitingRoomEventState {
      */
     eventEndTime?: pulumi.Input<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
      */
     eventStartTime?: pulumi.Input<string>;
+    /**
+     * Last modified time.
+     */
     modifiedOn?: pulumi.Input<string>;
     /**
      * A unique name to identify the event. Only alphanumeric characters, hyphens, and underscores are allowed.
@@ -228,23 +241,25 @@ export interface WaitingRoomEventState {
      */
     newUsersPerMinute?: pulumi.Input<number>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.
+     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
+     * before `event_start_time`.
      */
     prequeueStartTime?: pulumi.Input<string>;
     /**
-     * The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
      */
     queueingMethod?: pulumi.Input<string>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
      */
     sessionDuration?: pulumi.Input<number>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Default: false.
+     * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
+     * null.
      */
     shuffleAtEventStart?: pulumi.Input<boolean>;
     /**
-     * If suspended, the traffic doesn't go to the waiting room. Default: false.
+     * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
     suspended?: pulumi.Input<boolean>;
     /**
@@ -256,7 +271,7 @@ export interface WaitingRoomEventState {
      */
     waitingRoomId?: pulumi.Input<string>;
     /**
-     * The zone ID to apply to.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -266,15 +281,15 @@ export interface WaitingRoomEventState {
  */
 export interface WaitingRoomEventArgs {
     /**
-     * This a templated html file that will be rendered at the edge.
+     * This is a templated html file that will be rendered at the edge.
      */
     customPageHtml?: pulumi.Input<string>;
     /**
-     * A description to let users add more details about the waiting room event.
+     * A description to let users add more details about the event.
      */
     description?: pulumi.Input<string>;
     /**
-     * Disables automatic renewal of session cookies. If not specified, the event will inherit it from the waiting room.
+     * Disables automatic renewal of session cookies.
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
@@ -282,7 +297,7 @@ export interface WaitingRoomEventArgs {
      */
     eventEndTime: pulumi.Input<string>;
     /**
-     * ISO 8601 timestamp that marks the start of the event. At this time, queued users will be processed with the event's configuration. Must occur at least 1 minute before event_end_time.
+     * ISO 8601 timestamp that marks the start of the event. Must occur at least 1 minute before `event_end_time`.
      */
     eventStartTime: pulumi.Input<string>;
     /**
@@ -294,23 +309,25 @@ export interface WaitingRoomEventArgs {
      */
     newUsersPerMinute?: pulumi.Input<number>;
     /**
-     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes before event_start_time.
+     * ISO 8601 timestamp that marks when to begin queueing all users before the event starts. Must occur at least 5 minutes
+     * before `event_start_time`.
      */
     prequeueStartTime?: pulumi.Input<string>;
     /**
-     * The queueing method to be used by the waiting room during the event. If not specified, the event will inherit it from the waiting room.
+     * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`
      */
     queueingMethod?: pulumi.Input<string>;
     /**
-     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+     * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
      */
     sessionDuration?: pulumi.Input<number>;
     /**
-     * Users in the prequeue will be shuffled randomly at the `eventStartTime`. Requires that `prequeueStartTime` is not null. Default: false.
+     * Users in the prequeue will be shuffled randomly at the `event_start_time`. Requires that `prequeue_start_time` is not
+     * null.
      */
     shuffleAtEventStart?: pulumi.Input<boolean>;
     /**
-     * If suspended, the traffic doesn't go to the waiting room. Default: false.
+     * If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
      */
     suspended?: pulumi.Input<boolean>;
     /**
@@ -322,7 +339,7 @@ export interface WaitingRoomEventArgs {
      */
     waitingRoomId: pulumi.Input<string>;
     /**
-     * The zone ID to apply to.
+     * The zone identifier to target for the resource.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -66,6 +66,9 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkerCronTrigger.__pulumiType;
     }
 
+    /**
+     * The account identifier to target for the resource.
+     */
     public readonly accountId!: pulumi.Output<string>;
     /**
      * List of cron expressions to execute the Worker Script
@@ -116,6 +119,9 @@ export class WorkerCronTrigger extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkerCronTrigger resources.
  */
 export interface WorkerCronTriggerState {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId?: pulumi.Input<string>;
     /**
      * List of cron expressions to execute the Worker Script
@@ -131,6 +137,9 @@ export interface WorkerCronTriggerState {
  * The set of arguments for constructing a WorkerCronTrigger resource.
  */
 export interface WorkerCronTriggerArgs {
+    /**
+     * The account identifier to target for the resource.
+     */
     accountId: pulumi.Input<string>;
     /**
      * List of cron expressions to execute the Worker Script

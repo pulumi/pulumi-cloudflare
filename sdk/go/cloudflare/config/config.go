@@ -8,17 +8,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
-// Configure API client to always use that account
+// Configure API client to always use a specific account. Alternatively, can be configured using the
+// `CLOUDFLARE_ACCOUNT_ID` environment variable.
+//
+// Deprecated: Use resource specific `account_id` attributes instead.
 func GetAccountId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:accountId")
 }
 
-// Configure the base path used by the API client
+// Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
+// environment variable.
 func GetApiBasePath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiBasePath")
 }
 
-// Whether to print logs from the API client (using the default log library logger)
+// Whether to print logs from the API client (using the default log library logger). Alternatively, can be configured using
+// the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
 func GetApiClientLogging(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "cloudflare:apiClientLogging")
 	if err == nil {
@@ -27,32 +32,36 @@ func GetApiClientLogging(ctx *pulumi.Context) bool {
 	return getEnvOrDefault(false, parseEnvBool, "CLOUDFLARE_API_CLIENT_LOGGING").(bool)
 }
 
-// Configure the hostname used by the API client
+// Configure the hostname used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_HOSTNAME`
+// environment variable.
 func GetApiHostname(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiHostname")
 }
 
-// The API key for operations.
+// The API key for operations. Alternatively, can be configured using the `CLOUDFLARE_API_KEY` environment variable.
 func GetApiKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiKey")
 }
 
-// The API Token for operations.
+// The API Token for operations. Alternatively, can be configured using the `CLOUDFLARE_API_TOKEN` environment variable.
 func GetApiToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiToken")
 }
 
-// A special Cloudflare API key good for a restricted set of endpoints
+// A special Cloudflare API key good for a restricted set of endpoints. Alternatively, can be configured using the
+// `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
 func GetApiUserServiceKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:apiUserServiceKey")
 }
 
-// A registered Cloudflare email address
+// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
+// variable.
 func GetEmail(ctx *pulumi.Context) string {
 	return config.Get(ctx, "cloudflare:email")
 }
 
-// Maximum backoff period in seconds after failed API calls
+// Maximum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+// `CLOUDFLARE_MAX_BACKOFF` environment variable.
 func GetMaxBackoff(ctx *pulumi.Context) int {
 	v, err := config.TryInt(ctx, "cloudflare:maxBackoff")
 	if err == nil {
@@ -61,7 +70,8 @@ func GetMaxBackoff(ctx *pulumi.Context) int {
 	return getEnvOrDefault(30, parseEnvInt, "CLOUDFLARE_MAX_BACKOFF").(int)
 }
 
-// Minimum backoff period in seconds after failed API calls
+// Minimum backoff period in seconds after failed API calls. Alternatively, can be configured using the
+// `CLOUDFLARE_MIN_BACKOFF` environment variable.
 func GetMinBackoff(ctx *pulumi.Context) int {
 	v, err := config.TryInt(ctx, "cloudflare:minBackoff")
 	if err == nil {
@@ -70,7 +80,8 @@ func GetMinBackoff(ctx *pulumi.Context) int {
 	return getEnvOrDefault(1, parseEnvInt, "CLOUDFLARE_MIN_BACKOFF").(int)
 }
 
-// Maximum number of retries to perform when an API request fails
+// Maximum number of retries to perform when an API request fails. Alternatively, can be configured using the
+// `CLOUDFLARE_RETRIES` environment variable.
 func GetRetries(ctx *pulumi.Context) int {
 	v, err := config.TryInt(ctx, "cloudflare:retries")
 	if err == nil {
@@ -79,7 +90,8 @@ func GetRetries(ctx *pulumi.Context) int {
 	return getEnvOrDefault(3, parseEnvInt, "CLOUDFLARE_RETRIES").(int)
 }
 
-// RPS limit to apply when making calls to the API
+// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
+// variable.
 func GetRps(ctx *pulumi.Context) int {
 	v, err := config.TryInt(ctx, "cloudflare:rps")
 	if err == nil {

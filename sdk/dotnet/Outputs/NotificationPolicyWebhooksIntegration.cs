@@ -14,9 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class NotificationPolicyWebhooksIntegration
     {
         public readonly string Id;
-        /// <summary>
-        /// The name of the notification policy.
-        /// </summary>
         public readonly string? Name;
 
         [OutputConstructor]

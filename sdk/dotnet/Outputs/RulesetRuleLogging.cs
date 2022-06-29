@@ -13,15 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleLogging
     {
-        /// <summary>
-        /// Defines if the current rule-level override enables or disables the rule.
-        /// </summary>
         public readonly bool? Enabled;
+        public readonly string? Status;
 
         [OutputConstructor]
-        private RulesetRuleLogging(bool? enabled)
+        private RulesetRuleLogging(
+            bool? enabled,
+
+            string? status)
         {
             Enabled = enabled;
+            Status = status;
         }
     }
 }

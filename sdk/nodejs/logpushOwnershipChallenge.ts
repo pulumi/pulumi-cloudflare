@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.LogPushOwnershipChallenge("example", {
+ * const example = new cloudflare.LogpushOwnershipChallenge("example", {
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
  * });
@@ -25,15 +25,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example = new cloudflare.LogPushOwnershipChallenge("example", {
+ * const example = new cloudflare.LogpushOwnershipChallenge("example", {
  *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  * });
  * ```
  */
-export class LogPushOwnershipChallenge extends pulumi.CustomResource {
+export class LogpushOwnershipChallenge extends pulumi.CustomResource {
     /**
-     * Get an existing LogPushOwnershipChallenge resource's state with the given name, ID, and optional extra
+     * Get an existing LogpushOwnershipChallenge resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -41,22 +41,22 @@ export class LogPushOwnershipChallenge extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LogPushOwnershipChallengeState, opts?: pulumi.CustomResourceOptions): LogPushOwnershipChallenge {
-        return new LogPushOwnershipChallenge(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LogpushOwnershipChallengeState, opts?: pulumi.CustomResourceOptions): LogpushOwnershipChallenge {
+        return new LogpushOwnershipChallenge(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge';
+    public static readonly __pulumiType = 'cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge';
 
     /**
-     * Returns true if the given object is an instance of LogPushOwnershipChallenge.  This is designed to work even
+     * Returns true if the given object is an instance of LogpushOwnershipChallenge.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is LogPushOwnershipChallenge {
+    public static isInstance(obj: any): obj is LogpushOwnershipChallenge {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === LogPushOwnershipChallenge.__pulumiType;
+        return obj['__pulumiType'] === LogpushOwnershipChallenge.__pulumiType;
     }
 
     /**
@@ -78,24 +78,24 @@ export class LogPushOwnershipChallenge extends pulumi.CustomResource {
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
-     * Create a LogPushOwnershipChallenge resource with the given unique name, arguments, and options.
+     * Create a LogpushOwnershipChallenge resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LogPushOwnershipChallengeArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: LogPushOwnershipChallengeArgs | LogPushOwnershipChallengeState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: LogpushOwnershipChallengeArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: LogpushOwnershipChallengeArgs | LogpushOwnershipChallengeState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as LogPushOwnershipChallengeState | undefined;
+            const state = argsOrState as LogpushOwnershipChallengeState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["destinationConf"] = state ? state.destinationConf : undefined;
             resourceInputs["ownershipChallengeFilename"] = state ? state.ownershipChallengeFilename : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
-            const args = argsOrState as LogPushOwnershipChallengeArgs | undefined;
+            const args = argsOrState as LogpushOwnershipChallengeArgs | undefined;
             if ((!args || args.destinationConf === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationConf'");
             }
@@ -105,14 +105,14 @@ export class LogPushOwnershipChallenge extends pulumi.CustomResource {
             resourceInputs["ownershipChallengeFilename"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LogPushOwnershipChallenge.__pulumiType, name, resourceInputs, opts);
+        super(LogpushOwnershipChallenge.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering LogPushOwnershipChallenge resources.
+ * Input properties used for looking up and filtering LogpushOwnershipChallenge resources.
  */
-export interface LogPushOwnershipChallengeState {
+export interface LogpushOwnershipChallengeState {
     /**
      * The account ID where the logpush ownership challenge should be created. Either `accountId` or `zoneId` are required.
      */
@@ -133,9 +133,9 @@ export interface LogPushOwnershipChallengeState {
 }
 
 /**
- * The set of arguments for constructing a LogPushOwnershipChallenge resource.
+ * The set of arguments for constructing a LogpushOwnershipChallenge resource.
  */
-export interface LogPushOwnershipChallengeArgs {
+export interface LogpushOwnershipChallengeArgs {
     /**
      * The account ID where the logpush ownership challenge should be created. Either `accountId` or `zoneId` are required.
      */

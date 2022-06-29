@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example d41d8cd98f00b204e9800998ecf8427e
     /// ```
     /// 
-    ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+    ///  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneDnssec:ZoneDnssec")]
     public partial class ZoneDnssec : Pulumi.CustomResource

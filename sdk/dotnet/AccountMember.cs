@@ -38,25 +38,22 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Account members can be imported using a composite ID formed of account ID and account member ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/accountMember:AccountMember example_user d41d8cd98f00b204e9800998ecf8427e/b58c6f14d292556214bd64909bcdb118
+    ///  $ pulumi import cloudflare:index/accountMember:AccountMember example &lt;account_id&gt;/&lt;member_id&gt;
     /// ```
-    /// 
-    ///  where* `d41d8cd98f00b204e9800998ecf8427e` - account ID as returned by the [API](https://api.cloudflare.com/#accounts-account-details) * `b58c6f14d292556214bd64909bcdb118` - account member ID as returned by the [API](https://api.cloudflare.com/#account-members-member-details)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accountMember:AccountMember")]
     public partial class AccountMember : Pulumi.CustomResource
     {
         /// <summary>
-        /// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+        /// cannot be updated.
         /// </summary>
         [Output("emailAddress")]
         public Output<string> EmailAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Array of account role IDs that you want to assign to a member.
+        /// List of account role IDs that you want to assign to a member.
         /// </summary>
         [Output("roleIds")]
         public Output<ImmutableArray<string>> RoleIds { get; private set; } = null!;
@@ -108,7 +105,8 @@ namespace Pulumi.Cloudflare
     public sealed class AccountMemberArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+        /// cannot be updated.
         /// </summary>
         [Input("emailAddress", required: true)]
         public Input<string> EmailAddress { get; set; } = null!;
@@ -117,7 +115,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _roleIds;
 
         /// <summary>
-        /// Array of account role IDs that you want to assign to a member.
+        /// List of account role IDs that you want to assign to a member.
         /// </summary>
         public InputList<string> RoleIds
         {
@@ -133,7 +131,8 @@ namespace Pulumi.Cloudflare
     public sealed class AccountMemberState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+        /// The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+        /// cannot be updated.
         /// </summary>
         [Input("emailAddress")]
         public Input<string>? EmailAddress { get; set; }
@@ -142,7 +141,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _roleIds;
 
         /// <summary>
-        /// Array of account role IDs that you want to assign to a member.
+        /// List of account role IDs that you want to assign to a member.
         /// </summary>
         public InputList<string> RoleIds
         {

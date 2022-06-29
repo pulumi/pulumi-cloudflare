@@ -5,43 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
 export interface AccessApplicationCorsHeader {
-    /**
-     * Boolean value to determine whether all
-     * HTTP headers are exposed.
-     */
     allowAllHeaders?: boolean;
-    /**
-     * Boolean value to determine whether all
-     * methods are exposed.
-     */
     allowAllMethods?: boolean;
-    /**
-     * Boolean value to determine whether all
-     * origins are permitted to make CORS requests.
-     */
     allowAllOrigins?: boolean;
-    /**
-     * Boolean value to determine if credentials
-     * (cookies, authorization headers, or TLS client certificates) are included with
-     * requests.
-     */
     allowCredentials?: boolean;
-    /**
-     * List of HTTP headers to expose via CORS.
-     */
     allowedHeaders?: string[];
-    /**
-     * List of methods to expose via CORS.
-     */
     allowedMethods?: string[];
-    /**
-     * List of origins permitted to make CORS requests.
-     */
     allowedOrigins?: string[];
-    /**
-     * Integer representing the maximum time a preflight
-     * request will be cached.
-     */
     maxAge?: number;
 }
 
@@ -55,6 +25,7 @@ export interface AccessGroupExclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessGroupExcludeExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessGroupExcludeGithub[];
     groups?: string[];
@@ -71,11 +42,13 @@ export interface AccessGroupExcludeAzure {
     ids?: string[];
 }
 
+export interface AccessGroupExcludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
 export interface AccessGroupExcludeGithub {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Group.
-     */
     name?: string;
     teams?: string[];
 }
@@ -87,9 +60,6 @@ export interface AccessGroupExcludeGsuite {
 
 export interface AccessGroupExcludeOkta {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Group.
-     */
     names?: string[];
 }
 
@@ -109,6 +79,7 @@ export interface AccessGroupInclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessGroupIncludeExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessGroupIncludeGithub[];
     groups?: string[];
@@ -125,11 +96,13 @@ export interface AccessGroupIncludeAzure {
     ids?: string[];
 }
 
+export interface AccessGroupIncludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
 export interface AccessGroupIncludeGithub {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Group.
-     */
     name?: string;
     teams?: string[];
 }
@@ -141,9 +114,6 @@ export interface AccessGroupIncludeGsuite {
 
 export interface AccessGroupIncludeOkta {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Group.
-     */
     names?: string[];
 }
 
@@ -163,6 +133,7 @@ export interface AccessGroupRequire {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessGroupRequireExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessGroupRequireGithub[];
     groups?: string[];
@@ -179,11 +150,13 @@ export interface AccessGroupRequireAzure {
     ids?: string[];
 }
 
+export interface AccessGroupRequireExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
 export interface AccessGroupRequireGithub {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Group.
-     */
     name?: string;
     teams?: string[];
 }
@@ -195,9 +168,6 @@ export interface AccessGroupRequireGsuite {
 
 export interface AccessGroupRequireOkta {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Group.
-     */
     names?: string[];
 }
 
@@ -223,6 +193,7 @@ export interface AccessIdentityProviderConfig {
     issuerUrl?: string;
     oktaAccount?: string;
     oneloginAccount?: string;
+    pkceEnabled?: boolean;
     redirectUrl: string;
     signRequest?: boolean;
     ssoTargetUrl?: string;
@@ -231,13 +202,7 @@ export interface AccessIdentityProviderConfig {
 }
 
 export interface AccessPolicyApprovalGroup {
-    /**
-     * Number of approvals needed.
-     */
     approvalsNeeded: number;
-    /**
-     * List of emails to request approval from.
-     */
     emailAddresses?: string[];
     emailListUuid?: string;
 }
@@ -252,6 +217,7 @@ export interface AccessPolicyExclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessPolicyExcludeExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessPolicyExcludeGithub[];
     groups?: string[];
@@ -268,11 +234,13 @@ export interface AccessPolicyExcludeAzure {
     ids?: string[];
 }
 
+export interface AccessPolicyExcludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
 export interface AccessPolicyExcludeGithub {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Application.
-     */
     name?: string;
     teams?: string[];
 }
@@ -284,9 +252,6 @@ export interface AccessPolicyExcludeGsuite {
 
 export interface AccessPolicyExcludeOkta {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Application.
-     */
     names?: string[];
 }
 
@@ -306,6 +271,7 @@ export interface AccessPolicyInclude {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessPolicyIncludeExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessPolicyIncludeGithub[];
     groups?: string[];
@@ -322,11 +288,13 @@ export interface AccessPolicyIncludeAzure {
     ids?: string[];
 }
 
+export interface AccessPolicyIncludeExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
 export interface AccessPolicyIncludeGithub {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Application.
-     */
     name?: string;
     teams?: string[];
 }
@@ -338,9 +306,6 @@ export interface AccessPolicyIncludeGsuite {
 
 export interface AccessPolicyIncludeOkta {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Application.
-     */
     names?: string[];
 }
 
@@ -360,6 +325,7 @@ export interface AccessPolicyRequire {
     emailDomains?: string[];
     emails?: string[];
     everyone?: boolean;
+    externalEvaluation?: outputs.AccessPolicyRequireExternalEvaluation;
     geos?: string[];
     githubs?: outputs.AccessPolicyRequireGithub[];
     groups?: string[];
@@ -376,11 +342,13 @@ export interface AccessPolicyRequireAzure {
     ids?: string[];
 }
 
+export interface AccessPolicyRequireExternalEvaluation {
+    evaluateUrl?: string;
+    keysUrl?: string;
+}
+
 export interface AccessPolicyRequireGithub {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Application.
-     */
     name?: string;
     teams?: string[];
 }
@@ -392,9 +360,6 @@ export interface AccessPolicyRequireGsuite {
 
 export interface AccessPolicyRequireOkta {
     identityProviderId?: string;
-    /**
-     * Friendly name of the Access Application.
-     */
     names?: string[];
 }
 
@@ -405,51 +370,22 @@ export interface AccessPolicyRequireSaml {
 }
 
 export interface AccessRuleConfiguration {
-    /**
-     * The request property to target. Allowed values: "ip", "ip6", "ipRange", "asn", "country"
-     */
     target: string;
-    /**
-     * The value to target. Depends on target's type.
-     */
     value: string;
 }
 
 export interface ApiTokenCondition {
-    /**
-     * Request IP related conditions. See the definition below.
-     */
     requestIp?: outputs.ApiTokenConditionRequestIp;
 }
 
 export interface ApiTokenConditionRequestIp {
-    /**
-     * List of IPv4/IPv6 CIDR addresses where
-     * the Token can be used from.
-     */
     ins?: string[];
-    /**
-     * List of IPv4/IPv6 CIDR addresses where
-     * the Token cannot be used from.
-     */
     notIns?: string[];
 }
 
 export interface ApiTokenPolicy {
-    /**
-     * Policy effect. Valid values are `allow` or `deny`. `allow`
-     * is set as default.
-     */
     effect?: string;
-    /**
-     * List of permissions groups
-     * ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
-     */
     permissionGroups: string[];
-    /**
-     * Map describes what operations against which resources
-     * are allowed or denied.
-     */
     resources: {[key: string]: string};
 }
 
@@ -579,9 +515,17 @@ export interface DevicePostureIntegrationConfig {
      */
     clientId?: string;
     /**
+     * The client key for authenticating API calls.
+     */
+    clientKey?: string;
+    /**
      * The client secret for authenticating API calls.
      */
     clientSecret?: string;
+    /**
+     * The customer identifier for authenticating API calls.
+     */
+    customerId?: string;
 }
 
 export interface DevicePostureRuleInput {
@@ -656,274 +600,93 @@ export interface FallbackDomainDomain {
 }
 
 export interface GetAccountRolesRole {
-    /**
-     * Description of role's permissions
-     */
     description?: string;
-    /**
-     * Role identifier tag
-     */
     id?: string;
-    /**
-     * Role Name
-     */
     name?: string;
 }
 
 export interface GetDevicesDevice {
-    /**
-     * When the device was created.
-     */
     created?: string;
-    /**
-     * The type of the device.
-     */
     deviceType?: string;
-    /**
-     * Device ID.
-     */
     id?: string;
-    /**
-     * IPv4 or IPv6 address.
-     */
     ip?: string;
-    /**
-     * The device's public key.
-     */
     key?: string;
-    /**
-     * When the device was last seen.
-     */
     lastSeen?: string;
-    /**
-     * The device model name.
-     */
     model?: string;
-    /**
-     * The device name.
-     */
     name?: string;
-    /**
-     * The operating system version.
-     */
     osVersion?: string;
-    /**
-     * When the device was updated.
-     */
     updated?: string;
-    /**
-     * User's email.
-     */
     userEmail?: string;
-    /**
-     * User's ID.
-     */
     userId?: string;
-    /**
-     * User's Name.
-     */
     userName?: string;
-    /**
-     * The WARP client version.
-     */
     version?: string;
 }
 
 export interface GetWafGroupsFilter {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
     mode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
     name?: string;
 }
 
 export interface GetWafGroupsGroup {
-    /**
-     * The WAF Rule Group description
-     */
     description?: string;
-    /**
-     * The WAF Rule Group ID
-     */
     id?: string;
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
     mode?: string;
-    /**
-     * The number of modified rules in the WAF Rule Group
-     */
     modifiedRulesCount?: number;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
     name?: string;
-    /**
-     * The ID of the WAF Rule Package in which to search for the WAF Rule Groups.
-     */
     packageId?: string;
-    /**
-     * The number of rules in the WAF Rule Group
-     */
     rulesCount?: number;
 }
 
 export interface GetWafPackagesFilter {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
     actionMode?: string;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
     detectionMode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
     name?: string;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
     sensitivity?: string;
 }
 
 export interface GetWafPackagesPackage {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
     actionMode?: string;
-    /**
-     * The WAF Rule Package description
-     */
     description?: string;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
     detectionMode?: string;
-    /**
-     * The WAF Rule Package ID
-     */
     id?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
     name?: string;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
     sensitivity?: string;
 }
 
 export interface GetWafRulesFilter {
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
     description?: string;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
     groupId?: string;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
     mode?: string;
 }
 
 export interface GetWafRulesRule {
-    /**
-     * The list of allowed `mode` values for the WAF Rule
-     */
     allowedModes?: string[];
-    /**
-     * The default `mode` value for the WAF Rule
-     */
     defaultMode?: string;
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
     description?: string;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
     groupId?: string;
-    /**
-     * The Name of the WAF Rule Group that contains the WAF Rule
-     */
     groupName?: string;
-    /**
-     * The WAF Rule ID
-     */
     id?: string;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
     mode?: string;
-    /**
-     * The ID of the WAF Rule Package in which to search for the WAF Rules.
-     */
     packageId?: string;
-    /**
-     * The WAF Rule priority
-     */
     priority?: string;
 }
 
 export interface GetZonesFilter {
-    /**
-     * Only search for zones in this account.
-     */
     accountId?: string;
-    /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
-     */
     lookupType?: string;
-    /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
-     */
     match?: string;
-    /**
-     * A string value to search for.
-     */
     name?: string;
-    /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
-     */
     paused?: boolean;
-    /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
-     */
     status?: string;
 }
 
 export interface GetZonesZone {
-    /**
-     * The zone ID
-     */
     id?: string;
-    /**
-     * A string value to search for.
-     */
     name?: string;
 }
 
 export interface HealthcheckHeader {
-    /**
-     * The header name.
-     */
     header: string;
-    /**
-     * A list of string values for the header.
-     */
     values: string[];
 }
 
@@ -936,6 +699,26 @@ export interface IpListItem {
      * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
     value: string;
+}
+
+export interface ListItem {
+    comment?: string;
+    value: outputs.ListItemValue;
+}
+
+export interface ListItemValue {
+    ip?: string;
+    redirects?: outputs.ListItemValueRedirect[];
+}
+
+export interface ListItemValueRedirect {
+    includeSubdomains?: boolean;
+    preservePathSuffix?: boolean;
+    preserveQueryString?: boolean;
+    sourceUrl: string;
+    statusCode?: number;
+    subpathMatching?: boolean;
+    targetUrl: string;
 }
 
 export interface LoadBalancerMonitorHeader {
@@ -1142,63 +925,40 @@ export interface LoadBalancerRuleOverrideRegionPool {
     region: string;
 }
 
+export interface ManagedHeadersManagedRequestHeader {
+    enabled: boolean;
+    id: string;
+}
+
+export interface ManagedHeadersManagedResponseHeader {
+    enabled: boolean;
+    id: string;
+}
+
 export interface NotificationPolicyEmailIntegration {
     id: string;
-    /**
-     * The name of the notification policy.
-     */
     name?: string;
 }
 
 export interface NotificationPolicyFilters {
-    /**
-     * State of the pool to alert on. Example: `"true"`, `"false"`.
-     */
     enableds?: string[];
-    /**
-     * Identifier health check.
-     */
     healthCheckIds?: string[];
-    /**
-     * A numerical limit. Example: `"100"`
-     */
     limits?: string[];
-    /**
-     * Load balancer pool identifier.
-     */
     poolIds?: string[];
-    /**
-     * Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
-     */
     products?: string[];
     services?: string[];
-    /**
-     * A numerical limit. Example: `"99.9"`
-     */
     slos?: string[];
-    /**
-     * Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
-     */
     statuses?: string[];
-    /**
-     * A list of zone identifiers.
-     */
     zones?: string[];
 }
 
 export interface NotificationPolicyPagerdutyIntegration {
     id: string;
-    /**
-     * The name of the notification policy.
-     */
     name?: string;
 }
 
 export interface NotificationPolicyWebhooksIntegration {
     id: string;
-    /**
-     * The name of the notification policy.
-     */
     name?: string;
 }
 
@@ -1419,7 +1179,7 @@ export interface PageRuleActionsCacheKeyFieldsQueryString {
      */
     excludes: string[];
     /**
-     * `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+     * `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
      */
     ignore: boolean;
     /**
@@ -1450,7 +1210,7 @@ export interface PageRuleActionsCacheTtlByStatus {
     codes: string;
     /**
      * Duration a resource lives in the Cloudflare cache.
-     * * positive number - cache for specified duration in seconds
+     * - positive number - cache for specified duration in seconds
      */
     ttl: number;
 }
@@ -1531,11 +1291,11 @@ export interface RateLimitMatchRequest {
      */
     methods: string[];
     /**
-     * HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
+     * HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
      */
     schemes: string[];
     /**
-     * The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use * for all traffic to your zone. Default: '*'.
+     * The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone. Default: '_'.
      */
     urlPattern: string;
 }
@@ -1610,291 +1370,204 @@ export interface RecordData {
 }
 
 export interface RulesetRule {
-    /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-     */
     action?: string;
-    /**
-     * List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
-     */
     actionParameters?: outputs.RulesetRuleActionParameters;
-    /**
-     * Brief summary of the ruleset rule and its intended use.
-     */
     description?: string;
-    /**
-     * Defines if the current rule-level override enables or disables the rule.
-     */
     enabled?: boolean;
-    /**
-     * List of parameters that configure exposed credential checks (refer to the nested schema).
-     */
     exposedCredentialCheck?: outputs.RulesetRuleExposedCredentialCheck;
-    /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-     */
     expression: string;
-    /**
-     * Rule ID to apply the override to.
-     */
     id: string;
-    /**
-     * List parameters to configure how the rule generates logs (refer to the nested schema).
-     */
     logging?: outputs.RulesetRuleLogging;
-    /**
-     * List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
-     */
     ratelimit?: outputs.RulesetRuleRatelimit;
-    /**
-     * Rule reference.
-     */
     ref: string;
     version: string;
 }
 
 export interface RulesetRuleActionParameters {
-    /**
-     * List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
-     */
+    browserTtl?: outputs.RulesetRuleActionParametersBrowserTtl;
+    bypassCache?: boolean;
+    cacheKey?: outputs.RulesetRuleActionParametersCacheKey;
+    cookieFields?: string[];
+    edgeTtl?: outputs.RulesetRuleActionParametersEdgeTtl;
     headers?: outputs.RulesetRuleActionParametersHeader[];
-    /**
-     * Host Header that request origin receives.
-     */
     hostHeader?: string;
-    /**
-     * Rule ID to apply the override to.
-     */
     id?: string;
     increment?: number;
-    /**
-     * List of properties to configure WAF payload logging (refer to the nested schema).
-     */
     matchedData?: outputs.RulesetRuleActionParametersMatchedData;
-    /**
-     * List of properties to change request origin (refer to the nested schema).
-     */
     origin?: outputs.RulesetRuleActionParametersOrigin;
-    /**
-     * List of override configurations to apply to the ruleset (refer to the nested schema).
-     */
+    originErrorPagePassthru?: boolean;
     overrides?: outputs.RulesetRuleActionParametersOverrides;
     phases?: string[];
-    /**
-     * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
-     */
     products?: string[];
-    /**
-     * List of parameters that configure the response given to end users (refer to the nested schema).
-     */
+    requestFields?: string[];
+    respectStrongEtags?: boolean;
+    responseFields?: string[];
     responses?: outputs.RulesetRuleActionParametersResponse[];
-    /**
-     * List of rule-based overrides (refer to the nested schema).
-     */
     rules?: {[key: string]: string};
-    /**
-     * Which ruleset ID to target.
-     */
     ruleset?: string;
-    /**
-     * List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
-     */
     rulesets?: string[];
-    /**
-     * List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
-     */
+    serveStale?: outputs.RulesetRuleActionParametersServeStale;
     uri?: outputs.RulesetRuleActionParametersUri;
     version: string;
 }
 
+export interface RulesetRuleActionParametersBrowserTtl {
+    default?: number;
+    mode: string;
+}
+
+export interface RulesetRuleActionParametersCacheKey {
+    cacheByDeviceType?: boolean;
+    cacheDeceptionArmor?: boolean;
+    customKey?: outputs.RulesetRuleActionParametersCacheKeyCustomKey;
+    ignoreQueryStringsOrder?: boolean;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKey {
+    cookie?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie;
+    header?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader;
+    host?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost;
+    queryString?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString;
+    user?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
+    checkPresences?: string[];
+    includes?: string[];
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
+    checkPresences?: string[];
+    excludeOrigin?: boolean;
+    includes?: string[];
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHost {
+    resolved?: boolean;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
+    excludes?: string[];
+    includes?: string[];
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
+    deviceType?: boolean;
+    geo?: boolean;
+    lang?: boolean;
+}
+
+export interface RulesetRuleActionParametersEdgeTtl {
+    default: number;
+    mode: string;
+    statusCodeTtls?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
+}
+
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+    statusCode?: number;
+    statusCodeRanges?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange[];
+    value: number;
+}
+
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+    from?: number;
+    to?: number;
+}
+
 export interface RulesetRuleActionParametersHeader {
-    /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-     */
     expression?: string;
-    /**
-     * Name of the HTTP request header to target.
-     */
     name?: string;
-    /**
-     * Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
-     */
     operation?: string;
-    /**
-     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
-     */
     value?: string;
 }
 
 export interface RulesetRuleActionParametersMatchedData {
-    /**
-     * Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
-     */
     publicKey?: string;
 }
 
 export interface RulesetRuleActionParametersOrigin {
-    /**
-     * Origin Hostname where request is sent.
-     */
     host?: string;
-    /**
-     * Oirign Port where request is sent.
-     */
     port?: number;
 }
 
 export interface RulesetRuleActionParametersOverrides {
-    /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-     */
     action?: string;
-    /**
-     * List of tag-based overrides (refer to the nested schema).
-     */
     categories?: outputs.RulesetRuleActionParametersOverridesCategory[];
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
-    /**
-     * List of rule-based overrides (refer to the nested schema).
-     */
     rules?: outputs.RulesetRuleActionParametersOverridesRule[];
+    status?: string;
 }
 
 export interface RulesetRuleActionParametersOverridesCategory {
-    /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-     */
     action?: string;
-    /**
-     * Tag name to apply the ruleset rule override to.
-     */
     category?: string;
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
+    status?: string;
 }
 
 export interface RulesetRuleActionParametersOverridesRule {
-    /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-     */
     action?: string;
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
-    /**
-     * Rule ID to apply the override to.
-     */
     id?: string;
-    /**
-     * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
-     */
     scoreThreshold?: number;
-    /**
-     * Sensitivity level for a ruleset rule override.
-     */
     sensitivityLevel?: string;
+    status?: string;
 }
 
 export interface RulesetRuleActionParametersResponse {
-    /**
-     * Body content to include in the response.
-     */
     content?: string;
-    /**
-     * HTTP content type to send in the response.
-     */
     contentType?: string;
-    /**
-     * HTTP status code to send in the response.
-     */
     statusCode?: number;
 }
 
+export interface RulesetRuleActionParametersServeStale {
+    disableStaleWhileUpdating?: boolean;
+}
+
 export interface RulesetRuleActionParametersUri {
-    /**
-     * List of properties to change request origin (refer to the nested schema).
-     */
     origin?: boolean;
-    /**
-     * URI path configuration when performing a URL rewrite (refer to the nested schema).
-     */
     path?: outputs.RulesetRuleActionParametersUriPath;
-    /**
-     * Query string configuration when performing a URL rewrite (refer to the nested schema).
-     */
     query?: outputs.RulesetRuleActionParametersUriQuery;
 }
 
 export interface RulesetRuleActionParametersUriPath {
-    /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-     */
     expression?: string;
-    /**
-     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
-     */
     value?: string;
 }
 
 export interface RulesetRuleActionParametersUriQuery {
-    /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-     */
     expression?: string;
-    /**
-     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
-     */
     value?: string;
 }
 
 export interface RulesetRuleExposedCredentialCheck {
-    /**
-     * Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
-     */
     passwordExpression?: string;
-    /**
-     * Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
-     */
     usernameExpression?: string;
 }
 
 export interface RulesetRuleLogging {
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
+    status?: string;
 }
 
 export interface RulesetRuleRatelimit {
-    /**
-     * List of parameters that define how Cloudflare tracks the request rate for this rule.
-     */
     characteristics?: string[];
-    /**
-     * Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-     */
     countingExpression?: string;
-    /**
-     * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
-     */
     mitigationTimeout?: number;
-    /**
-     * The period of time to consider (in seconds) when evaluating the request rate.
-     */
     period?: number;
-    /**
-     * The number of requests over the period of time that will trigger the Rate Limiting rule.
-     */
     requestsPerPeriod?: number;
-    /**
-     * Whether to include requests to origin within the Rate Limiting count.
-     */
     requestsToOrigin?: boolean;
 }
 

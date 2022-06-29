@@ -11,9 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Bookmark resource. Access Bookmark
-// applications are not protected behind Access but are displayed in the App
-// Launcher.
+// Provides a Cloudflare Access Bookmark resource. Access Bookmark applications are not protected behind Access but are displayed in the App Launcher.
+//
+// > It's required that an `accountId` or `zoneId` is provided and in
+// most cases using either is fine. However, if you're using a scoped
+// access token, you must provide the argument that matches the token's
+// scope. For example, an access token that is scoped to the "example.com"
+// zone needs to use the `zoneId` argument.
 //
 // ## Example Usage
 //
@@ -31,7 +35,7 @@ import (
 // 			AccountId:          pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
 // 			AppLauncherVisible: pulumi.Bool(true),
 // 			Domain:             pulumi.String("example.com"),
-// 			LogoUrl:            pulumi.String("https://path-to-logo.com/example.png"),
+// 			LogoUrl:            pulumi.String("https://example.com/example.png"),
 // 			Name:               pulumi.String("My Bookmark App"),
 // 		})
 // 		if err != nil {
@@ -44,26 +48,23 @@ import (
 //
 // ## Import
 //
-// Access Bookmarks can be imported using a composite ID formed of account ID and bookmark ID.
-//
 // ```sh
-//  $ pulumi import cloudflare:index/accessBookmark:AccessBookmark my_bookmark cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+//  $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example <account_id>/<bookmark_id>
 // ```
 type AccessBookmark struct {
 	pulumi.CustomResourceState
 
-	// The account to which the Access bookmark application should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+	// Option to show/hide the bookmark in the app launcher.
 	AppLauncherVisible pulumi.BoolPtrOutput `pulumi:"appLauncherVisible"`
 	// The domain of the bookmark application. Can include subdomains, paths, or both.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The image URL for the logo shown in the app
-	// launcher dashboard.
+	// The image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
 	// Name of the bookmark application.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The DNS zone to which the Access bookmark application should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -102,34 +103,32 @@ func GetAccessBookmark(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessBookmark resources.
 type accessBookmarkState struct {
-	// The account to which the Access bookmark application should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+	// Option to show/hide the bookmark in the app launcher.
 	AppLauncherVisible *bool `pulumi:"appLauncherVisible"`
 	// The domain of the bookmark application. Can include subdomains, paths, or both.
 	Domain *string `pulumi:"domain"`
-	// The image URL for the logo shown in the app
-	// launcher dashboard.
+	// The image URL for the logo shown in the app launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
 	// Name of the bookmark application.
 	Name *string `pulumi:"name"`
-	// The DNS zone to which the Access bookmark application should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessBookmarkState struct {
-	// The account to which the Access bookmark application should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+	// Option to show/hide the bookmark in the app launcher.
 	AppLauncherVisible pulumi.BoolPtrInput
 	// The domain of the bookmark application. Can include subdomains, paths, or both.
 	Domain pulumi.StringPtrInput
-	// The image URL for the logo shown in the app
-	// launcher dashboard.
+	// The image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
 	// Name of the bookmark application.
 	Name pulumi.StringPtrInput
-	// The DNS zone to which the Access bookmark application should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -138,35 +137,33 @@ func (AccessBookmarkState) ElementType() reflect.Type {
 }
 
 type accessBookmarkArgs struct {
-	// The account to which the Access bookmark application should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+	// Option to show/hide the bookmark in the app launcher.
 	AppLauncherVisible *bool `pulumi:"appLauncherVisible"`
 	// The domain of the bookmark application. Can include subdomains, paths, or both.
 	Domain string `pulumi:"domain"`
-	// The image URL for the logo shown in the app
-	// launcher dashboard.
+	// The image URL for the logo shown in the app launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
 	// Name of the bookmark application.
 	Name string `pulumi:"name"`
-	// The DNS zone to which the Access bookmark application should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessBookmark resource.
 type AccessBookmarkArgs struct {
-	// The account to which the Access bookmark application should be added. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+	// Option to show/hide the bookmark in the app launcher.
 	AppLauncherVisible pulumi.BoolPtrInput
 	// The domain of the bookmark application. Can include subdomains, paths, or both.
 	Domain pulumi.StringInput
-	// The image URL for the logo shown in the app
-	// launcher dashboard.
+	// The image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
 	// Name of the bookmark application.
 	Name pulumi.StringInput
-	// The DNS zone to which the Access bookmark application should be added. Conflicts with `accountId`.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -257,12 +254,12 @@ func (o AccessBookmarkOutput) ToAccessBookmarkOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The account to which the Access bookmark application should be added. Conflicts with `zoneId`.
+// The account identifier to target for the resource.
 func (o AccessBookmarkOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessBookmark) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+// Option to show/hide the bookmark in the app launcher.
 func (o AccessBookmarkOutput) AppLauncherVisible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessBookmark) pulumi.BoolPtrOutput { return v.AppLauncherVisible }).(pulumi.BoolPtrOutput)
 }
@@ -272,8 +269,7 @@ func (o AccessBookmarkOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessBookmark) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The image URL for the logo shown in the app
-// launcher dashboard.
+// The image URL for the logo shown in the app launcher dashboard.
 func (o AccessBookmarkOutput) LogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessBookmark) pulumi.StringPtrOutput { return v.LogoUrl }).(pulumi.StringPtrOutput)
 }
@@ -283,7 +279,7 @@ func (o AccessBookmarkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessBookmark) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The DNS zone to which the Access bookmark application should be added. Conflicts with `accountId`.
+// The zone identifier to target for the resource.
 func (o AccessBookmarkOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessBookmark) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

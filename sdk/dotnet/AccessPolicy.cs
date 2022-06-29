@@ -10,9 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Policy resource. Access Policies are used
-    /// in conjunction with Access Applications to restrict access to a
-    /// particular resource.
+    /// Provides a Cloudflare Access Policy resource. Access Policies are used in conjunction with Access Applications to restrict access to a particular resource.
+    /// 
+    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
+    /// most cases using either is fine. However, if you're using a scoped
+    /// access token, you must provide the argument that matches the token's
+    /// scope. For example, an access token that is scoped to the "example.com"
+    /// zone needs to use the `zone_id` argument.
     /// 
     /// ## Example Usage
     /// 
@@ -90,23 +94,23 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Access Policies can be imported using a composite ID formed of identifier type (`zone` or `account`), identifier ID (`zone_id` or `account_id`), application ID and policy ID. # import a zone level Access policy
+    /// # Account level import.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy staging zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+    ///  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/&lt;account_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;
     /// ```
     /// 
-    /// # import an account level Access policy
+    /// # Zone level import.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy production account/0d599f0ec05c3bda8c3b8a68c32a1b47/d41d8cd98f00b204e9800998ecf8427e/67ea780ce4982c1cfbe6b7293afc765d
+    ///  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/&lt;zone_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessPolicy:AccessPolicy")]
     public partial class AccessPolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the access rule should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -117,9 +121,6 @@ namespace Pulumi.Cloudflare
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
-        /// <summary>
-        /// List of approval group blocks for configuring additional approvals (refer to the nested schema).
-        /// </summary>
         [Output("approvalGroups")]
         public Output<ImmutableArray<Outputs.AccessPolicyApprovalGroup>> ApprovalGroups { get; private set; } = null!;
 
@@ -127,56 +128,59 @@ namespace Pulumi.Cloudflare
         public Output<bool?> ApprovalRequired { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the action Access will take if the policy matches the user.
-        /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
+        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+        /// `bypass`
         /// </summary>
         [Output("decision")]
         public Output<string> Decision { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         [Output("excludes")]
         public Output<ImmutableArray<Outputs.AccessPolicyExclude>> Excludes { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         [Output("includes")]
         public Output<ImmutableArray<Outputs.AccessPolicyInclude>> Includes { get; private set; } = null!;
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// Friendly name of the Access Policy.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The unique precedence for policies on a single application. Integer.
+        /// The unique precedence for policies on a single application.
         /// </summary>
         [Output("precedence")]
         public Output<int> Precedence { get; private set; } = null!;
 
         /// <summary>
-        /// String to present to the user when purpose justification is enabled.
+        /// The prompt to display to the user for a justification for accessing the resource.
         /// </summary>
         [Output("purposeJustificationPrompt")]
         public Output<string?> PurposeJustificationPrompt { get; private set; } = null!;
 
         /// <summary>
-        /// Boolean of whether to prompt the user for a justification for accessing the resource.
+        /// Whether to prompt the user for a justification for accessing the resource.
         /// </summary>
         [Output("purposeJustificationRequired")]
         public Output<bool?> PurposeJustificationRequired { get; private set; } = null!;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         [Output("requires")]
         public Output<ImmutableArray<Outputs.AccessPolicyRequire>> Requires { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -228,7 +232,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the access rule should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -241,10 +245,6 @@ namespace Pulumi.Cloudflare
 
         [Input("approvalGroups")]
         private InputList<Inputs.AccessPolicyApprovalGroupArgs>? _approvalGroups;
-
-        /// <summary>
-        /// List of approval group blocks for configuring additional approvals (refer to the nested schema).
-        /// </summary>
         public InputList<Inputs.AccessPolicyApprovalGroupArgs> ApprovalGroups
         {
             get => _approvalGroups ?? (_approvalGroups = new InputList<Inputs.AccessPolicyApprovalGroupArgs>());
@@ -255,8 +255,8 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
-        /// Defines the action Access will take if the policy matches the user.
-        /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
+        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+        /// `bypass`
         /// </summary>
         [Input("decision", required: true)]
         public Input<string> Decision { get; set; } = null!;
@@ -265,7 +265,8 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyExcludeArgs>? _excludes;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyExcludeArgs> Excludes
         {
@@ -277,7 +278,8 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyIncludeArgs>? _includes;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyIncludeArgs> Includes
         {
@@ -286,25 +288,25 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// Friendly name of the Access Policy.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The unique precedence for policies on a single application. Integer.
+        /// The unique precedence for policies on a single application.
         /// </summary>
         [Input("precedence", required: true)]
         public Input<int> Precedence { get; set; } = null!;
 
         /// <summary>
-        /// String to present to the user when purpose justification is enabled.
+        /// The prompt to display to the user for a justification for accessing the resource.
         /// </summary>
         [Input("purposeJustificationPrompt")]
         public Input<string>? PurposeJustificationPrompt { get; set; }
 
         /// <summary>
-        /// Boolean of whether to prompt the user for a justification for accessing the resource.
+        /// Whether to prompt the user for a justification for accessing the resource.
         /// </summary>
         [Input("purposeJustificationRequired")]
         public Input<bool>? PurposeJustificationRequired { get; set; }
@@ -313,7 +315,8 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyRequireArgs>? _requires;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyRequireArgs> Requires
         {
@@ -322,7 +325,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -335,7 +338,7 @@ namespace Pulumi.Cloudflare
     public sealed class AccessPolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the access rule should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -348,10 +351,6 @@ namespace Pulumi.Cloudflare
 
         [Input("approvalGroups")]
         private InputList<Inputs.AccessPolicyApprovalGroupGetArgs>? _approvalGroups;
-
-        /// <summary>
-        /// List of approval group blocks for configuring additional approvals (refer to the nested schema).
-        /// </summary>
         public InputList<Inputs.AccessPolicyApprovalGroupGetArgs> ApprovalGroups
         {
             get => _approvalGroups ?? (_approvalGroups = new InputList<Inputs.AccessPolicyApprovalGroupGetArgs>());
@@ -362,8 +361,8 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ApprovalRequired { get; set; }
 
         /// <summary>
-        /// Defines the action Access will take if the policy matches the user.
-        /// Allowed values: `allow`, `deny`, `non_identity`, `bypass`
+        /// Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`,
+        /// `bypass`
         /// </summary>
         [Input("decision")]
         public Input<string>? Decision { get; set; }
@@ -372,7 +371,8 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyExcludeGetArgs>? _excludes;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyExcludeGetArgs> Excludes
         {
@@ -384,7 +384,8 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyIncludeGetArgs>? _includes;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyIncludeGetArgs> Includes
         {
@@ -393,25 +394,25 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// Friendly name of the Access Policy.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The unique precedence for policies on a single application. Integer.
+        /// The unique precedence for policies on a single application.
         /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
 
         /// <summary>
-        /// String to present to the user when purpose justification is enabled.
+        /// The prompt to display to the user for a justification for accessing the resource.
         /// </summary>
         [Input("purposeJustificationPrompt")]
         public Input<string>? PurposeJustificationPrompt { get; set; }
 
         /// <summary>
-        /// Boolean of whether to prompt the user for a justification for accessing the resource.
+        /// Whether to prompt the user for a justification for accessing the resource.
         /// </summary>
         [Input("purposeJustificationRequired")]
         public Input<bool>? PurposeJustificationRequired { get; set; }
@@ -420,7 +421,8 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.AccessPolicyRequireGetArgs>? _requires;
 
         /// <summary>
-        /// A series of access conditions, see [Access Groups](https://www.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
+        /// A series of access conditions, see [Access
+        /// Groups](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_group#conditions).
         /// </summary>
         public InputList<Inputs.AccessPolicyRequireGetArgs> Requires
         {
@@ -429,7 +431,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

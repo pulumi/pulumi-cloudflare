@@ -22,6 +22,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
+    ///         // Waiting Room
     ///         var example = new Cloudflare.WaitingRoom("example", new Cloudflare.WaitingRoomArgs
     ///         {
     ///             Host = "foo.example.com",
@@ -38,43 +39,48 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Waiting rooms can be imported using a composite ID formed of zone ID and waiting room ID, e.g.
+    /// # Use the Zone ID and Waiting Room ID to import.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default &lt;zone_id&gt;/&lt;waiting_room_id&gt;
     /// ```
-    /// 
-    ///  where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - waiting room ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-waiting-rooms)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/waitingRoom:WaitingRoom")]
     public partial class WaitingRoom : Pulumi.CustomResource
     {
         /// <summary>
-        /// This a templated html file that will be rendered at the edge.
+        /// This is a templated html file that will be rendered at the edge.
         /// </summary>
         [Output("customPageHtml")]
         public Output<string?> CustomPageHtml { get; private set; } = null!;
 
         /// <summary>
-        /// A description to let users add more details about the waiting room.
+        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+        /// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        /// </summary>
+        [Output("defaultTemplateLanguage")]
+        public Output<string?> DefaultTemplateLanguage { get; private set; } = null!;
+
+        /// <summary>
+        /// A description to add more details about the waiting room.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Disables automatic renewal of session cookies. Default: false.
+        /// Disables automatic renewal of session cookies.
         /// </summary>
         [Output("disableSessionRenewal")]
         public Output<bool?> DisableSessionRenewal { get; private set; } = null!;
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards).
+        /// Host name for which the waiting room will be applied (no wildcards)
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
 
         /// <summary>
-        /// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        /// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         /// </summary>
         [Output("jsonResponseEnabled")]
         public Output<bool?> JsonResponseEnabled { get; private set; } = null!;
@@ -92,25 +98,25 @@ namespace Pulumi.Cloudflare
         public Output<int> NewUsersPerMinute { get; private set; } = null!;
 
         /// <summary>
-        /// The path within the host to enable the waiting room on. Default: "/".
+        /// The path within the host to enable the waiting room on.
         /// </summary>
         [Output("path")]
         public Output<string?> Path { get; private set; } = null!;
 
         /// <summary>
-        /// If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+        /// If queue_all is true, then all traffic will be sent to the waiting room.
         /// </summary>
         [Output("queueAll")]
         public Output<bool?> QueueAll { get; private set; } = null!;
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         /// </summary>
         [Output("sessionDuration")]
         public Output<int?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// If suspended, the traffic doesn't go to the waiting room. Default: false.
+        /// Suspends the waiting room.
         /// </summary>
         [Output("suspended")]
         public Output<bool?> Suspended { get; private set; } = null!;
@@ -122,7 +128,7 @@ namespace Pulumi.Cloudflare
         public Output<int> TotalActiveUsers { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to apply to.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -174,31 +180,38 @@ namespace Pulumi.Cloudflare
     public sealed class WaitingRoomArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This a templated html file that will be rendered at the edge.
+        /// This is a templated html file that will be rendered at the edge.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// A description to let users add more details about the waiting room.
+        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+        /// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        /// </summary>
+        [Input("defaultTemplateLanguage")]
+        public Input<string>? DefaultTemplateLanguage { get; set; }
+
+        /// <summary>
+        /// A description to add more details about the waiting room.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Disables automatic renewal of session cookies. Default: false.
+        /// Disables automatic renewal of session cookies.
         /// </summary>
         [Input("disableSessionRenewal")]
         public Input<bool>? DisableSessionRenewal { get; set; }
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards).
+        /// Host name for which the waiting room will be applied (no wildcards)
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        /// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         /// </summary>
         [Input("jsonResponseEnabled")]
         public Input<bool>? JsonResponseEnabled { get; set; }
@@ -216,25 +229,25 @@ namespace Pulumi.Cloudflare
         public Input<int> NewUsersPerMinute { get; set; } = null!;
 
         /// <summary>
-        /// The path within the host to enable the waiting room on. Default: "/".
+        /// The path within the host to enable the waiting room on.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+        /// If queue_all is true, then all traffic will be sent to the waiting room.
         /// </summary>
         [Input("queueAll")]
         public Input<bool>? QueueAll { get; set; }
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
 
         /// <summary>
-        /// If suspended, the traffic doesn't go to the waiting room. Default: false.
+        /// Suspends the waiting room.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
@@ -246,7 +259,7 @@ namespace Pulumi.Cloudflare
         public Input<int> TotalActiveUsers { get; set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID to apply to.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -259,31 +272,38 @@ namespace Pulumi.Cloudflare
     public sealed class WaitingRoomState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// This a templated html file that will be rendered at the edge.
+        /// This is a templated html file that will be rendered at the edge.
         /// </summary>
         [Input("customPageHtml")]
         public Input<string>? CustomPageHtml { get; set; }
 
         /// <summary>
-        /// A description to let users add more details about the waiting room.
+        /// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+        /// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        /// </summary>
+        [Input("defaultTemplateLanguage")]
+        public Input<string>? DefaultTemplateLanguage { get; set; }
+
+        /// <summary>
+        /// A description to add more details about the waiting room.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Disables automatic renewal of session cookies. Default: false.
+        /// Disables automatic renewal of session cookies.
         /// </summary>
         [Input("disableSessionRenewal")]
         public Input<bool>? DisableSessionRenewal { get; set; }
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards).
+        /// Host name for which the waiting room will be applied (no wildcards)
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        /// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         /// </summary>
         [Input("jsonResponseEnabled")]
         public Input<bool>? JsonResponseEnabled { get; set; }
@@ -301,25 +321,25 @@ namespace Pulumi.Cloudflare
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// The path within the host to enable the waiting room on. Default: "/".
+        /// The path within the host to enable the waiting room on.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+        /// If queue_all is true, then all traffic will be sent to the waiting room.
         /// </summary>
         [Input("queueAll")]
         public Input<bool>? QueueAll { get; set; }
 
         /// <summary>
-        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         /// </summary>
         [Input("sessionDuration")]
         public Input<int>? SessionDuration { get; set; }
 
         /// <summary>
-        /// If suspended, the traffic doesn't go to the waiting room. Default: false.
+        /// Suspends the waiting room.
         /// </summary>
         [Input("suspended")]
         public Input<bool>? Suspended { get; set; }
@@ -331,7 +351,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? TotalActiveUsers { get; set; }
 
         /// <summary>
-        /// The DNS zone ID to apply to.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

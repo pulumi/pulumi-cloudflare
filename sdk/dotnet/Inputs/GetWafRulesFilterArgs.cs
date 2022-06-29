@@ -12,21 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class GetWafRulesFilterInputArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A regular expression matching the description of the WAF Rules to lookup.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-        /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
-        /// <summary>
-        /// Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 

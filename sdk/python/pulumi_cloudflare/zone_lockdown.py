@@ -23,7 +23,7 @@ class ZoneLockdownArgs:
                  priority: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ZoneLockdown resource.
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the access rule should be added.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
@@ -43,7 +43,7 @@ class ZoneLockdownArgs:
     @pulumi.getter
     def configurations(self) -> pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
         """
         return pulumi.get(self, "configurations")
 
@@ -120,7 +120,7 @@ class _ZoneLockdownState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZoneLockdown resources.
-        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
@@ -143,7 +143,7 @@ class _ZoneLockdownState:
     @pulumi.getter
     def configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
         """
         return pulumi.get(self, "configurations")
 
@@ -250,11 +250,11 @@ class ZoneLockdown(pulumi.CustomResource):
          $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
@@ -295,7 +295,7 @@ class ZoneLockdown(pulumi.CustomResource):
          $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
 
         :param str resource_name: The name of the resource.
         :param ZoneLockdownArgs args: The arguments to use to populate this resource's properties.
@@ -365,7 +365,7 @@ class ZoneLockdown(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ZoneLockdownConfigurationArgs']]]] configurations: A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
         :param pulumi.Input[str] description: A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
         :param pulumi.Input[bool] paused: Boolean of whether this zone lockdown is currently paused. Default: false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: A list of simple wildcard patterns to match requests against. The order of the urls is unimportant.
@@ -387,7 +387,7 @@ class ZoneLockdown(pulumi.CustomResource):
     @pulumi.getter
     def configurations(self) -> pulumi.Output[Sequence['outputs.ZoneLockdownConfiguration']]:
         """
-        A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+        A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
         """
         return pulumi.get(self, "configurations")
 

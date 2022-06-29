@@ -535,6 +535,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
         ## Example Usage
         ### HTTP Monitor
+
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -558,6 +559,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             type="http")
         ```
         ### TCP Monitor
+
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -602,6 +604,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
         ## Example Usage
         ### HTTP Monitor
+
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -625,6 +628,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             type="http")
         ```
         ### TCP Monitor
+
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare

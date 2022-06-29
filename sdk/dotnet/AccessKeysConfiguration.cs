@@ -12,9 +12,15 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")]
     public partial class AccessKeysConfiguration : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of days to trigger a rotation of the keys.
+        /// </summary>
         [Output("keyRotationIntervalDays")]
         public Output<int> KeyRotationIntervalDays { get; private set; } = null!;
 
@@ -64,9 +70,15 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessKeysConfigurationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
+        /// <summary>
+        /// Number of days to trigger a rotation of the keys.
+        /// </summary>
         [Input("keyRotationIntervalDays")]
         public Input<int>? KeyRotationIntervalDays { get; set; }
 
@@ -77,9 +89,15 @@ namespace Pulumi.Cloudflare
 
     public sealed class AccessKeysConfigurationState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account identifier to target for the resource.
+        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// Number of days to trigger a rotation of the keys.
+        /// </summary>
         [Input("keyRotationIntervalDays")]
         public Input<int>? KeyRotationIntervalDays { get; set; }
 

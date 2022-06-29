@@ -15,9 +15,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
-        /// <summary>
-        /// Friendly name of the Access Group.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -11,9 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Cloudflare Access Group resource. Access Groups are used
-// in conjunction with Access Policies to restrict access to a
-// particular resource based on group membership.
+// Provides a Cloudflare Access Group resource. Access Groups are used in conjunction with Access Policies to restrict access to a particular resource based on group membership.
+//
+// > It's required that an `accountId` or `zoneId` is provided and in
+// most cases using either is fine. However, if you're using a scoped
+// access token, you must provide the argument that matches the token's
+// scope. For example, an access token that is scoped to the "example.com"
+// zone needs to use the `zoneId` argument.
 //
 // ## Example Usage
 //
@@ -64,66 +68,22 @@ import (
 // 	})
 // }
 // ```
-// ## Conditions
-//
-// `require`, `exclude` and `include` arguments share the available
-// conditions which can be applied. The conditions are:
-//
-// * `ip` - (Optional) A list of IP addresses or ranges. Example:
-// `ip = ["1.2.3.4", "10.0.0.0/2"]`
-// * `email` - (Optional) A list of email addresses. Example:
-// `email = ["test@example.com"]`
-// * `emailDomain` - (Optional) A list of email domains. Example:
-// `emailDomain = ["example.com"]`
-// * `serviceToken` - (Optional) A list of service token ids. Example:
-// `serviceToken = [cloudflare_access_service_token.demo.id]`
-// * `anyValidServiceToken` - (Optional) Boolean indicating if allow
-// all tokens to be granted. Example: `anyValidServiceToken = true`
-// * `group` - (Optional) A list of access group ids. Example:
-// `group = [cloudflare_access_group.demo.id]`
-// * `everyone` - (Optional) Boolean indicating permitting access for all
-// requests. Example: `everyone = true`
-// * `certificate` - (Optional) Whether to use mTLS certificate authentication.
-// * `commonName` - (Optional) Use a certificate common name to authenticate with.
-// * `authMethod` - (Optional) A string identifying the authentication
-// method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
-// Custom values are also supported. Example: `authMethod = ["swk"]`
-// * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
-// * `loginMethod` - (Optional) A list of identity provider ids. Example: `loginMethod = [cloudflare_access_identity_provider.my_idp.id]`
-// * `devicePosture` - (Optional) A list of devicePosture integration_uids. Example: `devicePosture = [cloudflare_device_posture_rule.my_posture_rule.id]`
-// * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
-// * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
-// * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
-// * `okta` - (Optional) Use Okta as the `include` condition. Example:
-// * `saml` - (Optional) Use an external SAML setup as the `include` condition.
-// Example:
 //
 // ## Import
 //
-// Access Groups can be imported using a composite ID formed of account ID and group ID.
-//
 // ```sh
-//  $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d
+//  $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
 // ```
-//
-//  where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID
 type AccessGroup struct {
 	pulumi.CustomResourceState
 
-	// The ID of the account the group is associated with. Conflicts with `zoneId`.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// A series of access conditions, see below for
-	// full list.
-	Excludes AccessGroupExcludeArrayOutput `pulumi:"excludes"`
-	// A series of access conditions, see below for
-	// full list.
-	Includes AccessGroupIncludeArrayOutput `pulumi:"includes"`
-	// Friendly name of the Access Group.
-	Name pulumi.StringOutput `pulumi:"name"`
-	// A series of access conditions, see below for
-	// full list.
-	Requires AccessGroupRequireArrayOutput `pulumi:"requires"`
-	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	// The account identifier to target for the resource.
+	AccountId pulumi.StringPtrOutput        `pulumi:"accountId"`
+	Excludes  AccessGroupExcludeArrayOutput `pulumi:"excludes"`
+	Includes  AccessGroupIncludeArrayOutput `pulumi:"includes"`
+	Name      pulumi.StringOutput           `pulumi:"name"`
+	Requires  AccessGroupRequireArrayOutput `pulumi:"requires"`
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -162,38 +122,24 @@ func GetAccessGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessGroup resources.
 type accessGroupState struct {
-	// The ID of the account the group is associated with. Conflicts with `zoneId`.
-	AccountId *string `pulumi:"accountId"`
-	// A series of access conditions, see below for
-	// full list.
-	Excludes []AccessGroupExclude `pulumi:"excludes"`
-	// A series of access conditions, see below for
-	// full list.
-	Includes []AccessGroupInclude `pulumi:"includes"`
-	// Friendly name of the Access Group.
-	Name *string `pulumi:"name"`
-	// A series of access conditions, see below for
-	// full list.
-	Requires []AccessGroupRequire `pulumi:"requires"`
-	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	// The account identifier to target for the resource.
+	AccountId *string              `pulumi:"accountId"`
+	Excludes  []AccessGroupExclude `pulumi:"excludes"`
+	Includes  []AccessGroupInclude `pulumi:"includes"`
+	Name      *string              `pulumi:"name"`
+	Requires  []AccessGroupRequire `pulumi:"requires"`
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type AccessGroupState struct {
-	// The ID of the account the group is associated with. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// A series of access conditions, see below for
-	// full list.
-	Excludes AccessGroupExcludeArrayInput
-	// A series of access conditions, see below for
-	// full list.
-	Includes AccessGroupIncludeArrayInput
-	// Friendly name of the Access Group.
-	Name pulumi.StringPtrInput
-	// A series of access conditions, see below for
-	// full list.
-	Requires AccessGroupRequireArrayInput
-	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	Excludes  AccessGroupExcludeArrayInput
+	Includes  AccessGroupIncludeArrayInput
+	Name      pulumi.StringPtrInput
+	Requires  AccessGroupRequireArrayInput
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -202,39 +148,25 @@ func (AccessGroupState) ElementType() reflect.Type {
 }
 
 type accessGroupArgs struct {
-	// The ID of the account the group is associated with. Conflicts with `zoneId`.
-	AccountId *string `pulumi:"accountId"`
-	// A series of access conditions, see below for
-	// full list.
-	Excludes []AccessGroupExclude `pulumi:"excludes"`
-	// A series of access conditions, see below for
-	// full list.
-	Includes []AccessGroupInclude `pulumi:"includes"`
-	// Friendly name of the Access Group.
-	Name string `pulumi:"name"`
-	// A series of access conditions, see below for
-	// full list.
-	Requires []AccessGroupRequire `pulumi:"requires"`
-	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	// The account identifier to target for the resource.
+	AccountId *string              `pulumi:"accountId"`
+	Excludes  []AccessGroupExclude `pulumi:"excludes"`
+	Includes  []AccessGroupInclude `pulumi:"includes"`
+	Name      string               `pulumi:"name"`
+	Requires  []AccessGroupRequire `pulumi:"requires"`
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a AccessGroup resource.
 type AccessGroupArgs struct {
-	// The ID of the account the group is associated with. Conflicts with `zoneId`.
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// A series of access conditions, see below for
-	// full list.
-	Excludes AccessGroupExcludeArrayInput
-	// A series of access conditions, see below for
-	// full list.
-	Includes AccessGroupIncludeArrayInput
-	// Friendly name of the Access Group.
-	Name pulumi.StringInput
-	// A series of access conditions, see below for
-	// full list.
-	Requires AccessGroupRequireArrayInput
-	// The ID of the zone the group is associated with. Conflicts with `accountId`.
+	Excludes  AccessGroupExcludeArrayInput
+	Includes  AccessGroupIncludeArrayInput
+	Name      pulumi.StringInput
+	Requires  AccessGroupRequireArrayInput
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -325,35 +257,28 @@ func (o AccessGroupOutput) ToAccessGroupOutputWithContext(ctx context.Context) A
 	return o
 }
 
-// The ID of the account the group is associated with. Conflicts with `zoneId`.
+// The account identifier to target for the resource.
 func (o AccessGroupOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// A series of access conditions, see below for
-// full list.
 func (o AccessGroupOutput) Excludes() AccessGroupExcludeArrayOutput {
 	return o.ApplyT(func(v *AccessGroup) AccessGroupExcludeArrayOutput { return v.Excludes }).(AccessGroupExcludeArrayOutput)
 }
 
-// A series of access conditions, see below for
-// full list.
 func (o AccessGroupOutput) Includes() AccessGroupIncludeArrayOutput {
 	return o.ApplyT(func(v *AccessGroup) AccessGroupIncludeArrayOutput { return v.Includes }).(AccessGroupIncludeArrayOutput)
 }
 
-// Friendly name of the Access Group.
 func (o AccessGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A series of access conditions, see below for
-// full list.
 func (o AccessGroupOutput) Requires() AccessGroupRequireArrayOutput {
 	return o.ApplyT(func(v *AccessGroup) AccessGroupRequireArrayOutput { return v.Requires }).(AccessGroupRequireArrayOutput)
 }
 
-// The ID of the zone the group is associated with. Conflicts with `accountId`.
+// The zone identifier to target for the resource.
 func (o AccessGroupOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessGroup) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

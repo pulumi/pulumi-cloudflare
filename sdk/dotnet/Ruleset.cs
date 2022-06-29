@@ -84,13 +84,13 @@ namespace Pulumi.Cloudflare
     ///                                 {
     ///                                     Action = "block",
     ///                                     Category = "wordpress",
-    ///                                     Enabled = true,
+    ///                                     Status = "enabled",
     ///                                 },
     ///                                 new Cloudflare.Inputs.RulesetRuleActionParametersOverridesCategoryArgs
     ///                                 {
     ///                                     Action = "block",
     ///                                     Category = "joomla",
-    ///                                     Enabled = true,
+    ///                                     Status = "enabled",
     ///                                 },
     ///                             },
     ///                         },
@@ -260,6 +260,153 @@ namespace Pulumi.Cloudflare
     ///             },
     ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
     ///         });
+    ///         // Custom fields logging
+    ///         var customFieldsLoggingExample = new Cloudflare.Ruleset("customFieldsLoggingExample", new Cloudflare.RulesetArgs
+    ///         {
+    ///             Description = "add custom fields to logging",
+    ///             Kind = "zone",
+    ///             Name = "log custom fields",
+    ///             Phase = "http_log_custom_fields",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "log_custom_field",
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
+    ///                     {
+    ///                         CookieFields = 
+    ///                         {
+    ///                             "__ga",
+    ///                             "accountNumber",
+    ///                             "__cfruid",
+    ///                         },
+    ///                         RequestFields = 
+    ///                         {
+    ///                             "content-type",
+    ///                             "x-forwarded-for",
+    ///                             "host",
+    ///                         },
+    ///                         ResponseFields = 
+    ///                         {
+    ///                             "server",
+    ///                             "content-type",
+    ///                             "allow",
+    ///                         },
+    ///                     },
+    ///                     Description = "log custom fields rule",
+    ///                     Enabled = true,
+    ///                     Expression = "true",
+    ///                 },
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
+    ///         var cacheSettingsExample = new Cloudflare.Ruleset("cacheSettingsExample", new Cloudflare.RulesetArgs
+    ///         {
+    ///             Description = "set cache settings for the request",
+    ///             Kind = "zone",
+    ///             Name = "set cache settings",
+    ///             Phase = "http_request_cache_settings",
+    ///             Rules = 
+    ///             {
+    ///                 new Cloudflare.Inputs.RulesetRuleArgs
+    ///                 {
+    ///                     Action = "set_cache_settings",
+    ///                     ActionParameters = new Cloudflare.Inputs.RulesetRuleActionParametersArgs
+    ///                     {
+    ///                         BrowserTtl = new Cloudflare.Inputs.RulesetRuleActionParametersBrowserTtlArgs
+    ///                         {
+    ///                             Mode = "respect_origin",
+    ///                         },
+    ///                         CacheKey = new Cloudflare.Inputs.RulesetRuleActionParametersCacheKeyArgs
+    ///                         {
+    ///                             CacheDeceptionArmor = true,
+    ///                             CustomKey = new Cloudflare.Inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs
+    ///                             {
+    ///                                 Cookie = new Cloudflare.Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs
+    ///                                 {
+    ///                                     CheckPresence = 
+    ///                                     {
+    ///                                         "cabc_t",
+    ///                                         "cdef_t",
+    ///                                     },
+    ///                                     Include = 
+    ///                                     {
+    ///                                         "cabc",
+    ///                                         "cdef",
+    ///                                     },
+    ///                                 },
+    ///                                 Header = new Cloudflare.Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs
+    ///                                 {
+    ///                                     CheckPresence = 
+    ///                                     {
+    ///                                         "habc_t",
+    ///                                         "hdef_t",
+    ///                                     },
+    ///                                     ExcludeOrigin = true,
+    ///                                     Include = 
+    ///                                     {
+    ///                                         "habc",
+    ///                                         "hdef",
+    ///                                     },
+    ///                                 },
+    ///                                 Host = new Cloudflare.Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs
+    ///                                 {
+    ///                                     Resolved = true,
+    ///                                 },
+    ///                                 QueryString = new Cloudflare.Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs
+    ///                                 {
+    ///                                     Exclude = 
+    ///                                     {
+    ///                                         "*",
+    ///                                     },
+    ///                                 },
+    ///                                 User = new Cloudflare.Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs
+    ///                                 {
+    ///                                     DeviceType = true,
+    ///                                     Geo = false,
+    ///                                 },
+    ///                             },
+    ///                             IgnoreQueryStringsOrder = false,
+    ///                         },
+    ///                         EdgeTtl = new Cloudflare.Inputs.RulesetRuleActionParametersEdgeTtlArgs
+    ///                         {
+    ///                             Default = 60,
+    ///                             Mode = "override_origin",
+    ///                             StatusCodeTtl = 
+    ///                             {
+    ///                                 
+    ///                                 {
+    ///                                     { "statusCode", 200 },
+    ///                                     { "value", 50 },
+    ///                                 },
+    ///                                 
+    ///                                 {
+    ///                                     { "statusCodeRange", 
+    ///                                     {
+    ///                                         
+    ///                                         {
+    ///                                             { "from", 201 },
+    ///                                             { "to", 300 },
+    ///                                         },
+    ///                                     } },
+    ///                                     { "value", 30 },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         OriginErrorPagePassthru = false,
+    ///                         RespectStrongEtags = true,
+    ///                         ServeStale = new Cloudflare.Inputs.RulesetRuleActionParametersServeStaleArgs
+    ///                         {
+    ///                             DisableStaleWhileUpdating = true,
+    ///                         },
+    ///                     },
+    ///                     Description = "set cache settings rule",
+    ///                     Enabled = true,
+    ///                     Expression = "true",
+    ///                 },
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
     ///     }
     /// 
     /// }
@@ -267,43 +414,48 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Currently, you cannot import rulesets.
+    /// Import is not supported for this resource.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/ruleset:Ruleset")]
     public partial class Ruleset : Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
+        /// Brief summary of the ruleset and its intended use.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the HTTP request header to target.
+        /// Name of the ruleset.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_origin"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        /// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+        /// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
+        /// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
+        /// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
+        /// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
+        /// `http_request_sbfm`
         /// </summary>
         [Output("phase")]
         public Output<string> Phase { get; private set; } = null!;
 
         /// <summary>
-        /// List of rule-based overrides (refer to the nested schema).
+        /// List of rules to apply to the ruleset.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.RulesetRule>> Rules { get; private set; } = null!;
@@ -315,7 +467,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> ShareableEntitlementName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the zone where the ruleset is being created. Conflicts with `"account_id"`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -367,31 +519,36 @@ namespace Pulumi.Cloudflare
     public sealed class RulesetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
+        /// Brief summary of the ruleset and its intended use.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// Name of the HTTP request header to target.
+        /// Name of the ruleset.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_origin"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        /// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+        /// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
+        /// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
+        /// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
+        /// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
+        /// `http_request_sbfm`
         /// </summary>
         [Input("phase", required: true)]
         public Input<string> Phase { get; set; } = null!;
@@ -400,7 +557,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.RulesetRuleArgs>? _rules;
 
         /// <summary>
-        /// List of rule-based overrides (refer to the nested schema).
+        /// List of rules to apply to the ruleset.
         /// </summary>
         public InputList<Inputs.RulesetRuleArgs> Rules
         {
@@ -415,7 +572,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ShareableEntitlementName { get; set; }
 
         /// <summary>
-        /// The ID of the zone where the ruleset is being created. Conflicts with `"account_id"`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -428,31 +585,36 @@ namespace Pulumi.Cloudflare
     public sealed class RulesetState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the account where the ruleset is being created. Conflicts with `"zone_id"`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
+        /// Brief summary of the ruleset and its intended use.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+        /// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the HTTP request header to target.
+        /// Name of the ruleset.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddos_l4"`, `"ddos_l7"`, `"http_request_firewall_custom"`, `"http_request_firewall_managed"`, `"http_request_late_transform"`, `"http_response_headers_transform"`, `"http_request_origin"`, `"http_request_main"`, `"http_request_sanitize"`, `"http_request_transform"`, `"http_response_firewall_managed"`, `"magic_transit"`, or `"http_ratelimit"`.
+        /// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+        /// `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
+        /// `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
+        /// `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
+        /// `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
+        /// `http_request_sbfm`
         /// </summary>
         [Input("phase")]
         public Input<string>? Phase { get; set; }
@@ -461,7 +623,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.RulesetRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of rule-based overrides (refer to the nested schema).
+        /// List of rules to apply to the ruleset.
         /// </summary>
         public InputList<Inputs.RulesetRuleGetArgs> Rules
         {
@@ -476,7 +638,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ShareableEntitlementName { get; set; }
 
         /// <summary>
-        /// The ID of the zone where the ruleset is being created. Conflicts with `"account_id"`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

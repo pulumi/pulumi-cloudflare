@@ -12,9 +12,6 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ApiTokenConditionArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Request IP related conditions. See the definition below.
-        /// </summary>
         [Input("requestIp")]
         public Input<Inputs.ApiTokenConditionRequestIpArgs>? RequestIp { get; set; }
 

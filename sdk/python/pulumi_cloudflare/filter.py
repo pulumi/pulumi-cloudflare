@@ -21,9 +21,9 @@ class FilterArgs:
         """
         The set of arguments for constructing a Filter resource.
         :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
-        :param pulumi.Input[bool] paused: Whether this filter is currently paused. Boolean value.
+        :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
         """
         pulumi.set(__self__, "expression", expression)
@@ -51,7 +51,7 @@ class FilterArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The DNS zone to which the Filter should be added.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -75,7 +75,7 @@ class FilterArgs:
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this filter is currently paused. Boolean value.
+        Whether this filter is currently paused.
         """
         return pulumi.get(self, "paused")
 
@@ -108,9 +108,9 @@ class _FilterState:
         Input properties used for looking up and filtering Filter resources.
         :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
         :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[bool] paused: Whether this filter is currently paused. Boolean value.
+        :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -151,7 +151,7 @@ class _FilterState:
     @pulumi.getter
     def paused(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this filter is currently paused. Boolean value.
+        Whether this filter is currently paused.
         """
         return pulumi.get(self, "paused")
 
@@ -175,7 +175,7 @@ class _FilterState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone to which the Filter should be added.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -196,7 +196,7 @@ class Filter(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Filter expressions that can be referenced across multiple features, e.g. Firewall Rule. The expression format is similar to [Wireshark Display Filter](https://www.wireshark.org/docs/man-pages/wireshark-filter.html).
+        Filter expressions that can be referenced across multiple features, e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) for more details and available fields and operators.
 
         ## Example Usage
 
@@ -212,21 +212,17 @@ class Filter(pulumi.CustomResource):
 
         ## Import
 
-        Filter can be imported using a composite ID formed of zone ID and filter ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+         $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
         ```
-
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
         :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[bool] paused: Whether this filter is currently paused. Boolean value.
+        :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -235,7 +231,7 @@ class Filter(pulumi.CustomResource):
                  args: FilterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Filter expressions that can be referenced across multiple features, e.g. Firewall Rule. The expression format is similar to [Wireshark Display Filter](https://www.wireshark.org/docs/man-pages/wireshark-filter.html).
+        Filter expressions that can be referenced across multiple features, e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) for more details and available fields and operators.
 
         ## Example Usage
 
@@ -251,13 +247,9 @@ class Filter(pulumi.CustomResource):
 
         ## Import
 
-        Filter can be imported using a composite ID formed of zone ID and filter ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+         $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
         ```
-
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
 
         :param str resource_name: The name of the resource.
         :param FilterArgs args: The arguments to use to populate this resource's properties.
@@ -324,9 +316,9 @@ class Filter(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A note that you can use to describe the purpose of the filter.
         :param pulumi.Input[str] expression: The filter expression to be used.
-        :param pulumi.Input[bool] paused: Whether this filter is currently paused. Boolean value.
+        :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
-        :param pulumi.Input[str] zone_id: The DNS zone to which the Filter should be added.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -359,7 +351,7 @@ class Filter(pulumi.CustomResource):
     @pulumi.getter
     def paused(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this filter is currently paused. Boolean value.
+        Whether this filter is currently paused.
         """
         return pulumi.get(self, "paused")
 
@@ -375,7 +367,7 @@ class Filter(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone to which the Filter should be added.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

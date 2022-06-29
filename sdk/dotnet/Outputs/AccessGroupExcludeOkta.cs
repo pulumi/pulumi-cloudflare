@@ -14,9 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessGroupExcludeOkta
     {
         public readonly string? IdentityProviderId;
-        /// <summary>
-        /// Friendly name of the Access Group.
-        /// </summary>
         public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]

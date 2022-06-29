@@ -23,12 +23,12 @@ class AccessIdentityProviderArgs:
         """
         The set of arguments for constructing a AccessIdentityProvider resource.
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
-        :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
-               `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-               `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
-        :param pulumi.Input[str] account_id: The account ID the provider should be associated with. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
-        :param pulumi.Input[str] zone_id: The zone ID the provider should be associated with. Conflicts with `account_id`.
+        :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+               `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]] configs: Provider configuration from the [developer
+               documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -55,9 +55,8 @@ class AccessIdentityProviderArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The provider type to use. Must be one of: `"centrify"`,
-        `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-        `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+        The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+        `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
         """
         return pulumi.get(self, "type")
 
@@ -69,7 +68,7 @@ class AccessIdentityProviderArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account ID the provider should be associated with. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -81,7 +80,8 @@ class AccessIdentityProviderArgs:
     @pulumi.getter
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]]]:
         """
-        Provider configuration from the [developer documentation][access_identity_provider_guide].
+        Provider configuration from the [developer
+        documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         """
         return pulumi.get(self, "configs")
 
@@ -93,7 +93,7 @@ class AccessIdentityProviderArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID the provider should be associated with. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -112,13 +112,13 @@ class _AccessIdentityProviderState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessIdentityProvider resources.
-        :param pulumi.Input[str] account_id: The account ID the provider should be associated with. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]] configs: Provider configuration from the [developer
+               documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
-        :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
-               `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-               `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
-        :param pulumi.Input[str] zone_id: The zone ID the provider should be associated with. Conflicts with `account_id`.
+        :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+               `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -135,7 +135,7 @@ class _AccessIdentityProviderState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account ID the provider should be associated with. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -147,7 +147,8 @@ class _AccessIdentityProviderState:
     @pulumi.getter
     def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]]]:
         """
-        Provider configuration from the [developer documentation][access_identity_provider_guide].
+        Provider configuration from the [developer
+        documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         """
         return pulumi.get(self, "configs")
 
@@ -171,9 +172,8 @@ class _AccessIdentityProviderState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The provider type to use. Must be one of: `"centrify"`,
-        `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-        `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+        The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+        `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
         """
         return pulumi.get(self, "type")
 
@@ -185,7 +185,7 @@ class _AccessIdentityProviderState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID the provider should be associated with. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -206,8 +206,13 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Access Identity Provider resource. Identity Providers are
-        used as an authentication or authorisation source within Access.
+        Provides a Cloudflare Access Identity Provider resource. Identity Providers are used as an authentication or authorisation source within Access.
+
+        > It's required that an `account_id` or `zone_id` is provided and in
+        most cases using either is fine. However, if you're using a scoped
+        access token, you must provide the argument that matches the token's
+        scope. For example, an access token that is scoped to the "example.com"
+        zone needs to use the `zone_id` argument.
 
         ## Example Usage
 
@@ -258,28 +263,21 @@ class AccessIdentityProvider(pulumi.CustomResource):
             type="okta")
         ```
 
-        Please refer to the [developers.cloudflare.com Access documentation][access_identity_provider_guide]
-        for full reference on what is available and how to configure your provider.
-
         ## Import
 
-        Access Identity Providers can be imported using a composite ID formed of account ID and Access Identity Provider ID.
-
         ```sh
-         $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider my_idp cb029e245cfdd66dc8d2e570d5dd3322/e00e1c13-e350-44fe-96c5-fb75c954871c
+         $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example <account_id>/<identity_provider_id>
         ```
-
-         [access_identity_provider_guide]https://developers.cloudflare.com/access/configuring-identity-providers/
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account ID the provider should be associated with. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer
+               documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
-        :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
-               `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-               `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
-        :param pulumi.Input[str] zone_id: The zone ID the provider should be associated with. Conflicts with `account_id`.
+        :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+               `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -288,8 +286,13 @@ class AccessIdentityProvider(pulumi.CustomResource):
                  args: AccessIdentityProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Access Identity Provider resource. Identity Providers are
-        used as an authentication or authorisation source within Access.
+        Provides a Cloudflare Access Identity Provider resource. Identity Providers are used as an authentication or authorisation source within Access.
+
+        > It's required that an `account_id` or `zone_id` is provided and in
+        most cases using either is fine. However, if you're using a scoped
+        access token, you must provide the argument that matches the token's
+        scope. For example, an access token that is scoped to the "example.com"
+        zone needs to use the `zone_id` argument.
 
         ## Example Usage
 
@@ -340,18 +343,11 @@ class AccessIdentityProvider(pulumi.CustomResource):
             type="okta")
         ```
 
-        Please refer to the [developers.cloudflare.com Access documentation][access_identity_provider_guide]
-        for full reference on what is available and how to configure your provider.
-
         ## Import
 
-        Access Identity Providers can be imported using a composite ID formed of account ID and Access Identity Provider ID.
-
         ```sh
-         $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider my_idp cb029e245cfdd66dc8d2e570d5dd3322/e00e1c13-e350-44fe-96c5-fb75c954871c
+         $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example <account_id>/<identity_provider_id>
         ```
-
-         [access_identity_provider_guide]https://developers.cloudflare.com/access/configuring-identity-providers/
 
         :param str resource_name: The name of the resource.
         :param AccessIdentityProviderArgs args: The arguments to use to populate this resource's properties.
@@ -416,13 +412,13 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account ID the provider should be associated with. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation][access_identity_provider_guide].
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer
+               documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
-        :param pulumi.Input[str] type: The provider type to use. Must be one of: `"centrify"`,
-               `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-               `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
-        :param pulumi.Input[str] zone_id: The zone ID the provider should be associated with. Conflicts with `account_id`.
+        :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+               `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -439,7 +435,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The account ID the provider should be associated with. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -447,7 +443,8 @@ class AccessIdentityProvider(pulumi.CustomResource):
     @pulumi.getter
     def configs(self) -> pulumi.Output[Optional[Sequence['outputs.AccessIdentityProviderConfig']]]:
         """
-        Provider configuration from the [developer documentation][access_identity_provider_guide].
+        Provider configuration from the [developer
+        documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         """
         return pulumi.get(self, "configs")
 
@@ -463,9 +460,8 @@ class AccessIdentityProvider(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The provider type to use. Must be one of: `"centrify"`,
-        `"facebook"`, `"google-apps"`, `"oidc"`, `"github"`, `"google"`, `"saml"`,
-        `"linkedin"`, `"azureAD"`, `"okta"`, `"onetimepin"`, `"onelogin"`, `"yandex"`.
+        The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`,
+        `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`
         """
         return pulumi.get(self, "type")
 
@@ -473,7 +469,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The zone ID the provider should be associated with. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

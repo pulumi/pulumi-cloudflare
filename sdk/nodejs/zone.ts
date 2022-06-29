@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
  * ```
  *
- *  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+ *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
  */
 export class Zone extends pulumi.CustomResource {
     /**
@@ -81,8 +81,8 @@ export class Zone extends pulumi.CustomResource {
     public readonly type!: pulumi.Output<string | undefined>;
     /**
      * List of Vanity Nameservers (if set).
-     * * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-     * * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+     * - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+     * - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
      */
     public /*out*/ readonly vanityNameServers!: pulumi.Output<string[]>;
     /**
@@ -169,8 +169,8 @@ export interface ZoneState {
     type?: pulumi.Input<string>;
     /**
      * List of Vanity Nameservers (if set).
-     * * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-     * * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+     * - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+     * - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
      */
     vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**

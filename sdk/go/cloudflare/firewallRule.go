@@ -14,9 +14,10 @@ import (
 // Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.
 // A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
 //
-// Filter expressions needs to be created first before using Firewall Rule. See Filter.
+// Filter expressions needs to be created first before using Firewall Rule.
 //
-// If you want to configure Custom Firewall rules, you need to use cloudflare_ruleset, because Custom Rules are built upon the
+// > If you want to configure Custom Firewall rules, you need to use
+// `Ruleset`, because Custom Rules are built upon the
 // [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
 //
 // ## Example Usage
@@ -55,28 +56,28 @@ import (
 //
 // ## Import
 //
-// Firewall Rule can be imported using a composite ID formed of zone ID and rule ID, e.g.
-//
 // ```sh
-//  $ pulumi import cloudflare:index/firewallRule:FirewallRule default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+//  $ pulumi import cloudflare:index/firewallRule:FirewallRule example <zone_id>/<firewall_rule_id>
 // ```
-//
-//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules)
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+	// `managed_challenge`, `log`, `bypass`
 	Action pulumi.StringOutput `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	FilterId    pulumi.StringOutput    `pulumi:"filterId"`
-	// Whether this filter based firewall rule is currently paused. Boolean value.
+	// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
+	FilterId pulumi.StringOutput `pulumi:"filterId"`
+	// Whether this filter based firewall rule is currently paused.
 	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
-	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+	// any rules with a priority will be sequenced before those without.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
-	// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+	// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
 	Products pulumi.StringArrayOutput `pulumi:"products"`
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -118,34 +119,42 @@ func GetFirewallRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallRule resources.
 type firewallRuleState struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+	// `managed_challenge`, `log`, `bypass`
 	Action *string `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description *string `pulumi:"description"`
-	FilterId    *string `pulumi:"filterId"`
-	// Whether this filter based firewall rule is currently paused. Boolean value.
+	// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
+	FilterId *string `pulumi:"filterId"`
+	// Whether this filter based firewall rule is currently paused.
 	Paused *bool `pulumi:"paused"`
-	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+	// any rules with a priority will be sequenced before those without.
 	Priority *int `pulumi:"priority"`
-	// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+	// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
 	Products []string `pulumi:"products"`
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type FirewallRuleState struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+	// `managed_challenge`, `log`, `bypass`
 	Action pulumi.StringPtrInput
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrInput
-	FilterId    pulumi.StringPtrInput
-	// Whether this filter based firewall rule is currently paused. Boolean value.
+	// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
+	FilterId pulumi.StringPtrInput
+	// Whether this filter based firewall rule is currently paused.
 	Paused pulumi.BoolPtrInput
-	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+	// any rules with a priority will be sequenced before those without.
 	Priority pulumi.IntPtrInput
-	// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+	// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
 	Products pulumi.StringArrayInput
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -154,35 +163,43 @@ func (FirewallRuleState) ElementType() reflect.Type {
 }
 
 type firewallRuleArgs struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+	// `managed_challenge`, `log`, `bypass`
 	Action string `pulumi:"action"`
 	// A description of the rule to help identify it.
 	Description *string `pulumi:"description"`
-	FilterId    string  `pulumi:"filterId"`
-	// Whether this filter based firewall rule is currently paused. Boolean value.
+	// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
+	FilterId string `pulumi:"filterId"`
+	// Whether this filter based firewall rule is currently paused.
 	Paused *bool `pulumi:"paused"`
-	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+	// any rules with a priority will be sequenced before those without.
 	Priority *int `pulumi:"priority"`
-	// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+	// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
 	Products []string `pulumi:"products"`
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a FirewallRule resource.
 type FirewallRuleArgs struct {
-	// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
+	// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+	// `managed_challenge`, `log`, `bypass`
 	Action pulumi.StringInput
 	// A description of the rule to help identify it.
 	Description pulumi.StringPtrInput
-	FilterId    pulumi.StringInput
-	// Whether this filter based firewall rule is currently paused. Boolean value.
+	// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
+	FilterId pulumi.StringInput
+	// Whether this filter based firewall rule is currently paused.
 	Paused pulumi.BoolPtrInput
-	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+	// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+	// any rules with a priority will be sequenced before those without.
 	Priority pulumi.IntPtrInput
-	// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+	// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+	// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
 	Products pulumi.StringArrayInput
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -273,7 +290,8 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "jsChallenge", "managedChallenge", "bypass". Enterprise plan also allows "log".
+// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+// `managed_challenge`, `log`, `bypass`
 func (o FirewallRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
@@ -283,26 +301,29 @@ func (o FirewallRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
 func (o FirewallRuleOutput) FilterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.FilterId }).(pulumi.StringOutput)
 }
 
-// Whether this filter based firewall rule is currently paused. Boolean value.
+// Whether this filter based firewall rule is currently paused.
 func (o FirewallRuleOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
 
-// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+// any rules with a priority will be sequenced before those without.
 func (o FirewallRuleOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.IntPtrOutput { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
 func (o FirewallRuleOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringArrayOutput { return v.Products }).(pulumi.StringArrayOutput)
 }
 
-// The DNS zone to which the Filter should be added.
+// The zone identifier to target for the resource.
 func (o FirewallRuleOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallRule) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

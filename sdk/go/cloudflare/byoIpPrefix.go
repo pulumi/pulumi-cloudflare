@@ -48,6 +48,7 @@ import (
 type ByoIpPrefix struct {
 	pulumi.CustomResourceState
 
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
 	Advertisement pulumi.StringOutput `pulumi:"advertisement"`
@@ -92,6 +93,7 @@ func GetByoIpPrefix(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ByoIpPrefix resources.
 type byoIpPrefixState struct {
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
 	Advertisement *string `pulumi:"advertisement"`
@@ -102,6 +104,7 @@ type byoIpPrefixState struct {
 }
 
 type ByoIpPrefixState struct {
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
 	Advertisement pulumi.StringPtrInput
@@ -116,6 +119,7 @@ func (ByoIpPrefixState) ElementType() reflect.Type {
 }
 
 type byoIpPrefixArgs struct {
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
 	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
 	Advertisement *string `pulumi:"advertisement"`
@@ -127,6 +131,7 @@ type byoIpPrefixArgs struct {
 
 // The set of arguments for constructing a ByoIpPrefix resource.
 type ByoIpPrefixArgs struct {
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
 	// Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Valid values: `on` or `off`.
 	Advertisement pulumi.StringPtrInput
@@ -223,6 +228,7 @@ func (o ByoIpPrefixOutput) ToByoIpPrefixOutputWithContext(ctx context.Context) B
 	return o
 }
 
+// The account identifier to target for the resource.
 func (o ByoIpPrefixOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ByoIpPrefix) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }

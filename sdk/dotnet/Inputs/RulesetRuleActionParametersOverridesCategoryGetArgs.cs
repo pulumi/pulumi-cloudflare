@@ -12,23 +12,17 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersOverridesCategoryGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        /// <summary>
-        /// Tag name to apply the ruleset rule override to.
-        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
-        /// <summary>
-        /// Defines if the current rule-level override enables or disables the rule.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
+
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         public RulesetRuleActionParametersOverridesCategoryGetArgs()
         {

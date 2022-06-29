@@ -8,16 +8,16 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['LogPushOwnershipChallengeArgs', 'LogPushOwnershipChallenge']
+__all__ = ['LogpushOwnershipChallengeArgs', 'LogpushOwnershipChallenge']
 
 @pulumi.input_type
-class LogPushOwnershipChallengeArgs:
+class LogpushOwnershipChallengeArgs:
     def __init__(__self__, *,
                  destination_conf: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a LogPushOwnershipChallenge resource.
+        The set of arguments for constructing a LogpushOwnershipChallenge resource.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[str] account_id: The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
         :param pulumi.Input[str] zone_id: The zone ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
@@ -66,14 +66,14 @@ class LogPushOwnershipChallengeArgs:
 
 
 @pulumi.input_type
-class _LogPushOwnershipChallengeState:
+class _LogpushOwnershipChallengeState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  destination_conf: Optional[pulumi.Input[str]] = None,
                  ownership_challenge_filename: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering LogPushOwnershipChallenge resources.
+        Input properties used for looking up and filtering LogpushOwnershipChallenge resources.
         :param pulumi.Input[str] account_id: The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
         :param pulumi.Input[str] destination_conf: Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#destination).
         :param pulumi.Input[str] ownership_challenge_filename: The filename of the ownership challenge which
@@ -139,7 +139,7 @@ class _LogPushOwnershipChallengeState:
         pulumi.set(self, "zone_id", value)
 
 
-class LogPushOwnershipChallenge(pulumi.CustomResource):
+class LogpushOwnershipChallenge(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -159,7 +159,7 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.LogPushOwnershipChallenge("example",
+        example = cloudflare.LogpushOwnershipChallenge("example",
             destination_conf="s3://my-bucket-path?region=us-west-2",
             zone_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
@@ -168,7 +168,7 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.LogPushOwnershipChallenge("example",
+        example = cloudflare.LogpushOwnershipChallenge("example",
             account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
             destination_conf="s3://my-bucket-path?region=us-west-2")
         ```
@@ -183,7 +183,7 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LogPushOwnershipChallengeArgs,
+                 args: LogpushOwnershipChallengeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource which manages Cloudflare Logpush ownership challenges to use
@@ -196,7 +196,7 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.LogPushOwnershipChallenge("example",
+        example = cloudflare.LogpushOwnershipChallenge("example",
             destination_conf="s3://my-bucket-path?region=us-west-2",
             zone_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
@@ -205,18 +205,18 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example = cloudflare.LogPushOwnershipChallenge("example",
+        example = cloudflare.LogpushOwnershipChallenge("example",
             account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
             destination_conf="s3://my-bucket-path?region=us-west-2")
         ```
 
         :param str resource_name: The name of the resource.
-        :param LogPushOwnershipChallengeArgs args: The arguments to use to populate this resource's properties.
+        :param LogpushOwnershipChallengeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LogPushOwnershipChallengeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LogpushOwnershipChallengeArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -238,7 +238,7 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LogPushOwnershipChallengeArgs.__new__(LogPushOwnershipChallengeArgs)
+            __props__ = LogpushOwnershipChallengeArgs.__new__(LogpushOwnershipChallengeArgs)
 
             __props__.__dict__["account_id"] = account_id
             if destination_conf is None and not opts.urn:
@@ -246,8 +246,8 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
             __props__.__dict__["destination_conf"] = destination_conf
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["ownership_challenge_filename"] = None
-        super(LogPushOwnershipChallenge, __self__).__init__(
-            'cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge',
+        super(LogpushOwnershipChallenge, __self__).__init__(
+            'cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge',
             resource_name,
             __props__,
             opts)
@@ -259,9 +259,9 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             destination_conf: Optional[pulumi.Input[str]] = None,
             ownership_challenge_filename: Optional[pulumi.Input[str]] = None,
-            zone_id: Optional[pulumi.Input[str]] = None) -> 'LogPushOwnershipChallenge':
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'LogpushOwnershipChallenge':
         """
-        Get an existing LogPushOwnershipChallenge resource's state with the given name, id, and optional extra
+        Get an existing LogpushOwnershipChallenge resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -275,13 +275,13 @@ class LogPushOwnershipChallenge(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _LogPushOwnershipChallengeState.__new__(_LogPushOwnershipChallengeState)
+        __props__ = _LogpushOwnershipChallengeState.__new__(_LogpushOwnershipChallengeState)
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["destination_conf"] = destination_conf
         __props__.__dict__["ownership_challenge_filename"] = ownership_challenge_filename
         __props__.__dict__["zone_id"] = zone_id
-        return LogPushOwnershipChallenge(resource_name, opts=opts, __props__=__props__)
+        return LogpushOwnershipChallenge(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accountId")

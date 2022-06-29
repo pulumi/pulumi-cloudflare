@@ -68,8 +68,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-        /// * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-        /// * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+        /// - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+        /// - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
         /// </summary>
         [Output("readonlySettings")]
         public Output<ImmutableArray<string>> ReadonlySettings { get; private set; } = null!;
@@ -180,8 +180,8 @@ namespace Pulumi.Cloudflare
 
         /// <summary>
         /// Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-        /// * `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-        /// * `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+        /// - `zone_status`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+        /// - `zone_type`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
         /// </summary>
         public InputList<string> ReadonlySettings
         {

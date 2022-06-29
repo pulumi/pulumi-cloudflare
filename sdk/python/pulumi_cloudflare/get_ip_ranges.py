@@ -42,25 +42,16 @@ class GetIpRangesResult:
     @property
     @pulumi.getter(name="chinaIpv4CidrBlocks")
     def china_ipv4_cidr_blocks(self) -> Sequence[str]:
-        """
-        The lexically ordered list of only the IPv4 China CIDR blocks.
-        """
         return pulumi.get(self, "china_ipv4_cidr_blocks")
 
     @property
     @pulumi.getter(name="chinaIpv6CidrBlocks")
     def china_ipv6_cidr_blocks(self) -> Sequence[str]:
-        """
-        The lexically ordered list of only the IPv6 China CIDR blocks.
-        """
         return pulumi.get(self, "china_ipv6_cidr_blocks")
 
     @property
     @pulumi.getter(name="cidrBlocks")
     def cidr_blocks(self) -> Sequence[str]:
-        """
-        The lexically ordered list of all non-China CIDR blocks.
-        """
         return pulumi.get(self, "cidr_blocks")
 
     @property
@@ -74,17 +65,11 @@ class GetIpRangesResult:
     @property
     @pulumi.getter(name="ipv4CidrBlocks")
     def ipv4_cidr_blocks(self) -> Sequence[str]:
-        """
-        The lexically ordered list of only the IPv4 CIDR blocks.
-        """
         return pulumi.get(self, "ipv4_cidr_blocks")
 
     @property
     @pulumi.getter(name="ipv6CidrBlocks")
     def ipv6_cidr_blocks(self) -> Sequence[str]:
-        """
-        The lexically ordered list of only the IPv6 CIDR blocks.
-        """
         return pulumi.get(self, "ipv6_cidr_blocks")
 
 
@@ -104,24 +89,7 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
 
 def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpRangesResult:
     """
-    Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare edge nodes.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-    import pulumi_gcp as gcp
-
-    cloudflare = cloudflare.get_ip_ranges()
-    allow_cloudflare_ingress = gcp.compute.Firewall("allowCloudflareIngress",
-        network="default",
-        source_ranges=cloudflare.ipv4_cidr_blocks,
-        allows=[gcp.compute.FirewallAllowArgs(
-            ports="443",
-            protocol="tcp",
-        )])
-    ```
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     if opts is None:

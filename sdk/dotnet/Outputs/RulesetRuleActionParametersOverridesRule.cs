@@ -13,26 +13,12 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersOverridesRule
     {
-        /// <summary>
-        /// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-        /// </summary>
         public readonly string? Action;
-        /// <summary>
-        /// Defines if the current rule-level override enables or disables the rule.
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// Rule ID to apply the override to.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
-        /// </summary>
         public readonly int? ScoreThreshold;
-        /// <summary>
-        /// Sensitivity level for a ruleset rule override.
-        /// </summary>
         public readonly string? SensitivityLevel;
+        public readonly string? Status;
 
         [OutputConstructor]
         private RulesetRuleActionParametersOverridesRule(
@@ -44,13 +30,16 @@ namespace Pulumi.Cloudflare.Outputs
 
             int? scoreThreshold,
 
-            string? sensitivityLevel)
+            string? sensitivityLevel,
+
+            string? status)
         {
             Action = action;
             Enabled = enabled;
             Id = id;
             ScoreThreshold = scoreThreshold;
             SensitivityLevel = sensitivityLevel;
+            Status = status;
         }
     }
 }

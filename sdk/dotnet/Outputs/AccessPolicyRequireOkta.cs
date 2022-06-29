@@ -14,9 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessPolicyRequireOkta
     {
         public readonly string? IdentityProviderId;
-        /// <summary>
-        /// Friendly name of the Access Application.
-        /// </summary>
         public readonly ImmutableArray<string> Names;
 
         [OutputConstructor]

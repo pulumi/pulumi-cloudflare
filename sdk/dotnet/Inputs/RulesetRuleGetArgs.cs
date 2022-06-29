@@ -12,63 +12,33 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleGetArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddos_dynamic"`, `"execute"`, `"force_connection_close"`, `"js_challenge"`, `"managed_challenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        /// <summary>
-        /// List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
-        /// </summary>
         [Input("actionParameters")]
         public Input<Inputs.RulesetRuleActionParametersGetArgs>? ActionParameters { get; set; }
 
-        /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Defines if the current rule-level override enables or disables the rule.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// List of parameters that configure exposed credential checks (refer to the nested schema).
-        /// </summary>
         [Input("exposedCredentialCheck")]
         public Input<Inputs.RulesetRuleExposedCredentialCheckGetArgs>? ExposedCredentialCheck { get; set; }
 
-        /// <summary>
-        /// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-        /// </summary>
         [Input("expression", required: true)]
         public Input<string> Expression { get; set; } = null!;
 
-        /// <summary>
-        /// Rule ID to apply the override to.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// List parameters to configure how the rule generates logs (refer to the nested schema).
-        /// </summary>
         [Input("logging")]
         public Input<Inputs.RulesetRuleLoggingGetArgs>? Logging { get; set; }
 
-        /// <summary>
-        /// List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
-        /// </summary>
         [Input("ratelimit")]
         public Input<Inputs.RulesetRuleRatelimitGetArgs>? Ratelimit { get; set; }
 
-        /// <summary>
-        /// Rule reference.
-        /// </summary>
         [Input("ref")]
         public Input<string>? Ref { get; set; }
 

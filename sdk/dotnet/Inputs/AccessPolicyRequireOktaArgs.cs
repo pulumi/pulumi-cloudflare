@@ -17,10 +17,6 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("names")]
         private InputList<string>? _names;
-
-        /// <summary>
-        /// Friendly name of the Access Application.
-        /// </summary>
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());

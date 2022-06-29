@@ -57,12 +57,12 @@ import * as utilities from "./utilities";
  *                     {
  *                         action: "block",
  *                         category: "wordpress",
- *                         enabled: true,
+ *                         status: "enabled",
  *                     },
  *                     {
  *                         action: "block",
  *                         category: "joomla",
- *                         enabled: true,
+ *                         status: "enabled",
  *                     },
  *                 ],
  *             },
@@ -191,11 +191,119 @@ import * as utilities from "./utilities";
  *     }],
  *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
  * });
+ * // Custom fields logging
+ * const customFieldsLoggingExample = new cloudflare.Ruleset("custom_fields_logging_example", {
+ *     description: "add custom fields to logging",
+ *     kind: "zone",
+ *     name: "log custom fields",
+ *     phase: "http_log_custom_fields",
+ *     rules: [{
+ *         action: "log_custom_field",
+ *         actionParameters: {
+ *             cookieFields: [
+ *                 "__ga",
+ *                 "accountNumber",
+ *                 "__cfruid",
+ *             ],
+ *             requestFields: [
+ *                 "content-type",
+ *                 "x-forwarded-for",
+ *                 "host",
+ *             ],
+ *             responseFields: [
+ *                 "server",
+ *                 "content-type",
+ *                 "allow",
+ *             ],
+ *         },
+ *         description: "log custom fields rule",
+ *         enabled: true,
+ *         expression: "true",
+ *     }],
+ *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ * });
+ * const cacheSettingsExample = new cloudflare.Ruleset("cache_settings_example", {
+ *     description: "set cache settings for the request",
+ *     kind: "zone",
+ *     name: "set cache settings",
+ *     phase: "http_request_cache_settings",
+ *     rules: [{
+ *         action: "set_cache_settings",
+ *         actionParameters: {
+ *             browserTtl: {
+ *                 mode: "respect_origin",
+ *             },
+ *             cacheKey: {
+ *                 cacheDeceptionArmor: true,
+ *                 customKey: {
+ *                     cookie: {
+ *                         checkPresences: [
+ *                             "cabc_t",
+ *                             "cdef_t",
+ *                         ],
+ *                         includes: [
+ *                             "cabc",
+ *                             "cdef",
+ *                         ],
+ *                     },
+ *                     header: {
+ *                         checkPresences: [
+ *                             "habc_t",
+ *                             "hdef_t",
+ *                         ],
+ *                         excludeOrigin: true,
+ *                         includes: [
+ *                             "habc",
+ *                             "hdef",
+ *                         ],
+ *                     },
+ *                     host: {
+ *                         resolved: true,
+ *                     },
+ *                     queryString: {
+ *                         excludes: ["*"],
+ *                     },
+ *                     user: {
+ *                         deviceType: true,
+ *                         geo: false,
+ *                     },
+ *                 },
+ *                 ignoreQueryStringsOrder: false,
+ *             },
+ *             edgeTtl: {
+ *                 default: 60,
+ *                 mode: "override_origin",
+ *                 statusCodeTtls: [
+ *                     {
+ *                         statusCode: 200,
+ *                         value: 50,
+ *                     },
+ *                     {
+ *                         statusCodeRanges: [{
+ *                             from: 201,
+ *                             to: 300,
+ *                         }],
+ *                         value: 30,
+ *                     },
+ *                 ],
+ *             },
+ *             originErrorPagePassthru: false,
+ *             respectStrongEtags: true,
+ *             serveStale: {
+ *                 disableStaleWhileUpdating: true,
+ *             },
+ *         },
+ *         description: "set cache settings rule",
+ *         enabled: true,
+ *         expression: "true",
+ *     }],
+ *     zoneId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ * });
  * ```
  *
  * ## Import
  *
- * Currently, you cannot import rulesets.
+ * Import is not supported for this resource.
  */
 export class Ruleset extends pulumi.CustomResource {
     /**
@@ -226,27 +334,32 @@ export class Ruleset extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the HTTP request header to target.
+     * Name of the ruleset.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+     * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
+     * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
+     * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
+     * `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
+     * `http_request_sbfm`
      */
     public readonly phase!: pulumi.Output<string>;
     /**
-     * List of rule-based overrides (refer to the nested schema).
+     * List of rules to apply to the ruleset.
      */
     public readonly rules!: pulumi.Output<outputs.RulesetRule[] | undefined>;
     /**
@@ -254,7 +367,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly shareableEntitlementName!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -309,27 +422,32 @@ export class Ruleset extends pulumi.CustomResource {
  */
 export interface RulesetState {
     /**
-     * The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the HTTP request header to target.
+     * Name of the ruleset.
      */
     name?: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+     * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
+     * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
+     * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
+     * `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
+     * `http_request_sbfm`
      */
     phase?: pulumi.Input<string>;
     /**
-     * List of rule-based overrides (refer to the nested schema).
+     * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
@@ -337,7 +455,7 @@ export interface RulesetState {
      */
     shareableEntitlementName?: pulumi.Input<string>;
     /**
-     * The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -347,27 +465,32 @@ export interface RulesetState {
  */
 export interface RulesetArgs {
     /**
-     * The ID of the account where the ruleset is being created. Conflicts with `"zoneId"`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of Ruleset to create. Valid values are `"custom"`, `"managed"`, `"root"`, `"schema"` or `"zone"`.
+     * Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `schema`, `zone`
      */
     kind: pulumi.Input<string>;
     /**
-     * Name of the HTTP request header to target.
+     * Name of the ruleset.
      */
     name: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Valid values are `"ddosL4"`, `"ddosL7"`, `"httpRequestFirewallCustom"`, `"httpRequestFirewallManaged"`, `"httpRequestLateTransform"`, `"httpResponseHeadersTransform"`, `"httpRequestOrigin"`, `"httpRequestMain"`, `"httpRequestSanitize"`, `"httpRequestTransform"`, `"httpResponseFirewallManaged"`, `"magicTransit"`, or `"httpRatelimit"`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`,
+     * `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`,
+     * `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`,
+     * `http_request_main`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`,
+     * `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`, `http_ratelimit`,
+     * `http_request_sbfm`
      */
     phase: pulumi.Input<string>;
     /**
-     * List of rule-based overrides (refer to the nested schema).
+     * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
@@ -375,7 +498,7 @@ export interface RulesetArgs {
      */
     shareableEntitlementName?: pulumi.Input<string>;
     /**
-     * The ID of the zone where the ruleset is being created. Conflicts with `"accountId"`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

@@ -28,6 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? IssuerUrl;
         public readonly string? OktaAccount;
         public readonly string? OneloginAccount;
+        public readonly bool? PkceEnabled;
         public readonly string? RedirectUrl;
         public readonly bool? SignRequest;
         public readonly string? SsoTargetUrl;
@@ -66,6 +67,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? oneloginAccount,
 
+            bool? pkceEnabled,
+
             string? redirectUrl,
 
             bool? signRequest,
@@ -91,6 +94,7 @@ namespace Pulumi.Cloudflare.Outputs
             IssuerUrl = issuerUrl;
             OktaAccount = oktaAccount;
             OneloginAccount = oneloginAccount;
+            PkceEnabled = pkceEnabled;
             RedirectUrl = redirectUrl;
             SignRequest = signRequest;
             SsoTargetUrl = ssoTargetUrl;

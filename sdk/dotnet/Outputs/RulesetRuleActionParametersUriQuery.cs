@@ -13,13 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersUriQuery
     {
-        /// <summary>
-        /// Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-        /// </summary>
         public readonly string? Expression;
-        /// <summary>
-        /// Static string value of the updated URI path or query string component. Conflicts with `expression`.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

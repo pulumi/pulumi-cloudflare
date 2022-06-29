@@ -16,14 +16,11 @@ package cloudflare
 
 import (
 	"fmt"
-	"path/filepath"
-	"unicode"
-
-	"github.com/cloudflare/terraform-provider-cloudflare/cloudflare"
+	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
 	"github.com/pulumi/pulumi-cloudflare/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"path/filepath"
 )
 
 // all of the token components used below.
@@ -34,36 +31,10 @@ const (
 	mainMod = "index" // the y module
 )
 
-// makeMember manufactures a type token for the package and the given module and type.
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
-
-// makeType manufactures a type token for the package and the given module and type.
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
-// makeDataSource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the data source's
-// first character.
-func makeDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeMember(mod+"/"+fn, res)
-}
-
-// makeResource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the resource's
-// first character.
-func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv2.NewProvider(cloudflare.Provider())
+	p := shimv2.NewProvider(provShim.NewProvider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -108,32 +79,30 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"cloudflare_access_application":    {Tok: makeResource(mainMod, "AccessApplication")},
-			"cloudflare_access_bookmark":       {Tok: makeResource(mainMod, "AccessBookmark")},
-			"cloudflare_access_policy":         {Tok: makeResource(mainMod, "AccessPolicy")},
-			"cloudflare_access_rule":           {Tok: makeResource(mainMod, "AccessRule")},
-			"cloudflare_account_member":        {Tok: makeResource(mainMod, "AccountMember")},
-			"cloudflare_argo":                  {Tok: makeResource(mainMod, "Argo")},
-			"cloudflare_argo_tunnel":           {Tok: makeResource(mainMod, "ArgoTunnel")},
-			"cloudflare_custom_pages":          {Tok: makeResource(mainMod, "CustomPages")},
-			"cloudflare_filter":                {Tok: makeResource(mainMod, "Filter")},
-			"cloudflare_firewall_rule":         {Tok: makeResource(mainMod, "FirewallRule")},
-			"cloudflare_load_balancer_monitor": {Tok: makeResource(mainMod, "LoadBalancerMonitor")},
-			"cloudflare_load_balancer_pool":    {Tok: makeResource(mainMod, "LoadBalancerPool")},
-			"cloudflare_load_balancer":         {Tok: makeResource(mainMod, "LoadBalancer")},
-			"cloudflare_logpush_job":           {Tok: makeResource(mainMod, "LogpushJob")},
-			"cloudflare_page_rule":             {Tok: makeResource(mainMod, "PageRule")},
-			"cloudflare_rate_limit":            {Tok: makeResource(mainMod, "RateLimit")},
-			"cloudflare_record":                {Tok: makeResource(mainMod, "Record")},
-			"cloudflare_spectrum_application":  {Tok: makeResource(mainMod, "SpectrumApplication")},
-			"cloudflare_tunnel_route":          {Tok: makeResource(mainMod, "TunnelRoute")},
-			"cloudflare_waf_rule":              {Tok: makeResource(mainMod, "WafRule")},
-			"cloudflare_worker_route":          {Tok: makeResource(mainMod, "WorkerRoute")},
-			"cloudflare_worker_cron_trigger":   {Tok: makeResource(mainMod, "WorkerCronTrigger")},
-			"cloudflare_worker_script":         {Tok: makeResource(mainMod, "WorkerScript")},
-			"cloudflare_zone_lockdown":         {Tok: makeResource(mainMod, "ZoneLockdown")},
+			"cloudflare_access_application":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessApplication")},
+			"cloudflare_access_policy":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessPolicy")},
+			"cloudflare_access_rule":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessRule")},
+			"cloudflare_account_member":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccountMember")},
+			"cloudflare_argo":                  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Argo")},
+			"cloudflare_argo_tunnel":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ArgoTunnel")},
+			"cloudflare_custom_pages":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "CustomPages")},
+			"cloudflare_filter":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Filter")},
+			"cloudflare_firewall_rule":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FirewallRule")},
+			"cloudflare_load_balancer_monitor": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LoadBalancerMonitor")},
+			"cloudflare_load_balancer_pool":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LoadBalancerPool")},
+			"cloudflare_load_balancer":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LoadBalancer")},
+			"cloudflare_logpush_job":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LogpushJob")},
+			"cloudflare_page_rule":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "PageRule")},
+			"cloudflare_rate_limit":            {Tok: tfbridge.MakeResource(mainPkg, mainMod, "RateLimit")},
+			"cloudflare_record":                {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Record")},
+			"cloudflare_spectrum_application":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SpectrumApplication")},
+			"cloudflare_waf_rule":              {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WafRule")},
+			"cloudflare_worker_route":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkerRoute")},
+			"cloudflare_worker_cron_trigger":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkerCronTrigger")},
+			"cloudflare_worker_script":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkerScript")},
+			"cloudflare_zone_lockdown":         {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ZoneLockdown")},
 			"cloudflare_zone_settings_override": {
-				Tok: makeResource(mainMod, "ZoneSettingsOverride"),
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "ZoneSettingsOverride"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"settings": {
 						Elem: &tfbridge.SchemaInfo{
@@ -156,82 +125,117 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"cloudflare_zone": {
-				Tok: makeResource(mainMod, "Zone"),
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "Zone"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"zone": {
 						CSharpName: "ZoneName",
 					},
 				},
 			},
-			"cloudflare_custom_ssl":                  {Tok: makeResource(mainMod, "CustomSsl")},
-			"cloudflare_access_service_token":        {Tok: makeResource(mainMod, "AccessServiceToken")},
-			"cloudflare_waf_package":                 {Tok: makeResource(mainMod, "WafPackage")},
-			"cloudflare_waf_group":                   {Tok: makeResource(mainMod, "WafGroup")},
-			"cloudflare_access_group":                {Tok: makeResource(mainMod, "AccessGroup")},
-			"cloudflare_workers_kv_namespace":        {Tok: makeResource(mainMod, "WorkersKvNamespace")},
-			"cloudflare_origin_ca_certificate":       {Tok: makeResource(mainMod, "OriginCaCertificate")},
-			"cloudflare_access_identity_provider":    {Tok: makeResource(mainMod, "AccessIdentityProvider")},
-			"cloudflare_workers_kv":                  {Tok: makeResource(mainMod, "WorkersKv")},
-			"cloudflare_byo_ip_prefix":               {Tok: makeResource(mainMod, "ByoIpPrefix")},
-			"cloudflare_logpull_retention":           {Tok: makeResource(mainMod, "LogpullRetention")},
-			"cloudflare_healthcheck":                 {Tok: makeResource(mainMod, "Healthcheck")},
-			"cloudflare_logpush_ownership_challenge": {Tok: makeResource(mainMod, "LogPushOwnershipChallenge")},
-			"cloudflare_waf_override":                {Tok: makeResource(mainMod, "WafOverride")},
-			"cloudflare_authenticated_origin_pulls":  {Tok: makeResource(mainMod, "AuthenticatedOriginPulls")},
+			"cloudflare_custom_ssl": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "CustomSsl")},
+			"cloudflare_access_service_token": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessServiceToken"),
+			},
+			"cloudflare_waf_package":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WafPackage")},
+			"cloudflare_waf_group":    {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WafGroup")},
+			"cloudflare_access_group": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessGroup")},
+			"cloudflare_workers_kv_namespace": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkersKvNamespace"),
+			},
+			"cloudflare_origin_ca_certificate": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "OriginCaCertificate"),
+			},
+			"cloudflare_access_identity_provider": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessIdentityProvider"),
+			},
+			"cloudflare_workers_kv":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WorkersKv")},
+			"cloudflare_byo_ip_prefix":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ByoIpPrefix")},
+			"cloudflare_logpull_retention": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "LogpullRetention")},
+			"cloudflare_healthcheck":       {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Healthcheck")},
+			"cloudflare_logpush_ownership_challenge": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "LogpushOwnershipChallenge"),
+			},
+			"cloudflare_waf_override": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WafOverride")},
+			"cloudflare_authenticated_origin_pulls": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AuthenticatedOriginPulls"),
+			},
 			"cloudflare_authenticated_origin_pulls_certificate": {
-				Tok: makeResource(mainMod, "AuthenticatedOriginPullsCertificate"),
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AuthenticatedOriginPullsCertificate"),
 			},
-			"cloudflare_custom_hostname": {Tok: makeResource(mainMod, "CustomHostname")},
+			"cloudflare_custom_hostname": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "CustomHostname")},
 			"cloudflare_custom_hostname_fallback_origin": {
-				Tok: makeResource(mainMod, "CustomHostnameFallbackOrigin"),
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "CustomHostnameFallbackOrigin"),
 			},
-			"cloudflare_ip_list":                       {Tok: makeResource(mainMod, "IpList")},
-			"cloudflare_certificate_pack":              {Tok: makeResource(mainMod, "CertificatePack")},
-			"cloudflare_api_token":                     {Tok: makeResource(mainMod, "ApiToken")},
-			"cloudflare_zone_dnssec":                   {Tok: makeResource(mainMod, "ZoneDnssec")},
-			"cloudflare_magic_firewall_ruleset":        {Tok: makeResource(mainMod, "MagicFirewallRuleset")},
-			"cloudflare_access_mutual_tls_certificate": {Tok: makeResource(mainMod, "AccessMutualTlsCertificate")},
-			"cloudflare_access_ca_certificate":         {Tok: makeResource(mainMod, "AccessCaCertificate")},
-			"cloudflare_device_posture_rule":           {Tok: makeResource(mainMod, "DevicePostureRule")},
-			"cloudflare_teams_list":                    {Tok: makeResource(mainMod, "TeamsList")},
-			"cloudflare_waiting_room":                  {Tok: makeResource(mainMod, "WaitingRoom")},
-			"cloudflare_static_route":                  {Tok: makeResource(mainMod, "StaticRoute")},
-			"cloudflare_notification_policy":           {Tok: makeResource(mainMod, "NotificationPolicy")},
-			"cloudflare_notification_policy_webhooks":  {Tok: makeResource(mainMod, "NotificationPolicyWebhooks")},
-			"cloudflare_ruleset":                       {Tok: makeResource(mainMod, "Ruleset")},
-			"cloudflare_teams_location":                {Tok: makeResource(mainMod, "TeamsLocation")},
-			"cloudflare_teams_account":                 {Tok: makeResource(mainMod, "TeamsAccount")},
-			"cloudflare_teams_rule":                    {Tok: makeResource(mainMod, "TeamsRule")},
+			"cloudflare_ip_list":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IpList")},
+			"cloudflare_certificate_pack": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "CertificatePack")},
+			"cloudflare_api_token":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ApiToken")},
+			"cloudflare_zone_dnssec":      {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ZoneDnssec")},
+			"cloudflare_magic_firewall_ruleset": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "MagicFirewallRuleset"),
+			},
+			"cloudflare_access_mutual_tls_certificate": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessMutualTlsCertificate"),
+			},
+			"cloudflare_access_ca_certificate": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessCaCertificate"),
+			},
+			"cloudflare_device_posture_rule": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "DevicePostureRule")},
+			"cloudflare_teams_list":          {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsList")},
+			"cloudflare_waiting_room":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WaitingRoom")},
+			"cloudflare_static_route":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "StaticRoute")},
+			"cloudflare_notification_policy": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "NotificationPolicy")},
+			"cloudflare_notification_policy_webhooks": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "NotificationPolicyWebhooks"),
+			},
+			"cloudflare_ruleset":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "Ruleset")},
+			"cloudflare_teams_location": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsLocation")},
+			"cloudflare_teams_account":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsAccount")},
+			"cloudflare_teams_rule":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsRule")},
 			"cloudflare_access_keys_configuration": {
-				Tok: makeResource(mainMod, "AccessKeysConfiguration"),
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessKeysConfiguration"),
 				// This resource has no upstream docs:
 				Docs: &tfbridge.DocInfo{
 					Markdown: []byte(" "),
 				},
 			},
-			"cloudflare_split_tunnel":               {Tok: makeResource(mainMod, "SplitTunnel")},
-			"cloudflare_zone_cache_variants":        {Tok: makeResource(mainMod, "ZoneCacheVariants")},
-			"cloudflare_device_posture_integration": {Tok: makeResource(mainMod, "DevicePostureIntegration")},
-			"cloudflare_device_policy_certificates": {Tok: makeResource(mainMod, "DevicePolicyCertificates")},
-			"cloudflare_fallback_domain":            {Tok: makeResource(mainMod, "FallbackDomain")},
-			"cloudflare_gre_tunnel":                 {Tok: makeResource(mainMod, "GreTunnel")},
-			"cloudflare_ipsec_tunnel":               {Tok: makeResource(mainMod, "IpsecTunnel")},
-			"cloudflare_teams_proxy_endpoint":       {Tok: makeResource(mainMod, "TeamsProxyEndpoint")},
-			"cloudflare_waiting_room_event":         {Tok: makeResource(mainMod, "WaitingRoomEvent")},
+			"cloudflare_split_tunnel":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SplitTunnel")},
+			"cloudflare_zone_cache_variants": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ZoneCacheVariants")},
+			"cloudflare_device_posture_integration": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DevicePostureIntegration"),
+			},
+			"cloudflare_device_policy_certificates": {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "DevicePolicyCertificates"),
+			},
+			"cloudflare_fallback_domain":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "FallbackDomain")},
+			"cloudflare_gre_tunnel":             {Tok: tfbridge.MakeResource(mainPkg, mainMod, "GreTunnel")},
+			"cloudflare_ipsec_tunnel":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "IpsecTunnel")},
+			"cloudflare_teams_proxy_endpoint":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TeamsProxyEndpoint")},
+			"cloudflare_waiting_room_event":     {Tok: tfbridge.MakeResource(mainPkg, mainMod, "WaitingRoomEvent")},
+			"cloudflare_access_bookmark":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessBookmark")},
+			"cloudflare_tunnel_route":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelRoute")},
+			"cloudflare_tunnel_virtual_network": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelVirtualNetwork")},
+			"cloudflare_list":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "List")},
+			"cloudflare_managed_headers":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ManagedHeaders")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"cloudflare_ip_ranges":                   {Tok: makeDataSource(mainMod, "getIpRanges")},
-			"cloudflare_zones":                       {Tok: makeDataSource(mainMod, "getZones")},
-			"cloudflare_waf_groups":                  {Tok: makeDataSource(mainMod, "getWafGroups")},
-			"cloudflare_waf_packages":                {Tok: makeDataSource(mainMod, "getWafPackages")},
-			"cloudflare_waf_rules":                   {Tok: makeDataSource(mainMod, "getWafRules")},
-			"cloudflare_api_token_permission_groups": {Tok: makeDataSource(mainMod, "getApiTokenPermissionGroups")},
-			"cloudflare_zone_dnssec":                 {Tok: makeDataSource(mainMod, "getZoneDnssec")},
-			"cloudflare_origin_ca_root_certificate":  {Tok: makeDataSource(mainMod, "getOriginCaRootCertificate")},
-			"cloudflare_access_identity_provider":    {Tok: makeDataSource(mainMod, "getAccessIdentityProvider")},
-			"cloudflare_account_roles":               {Tok: makeDataSource(mainMod, "getAccountRoles")},
-			"cloudflare_zone":                        {Tok: makeDataSource(mainMod, "getZone")},
-			"cloudflare_devices":                     {Tok: makeDataSource(mainMod, "getDevices")},
+			"cloudflare_ip_ranges":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIpRanges")},
+			"cloudflare_zones":        {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZones")},
+			"cloudflare_waf_groups":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafGroups")},
+			"cloudflare_waf_packages": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafPackages")},
+			"cloudflare_waf_rules":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getWafRules")},
+			"cloudflare_api_token_permission_groups": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getApiTokenPermissionGroups"),
+			},
+			"cloudflare_zone_dnssec": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZoneDnssec")},
+			"cloudflare_origin_ca_root_certificate": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getOriginCaRootCertificate"),
+			},
+			"cloudflare_access_identity_provider": {
+				Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAccessIdentityProvider"),
+			},
+			"cloudflare_account_roles": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getAccountRoles")},
+			"cloudflare_zone":          {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getZone")},
+			"cloudflare_devices":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getDevices")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

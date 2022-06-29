@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
-    ///         var example = new Cloudflare.LogPushOwnershipChallenge("example", new Cloudflare.LogPushOwnershipChallengeArgs
+    ///         var example = new Cloudflare.LogpushOwnershipChallenge("example", new Cloudflare.LogpushOwnershipChallengeArgs
     ///         {
     ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
     ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     public MyStack()
     ///     {
-    ///         var example = new Cloudflare.LogPushOwnershipChallenge("example", new Cloudflare.LogPushOwnershipChallengeArgs
+    ///         var example = new Cloudflare.LogpushOwnershipChallenge("example", new Cloudflare.LogpushOwnershipChallengeArgs
     ///         {
     ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
     ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
@@ -52,8 +52,8 @@ namespace Pulumi.Cloudflare
     /// }
     /// ```
     /// </summary>
-    [CloudflareResourceType("cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge")]
-    public partial class LogPushOwnershipChallenge : Pulumi.CustomResource
+    [CloudflareResourceType("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge")]
+    public partial class LogpushOwnershipChallenge : Pulumi.CustomResource
     {
         /// <summary>
         /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
@@ -82,19 +82,19 @@ namespace Pulumi.Cloudflare
 
 
         /// <summary>
-        /// Create a LogPushOwnershipChallenge resource with the given unique name, arguments, and options.
+        /// Create a LogpushOwnershipChallenge resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public LogPushOwnershipChallenge(string name, LogPushOwnershipChallengeArgs args, CustomResourceOptions? options = null)
-            : base("cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge", name, args ?? new LogPushOwnershipChallengeArgs(), MakeResourceOptions(options, ""))
+        public LogpushOwnershipChallenge(string name, LogpushOwnershipChallengeArgs args, CustomResourceOptions? options = null)
+            : base("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge", name, args ?? new LogpushOwnershipChallengeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private LogPushOwnershipChallenge(string name, Input<string> id, LogPushOwnershipChallengeState? state = null, CustomResourceOptions? options = null)
-            : base("cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge", name, state, MakeResourceOptions(options, id))
+        private LogpushOwnershipChallenge(string name, Input<string> id, LogpushOwnershipChallengeState? state = null, CustomResourceOptions? options = null)
+            : base("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -110,7 +110,7 @@ namespace Pulumi.Cloudflare
             return merged;
         }
         /// <summary>
-        /// Get an existing LogPushOwnershipChallenge resource's state with the given name, ID, and optional extra
+        /// Get an existing LogpushOwnershipChallenge resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -118,13 +118,13 @@ namespace Pulumi.Cloudflare
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static LogPushOwnershipChallenge Get(string name, Input<string> id, LogPushOwnershipChallengeState? state = null, CustomResourceOptions? options = null)
+        public static LogpushOwnershipChallenge Get(string name, Input<string> id, LogpushOwnershipChallengeState? state = null, CustomResourceOptions? options = null)
         {
-            return new LogPushOwnershipChallenge(name, id, state, options);
+            return new LogpushOwnershipChallenge(name, id, state, options);
         }
     }
 
-    public sealed class LogPushOwnershipChallengeArgs : Pulumi.ResourceArgs
+    public sealed class LogpushOwnershipChallengeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
@@ -144,12 +144,12 @@ namespace Pulumi.Cloudflare
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
-        public LogPushOwnershipChallengeArgs()
+        public LogpushOwnershipChallengeArgs()
         {
         }
     }
 
-    public sealed class LogPushOwnershipChallengeState : Pulumi.ResourceArgs
+    public sealed class LogpushOwnershipChallengeState : Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account ID where the logpush ownership challenge should be created. Either `account_id` or `zone_id` are required.
@@ -176,7 +176,7 @@ namespace Pulumi.Cloudflare
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
-        public LogPushOwnershipChallengeState()
+        public LogpushOwnershipChallengeState()
         {
         }
     }

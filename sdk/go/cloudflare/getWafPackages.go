@@ -10,38 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to look up [WAF Rule Packages](https://api.cloudflare.com/#waf-rule-packages-properties).
-//
-// ## Example Usage
-//
-// The example below matches all `high` sensitivity WAF Rule Packages, with a `challenge` action mode and an `anomaly` detection mode, that contain the word `example`. The matched WAF Rule Packages are then returned as output.
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		test, err := cloudflare.GetWafPackages(ctx, &GetWafPackagesArgs{
-// 			Filter: GetWafPackagesFilter{
-// 				Name:          pulumi.StringRef(".*example.*"),
-// 				DetectionMode: pulumi.StringRef("anomaly"),
-// 				Sensitivity:   pulumi.StringRef("high"),
-// 				ActionMode:    pulumi.StringRef("challenge"),
-// 			},
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("wafPackages", test.Packages)
-// 		return nil
-// 	})
-// }
-// ```
 func GetWafPackages(ctx *pulumi.Context, args *GetWafPackagesArgs, opts ...pulumi.InvokeOption) (*GetWafPackagesResult, error) {
 	var rv GetWafPackagesResult
 	err := ctx.Invoke("cloudflare:index/getWafPackages:getWafPackages", args, &rv, opts...)
@@ -53,19 +21,15 @@ func GetWafPackages(ctx *pulumi.Context, args *GetWafPackagesArgs, opts ...pulum
 
 // A collection of arguments for invoking getWafPackages.
 type GetWafPackagesArgs struct {
-	// One or more values used to look up WAF Rule Packages. If more than one value is given all
-	// values must match in order to be included, see below for full list.
 	Filter *GetWafPackagesFilter `pulumi:"filter"`
-	// The ID of the DNS zone in which to search for the WAF Rule Packages.
-	ZoneId string `pulumi:"zoneId"`
+	ZoneId string                `pulumi:"zoneId"`
 }
 
 // A collection of values returned by getWafPackages.
 type GetWafPackagesResult struct {
 	Filter *GetWafPackagesFilter `pulumi:"filter"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// A map of WAF Rule Packages details. Full list below:
+	Id       string                  `pulumi:"id"`
 	Packages []GetWafPackagesPackage `pulumi:"packages"`
 	ZoneId   string                  `pulumi:"zoneId"`
 }
@@ -85,11 +49,8 @@ func GetWafPackagesOutput(ctx *pulumi.Context, args GetWafPackagesOutputArgs, op
 
 // A collection of arguments for invoking getWafPackages.
 type GetWafPackagesOutputArgs struct {
-	// One or more values used to look up WAF Rule Packages. If more than one value is given all
-	// values must match in order to be included, see below for full list.
 	Filter GetWafPackagesFilterPtrInput `pulumi:"filter"`
-	// The ID of the DNS zone in which to search for the WAF Rule Packages.
-	ZoneId pulumi.StringInput `pulumi:"zoneId"`
+	ZoneId pulumi.StringInput           `pulumi:"zoneId"`
 }
 
 func (GetWafPackagesOutputArgs) ElementType() reflect.Type {
@@ -120,7 +81,6 @@ func (o GetWafPackagesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafPackagesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// A map of WAF Rule Packages details. Full list below:
 func (o GetWafPackagesResultOutput) Packages() GetWafPackagesPackageArrayOutput {
 	return o.ApplyT(func(v GetWafPackagesResult) []GetWafPackagesPackage { return v.Packages }).(GetWafPackagesPackageArrayOutput)
 }

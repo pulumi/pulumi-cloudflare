@@ -13,23 +13,19 @@ import (
 
 // Provides a resource which manages Cloudflare API tokens.
 //
-// Read more about permission groups and their applicable scopes in
-// [the official documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
-//
-// ## Example Usage
+// Read more about permission groups and their applicable scopes in the [developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).
 type ApiToken struct {
 	pulumi.CustomResourceState
 
-	// Condition block. See the definition below.
+	// Conditions under which the token should be considered valid.
 	Condition ApiTokenConditionPtrOutput `pulumi:"condition"`
-	// The RFC3339 timestamp of when the API Token was issued.
+	// Timestamp of when the token was issued.
 	IssuedOn pulumi.StringOutput `pulumi:"issuedOn"`
-	// The RFC3339 timestamp of when the API Token was last modified.
+	// Timestamp of when the token was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// Name of the APIToken.
+	// Name of the API Token.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Permissions policy. Multiple policy blocks can be defined.
-	// See the definition below.
 	Policies ApiTokenPolicyArrayOutput `pulumi:"policies"`
 	Status   pulumi.StringOutput       `pulumi:"status"`
 	// The value of the API Token.
@@ -71,16 +67,15 @@ func GetApiToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApiToken resources.
 type apiTokenState struct {
-	// Condition block. See the definition below.
+	// Conditions under which the token should be considered valid.
 	Condition *ApiTokenCondition `pulumi:"condition"`
-	// The RFC3339 timestamp of when the API Token was issued.
+	// Timestamp of when the token was issued.
 	IssuedOn *string `pulumi:"issuedOn"`
-	// The RFC3339 timestamp of when the API Token was last modified.
+	// Timestamp of when the token was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// Name of the APIToken.
+	// Name of the API Token.
 	Name *string `pulumi:"name"`
 	// Permissions policy. Multiple policy blocks can be defined.
-	// See the definition below.
 	Policies []ApiTokenPolicy `pulumi:"policies"`
 	Status   *string          `pulumi:"status"`
 	// The value of the API Token.
@@ -88,16 +83,15 @@ type apiTokenState struct {
 }
 
 type ApiTokenState struct {
-	// Condition block. See the definition below.
+	// Conditions under which the token should be considered valid.
 	Condition ApiTokenConditionPtrInput
-	// The RFC3339 timestamp of when the API Token was issued.
+	// Timestamp of when the token was issued.
 	IssuedOn pulumi.StringPtrInput
-	// The RFC3339 timestamp of when the API Token was last modified.
+	// Timestamp of when the token was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// Name of the APIToken.
+	// Name of the API Token.
 	Name pulumi.StringPtrInput
 	// Permissions policy. Multiple policy blocks can be defined.
-	// See the definition below.
 	Policies ApiTokenPolicyArrayInput
 	Status   pulumi.StringPtrInput
 	// The value of the API Token.
@@ -109,23 +103,21 @@ func (ApiTokenState) ElementType() reflect.Type {
 }
 
 type apiTokenArgs struct {
-	// Condition block. See the definition below.
+	// Conditions under which the token should be considered valid.
 	Condition *ApiTokenCondition `pulumi:"condition"`
-	// Name of the APIToken.
+	// Name of the API Token.
 	Name string `pulumi:"name"`
 	// Permissions policy. Multiple policy blocks can be defined.
-	// See the definition below.
 	Policies []ApiTokenPolicy `pulumi:"policies"`
 }
 
 // The set of arguments for constructing a ApiToken resource.
 type ApiTokenArgs struct {
-	// Condition block. See the definition below.
+	// Conditions under which the token should be considered valid.
 	Condition ApiTokenConditionPtrInput
-	// Name of the APIToken.
+	// Name of the API Token.
 	Name pulumi.StringInput
 	// Permissions policy. Multiple policy blocks can be defined.
-	// See the definition below.
 	Policies ApiTokenPolicyArrayInput
 }
 
@@ -216,28 +208,27 @@ func (o ApiTokenOutput) ToApiTokenOutputWithContext(ctx context.Context) ApiToke
 	return o
 }
 
-// Condition block. See the definition below.
+// Conditions under which the token should be considered valid.
 func (o ApiTokenOutput) Condition() ApiTokenConditionPtrOutput {
 	return o.ApplyT(func(v *ApiToken) ApiTokenConditionPtrOutput { return v.Condition }).(ApiTokenConditionPtrOutput)
 }
 
-// The RFC3339 timestamp of when the API Token was issued.
+// Timestamp of when the token was issued.
 func (o ApiTokenOutput) IssuedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.IssuedOn }).(pulumi.StringOutput)
 }
 
-// The RFC3339 timestamp of when the API Token was last modified.
+// Timestamp of when the token was last modified.
 func (o ApiTokenOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// Name of the APIToken.
+// Name of the API Token.
 func (o ApiTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiToken) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Permissions policy. Multiple policy blocks can be defined.
-// See the definition below.
 func (o ApiTokenOutput) Policies() ApiTokenPolicyArrayOutput {
 	return o.ApplyT(func(v *ApiToken) ApiTokenPolicyArrayOutput { return v.Policies }).(ApiTokenPolicyArrayOutput)
 }

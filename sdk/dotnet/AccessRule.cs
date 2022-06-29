@@ -12,31 +12,99 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare IP Firewall Access Rule resource. Access control can be applied on basis of IP addresses, IP ranges, AS numbers or countries.
     /// 
-    /// ## Import
+    /// ## Example Usage
     /// 
-    /// Records can be imported using a composite ID formed of access rule type, access rule type identifier and identifer value, e.g.
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
     /// 
-    /// ```sh
-    ///  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Challenge requests coming from known Tor exit nodes.
+    ///         var torExitNodes = new Cloudflare.AccessRule("torExitNodes", new Cloudflare.AccessRuleArgs
+    ///         {
+    ///             Notes = "Requests coming from known Tor exit nodes",
+    ///             Mode = "challenge",
+    ///             Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
+    ///             {
+    ///                 Target = "country",
+    ///                 Value = "T1",
+    ///             },
+    ///         });
+    ///         // Whitelist (sic!) requests coming from Antarctica, but only for single zone.
+    ///         var antarctica = new Cloudflare.AccessRule("antarctica", new Cloudflare.AccessRuleArgs
+    ///         {
+    ///             Notes = "Requests coming from Antarctica",
+    ///             Mode = "whitelist",
+    ///             Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
+    ///             {
+    ///                 Target = "country",
+    ///                 Value = "AQ",
+    ///             },
+    ///             ZoneId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         });
+    ///         var config = new Config();
+    ///         var myOffice = config.GetObject&lt;dynamic&gt;("myOffice") ?? 
+    ///         {
+    ///             "192.0.2.0/24",
+    ///             "198.51.100.0/24",
+    ///             "2001:db8::/56",
+    ///         };
+    ///         var officeNetwork = new List&lt;Cloudflare.AccessRule&gt;();
+    ///         for (var rangeIndex = 0; rangeIndex &lt; myOffice.Length; rangeIndex++)
+    ///         {
+    ///             var range = new { Value = rangeIndex };
+    ///             officeNetwork.Add(new Cloudflare.AccessRule($"officeNetwork-{range.Value}", new Cloudflare.AccessRuleArgs
+    ///             {
+    ///                 Notes = "Requests coming from office network",
+    ///                 Mode = "whitelist",
+    ///                 Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
+    ///                 {
+    ///                     Target = "ip_range",
+    ///                     Value = myOffice[count.Index],
+    ///                 },
+    ///             }));
+    ///         }
+    ///     }
+    /// 
+    /// }
     /// ```
     /// 
-    ///  where* `zone` - access rule type (`account`, `zone` or `user`) * `cb029e245cfdd66dc8d2e570d5dd3322` - access rule type ID (i.e the zone ID
+    /// ## Import
     /// 
-    ///  or account ID you wish to target) * `d41d8cd98f00b204e9800998ecf8427e` - access rule ID as returned by
+    /// # User level access rule import.
     /// 
-    ///  respective API endpoint for the type you are attempting to import.
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessRule:AccessRule default user/&lt;user_id&gt;/&lt;rule_id&gt;
+    /// ```
+    /// 
+    /// # Zone level access rule import.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/&lt;zone_id&gt;/&lt;rule_id&gt;
+    /// ```
+    /// 
+    /// # Account level access rule import.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessRule:AccessRule default account/&lt;account_id&gt;/&lt;rule_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessRule:AccessRule")]
     public partial class AccessRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// Rule configuration to apply to a matched request. It's a complex value. See description below.
+        /// Rule configuration to apply to a matched request.
         /// </summary>
         [Output("configuration")]
         public Output<Outputs.AccessRuleConfiguration> Configuration { get; private set; } = null!;
 
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+        /// `managed_challenge`
         /// </summary>
         [Output("mode")]
         public Output<string> Mode { get; private set; } = null!;
@@ -48,7 +116,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -100,13 +168,14 @@ namespace Pulumi.Cloudflare
     public sealed class AccessRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Rule configuration to apply to a matched request. It's a complex value. See description below.
+        /// Rule configuration to apply to a matched request.
         /// </summary>
         [Input("configuration", required: true)]
         public Input<Inputs.AccessRuleConfigurationArgs> Configuration { get; set; } = null!;
 
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+        /// `managed_challenge`
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
@@ -118,7 +187,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Notes { get; set; }
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -131,13 +200,14 @@ namespace Pulumi.Cloudflare
     public sealed class AccessRuleState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Rule configuration to apply to a matched request. It's a complex value. See description below.
+        /// Rule configuration to apply to a matched request.
         /// </summary>
         [Input("configuration")]
         public Input<Inputs.AccessRuleConfigurationGetArgs>? Configuration { get; set; }
 
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "whitelist", "js_challenge", "managed_challenge"
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `whitelist`, `js_challenge`,
+        /// `managed_challenge`
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
@@ -149,7 +219,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Notes { get; set; }
 
         /// <summary>
-        /// The DNS zone to which the access rule should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

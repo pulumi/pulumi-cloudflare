@@ -43,41 +43,42 @@ import (
 //
 // ## Import
 //
-// Waiting rooms can be imported using a composite ID formed of zone ID and waiting room ID, e.g.
+// # Use the Zone ID and Waiting Room ID to import.
 //
 // ```sh
-//  $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+//  $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default <zone_id>/<waiting_room_id>
 // ```
-//
-//  where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - waiting room ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-waiting-rooms)
 type WaitingRoom struct {
 	pulumi.CustomResourceState
 
-	// This a templated html file that will be rendered at the edge.
+	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrOutput `pulumi:"customPageHtml"`
-	// A description to let users add more details about the waiting room.
+	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+	// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+	DefaultTemplateLanguage pulumi.StringPtrOutput `pulumi:"defaultTemplateLanguage"`
+	// A description to add more details about the waiting room.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Disables automatic renewal of session cookies. Default: false.
+	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrOutput `pulumi:"disableSessionRenewal"`
-	// Host name for which the waiting room will be applied (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards)
 	Host pulumi.StringOutput `pulumi:"host"`
-	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrOutput `pulumi:"jsonResponseEnabled"`
 	// A unique name to identify the waiting room.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntOutput `pulumi:"newUsersPerMinute"`
-	// The path within the host to enable the waiting room on. Default: "/".
+	// The path within the host to enable the waiting room on.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
-	// If queueAll is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrOutput `pulumi:"queueAll"`
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrOutput `pulumi:"sessionDuration"`
-	// If suspended, the traffic doesn't go to the waiting room. Default: false.
+	// Suspends the waiting room.
 	Suspended pulumi.BoolPtrOutput `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntOutput `pulumi:"totalActiveUsers"`
-	// The DNS zone ID to apply to.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -125,60 +126,66 @@ func GetWaitingRoom(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WaitingRoom resources.
 type waitingRoomState struct {
-	// This a templated html file that will be rendered at the edge.
+	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml *string `pulumi:"customPageHtml"`
-	// A description to let users add more details about the waiting room.
+	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+	// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+	DefaultTemplateLanguage *string `pulumi:"defaultTemplateLanguage"`
+	// A description to add more details about the waiting room.
 	Description *string `pulumi:"description"`
-	// Disables automatic renewal of session cookies. Default: false.
+	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// Host name for which the waiting room will be applied (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards)
 	Host *string `pulumi:"host"`
-	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
 	// A unique name to identify the waiting room.
 	Name *string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute *int `pulumi:"newUsersPerMinute"`
-	// The path within the host to enable the waiting room on. Default: "/".
+	// The path within the host to enable the waiting room on.
 	Path *string `pulumi:"path"`
-	// If queueAll is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll *bool `pulumi:"queueAll"`
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration *int `pulumi:"sessionDuration"`
-	// If suspended, the traffic doesn't go to the waiting room. Default: false.
+	// Suspends the waiting room.
 	Suspended *bool `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers *int `pulumi:"totalActiveUsers"`
-	// The DNS zone ID to apply to.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type WaitingRoomState struct {
-	// This a templated html file that will be rendered at the edge.
+	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrInput
-	// A description to let users add more details about the waiting room.
+	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+	// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+	DefaultTemplateLanguage pulumi.StringPtrInput
+	// A description to add more details about the waiting room.
 	Description pulumi.StringPtrInput
-	// Disables automatic renewal of session cookies. Default: false.
+	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// Host name for which the waiting room will be applied (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards)
 	Host pulumi.StringPtrInput
-	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrInput
 	// A unique name to identify the waiting room.
 	Name pulumi.StringPtrInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrInput
-	// The path within the host to enable the waiting room on. Default: "/".
+	// The path within the host to enable the waiting room on.
 	Path pulumi.StringPtrInput
-	// If queueAll is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrInput
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrInput
-	// If suspended, the traffic doesn't go to the waiting room. Default: false.
+	// Suspends the waiting room.
 	Suspended pulumi.BoolPtrInput
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntPtrInput
-	// The DNS zone ID to apply to.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -187,61 +194,67 @@ func (WaitingRoomState) ElementType() reflect.Type {
 }
 
 type waitingRoomArgs struct {
-	// This a templated html file that will be rendered at the edge.
+	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml *string `pulumi:"customPageHtml"`
-	// A description to let users add more details about the waiting room.
+	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+	// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+	DefaultTemplateLanguage *string `pulumi:"defaultTemplateLanguage"`
+	// A description to add more details about the waiting room.
 	Description *string `pulumi:"description"`
-	// Disables automatic renewal of session cookies. Default: false.
+	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// Host name for which the waiting room will be applied (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards)
 	Host string `pulumi:"host"`
-	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
 	// A unique name to identify the waiting room.
 	Name string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute int `pulumi:"newUsersPerMinute"`
-	// The path within the host to enable the waiting room on. Default: "/".
+	// The path within the host to enable the waiting room on.
 	Path *string `pulumi:"path"`
-	// If queueAll is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll *bool `pulumi:"queueAll"`
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration *int `pulumi:"sessionDuration"`
-	// If suspended, the traffic doesn't go to the waiting room. Default: false.
+	// Suspends the waiting room.
 	Suspended *bool `pulumi:"suspended"`
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers int `pulumi:"totalActiveUsers"`
-	// The DNS zone ID to apply to.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a WaitingRoom resource.
 type WaitingRoomArgs struct {
-	// This a templated html file that will be rendered at the edge.
+	// This is a templated html file that will be rendered at the edge.
 	CustomPageHtml pulumi.StringPtrInput
-	// A description to let users add more details about the waiting room.
+	// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+	// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+	DefaultTemplateLanguage pulumi.StringPtrInput
+	// A description to add more details about the waiting room.
 	Description pulumi.StringPtrInput
-	// Disables automatic renewal of session cookies. Default: false.
+	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// Host name for which the waiting room will be applied (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards)
 	Host pulumi.StringInput
-	// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrInput
 	// A unique name to identify the waiting room.
 	Name pulumi.StringInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntInput
-	// The path within the host to enable the waiting room on. Default: "/".
+	// The path within the host to enable the waiting room on.
 	Path pulumi.StringPtrInput
-	// If queueAll is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+	// If queue_all is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrInput
-	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 	SessionDuration pulumi.IntPtrInput
-	// If suspended, the traffic doesn't go to the waiting room. Default: false.
+	// Suspends the waiting room.
 	Suspended pulumi.BoolPtrInput
 	// The total number of active user sessions on the route at a point in time.
 	TotalActiveUsers pulumi.IntInput
-	// The DNS zone ID to apply to.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -332,27 +345,33 @@ func (o WaitingRoomOutput) ToWaitingRoomOutputWithContext(ctx context.Context) W
 	return o
 }
 
-// This a templated html file that will be rendered at the edge.
+// This is a templated html file that will be rendered at the edge.
 func (o WaitingRoomOutput) CustomPageHtml() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.CustomPageHtml }).(pulumi.StringPtrOutput)
 }
 
-// A description to let users add more details about the waiting room.
+// The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+// `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+func (o WaitingRoomOutput) DefaultTemplateLanguage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.DefaultTemplateLanguage }).(pulumi.StringPtrOutput)
+}
+
+// A description to add more details about the waiting room.
 func (o WaitingRoomOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Disables automatic renewal of session cookies. Default: false.
+// Disables automatic renewal of session cookies.
 func (o WaitingRoomOutput) DisableSessionRenewal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.DisableSessionRenewal }).(pulumi.BoolPtrOutput)
 }
 
-// Host name for which the waiting room will be applied (no wildcards).
+// Host name for which the waiting room will be applied (no wildcards)
 func (o WaitingRoomOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
 
-// If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 func (o WaitingRoomOutput) JsonResponseEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.JsonResponseEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -367,22 +386,22 @@ func (o WaitingRoomOutput) NewUsersPerMinute() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.NewUsersPerMinute }).(pulumi.IntOutput)
 }
 
-// The path within the host to enable the waiting room on. Default: "/".
+// The path within the host to enable the waiting room on.
 func (o WaitingRoomOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// If queueAll is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+// If queue_all is true, then all traffic will be sent to the waiting room.
 func (o WaitingRoomOutput) QueueAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.QueueAll }).(pulumi.BoolPtrOutput)
 }
 
-// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
 func (o WaitingRoomOutput) SessionDuration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntPtrOutput { return v.SessionDuration }).(pulumi.IntPtrOutput)
 }
 
-// If suspended, the traffic doesn't go to the waiting room. Default: false.
+// Suspends the waiting room.
 func (o WaitingRoomOutput) Suspended() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.Suspended }).(pulumi.BoolPtrOutput)
 }
@@ -392,7 +411,7 @@ func (o WaitingRoomOutput) TotalActiveUsers() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.TotalActiveUsers }).(pulumi.IntOutput)
 }
 
-// The DNS zone ID to apply to.
+// The zone identifier to target for the resource.
 func (o WaitingRoomOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

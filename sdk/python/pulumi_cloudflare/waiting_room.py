@@ -19,6 +19,7 @@ class WaitingRoomArgs:
                  total_active_users: pulumi.Input[int],
                  zone_id: pulumi.Input[str],
                  custom_page_html: Optional[pulumi.Input[str]] = None,
+                 default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  json_response_enabled: Optional[pulumi.Input[bool]] = None,
@@ -28,19 +29,21 @@ class WaitingRoomArgs:
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a WaitingRoom resource.
-        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
+        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards)
         :param pulumi.Input[str] name: A unique name to identify the waiting room.
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
-        :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
-        :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
-        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
-        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Default: "/".
-        :param pulumi.Input[bool] queue_all: If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
-        :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
-        :param pulumi.Input[bool] suspended: If suspended, the traffic doesn't go to the waiting room. Default: false.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
+        :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+               `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        :param pulumi.Input[str] description: A description to add more details about the waiting room.
+        :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
+        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
+        :param pulumi.Input[str] path: The path within the host to enable the waiting room on.
+        :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
+        :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        :param pulumi.Input[bool] suspended: Suspends the waiting room.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "name", name)
@@ -49,6 +52,8 @@ class WaitingRoomArgs:
         pulumi.set(__self__, "zone_id", zone_id)
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
+        if default_template_language is not None:
+            pulumi.set(__self__, "default_template_language", default_template_language)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
@@ -68,7 +73,7 @@ class WaitingRoomArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        Host name for which the waiting room will be applied (no wildcards).
+        Host name for which the waiting room will be applied (no wildcards)
         """
         return pulumi.get(self, "host")
 
@@ -116,7 +121,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Input[str]:
         """
-        The DNS zone ID to apply to.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -128,7 +133,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> Optional[pulumi.Input[str]]:
         """
-        This a templated html file that will be rendered at the edge.
+        This is a templated html file that will be rendered at the edge.
         """
         return pulumi.get(self, "custom_page_html")
 
@@ -137,10 +142,23 @@ class WaitingRoomArgs:
         pulumi.set(self, "custom_page_html", value)
 
     @property
+    @pulumi.getter(name="defaultTemplateLanguage")
+    def default_template_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+        `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        """
+        return pulumi.get(self, "default_template_language")
+
+    @default_template_language.setter
+    def default_template_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_template_language", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description to let users add more details about the waiting room.
+        A description to add more details about the waiting room.
         """
         return pulumi.get(self, "description")
 
@@ -152,7 +170,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="disableSessionRenewal")
     def disable_session_renewal(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disables automatic renewal of session cookies. Default: false.
+        Disables automatic renewal of session cookies.
         """
         return pulumi.get(self, "disable_session_renewal")
 
@@ -164,7 +182,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="jsonResponseEnabled")
     def json_response_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         """
         return pulumi.get(self, "json_response_enabled")
 
@@ -176,7 +194,7 @@ class WaitingRoomArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path within the host to enable the waiting room on. Default: "/".
+        The path within the host to enable the waiting room on.
         """
         return pulumi.get(self, "path")
 
@@ -188,7 +206,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="queueAll")
     def queue_all(self) -> Optional[pulumi.Input[bool]]:
         """
-        If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+        If queue_all is true, then all traffic will be sent to the waiting room.
         """
         return pulumi.get(self, "queue_all")
 
@@ -200,7 +218,7 @@ class WaitingRoomArgs:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         """
         return pulumi.get(self, "session_duration")
 
@@ -212,7 +230,7 @@ class WaitingRoomArgs:
     @pulumi.getter
     def suspended(self) -> Optional[pulumi.Input[bool]]:
         """
-        If suspended, the traffic doesn't go to the waiting room. Default: false.
+        Suspends the waiting room.
         """
         return pulumi.get(self, "suspended")
 
@@ -225,6 +243,7 @@ class WaitingRoomArgs:
 class _WaitingRoomState:
     def __init__(__self__, *,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
+                 default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -239,22 +258,26 @@ class _WaitingRoomState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering WaitingRoom resources.
-        :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
-        :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
-        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
-        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+               `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        :param pulumi.Input[str] description: A description to add more details about the waiting room.
+        :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
+        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards)
+        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room.
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Default: "/".
-        :param pulumi.Input[bool] queue_all: If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
-        :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
-        :param pulumi.Input[bool] suspended: If suspended, the traffic doesn't go to the waiting room. Default: false.
+        :param pulumi.Input[str] path: The path within the host to enable the waiting room on.
+        :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
+        :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if custom_page_html is not None:
             pulumi.set(__self__, "custom_page_html", custom_page_html)
+        if default_template_language is not None:
+            pulumi.set(__self__, "default_template_language", default_template_language)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
@@ -284,7 +307,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> Optional[pulumi.Input[str]]:
         """
-        This a templated html file that will be rendered at the edge.
+        This is a templated html file that will be rendered at the edge.
         """
         return pulumi.get(self, "custom_page_html")
 
@@ -293,10 +316,23 @@ class _WaitingRoomState:
         pulumi.set(self, "custom_page_html", value)
 
     @property
+    @pulumi.getter(name="defaultTemplateLanguage")
+    def default_template_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+        `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        """
+        return pulumi.get(self, "default_template_language")
+
+    @default_template_language.setter
+    def default_template_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_template_language", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description to let users add more details about the waiting room.
+        A description to add more details about the waiting room.
         """
         return pulumi.get(self, "description")
 
@@ -308,7 +344,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="disableSessionRenewal")
     def disable_session_renewal(self) -> Optional[pulumi.Input[bool]]:
         """
-        Disables automatic renewal of session cookies. Default: false.
+        Disables automatic renewal of session cookies.
         """
         return pulumi.get(self, "disable_session_renewal")
 
@@ -320,7 +356,7 @@ class _WaitingRoomState:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        Host name for which the waiting room will be applied (no wildcards).
+        Host name for which the waiting room will be applied (no wildcards)
         """
         return pulumi.get(self, "host")
 
@@ -332,7 +368,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="jsonResponseEnabled")
     def json_response_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         """
         return pulumi.get(self, "json_response_enabled")
 
@@ -368,7 +404,7 @@ class _WaitingRoomState:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path within the host to enable the waiting room on. Default: "/".
+        The path within the host to enable the waiting room on.
         """
         return pulumi.get(self, "path")
 
@@ -380,7 +416,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="queueAll")
     def queue_all(self) -> Optional[pulumi.Input[bool]]:
         """
-        If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+        If queue_all is true, then all traffic will be sent to the waiting room.
         """
         return pulumi.get(self, "queue_all")
 
@@ -392,7 +428,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> Optional[pulumi.Input[int]]:
         """
-        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         """
         return pulumi.get(self, "session_duration")
 
@@ -404,7 +440,7 @@ class _WaitingRoomState:
     @pulumi.getter
     def suspended(self) -> Optional[pulumi.Input[bool]]:
         """
-        If suspended, the traffic doesn't go to the waiting room. Default: false.
+        Suspends the waiting room.
         """
         return pulumi.get(self, "suspended")
 
@@ -428,7 +464,7 @@ class _WaitingRoomState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The DNS zone ID to apply to.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -443,6 +479,7 @@ class WaitingRoom(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
+                 default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -465,6 +502,7 @@ class WaitingRoom(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
+        # Waiting Room
         example = cloudflare.WaitingRoom("example",
             host="foo.example.com",
             name="foo",
@@ -476,29 +514,29 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Import
 
-        Waiting rooms can be imported using a composite ID formed of zone ID and waiting room ID, e.g.
+        # Use the Zone ID and Waiting Room ID to import.
 
         ```sh
-         $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default <zone_id>/<waiting_room_id>
         ```
-
-         where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - waiting room ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-waiting-rooms)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
-        :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
-        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
-        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+               `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        :param pulumi.Input[str] description: A description to add more details about the waiting room.
+        :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
+        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards)
+        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room.
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Default: "/".
-        :param pulumi.Input[bool] queue_all: If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
-        :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
-        :param pulumi.Input[bool] suspended: If suspended, the traffic doesn't go to the waiting room. Default: false.
+        :param pulumi.Input[str] path: The path within the host to enable the waiting room on.
+        :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
+        :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -515,6 +553,7 @@ class WaitingRoom(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
+        # Waiting Room
         example = cloudflare.WaitingRoom("example",
             host="foo.example.com",
             name="foo",
@@ -526,13 +565,11 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Import
 
-        Waiting rooms can be imported using a composite ID formed of zone ID and waiting room ID, e.g.
+        # Use the Zone ID and Waiting Room ID to import.
 
         ```sh
-         $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default ae36f999674d196762efcc5abb06b345/d41d8cd98f00b204e9800998ecf8427e
+         $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default <zone_id>/<waiting_room_id>
         ```
-
-         where* `ae36f999674d196762efcc5abb06b345` - the zone ID * `d41d8cd98f00b204e9800998ecf8427e` - waiting room ID as returned by [API](https://api.cloudflare.com/#waiting-room-list-waiting-rooms)
 
         :param str resource_name: The name of the resource.
         :param WaitingRoomArgs args: The arguments to use to populate this resource's properties.
@@ -550,6 +587,7 @@ class WaitingRoom(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_page_html: Optional[pulumi.Input[str]] = None,
+                 default_template_language: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_session_renewal: Optional[pulumi.Input[bool]] = None,
                  host: Optional[pulumi.Input[str]] = None,
@@ -575,6 +613,7 @@ class WaitingRoom(pulumi.CustomResource):
             __props__ = WaitingRoomArgs.__new__(WaitingRoomArgs)
 
             __props__.__dict__["custom_page_html"] = custom_page_html
+            __props__.__dict__["default_template_language"] = default_template_language
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_session_renewal"] = disable_session_renewal
             if host is None and not opts.urn:
@@ -608,6 +647,7 @@ class WaitingRoom(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_page_html: Optional[pulumi.Input[str]] = None,
+            default_template_language: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
             host: Optional[pulumi.Input[str]] = None,
@@ -627,25 +667,28 @@ class WaitingRoom(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] custom_page_html: This a templated html file that will be rendered at the edge.
-        :param pulumi.Input[str] description: A description to let users add more details about the waiting room.
-        :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies. Default: false.
-        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
-        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        :param pulumi.Input[str] custom_page_html: This is a templated html file that will be rendered at the edge.
+        :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+               `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        :param pulumi.Input[str] description: A description to add more details about the waiting room.
+        :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
+        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards)
+        :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room.
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Default: "/".
-        :param pulumi.Input[bool] queue_all: If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
-        :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
-        :param pulumi.Input[bool] suspended: If suspended, the traffic doesn't go to the waiting room. Default: false.
+        :param pulumi.Input[str] path: The path within the host to enable the waiting room on.
+        :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
+        :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
+        :param pulumi.Input[bool] suspended: Suspends the waiting room.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
-        :param pulumi.Input[str] zone_id: The DNS zone ID to apply to.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _WaitingRoomState.__new__(_WaitingRoomState)
 
         __props__.__dict__["custom_page_html"] = custom_page_html
+        __props__.__dict__["default_template_language"] = default_template_language
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_session_renewal"] = disable_session_renewal
         __props__.__dict__["host"] = host
@@ -664,15 +707,24 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="customPageHtml")
     def custom_page_html(self) -> pulumi.Output[Optional[str]]:
         """
-        This a templated html file that will be rendered at the edge.
+        This is a templated html file that will be rendered at the edge.
         """
         return pulumi.get(self, "custom_page_html")
+
+    @property
+    @pulumi.getter(name="defaultTemplateLanguage")
+    def default_template_language(self) -> pulumi.Output[Optional[str]]:
+        """
+        The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`,
+        `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`
+        """
+        return pulumi.get(self, "default_template_language")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A description to let users add more details about the waiting room.
+        A description to add more details about the waiting room.
         """
         return pulumi.get(self, "description")
 
@@ -680,7 +732,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="disableSessionRenewal")
     def disable_session_renewal(self) -> pulumi.Output[Optional[bool]]:
         """
-        Disables automatic renewal of session cookies. Default: false.
+        Disables automatic renewal of session cookies.
         """
         return pulumi.get(self, "disable_session_renewal")
 
@@ -688,7 +740,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
-        Host name for which the waiting room will be applied (no wildcards).
+        Host name for which the waiting room will be applied (no wildcards)
         """
         return pulumi.get(self, "host")
 
@@ -696,7 +748,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="jsonResponseEnabled")
     def json_response_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        If true, requests to the waiting room with the header Accept: application/json will receive a JSON response object.
+        If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         """
         return pulumi.get(self, "json_response_enabled")
 
@@ -720,7 +772,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter
     def path(self) -> pulumi.Output[Optional[str]]:
         """
-        The path within the host to enable the waiting room on. Default: "/".
+        The path within the host to enable the waiting room on.
         """
         return pulumi.get(self, "path")
 
@@ -728,7 +780,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="queueAll")
     def queue_all(self) -> pulumi.Output[Optional[bool]]:
         """
-        If queue_all is true all the traffic that is coming to a route will be sent to the waiting room. Default: false.
+        If queue_all is true, then all traffic will be sent to the waiting room.
         """
         return pulumi.get(self, "queue_all")
 
@@ -736,7 +788,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="sessionDuration")
     def session_duration(self) -> pulumi.Output[Optional[int]]:
         """
-        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. Default: 5
+        Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin.
         """
         return pulumi.get(self, "session_duration")
 
@@ -744,7 +796,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter
     def suspended(self) -> pulumi.Output[Optional[bool]]:
         """
-        If suspended, the traffic doesn't go to the waiting room. Default: false.
+        Suspends the waiting room.
         """
         return pulumi.get(self, "suspended")
 
@@ -760,7 +812,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The DNS zone ID to apply to.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

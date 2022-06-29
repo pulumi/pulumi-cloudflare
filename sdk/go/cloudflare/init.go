@@ -84,20 +84,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &IpList{}
 	case "cloudflare:index/ipsecTunnel:IpsecTunnel":
 		r = &IpsecTunnel{}
+	case "cloudflare:index/list:List":
+		r = &List{}
 	case "cloudflare:index/loadBalancer:LoadBalancer":
 		r = &LoadBalancer{}
 	case "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
 		r = &LoadBalancerMonitor{}
 	case "cloudflare:index/loadBalancerPool:LoadBalancerPool":
 		r = &LoadBalancerPool{}
-	case "cloudflare:index/logPushOwnershipChallenge:LogPushOwnershipChallenge":
-		r = &LogPushOwnershipChallenge{}
 	case "cloudflare:index/logpullRetention:LogpullRetention":
 		r = &LogpullRetention{}
 	case "cloudflare:index/logpushJob:LogpushJob":
 		r = &LogpushJob{}
+	case "cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge":
+		r = &LogpushOwnershipChallenge{}
 	case "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
 		r = &MagicFirewallRuleset{}
+	case "cloudflare:index/managedHeaders:ManagedHeaders":
+		r = &ManagedHeaders{}
 	case "cloudflare:index/notificationPolicy:NotificationPolicy":
 		r = &NotificationPolicy{}
 	case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
@@ -130,6 +134,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TeamsRule{}
 	case "cloudflare:index/tunnelRoute:TunnelRoute":
 		r = &TunnelRoute{}
+	case "cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork":
+		r = &TunnelVirtualNetwork{}
 	case "cloudflare:index/wafGroup:WafGroup":
 		r = &WafGroup{}
 	case "cloudflare:index/wafOverride:WafOverride":
@@ -352,6 +358,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/list",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/loadBalancer",
 		&module{version},
 	)
@@ -367,11 +378,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
-		"index/logPushOwnershipChallenge",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"cloudflare",
 		"index/logpullRetention",
 		&module{version},
 	)
@@ -382,7 +388,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/logpushOwnershipChallenge",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/magicFirewallRuleset",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/managedHeaders",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -463,6 +479,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/tunnelRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/tunnelVirtualNetwork",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

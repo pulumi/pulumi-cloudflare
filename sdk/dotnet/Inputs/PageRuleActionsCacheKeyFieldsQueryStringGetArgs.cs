@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+        /// `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
         /// </summary>
         [Input("ignore")]
         public Input<bool>? Ignore { get; set; }

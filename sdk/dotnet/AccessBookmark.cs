@@ -10,9 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a Cloudflare Access Bookmark resource. Access Bookmark
-    /// applications are not protected behind Access but are displayed in the App
-    /// Launcher.
+    /// Provides a Cloudflare Access Bookmark resource. Access Bookmark applications are not protected behind Access but are displayed in the App Launcher.
+    /// 
+    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
+    /// most cases using either is fine. However, if you're using a scoped
+    /// access token, you must provide the argument that matches the token's
+    /// scope. For example, an access token that is scoped to the "example.com"
+    /// zone needs to use the `zone_id` argument.
     /// 
     /// ## Example Usage
     /// 
@@ -29,7 +33,7 @@ namespace Pulumi.Cloudflare
     ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
     ///             AppLauncherVisible = true,
     ///             Domain = "example.com",
-    ///             LogoUrl = "https://path-to-logo.com/example.png",
+    ///             LogoUrl = "https://example.com/example.png",
     ///             Name = "My Bookmark App",
     ///         });
     ///     }
@@ -39,23 +43,21 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Access Bookmarks can be imported using a composite ID formed of account ID and bookmark ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/accessBookmark:AccessBookmark my_bookmark cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example &lt;account_id&gt;/&lt;bookmark_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessBookmark:AccessBookmark")]
     public partial class AccessBookmark : Pulumi.CustomResource
     {
         /// <summary>
-        /// The account to which the Access bookmark application should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+        /// Option to show/hide the bookmark in the app launcher.
         /// </summary>
         [Output("appLauncherVisible")]
         public Output<bool?> AppLauncherVisible { get; private set; } = null!;
@@ -67,8 +69,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The image URL for the logo shown in the app
-        /// launcher dashboard.
+        /// The image URL for the logo shown in the app launcher dashboard.
         /// </summary>
         [Output("logoUrl")]
         public Output<string?> LogoUrl { get; private set; } = null!;
@@ -80,7 +81,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the Access bookmark application should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -132,13 +133,13 @@ namespace Pulumi.Cloudflare
     public sealed class AccessBookmarkArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the Access bookmark application should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+        /// Option to show/hide the bookmark in the app launcher.
         /// </summary>
         [Input("appLauncherVisible")]
         public Input<bool>? AppLauncherVisible { get; set; }
@@ -150,8 +151,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// The image URL for the logo shown in the app
-        /// launcher dashboard.
+        /// The image URL for the logo shown in the app launcher dashboard.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
@@ -163,7 +163,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the Access bookmark application should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -176,13 +176,13 @@ namespace Pulumi.Cloudflare
     public sealed class AccessBookmarkState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account to which the Access bookmark application should be added. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Option to show/hide the bookmark in the app launcher. Defaults to `true`.
+        /// Option to show/hide the bookmark in the app launcher.
         /// </summary>
         [Input("appLauncherVisible")]
         public Input<bool>? AppLauncherVisible { get; set; }
@@ -194,8 +194,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The image URL for the logo shown in the app
-        /// launcher dashboard.
+        /// The image URL for the logo shown in the app launcher dashboard.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
@@ -207,7 +206,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The DNS zone to which the Access bookmark application should be added. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

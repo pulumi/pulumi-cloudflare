@@ -42,7 +42,7 @@ import (
 //  $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
 // ```
 //
-//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+//  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -60,8 +60,8 @@ type Zone struct {
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// List of Vanity Nameservers (if set).
-	// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-	// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+	// - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+	// - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
 	VanityNameServers pulumi.StringArrayOutput `pulumi:"vanityNameServers"`
 	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey pulumi.StringOutput `pulumi:"verificationKey"`
@@ -115,8 +115,8 @@ type zoneState struct {
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
 	Type *string `pulumi:"type"`
 	// List of Vanity Nameservers (if set).
-	// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-	// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+	// - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+	// - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
 	VanityNameServers []string `pulumi:"vanityNameServers"`
 	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey *string `pulumi:"verificationKey"`
@@ -139,8 +139,8 @@ type ZoneState struct {
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
 	Type pulumi.StringPtrInput
 	// List of Vanity Nameservers (if set).
-	// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-	// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+	// - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+	// - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
 	VanityNameServers pulumi.StringArrayInput
 	// Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
 	VerificationKey pulumi.StringPtrInput
@@ -301,8 +301,8 @@ func (o ZoneOutput) Type() pulumi.StringPtrOutput {
 }
 
 // List of Vanity Nameservers (if set).
-// * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-// * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+// - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+// - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
 func (o ZoneOutput) VanityNameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringArrayOutput { return v.VanityNameServers }).(pulumi.StringArrayOutput)
 }

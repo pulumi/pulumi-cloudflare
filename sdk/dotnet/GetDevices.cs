@@ -11,61 +11,9 @@ namespace Pulumi.Cloudflare
 {
     public static class GetDevices
     {
-        /// <summary>
-        /// Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var devices = Output.Create(Cloudflare.GetDevices.InvokeAsync(new Cloudflare.GetDevicesArgs
-        ///         {
-        ///             AccountId = "c68973221045fe805dfb9aa520153148",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetDevicesResult> InvokeAsync(GetDevicesArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDevicesResult>("cloudflare:index/getDevices:getDevices", args ?? new GetDevicesArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var devices = Output.Create(Cloudflare.GetDevices.InvokeAsync(new Cloudflare.GetDevicesArgs
-        ///         {
-        ///             AccountId = "c68973221045fe805dfb9aa520153148",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetDevicesResult> Invoke(GetDevicesInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("cloudflare:index/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());
     }
@@ -73,9 +21,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDevicesArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The account for which to list the devices.
-        /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
 
@@ -86,9 +31,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetDevicesInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The account for which to list the devices.
-        /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
@@ -102,9 +44,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetDevicesResult
     {
         public readonly string AccountId;
-        /// <summary>
-        /// A list of device object. See below for nested attributes.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetDevicesDeviceResult> Devices;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

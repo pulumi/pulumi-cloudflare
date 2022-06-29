@@ -26,15 +26,23 @@ class NotificationPolicyArgs:
                  webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None):
         """
         The set of arguments for constructing a NotificationPolicy resource.
-        :param pulumi.Input[str] account_id: The ID of the account for which the notification policy has to be created.
-        :param pulumi.Input[str] alert_type: The event type that will trigger the dispatch of a notification (refer to the nested schema).
-        :param pulumi.Input[bool] enabled: State of the pool to alert on. Example: `"true"`, `"false"`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] alert_type: The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
+               [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
+               values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
+               `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
+               `weekly_account_overview`
+        :param pulumi.Input[bool] enabled: The status of the notification policy.
         :param pulumi.Input[str] name: The name of the notification policy.
         :param pulumi.Input[str] description: Description of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]] email_integrations: The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
-        :param pulumi.Input['NotificationPolicyFiltersArgs'] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]] email_integrations: The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
+               required.
+        :param pulumi.Input['NotificationPolicyFiltersArgs'] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
+               of filter and the values to match against (refer to the alert type block for available fields).
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
+               or PagerDuty mechanisms is required.
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
+               or PagerDuty mechanisms is required.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "alert_type", alert_type)
@@ -55,7 +63,7 @@ class NotificationPolicyArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The ID of the account for which the notification policy has to be created.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -67,7 +75,11 @@ class NotificationPolicyArgs:
     @pulumi.getter(name="alertType")
     def alert_type(self) -> pulumi.Input[str]:
         """
-        The event type that will trigger the dispatch of a notification (refer to the nested schema).
+        The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
+        [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
+        values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
+        `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
+        `weekly_account_overview`
         """
         return pulumi.get(self, "alert_type")
 
@@ -79,7 +91,7 @@ class NotificationPolicyArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
         """
-        State of the pool to alert on. Example: `"true"`, `"false"`.
+        The status of the notification policy.
         """
         return pulumi.get(self, "enabled")
 
@@ -115,7 +127,8 @@ class NotificationPolicyArgs:
     @pulumi.getter(name="emailIntegrations")
     def email_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]]:
         """
-        The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
+        required.
         """
         return pulumi.get(self, "email_integrations")
 
@@ -127,7 +140,8 @@ class NotificationPolicyArgs:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input['NotificationPolicyFiltersArgs']]:
         """
-        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
+        of filter and the values to match against (refer to the alert type block for available fields).
         """
         return pulumi.get(self, "filters")
 
@@ -139,7 +153,8 @@ class NotificationPolicyArgs:
     @pulumi.getter(name="pagerdutyIntegrations")
     def pagerduty_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]]:
         """
-        The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
+        or PagerDuty mechanisms is required.
         """
         return pulumi.get(self, "pagerduty_integrations")
 
@@ -151,7 +166,8 @@ class NotificationPolicyArgs:
     @pulumi.getter(name="webhooksIntegrations")
     def webhooks_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]]:
         """
-        The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
+        or PagerDuty mechanisms is required.
         """
         return pulumi.get(self, "webhooks_integrations")
 
@@ -176,15 +192,25 @@ class _NotificationPolicyState:
                  webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None):
         """
         Input properties used for looking up and filtering NotificationPolicy resources.
-        :param pulumi.Input[str] account_id: The ID of the account for which the notification policy has to be created.
-        :param pulumi.Input[str] alert_type: The event type that will trigger the dispatch of a notification (refer to the nested schema).
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] alert_type: The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
+               [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
+               values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
+               `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
+               `weekly_account_overview`
+        :param pulumi.Input[str] created: When the notification policy was created.
         :param pulumi.Input[str] description: Description of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]] email_integrations: The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
-        :param pulumi.Input[bool] enabled: State of the pool to alert on. Example: `"true"`, `"false"`.
-        :param pulumi.Input['NotificationPolicyFiltersArgs'] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]] email_integrations: The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
+               required.
+        :param pulumi.Input[bool] enabled: The status of the notification policy.
+        :param pulumi.Input['NotificationPolicyFiltersArgs'] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
+               of filter and the values to match against (refer to the alert type block for available fields).
+        :param pulumi.Input[str] modified: When the notification policy was last modified.
         :param pulumi.Input[str] name: The name of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
-        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
+               or PagerDuty mechanisms is required.
+        :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
+               or PagerDuty mechanisms is required.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -213,7 +239,7 @@ class _NotificationPolicyState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account for which the notification policy has to be created.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -225,7 +251,11 @@ class _NotificationPolicyState:
     @pulumi.getter(name="alertType")
     def alert_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The event type that will trigger the dispatch of a notification (refer to the nested schema).
+        The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
+        [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
+        values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
+        `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
+        `weekly_account_overview`
         """
         return pulumi.get(self, "alert_type")
 
@@ -236,6 +266,9 @@ class _NotificationPolicyState:
     @property
     @pulumi.getter
     def created(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the notification policy was created.
+        """
         return pulumi.get(self, "created")
 
     @created.setter
@@ -258,7 +291,8 @@ class _NotificationPolicyState:
     @pulumi.getter(name="emailIntegrations")
     def email_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]]:
         """
-        The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
+        required.
         """
         return pulumi.get(self, "email_integrations")
 
@@ -270,7 +304,7 @@ class _NotificationPolicyState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        State of the pool to alert on. Example: `"true"`, `"false"`.
+        The status of the notification policy.
         """
         return pulumi.get(self, "enabled")
 
@@ -282,7 +316,8 @@ class _NotificationPolicyState:
     @pulumi.getter
     def filters(self) -> Optional[pulumi.Input['NotificationPolicyFiltersArgs']]:
         """
-        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
+        of filter and the values to match against (refer to the alert type block for available fields).
         """
         return pulumi.get(self, "filters")
 
@@ -293,6 +328,9 @@ class _NotificationPolicyState:
     @property
     @pulumi.getter
     def modified(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the notification policy was last modified.
+        """
         return pulumi.get(self, "modified")
 
     @modified.setter
@@ -315,7 +353,8 @@ class _NotificationPolicyState:
     @pulumi.getter(name="pagerdutyIntegrations")
     def pagerduty_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]]:
         """
-        The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
+        or PagerDuty mechanisms is required.
         """
         return pulumi.get(self, "pagerduty_integrations")
 
@@ -327,7 +366,8 @@ class _NotificationPolicyState:
     @pulumi.getter(name="webhooksIntegrations")
     def webhooks_integrations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]]:
         """
-        The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
+        or PagerDuty mechanisms is required.
         """
         return pulumi.get(self, "webhooks_integrations")
 
@@ -352,78 +392,33 @@ class NotificationPolicy(pulumi.CustomResource):
                  webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyWebhooksIntegrationArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a resource, that manages a notification policy for Cloudflare's products. The delivery
-        mechanisms supported are email, webhooks, and PagerDuty.
-
-        ## Example Usage
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.NotificationPolicy("example",
-            account_id="c4a7362d577a6c3019a474fd6f485821",
-            alert_type="universal_ssl_event_type",
-            description="Notification policy to alert when my SSL certificates are modified",
-            email_integrations=[cloudflare.NotificationPolicyEmailIntegrationArgs(
-                id="myemail@example.com",
-            )],
-            enabled=True,
-            name="Policy for SSL notification events",
-            pagerduty_integrations=[cloudflare.NotificationPolicyPagerdutyIntegrationArgs(
-                id="850129d136459401860572c5d964d27k",
-            )],
-            webhooks_integrations=[cloudflare.NotificationPolicyWebhooksIntegrationArgs(
-                id="1860572c5d964d27aa0f379d13645940",
-            )])
-        ```
-        ### With Filters
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.NotificationPolicy("example",
-            account_id="c4a7362d577a6c3019a474fd6f485821",
-            alert_type="health_check_status_notification",
-            description="Notification policy to alert on unhealthy Healthcheck status",
-            email_integrations=[cloudflare.NotificationPolicyEmailIntegrationArgs(
-                id="myemail@example.com",
-            )],
-            enabled=True,
-            filters=cloudflare.NotificationPolicyFiltersArgs(
-                health_check_ids=["699d98642c564d2e855e9661899b7252"],
-                statuses=["Unhealthy"],
-            ),
-            name="Policy for Healthcheck notification",
-            pagerduty_integrations=[cloudflare.NotificationPolicyPagerdutyIntegrationArgs(
-                id="850129d136459401860572c5d964d27k",
-            )],
-            webhooks_integrations=[cloudflare.NotificationPolicyWebhooksIntegrationArgs(
-                id="1860572c5d964d27aa0f379d13645940",
-            )])
-        ```
+        Provides a resource, that manages a notification policy for Cloudflare's products. The delivery mechanisms supported are email, webhooks, and PagerDuty.
 
         ## Import
 
-        An existing notification policy can be imported using the account ID and the policy ID
-
         ```sh
-         $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821
+         $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account for which the notification policy has to be created.
-        :param pulumi.Input[str] alert_type: The event type that will trigger the dispatch of a notification (refer to the nested schema).
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] alert_type: The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
+               [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
+               values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
+               `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
+               `weekly_account_overview`
         :param pulumi.Input[str] description: Description of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyEmailIntegrationArgs']]]] email_integrations: The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
-        :param pulumi.Input[bool] enabled: State of the pool to alert on. Example: `"true"`, `"false"`.
-        :param pulumi.Input[pulumi.InputType['NotificationPolicyFiltersArgs']] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyEmailIntegrationArgs']]]] email_integrations: The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
+               required.
+        :param pulumi.Input[bool] enabled: The status of the notification policy.
+        :param pulumi.Input[pulumi.InputType['NotificationPolicyFiltersArgs']] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
+               of filter and the values to match against (refer to the alert type block for available fields).
         :param pulumi.Input[str] name: The name of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyPagerdutyIntegrationArgs']]]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyWebhooksIntegrationArgs']]]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyPagerdutyIntegrationArgs']]]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
+               or PagerDuty mechanisms is required.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyWebhooksIntegrationArgs']]]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
+               or PagerDuty mechanisms is required.
         """
         ...
     @overload
@@ -432,65 +427,12 @@ class NotificationPolicy(pulumi.CustomResource):
                  args: NotificationPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource, that manages a notification policy for Cloudflare's products. The delivery
-        mechanisms supported are email, webhooks, and PagerDuty.
-
-        ## Example Usage
-        ### Basic Example
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.NotificationPolicy("example",
-            account_id="c4a7362d577a6c3019a474fd6f485821",
-            alert_type="universal_ssl_event_type",
-            description="Notification policy to alert when my SSL certificates are modified",
-            email_integrations=[cloudflare.NotificationPolicyEmailIntegrationArgs(
-                id="myemail@example.com",
-            )],
-            enabled=True,
-            name="Policy for SSL notification events",
-            pagerduty_integrations=[cloudflare.NotificationPolicyPagerdutyIntegrationArgs(
-                id="850129d136459401860572c5d964d27k",
-            )],
-            webhooks_integrations=[cloudflare.NotificationPolicyWebhooksIntegrationArgs(
-                id="1860572c5d964d27aa0f379d13645940",
-            )])
-        ```
-        ### With Filters
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.NotificationPolicy("example",
-            account_id="c4a7362d577a6c3019a474fd6f485821",
-            alert_type="health_check_status_notification",
-            description="Notification policy to alert on unhealthy Healthcheck status",
-            email_integrations=[cloudflare.NotificationPolicyEmailIntegrationArgs(
-                id="myemail@example.com",
-            )],
-            enabled=True,
-            filters=cloudflare.NotificationPolicyFiltersArgs(
-                health_check_ids=["699d98642c564d2e855e9661899b7252"],
-                statuses=["Unhealthy"],
-            ),
-            name="Policy for Healthcheck notification",
-            pagerduty_integrations=[cloudflare.NotificationPolicyPagerdutyIntegrationArgs(
-                id="850129d136459401860572c5d964d27k",
-            )],
-            webhooks_integrations=[cloudflare.NotificationPolicyWebhooksIntegrationArgs(
-                id="1860572c5d964d27aa0f379d13645940",
-            )])
-        ```
+        Provides a resource, that manages a notification policy for Cloudflare's products. The delivery mechanisms supported are email, webhooks, and PagerDuty.
 
         ## Import
 
-        An existing notification policy can be imported using the account ID and the policy ID
-
         ```sh
-         $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example 72c379d136459405d964d27aa0f18605/c4a7362d577a6c3019a474fd6f485821
+         $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -576,15 +518,25 @@ class NotificationPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account for which the notification policy has to be created.
-        :param pulumi.Input[str] alert_type: The event type that will trigger the dispatch of a notification (refer to the nested schema).
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] alert_type: The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
+               [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
+               values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
+               `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
+               `weekly_account_overview`
+        :param pulumi.Input[str] created: When the notification policy was created.
         :param pulumi.Input[str] description: Description of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyEmailIntegrationArgs']]]] email_integrations: The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
-        :param pulumi.Input[bool] enabled: State of the pool to alert on. Example: `"true"`, `"false"`.
-        :param pulumi.Input[pulumi.InputType['NotificationPolicyFiltersArgs']] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyEmailIntegrationArgs']]]] email_integrations: The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
+               required.
+        :param pulumi.Input[bool] enabled: The status of the notification policy.
+        :param pulumi.Input[pulumi.InputType['NotificationPolicyFiltersArgs']] filters: An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
+               of filter and the values to match against (refer to the alert type block for available fields).
+        :param pulumi.Input[str] modified: When the notification policy was last modified.
         :param pulumi.Input[str] name: The name of the notification policy.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyPagerdutyIntegrationArgs']]]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyWebhooksIntegrationArgs']]]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyPagerdutyIntegrationArgs']]]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
+               or PagerDuty mechanisms is required.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NotificationPolicyWebhooksIntegrationArgs']]]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
+               or PagerDuty mechanisms is required.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -607,7 +559,7 @@ class NotificationPolicy(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The ID of the account for which the notification policy has to be created.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -615,13 +567,20 @@ class NotificationPolicy(pulumi.CustomResource):
     @pulumi.getter(name="alertType")
     def alert_type(self) -> pulumi.Output[str]:
         """
-        The event type that will trigger the dispatch of a notification (refer to the nested schema).
+        The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of
+        [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/) Available
+        values: `billing_usage_alert`, `health_check_status_notification`, `g6_pool_toggle_alert`, `real_origin_monitoring`,
+        `universal_ssl_event_type`, `bgp_hijack_notification`, `http_alert_origin_error`, `workers_alert`,
+        `weekly_account_overview`
         """
         return pulumi.get(self, "alert_type")
 
     @property
     @pulumi.getter
     def created(self) -> pulumi.Output[str]:
+        """
+        When the notification policy was created.
+        """
         return pulumi.get(self, "created")
 
     @property
@@ -636,7 +595,8 @@ class NotificationPolicy(pulumi.CustomResource):
     @pulumi.getter(name="emailIntegrations")
     def email_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.NotificationPolicyEmailIntegration']]]:
         """
-        The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is
+        required.
         """
         return pulumi.get(self, "email_integrations")
 
@@ -644,7 +604,7 @@ class NotificationPolicy(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[bool]:
         """
-        State of the pool to alert on. Example: `"true"`, `"false"`.
+        The status of the notification policy.
         """
         return pulumi.get(self, "enabled")
 
@@ -652,13 +612,17 @@ class NotificationPolicy(pulumi.CustomResource):
     @pulumi.getter
     def filters(self) -> pulumi.Output[Optional['outputs.NotificationPolicyFilters']]:
         """
-        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
+        An optional nested block of filters that applies to the selected `alert_type`. A key-value map that specifies the type
+        of filter and the values to match against (refer to the alert type block for available fields).
         """
         return pulumi.get(self, "filters")
 
     @property
     @pulumi.getter
     def modified(self) -> pulumi.Output[str]:
+        """
+        When the notification policy was last modified.
+        """
         return pulumi.get(self, "modified")
 
     @property
@@ -673,7 +637,8 @@ class NotificationPolicy(pulumi.CustomResource):
     @pulumi.getter(name="pagerdutyIntegrations")
     def pagerduty_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.NotificationPolicyPagerdutyIntegration']]]:
         """
-        The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks,
+        or PagerDuty mechanisms is required.
         """
         return pulumi.get(self, "pagerduty_integrations")
 
@@ -681,7 +646,8 @@ class NotificationPolicy(pulumi.CustomResource):
     @pulumi.getter(name="webhooksIntegrations")
     def webhooks_integrations(self) -> pulumi.Output[Optional[Sequence['outputs.NotificationPolicyWebhooksIntegration']]]:
         """
-        The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+        The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks,
+        or PagerDuty mechanisms is required.
         """
         return pulumi.get(self, "webhooks_integrations")
 

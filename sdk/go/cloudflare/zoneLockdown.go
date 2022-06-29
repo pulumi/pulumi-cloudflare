@@ -55,11 +55,11 @@ import (
 //  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown cloudflare_zone_lockdown d41d8cd98f00b204e9800998ecf8427e/37cb64fe4a90adb5ca3afc04f2c82a2f
 // ```
 //
-//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
+//  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `37cb64fe4a90adb5ca3afc04f2c82a2f` - zone lockdown ID as returned by [API](https://api.cloudflare.com/#zone-lockdown-list-lockdown-rules)
 type ZoneLockdown struct {
 	pulumi.CustomResourceState
 
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
 	Configurations ZoneLockdownConfigurationArrayOutput `pulumi:"configurations"`
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -110,7 +110,7 @@ func GetZoneLockdown(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneLockdown resources.
 type zoneLockdownState struct {
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
 	Configurations []ZoneLockdownConfiguration `pulumi:"configurations"`
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description *string `pulumi:"description"`
@@ -124,7 +124,7 @@ type zoneLockdownState struct {
 }
 
 type ZoneLockdownState struct {
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
 	Configurations ZoneLockdownConfigurationArrayInput
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description pulumi.StringPtrInput
@@ -142,7 +142,7 @@ func (ZoneLockdownState) ElementType() reflect.Type {
 }
 
 type zoneLockdownArgs struct {
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
 	Configurations []ZoneLockdownConfiguration `pulumi:"configurations"`
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description *string `pulumi:"description"`
@@ -157,7 +157,7 @@ type zoneLockdownArgs struct {
 
 // The set of arguments for constructing a ZoneLockdown resource.
 type ZoneLockdownArgs struct {
-	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+	// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
 	Configurations ZoneLockdownConfigurationArrayInput
 	// A description about the lockdown entry. Typically used as a reminder or explanation for the lockdown.
 	Description pulumi.StringPtrInput
@@ -257,7 +257,7 @@ func (o ZoneLockdownOutput) ToZoneLockdownOutputWithContext(ctx context.Context)
 	return o
 }
 
-// A list of IP addresses or IP ranges to match the request against specified in target, value pairs.  It's a complex value. See description below.   The order of the configuration entries is unimportant.
+// A list of IP addresses or IP ranges to match the request against specified in target, value pairs. It's a complex value. See description below. The order of the configuration entries is unimportant.
 func (o ZoneLockdownOutput) Configurations() ZoneLockdownConfigurationArrayOutput {
 	return o.ApplyT(func(v *ZoneLockdown) ZoneLockdownConfigurationArrayOutput { return v.Configurations }).(ZoneLockdownConfigurationArrayOutput)
 }

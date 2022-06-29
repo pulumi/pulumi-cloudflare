@@ -10,88 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// ## Example Usage
-    /// ### Manual Inspection Of S3 Bucket)
-    /// 
-    /// - Create `cloudflare.LogPushOwnershipChallenge` resource
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var ownershipChallenge = new Cloudflare.LogPushOwnershipChallenge("ownershipChallenge", new Cloudflare.LogPushOwnershipChallengeArgs
-    ///         {
-    ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// - Check S3 bucket for your ownership challenge filename and grab the contents.
-    /// - Create the `cloudflare.LogpushJob` substituting in your manual `ownership_challenge`.
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleJob = new Cloudflare.LogpushJob("exampleJob", new Cloudflare.LogpushJobArgs
-    ///         {
-    ///             Dataset = "http_requests",
-    ///             DestinationConf = "s3://my-bucket-path?region=us-west-2",
-    ///             Enabled = true,
-    ///             LogpullOptions = "fields=RayID,ClientIP,EdgeStartTimestamp&amp;timestamps=rfc3339",
-    ///             Name = "My-logpush-job",
-    ///             OwnershipChallenge = "0000000000000",
-    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Logpush jobs can be imported using a composite ID formed of* `identifierType` - Either `account` or `zone`. * `identifierID` - The ID of the account or zone. * `jobID` - The Logpush Job ID to import. Import an account-scoped job using `account/:accountID/:jobID`
+    /// # Import an account-scoped job.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/1d5fdc9e88c8a8c4518b068cd94331fe/54321
+    ///  $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/&lt;account_id&gt;/&lt;job_id&gt;
     /// ```
     /// 
-    ///  Import a zone-scoped job using `zone/:zoneID/:jobID`
+    /// # Import a zone-scoped job.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/d41d8cd98f00b204e9800998ecf8427e/54321
+    ///  $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/&lt;zone_id&gt;/&lt;job_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/logpushJob:LogpushJob")]
     public partial class LogpushJob : Pulumi.CustomResource
     {
         /// <summary>
-        /// The account ID where the logpush job should be created. Either `account_id` or `zone_id` are required.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Which type of dataset resource to use. Available values are
-        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`, `"network_analytics_logs"`
-        /// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
+        /// supported by the destination may be included. See [Logpush destination
+        /// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
+        /// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
+        /// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
         /// </summary>
         [Output("dataset")]
         public Output<string> Dataset { get; private set; } = null!;
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
+        /// supported by the destination may be included. See [Logpush destination
+        /// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         /// </summary>
         [Output("destinationConf")]
         public Output<string> DestinationConf { get; private set; } = null!;
@@ -103,26 +58,49 @@ namespace Pulumi.Cloudflare
         public Output<bool?> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        /// Use filters to select the events to include and/or remove from your logs. For more information, refer to
+        /// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+        /// </summary>
+        [Output("filter")]
+        public Output<string?> Filter { get; private set; } = null!;
+
+        /// <summary>
+        /// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
+        /// often with larger files. Available values: `high`, `low`
+        /// </summary>
+        [Output("frequency")]
+        public Output<string?> Frequency { get; private set; } = null!;
+
+        /// <summary>
+        /// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        /// </summary>
+        [Output("kind")]
+        public Output<string?> Kind { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
+        /// options
+        /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         /// </summary>
         [Output("logpullOptions")]
         public Output<string?> LogpullOptions { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        /// The name of the logpush job to create.
         /// </summary>
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
         /// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-        /// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        /// Microsoft Azure or Sumo Logic. See [Developer
+        /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         /// </summary>
         [Output("ownershipChallenge")]
         public Output<string?> OwnershipChallenge { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID where the logpush job should be created. Either `account_id` or `zone_id` are required.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string?> ZoneId { get; private set; } = null!;
@@ -174,21 +152,25 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushJobArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID where the logpush job should be created. Either `account_id` or `zone_id` are required.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Which type of dataset resource to use. Available values are
-        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`, `"network_analytics_logs"`
-        /// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
+        /// supported by the destination may be included. See [Logpush destination
+        /// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
+        /// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
+        /// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
         /// </summary>
         [Input("dataset", required: true)]
         public Input<string> Dataset { get; set; } = null!;
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
+        /// supported by the destination may be included. See [Logpush destination
+        /// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         /// </summary>
         [Input("destinationConf", required: true)]
         public Input<string> DestinationConf { get; set; } = null!;
@@ -200,26 +182,49 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        /// Use filters to select the events to include and/or remove from your logs. For more information, refer to
+        /// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
+        /// often with larger files. Available values: `high`, `low`
+        /// </summary>
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
+
+        /// <summary>
+        /// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
+        /// <summary>
+        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
+        /// options
+        /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         /// </summary>
         [Input("logpullOptions")]
         public Input<string>? LogpullOptions { get; set; }
 
         /// <summary>
-        /// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        /// The name of the logpush job to create.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-        /// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        /// Microsoft Azure or Sumo Logic. See [Developer
+        /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         /// </summary>
         [Input("ownershipChallenge")]
         public Input<string>? OwnershipChallenge { get; set; }
 
         /// <summary>
-        /// The zone ID where the logpush job should be created. Either `account_id` or `zone_id` are required.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -232,21 +237,25 @@ namespace Pulumi.Cloudflare
     public sealed class LogpushJobState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account ID where the logpush job should be created. Either `account_id` or `zone_id` are required.
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Which type of dataset resource to use. Available values are
-        /// - [account-scoped](https://developers.cloudflare.com/logs/reference/log-fields/account): `"audit_logs"`, `"gateway_dns"`, `"gateway_http"`, `"gateway_network"`, `"network_analytics_logs"`
-        /// - [zone-scoped](https://developers.cloudflare.com/logs/reference/log-fields/zone): `"firewall_events"`, `"http_requests"`, `"spectrum_events"`, `"nel_reports", "dns_logs"`
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
+        /// supported by the destination may be included. See [Logpush destination
+        /// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination). Available
+        /// values: `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`,
+        /// `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`
         /// </summary>
         [Input("dataset")]
         public Input<string>? Dataset { get; set; }
 
         /// <summary>
-        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
+        /// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters
+        /// supported by the destination may be included. See [Logpush destination
+        /// documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
         /// </summary>
         [Input("destinationConf")]
         public Input<string>? DestinationConf { get; set; }
@@ -258,26 +267,49 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull options documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
+        /// Use filters to select the events to include and/or remove from your logs. For more information, refer to
+        /// [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
+        /// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
+        /// often with larger files. Available values: `high`, `low`
+        /// </summary>
+        [Input("frequency")]
+        public Input<string>? Frequency { get; set; }
+
+        /// <summary>
+        /// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
+        /// <summary>
+        /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
+        /// options
+        /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
         /// </summary>
         [Input("logpullOptions")]
         public Input<string>? LogpullOptions { get; set; }
 
         /// <summary>
-        /// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        /// The name of the logpush job to create.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
-        /// Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
+        /// Microsoft Azure or Sumo Logic. See [Developer
+        /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         /// </summary>
         [Input("ownershipChallenge")]
         public Input<string>? OwnershipChallenge { get; set; }
 
         /// <summary>
-        /// The zone ID where the logpush job should be created. Either `account_id` or `zone_id` are required.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

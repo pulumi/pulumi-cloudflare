@@ -23,15 +23,8 @@ class AccessGroupArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]] includes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[str] name: Friendly name of the Access Group.
-        :param pulumi.Input[str] account_id: The ID of the account the group is associated with. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]] excludes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]] requires: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[str] zone_id: The ID of the zone the group is associated with. Conflicts with `account_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         pulumi.set(__self__, "includes", includes)
         pulumi.set(__self__, "name", name)
@@ -47,10 +40,6 @@ class AccessGroupArgs:
     @property
     @pulumi.getter
     def includes(self) -> pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "includes")
 
     @includes.setter
@@ -60,9 +49,6 @@ class AccessGroupArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        Friendly name of the Access Group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -73,7 +59,7 @@ class AccessGroupArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account the group is associated with. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -84,10 +70,6 @@ class AccessGroupArgs:
     @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
@@ -97,10 +79,6 @@ class AccessGroupArgs:
     @property
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "requires")
 
     @requires.setter
@@ -111,7 +89,7 @@ class AccessGroupArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the zone the group is associated with. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -131,15 +109,8 @@ class _AccessGroupState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
-        :param pulumi.Input[str] account_id: The ID of the account the group is associated with. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]] excludes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]] includes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[str] name: Friendly name of the Access Group.
-        :param pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]] requires: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[str] zone_id: The ID of the zone the group is associated with. Conflicts with `account_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -158,7 +129,7 @@ class _AccessGroupState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the account the group is associated with. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -169,10 +140,6 @@ class _AccessGroupState:
     @property
     @pulumi.getter
     def excludes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "excludes")
 
     @excludes.setter
@@ -182,10 +149,6 @@ class _AccessGroupState:
     @property
     @pulumi.getter
     def includes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "includes")
 
     @includes.setter
@@ -195,9 +158,6 @@ class _AccessGroupState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Friendly name of the Access Group.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -207,10 +167,6 @@ class _AccessGroupState:
     @property
     @pulumi.getter
     def requires(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "requires")
 
     @requires.setter
@@ -221,7 +177,7 @@ class _AccessGroupState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the zone the group is associated with. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -243,9 +199,13 @@ class AccessGroup(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare Access Group resource. Access Groups are used
-        in conjunction with Access Policies to restrict access to a
-        particular resource based on group membership.
+        Provides a Cloudflare Access Group resource. Access Groups are used in conjunction with Access Policies to restrict access to a particular resource based on group membership.
+
+        > It's required that an `account_id` or `zone_id` is provided and in
+        most cases using either is fine. However, if you're using a scoped
+        access token, you must provide the argument that matches the token's
+        scope. For example, an access token that is scoped to the "example.com"
+        zone needs to use the `zone_id` argument.
 
         ## Example Usage
 
@@ -272,61 +232,17 @@ class AccessGroup(pulumi.CustomResource):
                 "ips": [var["office_ip"]],
             })
         ```
-        ## Conditions
-
-        `require`, `exclude` and `include` arguments share the available
-        conditions which can be applied. The conditions are:
-
-        * `ip` - (Optional) A list of IP addresses or ranges. Example:
-        `ip = ["1.2.3.4", "10.0.0.0/2"]`
-        * `email` - (Optional) A list of email addresses. Example:
-        `email = ["test@example.com"]`
-        * `email_domain` - (Optional) A list of email domains. Example:
-        `email_domain = ["example.com"]`
-        * `service_token` - (Optional) A list of service token ids. Example:
-        `service_token = [cloudflare_access_service_token.demo.id]`
-        * `any_valid_service_token` - (Optional) Boolean indicating if allow
-        all tokens to be granted. Example: `any_valid_service_token = true`
-        * `group` - (Optional) A list of access group ids. Example:
-        `group = [cloudflare_access_group.demo.id]`
-        * `everyone` - (Optional) Boolean indicating permitting access for all
-        requests. Example: `everyone = true`
-        * `certificate` - (Optional) Whether to use mTLS certificate authentication.
-        * `common_name` - (Optional) Use a certificate common name to authenticate with.
-        * `auth_method` - (Optional) A string identifying the authentication
-        method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
-        Custom values are also supported. Example: `auth_method = ["swk"]`
-        * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
-        * `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`
-        * `device_posture` - (Optional) A list of device_posture integration_uids. Example: `device_posture = [cloudflare_device_posture_rule.my_posture_rule.id]`
-        * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
-        * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
-        * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
-        * `okta` - (Optional) Use Okta as the `include` condition. Example:
-        * `saml` - (Optional) Use an external SAML setup as the `include` condition.
-        Example:
 
         ## Import
 
-        Access Groups can be imported using a composite ID formed of account ID and group ID.
-
         ```sh
-         $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d
+         $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
         ```
-
-         where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account the group is associated with. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]] excludes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]] includes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[str] name: Friendly name of the Access Group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]] requires: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[str] zone_id: The ID of the zone the group is associated with. Conflicts with `account_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
     @overload
@@ -335,9 +251,13 @@ class AccessGroup(pulumi.CustomResource):
                  args: AccessGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare Access Group resource. Access Groups are used
-        in conjunction with Access Policies to restrict access to a
-        particular resource based on group membership.
+        Provides a Cloudflare Access Group resource. Access Groups are used in conjunction with Access Policies to restrict access to a particular resource based on group membership.
+
+        > It's required that an `account_id` or `zone_id` is provided and in
+        most cases using either is fine. However, if you're using a scoped
+        access token, you must provide the argument that matches the token's
+        scope. For example, an access token that is scoped to the "example.com"
+        zone needs to use the `zone_id` argument.
 
         ## Example Usage
 
@@ -364,49 +284,12 @@ class AccessGroup(pulumi.CustomResource):
                 "ips": [var["office_ip"]],
             })
         ```
-        ## Conditions
-
-        `require`, `exclude` and `include` arguments share the available
-        conditions which can be applied. The conditions are:
-
-        * `ip` - (Optional) A list of IP addresses or ranges. Example:
-        `ip = ["1.2.3.4", "10.0.0.0/2"]`
-        * `email` - (Optional) A list of email addresses. Example:
-        `email = ["test@example.com"]`
-        * `email_domain` - (Optional) A list of email domains. Example:
-        `email_domain = ["example.com"]`
-        * `service_token` - (Optional) A list of service token ids. Example:
-        `service_token = [cloudflare_access_service_token.demo.id]`
-        * `any_valid_service_token` - (Optional) Boolean indicating if allow
-        all tokens to be granted. Example: `any_valid_service_token = true`
-        * `group` - (Optional) A list of access group ids. Example:
-        `group = [cloudflare_access_group.demo.id]`
-        * `everyone` - (Optional) Boolean indicating permitting access for all
-        requests. Example: `everyone = true`
-        * `certificate` - (Optional) Whether to use mTLS certificate authentication.
-        * `common_name` - (Optional) Use a certificate common name to authenticate with.
-        * `auth_method` - (Optional) A string identifying the authentication
-        method code. The list of codes are listed here: https://tools.ietf.org/html/rfc8176#section-2.
-        Custom values are also supported. Example: `auth_method = ["swk"]`
-        * `geo` - (Optional) A list of country codes. Example: `geo = ["US"]`
-        * `login_method` - (Optional) A list of identity provider ids. Example: `login_method = [cloudflare_access_identity_provider.my_idp.id]`
-        * `device_posture` - (Optional) A list of device_posture integration_uids. Example: `device_posture = [cloudflare_device_posture_rule.my_posture_rule.id]`
-        * `gsuite` - (Optional) Use GSuite as the authentication mechanism. Example:
-        * `github` - (Optional) Use a GitHub organization as the `include` condition. Example:
-        * `azure` - (Optional) Use Azure AD as the `include` condition. Example:
-        * `okta` - (Optional) Use Okta as the `include` condition. Example:
-        * `saml` - (Optional) Use an external SAML setup as the `include` condition.
-        Example:
 
         ## Import
 
-        Access Groups can be imported using a composite ID formed of account ID and group ID.
-
         ```sh
-         $ pulumi import cloudflare:index/accessGroup:AccessGroup staging 975ecf5a45e3bcb680dba0722a420ad9/67ea780ce4982c1cfbe6b7293afc765d
+         $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
         ```
-
-         where * `975ecf5a45e3bcb680dba0722a420ad9` - Account ID * `67ea780ce4982c1cfbe6b7293afc765d` - Access Group ID
 
         :param str resource_name: The name of the resource.
         :param AccessGroupArgs args: The arguments to use to populate this resource's properties.
@@ -474,15 +357,8 @@ class AccessGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The ID of the account the group is associated with. Conflicts with `zone_id`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupExcludeArgs']]]] excludes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupIncludeArgs']]]] includes: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[str] name: Friendly name of the Access Group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessGroupRequireArgs']]]] requires: A series of access conditions, see below for
-               full list.
-        :param pulumi.Input[str] zone_id: The ID of the zone the group is associated with. Conflicts with `account_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -500,50 +376,35 @@ class AccessGroup(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the account the group is associated with. Conflicts with `zone_id`.
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter
     def excludes(self) -> pulumi.Output[Optional[Sequence['outputs.AccessGroupExclude']]]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "excludes")
 
     @property
     @pulumi.getter
     def includes(self) -> pulumi.Output[Sequence['outputs.AccessGroupInclude']]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "includes")
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        Friendly name of the Access Group.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def requires(self) -> pulumi.Output[Optional[Sequence['outputs.AccessGroupRequire']]]:
-        """
-        A series of access conditions, see below for
-        full list.
-        """
         return pulumi.get(self, "requires")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The ID of the zone the group is associated with. Conflicts with `account_id`.
+        The zone identifier to target for the resource.
         """
         return pulumi.get(self, "zone_id")
 

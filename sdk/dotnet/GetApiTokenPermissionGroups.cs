@@ -11,32 +11,6 @@ namespace Pulumi.Cloudflare
 {
     public static class GetApiTokenPermissionGroups
     {
-        /// <summary>
-        /// Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions). Commonly used as references within [`cloudflare.ApiToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var test = Output.Create(Cloudflare.GetApiTokenPermissionGroups.InvokeAsync());
-        ///         this.DnsReadPermissionId = test.Apply(test =&gt; test.Permissions?.DNS_Read);
-        ///     }
-        /// 
-        ///     [Output("dnsReadPermissionId")]
-        ///     public Output&lt;string&gt; DnsReadPermissionId { get; set; }
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetApiTokenPermissionGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApiTokenPermissionGroupsResult>("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", InvokeArgs.Empty, options.WithDefaults());
     }
@@ -49,10 +23,6 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A map of permission groups where keys are human-readable permission names
-        /// and values are permission IDs.
-        /// </summary>
         public readonly ImmutableDictionary<string, object> Permissions;
 
         [OutputConstructor]

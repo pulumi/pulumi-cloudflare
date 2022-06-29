@@ -11,89 +11,9 @@ namespace Pulumi.Cloudflare
 {
     public static class GetAccessIdentityProvider
     {
-        /// <summary>
-        /// Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var mainAccessIdentityProvider = Output.Create(Cloudflare.GetAccessIdentityProvider.InvokeAsync(new Cloudflare.GetAccessIdentityProviderArgs
-        ///         {
-        ///             Name = "Google SSO",
-        ///             AccountId = "example-account-id",
-        ///         }));
-        ///         var mainAccessApplication = new Cloudflare.AccessApplication("mainAccessApplication", new Cloudflare.AccessApplicationArgs
-        ///         {
-        ///             ZoneId = "example.com",
-        ///             Name = "name",
-        ///             Domain = "name.example.com",
-        ///             Type = "self_hosted",
-        ///             SessionDuration = "24h",
-        ///             AllowedIdps = 
-        ///             {
-        ///                 mainAccessIdentityProvider.Apply(mainAccessIdentityProvider =&gt; mainAccessIdentityProvider.Id),
-        ///             },
-        ///             AutoRedirectToIdentity = true,
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAccessIdentityProviderResult> InvokeAsync(GetAccessIdentityProviderArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to lookup a single [Access Identity Provider][access_identity_provider_guide] by name.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var mainAccessIdentityProvider = Output.Create(Cloudflare.GetAccessIdentityProvider.InvokeAsync(new Cloudflare.GetAccessIdentityProviderArgs
-        ///         {
-        ///             Name = "Google SSO",
-        ///             AccountId = "example-account-id",
-        ///         }));
-        ///         var mainAccessApplication = new Cloudflare.AccessApplication("mainAccessApplication", new Cloudflare.AccessApplicationArgs
-        ///         {
-        ///             ZoneId = "example.com",
-        ///             Name = "name",
-        ///             Domain = "name.example.com",
-        ///             Type = "self_hosted",
-        ///             SessionDuration = "24h",
-        ///             AllowedIdps = 
-        ///             {
-        ///                 mainAccessIdentityProvider.Apply(mainAccessIdentityProvider =&gt; mainAccessIdentityProvider.Id),
-        ///             },
-        ///             AutoRedirectToIdentity = true,
-        ///         });
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetAccessIdentityProviderResult> Invoke(GetAccessIdentityProviderInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderInvokeArgs(), options.WithDefaults());
     }
@@ -101,21 +21,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAccessIdentityProviderArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
-        /// </summary>
         [Input("accountId")]
         public string? AccountId { get; set; }
 
-        /// <summary>
-        /// Access Identity Provider name to search for.
-        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
-        /// <summary>
-        /// The Zone's ID. Conflicts with `account_id`.
-        /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
 
@@ -126,21 +37,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAccessIdentityProviderInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The account for which to look for an Access Identity Provider. Conflicts with `zone_id`.
-        /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
-        /// <summary>
-        /// Access Identity Provider name to search for.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The Zone's ID. Conflicts with `account_id`.
-        /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
@@ -158,13 +60,7 @@ namespace Pulumi.Cloudflare
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// Access Identity Provider Name
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// Access Identity Provider Type
-        /// </summary>
         public readonly string Type;
         public readonly string? ZoneId;
 

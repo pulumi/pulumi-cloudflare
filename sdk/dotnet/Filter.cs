@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Filter expressions that can be referenced across multiple features, e.g. Firewall Rule. The expression format is similar to [Wireshark Display Filter](https://www.wireshark.org/docs/man-pages/wireshark-filter.html).
+    /// Filter expressions that can be referenced across multiple features, e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) for more details and available fields and operators.
     /// 
     /// ## Example Usage
     /// 
@@ -35,13 +35,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Filter can be imported using a composite ID formed of zone ID and filter ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+    ///  $ pulumi import cloudflare:index/filter:Filter example &lt;zone_id&gt;/&lt;filter_id&gt;
     /// ```
-    /// 
-    ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/filter:Filter")]
     public partial class Filter : Pulumi.CustomResource
@@ -59,7 +55,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Expression { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this filter is currently paused. Boolean value.
+        /// Whether this filter is currently paused.
         /// </summary>
         [Output("paused")]
         public Output<bool?> Paused { get; private set; } = null!;
@@ -71,7 +67,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Ref { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the Filter should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -135,7 +131,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Expression { get; set; } = null!;
 
         /// <summary>
-        /// Whether this filter is currently paused. Boolean value.
+        /// Whether this filter is currently paused.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
@@ -147,7 +143,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Ref { get; set; }
 
         /// <summary>
-        /// The DNS zone to which the Filter should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -172,7 +168,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Whether this filter is currently paused. Boolean value.
+        /// Whether this filter is currently paused.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
@@ -184,7 +180,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Ref { get; set; }
 
         /// <summary>
-        /// The DNS zone to which the Filter should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

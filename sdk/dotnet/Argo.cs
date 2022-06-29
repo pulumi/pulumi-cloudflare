@@ -35,31 +35,27 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Argo settings can be imported the zone ID.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/argo:Argo example d41d8cd98f00b204e9800998ecf8427e
+    ///  $ pulumi import cloudflare:index/argo:Argo example &lt;zone_id&gt;
     /// ```
-    /// 
-    ///  where `d41d8cd98f00b204e9800998ecf8427e` is the zone ID.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/argo:Argo")]
     public partial class Argo : Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether smart routing is enabled. Valid values: `on` or `off`.
+        /// Whether smart routing is enabled. Available values: `on`, `off`
         /// </summary>
         [Output("smartRouting")]
         public Output<string?> SmartRouting { get; private set; } = null!;
 
         /// <summary>
-        /// Whether tiered caching is enabled. Valid values: `on` or `off`.
+        /// Whether tiered caching is enabled. Available values: `on`, `off`
         /// </summary>
         [Output("tieredCaching")]
         public Output<string?> TieredCaching { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone ID that you wish to manage Argo on.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -111,19 +107,19 @@ namespace Pulumi.Cloudflare
     public sealed class ArgoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether smart routing is enabled. Valid values: `on` or `off`.
+        /// Whether smart routing is enabled. Available values: `on`, `off`
         /// </summary>
         [Input("smartRouting")]
         public Input<string>? SmartRouting { get; set; }
 
         /// <summary>
-        /// Whether tiered caching is enabled. Valid values: `on` or `off`.
+        /// Whether tiered caching is enabled. Available values: `on`, `off`
         /// </summary>
         [Input("tieredCaching")]
         public Input<string>? TieredCaching { get; set; }
 
         /// <summary>
-        /// The DNS zone ID that you wish to manage Argo on.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -136,19 +132,19 @@ namespace Pulumi.Cloudflare
     public sealed class ArgoState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether smart routing is enabled. Valid values: `on` or `off`.
+        /// Whether smart routing is enabled. Available values: `on`, `off`
         /// </summary>
         [Input("smartRouting")]
         public Input<string>? SmartRouting { get; set; }
 
         /// <summary>
-        /// Whether tiered caching is enabled. Valid values: `on` or `off`.
+        /// Whether tiered caching is enabled. Available values: `on`, `off`
         /// </summary>
         [Input("tieredCaching")]
         public Input<string>? TieredCaching { get; set; }
 
         /// <summary>
-        /// The DNS zone ID that you wish to manage Argo on.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

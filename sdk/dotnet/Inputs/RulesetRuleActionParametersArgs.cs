@@ -12,48 +12,52 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersArgs : Pulumi.ResourceArgs
     {
+        [Input("browserTtl")]
+        public Input<Inputs.RulesetRuleActionParametersBrowserTtlArgs>? BrowserTtl { get; set; }
+
+        [Input("bypassCache")]
+        public Input<bool>? BypassCache { get; set; }
+
+        [Input("cacheKey")]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyArgs>? CacheKey { get; set; }
+
+        [Input("cookieFields")]
+        private InputList<string>? _cookieFields;
+        public InputList<string> CookieFields
+        {
+            get => _cookieFields ?? (_cookieFields = new InputList<string>());
+            set => _cookieFields = value;
+        }
+
+        [Input("edgeTtl")]
+        public Input<Inputs.RulesetRuleActionParametersEdgeTtlArgs>? EdgeTtl { get; set; }
+
         [Input("headers")]
         private InputList<Inputs.RulesetRuleActionParametersHeaderArgs>? _headers;
-
-        /// <summary>
-        /// List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
-        /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersHeaderArgs> Headers
         {
             get => _headers ?? (_headers = new InputList<Inputs.RulesetRuleActionParametersHeaderArgs>());
             set => _headers = value;
         }
 
-        /// <summary>
-        /// Host Header that request origin receives.
-        /// </summary>
         [Input("hostHeader")]
         public Input<string>? HostHeader { get; set; }
 
-        /// <summary>
-        /// Rule ID to apply the override to.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         [Input("increment")]
         public Input<int>? Increment { get; set; }
 
-        /// <summary>
-        /// List of properties to configure WAF payload logging (refer to the nested schema).
-        /// </summary>
         [Input("matchedData")]
         public Input<Inputs.RulesetRuleActionParametersMatchedDataArgs>? MatchedData { get; set; }
 
-        /// <summary>
-        /// List of properties to change request origin (refer to the nested schema).
-        /// </summary>
         [Input("origin")]
         public Input<Inputs.RulesetRuleActionParametersOriginArgs>? Origin { get; set; }
 
-        /// <summary>
-        /// List of override configurations to apply to the ruleset (refer to the nested schema).
-        /// </summary>
+        [Input("originErrorPagePassthru")]
+        public Input<bool>? OriginErrorPagePassthru { get; set; }
+
         [Input("overrides")]
         public Input<Inputs.RulesetRuleActionParametersOverridesArgs>? Overrides { get; set; }
 
@@ -67,22 +71,33 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("products")]
         private InputList<string>? _products;
-
-        /// <summary>
-        /// Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
-        /// </summary>
         public InputList<string> Products
         {
             get => _products ?? (_products = new InputList<string>());
             set => _products = value;
         }
 
+        [Input("requestFields")]
+        private InputList<string>? _requestFields;
+        public InputList<string> RequestFields
+        {
+            get => _requestFields ?? (_requestFields = new InputList<string>());
+            set => _requestFields = value;
+        }
+
+        [Input("respectStrongEtags")]
+        public Input<bool>? RespectStrongEtags { get; set; }
+
+        [Input("responseFields")]
+        private InputList<string>? _responseFields;
+        public InputList<string> ResponseFields
+        {
+            get => _responseFields ?? (_responseFields = new InputList<string>());
+            set => _responseFields = value;
+        }
+
         [Input("responses")]
         private InputList<Inputs.RulesetRuleActionParametersResponseArgs>? _responses;
-
-        /// <summary>
-        /// List of parameters that configure the response given to end users (refer to the nested schema).
-        /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersResponseArgs> Responses
         {
             get => _responses ?? (_responses = new InputList<Inputs.RulesetRuleActionParametersResponseArgs>());
@@ -91,37 +106,26 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("rules")]
         private InputMap<string>? _rules;
-
-        /// <summary>
-        /// List of rule-based overrides (refer to the nested schema).
-        /// </summary>
         public InputMap<string> Rules
         {
             get => _rules ?? (_rules = new InputMap<string>());
             set => _rules = value;
         }
 
-        /// <summary>
-        /// Which ruleset ID to target.
-        /// </summary>
         [Input("ruleset")]
         public Input<string>? Ruleset { get; set; }
 
         [Input("rulesets")]
         private InputList<string>? _rulesets;
-
-        /// <summary>
-        /// List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
-        /// </summary>
         public InputList<string> Rulesets
         {
             get => _rulesets ?? (_rulesets = new InputList<string>());
             set => _rulesets = value;
         }
 
-        /// <summary>
-        /// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
-        /// </summary>
+        [Input("serveStale")]
+        public Input<Inputs.RulesetRuleActionParametersServeStaleArgs>? ServeStale { get; set; }
+
         [Input("uri")]
         public Input<Inputs.RulesetRuleActionParametersUriArgs>? Uri { get; set; }
 

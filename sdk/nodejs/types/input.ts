@@ -5,43 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
 export interface AccessApplicationCorsHeader {
-    /**
-     * Boolean value to determine whether all
-     * HTTP headers are exposed.
-     */
     allowAllHeaders?: pulumi.Input<boolean>;
-    /**
-     * Boolean value to determine whether all
-     * methods are exposed.
-     */
     allowAllMethods?: pulumi.Input<boolean>;
-    /**
-     * Boolean value to determine whether all
-     * origins are permitted to make CORS requests.
-     */
     allowAllOrigins?: pulumi.Input<boolean>;
-    /**
-     * Boolean value to determine if credentials
-     * (cookies, authorization headers, or TLS client certificates) are included with
-     * requests.
-     */
     allowCredentials?: pulumi.Input<boolean>;
-    /**
-     * List of HTTP headers to expose via CORS.
-     */
     allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of methods to expose via CORS.
-     */
     allowedMethods?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of origins permitted to make CORS requests.
-     */
     allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Integer representing the maximum time a preflight
-     * request will be cached.
-     */
     maxAge?: pulumi.Input<number>;
 }
 
@@ -55,6 +25,7 @@ export interface AccessGroupExclude {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupExcludeExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -71,11 +42,13 @@ export interface AccessGroupExcludeAzure {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface AccessGroupExcludeExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
+}
+
 export interface AccessGroupExcludeGithub {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Group.
-     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -87,9 +60,6 @@ export interface AccessGroupExcludeGsuite {
 
 export interface AccessGroupExcludeOkta {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Group.
-     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -109,6 +79,7 @@ export interface AccessGroupInclude {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupIncludeExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -125,11 +96,13 @@ export interface AccessGroupIncludeAzure {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface AccessGroupIncludeExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
+}
+
 export interface AccessGroupIncludeGithub {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Group.
-     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -141,9 +114,6 @@ export interface AccessGroupIncludeGsuite {
 
 export interface AccessGroupIncludeOkta {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Group.
-     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -163,6 +133,7 @@ export interface AccessGroupRequire {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessGroupRequireExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -179,11 +150,13 @@ export interface AccessGroupRequireAzure {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface AccessGroupRequireExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
+}
+
 export interface AccessGroupRequireGithub {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Group.
-     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -195,9 +168,6 @@ export interface AccessGroupRequireGsuite {
 
 export interface AccessGroupRequireOkta {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Group.
-     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -223,6 +193,7 @@ export interface AccessIdentityProviderConfig {
     issuerUrl?: pulumi.Input<string>;
     oktaAccount?: pulumi.Input<string>;
     oneloginAccount?: pulumi.Input<string>;
+    pkceEnabled?: pulumi.Input<boolean>;
     redirectUrl?: pulumi.Input<string>;
     signRequest?: pulumi.Input<boolean>;
     ssoTargetUrl?: pulumi.Input<string>;
@@ -231,13 +202,7 @@ export interface AccessIdentityProviderConfig {
 }
 
 export interface AccessPolicyApprovalGroup {
-    /**
-     * Number of approvals needed.
-     */
     approvalsNeeded: pulumi.Input<number>;
-    /**
-     * List of emails to request approval from.
-     */
     emailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     emailListUuid?: pulumi.Input<string>;
 }
@@ -252,6 +217,7 @@ export interface AccessPolicyExclude {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyExcludeExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -268,11 +234,13 @@ export interface AccessPolicyExcludeAzure {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface AccessPolicyExcludeExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
+}
+
 export interface AccessPolicyExcludeGithub {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Application.
-     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -284,9 +252,6 @@ export interface AccessPolicyExcludeGsuite {
 
 export interface AccessPolicyExcludeOkta {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Application.
-     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -306,6 +271,7 @@ export interface AccessPolicyInclude {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyIncludeExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -322,11 +288,13 @@ export interface AccessPolicyIncludeAzure {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface AccessPolicyIncludeExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
+}
+
 export interface AccessPolicyIncludeGithub {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Application.
-     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -338,9 +306,6 @@ export interface AccessPolicyIncludeGsuite {
 
 export interface AccessPolicyIncludeOkta {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Application.
-     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -360,6 +325,7 @@ export interface AccessPolicyRequire {
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
+    externalEvaluation?: pulumi.Input<inputs.AccessPolicyRequireExternalEvaluation>;
     geos?: pulumi.Input<pulumi.Input<string>[]>;
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
@@ -376,11 +342,13 @@ export interface AccessPolicyRequireAzure {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface AccessPolicyRequireExternalEvaluation {
+    evaluateUrl?: pulumi.Input<string>;
+    keysUrl?: pulumi.Input<string>;
+}
+
 export interface AccessPolicyRequireGithub {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Application.
-     */
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -392,9 +360,6 @@ export interface AccessPolicyRequireGsuite {
 
 export interface AccessPolicyRequireOkta {
     identityProviderId?: pulumi.Input<string>;
-    /**
-     * Friendly name of the Access Application.
-     */
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -405,51 +370,22 @@ export interface AccessPolicyRequireSaml {
 }
 
 export interface AccessRuleConfiguration {
-    /**
-     * The request property to target. Allowed values: "ip", "ip6", "ipRange", "asn", "country"
-     */
     target: pulumi.Input<string>;
-    /**
-     * The value to target. Depends on target's type.
-     */
     value: pulumi.Input<string>;
 }
 
 export interface ApiTokenCondition {
-    /**
-     * Request IP related conditions. See the definition below.
-     */
     requestIp?: pulumi.Input<inputs.ApiTokenConditionRequestIp>;
 }
 
 export interface ApiTokenConditionRequestIp {
-    /**
-     * List of IPv4/IPv6 CIDR addresses where
-     * the Token can be used from.
-     */
     ins?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of IPv4/IPv6 CIDR addresses where
-     * the Token cannot be used from.
-     */
     notIns?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ApiTokenPolicy {
-    /**
-     * Policy effect. Valid values are `allow` or `deny`. `allow`
-     * is set as default.
-     */
     effect?: pulumi.Input<string>;
-    /**
-     * List of permissions groups
-     * ids ([see official docs](https://developers.cloudflare.com/api/tokens/create/permissions)).
-     */
     permissionGroups: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Map describes what operations against which resources
-     * are allowed or denied.
-     */
     resources: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
@@ -579,9 +515,17 @@ export interface DevicePostureIntegrationConfig {
      */
     clientId?: pulumi.Input<string>;
     /**
+     * The client key for authenticating API calls.
+     */
+    clientKey?: pulumi.Input<string>;
+    /**
      * The client secret for authenticating API calls.
      */
     clientSecret?: pulumi.Input<string>;
+    /**
+     * The customer identifier for authenticating API calls.
+     */
+    customerId?: pulumi.Input<string>;
 }
 
 export interface DevicePostureRuleInput {
@@ -655,172 +599,62 @@ export interface FallbackDomainDomain {
     suffix?: pulumi.Input<string>;
 }
 
+export interface GetWafGroupsFilter {
+    mode?: string;
+    name?: string;
+}
+
 export interface GetWafGroupsFilterArgs {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
     mode?: pulumi.Input<string>;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
     name?: pulumi.Input<string>;
 }
 
-export interface GetWafGroupsFilter {
-    /**
-     * Mode of the WAF Rule Groups to lookup. Valid values: on and off.
-     */
-    mode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Groups to lookup.
-     */
-    name?: string;
-}
-
 export interface GetWafPackagesFilter {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
     actionMode?: string;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
     detectionMode?: string;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
     name?: string;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
     sensitivity?: string;
 }
 
 export interface GetWafPackagesFilterArgs {
-    /**
-     * Action mode of the WAF Rule Packages to lookup. Valid values: simulate, block and challenge.
-     */
     actionMode?: pulumi.Input<string>;
-    /**
-     * Detection mode of the WAF Rule Packages to lookup.
-     */
     detectionMode?: pulumi.Input<string>;
-    /**
-     * A regular expression matching the name of the WAF Rule Packages to lookup.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Sensitivity of the WAF Rule Packages to lookup. Valid values: high, medium, low and off.
-     */
     sensitivity?: pulumi.Input<string>;
 }
 
 export interface GetWafRulesFilterArgs {
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
     groupId?: pulumi.Input<string>;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
     mode?: pulumi.Input<string>;
 }
 
 export interface GetWafRulesFilter {
-    /**
-     * A regular expression matching the description of the WAF Rules to lookup.
-     */
     description?: string;
-    /**
-     * The ID of the WAF Rule Group in which the WAF Rules to lookup have to be.
-     */
     groupId?: string;
-    /**
-     * Mode of the WAF Rules to lookup. Valid values: one of ["block", "challenge", "default", "disable", "simulate"] or ["on", "off"] depending on the WAF Rule type.
-     */
     mode?: string;
 }
 
 export interface GetZonesFilterArgs {
-    /**
-     * Only search for zones in this account.
-     */
     accountId?: pulumi.Input<string>;
-    /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
-     */
     lookupType?: pulumi.Input<string>;
-    /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
-     */
     match?: pulumi.Input<string>;
-    /**
-     * A string value to search for.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
-     */
     paused?: pulumi.Input<boolean>;
-    /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
-     */
     status?: pulumi.Input<string>;
 }
 
 export interface GetZonesFilter {
-    /**
-     * Only search for zones in this account.
-     */
     accountId?: string;
-    /**
-     * The type of search to perform for the `name` value
-     * when querying the zone API. Valid values: `"exact"` and `"contains"`. Defaults
-     * to `"exact"`.
-     */
     lookupType?: string;
-    /**
-     * A RE2 compatible regular expression to filter the
-     * results. This is performed client side whereas the `name` and `lookupType`
-     * are performed on the Cloudflare server side.
-     */
     match?: string;
-    /**
-     * A string value to search for.
-     */
     name?: string;
-    /**
-     * Paused status of the zone to lookup. Valid values are
-     * `true` or `false`.
-     */
     paused?: boolean;
-    /**
-     * Status of the zone to lookup. Valid values: `"active"`,
-     * `"pending"`, `"initializing"`, `"moved"`, `"deleted"`, `"deactivated"` and
-     * `"read only"`.
-     */
     status?: string;
 }
 
 export interface HealthcheckHeader {
-    /**
-     * The header name.
-     */
     header: pulumi.Input<string>;
-    /**
-     * A list of string values for the header.
-     */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
@@ -833,6 +667,26 @@ export interface IpListItem {
      * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
     value: pulumi.Input<string>;
+}
+
+export interface ListItem {
+    comment?: pulumi.Input<string>;
+    value: pulumi.Input<inputs.ListItemValue>;
+}
+
+export interface ListItemValue {
+    ip?: pulumi.Input<string>;
+    redirects?: pulumi.Input<pulumi.Input<inputs.ListItemValueRedirect>[]>;
+}
+
+export interface ListItemValueRedirect {
+    includeSubdomains?: pulumi.Input<boolean>;
+    preservePathSuffix?: pulumi.Input<boolean>;
+    preserveQueryString?: pulumi.Input<boolean>;
+    sourceUrl: pulumi.Input<string>;
+    statusCode?: pulumi.Input<number>;
+    subpathMatching?: pulumi.Input<boolean>;
+    targetUrl: pulumi.Input<string>;
 }
 
 export interface LoadBalancerMonitorHeader {
@@ -1039,63 +893,40 @@ export interface LoadBalancerRuleOverrideRegionPool {
     region: pulumi.Input<string>;
 }
 
+export interface ManagedHeadersManagedRequestHeader {
+    enabled: pulumi.Input<boolean>;
+    id: pulumi.Input<string>;
+}
+
+export interface ManagedHeadersManagedResponseHeader {
+    enabled: pulumi.Input<boolean>;
+    id: pulumi.Input<string>;
+}
+
 export interface NotificationPolicyEmailIntegration {
     id: pulumi.Input<string>;
-    /**
-     * The name of the notification policy.
-     */
     name?: pulumi.Input<string>;
 }
 
 export interface NotificationPolicyFilters {
-    /**
-     * State of the pool to alert on. Example: `"true"`, `"false"`.
-     */
     enableds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Identifier health check.
-     */
     healthCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A numerical limit. Example: `"100"`
-     */
     limits?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Load balancer pool identifier.
-     */
     poolIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
-     */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     services?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A numerical limit. Example: `"99.9"`
-     */
     slos?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
-     */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of zone identifiers.
-     */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface NotificationPolicyPagerdutyIntegration {
     id: pulumi.Input<string>;
-    /**
-     * The name of the notification policy.
-     */
     name?: pulumi.Input<string>;
 }
 
 export interface NotificationPolicyWebhooksIntegration {
     id: pulumi.Input<string>;
-    /**
-     * The name of the notification policy.
-     */
     name?: pulumi.Input<string>;
 }
 
@@ -1316,7 +1147,7 @@ export interface PageRuleActionsCacheKeyFieldsQueryString {
      */
     excludes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value is ignored if any of `exclude` or `include` is non-empty.
+     * `false` (default) - all query string parameters are used for Cache Key, unless explicitly excluded; `true` - all query string parameters are ignored; value should be `false` if any of `exclude` or `include` is non-empty.
      */
     ignore?: pulumi.Input<boolean>;
     /**
@@ -1347,7 +1178,7 @@ export interface PageRuleActionsCacheTtlByStatus {
     codes: pulumi.Input<string>;
     /**
      * Duration a resource lives in the Cloudflare cache.
-     * * positive number - cache for specified duration in seconds
+     * - positive number - cache for specified duration in seconds
      */
     ttl: pulumi.Input<number>;
 }
@@ -1428,11 +1259,11 @@ export interface RateLimitMatchRequest {
      */
     methods?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_'].  Default: ['\_ALL\_'].
+     * HTTP Schemes, can be one ['HTTPS'], both ['HTTP','HTTPS'] or all ['\_ALL\_']. Default: ['\_ALL\_'].
      */
     schemes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use * for all traffic to your zone. Default: '*'.
+     * The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone. Default: '_'.
      */
     urlPattern?: pulumi.Input<string>;
 }
@@ -1507,291 +1338,204 @@ export interface RecordData {
 }
 
 export interface RulesetRule {
-    /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-     */
     action?: pulumi.Input<string>;
-    /**
-     * List of parameters that configure the behavior of the ruleset rule action (refer to the nested schema).
-     */
     actionParameters?: pulumi.Input<inputs.RulesetRuleActionParameters>;
-    /**
-     * Brief summary of the ruleset rule and its intended use.
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Defines if the current rule-level override enables or disables the rule.
-     */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * List of parameters that configure exposed credential checks (refer to the nested schema).
-     */
     exposedCredentialCheck?: pulumi.Input<inputs.RulesetRuleExposedCredentialCheck>;
-    /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-     */
     expression: pulumi.Input<string>;
-    /**
-     * Rule ID to apply the override to.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * List parameters to configure how the rule generates logs (refer to the nested schema).
-     */
     logging?: pulumi.Input<inputs.RulesetRuleLogging>;
-    /**
-     * List of parameters that configure HTTP rate limiting behaviour (refer to the nested schema).
-     */
     ratelimit?: pulumi.Input<inputs.RulesetRuleRatelimit>;
-    /**
-     * Rule reference.
-     */
     ref?: pulumi.Input<string>;
     version?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParameters {
-    /**
-     * List of HTTP header modifications to perform in the ruleset rule (refer to the nested schema).
-     */
+    browserTtl?: pulumi.Input<inputs.RulesetRuleActionParametersBrowserTtl>;
+    bypassCache?: pulumi.Input<boolean>;
+    cacheKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>;
+    cookieFields?: pulumi.Input<pulumi.Input<string>[]>;
+    edgeTtl?: pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>;
     headers?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
-    /**
-     * Host Header that request origin receives.
-     */
     hostHeader?: pulumi.Input<string>;
-    /**
-     * Rule ID to apply the override to.
-     */
     id?: pulumi.Input<string>;
     increment?: pulumi.Input<number>;
-    /**
-     * List of properties to configure WAF payload logging (refer to the nested schema).
-     */
     matchedData?: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
-    /**
-     * List of properties to change request origin (refer to the nested schema).
-     */
     origin?: pulumi.Input<inputs.RulesetRuleActionParametersOrigin>;
-    /**
-     * List of override configurations to apply to the ruleset (refer to the nested schema).
-     */
+    originErrorPagePassthru?: pulumi.Input<boolean>;
     overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     phases?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Products to target with the actions. Valid values are `"bic"`, `"hot"`, `"ratelimit"`, `"securityLevel"`, `"uablock"`, `"waf"` or `"zonelockdown"`.
-     */
     products?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of parameters that configure the response given to end users (refer to the nested schema).
-     */
+    requestFields?: pulumi.Input<pulumi.Input<string>[]>;
+    respectStrongEtags?: pulumi.Input<boolean>;
+    responseFields?: pulumi.Input<pulumi.Input<string>[]>;
     responses?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersResponse>[]>;
-    /**
-     * List of rule-based overrides (refer to the nested schema).
-     */
     rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
-     * Which ruleset ID to target.
-     */
     ruleset?: pulumi.Input<string>;
-    /**
-     * List of managed WAF rule IDs to target. Only valid when the "action" is set to skip.
-     */
     rulesets?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * List of URI properties to configure for the ruleset rule when performing URL rewrite transformations (refer to the nested schema).
-     */
+    serveStale?: pulumi.Input<inputs.RulesetRuleActionParametersServeStale>;
     uri?: pulumi.Input<inputs.RulesetRuleActionParametersUri>;
     version?: pulumi.Input<string>;
 }
 
+export interface RulesetRuleActionParametersBrowserTtl {
+    default?: pulumi.Input<number>;
+    mode: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersCacheKey {
+    cacheByDeviceType?: pulumi.Input<boolean>;
+    cacheDeceptionArmor?: pulumi.Input<boolean>;
+    customKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKey>;
+    ignoreQueryStringsOrder?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKey {
+    cookie?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie>;
+    header?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader>;
+    host?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHost>;
+    queryString?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString>;
+    user?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyUser>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
+    checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
+    checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeOrigin?: pulumi.Input<boolean>;
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHost {
+    resolved?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
+    excludes?: pulumi.Input<pulumi.Input<string>[]>;
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
+    deviceType?: pulumi.Input<boolean>;
+    geo?: pulumi.Input<boolean>;
+    lang?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParametersEdgeTtl {
+    default: pulumi.Input<number>;
+    mode: pulumi.Input<string>;
+    statusCodeTtls?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl>[]>;
+}
+
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+    statusCode?: pulumi.Input<number>;
+    statusCodeRanges?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange>[]>;
+    value: pulumi.Input<number>;
+}
+
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+    from?: pulumi.Input<number>;
+    to?: pulumi.Input<number>;
+}
+
 export interface RulesetRuleActionParametersHeader {
-    /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-     */
     expression?: pulumi.Input<string>;
-    /**
-     * Name of the HTTP request header to target.
-     */
     name?: pulumi.Input<string>;
-    /**
-     * Action to perform on the HTTP request header. Valid values are `"set"` or `"remove"`.
-     */
     operation?: pulumi.Input<string>;
-    /**
-     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
-     */
     value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersMatchedData {
-    /**
-     * Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure).
-     */
     publicKey?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersOrigin {
-    /**
-     * Origin Hostname where request is sent.
-     */
     host?: pulumi.Input<string>;
-    /**
-     * Oirign Port where request is sent.
-     */
     port?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersOverrides {
-    /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-     */
     action?: pulumi.Input<string>;
-    /**
-     * List of tag-based overrides (refer to the nested schema).
-     */
     categories?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesCategory>[]>;
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * List of rule-based overrides (refer to the nested schema).
-     */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesRule>[]>;
+    status?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersOverridesCategory {
-    /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-     */
     action?: pulumi.Input<string>;
-    /**
-     * Tag name to apply the ruleset rule override to.
-     */
     category?: pulumi.Input<string>;
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: pulumi.Input<boolean>;
+    status?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersOverridesRule {
-    /**
-     * Action to perform in the rule-level override. Valid values are `"block"`, `"challenge"`, `"ddosDynamic"`, `"execute"`, `"forceConnectionClose"`, `"jsChallenge"`, `"managedChallenge"`, `"log"`, `"rewrite"`, `"score"`, or `"skip"`.
-     */
     action?: pulumi.Input<string>;
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * Rule ID to apply the override to.
-     */
     id?: pulumi.Input<string>;
-    /**
-     * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
-     */
     scoreThreshold?: pulumi.Input<number>;
-    /**
-     * Sensitivity level for a ruleset rule override.
-     */
     sensitivityLevel?: pulumi.Input<string>;
+    status?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersResponse {
-    /**
-     * Body content to include in the response.
-     */
     content?: pulumi.Input<string>;
-    /**
-     * HTTP content type to send in the response.
-     */
     contentType?: pulumi.Input<string>;
-    /**
-     * HTTP status code to send in the response.
-     */
     statusCode?: pulumi.Input<number>;
 }
 
+export interface RulesetRuleActionParametersServeStale {
+    disableStaleWhileUpdating?: pulumi.Input<boolean>;
+}
+
 export interface RulesetRuleActionParametersUri {
-    /**
-     * List of properties to change request origin (refer to the nested schema).
-     */
     origin?: pulumi.Input<boolean>;
-    /**
-     * URI path configuration when performing a URL rewrite (refer to the nested schema).
-     */
     path?: pulumi.Input<inputs.RulesetRuleActionParametersUriPath>;
-    /**
-     * Query string configuration when performing a URL rewrite (refer to the nested schema).
-     */
     query?: pulumi.Input<inputs.RulesetRuleActionParametersUriQuery>;
 }
 
 export interface RulesetRuleActionParametersUriPath {
-    /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-     */
     expression?: pulumi.Input<string>;
-    /**
-     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
-     */
     value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersUriQuery {
-    /**
-     * Expression that defines the updated (dynamic) value of the URI path or query string component. Conflicts with `value`.
-     */
     expression?: pulumi.Input<string>;
-    /**
-     * Static string value of the updated URI path or query string component. Conflicts with `expression`.
-     */
     value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleExposedCredentialCheck {
-    /**
-     * Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
-     */
     passwordExpression?: pulumi.Input<string>;
-    /**
-     * Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
-     */
     usernameExpression?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleLogging {
     /**
-     * Defines if the current rule-level override enables or disables the rule.
+     * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: pulumi.Input<boolean>;
+    status?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleRatelimit {
-    /**
-     * List of parameters that define how Cloudflare tracks the request rate for this rule.
-     */
     characteristics?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-     */
     countingExpression?: pulumi.Input<string>;
-    /**
-     * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
-     */
     mitigationTimeout?: pulumi.Input<number>;
-    /**
-     * The period of time to consider (in seconds) when evaluating the request rate.
-     */
     period?: pulumi.Input<number>;
-    /**
-     * The number of requests over the period of time that will trigger the Rate Limiting rule.
-     */
     requestsPerPeriod?: pulumi.Input<number>;
-    /**
-     * Whether to include requests to origin within the Rate Limiting count.
-     */
     requestsToOrigin?: pulumi.Input<boolean>;
 }
 

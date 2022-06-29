@@ -119,8 +119,8 @@ class _ZoneState:
         :param pulumi.Input[str] status: Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
-               * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-               * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+               - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+               - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
         """
@@ -231,8 +231,8 @@ class _ZoneState:
     def vanity_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Vanity Nameservers (if set).
-        * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-        * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+        - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+        - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         """
         return pulumi.get(self, "vanity_name_servers")
 
@@ -294,7 +294,7 @@ class Zone(pulumi.CustomResource):
          $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,7 +328,7 @@ class Zone(pulumi.CustomResource):
          $ pulumi import cloudflare:index/zone:Zone example d41d8cd98f00b204e9800998ecf8427e
         ```
 
-         where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
+         where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID, as returned from [API](https://api.cloudflare.com/#zone-list-zones)
 
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.
@@ -408,8 +408,8 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[str] status: Status of the zone. Valid values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Valid values: `full`, `partial`. Default is `full`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
-               * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-               * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+               - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+               - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
         :param pulumi.Input[str] zone: The DNS zone name which will be added.
         """
@@ -487,8 +487,8 @@ class Zone(pulumi.CustomResource):
     def vanity_name_servers(self) -> pulumi.Output[Sequence[str]]:
         """
         List of Vanity Nameservers (if set).
-        * `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
-        * `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
+        - `meta.wildcard_proxiable` - Indicates whether wildcard DNS records can receive Cloudflare security and performance features.
+        - `meta.phishing_detected` - Indicates if URLs on the zone have been identified as hosting phishing content.
         """
         return pulumi.get(self, "vanity_name_servers")
 

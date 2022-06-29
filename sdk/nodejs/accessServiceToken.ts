@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Access Service Tokens are used for service-to-service communication
- * when an application is behind Cloudflare Access.
+ * Access Service Tokens are used for service-to-service communication when an application is behind Cloudflare Access.
  *
  * ## Example Usage
  *
@@ -24,13 +23,11 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * ~> **Important:** If you are importing an Access Service Token you will not have the `client_secret` available in the state for use. The `client_secret` is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources. Access Service Tokens can be imported using a composite ID formed of account ID and Service Token ID.
+ * # If you are importing an Access Service Token you will not have the # client_secret available in the state for use. The client_secret is only # available once, at creation. In most cases, it is better to just create a new # resource should you need to reference it in other resources.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken my_app cb029e245cfdd66dc8d2e570d5dd3322/d41d8cd98f00b204e9800998ecf8427e
+ *  $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example <account_id>/<service_token_id>
  * ```
- *
- *  where * `cb029e245cfdd66dc8d2e570d5dd3322` - Account ID * `d41d8cd98f00b204e9800998ecf8427e` - Access Service Token ID
  */
 export class AccessServiceToken extends pulumi.CustomResource {
     /**
@@ -61,7 +58,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -76,13 +73,16 @@ export class AccessServiceToken extends pulumi.CustomResource {
      * Date when the token expires
      */
     public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    /**
+     * Regenerates the token if terraform is run within the specified amount of days before expiration
+     */
     public readonly minDaysForRenewal!: pulumi.Output<number | undefined>;
     /**
      * Friendly name of the token's intent.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string | undefined>;
 
@@ -129,7 +129,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
  */
 export interface AccessServiceTokenState {
     /**
-     * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -144,13 +144,16 @@ export interface AccessServiceTokenState {
      * Date when the token expires
      */
     expiresAt?: pulumi.Input<string>;
+    /**
+     * Regenerates the token if terraform is run within the specified amount of days before expiration
+     */
     minDaysForRenewal?: pulumi.Input<number>;
     /**
      * Friendly name of the token's intent.
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -160,16 +163,19 @@ export interface AccessServiceTokenState {
  */
 export interface AccessServiceTokenArgs {
     /**
-     * The ID of the account where the Access Service is being created. Conflicts with `zoneId`.
+     * The account identifier to target for the resource.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Regenerates the token if terraform is run within the specified amount of days before expiration
+     */
     minDaysForRenewal?: pulumi.Input<number>;
     /**
      * Friendly name of the token's intent.
      */
     name: pulumi.Input<string>;
     /**
-     * The ID of the zone where the Access Service is being created. Conflicts with `accountId`.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

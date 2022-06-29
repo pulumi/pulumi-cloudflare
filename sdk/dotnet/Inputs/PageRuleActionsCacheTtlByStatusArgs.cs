@@ -20,7 +20,7 @@ namespace Pulumi.Cloudflare.Inputs
 
         /// <summary>
         /// Duration a resource lives in the Cloudflare cache.
-        /// * positive number - cache for specified duration in seconds
+        /// - positive number - cache for specified duration in seconds
         /// </summary>
         [Input("ttl", required: true)]
         public Input<int> Ttl { get; set; } = null!;

@@ -13,9 +13,10 @@ namespace Pulumi.Cloudflare
     /// Define Firewall rules using filter expressions for more control over how traffic is matched to the rule.
     /// A filter expression permits selecting traffic by multiple criteria allowing greater freedom in rule creation.
     /// 
-    /// Filter expressions needs to be created first before using Firewall Rule. See Filter.
+    /// Filter expressions needs to be created first before using Firewall Rule.
     /// 
-    /// If you want to configure Custom Firewall rules, you need to use cloudflare_ruleset, because Custom Rules are built upon the
+    /// &gt; If you want to configure Custom Firewall rules, you need to use
+    /// `cloudflare.Ruleset`, because Custom Rules are built upon the
     /// [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/).
     /// 
     /// ## Example Usage
@@ -48,19 +49,16 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Import
     /// 
-    /// Firewall Rule can be imported using a composite ID formed of zone ID and rule ID, e.g.
-    /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/firewallRule:FirewallRule default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+    ///  $ pulumi import cloudflare:index/firewallRule:FirewallRule example &lt;zone_id&gt;/&lt;firewall_rule_id&gt;
     /// ```
-    /// 
-    ///  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - rule ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filter-rules)
     /// </summary>
     [CloudflareResourceType("cloudflare:index/firewallRule:FirewallRule")]
     public partial class FirewallRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "managed_challenge", "bypass". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+        /// `managed_challenge`, `log`, `bypass`
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -71,29 +69,34 @@ namespace Pulumi.Cloudflare
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
+        /// </summary>
         [Output("filterId")]
         public Output<string> FilterId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this filter based firewall rule is currently paused. Boolean value.
+        /// Whether this filter based firewall rule is currently paused.
         /// </summary>
         [Output("paused")]
         public Output<bool?> Paused { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+        /// any rules with a priority will be sequenced before those without.
         /// </summary>
         [Output("priority")]
         public Output<int?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+        /// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+        /// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
         /// </summary>
         [Output("products")]
         public Output<ImmutableArray<string>> Products { get; private set; } = null!;
 
         /// <summary>
-        /// The DNS zone to which the Filter should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -145,7 +148,8 @@ namespace Pulumi.Cloudflare
     public sealed class FirewallRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "managed_challenge", "bypass". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+        /// `managed_challenge`, `log`, `bypass`
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -156,17 +160,21 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
+        /// </summary>
         [Input("filterId", required: true)]
         public Input<string> FilterId { get; set; } = null!;
 
         /// <summary>
-        /// Whether this filter based firewall rule is currently paused. Boolean value.
+        /// Whether this filter based firewall rule is currently paused.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+        /// any rules with a priority will be sequenced before those without.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -175,7 +183,8 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _products;
 
         /// <summary>
-        /// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+        /// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+        /// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
         /// </summary>
         public InputList<string> Products
         {
@@ -184,7 +193,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone to which the Filter should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -197,7 +206,8 @@ namespace Pulumi.Cloudflare
     public sealed class FirewallRuleState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to apply to a matched request. Allowed values: "block", "challenge", "allow", "js_challenge", "managed_challenge", "bypass". Enterprise plan also allows "log".
+        /// The action to apply to a matched request. Available values: `block`, `challenge`, `allow`, `js_challenge`,
+        /// `managed_challenge`, `log`, `bypass`
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -208,17 +218,21 @@ namespace Pulumi.Cloudflare
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The identifier of the Filter to use for determining if the Firewall Rule should be triggered.
+        /// </summary>
         [Input("filterId")]
         public Input<string>? FilterId { get; set; }
 
         /// <summary>
-        /// Whether this filter based firewall rule is currently paused. Boolean value.
+        /// Whether this filter based firewall rule is currently paused.
         /// </summary>
         [Input("paused")]
         public Input<bool>? Paused { get; set; }
 
         /// <summary>
-        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
+        /// The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided,
+        /// any rules with a priority will be sequenced before those without.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -227,7 +241,8 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _products;
 
         /// <summary>
-        /// List of products to bypass for a request when the bypass action is used. Allowed values: "zoneLockdown", "uaBlock", "bic", "hot", "securityLevel", "rateLimit", "waf".
+        /// List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`,
+        /// `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`
         /// </summary>
         public InputList<string> Products
         {
@@ -236,7 +251,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// The DNS zone to which the Filter should be added.
+        /// The zone identifier to target for the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

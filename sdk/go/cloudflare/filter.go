@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Filter expressions that can be referenced across multiple features, e.g. Firewall Rule. The expression format is similar to [Wireshark Display Filter](https://www.wireshark.org/docs/man-pages/wireshark-filter.html).
+// Filter expressions that can be referenced across multiple features, e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) for more details and available fields and operators.
 //
 // ## Example Usage
 //
@@ -40,13 +40,9 @@ import (
 //
 // ## Import
 //
-// Filter can be imported using a composite ID formed of zone ID and filter ID, e.g.
-//
 // ```sh
-//  $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+//  $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
 // ```
-//
-//  where* `d41d8cd98f00b204e9800998ecf8427e` - zone ID * `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
 type Filter struct {
 	pulumi.CustomResourceState
 
@@ -54,11 +50,11 @@ type Filter struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The filter expression to be used.
 	Expression pulumi.StringOutput `pulumi:"expression"`
-	// Whether this filter is currently paused. Boolean value.
+	// Whether this filter is currently paused.
 	Paused pulumi.BoolPtrOutput `pulumi:"paused"`
 	// Short reference tag to quickly select related rules.
 	Ref pulumi.StringPtrOutput `pulumi:"ref"`
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -101,11 +97,11 @@ type filterState struct {
 	Description *string `pulumi:"description"`
 	// The filter expression to be used.
 	Expression *string `pulumi:"expression"`
-	// Whether this filter is currently paused. Boolean value.
+	// Whether this filter is currently paused.
 	Paused *bool `pulumi:"paused"`
 	// Short reference tag to quickly select related rules.
 	Ref *string `pulumi:"ref"`
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -114,11 +110,11 @@ type FilterState struct {
 	Description pulumi.StringPtrInput
 	// The filter expression to be used.
 	Expression pulumi.StringPtrInput
-	// Whether this filter is currently paused. Boolean value.
+	// Whether this filter is currently paused.
 	Paused pulumi.BoolPtrInput
 	// Short reference tag to quickly select related rules.
 	Ref pulumi.StringPtrInput
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -131,11 +127,11 @@ type filterArgs struct {
 	Description *string `pulumi:"description"`
 	// The filter expression to be used.
 	Expression string `pulumi:"expression"`
-	// Whether this filter is currently paused. Boolean value.
+	// Whether this filter is currently paused.
 	Paused *bool `pulumi:"paused"`
 	// Short reference tag to quickly select related rules.
 	Ref *string `pulumi:"ref"`
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -145,11 +141,11 @@ type FilterArgs struct {
 	Description pulumi.StringPtrInput
 	// The filter expression to be used.
 	Expression pulumi.StringInput
-	// Whether this filter is currently paused. Boolean value.
+	// Whether this filter is currently paused.
 	Paused pulumi.BoolPtrInput
 	// Short reference tag to quickly select related rules.
 	Ref pulumi.StringPtrInput
-	// The DNS zone to which the Filter should be added.
+	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
 }
 
@@ -250,7 +246,7 @@ func (o FilterOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
 }
 
-// Whether this filter is currently paused. Boolean value.
+// Whether this filter is currently paused.
 func (o FilterOutput) Paused() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Filter) pulumi.BoolPtrOutput { return v.Paused }).(pulumi.BoolPtrOutput)
 }
@@ -260,7 +256,7 @@ func (o FilterOutput) Ref() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringPtrOutput { return v.Ref }).(pulumi.StringPtrOutput)
 }
 
-// The DNS zone to which the Filter should be added.
+// The zone identifier to target for the resource.
 func (o FilterOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Filter) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

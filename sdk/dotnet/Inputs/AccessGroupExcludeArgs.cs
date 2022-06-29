@@ -59,6 +59,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("everyone")]
         public Input<bool>? Everyone { get; set; }
 
+        [Input("externalEvaluation")]
+        public Input<Inputs.AccessGroupExcludeExternalEvaluationArgs>? ExternalEvaluation { get; set; }
+
         [Input("geos")]
         private InputList<string>? _geos;
         public InputList<string> Geos

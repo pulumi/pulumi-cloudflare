@@ -13,43 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessApplicationCorsHeader
     {
-        /// <summary>
-        /// Boolean value to determine whether all
-        /// HTTP headers are exposed.
-        /// </summary>
         public readonly bool? AllowAllHeaders;
-        /// <summary>
-        /// Boolean value to determine whether all
-        /// methods are exposed.
-        /// </summary>
         public readonly bool? AllowAllMethods;
-        /// <summary>
-        /// Boolean value to determine whether all
-        /// origins are permitted to make CORS requests.
-        /// </summary>
         public readonly bool? AllowAllOrigins;
-        /// <summary>
-        /// Boolean value to determine if credentials
-        /// (cookies, authorization headers, or TLS client certificates) are included with
-        /// requests.
-        /// </summary>
         public readonly bool? AllowCredentials;
-        /// <summary>
-        /// List of HTTP headers to expose via CORS.
-        /// </summary>
         public readonly ImmutableArray<string> AllowedHeaders;
-        /// <summary>
-        /// List of methods to expose via CORS.
-        /// </summary>
         public readonly ImmutableArray<string> AllowedMethods;
-        /// <summary>
-        /// List of origins permitted to make CORS requests.
-        /// </summary>
         public readonly ImmutableArray<string> AllowedOrigins;
-        /// <summary>
-        /// Integer representing the maximum time a preflight
-        /// request will be cached.
-        /// </summary>
         public readonly int? MaxAge;
 
         [OutputConstructor]

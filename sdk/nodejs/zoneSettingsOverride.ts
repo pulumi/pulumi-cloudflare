@@ -74,8 +74,8 @@ export class ZoneSettingsOverride extends pulumi.CustomResource {
     public /*out*/ readonly initialSettingsReadAt!: pulumi.Output<string>;
     /**
      * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-     * * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-     * * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+     * - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+     * - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
      */
     public /*out*/ readonly readonlySettings!: pulumi.Output<string[]>;
     /**
@@ -141,8 +141,8 @@ export interface ZoneSettingsOverrideState {
     initialSettingsReadAt?: pulumi.Input<string>;
     /**
      * Which of the current `settings` are not able to be set by the user. Which settings these are is determined by plan level and user permissions.
-     * * `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
-     * * `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
+     * - `zoneStatus`. A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup.
+     * - `zoneType`. Status of the zone. Valid values: active, pending, initializing, moved, deleted, deactivated.
      */
     readonlySettings?: pulumi.Input<pulumi.Input<string>[]>;
     /**

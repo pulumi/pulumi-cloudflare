@@ -199,7 +199,7 @@ class WorkerScript(pulumi.CustomResource):
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
                  __props__=None):
         """
-        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -239,7 +239,7 @@ class WorkerScript(pulumi.CustomResource):
          $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
         ```
 
-         where* `script_name` - the script name
+         where- `script_name` - the script name
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -253,7 +253,7 @@ class WorkerScript(pulumi.CustomResource):
                  args: WorkerScriptArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. *NOTE:*  This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
+        Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`. _NOTE:_ This resource uses the Cloudflare account APIs. This requires setting the `CLOUDFLARE_ACCOUNT_ID` environment variable or `account_id` provider argument.
 
         ## Example Usage
 
@@ -293,7 +293,7 @@ class WorkerScript(pulumi.CustomResource):
          $ pulumi import cloudflare:index/workerScript:WorkerScript default script_name
         ```
 
-         where* `script_name` - the script name
+         where- `script_name` - the script name
 
         :param str resource_name: The name of the resource.
         :param WorkerScriptArgs args: The arguments to use to populate this resource's properties.

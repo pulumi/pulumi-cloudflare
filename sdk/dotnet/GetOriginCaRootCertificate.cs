@@ -11,61 +11,9 @@ namespace Pulumi.Cloudflare
 {
     public static class GetOriginCaRootCertificate
     {
-        /// <summary>
-        /// Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var originCa = Output.Create(Cloudflare.GetOriginCaRootCertificate.InvokeAsync(new Cloudflare.GetOriginCaRootCertificateArgs
-        ///         {
-        ///             Algorithm = "&lt;algorithm&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetOriginCaRootCertificateResult> InvokeAsync(GetOriginCaRootCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to get the [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates) for a given algorithm.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// class MyStack : Stack
-        /// {
-        ///     public MyStack()
-        ///     {
-        ///         var originCa = Output.Create(Cloudflare.GetOriginCaRootCertificate.InvokeAsync(new Cloudflare.GetOriginCaRootCertificateArgs
-        ///         {
-        ///             Algorithm = "&lt;algorithm&gt;",
-        ///         }));
-        ///     }
-        /// 
-        /// }
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetOriginCaRootCertificateResult> Invoke(GetOriginCaRootCertificateInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateInvokeArgs(), options.WithDefaults());
     }
@@ -73,9 +21,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetOriginCaRootCertificateArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
-        /// </summary>
         [Input("algorithm", required: true)]
         public string Algorithm { get; set; } = null!;
 
@@ -86,9 +31,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetOriginCaRootCertificateInvokeArgs : Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The name of the algorithm used when creating an Origin CA certificate. Currently-supported values are "rsa" and "ecc" (case-insensitive).
-        /// </summary>
         [Input("algorithm", required: true)]
         public Input<string> Algorithm { get; set; } = null!;
 
@@ -102,9 +44,6 @@ namespace Pulumi.Cloudflare
     public sealed class GetOriginCaRootCertificateResult
     {
         public readonly string Algorithm;
-        /// <summary>
-        /// The Origin CA root certificate in PEM format.
-        /// </summary>
         public readonly string CertPem;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

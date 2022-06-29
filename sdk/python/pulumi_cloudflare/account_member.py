@@ -17,8 +17,9 @@ class AccountMemberArgs:
                  role_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         The set of arguments for constructing a AccountMember resource.
-        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: Array of account role IDs that you want to assign to a member.
+        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+               cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
         """
         pulumi.set(__self__, "email_address", email_address)
         pulumi.set(__self__, "role_ids", role_ids)
@@ -27,7 +28,8 @@ class AccountMemberArgs:
     @pulumi.getter(name="emailAddress")
     def email_address(self) -> pulumi.Input[str]:
         """
-        The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+        The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+        cannot be updated.
         """
         return pulumi.get(self, "email_address")
 
@@ -39,7 +41,7 @@ class AccountMemberArgs:
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Array of account role IDs that you want to assign to a member.
+        List of account role IDs that you want to assign to a member.
         """
         return pulumi.get(self, "role_ids")
 
@@ -55,8 +57,9 @@ class _AccountMemberState:
                  role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AccountMember resources.
-        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: Array of account role IDs that you want to assign to a member.
+        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+               cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
         """
         if email_address is not None:
             pulumi.set(__self__, "email_address", email_address)
@@ -67,7 +70,8 @@ class _AccountMemberState:
     @pulumi.getter(name="emailAddress")
     def email_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+        The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+        cannot be updated.
         """
         return pulumi.get(self, "email_address")
 
@@ -79,7 +83,7 @@ class _AccountMemberState:
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Array of account role IDs that you want to assign to a member.
+        List of account role IDs that you want to assign to a member.
         """
         return pulumi.get(self, "role_ids")
 
@@ -115,18 +119,15 @@ class AccountMember(pulumi.CustomResource):
 
         ## Import
 
-        Account members can be imported using a composite ID formed of account ID and account member ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/accountMember:AccountMember example_user d41d8cd98f00b204e9800998ecf8427e/b58c6f14d292556214bd64909bcdb118
+         $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
         ```
-
-         where* `d41d8cd98f00b204e9800998ecf8427e` - account ID as returned by the [API](https://api.cloudflare.com/#accounts-account-details) * `b58c6f14d292556214bd64909bcdb118` - account member ID as returned by the [API](https://api.cloudflare.com/#account-members-member-details)
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: Array of account role IDs that you want to assign to a member.
+        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+               cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
         """
         ...
     @overload
@@ -153,13 +154,9 @@ class AccountMember(pulumi.CustomResource):
 
         ## Import
 
-        Account members can be imported using a composite ID formed of account ID and account member ID, e.g.
-
         ```sh
-         $ pulumi import cloudflare:index/accountMember:AccountMember example_user d41d8cd98f00b204e9800998ecf8427e/b58c6f14d292556214bd64909bcdb118
+         $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
         ```
-
-         where* `d41d8cd98f00b204e9800998ecf8427e` - account ID as returned by the [API](https://api.cloudflare.com/#accounts-account-details) * `b58c6f14d292556214bd64909bcdb118` - account member ID as returned by the [API](https://api.cloudflare.com/#account-members-member-details)
 
         :param str resource_name: The name of the resource.
         :param AccountMemberArgs args: The arguments to use to populate this resource's properties.
@@ -215,8 +212,9 @@ class AccountMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: Array of account role IDs that you want to assign to a member.
+        :param pulumi.Input[str] email_address: The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+               cannot be updated.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -230,7 +228,8 @@ class AccountMember(pulumi.CustomResource):
     @pulumi.getter(name="emailAddress")
     def email_address(self) -> pulumi.Output[str]:
         """
-        The email address of the user who you wish to manage. Note: Following creation, this field becomes read only via the API and cannot be updated.
+        The email address of the user who you wish to manage. Following creation, this field becomes read only via the API and
+        cannot be updated.
         """
         return pulumi.get(self, "email_address")
 
@@ -238,7 +237,7 @@ class AccountMember(pulumi.CustomResource):
     @pulumi.getter(name="roleIds")
     def role_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        Array of account role IDs that you want to assign to a member.
+        List of account role IDs that you want to assign to a member.
         """
         return pulumi.get(self, "role_ids")
 
