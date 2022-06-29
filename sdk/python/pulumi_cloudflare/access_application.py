@@ -657,6 +657,37 @@ class AccessApplication(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # With CORS configuration
+        staging_app = cloudflare.AccessApplication("stagingApp",
+            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
+                allow_credentials=True,
+                allowed_methods=[
+                    "GET",
+                    "POST",
+                    "OPTIONS",
+                ],
+                allowed_origins=["https://example.com"],
+                max_age=10,
+            )],
+            domain="staging.example.com",
+            name="staging application",
+            session_duration="24h",
+            type="self_hosted",
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -695,6 +726,37 @@ class AccessApplication(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # With CORS configuration
+        staging_app = cloudflare.AccessApplication("stagingApp",
+            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
+                allow_credentials=True,
+                allowed_methods=[
+                    "GET",
+                    "POST",
+                    "OPTIONS",
+                ],
+                allowed_origins=["https://example.com"],
+                max_age=10,
+            )],
+            domain="staging.example.com",
+            name="staging application",
+            session_duration="24h",
+            type="self_hosted",
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessApplicationArgs args: The arguments to use to populate this resource's properties.

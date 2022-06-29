@@ -19,6 +19,7 @@ class LogpushJobArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -39,10 +40,11 @@ class LogpushJobArgs:
                [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
                often with larger files. Available values: `high`, `low`
+        :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
                options
                documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-        :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
                Microsoft Azure or Sumo Logic. See [Developer
                documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -58,6 +60,8 @@ class LogpushJobArgs:
             pulumi.set(__self__, "filter", filter)
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if logpull_options is not None:
             pulumi.set(__self__, "logpull_options", logpull_options)
         if name is not None:
@@ -148,6 +152,18 @@ class LogpushJobArgs:
         pulumi.set(self, "frequency", value)
 
     @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> Optional[pulumi.Input[str]]:
         """
@@ -165,7 +181,7 @@ class LogpushJobArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        The name of the logpush job to create.
         """
         return pulumi.get(self, "name")
 
@@ -209,6 +225,7 @@ class _LogpushJobState:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -229,10 +246,11 @@ class _LogpushJobState:
                [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
                often with larger files. Available values: `high`, `low`
+        :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
                options
                documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-        :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
                Microsoft Azure or Sumo Logic. See [Developer
                documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -250,6 +268,8 @@ class _LogpushJobState:
             pulumi.set(__self__, "filter", filter)
         if frequency is not None:
             pulumi.set(__self__, "frequency", frequency)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
         if logpull_options is not None:
             pulumi.set(__self__, "logpull_options", logpull_options)
         if name is not None:
@@ -340,6 +360,18 @@ class _LogpushJobState:
         pulumi.set(self, "frequency", value)
 
     @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> Optional[pulumi.Input[str]]:
         """
@@ -357,7 +389,7 @@ class _LogpushJobState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        The name of the logpush job to create.
         """
         return pulumi.get(self, "name")
 
@@ -403,6 +435,7 @@ class LogpushJob(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -439,10 +472,11 @@ class LogpushJob(pulumi.CustomResource):
                [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
                often with larger files. Available values: `high`, `low`
+        :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
                options
                documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-        :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
                Microsoft Azure or Sumo Logic. See [Developer
                documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -490,6 +524,7 @@ class LogpushJob(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  frequency: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
                  logpull_options: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -516,6 +551,7 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["filter"] = filter
             __props__.__dict__["frequency"] = frequency
+            __props__.__dict__["kind"] = kind
             __props__.__dict__["logpull_options"] = logpull_options
             __props__.__dict__["name"] = name
             __props__.__dict__["ownership_challenge"] = ownership_challenge
@@ -536,6 +572,7 @@ class LogpushJob(pulumi.CustomResource):
             enabled: Optional[pulumi.Input[bool]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             frequency: Optional[pulumi.Input[str]] = None,
+            kind: Optional[pulumi.Input[str]] = None,
             logpull_options: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             ownership_challenge: Optional[pulumi.Input[str]] = None,
@@ -561,10 +598,11 @@ class LogpushJob(pulumi.CustomResource):
                [Filters](https://developers.cloudflare.com/logs/reference/logpush-api-configuration/filters/).
         :param pulumi.Input[str] frequency: A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
                often with larger files. Available values: `high`, `low`
+        :param pulumi.Input[str] kind: The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
         :param pulumi.Input[str] logpull_options: Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
                options
                documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
-        :param pulumi.Input[str] name: The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        :param pulumi.Input[str] name: The name of the logpush job to create.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
                Microsoft Azure or Sumo Logic. See [Developer
                documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
@@ -580,6 +618,7 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["enabled"] = enabled
         __props__.__dict__["filter"] = filter
         __props__.__dict__["frequency"] = frequency
+        __props__.__dict__["kind"] = kind
         __props__.__dict__["logpull_options"] = logpull_options
         __props__.__dict__["name"] = name
         __props__.__dict__["ownership_challenge"] = ownership_challenge
@@ -643,6 +682,14 @@ class LogpushJob(pulumi.CustomResource):
         return pulumi.get(self, "frequency")
 
     @property
+    @pulumi.getter
+    def kind(self) -> pulumi.Output[Optional[str]]:
+        """
+        The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        """
+        return pulumi.get(self, "kind")
+
+    @property
     @pulumi.getter(name="logpullOptions")
     def logpull_options(self) -> pulumi.Output[Optional[str]]:
         """
@@ -656,7 +703,7 @@ class LogpushJob(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        The name of the logpush job to create.
         """
         return pulumi.get(self, "name")
 

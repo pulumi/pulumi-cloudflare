@@ -24,10 +24,10 @@ github.com/armon/go-socks5 v0.0.0-20160902184237-e75332964ef5/go.mod h1:wHh0iHkY
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash/v2 v2.1.1/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
-github.com/cloudflare/cloudflare-go v0.41.0 h1:4HiWuBpBj1fMiyWDfIlLGxnuPuEbkLi+SZWq9tgCFfc=
-github.com/cloudflare/cloudflare-go v0.41.0/go.mod h1:o0jm+vdFrhwy7GOT3PB/71JQ6kElUQcifPc2Z9KTxeE=
-github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220614204315-0cf91fc6c0e5 h1:0NQdgRP6Z0oFSma+4EMAcRmj42LnYNH95AKysCBF4ds=
-github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220614204315-0cf91fc6c0e5/go.mod h1:3/mxS7Ich3UFbGBcPUqDcuPypAr9nTZIvKzmuv/q+RI=
+github.com/cloudflare/cloudflare-go v0.43.0 h1:kNdJ/zehamtpqFyftFY8liyWng4RUh1ucz9ebCxAeJM=
+github.com/cloudflare/cloudflare-go v0.43.0/go.mod h1:VTbboW1zBcDmeJ+ahZaSatqUMCdrgqIwpYlwvOfMek4=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220628233243-db7e0ef4b519 h1:nlWPha9HWvWS098ikRkkluMrBcSRtywtPoqVuz39CTk=
+github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220628233243-db7e0ef4b519/go.mod h1:JTZ17Ru/WcYsQ+gUGqL8R4Ze/Jojy1iYHGvgAHOHe60=
 github.com/cncf/udpa/go v0.0.0-20191209042840-269d4d468f6f/go.mod h1:M8M6+tZqaGXZJjfX53e64911xZQV5JYwmTeXPW+k8Sc=
 github.com/cncf/udpa/go v0.0.0-20201120205902-5459f2c99403/go.mod h1:WmhPx2Nbnhtbo57+VJT5O0JRkEi1Wbu0z5j0R8u5Hbk=
 github.com/cncf/udpa/go v0.0.0-20210930031921-04548b0d99d4/go.mod h1:6pvJx4me5XPnfI9Z40ddWsdw2W/uZgQLFXToKeRcDiI=
@@ -206,8 +206,8 @@ github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UV
 github.com/stretchr/testify v1.4.0/go.mod h1:j7eGeouHqKxXV5pUuKE4zz7dFj8WfuZ+81PSLYec5m4=
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
-github.com/stretchr/testify v1.7.2 h1:4jaiDzPyXQvSd7D0EjG45355tLlV3VOECpq10pLC+8s=
 github.com/stretchr/testify v1.7.2/go.mod h1:R6va5+xMeoiuVRoj+gSkQ7d3FALtqAAGI1FQKckRals=
+github.com/stretchr/testify v1.7.5 h1:s5PTfem8p8EbKQOctVV53k6jCJt3UX4IEJzwh+C324Q=
 github.com/vmihailenco/msgpack v3.3.3+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=
 github.com/vmihailenco/msgpack v4.0.4+incompatible h1:dSLoQfGFAo3F6OoNhwUmLwVgaUXK79GlxNBwueZn0xI=
 github.com/vmihailenco/msgpack v4.0.4+incompatible/go.mod h1:fy3FlTQTDXWkZ7Bh6AcGMlsjHatGryHQYUTf1ShIgkk=

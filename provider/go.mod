@@ -52,8 +52,8 @@ require (
 	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/cenkalti/backoff/v3 v3.2.2 // indirect
 	github.com/cheggaaa/pb v1.0.29 // indirect
-	github.com/cloudflare/cloudflare-go v0.41.0 // indirect
-	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220614204315-0cf91fc6c0e5 // indirect
+	github.com/cloudflare/cloudflare-go v0.43.0 // indirect
+	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220628233243-db7e0ef4b519 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dimchansky/utfbom v1.1.1 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
@@ -163,7 +163,7 @@ require (
 	github.com/spf13/cobra v1.4.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/src-d/gcfg v1.4.0 // indirect
-	github.com/stretchr/testify v1.7.2 // indirect
+	github.com/stretchr/testify v1.7.5 // indirect
 	github.com/terraform-providers/terraform-provider-archive v1.3.0 // indirect
 	github.com/terraform-providers/terraform-provider-http v1.2.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect

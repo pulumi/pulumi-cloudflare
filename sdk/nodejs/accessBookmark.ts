@@ -12,6 +12,27 @@ import * as utilities from "./utilities";
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const myBookmarkApp = new cloudflare.AccessBookmark("my_bookmark_app", {
+ *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     appLauncherVisible: true,
+ *     domain: "example.com",
+ *     logoUrl: "https://example.com/example.png",
+ *     name: "My Bookmark App",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example <account_id>/<bookmark_id>
+ * ```
  */
 export class AccessBookmark extends pulumi.CustomResource {
     /**

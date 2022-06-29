@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Filter expressions that can be referenced across multiple features, e.g. Firewall Rule. The expression format is similar to [Wireshark Display Filter](https://www.wireshark.org/docs/man-pages/wireshark-filter.html).
+ * Filter expressions that can be referenced across multiple features, e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/) for more details and available fields and operators.
  *
  * ## Example Usage
  *
@@ -22,13 +22,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Filter can be imported using a composite ID formed of zone ID and filter ID, e.g.
- *
  * ```sh
- *  $ pulumi import cloudflare:index/filter:Filter default d41d8cd98f00b204e9800998ecf8427e/9e107d9d372bb6826bd81d3542a419d6
+ *  $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
  * ```
- *
- *  where- `d41d8cd98f00b204e9800998ecf8427e` - zone ID - `9e107d9d372bb6826bd81d3542a419d6` - filter ID as returned by [API](https://api.cloudflare.com/#zone-firewall-filters)
  */
 export class Filter extends pulumi.CustomResource {
     /**
@@ -67,7 +63,7 @@ export class Filter extends pulumi.CustomResource {
      */
     public readonly expression!: pulumi.Output<string>;
     /**
-     * Whether this filter is currently paused. Boolean value.
+     * Whether this filter is currently paused.
      */
     public readonly paused!: pulumi.Output<boolean | undefined>;
     /**
@@ -75,7 +71,7 @@ export class Filter extends pulumi.CustomResource {
      */
     public readonly ref!: pulumi.Output<string | undefined>;
     /**
-     * The DNS zone to which the Filter should be added.
+     * The zone identifier to target for the resource.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -129,7 +125,7 @@ export interface FilterState {
      */
     expression?: pulumi.Input<string>;
     /**
-     * Whether this filter is currently paused. Boolean value.
+     * Whether this filter is currently paused.
      */
     paused?: pulumi.Input<boolean>;
     /**
@@ -137,7 +133,7 @@ export interface FilterState {
      */
     ref?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the Filter should be added.
+     * The zone identifier to target for the resource.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -155,7 +151,7 @@ export interface FilterArgs {
      */
     expression: pulumi.Input<string>;
     /**
-     * Whether this filter is currently paused. Boolean value.
+     * Whether this filter is currently paused.
      */
     paused?: pulumi.Input<boolean>;
     /**
@@ -163,7 +159,7 @@ export interface FilterArgs {
      */
     ref?: pulumi.Input<string>;
     /**
-     * The DNS zone to which the Filter should be added.
+     * The zone identifier to target for the resource.
      */
     zoneId: pulumi.Input<string>;
 }

@@ -217,6 +217,33 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_cert = cloudflare.AccessMutualTlsCertificate("myCert",
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            name="My Root Cert",
+            certificate=var["ca_pem"],
+            associated_hostnames=["staging.example.com"])
+        ```
+
+        ## Import
+
+        # Account level import.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
+        ```
+
+        # Zone level import.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -239,6 +266,33 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_cert = cloudflare.AccessMutualTlsCertificate("myCert",
+            zone_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            name="My Root Cert",
+            certificate=var["ca_pem"],
+            associated_hostnames=["staging.example.com"])
+        ```
+
+        ## Import
+
+        # Account level import.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
+        ```
+
+        # Zone level import.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessMutualTlsCertificateArgs args: The arguments to use to populate this resource's properties.

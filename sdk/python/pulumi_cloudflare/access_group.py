@@ -207,6 +207,38 @@ class AccessGroup(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        test_group_access_group = cloudflare.AccessGroup("testGroupAccessGroup",
+            account_id="975ecf5a45e3bcb680dba0722a420ad9",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        test_group_index_access_group_access_group = cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup",
+            account_id="975ecf5a45e3bcb680dba0722a420ad9",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires={
+                "ips": [var["office_ip"]],
+            })
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -226,6 +258,38 @@ class AccessGroup(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        test_group_access_group = cloudflare.AccessGroup("testGroupAccessGroup",
+            account_id="975ecf5a45e3bcb680dba0722a420ad9",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        test_group_index_access_group_access_group = cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup",
+            account_id="975ecf5a45e3bcb680dba0722a420ad9",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires={
+                "ips": [var["office_ip"]],
+            })
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessGroupArgs args: The arguments to use to populate this resource's properties.

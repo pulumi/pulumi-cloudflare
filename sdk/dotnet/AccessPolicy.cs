@@ -17,6 +17,94 @@ namespace Pulumi.Cloudflare
     /// access token, you must provide the argument that matches the token's
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Allowing access to `test@example.com` email address only
+    ///         var testPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyAccessPolicy", new Cloudflare.AccessPolicyArgs
+    ///         {
+    ///             ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///             Name = "staging policy",
+    ///             Precedence = 1,
+    ///             Decision = "allow",
+    ///             Includes = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Requires = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessPolicyRequireArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Allowing `test@example.com` to access but only when coming from a
+    ///         // specific IP.
+    ///         var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", new Cloudflare.AccessPolicyArgs
+    ///         {
+    ///             ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///             ZoneId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///             Name = "staging policy",
+    ///             Precedence = 1,
+    ///             Decision = "allow",
+    ///             Includes = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Requires = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessPolicyRequireArgs
+    ///                 {
+    ///                     Ips = 
+    ///                     {
+    ///                         @var.Office_ip,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # Account level import.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/&lt;account_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;
+    /// ```
+    /// 
+    /// # Zone level import.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/&lt;zone_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessPolicy:AccessPolicy")]
     public partial class AccessPolicy : Pulumi.CustomResource

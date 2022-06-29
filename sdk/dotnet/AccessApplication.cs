@@ -19,6 +19,54 @@ namespace Pulumi.Cloudflare
     /// access token, you must provide the argument that matches the token's
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // With CORS configuration
+    ///         var stagingApp = new Cloudflare.AccessApplication("stagingApp", new Cloudflare.AccessApplicationArgs
+    ///         {
+    ///             CorsHeaders = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs
+    ///                 {
+    ///                     AllowCredentials = true,
+    ///                     AllowedMethods = 
+    ///                     {
+    ///                         "GET",
+    ///                         "POST",
+    ///                         "OPTIONS",
+    ///                     },
+    ///                     AllowedOrigins = 
+    ///                     {
+    ///                         "https://example.com",
+    ///                     },
+    ///                     MaxAge = 10,
+    ///                 },
+    ///             },
+    ///             Domain = "staging.example.com",
+    ///             Name = "staging application",
+    ///             SessionDuration = "24h",
+    ///             Type = "self_hosted",
+    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessApplication:AccessApplication example &lt;account_id&gt;/&lt;application_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessApplication:AccessApplication")]
     public partial class AccessApplication : Pulumi.CustomResource

@@ -13,28 +13,43 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParameters
     {
+        public readonly Outputs.RulesetRuleActionParametersBrowserTtl? BrowserTtl;
+        public readonly bool? BypassCache;
+        public readonly Outputs.RulesetRuleActionParametersCacheKey? CacheKey;
         public readonly ImmutableArray<string> CookieFields;
+        public readonly Outputs.RulesetRuleActionParametersEdgeTtl? EdgeTtl;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
         public readonly string? HostHeader;
         public readonly string? Id;
         public readonly int? Increment;
         public readonly Outputs.RulesetRuleActionParametersMatchedData? MatchedData;
         public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
+        public readonly bool? OriginErrorPagePassthru;
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
         public readonly ImmutableArray<string> Phases;
         public readonly ImmutableArray<string> Products;
         public readonly ImmutableArray<string> RequestFields;
+        public readonly bool? RespectStrongEtags;
         public readonly ImmutableArray<string> ResponseFields;
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponse> Responses;
         public readonly ImmutableDictionary<string, string>? Rules;
         public readonly string? Ruleset;
         public readonly ImmutableArray<string> Rulesets;
+        public readonly Outputs.RulesetRuleActionParametersServeStale? ServeStale;
         public readonly Outputs.RulesetRuleActionParametersUri? Uri;
         public readonly string? Version;
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
+            Outputs.RulesetRuleActionParametersBrowserTtl? browserTtl,
+
+            bool? bypassCache,
+
+            Outputs.RulesetRuleActionParametersCacheKey? cacheKey,
+
             ImmutableArray<string> cookieFields,
+
+            Outputs.RulesetRuleActionParametersEdgeTtl? edgeTtl,
 
             ImmutableArray<Outputs.RulesetRuleActionParametersHeader> headers,
 
@@ -48,6 +63,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParametersOrigin? origin,
 
+            bool? originErrorPagePassthru,
+
             Outputs.RulesetRuleActionParametersOverrides? overrides,
 
             ImmutableArray<string> phases,
@@ -55,6 +72,8 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> products,
 
             ImmutableArray<string> requestFields,
+
+            bool? respectStrongEtags,
 
             ImmutableArray<string> responseFields,
 
@@ -66,26 +85,35 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> rulesets,
 
+            Outputs.RulesetRuleActionParametersServeStale? serveStale,
+
             Outputs.RulesetRuleActionParametersUri? uri,
 
             string? version)
         {
+            BrowserTtl = browserTtl;
+            BypassCache = bypassCache;
+            CacheKey = cacheKey;
             CookieFields = cookieFields;
+            EdgeTtl = edgeTtl;
             Headers = headers;
             HostHeader = hostHeader;
             Id = id;
             Increment = increment;
             MatchedData = matchedData;
             Origin = origin;
+            OriginErrorPagePassthru = originErrorPagePassthru;
             Overrides = overrides;
             Phases = phases;
             Products = products;
             RequestFields = requestFields;
+            RespectStrongEtags = respectStrongEtags;
             ResponseFields = responseFields;
             Responses = responses;
             Rules = rules;
             Ruleset = ruleset;
             Rulesets = rulesets;
+            ServeStale = serveStale;
             Uri = uri;
             Version = version;
         }

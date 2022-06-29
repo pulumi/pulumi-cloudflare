@@ -80,13 +80,17 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly frequency!: pulumi.Output<string | undefined>;
     /**
+     * The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+     */
+    public readonly kind!: pulumi.Output<string | undefined>;
+    /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
      * options
      * documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     public readonly logpullOptions!: pulumi.Output<string | undefined>;
     /**
-     * The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+     * The name of the logpush job to create.
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
@@ -119,6 +123,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["enabled"] = state ? state.enabled : undefined;
             resourceInputs["filter"] = state ? state.filter : undefined;
             resourceInputs["frequency"] = state ? state.frequency : undefined;
+            resourceInputs["kind"] = state ? state.kind : undefined;
             resourceInputs["logpullOptions"] = state ? state.logpullOptions : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["ownershipChallenge"] = state ? state.ownershipChallenge : undefined;
@@ -137,6 +142,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["frequency"] = args ? args.frequency : undefined;
+            resourceInputs["kind"] = args ? args.kind : undefined;
             resourceInputs["logpullOptions"] = args ? args.logpullOptions : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
@@ -184,13 +190,17 @@ export interface LogpushJobState {
      */
     frequency?: pulumi.Input<string>;
     /**
+     * The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+     */
+    kind?: pulumi.Input<string>;
+    /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
      * options
      * documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     logpullOptions?: pulumi.Input<string>;
     /**
-     * The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+     * The name of the logpush job to create.
      */
     name?: pulumi.Input<string>;
     /**
@@ -242,13 +252,17 @@ export interface LogpushJobArgs {
      */
     frequency?: pulumi.Input<string>;
     /**
+     * The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+     */
+    kind?: pulumi.Input<string>;
+    /**
      * Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
      * options
      * documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
      */
     logpullOptions?: pulumi.Input<string>;
     /**
-     * The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+     * The name of the logpush job to create.
      */
     name?: pulumi.Input<string>;
     /**

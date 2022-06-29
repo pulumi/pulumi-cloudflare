@@ -72,6 +72,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> Frequency { get; private set; } = null!;
 
         /// <summary>
+        /// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        /// </summary>
+        [Output("kind")]
+        public Output<string?> Kind { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
         /// options
         /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -80,7 +86,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> LogpullOptions { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        /// The name of the logpush job to create.
         /// </summary>
         [Output("name")]
         public Output<string?> Name { get; private set; } = null!;
@@ -190,6 +196,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
+        /// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
+        /// <summary>
         /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
         /// options
         /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -198,7 +210,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogpullOptions { get; set; }
 
         /// <summary>
-        /// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        /// The name of the logpush job to create.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -269,6 +281,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Frequency { get; set; }
 
         /// <summary>
+        /// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+        /// </summary>
+        [Input("kind")]
+        public Input<string>? Kind { get; set; }
+
+        /// <summary>
         /// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
         /// options
         /// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -277,7 +295,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogpullOptions { get; set; }
 
         /// <summary>
-        /// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+        /// The name of the logpush job to create.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

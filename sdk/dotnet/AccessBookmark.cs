@@ -17,6 +17,35 @@ namespace Pulumi.Cloudflare
     /// access token, you must provide the argument that matches the token's
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myBookmarkApp = new Cloudflare.AccessBookmark("myBookmarkApp", new Cloudflare.AccessBookmarkArgs
+    ///         {
+    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             AppLauncherVisible = true,
+    ///             Domain = "example.com",
+    ///             LogoUrl = "https://example.com/example.png",
+    ///             Name = "My Bookmark App",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example &lt;account_id&gt;/&lt;bookmark_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessBookmark:AccessBookmark")]
     public partial class AccessBookmark : Pulumi.CustomResource

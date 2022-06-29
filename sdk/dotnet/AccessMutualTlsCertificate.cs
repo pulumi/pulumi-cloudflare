@@ -17,6 +17,45 @@ namespace Pulumi.Cloudflare
     /// access token, you must provide the argument that matches the token's
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myCert = new Cloudflare.AccessMutualTlsCertificate("myCert", new Cloudflare.AccessMutualTlsCertificateArgs
+    ///         {
+    ///             ZoneId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             Name = "My Root Cert",
+    ///             Certificate = @var.Ca_pem,
+    ///             AssociatedHostnames = 
+    ///             {
+    ///                 "staging.example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # Account level import.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/&lt;account_id&gt;/&lt;mutual_tls_certificate_id&gt;
+    /// ```
+    /// 
+    /// # Zone level import.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/&lt;zone_id&gt;/&lt;mutual_tls_certificate_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate")]
     public partial class AccessMutualTlsCertificate : Pulumi.CustomResource

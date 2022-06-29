@@ -17,6 +17,67 @@ namespace Pulumi.Cloudflare
     /// access token, you must provide the argument that matches the token's
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Allowing access to `test@example.com` email address only
+    ///         var testGroupAccessGroup = new Cloudflare.AccessGroup("testGroupAccessGroup", new Cloudflare.AccessGroupArgs
+    ///         {
+    ///             AccountId = "975ecf5a45e3bcb680dba0722a420ad9",
+    ///             Name = "staging group",
+    ///             Includes = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Allowing `test@example.com` to access but only when coming from a
+    ///         // specific IP.
+    ///         var testGroupIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", new Cloudflare.AccessGroupArgs
+    ///         {
+    ///             AccountId = "975ecf5a45e3bcb680dba0722a420ad9",
+    ///             Name = "staging group",
+    ///             Includes = 
+    ///             {
+    ///                 new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///                 {
+    ///                     Emails = 
+    ///                     {
+    ///                         "test@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Requires = 
+    ///             {
+    ///                 { "ips", 
+    ///                 {
+    ///                     @var.Office_ip,
+    ///                 } },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessGroup:AccessGroup example &lt;account_id&gt;/&lt;group_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessGroup:AccessGroup")]
     public partial class AccessGroup : Pulumi.CustomResource

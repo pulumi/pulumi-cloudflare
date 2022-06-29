@@ -49,6 +49,7 @@ from .gre_tunnel import *
 from .healthcheck import *
 from .ip_list import *
 from .ipsec_tunnel import *
+from .list import *
 from .load_balancer import *
 from .load_balancer_monitor import *
 from .load_balancer_pool import *
@@ -56,6 +57,7 @@ from .logpull_retention import *
 from .logpush_job import *
 from .logpush_ownership_challenge import *
 from .magic_firewall_ruleset import *
+from .managed_headers import *
 from .notification_policy import *
 from .notification_policy_webhooks import *
 from .origin_ca_certificate import *
@@ -361,6 +363,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/list",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/list:List": "List"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/loadBalancer",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -413,6 +423,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset": "MagicFirewallRuleset"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/managedHeaders",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/managedHeaders:ManagedHeaders": "ManagedHeaders"
   }
  },
  {

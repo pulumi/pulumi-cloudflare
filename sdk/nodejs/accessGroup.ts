@@ -13,6 +13,40 @@ import * as utilities from "./utilities";
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Allowing access to `test@example.com` email address only
+ * const testGroupAccessGroup = new cloudflare.AccessGroup("testGroupAccessGroup", {
+ *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
+ *     name: "staging group",
+ *     includes: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ * });
+ * // Allowing `test@example.com` to access but only when coming from a
+ * // specific IP.
+ * const testGroupIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("testGroupIndex/accessGroupAccessGroup", {
+ *     accountId: "975ecf5a45e3bcb680dba0722a420ad9",
+ *     name: "staging group",
+ *     includes: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ *     requires: {
+ *         ips: [_var.office_ip],
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+ * ```
  */
 export class AccessGroup extends pulumi.CustomResource {
     /**

@@ -3,14 +3,14 @@ module github.com/cloudflare/terraform-provider/cloudflare/shim
 go 1.18
 
 require (
-	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220614204315-0cf91fc6c0e5
+	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220628233243-db7e0ef4b519
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.17.0
 )
 
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
-	github.com/cloudflare/cloudflare-go v0.41.0 // indirect
+	github.com/cloudflare/cloudflare-go v0.43.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect

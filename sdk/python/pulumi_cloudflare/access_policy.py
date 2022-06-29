@@ -467,6 +467,55 @@ class AccessPolicy(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        test_policy_access_policy = cloudflare.AccessPolicy("testPolicyAccessPolicy",
+            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            name="staging policy",
+            precedence=1,
+            decision="allow",
+            includes=[cloudflare.AccessPolicyIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires=[cloudflare.AccessPolicyRequireArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        test_policy_index_access_policy_access_policy = cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy",
+            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            name="staging policy",
+            precedence=1,
+            decision="allow",
+            includes=[cloudflare.AccessPolicyIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires=[cloudflare.AccessPolicyRequireArgs(
+                ips=[var["office_ip"]],
+            )])
+        ```
+
+        ## Import
+
+        # Account level import.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+        ```
+
+        # Zone level import.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -499,6 +548,55 @@ class AccessPolicy(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        test_policy_access_policy = cloudflare.AccessPolicy("testPolicyAccessPolicy",
+            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            name="staging policy",
+            precedence=1,
+            decision="allow",
+            includes=[cloudflare.AccessPolicyIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires=[cloudflare.AccessPolicyRequireArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        test_policy_index_access_policy_access_policy = cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy",
+            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
+            zone_id="d41d8cd98f00b204e9800998ecf8427e",
+            name="staging policy",
+            precedence=1,
+            decision="allow",
+            includes=[cloudflare.AccessPolicyIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires=[cloudflare.AccessPolicyRequireArgs(
+                ips=[var["office_ip"]],
+            )])
+        ```
+
+        ## Import
+
+        # Account level import.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+        ```
+
+        # Zone level import.
+
+        ```sh
+         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessPolicyArgs args: The arguments to use to populate this resource's properties.

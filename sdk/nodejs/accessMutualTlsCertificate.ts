@@ -12,6 +12,34 @@ import * as utilities from "./utilities";
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const myCert = new cloudflare.AccessMutualTlsCertificate("myCert", {
+ *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     name: "My Root Cert",
+ *     certificate: _var.ca_pem,
+ *     associatedHostnames: ["staging.example.com"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * # Account level import.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
+ * ```
+ *
+ * # Zone level import.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
+ * ```
  */
 export class AccessMutualTlsCertificate extends pulumi.CustomResource {
     /**

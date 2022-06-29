@@ -237,6 +237,26 @@ class AccessBookmark(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_bookmark_app = cloudflare.AccessBookmark("myBookmarkApp",
+            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            app_launcher_visible=True,
+            domain="example.com",
+            logo_url="https://example.com/example.png",
+            name="My Bookmark App")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example <account_id>/<bookmark_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -260,6 +280,26 @@ class AccessBookmark(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_bookmark_app = cloudflare.AccessBookmark("myBookmarkApp",
+            account_id="1d5fdc9e88c8a8c4518b068cd94331fe",
+            app_launcher_visible=True,
+            domain="example.com",
+            logo_url="https://example.com/example.png",
+            name="My Bookmark App")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example <account_id>/<bookmark_id>
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessBookmarkArgs args: The arguments to use to populate this resource's properties.

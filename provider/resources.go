@@ -214,6 +214,8 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_access_bookmark":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "AccessBookmark")},
 			"cloudflare_tunnel_route":           {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelRoute")},
 			"cloudflare_tunnel_virtual_network": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "TunnelVirtualNetwork")},
+			"cloudflare_list":                   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "List")},
+			"cloudflare_managed_headers":        {Tok: tfbridge.MakeResource(mainPkg, mainMod, "ManagedHeaders")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"cloudflare_ip_ranges":    {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "getIpRanges")},

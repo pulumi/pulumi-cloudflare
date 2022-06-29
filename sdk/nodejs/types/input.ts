@@ -623,25 +623,16 @@ export interface GetWafPackagesFilterArgs {
     sensitivity?: pulumi.Input<string>;
 }
 
-export interface GetWafRulesFilter {
-    description?: string;
-    groupId?: string;
-    mode?: string;
-}
-
 export interface GetWafRulesFilterArgs {
     description?: pulumi.Input<string>;
     groupId?: pulumi.Input<string>;
     mode?: pulumi.Input<string>;
 }
 
-export interface GetZonesFilter {
-    accountId?: string;
-    lookupType?: string;
-    match?: string;
-    name?: string;
-    paused?: boolean;
-    status?: string;
+export interface GetWafRulesFilter {
+    description?: string;
+    groupId?: string;
+    mode?: string;
 }
 
 export interface GetZonesFilterArgs {
@@ -651,6 +642,15 @@ export interface GetZonesFilterArgs {
     name?: pulumi.Input<string>;
     paused?: pulumi.Input<boolean>;
     status?: pulumi.Input<string>;
+}
+
+export interface GetZonesFilter {
+    accountId?: string;
+    lookupType?: string;
+    match?: string;
+    name?: string;
+    paused?: boolean;
+    status?: string;
 }
 
 export interface HealthcheckHeader {
@@ -667,6 +667,26 @@ export interface IpListItem {
      * The IPv4 address, IPv4 CIDR or IPv6 CIDR. IPv6 CIDRs are limited to a maximum of /64.
      */
     value: pulumi.Input<string>;
+}
+
+export interface ListItem {
+    comment?: pulumi.Input<string>;
+    value: pulumi.Input<inputs.ListItemValue>;
+}
+
+export interface ListItemValue {
+    ip?: pulumi.Input<string>;
+    redirects?: pulumi.Input<pulumi.Input<inputs.ListItemValueRedirect>[]>;
+}
+
+export interface ListItemValueRedirect {
+    includeSubdomains?: pulumi.Input<boolean>;
+    preservePathSuffix?: pulumi.Input<boolean>;
+    preserveQueryString?: pulumi.Input<boolean>;
+    sourceUrl: pulumi.Input<string>;
+    statusCode?: pulumi.Input<number>;
+    subpathMatching?: pulumi.Input<boolean>;
+    targetUrl: pulumi.Input<string>;
 }
 
 export interface LoadBalancerMonitorHeader {
@@ -873,63 +893,40 @@ export interface LoadBalancerRuleOverrideRegionPool {
     region: pulumi.Input<string>;
 }
 
+export interface ManagedHeadersManagedRequestHeader {
+    enabled: pulumi.Input<boolean>;
+    id: pulumi.Input<string>;
+}
+
+export interface ManagedHeadersManagedResponseHeader {
+    enabled: pulumi.Input<boolean>;
+    id: pulumi.Input<string>;
+}
+
 export interface NotificationPolicyEmailIntegration {
     id: pulumi.Input<string>;
-    /**
-     * The name of the notification policy.
-     */
     name?: pulumi.Input<string>;
 }
 
 export interface NotificationPolicyFilters {
-    /**
-     * State of the pool to alert on. Example: `"true"`, `"false"`.
-     */
     enableds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Identifier health check.
-     */
     healthCheckIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A numerical limit. Example: `"100"`
-     */
     limits?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Load balancer pool identifier.
-     */
     poolIds?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
-     */
     products?: pulumi.Input<pulumi.Input<string>[]>;
     services?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A numerical limit. Example: `"99.9"`
-     */
     slos?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
-     */
     statuses?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * A list of zone identifiers.
-     */
     zones?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface NotificationPolicyPagerdutyIntegration {
     id: pulumi.Input<string>;
-    /**
-     * The name of the notification policy.
-     */
     name?: pulumi.Input<string>;
 }
 
 export interface NotificationPolicyWebhooksIntegration {
     id: pulumi.Input<string>;
-    /**
-     * The name of the notification policy.
-     */
     name?: pulumi.Input<string>;
 }
 
@@ -1355,24 +1352,94 @@ export interface RulesetRule {
 }
 
 export interface RulesetRuleActionParameters {
+    browserTtl?: pulumi.Input<inputs.RulesetRuleActionParametersBrowserTtl>;
+    bypassCache?: pulumi.Input<boolean>;
+    cacheKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKey>;
     cookieFields?: pulumi.Input<pulumi.Input<string>[]>;
+    edgeTtl?: pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtl>;
     headers?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersHeader>[]>;
     hostHeader?: pulumi.Input<string>;
     id?: pulumi.Input<string>;
     increment?: pulumi.Input<number>;
     matchedData?: pulumi.Input<inputs.RulesetRuleActionParametersMatchedData>;
     origin?: pulumi.Input<inputs.RulesetRuleActionParametersOrigin>;
+    originErrorPagePassthru?: pulumi.Input<boolean>;
     overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     phases?: pulumi.Input<pulumi.Input<string>[]>;
     products?: pulumi.Input<pulumi.Input<string>[]>;
     requestFields?: pulumi.Input<pulumi.Input<string>[]>;
+    respectStrongEtags?: pulumi.Input<boolean>;
     responseFields?: pulumi.Input<pulumi.Input<string>[]>;
     responses?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersResponse>[]>;
     rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     ruleset?: pulumi.Input<string>;
     rulesets?: pulumi.Input<pulumi.Input<string>[]>;
+    serveStale?: pulumi.Input<inputs.RulesetRuleActionParametersServeStale>;
     uri?: pulumi.Input<inputs.RulesetRuleActionParametersUri>;
     version?: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersBrowserTtl {
+    default?: pulumi.Input<number>;
+    mode: pulumi.Input<string>;
+}
+
+export interface RulesetRuleActionParametersCacheKey {
+    cacheByDeviceType?: pulumi.Input<boolean>;
+    cacheDeceptionArmor?: pulumi.Input<boolean>;
+    customKey?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKey>;
+    ignoreQueryStringsOrder?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKey {
+    cookie?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie>;
+    header?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader>;
+    host?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyHost>;
+    queryString?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString>;
+    user?: pulumi.Input<inputs.RulesetRuleActionParametersCacheKeyCustomKeyUser>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
+    checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
+    checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeOrigin?: pulumi.Input<boolean>;
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHost {
+    resolved?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
+    excludes?: pulumi.Input<pulumi.Input<string>[]>;
+    includes?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
+    deviceType?: pulumi.Input<boolean>;
+    geo?: pulumi.Input<boolean>;
+    lang?: pulumi.Input<boolean>;
+}
+
+export interface RulesetRuleActionParametersEdgeTtl {
+    default: pulumi.Input<number>;
+    mode: pulumi.Input<string>;
+    statusCodeTtls?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl>[]>;
+}
+
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+    statusCode?: pulumi.Input<number>;
+    statusCodeRanges?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange>[]>;
+    value: pulumi.Input<number>;
+}
+
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+    from?: pulumi.Input<number>;
+    to?: pulumi.Input<number>;
 }
 
 export interface RulesetRuleActionParametersHeader {
@@ -1428,6 +1495,10 @@ export interface RulesetRuleActionParametersResponse {
     content?: pulumi.Input<string>;
     contentType?: pulumi.Input<string>;
     statusCode?: pulumi.Input<number>;
+}
+
+export interface RulesetRuleActionParametersServeStale {
+    disableStaleWhileUpdating?: pulumi.Input<boolean>;
 }
 
 export interface RulesetRuleActionParametersUri {

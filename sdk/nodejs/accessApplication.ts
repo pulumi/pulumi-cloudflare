@@ -15,6 +15,38 @@ import * as utilities from "./utilities";
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // With CORS configuration
+ * const stagingApp = new cloudflare.AccessApplication("staging_app", {
+ *     corsHeaders: [{
+ *         allowCredentials: true,
+ *         allowedMethods: [
+ *             "GET",
+ *             "POST",
+ *             "OPTIONS",
+ *         ],
+ *         allowedOrigins: ["https://example.com"],
+ *         maxAge: 10,
+ *     }],
+ *     domain: "staging.example.com",
+ *     name: "staging application",
+ *     sessionDuration: "24h",
+ *     type: "self_hosted",
+ *     zoneId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
+ * ```
  */
 export class AccessApplication extends pulumi.CustomResource {
     /**

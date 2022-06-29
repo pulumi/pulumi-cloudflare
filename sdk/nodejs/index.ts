@@ -49,6 +49,7 @@ export * from "./greTunnel";
 export * from "./healthcheck";
 export * from "./ipList";
 export * from "./ipsecTunnel";
+export * from "./list";
 export * from "./loadBalancer";
 export * from "./loadBalancerMonitor";
 export * from "./loadBalancerPool";
@@ -56,6 +57,7 @@ export * from "./logpullRetention";
 export * from "./logpushJob";
 export * from "./logpushOwnershipChallenge";
 export * from "./magicFirewallRuleset";
+export * from "./managedHeaders";
 export * from "./notificationPolicy";
 export * from "./notificationPolicyWebhooks";
 export * from "./originCaCertificate";
@@ -133,6 +135,7 @@ import { GreTunnel } from "./greTunnel";
 import { Healthcheck } from "./healthcheck";
 import { IpList } from "./ipList";
 import { IpsecTunnel } from "./ipsecTunnel";
+import { List } from "./list";
 import { LoadBalancer } from "./loadBalancer";
 import { LoadBalancerMonitor } from "./loadBalancerMonitor";
 import { LoadBalancerPool } from "./loadBalancerPool";
@@ -140,6 +143,7 @@ import { LogpullRetention } from "./logpullRetention";
 import { LogpushJob } from "./logpushJob";
 import { LogpushOwnershipChallenge } from "./logpushOwnershipChallenge";
 import { MagicFirewallRuleset } from "./magicFirewallRuleset";
+import { ManagedHeaders } from "./managedHeaders";
 import { NotificationPolicy } from "./notificationPolicy";
 import { NotificationPolicyWebhooks } from "./notificationPolicyWebhooks";
 import { OriginCaCertificate } from "./originCaCertificate";
@@ -242,6 +246,8 @@ const _module = {
                 return new IpList(name, <any>undefined, { urn })
             case "cloudflare:index/ipsecTunnel:IpsecTunnel":
                 return new IpsecTunnel(name, <any>undefined, { urn })
+            case "cloudflare:index/list:List":
+                return new List(name, <any>undefined, { urn })
             case "cloudflare:index/loadBalancer:LoadBalancer":
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor":
@@ -256,6 +262,8 @@ const _module = {
                 return new LogpushOwnershipChallenge(name, <any>undefined, { urn })
             case "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset":
                 return new MagicFirewallRuleset(name, <any>undefined, { urn })
+            case "cloudflare:index/managedHeaders:ManagedHeaders":
+                return new ManagedHeaders(name, <any>undefined, { urn })
             case "cloudflare:index/notificationPolicy:NotificationPolicy":
                 return new NotificationPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
@@ -359,6 +367,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/greTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipList", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/list", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancerMonitor", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancerPool", _module)
@@ -366,6 +375,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/logpullRetention", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpushJob", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/logpushOwnershipChallenge", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/magicFirewallRuleset", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/managedHeaders", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicyWebhooks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/originCaCertificate", _module)

@@ -13,6 +13,57 @@ import * as utilities from "./utilities";
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Allowing access to `test@example.com` email address only
+ * const testPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyAccessPolicy", {
+ *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     name: "staging policy",
+ *     precedence: 1,
+ *     decision: "allow",
+ *     includes: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ *     requires: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ * });
+ * // Allowing `test@example.com` to access but only when coming from a
+ * // specific IP.
+ * const testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", {
+ *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     name: "staging policy",
+ *     precedence: 1,
+ *     decision: "allow",
+ *     includes: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ *     requires: [{
+ *         ips: [_var.office_ip],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * # Account level import.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
+ * ```
+ *
+ * # Zone level import.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
+ * ```
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**

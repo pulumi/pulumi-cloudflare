@@ -17,6 +17,47 @@ namespace Pulumi.Cloudflare
     /// access token, you must provide the argument that matches the token's
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // account level
+    ///         var example = new Cloudflare.AccessCaCertificate("example", new Cloudflare.AccessCaCertificateArgs
+    ///         {
+    ///             AccountId = "1d5fdc9e88c8a8c4518b068cd94331fe",
+    ///             ApplicationId = "6cd6cea3-3ef2-4542-9aea-85a0bbcd5414",
+    ///         });
+    ///         // zone level
+    ///         var anotherExample = new Cloudflare.AccessCaCertificate("anotherExample", new Cloudflare.AccessCaCertificateArgs
+    ///         {
+    ///             ApplicationId = "fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
+    ///             ZoneId = "b6bc7eb6027c792a6bca3dc91fd2d7e0",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// # Account level CA certificate import.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;account_id&gt;/&lt;certificate_id&gt;
+    /// ```
+    /// 
+    /// # Zone level CA certificate import.
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;zone_id&gt;/&lt;certificate_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessCaCertificate:AccessCaCertificate")]
     public partial class AccessCaCertificate : Pulumi.CustomResource

@@ -47,11 +47,13 @@ type LogpushJob struct {
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
 	// often with larger files. Available values: `high`, `low`
 	Frequency pulumi.StringPtrOutput `pulumi:"frequency"`
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
 	// options
 	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrOutput `pulumi:"logpullOptions"`
-	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+	// The name of the logpush job to create.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
 	// Microsoft Azure or Sumo Logic. See [Developer
@@ -116,11 +118,13 @@ type logpushJobState struct {
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
 	// often with larger files. Available values: `high`, `low`
 	Frequency *string `pulumi:"frequency"`
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	Kind *string `pulumi:"kind"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
 	// options
 	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
-	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
 	// Microsoft Azure or Sumo Logic. See [Developer
@@ -151,11 +155,13 @@ type LogpushJobState struct {
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
 	// often with larger files. Available values: `high`, `low`
 	Frequency pulumi.StringPtrInput
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	Kind pulumi.StringPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
 	// options
 	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
-	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
 	// Microsoft Azure or Sumo Logic. See [Developer
@@ -190,11 +196,13 @@ type logpushJobArgs struct {
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
 	// often with larger files. Available values: `high`, `low`
 	Frequency *string `pulumi:"frequency"`
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	Kind *string `pulumi:"kind"`
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
 	// options
 	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions *string `pulumi:"logpullOptions"`
-	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
 	// Microsoft Azure or Sumo Logic. See [Developer
@@ -226,11 +234,13 @@ type LogpushJobArgs struct {
 	// A higher frequency will result in logs being pushed on faster with smaller files. `low` frequency will push logs less
 	// often with larger files. Available values: `high`, `low`
 	Frequency pulumi.StringPtrInput
+	// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+	Kind pulumi.StringPtrInput
 	// Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
 	// options
 	// documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
 	LogpullOptions pulumi.StringPtrInput
-	// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage,
 	// Microsoft Azure or Sumo Logic. See [Developer
@@ -365,6 +375,11 @@ func (o LogpushJobOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Frequency }).(pulumi.StringPtrOutput)
 }
 
+// The kind of logpush job to create. Available values: `edge`, `instant-logs`, `""`
+func (o LogpushJobOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 // Configuration string for the Logshare API. It specifies things like requested fields and timestamp formats. See [Logpull
 // options
 // documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#options).
@@ -372,7 +387,7 @@ func (o LogpushJobOutput) LogpullOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.LogpullOptions }).(pulumi.StringPtrOutput)
 }
 
-// The name of the logpush job to create. Must match the regular expression `^[a-zA-Z0-9\-\.]*$`.
+// The name of the logpush job to create.
 func (o LogpushJobOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }

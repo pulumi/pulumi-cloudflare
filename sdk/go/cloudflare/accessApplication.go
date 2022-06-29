@@ -20,6 +20,53 @@ import (
 // access token, you must provide the argument that matches the token's
 // scope. For example, an access token that is scoped to the "example.com"
 // zone needs to use the `zoneId` argument.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
+// 			CorsHeaders: AccessApplicationCorsHeaderArray{
+// 				&AccessApplicationCorsHeaderArgs{
+// 					AllowCredentials: pulumi.Bool(true),
+// 					AllowedMethods: pulumi.StringArray{
+// 						pulumi.String("GET"),
+// 						pulumi.String("POST"),
+// 						pulumi.String("OPTIONS"),
+// 					},
+// 					AllowedOrigins: pulumi.StringArray{
+// 						pulumi.String("https://example.com"),
+// 					},
+// 					MaxAge: pulumi.Int(10),
+// 				},
+// 			},
+// 			Domain:          pulumi.String("staging.example.com"),
+// 			Name:            pulumi.String("staging application"),
+// 			SessionDuration: pulumi.String("24h"),
+// 			Type:            pulumi.String("self_hosted"),
+// 			ZoneId:          pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
+// ```
 type AccessApplication struct {
 	pulumi.CustomResourceState
 

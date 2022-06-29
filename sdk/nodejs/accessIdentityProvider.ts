@@ -13,6 +13,64 @@ import * as utilities from "./utilities";
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // one time pin
+ * const pinLogin = new cloudflare.AccessIdentityProvider("pin_login", {
+ *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     name: "PIN login",
+ *     type: "onetimepin",
+ * });
+ * // oauth
+ * const githubOauth = new cloudflare.AccessIdentityProvider("github_oauth", {
+ *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     configs: [{
+ *         clientId: "example",
+ *         clientSecret: "secret_key",
+ *     }],
+ *     name: "GitHub OAuth",
+ *     type: "github",
+ * });
+ * // saml
+ * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloud_saml", {
+ *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     configs: [{
+ *         attributes: [
+ *             "email",
+ *             "username",
+ *         ],
+ *         idpPublicCert: `MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+ * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o`,
+ *         issuerUrl: "jumpcloud",
+ *         signRequest: false,
+ *         ssoTargetUrl: "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+ *     }],
+ *     name: "JumpCloud SAML",
+ *     type: "saml",
+ * });
+ * // okta
+ * const okta = new cloudflare.AccessIdentityProvider("okta", {
+ *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     configs: [{
+ *         apiToken: "okta_api_token",
+ *         clientId: "example",
+ *         clientSecret: "secret_key",
+ *     }],
+ *     name: "Okta",
+ *     type: "okta",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessIdentityProvider:AccessIdentityProvider example <account_id>/<identity_provider_id>
+ * ```
  */
 export class AccessIdentityProvider extends pulumi.CustomResource {
     /**

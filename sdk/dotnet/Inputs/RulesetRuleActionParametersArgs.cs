@@ -12,6 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersArgs : Pulumi.ResourceArgs
     {
+        [Input("browserTtl")]
+        public Input<Inputs.RulesetRuleActionParametersBrowserTtlArgs>? BrowserTtl { get; set; }
+
+        [Input("bypassCache")]
+        public Input<bool>? BypassCache { get; set; }
+
+        [Input("cacheKey")]
+        public Input<Inputs.RulesetRuleActionParametersCacheKeyArgs>? CacheKey { get; set; }
+
         [Input("cookieFields")]
         private InputList<string>? _cookieFields;
         public InputList<string> CookieFields
@@ -19,6 +28,9 @@ namespace Pulumi.Cloudflare.Inputs
             get => _cookieFields ?? (_cookieFields = new InputList<string>());
             set => _cookieFields = value;
         }
+
+        [Input("edgeTtl")]
+        public Input<Inputs.RulesetRuleActionParametersEdgeTtlArgs>? EdgeTtl { get; set; }
 
         [Input("headers")]
         private InputList<Inputs.RulesetRuleActionParametersHeaderArgs>? _headers;
@@ -42,6 +54,9 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("origin")]
         public Input<Inputs.RulesetRuleActionParametersOriginArgs>? Origin { get; set; }
+
+        [Input("originErrorPagePassthru")]
+        public Input<bool>? OriginErrorPagePassthru { get; set; }
 
         [Input("overrides")]
         public Input<Inputs.RulesetRuleActionParametersOverridesArgs>? Overrides { get; set; }
@@ -69,6 +84,9 @@ namespace Pulumi.Cloudflare.Inputs
             get => _requestFields ?? (_requestFields = new InputList<string>());
             set => _requestFields = value;
         }
+
+        [Input("respectStrongEtags")]
+        public Input<bool>? RespectStrongEtags { get; set; }
 
         [Input("responseFields")]
         private InputList<string>? _responseFields;
@@ -104,6 +122,9 @@ namespace Pulumi.Cloudflare.Inputs
             get => _rulesets ?? (_rulesets = new InputList<string>());
             set => _rulesets = value;
         }
+
+        [Input("serveStale")]
+        public Input<Inputs.RulesetRuleActionParametersServeStaleArgs>? ServeStale { get; set; }
 
         [Input("uri")]
         public Input<Inputs.RulesetRuleActionParametersUriArgs>? Uri { get; set; }

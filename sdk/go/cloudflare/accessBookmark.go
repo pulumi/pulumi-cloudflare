@@ -18,6 +18,39 @@ import (
 // access token, you must provide the argument that matches the token's
 // scope. For example, an access token that is scoped to the "example.com"
 // zone needs to use the `zoneId` argument.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-cloudflare/sdk/v4/go/cloudflare"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudflare.NewAccessBookmark(ctx, "myBookmarkApp", &cloudflare.AccessBookmarkArgs{
+// 			AccountId:          pulumi.String("1d5fdc9e88c8a8c4518b068cd94331fe"),
+// 			AppLauncherVisible: pulumi.Bool(true),
+// 			Domain:             pulumi.String("example.com"),
+// 			LogoUrl:            pulumi.String("https://example.com/example.png"),
+// 			Name:               pulumi.String("My Bookmark App"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ```sh
+//  $ pulumi import cloudflare:index/accessBookmark:AccessBookmark example <account_id>/<bookmark_id>
+// ```
 type AccessBookmark struct {
 	pulumi.CustomResourceState
 

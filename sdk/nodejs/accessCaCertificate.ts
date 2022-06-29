@@ -12,6 +12,38 @@ import * as utilities from "./utilities";
  * access token, you must provide the argument that matches the token's
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // account level
+ * const example = new cloudflare.AccessCaCertificate("example", {
+ *     accountId: "1d5fdc9e88c8a8c4518b068cd94331fe",
+ *     applicationId: "6cd6cea3-3ef2-4542-9aea-85a0bbcd5414",
+ * });
+ * // zone level
+ * const anotherExample = new cloudflare.AccessCaCertificate("another_example", {
+ *     applicationId: "fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
+ *     zoneId: "b6bc7eb6027c792a6bca3dc91fd2d7e0",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * # Account level CA certificate import.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<certificate_id>
+ * ```
+ *
+ * # Zone level CA certificate import.
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<certificate_id>
+ * ```
  */
 export class AccessCaCertificate extends pulumi.CustomResource {
     /**

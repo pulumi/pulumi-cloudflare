@@ -701,6 +701,26 @@ export interface IpListItem {
     value: string;
 }
 
+export interface ListItem {
+    comment?: string;
+    value: outputs.ListItemValue;
+}
+
+export interface ListItemValue {
+    ip?: string;
+    redirects?: outputs.ListItemValueRedirect[];
+}
+
+export interface ListItemValueRedirect {
+    includeSubdomains?: boolean;
+    preservePathSuffix?: boolean;
+    preserveQueryString?: boolean;
+    sourceUrl: string;
+    statusCode?: number;
+    subpathMatching?: boolean;
+    targetUrl: string;
+}
+
 export interface LoadBalancerMonitorHeader {
     /**
      * The header name.
@@ -905,63 +925,40 @@ export interface LoadBalancerRuleOverrideRegionPool {
     region: string;
 }
 
+export interface ManagedHeadersManagedRequestHeader {
+    enabled: boolean;
+    id: string;
+}
+
+export interface ManagedHeadersManagedResponseHeader {
+    enabled: boolean;
+    id: string;
+}
+
 export interface NotificationPolicyEmailIntegration {
     id: string;
-    /**
-     * The name of the notification policy.
-     */
     name?: string;
 }
 
 export interface NotificationPolicyFilters {
-    /**
-     * State of the pool to alert on. Example: `"true"`, `"false"`.
-     */
     enableds?: string[];
-    /**
-     * Identifier health check.
-     */
     healthCheckIds?: string[];
-    /**
-     * A numerical limit. Example: `"100"`
-     */
     limits?: string[];
-    /**
-     * Load balancer pool identifier.
-     */
     poolIds?: string[];
-    /**
-     * Product name. Available values: `"workerRequests"`, `"workerDurableObjectsRequests"`, `"workerDurableObjectsDuration"`, `"workerDurableObjectsDataTransfer"`, `"workerDurableObjectsStoredData"`, `"workerDurableObjectsStorageDeletes"`, `"workerDurableObjectsStorageWrites"`, `"workerDurableObjectsStorageReads"`.
-     */
     products?: string[];
     services?: string[];
-    /**
-     * A numerical limit. Example: `"99.9"`
-     */
     slos?: string[];
-    /**
-     * Status to alert on. Example: `"Unhealthy"`, `"Healthy"`.
-     */
     statuses?: string[];
-    /**
-     * A list of zone identifiers.
-     */
     zones?: string[];
 }
 
 export interface NotificationPolicyPagerdutyIntegration {
     id: string;
-    /**
-     * The name of the notification policy.
-     */
     name?: string;
 }
 
 export interface NotificationPolicyWebhooksIntegration {
     id: string;
-    /**
-     * The name of the notification policy.
-     */
     name?: string;
 }
 
@@ -1387,24 +1384,94 @@ export interface RulesetRule {
 }
 
 export interface RulesetRuleActionParameters {
+    browserTtl?: outputs.RulesetRuleActionParametersBrowserTtl;
+    bypassCache?: boolean;
+    cacheKey?: outputs.RulesetRuleActionParametersCacheKey;
     cookieFields?: string[];
+    edgeTtl?: outputs.RulesetRuleActionParametersEdgeTtl;
     headers?: outputs.RulesetRuleActionParametersHeader[];
     hostHeader?: string;
     id?: string;
     increment?: number;
     matchedData?: outputs.RulesetRuleActionParametersMatchedData;
     origin?: outputs.RulesetRuleActionParametersOrigin;
+    originErrorPagePassthru?: boolean;
     overrides?: outputs.RulesetRuleActionParametersOverrides;
     phases?: string[];
     products?: string[];
     requestFields?: string[];
+    respectStrongEtags?: boolean;
     responseFields?: string[];
     responses?: outputs.RulesetRuleActionParametersResponse[];
     rules?: {[key: string]: string};
     ruleset?: string;
     rulesets?: string[];
+    serveStale?: outputs.RulesetRuleActionParametersServeStale;
     uri?: outputs.RulesetRuleActionParametersUri;
     version: string;
+}
+
+export interface RulesetRuleActionParametersBrowserTtl {
+    default?: number;
+    mode: string;
+}
+
+export interface RulesetRuleActionParametersCacheKey {
+    cacheByDeviceType?: boolean;
+    cacheDeceptionArmor?: boolean;
+    customKey?: outputs.RulesetRuleActionParametersCacheKeyCustomKey;
+    ignoreQueryStringsOrder?: boolean;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKey {
+    cookie?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyCookie;
+    header?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHeader;
+    host?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyHost;
+    queryString?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryString;
+    user?: outputs.RulesetRuleActionParametersCacheKeyCustomKeyUser;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
+    checkPresences?: string[];
+    includes?: string[];
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
+    checkPresences?: string[];
+    excludeOrigin?: boolean;
+    includes?: string[];
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyHost {
+    resolved?: boolean;
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
+    excludes?: string[];
+    includes?: string[];
+}
+
+export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
+    deviceType?: boolean;
+    geo?: boolean;
+    lang?: boolean;
+}
+
+export interface RulesetRuleActionParametersEdgeTtl {
+    default: number;
+    mode: string;
+    statusCodeTtls?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
+}
+
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+    statusCode?: number;
+    statusCodeRanges?: outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange[];
+    value: number;
+}
+
+export interface RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+    from?: number;
+    to?: number;
 }
 
 export interface RulesetRuleActionParametersHeader {
@@ -1460,6 +1527,10 @@ export interface RulesetRuleActionParametersResponse {
     content?: string;
     contentType?: string;
     statusCode?: number;
+}
+
+export interface RulesetRuleActionParametersServeStale {
+    disableStaleWhileUpdating?: boolean;
 }
 
 export interface RulesetRuleActionParametersUri {
